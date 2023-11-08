@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    div(v-if="props.length")
+  div This is written with no condition ||| isPropsLoaded: {{ isPropsLoaded }}
+    div(v-if="isPropsLoaded")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto')
@@ -112,6 +112,11 @@ import axios from 'axios';
       methods: [],
       docs: null
     };
+  },
+  computed: {
+    isPropsLoaded() {
+      return this.$data.props.length > 0;
+    }
   }
 })
 export default class PropertiesGenerator extends Vue {
@@ -131,7 +136,8 @@ export default class PropertiesGenerator extends Vue {
     }
   }
 
-  async mounted() {
+  async created() {
+    console.log('created hook started')
     if (Vue.prototype.$chiDocs) {
       console.log('got docs from vue prototype chidocs')
       this.$data.docs = Vue.prototype.$chiDocs;
