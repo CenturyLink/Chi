@@ -141,4 +141,5 @@ export default class PropertiesGenerator extends Vue {
       }
     }
   }
+}
 </script>
