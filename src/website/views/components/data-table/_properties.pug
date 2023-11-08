@@ -124,6 +124,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 print?: {
                   isNestedContentPrintDisabled?: boolean;
                 };
+                state?: <code>'success' | 'warning' | 'danger' | 'info'</code>;
               }
         tr
           td
@@ -194,13 +195,15 @@ section.chi-table.chi-table__options.-bordered.-my--3
       tbody
         tr
           td
-            div <code>toggleRow() => Promise&lt;void&gt;</code>
+            div <code>toggleRow() => void</code>
           td
-            div To expand / collapse specific rows
+            div.-mb--1 To expand / collapse specific rows. 
+            div <code>rowId</code> is created using this pattern: <code>row-dt-${dataTableNumber}-${rowId}</code>
           td
-            | Type: Promise<void>
+            | Type: void
           td
-            div rowId: <code>string</code>
+            div.-mb--1 row: <code> { rowId: string }</code> 
+            div action?: <code>'expand' | 'collapse'</code>
         tr
           td
             div <code>print() => void</code>
