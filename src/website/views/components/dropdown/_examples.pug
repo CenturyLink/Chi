@@ -624,6 +624,51 @@ h3 Visible items
 
       <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
 
+h3 Search input
+.example.-mb--3
+  .-p--3
+    chi-dropdown(button=`Dropdown, click me`)
+      chi-search-input(size="sm" placeholder="Search" slot="menu")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 4  
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-dropdown-with-search
+      li.-active
+        a(href=`#webcomponent-dropdown-with-search`) Web Component
+      li
+        a(href=`#html-dropdown-with-search`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-dropdown-with-search
+    :code(lang="html")
+      <chi-dropdown button="Dropdown, click me">
+        <chi-search-input size="sm" placeholder="Search" slot="menu"></chi-search-input>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+      </chi-dropdown>
+  .chi-tabs-panel#html-dropdown-with-search
+    :code(lang="html")
+      <div class="chi-dropdown">
+        <button id="example__dropdown-with-search" class="chi-button chi-dropdown__trigger">Dropdown, click me</button>
+        <div class="chi-dropdown__menu">
+          <div class="chi-input__wrapper -icon--right">
+            <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
+            <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-search" aria-hidden="true"></i>
+              </div>
+            </button>
+          </div>
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('example__dropdown-with-search'));</script>
 
 h2 Menu
 h3 Menu item states
@@ -850,19 +895,12 @@ p.-text
           </a>
         </div>
 
-h3 Search box
-p.-text
-  | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
-  | smaller padding at the sides.
+h3 Search Input
 .example.-mb--3
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       chi-dropdown(active prevent-auto-hide)
-        .chi-input__wrapper.-icon--right(slot="menu")
-          input.chi-input.chi-search__input.-sm(type="search" placeholder="Search" aria-label="search input")
-          button.chi-button.-icon.-flat.-sm.-bg--none(aria-label="Search")
-            .chi-button__content
-              i.chi-icon.icon-search(aria-hidden="true")
+        chi-search-input(size="sm" placeholder="Search" slot="menu")
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -876,14 +914,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-search
     :code(lang="html")
       <chi-dropdown active>
-         <div class="chi-input__wrapper -icon--right" slot="menu">
-          <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
-          <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-search" aria-hidden="true"></i>
-            </div>
-          </button>
-        </div>
+        <chi-search-input size="sm" placeholder="Search" slot="menu"></chi-search-input>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
