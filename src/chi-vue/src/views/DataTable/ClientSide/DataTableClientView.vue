@@ -64,12 +64,17 @@
           @chiToolbarColumnsReset="e => chiToolbarColumnsReset(e)"
           @chiToolbarViewsChange="e => chiToolbarViewsChange(e)"
         >
-          <template v-slot:start>
-            <ChiSearchInput :portal="true" :dataTableSearch="true" />
+          <template v-slot:start="{ onChiSearch, onChiFiltersChange, onChiViewsChange }">
+            <ChiSearchInput @chiSearch="onChiSearch" :portal="true" :dataTableSearch="true" />
             <div class="chi-divider -vertical"></div>
-            <ChiDataTableViews :views="toolbar.viewsData" defaultView="view-2" />
+            <ChiDataTableViews @chiViewsChange="onChiViewsChange" :views="toolbar.viewsData" defaultView="view-2" />
             <div class="chi-divider -vertical"></div>
-            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
+            <ChiDataTableFilters
+              @chiFiltersChange="onChiFiltersChange"
+              :portal="true"
+              :filtersData="toolbar.filtersData"
+              :customItems="toolbar.customItems"
+            >
               <template #customAdvanced>
                 <div class="chi-form__item">
                   <chi-label for="input-1">City</chi-label>
@@ -93,11 +98,12 @@
               </template>
             </ChiDataTableFilters>
           </template>
-          <template v-slot:end>
+          <template v-slot:end="{ onChiColumnsChange, onChiColumnsReset }">
             <div class="chi-toolbar__actions-desktop">
               <DownloadButtonIcon />
               <ChiColumnCustomization
-                @chiColumnsReset="e => chiToolbarColumnsReset(e)"
+                @chiColumnsChange="onChiColumnsChange"
+                @chiColumnsReset="onChiColumnsReset"
                 :columnsData="toolbar.columnsData"
               />
             </div>
@@ -186,7 +192,7 @@ import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
-import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
+import DataTableToolbar from '@/poc/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';

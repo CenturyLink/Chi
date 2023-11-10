@@ -39,7 +39,7 @@ export default class DataTableToolbar extends Vue {
         this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_CHANGE, ev);
       });
       this._columns.$on(DATA_TABLE_EVENTS.COLUMNS_RESET, (ev: Event) => {
-        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_CHANGE, ev);
+        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_RESET, ev);
       });
     }
 

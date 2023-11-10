@@ -45,7 +45,7 @@ import {
 } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import DataTableToolbar from '@/poc/DataTableToolbar.vue';
 import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';

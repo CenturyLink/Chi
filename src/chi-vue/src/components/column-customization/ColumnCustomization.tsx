@@ -114,7 +114,7 @@ export default class ColumnCustomization extends Vue {
       this._processData();
       (this.$refs.saveButton as HTMLButtonElement).disabled = false;
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
-
+      this.$emit(DATA_TABLE_EVENTS.COLUMNS_RESET);
       this._resetTooltip?.hide();
       this.key += 1;
     }
