@@ -252,14 +252,14 @@ export class Tabs {
   getSubLevelDropdown(id: string): HTMLChiDropdownElement {
     return this.el.querySelector(
       `chi-dropdown#subLevelDropdown-${id}`
-    ) as unknown as HTMLChiDropdownElement;
+    ) as HTMLChiDropdownElement;
   }
 
   /**
    * Returns the href for the given tab. 
    * If the tab has an external href, normalizes the href to ensure that
    * the browser does not prepends the current domain.
-   * @param tab Tab data
+   * @param tab TabTrigger
    */
   getTabHref(tab: TabTrigger): string {
     let href = tab.href || `#${tab.id}`;
@@ -285,6 +285,7 @@ export class Tabs {
 
     return target
   }
+
   /**
    * Checks wether the tab is an anchor link (internal link) 
    */
@@ -322,7 +323,6 @@ export class Tabs {
     tabData: TabTrigger,
     slidingBorderNewPosition?: HTMLElement
   ) {
-    // do not follow link
     if (this.isTabAnchorLink(tabData)) {
       e.preventDefault();
     }
