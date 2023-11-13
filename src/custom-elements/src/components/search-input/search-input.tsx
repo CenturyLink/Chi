@@ -88,7 +88,7 @@ export class SearchInput {
   /**
    * Triggered when the user clicked in one of the autocomplete elements
    */
-  @Event({ eventName: `chiSearchInputItemSelected`}) itemSelected: EventEmitter<DropdownMenuItem>
+  @Event({ eventName: 'chiSearchInputItemSelected'}) itemSelected: EventEmitter<DropdownMenuItem>
 
   @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
   @State() menuItemsFiltered: DropdownMenuItem[] = [];
