@@ -64,6 +64,10 @@ export class Dropdown {
    */
   @Prop({ reflect: true }) preventAutoHide: boolean;
   /**
+   * To prevent emitting the event chiDropdownItemSelected when an item is clicked
+   */
+  @Prop() disableItemSelectedEvent = false;
+  /**
    * To provide number of items in the dropdown to be displayed, and apply scroll if needed
    */
   @Prop() visibleItems?: number;
@@ -82,8 +86,7 @@ export class Dropdown {
   /**
    * Triggered when select an item in the dropdown menu
    */
-  @Event({ eventName: 'chiDropdownItemSelected' })
-  eventItemSelected: EventEmitter;
+  @Event({ eventName: 'chiDropdownItemSelected' }) eventItemSelected: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -320,18 +323,24 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.addEventListener('click', this.handlerClick);
-    menuItems.forEach((item: HTMLElement) => {
-      item.addEventListener('click', this.handlerSelectedMenuItem);
-    });
+
+    if (!this.disableItemSelectedEvent) {
+      menuItems.forEach((item: HTMLElement) => {
+        item.addEventListener('click', this.handlerSelectedMenuItem);
+      });
+    }
   }
 
   _removeEventListeners() {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.removeEventListener('click', this.handlerClick);
-    menuItems.forEach((item: HTMLElement) => {
-      item.removeEventListener('click', this.handlerSelectedMenuItem);
-    });
+
+    if (!this.disableItemSelectedEvent) {
+      menuItems.forEach((item: HTMLElement) => {
+        item.removeEventListener('click', this.handlerSelectedMenuItem);
+      });
+    }
   }
 
   render() {
