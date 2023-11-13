@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="props.length")
+    div(v-if="isPropsLoaded")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto')
@@ -111,6 +111,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
       methods: [],
       docs: Vue.prototype.$chiDocs
     };
+  },
+  computed: {
+    isPropsLoaded() {
+      return this.$data.props.length > 0;
+    }
   }
 })
 export default class PropertiesGenerator extends Vue {
