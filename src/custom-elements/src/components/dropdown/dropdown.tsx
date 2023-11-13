@@ -374,7 +374,6 @@ export class Dropdown {
         variant={`${this.variant || ''}`}
         size={`${this.size || ''}`}
         uppercase={this.uppercase}
-        center={this.center}
         disabled={this.disabled}
         ref={ref => (this._referenceElement = ref)}
       >
