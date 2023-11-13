@@ -188,6 +188,33 @@ script.
           label: 'Tab P',
           id: 'tab-p'
         },
+        {
+          label: 'Google',
+          id: 'tab-href',
+          href: 'https://www.google.com',
+          children: [
+            {
+              label: 'Google spain',
+              id: 'tab-href-google-spain',
+              href: 'www.google.es'
+            },
+            {
+              label: 'Google uk same window',
+              id: 'tab-href-google-uk',
+              href: 'www.google.co.uk',
+              target: '_self'
+            },
+            {
+              label: 'Internal link',
+              id: 'tab-href-internal'
+            }
+          ]
+        },
+        {
+          label: 'Tab Q external',
+          id: 'tab-q',
+          href: 'www.google.es'
+        }
       ];
     }
     tabElement.addEventListener('chiTabChange', e => {
