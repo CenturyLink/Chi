@@ -325,7 +325,7 @@ export class Dropdown {
 
     document.body.addEventListener('click', this.handlerClick);
 
-    if (this.preventItemSelectedEvent) return
+    if (this.preventItemSelectedEvent) return;
 
     menuItems.forEach((item: HTMLElement) => {
       item.addEventListener('click', this.handlerSelectedMenuItem);
@@ -337,7 +337,7 @@ export class Dropdown {
 
     document.body.removeEventListener('click', this.handlerClick);
 
-    if (this.preventItemSelectedEvent) return
+    if (this.preventItemSelectedEvent) return;
 
     menuItems.forEach((item: HTMLElement) => {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
