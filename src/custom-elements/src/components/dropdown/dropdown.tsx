@@ -117,6 +117,7 @@ export class Dropdown {
   private _popper: any;
   private _referenceElement: any;
   private _dropdownMenuElement: any;
+  private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
 
   connectedCallback() {
@@ -220,6 +221,9 @@ export class Dropdown {
 
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
+    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+    console.log(children)
+
     const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
     const padding = this.getPadding('top') + this.getPadding('bottom');
     let newHeight = 0;
@@ -228,7 +232,7 @@ export class Dropdown {
       newHeight += menuItems[i].offsetHeight;
     }
 
-    this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+    this._dropdownMenuItemsWrapper.style.height = `${newHeight + padding}px`;
   }
 
   getPadding(direction: 'top' | 'bottom') {
@@ -395,16 +399,25 @@ export class Dropdown {
 
     const menu = (
       <div
-        class={`
-          ${DROPDOWN_CLASSES.MENU}
-          ${UTILITY_CLASSES.Z_INDEX.Z_10}
-          ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''}
-          ${this.description ? LIST_CLASS : ''}
-        `}
-        ref={ref => (this._dropdownMenuElement = ref)}
+      class={`
+      ${DROPDOWN_CLASSES.MENU}
+      ${UTILITY_CLASSES.Z_INDEX.Z_10}
+      ${this.active ? ACTIVE_CLASS : ''}
+      ${this.fluid ? FLUID_CLASS : ''}
+      ${this.description ? LIST_CLASS : ''}
+      `}
+      ref={ref => (this._dropdownMenuElement = ref)}
       >
-        <slot name="menu" />
+        <div class={`${DROPDOWN_CLASSES.HEADER}`}>
+          <slot name="header"/>
+        </div>
+        <div class={`${DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}`}
+        ref={ref => (this._dropdownMenuItemsWrapper = ref)}>
+          <slot name="menu" />
+        </div>
+        <div class={`${DROPDOWN_CLASSES.FOOTER}`}>
+          <slot name="footer"/>
+        </div>
       </div>
     );
 

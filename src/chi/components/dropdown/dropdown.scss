@@ -70,7 +70,7 @@
       padding-right: $dropdown-menu-item-padding-right;
       white-space: nowrap;
 
-      & > .chi-checkbox {
+      &>.chi-checkbox {
         align-items: center;
         display: flex;
       }
@@ -138,12 +138,12 @@
       }
     }
 
-    & > chi-search-input {
+    & chi-search-input {
       width: auto;
     }
 
-    & > .chi-input__wrapper,
-    & > chi-search-input {
+    &>.chi-input__wrapper,
+    & chi-search-input {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
       padding-left: 0;
@@ -168,9 +168,10 @@
     }
 
     input {
+
       &[type='checkbox'],
       &[type='radio'] {
-        &.chi-input + label {
+        &.chi-input+label {
           margin-bottom: 0;
           margin-right: 0;
 
@@ -185,7 +186,7 @@
       input {
         &[type='checkbox'] {
           &.chi-checkbox__input {
-            & + label {
+            &+label {
               &.chi-checkbox__label {
                 padding-left: 1.75rem;
 
@@ -203,7 +204,7 @@
       input {
         &[type='radio'] {
           &.chi-radio__input {
-            & + label {
+            &+label {
               &.chi-radio__label {
                 padding-left: 1.75rem;
               }
@@ -214,7 +215,7 @@
     }
 
     &.-list {
-      > .chi-dropdown__menu-item {
+      >.chi-dropdown__menu-item {
         align-items: flex-start;
         flex-direction: column;
         height: auto;
@@ -348,8 +349,10 @@
     &.-danger,
     &.-disabled,
     &[disabled] {
+
       &:not([data-position^='left']),
       &[data-position^='left'] {
+
         &::before,
         &::after {
           color: inherit;
@@ -488,14 +491,15 @@
     }
   }
 
-  &[data-position='bottom-end'] ~ .chi-dropdown__menu {
+  &[data-position='bottom-end']~.chi-dropdown__menu {
     left: initial;
     right: 0;
   }
 }
 
 .chi-dropdown__hover:hover,
-.chi-dropdown__hover.-hover, // sass-lint:disable-line force-element-nesting
+.chi-dropdown__hover.-hover,
+// sass-lint:disable-line force-element-nesting
 .chi-dropdown__hover:active {
   .chi-dropdown__trigger {
     &:not([data-position^='left']) {
