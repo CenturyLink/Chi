@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-13T06:59:39",
+  "timestamp": "2023-11-14T10:49:38",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1780,6 +1780,22 @@
           "required": false
         },
         {
+          "name": "color",
+          "type": "string",
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "To set the color of the button. The value is directly passed to \nchi-button element if present  { primary, secondary, danger, dark, light }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "description",
           "type": "boolean",
           "mutable": false,
@@ -1793,6 +1809,23 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "to disable chi-button.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
           "required": false
         },
         {
@@ -1923,6 +1956,55 @@
           "attr": "reference",
           "reflectToAttr": true,
           "docs": "To provide selector of an external reference element",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "to set button size { xs, sm, md, lg, xl }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "uppercase",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "uppercase",
+          "reflectToAttr": false,
+          "docs": "to render a button with uppercase text.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "string",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": false,
+          "docs": "To set the variant of the button. The value is directly passed to \nchi-button element if present { outline, flat }",
           "docsTags": [],
           "values": [
             {
