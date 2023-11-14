@@ -55,6 +55,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) mode?: SearchInputModes;
   /**
+   * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+   */
+  @Prop({ reflect: true }) visibleItems?: number;
+  /**
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
   @Prop({ mutable: true, reflect: true }) menuItems: DropdownMenuItem[];
@@ -266,6 +270,7 @@ export class SearchInput {
         position="bottom"
         prevent-auto-hide
         fluid
+        visible-items={this.visibleItems && this._isAutocomplete() ? this.visibleItems : null}
       >
         {trigger}
         {this.menuItemsFiltered.map(item => (
