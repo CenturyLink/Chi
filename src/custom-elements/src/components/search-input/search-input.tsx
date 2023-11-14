@@ -245,7 +245,7 @@ export class SearchInput {
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
-        disable-item-selected-event
+        prevent-item-selected
         fluid
       >
         {trigger}

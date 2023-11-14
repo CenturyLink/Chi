@@ -66,7 +66,7 @@ export class Dropdown {
   /**
    * To prevent emitting the event chiDropdownItemSelected when an item is clicked
    */
-  @Prop() preventItemSelectedEvent = false;
+  @Prop() preventItemSelected = false;
   /**
    * To provide number of items in the dropdown to be displayed, and apply scroll if needed
    */
@@ -325,7 +325,7 @@ export class Dropdown {
 
     document.body.addEventListener('click', this.handlerClick);
 
-    if (this.preventItemSelectedEvent) return;
+    if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
       item.addEventListener('click', this.handlerSelectedMenuItem);
@@ -337,7 +337,7 @@ export class Dropdown {
 
     document.body.removeEventListener('click', this.handlerClick);
 
-    if (this.preventItemSelectedEvent) return;
+    if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
