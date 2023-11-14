@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-13T06:59:39",
+  "timestamp": "2023-11-14T07:58:19",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1908,6 +1908,23 @@
           "reflectToAttr": true,
           "docs": "To prevent hiding of the Dropdown when clicking outside its bounds",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventItemSelectedEvent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-item-selected-event",
+          "reflectToAttr": false,
+          "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
+          "docsTags": [],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
@@ -5172,11 +5189,20 @@
         },
         {
           "event": "chiSearch",
-          "detail": "any",
+          "detail": "string",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the user clicked the Search button.",
+          "docsTags": []
+        },
+        {
+          "event": "chiSearchInputItemSelected",
+          "detail": "DropdownMenuItem",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicked in one of the autocomplete elements",
           "docsTags": []
         }
       ],
