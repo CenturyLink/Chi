@@ -1950,6 +1950,23 @@
           "required": false
         },
         {
+          "name": "preventItemSelectedEvent",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-item-selected-event",
+          "reflectToAttr": false,
+          "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "reference",
           "type": "string",
           "mutable": false,
@@ -5254,11 +5271,20 @@
         },
         {
           "event": "chiSearch",
-          "detail": "any",
+          "detail": "string",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the user clicked the Search button.",
+          "docsTags": []
+        },
+        {
+          "event": "chiSearchInputItemSelected",
+          "detail": "DropdownMenuItem",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicked in one of the autocomplete elements",
           "docsTags": []
         }
       ],
