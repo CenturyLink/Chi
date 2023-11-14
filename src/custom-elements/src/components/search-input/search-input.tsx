@@ -264,13 +264,15 @@ export class SearchInput {
   }
 
   _dropdownAutocomplete(trigger: HTMLElement): HTMLChiDropdownElement {
+    const visibleItems = this.visibleItems ?? null;
+
     return (
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
         prevent-auto-hide
         fluid
-        visible-items={this.visibleItems && this._isAutocomplete() ? this.visibleItems : null}
+        visible-items={visibleItems}
       >
         {trigger}
         {this.menuItemsFiltered.map(item => (
