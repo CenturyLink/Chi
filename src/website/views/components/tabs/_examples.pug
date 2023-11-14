@@ -1226,7 +1226,7 @@ h2 Examples
             tabindex="-1"
             aria-controls="c2") Tab c
         li
-          a(href='https://assets.ctl.io/chi/' target='_self') External Link
+          a(href='https://lib.lumen.com/chi/' target='_self') External Link
       #a2.chi-tabs-panel.-active(role="tabpanel")
         p.-text Content for tab a
       #b2.chi-tabs-panel(role="tabpanel")
@@ -1280,7 +1280,7 @@ h2 Examples
               tabindex="-1"
               aria-controls="c2">Tab c</a>
           </li>
-          <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
+          <li><a href="https://lib.lumen.com/chi/" target="_self">External Link</a></li>
         </ul>
 
         <div class="chi-tabs-panel -active" id="a2" role="tabpanel">
@@ -1308,6 +1308,11 @@ p.-text
   | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
   | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
   | or a wait-for-animation option.
+
+p.-text
+  | To control the navigation, the web component has support for <code>href</code> property
+  | for each of the tabs, or any of it's children. By default, any external link is opened in a new window,
+  | although it can be controlled through the <code>target</code> property.
 
 h3 Flat
 .example.-mb--3
@@ -1382,8 +1387,21 @@ h3 Flat
             ]
           },
           {
-            label: 'Tab Link',
-            id: 'tab-b'
+            label: 'External Links',
+            id: 'tab-b',
+            children: [
+              {
+                id: 'tab-b-external-link-new',
+                label: 'Chi documentation in new tab',
+                href: 'https://lib.lumen.com/chi/'
+              },
+              {
+                id: 'tab-b-external-link-same',
+                label: 'Chi documentation in same tab',
+                href: 'https://lib.lumen.com/chi/',
+                target: '_self'
+              },
+            ]
           },
           {
             label: 'Tab Link',
@@ -1479,8 +1497,11 @@ h3 Flat
             <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
           </div>
         </li>
-        <li>
-          <a href="#">Tab Link</a>
+        <li class="chi-dropdown -active">
+          <a class="chi-dropdown__trigger" href="#">Active tab</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="https://lib.lumen.com/chi/" target="_blank">Chi documentation in new tab</a>
+            <a class="chi-dropdown__menu-item" href="https://lib.lumen.com/chi/">Chi documentation in same tab</a>
         </li>
         <li>
           <a href="#">Tab Link</a>
@@ -2951,6 +2972,20 @@ script.
                   {
                     label: 'Elem 3.2',
                     id: 'tab-a-3-2',
+                    children: [
+                      {
+                        label: 'Elem 3.2.1',
+                        id: 'tab-a-3-2-1'
+                      },
+                      {
+                        label: 'Elem 3.2.2',
+                        id: 'tab-a-3-2-2'
+                      },
+                      {
+                        label: 'Elem 3.2.3',
+                        id: 'tab-a-3-2-3'
+                      }
+                    ]
                   },
                   {
                     label: 'Elem 3.3',
@@ -2969,8 +3004,21 @@ script.
             ]
           },
           {
-            label: 'Tab Link',
-            id: 'tab-b'
+            label: 'External Links',
+            id: 'tab-b',
+            children: [
+              {
+                id: 'tab-b-external-link-new',
+                label: 'Chi documentation in new tab',
+                href: 'https://lib.lumen.com/chi/'
+              },
+              {
+                id: 'tab-b-external-link-same',
+                label: 'Chi documentation in same tab',
+                href: 'https://lib.lumen.com/chi/',
+                target: '_self'
+              },
+            ]
           },
           {
             label: 'Tab Link',
@@ -3003,13 +3051,45 @@ script.
               {
                 label: 'Element 2',
                 id: 'tab-h-2',
+                children: [
+                  {
+                    label: 'Elem 1',
+                    id: 'tab-h-2-1'
+                  },
+                  {
+                    label: 'Elem 2',
+                    id: 'tab-h-2-2'
+                  },
+                  {
+                    label: 'Elem 3 more',
+                    id: 'tab-h-2-3',
+                    children: [
+                      {
+                        label: 'Elem 3.1',
+                        id: 'tab-h-2-3-1'
+                      },
+                      {
+                        label: 'Elem 3.2',
+                        id: 'tab-h-2-3-2'
+                      },
+                      {
+                        label: 'Elem 3.3',
+                        id: 'tab-h-2-3-3'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'Elem 4',
+                    id: 'tab-h-2-4'
+                  }
+                ]
               },
               {
                 label: 'Element 3',
-                id: 'tab-h-3',
-              },
+                id: 'tab-h-3'
+              }
             ]
-          },
+          }
         ];
       }
 
