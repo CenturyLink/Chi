@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-14T07:58:19",
+  "timestamp": "2023-11-14T16:32:52",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1917,10 +1917,10 @@
           "required": false
         },
         {
-          "name": "preventItemSelectedEvent",
+          "name": "preventItemSelected",
           "type": "boolean",
           "mutable": false,
-          "attr": "prevent-item-selected-event",
+          "attr": "prevent-item-selected",
           "reflectToAttr": false,
           "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
           "docsTags": [],
