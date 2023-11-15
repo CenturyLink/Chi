@@ -34,17 +34,18 @@
   }
 
   &__menu-item {
-    padding: 0.625rem 1.25rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    background: $transfer-list-item-color;
+    padding: 0.625rem;
 
-    &:hover {
-      background: $transfer-list-item-hover-color;
-    }
+    &.-checkbox {
+      &:before {
+        content: '\2610';
+        font-size: 1.25rem;
+        padding-right: 0.3125rem;
+      }
 
-    &.-active {
-      background: $transfer-list-item-active-color;
+      &:checked:before {
+        content: '\2611';
+      }
     }
   }
 }
