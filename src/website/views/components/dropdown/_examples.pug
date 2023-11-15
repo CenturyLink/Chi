@@ -49,44 +49,83 @@ h3 Base
       <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
 
 h3 Additional Styles
+p.-text
+  | The web component accepts the properties <code>color</code>, <code>variant</code>, <code>size</code>, 
+  | <code>uppercase</code> and <code>disabled</code> to modify the underlying chi-button element 
+  | behavior and style.
 .example.-mb--3
-  .-p--3
-    .chi-dropdown
-      button.chi-button.-primary.chi-dropdown__trigger(id="dropdown-styles-1") Dropdown
-      .chi-dropdown__menu
-        a.chi-dropdown__menu-item(href='#') Item 1
-        a.chi-dropdown__menu-item(href='#') Item 2
-        a.chi-dropdown__menu-item(href='#') Item 3
-        a.chi-dropdown__menu-item(href='#') Item 4
-    .chi-dropdown.-ml--2
-      button.chi-button.-primary.-outline.chi-dropdown__trigger(id="dropdown-styles-2") Dropdown
-      .chi-dropdown__menu
-        a.chi-dropdown__menu-item(href='#') Item 1
-        a.chi-dropdown__menu-item(href='#') Item 2
-        a.chi-dropdown__menu-item(href='#') Item 3
-        a.chi-dropdown__menu-item(href='#') Item 4
-    .chi-dropdown.-ml--2
-      button.chi-button.-primary.-flat.chi-dropdown__trigger(id="dropdown-styles-3") Dropdown
-      .chi-dropdown__menu
-        a.chi-dropdown__menu-item(href='#') Item 1
-        a.chi-dropdown__menu-item(href='#') Item 2
-        a.chi-dropdown__menu-item(href='#') Item 3
-        a.chi-dropdown__menu-item(href='#') Item 4
-    .chi-dropdown.-ml--2
-      button.chi-button.-flat.chi-dropdown__trigger(id="dropdown-styles-4") Dropdown
-      .chi-dropdown__menu
-        a.chi-dropdown__menu-item(href='#') Item 1
-        a.chi-dropdown__menu-item(href='#') Item 2
-        a.chi-dropdown__menu-item(href='#') Item 3
-        a.chi-dropdown__menu-item(href='#') Item 4
+  .-p--3.-d--flex
+    chi-dropdown(position='bottom' button='Primary' color='primary')
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 1
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 3
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 4
+    chi-dropdown(position='bottom' button='Primary outline' color='primary' variant='outline').-ml--2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 1
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 3
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 4
+    chi-dropdown(position='bottom' button='Primary flat' color='primary' variant='flat').-ml--2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 1
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 3
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 4
+    chi-dropdown(position='bottom' button='Flat' variant='flat').-ml--2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 1
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 3
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 4
+
+    chi-dropdown(position='bottom' button='Disabled' disabled).-ml--2
+      a.chi-dropdown__menu-item(href='#' slot="menu") Item 1
   .example-tabs.-pl--2
     ul.chi-tabs#example-additional-styles
-      li.-disabled
-        a(href=`#webcomponent-additional-styles`) Web Component
       li.-active
+        a(href=`#webcomponent-additional-styles`) Web Component
+      li
         a(href=`#html-additional-styles`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-additional-styles
-  .chi-tabs-panel.-active#html-additional-styles
+  .chi-tabs-panel.-active#webcomponent-additional-styles
+    :code(lang="html")
+      <!-- Primary button -->
+      <chi-dropdown position='bottom' button='Primary' color='primary'>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 1</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 2</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 3</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 4</a>
+      </chi-dropdown>
+      
+      <!-- Primary outline button -->
+      <chi-dropdown position='bottom' button='Primary outline' color='primary' variant='outline'>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 1</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 2</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 3</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 4</a>
+      </chi-dropdown>
+      
+      <!-- Primary flat button -->
+      <chi-dropdown position='bottom' button='Primary flat' color='primary' variant='flat'>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 1</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 2</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 3</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 4</a>
+      </chi-dropdown>
+      
+      <!-- Base flat button -->
+      <chi-dropdown position='bottom' button='Flat' variant='flat'>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 1</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 2</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 3</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 4</a>
+      </chi-dropdown>
+
+      <!-- Disabled button -->
+      <chi-dropdown position='bottom' button='Disabled' disabled>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 1</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 2</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 3</a>
+        <a class='chi-dropdown__menu-item' href='#' slot="menu">Item 4</a>
+      </chi-dropdown>
+  .chi-tabs-panel#html-additional-styles
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -129,6 +168,17 @@ h3 Additional Styles
       <!-- Base flat button -->
       <div class="chi-dropdown">
         <button id="dropdown-styles-4" class="chi-button -flat chi-dropdown__trigger">Dropdown</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <!-- Disabled button -->
+      <div class="chi-dropdown">
+        <button id="dropdown-styles-4" class="chi-button chi-dropdown__trigger" disabled>Dropdown</button>
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">Item 1</a>
           <a class="chi-dropdown__menu-item" href="#">Item 2</a>

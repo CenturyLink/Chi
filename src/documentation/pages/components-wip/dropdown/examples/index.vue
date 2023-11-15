@@ -8,6 +8,7 @@
       | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
 
     <Base />
+    <AdditionalStyles />
     <DataTarget />
     <Hover />
     <Animated />
@@ -38,6 +39,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
+import AdditionalStyles from './_additional_styles.vue';
 import DataTarget from './_data_target.vue';
 import Hover from './_hover.vue';
 import Animated from './_animate.vue';
@@ -61,6 +63,7 @@ import VisibleItems from './_visible_items.vue';
   components: {
     Animated,
     Base,
+    AdditionalStyles,
     CheckboxesBase,
     CheckboxesIcons,
     DataTarget,
