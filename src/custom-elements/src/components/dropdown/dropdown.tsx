@@ -48,6 +48,28 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
+   * To set the color of the button. The value is directly passed to 
+   * chi-button element if present  { primary, secondary, danger, dark, light }.
+   */
+  @Prop() color: string
+  /**
+   * To set the variant of the button. The value is directly passed to 
+   * chi-button element if present { outline, flat }
+   */
+  @Prop() variant: string
+  /**
+   *  to set button size { xs, sm, md, lg, xl }.
+   */
+  @Prop() size: string;
+   /**
+   *  to render a button with uppercase text.
+   */
+   @Prop() uppercase = false;
+  /**
+   *  to disable chi-button.
+   */
+  @Prop() disabled = false;
+  /**
    * To animate the chevron of Dropdown
    */
   @Prop() animateChevron?: boolean;
@@ -358,6 +380,11 @@ export class Dropdown {
           ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
+        color={`${this.color || ''}`}
+        variant={`${this.variant || ''}`}
+        size={`${this.size || ''}`}
+        uppercase={this.uppercase}
+        disabled={this.disabled}
         ref={ref => (this._referenceElement = ref)}
       >
         {this.button}
