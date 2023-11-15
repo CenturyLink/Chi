@@ -55,6 +55,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) mode?: SearchInputModes;
   /**
+   * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+   */
+  @Prop({ reflect: true }) visibleItems?: number;
+  /**
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
   @Prop({ mutable: true, reflect: true }) menuItems: DropdownMenuItem[];
@@ -241,12 +245,15 @@ export class SearchInput {
   }
 
   _dropdownAutocomplete(trigger: HTMLElement): HTMLChiDropdownElement {
+    const visibleItems = this.visibleItems ?? null;
+
     return (
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
         prevent-item-selected
         fluid
+        visible-items={visibleItems}
       >
         {trigger}
         {this.menuItemsFiltered.map(item => (
