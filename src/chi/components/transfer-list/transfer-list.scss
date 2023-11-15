@@ -1,50 +1,50 @@
-.transfer-list-column {
-  width: 200px;
+.chi-transfer-list {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
+  width: 12.5rem;
 
-  &__content {
+  &__menu {
     border: 0.0625rem solid $transfer-list-border-color;
     border-radius: $transfer-list-border-radius;
-    position: relative;
+    height: 18.75rem;
     overflow: auto;
-    height: 300px;
+    position: relative;
   }
-}
 
-.transfer-list-column-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  &__header {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__title {
-    display: flex;
     align-items: center;
-    gap: 0.3125rem;
-    color: $transfer-list-title-text-color;
+    color: $transfer-list-title-color;
+    display: flex;
     font-weight: 700;
+    gap: 0.3125rem;
     margin: 0;
   }
 
-  &__actions {
-    display: flex;
+  &__header-actions {
     align-items: center;
+    display: flex;
     gap: 0.3125rem;
   }
-}
 
-.transfer-list-item {
-  padding: 0.625rem 1.25rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  background: $transfer-list-item-color;
+  &__menu-item {
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: $transfer-list-item-color;
 
-  &:hover {
-    background: $transfer-list-item-hover-color;
-  }
+    &:hover {
+      background: $transfer-list-item-hover-color;
+    }
 
-  &.-active {
-    background: $transfer-list-item-active-color;
+    &.-active {
+      background: $transfer-list-item-active-color;
+    }
   }
 }

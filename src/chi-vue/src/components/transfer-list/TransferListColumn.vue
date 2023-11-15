@@ -1,22 +1,22 @@
 <template>
-  <div class="transfer-list-column">
-    <div class="transfer-list-column-header">
-      <p class="transfer-list-column-header__title">
+  <div class="chi-transfer-list__column">
+    <div class="chi-transfer-list__header">
+      <p class="chi-transfer-list__title">
         {{ title }}
         <ChiTooltip message="Your tooltip text">
           <chi-icon icon="circle-info-outline" size="xs" />
         </ChiTooltip>
       </p>
-      <div class="transfer-list-column-header__actions">
+      <div class="chi-transfer-list__header-actions">
         <chi-icon icon="atom" size="sm--3" />
         <chi-icon icon="atom" size="sm--3" />
       </div>
     </div>
-    <div class="transfer-list-column__search">
+    <div class="chi-transfer-list__search">
       <chi-search-input placeholder="Filter" />
     </div>
-    <div class="transfer-list-column__content">
-      <div v-for="(item, index) in list" :key="index" class="transfer-list-item">
+    <div class="chi-transfer-list__menu">
+      <div v-for="(item, index) in list" :key="index" class="chi-transfer-list__menu-item">
         <chi-checkbox :id="item.name" :label="item.label" />
       </div>
     </div>
