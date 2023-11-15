@@ -502,8 +502,7 @@
 }
 
 .chi-dropdown__hover:hover,
-.chi-dropdown__hover.-hover,
-// sass-lint:disable-line force-element-nesting
+.chi-dropdown__hover.-hover, // sass-lint:disable-line force-element-nesting
 .chi-dropdown__hover:active {
   .chi-dropdown__trigger {
     &:not([data-position^='left']) {
