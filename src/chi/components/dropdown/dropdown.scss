@@ -61,6 +61,10 @@
       display: block;
     }
 
+    &-items-wrapper {
+      overflow: overlay;
+    }
+
     &-item {
       align-items: center;
       display: flex;

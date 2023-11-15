@@ -117,6 +117,8 @@ export class Dropdown {
   private _popper: any;
   private _referenceElement: any;
   private _dropdownMenuElement: any;
+  private _dropdownMenuHeader: any;
+  private _dropdownMenuFooter: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
 
@@ -221,18 +223,18 @@ export class Dropdown {
 
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
-    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
-    console.log(children)
-
     const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
-    const padding = this.getPadding('top') + this.getPadding('bottom');
+
     let newHeight = 0;
     
     for (let i = 0; i < itemsToShow; i++) {
       newHeight += menuItems[i].offsetHeight;
     }
 
-    this._dropdownMenuItemsWrapper.style.height = `${newHeight + padding}px`;
+    this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+
+    if(!!this._dropdownMenuHeader.children.length) this._dropdownMenuHeader.style['margin-bottom'] = "0.5rem";
+    if(!!this._dropdownMenuFooter.children.length) this._dropdownMenuFooter.style['margin-top'] = "0.5rem";
   }
 
   getPadding(direction: 'top' | 'bottom') {
@@ -339,7 +341,7 @@ export class Dropdown {
   }
 
   _getDropdownMenuItems(): HTMLElement[] {
-    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+    const children = this._dropdownMenuItemsWrapper.children as HTMLAnchorElement[];
 
     return Array.from(children).filter((item: HTMLElement) =>
       item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)
@@ -408,14 +410,16 @@ export class Dropdown {
       `}
       ref={ref => (this._dropdownMenuElement = ref)}
       >
-        <div class={`${DROPDOWN_CLASSES.HEADER}`}>
+        <div class={`${DROPDOWN_CLASSES.HEADER}`}
+        ref={ref => (this._dropdownMenuHeader = ref)}>
           <slot name="header"/>
         </div>
         <div class={`${DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}`}
         ref={ref => (this._dropdownMenuItemsWrapper = ref)}>
           <slot name="menu" />
         </div>
-        <div class={`${DROPDOWN_CLASSES.FOOTER}`}>
+        <div class={`${DROPDOWN_CLASSES.FOOTER}`}
+        ref={ref => (this._dropdownMenuFooter = ref)}>
           <slot name="footer"/>
         </div>
       </div>
