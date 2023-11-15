@@ -120,13 +120,15 @@ h3 Autocomplete
 p.-text
   | Use the <code>mode="autocomplete"</code> attribute to enable autocomplete functionality.
   | To fully implement the autocomplete field, you must provide a list of menu items by setting
-  | the <code>menuItems</code> property to the input search field, as in the example below.
+  | the <code>menuItems</code> property to the input search field, as in the example below. 
+  | When autocomplete mode is active, the property <code>visible-items</code>, which allows
+  | to set numbers of items visible in the dropdown, is available.
 .example.-mb--3
   .-p--3
     .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
-          chi-search-input#example__autocomplete(mode="autocomplete")
+          chi-search-input#example__autocomplete(mode="autocomplete" visible-items="3")
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-dropdown(role="tablist")
       li.-active
@@ -147,7 +149,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-with-dropdown
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-search-input id="example__autocomplete" mode="autocomplete"></chi-search-input>
+        <chi-search-input id="example__autocomplete" mode="autocomplete" visible-items="3"></chi-search-input>
       </div>
 
       <script>
@@ -177,7 +179,7 @@ p.-text
                </div>
             </button>
          </div>
-         <div class="chi-dropdown__menu">
+         <div class="chi-dropdown__menu" style="overflow-y: auto; max-height: 7rem">
             <a class="chi-dropdown__menu-item" href="#">Item 1</a>
             <a class="chi-dropdown__menu-item" href="#">Item 2</a>
             <a class="chi-dropdown__menu-item" href="#">Item 3</a>
