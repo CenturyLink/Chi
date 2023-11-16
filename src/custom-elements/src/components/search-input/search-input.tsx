@@ -55,6 +55,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) mode?: SearchInputModes;
   /**
+   * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+   */
+  @Prop({ reflect: true }) visibleItems?: number;
+  /**
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
   @Prop({ mutable: true, reflect: true }) menuItems: DropdownMenuItem[];
@@ -84,7 +88,11 @@ export class SearchInput {
   /**
    * Triggered when the user clicked the Search button.
    */
-  @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
+  @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter<string>;
+  /**
+   * Triggered when the user clicked in one of the autocomplete elements
+   */
+  @Event({ eventName: 'chiSearchInputItemSelected'}) eventItemSelected: EventEmitter<DropdownMenuItem>
 
   @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
   @State() menuItemsFiltered: DropdownMenuItem[] = [];
@@ -119,13 +127,6 @@ export class SearchInput {
     this.sizeValidation(this.size);
   }
 
-  componentDidLoad(): void {
-    document.addEventListener('click', this._handleClickInDocument.bind(this));
-  }
-
-  disconnectedCallback(): void {
-    document.removeEventListener('click', this._handleClickInDocument);
-  }
   //#endregion
 
   _handleValueInput(valueChange: Event): void {
@@ -196,7 +197,7 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: Event): void => {
+  _handleSelectItem = (ev: Event, item: DropdownMenuItem): void => {
     ev.preventDefault();
 
     const title = (ev.target as HTMLAnchorElement).innerText;
@@ -207,6 +208,7 @@ export class SearchInput {
     this.value = title;
     dropdown.hide();
     this._clearFilterMenuItems();
+    this.eventItemSelected.emit(item);
   };
 
   _handleValueChange(valueChange: Event): void {
@@ -227,23 +229,6 @@ export class SearchInput {
     this.eventFocus.emit();
   }
 
-  _handleClickInDocument(event: Event): void {
-    const isAutocomplete = this._isAutocomplete();
-
-    if (!isAutocomplete) {
-      return;
-    }
-
-    const isClickInsideSearchInput = this.el.contains(
-      event.target as HTMLElement
-    );
-    const dropdown = this._getAutocompleteDropdown();
-
-    if (!isClickInsideSearchInput) {
-      dropdown.hide();
-    }
-  }
-
   _isAutocomplete(): boolean {
     return this.mode === 'autocomplete';
   }
@@ -260,12 +245,15 @@ export class SearchInput {
   }
 
   _dropdownAutocomplete(trigger: HTMLElement): HTMLChiDropdownElement {
+    const visibleItems = this.visibleItems ?? null;
+
     return (
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
-        prevent-auto-hide
+        prevent-item-selected
         fluid
+        visible-items={visibleItems}
       >
         {trigger}
         {this.menuItemsFiltered.map(item => (
@@ -274,7 +262,7 @@ export class SearchInput {
             href={item.href}
             slot="menu"
             innerHTML={item.title}
-            onClick={this._handleSelectItem}
+            onClick={ev => this._handleSelectItem(ev, item)}
           ></a>
         ))}
       </chi-dropdown>

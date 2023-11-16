@@ -23,6 +23,7 @@ export interface TabTrigger {
   label?: string;
   overflow: boolean;
   target?: string;
+  href?: string;
 }
 
 export interface TabTriggerPosition {

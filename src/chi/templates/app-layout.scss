@@ -83,13 +83,15 @@
 
       & + .chi-main__title-subheading {
         @include respond-to(md) {
-          border-left: 0.0625rem solid $color-border-base;
+          border-left: 0.0625rem solid $app-layout-sub-header-border-color;
         }
       }
     }
 
     &-subheading {
-      font-size: $font-size-base;
+      color: $app-layout-sub-header-title-color;
+      font-size: $app-layout-sub-header-font-size;
+      font-weight: $app-layout-sub-header-font-weight;
 
       @include respond-to(md) {
         padding-left: 1rem;
