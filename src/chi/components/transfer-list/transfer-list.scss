@@ -1,15 +1,14 @@
 .chi-transfer-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  width: 12.5rem;
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 12.5rem;
+  }
 
   &__menu {
-    border: 0.0625rem solid $transfer-list-border-color;
-    border-radius: $transfer-list-border-radius;
-    height: 18.75rem;
+    height: 12.5rem;
     overflow: auto;
-    position: relative;
   }
 
   &__header {
@@ -22,7 +21,7 @@
     align-items: center;
     color: $transfer-list-title-color;
     display: flex;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     gap: 0.3125rem;
     margin: 0;
   }
@@ -34,17 +33,25 @@
   }
 
   &__menu-item {
-    padding: 0.625rem;
-
     &.-checkbox {
       &:before {
-        content: '\2610';
-        font-size: 1.25rem;
-        padding-right: 0.3125rem;
+        content: '\e91d';
+        font-family: $font-family-icon;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
       }
 
       &:checked:before {
-        content: '\2611';
+        content: '\e91c';
+      }
+    }
+
+    &.-locked {
+      &::before {
+        content: '\e959';
+        font-family: $font-family-icon;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
       }
     }
   }
