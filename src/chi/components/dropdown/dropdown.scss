@@ -138,7 +138,12 @@
       }
     }
 
-    & > .chi-input__wrapper {
+    & > chi-search-input {
+      width: auto;
+    }
+
+    & > .chi-input__wrapper,
+    & > chi-search-input {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
       padding-left: 0;

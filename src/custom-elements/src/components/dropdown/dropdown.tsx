@@ -48,6 +48,28 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
+   * To set the color of the button. The value is directly passed to 
+   * chi-button element if present  { primary, secondary, danger, dark, light }.
+   */
+  @Prop() color: string
+  /**
+   * To set the variant of the button. The value is directly passed to 
+   * chi-button element if present { outline, flat }
+   */
+  @Prop() variant: string
+  /**
+   *  to set button size { xs, sm, md, lg, xl }.
+   */
+  @Prop() size: string;
+   /**
+   *  to render a button with uppercase text.
+   */
+   @Prop() uppercase = false;
+  /**
+   *  to disable chi-button.
+   */
+  @Prop() disabled = false;
+  /**
    * To animate the chevron of Dropdown
    */
   @Prop() animateChevron?: boolean;
@@ -63,6 +85,10 @@ export class Dropdown {
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
   @Prop({ reflect: true }) preventAutoHide: boolean;
+  /**
+   * To prevent emitting the event chiDropdownItemSelected when an item is clicked
+   */
+  @Prop() preventItemSelected = false;
   /**
    * To provide number of items in the dropdown to be displayed, and apply scroll if needed
    */
@@ -82,7 +108,7 @@ export class Dropdown {
   /**
    * Triggered when select an item in the dropdown menu
    */
-  @Event({ eventName: 'chiDropdownItemSelected' })
+  @Event({ eventName: 'chiDropdownItemSelected' }) 
   eventItemSelected: EventEmitter;
 
   @Element() el: HTMLElement;
@@ -320,6 +346,9 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.addEventListener('click', this.handlerClick);
+
+    if (this.preventItemSelected) return;
+
     menuItems.forEach((item: HTMLElement) => {
       item.addEventListener('click', this.handlerSelectedMenuItem);
     });
@@ -329,6 +358,9 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.removeEventListener('click', this.handlerClick);
+
+    if (this.preventItemSelected) return;
+
     menuItems.forEach((item: HTMLElement) => {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
     });
@@ -348,6 +380,11 @@ export class Dropdown {
           ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
+        color={`${this.color || ''}`}
+        variant={`${this.variant || ''}`}
+        size={`${this.size || ''}`}
+        uppercase={this.uppercase}
+        disabled={this.disabled}
         ref={ref => (this._referenceElement = ref)}
       >
         {this.button}
