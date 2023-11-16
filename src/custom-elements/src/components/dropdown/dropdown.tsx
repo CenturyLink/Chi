@@ -138,6 +138,7 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
+    this._addItemListObserver();
   }
 
   componentDidUnload() {
@@ -216,6 +217,11 @@ export class Dropdown {
         placement: this.position || 'bottom'
       }
     );
+  }
+
+  _addItemListObserver() {
+    const observer = new MutationObserver(() => this.setMenuHeight());
+    observer.observe(this._dropdownMenuElement, { childList: true });
   }
 
   setMenuHeight() {
