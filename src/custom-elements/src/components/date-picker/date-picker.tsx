@@ -1,13 +1,13 @@
 import { Component, Element, Listen, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import {
-  ESCAPE_KEYCODE,
   CHI_TIME_AUTO_SCROLL_DELAY,
   DataLocales,
   DatePickerModes,
   DateFormats,
   TimePickerFormats
 } from '../../constants/constants';
+import { isEscapeKey } from '../../utils/utils';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -140,10 +140,7 @@ export class DatePicker {
   }
 
   _onKeyUp(e) {
-    if (
-      'key' in e &&
-      (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-    ) {
+    if (isEscapeKey(e)) {
       this.active = false;
       this._input.blur();
     }

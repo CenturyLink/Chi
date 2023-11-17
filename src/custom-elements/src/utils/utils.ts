@@ -1,4 +1,7 @@
 import { CalculateClassesParam } from '../models/CalculateClassesParam';
+import {
+  ESCAPE_KEYCODE
+} from '../constants/constants'
 
 /**
  * Returns a string that contains the class value based on the opts parameter.
@@ -62,4 +65,12 @@ const idDomain = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10
 
 export function getNewUniqueId(): string {
   return `chi-${idDomain}-${idCounter++}`;
+}
+
+/**
+ * @param e KeyboardEvent
+ * @returns wether the keyboard event was triggered by escape key
+ */
+export function isEscapeKey(e: KeyboardEvent): boolean {
+  return 'key' in e && (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE);
 }

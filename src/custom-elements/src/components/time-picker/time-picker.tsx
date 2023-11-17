@@ -1,9 +1,9 @@
 import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { CHI_TIME_AUTO_SCROLL_DELAY,
-  ESCAPE_KEYCODE,
   TimePickerFormats} from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
+import { isEscapeKey } from '../../utils/utils';
 
 @Component({
   tag: 'chi-time-picker',
@@ -71,10 +71,7 @@ export class TimePicker {
   }
 
   _onKeyUp(e) {
-    if (
-      'key' in e &&
-      (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-    ) {
+    if (isEscapeKey(e)) {
       this.active = false;
       this._input.blur();
     }

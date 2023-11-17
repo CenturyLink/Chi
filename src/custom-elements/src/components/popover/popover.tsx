@@ -12,10 +12,10 @@ import {
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { Drag } from '../../utils/Drag';
+import { isEscapeKey } from '../../utils/utils';
 import {
   ANIMATION_DURATION,
-  CLASSES,
-  ESCAPE_KEYCODE
+  CLASSES
 } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
 import { POPOVER_CLASSES } from '../../constants/classes';
@@ -403,9 +403,7 @@ export class Popover {
     };
     this._documentKeyHandler = e => {
       if (
-        !this.preventAutoHide &&
-        'key' in e &&
-        (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
+        !this.preventAutoHide && isEscapeKey(e)
       ) {
         this.hide();
       }
