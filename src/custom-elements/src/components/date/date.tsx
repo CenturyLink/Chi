@@ -336,6 +336,8 @@ export class Date {
   render() {
     const endOfLastMonth = this.viewMonth.subtract(1, 'month').endOf('month');
     const startOfNextMonth = this.viewMonth.add(1, 'month').startOf('month');
+    const prevMonthDisabled = this._vm.min && endOfLastMonth.isBefore(this._vm.min);
+    const nextMonthDisabled = this._vm.max && startOfNextMonth.isAfter(this._vm.max);
 
     return (
       <div
@@ -344,10 +346,9 @@ export class Date {
         <div class="chi-datepicker__month-row">
           <div
             class={`prev ${
-              this._vm.min && endOfLastMonth.isBefore(this._vm.min)
-                ? CLASSES.DISABLED
-                : ''
+                prevMonthDisabled ? CLASSES.DISABLED : ''
             }`}
+            tabindex={prevMonthDisabled ? '' : "0"}
             onClick={() => this.prevMonth()}
           >
             <chi-icon icon="chevron-left" size="sm" />
@@ -358,10 +359,9 @@ export class Date {
           </div>
           <div
             class={`next ${
-              this._vm.max && startOfNextMonth.isAfter(this._vm.max)
-                ? CLASSES.DISABLED
-                : ''
+              nextMonthDisabled ? CLASSES.DISABLED : ''
             }`}
+            tabindex={nextMonthDisabled ? '' : "0"}
             onClick={() => this.nextMonth()}
           >
             <chi-icon icon="chevron-right" size="sm" />
@@ -374,7 +374,7 @@ export class Date {
             </div>
           ))}
         </div>
-        <div class="chi-datepicker__days">
+        <div class="chi-datepicker__days" tabindex="0">
           {this._vm.monthDays.map(day => (
             <div
               class={`chi-datepicker__day
