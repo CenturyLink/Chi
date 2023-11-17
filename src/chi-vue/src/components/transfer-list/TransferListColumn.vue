@@ -4,9 +4,25 @@
       <p class="chi-transfer-list__title">
         {{ title }}
 
-        <ChiTooltip :message="description" v-if="description">
-          <chi-icon icon="circle-info-outline" size="xs" />
-        </ChiTooltip>
+        <template v-if="description">
+          <chi-button
+            :id="`transfer-list-info-popover-${title}`"
+            variant="flat"
+            type="icon"
+            size="xs"
+            alternative-text="Info icon"
+            @chiClick="toggleInfoPopover">
+            <chi-icon icon="circle-info-outline" size="xs" />
+          </chi-button>
+
+          <chi-popover
+            arrow
+            variant="text"
+            :id="`transfer-list-popover-${title}`"
+            :reference="`#transfer-list-info-popover-${title}`">
+            {{ description }}
+          </chi-popover>
+        </template>
       </p>
       <div class="chi-transfer-list__header-actions">
         <slot name="header-actions"></slot>
@@ -31,17 +47,12 @@
 <script lang="ts">
 import { Prop } from 'vue-property-decorator';
 import { Component, Vue } from '@/build/vue-wrapper';
-import list from './__mock__/list.json';
 import Tooltip from '../tooltip/tooltip';
 import { TransferListItem } from './TransferList';
+
 @Component({
   components: {
     ChiTooltip: Tooltip,
-  },
-  data() {
-    return {
-      list,
-    };
   },
 })
 export default class TransferListColumn extends Vue {
@@ -49,6 +60,7 @@ export default class TransferListColumn extends Vue {
   @Prop() description?: string;
   @Prop() withSearch?: boolean;
   @Prop() withCheckbox?: boolean;
+  @Prop() list?: TransferListItem[];
 
   getMenuItemClasses({ locked }: TransferListItem) {
     const classes = ['chi-transfer-list__menu-item'];
@@ -62,6 +74,11 @@ export default class TransferListColumn extends Vue {
     }
 
     return classes.join(' ');
+  }
+
+  toggleInfoPopover() {
+    const popover = document.querySelector(`#transfer-list-popover-${this.title}`) as any;
+    popover.toggle();
   }
 }
 </script>

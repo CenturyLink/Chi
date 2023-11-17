@@ -1,9 +1,15 @@
 .chi-transfer-list {
+  &__content {
+    align-items: center;
+    display: flex;
+    gap: 0.625rem;
+  }
+
   &__column {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 0.625rem;
-    width: 12.5rem;
   }
 
   &__menu {
@@ -33,12 +39,16 @@
   }
 
   &__menu-item {
+    &.-checkbox:before,
+    &.-locked:before {
+      font-family: $font-family-icon;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
     &.-checkbox {
       &:before {
         content: '\e91d';
-        font-family: $font-family-icon;
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
       }
 
       &:checked:before {
@@ -46,13 +56,22 @@
       }
     }
 
-    &.-locked {
-      &::before {
-        content: '\e959';
-        font-family: $font-family-icon;
-        padding-right: 0.5rem;
-        padding-left: 0.5rem;
-      }
+    &.-locked:before {
+      content: '\e959';
     }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
   }
 }
