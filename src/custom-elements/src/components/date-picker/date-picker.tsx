@@ -13,6 +13,11 @@ import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ChiStates, CHI_STATES } from '../../constants/states';
 
+
+// TODO: where to put this color? Same color as on hover.
+// ?? should this color be changed?
+const GREY_20 = '#EDF0F2';
+
 @Component({
   tag: 'chi-date-picker',
   scoped: true
@@ -95,6 +100,8 @@ export class DatePicker {
 
   private _input: HTMLInputElement;
   private _uuid: string;
+  // for later?¿
+  // private _keyboardFocusedDay: number;
 
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
@@ -139,11 +146,65 @@ export class DatePicker {
     }
   }
 
-  _onKeyUp(e) {
+  _onKeyUp(e: KeyboardEvent) {
+    if (!this.active) return;
+
     if (isEscapeKey(e)) {
       this.active = false;
       this._input.blur();
     }
+
+    /**
+     * TODO: will need to add arrow key handler here as well, to move the focus in case the user continues
+     * pressing the key to continue moving.
+     * 
+     */
+
+    console.log('keyup', e.key, e.target)
+  }
+
+  /**
+  * Handles key down event for calendar
+  */
+ _onKeyDown(e: KeyboardEvent) {
+   // ?? ADD PROPERTY enableKeyboardNavigation ??
+   if (!this.active) {
+     return
+    }
+    
+    console.log('keydown', e.key, e.target, e)
+    
+    // TODO: enter key event
+    const keyHandler = {
+      "ArrowLeft": this._changeKeyboardFocus.bind(this, 1),
+      "ArrowRight": this._changeKeyboardFocus.bind(this, -1),
+      "ArrowUp": this._changeKeyboardFocus.bind(this, -7),
+      "ArrowDown": this._changeKeyboardFocus.bind(this, 7),
+      "Tab": this._handleTab.bind(this, e)
+    }[e.key];
+
+    if (keyHandler) {
+      e.stopPropagation();
+      keyHandler();
+    }
+  }
+
+  // TODO: to be impemented. This function should add a background color to the keyboard-focused day
+  _changeKeyboardFocus(dayDiff: number) {
+    console.log(dayDiff, GREY_20)
+  }
+
+  _handleTab(e: KeyboardEvent) {
+    const calendarElement = this.el.querySelector("chi-date .chi-datepicker__days");
+    const shouldTrapFocus = e.target === calendarElement;
+
+    // TODO: will probably need to change if keyboard navigation is also wanted in time picker
+    if (shouldTrapFocus) {
+      e.preventDefault();
+      const prev = this.el.querySelector('chi-date .chi-datepicker__month-row .prev') as HTMLElement;
+      prev.focus()
+    }
+
   }
 
   checkIfExcluded(day: Dayjs) {
@@ -345,12 +406,14 @@ export class DatePicker {
     document.body.addEventListener('focusin', this._onFocusIn);
     document.body.addEventListener('click', this._onClick);
     document.body.addEventListener('keyup', this._onKeyUp);
+    document.body.addEventListener('keydown', this._onKeyDown.bind(this));
   }
 
   componentDidUnload(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
     document.body.removeEventListener('keyup', this._onKeyUp);
+    document.body.removeEventListener('keydown', this._onKeyDown);
   }
 
   render() {
