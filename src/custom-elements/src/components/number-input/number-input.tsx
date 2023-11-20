@@ -5,9 +5,11 @@ import {
   EventEmitter,
   Prop,
   State,
+  Watch,
   h
 } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
+import { CHI_STATES, ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-number-input',
@@ -68,7 +70,7 @@ export class NumberInput {
   /**
    * used to provide an input style like 'danger'. Mostly used for testing purposes
    */
-  @Prop() inputstyle?: string;
+  @Prop() inputstyle?: ChiStates;
 
   /**
    * If set, component value won't be updated by itself.
@@ -79,6 +81,12 @@ export class NumberInput {
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
    */
   @Prop() state?: string;
+
+  /**
+   * To display an additional helper text message below the Textarea
+   */
+  @Prop({ reflect: true }) helperMessage: string;
+
 
   @Element() el: HTMLElement;
 
@@ -98,6 +106,15 @@ export class NumberInput {
   @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
     void
   >;
+
+  @Watch('inputstyle')
+  inputStyleValidation(newValue: ChiStates) {
+    if (newValue && !CHI_STATES.includes(newValue)) {
+      throw new Error(
+        `${newValue} is not a valid inputstyle for number input. If provided, valid values are: ${CHI_STATES.join(', ')}. `
+      );
+    }
+  }
 
   _numberInput!: HTMLInputElement;
 
@@ -232,12 +249,27 @@ export class NumberInput {
 
   isIncreaseDisabled() {
     return !!(this.max && (Number(this.value) + this.step > this.max ||
-    Number(this.value) >= this.max));
+      Number(this.value) >= this.max));
+  }
+
+  getHelperMessage() {
+    return <chi-helper-message state={this.inputstyle}>{this.helperMessage}</chi-helper-message>;
   }
 
   render() {
-    return this.expanded
+    let input = this.expanded
       ? this.getExpandedNumberInput()
       : this.getBaseNumberInput();
+    
+      if (this.helperMessage) {
+        input = (
+          <div class="chi-input__wrapper">
+            {input}
+            {this.getHelperMessage()}
+          </div>
+        )
+      }
+    
+      return input;
   }
 }

@@ -116,4 +116,24 @@ describe('Number input', function() {
       valueCheck('@expanded_minus_button', '-1', '@expanded_input');
     });
   });
+
+  describe('Helper message', function() {
+    beforeEach(function() {
+      cy.visit('tests/custom-elements/number-input.html');
+    });
+
+    it("Base input should show a helper message if property is provided", function() {
+      cy.get('[data-cy="test-base-helper-message"] chi-helper-message')
+        .first()
+        .invoke('text')
+        .should('equal', "An optional message")
+    });
+
+    it("Expanded input should show a helper message if property is provided", function() {
+      cy.get('[data-cy="test-base-helper-message"] chi-helper-message')
+        .first()
+        .invoke('text')
+        .should('equal', "An optional message")
+    });
+  })
 });

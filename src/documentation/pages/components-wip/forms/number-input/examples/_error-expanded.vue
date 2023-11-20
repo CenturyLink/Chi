@@ -6,13 +6,12 @@
       | failure and/or how to correct it.
     .chi-form__item(slot="example")
       chi-label(for="unique-id-eer1") Quantity
-      chi-number-input#unique-id-eer1(inputstyle="danger", expanded)
-      .chi-label.-status.-danger Please enter a quantity.   
+      chi-number-input#unique-id-eer1(inputstyle="danger", expanded, helper-message="Please enter a queantity.")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
     <Wrapper slot="code-htmlblueprint">
-      <JSNeeded /> 
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
@@ -39,8 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-eer1">Quantity</chi-label>
-<chi-number-input expanded id="unique-id-eer1" inputstyle="danger"></chi-number-input>
-<div class="chi-label -status -danger">Please enter a quantity.</div>`,
+<chi-number-input expanded id="unique-id-eer1" inputstyle="danger" helper-message="Please enter a queantity."></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="input-example-expanded">Label</label>
   <div class="chi-number-input -expanded">
