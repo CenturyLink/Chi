@@ -48,6 +48,49 @@ h3 Base
       <div class="chi-label" id="example-3">100%</div>
       <progress aria-labelledby="example-3" value="100" max="100"></progress>
 
+h3 Contextual
+h4 Progress in Modals
+.example.-mb--3
+  .chi-backdrop.-p--6.-position--relative.-z--0
+    .chi-backdrop__wrapper
+      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+        .chi-modal__content
+          .chi-label 50%
+          chi-progress(value='50', max='100')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-center-align
+      li.-disabled
+        a(href=`#webcomponent-center-align`) Web Component
+      li.-active
+        a(href=`#html-center-align`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-center-align
+  .chi-tabs-panel.-active#html-center-align
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- Trigger -->
+      <button id="modal-trigger" class="chi-button chi-modal__trigger" data-target="#modal">
+        Launch center modal
+      </button>
+
+      <!-- Modal -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <section id="modal" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+            <div class="chi-modal__content">
+              <div class="chi-label" id="example-2">50%</div>
+              <progress aria-labelledby="example-2" value="50" max="100"></progress>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- JavaScript -->
+      <script>chi.modal(document.getElementById('modal-trigger'));</script>
+
 .-portal--hide.-colt--hide.-brightspeed--hide
   h3 Semantic States
   p.-text
