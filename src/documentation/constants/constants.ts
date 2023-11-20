@@ -335,8 +335,8 @@ export const NAVIGATION_TEMPLATE_ITEMS = [
     source: 'pug'
   },
   { href: `templates/card`, label: 'Card', source: 'pug' },
-  { href: `templates/error-404`, label: 'Error 404', source: 'pug' },
-  { href: `templates/error-500`, label: 'Error 500', source: 'pug' },
+  { to: `templates/error-404`, label: 'Error 404', source: 'vue' },
+  { to: `templates/error-500`, label: 'Error 500', source: 'vue' },
   { to: `templates/state`, label: 'State', source: 'vue' }
 ];
 
