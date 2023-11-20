@@ -65,6 +65,9 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
+                  if section.title == 'Error 500'
+                    li
+                      a(href=`${rootPath}templates/state`) State
                   if section.title === 'Accordion'
                     li
                       a(href=`${rootPath}components/activity`) Activity
@@ -140,6 +143,9 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
+                  if section.title == 'Error 500'
+                    li
+                      a(href=`${rootPath}templates/state`) State
                   if section.title === 'Accordion'
                     li
                       a(href=`${rootPath}components/activity`) Activity
