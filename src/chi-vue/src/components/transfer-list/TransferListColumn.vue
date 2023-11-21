@@ -51,7 +51,14 @@
 import { Prop } from 'vue-property-decorator';
 import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '../tooltip/tooltip';
-import { TransferListItem } from './TransferList';
+
+export interface TransferListItem {
+  name: string;
+  label: string;
+  selected: boolean;
+  locked: boolean;
+  wildcard: boolean;
+}
 
 @Component({
   components: {
