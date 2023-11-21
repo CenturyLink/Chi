@@ -1,11 +1,12 @@
 <template>
   <div class="chi-transfer-list__actions">
-    <button class="chi-button -icon -flat" type="button">
-      <i class="chi-icon icon-chevron-right"></i>
-    </button>
-    <button class="chi-button -icon -flat" type="button">
-      <i class="chi-icon icon-chevron-left"></i>
-    </button>
+    <chi-button variant="flat" type="icon">
+      <chi-icon icon="chevron-left" />
+    </chi-button>
+
+    <chi-button variant="flat" type="icon">
+      <chi-icon icon="chevron-right" />
+    </chi-button>
   </div>
 </template>
 

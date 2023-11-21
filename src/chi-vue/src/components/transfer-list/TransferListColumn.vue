@@ -11,7 +11,8 @@
             type="icon"
             size="xs"
             alternative-text="Info icon"
-            @chiClick="toggleInfoPopover">
+            @chiClick="toggleInfoPopover"
+          >
             <chi-icon icon="circle-info-outline" size="xs" />
           </chi-button>
 
@@ -19,7 +20,8 @@
             arrow
             variant="text"
             :id="`transfer-list-popover-${title}`"
-            :reference="`#transfer-list-info-popover-${title}`">
+            :reference="`#transfer-list-info-popover-${title}`"
+          >
             {{ description }}
           </chi-popover>
         </template>
@@ -37,7 +39,8 @@
         :key="index"
         :value="item.name"
         :disabled="isToColumn && item.locked"
-        :class="getMenuItemClasses(item)">
+        :class="getMenuItemClasses(item)"
+      >
         {{ item.label }}
       </option>
     </select>
@@ -64,7 +67,7 @@ export default class TransferListColumn extends Vue {
   @Prop() list!: TransferListItem[];
 
   isToColumn = this.type === 'to';
-  hasLockedItems = this.list?.some((item) => item.locked);
+  hasLockedItems = this.list?.some(item => item.locked);
 
   getMenuItemClasses({ locked }: TransferListItem) {
     const classes = ['chi-transfer-list__menu-item'];
