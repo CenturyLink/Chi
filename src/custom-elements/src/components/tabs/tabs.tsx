@@ -16,7 +16,8 @@ import {
   GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   TABS_CLASSES,
-  UTILITY_CLASSES
+  UTILITY_CLASSES,
+  INVERSE_CLASS
 } from '../../constants/classes';
 import {
   ANIMATION_DURATION,
@@ -75,6 +76,10 @@ export class Tabs {
    *  To configure See more Dropdown trigger message
    */
   @Prop() seeMoreMessage = TABS_SEE_MORE_DEFAULT_MESSAGE;
+  /**
+   * To set inverse style
+   */
+  @Prop() inverse = false;
 
   @State() sliding = false;
   @State() isSeeMoreActive = false;
@@ -111,7 +116,6 @@ export class Tabs {
   private uuid4: string = uuid4();
   private seeMoreTriggerId: string = `see-more-trigger-${this.uuid4}`;
   private slidingBorderLeft: string;
-  private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
   private liMarginLeft: number =
@@ -182,64 +186,87 @@ export class Tabs {
   }
 
   createDropdowns(tabs: TabTrigger[], level: number, firstLevel?: string) {
-    if (this.vertical) {
-      return [];
-    }
+    const dropdowns = [];
 
     tabs.forEach((tab: TabTrigger) => {
-      const firstLevelId = level === 0 ? tab.id : firstLevel;
+      const isFirstLevel = level === 0;
+      const firstLevelId = isFirstLevel ? tab.id : firstLevel;
 
       if (tab.children && tab.children.length > 0) {
         this.dropdownKeys[tab.id] = 0;
-        this.dropdowns.push(
-          <chi-dropdown
-            id={`subLevelDropdown-${tab.id}`}
-            position={level === 0 ? 'bottom-start' : 'right-start'}
-            reference={`#${tab.id}`}
-            key={`${tab.id}-${this.dropdownKey}`}
-          >
-            {tab.children.map(child => {
-              child.parent = tab;
-
-              return (
-                <a
-                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
-                    UTILITY_CLASSES.JUSTIFY.BETWEEN
-                  } ${this._isActiveTab(child) ? ACTIVE_CLASS : ''}`}
-                  id={child.id}
-                  href={this.getTabHref(child)}
-                  target={this.getTabHrefTarget(child)}
-                  onMouseEnter={() => this.handlerTabMouseEnter(child)}
-                  onMouseLeave={e => this.handlerMouseLeave(e)}
-                  onClick={e => {
-                    const dropdownElement = this.getSubLevelDropdown(tab.id);
-                    const firstLevelTriggerElement = this.el.querySelector(
-                      `li#${firstLevelId} a`
-                    ) as HTMLElement;
-
-                    this.handlerClickTab(e, child, firstLevelTriggerElement);
-                    this.isSeeMoreActive = false;
-                    if (dropdownElement) {
-                      this.setParentTabActive(child);
-                      dropdownElement.hide();
-                    }
-                  }}
-                  innerHTML={child.label}
-                  slot="menu"
-                >
-                  {child.children &&
-                    child.children.length > 0 &&
-                    this.dropdownIcon('right')}
-                </a>
-              );
-            })}
-          </chi-dropdown>
+        dropdowns.push(
+          this.getDropdown(tab, isFirstLevel, firstLevelId)
         );
-        this.createDropdowns(tab.children, level + 1, firstLevelId);
+        dropdowns.push(
+          ...this.createDropdowns(tab.children, level + 1, firstLevelId)
+        );
       }
     });
 
-    return this.dropdowns;
+    return dropdowns;
+  }
+
+  getDropdown(tab: TabTrigger, isFirstLevel: boolean, firstLevelId: string) {
+    return <chi-dropdown
+      id={`subLevelDropdown-${tab.id}`}
+      position={isFirstLevel ? 'bottom-start' : 'right-start'}
+      reference={`#${tab.id}`}
+      key={`${tab.id}-${this.dropdownKey}`}
+    >
+      {this.getDropdownMenuItems(tab, firstLevelId)}
+    </chi-dropdown>
+  }
+
+  getDropdownMenuItems(tab: TabTrigger, firstLevelId: string) {
+    return tab.children.map(child => {
+      child.parent = tab;
+      return this.getDropdownMenuItem(
+        child,
+        e => this.onDropdownMenuItemClick(e, tab, child, firstLevelId),
+        UTILITY_CLASSES.JUSTIFY.BETWEEN,
+      )
+    })
+  }
+
+  getDropdownMenuItem(
+    tab: TabTrigger, 
+    onClickHandler: Function,
+    extraClass = ''
+  ) {
+    return (
+      <a
+        class={`${DROPDOWN_CLASSES.MENU_ITEM} 
+          ${ extraClass } 
+          ${ this._isActiveTab(tab) ? ACTIVE_CLASS : ''}
+        `}
+        id={tab.id}
+        href={this.getTabHref(tab)}
+        target={this.getTabHrefTarget(tab)}
+        onMouseEnter={() => this.handlerTabMouseEnter(tab)}
+        onMouseLeave={e => this.handlerMouseLeave(e)}
+        onClick={e => onClickHandler(e)}
+        innerHTML={tab.label}
+        slot="menu"
+      >
+        {tab.children &&
+          tab.children.length > 0 &&
+          this.dropdownIcon('right')}
+      </a>
+    );
+  }
+
+  onDropdownMenuItemClick(e: Event, tab: TabTrigger, tabChild: TabTrigger, firstLevelId: string) {
+    const dropdownElement = this.getSubLevelDropdown(tab.id)
+    const firstLevelTriggerElement = this.el.querySelector(
+      `li#${firstLevelId} a`
+    ) as HTMLElement;
+
+    this.handlerClickTab(e, tabChild, firstLevelTriggerElement);
+    this.isSeeMoreActive = false;
+    if (dropdownElement) {
+      this.setParentTabActive(tabChild);
+      dropdownElement.hide();
+    }
   }
 
   getActiveTabTrigger(): HTMLElement {
@@ -331,40 +358,47 @@ export class Tabs {
     }
 
     const element = slidingBorderNewPosition || (e.target as HTMLElement);
-    const position = this.getPosition(element);
 
     if (this.slidingBorder) {
-      this.animation = ThreeStepsAnimation.animationFactory(
-        () => {
-          this.sliding = true;
-        },
-        () => {
-          const dimension = this.vertical
-            ? TabTriggerSizes.Height
-            : TabTriggerSizes.Width;
-          const direction = this.vertical
-            ? TabTriggerDirections.Top
-            : TabTriggerDirections.Left;
-          const size = this.calculateSize(
-            element,
-            this.vertical ? TabTriggerSizes.Height : TabTriggerSizes.Width
-          );
-
-          this.slidingBorderElement.style[
-            direction
-          ] = `${position[direction]}px`;
-          this.slidingBorderElement.style[dimension] = `${size}px`;
-        },
-        () => {
-          this.slidingBorderElement.style.width = '';
-          this.sliding = false;
-        },
-        ANIMATION_DURATION.MEDIUM
-      );
+      this.setAnimation(element)
     }
 
     this.removeActiveItems();
     this.activateTab(tabData, element);
+  }
+
+  setAnimation(element: HTMLElement) {
+    const position = this.getPosition(element);
+    this.animation = ThreeStepsAnimation.animationFactory(
+      () => {
+        this.sliding = true;
+      },
+      () => {
+        const animationStyle = this.getSlidingBorderAnimationStyle();
+      
+        const size = this.calculateSize(
+          element,
+          animationStyle.dimension
+        );
+
+        this.slidingBorderElement.style[
+          animationStyle.direction
+        ] = `${position[animationStyle.direction]}px`;
+
+        this.slidingBorderElement.style[animationStyle.dimension] = `${size}px`;
+      },
+      () => {
+        this.slidingBorderElement.style.width = '';
+        this.sliding = false;
+      },
+      ANIMATION_DURATION.MEDIUM
+    );
+  }
+
+  getSlidingBorderAnimationStyle() {
+    return this.vertical
+      ? {dimension: TabTriggerSizes.Height, direction: TabTriggerDirections.Top}
+      : {dimension: TabTriggerSizes.Width, direction: TabTriggerDirections.Left};
   }
 
   handlerResize = () => {
@@ -433,15 +467,17 @@ export class Tabs {
     this.isSeeMoreActive = false;
   }
 
+  /**
+   * Checks if the tab or any of it's children is active.
+   */
   _isActiveTab(tab: TabTrigger) {
-    if (tab.children) {
-      return (
-        tab.id === this.activeTab ||
-        tab.children.some(tab => this._isActiveTab(tab))
-      );
-    } else {
-      return tab.id === this.activeTab;
+    let isActiveTab = tab.id === this.activeTab;
+
+    if (!isActiveTab && tab.children) {
+      isActiveTab = tab.children.some(tab => this._isActiveTab(tab))
     }
+
+    return isActiveTab
   }
 
   isActiveTabOverflown(tabs: TabTrigger[]): boolean {
@@ -511,7 +547,7 @@ export class Tabs {
 
   hideDropdowns(dropdowns: string[]) {
     dropdowns.forEach(id => {
-      const dropdownElement = this.getSubLevelDropdown(id)
+      const dropdownElement = this.getSubLevelDropdown(id);
 
       if (dropdownElement) {
         dropdownElement.hide();
@@ -536,40 +572,42 @@ export class Tabs {
     );
   }
 
-  // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
-  render() {
-    this.dropdowns = [];
-    const tabElements =
-      this.tabs &&
-      this.tabs
-        .filter(tab => !tab.overflow)
-        .map((tab: TabTrigger, index: number) => {
-          return (
-            <li
-              class={`${TABS_CLASSES.TRIGGER} ${
-                this._isActiveTab(tab) ? ACTIVE_CLASS : ''
-              }`}
-              data-index={index}
-              id={tab.id}
-              onMouseEnter={() => {
-                this.hideAllDropdowns();
-                this.handlerTabMouseEnter(tab);
-              }}
-            >
-              <a
-                href={this.getTabHref(tab)}
-                target={this.getTabHrefTarget(tab)}
-                class={tab.children ? '-has-child' : ''}
-                role="tab"
-                aria-selected={this._isActiveTab(tab)}
-                aria-controls={`#${tab.id}`}
-                onClick={e => this.handlerClickTab(e, tab)}
-                innerHTML={tab.label}
-              ></a>
-            </li>
-          );
-        });
-    const slidingBorder = this.slidingBorder ? (
+  getTabElements() {
+    const tabs = []
+
+    this.tabs?.forEach((tab: TabTrigger, index: number) => {
+      if (tab.overflow) return
+
+      tabs.push(
+        <li
+          class={`${TABS_CLASSES.TRIGGER} ${
+            this._isActiveTab(tab) ? ACTIVE_CLASS : ''
+          }`}
+          data-index={index}
+          id={tab.id}
+          onMouseEnter={() => {
+            this.hideAllDropdowns();
+            this.handlerTabMouseEnter(tab);
+          }}
+        >
+          <a
+            href={`#${tab.id}`}
+            class={tab.children ? '-has-child' : ''}
+            role="tab"
+            aria-selected={this._isActiveTab(tab)}
+            aria-controls={`#${tab.id}`}
+            onClick={e => this.handlerClickTab(e, tab)}
+            innerHTML={tab.label}
+          ></a>
+        </li>
+      );
+    });
+
+    return tabs;
+  }
+
+  getSlidingBorder() {
+    return this.slidingBorder ? (
       <li
         class={TABS_CLASSES.SLIDING_BORDER}
         ref={el => (this.slidingBorderElement = el)}
@@ -578,10 +616,14 @@ export class Tabs {
         }}
       ></li>
     ) : null;
+  }
+
+  getSeeMoreTrigger() {
     const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs)
-      ? ACTIVE_CLASS
-      : '';
-    const seeMoreTrigger = !this.vertical &&
+    ? ACTIVE_CLASS
+    : '';
+
+    return !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
           class={`${TABS_CLASSES.SHOW_MORE} ${activeTabOverflownClass}`}
@@ -598,46 +640,46 @@ export class Tabs {
           </a>
         </li>
       );
-    const overflowItems = this.tabs
-      .filter(li => li.overflow)
-      .map(tab => {
-        return (
-          <a
-            class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
-              this._isActiveTab(tab) ? ACTIVE_CLASS : ''
-            }`}
-            id={tab.id}
-            href={this.getTabHref(tab)}
-            target={this.getTabHrefTarget(tab)}
-            onMouseEnter={() => this.handlerTabMouseEnter(tab)}
-            onMouseLeave={e => this.handlerMouseLeave(e, true)}
-            onClick={e => {
-              this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
-              this.seeMoreDropdown.hide();
-              this.isSeeMoreActive = false;
-            }}
-            innerHTML={tab.label}
-            slot="menu"
+  }
+
+  getOverflowItems() {
+    return this.tabs.filter(li => li.overflow).map(tab => this.getDropdownMenuItem(
+      tab,
+      e => {
+        this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
+        this.seeMoreDropdown.hide();
+        this.isSeeMoreActive = false;
+      }
+    ))
+  }
+
+  getDropdowns() {
+    return this.vertical
+      ? []
+      : [
+        this.isSeeMoreVisible && (
+          <chi-dropdown
+            active={this.isSeeMoreActive}
+            id={`${this.uuid4}-see-more-dropdown`}
+            key={this.dropdownKey}
+            position="bottom"
+            reference={`#${this.seeMoreTriggerId}`}
+            ref={el => (this.seeMoreDropdown = el)}
           >
-            {tab.children && this.dropdownIcon('right')}
-          </a>
-        );
-      });
-    const dropdowns = [
-      this.isSeeMoreVisible && !this.vertical && (
-        <chi-dropdown
-          active={this.isSeeMoreActive}
-          id={`${this.uuid4}-see-more-dropdown`}
-          key={this.dropdownKey}
-          position="bottom"
-          reference={`#${this.seeMoreTriggerId}`}
-          ref={el => (this.seeMoreDropdown = el)}
-        >
-          {overflowItems}
-        </chi-dropdown>
-      ),
-      this.createDropdowns(this.tabs, 0)
+            {this.getOverflowItems()}
+          </chi-dropdown>
+        ),
+        ...this.createDropdowns(this.tabs, 0)
     ];
+  }
+
+  // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
+  render() {
+    const tabElements = this.getTabElements();
+    const slidingBorder = this.getSlidingBorder();
+    const seeMoreTrigger = this.getSeeMoreTrigger();
+
+    const dropdowns = this.getDropdowns();
 
     return (
       <Host>
@@ -650,6 +692,7 @@ export class Tabs {
             ${this.solid && TABS_CLASSES.SOLID}
             ${this.sliding && TABS_CLASSES.SLIDING}
             ${this.size ? `-${this.size}` : ''}
+            ${this.inverse && INVERSE_CLASS}
           `}
           ref={el => {
             this.ulElement = el;
