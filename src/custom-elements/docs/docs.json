@@ -1950,10 +1950,10 @@
           "required": false
         },
         {
-          "name": "preventItemSelectedEvent",
+          "name": "preventItemSelected",
           "type": "boolean",
           "mutable": false,
-          "attr": "prevent-item-selected-event",
+          "attr": "prevent-item-selected",
           "reflectToAttr": false,
           "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
           "docsTags": [],
@@ -5545,6 +5545,23 @@
           "attr": "border",
           "reflectToAttr": false,
           "docs": "To enable border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To set inverse style",
           "docsTags": [],
           "default": "false",
           "values": [
