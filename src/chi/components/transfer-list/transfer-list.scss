@@ -12,11 +12,6 @@
     gap: 0.625rem;
   }
 
-  &__menu {
-    height: 12.5rem;
-    overflow: auto;
-  }
-
   &__header {
     align-items: flex-end;
     display: flex;
@@ -38,12 +33,21 @@
     gap: 0.3125rem;
   }
 
+  &__menu {
+    height: 12.5rem;
+    overflow: auto;
+  }
+
   &__menu-item {
+    position: relative;
+
     &.-checkbox:before,
     &.-locked:before {
       font-family: $font-family-icon;
+      left: 0.125rem;
       padding-right: 0.5rem;
       padding-left: 0.5rem;
+      position: absolute;
     }
 
     &.-checkbox {
@@ -53,6 +57,7 @@
 
       &:checked:before {
         content: '\e91c';
+        color: $transfer-list-checkbox-icon-color;
       }
     }
 
