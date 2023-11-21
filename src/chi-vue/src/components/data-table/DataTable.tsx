@@ -1017,6 +1017,7 @@ export default class DataTable extends Vue {
             aria-label={cellLabel}
             class={`
               ${DATA_TABLE_CLASSES.CELL}
+              ${bodyRow.autoExpandedAlignment ? UTILITY_CLASSES.FLEX.ALIGN.START : ''}
               ${alignment}
               ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}
               ${cellKey ? '-key' : ''}
@@ -1048,6 +1049,7 @@ export default class DataTable extends Vue {
           class={`
           ${DATA_TABLE_CLASSES.CELL}
           ${flexBasis}
+          ${bodyRow.autoExpandedAlignment ? UTILITY_CLASSES.FLEX.ALIGN.START : ''}
           -justify-content-md--end
           -key`}
           style="overflow: visible; position: initial">
