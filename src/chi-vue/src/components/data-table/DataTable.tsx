@@ -841,7 +841,7 @@ export default class DataTable extends Vue {
   }
 
   _getSelectableClasses(rowData: DataTableRow): string {
-    if (!rowData?.alignmentToParent) {
+    if (!rowData?.autoExpandedAlignment) {
       return `${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`;
     }
 
@@ -925,7 +925,7 @@ export default class DataTable extends Vue {
   }
 
   _getRowClass(bodyRow: DataTableRow, rowLevel: DataTableRowLevels): string {
-    if (bodyRow.alignmentToParent) {
+    if (bodyRow.autoExpandedAlignment) {
       return DATA_TABLE_CLASSES.ROW;
     }
 
@@ -964,7 +964,7 @@ export default class DataTable extends Vue {
         rowAccordionContent.push(
           this._rowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
         );
-      } else if (rowLevel === 'parent' || !bodyRow.alignmentToParent) {
+      } else if (rowLevel === 'parent' || !bodyRow.autoExpandedAlignment) {
         rowCells.push(<div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell" />);
       }
     }
