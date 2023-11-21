@@ -330,6 +330,17 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   }
 ];
+export const NAVIGATION_TEMPLATE_ITEMS = [
+  {
+    href: `templates/app-layout`,
+    label: 'App Layout',
+    source: 'pug'
+  },
+  { href: `templates/card`, label: 'Card', source: 'pug' },
+  { to: `templates/error-404`, label: 'Error 404', source: 'vue' },
+  { to: `templates/error-500`, label: 'Error 500', source: 'vue' },
+  { to: `templates/state`, label: 'State', source: 'vue' }
+];
 
 export const CHI_VISIBLE_VERSION = [
   '5.41.0',
