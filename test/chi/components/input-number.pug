@@ -1,40 +1,98 @@
 ---
 title: Input numbers
 ---
+- var styles = ['', 'success', 'warning', 'danger']
+- var states =  ['initial', 'hover', 'focus', 'disabled']
+- var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
 
-each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+each size in sizes
   div(class=`test-${size}`)
-    span.-text--h2= `Text Input / ${size}`
-    table(cellpadding='0', cellspacing='0', width='600px')
-      each state in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Number Input / ${size}`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+        tr
+          th.-text--left
+            small='↓ State / style →'
+          each style in styles
+            th.-text--left.-pl--1= `${style}`
+        each state in ['initial', 'hover', 'focus', 'disabled']
+          tr
+            td
+              small= `${state}`
+            each style in styles
+              td
+                .-m--1
+                  .chi-form__item.-row
+                    .chi-number-input(class={[`-${size}`]: size != 'default'})
+                      input.chi-input(
+                        type='number'
+                        class={
+                          [`-${style}`]: style != '',
+                          [`-${state}`]: state != 'disabled'
+                        }
+                        disabled=state=='disabled'?'disabled': false
+                      )
+                      button(tabindex='-1', aria-label='Decrease')
+                      button(tabindex='-1', aria-label='Increase')
+
+each size in sizes
+  div(class=`test-base-helper-message-${size}`)
+    span.-text--h2= `Number Input ${size} with helper message`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles 
+          th.-text--left.-pl--1= `${style}`
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'danger']
+          each style in styles
             td
               .-m--1
-                .chi-form__item.-row
+                .chi-form__item
                   .chi-number-input(class={[`-${size}`]: size != 'default'})
                     input.chi-input(
                       type='number'
                       class={
-                        [`-${style}`]: style != 'default',
+                        [`-${style}`]: style != '',
                         [`-${state}`]: state != 'disabled'
                       }
                       disabled=state=='disabled'?'disabled': false
                     )
                     button(tabindex='-1', aria-label='Decrease')
                     button(tabindex='-1', aria-label='Increase')
+                  div(class={
+                    "chi-label": true,
+                    "-status": true,
+                    [`-${style}`]: style != ''
+                  })
+                    i(
+                      class={
+                        "-d--none": style == '',
+                        "chi-icon": true,
+                        "icon-warning": style === 'warning',
+                        "icon-circle-warning": style === 'danger',
+                        "icon-circle-check": style === 'success'
+                      }
+                      aria-hidden="true"
+                    )
+                    span An optional message.
 
-each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+each size in sizes
   div(class=`test-expanded-${size}`)
-    span.-text--h2= `Text Input Expanded / ${size}`
-    table(cellpadding='0', cellspacing='0', width='600px')
+    span.-text--h2= `Number Input Expanded / ${size}`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles
+          th.-text--left.-pl--1= `${style}`
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
           td
             small= `${state}`
-          each style in ['default', 'danger']
+          each style in styles
             td
               .-m--1
                 .chi-form__item.-row
@@ -42,7 +100,7 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                     input.chi-input(
                       type='number'
                       class={
-                        [`-${style}`]: style != 'default',
+                        [`-${style}`]: style != '',
                         [`-${state}`]: state != 'disabled'
                       }
                       disabled=state=='disabled'?'disabled': false
@@ -54,15 +112,20 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                       .chi-button__content
                         i.chi-icon.icon-plus(aria-hidden="true")
 
-each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+each size in sizes
   div(class=`test-expanded-svg-${size}`)
-    span.-text--h2= `Text Input Expanded SVG / ${size}`
-    table(cellpadding='0', cellspacing='0', width='600px')
+    span.-text--h2= `Number Input Expanded SVG / ${size}`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles
+          th.-text--left.-pl--1= `${style}`
       each state in ['initial', 'hover', 'focus', 'disabled']
         tr
           td
             small= `${state}`
-          each style in ['default', 'danger']
+          each style in styles
             td
               .-m--1
                 .chi-form__item.-row
@@ -70,7 +133,7 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                     input.chi-input(
                       type='number'
                       class={
-                        [`-${style}`]: style != 'default',
+                        [`-${style}`]: style != '',
                         [`-${state}`]: state != 'disabled'
                       }
                       disabled=state=='disabled'?'disabled': false
@@ -85,3 +148,58 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                         .chi-icon
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-plus')
+
+each size in sizes
+  div(class=`test-expanded-helper-message-${size}`)
+    span.-text--h2= `Number Input Expanded SVG / ${size} with helper message`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles 
+          th.-text--left.-pl--1= `${style}`
+      each state in states
+        tr
+          td
+            small= `${state}`
+          each style in styles
+            td
+              .-m--1
+                .chi-input__wrapper
+                  .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
+                    input.chi-input(
+                      type='number'
+                      class={
+                        [`-${style}`]: style != '',
+                        [`-${state}`]: state != 'disabled'
+                      }
+                      disabled=state=='disabled'?'disabled': false
+                    )
+                    button.chi-button.-icon(tabindex='-1', aria-label='Decrease')
+                      .chi-button__content
+                        .chi-icon
+                          svg(aria-hidden="true")
+                            use(xlink:href='#icon-minus')
+                    button.chi-button.-icon(tabindex='-1', aria-label='Increase')
+                      .chi-button__content
+                        .chi-icon
+                          svg(aria-hidden="true")
+                            use(xlink:href='#icon-plus')
+                  div(class={
+                    "chi-label": true,
+                    "-status": true,
+                    [`-${style}`]: style != ''
+                  })
+                    i(
+                      class={
+                        "-d--none": style == '',
+                        "chi-icon": true,
+                        "icon-warning": style === 'warning',
+                        "icon-circle-warning": style === 'danger',
+                        "icon-circle-check": style === 'success'
+                      }
+                      aria-hidden="true"
+                    )
+                    span An optional message.
+
+
