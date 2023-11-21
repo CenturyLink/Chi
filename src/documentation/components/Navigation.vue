@@ -11,13 +11,19 @@
             <a :href="`${BASE_URL}getting-started`">Introduction</a>
           </li>
           <li>
-            <a :href="`${BASE_URL}getting-started/installation`">Installation</a>
+            <a :href="`${BASE_URL}getting-started/installation`"
+              >Installation</a
+            >
           </li>
           <li>
-            <a :href="`${BASE_URL}getting-started/development-workflow`">Development workflow</a>
+            <a :href="`${BASE_URL}getting-started/development-workflow`"
+              >Development workflow</a
+            >
           </li>
           <li>
-            <a :href="`${BASE_URL}getting-started/browsers-devices`">Browser support</a>
+            <a :href="`${BASE_URL}getting-started/browsers-devices`"
+              >Browser support</a
+            >
           </li>
           <li>
             <a :href="`${BASE_URL}getting-started/whats-new`">What's new</a>
@@ -28,40 +34,76 @@
         <div class="chi-collection__title">Foundations</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <div class="chi-accordion accessibility-accordion" ref="accessibilityAccordion">
+            <div
+              class="chi-accordion accessibility-accordion"
+              ref="accessibilityAccordion"
+            >
               <div class="chi-accordion__item -bg--none">
                 <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accessibility</div>
-                  <i class="chi-icon icon-chevron-down -xs" aria-hidden="true"></i>
+                  <i
+                    class="chi-icon icon-chevron-down -xs"
+                    aria-hidden="true"
+                  ></i>
                 </button>
                 <div class="chi-accordion__content -p--0">
                   <ul class="chi-tabs__subtabs">
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/overview`">Overview</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/overview`"
+                        >Overview</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/using-keyboard`">Using the keyboard</a>
+                      <a
+                        :href="
+                          `${BASE_URL}foundations/accessibility/using-keyboard`
+                        "
+                        >Using the keyboard</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/page-structure`">Page structure</a>
+                      <a
+                        :href="
+                          `${BASE_URL}foundations/accessibility/page-structure`
+                        "
+                        >Page structure</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/color-sensory`">Color and sensory</a>
+                      <a
+                        :href="
+                          `${BASE_URL}foundations/accessibility/color-sensory`
+                        "
+                        >Color and sensory</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/images`">Images</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/images`"
+                        >Images</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/text`">Text</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/text`"
+                        >Text</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/links-and-forms`">Links and forms</a>
+                      <a
+                        :href="
+                          `${BASE_URL}foundations/accessibility/links-and-forms`
+                        "
+                        >Links and forms</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/tables`">Tables</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/tables`"
+                        >Tables</a
+                      >
                     </li>
                     <li>
-                      <a :href="`${BASE_URL}foundations/accessibility/other`">Other</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/other`"
+                        >Other</a
+                      >
                     </li>
                   </ul>
                 </div>
@@ -84,17 +126,26 @@
         <ul class="chi-tabs__subtabs">
           <li
             :key="index"
-            v-for="(navigationComponentItem, index) in NAVIGATION_COMPONENTS_ITEMS"
-            :class="{'-active': $route.path === `/${navigationComponentItem.to}`}"
+            v-for="(navigationComponentItem,
+            index) in NAVIGATION_COMPONENTS_ITEMS"
+            :class="{
+              '-active': $route.path === `/${navigationComponentItem.to}`
+            }"
           >
             <NuxtLink
-              v-if="navigationComponentItem.to && navigationComponentItem.source === 'vue'"
+              v-if="
+                navigationComponentItem.to &&
+                  navigationComponentItem.source === 'vue'
+              "
               :to="`/${navigationComponentItem.to}`"
             >
               {{ navigationComponentItem.label }}
             </NuxtLink>
             <a
-              v-if="navigationComponentItem.href && navigationComponentItem.source === 'pug'"
+              v-if="
+                navigationComponentItem.href &&
+                  navigationComponentItem.source === 'pug'
+              "
               :href="`${BASE_URL}${navigationComponentItem.href}`"
             >
               {{ navigationComponentItem.label }}
@@ -152,20 +203,31 @@
       <li>
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
-          <li>
-            <a :href="`${BASE_URL}templates/app-layout`">App layout</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}templates/card`">Card</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}templates/error-404`">Error 404</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}templates/error-500`">Error 500</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}templates/state`">State</a>
+          <li
+            :key="index"
+            v-for="(navigationTemplateItem, index) in NAVIGATION_TEMPLATE_ITEMS"
+            :class="{
+              '-active': $route.path === `/${navigationTemplateItem.to}`
+            }"
+          >
+            <NuxtLink
+              v-if="
+                navigationTemplateItem.to &&
+                  navigationTemplateItem.source === 'vue'
+              "
+              :to="`/${navigationTemplateItem.to}`"
+            >
+              {{ navigationTemplateItem.label }}
+            </NuxtLink>
+            <a
+              v-if="
+                navigationTemplateItem.href &&
+                  navigationTemplateItem.source === 'pug'
+              "
+              :href="`${BASE_URL}${navigationTemplateItem.href}`"
+            >
+              {{ navigationTemplateItem.label }}
+            </a>
           </li>
         </ul>
       </li>
@@ -174,55 +236,60 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import ThemeSwitcher from './ThemeSwitcher.vue';
-  import { NAVIGATION_COMPONENTS_ITEMS, BASE_URL } from '../constants/constants';
+import { Component, Vue } from 'vue-property-decorator';
+import ThemeSwitcher from './ThemeSwitcher.vue';
+import {
+  NAVIGATION_COMPONENTS_ITEMS,
+  NAVIGATION_TEMPLATE_ITEMS,
+  BASE_URL
+} from '../constants/constants';
 
-  declare const chi: any;
+declare const chi: any;
 
-  @Component({
-    components: {
-      ThemeSwitcher
-    },
-    data: () => {
-      return {
-        BASE_URL,
-        NAVIGATION_COMPONENTS_ITEMS
-      };
-    }
-  })
-  export default class Navigation extends Vue {
-    [x: string]: any;
-    chiAccordion: any;
+@Component({
+  components: {
+    ThemeSwitcher
+  },
+  data: () => {
+    return {
+      BASE_URL,
+      NAVIGATION_COMPONENTS_ITEMS,
+      NAVIGATION_TEMPLATE_ITEMS
+    };
+  }
+})
+export default class Navigation extends Vue {
+  [x: string]: any;
+  chiAccordion: any;
 
-    mounted() {
-      const accordionElement = this.$refs.accessibilityAccordion as HTMLElement;
+  mounted() {
+    const accordionElement = this.$refs.accessibilityAccordion as HTMLElement;
 
-      if (accordionElement) {
-        this.chiAccordion = chi.accordion(accordionElement);
-      }
-    }
-
-    beforeDestroy() {
-      if (this.chiAccordion) {
-        this.chiAccordion.dispose();
-      }
+    if (accordionElement) {
+      this.chiAccordion = chi.accordion(accordionElement);
     }
   }
+
+  beforeDestroy() {
+    if (this.chiAccordion) {
+      this.chiAccordion.dispose();
+    }
+  }
+}
 </script>
 
 <style>
-  .-theme-lumen
+.-theme-lumen
   nav.docs-sidenav
-    > nav
-    > ul.chi-tabs.-vertical
-    > li
-    > ul.chi-tabs__subtabs
-    > li
-    > a.-active {
-    background-color: #e0f3ff;
-    box-shadow: inset 0.125rem 0 0 #0075c9;
-    color: #0262b9;
-    font-weight: 500;
-  }
+  > nav
+  > ul.chi-tabs.-vertical
+  > li
+  > ul.chi-tabs__subtabs
+  > li
+  > a.-active {
+  background-color: #e0f3ff;
+  box-shadow: inset 0.125rem 0 0 #0075c9;
+  color: #0262b9;
+  font-weight: 500;
+}
 </style>
