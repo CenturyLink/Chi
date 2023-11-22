@@ -584,4 +584,12 @@ describe('Phone Input', () => {
         });
     });
   });
+
+  describe('helper message', () => {
+    it.only("Should show a helper message if property helperMessage is provided", function() {
+      cy.get('[data-cy="phone-input-danger-helper-message"] chi-helper-message')
+        .invoke('text')
+        .should('equal', "Optional message")
+    });
+  })
 });
