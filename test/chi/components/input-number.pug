@@ -50,34 +50,35 @@ each size in sizes
           each style in styles
             td
               .-m--1
-                .chi-form__item
-                  .chi-number-input(class={[`-${size}`]: size != 'default'})
-                    input.chi-input(
-                      type='number'
-                      class={
-                        [`-${style}`]: style != '',
-                        [`-${state}`]: state != 'disabled'
-                      }
-                      disabled=state=='disabled'?'disabled': false
-                    )
-                    button(tabindex='-1', aria-label='Decrease')
-                    button(tabindex='-1', aria-label='Increase')
-                  div(class={
-                    "chi-label": true,
-                    "-status": true,
-                    [`-${style}`]: style != ''
-                  })
-                    i(
-                      class={
-                        "-d--none": style == '',
-                        "chi-icon": true,
-                        "icon-warning": style === 'warning',
-                        "icon-circle-warning": style === 'danger',
-                        "icon-circle-check": style === 'success'
-                      }
-                      aria-hidden="true"
-                    )
-                    span An optional message.
+                .chi-form__item.-row
+                  .chi-input__wrapper
+                    .chi-number-input(class={[`-${size}`]: size != 'default'})
+                      input.chi-input(
+                        type='number'
+                        class={
+                          [`-${style}`]: style != '',
+                          [`-${state}`]: state != 'disabled'
+                        }
+                        disabled=state=='disabled'?'disabled': false
+                      )
+                      button(tabindex='-1', aria-label='Decrease')
+                      button(tabindex='-1', aria-label='Increase')
+                    div(class={
+                      "chi-label": true,
+                      "-status": true,
+                      [`-${style}`]: style != ''
+                    })
+                      .chi-icon(class={
+                          "-d--none": style == '',
+                        }
+                      )
+                        svg(aria-hidden="true")
+                          use(xlink:href=`${
+                            style === 'warning' ? '#icon-warning' :
+                              style === 'danger' ? '#icon-circle-warning' :
+                                style === 'success' ? '#icon-circle-check' : ''
+                          }`)
+                      .-p--0.-m--0 An optional message
 
 each size in sizes
   div(class=`test-expanded-${size}`)
@@ -165,41 +166,42 @@ each size in sizes
           each style in styles
             td
               .-m--1
-                .chi-input__wrapper
-                  .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
-                    input.chi-input(
-                      type='number'
-                      class={
-                        [`-${style}`]: style != '',
-                        [`-${state}`]: state != 'disabled'
-                      }
-                      disabled=state=='disabled'?'disabled': false
-                    )
-                    button.chi-button.-icon(tabindex='-1', aria-label='Decrease')
-                      .chi-button__content
-                        .chi-icon
-                          svg(aria-hidden="true")
-                            use(xlink:href='#icon-minus')
-                    button.chi-button.-icon(tabindex='-1', aria-label='Increase')
-                      .chi-button__content
-                        .chi-icon
-                          svg(aria-hidden="true")
-                            use(xlink:href='#icon-plus')
-                  div(class={
-                    "chi-label": true,
-                    "-status": true,
-                    [`-${style}`]: style != ''
-                  })
-                    i(
-                      class={
-                        "-d--none": style == '',
-                        "chi-icon": true,
-                        "icon-warning": style === 'warning',
-                        "icon-circle-warning": style === 'danger',
-                        "icon-circle-check": style === 'success'
-                      }
-                      aria-hidden="true"
-                    )
-                    span An optional message.
+                .chi-form__item.-row
+                  .chi-input__wrapper
+                    .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
+                      input.chi-input(
+                        type='number'
+                        class={
+                          [`-${style}`]: style != '',
+                          [`-${state}`]: state != 'disabled'
+                        }
+                        disabled=state=='disabled'?'disabled': false
+                      )
+                      button.chi-button.-icon(tabindex='-1', aria-label='Decrease')
+                        .chi-button__content
+                          .chi-icon
+                            svg(aria-hidden="true")
+                              use(xlink:href='#icon-minus')
+                      button.chi-button.-icon(tabindex='-1', aria-label='Increase')
+                        .chi-button__content
+                          .chi-icon
+                            svg(aria-hidden="true")
+                              use(xlink:href='#icon-plus')
+                    div(class={
+                      "chi-label": true,
+                      "-status": true,
+                      [`-${style}`]: style != ''
+                    })
+                      .chi-icon(class={
+                          "-d--none": style == ''
+                        }
+                      )
+                        svg(aria-hidden="true")
+                          use(xlink:href=`${
+                            style === 'warning' ? '#icon-warning' :
+                              style === 'danger' ? '#icon-circle-warning' :
+                                style === 'success' ? '#icon-circle-check' : ''
+                          }`)
+                      .-p--0.-m--0 An optional message
 
 
