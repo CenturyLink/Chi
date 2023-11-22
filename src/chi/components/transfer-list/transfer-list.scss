@@ -1,0 +1,84 @@
+// sass-lint:disable no-misspelled-properties
+
+.chi-transfer-list {
+  &__content {
+    align-items: center;
+    display: flex;
+    gap: 0.625rem;
+  }
+
+  &__column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  &__header {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    align-items: center;
+    color: $transfer-list-title-color;
+    display: flex;
+    font-weight: $font-weight-bold;
+    gap: 0.3125rem;
+    margin: 0;
+  }
+
+  &__header-actions {
+    align-items: center;
+    display: flex;
+    gap: 0.3125rem;
+  }
+
+  &__menu {
+    height: 12.5rem;
+    overflow: auto;
+  }
+
+  &__menu-item {
+    position: relative;
+
+    &.-checkbox:before,
+    &.-locked:before {
+      font-family: $font-family-icon;
+      left: 0.125rem;
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+      position: absolute;
+    }
+
+    &.-checkbox {
+      &:before {
+        content: '\e91d';
+      }
+
+      &:checked:before {
+        content: '\e91c';
+        color: $transfer-list-checkbox-icon-color;
+      }
+    }
+
+    &.-locked:before {
+      content: '\e959';
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+  }
+}

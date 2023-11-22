@@ -50,6 +50,7 @@ export interface DataTableRow {
     isNestedContentPrintDisabled?: boolean;
   };
   state?: DataTableRowStates;
+  autoExpandedAlignment?: boolean;
 }
 export interface DataTableData {
   head: {
