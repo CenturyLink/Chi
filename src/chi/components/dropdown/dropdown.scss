@@ -62,7 +62,7 @@
     }
 
     &-items-wrapper {
-      overflow: overlay;
+      overflow: auto;
     }
 
     &-item {
@@ -74,7 +74,7 @@
       padding-right: $dropdown-menu-item-padding-right;
       white-space: nowrap;
 
-      &>.chi-checkbox {
+      & > .chi-checkbox {
         align-items: center;
         display: flex;
       }
@@ -146,7 +146,7 @@
       width: auto;
     }
 
-    &>.chi-input__wrapper,
+    & > .chi-input__wrapper,
     & chi-search-input {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
@@ -175,7 +175,7 @@
 
       &[type='checkbox'],
       &[type='radio'] {
-        &.chi-input+label {
+        &.chi-input + label {
           margin-bottom: 0;
           margin-right: 0;
 
@@ -190,7 +190,7 @@
       input {
         &[type='checkbox'] {
           &.chi-checkbox__input {
-            &+label {
+            & + label {
               &.chi-checkbox__label {
                 padding-left: 1.75rem;
 
@@ -208,7 +208,7 @@
       input {
         &[type='radio'] {
           &.chi-radio__input {
-            &+label {
+            & + label {
               &.chi-radio__label {
                 padding-left: 1.75rem;
               }
@@ -219,7 +219,7 @@
     }
 
     &.-list {
-      >.chi-dropdown__menu-item {
+      > .chi-dropdown__menu-item {
         align-items: flex-start;
         flex-direction: column;
         height: auto;
@@ -353,10 +353,8 @@
     &.-danger,
     &.-disabled,
     &[disabled] {
-
       &:not([data-position^='left']),
       &[data-position^='left'] {
-
         &::before,
         &::after {
           color: inherit;
@@ -495,7 +493,7 @@
     }
   }
 
-  &[data-position='bottom-end']~.chi-dropdown__menu {
+  &[data-position='bottom-end'] ~ .chi-dropdown__menu {
     left: initial;
     right: 0;
   }

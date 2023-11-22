@@ -106,8 +106,8 @@ export const DROPDOWN_CLASSES = {
   MENU_CONTENT: 'chi-dropdown__menu-content',
   MENU_ITEM: 'chi-dropdown__menu-item',
   MENU_ITEMS_WRAPPER: 'chi-dropdown__menu-items-wrapper',
-  HEADER: 'chi-dropdown__header',
-  FOOTER: 'chi-dropdown__footer',
+  MENU_HEADER: 'chi-dropdown__menu-header',
+  MENU_FOOTER: 'chi-dropdown__menu-footer',
 };
 //#endregion
 

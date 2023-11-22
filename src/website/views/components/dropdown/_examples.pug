@@ -630,28 +630,6 @@ h3 Visible items
 .example.-mb--3
   .-p--3
     chi-dropdown(visible-items='3' button='Dropdown, click me' )
-      chi-search-input(size="sm" placeholder="Search" slot="header")
-      chi-search-input(size="sm" placeholder="Search" slot="footer")
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 5
-    chi-dropdown(visible-items='3' button='Dropdown, click me' )
-      chi-search-input(size="sm" placeholder="Search" slot="header")
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 5
-    chi-dropdown(visible-items='3' button='Dropdown, click me' )
-      chi-search-input(size="sm" placeholder="Search" slot="footer")
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
-      a.chi-dropdown__menu-item(href='#' slot='menu') Item 5
-    chi-dropdown(visible-items='3' button='Dropdown, click me' )
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -699,12 +677,13 @@ h3 Visible items
 h3 Search input
 .example.-mb--3
   .-p--3
-    chi-dropdown(button=`Dropdown, click me`)
-      chi-search-input(size="sm" placeholder="Search" slot="menu")
+    chi-dropdown(button=`Dropdown, click me` visible-items="3")
+      chi-search-input(size="sm" placeholder="Search" slot="menu-header")
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 4  
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 5
   .example-tabs.-pl--2
     ul.chi-tabs#example-dropdown-with-search
       li.-active
@@ -712,31 +691,41 @@ h3 Search input
       li
         a(href=`#html-dropdown-with-search`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-dropdown-with-search
+    .chi-tab__description
+      span.-text--grey
+        | There are two extra slots available for the dropdown menu: <code>menu-header</code> and <code>menu-footer</code>,
+        | which places the items inside those slots, accordingly inside the header and footer of dropdown menu.
     :code(lang="html")
-      <chi-dropdown button="Dropdown, click me">
-        <chi-search-input size="sm" placeholder="Search" slot="menu"></chi-search-input>
+      <chi-dropdown button="Dropdown, click me" visible-items="3">
+        <chi-search-input size="sm" placeholder="Search" slot="menu-header"></chi-search-input>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 5</a>
       </chi-dropdown>
   .chi-tabs-panel#html-dropdown-with-search
     :code(lang="html")
       <div class="chi-dropdown">
         <button id="example__dropdown-with-search" class="chi-button chi-dropdown__trigger">Dropdown, click me</button>
         <div class="chi-dropdown__menu">
-          <div class="chi-input__wrapper -icon--right">
-            <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
-            <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-search" aria-hidden="true"></i>
-              </div>
-            </button>
+          <div class="chi-dropdown__menu-header">
+            <div class="chi-input__wrapper -icon--right">
+              <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
+              <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-search" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
           </div>
-          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
-          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
-          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
-          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+          <div class="chi-dropdown__menu-items-wrapper" style="overflow-y: auto; max-height: 7rem"> 
+            <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 5</a>
+          </div>
         </div>
       </div>
 

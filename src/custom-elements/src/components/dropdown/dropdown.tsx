@@ -221,6 +221,11 @@ export class Dropdown {
     );
   }
 
+  addSlotsMargins() {
+    if(!!this._dropdownMenuHeader?.children.length) this._dropdownMenuHeader.classList.add('-mb--1');
+    if(!!this._dropdownMenuFooter?.children.length) this._dropdownMenuFooter.classList.add('-mt--1');
+  }
+
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
     const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
@@ -232,9 +237,6 @@ export class Dropdown {
     }
 
     this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
-
-    if(!!this._dropdownMenuHeader.children.length) this._dropdownMenuHeader.style['margin-bottom'] = "0.5rem";
-    if(!!this._dropdownMenuFooter.children.length) this._dropdownMenuFooter.style['margin-top'] = "0.5rem";
   }
 
   getPadding(direction: 'top' | 'bottom') {
@@ -303,7 +305,8 @@ export class Dropdown {
     this.setDisplay('block');
     this.active = true;
 
-    if (this.visibleItems) this.setMenuHeight()
+    if (this.visibleItems) this.setMenuHeight();
+    this.addSlotsMargins();
 
     if (this._popper) {
       this._popper.update();
@@ -410,17 +413,17 @@ export class Dropdown {
       `}
       ref={ref => (this._dropdownMenuElement = ref)}
       >
-        <div class={`${DROPDOWN_CLASSES.HEADER}`}
+       { <div class={DROPDOWN_CLASSES.MENU_HEADER}
         ref={ref => (this._dropdownMenuHeader = ref)}>
-          <slot name="header"/>
-        </div>
+          <slot name="menu-header"/>
+        </div>}
         <div class={`${DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}`}
         ref={ref => (this._dropdownMenuItemsWrapper = ref)}>
           <slot name="menu" />
         </div>
-        <div class={`${DROPDOWN_CLASSES.FOOTER}`}
+        <div class={DROPDOWN_CLASSES.MENU_FOOTER}
         ref={ref => (this._dropdownMenuFooter = ref)}>
-          <slot name="footer"/>
+          <slot name="menu-footer"/>
         </div>
       </div>
     );
