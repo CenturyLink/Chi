@@ -121,8 +121,6 @@ export class Dropdown {
   private _popper: any;
   private _referenceElement: any;
   private _dropdownMenuElement: any;
-  private _dropdownMenuHeader: any;
-  private _dropdownMenuFooter: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
 
@@ -242,11 +240,8 @@ export class Dropdown {
     }
   }
 
-  addSlotsMargins() {
-    if (!!this._dropdownMenuHeader?.children.length)
-      this._dropdownMenuHeader.classList.add(UTILITY_CLASSES.MARGIN.BOTTOM[1]);
-    if (!!this._dropdownMenuFooter?.children.length)
-      this._dropdownMenuFooter.classList.add(UTILITY_CLASSES.MARGIN.TOP[1]);
+  getPadding(direction: 'top' | 'bottom') {
+    return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
   }
 
   setMenuHeight() {
@@ -262,7 +257,12 @@ export class Dropdown {
       newHeight += menuItems[i].offsetHeight;
     }
 
-    this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+    if (this._menuFooter  || this._menuHeader) {
+      this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+    } else {
+      const padding = this.getPadding('top') + this.getPadding('bottom');
+      this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+    }
   }
 
   setDisplay(display: 'block' | 'none') {
@@ -328,8 +328,6 @@ export class Dropdown {
     this.active = true;
 
     if (this.visibleItems) this.setMenuHeight();
-
-    this.addSlotsMargins();
 
     if (this._popper) {
       this._popper.update();
@@ -432,7 +430,6 @@ export class Dropdown {
     const dropdownMenuHeader = this._menuHeader && (
       <div
         class={DROPDOWN_CLASSES.MENU_HEADER}
-        ref={ref => (this._dropdownMenuHeader = ref)}
       >
         <slot name="menu-header" />
       </div>
@@ -440,12 +437,11 @@ export class Dropdown {
     const dropdownMenuFooter = this._menuFooter && (
       <div
         class={DROPDOWN_CLASSES.MENU_FOOTER}
-        ref={ref => (this._dropdownMenuFooter = ref)}
       >
         <slot name="menu-footer" />
       </div>
     );
-    const dropdownMenuItems = this.visibleItems ? (
+    const dropdownMenuItems = this.visibleItems && (this._menuFooter || this._menuHeader) ? (
       <div
         class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}
         ref={ref => (this._dropdownMenuItemsWrapper = ref)}
