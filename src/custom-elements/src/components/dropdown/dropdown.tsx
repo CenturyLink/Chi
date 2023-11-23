@@ -261,6 +261,7 @@ export class Dropdown {
       this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
     } else {
       const padding = this.getPadding('top') + this.getPadding('bottom');
+
       this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
     }
   }
@@ -429,14 +430,14 @@ export class Dropdown {
 
     const dropdownMenuHeader = this._menuHeader && (
       <div
-        class={DROPDOWN_CLASSES.MENU_HEADER}
+        class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
       >
         <slot name="menu-header" />
       </div>
     );
     const dropdownMenuFooter = this._menuFooter && (
       <div
-        class={DROPDOWN_CLASSES.MENU_FOOTER}
+        class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}
       >
         <slot name="menu-footer" />
       </div>
