@@ -5,6 +5,9 @@ title: Dropdown
 - var dropdownStates = ["", "-active", "-fluid"];
 - var textCombinations = [{"t_text": "Click me", "d_text": "Element"}, {"t_text": "Long trigger text, click me", "d_text": "Element"}, {"t_text": "Click me", "d_text": "Long text dropdown element"}];
 - var menuItemStates = [{"title":"Normal", "class": ""}, {"title":"Active", "class": "-active"}, {"title":"Disabled", "class": "-disabled"}, {"title":"Hover", "class": "-hover"}];
+- var colors = ["primary", "secondary", "danger", "dark", "light" ]
+- var variants = ["", "outline", "flat"]
+- var sizes = [ "xs", "sm", "md", "lg", "xl" ]
 
 each menuItemState in menuItemStates
   div(class=`test-basicDropdown${menuItemState.class} -w--100`)
@@ -313,3 +316,51 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                             svg
                               use(xlink:href='#icon-atom')
                           span Button
+
+.test-dropdown-variants-color.-mt--5(style='width: 1000px; height: 400px;')
+  span.-text--h2 Variant and color
+  each variant in variants
+    .-d--flex.-flex--row.-justify-content--around.-mt--5.-text--center=`Variant ${variant}`
+      each color in colors
+        .chi-dropdown
+          button.chi-button.chi-dropdown__trigger(
+            class={
+              [`-${color}`]: !!color, 
+              [`-${variant}`]: !!variant
+            }
+          )=`${color}${variant ? '-' + variant : ''}`
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+.test-dropdown-button-sizes.-mt--5(style='width: 1000px;')
+  span.-text--h2 Button sizes
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--around
+    each size in sizes
+      .chi-dropdown
+        button.chi-button.chi-dropdown__trigger(class=`-${size}`)=`Size-${size}`
+      .chi-dropdown__menu 
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+.test-dropdown-button-disabled.-mt--5(style='width: 200px; height: 200px;')
+  span.-text--h2=`Disabled`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    .chi-dropdown
+      button.chi-button.chi-dropdown__trigger(disabled) Disabled
+    .chi-dropdown__menu 
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+.test-dropdown-button-uppercase.-mt--5(style='width: 500px; height: 200px;')
+  span.-text--h2=`Uppercase text`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    .chi-dropdown
+      button.chi-button.chi-dropdown__trigger.-uppercase() This text is uppercased
+    .chi-dropdown__menu 
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
