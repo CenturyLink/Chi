@@ -291,6 +291,13 @@ export const UTILITY_CLASSES = {
   FLEX: {
     FLEX_GROW1: '-flex--grow1',
     COLUMN: '-flex--column',
+    ALIGN: {
+      START: '-align-items--start',
+      END: '-align-items--end',
+      CENTER: '-align-items--center',
+      BASELINE: '-align-items--baseline',
+      STRETCH: '-align-items--stretch',
+    },
   },
   JUSTIFY: {
     CENTER: '-justify-content--center',
