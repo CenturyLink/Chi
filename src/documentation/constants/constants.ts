@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
 export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.41.0`;
-export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
+
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -69,6 +69,8 @@ export const BASE_URL =
   (DOCS_ENV === 'production' || DOCS_ENV === 'pr' || DOCS_ENV === 'development')
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
+
+export const DOCS_URL = `${BASE_URL}js/ce/docs.json`;
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
