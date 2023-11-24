@@ -588,15 +588,15 @@ describe('Phone Input', () => {
   describe('Helper message', () => {
     beforeEach(() => {
       cy.get('[data-cy="phone-input-danger-helper-message"]')
-        .as("phoneInput");
+        .as('phoneInput');
       
     });
-    it("Should initiate with helper-message attribute", function() {
-      cy.get("@phoneInput")
+    it("Should initiate with helper-message attribute", () => {
+      cy.get('@phoneInput')
         .should(
           'have.attr',
           'helper-message',
-          "Optional message"
+          'Optional message'
         )
         .find('chi-helper-message').should('exist');
     })
@@ -605,10 +605,12 @@ describe('Phone Input', () => {
       cy.get('@phoneInput')
         .should('have.attr', 'state', 'danger');
     
-      cy.get('@phoneInput').find('.chi-label')
-      .should('have.class', '-danger');
+      cy.get('@phoneInput')
+        .find('.chi-label')
+        .should('have.class', '-danger');
       
-      cy.get('@phoneInput').find('chi-icon')
+      cy.get('@phoneInput')
+        .find('chi-icon')
         .find('use')
         .should('have.attr', 'href', '#icon-circle-warning')
         .should('exist');
