@@ -82,7 +82,7 @@ each event in events
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
 
-.test-reference.-mt--5(style='width: 500px; height: 500px;')
+.test-dropdown-reference.-mt--5(style='width: 500px; height: 500px;')
   span.-text--h2 External Reference
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
     chi-button#test-reference-trigger Test external reference
@@ -104,17 +104,17 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
-.test-nesting.-d--flex.-mt--5(style='width: 1000px; height: 600px;')
-  span.-text--h2=`Color - And Variants`
-    each variant in variants
-      .-w--100.-h--100.-d--flex.-flex--row.-align-items--center.-justify-content--around
-        each color in colors
-          chi-dropdown(id=`test-variant-${variant}-color-${color}-dropdown` button=`${color}${variant ? '-' + variant : ''}` color=color variant=variant)
-            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
-            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+.test-dropdown-variants-color.-mt--5(style='width: 1000px; height: 400px;')
+  span.-text--h2 Variant and color
+  each variant in variants
+    .-d--flex.-flex--row.-justify-content--around.-mt--5.-text--center=`Variant ${variant}`
+      each color in colors
+        chi-dropdown(id=`test-variant-${variant}-color-${color}-dropdown` button=`${color}${variant ? '-' + variant : ''}` color=color variant=variant)
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
 
-.-mt--5(style='width: 1000px;')
+.test-dropdown-button-sizes.-mt--5(style='width: 1000px;')
   span.-text--h2=`Button sizes`
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--around
     each size in sizes
@@ -123,17 +123,17 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
 
-.-mt--5(style='width: 500px; height: 500px;')
+.test-dropdown-button-disabled.-mt--5(style='width: 200px; height: 200px;')
   span.-text--h2=`Disabled`
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
     chi-dropdown(disabled button="Disabled")
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
-.-mt--5(style='width: 500px; height: 500px;')
+.test-dropdown-button-uppercase.-mt--5(style='width: 500px; height: 200px;')
   span.-text--h2=`Uppercase text`
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-    chi-dropdown(uppercase button="this text is uppercased")
+    chi-dropdown(uppercase button="This text is uppercased")
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
