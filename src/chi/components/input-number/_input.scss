@@ -46,13 +46,15 @@ input {
         pointer-events: none;
       }
 
-      &:not([disabled]) {
-        &.-danger {
-          border-color: $number-input-danger-border-color;
-
-          &:focus,
-          &.-focus {
-            box-shadow: 0 0 0 1px $number-input-danger-border-color;
+      @each $type in map-keys($color-semantic) {
+        &:not([disabled]) {
+          &.-#{$type} {
+            border-color: map-get(map-get($color-semantic, $type), border-color);
+    
+            &:focus,
+            &.-focus {
+              box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);
+            }
           }
         }
       }

@@ -117,23 +117,34 @@ describe('Number input', function() {
     });
   });
 
-  describe('Helper message', function() {
-    beforeEach(function() {
+  describe('Helper message', () => {
+    beforeEach(() => {
       cy.visit('tests/custom-elements/number-input.html');
-    });
+      cy.get('[data-cy="test-base-helper-message-danger"]')
+        .as("numberInput");
 
-    it("Base input should show a helper message if property is provided", function() {
-      cy.get('[data-cy="test-base-helper-message"] chi-helper-message')
-        .first()
-        .invoke('text')
-        .should('equal', "An optional message")
     });
+    it("Should initiate with helper-message attribute", function() {
+      cy.get("@numberInput")
+        .should(
+          'have.attr',
+          'helper-message',
+          "An optional message"
+        )
+        .find('chi-helper-message').should('exist');
+    })
 
-    it("Expanded input should show a helper message if property is provided", function() {
-      cy.get('[data-cy="test-base-helper-message"] chi-helper-message')
-        .first()
-        .invoke('text')
-        .should('equal', "An optional message")
-    });
+    it('Should have a danger inputstyle helper message', () => {
+      cy.get('@numberInput')
+        .should('have.attr', 'inputstyle', 'danger');
+
+      cy.get('@numberInput').find('.chi-label')
+      .should('have.class', '-danger');
+
+      cy.get('@numberInput').find('chi-icon')
+        .find('use')
+        .should('have.attr', 'href', '#icon-circle-warning')
+        .should('exist');
+    })
   })
 });
