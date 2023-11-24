@@ -253,10 +253,10 @@ export class Dropdown {
 
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
-    const itemsToShow =
-      menuItems.length < this.visibleItems
+    const itemsToShow = this.visibleItems ? 
+      (menuItems.length < this.visibleItems
         ? menuItems.length
-        : this.visibleItems;
+        : this.visibleItems) : menuItems.length;
 
     let newHeight = 0;
 
@@ -264,7 +264,7 @@ export class Dropdown {
       newHeight += menuItems[i].offsetHeight;
     }
 
-    if (this._menuFooter  || this._menuHeader) {
+    if (this._menuFooter || this._menuHeader) {
       this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
     } else {
       const padding = this.getPadding('top') + this.getPadding('bottom');
@@ -335,7 +335,7 @@ export class Dropdown {
     this.setDisplay('block');
     this.active = true;
 
-    if (this.visibleItems) this.setMenuHeight();
+    this.setMenuHeight();
 
     if (this._popper) {
       this._popper.update();
