@@ -74,7 +74,7 @@ export class ChiPhoneInput {
   /**
    * To display an additional helper text message below the Textarea
    */
-  @Prop({ reflect: true }) helperMessage: string;
+  @Prop({ reflect: true }) helperMessage?: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user

@@ -585,11 +585,35 @@ describe('Phone Input', () => {
     });
   });
 
-  describe('helper message', () => {
-    it.only("Should show a helper message if property helperMessage is provided", function() {
+  describe('Helper message', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="phone-input-danger-helper-message"]')
+        .as("phoneInput");
       cy.get('[data-cy="phone-input-danger-helper-message"] chi-helper-message')
-        .invoke('text')
-        .should('equal', "Optional message")
+        .as('helperMessage');
+      
     });
+    it("Should initiate with helper-message attribute", function() {
+      cy.get("@phoneInput")
+        .should(
+          'have.attr',
+          'helper-message',
+          "Optional message"
+        )
+        .find('chi-helper-message').should('exist');
+    })
+
+    it('Should have a danger state helper message', () => {
+      cy.get('@phoneInput')
+        .should('have.attr', 'state', 'danger');
+    
+      cy.get('@phoneInput').find('.chi-label')
+      .should('have.class', '-danger');
+      
+      cy.get('@phoneInput').find('chi-icon')
+        .find('use')
+        .should('have.attr', 'href', '#icon-circle-warning')
+        .should('exist');
+    })
   })
 });
