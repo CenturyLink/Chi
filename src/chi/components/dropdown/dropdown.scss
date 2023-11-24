@@ -61,6 +61,10 @@
       display: block;
     }
 
+    &-items-wrapper {
+      overflow: auto;
+    }
+
     &-item {
       align-items: center;
       display: flex;
@@ -138,12 +142,12 @@
       }
     }
 
-    & > chi-search-input {
+    & chi-search-input {
       width: auto;
     }
 
     & > .chi-input__wrapper,
-    & > chi-search-input {
+    & chi-search-input {
       margin-left: 0.5rem;
       margin-right: 0.5rem;
       padding-left: 0;
