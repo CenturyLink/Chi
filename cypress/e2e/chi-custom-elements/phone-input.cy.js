@@ -589,8 +589,6 @@ describe('Phone Input', () => {
     beforeEach(() => {
       cy.get('[data-cy="phone-input-danger-helper-message"]')
         .as("phoneInput");
-      cy.get('[data-cy="phone-input-danger-helper-message"] chi-helper-message')
-        .as('helperMessage');
       
     });
     it("Should initiate with helper-message attribute", function() {
