@@ -124,6 +124,7 @@ describe('Number input', function() {
         .as("numberInput");
 
     });
+
     it("Should initiate with helper-message attribute", function() {
       cy.get("@numberInput")
         .should(
@@ -131,7 +132,8 @@ describe('Number input', function() {
           'helper-message',
           "An optional message"
         )
-        .find('chi-helper-message').should('exist');
+        .find('chi-helper-message')
+        .should('exist');
     })
 
     it('Should have a danger inputstyle helper message', () => {
@@ -139,7 +141,7 @@ describe('Number input', function() {
         .should('have.attr', 'inputstyle', 'danger');
 
       cy.get('@numberInput').find('.chi-label')
-      .should('have.class', '-danger');
+        .should('have.class', '-danger');
 
       cy.get('@numberInput').find('chi-icon')
         .find('use')
