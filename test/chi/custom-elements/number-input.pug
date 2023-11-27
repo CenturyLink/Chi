@@ -65,18 +65,16 @@ each size in sizes
 each size in sizes
   div(class=`test-expanded-helper-message-${size}`)
     span.-text--h2= `Number Input Expanded SVG / ${size} with helper message`
-    each size in sizes
-      span.-text--h2= `Number Input ${size} with helper message`
-      each state in states
-        span.-text--h3.-mt--3= `${state}`
-        each style in styles 
-          span.-mt--3=style 
-          chi-number-input(
-            disabled=(state==='disabled'),
-            data-cy='test-expanded-helper-message',
-            size=size, 
-            state=state,
-            inputstyle=style
-            expanded=true,
-            helper-message="An optional message"
-          )
+    each state in states
+      span.-text--h3.-mt--3= `${state}`
+      each style in styles 
+        span.-mt--3=style 
+        chi-number-input(
+          disabled=(state==='disabled'),
+          data-cy='test-expanded-helper-message',
+          size=size, 
+          state=state,
+          inputstyle=style
+          expanded=true,
+          helper-message="An optional message"
+        )
