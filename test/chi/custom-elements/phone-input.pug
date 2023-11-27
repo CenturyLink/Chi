@@ -45,3 +45,15 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-masking.-py--2
   chi-label(for=`phone-input-mask`) Phone Number
   chi-phone-input(id="phone-input-mask" data-cy='phone-input-mask' placeholder="Phone Number" input-mask)
+
+.test-optional-message.-py--2
+  each state in ['', 'danger', 'success', 'warning']
+    chi-label(for=`phone-input-${state}-helper-message`)=`Phone Number with optional ${state} message`
+    chi-phone-input(
+      id=`phone-input-${state}-helper-message`
+      data-cy=`phone-input-${state}-helper-message`
+      placeholder="Phone Number"
+      state=`${state}`
+      input-mask 
+      helper-message="Optional message"
+    )
