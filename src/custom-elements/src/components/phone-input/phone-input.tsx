@@ -71,6 +71,10 @@ export class ChiPhoneInput {
    * To define two letter ISO country codes to exclude from Phone input dropdown
    */
   @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
+  /**
+   * To display an additional helper text message below the Phone input
+   */
+  @Prop({ reflect: true }) helperMessage?: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -431,6 +435,7 @@ export class ChiPhoneInput {
         type="tel"
         state={this.state ? this.state : null}
         size={this.size}
+        helperMessage={this.helperMessage}
         disabled={this.disabled}
         placeholder={this.placeholder}
         value={this._suffix}
