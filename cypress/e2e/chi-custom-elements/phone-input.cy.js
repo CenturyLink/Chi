@@ -591,6 +591,7 @@ describe('Phone Input', () => {
         .as('phoneInput');
       
     });
+    
     it("Should initiate with helper-message attribute", () => {
       cy.get('@phoneInput')
         .should(

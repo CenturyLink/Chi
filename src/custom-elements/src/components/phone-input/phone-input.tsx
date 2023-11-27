@@ -72,7 +72,7 @@ export class ChiPhoneInput {
    */
   @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
   /**
-   * To display an additional helper text message below the Textarea
+   * To display an additional helper text message below the Phone input
    */
   @Prop({ reflect: true }) helperMessage?: string;
 
