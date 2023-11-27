@@ -374,43 +374,47 @@ export class Date {
             </div>
           ))}
         </div>
-        <div class="chi-datepicker__days" tabindex="0">
-          {this._vm.monthDays.map(day => (
-            <div
-              class={`chi-datepicker__day
-              ${
-                (this._vm.min && day.isBefore(this._vm.min)) ||
-                (this._vm.max && day.isAfter(this._vm.max)) ||
-                this.checkIfExcluded(day)
-                  ? CLASSES.INACTIVE
-                  : ''
-              }
-              ${
-                Array.from(this._vm.dates).some(vmDay =>
-                  day.isSame(vmDay, 'day')
-                )
-                  ? CLASSES.ACTIVE
-                  : ''
-              }
-              ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
-            `}
-              data-date={this.toDayString(day)}
-              onClick={() => {
-                if (
-                  this.multiple &&
+        <div class="chi-datepicker__days">
+          {this._vm.monthDays.map(day => {
+            const isExcludedDay = this.checkIfExcluded(day);
+            return (
+             <div
+                class={`chi-datepicker__day
+                ${
+                  (this._vm.min && day.isBefore(this._vm.min)) ||
+                  (this._vm.max && day.isAfter(this._vm.max)) ||
+                  isExcludedDay
+                    ? CLASSES.INACTIVE
+                    : ''
+                }
+                ${
                   Array.from(this._vm.dates).some(vmDay =>
                     day.isSame(vmDay, 'day')
                   )
-                ) {
-                  return this.removeDate(day);
+                    ? CLASSES.ACTIVE
+                    : ''
                 }
+                ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
+              `}
+                tabindex={isExcludedDay ? "" : "0"}
+                data-date={this.toDayString(day)}
+                onClick={() => {
+                  if (
+                    this.multiple &&
+                    Array.from(this._vm.dates).some(vmDay =>
+                      day.isSame(vmDay, 'day')
+                    )
+                  ) {
+                    return this.removeDate(day);
+                  }
 
-                return this.selectDate(day);
-              }}
-            >
-              {day.date()}
-            </div>
-          ))}
+                  return this.selectDate(day);
+                }}
+              >
+                {day.date()}
+              </div>
+            )
+          })}
         </div>
       </div>
     );

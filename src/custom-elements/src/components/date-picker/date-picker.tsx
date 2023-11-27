@@ -101,7 +101,7 @@ export class DatePicker {
   private _input: HTMLInputElement;
   private _uuid: string;
   // for later?¿
-  // private _keyboardFocusedDay: number;
+  private _keyboardFocusedDate: string;
 
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
@@ -159,6 +159,10 @@ export class DatePicker {
      * pressing the key to continue moving.
      * 
      */
+    if (this._isDayElement(e.target)) {
+      this._focusCalendarDay();
+    }
+
 
     console.log('keyup', e.key, e.target)
   }
@@ -168,19 +172,17 @@ export class DatePicker {
   */
  _onKeyDown(e: KeyboardEvent) {
    // ?? ADD PROPERTY enableKeyboardNavigation ??
-   if (!this.active) {
+    if (!this.active) {
      return
     }
     
-    console.log('keydown', e.key, e.target, e)
-    
     // TODO: enter key event
     const keyHandler = {
-      "ArrowLeft": this._changeKeyboardFocus.bind(this, 1),
-      "ArrowRight": this._changeKeyboardFocus.bind(this, -1),
-      "ArrowUp": this._changeKeyboardFocus.bind(this, -7),
-      "ArrowDown": this._changeKeyboardFocus.bind(this, 7),
-      "Tab": this._handleTab.bind(this, e)
+      "ArrowLeft": this._focusCalendarDay.bind(this, 1),
+      "ArrowRight": this._focusCalendarDay.bind(this, -1),
+      "ArrowUp": this._focusCalendarDay.bind(this, -7),
+      "ArrowDown": this._focusCalendarDay.bind(this, 7),
+      "Tab": this._trapFocus.bind(this, e)
     }[e.key];
 
     if (keyHandler) {
@@ -190,22 +192,46 @@ export class DatePicker {
   }
 
   // TODO: to be impemented. This function should add a background color to the keyboard-focused day
-  _changeKeyboardFocus(dayDiff: number) {
+  _focusCalendarDay(dayDiff: number = 0) {
+    if (!this._keyboardFocusedDate) {
+      this._keyboardFocusedDate = this.el.querySelector('.chi-datepicker__day.-today').getAttribute('data-date');
+    }
+
+    if (!dayDiff) {
+      const currentElement = this.el.querySelector(
+        `.chi-datepicker__day[data-date="${this._keyboardFocusedDate}"]`
+      ) as HTMLElement;
+      currentElement.focus();
+    }
+
+    console.log(this._keyboardFocusedDate)
+
     console.log(dayDiff, GREY_20)
   }
 
-  _handleTab(e: KeyboardEvent) {
-    const calendarElement = this.el.querySelector("chi-date .chi-datepicker__days");
-    const shouldTrapFocus = e.target === calendarElement;
+  _isDayElement(element: EventTarget) {
+    return (element as HTMLElement).classList.contains("chi-datepicker__day")
+  }
 
+  /**
+   * Handles tab key
+   */
+  _trapFocus(e: KeyboardEvent) {
     // TODO: will probably need to change if keyboard navigation is also wanted in time picker
-    if (shouldTrapFocus) {
+    const isNextMonth = e.target === this.el.querySelector('chi-date .chi-datepicker__month-row .next');
+    // to avoid focu on first day of the calendar
+    if (isNextMonth) {
       e.preventDefault();
-      const prev = this.el.querySelector('chi-date .chi-datepicker__month-row .prev') as HTMLElement;
-      prev.focus()
+      this._focusCalendarDay();
     }
 
+    if (this._isDayElement(e.target)) {
+      e.preventDefault();
+      const prevMonth = this.el.querySelector('chi-date .chi-datepicker__month-row .prev') as HTMLElement;
+      prevMonth.focus();
+    }
   }
+
 
   checkIfExcluded(day: Dayjs) {
     if (this.excludedDates) {
