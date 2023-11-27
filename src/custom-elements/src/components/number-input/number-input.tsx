@@ -83,7 +83,7 @@ export class NumberInput {
   @Prop() state?: string;
 
   /**
-   * To display an additional helper text message below the Textarea
+   * To display an additional helper text message below the Number Inpunt
    */
   @Prop({ reflect: true }) helperMessage: string;
 
