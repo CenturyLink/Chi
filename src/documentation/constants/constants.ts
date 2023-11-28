@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.41.0`;
-export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.42.0`;
+
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -69,6 +69,8 @@ export const BASE_URL =
   (DOCS_ENV === 'production' || DOCS_ENV === 'pr' || DOCS_ENV === 'development')
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
+
+export const DOCS_URL = `${BASE_URL}js/ce/docs.json`;
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
@@ -328,8 +330,20 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   }
 ];
+export const NAVIGATION_TEMPLATE_ITEMS = [
+  {
+    href: `templates/app-layout`,
+    label: 'App Layout',
+    source: 'pug'
+  },
+  { href: `templates/card`, label: 'Card', source: 'pug' },
+  { to: `templates/error-404`, label: 'Error 404', source: 'vue' },
+  { to: `templates/error-500`, label: 'Error 500', source: 'vue' },
+  { to: `templates/state`, label: 'State', source: 'vue' }
+];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.42.0',
   '5.41.0',
   '5.40.0',
   '5.39.0',

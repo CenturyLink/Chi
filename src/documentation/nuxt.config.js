@@ -2,6 +2,7 @@ import {
   BASE_URL,
   DOCS_ENV,
   NAVIGATION_COMPONENTS_ITEMS,
+  NAVIGATION_TEMPLATE_ITEMS,
   TEMP_DEVELOPMENT_FALLBACK_URL,
   DEFAULT_CSS,
   DEFAULT_DOCS_CSS
@@ -70,7 +71,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['./plugins/chi-vue-components.js', './plugins/chi-docs.js'],
+  plugins: ['./plugins/chi-docs.js', './plugins/chi-vue-components.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -152,12 +153,11 @@ export default {
       '/utilities/vertical-align',
       '/utilities/zindex',
       '/utilities/color',
-      '/templates/error-500',
-      '/templates/state',
-      '/templates/app-layout',
-      '/templates/error-404',
       '/components/icon', // To-do, must be removed after full migration
       ...NAVIGATION_COMPONENTS_ITEMS.map(item => {
+        return `/${item.href}`;
+      }),
+      ...NAVIGATION_TEMPLATE_ITEMS.map(item => {
         return `/${item.href}`;
       })
     ]

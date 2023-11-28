@@ -7,7 +7,8 @@ import {
   Prop,
   h,
   Watch,
-  Listen
+  Listen,
+  State
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -48,23 +49,23 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
-   * To set the color of the button. The value is directly passed to 
+   * To set the color of the button. The value is directly passed to
    * chi-button element if present  { primary, secondary, danger, dark, light }.
    */
-  @Prop() color: string
+  @Prop() color: string;
   /**
-   * To set the variant of the button. The value is directly passed to 
+   * To set the variant of the button. The value is directly passed to
    * chi-button element if present { outline, flat }
    */
-  @Prop() variant: string
+  @Prop() variant: string;
   /**
    *  to set button size { xs, sm, md, lg, xl }.
    */
   @Prop() size: string;
-   /**
+  /**
    *  to render a button with uppercase text.
    */
-   @Prop() uppercase = false;
+  @Prop() uppercase = false;
   /**
    *  to disable chi-button.
    */
@@ -108,8 +109,11 @@ export class Dropdown {
   /**
    * Triggered when select an item in the dropdown menu
    */
-  @Event({ eventName: 'chiDropdownItemSelected' }) 
+  @Event({ eventName: 'chiDropdownItemSelected' })
   eventItemSelected: EventEmitter;
+
+  @State() _menuHeader: boolean;
+  @State() _menuFooter: boolean;
 
   @Element() el: HTMLElement;
 
@@ -117,6 +121,7 @@ export class Dropdown {
   private _popper: any;
   private _referenceElement: any;
   private _dropdownMenuElement: any;
+  private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
 
   connectedCallback() {
@@ -138,6 +143,11 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
+    this._addItemListObserver();
+  }
+
+  componentWillLoad() {
+    this._getDropdownMenuSlots();
   }
 
   componentDidUnload() {
@@ -218,21 +228,49 @@ export class Dropdown {
     );
   }
 
-  setMenuHeight() {
-    const menuItems = this._getDropdownMenuItems();
-    const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
-    const padding = this.getPadding('top') + this.getPadding('bottom');
-    let newHeight = 0;
-    
-    for (let i = 0; i < itemsToShow; i++) {
-      newHeight += menuItems[i].offsetHeight;
+  _addItemListObserver() {
+    const observer = new MutationObserver(() => this.setMenuHeight());
+
+    observer.observe(this._dropdownMenuElement, { childList: true });
+  }
+
+  _getDropdownMenuSlots() {
+    const menuHeader = this.el.querySelector('[slot=menu-header]');
+    const menuFooter = this.el.querySelector('[slot=menu-footer]');
+
+    if (menuHeader) {
+      this._menuHeader = true;
     }
 
-    this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+    if (menuFooter) {
+      this._menuFooter = true;
+    }
   }
 
   getPadding(direction: 'top' | 'bottom') {
     return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
+  }
+
+  setMenuHeight() {
+    const menuItems = this._getDropdownMenuItems();
+    const itemsToShow = this.visibleItems ? 
+      (menuItems.length < this.visibleItems
+        ? menuItems.length
+        : this.visibleItems) : menuItems.length;
+
+    let newHeight = 0;
+
+    for (let i = 0; i < itemsToShow; i++) {
+      newHeight += menuItems[i].offsetHeight;
+    }
+
+    if (this._menuFooter || this._menuHeader) {
+      this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+    } else {
+      const padding = this.getPadding('top') + this.getPadding('bottom');
+
+      this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+    }
   }
 
   setDisplay(display: 'block' | 'none') {
@@ -297,7 +335,7 @@ export class Dropdown {
     this.setDisplay('block');
     this.active = true;
 
-    if (this.visibleItems) this.setMenuHeight()
+    this.setMenuHeight();
 
     if (this._popper) {
       this._popper.update();
@@ -335,7 +373,11 @@ export class Dropdown {
   }
 
   _getDropdownMenuItems(): HTMLElement[] {
-    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+    let children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+    
+    if (this._dropdownMenuItemsWrapper) {
+      children = this._dropdownMenuItemsWrapper.children as HTMLAnchorElement[];
+    }
 
     return Array.from(children).filter((item: HTMLElement) =>
       item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)
@@ -393,6 +435,31 @@ export class Dropdown {
       <slot name="trigger" />
     ) : null;
 
+    const dropdownMenuHeader = this._menuHeader && (
+      <div
+        class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
+      >
+        <slot name="menu-header" />
+      </div>
+    );
+    const dropdownMenuFooter = this._menuFooter && (
+      <div
+        class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}
+      >
+        <slot name="menu-footer" />
+      </div>
+    );
+    const dropdownMenuItems = this.visibleItems && (this._menuFooter || this._menuHeader) ? (
+      <div
+        class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}
+        ref={ref => (this._dropdownMenuItemsWrapper = ref)}
+      >
+        <slot name="menu" />
+      </div>
+    ) : (
+      <slot name="menu" />
+    );
+
     const menu = (
       <div
         class={`
@@ -404,7 +471,9 @@ export class Dropdown {
         `}
         ref={ref => (this._dropdownMenuElement = ref)}
       >
-        <slot name="menu" />
+        {dropdownMenuHeader}
+        {dropdownMenuItems}
+        {dropdownMenuFooter}
       </div>
     );
 

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-14T10:49:38",
+  "timestamp": "2023-11-27T12:19:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1785,7 +1785,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "To set the color of the button. The value is directly passed to \nchi-button element if present  { primary, secondary, danger, dark, light }.",
+          "docs": "To set the color of the button. The value is directly passed to\nchi-button element if present  { primary, secondary, danger, dark, light }.",
           "docsTags": [],
           "values": [
             {
@@ -1950,10 +1950,10 @@
           "required": false
         },
         {
-          "name": "preventItemSelectedEvent",
+          "name": "preventItemSelected",
           "type": "boolean",
           "mutable": false,
-          "attr": "prevent-item-selected-event",
+          "attr": "prevent-item-selected",
           "reflectToAttr": false,
           "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
           "docsTags": [],
@@ -2021,7 +2021,7 @@
           "mutable": false,
           "attr": "variant",
           "reflectToAttr": false,
-          "docs": "To set the variant of the button. The value is directly passed to \nchi-button element if present { outline, flat }",
+          "docs": "To set the variant of the button. The value is directly passed to\nchi-button element if present { outline, flat }",
           "docsTags": [],
           "values": [
             {
@@ -5220,6 +5220,22 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": true,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
@@ -5545,6 +5561,23 @@
           "attr": "border",
           "reflectToAttr": false,
           "docs": "To enable border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To set inverse style",
           "docsTags": [],
           "default": "false",
           "values": [
