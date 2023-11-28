@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table', slot="example")
     <pre class="language-html" slot="code-vue">
       <code v-highlight="codeSnippets.vue" class="html"></code>
     </pre>

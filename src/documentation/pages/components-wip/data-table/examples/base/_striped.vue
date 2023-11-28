@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Striped" id="sorting-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>striped</code> config to achieve striped styles

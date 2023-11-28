@@ -1,7 +1,6 @@
 <template lang="pug">
     <ComponentExample title="Two tier header" id="two-tier-data-table" :tabs="exampleTabs">
-      div(slot="example")
-        //- chi-data-table(:config='config', :data='table')
+      chi-data-table(:config='config', :data='table' slot="example")
       <Wrapper slot="code-htmlblueprint">
         <JSNeeded />
         <pre class="language-html">

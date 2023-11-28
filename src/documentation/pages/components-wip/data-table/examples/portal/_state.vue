@@ -1,7 +1,6 @@
 <template lang="pug">
     <ComponentExample title="State" id="state-data-table" :tabs="exampleTabs">
-      div(slot="example")
-        //- chi-data-table(:config='config', :data='table')
+      chi-data-table(:config='config', :data='table' slot="example")
       <Wrapper slot='code-vue'>
         .chi-tab__description
           | Use <code>state</code> config to achieve state styling

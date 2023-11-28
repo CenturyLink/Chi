@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Complex" id="complex-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>bordered</code> config to achieve bordered behavior
@@ -33,7 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'vue',
-          label: 'Vue',
+          label: 'Vue'
         },
         {
           active: false,
@@ -70,9 +69,7 @@ import { Component, Vue } from 'vue-property-decorator';
           {
             label: 'View',
             icon: 'icon-check-alt',
-            onClick: (props) => {
-              console.log(JSON.stringify(props));
-            },
+            onClick: () => console.log(`Viewed`),
           },
           {
             label: 'Edit',

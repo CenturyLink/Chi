@@ -1,7 +1,6 @@
 <template lang="pug">
     <ComponentExample title="Second line wrapping" id="second-line-wrapping-data-table" :tabs="exampleTabs">
-      div(slot="example")
-        //- chi-data-table(:config='config', :data='table')
+      chi-data-table(:config='config', :data='table' slot="example")
       <Wrapper slot='code-vue'>
         .chi-tab__description
           | Use <code>cellWrap</code> config to achieve the two line wrapping

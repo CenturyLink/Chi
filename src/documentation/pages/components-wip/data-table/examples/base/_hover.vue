@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Hover" id="hover-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>hover</code> config to achieve hover behavior

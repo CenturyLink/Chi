@@ -1,8 +1,7 @@
 <template lang="pug">
   div
     <ComponentExample v-for="size in ['xs', 'sm', 'md', 'lg', 'xl']" :key="size" :title="`Size -${size}`" :id="`size-${size}-data-table`" :tabs="exampleTabs">
-      div(slot="example")
-        //- chi-data-table(:config='getConfig(size)', :data='table')
+      chi-data-table(:config='getConfig(size)', :data='table' slot="example")
       <Wrapper slot='code-vue'>
         pre.language-html
           code(v-highlight="getVueCode(size)" class="html")
@@ -122,7 +121,7 @@ import { Component, Vue } from 'vue-property-decorator';
     getConfig(size: typeof this.$data.sizes[number]) {
       return {
         ...this.$data.config,
-        styles: {
+        style: {
           ...this.$data.config.styles,
           size: size
         }

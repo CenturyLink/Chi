@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="No Border" id="no-border-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>noBorder</code> config to remove the borders

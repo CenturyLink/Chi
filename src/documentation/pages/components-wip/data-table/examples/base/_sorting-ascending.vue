@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Default Sorting -- Ascending" id="sorting-ascending-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable

@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs">
-    div(slot="example")
-      //- chi-data-table(:config='config', :data='table')
+    chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description
         | Use <code>selectable</code> config to render rows with radio buttons
