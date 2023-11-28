@@ -65,6 +65,12 @@ export class Date {
    * To allow the user to select multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
+  /**
+   * To enable keyboard navigation through the component via tabs and arrow keys.
+   */
+  @Prop() keyboardNavigation = false;
+
+  @Event({ eventName: 'chiDateRendered' }) eventRendered: EventEmitter;
 
   @State() viewMonth = dayjs();
 
@@ -271,11 +277,13 @@ export class Date {
     return this.format ? date.format(this.format) : date.format('L');
   }
 
-  nextMonth(): void {
+  @Method()
+  async nextMonth() {
     this.viewMonth = this.viewMonth.add(1, 'month');
   }
 
-  prevMonth(): void {
+  @Method()
+  async prevMonth() {
     this.viewMonth = this.viewMonth.subtract(1, 'month');
   }
 
@@ -285,6 +293,10 @@ export class Date {
     this._initCalendarViewModel();
     this._initViewMonth();
     this._updateViewMonth();
+  }
+
+  componentDidRender(): void {
+    this.eventRendered.emit();
   }
 
   addDate(date) {
@@ -339,6 +351,7 @@ export class Date {
     const prevMonthDisabled = this._vm.min && endOfLastMonth.isBefore(this._vm.min);
     const nextMonthDisabled = this._vm.max && startOfNextMonth.isAfter(this._vm.max);
 
+    console.log('date render')
     return (
       <div
         class={`chi-datepicker ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
@@ -348,7 +361,7 @@ export class Date {
             class={`prev ${
                 prevMonthDisabled ? CLASSES.DISABLED : ''
             }`}
-            tabindex={prevMonthDisabled ? '' : "0"}
+            tabindex={this.keyboardNavigation && !prevMonthDisabled ? "0" : ""}
             onClick={() => this.prevMonth()}
           >
             <chi-icon icon="chevron-left" size="sm" />
@@ -361,7 +374,7 @@ export class Date {
             class={`next ${
               nextMonthDisabled ? CLASSES.DISABLED : ''
             }`}
-            tabindex={nextMonthDisabled ? '' : "0"}
+            tabindex={this.keyboardNavigation && !nextMonthDisabled ? "0" : ""}
             onClick={() => this.nextMonth()}
           >
             <chi-icon icon="chevron-right" size="sm" />
@@ -396,7 +409,7 @@ export class Date {
                 }
                 ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
               `}
-                tabindex={isExcludedDay ? "" : "0"}
+                tabindex={this.keyboardNavigation && !isExcludedDay ? "0" : ""}
                 data-date={this.toDayString(day)}
                 onClick={() => {
                   if (
