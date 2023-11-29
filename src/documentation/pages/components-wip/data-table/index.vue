@@ -29,6 +29,9 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     return {
       pageTabs: standardComponentPageTabs
     };
+  },
+  layout() {
+    return 'wide';
   }
 })
 export default class DataTable extends Vue {}

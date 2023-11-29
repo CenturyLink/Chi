@@ -9,9 +9,8 @@
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="codeSnippets.htmlblueprint" class="html")
     </Wrapper>
   </ComponentExample>
 </template>

@@ -3,6 +3,7 @@
     h2 Examples
 
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      <Complex />
       <Base />
       <Empty />
       <NoBorder />
@@ -19,6 +20,7 @@
       <Sizes />
     
     div(v-if="['portal', 'brightspeed', 'colt'].includes($store.state.themes.theme)")
+      <ComplexPortal />
       <BasePortal />
       <SecondLineWrapping />
       <State />
@@ -47,6 +49,7 @@ import Striped from './base/_striped.vue';
 import Sorting from './base/_sorting.vue';
 import SortingAscending from './base/_sorting-ascending.vue';
 import SortingDescending from './base/_sorting-descending.vue';
+import Complex from './base/_complex.vue';
 
 import AccordionChild from './portal/_accordion-child.vue';
 import AccordionGrandChild from './portal/_accordion-grand-child.vue';
@@ -57,9 +60,11 @@ import RadioSelectionPortal from './portal/_radio-selection.vue';
 import SecondLineWrapping from './portal/_second-line-wrapping.vue';
 import State from './portal/_state.vue';
 import TwoTierHeader from './portal/_two-tier.vue';
+import ComplexPortal from './portal/_complex.vue';
 
 @Component({
   components: {
+    Complex,
     Accordion,
     Active,
     Base,
@@ -82,7 +87,8 @@ import TwoTierHeader from './portal/_two-tier.vue';
     RadioSelectionPortal,
     SecondLineWrapping,
     State,
-    TwoTierHeader
+    TwoTierHeader,
+    ComplexPortal
   }
 })
 export default class Examples extends Vue {}

@@ -1,12 +1,100 @@
 <template lang="pug">
     <ComponentExample title="Two tier header" id="two-tier-data-table" :tabs="exampleTabs">
-      chi-data-table(:config='config', :data='table' slot="example")
-      <Wrapper slot="code-htmlblueprint">
-        <JSNeeded />
-        <pre class="language-html">
-          <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-      </Wrapper>
+      .chi-card.-portal.-bg--white.-bg-md--grey-15(slot="example")
+        .chi-card__header.-sm
+          .chi-card__title Title
+        .chi-card__content.-p--0
+          .chi-data-table.-portal.-compact
+            .chi-data-table__head
+              .chi-data-table__row
+                div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Location",
+                    data-column="localization", data-sort="ascending", data-label="Location") Location
+                  chi-button(variant='flat' type='icon')
+                    chi-icon(icon='arrow-up', size='xs')
+                div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column High Utilization",
+                    data-column="highUtilization", data-sort="ascending", data-label="High Utilization") High Utilization
+                  chi-button(variant='flat' type='icon')
+                    chi-icon(icon='arrow-sort', size='xs')
+                div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Elevated Utilization",
+                    data-column="elevatedUtilization", data-sort="ascending", data-label="Elevated Utilization") Elevated Utilization
+                  chi-button(variant='flat' type='icon')
+                    chi-icon(icon='arrow-sort', size='xs')
+                div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Highest %",
+                    data-column="highest", data-sort="ascending", data-label="Highest %") Highest %
+                  chi-button(variant='flat' type='icon')
+                    chi-icon(icon='arrow-sort', size='xs')
+              .chi-data-table__row
+                .chi-data-table__cell
+                .chi-data-table__cell
+                  div.-associated Total
+                  div.-associated %
+                .chi-data-table__cell
+                  div.-associated Total
+                  div.-associated %
+                .chi-data-table__cell
+            .chi-data-table__body
+              .chi-data-table__row.-md
+                .chi-data-table__cell.-key.-bold
+                  div Location 1
+                .chi-data-table__cell
+                  div.-associated 3
+                  div.-associated 98%
+                .chi-data-table__cell
+                  div.-associated -
+                  div.-associated -
+                .chi-data-table__cell
+                  div 98%
+              .chi-data-table__row.-striped.-md
+                .chi-data-table__cell.-key.-bold
+                  div Location 2
+                .chi-data-table__cell
+                  div.-associated 1
+                  div.-associated 98%
+                .chi-data-table__cell
+                  div.-associated 3
+                  div.-associated 67%
+                .chi-data-table__cell
+                  div 98%
+              .chi-data-table__row.-md
+                .chi-data-table__cell.-key.-bold
+                  div Location 3
+                .chi-data-table__cell
+                  div.-associated -
+                  div.-associated -
+                .chi-data-table__cell
+                  div.-associated 2
+                  div.-associated 66
+                .chi-data-table__cell
+                  div 66%
+            .chi-data-table__footer
+              nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+                .chi-pagination__content
+                  .chi-pagination__start
+                    .chi-pagination__results.-text--xs
+                      span.chi-pagination__label 240 Results
+                  .chi-pagination__center
+                    .chi-pagination__button-group.chi-button-group
+                      button.chi-button.-icon.-flat.-xs(aria-label='First page')
+                        .chi-button__content
+                          i.chi-icon.icon-page-first(aria-hidden='true')
+                      button.chi-button.-icon.-flat.-xs(aria-label='Previous page')
+                        .chi-button__content
+                          i.chi-icon.icon-chevron-left(aria-hidden='true')
+                    .chi-pagination__label
+                      strong 2
+                      span of
+                      strong 3
+                    .chi-pagination__button-group.chi-button-group
+                      button.chi-button.-icon.-flat.-xs(aria-label='Next page')
+                        .chi-button__content
+                          i.chi-icon.icon-chevron-right(aria-hidden='true')
+                      button.chi-button.-icon.-flat.-xs(aria-label='Last page')
+                        .chi-button__content
+                          i.chi-icon.icon-page-last(aria-hidden='true')
+                  .chi-pagination__end
+      <pre class="language-html" slot="code-htmlblueprint">
+        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
     </ComponentExample>
 </template>
   
@@ -21,12 +109,6 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
-        },
-        {
-          active: false,
-          id: 'vue',
-          label: 'Vue',
           disabled: true
         },
         {
@@ -186,6 +268,6 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class DataTableActive extends Vue { }
+export default class DataTableTwoTier extends Vue { }
 </script>
   
