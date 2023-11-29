@@ -99,7 +99,6 @@ export class DatePicker {
 
   private _input: HTMLInputElement;
   private _uuid: string;
-  // for later?¿
   private _keyboardFocusedDate: string;
 
   excludedWeekdaysArray = [];
@@ -128,6 +127,22 @@ export class DatePicker {
       : [];
   }
 
+  /**
+   * Sets keyboardFocusedDate with today or (if not selectable), the first available
+   * day of the month.
+   */
+  @Watch('active')
+  _setKeyboardFocusedDate() {
+    if (!this.active || this._keyboardFocusedDate) {
+      return
+    }
+
+    const today = dayjs().format(this.format);
+    this._keyboardFocusedDate = this._getValidDayElement(today) 
+      ? today 
+      : this._getFocusableDays()[0]?.getAttribute('data-date');
+  }
+
   _onFocusIn(e) {
     if (e.target !== document.body && e.target !== null) {
       this.active = contains(this.el, e.target);
@@ -152,28 +167,21 @@ export class DatePicker {
       this.active = false;
       this._input.blur();
     }
-
-    /**
-     * TODO: will need to add arrow key handler here as well, to move the focus in case the user continues
-     * pressing the key to continue moving.
-     * 
-     */
-    if (this._isDayElement(e.target)) {
-      this._focusCalendarDay();
-    }
   }
 
   /**
-  * Handles key down event for calendar
+  * Handles key down event
   */
  _onKeyDown(e: KeyboardEvent) {
    // TODO: enter key event
+   // TODO: check if calendar is focused in to enable arrows
    const keyHandler = {
-     "ArrowLeft": this._focusPrevDay.bind(this),
-     "ArrowRight": this._focusNextDay.bind(this),
-   //  "ArrowUp": this._focusCalendarDay.bind(this, -7),
-   //  "ArrowDown": this._focusCalendarDay.bind(this, 7),
-     "Tab": this._handleTab.bind(this, e)
+    "ArrowLeft": this._focusPrevDay.bind(this),
+    "ArrowRight": this._focusNextDay.bind(this),
+    "ArrowUp": this._focusPrevWeek.bind(this, e),
+    "ArrowDown": this._focusNextWeek.bind(this, e),
+    "Tab": this._handleTab.bind(this, e),
+    "Enter": this._handleEnter.bind(this, e)
    }[e.key];
 
     if (!this.active || !keyHandler) {
@@ -181,12 +189,72 @@ export class DatePicker {
     }
     e.stopPropagation();
 
-    // TODO: use this.value at component load?
-    if (!this._keyboardFocusedDate) {
-      this._keyboardFocusedDate = this.el.querySelector('.chi-datepicker__day.-today').getAttribute('data-date');
+    keyHandler();
+  }
+
+  // TODO: create a function to check if there are available days after or before N days
+
+  _focusNextWeek(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    // day + 1 week, if available -> focus, else, find next one
+    // control if month is the same
+    const currentDate = dayjs(this._keyboardFocusedDate)
+    const nextDate = currentDate.add(1, 'week');
+
+    if (nextDate.isAfter(this.max)) {
+      return
     }
 
-    keyHandler();
+    if (this._getValidDayElement(nextDate.format(this.format))) {
+      return this._focusCalendarDay(nextDate.format(this.format))
+    }
+
+    const chiDate = this.el.querySelector('chi-date');
+
+    const handler = () => {
+      if (this._getValidDayElement(nextDate.format(this.format))) {
+        return this._focusCalendarDay(nextDate.format(this.format))
+      }
+    }
+
+    chiDate.addEventListener('chiDateRendered', handler.bind(this));
+    chiDate.nextMonth().then(() => chiDate.removeEventListener(
+      'chiDateRendered', handler
+    ))
+
+  }
+
+  _focusPrevWeek(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // day + 1 week, if available -> focus, else, find next one
+    // control if month is the same
+    const currentDate = dayjs(this._keyboardFocusedDate)
+    const nextDate = currentDate.subtract(1, 'week');
+
+    if (nextDate.isBefore(this.min)) {
+      return
+    }
+
+    if (this._getValidDayElement(nextDate.format(this.format))) {
+      return this._focusCalendarDay(nextDate.format(this.format))
+    }
+
+
+    const chiDate = this.el.querySelector('chi-date');
+
+    const handler = () => {
+      if (this._getValidDayElement(nextDate.format(this.format))) {
+        return this._focusCalendarDay(nextDate.format(this.format))
+      }
+    }
+
+    chiDate.addEventListener('chiDateRendered', handler.bind(this));
+    chiDate.prevMonth().then(() => chiDate.removeEventListener(
+      'chiDateRendered', handler
+    ))
   }
 
   // ? if max date is an invalid day, and we try to focus --> next month is enabled
@@ -200,7 +268,7 @@ export class DatePicker {
     }
 
     if (!dayToFocus && 
-        dayjs(this.max).isAfter(dayjs(this._keyboardFocusedDate).subtract(1, 'day'))
+        dayjs(this.max).isAfter(dayjs(this._keyboardFocusedDate).add(1, 'day'))
     ) {
       const chiDate = this.el.querySelector('chi-date');
 
@@ -249,45 +317,71 @@ export class DatePicker {
 
     return availableDays[currentFocusIndex + dayDiff];
   }
+
+  _getValidDayElement(date: string) {
+    return this.el.querySelector(`.chi-datepicker__day[data-date="${date}"]:not(.-inactive)`) as HTMLElement;
+  }
   
   _focusCalendarDay(date: string = this._keyboardFocusedDate) {
-    const element = this.el.querySelector(`.chi-datepicker__day[data-date="${date}"]`) as HTMLElement;
+    const element = this._getValidDayElement(date);
 
     if (element) {
       element.focus();
       this._keyboardFocusedDate = date;
     }
   }
-    
+
   _getFocusableDays() {
     const availableDays = this.el.querySelectorAll('.chi-datepicker__day:not(.-inactive)');
     return Array.from(availableDays);
   }
 
 
-  _isDayElement(element: EventTarget) {
-    return (element as HTMLElement).classList.contains("chi-datepicker__day")
-  }
-
-  _getPrevMonthElement() {
-    return this.el.querySelector('chi-date .chi-datepicker__month-row .prev') as HTMLElement;
-  }
-
   /**
-   * Handles tab key
+   * Handles tab key to keep focus on the enabled elements of date picker: 
+   * prev month, next month and calendar day.
    */
   _handleTab(e: KeyboardEvent) {
     // TODO: will probably need to change if keyboard navigation is also wanted in time picker
-    const isNextMonthElement = e.target === this.el.querySelector('chi-date .chi-datepicker__month-row .next');
-    // to avoid focu on first day of the calendar
-    if (isNextMonthElement) {
-      e.preventDefault();
-      this._focusCalendarDay();
-    }
+    e.preventDefault();
+    e.stopPropagation();
 
-    if (this._isDayElement(e.target)) {
-      e.preventDefault();
-      this._getPrevMonthElement().focus();
+    let tabElements = [
+      this.el.querySelector('chi-date .chi-datepicker__month-row .prev:not(.-disabled)'),
+      this.el.querySelector('chi-date .chi-datepicker__month-row .next:not(.-disabled)'),
+      this._getValidDayElement(this._keyboardFocusedDate)
+    ]
+    
+    tabElements = [...tabElements, ...tabElements].filter(Boolean);
+
+    const nextElement = tabElements[
+      tabElements.indexOf(e.target as Element) + 1
+    ] as HTMLElement;
+
+    nextElement.focus();
+  }
+
+  _handleEnter(e: KeyboardEvent) {
+    const target = e.target as HTMLElement;
+    const isPrevMonth = target === this.el.querySelector('chi-date .chi-datepicker__month-row .prev');
+    const isNextMonth = target === this.el.querySelector('chi-date .chi-datepicker__month-row .next');
+    const isDay = target === this._getValidDayElement(this._keyboardFocusedDate);
+
+    // TODO: prone to errors if fousing more than max or invalid date ---> chirender handler
+    if (isPrevMonth) {
+      this.el.querySelector('chi-date').prevMonth();
+      this._keyboardFocusedDate = dayjs(this._keyboardFocusedDate)
+        .subtract(1, "month")
+        .format(this.format);
+      } else if (isNextMonth) {
+        this.el.querySelector('chi-date').nextMonth();
+        this._keyboardFocusedDate = dayjs(this._keyboardFocusedDate)
+          .add(1, "month")
+          .format(this.format);
+    } else if (isDay) {
+      this.el.querySelector('chi-date').selectDate(
+        dayjs(this._keyboardFocusedDate)
+      ); 
     }
   }
 

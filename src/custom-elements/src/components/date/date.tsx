@@ -314,6 +314,7 @@ export class Date {
     this.eventChange.emit(this.value);
   }
 
+  @Method()
   selectDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
 
@@ -351,7 +352,6 @@ export class Date {
     const prevMonthDisabled = this._vm.min && endOfLastMonth.isBefore(this._vm.min);
     const nextMonthDisabled = this._vm.max && startOfNextMonth.isAfter(this._vm.max);
 
-    console.log('date render')
     return (
       <div
         class={`chi-datepicker ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
