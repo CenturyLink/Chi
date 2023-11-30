@@ -37,7 +37,7 @@
       <option
         v-for="(item, index) in items"
         :key="index"
-        :value="item.name"
+        :value="item.value"
         :disabled="isToColumn && item.locked"
         :class="getMenuItemClasses(item)"
       >
