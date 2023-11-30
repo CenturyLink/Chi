@@ -65,7 +65,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
-                  if section.title == 'Card'
+                  if section.title == 'Card' && section.template
                     li
                       a(href=`${rootPath}templates/error-404`) Error 404
                     li
@@ -147,7 +147,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
-                  if section.title == 'Card'
+                  if section.title == 'Card' && section.template
                     li
                       a(href=`${rootPath}templates/error-404`) Error 404
                     li
