@@ -262,16 +262,16 @@ export type DataTableAction = {
 
 // TransferList
 export interface TransferListItem {
-  name: string;
+  value: string;
   label: string;
   selected: boolean;
-  locked: boolean;
-  wildcard: boolean;
+  locked?: boolean;
+  wildcard?: boolean;
 }
 
 export interface TransferListConfig {
-  withSearch?: boolean;
-  withCheckbox?: boolean;
+  searchInput?: boolean;
+  checkbox?: boolean;
   columns: {
     from: {
       title: string;

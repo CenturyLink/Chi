@@ -35,7 +35,7 @@
     </div>
     <select multiple class="chi-select chi-transfer-list__menu">
       <option
-        v-for="(item, index) in list"
+        v-for="(item, index) in items"
         :key="index"
         :value="item.name"
         :disabled="isToColumn && item.locked"
@@ -62,17 +62,17 @@ export default class TransferListColumn extends Vue {
   @Prop() title!: string;
   @Prop() type?: 'from' | 'to';
   @Prop() description?: string;
-  @Prop() withSearch?: boolean;
-  @Prop() withCheckbox?: boolean;
-  @Prop() list!: TransferListItem[];
+  @Prop() searchInput?: boolean;
+  @Prop() checkbox?: boolean;
+  @Prop() items!: TransferListItem[];
 
   isToColumn = this.type === 'to';
-  hasLockedItems = this.list?.some(item => item.locked);
+  hasLockedItems = this.items?.some(item => item.locked);
 
   getMenuItemClasses({ locked }: TransferListItem) {
     const classes = ['chi-transfer-list__menu-item'];
 
-    if (this.withCheckbox) {
+    if (this.checkbox) {
       classes.push('-checkbox');
     }
 
@@ -80,7 +80,7 @@ export default class TransferListColumn extends Vue {
       classes.push('-locked');
     }
 
-    if (this.withCheckbox || (this.hasLockedItems && this.isToColumn)) {
+    if (this.checkbox || (this.hasLockedItems && this.isToColumn)) {
       classes.push('-pl--4');
     }
 
