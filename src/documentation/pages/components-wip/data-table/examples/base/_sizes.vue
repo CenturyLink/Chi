@@ -6,12 +6,8 @@
         pre.language-html
           code(v-highlight="getVueCode(size)" class="html")
       </Wrapper>
-      <Wrapper slot="code-htmlblueprint">
-        <JSNeeded />
-        <pre class="language-html">
-          <code v-highlight="getHtmlCode(size)" class="html"></code>
-        </pre>
-      </Wrapper>
+      pre.language-html(slot="code-htmlblueprint")
+        code(v-highlight="getHtmlCode(size)" class="html")
     </ComponentExample>
 </template>
 

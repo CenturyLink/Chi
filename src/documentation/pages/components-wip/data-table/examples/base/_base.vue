@@ -1,15 +1,10 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-data-table" :tabs="exampleTabs">
     chi-data-table(:config='config', :data='table', slot="example")
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    pre.language-html(slot="code-vue")
+      code(v-highlight="codeSnippets.vue" class="html")
+    pre.language-html(slot="code-htmlblueprint")
+      code(v-highlight="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
   

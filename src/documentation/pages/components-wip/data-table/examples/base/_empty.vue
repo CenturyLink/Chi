@@ -7,11 +7,8 @@
       pre.language-html
         code(v-highlight="codeSnippets.vue" class="html")
     </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      pre.language-html
-        code(v-highlight="codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
+    pre.language-html(slot="code-htmlblueprint")
+      code(v-highlight="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

@@ -92,9 +92,8 @@
                         .chi-button__content
                           i.chi-icon.icon-page-last(aria-hidden='true')
                   .chi-pagination__end
-      <pre class="language-html" slot="code-htmlblueprint">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html(slot="code-htmlblueprint")
+        code(v-highlight="codeSnippets.htmlblueprint" class="html")
     </ComponentExample>
 </template>
   
