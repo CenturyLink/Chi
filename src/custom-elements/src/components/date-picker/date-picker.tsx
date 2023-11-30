@@ -228,7 +228,7 @@ export class DatePicker {
     const shouldMoveMonth = this._isDayInRange(dayjs(this._keyboardFocusedDate).add(dayDiff, 'day'));
     if (shouldMoveMonth) {
       this._afterChiDateRender = () => this._focusCalendarDay(
-        this._getFirstOrLastAvailabeDate(dayDiff > 0)
+        this._getFirstOrLastAvailableDate(dayDiff > 0)
       )
       
       this._moveMonth(dayDiff > 0);
@@ -267,14 +267,14 @@ export class DatePicker {
     this._afterChiDateRender = () => {
       const validDate = this._getValidDayElement(formattedDate)
         ? formattedDate
-        : this._getFirstOrLastAvailabeDate(weekDif > 0);
+        : this._getFirstOrLastAvailableDate(weekDif > 0);
   
       this._focusCalendarDay(validDate);
     }
     this._moveMonth(weekDif > 0);
   }
 
-  _getFirstOrLastAvailabeDate(first) {
+  _getFirstOrLastAvailableDate(first) {
     const days = this._getFocusableDays();
     const day = first ? days[0] : days.pop();
 
@@ -328,7 +328,7 @@ export class DatePicker {
     let tabElements = [
       this.el.querySelector('chi-date .chi-datepicker__month-row .prev:not(.-disabled)'),
       this.el.querySelector('chi-date .chi-datepicker__month-row .next:not(.-disabled)'),
-      this._getValidDayElement(this._keyboardFocusedDate)
+      this._getValidDayElement(this._keyboardFocusedDate) || this._getValidDayElement(this._getFirstOrLastAvailableDate(true))
     ]
     
     tabElements = [...tabElements, ...tabElements].filter(Boolean);
@@ -360,7 +360,7 @@ export class DatePicker {
       this._afterChiDateRender = () => {
         this._keyboardFocusedDate = this._getValidDayElement(nextFocusedDate)
           ? nextFocusedDate
-          : this._getFirstOrLastAvailabeDate(isNextMonth);
+          : this._getFirstOrLastAvailableDate(isNextMonth);
       }
       this._moveMonth(isNextMonth);
     }
