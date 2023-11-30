@@ -250,10 +250,6 @@ export class DatePicker {
     chiDate[next ? 'nextMonth' : 'prevMonth']();
   }
 
-  // TODO: create a function to check if there are available days after or before N days
-  // ? if max date is an invalid day, and we try to focus --> next month is enabled
-  // ? e.g. max = 1 dec 23, and excluded-weekdays="0,3,5" -> 1 dec is friday (5)
-
   _focusSiblingWeek(weekDif: number) {
     const currentDate = dayjs(this._keyboardFocusedDate)
     const nextDate = currentDate.add(weekDif, 'week');
@@ -344,14 +340,12 @@ export class DatePicker {
     nextElement.focus();
   }
 
-  // TODOP: need to change keyboard focused date or tab will stop focusing calendar
 
   _handleEnter(e: KeyboardEvent) {
     const isPrevMonth = e.target === this.el.querySelector('chi-date .chi-datepicker__month-row .prev');
     const isNextMonth = e.target === this.el.querySelector('chi-date .chi-datepicker__month-row .next');
     const isDay = e.target === this._getValidDayElement(this._keyboardFocusedDate);
 
-    // TODO: prone to errors if fousing more than max or invalid date ---> chirender handler
     if (isDay) {
       this.el.querySelector('chi-date').selectDate(
         dayjs(this._keyboardFocusedDate)
