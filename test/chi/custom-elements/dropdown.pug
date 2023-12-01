@@ -138,6 +138,15 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
+.test-dynamic-dropdown.-mt--5(style='width: 500px; height: 200px;')
+  span.-text--h2=`Dynamic dropdown`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(uppercase button="Dynamic dropdown" data-cy="dynamic-dropdown")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+    .-ml--2
+      chi-button(data-cy="add-items-btn") Add items
 
 
 script.
@@ -167,4 +176,13 @@ script.
     }
 
     isReferenceDropdownActive = !isReferenceDropdownActive;
+  });
+
+  document.querySelector("[data-cy='add-items-btn']").addEventListener('click', () => {
+    const newItem = document.createElement('a');
+    
+    newItem.setAttribute('slot', 'menu');
+    newItem.innerText = 'New item'
+    newItem.classList.add('chi-dropdown__menu-item');
+    document.querySelector('.test-dynamic-dropdown chi-dropdown').appendChild(newItem);
   });
