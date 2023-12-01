@@ -180,6 +180,7 @@ script.
 
   document.querySelector("[data-cy='add-items-btn']").addEventListener('click', () => {
     const newItem = document.createElement('a');
+    
     newItem.setAttribute('slot', 'menu');
     newItem.innerText = 'New item'
     newItem.classList.add('chi-dropdown__menu-item');
