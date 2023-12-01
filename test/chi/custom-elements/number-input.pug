@@ -52,7 +52,7 @@ each size in sizes
     each state in states
       span.-text--h3.-mt--3= `${state}`
       each style in styles 
-        span.-mt--3=style 
+        span.-text-h4=style 
         chi-number-input(
           disabled=(state==='disabled'),
           data-cy=`test-base-helper-message-${style}`,
@@ -68,7 +68,7 @@ each size in sizes
     each state in states
       span.-text--h3.-mt--3= `${state}`
       each style in styles 
-        span.-mt--3=style 
+        span.-text-h4=style 
         chi-number-input(
           disabled=(state==='disabled'),
           data-cy='test-expanded-helper-message',

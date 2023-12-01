@@ -140,10 +140,12 @@ describe('Number input', function() {
       cy.get('@numberInput')
         .should('have.attr', 'inputstyle', 'danger');
 
-      cy.get('@numberInput').find('.chi-label')
+      cy.get('@numberInput')
+        .find('.chi-label')
         .should('have.class', '-danger');
 
-      cy.get('@numberInput').find('chi-icon')
+      cy.get('@numberInput')
+        .find('chi-icon')
         .find('use')
         .should('have.attr', 'href', '#icon-circle-warning')
         .should('exist');

@@ -40,7 +40,7 @@ each size in sizes
     each state in states
       span.-text--h3.-mt--3= `${state}`
       each style in styles 
-        span.-mt--3=style 
+        span.-text-h4=style 
         .chi-input__wrapper
           .chi-number-input(class={[`-${size}`]: size != 'default'})
             input.chi-input(
@@ -148,7 +148,7 @@ each size in sizes
     each state in states
       span.-text--h3.-mt--3= `${state}`
       each style in styles 
-        span.-mt--3=style 
+        span.-text-h4=style 
         .chi-input__wrapper
           .chi-number-input.-expanded(class={[`-${size}`]: size != 'default'})
             input.chi-input(

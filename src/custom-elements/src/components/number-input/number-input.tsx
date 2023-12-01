@@ -83,10 +83,9 @@ export class NumberInput {
   @Prop() state?: string;
 
   /**
-   * To display an additional helper text message below the Number Inpunt
+   * To display an additional helper text message below the Number Input
    */
-  @Prop({ reflect: true }) helperMessage: string;
-
+  @Prop({ reflect: true }) helperMessage?: string;
 
   @Element() el: HTMLElement;
 
@@ -111,7 +110,9 @@ export class NumberInput {
   inputStyleValidation(newValue: ChiStates) {
     if (newValue && !CHI_STATES.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid inputstyle for number input. If provided, valid values are: ${CHI_STATES.join(', ')}. `
+        `${newValue} is not a valid inputstyle for number input. If provided, valid values are: ${CHI_STATES.join(
+          ', '
+        )}. `
       );
     }
   }
@@ -210,7 +211,7 @@ export class NumberInput {
           aria-label="Increase"
         ></button>
       </div>
-    )
+    );
   }
 
   getExpandedNumberInput() {
@@ -240,7 +241,7 @@ export class NumberInput {
           </div>
         </button>
       </div>
-    )
+    );
   }
 
   isDecreaseDisabled() {
@@ -248,28 +249,35 @@ export class NumberInput {
   }
 
   isIncreaseDisabled() {
-    return !!(this.max && (Number(this.value) + this.step > this.max ||
-      Number(this.value) >= this.max));
+    return !!(
+      this.max &&
+      (Number(this.value) + this.step > this.max ||
+        Number(this.value) >= this.max)
+    );
   }
 
   getHelperMessage() {
-    return <chi-helper-message state={this.inputstyle}>{this.helperMessage}</chi-helper-message>;
+    return (
+      <chi-helper-message state={this.inputstyle}>
+        {this.helperMessage}
+      </chi-helper-message>
+    );
   }
 
   render() {
     let input = this.expanded
       ? this.getExpandedNumberInput()
       : this.getBaseNumberInput();
-    
-      if (this.helperMessage) {
-        input = (
-          <div class="chi-input__wrapper">
-            {input}
-            {this.getHelperMessage()}
-          </div>
-        )
-      }
-    
-      return input;
+
+    if (this.helperMessage) {
+      input = (
+        <div class="chi-input__wrapper">
+          {input}
+          {this.getHelperMessage()}
+        </div>
+      );
+    }
+
+    return input;
   }
 }
