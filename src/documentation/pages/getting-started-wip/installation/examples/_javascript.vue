@@ -53,8 +53,7 @@ declare const chi: any;
     deps: ['Popper'],
     exports: 'chi'
   }
-}`,
-          es6: `import {Dropdown} from "route/to/chi/es6/dropdown.js";`
+}`
         }
       },
     }
