@@ -1,0 +1,41 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src=`../../js/chi.js`)
+
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+#dynamically-updated-dropdown.-w--100
+  h2 Dropdown
+
+  chi-dropdown(
+    id="dropdown-list"
+    data-cy="dropdown"
+    position="bottom"
+    button="Dropdown, click me"
+  )
+    a(
+      v-for="item in reportedList"
+      class="chi-dropdown__menu-item"
+      :key="item"
+      slot="menu"
+      @click="onReportSelectionChange(item)"
+    ) {{item}}
+
+  chi-button.-mt--3(@click="changeItems", data-cy="add-items-btn") Add items
+
+script.
+  new Vue({
+    data: () => {
+      return {
+        active: false,
+        isInfoPopoverActive: false,
+        reportedList: ["New item 1", "New item 2", "New item 3"]
+      }
+    },
+    methods: {
+      changeItems() {
+        this.reportedList = [...this.reportedList, "Test element"]
+     },
+    },
+  }).$mount("#dynamically-updated-dropdown");

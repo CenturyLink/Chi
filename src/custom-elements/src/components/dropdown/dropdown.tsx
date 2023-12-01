@@ -114,6 +114,7 @@ export class Dropdown {
 
   @State() _menuHeader: boolean;
   @State() _menuFooter: boolean;
+  @State() _forceRender: boolean;
 
   @Element() el: HTMLElement;
 
@@ -123,6 +124,7 @@ export class Dropdown {
   private _dropdownMenuElement: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
+  private _mutationObserver: MutationObserver;
 
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
@@ -148,10 +150,23 @@ export class Dropdown {
 
   componentWillLoad() {
     this._getDropdownMenuSlots();
+    this._setMutationObserver();
   }
-
+  
   componentDidUnload() {
     this._removeEventListeners();
+    this._mutationObserver.disconnect();
+  }
+  
+  /**
+   * Sets a MutationObserver of this element DOM tree force a re-render when child
+   * nodes change.
+   * This is to avoid the new dynamically added elements in the slot=menu 
+   * are rendered outside the dropdwon.
+   */
+  _setMutationObserver() {
+    this._mutationObserver = new MutationObserver(this.updatePopper.bind(this));
+    this._mutationObserver.observe(this.el, { childList: true });
   }
 
   @Watch('position')
@@ -181,7 +196,7 @@ export class Dropdown {
 
   @Method()
   async updatePopper() {
-    this._popper.update();
+    this._forceRender = !this._forceRender;
   }
 
   @Listen('keydown', { target: 'parent' })
