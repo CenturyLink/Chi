@@ -30,15 +30,6 @@
           <code v-highlight="stylesheet.htmlblueprint.amd" lang='bash' class="html"></code>
         </pre>
       </Copy>
-    #chi-js-tabs--es6.chi-tabs-panel
-      p.-text
-        | For recent projects already using ES6 modules, will find their version in the <code>es6</code> folder. In this case, there is no
-        | need for importing the whole Chi library as you can import each component separately by using ES6 import syntax.
-      <Copy id="stylesheet">
-        <pre class="language-html" slot="code">
-          <code v-highlight="stylesheet.htmlblueprint.es6" lang='bash' class="html"></code>
-        </pre>
-      </Copy>
 </template>
 
 <script lang="ts">
@@ -52,7 +43,6 @@ declare const chi: any;
       tabs: [
         { title: 'JavaScript file', link: 'file' },
         { title: 'AMD module', link: 'amd' },
-        { title: 'ES6 modules', link: 'es6' },
       ],
       stylesheet: {
         htmlblueprint: {
