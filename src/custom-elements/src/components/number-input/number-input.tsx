@@ -5,9 +5,11 @@ import {
   EventEmitter,
   Prop,
   State,
+  Watch,
   h
 } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
+import { CHI_STATES, ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-number-input',
@@ -68,7 +70,7 @@ export class NumberInput {
   /**
    * used to provide an input style like 'danger'. Mostly used for testing purposes
    */
-  @Prop() inputstyle?: string;
+  @Prop() inputstyle?: ChiStates;
 
   /**
    * If set, component value won't be updated by itself.
@@ -79,6 +81,11 @@ export class NumberInput {
    * used to provide an input state like 'hover' or 'focus'. Mostly used for testing purposes
    */
   @Prop() state?: string;
+
+  /**
+   * To display an additional helper text message below the Number Input
+   */
+  @Prop({ reflect: true }) helperMessage?: string;
 
   @Element() el: HTMLElement;
 
@@ -98,6 +105,17 @@ export class NumberInput {
   @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
     void
   >;
+
+  @Watch('inputstyle')
+  inputStyleValidation(newValue: ChiStates) {
+    if (newValue && !CHI_STATES.includes(newValue)) {
+      throw new Error(
+        `${newValue} is not a valid inputstyle for number input. If provided, valid values are: ${CHI_STATES.join(
+          ', '
+        )}. `
+      );
+    }
+  }
 
   _numberInput!: HTMLInputElement;
 
@@ -154,8 +172,11 @@ export class NumberInput {
     }
   }
 
-  render() {
-    const input = (
+  /**
+   * Generates and returns input element
+   */
+  getInput(): HTMLInputElement {
+    return (
       <input
         type="number"
         ref={el => (this._numberInput = el as HTMLInputElement)}
@@ -173,36 +194,35 @@ export class NumberInput {
         id={this.el.id ? `${this.el.id}-control` : null}
       />
     );
+  }
 
-    const base = (
+  getBaseNumberInput() {
+    return (
       <div class={`chi-number-input ${this.size ? `-${this.size}` : ''}`}>
-        {input}
+        {this.getInput()}
         <button
-          disabled={this.min ? Number(this.value) <= this.min : false}
+          disabled={this.isDecreaseDisabled()}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         ></button>
         <button
-          disabled={
-            this.max
-              ? Number(this.value) + this.step > this.max ||
-                Number(this.value) >= this.max
-              : false
-          }
+          disabled={this.isIncreaseDisabled()}
           onClick={() => this.increment()}
           aria-label="Increase"
         ></button>
       </div>
     );
+  }
 
-    const expanded = (
+  getExpandedNumberInput() {
+    return (
       <div
         class={`chi-number-input -expanded ${this.size ? `-${this.size}` : ''}`}
       >
-        {input}
+        {this.getInput()}
         <button
           class="chi-button -icon"
-          disabled={this.min ? Number(this.value) <= this.min : false}
+          disabled={this.isDecreaseDisabled()}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         >
@@ -212,12 +232,7 @@ export class NumberInput {
         </button>
         <button
           class="chi-button -icon"
-          disabled={
-            this.max
-              ? Number(this.value) + this.step > this.max ||
-                Number(this.value) >= this.max
-              : false
-          }
+          disabled={this.isIncreaseDisabled()}
           onClick={() => this.increment()}
           aria-label="Increase"
         >
@@ -227,11 +242,42 @@ export class NumberInput {
         </button>
       </div>
     );
+  }
 
-    if (this.expanded) {
-      return expanded;
-    } else {
-      return base;
+  isDecreaseDisabled() {
+    return !!(this.min && Number(this.value) <= this.min);
+  }
+
+  isIncreaseDisabled() {
+    return !!(
+      this.max &&
+      (Number(this.value) + this.step > this.max ||
+        Number(this.value) >= this.max)
+    );
+  }
+
+  getHelperMessage() {
+    return (
+      <chi-helper-message state={this.inputstyle}>
+        {this.helperMessage}
+      </chi-helper-message>
+    );
+  }
+
+  render() {
+    let input = this.expanded
+      ? this.getExpandedNumberInput()
+      : this.getBaseNumberInput();
+
+    if (this.helperMessage) {
+      input = (
+        <div class="chi-input__wrapper">
+          {input}
+          {this.getHelperMessage()}
+        </div>
+      );
     }
+
+    return input;
   }
 }
