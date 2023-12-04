@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Min and Max " id="calendar-min-max" :tabs="exampleTabs">
-    chi-date(min="06/06/2019", max="06/22/2019" slot="example")
+    chi-date(min="06/06/2024", max="06/22/2024" slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -34,7 +34,7 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-date min="06/06/2019" max="06/22/2019"></chi-date>`,
+        webcomponent: `<chi-date min="06/06/2024" max="06/22/2024"></chi-date>`,
         htmlblueprint: ``,
       },
     };
@@ -64,7 +64,7 @@ export default class CalendarMinMax extends Vue {
     <div class="prev -disabled">
       <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
     </div>
-    <div class="chi-datepicker__month">June 2019</div>
+    <div class="chi-datepicker__month">June 2024</div>
     <div class="next -disabled">
       <i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i>
     </div>
