@@ -413,8 +413,8 @@ export class DatePicker {
             placeholder={this.mode === 'datetime' ? `${this.format}, --:-- --` : this.format}
             ref={el => (this._input = el as HTMLInputElement)}
             value={(this.value && this.multiple) ?
-                String(this.value).replace(/,/g, ', ') :
-                this.value}
+              String(this.value).replace(/,/g, ', ') :
+              this.value}
             onChange={() => {
               this._checkDate();
             }}

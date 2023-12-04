@@ -79,7 +79,6 @@ export class Date {
   private _afterRenderHandler: Function;
   private _enableKeyboardNavigation = true;
 
-
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
 
@@ -270,9 +269,8 @@ export class Date {
     }
     this._vm.monthDays = month;
 
-    this._vm.monthStartClass = `-month-starts-on-${
-      WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]
-    }`;
+    this._vm.monthStartClass = `-month-starts-on-${WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]
+      }`;
   }
 
   fromString(dateStr: string): Dayjs {
@@ -308,8 +306,8 @@ export class Date {
 
     if (!this._keyboardFocusedDate) {
       const today = dayjs().format(this.format);
-      this._keyboardFocusedDate = this._getValidDayElement(this.value) 
-        ? this.value 
+      this._keyboardFocusedDate = this._getValidDayElement(this.value)
+        ? this.value
         : this._getValidDayElement(today)
           ? today
           : this._getFirstOrLastAvailableDate(true);
@@ -324,8 +322,7 @@ export class Date {
   componentDidUnload(): void {
     document.body.removeEventListener('keydown', this._onKeyDown);
     document.body.removeEventListener('focusin', this._onFocusIn);
-    console.log('comonentload')
-  }  
+  }
 
   _onFocusIn(e) {
     if (e.target !== document.body && e.target !== null) {
@@ -357,7 +354,6 @@ export class Date {
       return;
     }
 
-    // ? is prevent default needed?
     e.stopPropagation();
     e.preventDefault();
     keyHandler();
@@ -369,14 +365,14 @@ export class Date {
   _isTargetCalendarDay(e: KeyboardEvent) {
     return (e.target as HTMLElement).classList.contains("chi-datepicker__day");
   }
-  
+
   /**
    * Focus a sibling day of the calendar, either +1 or -1
    * Changes month if necessary.
    */
   _focusSiblingDay(dayDiff: number) {
     const dayToFocus = this._getAvailableSiblingDay(dayDiff);
-  
+
     if (dayToFocus) {
       this._focusCalendarDay(dayToFocus);
       return;
@@ -387,13 +383,13 @@ export class Date {
       this._afterRenderHandler = () => this._focusCalendarDay(
         this._getFirstOrLastAvailableDate(dayDiff > 0)
       )
-      
+
       this._moveMonth(dayDiff > 0);
     }
   }
 
   /**
-   * Checks wether the given date is bewteen min and max
+   * Checks wether the given date is between min and max
    */
   _isDayInRange(date: Dayjs) {
     return date.isBetween(this.min, this.max, 'day', '[]')
@@ -413,13 +409,13 @@ export class Date {
   _focusSiblingWeek(weekDif: number) {
     const currentDate = dayjs(this._keyboardFocusedDate)
     const nextDate = currentDate.add(weekDif, 'week');
-    
+
     if (!this._isDayInRange(nextDate)) {
       return;
     }
 
     const nextDateFormatted = nextDate.format(this.format);
-    const nextAvailableDate = this._getFocusableDays().find(i => 
+    const nextAvailableDate = this._getFocusableDays().find(i =>
       dayjs(i.getAttribute('data-date'))[weekDif > 0 ? 'isAfter' : 'isBefore'](nextDate)
     )?.getAttribute('data-date');
 
@@ -434,7 +430,7 @@ export class Date {
         const validDate = this._getValidDayElement(nextDateFormatted)
           ? nextDateFormatted
           : this._getFirstOrLastAvailableDate(weekDif > 0);
-    
+
         this._focusCalendarDay(validDate);
       }
       this._moveMonth(weekDif > 0);
@@ -465,9 +461,10 @@ export class Date {
   _getValidDayElement(date: string) {
     return this.el.querySelector(`.chi-datepicker__day[data-date="${date}"]:not(.-inactive)`) as HTMLElement;
   }
-  
+
   /**
-   * Focuses the given calendar day if available and stores the date in _keyboardFocusedDate
+   * Focuses the given calendar day if available and stores the date in _keyboardFocusedDate.
+   * 
    */
   _focusCalendarDay(date: string = this._keyboardFocusedDate) {
     const element = this._getValidDayElement(date);
@@ -477,13 +474,13 @@ export class Date {
 
     element.tabIndex = 0;
     element.focus();
-    this._keyboardFocusedDate = date;
-
+    
     const currentElement = this._getValidDayElement(this._keyboardFocusedDate);
-    if (currentElement) {
+    if (currentElement && currentElement !== element) {
       currentElement.tabIndex = -1;
     }
-
+    
+    this._keyboardFocusedDate = date;
   }
 
   /**
@@ -509,7 +506,7 @@ export class Date {
       this.el.querySelector('.chi-datepicker__month-row .next:not(.-disabled)'),
       this._getValidDayElement(this._keyboardFocusedDate) || this._getValidDayElement(this._getFirstOrLastAvailableDate(true))
     ]
-    
+
     tabElements = [...tabElements, ...tabElements].filter(Boolean);
 
 
@@ -533,7 +530,7 @@ export class Date {
       this._handleSelectDate(dayjs(this._keyboardFocusedDate))
       return;
     }
-    
+
     if (isPrevMonth || isNextMonth) {
       const nextFocusedDate = dayjs(this._keyboardFocusedDate)
         .add(isPrevMonth ? -1 : 1, "month")
@@ -554,16 +551,16 @@ export class Date {
   }
 
   _handleSelectDate(day: Dayjs) {
-      if (
-        this.multiple &&
-        Array.from(this._vm.dates).some(vmDay =>
-          day.isSame(vmDay, 'day')
-        )
-      ) {
-        return this.removeDate(day);
-      }
+    if (
+      this.multiple &&
+      Array.from(this._vm.dates).some(vmDay =>
+        day.isSame(vmDay, 'day')
+      )
+    ) {
+      return this.removeDate(day);
+    }
 
-      return this.selectDate(day);
+    return this.selectDate(day);
   }
 
   addDate(date) {
@@ -624,9 +621,8 @@ export class Date {
       >
         <div class="chi-datepicker__month-row">
           <div
-            class={`prev ${
-                prevMonthDisabled ? CLASSES.DISABLED : ''
-            }`}
+            class={`prev ${prevMonthDisabled ? CLASSES.DISABLED : ''
+              }`}
             tabindex="0"
             onClick={() => this.prevMonth()}
           >
@@ -637,9 +633,8 @@ export class Date {
               ${this.viewMonth.format('YYYY')}`}
           </div>
           <div
-            class={`next ${
-              nextMonthDisabled ? CLASSES.DISABLED : ''
-            }`}
+            class={`next ${nextMonthDisabled ? CLASSES.DISABLED : ''
+              }`}
             tabindex={!nextMonthDisabled ? "0" : ""}
             onClick={() => this.nextMonth()}
           >
@@ -657,22 +652,20 @@ export class Date {
           {this._vm.monthDays.map(day => {
             const isExcludedDay = this.checkIfExcluded(day);
             return (
-             <div
+              <div
                 class={`chi-datepicker__day
-                ${
-                  (this._vm.min && day.isBefore(this._vm.min)) ||
-                  (this._vm.max && day.isAfter(this._vm.max)) ||
-                  isExcludedDay
+                ${(this._vm.min && day.isBefore(this._vm.min)) ||
+                    (this._vm.max && day.isAfter(this._vm.max)) ||
+                    isExcludedDay
                     ? CLASSES.INACTIVE
                     : ''
-                }
-                ${
-                  Array.from(this._vm.dates).some(vmDay =>
+                  }
+                ${Array.from(this._vm.dates).some(vmDay =>
                     day.isSame(vmDay, 'day')
                   )
                     ? CLASSES.ACTIVE
                     : ''
-                }
+                  }
                 ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
               `}
                 data-date={this.toDayString(day)}
