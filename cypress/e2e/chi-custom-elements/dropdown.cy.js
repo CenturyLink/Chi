@@ -374,5 +374,20 @@ describe('Dropdown', () => {
           });
       });
     });
+
+    describe.only('Dynamically change menu items', () => {
+      beforeEach(() => {
+        cy.get(`[data-cy='dynamic-dropdown'] ${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
+          .as('dropdownMenuItems');
+        cy.get("[data-cy='add-items-btn']")
+          .as('addItemsBtn');
+      });
+
+      it('Should add one item to the dropdown', () => {
+        cy.get('@dropdownMenuItems').should('have.length', 3);
+        cy.get('@addItemsBtn').click();
+        cy.get('@dropdownMenuItems').should('have.length', 4);
+      });
+    })
   });
 });

@@ -62,8 +62,6 @@ ul#chi-js-tabs.chi-tabs.-border
     a(href='#chi-js-tabs--file') JavaScript file
   li
     a(href='#chi-js-tabs--amd') AMD module
-  li
-    a(href='#chi-js-tabs--es6') ES6 modules
 #chi-js-tabs--file.chi-tabs-panel.-active
   p.-text
     | To use the old method of including Chi in your project, include the ES5, browser prepared, JavaScript
@@ -82,12 +80,6 @@ ul#chi-js-tabs.chi-tabs.-border
         exports: 'chi'
       }
     }
-#chi-js-tabs--es6.chi-tabs-panel
-  p.-text
-    | For recent projects already using ES6 modules, will find their version in the <code>es6</code> folder. In this case, there is no
-    | need for importing the whole Chi library as you can import each component separately by using ES6 import syntax.
-  :code(lang='javascript')
-    import {Dropdown} from "route/to/chi/es6/dropdown.js";
 
 h2.-text--h2.-text--bold.-mt--4 Web Components
 .chi-badge.-dark.-outline.-xs.-mb--1
