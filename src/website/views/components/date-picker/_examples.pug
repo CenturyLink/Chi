@@ -140,14 +140,14 @@ p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 
 
 h3 Excluded dates
 p.-text
-  | Specify which dates to disable by using <code>excluded-dates="02/24/2024, 03/25/2024"</code> attribute
+  | Specify which dates to disable by using <code>excluded-dates="01/24/2024, 03/25/2024"</code> attribute
   br
   | Separate dates with a comma
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-dates') Date
-      chi-date-picker(id="date-excluded-dates", value="01/05/2024", excluded-dates="01/24/2024, 05/25/2024, 07/03/2024, 09/12/2024, 12/12/2024")
+      chi-date-picker(id="date-excluded-dates", value="01/05/2024", excluded-dates="01/24/2024, 03/25/2024, 07/03/2024, 09/12/2024, 12/12/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-excluded-dates
       li.-active
@@ -157,12 +157,12 @@ p.-text
   #webcomponent-excluded-dates.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-excluded-dates">Date</chi-label>
-      <chi-date-picker id="date-excluded-dates" value="01/05/2024" excluded-dates="01/24/2024, 05/25/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
+      <chi-date-picker id="date-excluded-dates" value="01/05/2024" excluded-dates="01/24/2024, 03/25/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
   #html-excluded-dates.chi-tabs-panel
 
 h3 Excluded dates and week days
 p.-text
-  | Disable dates - <code>excluded-dates="02/23/2024, 05/25/2024"</code>
+  | Disable dates - <code>excluded-dates="02/23/2024, 05/24/2024"</code>
   br
   | Disable days - <code>excluded-weekdays="0, 6"</code>
 .example.-mb--3
@@ -179,7 +179,7 @@ p.-text
   #webcomponent-excluded-days-dates.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-excluded-days-dates">Date</chi-label>
-      <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
+      <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="02/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
   #html-excluded-days-dates.chi-tabs-panel
 
 h3 Error
