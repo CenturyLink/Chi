@@ -4,30 +4,77 @@ title: Number input
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+- var styles = ['', 'success', 'warning', 'danger']
+- var states =  ['initial', 'hover', 'focus', 'disabled']
+- var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+
+each size in sizes
   div(class=`test-${size}`)
-    span.-text--h2= `Text Input / ${size}`
-    table(cellpadding='0', cellspacing='0', width='600px')
-      each state in ['initial', 'hover', 'focus', 'disabled']
+    span.-text--h2= `Number Input / ${size}`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles 
+          th.-text--left.-pl--1= `${style}`
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'danger']
+          each style in styles
             td
               .-m--1
                 .chi-form__item.-row
                     chi-number-input(disabled=(state==='disabled'), data-cy='test-base' size=size, state=state, inputstyle=style)
 
-each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+each size in sizes
   div(class=`test-expanded-svg-${size}`)
-    span.-text--h2= `Text Input Expanded SVG / ${size}`
-    table(cellpadding='0', cellspacing='0', width='600px')
-      each state in ['initial', 'hover', 'focus', 'disabled']
-        tr
-          td
-            small= `${state}`
-          each style in ['default', 'danger']
+    span.-text--h2= `Number Input Expanded SVG / ${size}`
+    table(cellpadding='0', cellspacing='0', width='1000px')
+      tr
+        th.-text--left
+          small='↓ State / style →'
+        each style in styles 
+          th.-text--left.-pl--1= `${style}`
+        each state in states
+          tr
             td
-              .-m--1
-                .chi-form__item.-row
-                    chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded', size=size, state=state, inputstyle=style expanded=true)
+              small= `${state}`
+            each style in styles
+              td
+                .-m--1
+                  .chi-form__item.-row
+                      chi-number-input(disabled=(state==='disabled'), data-cy='test-expanded', size=size, state=state, inputstyle=style expanded=true)
+
+each size in sizes
+  div(class=`test-base-helper-message-${size}`)
+    span.-text--h2= `Number Input ${size} with helper message`
+    each state in states
+      span.-text--h3.-mt--3= `${state}`
+      each style in styles 
+        span.-text-h4=style 
+        chi-number-input(
+          disabled=(state==='disabled'),
+          data-cy=`test-base-helper-message-${style}`,
+          size=size, 
+          state=state,
+          inputstyle=style
+          helper-message="An optional message"
+        )
+
+each size in sizes
+  div(class=`test-expanded-helper-message-${size}`)
+    span.-text--h2= `Number Input Expanded SVG / ${size} with helper message`
+    each state in states
+      span.-text--h3.-mt--3= `${state}`
+      each style in styles 
+        span.-text-h4=style 
+        chi-number-input(
+          disabled=(state==='disabled'),
+          data-cy='test-expanded-helper-message',
+          size=size, 
+          state=state,
+          inputstyle=style
+          expanded=true,
+          helper-message="An optional message"
+        )
