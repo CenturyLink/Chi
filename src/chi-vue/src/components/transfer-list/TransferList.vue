@@ -5,10 +5,9 @@
         type="from"
         :title="config.columns.from.title"
         :description="config.columns.from.description"
-        :items="listFrom"
+        :items="getAvailables()"
         :checkbox="config.checkbox"
-        :searchInput="config.searchInput"
-      />
+        :searchInput="config.searchInput" />
 
       <TransferListActions />
 
@@ -16,10 +15,9 @@
         type="to"
         :title="config.columns.to.title"
         :description="config.columns.to.description"
-        :items="listTo"
+        :items="getSelecteds()"
         :checkbox="config.checkbox"
-        :searchInput="config.searchInput"
-      />
+        :searchInput="config.searchInput" />
     </div>
 
     <TransferListFooter />
@@ -45,7 +43,12 @@ export default class TransferList extends Vue {
   @Prop() transferListData!: TransferListItem[];
   @Prop() config!: TransferListConfig;
 
-  listFrom = this.transferListData.filter(item => !item.selected);
-  listTo = this.transferListData.filter(item => item.selected);
+  getAvailables(): TransferListItem[] {
+    return this.transferListData?.filter((item) => !item.selected) || [];
+  }
+
+  getSelecteds(): TransferListItem[] {
+    return this.transferListData?.filter((item) => item.selected) || [];
+  }
 }
 </script>

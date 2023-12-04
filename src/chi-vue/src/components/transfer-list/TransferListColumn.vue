@@ -11,8 +11,7 @@
             type="icon"
             size="xs"
             alternative-text="Info icon"
-            @chiClick="toggleInfoPopover"
-          >
+            @chiClick="toggleInfoPopover">
             <chi-icon icon="circle-info-outline" size="xs" />
           </chi-button>
 
@@ -20,8 +19,7 @@
             arrow
             variant="text"
             :id="`transfer-list-popover-${title}`"
-            :reference="`#transfer-list-info-popover-${title}`"
-          >
+            :reference="`#transfer-list-info-popover-${title}`">
             {{ description }}
           </chi-popover>
         </template>
@@ -31,16 +29,15 @@
       </div>
     </div>
     <div class="chi-transfer-list__search">
-      <chi-search-input placeholder="Filter" />
+      <SearchInput placeholder="Filter" @chiInput="handleFilter" @chiClean="handleClearFilter" />
     </div>
-    <select multiple class="chi-select chi-transfer-list__menu">
+    <select multiple class="chi-select chi-transfer-list__menu" @change="handleSelectItem">
       <option
-        v-for="(item, index) in items"
+        v-for="(item, index) in getFilteredList()"
         :key="index"
         :value="item.value"
         :disabled="isToColumn && item.locked"
-        :class="getMenuItemClasses(item)"
-      >
+        :class="getMenuItemClasses(item)">
         {{ item.label }}
       </option>
     </select>
@@ -52,10 +49,12 @@ import { Prop } from 'vue-property-decorator';
 import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '../tooltip/tooltip';
 import { TransferListItem } from '@/constants/types';
+import SearchInput from '../search-input/SearchInput';
 
 @Component({
   components: {
     ChiTooltip: Tooltip,
+    SearchInput,
   },
 })
 export default class TransferListColumn extends Vue {
@@ -66,8 +65,29 @@ export default class TransferListColumn extends Vue {
   @Prop() checkbox?: boolean;
   @Prop() items!: TransferListItem[];
 
+  filter = '';
+
   isToColumn = this.type === 'to';
-  hasLockedItems = this.items?.some(item => item.locked);
+  hasLockedItems = this.items?.some((item) => item.locked);
+
+  handleFilter(value: string) {
+    this.filter = value;
+  }
+
+  handleClearFilter() {
+    this.filter = '';
+  }
+
+  handleSelectItem(event: Event) {
+    const items = Array.from((event.target as HTMLSelectElement).selectedOptions, (option) => option.value);
+
+    // EMIT EVENT
+  }
+
+  getFilteredList() {
+    const filter = this.filter.toLowerCase();
+    return this.items?.filter(({ label }) => label.toLowerCase().includes(filter)) || [];
+  }
 
   getMenuItemClasses({ locked }: TransferListItem) {
     const classes = ['chi-transfer-list__menu-item'];

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="-p--4">
+      <TransferListView />
       <DataTableClientView />
       <DataTableServerView class="-mt--10" />
       <ExpansionPanelView />
@@ -23,6 +24,7 @@ import DataTableClientView from './views/DataTable/ClientSide/DataTableClientVie
 import DataTableServerView from './views/DataTable/ServerSide/DataTableServerView.vue';
 import SearchInputView from './views/SearchInputView.vue';
 import SaveViewView from './views/SaveView.vue';
+import TransferListView from './views/TransferList.vue';
 
 @Component({
   components: {
@@ -34,6 +36,7 @@ import SaveViewView from './views/SaveView.vue';
     SaveViewView,
     SearchInputView,
     TooltipView,
+    TransferListView,
   },
 })
 export default class App extends Vue {}
