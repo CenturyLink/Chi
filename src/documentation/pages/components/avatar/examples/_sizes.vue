@@ -1,39 +1,32 @@
 <template lang="pug">
-  <ComponentTabExample title="Size" id="size" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+  <ComponentExample title="Size" id="size" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="headTabChanged">
     p.-text(slot="example-description")
       | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
       | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
       | <code>-md</code> is the default size.
-    .-p--0(:slot="$data.menuTabs[0].id")
+
+    .-p--0(slot="example")
       .chi-grid.-align-items--end
-        div(:class="`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`" v-for="size in sizes")
-          div(:class="`chi-avatar -${size}`") AA
+        div(
+          v-for="size in sizes"
+          :class="`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`"
+        )
+          div(:class="`chi-avatar -${size}`") {{  avatarType === 'initial' ? 'AA' : '' }}
+            i.chi-icon.icon-user(v-if="avatarType === 'icon'" aria-hidden="true")
+            img(v-if="avatarType === 'image'" src='../../../../assets/images/avatar.jpg', alt="avatar")
           p.-text {{size}}
 
-    .-p--0(:slot="$data.menuTabs[1].id")
-      .chi-grid.-align-items--end
-        div(:class="`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`" v-for="size in sizes")
-          div(:class="`chi-avatar -${size}`")
-            i.chi-icon.icon-user(aria-hidden="true")
-          p.-text {{size}}
-
-    .-p--0(:slot="$data.menuTabs[2].id")
-      .chi-grid.-align-items--end
-        div(:class="`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`" v-for="size in sizes")
-          div(:class="`chi-avatar -${size}`")
-            img(src='../../../../assets/images/avatar.jpg', alt="avatar")
-          p.-text {{size}}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="highlightedHTMLBluePrint ? highlightedHTMLBluePrint : $data.codeSnippets.htmlblueprint.initial" class="html"></code>
-    </pre>
-  </ComponentTabExample>
+    <Wrapper v-for="tab in headTabs" :slot="`code-size-${tab.id}-htmlblueprint`" :key="tab.id">
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint[tab.id]" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { IHeadTabs } from '~/models/models';
 
 @Component({
   data: () => {
@@ -42,31 +35,40 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component',
+          label: 'Web Component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
+          label: 'HTML Blueprint'
+        }
       ],
-      menuTabs: [
+      headTabs: [
         {
           active: true,
           id: 'initial',
-          label: 'Initial',
+          label: 'Initial'
         },
         {
           id: 'icon',
-          label: 'Icon',
+          label: 'Icon'
         },
         {
           id: 'image',
-          label: 'Image',
+          label: 'Image'
         }
       ],
       sizes: ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'],
-      columnWidths: {'xs':['4', '3', '1'], 'sm':['4', '3', '1'], 'sm--2':['4', '3', '1'], 'sm--3':['4', '3', '1'], 'md':['4', '2', '1'], 'lg':['4', '3', '2'], 'xl':['6', '3', '2'], 'xxl':['6', '4', '3']},
+      columnWidths: {
+        xs: ['4', '3', '1'],
+        sm: ['4', '3', '1'],
+        'sm--2': ['4', '3', '1'],
+        'sm--3': ['4', '3', '1'],
+        md: ['4', '2', '1'],
+        lg: ['4', '3', '2'],
+        xl: ['6', '3', '2'],
+        xxl: ['6', '4', '3']
+      },
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: {
@@ -127,17 +129,15 @@ import { Component, Vue } from 'vue-property-decorator';
   <img src="path/to/image.jpg">
 </div>`
         }
-      },
+      }
     };
-  },
+  }
 })
 export default class Sizes extends Vue {
-  menuId = 'initial';
-  highlightedHTMLBluePrint = '';
+  avatarType = 'initial';
 
-  toggleMenuId(toggleTabEvent: string) {
-    this.menuId = toggleTabEvent;
-    this.highlightedHTMLBluePrint = this.$data.codeSnippets.htmlblueprint[toggleTabEvent];
+  headTabChanged(headTab: IHeadTabs) {
+    this.avatarType = headTab.id;
   }
 }
 </script>

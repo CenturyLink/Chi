@@ -139,20 +139,6 @@ export default {
       '/foundations/accessibility/tables',
       '/foundations/accessibility/links-and-forms',
       '/installation',
-      '/utilities/display',
-      '/utilities/flex',
-      '/utilities/border',
-      '/utilities/overflow',
-      '/utilities/image',
-      '/utilities/position',
-      '/utilities/opacity',
-      '/utilities/shadow',
-      '/utilities/text',
-      '/utilities/sizing',
-      '/utilities/spacing',
-      '/utilities/vertical-align',
-      '/utilities/zindex',
-      '/utilities/color',
       '/components/icon', // To-do, must be removed after full migration
       ...NAVIGATION_COMPONENTS_ITEMS.map((item) => {
         return `/${item.href}`;

@@ -28,7 +28,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { themeNames } from './../store/themes';
-import { BASE_URL } from '@/constants/constants'
 
 @Component({})
 export default class TitleAnchor extends Vue {
@@ -39,7 +38,7 @@ export default class TitleAnchor extends Vue {
   @Prop() additionalClasses?: string;
 
   get anchor() {
-    return `<a class="-ml--1" href="${BASE_URL}${this.$store.$router.currentRoute.path}?theme=${this.theme}#${this.id}">#</a>`.replace(/\/\//g, '/');
+    return `<a class="-ml--1" href="${process.env.BASE_URL}${this.$store.$router.currentRoute.path}?theme=${this.theme}#${this.id}">#</a>`.replace(/\/\//g, '/');
   }
 
   get theme() {
