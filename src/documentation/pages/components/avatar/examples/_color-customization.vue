@@ -1,36 +1,33 @@
 <template lang="pug">
-  <ComponentTabExample title="Color" id="color" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+  <ComponentExample title="Color" id="color" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="headTabChanged">
     p.-text(slot="example-description")
       | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
       | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
       | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
       | <code>-teal</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
       | <code>-secondary</code>, <code>-primary</code>
-    .-p--0(:slot="$data.menuTabs[0].id")
+
+    .-p--0(slot="example")
       .chi-grid.-align-items--end
         template(v-for="color in colors" v-if="color !== 'secondary'")
           .chi-col.-w--2.-text--center
-            div(:class="`chi-avatar -${color}`") AA
+            div(:class="`chi-avatar -${color}`") {{ showIconAvatar ? '' : 'AA' }}
+              <template v-if="showIconAvatar">
+                i.chi-icon.icon-user(aria-hidden="true")
+              </template>
             p.-text {{color}}
 
-    .-p--0(:slot="$data.menuTabs[1].id")
-      .chi-grid.-align-items--end
-        template(v-for="color in colors" v-if="color !== 'secondary'")
-          .chi-col.-w--2.-text--center
-            div(:class="`chi-avatar -${color}`")
-              i.chi-icon.icon-user(aria-hidden="true")
-            p.-text {{color}}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="highlightedHTMLBluePrint ? highlightedHTMLBluePrint : $data.codeSnippets.htmlblueprint.initial" class="html"></code>
-    </pre>
-  </ComponentTabExample>
+    <Wrapper v-for="tab in headTabs" :slot="`code-color-${tab.id}-htmlblueprint`" :key="tab.id">
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint[tab.id]" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { IHeadTabs } from '~/models/models';
 
 @Component({
   data: () => {
@@ -47,7 +44,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint',
         },
       ],
-      menuTabs: [
+      headTabs: [
         {
           active: true,
           id: 'initial',
@@ -120,11 +117,10 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class ColorCustomization extends Vue {
-  menuId = 'initial';
-  highlightedHTMLBluePrint = '';
-  toggleMenuId(toggleTabEvent: string) {
-    this.menuId = toggleTabEvent;
-    this.highlightedHTMLBluePrint = this.$data.codeSnippets.htmlblueprint[toggleTabEvent];
+  showIconAvatar = false;
+
+  headTabChanged(headTab: IHeadTabs) {
+    this.showIconAvatar = headTab.id === 'icon';
   }
 }
 </script>
