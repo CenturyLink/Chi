@@ -7,23 +7,20 @@ import {
   Prop,
   State,
   Watch,
-  h
+  h,
 } from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { Drag } from '../../utils/Drag';
 import { isEscapeKey } from '../../utils/utils';
-import {
-  ANIMATION_DURATION,
-  CLASSES
-} from '../../constants/constants';
+import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
 import { POPOVER_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-popover',
   styleUrl: 'popover.scss',
-  scoped: true
+  scoped: true,
 })
 export class Popover {
   /**
@@ -60,7 +57,7 @@ export class Popover {
   /**
    * To define portal style of the Popover
    */
-   @Prop({ reflect: true }) portal: boolean;
+  @Prop({ reflect: true }) portal: boolean;
 
   /**
    * To define modal style of the Popover
@@ -114,7 +111,7 @@ export class Popover {
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_EXTENDED_POSITIONS.includes(newValue)) {
       throw new Error(
-        `Not valid position ${newValue} for popover. Valid values are top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start and left-end. `
+        `Not valid position ${newValue} for popover. Valid values are top, top-start, top-end, right, right-start, right-end, bottom, bottom-start, bottom-end, left, left-start and left-end. `,
       );
     }
     if (this._componentLoaded) {
@@ -142,7 +139,7 @@ export class Popover {
       }
       if (referenceCandidates.length > 1) {
         throw new Error(
-          `Found ${referenceCandidates.length} reference candidates matching ${newValue}. Not able to discern which one is the preferred.`
+          `Found ${referenceCandidates.length} reference candidates matching ${newValue}. Not able to discern which one is the preferred.`,
         );
       }
     }
@@ -167,7 +164,7 @@ export class Popover {
     }
   }
 
-  @Watch("drag")
+  @Watch('drag')
   dragUpdated(newVal: boolean) {
     if (newVal && !this._drag) {
       this._drag = new Drag(this._popoverHeader, this._popoverElement, this);
@@ -244,18 +241,20 @@ export class Popover {
       this._resetPopperPosition();
       this.currentAnimation = ThreeStepsAnimation.animationFactory(
         () => {
-          this._popoverElement.style.transform = this._preAnimationTransformStyle;
+          this._popoverElement.style.transform =
+            this._preAnimationTransformStyle;
         },
         () => {
           this._animationClasses = `${CLASSES.TRANSITIONING} ${CLASSES.ACTIVE}`;
           this._popoverElement.style.transition = transition;
-          this._popoverElement.style.transform = this._postAnimationTransformStyle;
+          this._popoverElement.style.transform =
+            this._postAnimationTransformStyle;
         },
         () => {
           this._animationClasses = CLASSES.ACTIVE;
           this.eventShown.emit();
         },
-        ANIMATION_DURATION.SHORT
+        ANIMATION_DURATION.SHORT,
       );
     });
     this.eventShow.emit();
@@ -281,7 +280,7 @@ export class Popover {
         }
         this.eventHidden.emit();
       },
-      ANIMATION_DURATION.SHORT
+      ANIMATION_DURATION.SHORT,
     );
 
     this.eventHide.emit();
@@ -309,15 +308,17 @@ export class Popover {
           data.popper.left
         }px, ${data.popper.top + 20}px, 0)`;
       } else if (data.placement.indexOf('right') === 0) {
-        this._preAnimationTransformStyle = `translate3d(${data.popper.left -
-        20}px, ${data.popper.top}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${
+          data.popper.left - 20
+        }px, ${data.popper.top}px, 0)`;
       } else if (data.placement.indexOf('bottom') === 0) {
         this._preAnimationTransformStyle = `translate3d(${
           data.popper.left
         }px, ${data.popper.top - 20}px, 0)`;
       } else if (data.placement.indexOf('left') === 0) {
-        this._preAnimationTransformStyle = `translate3d(${data.popper.left +
-        20}px, ${data.popper.top}px, 0)`;
+        this._preAnimationTransformStyle = `translate3d(${
+          data.popper.left + 20
+        }px, ${data.popper.top}px, 0)`;
       } else {
         this._preAnimationTransformStyle = data.styles.transform;
       }
@@ -332,14 +333,14 @@ export class Popover {
           fn: savePopperData,
           // Set order to run after popper applyStyle modifier
           // as we need data.styles to be filled.
-          order: 875
+          order: 875,
         },
         arrow: {
           element: `.${POPOVER_CLASSES.ARROW}`,
-          enabled: this.arrow
+          enabled: this.arrow,
         },
         preventOverflow: {
-          boundariesElement: "window"
+          boundariesElement: 'window',
         },
       },
       removeOnDestroy: false,
@@ -361,7 +362,7 @@ export class Popover {
     const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
-      attributeFilter: ['title']
+      attributeFilter: ['title'],
     };
 
     if (!this.mutationObserver) {
@@ -392,7 +393,10 @@ export class Popover {
       this.popoverTitle = this.el.getAttribute('title');
     }
 
-    if (Array.from(this.el.querySelectorAll(`[slot=${POPOVER_CLASSES.FOOTER}]`)).length > 0) {
+    if (
+      Array.from(this.el.querySelectorAll(`[slot=${POPOVER_CLASSES.FOOTER}]`))
+        .length > 0
+    ) {
       this.popoverFooter = true;
     }
   }
@@ -401,10 +405,8 @@ export class Popover {
     this._documentClickHandler = () => {
       !this._closePrevented && !this.preventAutoHide && this.hide();
     };
-    this._documentKeyHandler = e => {
-      if (
-        !this.preventAutoHide && isEscapeKey(e)
-      ) {
+    this._documentKeyHandler = (e) => {
+      if (!this.preventAutoHide && isEscapeKey(e)) {
         this.hide();
       }
     };
@@ -451,15 +453,35 @@ export class Popover {
 
   hostData() {
     return {
-      'aria-hidden': this.active ? 'false' : 'true'
+      'aria-hidden': this.active ? 'false' : 'true',
     };
   }
 
   render() {
-    const closeButton = this.closable ? <chi-button size="xs" onClick={() => this.hide()} type="close" /> : null;
-    const popoverHeader = this.popoverTitle && <header ref={el => (this._popoverHeader = el as HTMLElement)} class={POPOVER_CLASSES.HEADER}><h2 class={POPOVER_CLASSES.TITLE}>{this.popoverTitle}</h2></header>;
-    const slot = this.variant && this.variant === 'text' ? <p class={POPOVER_CLASSES.TEXT}><slot /></p> : <slot />;
-    const chiFooter = this.popoverFooter && <div class={POPOVER_CLASSES.FOOTER}><slot name={POPOVER_CLASSES.FOOTER}></slot></div>;
+    const closeButton = this.closable ? (
+      <chi-button size="xs" onClick={() => this.hide()} type="close" />
+    ) : null;
+    const popoverHeader = this.popoverTitle && (
+      <header
+        ref={(el) => (this._popoverHeader = el as HTMLElement)}
+        class={POPOVER_CLASSES.HEADER}
+      >
+        <h2 class={POPOVER_CLASSES.TITLE}>{this.popoverTitle}</h2>
+      </header>
+    );
+    const slot =
+      this.variant && this.variant === 'text' ? (
+        <p class={POPOVER_CLASSES.TEXT}>
+          <slot />
+        </p>
+      ) : (
+        <slot />
+      );
+    const chiFooter = this.popoverFooter && (
+      <div class={POPOVER_CLASSES.FOOTER}>
+        <slot name={POPOVER_CLASSES.FOOTER}></slot>
+      </div>
+    );
 
     return (
       <section
@@ -469,13 +491,17 @@ export class Popover {
           ${this.position ? `chi-popover--${this.position}` : ''}
           ${this.arrow ? '' : POPOVER_CLASSES.NO_ARROW}
           ${this._animationClasses}
-          ${this._reference && this._reference.classList.contains('chi-input') ? POPOVER_CLASSES.INPUT : ''}
+          ${
+            this._reference && this._reference.classList.contains('chi-input')
+              ? POPOVER_CLASSES.INPUT
+              : ''
+          }
           ${this.closable ? POPOVER_CLASSES.CLOSABLE : ''}
           ${this.drag ? POPOVER_CLASSES.DRAGGABLE : ''}
           ${this.portal ? '-portal' : ''}
           ${this.modal ? POPOVER_CLASSES.MODAL : ''}
         `}
-        ref={el => (this._popoverElement = el as HTMLElement)}
+        ref={(el) => (this._popoverElement = el as HTMLElement)}
         onClick={() => this.preventAutoClose()}
         role="dialog"
         aria-modal="true"
@@ -484,9 +510,7 @@ export class Popover {
       >
         {closeButton}
         {popoverHeader}
-        <div class={POPOVER_CLASSES.CONTENT}>
-          {slot}
-        </div>
+        <div class={POPOVER_CLASSES.CONTENT}>{slot}</div>
         {chiFooter}
         {this.arrow && <div class={POPOVER_CLASSES.ARROW} />}
       </section>
