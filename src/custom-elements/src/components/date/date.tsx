@@ -20,6 +20,7 @@ import 'dayjs/locale/ja';
 import 'dayjs/locale/zh';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { contains } from '../../utils/utils';
+import { DATEPICKER_CLASSES, INACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes'; 
 
 dayjs.extend(isBetween);
 
@@ -305,6 +306,7 @@ export class Date {
 
     if (!this._keyboardFocusedDate) {
       const today = dayjs().format(this.format);
+
       this._keyboardFocusedDate = this._getValidDayElement(this.value)
         ? this.value
         : this._getValidDayElement(today)
@@ -333,7 +335,6 @@ export class Date {
    * Handles key down event
    */
   _onKeyDown(e: KeyboardEvent) {
-    // TODO: check if calendar is focused in to enable arrows
     if (
       !this._enableKeyboardNavigation ||
       !contains(this.el, e.target as HTMLElement)
@@ -351,8 +352,7 @@ export class Date {
       Escape: this._handleEscape.bind(this),
     }[e.key];
 
-    const disableArrowHandler =
-      e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
+    const disableArrowHandler = e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
     if (
       !keyHandler ||
       disableArrowHandler ||
@@ -370,7 +370,7 @@ export class Date {
    * Checks wether the keyboard event target belongs to a calendar day
    */
   _isTargetCalendarDay(e: KeyboardEvent) {
-    return (e.target as HTMLElement).classList.contains('chi-datepicker__day');
+    return (e.target as HTMLElement).classList.contains(DATEPICKER_CLASSES.DAY);
   }
 
   /**
@@ -473,7 +473,7 @@ export class Date {
    */
   _getValidDayElement(date: string) {
     return this.el.querySelector(
-      `.chi-datepicker__day[data-date="${date}"]:not(.-inactive)`,
+      `.${DATEPICKER_CLASSES.DAY}[data-date="${date}"]:not(.${INACTIVE_CLASS})`
     ) as HTMLElement;
   }
 
@@ -503,7 +503,7 @@ export class Date {
    */
   _getFocusableDays() {
     const availableDays = this.el.querySelectorAll(
-      '.chi-datepicker__day:not(.-inactive)',
+      `.${DATEPICKER_CLASSES.DAY}:not(.${INACTIVE_CLASS})`
     );
     return Array.from(availableDays);
   }
@@ -518,8 +518,8 @@ export class Date {
     }
 
     let tabElements = [
-      this.el.querySelector('.chi-datepicker__month-row .prev:not(.-disabled)'),
-      this.el.querySelector('.chi-datepicker__month-row .next:not(.-disabled)'),
+      this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}:not(.${DISABLED_CLASS})`),
+      this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}:not(.${DISABLED_CLASS})`),
       this._getValidDayElement(this._keyboardFocusedDate) ||
         this._getValidDayElement(this._getFirstOrLastAvailableDate(true)),
     ];
@@ -530,7 +530,7 @@ export class Date {
       ? tabElements[tabElements.lastIndexOf(e.target as Element) - 1]
       : tabElements[tabElements.indexOf(e.target as Element) + 1];
 
-    if (nextElement.classList.contains('chi-datepicker__day')) {
+    if (nextElement.classList.contains(DATEPICKER_CLASSES.DAY)) {
       this._focusCalendarDay(nextElement.getAttribute('data-date'));
     } else {
       (nextElement as HTMLElement).focus();
@@ -539,9 +539,9 @@ export class Date {
 
   _handleEnter(e: KeyboardEvent) {
     const isPrevMonth =
-      e.target === this.el.querySelector('.chi-datepicker__month-row .prev');
+      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}`);
     const isNextMonth =
-      e.target === this.el.querySelector('.chi-datepicker__month-row .next');
+      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}`);
     const isDay =
       e.target === this._getValidDayElement(this._keyboardFocusedDate);
 
@@ -636,9 +636,9 @@ export class Date {
 
     return (
       <div
-        class={`chi-datepicker ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
+        class={`${DATEPICKER_CLASSES.DATEPICKER} ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
       >
-        <div class="chi-datepicker__month-row">
+        <div class={`${DATEPICKER_CLASSES.MONTH_ROW}`}>
           <div
             class={`prev ${prevMonthDisabled ? CLASSES.DISABLED : ''}`}
             tabindex="0"
@@ -646,7 +646,7 @@ export class Date {
           >
             <chi-icon icon="chevron-left" size="sm" />
           </div>
-          <div class="chi-datepicker__month">
+          <div class={`${DATEPICKER_CLASSES.MONTH}`}>
             {`${this.viewMonth.format('MMMM')}
               ${this.viewMonth.format('YYYY')}`}
           </div>
@@ -658,19 +658,19 @@ export class Date {
             <chi-icon icon="chevron-right" size="sm" />
           </div>
         </div>
-        <div class="chi-datepicker__day-names">
+        <div class={`${DATEPICKER_CLASSES.DAY_NAMES}`}>
           {this._vm.weekDays.map((weekDay) => (
-            <div class="chi-datepicker__week-day">
+            <div class={`${DATEPICKER_CLASSES.WEEK_DAY}`}>
               {weekDay.format('dddd').substr(0, 1)}
             </div>
           ))}
         </div>
-        <div class="chi-datepicker__days">
+        <div class={`${DATEPICKER_CLASSES.DAYS}`}>
           {this._vm.monthDays.map((day) => {
             const isExcludedDay = this.checkIfExcluded(day);
             return (
               <div
-                class={`chi-datepicker__day
+                class={`${DATEPICKER_CLASSES.DAY}
                 ${
                   (this._vm.min && day.isBefore(this._vm.min)) ||
                   (this._vm.max && day.isAfter(this._vm.max)) ||
