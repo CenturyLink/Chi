@@ -187,7 +187,41 @@ ul.chi-tabs.-vertical.-lg.-animated
                     li
                       a(href=`${rootPath}components/table`) Table
     else
-      li
-        a(href=`#`, disabled="disabled") #{key}
+      if key === "Utilities"
+        li
+          .chi-collection__title
+            =key
+          ul.chi-tabs__subtabs
+            li
+              a(href=`${rootPath}utilities/border`) Border
+            li
+              a(href=`${rootPath}utilities/color`) Color
+            li
+              a(href=`${rootPath}utilities/display`) Display
+            li
+              a(href=`${rootPath}utilities/flex`) Flex
+            li
+              a(href=`${rootPath}utilities/image`) Image
+            li
+              a(href=`${rootPath}utilities/opacity`) Opacity
+            li
+              a(href=`${rootPath}utilities/overflow`) Overflow
+            li
+              a(href=`${rootPath}utilities/position`) Position
+            li
+              a(href=`${rootPath}utilities/shadow`) Shadow
+            li
+              a(href=`${rootPath}utilities/sizing`) Sizing
+            li
+              a(href=`${rootPath}utilities/spacing`) Spacing
+            li
+              a(href=`${rootPath}utilities/text`) Text
+            li
+              a(href=`${rootPath}utilities/vertical-align`) Vertical-align
+            li
+              a(href=`${rootPath}utilities/zindex`) Z-index
+      else
+        li
+          a(href=`#`, disabled="disabled") #{key}
 
 script(type="text/javascript", src=`${rootPath}assets/scripts/sidenav.js`)

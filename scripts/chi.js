@@ -9,7 +9,6 @@ import svgSprite from 'gulp-svg-sprite';
 import header from 'gulp-header';
 
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
-const utilitiesFolder = path.join(__dirname, '..', 'src', 'chi', 'utilities');
 const iconsFolder = path.join(__dirname, '..', 'src', 'chi', 'assets', 'icons');
 const copyright = `/* Chi and its documentation are released under the terms of the MIT license.
 In addition, Chi uses several 3rd-party libraries,
@@ -238,7 +237,6 @@ export function copyAssets({ names = ['all'], dest = 'dist' }) {
   return gulp.src(
     foundationFolders
       .concat(componentFolders)
-      .concat(utilitiesFolder)
       .map(folder => `${path.join(folder, '**', '!(*.scss)')}`)
   )
     .pipe(header(`${copyright} \n`))
