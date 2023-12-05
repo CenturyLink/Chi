@@ -64,7 +64,7 @@ function buildWebsiteViews () {
           sortBy: collectionSorter(['Overview'])
         },
         'Utilities': {
-          pattern: 'utilities/**/*.pug',
+          // pattern: 'utilities/**/*.pug',
           sortBy: collectionSorter(['Overview'])
         },
         'Templates': {

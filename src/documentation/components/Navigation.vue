@@ -156,47 +156,16 @@
       <li>
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
-          <li>
-            <a :href="`${BASE_URL}utilities/border`">Border</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/color`">Color</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/display`">Display</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/flex`">Flex</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/image`">Image</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/opacity`">Opacity</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/overflow`">Overflow</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/position`">Position</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/shadow`">Shadow</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/sizing`">Sizing</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/spacing`">Spacing</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/text`">Text</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/vertical-align`">Vertical-align</a>
-          </li>
-          <li>
-            <a :href="`${BASE_URL}utilities/zindex`">Z-index</a>
+          <li
+            :key="index"
+            v-for="(navigationUtilityItem, index) in NAVIGATION_UTILITIES_ITEMS"
+            :class="{
+              '-active': $route.path === `/${navigationUtilityItem.to}`
+            }"
+          >
+            <NuxtLink :to="`/${navigationUtilityItem.to}`">
+              {{ navigationUtilityItem.label }}
+            </NuxtLink>
           </li>
         </ul>
       </li>
@@ -241,6 +210,7 @@ import ThemeSwitcher from './ThemeSwitcher.vue';
 import {
   NAVIGATION_COMPONENTS_ITEMS,
   NAVIGATION_TEMPLATE_ITEMS,
+  NAVIGATION_UTILITIES_ITEMS,
   BASE_URL
 } from '../constants/constants';
 
@@ -254,7 +224,8 @@ declare const chi: any;
     return {
       BASE_URL,
       NAVIGATION_COMPONENTS_ITEMS,
-      NAVIGATION_TEMPLATE_ITEMS
+      NAVIGATION_TEMPLATE_ITEMS,
+      NAVIGATION_UTILITIES_ITEMS
     };
   }
 })
