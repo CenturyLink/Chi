@@ -50,6 +50,7 @@ import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '../tooltip/tooltip';
 import { TransferListItem } from '@/constants/types';
 import SearchInput from '../search-input/SearchInput';
+import { GENERIC_EVENTS, TRANSFER_LIST_EVENTS } from '@/constants/events';
 
 @Component({
   components: {
@@ -66,6 +67,7 @@ export default class TransferListColumn extends Vue {
   @Prop() items!: TransferListItem[];
 
   filter = '';
+  activeItems: TransferListItem[] = [];
 
   isToColumn = this.type === 'to';
   hasLockedItems = this.items?.some((item) => item.locked);
@@ -80,8 +82,9 @@ export default class TransferListColumn extends Vue {
 
   handleSelectItem(event: Event) {
     const items = Array.from((event.target as HTMLSelectElement).selectedOptions, (option) => option.value);
+    const column = this.type as string;
 
-    // EMIT EVENT
+    this.$emit(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, { [column]: items });
   }
 
   getFilteredList() {

@@ -112,3 +112,9 @@ export const SAVE_VIEW_EVENTS = {
   INPUT: 'chiSaveViewInput',
 };
 //#endregion
+
+export const TRANSFER_LIST_EVENTS = {
+  ITEMS_SELECTED: 'chiItemSelected',
+  ITEMS_MOVED: 'chiItemMoved',
+  ITEMS_MOVE_ALL: 'chiItemMoveAll',
+};

@@ -5,7 +5,7 @@
         type="from"
         :title="config.columns.from.title"
         :description="config.columns.from.description"
-        :items="getAvailables()"
+        :items="getColumnItems('from')"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput" />
 
@@ -15,7 +15,7 @@
         type="to"
         :title="config.columns.to.title"
         :description="config.columns.to.description"
-        :items="getSelecteds()"
+        :items="getColumnItems('to')"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput" />
     </div>
@@ -31,6 +31,7 @@ import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
 import { TransferListConfig, TransferListItem } from '@/constants/types';
+import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 
 @Component({
   components: {
@@ -43,12 +44,36 @@ export default class TransferList extends Vue {
   @Prop() transferListData!: TransferListItem[];
   @Prop() config!: TransferListConfig;
 
-  getAvailables(): TransferListItem[] {
-    return this.transferListData?.filter((item) => !item.selected) || [];
+  list = this.transferListData;
+
+  mounted() {
+    const actions = this.$children.find(({ $options }: any) => $options.name === 'TransferListActions');
+    actions.$on(TRANSFER_LIST_EVENTS.ITEMS_MOVED, this.updateListOnItemsMoved);
+    actions.$on(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, this.updateListOnAllItemsMoved);
   }
 
-  getSelecteds(): TransferListItem[] {
-    return this.transferListData?.filter((item) => item.selected) || [];
+  getColumnItems(column: 'from' | 'to'): TransferListItem[] {
+    return this.list?.filter((item) => (column === 'from' ? !item.selected : item.selected)) || [];
+  }
+
+  updateListOnItemsMoved(items: string[]) {
+    const newList = this.list.map((item: TransferListItem) => {
+      const shouldMove = items.includes(item.value);
+
+      return {
+        ...item,
+        ...(shouldMove && { selected: !item.selected }),
+      };
+    });
+
+    this.list = newList;
+  }
+
+  updateListOnAllItemsMoved(column: 'from' | 'to') {
+    const columnType = this.getColumnItems(column);
+    const items = columnType.map((item) => item.value);
+
+    this.updateListOnItemsMoved(items);
   }
 }
 </script>
