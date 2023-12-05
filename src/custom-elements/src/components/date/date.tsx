@@ -20,7 +20,11 @@ import 'dayjs/locale/ja';
 import 'dayjs/locale/zh';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { contains } from '../../utils/utils';
-import { DATEPICKER_CLASSES, INACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes'; 
+import {
+  DATEPICKER_CLASSES,
+  INACTIVE_CLASS,
+  DISABLED_CLASS,
+} from '../../constants/classes';
 
 dayjs.extend(isBetween);
 
@@ -352,7 +356,8 @@ export class Date {
       Escape: this._handleEscape.bind(this),
     }[e.key];
 
-    const disableArrowHandler = e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
+    const disableArrowHandler =
+      e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
     if (
       !keyHandler ||
       disableArrowHandler ||
@@ -518,12 +523,15 @@ export class Date {
     }
 
     let tabElements = [
-      this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}:not(.${DISABLED_CLASS})`),
-      this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}:not(.${DISABLED_CLASS})`),
+      this.el.querySelector(
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}:not(.${DISABLED_CLASS})`,
+      ),
+      this.el.querySelector(
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}:not(.${DISABLED_CLASS})`,
+      ),
       this._getValidDayElement(this._keyboardFocusedDate) ||
         this._getValidDayElement(this._getFirstOrLastAvailableDate(true)),
     ];
-
     tabElements = [...tabElements, ...tabElements].filter(Boolean);
 
     const nextElement = e.shiftKey
@@ -539,9 +547,15 @@ export class Date {
 
   _handleEnter(e: KeyboardEvent) {
     const isPrevMonth =
-      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}`);
+      e.target ===
+      this.el.querySelector(
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}`,
+      );
     const isNextMonth =
-      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}`);
+      e.target ===
+      this.el.querySelector(
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}`,
+      );
     const isDay =
       e.target === this._getValidDayElement(this._keyboardFocusedDate);
 
@@ -640,7 +654,7 @@ export class Date {
       >
         <div class={`${DATEPICKER_CLASSES.MONTH_ROW}`}>
           <div
-            class={`prev ${prevMonthDisabled ? CLASSES.DISABLED : ''}`}
+            class={`${DATEPICKER_CLASSES.PREV_MONTH} ${prevMonthDisabled ? CLASSES.DISABLED : ''}`}
             tabindex="0"
             onClick={() => this.prevMonth()}
           >
@@ -651,7 +665,7 @@ export class Date {
               ${this.viewMonth.format('YYYY')}`}
           </div>
           <div
-            class={`next ${nextMonthDisabled ? CLASSES.DISABLED : ''}`}
+            class={`${DATEPICKER_CLASSES.NEXT_MONTH} ${nextMonthDisabled ? CLASSES.DISABLED : ''}`}
             tabindex={!nextMonthDisabled ? '0' : ''}
             onClick={() => this.nextMonth()}
           >
@@ -668,6 +682,7 @@ export class Date {
         <div class={`${DATEPICKER_CLASSES.DAYS}`}>
           {this._vm.monthDays.map((day) => {
             const isExcludedDay = this.checkIfExcluded(day);
+
             return (
               <div
                 class={`${DATEPICKER_CLASSES.DAY}
