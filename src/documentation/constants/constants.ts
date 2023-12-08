@@ -70,6 +70,14 @@ export const BASE_URL =
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
 
+export const SECTION_URLS = {
+  gettingStarted: `getting-started`,
+  utilities: `utilities`,
+  components: `components`,
+  foundations: `foundations`,
+  templates: `templates`
+} 
+
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/accordion`,
