@@ -4,7 +4,7 @@
       <ThemeSwitcher />
     </div>
     <ul class="chi-tabs -vertical -lg -animated">
-      <li>
+      <li :class="{'-active' : $route.fullPath.includes(SECTION_URLS.gettingStarted)}">
         <div class="chi-collection__title">Getting Started</div>
         <ul class="chi-tabs__subtabs">
           <li>
@@ -30,7 +30,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li :class="{'-active' : $route.fullPath.includes(SECTION_URLS.foundations)}">
         <div class="chi-collection__title">Foundations</div>
         <ul class="chi-tabs__subtabs">
           <li>
@@ -121,7 +121,7 @@
           </li>
         </ul>
       </li>
-      <li class="-active">
+      <li :class="{'-active' : $route.fullPath.includes(SECTION_URLS.components)}">
         <div class="chi-collection__title">Components</div>
         <ul class="chi-tabs__subtabs">
           <li
@@ -153,7 +153,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li :class="{'-active' : $route.fullPath.includes(SECTION_URLS.utilities)}">
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
           <li
@@ -169,7 +169,7 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li :class="{'-active' : $route.fullPath.includes(SECTION_URLS.templates)}">
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
           <li
@@ -211,7 +211,8 @@ import {
   NAVIGATION_COMPONENTS_ITEMS,
   NAVIGATION_TEMPLATE_ITEMS,
   NAVIGATION_UTILITIES_ITEMS,
-  BASE_URL
+  BASE_URL,
+  SECTION_URLS
 } from '../constants/constants';
 
 declare const chi: any;
@@ -225,7 +226,8 @@ declare const chi: any;
       BASE_URL,
       NAVIGATION_COMPONENTS_ITEMS,
       NAVIGATION_TEMPLATE_ITEMS,
-      NAVIGATION_UTILITIES_ITEMS
+      NAVIGATION_UTILITIES_ITEMS,
+      SECTION_URLS
     };
   }
 })
