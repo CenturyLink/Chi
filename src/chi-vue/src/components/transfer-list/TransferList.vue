@@ -9,7 +9,9 @@
         :checkbox="config.checkbox"
         :searchInput="config.searchInput" />
 
-      <TransferListActions />
+      <TransferListActions
+        @chiTransferListItemMoved="updateListOnItemsMoved"
+        @chiTransferListItemMoveAll="updateListOnAllItemsMoved" />
 
       <TransferListColumn
         type="to"
@@ -31,7 +33,6 @@ import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
 import { TransferListConfig, TransferListItem } from '@/constants/types';
-import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 
 @Component({
   components: {
@@ -45,12 +46,6 @@ export default class TransferList extends Vue {
   @Prop() config!: TransferListConfig;
 
   list = this.transferListData;
-
-  mounted() {
-    const actions = this.$children.find(({ $options }: any) => $options.name === 'TransferListActions');
-    actions.$on(TRANSFER_LIST_EVENTS.ITEMS_MOVED, this.updateListOnItemsMoved);
-    actions.$on(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, this.updateListOnAllItemsMoved);
-  }
 
   getColumnItems(column: 'from' | 'to'): TransferListItem[] {
     return this.list?.filter((item) => (column === 'from' ? !item.selected : item.selected)) || [];

@@ -114,7 +114,7 @@ export const SAVE_VIEW_EVENTS = {
 //#endregion
 
 export const TRANSFER_LIST_EVENTS = {
-  ITEMS_SELECTED: 'chiItemSelected',
-  ITEMS_MOVED: 'chiItemMoved',
-  ITEMS_MOVE_ALL: 'chiItemMoveAll',
+  ITEMS_SELECTED: 'chiTransferListItemSelected',
+  ITEMS_MOVED: 'chiTransferListItemMoved',
+  ITEMS_MOVE_ALL: 'chiTransferListItemMoveAll',
 };
