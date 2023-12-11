@@ -105,30 +105,33 @@ export class Date {
   dateChanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue && (newValue || oldValue)) {
       if (newValue) {
-        if (this.multiple) {
-          this._vm.dates =
-            newValue.split(',').map((valueDay) => this.fromString(valueDay)) ||
-            [];
-        } else {
-          const date = dayjs(newValue).format(this.format);
-
-          this._vm.dates = [this.fromString(date)];
-        }
-
-        if (this._vm.dates.length > 0) {
-          Array.from(this._vm.dates).forEach((date) => {
-            if (!date.isValid()) {
-              throw new Error(`Date ${newValue} has an invalid format. `);
-            }
-          });
-        }
-        this.viewMonth = this._vm.dates[this._vm.dates.length - 1];
+        this._handleNewDateValue(newValue);
       } else {
         this._initCalendarViewModel();
         this._initViewMonth();
         this._updateViewMonth();
       }
     }
+  }
+
+  _handleNewDateValue(newValue: string) {
+    if (this.multiple) {
+      this._vm.dates =
+        newValue.split(',').map((valueDay) => this.fromString(valueDay)) || [];
+    } else {
+      const date = dayjs(newValue).format(this.format);
+
+      this._vm.dates = [this.fromString(date)];
+    }
+
+    if (this._vm.dates.length > 0) {
+      Array.from(this._vm.dates).forEach((date) => {
+        if (!date.isValid()) {
+          throw new Error(`Date ${newValue} has an invalid format. `);
+        }
+      });
+    }
+    this.viewMonth = this._vm.dates[this._vm.dates.length - 1];
   }
 
   @Watch('locale')
@@ -310,12 +313,13 @@ export class Date {
 
     if (!this._keyboardFocusedDate) {
       const today = dayjs().format(this.format);
+      const alternativeFocusedDay = this._getValidDayElement(today)
+        ? today
+        : this._getFirstOrLastAvailableDate(true);
 
       this._keyboardFocusedDate = this._getValidDayElement(this.value)
         ? this.value
-        : this._getValidDayElement(today)
-          ? today
-          : this._getFirstOrLastAvailableDate(true);
+        : alternativeFocusedDay;
     }
   }
 
@@ -478,7 +482,7 @@ export class Date {
    */
   _getValidDayElement(date: string) {
     return this.el.querySelector(
-      `.${DATEPICKER_CLASSES.DAY}[data-date="${date}"]:not(.${INACTIVE_CLASS})`
+      `.${DATEPICKER_CLASSES.DAY}[data-date="${date}"]:not(.${INACTIVE_CLASS})`,
     ) as HTMLElement;
   }
 
@@ -508,7 +512,7 @@ export class Date {
    */
   _getFocusableDays() {
     const availableDays = this.el.querySelectorAll(
-      `.${DATEPICKER_CLASSES.DAY}:not(.${INACTIVE_CLASS})`
+      `.${DATEPICKER_CLASSES.DAY}:not(.${INACTIVE_CLASS})`,
     );
     return Array.from(availableDays);
   }
@@ -654,7 +658,9 @@ export class Date {
       >
         <div class={`${DATEPICKER_CLASSES.MONTH_ROW}`}>
           <div
-            class={`${DATEPICKER_CLASSES.PREV_MONTH} ${prevMonthDisabled ? CLASSES.DISABLED : ''}`}
+            class={`${DATEPICKER_CLASSES.PREV_MONTH} ${
+              prevMonthDisabled ? CLASSES.DISABLED : ''
+            }`}
             tabindex="0"
             onClick={() => this.prevMonth()}
           >
@@ -665,7 +671,9 @@ export class Date {
               ${this.viewMonth.format('YYYY')}`}
           </div>
           <div
-            class={`${DATEPICKER_CLASSES.NEXT_MONTH} ${nextMonthDisabled ? CLASSES.DISABLED : ''}`}
+            class={`${DATEPICKER_CLASSES.NEXT_MONTH} ${
+              nextMonthDisabled ? CLASSES.DISABLED : ''
+            }`}
             tabindex={!nextMonthDisabled ? '0' : ''}
             onClick={() => this.nextMonth()}
           >
@@ -674,7 +682,10 @@ export class Date {
         </div>
         <div class={`${DATEPICKER_CLASSES.DAY_NAMES}`}>
           {this._vm.weekDays.map((weekDay) => (
-            <div class={`${DATEPICKER_CLASSES.WEEK_DAY}`}>
+            <div
+              class={`${DATEPICKER_CLASSES.WEEK_DAY}`}
+              key={weekDay.format('dddd')}
+            >
               {weekDay.format('dddd').substr(0, 1)}
             </div>
           ))}

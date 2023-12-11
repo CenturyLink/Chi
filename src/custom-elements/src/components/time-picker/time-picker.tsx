@@ -7,13 +7,12 @@ import {
   h,
   Watch,
 } from '@stencil/core';
-import { contains, uuid4 } from '../../utils/utils';
+import { contains, uuid4, isEscapeKey } from '../../utils/utils';
 import {
   CHI_TIME_AUTO_SCROLL_DELAY,
   TimePickerFormats,
 } from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
-import { isEscapeKey } from '../../utils/utils';
 
 @Component({
   tag: 'chi-time-picker',
@@ -129,15 +128,9 @@ export class TimePicker {
   @Listen('chiPopoverShow')
   handlePopoverOpen(ev) {
     ev.stopPropagation();
-    const hoursColumn = this.el.querySelector(
-      `.${TIME_CLASSES.HOURS}`,
-    ) as HTMLElement;
-    const minutesColumn = this.el.querySelector(
-      `.${TIME_CLASSES.MINUTES}`,
-    ) as HTMLElement;
-    const secondsColumn = this.el.querySelector(
-      `.${TIME_CLASSES.SECONDS}`,
-    ) as HTMLElement;
+    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`);
+    const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`);
+    const secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`);
 
     setTimeout(() => {
       if (hoursColumn) {
@@ -179,7 +172,7 @@ export class TimePicker {
       return String(period).length > 1 ? String(period) : `0${period}`;
     };
     const hour =
-      !(this.format === '24hr') && ev.detail.hour > 12
+      this.format !== '24hr' && ev.detail.hour > 12
         ? ev.detail.hour - 12
         : ev.detail.hour;
     const seconds = this.displaySeconds
