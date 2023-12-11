@@ -10,6 +10,7 @@
         :searchInput="config.searchInput" />
 
       <TransferListActions
+        move="transfer"
         @chiTransferListItemMoved="updateListOnItemsMoved"
         @chiTransferListItemMoveAll="updateListOnAllItemsMoved" />
 
@@ -20,6 +21,8 @@
         :items="getColumnItems('to')"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput" />
+
+      <TransferListActions move="sort" @chiTransferListItemSorted="updateListOnItemsSorted" />
     </div>
 
     <TransferListFooter />
@@ -33,6 +36,7 @@ import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
 import { TransferListConfig, TransferListItem } from '@/constants/types';
+import { swapElementsInArray } from '@/utils/utils';
 
 @Component({
   components: {
@@ -45,10 +49,12 @@ export default class TransferList extends Vue {
   @Prop() transferListData!: TransferListItem[];
   @Prop() config!: TransferListConfig;
 
-  list = this.transferListData;
+  list = this.transferListData || [];
 
   getColumnItems(column: 'from' | 'to'): TransferListItem[] {
-    return this.list?.filter((item) => (column === 'from' ? !item.selected : item.selected)) || [];
+    return this.list.filter(({ selected }) => {
+      return column === 'from' ? !selected : selected;
+    });
   }
 
   updateListOnItemsMoved(items: string[]) {
@@ -69,6 +75,21 @@ export default class TransferList extends Vue {
     const items = columnType.map((item) => item.value);
 
     this.updateListOnItemsMoved(items);
+  }
+
+  updateListOnItemsSorted({ direction, items }: { direction: 'up' | 'down'; items: string[] }) {
+    items.forEach((item) => {
+      const currItemIndex = this.list.findIndex(({ value }) => value === item);
+      const currItem = this.list[currItemIndex];
+      const itemToSwapIndex = direction === 'up' ? currItemIndex - 1 : currItemIndex + 1;
+      const itemToSwap = this.list[itemToSwapIndex];
+
+      if (!itemToSwap || (itemToSwap.locked && !currItem.wildcard)) {
+        return;
+      }
+
+      swapElementsInArray(this.list, currItemIndex, itemToSwapIndex);
+    });
   }
 }
 </script>

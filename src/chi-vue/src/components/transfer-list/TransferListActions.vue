@@ -1,23 +1,13 @@
 <template>
   <div class="chi-transfer-list__actions">
-    <chi-button variant="flat" type="icon" @click="handleTransferAllFromColumn('from')">
-      <chi-icon icon="arrow-right" />
-    </chi-button>
-
     <chi-button
       variant="flat"
       type="icon"
-      :disabled="isFromColumnDisabled()"
-      @click="handleTransferItemsToColumn('from')">
-      <chi-icon icon="chevron-right" />
-    </chi-button>
-
-    <chi-button variant="flat" type="icon" :disabled="isToColumnDisabled()" @click="handleTransferItemsToColumn('to')">
-      <chi-icon icon="chevron-left" />
-    </chi-button>
-
-    <chi-button variant="flat" type="icon" @click="handleTransferAllFromColumn('to')">
-      <chi-icon icon="arrow-left" />
+      v-for="(item, index) in actionList"
+      :key="index"
+      @click="events[item.event]()"
+      :disabled="item.disabled && events[item.disabled]()">
+      <chi-icon :icon="item.icon" />
     </chi-button>
   </div>
 </template>
@@ -25,29 +15,45 @@
 <script lang="ts">
 import { Component, Vue } from '@/build/vue-wrapper';
 import { TRANSFER_LIST_EVENTS } from '@/constants/events';
+import { Prop } from 'vue-property-decorator';
+import { Event } from '@/utils/event';
+
+const actions = {
+  transfer: [
+    { icon: 'arrow-right', event: 'onTransferAllToColumnFrom', disabled: null },
+    { icon: 'chevron-right', event: 'onTransferItemsToColumnFrom', disabled: 'isColumnFromDisabled' },
+    { icon: 'chevron-left', event: 'onTransferItemsToColumnTo', disabled: 'isColumnToDisabled' },
+    { icon: 'arrow-left', event: 'onTransferAllToColumnTo', disabled: null },
+  ],
+  sort: [
+    { icon: 'arrow-up', event: 'onMoveItemsToUp', disabled: 'isColumnToDisabled' },
+    { icon: 'arrow-down', event: 'onMoveItemsToDown', disabled: 'isColumnToDisabled' },
+  ],
+};
 
 interface ColumnItemsActive {
   from: string[];
   to: string[];
 }
 
-const defaultActiveItems = { from: [], to: [] };
+const DEFAULT_ACTIVE_ITEMS = { from: [], to: [] };
 
 @Component({})
 export default class TransferListActions extends Vue {
-  activeItems: ColumnItemsActive = defaultActiveItems;
+  @Prop() move!: 'transfer' | 'sort';
 
-  isFromColumnDisabled() {
-    return this.activeItems.from.length === 0;
-  }
-
-  isToColumnDisabled() {
-    return this.activeItems.to.length === 0;
-  }
-
-  handleSelectItem(event: CustomEvent) {
-    this.activeItems = { ...this.activeItems, ...event.detail };
-  }
+  activeItems: ColumnItemsActive = DEFAULT_ACTIVE_ITEMS;
+  actionList = actions[this.move];
+  events = {
+    onTransferAllToColumnFrom: () => this.handleTransferAllToColumn('from'),
+    onTransferAllToColumnTo: () => this.handleTransferAllToColumn('to'),
+    onTransferItemsToColumnFrom: () => this.handleTransferItemsToColumn('from'),
+    onTransferItemsToColumnTo: () => this.handleTransferItemsToColumn('to'),
+    onMoveItemsToUp: () => this.handleSortItems('up'),
+    onMoveItemsToDown: () => this.handleSortItems('down'),
+    isColumnFromDisabled: this.isColumnFromDisabled,
+    isColumnToDisabled: this.isColumnToDisabled,
+  };
 
   mounted() {
     window.addEventListener(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, (event) =>
@@ -59,20 +65,41 @@ export default class TransferListActions extends Vue {
     window.removeEventListener(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, () => this.handleSelectItem);
   }
 
-  handleTransferItemsToColumn(columnToMove: 'from' | 'to') {
-    const itemsToMove = this.activeItems[columnToMove];
+  isColumnFromDisabled() {
+    return this.activeItems.from.length === 0;
+  }
+
+  isColumnToDisabled() {
+    return this.activeItems.to.length === 0;
+  }
+
+  handleSelectItem(event: CustomEvent) {
+    this.activeItems = { ...this.activeItems, ...event.detail };
+  }
+
+  handleTransferItemsToColumn(direction: 'from' | 'to') {
+    const itemsToMove = this.activeItems[direction];
 
     this.$emit(TRANSFER_LIST_EVENTS.ITEMS_MOVED, itemsToMove);
     this.clearSelecteds();
   }
 
-  handleTransferAllFromColumn(columnFrom: 'from' | 'to') {
-    this.$emit(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, columnFrom);
+  handleTransferAllToColumn(direction: 'from' | 'to') {
+    this.$emit(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, direction);
     this.clearSelecteds();
   }
 
+  handleSortItems(direction: 'up' | 'down') {
+    const itemsToMove = this.activeItems['to'];
+
+    this.$emit(TRANSFER_LIST_EVENTS.ITEMS_SORTED, { direction, items: itemsToMove });
+  }
+
   clearSelecteds() {
-    this.activeItems = defaultActiveItems;
+    this.activeItems = DEFAULT_ACTIVE_ITEMS;
+
+    const evt = Event(TRANSFER_LIST_EVENTS.CLEAR_SELECTION);
+    window.dispatchEvent(evt);
   }
 }
 </script>

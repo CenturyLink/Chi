@@ -68,10 +68,15 @@ export default class TransferListColumn extends Vue {
   @Prop() items!: TransferListItem[];
 
   filter = '';
-  activeItems: TransferListItem[] = [];
-
   isToColumn = this.type === 'to';
   hasLockedItems = this.items?.some((item) => item.locked);
+
+  mounted() {
+    window.addEventListener(TRANSFER_LIST_EVENTS.CLEAR_SELECTION, () => {
+      const select = this.$el.querySelector('select') as HTMLSelectElement;
+      select.selectedIndex = -1;
+    });
+  }
 
   handleFilter(value: string) {
     this.filter = value;
@@ -86,7 +91,6 @@ export default class TransferListColumn extends Vue {
     const column = this.type as string;
 
     const evt = Event(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, { [column]: items });
-
     window.dispatchEvent(evt);
   }
 
