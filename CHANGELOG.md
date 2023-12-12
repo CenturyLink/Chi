@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.43.0 (December 12, 2023)
+### Components
+#### Added
+* Added: Dropdown menu items now supports mutation observer to better support dynamic DOM changes.
+### Documentation
+#### Added
+* Added: Helper message to Number input in message and error sections.
+
 ## 5.42.0 (November 27, 2023)
 ### Components
 #### Added
