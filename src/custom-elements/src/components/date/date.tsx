@@ -696,6 +696,7 @@ export class Date {
 
             return (
               <div
+                key={day.format(this.format)}
                 class={`${DATEPICKER_CLASSES.DAY}
                 ${
                   (this._vm.min && day.isBefore(this._vm.min)) ||
