@@ -1,13 +1,22 @@
-import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
-import { contains, uuid4 } from '../../utils/utils';
-import { CHI_TIME_AUTO_SCROLL_DELAY,
-  ESCAPE_KEYCODE,
-  TimePickerFormats} from '../../constants/constants';
+import {
+  Component,
+  Element,
+  Listen,
+  Method,
+  Prop,
+  h,
+  Watch,
+} from '@stencil/core';
+import { contains, uuid4, isEscapeKey } from '../../utils/utils';
+import {
+  CHI_TIME_AUTO_SCROLL_DELAY,
+  TimePickerFormats,
+} from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-time-picker',
-  scoped: true
+  scoped: true,
 })
 export class TimePicker {
   /**
@@ -62,19 +71,13 @@ export class TimePicker {
   }
 
   _onClick(e) {
-    if (
-      e.target !== document.body &&
-      e.target !== null
-    ) {
+    if (e.target !== document.body && e.target !== null) {
       this.active = contains(this.el, e.target);
     }
   }
 
   _onKeyUp(e) {
-    if (
-      'key' in e &&
-      (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-    ) {
+    if (isEscapeKey(e)) {
       this.active = false;
       this._input.blur();
     }
@@ -125,27 +128,33 @@ export class TimePicker {
   @Listen('chiPopoverShow')
   handlePopoverOpen(ev) {
     ev.stopPropagation();
-    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`) as HTMLElement;
-    const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`) as HTMLElement;
-    const secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`) as HTMLElement;
+    const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`);
+    const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`);
+    const secondsColumn = this.el.querySelector(`.${TIME_CLASSES.SECONDS}`);
 
     setTimeout(() => {
       if (hoursColumn) {
-        const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
+        const activeHour = hoursColumn.querySelector(
+          `.${TIME_CLASSES.HOUR}.-active`,
+        ) as HTMLElement;
 
         if (activeHour) {
           hoursColumn.scrollTop = activeHour.offsetTop - 4;
         }
       }
       if (minutesColumn) {
-        const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
+        const activeMinute = minutesColumn.querySelector(
+          `.${TIME_CLASSES.MINUTE}.-active`,
+        ) as HTMLElement;
 
         if (activeMinute) {
           minutesColumn.scrollTop = activeMinute.offsetTop - 4;
         }
       }
       if (secondsColumn) {
-        const activeSecond = secondsColumn.querySelector(`.${TIME_CLASSES.SECOND}.-active`) as HTMLElement;
+        const activeSecond = secondsColumn.querySelector(
+          `.${TIME_CLASSES.SECOND}.-active`,
+        ) as HTMLElement;
 
         if (activeSecond) {
           secondsColumn.scrollTop = activeSecond.offsetTop - 4;
@@ -156,15 +165,25 @@ export class TimePicker {
 
   @Listen('chiTimeChange')
   handleTimeChange(ev) {
-    const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
+    const timePickerInput = document.getElementById(
+      this._uuid,
+    ) as HTMLInputElement;
     const formatTimePeriod = (period: number) => {
       return String(period).length > 1 ? String(period) : `0${period}`;
     };
-    const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
-    const seconds = this.displaySeconds ? `:${formatTimePeriod(ev.detail.second)}` : '';
-    const timePeriod = this.format === '12hr' ? formatTimePeriod(ev.detail.period) : '';
-    
-    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds} ${timePeriod}`
+    const hour =
+      this.format !== '24hr' && ev.detail.hour > 12
+        ? ev.detail.hour - 12
+        : ev.detail.hour;
+    const seconds = this.displaySeconds
+      ? `:${formatTimePeriod(ev.detail.second)}`
+      : '';
+    const timePeriod =
+      this.format === '12hr' ? formatTimePeriod(ev.detail.period) : '';
+
+    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(
+      ev.detail.minute,
+    )}${seconds} ${timePeriod}`;
   }
 
   render() {
@@ -189,16 +208,14 @@ export class TimePicker {
 
     return (
       <div class={this.disabled ? '-disabled' : ''}>
-        <div
-          class="chi-input__wrapper -icon--right"
-        >
+        <div class="chi-input__wrapper -icon--right">
           <input
             id={`${this._uuid}-control`}
             class={`chi-input
               ${this.active ? '-focus' : ''}`}
             type={`text`}
             placeholder={this.format === '12hr' ? '--:-- --' : '--:--'}
-            ref={el => (this._input = el as HTMLInputElement)}
+            ref={(el) => (this._input = el as HTMLInputElement)}
             value={this.value}
             disabled={this.disabled}
           />
