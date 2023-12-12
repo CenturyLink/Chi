@@ -70,7 +70,13 @@ export const BASE_URL =
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
 
-export const DOCS_URL = `${BASE_URL}js/ce/docs.json`;
+export const SECTION_URLS = {
+  gettingStarted: `getting-started`,
+  utilities: `utilities`,
+  components: `components`,
+  foundations: `foundations`,
+  templates: `templates`
+} 
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
@@ -340,6 +346,22 @@ export const NAVIGATION_TEMPLATE_ITEMS = [
   { to: `templates/error-404`, label: 'Error 404', source: 'vue' },
   { to: `templates/error-500`, label: 'Error 500', source: 'vue' },
   { to: `templates/state`, label: 'State', source: 'vue' }
+];
+export const NAVIGATION_UTILITIES_ITEMS = [
+  { to: `utilities/border`, label: 'Border' },
+  { to: `utilities/color`, label: 'Color' },
+  { to: `utilities/display`, label: 'Display' },
+  { to: `utilities/flex`, label: 'Flex' },
+  { to: `utilities/image`, label: 'Image' },
+  { to: `utilities/opacity`, label: 'Opacity' },
+  { to: `utilities/overflow`, label: 'Overflow' },
+  { to: `utilities/position`, label: 'Position' },
+  { to: `utilities/shadow`, label: 'Shadow' },
+  { to: `utilities/sizing`, label: 'Sizing' },
+  { to: `utilities/spacing`, label: 'Spacing' },
+  { to: `utilities/text`, label: 'Text' },
+  { to: `utilities/vertical-align`, label: 'Vertical-align' },
+  { to: `utilities/zindex`, label: 'Z-index' },
 ];
 
 export const CHI_VISIBLE_VERSION = [

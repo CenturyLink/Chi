@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-27T12:19:51",
+  "timestamp": "2023-12-04T16:12:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2312,6 +2312,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-number-input",
         "chi-text-input",
         "chi-textarea"
       ],
@@ -2321,6 +2322,9 @@
       "dependencyGraph": {
         "chi-helper-message": [
           "chi-icon"
+        ],
+        "chi-number-input": [
+          "chi-helper-message"
         ],
         "chi-text-input": [
           "chi-helper-message"
@@ -3022,8 +3026,24 @@
           "required": false
         },
         {
-          "name": "inputstyle",
+          "name": "helperMessage",
           "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Number Input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "inputstyle",
+          "type": "\"danger\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "inputstyle",
           "reflectToAttr": false,
@@ -3031,6 +3051,15 @@
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -3201,10 +3230,15 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-number-input": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }
@@ -4457,6 +4491,22 @@
           "attr": "excluded-countries",
           "reflectToAttr": true,
           "docs": "To define two letter ISO country codes to exclude from Phone input dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Phone input",
           "docsTags": [],
           "values": [
             {

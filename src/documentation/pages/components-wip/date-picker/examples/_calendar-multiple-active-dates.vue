@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Multiple active dates" id="calendar-multiple-active-dates" :tabs="exampleTabs">
-    chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021" slot="example")
+    chi-date(multiple, value="03/10/2024,03/11/2024,03/12/2024" slot="example")
     <Wrapper slot="code-webcomponent">
       .chi-tab__description Specify multiple active dates by separating the dates with a comma
       <pre class="language-html">
@@ -37,7 +37,7 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-date value="03/10/2021,03/11/2021,03/12/2021" multiple></chi-date>`,
+        webcomponent: `<chi-date value="03/10/2024,03/11/2024,03/12/2024" multiple></chi-date>`,
         htmlblueprint: ``,
       },
     };
@@ -67,7 +67,7 @@ export default class CalendarMultipleActiveDates extends Vue {
     <div class="prev">
       <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
     </div>
-    <div class="chi-datepicker__month">March 2021</div>
+    <div class="chi-datepicker__month">March 2024</div>
     <div class="next">
       <i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i>
     </div>
