@@ -1,3 +1,7 @@
+ARG BASE_VERSION=latest
+FROM nexusprod.corp.intranet:4567/jsl-docker-standard-images/base_agent:$BASE_VERSION AS base_agent
+FROM nexusprod.corp.intranet:4567/jsl-docker-standard-images/sonarqube_agent:$BASE_VERSION AS sonar_agent
+FROM nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:$BASE_VERSION AS jira_agent
 FROM nexusprod.corp.intranet:4567/node:fermium-buster-slim
 
 LABEL Description="This is a base image, which provides a cypress environment"
@@ -8,6 +12,9 @@ ARG uid=1341
 ARG gid=1341
 RUN getent group ${gid} || groupadd -g ${gid} ${group}
 RUN useradd -c "Jenkins user" -d /home/${user} -u ${uid} -g ${gid} -m ${user}
+
+WORKDIR /home/${user}
+ENV CURLOPTIONS "-SsLk --fail"
 
 VOLUME /ux-chi
 
