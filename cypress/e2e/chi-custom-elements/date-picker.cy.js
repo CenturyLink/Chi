@@ -557,11 +557,17 @@ describe('Date picker', function() {
 
       cy.focused()
         .type('{rightArrow}')
+      cy.focused()
         .type('{downArrow}')
+      cy.focused()
         .type('{downArrow}')
+      cy.focused()
         .type('{downArrow}')
+      cy.focused()
         .type('{downArrow}')
+      cy.focused()
         .type('{downArrow}')
+      cy.focused()
         .type('{downArrow}');
 
       cy.focused().type('{enter}');
