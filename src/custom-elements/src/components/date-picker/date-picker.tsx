@@ -311,7 +311,7 @@ export class DatePicker {
   handleDateTimeChange(ev) {
     const chiTime = this.el.querySelector(
       '.chi-popover__content chi-time',
-    ) as HTMLElement;
+    );
     const valueTime = chiTime.getAttribute('value');
     const timeFormat = chiTime.getAttribute('format');
     const is24hrTimeFormat = timeFormat === '24hr';
@@ -470,7 +470,8 @@ export class DatePicker {
 
     const inputClasses = `chi-input
       ${this.active ? '-focus' : ''}
-      ${this.state ? `-${this.state}` : ''}`;
+      ${this.state ? '-' + this.state : ''}
+    `;
 
     return [
       // TODO: This input should be chi-input in the future and will pass through
