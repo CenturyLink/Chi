@@ -129,7 +129,7 @@
             v-for="(navigationComponentItem,
             index) in NAVIGATION_COMPONENTS_ITEMS"
             :class="{
-              '-active': $route.path === `/${navigationComponentItem.to}`
+              '-active': $route.path.includes(navigationComponentItem.to)
             }"
           >
             <NuxtLink
@@ -160,7 +160,7 @@
             :key="index"
             v-for="(navigationUtilityItem, index) in NAVIGATION_UTILITIES_ITEMS"
             :class="{
-              '-active': $route.path === `/${navigationUtilityItem.to}`
+              '-active': $route.path.includes(navigationUtilityItem.to)
             }"
           >
             <NuxtLink :to="`/${navigationUtilityItem.to}`">
@@ -176,7 +176,7 @@
             :key="index"
             v-for="(navigationTemplateItem, index) in NAVIGATION_TEMPLATE_ITEMS"
             :class="{
-              '-active': $route.path === `/${navigationTemplateItem.to}`
+              '-active': $route.path.includes(navigationTemplateItem.to)
             }"
           >
             <NuxtLink
