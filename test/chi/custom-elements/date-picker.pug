@@ -70,3 +70,15 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   .-d--flex
     chi-date(value=date1)
     chi-time(value="00:00", format='12hr')
+
+.test-keyboard-functionality.-py--2
+  span.-text--h2 Test keyboard functionality
+  .-d--flex
+    chi-date-picker(
+      data-cy="test-keyboard-functionality"
+      excluded-weekdays="0,3,5"
+      keyboard-navigation
+      min="11/01/2023"
+      max="03/03/2024"
+      value="12/05/2023"
+    )
