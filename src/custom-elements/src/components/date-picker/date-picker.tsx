@@ -9,7 +9,7 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core';
-import { contains, uuid4, isEscapeKey } from '../../utils/utils';
+import { contains, uuid4 } from '../../utils/utils';
 import {
   CHI_TIME_AUTO_SCROLL_DELAY,
   DataLocales,
@@ -21,6 +21,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ChiStates, CHI_STATES } from '../../constants/states';
+import { ESCAPE_KEYCODE } from '../../constants/constants';
 
 @Component({
   tag: 'chi-date-picker',
@@ -156,10 +157,17 @@ export class DatePicker {
     }
   }
 
+  _isEscapeKey(e: KeyboardEvent): boolean {
+    return (
+      'key' in e &&
+      (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
+    );
+  }
+
   _onKeyUp(e: KeyboardEvent) {
     if (!this.active) return;
 
-    if (isEscapeKey(e)) {
+    if (this._isEscapeKey(e)) {
       this.active = false;
       this._input.blur();
     }
@@ -211,9 +219,7 @@ export class DatePicker {
       !this.checkIfExcluded(inputDate)
     ) {
       if (
-        dayjs(inputDate)
-          .startOf('day')
-          .isBefore(dayjs(minDate).startOf('day'))
+        dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))
       ) {
         this.value = this.min;
         this._input.value = this.min;
@@ -309,15 +315,13 @@ export class DatePicker {
   }
 
   handleDateTimeChange(ev) {
-    const chiTime = this.el.querySelector(
-      '.chi-popover__content chi-time',
-    );
+    const chiTime = this.el.querySelector('.chi-popover__content chi-time');
     const valueTime = chiTime.getAttribute('value');
     const timeFormat = chiTime.getAttribute('format');
     const is24hrTimeFormat = timeFormat === '24hr';
-    
+
     if (!valueTime) {
-      return
+      return;
     }
 
     const time = valueTime.split(':');
@@ -419,11 +423,9 @@ export class DatePicker {
     let value = this.value;
 
     if (this.mode === 'datetime') {
-      value = this.value
-        ? this.value.split(',')[0]
-        : null;
+      value = this.value ? this.value.split(',')[0] : null;
     }
-    
+
     return value;
   }
 

@@ -1,5 +1,4 @@
 import { CalculateClassesParam } from '../models/CalculateClassesParam';
-import { ESCAPE_KEYCODE } from '../constants/constants';
 
 /**
  * Returns a string that contains the class value based on the opts parameter.
@@ -8,34 +7,23 @@ import { ESCAPE_KEYCODE } from '../constants/constants';
 export function calculateClasses(opts?: CalculateClassesParam): string {
   if (opts) {
     return (opts.binary || [])
-      .filter((tuple) => tuple[1])
-      .map((tuple) => tuple[0])
-      .concat(
-        (opts.prefixed || [])
-          .filter((prefixed) => prefixed.value)
-          .map(
-            (prefixed) =>
-              (prefixed.prefix || '') +
-              prefixed.value +
-              (prefixed.suffix || ''),
-          ),
+      .filter(tuple => tuple[1])
+      .map(tuple => tuple[0])
+      .concat((opts.prefixed || [])
+        .filter(prefixed => prefixed.value)
+        .map(prefixed => (prefixed.prefix || '') + prefixed.value + (prefixed.suffix || ''))
       )
-      .concat(
-        (opts.generated || []).map((generator) =>
-          generator.generator(generator.value),
-        ),
+      .concat((opts.generated || [])
+        .map(generator => generator.generator(generator.value))
       )
-      .filter((className) => className && className.trim())
+      .filter(className => className && className.trim())
       .join(' ');
   } else {
     return '';
   }
 }
 
-export function contains(
-  ancestorElement: HTMLElement,
-  descendantElement: HTMLElement,
-): boolean {
+export function contains(ancestorElement: HTMLElement, descendantElement: HTMLElement): boolean {
   if (descendantElement.parentElement === ancestorElement) {
     return true;
   } else if (!descendantElement.parentElement) {
@@ -46,14 +34,13 @@ export function contains(
 }
 
 export function uuid4() {
-  let uuid = '',
-    ii;
+  let uuid = '', ii;
   for (ii = 0; ii < 32; ii += 1) {
     switch (ii) {
       case 8:
       case 20:
         uuid += '-';
-        uuid += ((Math.random() * 16) | 0).toString(16);
+        uuid += (Math.random() * 16 | 0).toString(16);
         break;
       case 12:
         uuid += '-';
@@ -61,32 +48,18 @@ export function uuid4() {
         break;
       case 16:
         uuid += '-';
-        uuid += ((Math.random() * 4) | 8).toString(16);
+        uuid += (Math.random() * 4 | 8).toString(16);
         break;
       default:
-        uuid += ((Math.random() * 16) | 0).toString(16);
+        uuid += (Math.random() * 16 | 0).toString(16);
     }
   }
   return uuid;
 }
 
 let idCounter = 0;
-const idDomain = Math.random()
-  .toString(36)
-  .replace(/[^a-z]+/g, '')
-  .substring(2, 13);
+const idDomain = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(2, 10);
 
 export function getNewUniqueId(): string {
   return `chi-${idDomain}-${idCounter++}`;
-}
-
-/**
- * @param e KeyboardEvent
- * @returns wether the keyboard event was triggered by escape key
- */
-export function isEscapeKey(e: KeyboardEvent): boolean {
-  return (
-    'key' in e &&
-    (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-  );
 }
