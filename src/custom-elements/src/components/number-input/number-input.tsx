@@ -106,6 +106,21 @@ export class NumberInput {
     void
   >;
 
+  /**
+   * Triggered when the user sets focus on the element.
+   */
+  @Event({ eventName: 'chiFocus' }) chiFocus: EventEmitter;
+
+  /**
+   * Triggered when the element has lost focus.
+   */
+  @Event({ eventName: 'chiBlur' }) chiBlur: EventEmitter;
+
+  /**
+   * Triggered when the user clicks on increment/decrement button.
+   */
+  @Event({ eventName: 'chiClick' }) chiClick: EventEmitter;
+
   @Watch('inputstyle')
   inputStyleValidation(newValue: ChiStates) {
     if (newValue && !CHI_STATES.includes(newValue)) {
@@ -150,7 +165,14 @@ export class NumberInput {
     if (!input.validity.valid) this.chiNumberInvalid.emit();
   }
 
-  private increment() {
+  emitEventsOnClick(ev: Event) {
+    this.chiFocus.emit()
+    this.chiChange.emit(this.value);
+    this.chiInput.emit(this.value);
+    this.chiClick.emit(ev)
+  }
+
+  private increment(clickEv: Event) {
     this._numberInput.stepUp();
     this.value = this._numberInput.value;
 
@@ -159,9 +181,11 @@ export class NumberInput {
         this.chiChange.emit(this.value);
       });
     }
+
+    this.emitEventsOnClick(clickEv)
   }
 
-  private decrement() {
+  private decrement(clickEv: Event) {
     this._numberInput.stepDown();
     this.value = this._numberInput.value;
 
@@ -170,6 +194,8 @@ export class NumberInput {
         this.chiChange.emit(this.value);
       });
     }
+
+    this.emitEventsOnClick(clickEv)
   }
 
   /**
@@ -191,6 +217,8 @@ export class NumberInput {
         value={this.value}
         onChange={ev => this.handleChange(ev)}
         onInput={ev => this.handleInput(ev)}
+        onFocus={() => this.chiFocus.emit()}
+        onBlur={() => this.chiBlur.emit()}
         id={this.el.id ? `${this.el.id}-control` : null}
       />
     );
@@ -202,12 +230,12 @@ export class NumberInput {
         {this.getInput()}
         <button
           disabled={this.isDecreaseDisabled()}
-          onClick={() => this.decrement()}
+          onClick={ev => this.decrement(ev)}
           aria-label="Decrease"
         ></button>
         <button
           disabled={this.isIncreaseDisabled()}
-          onClick={() => this.increment()}
+          onClick={ev => this.increment(ev)}
           aria-label="Increase"
         ></button>
       </div>
@@ -223,7 +251,7 @@ export class NumberInput {
         <button
           class="chi-button -icon"
           disabled={this.isDecreaseDisabled()}
-          onClick={() => this.decrement()}
+          onClick={ev => this.decrement(ev)}
           aria-label="Decrease"
         >
           <div class="chi-button__content">
@@ -233,7 +261,7 @@ export class NumberInput {
         <button
           class="chi-button -icon"
           disabled={this.isIncreaseDisabled()}
-          onClick={() => this.increment()}
+          onClick={ev => this.increment(ev)}
           aria-label="Increase"
         >
           <div class="chi-button__content">
