@@ -4,6 +4,9 @@ const DANGER_CLASS = '-danger';
 const TIME_PICKER_HOUR = 'chi-time-picker__hour';
 const TIME_PICKER_MINUTE = 'chi-time-picker__minute';
 const TIME_PICKER_PERIOD = 'chi-time-picker__period';
+const DATE_PICKER_DAY = 'chi-datepicker__day';
+const DATE_PICKER_NEXT = 'next';
+const DATE_PICKER_PREV = 'prev';
 const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
 const hour = '07';
@@ -467,5 +470,109 @@ describe('Date picker', function() {
     cy.get('@testTimeFormat')
       .find('input')
       .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+  });
+
+  describe('Keyboard navigation', function() {
+    beforeEach(() => {
+      cy.get('[data-cy="test-keyboard-functionality"]').as('datePicker');
+      cy.get('[data-cy="test-keyboard-functionality"] input').as('pickerInput');
+      cy.get('@pickerInput')
+        .scrollIntoView()
+        .click()
+        .tab()
+        .should('have.class', DATE_PICKER_PREV);
+    });
+
+    it('Should navigate with tab through months and calendar', function() {
+      cy.focused()
+        .tab()
+        .should('have.class', DATE_PICKER_NEXT);
+      cy.focused()
+        .tab()
+        .should('have.class', DATE_PICKER_DAY);
+      cy.focused()
+        .tab()
+        .should('have.class', DATE_PICKER_PREV);
+    });
+
+    it('Should navigate backwards with shift tab', function() {
+      cy.focused()
+        .tab({ shift: true })
+        .should('have.class', DATE_PICKER_DAY);
+      cy.focused()
+        .tab({ shift: true })
+        .should('have.class', DATE_PICKER_NEXT);
+      cy.focused()
+        .tab({ shift: true })
+        .should('have.class', DATE_PICKER_PREV);
+    });
+
+    it('Should navigate through months with enter but not if disabled', function() {
+      cy.focused()
+        .type('{enter}')
+        .tab()
+        .should('have.class', DATE_PICKER_NEXT)
+        .tab()
+        .should('have.class', DATE_PICKER_DAY)
+        .tab()
+        .should('have.class', DATE_PICKER_NEXT)
+        .type('{enter}')
+        .type('{enter}')
+        .type('{enter}')
+        .type('{enter}');
+      cy.get('@pickerInput')
+        .tab()
+        .should('have.class', DATE_PICKER_PREV)
+        .tab()
+        .should('have.class', DATE_PICKER_DAY)
+        .tab()
+        .should('have.class', DATE_PICKER_PREV);
+    });
+
+    it('Should navigate with arrow keys in the calendar', function() {
+      cy.get('@datePicker').should('have.attr', 'value', '12/05/2023');
+
+      cy.focused()
+        .tab()
+        .should('have.class', DATE_PICKER_NEXT)
+        .tab()
+        .should('have.class', DATE_PICKER_DAY)
+        .type('{upArrow}');
+      cy.focused().type('{upArrow}');
+
+      cy.focused()
+        .type('{leftArrow}')
+        .type('{leftArrow}');
+
+      cy.focused().type('{enter}');
+
+      cy.get('@datePicker').should('have.attr', 'value', '11/18/2023');
+
+      cy.get('@pickerInput')
+        .click()
+        .tab()
+        .tab()
+        .tab()
+        .should('have.class', DATE_PICKER_DAY);
+
+      cy.focused()
+        .type('{rightArrow}')
+      cy.focused()
+        .type('{downArrow}')
+      cy.focused()
+        .type('{downArrow}')
+      cy.focused()
+        .type('{downArrow}')
+      cy.focused()
+        .type('{downArrow}')
+      cy.focused()
+        .type('{downArrow}')
+      cy.focused()
+        .type('{downArrow}');
+
+      cy.focused().type('{enter}');
+
+      cy.get('@datePicker').should('have.attr', 'value', '01/01/2024');
+    });
   });
 });
