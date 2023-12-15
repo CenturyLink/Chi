@@ -13,67 +13,67 @@ $avatar-sizes: (
 );
 
 $avatar-colors: (
-  grey: (
+  "grey": (
     border-color: $avatar-grey-border-color,
     text-color:   $avatar-grey-text-color,
   ),
-  red: (
+  "red": (
     border-color: $avatar-red-border-color,
     text-color:   $avatar-red-text-color,
   ),
-  pink: (
+  "pink": (
     border-color: $avatar-pink-border-color,
     text-color:   $avatar-pink-text-color,
   ),
-  purple: (
+  "purple": (
     border-color: $avatar-purple-border-color,
     text-color:   $avatar-purple-text-color,
   ),
-  indigo: (
+  "indigo": (
     border-color: $avatar-indigo-border-color,
     text-color:   $avatar-indigo-text-color,
   ),
-  cyan: (
+  "cyan": (
     border-color: $avatar-cyan-border-color,
     text-color:   $avatar-cyan-text-color,
   ),
-  navy: (
+  "navy": (
     border-color: $avatar-navy-border-color,
     text-color:   $avatar-navy-text-color,
   ),
-  blue: (
+  "blue": (
     border-color: $avatar-blue-border-color,
     text-color:   $avatar-blue-text-color,
   ),
-  teal: (
+  "teal": (
     border-color: $avatar-teal-border-color,
     text-color:   $avatar-teal-text-color,
   ),
-  green: (
+  "green": (
     border-color: $avatar-green-border-color,
     text-color:   $avatar-green-text-color,
   ),
-  yellow: (
+  "yellow": (
     border-color: $avatar-yellow-border-color,
     text-color:   $avatar-yellow-text-color,
   ),
-  orange: (
+  "orange": (
     border-color: $avatar-orange-border-color,
     text-color:   $avatar-orange-text-color,
   ),
-  light: (
+  "light": (
     border-color: $avatar-light-border-color,
     text-color:   $avatar-light-text-color,
   ),
-  inverse: (
+  "inverse": (
     border-color: $avatar-inverse-border-color,
     text-color:   $avatar-inverse-text-color,
   ),
-  primary: (
+  "primary": (
     border-color: $avatar-primary-border-color,
     text-color:   $avatar-primary-text-color,
   ),
-  secondary: (
+  "secondary": (
     border-color: $avatar-secondary-border-color,
     text-color:   $avatar-secondary-text-color,
   ),
@@ -86,7 +86,7 @@ $avatar-default-size: 'md';
   border-radius: 50%;
   color: $avatar-text-color;
   display: inline-block;
-  font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
+  font-size: calc(map-get($avatar-sizes, $avatar-default-size) / 2);
   height: map-get($avatar-sizes, $avatar-default-size);
   line-height: map-get($avatar-sizes, $avatar-default-size);
   overflow: hidden;
@@ -109,7 +109,7 @@ $avatar-default-size: 'md';
   }
 
   &.chi-icon {
-    font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
+    font-size: calc(map-get($avatar-sizes, $avatar-default-size) / 2);
     height: map-get($avatar-sizes, $avatar-default-size);
     line-height: map-get($avatar-sizes, $avatar-default-size);
     width: map-get($avatar-sizes, $avatar-default-size);
@@ -117,14 +117,14 @@ $avatar-default-size: 'md';
 
   @each $type in map-keys($avatar-sizes) {
     &.-#{$type} {
-      font-size: map-get($avatar-sizes, $type) / 2;
+      font-size: calc(map-get($avatar-sizes, $type) / 2);
       height: map-get($avatar-sizes, $type);
       line-height: map-get($avatar-sizes, $type);
       width: map-get($avatar-sizes, $type);
 
       & > i {
         &.chi-icon {
-          font-size: map-get($avatar-sizes, $type) / 2;
+          font-size: calc(map-get($avatar-sizes, $type) / 2);
         }
       }
     }

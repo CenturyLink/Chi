@@ -72,7 +72,7 @@
 
   @for $i from 0 through 6 {
     &.-gap--#{$i} {
-      grid-gap: ($i / 2) + rem;
+      grid-gap: calc($i / 2) + rem;
     }
   }
 
@@ -86,7 +86,7 @@
     @include respond-to($size) {
       @for $i from 0 through 6 {
         &.-gap-#{$size}--#{$i} {
-          grid-gap: ($i / 2) + rem;
+          grid-gap: calc($i / 2) + rem;
         }
       }
 

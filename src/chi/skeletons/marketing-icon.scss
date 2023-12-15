@@ -16,7 +16,7 @@ chi-marketing-icon:not(.hydrated) {
 
   @each $size, $width in $sizes {
     &[size=#{$size}] {
-      border-radius: $width / 2;
+      border-radius: calc($width / 2);
       height: $width;
       width: $width;
     }

@@ -208,7 +208,7 @@ $input-range-track-height: 0.25rem;
 .chi-input__tick {
   border-left: 0.0625rem solid $range-slider-tick-border-color;
   height: 0.25rem;
-  margin: -($input-range-height - $input-range-track-height) / 2 auto 0;
+  margin: -($input-range-height - calc($input-range-track-height / 2)) auto 0;
 
   &-bar {
     display: flex;

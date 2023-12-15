@@ -125,7 +125,7 @@ $transforms: (lowercase, uppercase, capitalize);
 // line heights
 @for $index from 1 through 9 {
   .-lh--#{$index} {
-    line-height: ($index / 2) + rem !important;
+    line-height: calc($index / 2) + rem !important;
   }
 }
 
@@ -134,7 +134,7 @@ $transforms: (lowercase, uppercase, capitalize);
   @include respond-to($screen-size) {
     @for $index from 1 through 9 {
       .-lh-#{$screen-size}--#{$index} {
-        line-height: ($index / 2) + rem !important;
+        line-height: calc($index / 2) + rem !important;
       }
     }
   }

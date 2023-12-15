@@ -55,7 +55,7 @@ $skeleton-sizes: (
 
     @each $type in map-keys($skeleton-sizes) {
       &.-#{$type} {
-        border-radius: map-get($skeleton-sizes, $type) / 2;
+        border-radius: calc(map-get($skeleton-sizes, $type) / 2);
       }
     }
   }

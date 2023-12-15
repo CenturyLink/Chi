@@ -2,44 +2,44 @@
 @import '_global-variables';
 
 $colors: (
-  primary: $color-background-primary,
-  secondary: $color-background-secondary,
-  white: $color-white,
-  black: $color-black,
-  navy: $color-navy-100,
-  grey: $color-grey-80,
-  grey-10: $color-grey-10,
-  grey-15: $color-grey-15,
-  grey-20: $color-grey-20,
-  grey-25: $color-grey-25,
-  grey-30: $color-grey-30,
-  grey-80: $color-grey-80,
-  muted: $color-background-muted,
-  muted-light: $color-background-muted-light,
-  muted-lighter: $color-background-muted-lighter,
-  success: $color-background-success,
-  success-light: $color-background-success-light,
-  success-lighter: $color-background-success-lighter,
-  info: $color-background-info,
-  info-light: $color-background-info-light,
-  info-lighter: $color-background-info-lighter,
-  warning: $color-background-warning,
-  warning-light: $color-background-warning-light,
-  warning-lighter: $color-background-warning-lighter,
-  danger: $color-background-danger,
-  danger-light: $color-background-danger-light,
-  danger-lighter: $color-background-danger-lighter,
-  none: none
+  "primary": $color-background-primary,
+  "secondary": $color-background-secondary,
+  "white": $color-white,
+  "black": $color-black,
+  "navy": $color-navy-100,
+  "grey": $color-grey-80,
+  "grey-10": $color-grey-10,
+  "grey-15": $color-grey-15,
+  "grey-20": $color-grey-20,
+  "grey-25": $color-grey-25,
+  "grey-30": $color-grey-30,
+  "grey-80": $color-grey-80,
+  "muted": $color-background-muted,
+  "muted-light": $color-background-muted-light,
+  "muted-lighter": $color-background-muted-lighter,
+  "success": $color-background-success,
+  "success-light": $color-background-success-light,
+  "success-lighter": $color-background-success-lighter,
+  "info": $color-background-info,
+  "info-light": $color-background-info-light,
+  "info-lighter": $color-background-info-lighter,
+  "warning": $color-background-warning,
+  "warning-light": $color-background-warning-light,
+  "warning-lighter": $color-background-warning-lighter,
+  "danger": $color-background-danger,
+  "danger-light": $color-background-danger-light,
+  "danger-lighter": $color-background-danger-lighter,
+  "none": none
 );
 
 @each $color-key, $color-value in $colors  {
 
   @if $color-key == 'none' {
-    .-bg--#{$color-key} {
+    .-bg--#{$color-key}  {
       background: $color-value !important;
     }
   } @else {
-    .-bg--#{$color-key} {
+    .-bg--#{$color-key}  {
       background-color: $color-value !important;
     }
   }
