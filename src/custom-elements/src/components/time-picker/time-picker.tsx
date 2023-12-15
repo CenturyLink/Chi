@@ -5,7 +5,7 @@ import {
   Method,
   Prop,
   h,
-  Watch,
+  Watch
 } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import {
@@ -127,7 +127,7 @@ export class TimePicker {
     document.body.addEventListener('keyup', this._onKeyUp);
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
     document.body.removeEventListener('keyup', this._onKeyUp);

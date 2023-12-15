@@ -1,4 +1,14 @@
-import { Component, Event, EventEmitter, Method, Prop, State, Watch, h, Element } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h,
+  Element
+} from '@stencil/core';
 import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
@@ -10,7 +20,6 @@ import { contains } from '../../utils/utils';
   scoped: true
 })
 export class Drawer {
-
   @Element() el;
 
   /**
@@ -70,14 +79,18 @@ export class Drawer {
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_POSITIONS.includes(newValue)) {
-      throw new Error(`Not valid position ${newValue} for drawer. Valid values are top, right, bottom or left. `);
+      throw new Error(
+        `Not valid position ${newValue} for drawer. Valid values are top, right, bottom or left. `
+      );
     }
   }
 
   @Watch('backdrop')
   backdropValidation(newValue: string) {
     if (newValue && newValue !== 'inverse' && newValue !== 'backdrop') {
-      throw new Error(`Not valid backdrop ${newValue} for drawer. Valid values are inverse, backdrop, empty or true. `);
+      throw new Error(
+        `Not valid backdrop ${newValue} for drawer. Valid values are inverse, backdrop, empty or true. `
+      );
     }
   }
 
@@ -143,7 +156,10 @@ export class Drawer {
       this.animation.stop();
     }
 
-    if (this._backdropAnimationClasses !== '' || this._animationClasses !== CLASSES.ACTIVE) {
+    if (
+      this._backdropAnimationClasses !== '' ||
+      this._animationClasses !== CLASSES.ACTIVE
+    ) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this._animationClasses = CLASSES.TRANSITIONING;
@@ -170,7 +186,10 @@ export class Drawer {
       this.animation.stop();
     }
 
-    if (this._backdropAnimationClasses !== CLASSES.CLOSED || this._animationClasses !== '') {
+    if (
+      this._backdropAnimationClasses !== CLASSES.CLOSED ||
+      this._animationClasses !== ''
+    ) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this._animationClasses = `${CLASSES.TRANSITIONING} ${CLASSES.ACTIVE}`;
@@ -201,8 +220,8 @@ export class Drawer {
     };
 
     if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
+      const subscriberCallback = mutations => {
+        mutations.forEach(mutation => {
           this.drawerTitle = mutation.target.title;
         });
       };
@@ -213,23 +232,22 @@ export class Drawer {
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
 
   private _documentClickHandler = (ev): void => {
     const drawerElement = this.el.querySelector('.chi-drawer');
-    const drawerCloseButton = this.nonClosable ? null : drawerElement.querySelector('button.-close');
+    const drawerCloseButton = this.nonClosable
+      ? null
+      : drawerElement.querySelector('button.-close');
     const clickTarget = ev.target as HTMLElement;
 
     if (!this.preventAutoHide) {
       if (drawerElement.classList.contains('-active')) {
-        const clickOnCloseButton = drawerCloseButton &&
-          clickTarget === drawerCloseButton ||
+        const clickOnCloseButton =
+          (drawerCloseButton && clickTarget === drawerCloseButton) ||
           contains(drawerCloseButton, clickTarget);
 
-        this.active = contains(drawerElement, clickTarget) &&
-          !clickOnCloseButton;
+        this.active =
+          contains(drawerElement, clickTarget) && !clickOnCloseButton;
       }
     }
   };
@@ -248,18 +266,25 @@ export class Drawer {
     document.addEventListener('click', this._documentClickHandler);
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     document.removeEventListener('click', this._documentClickHandler);
+    this.mutationObserver.disconnect();
   }
 
   render() {
     // TODO: change this into <chi-button/> element.
-    const xIconProperties = {icon: 'x'};
-    const closeButton = <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
-      <div class="chi-button__content">
-        <chi-icon {...xIconProperties}></chi-icon>
-      </div>
-    </button>;
+    const xIconProperties = { icon: 'x' };
+    const closeButton = (
+      <button
+        class="chi-button -icon -close"
+        onClick={() => this.hide()}
+        aria-label="Close"
+      >
+        <div class="chi-button__content">
+          <chi-icon {...xIconProperties}></chi-icon>
+        </div>
+      </button>
+    );
 
     const drawer = (
       <div
@@ -267,45 +292,46 @@ export class Drawer {
         ${this.position ? `-${this.position}` : ''}
         ${this._animationClasses}
         ${this.portal ? '-portal' : ''}
-      `}>
-        {this.noHeader
-          ? !this.nonClosable
-            ? [
-              closeButton,
+      `}
+      >
+        {this.noHeader ? (
+          !this.nonClosable ? (
+            [closeButton, <slot></slot>]
+          ) : (
+            <slot></slot>
+          )
+        ) : !this.nonClosable ? (
+          [
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">{this.drawerTitle}</span>
+              {closeButton}
+            </div>,
+            <div class="chi-drawer__content">
               <slot></slot>
-            ]
-            : <slot></slot>
-          : !this.nonClosable
-            ? [
-              <div class="chi-drawer__header">
-                <span class="chi-drawer__title">{this.drawerTitle}</span>
-                {closeButton}
-              </div>,
-              <div class="chi-drawer__content">
-                <slot></slot>
-              </div>
-            ]
-            : [
-              <div class="chi-drawer__header">
-                <span class="chi-drawer__title">{this.drawerTitle}</span>
-              </div>,
-              <div class="chi-drawer__content">
-                <slot></slot>
-              </div>
-            ]
-        }
+            </div>
+          ]
+        ) : (
+          [
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">{this.drawerTitle}</span>
+            </div>,
+            <div class="chi-drawer__content">
+              <slot></slot>
+            </div>
+          ]
+        )}
       </div>
     );
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`chi-backdrop -animated
+        <div
+          class={`chi-backdrop -animated
           ${this.backdrop === 'inverse' ? '-inverse' : ''}
           ${this._backdropAnimationClasses}
-        `}>
-          <div class="chi-backdrop__wrapper">
-            {drawer}
-          </div>
+        `}
+        >
+          <div class="chi-backdrop__wrapper">{drawer}</div>
         </div>
       );
     } else {

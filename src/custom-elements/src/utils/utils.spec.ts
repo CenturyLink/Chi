@@ -1,5 +1,8 @@
 import { calculateClasses } from './utils';
 
+// type complains
+import 'jest';
+
 it('should create empty classes from empty attributes', () => {
 
   expect(calculateClasses()).toBe('');

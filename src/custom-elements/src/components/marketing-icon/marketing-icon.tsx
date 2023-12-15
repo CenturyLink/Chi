@@ -82,7 +82,7 @@ export class MarketingIcon {
     this.validateSizeAttribute(this.size);
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     if (loadedIcons[this.variant] === 0) {
       if (!document.getElementById(`chi-marketing-icons-${this.variant}`)) {
         this._loadSprite(this.variant);
@@ -117,7 +117,6 @@ export class MarketingIcon {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
         >
           <use xlinkHref={`#icon-${this.variant}-${this.icon}`} />
