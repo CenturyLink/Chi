@@ -78,7 +78,7 @@
               &.-primary {
                 color: $color-text-black;
                 background: $color-background-secondary;
-                
+               
                 &:hover {
                   background: $color-background-secondary-dark;
                 }
@@ -91,7 +91,7 @@
               &.-dark {
                 color: $color-text-white;
                 border-color: $color-border-white;
-                
+               
                 &:hover {
                   color: $color-grey-25;
                   border-color: $color-border-muted-light;
@@ -100,7 +100,7 @@
                 &:active {
                   color: $color-grey-40;
                   border-color: $color-grey-40;
-                }            
+                }           
               }
             }
           }

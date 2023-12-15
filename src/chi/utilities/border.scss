@@ -14,22 +14,22 @@ $positions: (
 );
 
 $border-colors: (
-  "base": $color-border-base,
-  "base-light": $color-border-base-light,
-  "base-dark": $color-border-base-dark,
-  "primary": $color-border-primary,
-  "secondary": $color-border-secondary,
-  "success": $color-border-success,
-  "success-light": $color-border-success-light,
-  "info": $color-border-info,
-  "info-light": $color-border-info-light,
-  "danger": $color-border-danger,
-  "danger-light": $color-border-danger-light,
-  "warning": $color-border-warning,
-  "warning-light": $color-border-warning-light,
-  "black": $color-border-black,
-  "white": $color-border-white,
-  "transparent": transparent
+  'base': $color-border-base,
+  'base-light': $color-border-base-light,
+  'base-dark': $color-border-base-dark,
+  'primary': $color-border-primary,
+  'secondary': $color-border-secondary,
+  'success': $color-border-success,
+  'success-light': $color-border-success-light,
+  'info': $color-border-info,
+  'info-light': $color-border-info-light,
+  'danger': $color-border-danger,
+  'danger-light': $color-border-danger-light,
+  'warning': $color-border-warning,
+  'warning-light': $color-border-warning-light,
+  'black': $color-border-black,
+  'white': $color-border-white,
+  'transparent': transparent
 );
 
 @mixin create-border($position, $position-suffix, $breakpoint-infix, $thickness-index) {

@@ -43,8 +43,8 @@
   &__menu-item {
     position: relative;
 
-    &.-checkbox:before,
-    &.-locked:before {
+    &.-checkbox::before,
+    &.-locked::before {
       font-family: $font-family-icon;
       left: 0.125rem;
       padding-right: 0.5rem;
@@ -53,17 +53,17 @@
     }
 
     &.-checkbox {
-      &:before {
+      &::before {
         content: '\e91d';
       }
 
-      &:checked:before {
+      &:checked::before {
         content: '\e91c';
         color: $transfer-list-checkbox-icon-color;
       }
     }
 
-    &.-locked:before {
+    &.-locked::before {
       content: '\e959';
     }
   }
