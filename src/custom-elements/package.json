@@ -18,7 +18,6 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@types/lodash": "4.14.182",
     "all-country-data": "0.1.1",
     "dayjs": "1.11.7",
     "libphonenumber-js": "1.10.30",
@@ -26,8 +25,10 @@
     "popper.js": "1.15.0"
   },
   "devDependencies": {
-    "@stencil/core": "1.8.9",
-    "@stencil/sass": "1.0.1",
+    "@types/lodash": "4.14.182",
+    "@types/node": "^20.10.4",
+    "@stencil/core": "4.8.2",
+    "@stencil/sass": "3.0.7",
     "tslint": "5.16.0"
   },
   "license": "MIT"

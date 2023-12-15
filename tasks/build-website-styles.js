@@ -4,12 +4,14 @@ import cssnano from 'cssnano';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
-import sass from 'gulp-sass';
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
 import { Folders } from './constants';
 import { server } from './serve';
-import * as chi from "../scripts/chi";
+// import * as chi from "../scripts/chi";
 
 const merge = require('merge-stream');
+const sass = gulpSass(dartSass);
 
 function buildStyles(source, dest) {
   const pipes = gulp.src(path.join(source, '**', '*.scss'))

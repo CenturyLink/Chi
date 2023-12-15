@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:20
 
 ENV BABEL_DISABLE_CACHE=1
 
@@ -27,6 +27,8 @@ RUN  cd /tmp/chi \
  && yarn install \
  && cd /tmp/custom-elements \
  && yarn install \
+#  broken dependencies
+#  && cd /tmp/documentation && npm install \
  && yarn cache clean \
  && cd /tmp/chi-vue \
  && npm ci

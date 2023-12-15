@@ -1,13 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
-import sass from 'gulp-sass';
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
 import concat from 'gulp-concat';
 import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
 import svgSprite from 'gulp-svg-sprite';
 import header from 'gulp-header';
 
+const sass = gulpSass(dartSass);
 const componentsFolder = path.join(__dirname, '..', 'src', 'chi', 'components');
 const iconsFolder = path.join(__dirname, '..', 'src', 'chi', 'assets', 'icons');
 const copyright = `/* Chi and its documentation are released under the terms of the MIT license.
@@ -37,8 +39,6 @@ function getComponentNamesToInclude(names) {
 }
 
 export function buildCss({ names = ['all'], dest = 'dist', assetsPath = '/' }) {
-  const componentFolders = getComponentNamesToInclude(names)
-    .map(name => `${path.join(componentsFolder, name)}`);
 
   return gulp.src(
     path.join(__dirname, '..', 'src', 'chi', 'themes', 'lumen', 'index.scss')

@@ -7,6 +7,7 @@ export const config: Config = {
   devServer: {
     openBrowser: false
   },
+  sourceMap: false,
   plugins: [
     sass(
       {

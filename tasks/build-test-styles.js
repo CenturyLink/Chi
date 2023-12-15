@@ -4,10 +4,12 @@ import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import sass from 'gulp-sass';
+import gulpSass from 'gulp-sass';
+import dartSass from 'sass';
 import postcss from 'gulp-postcss';
 import wait from 'gulp-wait';
 
+const sass = gulpSass(dartSass);
 const publicFolder = 'dist/tests';
 const rootFolder = path.join(__dirname, '..');
 
