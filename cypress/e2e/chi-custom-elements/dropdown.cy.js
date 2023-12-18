@@ -155,7 +155,7 @@ describe('Dropdown', () => {
     });
   });
 
-  describe.only('Font Weight', () => {
+  describe('Font Weight', () => {
     beforeEach(() => {
       cy.get(DROPDOWN_DATA_CY.FONT_WEIGHT)
         .find(DROPDOWN_TRIGGER)
