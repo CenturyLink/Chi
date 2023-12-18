@@ -79,6 +79,10 @@ export class Dropdown {
    */
   @Prop() position: Placement;
   /**
+   *  To set weight of the button text { normal, bold }.
+   */
+  @Prop({ reflect: true }) fontWeight: string;
+  /**
    * To provide selector of an external reference element
    */
   @Prop({ reflect: true }) reference: string;
@@ -433,6 +437,7 @@ export class Dropdown {
         `}
         extra-class={`
           ${DROPDOWN_CLASSES.TRIGGER}
+          ${this.fontWeight === 'normal' ? '-text--normal' : ''}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}

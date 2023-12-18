@@ -19,6 +19,13 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 .-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Font Weight`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(data-cy="font-weight-dropdown" font-weight="normal" active='false' button=`Font Weight`)
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.-mt--5(style='width: 500px; height: 500px;')
   span.-text--h2=`Visible Items`
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
     chi-dropdown(data-cy="visible-items-dropdown" active='false' visible-items='3' button=`Visible Items`)
@@ -137,6 +144,14 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.test-dropdown-button-font-weight.-mt--5(style='width: 500px; height: 200px;')
+  span.-text--h2=`Font weight`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(font-weight="normal" button="This text has normal font weight")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
 
 .test-dynamic-dropdown.-mt--5(style='width: 500px; height: 200px;')
   span.-text--h2=`Dynamic dropdown`
