@@ -21,8 +21,7 @@ import {
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
-
-type FontWeight = 'normal';
+import { FontWeight } from '../../constants/types';
 
 @Component({
   tag: 'chi-dropdown',
