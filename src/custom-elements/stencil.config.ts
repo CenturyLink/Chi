@@ -22,7 +22,8 @@ export const config: Config = {
   ],
   outputTargets: [
     {
-      type: 'dist'
+      type: 'dist',
+      dir: '../../dist/js/ce/'
     },
     {
       type: 'docs-custom',

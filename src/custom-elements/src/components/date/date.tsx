@@ -323,12 +323,12 @@ export class Date {
     }
   }
 
-  componentDidLoad(): void {
+  connectedCallback(): void {
     document.body.addEventListener('keydown', this._onKeyDown.bind(this));
     document.body.addEventListener('focusin', this._onFocusIn.bind(this));
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.body.removeEventListener('keydown', this._onKeyDown);
     document.body.removeEventListener('focusin', this._onFocusIn);
   }

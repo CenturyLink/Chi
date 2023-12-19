@@ -8,6 +8,5 @@ gulp.task('build', gulp.series(
   'update:boilerplate:assets',
   'build:boilerplates',
   'copy:chi:ce-docs-scripts',
-  'copy:chi:ce-scripts',
   'copy:chi-vue:scripts'
 ));
