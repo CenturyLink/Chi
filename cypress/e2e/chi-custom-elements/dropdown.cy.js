@@ -392,7 +392,7 @@ describe('Dropdown', () => {
       });
     });
 
-    describe.only('Dynamically change menu items', () => {
+    describe('Dynamically change menu items', () => {
       beforeEach(() => {
         cy.get(`[data-cy='dynamic-dropdown'] ${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
           .as('dropdownMenuItems');

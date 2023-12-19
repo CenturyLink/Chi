@@ -22,6 +22,8 @@ import {
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 
+type FontWeight = 'normal';
+
 @Component({
   tag: 'chi-dropdown',
   styleUrl: 'dropdown.scss',
@@ -79,9 +81,9 @@ export class Dropdown {
    */
   @Prop() position: Placement;
   /**
-   *  To set weight of the button text { normal, bold }.
+   *  To set weight of the button text { normal }.
    */
-  @Prop({ reflect: true }) fontWeight: string;
+  @Prop({ reflect: true }) fontWeight?: FontWeight;
   /**
    * To provide selector of an external reference element
    */
@@ -437,7 +439,7 @@ export class Dropdown {
         `}
         extra-class={`
           ${DROPDOWN_CLASSES.TRIGGER}
-          ${this.fontWeight === 'normal' ? '-text--normal' : ''}
+          ${this.fontWeight ? `-text--${this.fontWeight}` : ''}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
