@@ -10,7 +10,7 @@ gulp.task('update:boilerplate:assets', function(done) {
   const favSVGSRI = sriJson['dist/assets/themes/lumen/images/favicon.svg'];
   const favICOSRI = sriJson['dist/assets/themes/lumen/images/favicon.ico'];
   const ceModuleSRI = sriJson['dist/js/ce/ux-chi-ce/ux-chi-ce.esm.js'];
-  const ceNoModuleSRI = sriJson['dist/js/ce/ux-chi-ce.js'];
+  const ceNoModuleSRI = sriJson['dist/js/ce/esm/ux-chi-ce.js'];
 
   const newCSS = `<link rel="stylesheet" href="https://assets.ctl.io/chi/${currentVersion}/chi.css" integrity="${cssSRI}" crossorigin="anonymous">`;
   const newJS = `<script src="https://assets.ctl.io/chi/${currentVersion}/js/chi.js" integrity="${jsSRI}" crossorigin="anonymous"></script>`;

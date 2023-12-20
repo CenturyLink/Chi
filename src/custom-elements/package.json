@@ -2,13 +2,12 @@
   "name": "ux-chi-custom-elements",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
-  "module": "dist/index.mjs",
-  "main": "dist/index.js",
-  "unpkg": "dist/ionic.js",
-  "types": "dist/types/components.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
+  "module": "../../dist/index.mjs",
+  "main": "../../dist/js/ce/index.cjs.js",
+  "types": "../../dist/js/ce/types/components.d.ts",
+  "collection": "../../dist/js/ce/collection/collection-manifest.json",
   "files": [
-    "dist/"
+    "../../dist/js/ce/"
   ],
   "scripts": {
     "build": "stencil build --docs-json /docs/docs.json",

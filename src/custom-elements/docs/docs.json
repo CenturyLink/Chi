@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-12-07T13:14:13",
+  "timestamp": "2023-12-20T11:05:28",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.8.2",
@@ -4231,6 +4231,11 @@
           "event": "chiBlur",
           "detail": "any",
           "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the element has lost focus.",
@@ -4254,6 +4259,11 @@
           "event": "chiClick",
           "detail": "any",
           "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the user clicks on increment/decrement button.",
@@ -4263,6 +4273,11 @@
           "event": "chiFocus",
           "detail": "any",
           "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the user sets focus on the element.",
