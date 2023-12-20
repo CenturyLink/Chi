@@ -36,7 +36,7 @@ const columns = [
     key: 'download',
   }
 ];
-const values = ['Vue', 'Stencil', 'Angular', 'React', 'Vue + ES6'];
+const values = ['Vue', 'Stencil', 'Angular', 'React'];
 
   @Component({
   data: () => {
