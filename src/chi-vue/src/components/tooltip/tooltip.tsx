@@ -153,7 +153,7 @@ export default class Tooltip extends Vue {
 
   render() {
     return (
-      <div class={UTILITY_CLASSES.SIZING.W100} ref="_tooltipRef">
+      <div ref="_tooltipRef">
         {this.$slots.default && this.$slots.default()}
         {this._tooltipElement}
       </div>
