@@ -113,3 +113,11 @@ export const SAVE_VIEW_EVENTS = {
   DEFAULT: 'chiSaveViewDefault',
 };
 //#endregion
+
+export const TRANSFER_LIST_EVENTS = {
+  ITEMS_SELECTED: 'chiTransferListItemSelected',
+  ITEMS_MOVED: 'chiTransferListItemMoved',
+  ITEMS_MOVE_ALL: 'chiTransferListItemMoveAll',
+  ITEMS_SORTED: 'chiTransferListItemSorted',
+  CLEAR_SELECTION: 'chiTransferListClearSelection',
+};

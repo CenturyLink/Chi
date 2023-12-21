@@ -1,6 +1,8 @@
 <template>
   <div class="-p--4">
     <h1>Chi Vue 3</h1>
+    <TransferListView />
+
     <DataTableClientView />
     <DataTableServerView class="-mt--10" />
 
@@ -25,6 +27,7 @@ import PaginationView from './views/PaginationView.vue';
 import SaveViewView from './views/SaveView.vue';
 import SearchInputView from './views/SearchInputView.vue';
 import TooltipView from './views/TooltipView.vue';
+import TransferListView from './views/TransferList/TransferListView.vue';
 
 @Component({
   components: {
@@ -37,6 +40,7 @@ import TooltipView from './views/TooltipView.vue';
     SaveViewView,
     SearchInputView,
     TooltipView,
+    TransferListView,
   },
 })
 export default class App extends Vue {}
