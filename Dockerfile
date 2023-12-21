@@ -2,7 +2,7 @@ FROM node:14
 
 ENV BABEL_DISABLE_CACHE=1
 
-RUN mkdir -p /old-chi
+RUN mkdir -p /chi
 WORKDIR /chi
 
 # Add Tini
