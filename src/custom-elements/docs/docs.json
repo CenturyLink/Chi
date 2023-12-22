@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-12-18T15:46:57",
+  "timestamp": "2023-12-22T12:40:12",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1846,18 +1846,19 @@
         },
         {
           "name": "fontWeight",
-          "type": "string",
+          "type": "\"normal\"",
           "mutable": false,
           "attr": "font-weight",
           "reflectToAttr": true,
-          "docs": "To set weight of the button text { normal, bold }.",
+          "docs": "To set weight of the button text { normal }.",
           "docsTags": [],
           "values": [
             {
+              "value": "normal",
               "type": "string"
             }
           ],
-          "optional": false,
+          "optional": true,
           "required": false
         },
         {
