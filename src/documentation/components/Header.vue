@@ -116,7 +116,7 @@
               :class="version === ACTIVE_CHI_VERSION ? '-active' : ''"
               v-for="(version, index) in CHI_VISIBLE_VERSION"
               :key="index"
-              :href="`https://assets.ctl.io/chi/${version}`"
+              :href="`https://lib.lumen.com/chi/${version}`"
             )
               | v{{version}}
         .chi-dropdown
