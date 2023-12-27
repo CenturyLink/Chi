@@ -56,11 +56,11 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- External Image Method -->
 <!-- Lumen -->
 <a class="chi-brand" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo-white.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo-white.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -centurylink -white" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo-white.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo-white.svg" alt="CenturyLink">
 </a>`,
       }
     }

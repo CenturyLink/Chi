@@ -94,8 +94,8 @@ declare const chi: any;
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: (version: string) => `<script type="module" src="https://assets.ctl.io/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>
-<script nomodule="" src="https://assets.ctl.io/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="sha256-YrDiIH91dWgnfQRTLsWYoxQj7LGxf7PHV4TIZcazh5M=" crossorigin="anonymous">\x3C/script>`,
+        htmlblueprint: (version: string) => `<script type="module" src="https://lib.lumen.com/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>
+<script nomodule="" src="https://lib.lumen.com/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="sha256-YrDiIH91dWgnfQRTLsWYoxQj7LGxf7PHV4TIZcazh5M=" crossorigin="anonymous">\x3C/script>`,
         HTMLAttribute: `<chi-button id="close-btn" size="md">Close</chi-button>
 <script>
   document.getElementById("close-btn").setAttribute("size", "xl");

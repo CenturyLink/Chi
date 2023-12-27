@@ -46,7 +46,7 @@ declare const chi: any;
       ],
       stylesheet: {
         htmlblueprint: {
-          jsFile: (version: string) => `<script src="https://assets.ctl.io/chi/${version}/js/chi.js" integrity="sha256-6QhYmHCoTdqje2hbaXewfi4/GRD7ar8PaJNc/txRYpw=" crossorigin="anonymous">\x3C/script>`,
+          jsFile: (version: string) => `<script src="https://lib.lumen.com/chi/${version}/js/chi.js" integrity="sha256-6QhYmHCoTdqje2hbaXewfi4/GRD7ar8PaJNc/txRYpw=" crossorigin="anonymous">\x3C/script>`,
           amd: `'chi': {
   path: [CHI_PATH, 'amd', 'chi'].join('/'),
   shim: {
