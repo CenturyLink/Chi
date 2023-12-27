@@ -39,7 +39,6 @@ gulp.task('update:boilerplate:assets', function(done) {
 
   [
     'src/boilerplates/angular/chi-angular-boilerplate/src',
-    'src/boilerplates/es6/chi-vue-es6-boilerplate/public',
     'src/boilerplates/react/chi-react-boilerplate/public',
     'src/boilerplates/stencil/chi-stencil-boilerplate/src',
     'src/boilerplates/vue/chi-vue-boilerplate/public'
