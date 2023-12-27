@@ -491,11 +491,13 @@ export class Dropdown {
     return (
       <div
         class={`
-          ${DROPDOWN_CLASSES.MENU} 
-          ${UTILITY_CLASSES.Z_INDEX.Z_10} 
-          ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''} 
+          ${DROPDOWN_CLASSES.MENU}
+          ${UTILITY_CLASSES.Z_INDEX.Z_10}
+          ${this.active ? ACTIVE_CLASS : ''}
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.description ? LIST_CLASS : ''}`
-        }>
+        }
+        ref={ref => (this._dropdownMenuElement = ref)}>
         {this.renderDropdownMenuHeader()}
         {this.renderDropdownMenuItems()}
         {this.renderDropdownMenuFooter()}
