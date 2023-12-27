@@ -36,13 +36,13 @@ const columns = [
     key: 'download',
   }
 ];
-const values = ['Vue', 'Stencil', 'Angular', 'React', 'Vue + ES6'];
+const values = ['Vue', 'Stencil', 'Angular', 'React'];
 
   @Component({
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: (version: string) => `<link rel="stylesheet" href="https://assets.ctl.io/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
+        htmlblueprint: (version: string) => `<link rel="stylesheet" href="https://lib.lumen.com/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
       },
       values,
       columns
