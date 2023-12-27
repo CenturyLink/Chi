@@ -431,21 +431,21 @@ export class Dropdown {
   renderTrigger() {
     return this.button ? (
       <chi-button
-      onChiClick={this.handlerClickTrigger}
-      onChiMouseEnter={this.handlerMouseEnter}
-      class={`
+        onChiClick={this.handlerClickTrigger}
+        onChiMouseEnter={this.handlerMouseEnter}
+        class={`
         ${this.fluid ? FLUID_CLASS : ''}
       `}
-      extra-class={this.getExtraClassForTriggerButton()}
-      color={`${this.color || ''}`}
-      variant={`${this.variant || ''}`}
-      size={`${this.size || ''}`}
-      uppercase={this.uppercase}
-      disabled={this.disabled}
-      ref={ref => (this._referenceElement = ref)}
-    >
-      {this.button}
-    </chi-button>
+        extra-class={this.getExtraClassForTriggerButton()}
+        color={`${this.color || ''}`}
+        variant={`${this.variant || ''}`}
+        size={`${this.size || ''}`}
+        uppercase={this.uppercase}
+        disabled={this.disabled}
+        ref={ref => (this._referenceElement = ref)}
+      >
+        {this.button}
+      </chi-button>
     ) : this._customTrigger ? (
       <slot name="trigger" />
     ) : null;
@@ -489,16 +489,16 @@ export class Dropdown {
 
   renderMenu() {
     return (
-      <div 
+      <div
         class={`
           ${DROPDOWN_CLASSES.MENU} 
           ${UTILITY_CLASSES.Z_INDEX.Z_10} 
           ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''} 
           ${this.description ? LIST_CLASS : ''}`
         }>
-          {this.renderDropdownMenuHeader()}
-          {this.renderDropdownMenuItems()}
-          {this.renderDropdownMenuFooter()}
+        {this.renderDropdownMenuHeader()}
+        {this.renderDropdownMenuItems()}
+        {this.renderDropdownMenuFooter()}
       </div>
     );
   }
@@ -508,7 +508,7 @@ export class Dropdown {
     const menu = this.renderMenu();
 
     return trigger ? (
-      <div class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`} 
+      <div class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`}
         onMouseLeave={this.handlerMouseLeave}>
         {trigger}
         {menu}
