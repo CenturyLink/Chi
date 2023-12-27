@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-11-14T10:49:38",
+  "timestamp": "2023-12-26T12:43:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1785,7 +1785,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "To set the color of the button. The value is directly passed to \nchi-button element if present  { primary, secondary, danger, dark, light }.",
+          "docs": "To set the color of the button. The value is directly passed to\nchi-button element if present  { primary, secondary, danger, dark, light }.",
           "docsTags": [],
           "values": [
             {
@@ -2021,7 +2021,7 @@
           "mutable": false,
           "attr": "variant",
           "reflectToAttr": false,
-          "docs": "To set the variant of the button. The value is directly passed to \nchi-button element if present { outline, flat }",
+          "docs": "To set the variant of the button. The value is directly passed to\nchi-button element if present { outline, flat }",
           "docsTags": [],
           "values": [
             {
@@ -2312,6 +2312,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-number-input",
         "chi-text-input",
         "chi-textarea"
       ],
@@ -2321,6 +2322,9 @@
       "dependencyGraph": {
         "chi-helper-message": [
           "chi-icon"
+        ],
+        "chi-number-input": [
+          "chi-helper-message"
         ],
         "chi-text-input": [
           "chi-helper-message"
@@ -3022,8 +3026,24 @@
           "required": false
         },
         {
-          "name": "inputstyle",
+          "name": "helperMessage",
           "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Number Input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "inputstyle",
+          "type": "\"danger\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "inputstyle",
           "reflectToAttr": false,
@@ -3031,6 +3051,15 @@
           "docsTags": [],
           "values": [
             {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
               "type": "string"
             }
           ],
@@ -3170,12 +3199,39 @@
       "methods": [],
       "events": [
         {
+          "event": "chiBlur",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the element has lost focus.",
+          "docsTags": []
+        },
+        {
           "event": "chiChange",
           "detail": "string",
           "bubbles": true,
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when an alteration to the element's value is committed by the user",
+          "docsTags": []
+        },
+        {
+          "event": "chiClick",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicks on increment/decrement button.",
+          "docsTags": []
+        },
+        {
+          "event": "chiFocus",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user sets focus on the element.",
           "docsTags": []
         },
         {
@@ -3201,10 +3257,15 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-number-input": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }
@@ -4467,6 +4528,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Phone input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "inputMask",
           "type": "boolean",
           "mutable": false,
@@ -5219,6 +5296,22 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": true,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],

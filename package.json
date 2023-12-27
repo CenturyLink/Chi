@@ -1,11 +1,11 @@
 {
   "name": "@centurylink/chi",
-  "version": "5.41.0",
+  "version": "5.43.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "main": "bin/chi.js",
   "repository": "https://github.com/CenturyLink/Chi",
-  "homepage": "https://assets.ctl.io/chi",
+  "homepage": "https://lib.lumen.com/chi",
   "scripts": {
     "approve": "gulp backstop-approve",
     "build": "gulp build",
@@ -26,7 +26,8 @@
     "update:boilerplate:assets": "gulp update:boilerplate:assets",
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
-    "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test"
+    "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test",
+    "cypress": "cypress open"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
@@ -39,6 +40,7 @@
     "browser-sync": "2.29.3",
     "cssnano": "4.1.10",
     "cypress": "12.17.4",
+    "cypress-plugin-tab": "1.0.5",
     "del": "3.0.0",
     "eslint-loader": "2.1.2",
     "gulp": "4.0.0",

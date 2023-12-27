@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.41.0`;
-export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://lib.lumen.com/chi/5.43.0`;
+
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -69,6 +69,14 @@ export const BASE_URL =
   (DOCS_ENV === 'production' || DOCS_ENV === 'pr' || DOCS_ENV === 'development')
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
+
+export const SECTION_URLS = {
+  gettingStarted: `getting-started`,
+  utilities: `utilities`,
+  components: `components`,
+  foundations: `foundations`,
+  templates: `templates`
+} 
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
@@ -339,8 +347,26 @@ export const NAVIGATION_TEMPLATE_ITEMS = [
   { to: `templates/error-500`, label: 'Error 500', source: 'vue' },
   { to: `templates/state`, label: 'State', source: 'vue' }
 ];
+export const NAVIGATION_UTILITIES_ITEMS = [
+  { to: `utilities/border`, label: 'Border' },
+  { to: `utilities/color`, label: 'Color' },
+  { to: `utilities/display`, label: 'Display' },
+  { to: `utilities/flex`, label: 'Flex' },
+  { to: `utilities/image`, label: 'Image' },
+  { to: `utilities/opacity`, label: 'Opacity' },
+  { to: `utilities/overflow`, label: 'Overflow' },
+  { to: `utilities/position`, label: 'Position' },
+  { to: `utilities/shadow`, label: 'Shadow' },
+  { to: `utilities/sizing`, label: 'Sizing' },
+  { to: `utilities/spacing`, label: 'Spacing' },
+  { to: `utilities/text`, label: 'Text' },
+  { to: `utilities/vertical-align`, label: 'Vertical-align' },
+  { to: `utilities/zindex`, label: 'Z-index' },
+];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.43.0',
+  '5.42.0',
   '5.41.0',
   '5.40.0',
   '5.39.0',

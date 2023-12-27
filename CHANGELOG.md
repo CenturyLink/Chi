@@ -1,4 +1,34 @@
 # CHANGELOG
+## 5.43.0 (December 12, 2023)
+### Components
+#### Added
+* Added: Dropdown menu items now supports mutation observer to better support dynamic DOM changes.
+### Documentation
+#### Added
+* Added: Helper message to Number input in message and error sections.
+
+## 5.42.0 (November 27, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports row `success`, `warning`, `danger`, `info` states with `state` config.
+* Added: Tabs web component now supports `href` property.
+* Added: Tabs web component now supports `inverse` attribute.
+* Added: Search input web component now supports `chiSearchInputItemSelected` event when the user clicked in one of the autocomplete elements.
+* Added: Dropdown web component now supports `color`, `variant`, `size`, `uppercase`, `disabled` and `prevent-item-selected` attributes.
+#### Changed
+* Changed: Data table Vue component `toggleRow` method.
+* Changed: Expansion Panel content width has been expanded.
+* Changed: App layout subtitle and border left colors in Portal theme for consistency with Brand guidelines.
+#### Fixed
+* Fixed: Expansion panel title and headings alignment in done state.
+* Fixed: Dropddown `visible-items` funcionality calculation.
+### Documentation
+#### Added
+* Added: Helper message to Phone input in error section.
+* Added: Progress bar within a modal to modal component section.
+* Added: Column customization component to modal component section.
+* Added: Dropdown with search input to dropdown component section.
+
 ## 5.41.0 (October 17, 2023)
 ### Components
 #### Added

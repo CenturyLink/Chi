@@ -5,73 +5,72 @@ import {
   NAVIGATION_TEMPLATE_ITEMS,
   TEMP_DEVELOPMENT_FALLBACK_URL,
   DEFAULT_CSS,
-  DEFAULT_DOCS_CSS
+  DEFAULT_DOCS_CSS,
 } from './constants/constants';
 
 const CopyPlugin = require('copy-webpack-plugin');
 
-const CHI_ASSETS_SOURCE_URL =
-  DOCS_ENV === 'development' ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/` : BASE_URL;
+const CHI_ASSETS_SOURCE_URL = DOCS_ENV === 'development' ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/` : BASE_URL;
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {
       lang: 'en',
-      class: 'chi'
+      class: 'chi',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: `${CHI_ASSETS_SOURCE_URL}assets/themes/lumen/images/favicon.ico`
+        href: `${CHI_ASSETS_SOURCE_URL}assets/themes/lumen/images/favicon.ico`,
       },
       {
         rel: 'stylesheet',
         id: 'chi-css',
         type: 'text/css',
-        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_CSS}`
+        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_CSS}`,
       },
       {
         rel: 'stylesheet',
         type: 'text/css',
         id: 'chi-docs-css',
-        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_DOCS_CSS}`
+        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_DOCS_CSS}`,
       },
       {
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/@docsearch/css@3'
-      }
+        href: 'https://cdn.jsdelivr.net/npm/@docsearch/css@3',
+      },
     ],
     script: [
       {
-        src: `${CHI_ASSETS_SOURCE_URL}js/chi.js`
+        src: `${CHI_ASSETS_SOURCE_URL}js/chi.js`,
       },
       {
         src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
-        type: 'module'
+        type: 'module',
       },
       {
-        src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.js`
+        src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.js`,
       },
       {
         type: 'text/javascript',
-        src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3'
-      }
-    ]
+        src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['./plugins/chi-vue-components.js', './plugins/chi-docs.js'],
+  plugins: ['./plugins/chi-docs.js', './plugins/chi-vue-components.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -80,7 +79,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    '@nuxt/image'
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -89,10 +88,10 @@ export default {
     [
       'nuxt-highlightjs',
       {
-        style: 'github'
-      }
+        style: 'github',
+      },
     ],
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -104,20 +103,21 @@ export default {
             from: '@centurylink/chi-vue/dist',
             context: 'node_modules',
             globOptions: {
-              ignore: ['.DS_Store']
-            }
-          }
-        ]
-      })
-    ]
+              ignore: ['.DS_Store'],
+            },
+          },
+        ],
+      }),
+    ],
   },
   router: {
     base: BASE_URL,
-    linkExactActiveClass: '-active'
+    linkExactActiveClass: '-active',
   },
-
   target: 'static',
-
+  env: {
+    BASE_URL,
+  },
   generate: {
     exclude: [
       '/',
@@ -139,27 +139,13 @@ export default {
       '/foundations/accessibility/tables',
       '/foundations/accessibility/links-and-forms',
       '/installation',
-      '/utilities/display',
-      '/utilities/flex',
-      '/utilities/border',
-      '/utilities/overflow',
-      '/utilities/image',
-      '/utilities/position',
-      '/utilities/opacity',
-      '/utilities/shadow',
-      '/utilities/text',
-      '/utilities/sizing',
-      '/utilities/spacing',
-      '/utilities/vertical-align',
-      '/utilities/zindex',
-      '/utilities/color',
       '/components/icon', // To-do, must be removed after full migration
-      ...NAVIGATION_COMPONENTS_ITEMS.map(item => {
+      ...NAVIGATION_COMPONENTS_ITEMS.map((item) => {
         return `/${item.href}`;
       }),
-      ...NAVIGATION_TEMPLATE_ITEMS.map(item => {
+      ...NAVIGATION_TEMPLATE_ITEMS.map((item) => {
         return `/${item.href}`;
-      })
-    ]
-  }
+      }),
+    ],
+  },
 };

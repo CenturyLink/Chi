@@ -13,7 +13,7 @@
             :aria-controls="link.id"
           ) {{link.label}}
         li
-          a(href='https://assets.ctl.io/chi/' target='_self') External Link
+          a(href='https://lib.lumen.com/chi/' target='_self') External Link
       .-py--2
         .chi-tabs-panel(v-for="tabContent in tabsContent" :class="[tabContent.active ? '-active' : '']" :id="tabContent.id" role="tabpanel")
           .-text {{tabContent.text}}
@@ -90,7 +90,7 @@ export default class TabbedNavigationFlat extends Vue {
     return {
       webComponent: '',
       htmlblueprint: `<ul class="chi-tabs" id="example-tabs-2" role="tablist" aria-label="example-default-link-behavior">\n${this.generateTabsHtml()}
-  <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
+  <li><a href="https://lib.lumen.com/chi/" target="_self">External Link</a></li>
 </ul>
 
 ${this.generateTabsContentHtml()}

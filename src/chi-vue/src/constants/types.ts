@@ -259,3 +259,27 @@ export type DataTableAction = {
   onClick: (props: DataTableColumnProps) => void;
   hide?: DataTableActionItemResponsiveness[];
 };
+
+// TransferList
+export interface TransferListItem {
+  value: string;
+  label: string;
+  selected: boolean;
+  locked?: boolean;
+  wildcard?: boolean;
+}
+
+export interface TransferListConfig {
+  searchInput?: boolean;
+  checkbox?: boolean;
+  columns: {
+    from: {
+      title: string;
+      description: string;
+    };
+    to: {
+      title: string;
+      description: string;
+    };
+  };
+}

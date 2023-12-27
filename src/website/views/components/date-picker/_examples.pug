@@ -80,7 +80,7 @@ h3 Value, min and max options
   .-p--3
     div(style="max-width: 14rem;")
       chi-label(for='date-3') Date
-      chi-date-picker(id="date-3", value="01/24/2019", min="01/14/2019", max="02/07/2019")
+      chi-date-picker(id="date-3", value="01/24/2024", min="01/14/2024", max="02/07/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max-value
       li.-active
@@ -90,7 +90,7 @@ h3 Value, min and max options
   #webcomponent-min-max-value.chi-tabs-panel.-active
     :code(lang="html")
       <chi-label for="date-3">Date</chi-label>
-      <chi-date-picker id="date-3" value="01/24/2019" min="01/14/2019" max="02/07/2019">
+      <chi-date-picker id="date-3" value="01/24/2024" min="01/14/2024" max="02/07/2024">
   #html-min-max-value.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -101,7 +101,7 @@ h3 Value, min and max options
       <div class="chi-form__item">
         <label class="chi-label" for="datepicker-3">Date</label>
         <div class="chi-input__wrapper -icon--right">
-          <input id="datepicker-3" type="text" class="chi-input" value="01/24/2019" min="01/14/2019" max="02/07/2019" placeholder="MM/DD/YYYY">
+          <input id="datepicker-3" type="text" class="chi-input" value="01/24/2024" min="01/14/2024" max="02/07/2024" placeholder="MM/DD/YYYY">
           <i class="chi-icon icon-date" aria-hidden="true"></i>
         </div>
       </div>
@@ -113,8 +113,8 @@ h3 Value, min and max options
         chi.datePicker(
           document.getElementById('datepicker-3'),
           {
-            date: '01/24/2019',
-            min: '01/24/2019'
+            date: '01/24/2024',
+            min: '01/24/2024'
           }
       );
       </script>
@@ -140,14 +140,14 @@ p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 
 
 h3 Excluded dates
 p.-text
-  | Specify which dates to disable by using <code>excluded-dates="02/24/2020, 05/25/2020"</code> attribute
+  | Specify which dates to disable by using <code>excluded-dates="01/24/2024, 03/25/2024"</code> attribute
   br
   | Separate dates with a comma
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-dates') Date
-      chi-date-picker(id="date-excluded-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020")
+      chi-date-picker(id="date-excluded-dates", value="01/05/2024", excluded-dates="01/24/2024, 03/25/2024, 07/03/2024, 09/12/2024, 12/12/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-excluded-dates
       li.-active
@@ -157,19 +157,19 @@ p.-text
   #webcomponent-excluded-dates.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-excluded-dates">Date</chi-label>
-      <chi-date-picker id="date-excluded-dates" excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+      <chi-date-picker id="date-excluded-dates" value="01/05/2024" excluded-dates="01/24/2024, 03/25/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
   #html-excluded-dates.chi-tabs-panel
 
 h3 Excluded dates and week days
 p.-text
-  | Disable dates - <code>excluded-dates="02/24/2020, 05/25/2020"</code>
+  | Disable dates - <code>excluded-dates="02/23/2024, 05/24/2024"</code>
   br
   | Disable days - <code>excluded-weekdays="0, 6"</code>
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
       chi-label(for='date-excluded-days-dates') Date
-      chi-date-picker(id="date-excluded-days-dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020", excluded-weekdays="0, 6")
+      chi-date-picker(id="date-excluded-days-dates", excluded-dates="02/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024", excluded-weekdays="0, 6")
   .example-tabs.-pl--2
     ul.chi-tabs#example-excluded-days-dates
       li.-active
@@ -179,7 +179,7 @@ p.-text
   #webcomponent-excluded-days-dates.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-excluded-days-dates">Date</chi-label>
-      <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
+      <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="02/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
   #html-excluded-days-dates.chi-tabs-panel
 
 h3 Error
@@ -323,7 +323,7 @@ h4 Base
             <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
           </div>
           <div class="chi-datepicker__month">
-            November 2018
+            November 2024
           </div>
           <div class="next">
             <i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i>
@@ -389,7 +389,7 @@ h4 Base
 h4 Active
 .example.-mb--3
   .-p--3
-    chi-date(value="05/15/2019")
+    chi-date(value="05/15/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-active
       li.-active
@@ -398,7 +398,7 @@ h4 Active
         a(href=`#html-active`) HTML Blueprint
   #webcomponent-active.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-date value="05/15/2019"></chi-date>
+      <chi-date value="05/15/2024"></chi-date>
   #html-active.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -412,7 +412,7 @@ h4 Active
       <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
         <div class="chi-datepicker__month-row">
           <div class="prev"><i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i></div>
-          <div class="chi-datepicker__month">May 2019</div>
+          <div class="chi-datepicker__month">May 2024</div>
           <div class="next"><i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i></div>
         </div>
         <div class="chi-datepicker__day-names">
@@ -462,7 +462,7 @@ h4 Active
 h4 Multiple active dates
 .example.-mb--3
   .-p--3
-    chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021")
+    chi-date(multiple, value="03/10/2024,03/11/2024,03/12/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-multiple-dates(role="tablist")
       li.-active
@@ -481,7 +481,7 @@ h4 Multiple active dates
   #webcomponent-multiple-dates.chi-tabs-panel.-active
     .chi-tab__description Specify multiple active dates by separating the dates with a comma
     :code(lang="html")
-      <chi-date value="03/10/2021,03/11/2021,03/12/2021" multiple></chi-date>
+      <chi-date value="03/10/2024,03/11/2024,03/12/2024" multiple></chi-date>
   #html-multiple-dates.chi-tabs-panel
     .chi-tab__description
       span.-text--grey Use class <code>-active</code> for the selected date
@@ -489,7 +489,7 @@ h4 Multiple active dates
       <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
         <div class="chi-datepicker__month-row">
           <div class="prev"><i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i></div>
-          <div class="chi-datepicker__month">March 2021</div>
+          <div class="chi-datepicker__month">March 2024</div>
           <div class="next"><i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i></div>
         </div>
         <div class="chi-datepicker__day-names">
@@ -539,7 +539,7 @@ h4 Multiple active dates
 h4 Min and Max
 .example.-mb--3
   .-p--3
-    chi-date(min="06/06/2019", max="06/22/2019")
+    chi-date(min="06/06/2024", max="06/22/2024")
   .example-tabs.-pl--2
     ul.chi-tabs#example-min-max
       li.-active
@@ -548,7 +548,7 @@ h4 Min and Max
         a(href=`#html-min-max`) HTML Blueprint
   #webcomponent-min-max.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-date min="06/06/2019" max="06/22/2019"></chi-date>
+      <chi-date min="06/06/2024" max="06/22/2024"></chi-date>
   #html-min-max.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -562,7 +562,7 @@ h4 Min and Max
       <div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">
         <div class="chi-datepicker__month-row">
           <div class="prev -disabled"><i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i></div>
-          <div class="chi-datepicker__month">June 2019</div>
+          <div class="chi-datepicker__month">June 2024</div>
           <div class="next -disabled"><i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i></div>
         </div>
         <div class="chi-datepicker__day-names">
@@ -617,7 +617,7 @@ h4 Date and Time
           .prev
             i.chi-icon.icon-chevron-left.-sm(aria-hidden="true")
           .chi-datepicker__month
-            | November 2018
+            | November 2024
           .next
             i.chi-icon.icon-chevron-right.-sm(aria-hidden="true")
         .chi-datepicker__day-names
