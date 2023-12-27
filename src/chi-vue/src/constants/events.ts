@@ -115,9 +115,13 @@ export const SAVE_VIEW_EVENTS = {
 //#endregion
 
 export const TRANSFER_LIST_EVENTS = {
+  CURRENT_LIST: 'chiTransferListCurrentList',
   ITEMS_SELECTED: 'chiTransferListItemSelected',
   ITEMS_MOVED: 'chiTransferListItemMoved',
   ITEMS_MOVE_ALL: 'chiTransferListItemMoveAll',
   ITEMS_SORTED: 'chiTransferListItemSorted',
   CLEAR_SELECTION: 'chiTransferListClearSelection',
+  RESET_LIST: 'chiTransferListResetList',
+  CANCEL: 'chiTransferListCancel',
+  SAVE: 'chiTransferListSave',
 };

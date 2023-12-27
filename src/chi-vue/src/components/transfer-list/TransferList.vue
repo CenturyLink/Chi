@@ -7,12 +7,10 @@
         :description="config.columns.from.description"
         :items="getColumnItems('from')"
         :checkbox="config.checkbox"
-        :searchInput="config.searchInput" />
+        :searchInput="config.searchInput"
+      />
 
-      <TransferListActions
-        move="transfer"
-        @chiTransferListItemMoved="updateListOnItemsMoved"
-        @chiTransferListItemMoveAll="updateListOnAllItemsMoved" />
+      <TransferListActions move="transfer" />
 
       <TransferListColumn
         type="to"
@@ -20,23 +18,25 @@
         :description="config.columns.to.description"
         :items="getColumnItems('to')"
         :checkbox="config.checkbox"
-        :searchInput="config.searchInput" />
+        :searchInput="config.searchInput"
+      />
 
-      <TransferListActions move="sort" @chiTransferListItemSorted="updateListOnItemsSorted" />
+      <TransferListActions move="sort" />
     </div>
 
-    <TransferListFooter />
+    <TransferListFooter :original="transferListData" />
   </div>
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { Component, Vue } from '@/build/vue-wrapper';
 import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
 import { TransferListConfig, TransferListItem } from '@/constants/types';
-import { swapElementsInArray } from '@/utils/utils';
+import EventBus from '@/utils/EventBus';
+import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 
 @Component({
   components: {
@@ -49,47 +49,53 @@ export default class TransferList extends Vue {
   @Prop() transferListData!: TransferListItem[];
   @Prop() config!: TransferListConfig;
 
-  list = this.transferListData || [];
+  currentTransferList: TransferListItem[] = [];
+
+  onLoadOriginalList() {
+    this.currentTransferList = this.transferListData;
+  }
+
+  mounted() {
+    this.onLoadOriginalList();
+
+    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_MOVED, this.updateListOnItemsMoved);
+    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, this.updateListOnAllItemsMovedFromColumn);
+    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_SORTED, this.updateListOnItemsSorted);
+    EventBus.on(TRANSFER_LIST_EVENTS.RESET_LIST, this.onLoadOriginalList);
+    EventBus.on(TRANSFER_LIST_EVENTS.CANCEL, () => console.log('cancel'));
+    EventBus.on(TRANSFER_LIST_EVENTS.SAVE, () => console.log('cancel'));
+  }
+
+  @Watch('currentTransferList')
+  onChangeCurrentTransferList() {
+    EventBus.emit(TRANSFER_LIST_EVENTS.CURRENT_LIST, this.currentTransferList);
+  }
 
   getColumnItems(column: 'from' | 'to'): TransferListItem[] {
-    return this.list.filter(({ selected }) => {
+    return this.currentTransferList.filter(({ selected }) => {
       return column === 'from' ? !selected : selected;
     });
   }
 
-  updateListOnItemsMoved(items: string[]) {
-    const newList = this.list.map((item: TransferListItem) => {
+  updateListOnItemsMoved(items) {
+    this.currentTransferList = this.currentTransferList.map((item: TransferListItem) => {
       const shouldMove = items.includes(item.value);
-
-      return {
-        ...item,
-        ...(shouldMove && { selected: !item.selected }),
-      };
+      return { ...item, ...(shouldMove && { selected: !item.selected }) };
     });
-
-    this.list = newList;
   }
 
-  updateListOnAllItemsMoved(column: 'from' | 'to') {
-    const columnType = this.getColumnItems(column);
-    const items = columnType.map((item) => item.value);
+  updateListOnAllItemsMovedFromColumn(column) {
+    let options = this.getColumnItems(column);
 
-    this.updateListOnItemsMoved(items);
+    if (column === 'to') {
+      options = options.filter(({ locked }) => !locked);
+    }
+
+    this.updateListOnItemsMoved(options.map(({ value }) => value));
   }
 
-  updateListOnItemsSorted({ direction, items }: { direction: 'up' | 'down'; items: string[] }) {
-    items.forEach((item) => {
-      const currItemIndex = this.list.findIndex(({ value }) => value === item);
-      const currItem = this.list[currItemIndex];
-      const itemToSwapIndex = direction === 'up' ? currItemIndex - 1 : currItemIndex + 1;
-      const itemToSwap = this.list[itemToSwapIndex];
-
-      if (!itemToSwap || (itemToSwap.locked && !currItem.wildcard)) {
-        return;
-      }
-
-      swapElementsInArray(this.list, currItemIndex, itemToSwapIndex);
-    });
+  updateListOnItemsSorted(list) {
+    this.currentTransferList = list;
   }
 }
 </script>

@@ -11,7 +11,8 @@
             type="icon"
             size="xs"
             alternative-text="Info icon"
-            @chiClick="toggleInfoPopover">
+            @chiClick="toggleInfoPopover"
+          >
             <chi-icon icon="circle-info-outline" size="xs" />
           </chi-button>
 
@@ -19,7 +20,8 @@
             arrow
             variant="text"
             :id="`transfer-list-popover-${title}`"
-            :reference="`#transfer-list-info-popover-${title}`">
+            :reference="`#transfer-list-info-popover-${title}`"
+          >
             {{ description }}
           </chi-popover>
         </template>
@@ -37,7 +39,9 @@
         :key="index"
         :value="item.value"
         :disabled="isToColumn && item.locked"
-        :class="getMenuItemClasses(item)">
+        :class="getMenuItemClasses(item)"
+        :selected="selectedItems.includes(item.value)"
+      >
         {{ item.label }}
       </option>
     </select>
@@ -50,8 +54,7 @@ import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '../tooltip/tooltip';
 import { TransferListItem } from '@/constants/types';
 import SearchInput from '../search-input/SearchInput';
-import { TRANSFER_LIST_EVENTS, DATA_TABLE_EVENTS } from '@/constants/events';
-import { Event } from '@/utils/Event';
+import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 import EventBus from '@/utils/EventBus';
 
 @Component({
@@ -71,12 +74,10 @@ export default class TransferListColumn extends Vue {
   filter = '';
   isToColumn = this.type === 'to';
   hasLockedItems = this.items?.some((item) => item.locked);
+  selectedItems: string[] = [];
 
   mounted() {
-    window.addEventListener(TRANSFER_LIST_EVENTS.CLEAR_SELECTION, () => {
-      const select = this.$el.querySelector('select') as HTMLSelectElement;
-      select.selectedIndex = -1;
-    });
+    EventBus.on(TRANSFER_LIST_EVENTS.CLEAR_SELECTION, this.onClearSelection);
   }
 
   handleFilter(value: string) {
@@ -87,10 +88,15 @@ export default class TransferListColumn extends Vue {
     this.filter = '';
   }
 
+  onClearSelection() {
+    this.selectedItems = [];
+  }
+
   @Emit(TRANSFER_LIST_EVENTS.ITEMS_SELECTED)
   handleSelectItem(event: Event) {
-    const items = Array.from((event.target as HTMLSelectElement).selectedOptions, (option) => option.value);
+    const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
     const column = this.type as string;
+    this.selectedItems = items;
 
     EventBus.emit(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, { [column]: items });
   }
