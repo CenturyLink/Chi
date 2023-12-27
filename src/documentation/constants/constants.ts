@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.43.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://lib.lumen.com/chi/5.43.0`;
 
 export const THEMES = {
   centurylink: {

@@ -172,61 +172,61 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- xs -->
 <!-- Lumen -->
 <a class="chi-brand -xs" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -xs" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>
 
 <!-- sm -->
 <!-- Lumen -->
 <a class="chi-brand -sm" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -sm" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>
 
 <!-- md -->
 <!-- Lumen -->
 <a class="chi-brand -md" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -md" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>
 
 <!-- lg -->
 <!-- Lumen -->
 <a class="chi-brand -lg" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -lg" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>
 
 <!-- xl -->
 <!-- Lumen -->
 <a class="chi-brand -xl" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -xl" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>
 
 <!-- xxl -->
 <!-- Lumen -->
 <a class="chi-brand -xxl" href="/" aria-label="Lumen">
-  <img src="https://assets.ctl.io/images/lumen-logo.svg" alt="Lumen">
+  <img src="https://lib.lumen.com/images/lumen-logo.svg" alt="Lumen">
 </a>
 <!-- CenturyLink -->
 <a class="chi-brand -xxl" href="/" aria-label="CenturyLink">
-  <img src="https://assets.ctl.io/images/centurylink-logo.svg" alt="CenturyLink">
+  <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
 </a>`
       }
     };

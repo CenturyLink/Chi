@@ -68,7 +68,7 @@ function createAlertBar(currentVersion) {
       <i class="chi-icon chi-alert__icon icon-warning -icon--warning" aria-hidden="true"></i>
       <div class="chi-alert__content">
         <p class="chi-alert__text">A new version of Chi is available! &nbsp;
-          <a href="https://assets.ctl.io/chi/${currentVersion}">Learn more ›</a>
+          <a href="https://lib.lumen.com/chi/${currentVersion}">Learn more ›</a>
         </p>
       </div>
     </div>

@@ -18,8 +18,8 @@ import { Component, Vue } from 'vue-property-decorator';
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: (version: string, theme: string) => `<link rel="icon" type="image/svg+xml" href="https://assets.ctl.io/chi/${version}/assets/themes/${theme}/images/favicon.svg" integrity="sha256-s8cfYbPxhcrLj+FL/OxALhZoDmlCwvX2/K3I0hq1PAs=" crossorigin="anonymous">
-<link rel="alternate icon" href="https://assets.ctl.io/chi/${version}/assets/themes/${theme}/images/favicon.ico" integrity="sha256-EkKmbH+i/VIQAtUl7NF4bPVaaJZCeBc5xWx8LTcMJp0=" crossorigin="anonymous">`
+        htmlblueprint: (version: string, theme: string) => `<link rel="icon" type="image/svg+xml" href="https://lib.lumen.com/chi/${version}/assets/themes/${theme}/images/favicon.svg" integrity="sha256-s8cfYbPxhcrLj+FL/OxALhZoDmlCwvX2/K3I0hq1PAs=" crossorigin="anonymous">
+<link rel="alternate icon" href="https://lib.lumen.com/chi/${version}/assets/themes/${theme}/images/favicon.ico" integrity="sha256-EkKmbH+i/VIQAtUl7NF4bPVaaJZCeBc5xWx8LTcMJp0=" crossorigin="anonymous">`
       },
     }
   }
