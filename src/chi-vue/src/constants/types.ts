@@ -8,13 +8,13 @@ export type CheckboxState = boolean | 'indeterminate';
 
 //#region Data Table
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
+export type DataTableSizes = (typeof DATA_TABLE_SIZE)[number];
 export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
 export type DataTableRowLevels = 'parent' | 'child' | 'grandChild';
 export type PrintModes = 'full' | 'printonly' | 'screenonly';
-export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];
+export type DataTableExpansionIconStyles = (typeof DATA_TABLE_EXPANSION_ICON_STYLES)[number];
 export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
-export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
+export type DataTableScreenBreakpoints = (typeof DATA_TABLE_SCREEN_BREAKPOINTS)[number];
 export type DataTableRowStates = 'success' | 'warning' | 'danger' | 'info';
 export interface DataTableStyleConfig {
   portal?: boolean;
@@ -179,18 +179,18 @@ export type DataTableCellAlignment = 'left' | 'center' | 'right';
 //#endregion
 
 //#region Drawer
-export type DrawerPositions = typeof GENERAL_POSITIONS[number];
+export type DrawerPositions = (typeof GENERAL_POSITIONS)[number];
 export type Backdrop = 'inverse' | '';
 //#endregion
 
 //#region Expansion Panel
 export const EXPANSION_PANEL_STATES = ['done', 'active', 'pending', 'disabled'] as const;
-export type ExpansionPanelState = typeof EXPANSION_PANEL_STATES[number];
+export type ExpansionPanelState = (typeof EXPANSION_PANEL_STATES)[number];
 //#endregion
 
 //#region Pagination
 export const PAGINATION_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
-export type PaginationSizes = typeof PAGINATION_SIZES[number];
+export type PaginationSizes = (typeof PAGINATION_SIZES)[number];
 //#endregion
 
 //#region Save View
@@ -221,17 +221,33 @@ export enum SaveViewModes {
   SAVED = 'saved',
   DELETE = 'delete',
 }
+
+export interface SaveViewSave {
+  id: string | null;
+  title?: string;
+  default?: boolean;
+}
+//#endregion
+
+//#region Transfer List
+export interface TransferListItem {
+  value: string;
+  label: string;
+  selected: boolean;
+  locked?: boolean;
+  wildcard?: boolean;
+}
 //#endregion
 
 //#region Search Input
 export const SEARCH_INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
-export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];
+export type SearchInputSizes = (typeof SEARCH_INPUT_SIZES)[number];
 //#endregion
 
 //#region Tooltip
-export type TooltipPositions = typeof GENERAL_POSITIONS[number];
+export type TooltipPositions = (typeof GENERAL_POSITIONS)[number];
 export const TOOLTIP_COLORS = ['light', 'base'] as const;
-export type TooltipColors = typeof TOOLTIP_COLORS[number];
+export type TooltipColors = (typeof TOOLTIP_COLORS)[number];
 //#endregion
 
 //#region DataTableEmpty
@@ -259,15 +275,6 @@ export type DataTableAction = {
   onClick: (props: DataTableColumnProps) => void;
   hide?: DataTableActionItemResponsiveness[];
 };
-
-// TransferList
-export interface TransferListItem {
-  value: string;
-  label: string;
-  selected: boolean;
-  locked?: boolean;
-  wildcard?: boolean;
-}
 
 export interface TransferListConfig {
   searchInput?: boolean;

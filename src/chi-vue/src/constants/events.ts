@@ -110,5 +110,6 @@ export const SAVE_VIEW_EVENTS = {
   HIDDEN: 'chiSaveViewHidden',
   SAVE_LINK: 'chiSaveLink',
   INPUT: 'chiSaveViewInput',
+  DEFAULT: 'chiSaveViewDefault',
 };
 //#endregion

@@ -215,16 +215,16 @@ describe('Column Customization', () => {
       .then(baseColumnCustomizationExample => {
         const component =
           baseColumnCustomizationExample.$refs.baseColumnCustomizationRef;
-        const spy = cy.spy();
 
-        component.$on(`${DATA_TABLE_EVENTS.COLUMNS_CHANGE}`, spy);
+        cy.spy(component, '_emitColumnsChange').as('changeSpy');
+
         cy.get('@columnsBtn').click();
         cy.get('@availableColumns').select('columnA');
         cy.get('@moveRightBtn').click();
         cy.get('@saveBtn')
           .click()
           .then(() => {
-            expect(spy).to.be.calledOnce;
+            cy.get('@changeSpy').should('have.been.called');
           });
       });
     cy.get('@columnsBtn').click();

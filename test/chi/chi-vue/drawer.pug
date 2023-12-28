@@ -1,5 +1,7 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
 
 h2 Drawer
 h3 Left Drawer
@@ -81,9 +83,9 @@ h3 Portal Bottom position
 
 h3 Show / Hide Drawer
 .test-drawer.-p--3.-w--100#showHide(data-cy="drawer-show-hide-container")
-  button(id="openDrawerBtn" class="chi-button" @click="() => toggleDrawer()") Click me to open the Drawer
+  button(id="openDrawerBtn" class="chi-button" @click.stop="toggleDrawer()") Click me to open the Drawer
   .-position--relative.-w--100(style='height: 300px;')
-    chi-vue-drawer.-position--absolute(ref="drawer" data-cy="drawer-show-hide" position='left' :active="this.drawerActive" style="top: 50px")
+    chi-vue-drawer.-position--absolute(ref="drawer" data-cy="drawer-show-hide" position='left' :active="this.drawerActive" @chi-drawer-hide="() => this.drawerActive = false" @chi-drawer-click-outside="() => this.drawerActive = false" style="top: 50px")
       .-px--2 Drawer content here
 
 script.
@@ -100,18 +102,18 @@ script.
     "#portalTop",
     "#portalBottom",
   ];
-  ids.forEach(id => new Vue({components: {chiVueDrawer: window['chi-vue'].library.components.ChiDrawer}}).$mount(id));
 
-  new Vue({
-    components: {
-      chiVueDrawer: window['chi-vue'].library.components.ChiDrawer
-    },
-    data: {
-      drawerActive: false
-    },
-    methods: {
-      toggleDrawer() {
-        this.drawerActive = !this.drawerActive;
+  ids.forEach(id => {
+    const app = Vue.createApp({});
+
+    app.component('chiVueDrawer', window["chi-vue"].library.components.ChiDrawer);
+    app.mount(id);
+  });
+
+  const showHideApp = Vue.createApp({
+    data() {
+      return {
+        drawerActive: false
       }
     },
     mounted() {
@@ -119,15 +121,12 @@ script.
         window.showHideDrawer = this;
       }
     },
-    watch: {
-      drawerActive() {
-        const events = ["chiDrawerHide","chiDrawerClickOutside"];
-
-        events.forEach(event => {
-          this.$refs.drawer.$on(event, () => {
-            this.drawerActive = false;
-          });
-        });
-      }
+    methods: {
+      toggleDrawer() {
+        this.drawerActive = !this.drawerActive;
+      },
     }
-  }).$mount("#showHide")
+  });
+
+  showHideApp.component('chiVueDrawer', window["chi-vue"].library.components.ChiDrawer);
+  showHideApp.mount('#showHide');

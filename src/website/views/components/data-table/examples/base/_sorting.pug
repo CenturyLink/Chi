@@ -3,7 +3,7 @@ h3 Sorting
 .example.-mb--3
   .-p--3
     #sorting(style="min-height: 16rem;")
-      chi-vue-data-table(:config='config', :data='table')
+      chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-sorting
       li.-disabled
@@ -17,84 +17,86 @@ h3 Sorting
     .chi-tab__description Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          style: {
-            portal: false,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: false,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            style: {
+              portal: false,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: false,
+            },
+            pagination: {
+              activePage: 1,
+              compact: false,
+              firstLast: false,
+              pageJumper: true,
+            },
+            resultsPerPage: 3,
           },
-          pagination: {
-            activePage: 1,
-            compact: false,
-            firstLast: false,
-            pageJumper: true,
-          },
-          resultsPerPage: 3,
-        },
-        table: {
-          head: {
-            name: { label: 'Name', sortable: true, sortDataType: 'string' },
-            id: { label: 'ID', sortable: true, sortDataType: 'string' },
-            lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
-          },
-          body: [
-            {
-              id: 'name-1',
-              data: [
-                'Name 1',
-                'name-1',
-                '18 Dec 2020 3:26 p.m.',
-              ],
+          table: {
+            head: {
+              name: { label: 'Name', sortable: true, sortDataType: 'string' },
+              id: { label: 'ID', sortable: true, sortDataType: 'string' },
+              lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
             },
-            {
-              id: 'name-2',
-              data: [
-                'Name 2',
-                'name-2',
-                '18 Dec 2020 2:38 a.m.',
-              ],
-            },
-            {
-              id: 'name-3',
-              data: [
-                'Name 3',
-                'name-3',
-                '5 Nov 2020 10:15 a.m.',
-              ],
-            },
-            {
-              id: 'name-4',
-              data: [
-                'Name 4',
-                'name-4',
-                '18 Dec 2020 3:26 p.m.',
-              ],
-            },
-            {
-              id: 'name-5',
-              data: [
-                'Name 5',
-                'name-5',
-                '18 Dec 2020 2:38 a.m.',
-              ],
-            },
-            {
-              id: 'name-6',
-              data: [
-                'Name 6',
-                'name-6',
-                '5 Nov 2020 10:15 a.m.',
-              ],
-            },
-          ]
+            body: [
+              {
+                id: 'name-1',
+                data: [
+                  'Name 1',
+                  'name-1',
+                  '18 Dec 2020 3:26 p.m.',
+                ],
+              },
+              {
+                id: 'name-2',
+                data: [
+                  'Name 2',
+                  'name-2',
+                  '18 Dec 2020 2:38 a.m.',
+                ],
+              },
+              {
+                id: 'name-3',
+                data: [
+                  'Name 3',
+                  'name-3',
+                  '5 Nov 2020 10:15 a.m.',
+                ],
+              },
+              {
+                id: 'name-4',
+                data: [
+                  'Name 4',
+                  'name-4',
+                  '18 Dec 2020 3:26 p.m.',
+                ],
+              },
+              {
+                id: 'name-5',
+                data: [
+                  'Name 5',
+                  'name-5',
+                  '18 Dec 2020 2:38 a.m.',
+                ],
+              },
+              {
+                id: 'name-6',
+                data: [
+                  'Name 6',
+                  'name-6',
+                  '5 Nov 2020 10:15 a.m.',
+                ],
+              },
+            ]
+          }
         }
       }
   .chi-tabs-panel#html-sorting
@@ -205,88 +207,91 @@ h3 Sorting
       </div>
 
 script.
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: false,
+  const sortingApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: 'Name', sortable: true, sortDataType: 'string' },
-          id: { label: 'ID', sortable: true, sortDataType: 'string' },
-          lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
-        },
-        body: [
-          {
-            id: 'name-1',
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+        table: {
+          head: {
+            name: { label: 'Name', sortable: true, sortDataType: 'string' },
+            id: { label: 'ID', sortable: true, sortDataType: 'string' },
+            lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
           },
-          {
-            id: 'name-2',
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
-          },
-          {
-            id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
-          },
-          {
-            id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
-          },
-          {
-            id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
-          },
-          {
-            id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
-          },
-        ]
+          body: [
+            {
+              id: 'name-1',
+              data: [
+                'Name 1',
+                'name-1',
+                '18 Dec 2020 3:26 p.m.',
+              ],
+            },
+            {
+              id: 'name-2',
+              data: [
+                'Name 2',
+                'name-2',
+                '18 Dec 2020 2:38 a.m.',
+              ],
+            },
+            {
+              id: 'name-3',
+              data: [
+                'Name 3',
+                'name-3',
+                '5 Nov 2020 10:15 a.m.',
+              ],
+            },
+            {
+              id: 'name-4',
+              data: [
+                'Name 4',
+                'name-4',
+                '18 Dec 2020 3:26 p.m.',
+              ],
+            },
+            {
+              id: 'name-5',
+              data: [
+                'Name 5',
+                'name-5',
+                '18 Dec 2020 2:38 a.m.',
+              ],
+            },
+            {
+              id: 'name-6',
+              data: [
+                'Name 6',
+                'name-6',
+                '5 Nov 2020 10:15 a.m.',
+              ],
+            },
+          ]
+        }
       }
-    }
-  }).$mount('#sorting');
+    },
+  });
+
+  sortingApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  sortingApp.mount('#sorting');
+
   document.addEventListener(
     'DOMContentLoaded',
     function() {

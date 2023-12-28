@@ -1,9 +1,8 @@
 <template>
-  <div class="chi-transfer-list__column">
-    <div class="chi-transfer-list__header">
-      <p class="chi-transfer-list__title">
+  <div :class="[TRANSFER_LIST_CLASSES.COLUMN]">
+    <div :class="[TRANSFER_LIST_CLASSES.HEADER]">
+      <p :class="[TRANSFER_LIST_CLASSES.TITLE]">
         {{ title }}
-
         <template v-if="description">
           <chi-button
             :id="`transfer-list-info-popover-${title}`"
@@ -15,7 +14,6 @@
           >
             <chi-icon icon="circle-info-outline" size="xs" />
           </chi-button>
-
           <chi-popover
             arrow
             variant="text"
@@ -26,14 +24,14 @@
           </chi-popover>
         </template>
       </p>
-      <div class="chi-transfer-list__header-actions">
+      <div :class="[TRANSFER_LIST_CLASSES.HEADER_ACTIONS]">
         <slot name="header-actions"></slot>
       </div>
     </div>
-    <div class="chi-transfer-list__search">
+    <div :class="[TRANSFER_LIST_CLASSES.SEARCH]">
       <chi-search-input placeholder="Filter" />
     </div>
-    <select multiple class="chi-select chi-transfer-list__menu">
+    <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]">
       <option
         v-for="(item, index) in items"
         :key="index"
@@ -50,14 +48,10 @@
 <script lang="ts">
 import { Prop } from 'vue-property-decorator';
 import { Component, Vue } from '@/build/vue-wrapper';
-import Tooltip from '../tooltip/tooltip';
 import { TransferListItem } from '@/constants/types';
+import { SELECT_CLASSES, TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
-@Component({
-  components: {
-    ChiTooltip: Tooltip,
-  },
-})
+@Component({})
 export default class TransferListColumn extends Vue {
   @Prop() title!: string;
   @Prop() type?: 'from' | 'to';
@@ -66,29 +60,38 @@ export default class TransferListColumn extends Vue {
   @Prop() checkbox?: boolean;
   @Prop() items!: TransferListItem[];
 
+  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
+  SELECT_CLASSES = SELECT_CLASSES;
+
   isToColumn = this.type === 'to';
-  hasLockedItems = this.items?.some(item => item.locked);
+  hasLockedItems = this.items?.some((item) => item.locked);
 
   getMenuItemClasses({ locked }: TransferListItem) {
-    const classes = ['chi-transfer-list__menu-item'];
+    const classes = [TRANSFER_LIST_CLASSES.MENU_ITEM];
+    const paddingClass = this._getPaddingClass();
+    const checkboxClass = this._getCheckboxClass();
+    const lockedClass = this._getLockedClass(locked);
 
-    if (this.checkbox) {
-      classes.push('-checkbox');
-    }
-
-    if (locked && this.isToColumn) {
-      classes.push('-locked');
-    }
-
-    if (this.checkbox || (this.hasLockedItems && this.isToColumn)) {
-      classes.push('-pl--4');
-    }
+    classes.push(paddingClass, checkboxClass, lockedClass);
 
     return classes.join(' ');
   }
 
+  _getPaddingClass() {
+    return this.checkbox || (this.hasLockedItems && this.isToColumn) ? '-pl--4' : '';
+  }
+
+  _getCheckboxClass() {
+    return this.checkbox ? '-checkbox' : '';
+  }
+
+  _getLockedClass(locked: boolean | undefined) {
+    return locked && this.isToColumn ? '-locked' : '';
+  }
+
   toggleInfoPopover() {
     const popover = document.querySelector(`#transfer-list-popover-${this.title}`) as any;
+
     popover.toggle();
   }
 }

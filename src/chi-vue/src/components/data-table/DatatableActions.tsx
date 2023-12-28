@@ -25,7 +25,8 @@ export default class DataTableActions extends Vue {
             ref="dropdownTrigger"
             class="chi-button -icon -flat"
             aria-label="More options"
-            data-position="left-start">
+            data-position="left-start"
+          >
             <div class="chi-button__content">
               <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
             </div>
@@ -53,7 +54,8 @@ export default class DataTableActions extends Vue {
         <button
           ref="modalTrigger"
           class="chi-button -icon -flat -centered chi-modal__trigger"
-          data-target={`#modal-actions-${this.dataTableNumber}`}>
+          data-target={`#modal-actions-${this.dataTableNumber}`}
+        >
           <div class="chi-button__content">
             <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
           </div>
@@ -66,7 +68,8 @@ export default class DataTableActions extends Vue {
               class="chi-modal"
               role="dialog"
               aria-label="Modal description"
-              aria-modal="true">
+              aria-modal="true"
+            >
               <header class="chi-modal__header">
                 <h2 class="chi-modal__title">Actions</h2>
                 <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
@@ -82,7 +85,8 @@ export default class DataTableActions extends Vue {
                       <a
                         key={index}
                         class="-d--block -text--lg -text--bold -text--primary -p--3 -bb--1"
-                        onClick={() => button.onClick(this.rowData)}>
+                        onClick={() => button.onClick(this.rowData)}
+                      >
                         {button.label}
                       </a>
                     );

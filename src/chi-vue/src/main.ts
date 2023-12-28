@@ -1,19 +1,8 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import App from './App.vue';
-import Vuex from 'vuex';
-import ChiVue from '@/store';
 
-Vue.config.productionTip = false;
-Vue.use(Vuex);
+const app = createApp(App);
+const pinia = createPinia();
 
-const store = new Vuex.Store({
-  state: {},
-  modules: {
-    ChiVue,
-  },
-});
-
-new Vue({
-  render: h => h(App),
-  store: store,
-}).$mount('#app');
+app.use(pinia).mount('#app');

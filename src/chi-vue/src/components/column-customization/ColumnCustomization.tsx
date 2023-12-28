@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import { findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
@@ -15,24 +15,35 @@ import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
-import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
+import Tooltip from '@/components/tooltip/tooltip';
+import EventBus from '@/utils/EventBus';
 
 declare const chi: any;
 
 @Component({})
 export default class ColumnCustomization extends Vue {
-  @Prop() columnsData?: DataTableColumnsData;
+  @Prop() columnsData!: DataTableColumnsData;
+
+  name = 'ColumnCustomization';
+
+  columnsAvailableColumns?: DataTableColumn[] = [];
+  columnsSelectedColumns?: DataTableColumn[] = [];
 
   key = 0;
   _chiModal: any;
-  _availableColumns?: DataTableColumn[] = [];
-  _selectedColumns?: DataTableColumn[] = [];
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
   _previousSelected?: DataTableColumn[];
   _resetTooltip?: any;
+
+  @Emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE)
+  _emitColumnsChange() {
+    EventBus.emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
+
+    return this._selectedData;
+  }
 
   _modal() {
     return (
@@ -44,13 +55,15 @@ export default class ColumnCustomization extends Vue {
             class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
             aria-label="Customize Columns"
-            aria-modal="true">
+            aria-modal="true"
+          >
             <header class={MODAL_CLASSES.HEADER}>
               <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
                 onClick={this._cancelColumnsChange}
-                aria-label="Close">
+                aria-label="Close"
+              >
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
                 </div>
@@ -58,8 +71,9 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
-                available-columns={this._availableColumns}
-                selected-columns={this._selectedColumns}
+                onChiColumnsChange={(ev: DataTableColumn[]) => this._watchContentComponentChanges(ev)}
+                available-columns={this.columnsAvailableColumns}
+                selected-columns={this.columnsSelectedColumns}
               />
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
@@ -75,20 +89,25 @@ export default class ColumnCustomization extends Vue {
                   chi-column-customization__reset-button
                 `}
                 onClick={this._reset}
-                disabled>
+                disabled
+              >
                 <div
-                  class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
+                  class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}
+                >
                   <i
                     aria-hidden="true"
-                    class={`${ICON_CLASS} icon-reset -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
+                    class={`${ICON_CLASS} icon-reset -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}
+                  ></i>
                   <span
-                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
+                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}
+                  >
                     Reset
                   </span>
                 </div>
               </button>
               <div
-                class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL} ${UTILITY_CLASSES.MARGIN.RIGHT[2]}`}></div>
+                class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL} ${UTILITY_CLASSES.MARGIN.RIGHT[2]}`}
+              ></div>
               <button class={`${BUTTON_CLASSES.BUTTON}`} onClick={this._cancelColumnsChange}>
                 Cancel
               </button>
@@ -96,7 +115,8 @@ export default class ColumnCustomization extends Vue {
                 ref="saveButton"
                 onClick={this._submitColumnsChange}
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
-                disabled>
+                disabled
+              >
                 Save
               </button>
             </footer>
@@ -108,8 +128,8 @@ export default class ColumnCustomization extends Vue {
 
   _reset() {
     if (this._ColumnCustomizationContentComponent) {
-      this._availableColumns = [];
-      this._selectedColumns = [];
+      this.columnsAvailableColumns = [];
+      this.columnsSelectedColumns = [];
       this._selectedData = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
       this._processData();
       (this.$refs.saveButton as HTMLButtonElement).disabled = false;
@@ -122,13 +142,13 @@ export default class ColumnCustomization extends Vue {
 
   _submitColumnsChange() {
     this._previousSelected = this._selectedData;
-    this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
+    this._emitColumnsChange();
     (this.$refs.saveButton as HTMLButtonElement).disabled = true;
     this._chiModal.hide();
   }
 
   _cancelColumnsChange() {
-    const originalSelectedColumns = this.columnsData?.columns.filter(column => column.selected);
+    const originalSelectedColumns = this.columnsData?.columns.filter((column) => column.selected);
     const previousSelected = this._previousSelected || (originalSelectedColumns as DataTableColumn[]);
     const selectedNames = previousSelected.map(({ name }) => name);
 
@@ -141,13 +161,13 @@ export default class ColumnCustomization extends Vue {
     this.key += 1;
 
     this._selectedData = previousSelected;
-    this._selectedColumns = previousSelected;
-    this._availableColumns = this.columnsData?.columns.filter(({ name }) => !selectedNames.includes(name));
+    this.columnsSelectedColumns = previousSelected;
+    this.columnsAvailableColumns = this.columnsData?.columns.filter(({ name }) => !selectedNames.includes(name));
   }
 
   beforeCreate() {
-    this._availableColumns = [];
-    this._selectedColumns = [];
+    this.columnsAvailableColumns = [];
+    this.columnsSelectedColumns = [];
   }
 
   created() {
@@ -157,12 +177,12 @@ export default class ColumnCustomization extends Vue {
 
   @Watch('columnsData')
   _processData() {
-    this.$props.columnsData.columns.forEach((column: DataTableColumn) => {
-      if (column.selected && this._selectedColumns) {
-        this._selectedColumns.push(column);
+    this.columnsData.columns.forEach((column: DataTableColumn) => {
+      if (column.selected && this.columnsSelectedColumns) {
+        this.columnsSelectedColumns.push(column);
       } else {
-        if (this._availableColumns) {
-          this._availableColumns.push(column);
+        if (this.columnsAvailableColumns) {
+          this.columnsAvailableColumns.push(column);
         }
       }
     });
@@ -177,37 +197,32 @@ export default class ColumnCustomization extends Vue {
     }
 
     this._chiModal = chi.modal(modalButton);
-    this._watchContentComponentChanges();
-  }
-
-  updated() {
-    this._watchContentComponentChanges();
   }
 
   beforeDestroy() {
     this._resetTooltip?.dispose();
   }
 
-  _watchContentComponentChanges() {
+  _watchContentComponentChanges(columns: DataTableColumn[]) {
     if (this._ColumnCustomizationContentComponent) {
-      this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
-        const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
-        const resetButton = this.$refs.resetButton as HTMLButtonElement;
+      const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
+      const resetButton = this.$refs.resetButton as HTMLButtonElement;
 
-        if (!this._previousSelected) {
-          this._previousSelected = originalSelectedColumns;
-        }
+      if (!this._previousSelected) {
+        this._previousSelected = originalSelectedColumns;
+      }
 
-        this._selectedData = ev;
-        if (this._previousSelected && originalSelectedColumns) {
-          (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(this._previousSelected, ev);
-          resetButton.disabled = checkColumns(originalSelectedColumns, ev);
-        }
+      this._selectedData = columns;
 
-        this._resetTooltip = chi.tooltip(resetButton);
-      });
+      if (this._previousSelected && originalSelectedColumns) {
+        (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(this._previousSelected, columns);
+        resetButton.disabled = checkColumns(originalSelectedColumns, columns);
+      }
+
+      this._resetTooltip = chi.tooltip(resetButton);
     }
   }
+
   render() {
     const modalButton = (
       <button
@@ -218,7 +233,8 @@ export default class ColumnCustomization extends Vue {
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
           ${BUTTON_CLASSES.FLAT}
-          `}>
+          `}
+      >
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} aria-hidden="true" />
         </div>

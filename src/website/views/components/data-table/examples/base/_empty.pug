@@ -4,7 +4,7 @@ h4 No Results
 .example.-mb--3
   .-p--3
     #no-results(style="min-height: 5.2rem;")
-      chi-vue-data-table(:config='config', :data='table')
+      chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-no-results
       li.-disabled
@@ -18,36 +18,38 @@ h4 No Results
     .chi-tab__description Use <code>noResultsMessage</code> config to customize the no results data message
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          noResultsMessage: 'No matching results',
-          style: {
-            portal: false,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: false,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            noResultsMessage: 'No matching results',
+            style: {
+              portal: false,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: false,
+            },
+            pagination: {
+              activePage: 1,
+              compact: false,
+              firstLast: false,
+              pageJumper: true,
+            },
+            resultsPerPage: 3,
           },
-          pagination: {
-            activePage: 1,
-            compact: false,
-            firstLast: false,
-            pageJumper: true,
-          },
-          resultsPerPage: 3,
-        },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: []
+          table: {
+            head: {
+              name: { label: 'Name' },
+              id: { label: 'ID' },
+              lastLogin: { label: 'Last Login' },
+            },
+            body: []
+          }
         }
       }
   .chi-tabs-panel#html-no-results
@@ -78,7 +80,7 @@ h4 No Filters
 .example.-mb--3
   .-p--3
     #no-filters(style="min-height: 5.2rem;")
-      chi-vue-data-table(:config='config', :data='table')
+      chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-no-filters
       li.-disabled
@@ -92,36 +94,38 @@ h4 No Filters
     .chi-tab__description Use <code>noFiltersMessage</code> config to customize the no filters data message
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          noFiltersMessage: "Search for or select at least one filter to get results",
-          style: {
-            portal: false,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: false,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            noFiltersMessage: "Search for or select at least one filter to get results",
+            style: {
+              portal: false,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: false,
+            },
+            pagination: {
+              activePage: 1,
+              compact: false,
+              firstLast: false,
+              pageJumper: true,
+            },
+            resultsPerPage: 3,
           },
-          pagination: {
-            activePage: 1,
-            compact: false,
-            firstLast: false,
-            pageJumper: true,
-          },
-          resultsPerPage: 3,
-        },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: []
+          table: {
+            head: {
+              name: { label: 'Name' },
+              id: { label: 'ID' },
+              lastLogin: { label: 'Last Login' },
+            },
+            body: []
+          }
         }
       }
   .chi-tabs-panel#html-no-filters
@@ -153,7 +157,7 @@ h4 Empty Actionable
 .example.-mb--3
   .-p--3
     #empty-actionable
-      chi-vue-data-table(:config='config', :data='table')
+      chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-empty-actionable
       li.-disabled
@@ -166,38 +170,40 @@ h4 Empty Actionable
   .chi-tabs-panel.-active#vue-empty-actionable
   :code(lang='html')
     <!-- Vue component -->
-    <ChiDataTable :config="config" :data="table"></ChiDataTable>
+    <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
     <!-- Config and Data -->
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: false,
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+          emptyActionable: {
+            isActionable: true,
+          },
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-        emptyActionable: {
-          isActionable: true,
-        },
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: []
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: []
+        }
       }
     }
   .chi-tabs-panel#html-empty-actionable
@@ -229,110 +235,119 @@ h4 Empty Actionable
       </div>
 
 script.
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        noResultsMessage: 'No matching results',
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
+  const noResultsApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          noResultsMessage: 'No matching results',
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: [],
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
       }
-    }
-  }).$mount('#no-results');
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
     },
-    data: {
-      config: {
-        columnResize: true,
-        noResultsMessage: "Search for or select at least one filter to get results",
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
+  });
+
+  noResultsApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  noResultsApp.mount('#no-results');
+
+  const noFiltersApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          noResultsMessage: "Search for or select at least one filter to get results",
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: {label: 'Name'},
-          id: {label: 'ID'},
-          lastLogin: {label: 'Last Login'},
-        },
-        body: [],
+        table: {
+          head: {
+            name: {label: 'Name'},
+            id: {label: 'ID'},
+            lastLogin: {label: 'Last Login'},
+          },
+          body: [],
+        }
       }
-    }
-  }).$mount('#no-filters');
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
     },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
+  });
+
+  noFiltersApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  noFiltersApp.mount('#no-filters');
+
+  const emptyActionableApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+          emptyActionable: {
+            isActionable: true,
+          },
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-        emptyActionable: {
-          isActionable: true,
-        },
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: [],
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
       }
-    }
-  }).$mount('#empty-actionable');
+    },
+  });
+
+  emptyActionableApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  emptyActionableApp.mount('#empty-actionable');
+
   document.addEventListener(
     'DOMContentLoaded',
     function() {

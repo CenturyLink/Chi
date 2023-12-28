@@ -1,5 +1,7 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
 
 .chi
   .-p--3
@@ -35,20 +37,24 @@ script(src="../../chi-vue/umd/chi-vue.umd.js")
       chi-vue-search-input(data-cy="chi-events-trigger-search-input-test", ref="testEvents")
 
 script.
-  new Vue({
-    components: {
-      ChiVueSearchInput: window["chi-vue"].library.components.ChiSearchInput
-    },
-    data: {
-      event: false
-    },
+  const app = Vue.createApp({
     mounted() {
       if (window.Cypress) {
-        const events = ["eventExampleChiBlur","eventExampleChiChange", "eventExampleChiClean", "eventExampleChiFocus" ,"eventExampleChiInput", "eventExampleChiSearch"];
+        const events = [
+          "eventExampleChiBlur", 
+          "eventExampleChiChange", 
+          "eventExampleChiClean", 
+          "eventExampleChiFocus", 
+          "eventExampleChiInput", 
+          "eventExampleChiSearch"
+        ];
 
         events.forEach((event) => {
            window[event] = this;
         })
       }
-    },
-  }).$mount("#app")
+    }
+  });
+
+  app.component('chiVueSearchInput', window["chi-vue"].library.components.ChiSearchInput);
+  app.mount('#app');

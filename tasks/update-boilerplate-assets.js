@@ -19,6 +19,16 @@ gulp.task('update:boilerplate:assets', function(done) {
   const newCEModule = `<script type="module" src="https://lib.lumen.com/chi/${currentVersion}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="${ceModuleSRI}" crossorigin="anonymous"></script>`;
   const newCENoModule = `<script nomodule="" src="https://lib.lumen.com/chi/${currentVersion}/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="${ceNoModuleSRI}" crossorigin="anonymous"></script>`;
 
+  function updateVueFavIcon(path) {
+    const newLibLumenFavICO = `<link rel="alternate icon" href="https://lib.lumen.com/chi/${currentVersion}/assets/themes/lumen/images/favicon.ico" integrity="${favICOSRI}" crossorigin="anonymous">`;
+
+    gulp
+      .src(`${path}/index.html`)
+      .pipe(
+        replace(/<link rel="alternate icon" href="https:\/\/lib.lumen.com\/chi\/.*favicon.ico.*>/g, newLibLumenFavICO)
+      );
+  }
+
   function updateIndexFile(path) {
     gulp.src(`${path}/index.html`)
       .pipe(replace(/<link rel="stylesheet" href="https:\/\/assets\.ctl\.io\/chi.*\/chi.css.*>/g,
@@ -41,6 +51,7 @@ gulp.task('update:boilerplate:assets', function(done) {
     'src/boilerplates/angular/chi-angular-boilerplate/src',
     'src/boilerplates/react/chi-react-boilerplate/public',
     'src/boilerplates/stencil/chi-stencil-boilerplate/src',
-    'src/boilerplates/vue/chi-vue-boilerplate/public'
-  ].forEach(path => updateIndexFile(path));
+  ].forEach((path) => updateIndexFile(path));
+
+  updateVueFavIcon('src/boilerplates/vue/chi-vue-boilerplate');
 });

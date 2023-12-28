@@ -8,7 +8,7 @@ h4 No Results
         .chi-card__title Title
       .chi-card__content.-p--0
         #portal-no-results(style="min-height: 5.25rem;")
-          chi-vue-data-table(:config='config', :data='table')
+          chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-no-results
       li.-disabled
@@ -22,36 +22,38 @@ h4 No Results
     .chi-tab__description Use <code>noResultsMessage</code> config to customize the no results data message
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          noResultsMessage: 'No matching results',
-          style: {
-            portal: true,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: true,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            noResultsMessage: 'No matching results',
+            style: {
+              portal: true,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: true,
+            },
+            pagination: {
+              activePage: 1,
+              compact: true,
+              firstLast: true,
+              pageJumper: false,
+            },
+            resultsPerPage: 3,
           },
-          pagination: {
-            activePage: 1,
-            compact: true,
-            firstLast: true,
-            pageJumper: false,
-          },
-          resultsPerPage: 3,
-        },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: [],
+          table: {
+            head: {
+              name: { label: 'Name' },
+              id: { label: 'ID' },
+              lastLogin: { label: 'Last Login' },
+            },
+            body: [],
+          }
         }
       }
 
@@ -94,7 +96,7 @@ h4 No Filters
         .chi-card__title Title
       .chi-card__content.-p--0
         #portal-no-filters(style="min-height: 5.25rem;")
-          chi-vue-data-table(:config='config', :data='table')
+          chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-no-filters
       li.-disabled
@@ -108,36 +110,38 @@ h4 No Filters
     .chi-tab__description Use <code>noFiltersMessage</code> config to customize the no filters data message
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          noFiltersMessage: 'Search for or select at least one filter to get results',
-          style: {
-            portal: true,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: true,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            noFiltersMessage: 'Search for or select at least one filter to get results',
+            style: {
+              portal: true,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: true,
+            },
+            pagination: {
+              activePage: 1,
+              compact: true,
+              firstLast: true,
+              pageJumper: false,
+            },
+            resultsPerPage: 3,
           },
-          pagination: {
-            activePage: 1,
-            compact: true,
-            firstLast: true,
-            pageJumper: false,
-          },
-          resultsPerPage: 3,
-        },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: [],
+          table: {
+            head: {
+              name: { label: 'Name' },
+              id: { label: 'ID' },
+              lastLogin: { label: 'Last Login' },
+            },
+            body: [],
+          }
         }
       }
   .chi-tabs-panel#html-portal-no-filters
@@ -179,7 +183,7 @@ h4 Empty Actionable
         .chi-card__title Title
       .chi-card__content.-p--0
         #portal-empty-actionable
-          chi-vue-data-table(:config='config', :data='table')
+          chi-vue-data-table(:config='config', :data-table-data='table')
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-empty-actionable
       li.-disabled
@@ -192,38 +196,40 @@ h4 Empty Actionable
   .chi-tabs-panel.-active#vue-portal-empty-actionable
     :code(lang='html')
       <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+      <ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
       <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          style: {
-            portal: true,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: true,
+      data() {
+        return {
+          config: {
+            columnResize: true,
+            style: {
+              portal: true,
+              noBorder: false,
+              bordered: false,
+              hover: false,
+              size: 'md',
+              striped: true,
+            },
+            pagination: {
+              activePage: 1,
+              compact: true,
+              firstLast: true,
+              pageJumper: false,
+            },
+            resultsPerPage: 3,
+            emptyActionable: {
+              isActionable: true,
+            },
           },
-          pagination: {
-            activePage: 1,
-            compact: true,
-            firstLast: true,
-            pageJumper: false,
-          },
-          resultsPerPage: 3,
-          emptyActionable: {
-            isActionable: true,
-          },
-        },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: [],
+          table: {
+            head: {
+              name: { label: 'Name' },
+              id: { label: 'ID' },
+              lastLogin: { label: 'Last Login' },
+            },
+            body: [],
+          }
         }
       }
 
@@ -263,111 +269,117 @@ h4 Empty Actionable
       </div>
 
 script.
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
+  const portalNoResultsApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            pageJumper: false,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: true,
-          firstLast: true,
-          pageJumper: false,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: [],
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
       }
-    }
-  }).$mount('#portal-no-results');
+    },
+  });
 
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        noResultsMessage: 'Search for or select at least one filter to get results',
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
-        },
-        pagination: {
-          activePage: 1,
-          compact: true,
-          firstLast: true,
-          pageJumper: false,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: [],
-      }
-    }
-  }).$mount('#portal-no-filters');
+  portalNoResultsApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalNoResultsApp.mount('#portal-no-results');
 
-  new Vue({
-    components: {
-      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'md',
-          striped: true,
+  const portalNoFiltersApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          noResultsMessage: 'Search for or select at least one filter to get results',
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            pageJumper: false,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: true,
-          firstLast: true,
-          pageJumper: false,
-        },
-        resultsPerPage: 3,
-        emptyActionable: {
-          isActionable: true,
-        },
-      },
-      table: {
-        head: {
-          name: { label: 'Name' },
-          id: { label: 'ID' },
-          lastLogin: { label: 'Last Login' },
-        },
-        body: [],
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
       }
-    }
-  }).$mount('#portal-empty-actionable');
+    },
+  });
+
+  portalNoFiltersApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalNoFiltersApp.mount('#portal-no-filters');
+
+  const portalEmptyActionable = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            pageJumper: false,
+          },
+          resultsPerPage: 3,
+          emptyActionable: {
+            isActionable: true,
+          },
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
+      }
+    },
+  });
+
+  portalEmptyActionable.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalEmptyActionable.mount('#portal-empty-actionable');
 
   document.addEventListener(
     'DOMContentLoaded',

@@ -2,7 +2,6 @@
 
 mount -o bind /tmp/chi/node_modules /chi/node_modules
 mount -o bind /tmp/custom-elements/node_modules /chi/src/custom-elements/node_modules
-mount -o bind /tmp/chi-vue/node_modules /chi/src/chi-vue/node_modules
 mount -o bind /tmp/documentation/node_modules /chi/src/documentation/node_modules
 
 mount -t tmpfs tmpfs /chi/src/custom-elements/.stencil
@@ -61,14 +60,14 @@ start() {
     cd /chi
     unbuffer npm run start 2>&1 | addheader_chi &
 
-    cd /chi/src/documentation
-    echo -e "Documentation"
-    unbuffer npm run dev 2>&1 | addheader_docs &
-
-    cd /chi/src/chi-vue
-    while [ ! -d /chi/dist/js/vue ]; do sleep 1; done
-    unbuffer npm run serve 2>&1 | addheader_vue &
-    unbuffer npm run build:umd
+    # cd /chi/src/documentation
+    # echo -e "Documentation"
+    # unbuffer npm run dev 2>&1 | addheader_docs &
+    
+    # cd /chi/src/chi-vue
+    # while [ ! -d /chi/dist/js/vue ]; do sleep 1; done
+    # unbuffer npm run serve 2>&1 | addheader_vue &
+    # unbuffer npm run build:umd
 
     cd /chi/src/custom-elements
     while [ ! -d /chi/dist/js/ce ]; do sleep 1; done
@@ -80,9 +79,9 @@ build() {
     unbuffer npm run build 2>&1 | addheader_chi
     cd /chi/src/custom-elements
     unbuffer npm run build 2>&1 | addheader_custom_elements
-    cd /chi/src/chi-vue
-    unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
-    unbuffer npm run build:umd 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
+    # cd /chi/src/chi-vue
+    # unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
+    # unbuffer npm run build:umd 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
     cd /chi
     unbuffer npm run sri 2>&1 | addheader_chi
     unbuffer npm run update:boilerplate:assets
