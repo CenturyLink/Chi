@@ -37,6 +37,7 @@ import TransferListFooter from './TransferListFooter.vue';
 import { TransferListConfig, TransferListItem } from '@/constants/types';
 import EventBus from '@/utils/EventBus';
 import { TRANSFER_LIST_EVENTS } from '@/constants/events';
+import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
 @Component({
   components: {
@@ -50,6 +51,8 @@ export default class TransferList extends Vue {
   @Prop() config!: TransferListConfig;
 
   currentTransferList: TransferListItem[] = [];
+
+  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
 
   onLoadOriginalList() {
     this.currentTransferList = this.transferListData;

@@ -70,6 +70,8 @@ export default class TransferListColumn extends Vue {
   @Prop() checkbox?: boolean;
   @Prop() items!: TransferListItem[];
 
+  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
+
   filter = '';
   isToColumn = this.type === 'to';
   hasLockedItems = this.items?.some((item) => item.locked);

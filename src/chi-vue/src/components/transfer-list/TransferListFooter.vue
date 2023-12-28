@@ -23,10 +23,13 @@ import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 import { Prop, Emit } from 'vue-property-decorator';
 import { TransferListItem } from '@/constants/types';
 import { Compare } from '@/utils/Compare';
+import { UTILITY_CLASSES } from '../../constants/classes';
 
 @Component({})
 export default class TransferListFooter extends Vue {
   @Prop() original!: TransferListItem[];
+
+  UTILITY_CLASSES = UTILITY_CLASSES;
 
   canSave = false;
   canReset = false;
