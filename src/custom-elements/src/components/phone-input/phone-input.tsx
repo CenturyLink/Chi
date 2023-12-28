@@ -113,7 +113,7 @@ export class ChiPhoneInput {
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.removeEventListener('click', this._closeDropdown);
   }
 

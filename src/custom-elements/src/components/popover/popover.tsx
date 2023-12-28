@@ -60,7 +60,7 @@ export class Popover {
   /**
    * To define portal style of the Popover
    */
-   @Prop({ reflect: true }) portal: boolean;
+  @Prop({ reflect: true }) portal: boolean;
 
   /**
    * To define modal style of the Popover
@@ -167,7 +167,7 @@ export class Popover {
     }
   }
 
-  @Watch("drag")
+  @Watch('drag')
   dragUpdated(newVal: boolean) {
     if (newVal && !this._drag) {
       this._drag = new Drag(this._popoverHeader, this._popoverElement, this);
@@ -377,10 +377,6 @@ export class Popover {
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
-
   componentWillLoad(): void {
     this.positionValidation(this.position);
     this.referenceElementChanged(this.reference);
@@ -421,7 +417,7 @@ export class Popover {
     }
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     this._destroyPopper();
     if (this.currentAnimation && !this.currentAnimation.isStopped()) {
       this.currentAnimation.stop();
@@ -434,6 +430,7 @@ export class Popover {
     this._componentLoaded = false;
     document.removeEventListener('click', this._documentClickHandler);
     document.removeEventListener('keyup', this._documentKeyHandler);
+    this.mutationObserver.disconnect();
   }
 
   componentDidUpdate(): void {

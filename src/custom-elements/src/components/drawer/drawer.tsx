@@ -213,10 +213,6 @@ export class Drawer {
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
-
   private _documentClickHandler = (ev): void => {
     const drawerElement = this.el.querySelector('.chi-drawer');
     const drawerCloseButton = this.nonClosable ? null : drawerElement.querySelector('button.-close');
@@ -248,8 +244,9 @@ export class Drawer {
     document.addEventListener('click', this._documentClickHandler);
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     document.removeEventListener('click', this._documentClickHandler);
+    this.mutationObserver.disconnect();
   }
 
   render() {

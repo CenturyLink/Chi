@@ -245,7 +245,8 @@ pipeline {
           stage ('Building Custom elements') {
             agent {
               docker {
-                image getNodeAgentBlock(null, 'image')
+                image getNodeAgentBlock('custom-elements')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -1109,7 +1110,7 @@ def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
-  if (scope == 'chi-vue') {
+  if (scope == 'chi-vue' || scope == 'custom-elements') {
     nodeVersion = '20'
   }
 

@@ -7,7 +7,6 @@ import {
   Prop,
   h,
   Watch,
-  Listen,
   State
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
@@ -157,16 +156,16 @@ export class Dropdown {
     this._getDropdownMenuSlots();
     this._setMutationObserver();
   }
-  
-  componentDidUnload() {
+
+  disconnectedCallback() {
     this._removeEventListeners();
     this._mutationObserver.disconnect();
   }
-  
+
   /**
    * Sets a MutationObserver of this element DOM tree force a re-render when child
    * nodes change.
-   * This is to avoid the new dynamically added elements in the slot=menu 
+   * This is to avoid the new dynamically added elements in the slot=menu
    * are rendered outside the dropdwon.
    */
   _setMutationObserver() {
@@ -204,17 +203,16 @@ export class Dropdown {
     this._forceRender = !this._forceRender;
   }
 
-  @Listen('keydown', { target: 'parent' })
   handleKeyDown(event: KeyboardEvent) {
     const allowedKeys = ['ArrowDown', 'ArrowUp'];
 
-    if (!allowedKeys.includes(event.code)) {
+    if (!allowedKeys.includes(event.key) || !this.active) {
       return;
     }
 
     event.preventDefault();
 
-    this._focusMenuItem(event.code);
+    this._focusMenuItem(event.key);
     this.eventKeyDown.emit();
   }
 
@@ -268,15 +266,21 @@ export class Dropdown {
   }
 
   getPadding(direction: 'top' | 'bottom') {
-    return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
+    return parseInt(
+      getComputedStyle(this._dropdownMenuElement).getPropertyValue(
+        `padding-${direction}`
+      ),
+      10
+    );
   }
 
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
-    const itemsToShow = this.visibleItems ? 
-      (menuItems.length < this.visibleItems
+    const itemsToShow = this.visibleItems
+      ? menuItems.length < this.visibleItems
         ? menuItems.length
-        : this.visibleItems) : menuItems.length;
+        : this.visibleItems
+      : menuItems.length;
 
     let newHeight = 0;
 
@@ -375,8 +379,8 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
     const focusedElement = document.activeElement as HTMLElement;
     const currentIndex = menuItems.indexOf(focusedElement);
-    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
-
+    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1; 
+  
     if (!menuItems.includes(focusedElement)) {
       const startIndex = keyCode === 'ArrowUp' ? menuItems.length - 1 : 0;
 
@@ -394,7 +398,7 @@ export class Dropdown {
 
   _getDropdownMenuItems(): HTMLElement[] {
     let children = this._dropdownMenuElement.children as HTMLAnchorElement[];
-    
+
     if (this._dropdownMenuItemsWrapper) {
       children = this._dropdownMenuItemsWrapper.children as HTMLAnchorElement[];
     }
@@ -407,12 +411,13 @@ export class Dropdown {
   _addEventListeners() {
     const menuItems = this._getDropdownMenuItems();
 
-    document.body.addEventListener('click', this.handlerClick);
+    document.body.addEventListener('click', this.handlerClick.bind(this));
+    document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.addEventListener('click', this.handlerSelectedMenuItem);
+      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this));
     });
   }
 
@@ -420,6 +425,7 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.removeEventListener('click', this.handlerClick);
+    document.body.removeEventListener('keydown', this.handleKeyDown);
 
     if (this.preventItemSelected) return;
 
