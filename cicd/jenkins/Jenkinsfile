@@ -244,7 +244,7 @@ pipeline {
         parallel {
           stage ('Building Custom elements') {
             agent {
-              docker {
+              dockerfile {
                 filename getNodeAgentBlock('custom-elements')
                 dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
