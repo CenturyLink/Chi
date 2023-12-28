@@ -21,6 +21,7 @@ import {
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
+import { FontWeight } from '../../constants/types';
 
 @Component({
   tag: 'chi-dropdown',
@@ -78,6 +79,10 @@ export class Dropdown {
    * To set position of the Dropdown
    */
   @Prop() position: Placement;
+  /**
+   *  To set weight of the button text { normal }.
+   */
+  @Prop({ reflect: true }) fontWeight?: FontWeight;
   /**
    * To provide selector of an external reference element
    */
@@ -423,20 +428,15 @@ export class Dropdown {
     });
   }
 
-  render() {
-    const trigger = this.button ? (
+  renderTrigger() {
+    return this.button ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
         class={`
-          ${this.fluid ? FLUID_CLASS : ''}
-        `}
-        extra-class={`
-          ${DROPDOWN_CLASSES.TRIGGER}
-          ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''}
-          ${this.animateChevron ? ANIMATE_CLASS : ''}
-        `}
+        ${this.fluid ? FLUID_CLASS : ''}
+      `}
+        extra-class={this.getExtraClassForTriggerButton()}
         color={`${this.color || ''}`}
         variant={`${this.variant || ''}`}
         size={`${this.size || ''}`}
@@ -449,65 +449,72 @@ export class Dropdown {
     ) : this._customTrigger ? (
       <slot name="trigger" />
     ) : null;
+  }
 
-    const dropdownMenuHeader = this._menuHeader && (
-      <div
-        class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
-      >
+  getExtraClassForTriggerButton() {
+    return `
+      ${DROPDOWN_CLASSES.TRIGGER}
+      ${this.fontWeight ? `-text--${this.fontWeight}` : ''}
+      ${this.active ? ACTIVE_CLASS : ''}
+      ${this.fluid ? FLUID_CLASS : ''}
+      ${this.animateChevron ? ANIMATE_CLASS : ''}
+    `;
+  }
+
+  renderDropdownMenuHeader() {
+    return this._menuHeader && (
+      <div class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
         <slot name="menu-header" />
       </div>
     );
-    const dropdownMenuFooter = this._menuFooter && (
-      <div
-        class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}
-      >
+  }
+
+  renderDropdownMenuFooter() {
+    return this._menuFooter && (
+      <div class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}>
         <slot name="menu-footer" />
       </div>
     );
-    const dropdownMenuItems = this.visibleItems && (this._menuFooter || this._menuHeader) ? (
-      <div
-        class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER}
-        ref={ref => (this._dropdownMenuItemsWrapper = ref)}
-      >
+  }
+
+  renderDropdownMenuItems() {
+    return this.visibleItems && (this._menuFooter || this._menuHeader) ? (
+      <div class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER} ref={ref => (this._dropdownMenuItemsWrapper = ref)}>
         <slot name="menu" />
       </div>
     ) : (
       <slot name="menu" />
     );
+  }
 
-    const menu = (
+  renderMenu() {
+    return (
       <div
         class={`
           ${DROPDOWN_CLASSES.MENU}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''}
-          ${this.description ? LIST_CLASS : ''}
-        `}
-        ref={ref => (this._dropdownMenuElement = ref)}
-      >
-        {dropdownMenuHeader}
-        {dropdownMenuItems}
-        {dropdownMenuFooter}
+          ${this.description ? LIST_CLASS : ''}`
+        }
+        ref={ref => (this._dropdownMenuElement = ref)}>
+        {this.renderDropdownMenuHeader()}
+        {this.renderDropdownMenuItems()}
+        {this.renderDropdownMenuFooter()}
       </div>
     );
+  }
 
-    if (trigger) {
-      return (
-        <div
-          class={`
-            ${DROPDOWN_CLASSES.DROPDOWN}
-            ${this.active ? ACTIVE_CLASS : ''}
-            ${this.fluid ? FLUID_CLASS : ''}
-          `}
-          onMouseLeave={this.handlerMouseLeave}
-        >
-          {trigger}
-          {menu}
-        </div>
-      );
-    }
+  render() {
+    const trigger = this.renderTrigger();
+    const menu = this.renderMenu();
 
-    return menu;
+    return trigger ? (
+      <div class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`}
+        onMouseLeave={this.handlerMouseLeave}>
+        {trigger}
+        {menu}
+      </div>
+    ) : menu;
   }
 }

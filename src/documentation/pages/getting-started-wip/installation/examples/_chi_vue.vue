@@ -109,7 +109,7 @@ module.exports = {
 });`
         },
         umd: (version: string) => `<!-- UMD asset -->
-<script src="https://assets.ctl.io/chi/${version}/chi-vue/umd/chi-vue.umd.js">\x3C/script>
+<script src="https://lib.lumen.com/chi/${version}/chi-vue/umd/chi-vue.umd.js">\x3C/script>
 
 <!-- Vue component example -->
 new Vue({

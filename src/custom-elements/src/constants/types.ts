@@ -45,3 +45,5 @@ export enum TabTriggerDirections {
   Left = 'left',
   Top = 'top'
 }
+
+export type FontWeight = 'normal';

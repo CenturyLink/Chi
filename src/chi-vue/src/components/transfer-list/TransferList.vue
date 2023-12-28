@@ -1,6 +1,6 @@
 <template>
-  <div class="chi-transfer-list">
-    <div class="chi-transfer-list__content">
+  <div :class="[TRANSFER_LIST_CLASSES.TRANSFER_LIST]">
+    <div :class="[TRANSFER_LIST_CLASSES.CONTENT]">
       <TransferListColumn
         type="from"
         :title="config.columns.from.title"

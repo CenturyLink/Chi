@@ -4,12 +4,12 @@ Chi is Lumen's design system for building consistent digital products and experi
 
 ## Getting Started
 
-Integrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
+Integrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://lib.lumen.com). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
 
 Begin by adding the Chi stylesheet to your project's layout template, replacing `VERSION` with the most recent release of Chi:
 
 ``` html
-<link rel="stylesheet" href="https://assets.ctl.io/chi/VERSION/chi.css">
+<link rel="stylesheet" href="https://lib.lumen.com/chi/VERSION/chi.css">
 ```
 
 Next, add the `chi` CSS class to the `<html>` tag of your document to properly scope the styles. This allows Chi to override any existing styles that have been defined by legacy markup.
@@ -22,7 +22,7 @@ Next, add the `chi` CSS class to the `<html>` tag of your document to properly s
 </html>
 ```
 
-At this point you will be able to target the styles available in Chi by referencing its [documentation](https://assets.ctl.io/chi).
+At this point you will be able to target the styles available in Chi by referencing its [documentation](https://lib.lumen.com/chi).
 
 ## Development Workflow
 

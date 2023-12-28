@@ -8,7 +8,7 @@
     >
       <div class="chi-button__content -flex--column -align-items--center">
         <i aria-hidden="true" class="chi-icon icon-reset -sm--2" />
-        <span class="-text--uppercase -text--2xs">Reset</span>
+        <span :class="[UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE, UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS]">Reset</span>
       </div>
     </button>
     <button class="chi-button" @click="handleCancel">Cancel</button>
