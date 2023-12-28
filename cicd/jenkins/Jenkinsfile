@@ -245,7 +245,7 @@ pipeline {
           stage ('Building Custom elements') {
             agent {
               docker {
-                image getNodeAgentBlock('custom-elements')
+                filename getNodeAgentBlock('custom-elements')
                 dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
