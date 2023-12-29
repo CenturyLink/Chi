@@ -42,7 +42,6 @@ export const importWebComponents = (version: string) => {
     script.src = createUrl(ESM);
     script.crossOrigin = 'anonymous';
 
-   
     script.type = 'module';
 
     head.appendChild(script);
