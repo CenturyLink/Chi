@@ -24,8 +24,8 @@
     "directory": "src/chi-vue"
   },
   "devDependencies": {
-    "@babel/plugin-transform-class-properties": "^7.23.3",
     "@babel/plugin-proposal-decorators": "^7.23.6",
+    "@babel/plugin-transform-class-properties": "^7.23.3",
     "@popperjs/core": "^2.11.8",
     "@types/array-sort": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
@@ -44,6 +44,7 @@
     "pinia": "^2.1.4",
     "prettier": "^2.8.8",
     "sass": "^1.69.5",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-checker": "^0.6.2",

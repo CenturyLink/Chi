@@ -14,6 +14,7 @@ import {
 import { PaginationSizes } from '@/constants/types';
 import { PAGINATION_EVENTS } from '@/constants/events';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { JSX } from 'vue/jsx-runtime';
 
 @Component({})
 export default class Pagination extends Vue {

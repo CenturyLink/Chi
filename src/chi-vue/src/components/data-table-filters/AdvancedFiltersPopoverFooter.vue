@@ -31,7 +31,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits } from 'vue';
 import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 
