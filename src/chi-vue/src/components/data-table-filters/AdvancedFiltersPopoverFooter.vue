@@ -30,34 +30,17 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Emit, Prop } from 'vue-property-decorator';
+<script lang="ts" setup>
+import { defineProps, defineEmits } from 'vue';
 import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
-import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component({})
-export default class AdvancedFiltersPopoverFooter extends Vue {
-  @Prop() disabledButtons?: boolean;
+const emit = defineEmits();
+const props = defineProps<{
+  disabledButtons?: boolean;
+}>();
 
-  BUTTON_CLASSES = BUTTON_CLASSES;
-  DIVIDER_CLASSES = DIVIDER_CLASSES;
-  ICON_CLASS = ICON_CLASS;
-  UTILITY_CLASSES = UTILITY_CLASSES;
-
-  @Emit(ADVANCED_FILTER_EVENTS.CLEAR)
-  clear() {
-    // This is intentional
-  }
-
-  @Emit(GENERIC_EVENTS.CANCEL)
-  cancel() {
-    // This is intentional
-  }
-
-  @Emit(ADVANCED_FILTER_EVENTS.APPLY)
-  apply() {
-    // This is intentional
-  }
-}
+const clear = () => emit(ADVANCED_FILTER_EVENTS.CLEAR);
+const cancel = () => emit(GENERIC_EVENTS.CANCEL);
+const apply = () => emit(ADVANCED_FILTER_EVENTS.APPLY);
 </script>
