@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-12-26T10:54:46",
+  "timestamp": "2023-12-29T08:51:54",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.9.0",
@@ -2487,6 +2487,17 @@
         {
           "name": "fontWeight",
           "type": "\"normal\"",
+          "complexType": {
+            "original": "FontWeight",
+            "resolved": "\"normal\"",
+            "references": {
+              "FontWeight": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::FontWeight"
+              }
+            }
+          },
           "mutable": false,
           "attr": "font-weight",
           "reflectToAttr": true,
@@ -8936,6 +8947,11 @@
       "declaration": "\"12hr\" | \"24hr\"",
       "docstring": "",
       "path": "src/constants/constants.ts"
+    },
+    "src/constants/types.ts::FontWeight": {
+      "declaration": "\"normal\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
     },
     "src/constants/color.ts::IconColors": {
       "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
