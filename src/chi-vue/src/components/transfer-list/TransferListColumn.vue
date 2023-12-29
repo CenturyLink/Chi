@@ -28,10 +28,10 @@
         <slot name="header-actions"></slot>
       </div>
     </div>
-    <div class="chi-transfer-list__search">
+    <div :class="[TRANSFER_LIST_CLASSES.SEARCH]">
       <SearchInput placeholder="Filter" @chiInput="handleFilter" @chiClean="handleClearFilter" />
     </div>
-    <select multiple class="chi-select chi-transfer-list__menu" @change="handleSelectItem">
+    <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]" @change="handleSelectItem">
       <option
         v-for="(item, index) in getFilteredList()"
         :key="index"
@@ -54,7 +54,7 @@ import SearchInput from '../search-input/SearchInput';
 import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 import EventBus from '@/utils/EventBus';
 import Tooltip from '../tooltip/tooltip';
-import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
+import { TRANSFER_LIST_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 
 @Component({
   components: {
@@ -71,6 +71,7 @@ export default class TransferListColumn extends Vue {
   @Prop() items!: TransferListItem[];
 
   TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
+  SELECT_CLASSES = SELECT_CLASSES;
 
   filter = '';
   isToColumn = this.type === 'to';

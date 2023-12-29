@@ -1,5 +1,5 @@
 <template>
-  <div class="chi-transfer-list__actions">
+  <div :class="[TRANSFER_LIST_CLASSES.ACTIONS]">
     <chi-button
       variant="flat"
       type="icon"
@@ -20,6 +20,7 @@ import { Prop, Emit } from 'vue-property-decorator';
 import EventBus from '@/utils/EventBus';
 import { swapElementsInArray } from '@/utils/utils';
 import { TransferListItem } from '@/constants/types';
+import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
 interface ColumnItemsActive {
   from: string[];
@@ -35,6 +36,8 @@ export default class TransferListActions extends Vue {
   selectedItems: ColumnItemsActive = DEFAULT_ACTIVE_ITEMS;
   currentTransferList: TransferListItem[] = [];
   currentTransferListMapped = DEFAULT_ACTIVE_ITEMS;
+
+  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
 
   getActions() {
     const actions = {
