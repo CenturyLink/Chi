@@ -32,29 +32,23 @@ export const importWebComponents = (version: string) => {
   const createUrl = (fileName: string) => `${CHI_LIB_LUMEN}/${version}/js/ce/ux-chi-ce/${fileName}`;
 
   const ESM = 'ux-chi-ce.esm.js';
-  const JS = 'ux-chi-ce.js';
 
   const scripts = Array.from(head.querySelectorAll<HTMLScriptElement>('script'));
   const scriptEsmExists = scripts.some(({ src }) => src.endsWith(ESM));
-  const scriptJsExists = scripts.some(({ src }) => src.endsWith(JS));
 
-  const addScriptToHead = (isModule: boolean) => {
+  const addScriptToHead = () => {
     const script = document.createElement('script');
 
-    script.src = createUrl(isModule ? ESM : JS);
+    script.src = createUrl(ESM);
     script.crossOrigin = 'anonymous';
 
-    if (isModule) {
-      script.type = 'module';
-    } else {
-      script.noModule = true;
-    }
+   
+    script.type = 'module';
 
     head.appendChild(script);
   };
 
-  if (!scriptEsmExists) addScriptToHead(true);
-  if (!scriptJsExists) addScriptToHead(false);
+  if (!scriptEsmExists) addScriptToHead();
 };
 
 export const importJs = (w: Window) => {

@@ -57,9 +57,6 @@ export default {
         type: 'module',
       },
       {
-        src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.js`,
-      },
-      {
         type: 'text/javascript',
         src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3',
       },
