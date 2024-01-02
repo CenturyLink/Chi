@@ -206,7 +206,7 @@ export class Dropdown {
   handleKeyDown(event: KeyboardEvent) {
     const allowedKeys = ['ArrowDown', 'ArrowUp'];
 
-    if (!allowedKeys.includes(event.key) || !this.active) {
+    if (!allowedKeys.includes(event.key) || !this.active || !contains(this.el, event.target as HTMLElement)) {
       return;
     }
 
@@ -412,7 +412,7 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.addEventListener('click', this.handlerClick.bind(this));
-    document.addEventListener('keydown', this.handleKeyDown.bind(this));
+    document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
 
     if (this.preventItemSelected) return;
 
