@@ -28,6 +28,7 @@ import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
 import EventBus from '@/utils/EventBus';
 import { Compare } from '@/utils/Compare';
+import { JSX } from 'vue/jsx-runtime';
 
 @Component({})
 export default class DataTableFilters extends Vue {

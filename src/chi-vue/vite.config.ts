@@ -17,7 +17,10 @@ export default defineConfig({
     }),
     vueJsx({
       isCustomElement: (tag) => tag.startsWith('chi-'),
-      babelPlugins: [['@babel/plugin-proposal-decorators', { legacy: true }], '@babel/proposal-class-properties'],
+      babelPlugins: [
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        '@babel/plugin-transform-class-properties',
+      ],
     }),
     dts({
       tsconfigPath: './tsconfig.app.json',
@@ -67,5 +70,5 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.MODE': '"production"',
-  }
+  },
 });
