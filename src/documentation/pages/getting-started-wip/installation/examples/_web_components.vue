@@ -9,8 +9,8 @@
       | They are written in vanilla Javascript for compatibility with major frameworks including
       | AngularJS, ReactJS, VueJS, or no framework at all.
     p.-text
-      | Add Chi Web Components by copying and pasting the JavaScript files below into the header of your
-      | web application. Placing the files in the header is important as it will load any Polyfill if the browser
+      | Add Chi Web Components by copying and pasting the JavaScript file below into the header of your
+      | web application. Placing the file in the header is important as it will load any Polyfill if the browser
       | doesn't support Web Components.
 
     <Copy id="stylesheet">
@@ -20,7 +20,7 @@
     </Copy>
 
     p.-text.-mb--3
-      | After placing the files in your header, you are now ready to use the Web Components described in this documentation.
+      | After placing the file in your header, you are now ready to use the Web Components described in this documentation.
 
     .chi-expansion-panel.-web-components
       .chi-epanel.-no-step(data-chi-epanel-group="web-component-details")
@@ -94,8 +94,7 @@ declare const chi: any;
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: (version: string) => `<script type="module" src="https://lib.lumen.com/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>
-<script nomodule="" src="https://lib.lumen.com/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="sha256-YrDiIH91dWgnfQRTLsWYoxQj7LGxf7PHV4TIZcazh5M=" crossorigin="anonymous">\x3C/script>`,
+        htmlblueprint: (version: string) => `<script type="module" src="https://lib.lumen.com/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>`,
         HTMLAttribute: `<chi-button id="close-btn" size="md">Close</chi-button>
 <script>
   document.getElementById("close-btn").setAttribute("size", "xl");

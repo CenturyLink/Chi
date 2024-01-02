@@ -413,7 +413,7 @@ export class DatePicker {
     document.body.addEventListener('keyup', this._onKeyUp);
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
     document.body.removeEventListener('keyup', this._onKeyUp);

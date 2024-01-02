@@ -76,9 +76,6 @@ export class ExpansionPanel {
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
 
   componentWillLoad() {
     if (this.el.getAttribute('title')) {
@@ -92,11 +89,12 @@ export class ExpansionPanel {
     this.tooltip = chi.tooltip(document.getElementById('state-icon-tooltip'));
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     if (this.tooltip) {
       this.tooltip.dispose();
       this.tooltip = null;
     }
+    this.mutationObserver.disconnect();
   }
 
   render() {

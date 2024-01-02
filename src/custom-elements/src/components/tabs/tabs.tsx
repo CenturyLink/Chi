@@ -32,7 +32,6 @@ import {
 import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
-import _ from 'lodash';
 
 const MARGIN_LEFT_BASE = 24;
 const MARGIN_LEFT_LG = 32;
@@ -513,7 +512,7 @@ export class Tabs {
   }
 
   setListOverflow() {
-    const copyTabsData = _.cloneDeep(this.tabs);
+    const copyTabsData = JSON.stringify(this.tabs);
 
     let usedSpace = 0;
 
@@ -531,7 +530,7 @@ export class Tabs {
       }
     }
 
-    if (!_.isEqual(this.tabs, copyTabsData)) {
+    if (JSON.stringify(this.tabs) !==  copyTabsData) {
       this.dropdownKey += 1;
     }
   }
