@@ -15,8 +15,6 @@
       <RadioSelection />
       <Accordion />
       <Sorting />
-      <SortingAscending />
-      <SortingDescending />
       <Sizes />
     
     div(v-if="['portal', 'brightspeed', 'colt'].includes($store.state.themes.theme)")
@@ -47,8 +45,6 @@ import Selectable from './base/_selectable.vue';
 import Sizes from './base/_sizes.vue';
 import Striped from './base/_striped.vue';
 import Sorting from './base/_sorting.vue';
-import SortingAscending from './base/_sorting-ascending.vue';
-import SortingDescending from './base/_sorting-descending.vue';
 import Complex from './base/_complex.vue';
 
 import AccordionChild from './portal/_accordion-child.vue';
@@ -74,8 +70,6 @@ import ComplexPortal from './portal/_complex.vue';
     RadioSelection,
     Selectable,
     Sizes,
-    SortingAscending,
-    SortingDescending,
     NoBorder,
     Sorting,
     Striped,
