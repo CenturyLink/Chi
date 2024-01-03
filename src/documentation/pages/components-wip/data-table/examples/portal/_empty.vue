@@ -165,5 +165,5 @@ data: {
     }
   }
 })
-export default class DataTableEmpty extends Vue { }
+export default class DataTableEmptyPortal extends Vue { }
 </script>
