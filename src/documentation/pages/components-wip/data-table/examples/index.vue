@@ -6,10 +6,7 @@
       <Complex />
       <Base />
       <Empty />
-      <NoBorder />
-      <Striped />
-      <Hover />
-      <Bordered />
+      <ConfigStyled />
       <Active />
       <Selectable />
       <RadioSelection />
@@ -34,14 +31,11 @@ import { Component, Vue } from 'vue-property-decorator';
 import Accordion from './base/_accordion.vue';
 import Active from './base/_active.vue';
 import Base from './base/_base.vue';
-import Bordered from './base/_bordered.vue';
 import Empty from './base/_empty.vue';
-import Hover from './base/_hover.vue';
-import NoBorder from './base/_no-border.vue';
+import ConfigStyled from './base/_config-styled.vue';
 import RadioSelection from './base/_radio-selection.vue';
 import Selectable from './base/_selectable.vue';
 import Sizes from './base/_sizes.vue';
-import Striped from './base/_striped.vue';
 import Sorting from './base/_sorting.vue';
 import Complex from './base/_complex.vue';
 
@@ -60,17 +54,12 @@ import ComplexPortal from './portal/_complex.vue';
     Accordion,
     Active,
     Base,
-    Bordered,
     Empty,
-    Hover,
     RadioSelection,
     Selectable,
     Sizes,
-    NoBorder,
+    ConfigStyled,
     Sorting,
-    Striped,
-    AccordionChild,
-    AccordionGrandChild,
     AccordionPortal,
     BasePortal,
     EmptyPortal,

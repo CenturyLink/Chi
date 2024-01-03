@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Striped" id="sorting-data-table" :tabs="exampleTabs">
+  <ComponentExample title="Striped" id="striped-data-table" :tabs="exampleTabs">
     chi-data-table(:config='config', :data='table' slot="example")
     <Wrapper slot='code-vue'>
       .chi-tab__description

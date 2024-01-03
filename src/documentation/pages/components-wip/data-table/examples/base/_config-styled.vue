@@ -1,23 +1,60 @@
 <template lang="pug">
-  <ComponentExample title="No Border" id="no-border-data-table" :tabs="exampleTabs">
-    chi-data-table(:config='config', :data='table' slot="example")
-    <Wrapper slot='code-vue'>
-      .chi-tab__description
-        | Use <code>noBorder</code> config to remove the borders
-      pre.language-html
-        code(v-highlight="codeSnippets.vue" class="html")
-    </Wrapper>
-    pre.language-html(slot="code-htmlblueprint")
-      code(v-highlight="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+  div
+    <ComponentExample v-for="styledDataTable in styledDataTables" :title="styledDataTable.title" :key="styledDataTable.id" :id="styledDataTable.id" :tabs="exampleTabs">
+      chi-data-table(:config='getConfig(styledDataTable.style)' :key="styledDataTable.id" :data='table' slot="example")
+      <Wrapper slot='code-vue'>
+        .chi-tab__description(v-html="styledDataTable.description")
+        pre.language-html
+          code(v-highlight="getVueCode(styledDataTable.style)" class="html")
+      </Wrapper>
+      pre.language-html(slot="code-htmlblueprint")
+        code(v-highlight="getHtmlCode(styledDataTable.style)" class="html")
+    </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+type ConfigStyleType = {
+  [key: string]: boolean;
+};
 
 @Component({
   data: () => {
     return {
+      styledDataTables: [
+        {
+          title: "No Border",
+          id: "no-border-data-table",
+          description: "Use <code>noBorder</code> config to remove the borders",
+          style: {
+            noBorder: true
+          }
+        },
+        {
+          title: "Striped",
+          id: "striped-data-table",
+          description: "Use <code>striped</code> config to achieve striped styles",
+          style: {
+            striped: true
+          }
+        },
+        {
+          title: "Hover",
+          id: "hover-data-table",
+          description: "Use <code>hover</code> config to achieve hover styles",
+          style: {
+            hover: true
+          }
+        },
+        {
+          title: "Bordered",
+          id: "bordered-data-table",
+          description: "Use <code>bordered</code> config to achieve bordered styles",
+          style: {
+            bordered: true
+          }
+        }
+      ],
       exampleTabs: [
         {
           active: false,
@@ -40,7 +77,7 @@ import { Component, Vue } from 'vue-property-decorator';
         columnResize: true,
         style: {
           portal: false,
-          noBorder: true,
+          noBorder: false,
           bordered: false,
           hover: false,
           size: 'md',
@@ -111,8 +148,20 @@ import { Component, Vue } from 'vue-property-decorator';
           },
         ]
       },
-      codeSnippets: {
-        vue: `<!-- Vue component -->
+    };
+  },
+  methods: {
+    getConfig(style: ConfigStyleType) {
+      return {
+        ...this.$data.config,
+        style: {
+          ...this.$data.config.style,
+          ...style
+        }
+      };
+    },
+    getVueCode(style: ConfigStyleType) {
+      return `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
 
 <!-- Config and Data -->
@@ -121,11 +170,11 @@ data: {
     columnResize: true,
     style: {
       portal: false,
-      noBorder: true,
-      bordered: false,
-      hover: false,
+      noBorder: ${!!style.noBorder},
+      bordered: ${!!style.bordered},
+      hover: ${!!style.hover},
       size: 'md',
-      striped: false,
+      striped: ${!!style.striped},
     },
     pagination: {
       activePage: 1,
@@ -192,8 +241,10 @@ data: {
       },
     ]
   }
-}`,
-        htmlblueprint: `<div class="chi-data-table -no-border">
+}`
+    },
+    getHtmlCode(style: ConfigStyleType) {
+      return `<div class="chi-data-table${style.noBorder ? ' -no-border' : ''}${style.bordered ? ' -bordered' : ''}${style.hover ? ' -hover' : ''}">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
       <div class="chi-data-table__cell">
@@ -219,8 +270,8 @@ data: {
         <div>18 Dec 2020 3:26 p.m.</div>
       </div>
     </div>
-    <div class="chi-data-table__row">
-      <div class="chi-data-table__cell" data-label="Name">
+    <div class="chi-data-table__row ${style.striped ? '-striped' : ''}" >
+      <div class="chi-data-table__cell" data-label="Name" >
         <div>Name 2</div>
       </div>
       <div class="chi-data-table__cell" data-label="ID">
@@ -293,10 +344,9 @@ data: {
       </div>
     </nav>
   </div>
-</div>`,
-      },
-    };
-  },
+</div>`
+    }
+  }
 })
 export default class DataTableNoBorder extends Vue { }
 </script>
