@@ -25,8 +25,6 @@
       <EmptyPortal />
       <RadioSelectionPortal />
       <AccordionPortal />
-      <AccordionChild />
-      <AccordionGrandChild />
       <TwoTierHeader />
  
 </template>
@@ -47,8 +45,6 @@ import Striped from './base/_striped.vue';
 import Sorting from './base/_sorting.vue';
 import Complex from './base/_complex.vue';
 
-import AccordionChild from './portal/_accordion-child.vue';
-import AccordionGrandChild from './portal/_accordion-grand-child.vue';
 import AccordionPortal from './portal/_accordion.vue';
 import BasePortal from './portal/_base.vue';
 import EmptyPortal from './portal/_empty.vue';
