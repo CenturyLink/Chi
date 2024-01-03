@@ -79,7 +79,7 @@ import DropdownExample from './../dropdown-example.vue'
   },
   methods: {
     printTable() {
-      this.$refs.dataTableComplex?.print("Data table - Complex");
+      (this.$refs.dataTableComplex as any)?.print("Data table - Complex");
     },
   },
   data: () => {

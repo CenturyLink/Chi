@@ -1,23 +1,52 @@
 <template lang="pug">
-  <ComponentExample title="Sorting" id="sorting-data-table" :tabs="exampleTabs">
-    chi-data-table(:config='config', :data='table' slot="example")
-    <Wrapper slot='code-vue'>
-      .chi-tab__description
-        | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable
-      pre.language-html
-        code(v-highlight="codeSnippets.vue" class="html")
-    </Wrapper>
-    pre.language-html(slot="code-htmlblueprint")
-      code(v-highlight="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+  div
+    <ComponentExample v-for="sortType in sortingTypes" :key="sortType.id" :title="sortType.title" :id="sortType.id" :tabs="exampleTabs">
+      chi-data-table(:config='getConfig(sortType.defaultSort)', :data='table' slot="example")
+      <Wrapper slot='code-vue'>
+        .chi-tab__description
+          | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable
+        pre.language-html
+          code(v-highlight="getVueCode(sortType.defaultSort)" class="html")
+      </Wrapper>
+      pre.language-html(slot="code-htmlblueprint")
+        code(v-highlight="getHtmlCode(sortType.defaultSort)" class="html")
+    </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+type DefaultSortType = {
+  key: string;
+  direction: 'ascending' | 'descending';
+} | null;
+
 @Component({
   data: () => {
     return {
+      sortingTypes: [
+        {
+          title: "Sorting",
+          id: "sorting-data-table",
+          defaultSort: null
+        },
+        {
+          title: "Default Sorting -- Ascending",
+          id: "sorting-ascending-data-table",
+          defaultSort: {
+            key: 'name',
+            direction: 'ascending',
+          },
+        },
+        {
+          title: "Default Sorting -- Descending",
+          id: "sorting-descending-data-table",
+          defaultSort: {
+            key: 'name',
+            direction: 'descending',
+          },
+        }
+      ],
       exampleTabs: [
         {
           active: false,
@@ -111,92 +140,20 @@ import { Component, Vue } from 'vue-property-decorator';
           },
         ]
       },
-      codeSnippets: {
-        vue: `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
-
-<!-- Config and Data -->
-data: {
-  config: {
-    columnResize: true,
-    style: {
-      portal: false,
-      noBorder: false,
-      bordered: false,
-      hover: false,
-      size: 'md',
-      striped: false,
-    },
-    pagination: {
-      activePage: 1,
-      compact: false,
-      firstLast: false,
-      pageJumper: true,
-    },
-    resultsPerPage: 3,
+    };
   },
-  table: {
-    head: {
-      name: { label: 'Name', sortable: true, sortDataType: 'string' },
-      id: { label: 'ID', sortable: true, sortDataType: 'string' },
-      lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
-    },
-    body: [
-      {
-        id: 'name-1',
-        data: [
-          'Name 1',
-          'name-1',
-          '18 Dec 2020 3:26 p.m.',
-        ],
+  methods: {
+    getConfig(defaultSort: DefaultSortType) {
+        return {
+          ...this.$data.config,
+          ...(defaultSort ? { defaultSort: defaultSort } : {})
+        };
       },
-      {
-        id: 'name-2',
-        data: [
-          'Name 2',
-          'name-2',
-          '18 Dec 2020 2:38 a.m.',
-        ],
-      },
-      {
-        id: 'name-3',
-        data: [
-          'Name 3',
-          'name-3',
-          '5 Nov 2020 10:15 a.m.',
-        ],
-      },
-      {
-        id: 'name-4',
-        data: [
-          'Name 4',
-          'name-4',
-          '18 Dec 2020 3:26 p.m.',
-        ],
-      },
-      {
-        id: 'name-5',
-        data: [
-          'Name 5',
-          'name-5',
-          '18 Dec 2020 2:38 a.m.',
-        ],
-      },
-      {
-        id: 'name-6',
-        data: [
-          'Name 6',
-          'name-6',
-          '5 Nov 2020 10:15 a.m.',
-        ],
-      },
-    ]
-  }
-}`,
-        htmlblueprint: `<div class="chi-data-table">
+    getHtmlCode(defaultSort: DefaultSortType) {
+      return `<div class="chi-data-table">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
-      <button class="chi-data-table__cell -sorting">
+      <button class="chi-data-table__cell -sorting ${defaultSort ? '-active' : ''} ${defaultSort?.direction === 'descending' ? '-descending' : ''}">
         <div>Name</div>
         <i class="chi-icon -xs icon-arrow-sort" aria-hidden="true"></i>
       </button>
@@ -296,10 +253,96 @@ data: {
       </div>
     </nav>
   </div>
-</div>`,
-      },
-    };
+</div>`
+    },
+    getVueCode(defaultSort: DefaultSortType) {
+      return `<!-- Vue component -->
+<ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+<!-- Config and Data -->
+data: {
+  config: {
+    columnResize: true,
+    style: {
+      portal: false,
+      noBorder: false,
+      bordered: false,
+      hover: false,
+      size: 'md',
+      striped: false,
+    },${defaultSort ?`
+    defaultSort: {
+      key: 'name',
+      direction: ${defaultSort.direction},
+    },` : ''}
+    pagination: {
+      activePage: 1,
+      compact: false,
+      firstLast: false,
+      pageJumper: true,
+    },
+    resultsPerPage: 3,
   },
+  table: {
+    head: {
+      name: { label: 'Name', sortable: true, sortDataType: 'string' },
+      id: { label: 'ID', sortable: true, sortDataType: 'string' },
+      lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
+    },
+    body: [
+      {
+        id: 'name-1',
+        data: [
+          'Name 1',
+          'name-1',
+          '18 Dec 2020 3:26 p.m.',
+        ],
+      },
+      {
+        id: 'name-2',
+        data: [
+          'Name 2',
+          'name-2',
+          '18 Dec 2020 2:38 a.m.',
+        ],
+      },
+      {
+        id: 'name-3',
+        data: [
+          'Name 3',
+          'name-3',
+          '5 Nov 2020 10:15 a.m.',
+        ],
+      },
+      {
+        id: 'name-4',
+        data: [
+          'Name 4',
+          'name-4',
+          '18 Dec 2020 3:26 p.m.',
+        ],
+      },
+      {
+        id: 'name-5',
+        data: [
+          'Name 5',
+          'name-5',
+          '18 Dec 2020 2:38 a.m.',
+        ],
+      },
+      {
+        id: 'name-6',
+        data: [
+          'Name 6',
+          'name-6',
+          '5 Nov 2020 10:15 a.m.',
+        ],
+      },
+    ]
+  }
+}`
+    },
+  }
 })
 export default class DataTableSorting extends Vue { }
 </script>
