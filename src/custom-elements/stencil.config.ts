@@ -10,6 +10,7 @@ export const config: Config = {
     openBrowser: IS_DEV
   },
   sourceMap: IS_DEV,
+  buildEs5: true,
   plugins: [
     sass(
       {

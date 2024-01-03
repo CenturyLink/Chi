@@ -19,7 +19,8 @@ gulp.task('sri:chi:assets', function () {
     'dist/assets/themes/colt/images/favicon.ico',
     'dist/assets/themes/colt/images/background-hero.png',
     'dist/assets/themes/colt/images/background-login.png',
-    'dist/js/ce/ux-chi-ce/ux-chi-ce.esm.js'
+    'dist/js/ce/ux-chi-ce/ux-chi-ce.esm.js',
+    'dist/js/ce/ux-chi-ce/ux-chi-ce.js'
   ])
     .pipe(sri())
     .pipe(gulp.dest('.'));
