@@ -151,6 +151,7 @@ export default class SearchInput extends Vue {
         class={`
         ${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON}
         ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.BG_NONE}
+        ${this.size ? `-${this.size}` : ''}
         `}
         onClick={() => this._emitSearch(this.inputValue)}
         aria-label="Search"
