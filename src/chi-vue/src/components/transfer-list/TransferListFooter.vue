@@ -19,19 +19,15 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, Ref } from 'vue';
+import { inject } from 'vue';
 import { TRANSFER_LIST_EVENTS } from '@/constants/events';
-import { TransferListItem } from '@/constants/types';
+import { TransferListItem, TransferListActions } from '@/constants/types';
 import { Compare } from '@/utils/Compare';
 import { UTILITY_CLASSES, TRANSFER_LIST_CLASSES, BUTTON_CLASSES, ICON_CLASS } from '@/constants/classes';
 
 const props = defineProps<{ original: TransferListItem[] }>();
 const emit = defineEmits();
-
-const { transferList, onUpdateTransferList } = inject('transferList') as {
-  transferList: Ref<TransferListItem[]>;
-  onUpdateTransferList: (list: TransferListItem[]) => void;
-};
+const { transferList, onUpdateTransferList } = inject('transferList') as TransferListActions;
 
 const TOOLTIP_MESSAGE = 'Reset to default columns and order';
 

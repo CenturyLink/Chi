@@ -1,3 +1,5 @@
+import { Ref } from 'vue';
+
 //#region GENERAL
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
@@ -237,6 +239,35 @@ export interface TransferListItem {
   locked?: boolean;
   wildcard?: boolean;
 }
+
+export interface TransferListConfig {
+  searchInput?: boolean;
+  checkbox?: boolean;
+  columns: {
+    from: {
+      title: string;
+      description: string;
+    };
+    to: {
+      title: string;
+      description: string;
+    };
+  };
+}
+
+export interface TransferListColumnItemsActive {
+  from: string[];
+  to: string[];
+}
+
+export interface TransferListActions {
+  transferList: Ref<TransferListItem[]>;
+  selectedItems: Ref<TransferListColumnItemsActive>;
+  onUpdateTransferList: (list: TransferListItem[]) => void;
+  onSelectItem: (list: TransferListColumnItemsActive) => void;
+  onClearSelection: () => void;
+}
+
 //#endregion
 
 //#region Search Input
@@ -275,23 +306,3 @@ export type DataTableAction = {
   onClick: (props: DataTableColumnProps) => void;
   hide?: DataTableActionItemResponsiveness[];
 };
-
-export interface TransferListConfig {
-  searchInput?: boolean;
-  checkbox?: boolean;
-  columns: {
-    from: {
-      title: string;
-      description: string;
-    };
-    to: {
-      title: string;
-      description: string;
-    };
-  };
-}
-
-export interface TransferListColumnItemsActive {
-  from: string[];
-  to: string[];
-}

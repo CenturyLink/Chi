@@ -47,8 +47,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, inject, Ref } from 'vue';
-import { TransferListItem, TransferListColumnItemsActive } from '@/constants/types';
+import { ref, inject } from 'vue';
+import { TransferListItem, TransferListActions } from '@/constants/types';
 import SearchInput from '@/components/search-input/SearchInput';
 import { TRANSFER_LIST_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 
@@ -63,11 +63,7 @@ const filter = ref<string>('');
 const column = props.type;
 const isToColumn = props.type === 'to';
 
-const { transferList, selectedItems, onSelectItem } = inject('transferList') as {
-  transferList: Ref<TransferListItem[]>;
-  selectedItems: Ref<TransferListColumnItemsActive>;
-  onSelectItem: (list: TransferListColumnItemsActive) => void;
-};
+const { transferList, selectedItems, onSelectItem } = inject('transferList') as TransferListActions;
 
 const handleFilter = (value: string) => {
   filter.value = value;

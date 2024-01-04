@@ -14,21 +14,16 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, Ref } from 'vue';
+import { inject } from 'vue';
 import { swapElementsInArray } from '@/utils/utils';
-import { TransferListItem, TransferListColumnItemsActive } from '@/constants/types';
+import { TransferListItem, TransferListActions } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
-const props = defineProps<{
-  move: 'transfer' | 'sort';
-}>();
+const props = defineProps<{ move: 'transfer' | 'sort' }>();
 
-const { transferList, onUpdateTransferList, selectedItems, onClearSelection } = inject('transferList') as {
-  transferList: Ref<TransferListItem[]>;
-  onUpdateTransferList: (list: TransferListItem[]) => void;
-  selectedItems: Ref<TransferListColumnItemsActive>;
-  onClearSelection: () => void;
-};
+const { transferList, selectedItems, onUpdateTransferList, onClearSelection } = inject(
+  'transferList'
+) as TransferListActions;
 
 const transferListActions = () => {
   const actions = {
