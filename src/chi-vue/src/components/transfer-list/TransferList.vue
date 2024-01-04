@@ -5,7 +5,6 @@
         type="from"
         :title="config.columns.from.title"
         :description="config.columns.from.description"
-        :items="getColumnItems('from')"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
@@ -16,7 +15,6 @@
         type="to"
         :title="config.columns.to.title"
         :description="config.columns.to.description"
-        :items="getColumnItems('to')"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
@@ -24,81 +22,49 @@
       <TransferListActions move="sort" />
     </div>
 
-    <TransferListFooter :original="transferListData" />
+    <TransferListFooter :original="transferListData" @chiTransferListSave="handleSaveList" />
   </div>
 </template>
 
-<script lang="ts">
-import { Prop, Watch } from 'vue-property-decorator';
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
+import { ref, provide, readonly } from 'vue';
 import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
-import { TransferListConfig, TransferListItem } from '@/constants/types';
-import EventBus from '@/utils/EventBus';
-import { TRANSFER_LIST_EVENTS } from '@/constants/events';
+import { TransferListConfig, TransferListItem, TransferListColumnItemsActive } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
-@Component({
-  components: {
-    TransferListColumn,
-    TransferListActions,
-    TransferListFooter,
-  },
-})
-export default class TransferList extends Vue {
-  @Prop() transferListData!: TransferListItem[];
-  @Prop() config!: TransferListConfig;
+const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
-  currentTransferList: TransferListItem[] = [];
+const props = defineProps<{
+  transferListData: TransferListItem[];
+  config: TransferListConfig;
+}>();
+const currentList = ref<TransferListItem[]>(props.transferListData);
+const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION);
 
-  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
+const handleSaveList = () => {
+  // TODO: implement save list
+  console.log('Save list');
+};
 
-  onLoadOriginalList() {
-    this.currentTransferList = this.transferListData;
-  }
+const onUpdateTransferList = (list: TransferListItem[]) => {
+  currentList.value = list;
+};
 
-  mounted() {
-    this.onLoadOriginalList();
+const onSelectItem = (list: TransferListColumnItemsActive) => {
+  selectedItems.value = list;
+};
 
-    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_MOVED, this.updateListOnItemsMoved);
-    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_MOVE_ALL, this.updateListOnAllItemsMovedFromColumn);
-    EventBus.on(TRANSFER_LIST_EVENTS.ITEMS_SORTED, this.updateListOnItemsSorted);
-    EventBus.on(TRANSFER_LIST_EVENTS.RESET_LIST, this.onLoadOriginalList);
-    EventBus.on(TRANSFER_LIST_EVENTS.CANCEL, () => console.log('cancel'));
-    EventBus.on(TRANSFER_LIST_EVENTS.SAVE, () => console.log('cancel'));
-  }
+const onClearSelection = () => {
+  selectedItems.value = DEFAULT_ITEMS_SELECTION;
+};
 
-  @Watch('currentTransferList')
-  onChangeCurrentTransferList() {
-    EventBus.emit(TRANSFER_LIST_EVENTS.CURRENT_LIST, this.currentTransferList);
-  }
-
-  getColumnItems(column: 'from' | 'to'): TransferListItem[] {
-    return this.currentTransferList.filter(({ selected }) => {
-      return column === 'from' ? !selected : selected;
-    });
-  }
-
-  updateListOnItemsMoved(items) {
-    this.currentTransferList = this.currentTransferList.map((item: TransferListItem) => {
-      const shouldMove = items.includes(item.value);
-      return { ...item, ...(shouldMove && { selected: !item.selected }) };
-    });
-  }
-
-  updateListOnAllItemsMovedFromColumn(column) {
-    let options = this.getColumnItems(column);
-
-    if (column === 'to') {
-      options = options.filter(({ locked }) => !locked);
-    }
-
-    this.updateListOnItemsMoved(options.map(({ value }) => value));
-  }
-
-  updateListOnItemsSorted(list) {
-    this.currentTransferList = list;
-  }
-}
+provide('transferList', {
+  transferList: readonly(currentList),
+  selectedItems: readonly(selectedItems),
+  onUpdateTransferList,
+  onSelectItem,
+  onClearSelection,
+});
 </script>

@@ -38,7 +38,7 @@
         :value="item.value"
         :disabled="isToColumn && item.locked"
         :class="getMenuItemClasses(item)"
-        :selected="selectedItems.includes(item.value)"
+        :selected="isSelected(item.value)"
       >
         {{ item.label }}
       </option>
@@ -46,95 +46,80 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Prop, Emit } from 'vue-property-decorator';
-import { Component, Vue } from '@/build/vue-wrapper';
-import { TransferListItem } from '@/constants/types';
-import SearchInput from '../search-input/SearchInput';
-import { TRANSFER_LIST_EVENTS } from '@/constants/events';
-import EventBus from '@/utils/EventBus';
-import Tooltip from '../tooltip/tooltip';
+<script lang="ts" setup>
+import { ref, inject, Ref } from 'vue';
+import { TransferListItem, TransferListColumnItemsActive } from '@/constants/types';
+import SearchInput from '@/components/search-input/SearchInput';
 import { TRANSFER_LIST_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 
-@Component({
-  components: {
-    ChiTooltip: Tooltip,
-    SearchInput,
-  },
-})
-export default class TransferListColumn extends Vue {
-  @Prop() title!: string;
-  @Prop() type?: 'from' | 'to';
-  @Prop() description?: string;
-  @Prop() searchInput?: boolean;
-  @Prop() checkbox?: boolean;
-  @Prop() items!: TransferListItem[];
+const props = defineProps<{
+  title: string;
+  type: 'from' | 'to';
+  description?: string;
+  searchInput?: boolean;
+  checkbox?: boolean;
+}>();
+const filter = ref<string>('');
+const column = props.type;
+const isToColumn = props.type === 'to';
 
-  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
-  SELECT_CLASSES = SELECT_CLASSES;
+const { transferList, selectedItems, onSelectItem } = inject('transferList') as {
+  transferList: Ref<TransferListItem[]>;
+  selectedItems: Ref<TransferListColumnItemsActive>;
+  onSelectItem: (list: TransferListColumnItemsActive) => void;
+};
 
-  filter = '';
-  isToColumn = this.type === 'to';
-  hasLockedItems = this.items?.some((item) => item.locked);
-  selectedItems: string[] = [];
+const handleFilter = (value: string) => {
+  filter.value = value;
+};
 
-  mounted() {
-    EventBus.on(TRANSFER_LIST_EVENTS.CLEAR_SELECTION, this.onClearSelection);
-  }
+const handleClearFilter = () => {
+  filter.value = '';
+};
 
-  handleFilter(value: string) {
-    this.filter = value;
-  }
+const handleSelectItem = (event: Event) => {
+  const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
 
-  handleClearFilter() {
-    this.filter = '';
-  }
+  onSelectItem({ ...selectedItems.value, [column]: items });
+};
 
-  onClearSelection() {
-    this.selectedItems = [];
-  }
+const getFilteredList = () => {
+  const value = filter.value.toLowerCase();
+  const items = transferList.value.filter(({ selected }) => (isToColumn ? selected : !selected));
 
-  @Emit(TRANSFER_LIST_EVENTS.ITEMS_SELECTED)
-  handleSelectItem(event: Event) {
-    const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
-    const column = this.type as string;
-    this.selectedItems = items;
+  return items?.filter(({ label }) => label.toLowerCase().includes(value));
+};
 
-    EventBus.emit(TRANSFER_LIST_EVENTS.ITEMS_SELECTED, { [column]: items });
-  }
+const isSelected = (value: string) => {
+  return selectedItems.value[column].includes(value);
+};
 
-  getFilteredList() {
-    const filter = this.filter.toLowerCase();
-    return this.items?.filter(({ label }) => label.toLowerCase().includes(filter)) || [];
-  }
+const getMenuItemClasses = ({ locked }: TransferListItem) => {
+  const classes = [TRANSFER_LIST_CLASSES.MENU_ITEM];
+  const paddingClass = _getPaddingClass();
+  const checkboxClass = _getCheckboxClass();
+  const lockedClass = _getLockedClass(locked);
 
-  getMenuItemClasses({ locked }: TransferListItem) {
-    const classes = [TRANSFER_LIST_CLASSES.MENU_ITEM];
-    const paddingClass = this._getPaddingClass();
-    const checkboxClass = this._getCheckboxClass();
-    const lockedClass = this._getLockedClass(locked);
+  classes.push(paddingClass, checkboxClass, lockedClass);
 
-    classes.push(paddingClass, checkboxClass, lockedClass);
+  return classes.join(' ');
+};
 
-    return classes.join(' ');
-  }
+const _getPaddingClass = () => {
+  return props.checkbox || isToColumn ? '-pl--4' : '';
+};
 
-  _getPaddingClass() {
-    return this.checkbox || (this.hasLockedItems && this.isToColumn) ? '-pl--4' : '';
-  }
+const _getCheckboxClass = () => {
+  return props.checkbox ? '-checkbox' : '';
+};
 
-  _getCheckboxClass() {
-    return this.checkbox ? '-checkbox' : '';
-  }
+const _getLockedClass = (locked: boolean | undefined) => {
+  return locked && isToColumn ? '-locked' : '';
+};
 
-  _getLockedClass(locked: boolean | undefined) {
-    return locked && this.isToColumn ? '-locked' : '';
-  }
+const toggleInfoPopover = () => {
+  const popover = document.querySelector(`#transfer-list-popover-${props.title}`) as any;
 
-  toggleInfoPopover() {
-    const popover = document.querySelector(`#transfer-list-popover-${this.title}`) as any;
-
-    popover.toggle();
-  }
-}
+  popover.toggle();
+};
 </script>

@@ -18,7 +18,7 @@ export default class TransferListView extends Vue {
   list = exampleData;
   config = {
     searchInput: true,
-    checkbox: true,
+    checkbox: false,
     columns: {
       from: {
         title: 'From',

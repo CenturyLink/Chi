@@ -290,3 +290,8 @@ export interface TransferListConfig {
     };
   };
 }
+
+export interface TransferListColumnItemsActive {
+  from: string[];
+  to: string[];
+}
