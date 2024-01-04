@@ -8,9 +8,7 @@
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
-
       <TransferListActions move="transfer" />
-
       <TransferListColumn
         type="to"
         :title="config.columns.to.title"
@@ -18,34 +16,43 @@
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
-
       <TransferListActions move="sort" />
     </div>
 
-    <TransferListFooter :original="transferListData" @chiTransferListSave="handleSaveList" />
+    <TransferListFooter
+      :original="transferListData"
+      @chiTransferListSave="onSaveTransferList"
+      @chiTransferListReset="onResetTransferList"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref, provide, readonly } from 'vue';
+import { ref, provide, readonly, watch } from 'vue';
 import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
-import { TransferListConfig, TransferListItem, TransferListColumnItemsActive } from '@/constants/types';
+import { TransferListItem, TransferListColumnItemsActive, TransferList } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
+import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 
 const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
-const props = defineProps<{
-  transferListData: TransferListItem[];
-  config: TransferListConfig;
-}>();
+const props = defineProps<TransferList>();
+const emit = defineEmits();
 const currentList = ref<TransferListItem[]>(props.transferListData);
 const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION);
 
-const handleSaveList = () => {
-  // TODO: implement save list
-  console.log('Save list');
+watch(currentList, () => {
+  emit(TRANSFER_LIST_EVENTS.CHANGE, currentList.value);
+});
+
+const onSaveTransferList = () => {
+  emit(TRANSFER_LIST_EVENTS.SAVE, currentList.value);
+};
+
+const onResetTransferList = () => {
+  emit(TRANSFER_LIST_EVENTS.RESET, props.transferListData);
 };
 
 const onUpdateTransferList = (list: TransferListItem[]) => {

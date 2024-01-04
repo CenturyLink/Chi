@@ -116,4 +116,6 @@ export const SAVE_VIEW_EVENTS = {
 
 export const TRANSFER_LIST_EVENTS = {
   SAVE: 'chiTransferListSave',
+  CHANGE: 'chiTransferListChange',
+  RESET: 'chiTransferListReset',
 };

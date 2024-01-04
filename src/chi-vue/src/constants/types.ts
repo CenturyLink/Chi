@@ -232,6 +232,11 @@ export interface SaveViewSave {
 //#endregion
 
 //#region Transfer List
+export interface TransferList {
+  transferListData: TransferListItem[];
+  config: TransferListConfig;
+}
+
 export interface TransferListItem {
   value: string;
   label: string;
@@ -240,7 +245,7 @@ export interface TransferListItem {
   wildcard?: boolean;
 }
 
-export interface TransferListConfig {
+interface TransferListConfig {
   searchInput?: boolean;
   checkbox?: boolean;
   columns: {

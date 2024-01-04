@@ -25,11 +25,10 @@ import { TransferListItem, TransferListActions } from '@/constants/types';
 import { Compare } from '@/utils/Compare';
 import { UTILITY_CLASSES, TRANSFER_LIST_CLASSES, BUTTON_CLASSES, ICON_CLASS } from '@/constants/classes';
 
+const TOOLTIP_MESSAGE = 'Reset to default columns and order';
 const props = defineProps<{ original: TransferListItem[] }>();
 const emit = defineEmits();
 const { transferList, onUpdateTransferList } = inject('transferList') as TransferListActions;
-
-const TOOLTIP_MESSAGE = 'Reset to default columns and order';
 
 const canSave = () => {
   return Compare.deepEqual(transferList.value, props.original);
@@ -41,6 +40,7 @@ const canReset = () => {
 
 const handleReset = () => {
   onUpdateTransferList(props.original);
+  emit(TRANSFER_LIST_EVENTS.RESET);
 };
 
 const handleCancel = () => {

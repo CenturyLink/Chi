@@ -20,7 +20,6 @@ import { TransferListItem, TransferListActions } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 
 const props = defineProps<{ move: 'transfer' | 'sort' }>();
-
 const { transferList, selectedItems, onUpdateTransferList, onClearSelection } = inject(
   'transferList'
 ) as TransferListActions;
