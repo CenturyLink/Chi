@@ -60,6 +60,7 @@ import { Transition } from 'vue';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
 import DataTableActions from './DatatableActions';
 import EventBus from '@/utils/EventBus';
+import { JSX } from 'vue/jsx-runtime';
 
 declare const chi: any;
 
