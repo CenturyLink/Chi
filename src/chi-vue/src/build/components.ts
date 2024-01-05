@@ -2,7 +2,7 @@ export { default as ChiCheckbox } from '@/components/checkbox/Checkbox';
 export { default as ChiColumnCustomization } from '@/components/column-customization/ColumnCustomization';
 export { default as ChiDataTable } from '@/components/data-table/DataTable';
 export { default as ChiDataTableBulkActions } from '@/components/data-table-bulk-actions/DataTableBulkActions';
-export { default as ChiDataTableToolbar } from '@/components/data-table-toolbar/DataTableToolbar';
+export { default as ChiDataTableToolbar } from '@/components/data-table-toolbar/DataTableToolbar.vue';
 export { default as ChiDataTableFilters } from '@/components/data-table-filters/DataTableFilters';
 export { default as ChiDataTableViews } from '@/components/data-table-views/DataTableViews';
 export { default as ChiDrawer } from '@/components/drawer/drawer';

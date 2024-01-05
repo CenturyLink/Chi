@@ -57,13 +57,7 @@
       {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
     </template>
     <template v-slot:toolbar>
-      <DataTableToolbar
-        @chiToolbarFiltersChange="(e) => chiToolbarFiltersChange(e)"
-        @chiToolbarSearch="(e) => chiToolbarSearch(e)"
-        @chiToolbarColumnsChange="(e) => chiToolbarColumnsChange(e)"
-        @chiToolbarColumnsReset="(e) => chiToolbarColumnsReset(e)"
-        @chiToolbarViewsChange="(e) => chiToolbarViewsChange(e)"
-      >
+      <DataTableToolbar>
         <template v-slot:start>
           <SearchInput :portal="true" :dataTableSearch="true" />
           <div class="chi-divider -vertical"></div>
@@ -96,10 +90,7 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <ColumnCustomization
-              @chiColumnsReset="(e) => chiToolbarColumnsReset(e)"
-              :columnsData="toolbar.columnsData"
-            />
+            <ColumnCustomization @chiColumnsReset="(e) => chiColumnsReset(e)" :columnsData="toolbar.columnsData" />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -200,7 +191,7 @@
 import { ref } from 'vue';
 import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
-import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
+import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
@@ -252,14 +243,6 @@ const changeEmptyActionable = (state: boolean) => {
   };
 };
 
-const chiToolbarColumnsChange = (e) => {
-  console.log('chiToolbarColumnsChange', e);
-};
-
-const chiToolbarColumnsReset = (e) => {
-  console.log('chiToolbarColumnsReset', e);
-};
-
 const chiColumnsReset = (e) => {
   console.log('chiColumnsReset', e);
 };
@@ -306,18 +289,6 @@ const chiPageSizeChange = (e) => {
 
 const chiDataSorting = (e) => {
   console.log('chiDataSorting', e);
-};
-
-const chiToolbarSearch = (e) => {
-  console.log('chiToolbarSearch', e);
-};
-
-const chiToolbarFiltersChange = (e) => {
-  console.log('chiToolbarFiltersChange', e);
-};
-
-const chiToolbarViewsChange = (e) => {
-  console.log('chiToolbarViewsChange', e);
 };
 
 const chiRowExpanded = (e) => {

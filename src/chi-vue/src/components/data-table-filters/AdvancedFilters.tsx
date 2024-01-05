@@ -259,12 +259,12 @@ export default class AdvancedFilters extends Vue {
           filter.type === 'select'
             ? this._createSelectFilter(filter)
             : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-            ? this._createCheckboxFilter(filter)
-            : filter.type === 'textarea'
-            ? this._createTextareaFilter(filter)
-            : null;
+              ? this._createInputFilter(filter)
+              : filter.type === 'checkbox'
+                ? this._createCheckboxFilter(filter)
+                : filter.type === 'textarea'
+                  ? this._createTextareaFilter(filter)
+                  : null;
 
         if (filterElement) {
           const accordionItem = (

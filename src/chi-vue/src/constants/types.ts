@@ -137,7 +137,7 @@ export interface DataTableFilter {
       value: string;
       label: string;
       selected: true;
-    }
+    },
   ];
   value?: string;
   checked?: boolean;
@@ -289,4 +289,8 @@ export interface TransferListConfig {
       description: string;
     };
   };
+}
+
+export interface ToolbarRef {
+  callback?: () => void;
 }

@@ -200,23 +200,23 @@ export default class Drawer extends Vue {
             ? [closeButton, defaultSlot]
             : defaultSlot
           : !this.nonClosable
-          ? [
-              <div
-                class={`
+            ? [
+                <div
+                  class={`
                 ${DRAWER_CLASSES.HEADER}
               `}
-              >
-                <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
-                {closeButton}
-              </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
-            ]
-          : [
-              <div class={`${DRAWER_CLASSES.HEADER}`}>
-                <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
-              </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
-            ]}
+                >
+                  <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
+                  {closeButton}
+                </div>,
+                <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
+              ]
+            : [
+                <div class={`${DRAWER_CLASSES.HEADER}`}>
+                  <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
+                </div>,
+                <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
+              ]}
       </div>
     );
 

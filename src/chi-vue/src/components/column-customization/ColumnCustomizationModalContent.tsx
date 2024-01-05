@@ -67,12 +67,12 @@ export default class ColumnCustomizationContent extends Vue {
       icon === 'chevron-up'
         ? 'Move Up'
         : icon === 'chevron-down'
-        ? 'Move Down'
-        : icon === 'chevron-left'
-        ? 'Deselect'
-        : icon === 'chevron-right'
-        ? 'select'
-        : '';
+          ? 'Move Down'
+          : icon === 'chevron-left'
+            ? 'Deselect'
+            : icon === 'chevron-right'
+              ? 'select'
+              : '';
 
     if (icons.includes(icon)) {
       let refButton = 'buttonRows';

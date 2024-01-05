@@ -1,4 +1,4 @@
-import { Emit, Prop, Watch } from 'vue-property-decorator';
+import { Emit, Inject, Prop, Watch } from 'vue-property-decorator';
 import {
   BUTTON_CLASSES,
   CLOSE_CLASS,
@@ -9,11 +9,10 @@ import {
   INPUT_CLASSES,
   SEARCH_INPUT_CLASSES,
 } from '@/constants/classes';
-import { SearchInputSizes } from '@/constants/types';
+import { SearchInputSizes, ToolbarRef } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
-import { findComponent } from '@/utils/utils';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { TOOLBAR_KEYS } from '@/constants/constants';
 
 @Component({})
 export default class SearchInput extends Vue {
@@ -25,6 +24,9 @@ export default class SearchInput extends Vue {
   @Prop() dataTableSearch?: boolean;
   @Prop() portal?: boolean;
   @Prop() readOnly?: boolean;
+
+  @Inject({ from: TOOLBAR_KEYS.SEARCH_INPUT })
+  toolbarSearch?: ToolbarRef;
 
   cleanButtonVisible?: boolean = false;
   inputValue = '';
@@ -41,8 +43,13 @@ export default class SearchInput extends Vue {
 
   @Emit(SEARCH_INPUT_EVENTS.SEARCH)
   _emitSearch(value: string) {
+    if (this.toolbarSearch && this.toolbarSearch.callback) {
+      this.toolbarSearch.callback();
+    }
+
     return value;
   }
+
   @Emit(SEARCH_INPUT_EVENTS.FOCUS)
   _emitFocus() {
     // This is intentional
@@ -89,16 +96,6 @@ export default class SearchInput extends Vue {
 
   beforeMount() {
     this._initDataFromProps();
-  }
-
-  mounted() {
-    if (this.dataTableSearch) {
-      const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
-
-      if (dataTableToolbarComponent) {
-        (dataTableToolbarComponent as DataTableToolbar)._searchComponent = this;
-      }
-    }
   }
 
   render() {
