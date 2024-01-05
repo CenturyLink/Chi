@@ -735,6 +735,9 @@ PolicyDocument
                     fi
                   """, label: "Cleaning before pushing to AssetsServer"
                   jslGitHubCloneRepo('ux-chi-AssetsServer')
+                  
+                  def packageJson = readJSON file: 'package.json'
+                  
                   env.CHECK = sh (
                     script: """#!/bin/bash
                       if [[ -d ux-chi-AssetsServer/chi/${packageJson.version} ]]
