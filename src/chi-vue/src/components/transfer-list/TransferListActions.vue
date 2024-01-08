@@ -34,12 +34,12 @@ const transferListActions = () => {
       },
       {
         icon: 'chevron-right',
-        event: () => handleTransferItemsToColumn('from'),
+        event: () => handleTransferItemsFromColumn('from'),
         disabled: () => selectedItems.value.from.length === 0,
       },
       {
         icon: 'chevron-left',
-        event: () => handleTransferItemsToColumn('to'),
+        event: () => handleTransferItemsFromColumn('to'),
         disabled: () => selectedItems.value.to.length === 0,
       },
       {
@@ -65,30 +65,31 @@ const transferListActions = () => {
   return actions[props.move];
 };
 
-const handleTransferItemsToColumn = (direction: 'from' | 'to') => {
-  const itemsToMove = selectedItems.value[direction];
-  const list = transferList.value.map((item: TransferListItem) => {
-    const shouldMove = itemsToMove.includes(item.value);
-    return { ...item, ...(shouldMove && { selected: !item.selected }) };
-  });
+const handleTransferItemsFromColumn = (direction: 'from' | 'to') => {
+  const items = selectedItems.value[direction];
 
-  onUpdateTransferList(list);
+  const filteredList = transferList.value.filter(({ value }) => !items.includes(value));
+  const itemsToMove = getMappedCurrentList(direction)
+    .filter(({ value }) => items.includes(value))
+    .map((item) => ({ ...item, selected: !item.selected }));
+
+  const newList = [...filteredList, ...itemsToMove];
+
+  onUpdateTransferList(newList);
   onClearSelection();
 };
 
 const handleTransferAllFromColumn = (direction: 'from' | 'to') => {
-  let options = getMappedCurrentList(direction);
+  const currentColumn = getMappedCurrentList(direction);
+  const targetColumn = getMappedCurrentList(direction === 'from' ? 'to' : 'from');
 
-  if (direction === 'to') {
-    options = options.filter(({ locked }) => !locked);
-  }
+  const fixedItems = currentColumn.filter(({ locked }) => locked);
+  const itemsToMove = currentColumn.filter(({ locked }) => !locked);
+  const mappedItems = itemsToMove.map((item) => ({ ...item, selected: !item.selected }));
 
-  const list = transferList.value.map((item: TransferListItem) => {
-    const shouldMove = options.map(({ value }) => value).includes(item.value);
-    return { ...item, ...(shouldMove && { selected: !item.selected }) };
-  });
+  const newList = [...targetColumn, ...fixedItems, ...mappedItems];
 
-  onUpdateTransferList(list);
+  onUpdateTransferList(newList);
   onClearSelection();
 };
 

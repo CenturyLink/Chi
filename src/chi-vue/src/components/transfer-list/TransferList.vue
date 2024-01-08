@@ -20,7 +20,7 @@
     </div>
 
     <TransferListFooter
-      :original="transferListData"
+      :transferListData="transferListData"
       @chiTransferListSave="onSaveTransferList"
       @chiTransferListReset="onResetTransferList"
     />
@@ -40,6 +40,7 @@ const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
 const props = defineProps<TransferList>();
 const emit = defineEmits();
+const transferListData = ref<TransferListItem[]>(props.transferListData);
 const currentList = ref<TransferListItem[]>(props.transferListData);
 const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION);
 
@@ -48,11 +49,12 @@ watch(currentList, () => {
 });
 
 const onSaveTransferList = () => {
+  transferListData.value = currentList.value;
   emit(TRANSFER_LIST_EVENTS.SAVE, currentList.value);
 };
 
 const onResetTransferList = () => {
-  emit(TRANSFER_LIST_EVENTS.RESET, props.transferListData);
+  emit(TRANSFER_LIST_EVENTS.RESET, transferListData.value);
 };
 
 const onUpdateTransferList = (list: TransferListItem[]) => {

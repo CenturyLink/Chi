@@ -5,7 +5,7 @@
         {{ title }}
         <template v-if="description">
           <chi-button
-            :id="`transfer-list-info-popover-${title}`"
+            :id="`transfer-list-info-popover-${id}`"
             variant="flat"
             type="icon"
             size="xs"
@@ -17,8 +17,8 @@
           <chi-popover
             arrow
             variant="text"
-            :id="`transfer-list-popover-${title}`"
-            :reference="`#transfer-list-info-popover-${title}`"
+            :id="`transfer-list-popover-${id}`"
+            :reference="`#transfer-list-info-popover-${id}`"
           >
             {{ description }}
           </chi-popover>
@@ -48,6 +48,7 @@
 
 <script lang="ts" setup>
 import { ref, inject } from 'vue';
+import { uuid4 } from '@/utils/utils';
 import { TransferListItem, TransferListActions } from '@/constants/types';
 import SearchInput from '@/components/search-input/SearchInput';
 import { TRANSFER_LIST_CLASSES, SELECT_CLASSES } from '@/constants/classes';
@@ -62,6 +63,7 @@ const props = defineProps<{
 const filter = ref<string>('');
 const column = props.type;
 const isToColumn = props.type === 'to';
+const id = uuid4();
 
 const { transferList, selectedItems, onSelectItem } = inject('transferList') as TransferListActions;
 
@@ -114,7 +116,7 @@ const _getLockedClass = (locked: boolean | undefined) => {
 };
 
 const toggleInfoPopover = () => {
-  const popover = document.querySelector(`#transfer-list-popover-${props.title}`) as any;
+  const popover = document.querySelector(`#transfer-list-popover-${id}`) as any;
 
   popover.toggle();
 };
