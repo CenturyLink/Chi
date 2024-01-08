@@ -20,35 +20,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from '@/build/vue-wrapper';
-import { Prop } from 'vue-property-decorator';
+<script lang="ts" setup>
+import { onMounted } from 'vue';
 
 declare const chi: any;
 
-@Component({})
-export default class ExamplePopover extends Vue {
-  @Prop() id?: string;
+const props = defineProps<{
+  id?: string;
+}>();
 
-  mounted() {
-    const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.id}`);
-    const popover = chi.popover(buttonOpenOnHover);
-    let hoverAnimationTimeout: any;
+onMounted(() => {
+  const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${props.id}`);
+  const popover = chi.popover(buttonOpenOnHover);
+  let hoverAnimationTimeout: any;
 
-    if (buttonOpenOnHover) {
-      buttonOpenOnHover.addEventListener('mouseenter', function () {
-        hoverAnimationTimeout = setTimeout(() => {
-          popover.show();
-        }, 300);
-      });
+  if (buttonOpenOnHover) {
+    buttonOpenOnHover.addEventListener('mouseenter', function () {
+      hoverAnimationTimeout = setTimeout(() => {
+        popover.show();
+      }, 300);
+    });
 
-      buttonOpenOnHover.addEventListener('mouseleave', function () {
-        if (hoverAnimationTimeout) {
-          clearTimeout(hoverAnimationTimeout);
-        }
-        popover.hide();
-      });
-    }
+    buttonOpenOnHover.addEventListener('mouseleave', function () {
+      if (hoverAnimationTimeout) {
+        clearTimeout(hoverAnimationTimeout);
+      }
+      popover.hide();
+    });
   }
-}
+});
 </script>

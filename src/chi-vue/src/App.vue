@@ -4,8 +4,7 @@
     <TransferListView />
 
     <DataTableClientView />
-    <DataTableServerView class="-mt--10" />
-
+    <DataTableServerView />
     <ExpansionPanelView />
     <PaginationView />
     <DrawerView />
@@ -16,8 +15,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
 import CheckboxView from './views/CheckboxView.vue';
 import DataTableClientView from './views/DataTable/ClientSide/DataTableClientView.vue';
 import DataTableServerView from './views/DataTable/ServerSide/DataTableServerView.vue';
@@ -28,20 +26,4 @@ import SaveViewView from './views/SaveView.vue';
 import SearchInputView from './views/SearchInputView.vue';
 import TooltipView from './views/TooltipView.vue';
 import TransferListView from './views/TransferList/TransferListView.vue';
-
-@Component({
-  components: {
-    CheckboxView,
-    DataTableClientView,
-    DataTableServerView,
-    DrawerView,
-    ExpansionPanelView,
-    PaginationView,
-    SaveViewView,
-    SearchInputView,
-    TooltipView,
-    TransferListView,
-  },
-})
-export default class App extends Vue {}
 </script>
