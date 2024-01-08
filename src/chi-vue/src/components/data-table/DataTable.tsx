@@ -61,6 +61,7 @@ import { Transition } from 'vue';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
 import DataTableActions from './DatatableActions';
 import { JSX } from 'vue/jsx-runtime';
+import { Compare } from '@/utils/Compare';
 
 declare const chi: any;
 
@@ -891,12 +892,12 @@ export default class DataTable extends Vue {
       return;
     }
 
-    const checkboxId =
-      rowData && typeof rowData === 'object' && rowData.rowNumber
-        ? `checkbox-select-${rowData?.rowId}`
-        : selectAll
-          ? `checkbox-${this._dataTableId}-select-all-rows`
-          : '';
+    const checkboxIds = {
+      object: rowData?.rowNumber ? `checkbox-select-${rowData.rowId}` : '',
+      boolean: selectAll ? `checkbox-${this._dataTableId}-select-all-rows` : '',
+    };
+    const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
+    debugger;
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
 
@@ -1906,12 +1907,12 @@ export default class DataTable extends Vue {
 
   _printBody() {
     if (this.dataTableData.body.length > 0) {
-      const bodyRows =
-        this.showSelectedOnlyRowsData?.length > 0
-          ? this.showSelectedOnlyRowsData
-          : this.sortedData && this.sortedData.length > 0
-            ? this.sortedData
-            : this.serializedDataBody;
+      const bodyRowsMappings = {
+        selected: this.showSelectedOnlyRowsData?.length > 0 ? this.showSelectedOnlyRowsData : null,
+        sorted: !Compare.isEmptyArray(this.sortedData) ? this.sortedData : null,
+        default: this.serializedDataBody ?? [],
+      };
+      const bodyRows = bodyRowsMappings['selected'] || bodyRowsMappings['sorted'] || bodyRowsMappings['default'];
 
       return (
         <tbody>

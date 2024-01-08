@@ -63,16 +63,13 @@ export default class ColumnCustomizationContent extends Vue {
 
   _controlButton(icon: string, action: () => void) {
     const icons = ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'];
-    const ariaLabel =
-      icon === 'chevron-up'
-        ? 'Move Up'
-        : icon === 'chevron-down'
-          ? 'Move Down'
-          : icon === 'chevron-left'
-            ? 'Deselect'
-            : icon === 'chevron-right'
-              ? 'select'
-              : '';
+    const ariaLabels = {
+      'chevron-up': 'Move Up',
+      'chevron-down': 'Move Down',
+      'chevron-left': 'Deselect',
+      'chevron-right': 'Select',
+    };
+    const ariaLabel = ariaLabels[icon] || '';
 
     if (icons.includes(icon)) {
       let refButton = 'buttonRows';

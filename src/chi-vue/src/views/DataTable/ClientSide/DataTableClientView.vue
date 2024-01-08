@@ -8,22 +8,22 @@
     ref="dataTableClient"
     :dataTableData="table"
     :config="config"
-    @chiSelectedRowsChange="(e) => chiSelectedRowsChange(e)"
-    @chiPageChange="(e) => chiPageChange(e)"
-    @chiPageSizeChange="(e) => chiPageSizeChange(e)"
-    @chiDataSorting="(e) => chiDataSorting(e)"
-    @chiRowExpanded="(e) => chiRowExpanded(e)"
-    @chiRowCollapsed="(e) => chiRowCollapsed(e)"
-    @chiRowSelected="(e) => chiRowSelected(e)"
-    @chiRowDeselected="(e) => chiRowDeselected(e)"
-    @chiSelectAll="(e) => chiSelectAll(e)"
-    @chiSelectThisPage="(e) => chiSelectThisPage(e)"
-    @chiSelectAllPages="(e) => chiSelectAllPages(e)"
-    @chiDeselectAll="(e) => chiDeselectAll(e)"
-    @chiDeselectThisPage="(e) => chiDeselectThisPage(e)"
-    @chiDeselectAllPages="(e) => chiDeselectAllPages(e)"
-    @chiExpandAll="(e) => chiExpandAll(e)"
-    @chiCollapseAll="(e) => chiCollapseAll(e)"
+    @chiSelectedRowsChange="chiSelectedRowsChange"
+    @chiPageChange="chiPageChange"
+    @chiPageSizeChange="chiPageSizeChange"
+    @chiDataSorting="chiDataSorting"
+    @chiRowExpanded="chiRowExpanded"
+    @chiRowCollapsed="chiRowCollapsed"
+    @chiRowSelected="chiRowSelected"
+    @chiRowDeselected="chiRowDeselected"
+    @chiSelectAll="chiSelectAll"
+    @chiSelectThisPage="chiSelectThisPage"
+    @chiSelectAllPages="chiSelectAllPages"
+    @chiDeselectAll="chiDeselectAll"
+    @chiDeselectThisPage="chiDeselectThisPage"
+    @chiDeselectAllPages="chiDeselectAllPages"
+    @chiExpandAll="chiExpandAll"
+    @chiCollapseAll="chiCollapseAll"
     @chiEmptyActionableLink="() => chiEmptyActionableLink()"
   >
     <template v-slot:alertsDesc="payload">
@@ -67,13 +67,13 @@
             <template v-slot:customAdvanced>
               <div class="chi-form__item">
                 <chi-label for="input-1">City</chi-label>
-                <chi-text-input id="input-1" @chiChange="(e) => chiChangeInputOne(e)"></chi-text-input>
+                <chi-text-input id="input-1" @chiChange="chiChangeInputOne"></chi-text-input>
                 <chi-label for="input-2">Zip Code</chi-label>
-                <chi-text-input id="input-2" @chiChange="(e) => chiChangeInputTwo(e)"></chi-text-input>
+                <chi-text-input id="input-2" @chiChange="chiChangeInputTwo"></chi-text-input>
               </div>
             </template>
             <template v-slot:customAdvanced2>
-              <chi-date-picker @chiDateChange="(e) => chiDateChange(e)" />
+              <chi-date-picker @chiDateChange="chiDateChange" />
             </template>
             <template v-slot:customAdvanced3>
               <chi-time-picker />
@@ -90,7 +90,7 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <ColumnCustomization @chiColumnsReset="(e) => chiColumnsReset(e)" :columnsData="toolbar.columnsData" />
+            <ColumnCustomization :columnsData="toolbar.columnsData" />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -243,16 +243,8 @@ const changeEmptyActionable = (state: boolean) => {
   };
 };
 
-const chiColumnsReset = (e) => {
-  console.log('chiColumnsReset', e);
-};
-
 const chiSelectedRowsChange = (e) => {
   console.log('chiSelectedRowsChange', e);
-};
-
-const chiShowSelectedRowsOnly = (e) => {
-  console.log('chiColumnsReset', e);
 };
 
 const chiDeselectAll = (e) => {

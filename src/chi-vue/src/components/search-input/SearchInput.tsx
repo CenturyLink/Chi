@@ -43,7 +43,7 @@ export default class SearchInput extends Vue {
 
   @Emit(SEARCH_INPUT_EVENTS.SEARCH)
   _emitSearch(value: string) {
-    if (this.toolbarSearch && this.toolbarSearch.callback) {
+    if (this.toolbarSearch?.callback) {
       this.toolbarSearch.callback();
     }
 

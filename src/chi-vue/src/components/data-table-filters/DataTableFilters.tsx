@@ -323,27 +323,20 @@ export default class DataTableFilters extends Vue {
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
     this.filtersData.filters.forEach((filter: DataTableFilter) => {
-      const filterElement =
-        filter.type === 'select'
-          ? this._createSelectFilter(filter)
-          : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-              ? this._createCheckboxFilter(filter)
-              : filter.type === 'textarea'
-                ? this._createTextareaFilter(filter)
-                : null;
-
-      const filterElementMobile =
-        filter.type === 'select'
-          ? this._createSelectFilter(filter, true)
-          : filter.type === 'input'
-            ? this._createInputFilter(filter, true)
-            : filter.type === 'checkbox'
-              ? this._createCheckboxFilter(filter, true)
-              : filter.type === 'textarea'
-                ? this._createTextareaFilter(filter, true)
-                : null;
+      const filterTypes = {
+        select: this._createSelectFilter,
+        input: this._createInputFilter,
+        checkbox: this._createCheckboxFilter,
+        textarea: this._createTextareaFilter,
+      };
+      const filterTypesMobile = {
+        select: this._createSelectFilter,
+        input: this._createInputFilter,
+        checkbox: this._createCheckboxFilter,
+        textarea: this._createTextareaFilter,
+      };
+      const filterElement = filterTypes[filter.type] ? filterTypes[filter.type](filter) : null;
+      const filterElementMobile = filterTypesMobile[filter.type] ? filterTypesMobile[filter.type](filter, true) : null;
 
       if (filterElement && filterElementMobile) {
         if (!filter.advanced) {
