@@ -329,14 +329,8 @@ export default class DataTableFilters extends Vue {
         checkbox: this._createCheckboxFilter,
         textarea: this._createTextareaFilter,
       };
-      const filterTypesMobile = {
-        select: this._createSelectFilter,
-        input: this._createInputFilter,
-        checkbox: this._createCheckboxFilter,
-        textarea: this._createTextareaFilter,
-      };
       const filterElement = filterTypes[filter.type] ? filterTypes[filter.type](filter) : null;
-      const filterElementMobile = filterTypesMobile[filter.type] ? filterTypesMobile[filter.type](filter, true) : null;
+      const filterElementMobile = filterTypes[filter.type] ? filterTypes[filter.type](filter, true) : null;
 
       if (filterElement && filterElementMobile) {
         if (!filter.advanced) {

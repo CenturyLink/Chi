@@ -897,7 +897,6 @@ export default class DataTable extends Vue {
       boolean: selectAll ? `checkbox-${this._dataTableId}-select-all-rows` : '',
     };
     const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
-    debugger;
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
 
