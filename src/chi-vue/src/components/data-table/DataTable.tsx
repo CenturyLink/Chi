@@ -1907,7 +1907,7 @@ export default class DataTable extends Vue {
   _printBody() {
     if (this.dataTableData.body.length > 0) {
       const bodyRowsMappings = {
-        selected: this.showSelectedOnlyRowsData?.length > 0 ? this.showSelectedOnlyRowsData : null,
+        selected: !Compare.isEmptyArray(this.showSelectedOnlyRowsData) ? this.showSelectedOnlyRowsData : null,
         sorted: !Compare.isEmptyArray(this.sortedData) ? this.sortedData : null,
         default: this.serializedDataBody ?? [],
       };
