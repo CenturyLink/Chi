@@ -6,7 +6,7 @@ const SPINNER_COLORS = ['primary', 'dark', 'success', 'warning', 'danger', 'mute
 @Component({
   tag: 'chi-spinner',
   styleUrl: 'spinner.scss',
-  scoped: true
+  scoped: true,
 })
 export class Spinner {
   /**
@@ -27,21 +27,27 @@ export class Spinner {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !ICON_SIZES.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for spinner. If provided, valid values are: xs, sm, sm--2, sm--3, md, lg, xl or xxl. `);
+      throw new Error(
+        `${newValue} is not a valid size for spinner. If provided, valid values are: xs, sm, sm--2, sm--3, md, lg, xl or xxl. `
+      );
     }
   }
 
   @Watch('color')
   colorValidation(newValue: string) {
     if (newValue && !SPINNER_COLORS.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for spinner. If provided, valid values are: primary, dark, success, warning, danger, muted, secondary or light. `);
+      throw new Error(
+        `${newValue} is not a valid color for spinner. If provided, valid values are: primary, dark, success, warning, danger, muted, secondary or light. `
+      );
     }
   }
 
   @Watch('backdrop')
   backdropValidation(newValue: string) {
     if (newValue && !['', 'inverse', 'backdrop', 'true'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid backdrop for spinner. If provided, valid values are: inverse, backdrop or true. `);
+      throw new Error(
+        `${newValue} is not a valid backdrop for spinner. If provided, valid values are: inverse, backdrop or true. `
+      );
     }
   }
 
@@ -53,9 +59,11 @@ export class Spinner {
 
   render() {
     const spinner = (
-      <svg class={`chi-spinner
+      <svg
+        class={`chi-spinner
         ${this.color ? `-icon--${this.color}` : ''}
-        ${this.size ? `-${this.size}` : ''}`} viewBox="0 0 66 66"
+        ${this.size ? `-${this.size}` : ''}`}
+        viewBox="0 0 66 66"
       >
         <title>Loading</title>
         <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6" />
@@ -65,9 +73,7 @@ export class Spinner {
     if (this.backdrop || this.backdrop === '') {
       return (
         <div class={`chi-backdrop -center ${this.backdrop === 'inverse' && '-inverse'}`}>
-          <div class="chi-backdrop__wrapper">
-            {spinner}
-          </div>
+          <div class="chi-backdrop__wrapper">{spinner}</div>
         </div>
       );
     } else {

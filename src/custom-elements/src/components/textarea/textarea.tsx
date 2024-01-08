@@ -6,9 +6,8 @@ import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 @Component({
   tag: 'chi-textarea',
   styleUrl: 'textarea.scss',
-  scoped: true
+  scoped: true,
 })
-
 export class Textarea {
   @Element() el: HTMLChiTextareaElement;
   /**
@@ -34,7 +33,7 @@ export class Textarea {
   /**
    * To define size of Textarea
    */
-  @Prop({ reflect: true }) size ?: TextInputSizes = 'md';
+  @Prop({ reflect: true }) size?: TextInputSizes = 'md';
   /**
    * To define placeholder of Textarea
    */
@@ -134,38 +133,47 @@ export class Textarea {
   }
 
   render() {
-    const textareaElement = <textarea
-      class={
-        `chi-input
+    const textareaElement = (
+      <textarea
+        class={`chi-input
         ${this.state ? `-${this.state}` : ''}
         ${this.size ? `-${this.size}` : ''}
         ${this._status ? `-${this._status}` : ''}
         `}
-      placeholder={this.placeholder || ''}
-      name={this.name || ''}
-      disabled={this.disabled}
-      readonly={this.readonly}
-      id={this.el.id ? `${this.el.id}-control` : null}
-      onFocus={() => this.eventFocus.emit()}
-      onBlur={() => this.eventBlur.emit()}
-      onInput={(ev) => this._handleValueInput(ev)}
-      onChange={() => this._handleValueChange()}
-    ><slot></slot></textarea>;
+        placeholder={this.placeholder || ''}
+        name={this.name || ''}
+        disabled={this.disabled}
+        readonly={this.readonly}
+        id={this.el.id ? `${this.el.id}-control` : null}
+        onFocus={() => this.eventFocus.emit()}
+        onBlur={() => this.eventBlur.emit()}
+        onInput={(ev) => this._handleValueInput(ev)}
+        onChange={() => this._handleValueChange()}
+      >
+        <slot></slot>
+      </textarea>
+    );
     const iconClasses = `
       ${this.iconLeft ? '-icon--left' : ''}
       ${this.iconRight ? '-icon--right' : ''}
     `;
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
-    const helperMessage = this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+    const helperMessage = this.helperMessage && (
+      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
+    );
 
-    const textarea = this.iconLeft || this.iconRight || this.helperMessage ?
-      <div class={`chi-input__wrapper ${iconClasses}`}>
-        {textareaElement}
-        {iconLeft}
-        {iconRight}
-        {helperMessage}
-      </div> : textareaElement;
+    const textarea =
+      this.iconLeft || this.iconRight || this.helperMessage ? (
+        <div class={`chi-input__wrapper ${iconClasses}`}>
+          {textareaElement}
+          {iconLeft}
+          {iconRight}
+          {helperMessage}
+        </div>
+      ) : (
+        textareaElement
+      );
 
     return textarea;
   }

@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Method,
-  Prop,
-  h,
-  Watch,
-  State
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, h, Watch, State } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
   ACTIVE_CLASS,
@@ -16,7 +6,7 @@ import {
   DROPDOWN_CLASSES,
   LIST_CLASS,
   FLUID_CLASS,
-  UTILITY_CLASSES
+  UTILITY_CLASSES,
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
@@ -25,7 +15,7 @@ import { FontWeight } from '../../constants/types';
 @Component({
   tag: 'chi-dropdown',
   styleUrl: 'dropdown.scss',
-  scoped: true
+  scoped: true,
 })
 export class Dropdown {
   /**
@@ -177,9 +167,7 @@ export class Dropdown {
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_EXTENDED_POSITIONS.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid position for Dropdown. Valid values are ${CARDINAL_EXTENDED_POSITIONS.join(
-          ', '
-        )}.`
+        `${newValue} is not a valid position for Dropdown. Valid values are ${CARDINAL_EXTENDED_POSITIONS.join(', ')}.`
       );
     }
     if (this._componentLoaded) {
@@ -230,20 +218,16 @@ export class Dropdown {
   }
 
   _initializePopper() {
-    this._popper = new Popper(
-      this._referenceElement,
-      this._dropdownMenuElement,
-      {
-        modifiers: {
-          applyStyle: { enabled: true },
-          preventOverflow: {
-            boundariesElement: 'window'
-          }
+    this._popper = new Popper(this._referenceElement, this._dropdownMenuElement, {
+      modifiers: {
+        applyStyle: { enabled: true },
+        preventOverflow: {
+          boundariesElement: 'window',
         },
-        removeOnDestroy: true,
-        placement: this.position || 'bottom'
-      }
-    );
+      },
+      removeOnDestroy: true,
+      placement: this.position || 'bottom',
+    });
   }
 
   _addItemListObserver() {
@@ -266,12 +250,7 @@ export class Dropdown {
   }
 
   getPadding(direction: 'top' | 'bottom') {
-    return parseInt(
-      getComputedStyle(this._dropdownMenuElement).getPropertyValue(
-        `padding-${direction}`
-      ),
-      10
-    );
+    return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
   }
 
   setMenuHeight() {
@@ -379,8 +358,8 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
     const focusedElement = document.activeElement as HTMLElement;
     const currentIndex = menuItems.indexOf(focusedElement);
-    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1; 
-  
+    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
+
     if (!menuItems.includes(focusedElement)) {
       const startIndex = keyCode === 'ArrowUp' ? menuItems.length - 1 : 0;
 
@@ -403,9 +382,7 @@ export class Dropdown {
       children = this._dropdownMenuItemsWrapper.children as HTMLAnchorElement[];
     }
 
-    return Array.from(children).filter((item: HTMLElement) =>
-      item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)
-    );
+    return Array.from(children).filter((item: HTMLElement) => item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM));
   }
 
   _addEventListeners() {
@@ -448,7 +425,7 @@ export class Dropdown {
         size={`${this.size || ''}`}
         uppercase={this.uppercase}
         disabled={this.disabled}
-        ref={ref => (this._referenceElement = ref)}
+        ref={(ref) => (this._referenceElement = ref)}
       >
         {this.button}
       </chi-button>
@@ -468,24 +445,28 @@ export class Dropdown {
   }
 
   renderDropdownMenuHeader() {
-    return this._menuHeader && (
-      <div class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
-        <slot name="menu-header" />
-      </div>
+    return (
+      this._menuHeader && (
+        <div class={`${DROPDOWN_CLASSES.MENU_HEADER} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
+          <slot name="menu-header" />
+        </div>
+      )
     );
   }
 
   renderDropdownMenuFooter() {
-    return this._menuFooter && (
-      <div class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}>
-        <slot name="menu-footer" />
-      </div>
+    return (
+      this._menuFooter && (
+        <div class={`${DROPDOWN_CLASSES.MENU_FOOTER} ${UTILITY_CLASSES.MARGIN.TOP[1]}`}>
+          <slot name="menu-footer" />
+        </div>
+      )
     );
   }
 
   renderDropdownMenuItems() {
     return this.visibleItems && (this._menuFooter || this._menuHeader) ? (
-      <div class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER} ref={ref => (this._dropdownMenuItemsWrapper = ref)}>
+      <div class={DROPDOWN_CLASSES.MENU_ITEMS_WRAPPER} ref={(ref) => (this._dropdownMenuItemsWrapper = ref)}>
         <slot name="menu" />
       </div>
     ) : (
@@ -501,9 +482,9 @@ export class Dropdown {
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''}
-          ${this.description ? LIST_CLASS : ''}`
-        }
-        ref={ref => (this._dropdownMenuElement = ref)}>
+          ${this.description ? LIST_CLASS : ''}`}
+        ref={(ref) => (this._dropdownMenuElement = ref)}
+      >
         {this.renderDropdownMenuHeader()}
         {this.renderDropdownMenuItems()}
         {this.renderDropdownMenuFooter()}
@@ -516,11 +497,15 @@ export class Dropdown {
     const menu = this.renderMenu();
 
     return trigger ? (
-      <div class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`}
-        onMouseLeave={this.handlerMouseLeave}>
+      <div
+        class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`}
+        onMouseLeave={this.handlerMouseLeave}
+      >
         {trigger}
         {menu}
       </div>
-    ) : menu;
+    ) : (
+      menu
+    );
   }
 }

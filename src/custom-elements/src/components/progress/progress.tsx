@@ -4,7 +4,7 @@ import { SEMANTIC_COLORS } from '../../constants/color';
 @Component({
   tag: 'chi-progress',
   styleUrl: 'progress.scss',
-  scoped: true
+  scoped: true,
 })
 export class Progress {
   /**

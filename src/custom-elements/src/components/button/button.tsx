@@ -3,7 +3,7 @@ import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '
 @Component({
   tag: 'chi-button',
   styleUrl: 'button.scss',
-  scoped: true
+  scoped: true,
 })
 export class Button {
   @Element() el: HTMLButtonElement;
@@ -38,7 +38,7 @@ export class Button {
    */
   @Prop({ reflect: true }) fluid = false;
 
-   /**
+  /**
    *  to render a button with uppercase text.
    */
   @Prop({ reflect: true }) uppercase = false;
@@ -78,7 +78,9 @@ export class Button {
   @Watch('color')
   colorValidation(newValue: string) {
     if (newValue && !['', 'primary', 'secondary', 'danger', 'dark', 'light'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for button. Valid values are primary, secondary, danger, dark, light or ''. `);
+      throw new Error(
+        `${newValue} is not a valid color for button. Valid values are primary, secondary, danger, dark, light or ''. `
+      );
     }
   }
 
@@ -101,8 +103,7 @@ export class Button {
     this.sizeValidation(this.size);
     this.buttonTypeValidation(this.type);
     this.variantValidation(this.variant);
-    if (!this.el.querySelector('chi-icon') &&
-      !this.el.querySelector('chi-spinner')) {
+    if (!this.el.querySelector('chi-icon') && !this.el.querySelector('chi-spinner')) {
       this.slotBtnContent = false;
     }
   }
@@ -122,7 +123,13 @@ export class Button {
   render() {
     if (this.type === 'close') {
       return (
-        <button class={`${this.extraClass ? this.extraClass : ''} chi-button -icon -close ${this.size ? `-${this.size}` : ''}`} onClick={() => this._buttonClicked()} aria-label="Close">
+        <button
+          class={`${this.extraClass ? this.extraClass : ''} chi-button -icon -close ${
+            this.size ? `-${this.size}` : ''
+          }`}
+          onClick={() => this._buttonClicked()}
+          aria-label="Close"
+        >
           <div class="chi-button__content">
             <chi-icon icon={'x'} />
           </div>
@@ -145,14 +152,15 @@ export class Button {
           onMouseEnter={() => this._buttonMouseEnter()}
           onMouseLeave={() => this._buttonMouseLeave()}
           disabled={this.disabled}
-          {...(this.alternativeText && {'aria-label': this.alternativeText})}
+          {...(this.alternativeText && { 'aria-label': this.alternativeText })}
         >
-          {this.slotBtnContent ?
+          {this.slotBtnContent ? (
             <div class={'chi-button__content'}>
               <slot />
             </div>
-            : <slot />
-          }
+          ) : (
+            <slot />
+          )}
         </button>
       );
     }

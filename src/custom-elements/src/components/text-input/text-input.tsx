@@ -7,9 +7,8 @@ import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
 @Component({
   tag: 'chi-text-input',
   styleUrl: 'text-input.scss',
-  scoped: true
+  scoped: true,
 })
-
 export class TextInput {
   @Element() el: HTMLChiTextInputElement;
   /**
@@ -39,7 +38,7 @@ export class TextInput {
   /**
    * To define size of Text input
    */
-  @Prop({ reflect: true }) size ?: TextInputSizes = 'md';
+  @Prop({ reflect: true }) size?: TextInputSizes = 'md';
   /**
    * To define placeholder of Text input
    */
@@ -165,26 +164,27 @@ export class TextInput {
   }
 
   render() {
-    const input = <input
-      type={this.type}
-      class={
-        `chi-input
+    const input = (
+      <input
+        type={this.type}
+        class={`chi-input
         ${this.state ? `-${this.state}` : ''}
         ${this.size ? `-${this.size}` : ''}
         ${this._status ? `-${this._status}` : ''}
         ${this.extraClass ? this.extraClass : ''}
         `}
-      placeholder={this.placeholder || ''}
-      value={this.value}
-      name={this.name || ''}
-      disabled={this.disabled}
-      readonly={this.readonly}
-      id={this.el.id ? `${this.el.id}-control` : null}
-      onFocus={() => this.eventFocus.emit()}
-      onBlur={() => this.eventBlur.emit()}
-      onInput={(ev) => this._handleValueInput(ev)}
-      onChange={(ev) => this._handleValueChange(ev)}
-    />;
+        placeholder={this.placeholder || ''}
+        value={this.value}
+        name={this.name || ''}
+        disabled={this.disabled}
+        readonly={this.readonly}
+        id={this.el.id ? `${this.el.id}-control` : null}
+        onFocus={() => this.eventFocus.emit()}
+        onBlur={() => this.eventBlur.emit()}
+        onInput={(ev) => this._handleValueInput(ev)}
+        onChange={(ev) => this._handleValueChange(ev)}
+      />
+    );
     const iconClasses = `
       ${this.iconLeft ? '-icon--left' : ''}
       ${this.iconRight ? '-icon--right' : ''}
@@ -193,12 +193,16 @@ export class TextInput {
       sm: 'xs',
       md: 'sm',
       lg: 'sm--2',
-      xl: 'sm--3'
+      xl: 'sm--3',
     };
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
-    const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+    const iconRight = this.iconRight && !this.spinner && (
+      <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />
+    );
     const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
-    const helperMessage = this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+    const helperMessage = this.helperMessage && (
+      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
+    );
 
     if (this.iconLeft || this.iconRight || this.spinner || this.helperMessage) {
       return (
@@ -209,7 +213,7 @@ export class TextInput {
           {spinner}
           {helperMessage}
         </div>
-      )
+      );
     }
 
     return input;

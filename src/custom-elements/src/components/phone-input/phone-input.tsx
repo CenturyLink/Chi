@@ -1,38 +1,23 @@
-import {
-  Component,
-  Event,
-  EventEmitter,
-  Prop,
-  h,
-  JSX,
-  State,
-  Watch,
-  Element
-} from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, h, JSX, State, Watch, Element } from '@stencil/core';
 import {
   AsYouType,
   CountryCode,
   getCountries,
   getCountryCallingCode,
   isSupportedCountry,
-  isValidPhoneNumber
+  isValidPhoneNumber,
 } from 'libphonenumber-js';
 import country from 'all-country-data';
 import { EXTRA_COUNTRIES } from '../../constants/constants';
 import { ChiStates, CHI_STATES } from '../../constants/states';
 import { uuid4 } from '../../utils/utils';
 import { TextInputSizes } from '../../constants/size';
-import {
-  ACTIVE_CLASS,
-  BUTTON_CLASSES,
-  DROPDOWN_CLASSES,
-  PHONE_INPUT_CLASSES
-} from '../../constants/classes';
+import { ACTIVE_CLASS, BUTTON_CLASSES, DROPDOWN_CLASSES, PHONE_INPUT_CLASSES } from '../../constants/classes';
 import { Country, ExtraCountry } from '../../constants/types';
 
 @Component({
   tag: 'chi-phone-input',
-  scoped: true
+  scoped: true,
 })
 export class ChiPhoneInput {
   /**
@@ -87,9 +72,7 @@ export class ChiPhoneInput {
   /**
    * Triggered when the element's value committed by the user is an invalid phone number for the selected prefix
    */
-  @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
-    void
-  >;
+  @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<void>;
 
   @Element() el: HTMLElement;
 
@@ -102,7 +85,7 @@ export class ChiPhoneInput {
   @State() _suffix = '';
   @State() _uuid: string;
 
-  private _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
+  private _extraCountryCodes: string[] = EXTRA_COUNTRIES.map((item) => item.country_code);
   private excludedCountriesArray: CountryCode[];
 
   componentWillLoad(): void {
@@ -122,9 +105,7 @@ export class ChiPhoneInput {
     const validValues = CHI_STATES.join(', ');
 
     if (state && !CHI_STATES.includes(state)) {
-      throw new Error(
-        `${state} is not a valid state for phone input. If provided, valid values are: ${validValues}. `
-      );
+      throw new Error(`${state} is not a valid state for phone input. If provided, valid values are: ${validValues}. `);
     }
   }
 
@@ -155,7 +136,7 @@ export class ChiPhoneInput {
         value.substring(0, 2),
         value.substring(2, 5),
         value.substring(5, 7),
-        value.substring(7, 9)
+        value.substring(7, 9),
       ];
 
       return formattedNumbers.join(' ').trim();
@@ -172,14 +153,14 @@ export class ChiPhoneInput {
 
     if (this._isSpecialNumber()) {
       const specialCountry: ExtraCountry = EXTRA_COUNTRIES.find(
-        country => this._country.countryAbbr === country.country_code
+        (country) => this._country.countryAbbr === country.country_code
       );
 
       this._suffix = specialCountry?.formatNumber
         ? specialCountry.formatNumber(suffix)
-        : this._basicNumberFormatting(suffix)
+        : this._basicNumberFormatting(suffix);
     } else {
-      this._suffix = new AsYouType(this._country.countryAbbr).input(suffix)
+      this._suffix = new AsYouType(this._country.countryAbbr).input(suffix);
     }
   }
 
@@ -188,7 +169,7 @@ export class ChiPhoneInput {
       return suffix.replace(/\s/g, '').length === 9;
     }
 
-    return isValidPhoneNumber(suffix, this._country.countryAbbr)
+    return isValidPhoneNumber(suffix, this._country.countryAbbr);
   }
 
   _getCorrectCountryList(): ExtraCountry[] {
@@ -200,21 +181,17 @@ export class ChiPhoneInput {
     const dialCodes = this._getCountryList(excludedCountries);
     const countries = [];
 
-    countryObjs.forEach(
-      (countryObj: { country: string; country_code: CountryCode }) => {
-        if (dialCodes.find(code => code === countryObj.country_code)) {
-          const country: Country = {
-            name: countryObj.country,
-            countryAbbr: countryObj.country_code as CountryCode,
-            dialCode: getCountryCallingCode(
-              countryObj.country_code as CountryCode
-            )
-          };
+    countryObjs.forEach((countryObj: { country: string; country_code: CountryCode }) => {
+      if (dialCodes.find((code) => code === countryObj.country_code)) {
+        const country: Country = {
+          name: countryObj.country,
+          countryAbbr: countryObj.country_code as CountryCode,
+          dialCode: getCountryCallingCode(countryObj.country_code as CountryCode),
+        };
 
-          countries.push(country);
-        }
+        countries.push(country);
       }
-    );
+    });
 
     this._countries = countries;
   }
@@ -226,9 +203,9 @@ export class ChiPhoneInput {
       this.excludedCountriesArray = excludedCountries
         .replace(/[^A-Z,]+/g, '')
         .split(',')
-        .filter(item => item !== this.defaultCountry) as CountryCode[];
+        .filter((item) => item !== this.defaultCountry) as CountryCode[];
       if (this.excludedCountriesArray) {
-        dialCodes = dialCodes.filter(code => !this.excludedCountriesArray.includes(code));
+        dialCodes = dialCodes.filter((code) => !this.excludedCountriesArray.includes(code));
       }
     }
 
@@ -246,10 +223,8 @@ export class ChiPhoneInput {
   _checkCountry(prefix: string) {
     const prevCountry = this._country;
 
-    this._country = this._countries.find(country =>
-      this.dynamicValue
-        ? country.dialCode === prefix
-        : country.countryAbbr === prefix
+    this._country = this._countries.find((country) =>
+      this.dynamicValue ? country.dialCode === prefix : country.countryAbbr === prefix
     );
 
     if (prevCountry && this._country.dialCode === prevCountry.dialCode) {
@@ -258,15 +233,11 @@ export class ChiPhoneInput {
     }
 
     if (this._country.dialCode == '1' && this.dynamicValue) {
-      this._country = this._countries.find(
-        country => country.countryAbbr === 'US'
-      );
+      this._country = this._countries.find((country) => country.countryAbbr === 'US');
     }
 
     if (!isSupportedCountry(this._country.countryAbbr)) {
-      throw new Error(
-        `"${this._country.countryAbbr}" is not a valid country for phone input.`
-      );
+      throw new Error(`"${this._country.countryAbbr}" is not a valid country for phone input.`);
     }
   }
 
@@ -301,13 +272,11 @@ export class ChiPhoneInput {
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
 
-    this.chiInput.emit(
-      this._prefix + '-' + (event.target as HTMLInputElement).value
-    );
+    this.chiInput.emit(this._prefix + '-' + (event.target as HTMLInputElement).value);
   };
 
   _pasteHandler = (event: ClipboardEvent): void => {
-    if(!this.inputMask) return;
+    if (!this.inputMask) return;
 
     const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
     const clipboardData = event.clipboardData.getData('text');
@@ -316,11 +285,11 @@ export class ChiPhoneInput {
     if (!containsOnlyAllowedChars) {
       event.preventDefault();
     }
-  }
+  };
 
   _keyPressHandler = (event: KeyboardEvent): void => {
-    if(!this.inputMask) return;
-    
+    if (!this.inputMask) return;
+
     const onlyNumbersRegex = new RegExp('^[0-9]+$');
     const isKeyNumber = onlyNumbersRegex.test(event.key);
 
@@ -331,7 +300,7 @@ export class ChiPhoneInput {
     if (!isKeyNumber) {
       event.preventDefault();
     }
-  }
+  };
 
   _prefixChangeHandler(event: Event, country: Country): void {
     event.preventDefault();
@@ -346,17 +315,13 @@ export class ChiPhoneInput {
     this._isDropdownActive = !this._isDropdownActive;
     if (this._isDropdownActive) {
       setTimeout(() => {
-        (this.el.querySelector(
-          'input[type=search]'
-        ) as HTMLInputElement).focus();
+        (this.el.querySelector('input[type=search]') as HTMLInputElement).focus();
       }, 50);
     }
   }
 
   _closeDropdown = (): void => {
-    this._clickedOnComponent
-      ? (this._clickedOnComponent = false)
-      : (this._isDropdownActive = false);
+    this._clickedOnComponent ? (this._clickedOnComponent = false) : (this._isDropdownActive = false);
   };
 
   _getValue(): string {
@@ -369,13 +334,11 @@ export class ChiPhoneInput {
         size="sm"
         placeholder="Search"
         value={this._search}
-        onChiInput={(e: Event) =>
-          (this._search = (e.target as HTMLInputElement).value)
-        }
+        onChiInput={(e: Event) => (this._search = (e.target as HTMLInputElement).value)}
         onChiClean={() => (this._search = '')}
       ></chi-search-input>
     );
-    const filteredCountries = this._countries.filter(country => {
+    const filteredCountries = this._countries.filter((country) => {
       return (
         country.name.toLowerCase().indexOf(this._search.toLowerCase()) > -1 ||
         country.dialCode.indexOf(this._search) > -1 ||
@@ -384,30 +347,23 @@ export class ChiPhoneInput {
     });
     const countries = (
       <div class={`${DROPDOWN_CLASSES.MENU_CONTENT}`}>
-        {filteredCountries.map(country => (
+        {filteredCountries.map((country) => (
           <a
             href="#"
             class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
-              this._country.countryAbbr === country.countryAbbr
-                ? ACTIVE_CLASS
-                : ''
+              this._country.countryAbbr === country.countryAbbr ? ACTIVE_CLASS : ''
             }`}
             onClick={(e: Event) => this._prefixChangeHandler(e, country)}
           >
             <span>{country.name}</span>
-            <span
-              class={`${PHONE_INPUT_CLASSES.CODE}`}
-            >{`+${country.dialCode}`}</span>
+            <span class={`${PHONE_INPUT_CLASSES.CODE}`}>{`+${country.dialCode}`}</span>
           </a>
         ))}
       </div>
     );
 
     return (
-      <div
-        class={`${DROPDOWN_CLASSES.DROPDOWN}`}
-        onClick={() => (this._clickedOnComponent = true)}
-      >
+      <div class={`${DROPDOWN_CLASSES.DROPDOWN}`} onClick={() => (this._clickedOnComponent = true)}>
         <button
           disabled={this.disabled}
           class={`${BUTTON_CLASSES.BUTTON} ${DROPDOWN_CLASSES.TRIGGER} -${this.size}`}
@@ -415,11 +371,7 @@ export class ChiPhoneInput {
         >
           <span>{`+${this._country.dialCode}`}</span>
         </button>
-        <div
-          class={`${DROPDOWN_CLASSES.MENU} ${
-            this._isDropdownActive ? ACTIVE_CLASS : ''
-          }`}
-        >
+        <div class={`${DROPDOWN_CLASSES.MENU} ${this._isDropdownActive ? ACTIVE_CLASS : ''}`}>
           {searchInput}
           {countries}
         </div>

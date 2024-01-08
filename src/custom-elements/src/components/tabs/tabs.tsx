@@ -1,15 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Host,
-  Prop,
-  State,
-  h,
-  Listen,
-  Watch
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Prop, State, h, Listen, Watch } from '@stencil/core';
 import {
   ACTIVE_CLASS,
   DROPDOWN_CLASSES,
@@ -17,18 +6,10 @@ import {
   ICON_CLASS,
   TABS_CLASSES,
   UTILITY_CLASSES,
-  INVERSE_CLASS
+  INVERSE_CLASS,
 } from '../../constants/classes';
-import {
-  ANIMATION_DURATION,
-  TABS_SEE_MORE_DEFAULT_MESSAGE
-} from '../../constants/constants';
-import {
-  TabTrigger,
-  TabTriggerSizes,
-  TabTriggerPosition,
-  TabTriggerDirections
-} from '../../constants/types';
+import { ANIMATION_DURATION, TABS_SEE_MORE_DEFAULT_MESSAGE } from '../../constants/constants';
+import { TabTrigger, TabTriggerSizes, TabTriggerPosition, TabTriggerDirections } from '../../constants/types';
 import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
@@ -39,7 +20,7 @@ const MARGIN_LEFT_LG = 32;
 @Component({
   tag: 'chi-tabs',
   styleUrl: 'tabs.scss',
-  scoped: true
+  scoped: true,
 })
 export class Tabs {
   @Element() el: HTMLElement;
@@ -95,9 +76,7 @@ export class Tabs {
     const validValues = TABS_SIZES.join(', ');
 
     if (newValue && !TABS_SIZES.includes(newValue)) {
-      throw new Error(
-        `${newValue} is not a valid size for tabs. Valid values are: ${validValues}. `
-      );
+      throw new Error(`${newValue} is not a valid size for tabs. Valid values are: ${validValues}. `);
     }
   }
 
@@ -117,8 +96,7 @@ export class Tabs {
   private slidingBorderLeft: string;
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
-  private liMarginLeft: number =
-    this.size === 'lg' ? MARGIN_LEFT_LG : MARGIN_LEFT_BASE;
+  private liMarginLeft: number = this.size === 'lg' ? MARGIN_LEFT_LG : MARGIN_LEFT_BASE;
 
   componentWillLoad(): void {
     this.sizeValidation(this.size);
@@ -130,8 +108,7 @@ export class Tabs {
       this.setAvailableSpace();
       this.setLiSizes();
       this.seeMoreTriggerElementWidth =
-        this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) +
-        (this.solid ? 0 : this.liMarginLeft);
+        this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) + (this.solid ? 0 : this.liMarginLeft);
       this.isSeeMoreTriggerMeasured = true;
       this.activeTabElement = this.getActiveTabTrigger();
       this.setSlidingBorderStyles();
@@ -175,7 +152,7 @@ export class Tabs {
   }
 
   removeActiveItems() {
-    Object.keys(this.dropdownKeys).forEach(id => {
+    Object.keys(this.dropdownKeys).forEach((id) => {
       const menuItemElement = document.getElementById(id);
 
       if (menuItemElement && menuItemElement.classList.contains(ACTIVE_CLASS)) {
@@ -193,12 +170,8 @@ export class Tabs {
 
       if (tab.children && tab.children.length > 0) {
         this.dropdownKeys[tab.id] = 0;
-        dropdowns.push(
-          this.getDropdown(tab, isFirstLevel, firstLevelId)
-        );
-        dropdowns.push(
-          ...this.createDropdowns(tab.children, level + 1, firstLevelId)
-        );
+        dropdowns.push(this.getDropdown(tab, isFirstLevel, firstLevelId));
+        dropdowns.push(...this.createDropdowns(tab.children, level + 1, firstLevelId));
       }
     });
 
@@ -206,59 +179,53 @@ export class Tabs {
   }
 
   getDropdown(tab: TabTrigger, isFirstLevel: boolean, firstLevelId: string) {
-    return <chi-dropdown
-      id={`subLevelDropdown-${tab.id}`}
-      position={isFirstLevel ? 'bottom-start' : 'right-start'}
-      reference={`#${tab.id}`}
-      key={`${tab.id}-${this.dropdownKey}`}
-    >
-      {this.getDropdownMenuItems(tab, firstLevelId)}
-    </chi-dropdown>
+    return (
+      <chi-dropdown
+        id={`subLevelDropdown-${tab.id}`}
+        position={isFirstLevel ? 'bottom-start' : 'right-start'}
+        reference={`#${tab.id}`}
+        key={`${tab.id}-${this.dropdownKey}`}
+      >
+        {this.getDropdownMenuItems(tab, firstLevelId)}
+      </chi-dropdown>
+    );
   }
 
   getDropdownMenuItems(tab: TabTrigger, firstLevelId: string) {
-    return tab.children.map(child => {
+    return tab.children.map((child) => {
       child.parent = tab;
       return this.getDropdownMenuItem(
         child,
-        e => this.onDropdownMenuItemClick(e, tab, child, firstLevelId),
-        UTILITY_CLASSES.JUSTIFY.BETWEEN,
-      )
-    })
+        (e) => this.onDropdownMenuItemClick(e, tab, child, firstLevelId),
+        UTILITY_CLASSES.JUSTIFY.BETWEEN
+      );
+    });
   }
 
-  getDropdownMenuItem(
-    tab: TabTrigger, 
-    onClickHandler: Function,
-    extraClass = ''
-  ) {
+  getDropdownMenuItem(tab: TabTrigger, onClickHandler: Function, extraClass = '') {
     return (
       <a
         class={`${DROPDOWN_CLASSES.MENU_ITEM} 
-          ${ extraClass } 
-          ${ this._isActiveTab(tab) ? ACTIVE_CLASS : ''}
+          ${extraClass} 
+          ${this._isActiveTab(tab) ? ACTIVE_CLASS : ''}
         `}
         id={tab.id}
         href={this.getTabHref(tab)}
         target={this.getTabHrefTarget(tab)}
         onMouseEnter={() => this.handlerTabMouseEnter(tab)}
-        onMouseLeave={e => this.handlerMouseLeave(e)}
-        onClick={e => onClickHandler(e)}
+        onMouseLeave={(e) => this.handlerMouseLeave(e)}
+        onClick={(e) => onClickHandler(e)}
         innerHTML={tab.label}
         slot="menu"
       >
-        {tab.children &&
-          tab.children.length > 0 &&
-          this.dropdownIcon('right')}
+        {tab.children && tab.children.length > 0 && this.dropdownIcon('right')}
       </a>
     );
   }
 
   onDropdownMenuItemClick(e: Event, tab: TabTrigger, tabChild: TabTrigger, firstLevelId: string) {
-    const dropdownElement = this.getSubLevelDropdown(tab.id)
-    const firstLevelTriggerElement = this.el.querySelector(
-      `li#${firstLevelId} a`
-    ) as HTMLElement;
+    const dropdownElement = this.getSubLevelDropdown(tab.id);
+    const firstLevelTriggerElement = this.el.querySelector(`li#${firstLevelId} a`) as HTMLElement;
 
     this.handlerClickTab(e, tabChild, firstLevelTriggerElement);
     this.isSeeMoreActive = false;
@@ -276,13 +243,11 @@ export class Tabs {
    * Gets the element for a dropdown sublevel with the given ID
    */
   getSubLevelDropdown(id: string): HTMLChiDropdownElement {
-    return this.el.querySelector(
-      `chi-dropdown#subLevelDropdown-${id}`
-    ) as HTMLChiDropdownElement;
+    return this.el.querySelector(`chi-dropdown#subLevelDropdown-${id}`) as HTMLChiDropdownElement;
   }
 
   /**
-   * Returns the href for the given tab. 
+   * Returns the href for the given tab.
    * If the tab has an external href, normalizes the href to ensure that
    * the browser does not prepends the current domain.
    * @param tab TabTrigger
@@ -291,10 +256,10 @@ export class Tabs {
     let href = tab.href || `#${tab.id}`;
 
     if (tab.href?.startsWith('www.')) {
-      href = '//' + href       
+      href = '//' + href;
     }
 
-    return href
+    return href;
   }
 
   /**
@@ -303,20 +268,20 @@ export class Tabs {
    * the link in a new tab.
    */
   getTabHrefTarget(tab: TabTrigger): string {
-    let target = tab.target || ''
+    let target = tab.target || '';
 
     if (!this.isTabAnchorLink(tab) && !target) {
-      target = '_blank'
+      target = '_blank';
     }
 
-    return target
+    return target;
   }
 
   /**
-   * Checks wether the tab is an anchor link (internal link) 
+   * Checks wether the tab is an anchor link (internal link)
    */
-  isTabAnchorLink(tabData :TabTrigger): boolean {
-    return !tabData.href || tabData.href.startsWith('#')
+  isTabAnchorLink(tabData: TabTrigger): boolean {
+    return !tabData.href || tabData.href.startsWith('#');
   }
 
   getPosition(el: HTMLElement): TabTriggerPosition {
@@ -326,7 +291,7 @@ export class Tabs {
 
     return {
       left: el.offsetLeft - parseInt(marginLeft),
-      top: el.offsetTop - parseInt(marginTop)
+      top: el.offsetTop - parseInt(marginTop),
     };
   }
 
@@ -334,9 +299,7 @@ export class Tabs {
     e.preventDefault();
     this.isSeeMoreActive = !this.isSeeMoreActive;
     if (!this.seeMoreDropdown) {
-      const seeMoreDropdown = document.getElementById(
-        `${this.uuid4}-see-more-dropdown`
-      ) as HTMLChiDropdownElement;
+      const seeMoreDropdown = document.getElementById(`${this.uuid4}-see-more-dropdown`) as HTMLChiDropdownElement;
 
       this.seeMoreDropdown = seeMoreDropdown;
     }
@@ -344,11 +307,7 @@ export class Tabs {
     this.seeMoreDropdown.toggle();
   };
 
-  handlerClickTab(
-    e: Event,
-    tabData: TabTrigger,
-    slidingBorderNewPosition?: HTMLElement
-  ) {
+  handlerClickTab(e: Event, tabData: TabTrigger, slidingBorderNewPosition?: HTMLElement) {
     if (this.isTabAnchorLink(tabData)) {
       e.preventDefault();
     }
@@ -359,7 +318,7 @@ export class Tabs {
     const element = slidingBorderNewPosition || (e.target as HTMLElement);
 
     if (this.slidingBorder) {
-      this.setAnimation(element)
+      this.setAnimation(element);
     }
 
     this.removeActiveItems();
@@ -374,15 +333,10 @@ export class Tabs {
       },
       () => {
         const animationStyle = this.getSlidingBorderAnimationStyle();
-      
-        const size = this.calculateSize(
-          element,
-          animationStyle.dimension
-        );
 
-        this.slidingBorderElement.style[
-          animationStyle.direction
-        ] = `${position[animationStyle.direction]}px`;
+        const size = this.calculateSize(element, animationStyle.dimension);
+
+        this.slidingBorderElement.style[animationStyle.direction] = `${position[animationStyle.direction]}px`;
 
         this.slidingBorderElement.style[animationStyle.dimension] = `${size}px`;
       },
@@ -396,15 +350,15 @@ export class Tabs {
 
   getSlidingBorderAnimationStyle() {
     return this.vertical
-      ? {dimension: TabTriggerSizes.Height, direction: TabTriggerDirections.Top}
-      : {dimension: TabTriggerSizes.Width, direction: TabTriggerDirections.Left};
+      ? { dimension: TabTriggerSizes.Height, direction: TabTriggerDirections.Top }
+      : { dimension: TabTriggerSizes.Width, direction: TabTriggerDirections.Left };
   }
 
   handlerResize = () => {
     this._setSeeMoreTriggerElement();
     this.setAvailableSpace();
     this.setListOverflow();
-    this.isSeeMoreVisible = this.tabs.findIndex(li => li.overflow) !== -1;
+    this.isSeeMoreVisible = this.tabs.findIndex((li) => li.overflow) !== -1;
     this.activeTabElement = this.getActiveTabTrigger();
     this.setSlidingBorderStyles();
     this.hideAllDropdowns();
@@ -427,9 +381,7 @@ export class Tabs {
   hideInactiveDropdowns(tabData: TabTrigger) {
     const parentIds = this.getParentIds(tabData);
     const idsToRemove = [...parentIds, tabData.id];
-    const filteredDropdownKeys = Object.keys(this.dropdownKeys).filter(
-      item => !idsToRemove.includes(item)
-    );
+    const filteredDropdownKeys = Object.keys(this.dropdownKeys).filter((item) => !idsToRemove.includes(item));
 
     this.hideSelectedDropdowns(filteredDropdownKeys);
   }
@@ -440,7 +392,7 @@ export class Tabs {
     if (!tabData.children) return;
 
     this.dropdownKeys[tabData.id] += 1;
-    const dropdownElement = this.getSubLevelDropdown(tabData.id)
+    const dropdownElement = this.getSubLevelDropdown(tabData.id);
 
     if (dropdownElement) {
       (dropdownElement as HTMLChiDropdownElement).show();
@@ -448,13 +400,9 @@ export class Tabs {
   };
 
   handlerMouseLeave = (e: MouseEvent, isTargetMenu?: boolean) => {
-    const elementTarget = isTargetMenu
-      ? DROPDOWN_CLASSES.MENU
-      : DROPDOWN_CLASSES.MENU_ITEM;
-    const elements = Array.from(document.getElementsByClassName(
-      elementTarget
-    ) as HTMLCollectionOf<HTMLElement>);
-    const isElementTarget = elements.some(el => el === e.relatedTarget);
+    const elementTarget = isTargetMenu ? DROPDOWN_CLASSES.MENU : DROPDOWN_CLASSES.MENU_ITEM;
+    const elements = Array.from(document.getElementsByClassName(elementTarget) as HTMLCollectionOf<HTMLElement>);
+    const isElementTarget = elements.some((el) => el === e.relatedTarget);
 
     if (!isElementTarget) {
       this.hideAllDropdowns();
@@ -473,21 +421,19 @@ export class Tabs {
     let isActiveTab = tab.id === this.activeTab;
 
     if (!isActiveTab && tab.children) {
-      isActiveTab = tab.children.some(tab => this._isActiveTab(tab))
+      isActiveTab = tab.children.some((tab) => this._isActiveTab(tab));
     }
 
-    return isActiveTab
+    return isActiveTab;
   }
 
   isActiveTabOverflown(tabs: TabTrigger[]): boolean {
-    return tabs.some(tab => this._isActiveTab(tab) && !!tab.overflow);
+    return tabs.some((tab) => this._isActiveTab(tab) && !!tab.overflow);
   }
 
   _setSeeMoreTriggerElement() {
     if (!this.seeMoreTriggerElement) {
-      const seeMoreElement = document.getElementById(
-        this.seeMoreTriggerId
-      ) as HTMLLIElement;
+      const seeMoreElement = document.getElementById(this.seeMoreTriggerId) as HTMLLIElement;
 
       this.seeMoreTriggerElement = seeMoreElement;
     }
@@ -498,15 +444,12 @@ export class Tabs {
   }
 
   async setLiSizes() {
-    const liElements = this.ulElement.querySelectorAll(
-      `li.${TABS_CLASSES.TRIGGER}`
-    );
+    const liElements = this.ulElement.querySelectorAll(`li.${TABS_CLASSES.TRIGGER}`);
 
     this.lisArrayLength = liElements.length;
     await liElements.forEach((li: HTMLElement, index) => {
       this.liSizes[li.dataset.index] =
-        this.calculateSize(li, TabTriggerSizes.Width) +
-        (index === 0 || this.solid ? 0 : this.liMarginLeft);
+        this.calculateSize(li, TabTriggerSizes.Width) + (index === 0 || this.solid ? 0 : this.liMarginLeft);
     });
     this.setListOverflow();
   }
@@ -517,10 +460,7 @@ export class Tabs {
     let usedSpace = 0;
 
     for (let i = 0; i < this.lisArrayLength; i++) {
-      if (
-        usedSpace + this.liSizes[i] + this.seeMoreTriggerElementWidth <=
-        this.availableSpace
-      ) {
+      if (usedSpace + this.liSizes[i] + this.seeMoreTriggerElementWidth <= this.availableSpace) {
         usedSpace += this.liSizes[i];
         this.tabs[i].overflow = false;
         this.isSeeMoreVisible = false;
@@ -530,22 +470,20 @@ export class Tabs {
       }
     }
 
-    if (JSON.stringify(this.tabs) !==  copyTabsData) {
+    if (JSON.stringify(this.tabs) !== copyTabsData) {
       this.dropdownKey += 1;
     }
   }
 
   setSlidingBorderStyles() {
-    const element = this.isActiveTabOverflown(this.tabs)
-      ? this.seeMoreTriggerElement
-      : this.activeTabElement;
+    const element = this.isActiveTabOverflown(this.tabs) ? this.seeMoreTriggerElement : this.activeTabElement;
     const position = this.getPosition(element);
 
     this.slidingBorderLeft = `${position.left}px`;
   }
 
   hideDropdowns(dropdowns: string[]) {
-    dropdowns.forEach(id => {
+    dropdowns.forEach((id) => {
       const dropdownElement = this.getSubLevelDropdown(id);
 
       if (dropdownElement) {
@@ -572,16 +510,14 @@ export class Tabs {
   }
 
   getTabElements() {
-    const tabs = []
+    const tabs = [];
 
     this.tabs?.forEach((tab: TabTrigger, index: number) => {
-      if (tab.overflow) return
+      if (tab.overflow) return;
 
       tabs.push(
         <li
-          class={`${TABS_CLASSES.TRIGGER} ${
-            this._isActiveTab(tab) ? ACTIVE_CLASS : ''
-          }`}
+          class={`${TABS_CLASSES.TRIGGER} ${this._isActiveTab(tab) ? ACTIVE_CLASS : ''}`}
           data-index={index}
           id={tab.id}
           onMouseEnter={() => {
@@ -595,7 +531,7 @@ export class Tabs {
             role="tab"
             aria-selected={this._isActiveTab(tab)}
             aria-controls={`#${tab.id}`}
-            onClick={e => this.handlerClickTab(e, tab)}
+            onClick={(e) => this.handlerClickTab(e, tab)}
             innerHTML={tab.label}
           ></a>
         </li>
@@ -609,67 +545,68 @@ export class Tabs {
     return this.slidingBorder ? (
       <li
         class={TABS_CLASSES.SLIDING_BORDER}
-        ref={el => (this.slidingBorderElement = el)}
+        ref={(el) => (this.slidingBorderElement = el)}
         style={{
-          left: this.slidingBorderLeft
+          left: this.slidingBorderLeft,
         }}
       ></li>
     ) : null;
   }
 
   getSeeMoreTrigger() {
-    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs)
-    ? ACTIVE_CLASS
-    : '';
+    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : '';
 
-    return !this.vertical &&
+    return (
+      !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
           class={`${TABS_CLASSES.SHOW_MORE} ${activeTabOverflownClass}`}
           id={this.seeMoreTriggerId}
-          ref={el => (this.seeMoreTriggerElement = el)}
+          ref={(el) => (this.seeMoreTriggerElement = el)}
         >
           <a
             href={`#seeMore`}
             role="tab"
             onClick={(e: Event) => this.handlerClickSeeMore(e)}
-            ref={el => (this.seeMoreTriggerAnchorElement = el)}
+            ref={(el) => (this.seeMoreTriggerAnchorElement = el)}
           >
             {this.seeMoreMessage}
           </a>
         </li>
-      );
+      )
+    );
   }
 
   getOverflowItems() {
-    return this.tabs.filter(li => li.overflow).map(tab => this.getDropdownMenuItem(
-      tab,
-      e => {
-        this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
-        this.seeMoreDropdown.hide();
-        this.isSeeMoreActive = false;
-      }
-    ))
+    return this.tabs
+      .filter((li) => li.overflow)
+      .map((tab) =>
+        this.getDropdownMenuItem(tab, (e) => {
+          this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
+          this.seeMoreDropdown.hide();
+          this.isSeeMoreActive = false;
+        })
+      );
   }
 
   getDropdowns() {
     return this.vertical
       ? []
       : [
-        this.isSeeMoreVisible && (
-          <chi-dropdown
-            active={this.isSeeMoreActive}
-            id={`${this.uuid4}-see-more-dropdown`}
-            key={this.dropdownKey}
-            position="bottom"
-            reference={`#${this.seeMoreTriggerId}`}
-            ref={el => (this.seeMoreDropdown = el)}
-          >
-            {this.getOverflowItems()}
-          </chi-dropdown>
-        ),
-        ...this.createDropdowns(this.tabs, 0)
-    ];
+          this.isSeeMoreVisible && (
+            <chi-dropdown
+              active={this.isSeeMoreActive}
+              id={`${this.uuid4}-see-more-dropdown`}
+              key={this.dropdownKey}
+              position="bottom"
+              reference={`#${this.seeMoreTriggerId}`}
+              ref={(el) => (this.seeMoreDropdown = el)}
+            >
+              {this.getOverflowItems()}
+            </chi-dropdown>
+          ),
+          ...this.createDropdowns(this.tabs, 0),
+        ];
   }
 
   // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
@@ -693,10 +630,10 @@ export class Tabs {
             ${this.size ? `-${this.size}` : ''}
             ${this.inverse && INVERSE_CLASS}
           `}
-          ref={el => {
+          ref={(el) => {
             this.ulElement = el;
           }}
-          onMouseLeave={e => this.handlerMouseLeave(e, true)}
+          onMouseLeave={(e) => this.handlerMouseLeave(e, true)}
           role="tablist"
         >
           {tabElements}

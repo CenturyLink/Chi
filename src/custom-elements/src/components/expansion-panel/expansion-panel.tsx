@@ -1,6 +1,6 @@
 import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
-import { EPANEL_CLASSES, GENERIC_SIZE_CLASSES, ICON_CLASS, ICONS, UTILITY_CLASSES } from "../../constants/classes";
-import { EPANEL_TOOLTIP_CONTENT } from "../../constants/constants";
+import { EPANEL_CLASSES, GENERIC_SIZE_CLASSES, ICON_CLASS, ICONS, UTILITY_CLASSES } from '../../constants/classes';
+import { EPANEL_TOOLTIP_CONTENT } from '../../constants/constants';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
@@ -9,7 +9,7 @@ declare const chi: any;
 @Component({
   tag: 'chi-expansion-panel',
   styleUrl: 'expansion-panel.scss',
-  scoped: true
+  scoped: true,
 })
 export class ExpansionPanel {
   @Element() el;
@@ -60,12 +60,12 @@ export class ExpansionPanel {
     const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
-      attributeFilter: ['title']
+      attributeFilter: ['title'],
     };
 
     if (!this.mutationObserver) {
-      const subscriberCallback = mutations => {
-        mutations.forEach(mutation => {
+      const subscriberCallback = (mutations) => {
+        mutations.forEach((mutation) => {
           this.epanelTitle = mutation.target.title;
         });
       };
@@ -75,7 +75,6 @@ export class ExpansionPanel {
 
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
-
 
   componentWillLoad() {
     if (this.el.getAttribute('title')) {
@@ -110,15 +109,13 @@ export class ExpansionPanel {
       >
         <div class={EPANEL_CLASSES.HEADER}>
           {this.stateIcon && (
-            <i class={`${ICON_CLASS} ${ICONS.SUCCESS} icon-circle-check ${GENERIC_SIZE_CLASSES.SM_2} ${EPANEL_CLASSES.STATE}`}
-               id="state-icon-tooltip"
-               data-tooltip={this.stateIconTooltip} />
+            <i
+              class={`${ICON_CLASS} ${ICONS.SUCCESS} icon-circle-check ${GENERIC_SIZE_CLASSES.SM_2} ${EPANEL_CLASSES.STATE}`}
+              id="state-icon-tooltip"
+              data-tooltip={this.stateIconTooltip}
+            />
           )}
-          {this.step ? (
-            <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span>
-          ) : (
-            ''
-          )}
+          {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
           <div class={EPANEL_CLASSES.TITLE}>{this.epanelTitle}</div>
           <div class={EPANEL_CLASSES.CONTENT}>
             <div class={EPANEL_CLASSES.COLLAPSE}>
