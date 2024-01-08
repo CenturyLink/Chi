@@ -1,14 +1,14 @@
 <template lang="pug">
     <ComponentExample title="Accordion" id="accordion-data-table" :tabs="exampleTabs">
-        chi-data-table(:config='config', :data='table' slot="example")
-        <Wrapper slot='code-vue'>
-          .chi-tab__description
-            | Use <code>nestedContent</code> property to provide data of row accordion content.
-          pre.language-html
-            code(v-highlight="codeSnippets.vue" class="html")
-        </Wrapper>
-        pre.language-html(slot="code-htmlblueprint")
-          code(v-highlight="codeSnippets.htmlblueprint" class="html")
+      chi-data-table(:config='config', :data='table' slot="example")
+      <Wrapper slot='code-vue'>
+        .chi-tab__description
+          | Use <code>nestedContent</code> property to provide data of row accordion content.
+        pre.language-html
+          code(v-highlight="codeSnippets.vue" class="html")
+      </Wrapper>
+      pre.language-html(slot="code-htmlblueprint")
+        code(v-highlight="codeSnippets.htmlblueprint" class="html")
     </ComponentExample>
   </template>
   
@@ -16,123 +16,123 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
-    data: () => {
-        return {
-            exampleTabs: [
-                {
-                    active: false,
-                    id: 'webcomponent',
-                    label: 'Web Component',
-                    disabled: true
-                },
-                {
-                    active: true,
-                    id: 'vue',
-                    label: 'Vue',
-                },
-                {
-                    active: false,
-                    id: 'htmlblueprint',
-                    label: 'HTML Blueprint',
-                }
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: false,
+          id: 'webcomponent',
+          label: 'Web Component',
+          disabled: true
+        },
+        {
+          active: true,
+          id: 'vue',
+          label: 'Vue',
+        },
+        {
+          active: false,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint',
+        }
+      ],
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        showExpandAll: true,
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            expanded: true,
+            id: 'name-1',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 1',
+              'name-1',
+              '18 Dec 2020 3:26 p.m.',
             ],
-            config: {
-                columnResize: true,
-                style: {
-                    portal: false,
-                    noBorder: false,
-                    bordered: false,
-                    hover: false,
-                    size: 'md',
-                    striped: false,
-                },
-                pagination: {
-                    activePage: 1,
-                    compact: false,
-                    firstLast: false,
-                    pageJumper: true,
-                },
-                showExpandAll: true,
-                resultsPerPage: 3,
+          },
+          {
+            id: 'name-2',
+            nestedContent: {
+              value: "Accordion content",
             },
-            table: {
-                head: {
-                    name: { label: 'Name' },
-                    id: { label: 'ID' },
-                    lastLogin: { label: 'Last Login' },
-                },
-                body: [
-                    {
-                        expanded: true,
-                        id: 'name-1',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 1',
-                            'name-1',
-                            '18 Dec 2020 3:26 p.m.',
-                        ],
-                    },
-                    {
-                        id: 'name-2',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 2',
-                            'name-2',
-                            '18 Dec 2020 2:38 a.m.',
-                        ],
-                    },
-                    {
-                        id: 'name-3',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 3',
-                            'name-3',
-                            '5 Nov 2020 10:15 a.m.',
-                        ],
-                    },
-                    {
-                        id: 'name-4',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 4',
-                            'name-4',
-                            '18 Dec 2020 3:26 p.m.',
-                        ],
-                    },
-                    {
-                        id: 'name-5',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 5',
-                            'name-5',
-                            '18 Dec 2020 2:38 a.m.',
-                        ],
-                    },
-                    {
-                        id: 'name-6',
-                        nestedContent: {
-                            value: "Accordion content",
-                        },
-                        data: [
-                            'Name 6',
-                            'name-6',
-                            '5 Nov 2020 10:15 a.m.',
-                        ],
-                    },
-                ]
+            data: [
+              'Name 2',
+              'name-2',
+              '18 Dec 2020 2:38 a.m.',
+            ],
+          },
+          {
+            id: 'name-3',
+            nestedContent: {
+              value: "Accordion content",
             },
-            codeSnippets: {
-                vue: `<!-- Vue component -->
+            data: [
+              'Name 3',
+              'name-3',
+              '5 Nov 2020 10:15 a.m.',
+            ],
+          },
+          {
+            id: 'name-4',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 4',
+              'name-4',
+              '18 Dec 2020 3:26 p.m.',
+            ],
+          },
+          {
+            id: 'name-5',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 5',
+              'name-5',
+              '18 Dec 2020 2:38 a.m.',
+            ],
+          },
+          {
+            id: 'name-6',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 6',
+              'name-6',
+              '5 Nov 2020 10:15 a.m.',
+            ],
+          },
+        ]
+      },
+      codeSnippets: {
+        vue: `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
 
 <!-- Config and Data -->
@@ -233,7 +233,7 @@ data: {
     ]
   }
 }`,
-                htmlblueprint: `<div class="chi-card -portal -bg--white -bg-md--grey-15">
+        htmlblueprint: `<div class="chi-card -portal -bg--white -bg-md--grey-15">
   <div class="chi-card__header -sm">
     <div class="chi-card__title">Title</div>
   </div>
@@ -397,9 +397,9 @@ data: {
       </div>
     </div>
   </div>`,
-            },
-        };
-    },
+      },
+    };
+  },
 })
 export default class DataTableAccordion extends Vue { }
 </script>

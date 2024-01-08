@@ -16,7 +16,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-type ConfigStyleType = {
+type ConfigType = {
   [key: string]: any;
 };
 

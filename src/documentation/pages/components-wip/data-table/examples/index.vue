@@ -9,7 +9,6 @@
       <ConfigStyled />
       <Active />
       <Selectable />
-      <RadioSelection />
       <Accordion />
       <Sorting />
       <Sizes />
@@ -33,7 +32,6 @@ import Active from './base/_active.vue';
 import Base from './base/_base.vue';
 import Empty from './base/_empty.vue';
 import ConfigStyled from './base/_config-styled.vue';
-import RadioSelection from './base/_radio-selection.vue';
 import Selectable from './base/_selectable.vue';
 import Sizes from './base/_sizes.vue';
 import Sorting from './base/_sorting.vue';
@@ -55,7 +53,6 @@ import ComplexPortal from './portal/_complex.vue';
     Active,
     Base,
     Empty,
-    RadioSelection,
     Selectable,
     Sizes,
     ConfigStyled,
