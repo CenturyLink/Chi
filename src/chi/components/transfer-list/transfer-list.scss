@@ -82,7 +82,7 @@
     flex-direction: column;
   }
 
-  &__reset-button .chi-button__content span {
+  &__reset-button:not(:disabled) .chi-button__content span {
     color: $transfer-list-reset-button-color;
   }
 }

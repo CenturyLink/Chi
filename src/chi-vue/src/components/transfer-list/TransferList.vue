@@ -20,7 +20,8 @@
     </div>
 
     <TransferListFooter
-      :transferListData="transferListData"
+      :originalTransferListData="props.transferListData"
+      :savedTransferListData="transferListData"
       @chiTransferListSave="onSaveTransferList"
       @chiTransferListReset="onResetTransferList"
     />
@@ -54,7 +55,10 @@ const onSaveTransferList = () => {
 };
 
 const onResetTransferList = () => {
-  emit(TRANSFER_LIST_EVENTS.RESET, transferListData.value);
+  transferListData.value = props.transferListData;
+  currentList.value = props.transferListData;
+
+  emit(TRANSFER_LIST_EVENTS.RESET, props.transferListData);
 };
 
 const onUpdateTransferList = (list: TransferListItem[]) => {
