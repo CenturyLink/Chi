@@ -1149,10 +1149,10 @@ def promoteDeployTagGCR() {
 def packageVersionCheck() {
   sh(script: """
     set +x
-    git whatchanged -2 --format=oneline
-    git diff HEAD~3 package.json | grep '"version":' || echo No package.json changes
+    git whatchanged -1 --format=oneline
+    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
     rm -rf chi_version_bump
-    if [ \$(git diff HEAD~3 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
       echo -n "yes" > chi_version_bump
     else
       echo -n "no" > chi_version_bump
@@ -1165,10 +1165,10 @@ def packageVersionCheck() {
   echo "${env.VERSION_BUMP_SCOPE}"
   sh(script: """
     set +x
-    git whatchanged -2 --format=oneline src/chi-vue
-    git diff HEAD~3 src/chi-vue/package.json | grep '"version":' || echo No package.json changes
+    git whatchanged -1 --format=oneline src/chi-vue
+    git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No package.json changes
     rm -rf chi_vue_version_bump
-    if [ \$(git diff HEAD~3 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
+    if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
       echo -n "yes" > chi_vue_version_bump
     else
       echo -n "no" > chi_vue_version_bump
