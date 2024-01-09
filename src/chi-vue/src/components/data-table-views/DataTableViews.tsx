@@ -14,7 +14,7 @@ export default class DataTableViews extends Vue {
   @Prop() defaultView?: string;
   @Prop() selectedView?: string;
 
-  _selectedView? = this.selectedView || this.defaultView || '';
+  newSelectedView? = this.selectedView || this.defaultView || '';
 
   @Emit(DATA_TABLE_EVENTS.VIEWS_CHANGE)
   _emitViewsChanged(view: DataTableView | undefined) {
@@ -26,12 +26,12 @@ export default class DataTableViews extends Vue {
   @Watch('selectedView')
   selectedViewChange(newValue: string, oldValue: string) {
     if (!Compare.deepEqual(newValue, oldValue)) {
-      this._selectedView = newValue;
+      this.newSelectedView = newValue;
     }
   }
 
   beforeMount(): void {
-    this._selectedView = this.selectedView || this.defaultView || '';
+    this.newSelectedView = this.selectedView || this.defaultView || '';
   }
 
   mounted(): void {
@@ -46,14 +46,14 @@ export default class DataTableViews extends Vue {
     const value = (ev.target as HTMLFormElement).value;
     const view = this.views?.find((view: DataTableView) => view.id === value);
 
-    this._selectedView = view?.id;
+    this.newSelectedView = view?.id;
     this._emitViewsChanged(view);
   }
 
   render() {
     const options = this.views?.map((view: DataTableView) => {
       return (
-        <option value={view.id} selected={this._selectedView === view.id}>
+        <option value={view.id} selected={this.newSelectedView === view.id}>
           {view.label || view.id}
         </option>
       );

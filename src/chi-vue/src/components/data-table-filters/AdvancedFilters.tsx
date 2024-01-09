@@ -19,6 +19,7 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 import { Component, Vue } from '@/build/vue-wrapper';
 import { Compare } from '@/utils/Compare';
+import { JSX } from 'vue/jsx-runtime';
 
 declare const chi: any;
 

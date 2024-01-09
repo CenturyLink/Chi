@@ -7,6 +7,7 @@ import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { createPopper } from '@popperjs/core';
 import { Instance as PopoverInstance } from '@popperjs/core/lib/types';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { JSX } from 'vue/jsx-runtime';
 
 @Component({})
 export default class Tooltip extends Vue {
