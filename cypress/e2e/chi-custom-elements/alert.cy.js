@@ -138,4 +138,33 @@ describe('Alert', () => {
         .should('match', 'div.chi-alert.-toast');
     });
   });
+
+  describe('Alert Common', () => {
+    before(() => {
+      cy.visit('tests/custom-elements/alert-toast.html');
+    });
+
+    it('should change displayed title if attribute changes', () => {
+      cy.get('[data-cy="alert-toast-title-base-lg"]', { timeout: 5000 })
+        .scrollIntoView()
+        .as("alert")
+
+      cy.get('@alert')
+        .find('.chi-alert__title')
+        .as('title');
+
+      cy.get("@title")
+        .should('have.text', 'base');
+
+      cy.get('@alert')
+        .should('have.attr', 'title', 'base')
+        
+      cy.get("@alert")
+        .invoke('attr', 'title', 'my new title')
+        .should('have.attr', 'title', 'my new title');
+
+      cy.get('@title')
+        .should('have.text', 'my new title');
+    });
+  });
 });

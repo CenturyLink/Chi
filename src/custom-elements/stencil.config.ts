@@ -30,24 +30,19 @@ export const config: Config = {
     {
       type: 'docs-custom',
       generator: (docs: JsonDocs) => {
-        const alertTitleProp = {
-          name: 'title',
-          type: 'string',
-          mutable: false,
-          attr: 'title',
-          reflectToAttr: true,
-          docs: 'to define alert title.',
-          docsTags: [],
-          default: false,
-          values: [
-            {
-              type: 'string'
-            }
-          ],
-          optional: false,
-          required: false
+        const titleAttributeChanges = {
+          'chi-alert': 'alertTitle',
         };
 
+        for (let [tag, propName] of Object.entries(titleAttributeChanges)) {
+          // @ts-ignore
+          const componentProps = docs['components'].find(x => x.tag === tag)['props'];
+          // @ts-ignore
+          componentProps.find(prop => prop.name === propName)['name'] = 'title';
+          componentProps.sort(
+            (a,b) => a.name.localeCompare(b.name)
+          );
+        }
         const popoverTitleProp = {
           name: 'title',
           type: 'string',
