@@ -204,6 +204,7 @@ ul#chi-vue-tabs.chi-tabs.-border
         #npm--package.chi-tabs-panel(role='tabpanel')
           :code(lang='javascript')
             "@centurylink/chi-vue": "3.0.1"
+            "pinia": "^2.1.4"
         #npm--main.chi-tabs-panel(role='tabpanel')
           .chi-tab__description
             | Import Chi Vue and register its components globally
@@ -266,7 +267,9 @@ ul#chi-vue-tabs.chi-tabs.-border
       | Include Chi Vue UMD library from CDN and register the components you need.
     :code(lang='html')
       <!-- UMD asset -->
-      <script src="https://lib.lumen.com/chi/5.44.0/chi-vue/umd/chi-vue.umd.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6"></script>
+      <script src="https://cdn.jsdelivr.net/npm/pinia@2.1.4"></script>
+      <script src="https://lib.lumen.com/chi/5.44.0/chi-vue/umd/index.umd.js"></script>
 
       <!-- Vue component example -->
       const exampleVueComponent = Vue.createApp({
