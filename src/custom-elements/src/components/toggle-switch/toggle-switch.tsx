@@ -3,7 +3,7 @@ import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stenci
 @Component({
   tag: 'chi-switch',
   styleUrl: 'toggle-switch.scss',
-  scoped: true
+  scoped: true,
 })
 export class ToggleSwitch {
   /**
@@ -31,7 +31,7 @@ export class ToggleSwitch {
    */
   @Prop({ reflect: true }) size: string;
 
-   // used to pass additional classes like { -focus, -hover etc .}
+  // used to pass additional classes like { -focus, -hover etc .}
   @Prop() extraClass: string;
 
   @Element() el: HTMLElement;
@@ -59,16 +59,19 @@ export class ToggleSwitch {
 
   render() {
     return (
-      <label htmlFor={`${this.el.id}-control`}
-            class={`chi-switch
+      <label
+        htmlFor={`${this.el.id}-control`}
+        class={`chi-switch
               ${this.size ? `-${this.size}` : ''}
-              ${this.hideLabel ? '-label--hide' : ''}`}>
-        <input type="checkbox"
-               class={`chi-switch__input ${this.extraClass ? this.extraClass : ''}`}
-               id={`${this.el.id}-control`}
-               disabled={this.disabled}
-               checked={this.checked}
-               onClick={() => this._toggle()}
+              ${this.hideLabel ? '-label--hide' : ''}`}
+      >
+        <input
+          type="checkbox"
+          class={`chi-switch__input ${this.extraClass ? this.extraClass : ''}`}
+          id={`${this.el.id}-control`}
+          disabled={this.disabled}
+          checked={this.checked}
+          onClick={() => this._toggle()}
         />
         <span class="chi-switch__content">
           <span class="chi-switch__thumb"></span>

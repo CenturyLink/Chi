@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "module": "dist/index.mjs",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
@@ -15,19 +15,21 @@
     "start.es5": "stencil build --dev --watch --serve --es5",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "prettier": "prettier --write src/**/*.tsx"
   },
   "dependencies": {
-    "@types/lodash": "4.14.182",
-    "all-country-data": "0.1.1",
-    "dayjs": "1.11.7",
-    "libphonenumber-js": "1.10.30",
-    "lodash": "4.17.21",
-    "popper.js": "1.15.0"
+    "all-country-data": "1.0.3",
+    "dayjs": "1.11.10",
+    "libphonenumber-js": "1.10.52",
+    "popper.js": "1.16.1"
   },
   "devDependencies": {
-    "@stencil/core": "1.8.9",
-    "@stencil/sass": "1.0.1",
+    "@stencil/core": "4.9.0",
+    "@stencil/sass": "3.0.7",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "prettier": "^3.1.1",
     "tslint": "5.16.0"
   },
   "license": "MIT"

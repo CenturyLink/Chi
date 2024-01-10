@@ -2,11 +2,15 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { JsonDocs } from './docs/docs';
 
+const IS_DEV = process.argv?.indexOf('--dev') > -1;
+
 export const config: Config = {
   namespace: 'ux-chi-ce',
   devServer: {
-    openBrowser: false
+    openBrowser: IS_DEV
   },
+  sourceMap: IS_DEV,
+  buildEs5: true,
   plugins: [
     sass(
       {
