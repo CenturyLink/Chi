@@ -57,7 +57,7 @@ export class Time {
   @Watch('excluded-hours')
   updateExcludedHours() {
     if (this._excludedHours) {
-      this._excludedHours.split(',').map((time) => {
+      this._excludedHours.split(',').forEach((time) => {
         this.excludedHoursArray.push(time.trim());
       });
     }
@@ -66,7 +66,7 @@ export class Time {
   @Watch('excluded-minutes')
   updateExcludedMinutes() {
     if (this._excludedMinutes) {
-      this._excludedMinutes.split(',').map((time) => {
+      this._excludedMinutes.split(',').forEach((time) => {
         this.excludedMinutesArray.push(time.trim());
       });
     }
@@ -75,7 +75,7 @@ export class Time {
   @Watch('excluded-seconds')
   updateExcludedSeconds() {
     if (this._excludedSeconds) {
-      this._excludedSeconds.split(',').map((time) => {
+      this._excludedSeconds.split(',').forEach((time) => {
         this.excludedSecondsArray.push(time.trim());
       });
     }
