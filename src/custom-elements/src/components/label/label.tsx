@@ -5,9 +5,8 @@ const VALID_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'];
 @Component({
   tag: 'chi-label',
   styleUrl: 'label.scss',
-  scoped: true
+  scoped: true,
 })
-
 export class Label {
   @Element() el: HTMLLabelElement;
   /**
@@ -35,8 +34,16 @@ export class Label {
   }
 
   render() {
-    const required = <abbr class="chi-label__required" aria-label="Required field">*</abbr>;
-    const optional = <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>;
+    const required = (
+      <abbr class="chi-label__required" aria-label="Required field">
+        *
+      </abbr>
+    );
+    const optional = (
+      <abbr class="chi-label__optional" aria-label="Optional field">
+        (optional)
+      </abbr>
+    );
     let message = '';
 
     if (!(this.required && this.optional)) {

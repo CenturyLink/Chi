@@ -984,13 +984,11 @@ describe('Data Table', () => {
         const datesAsc = ['5 Mar 2017', '6 Jan 2018', '5 Feb 2018'];
         const datesDesc = ['5 Apr 2019', '9 Nov 2018', '5 Jul 2018'];
 
-        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
-          .eq(0)
-          .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(2)
+        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.ROW} .${DATA_TABLE_CLASSES.CELL}[data-column='date']`)
           .as('dateCell');
 
         checkDateSorting(dates);
+        cy.get('@dateCell').find('chi-button i', { timeout: 3000 }).should('be.visible');
         cy.get('@dateCell').click();
         checkDateSorting(datesAsc);
         cy.get('@dateCell').click();

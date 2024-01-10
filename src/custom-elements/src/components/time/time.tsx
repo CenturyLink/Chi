@@ -1,18 +1,11 @@
-import {
-  Component,
-  Event,
-  EventEmitter,
-  Prop,
-  Watch,
-  h, Element
-} from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, Watch, h, Element } from '@stencil/core';
 import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 import { CHI_TIME_SCROLL_ADJUSTMENT, TimePickerFormats } from '../../constants/constants';
 
 @Component({
   tag: 'chi-time',
   styleUrl: 'time.scss',
-  scoped: true
+  scoped: true,
 })
 export class Time {
   /**
@@ -64,7 +57,7 @@ export class Time {
   @Watch('excluded-hours')
   updateExcludedHours() {
     if (this._excludedHours) {
-      this._excludedHours.split(',').map(time => {
+      this._excludedHours.split(',').forEach((time) => {
         this.excludedHoursArray.push(time.trim());
       });
     }
@@ -73,7 +66,7 @@ export class Time {
   @Watch('excluded-minutes')
   updateExcludedMinutes() {
     if (this._excludedMinutes) {
-      this._excludedMinutes.split(',').map(time => {
+      this._excludedMinutes.split(',').forEach((time) => {
         this.excludedMinutesArray.push(time.trim());
       });
     }
@@ -82,7 +75,7 @@ export class Time {
   @Watch('excluded-seconds')
   updateExcludedSeconds() {
     if (this._excludedSeconds) {
-      this._excludedSeconds.split(',').map(time => {
+      this._excludedSeconds.split(',').forEach((time) => {
         this.excludedSecondsArray.push(time.trim());
       });
     }
@@ -112,7 +105,9 @@ export class Time {
       seconds = currentTime.getSeconds();
 
     if (!this.value) {
-      this.value = `${this.formatTimePeriod(hours)}:${this.formatTimePeriod(minutes)}:${this.formatTimePeriod(seconds)}`;
+      this.value = `${this.formatTimePeriod(hours)}:${this.formatTimePeriod(minutes)}:${this.formatTimePeriod(
+        seconds
+      )}`;
     }
 
     const time = this.value.split(':');
@@ -165,11 +160,11 @@ export class Time {
 
   formatTimePeriod(period: number) {
     return String(period).length > 1 ? String(period) : `0${period}`;
-  };
+  }
 
   hours() {
-    const hourFormat = (this.format === '24hr') ? 24 : 12;
-    const startHour = (this.format === '24hr') ? '00' : '12';
+    const hourFormat = this.format === '24hr' ? 24 : 12;
+    const startHour = this.format === '24hr' ? '00' : '12';
     let hourToSet: string;
     const setHour = (hour: string) => {
       if (this.format === '24hr') {
@@ -202,17 +197,17 @@ export class Time {
       const valueHour = parseInt(this.value.split(':')[0]);
       let hourStatus = '';
 
-      if (this._hour === hour ||
-        (!(this.format === '24hr') &&
-          this._period === 'pm' &&
-          parseInt(hour) + 12 === parseInt(this._hour)
-        ) ||
-        (this._period === 'am' && (parseInt(hour) === 12 && valueHour === 0))
+      if (
+        this._hour === hour ||
+        (!(this.format === '24hr') && this._period === 'pm' && parseInt(hour) + 12 === parseInt(this._hour)) ||
+        (this._period === 'am' && parseInt(hour) === 12 && valueHour === 0)
       ) {
         hourStatus = ACTIVE_CLASS;
       } else {
-        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
-          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))) {
+        if (
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))
+        ) {
           hourStatus = DISABLED_CLASS;
         }
       }
@@ -221,11 +216,16 @@ export class Time {
     };
 
     const hoursToDisplay = [
-      <div data-hour={startHour} class={`
+      <div
+        data-hour={startHour}
+        class={`
         ${TIME_CLASSES.HOUR}
         ${hourStatus(startHour)}
         `}
-           onClick={() => setHour(String(hourFormat))}>{startHour}</div>
+        onClick={() => setHour(String(hourFormat))}
+      >
+        {startHour}
+      </div>,
     ];
 
     Array.from(Array(hourFormat), (_, i) => {
@@ -233,22 +233,21 @@ export class Time {
 
       if (i > 0) {
         hoursToDisplay.push(
-          <div data-hour={hour} class={`
+          <div
+            data-hour={hour}
+            class={`
             ${TIME_CLASSES.HOUR}
             ${hourStatus(hour)}
           `}
-            onClick={() => setHour(hour)}>
+            onClick={() => setHour(hour)}
+          >
             {hour}
           </div>
         );
       }
     });
 
-    return (
-      <div class={`${TIME_CLASSES.HOURS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>
-        {hoursToDisplay}
-      </div>
-    );
+    return <div class={`${TIME_CLASSES.HOURS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{hoursToDisplay}</div>;
   }
 
   minutes() {
@@ -271,21 +270,31 @@ export class Time {
       return minuteState;
     };
     const minutesToDisplay = [
-      <div class={`
+      <div
+        class={`
       ${TIME_CLASSES.MINUTE}
       ${minuteState('00')}
       `}
-       onClick={() => setMinute('00')}>00</div>
+        onClick={() => setMinute('00')}
+      >
+        00
+      </div>,
     ];
 
     Array.from(Array(60), (_, i) => {
       const minute = this.formatTimePeriod(i);
       const displayMinute = () => {
-        minutesToDisplay.push(<div class={`
+        minutesToDisplay.push(
+          <div
+            class={`
         ${TIME_CLASSES.MINUTE}
         ${minuteState(minute)}
         `}
-         onClick={() => setMinute(minute)}>{minute}</div>);
+            onClick={() => setMinute(minute)}
+          >
+            {minute}
+          </div>
+        );
       };
 
       if (i > 0) {
@@ -299,11 +308,7 @@ export class Time {
       }
     });
 
-    return (
-      <div class={`${TIME_CLASSES.MINUTES} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
-        minutesToDisplay
-      }</div>
-    );
+    return <div class={`${TIME_CLASSES.MINUTES} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{minutesToDisplay}</div>;
   }
 
   seconds() {
@@ -326,21 +331,31 @@ export class Time {
       return secondState;
     };
     const secondsToDisplay = [
-      <div class={`
+      <div
+        class={`
         ${TIME_CLASSES.SECOND}
         ${secondsState('00')}
         `}
-       onClick={() => setSecond('00')}>00</div>
+        onClick={() => setSecond('00')}
+      >
+        00
+      </div>,
     ];
 
     Array.from(Array(60), (_, i) => {
       const second = this.formatTimePeriod(i);
       const displaySecond = () => {
-        secondsToDisplay.push(<div class={`
+        secondsToDisplay.push(
+          <div
+            class={`
           ${TIME_CLASSES.SECOND}
           ${secondsState(second)}
           `}
-        onClick={() => setSecond(second)}>{second}</div>);
+            onClick={() => setSecond(second)}
+          >
+            {second}
+          </div>
+        );
       };
 
       if (i > 0) {
@@ -355,11 +370,7 @@ export class Time {
     });
 
     if (this.displaySeconds) {
-      return (
-        <div class={`${TIME_CLASSES.SECONDS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
-          secondsToDisplay
-        }</div>
-      );
+      return <div class={`${TIME_CLASSES.SECONDS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{secondsToDisplay}</div>;
     }
     return;
   }
@@ -404,13 +415,11 @@ export class Time {
 
       return (
         <div class={TIME_CLASSES.PERIODS}>
-          <div
-            class={periodClasses('am')}
-            onClick={() => setPeriod('am')}>AM
+          <div class={periodClasses('am')} onClick={() => setPeriod('am')}>
+            AM
           </div>
-          <div
-            class={periodClasses('pm')}
-            onClick={() => setPeriod('pm')}>PM
+          <div class={periodClasses('pm')} onClick={() => setPeriod('pm')}>
+            PM
           </div>
         </div>
       );
@@ -424,7 +433,7 @@ export class Time {
       minute: this._minute,
       second: this._second,
       period: this._period,
-      value: this.value
+      value: this.value,
     });
   }
 
@@ -463,9 +472,7 @@ export class Time {
       periods = this.periods();
 
     return (
-      <div
-        class={TIME_CLASSES.TIME}
-      >
+      <div class={TIME_CLASSES.TIME}>
         <div class={TIME_CLASSES.CONTENT}>
           {hours}
           {minutes}

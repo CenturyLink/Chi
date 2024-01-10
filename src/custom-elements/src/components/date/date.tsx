@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Method,
-  Prop,
-  State,
-  Watch,
-  h,
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import { CLASSES, DataLocales, DateFormats } from '../../constants/constants';
@@ -20,11 +10,7 @@ import 'dayjs/locale/ja';
 import 'dayjs/locale/zh';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { contains } from '../../utils/utils';
-import {
-  DATEPICKER_CLASSES,
-  INACTIVE_CLASS,
-  DISABLED_CLASS,
-} from '../../constants/classes';
+import { DATEPICKER_CLASSES, INACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes';
 
 dayjs.extend(isBetween);
 
@@ -89,9 +75,7 @@ export class Date {
 
   @Watch('excludedDates')
   updateExcludedDates() {
-    this.excludedDatesArray = this.excludedDates
-      ? this.excludedDates.split(',').map((date) => date.trim())
-      : [];
+    this.excludedDatesArray = this.excludedDates ? this.excludedDates.split(',').map((date) => date.trim()) : [];
   }
 
   @Watch('excludedWeekdays')
@@ -116,8 +100,7 @@ export class Date {
 
   _handleNewDateValue(newValue: string) {
     if (this.multiple) {
-      this._vm.dates =
-        newValue.split(',').map((valueDay) => this.fromString(valueDay)) || [];
+      this._vm.dates = newValue.split(',').map((valueDay) => this.fromString(valueDay)) || [];
     } else {
       const date = dayjs(newValue).format(this.format);
 
@@ -141,10 +124,7 @@ export class Date {
 
   @Watch('viewMonth')
   viewMonthChanged(newValue: Dayjs, oldValue: Dayjs) {
-    if (
-      newValue.month() !== oldValue.month() ||
-      newValue.year() !== oldValue.year()
-    ) {
+    if (newValue.month() !== oldValue.month() || newValue.year() !== oldValue.year()) {
       this._updateViewMonth();
     }
   }
@@ -243,10 +223,7 @@ export class Date {
     this._vm = {
       dates: this._initDates(),
       today: dayjs(),
-      weekStartClass:
-        dayjs().startOf('week').day() === 1
-          ? '-week-starts-on-mon'
-          : '-week-starts-on-sun',
+      weekStartClass: dayjs().startOf('week').day() === 1 ? '-week-starts-on-mon' : '-week-starts-on-sun',
       monthStartClass: '',
       weekDays: week,
       monthDays: [],
@@ -266,18 +243,12 @@ export class Date {
 
     const month: Dayjs[] = [];
     const lastDay = this.viewMonth.endOf('month');
-    for (
-      let day = this.viewMonth.startOf('month');
-      day.isBefore(lastDay);
-      day = day.add(1, 'day')
-    ) {
+    for (let day = this.viewMonth.startOf('month'); day.isBefore(lastDay); day = day.add(1, 'day')) {
       month.push(day);
     }
     this._vm.monthDays = month;
 
-    this._vm.monthStartClass = `-month-starts-on-${
-      WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]
-    }`;
+    this._vm.monthStartClass = `-month-starts-on-${WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]}`;
   }
 
   fromString(dateStr: string): Dayjs {
@@ -313,13 +284,9 @@ export class Date {
 
     if (!this._keyboardFocusedDate) {
       const today = dayjs().format(this.format);
-      const alternativeFocusedDay = this._getValidDayElement(today)
-        ? today
-        : this._getFirstOrLastAvailableDate(true);
+      const alternativeFocusedDay = this._getValidDayElement(today) ? today : this._getFirstOrLastAvailableDate(true);
 
-      this._keyboardFocusedDate = this._getValidDayElement(this.value)
-        ? this.value
-        : alternativeFocusedDay;
+      this._keyboardFocusedDate = this._getValidDayElement(this.value) ? this.value : alternativeFocusedDay;
     }
   }
 
@@ -328,7 +295,7 @@ export class Date {
     document.body.addEventListener('focusin', this._onFocusIn.bind(this));
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.body.removeEventListener('keydown', this._onKeyDown);
     document.body.removeEventListener('focusin', this._onFocusIn);
   }
@@ -343,10 +310,7 @@ export class Date {
    * Handles key down event
    */
   _onKeyDown(e: KeyboardEvent) {
-    if (
-      !this._enableKeyboardNavigation ||
-      !contains(this.el, e.target as HTMLElement)
-    ) {
+    if (!this._enableKeyboardNavigation || !contains(this.el, e.target as HTMLElement)) {
       return;
     }
 
@@ -360,13 +324,8 @@ export class Date {
       Escape: this._handleEscape.bind(this),
     }[e.key];
 
-    const disableArrowHandler =
-      e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
-    if (
-      !keyHandler ||
-      disableArrowHandler ||
-      !contains(this.el, e.target as HTMLElement)
-    ) {
+    const disableArrowHandler = e.key.startsWith('Arrow') && !this._isTargetCalendarDay(e);
+    if (!keyHandler || disableArrowHandler || !contains(this.el, e.target as HTMLElement)) {
       return;
     }
 
@@ -394,12 +353,9 @@ export class Date {
       return;
     }
 
-    const shouldMoveMonth = this._isDayInRange(
-      dayjs(this._keyboardFocusedDate).add(dayDiff, 'day'),
-    );
+    const shouldMoveMonth = this._isDayInRange(dayjs(this._keyboardFocusedDate).add(dayDiff, 'day'));
     if (shouldMoveMonth) {
-      this._afterRenderHandler = () =>
-        this._focusCalendarDay(this._getFirstOrLastAvailableDate(dayDiff > 0));
+      this._afterRenderHandler = () => this._focusCalendarDay(this._getFirstOrLastAvailableDate(dayDiff > 0));
 
       this._moveMonth(dayDiff > 0);
     }
@@ -433,16 +389,10 @@ export class Date {
 
     const nextDateFormatted = nextDate.format(this.format);
     const nextAvailableDate = this._getFocusableDays()
-      .find((i) =>
-        dayjs(i.getAttribute('data-date'))[
-          weekDif > 0 ? 'isAfter' : 'isBefore'
-        ](nextDate),
-      )
+      .find((i) => dayjs(i.getAttribute('data-date'))[weekDif > 0 ? 'isAfter' : 'isBefore'](nextDate))
       ?.getAttribute('data-date');
 
-    const dayToFocus = this._getValidDayElement(nextDateFormatted)
-      ? nextDateFormatted
-      : nextAvailableDate;
+    const dayToFocus = this._getValidDayElement(nextDateFormatted) ? nextDateFormatted : nextAvailableDate;
 
     if (dayToFocus) {
       this._focusCalendarDay(dayToFocus);
@@ -469,9 +419,7 @@ export class Date {
    * Gets the N previous or N next available day
    */
   _getAvailableSiblingDay(dayDiff: number) {
-    const availableDays = this._getFocusableDays().map((i) =>
-      i.getAttribute('data-date'),
-    );
+    const availableDays = this._getFocusableDays().map((i) => i.getAttribute('data-date'));
     const currentFocusIndex = availableDays.indexOf(this._keyboardFocusedDate);
 
     return availableDays[currentFocusIndex + dayDiff];
@@ -482,7 +430,7 @@ export class Date {
    */
   _getValidDayElement(date: string) {
     return this.el.querySelector(
-      `.${DATEPICKER_CLASSES.DAY}[data-date="${date}"]:not(.${INACTIVE_CLASS})`,
+      `.${DATEPICKER_CLASSES.DAY}[data-date="${date}"]:not(.${INACTIVE_CLASS})`
     ) as HTMLElement;
   }
 
@@ -511,9 +459,7 @@ export class Date {
    * Gets all the day elements of the calendar that are valid date to select
    */
   _getFocusableDays() {
-    const availableDays = this.el.querySelectorAll(
-      `.${DATEPICKER_CLASSES.DAY}:not(.${INACTIVE_CLASS})`,
-    );
+    const availableDays = this.el.querySelectorAll(`.${DATEPICKER_CLASSES.DAY}:not(.${INACTIVE_CLASS})`);
     return Array.from(availableDays);
   }
 
@@ -528,10 +474,10 @@ export class Date {
 
     let tabElements = [
       this.el.querySelector(
-        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}:not(.${DISABLED_CLASS})`,
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}:not(.${DISABLED_CLASS})`
       ),
       this.el.querySelector(
-        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}:not(.${DISABLED_CLASS})`,
+        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}:not(.${DISABLED_CLASS})`
       ),
       this._getValidDayElement(this._keyboardFocusedDate) ||
         this._getValidDayElement(this._getFirstOrLastAvailableDate(true)),
@@ -551,17 +497,10 @@ export class Date {
 
   _handleEnter(e: KeyboardEvent) {
     const isPrevMonth =
-      e.target ===
-      this.el.querySelector(
-        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}`,
-      );
+      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.PREV_MONTH}`);
     const isNextMonth =
-      e.target ===
-      this.el.querySelector(
-        `.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}`,
-      );
-    const isDay =
-      e.target === this._getValidDayElement(this._keyboardFocusedDate);
+      e.target === this.el.querySelector(`.${DATEPICKER_CLASSES.MONTH_ROW} .${DATEPICKER_CLASSES.NEXT_MONTH}`);
+    const isDay = e.target === this._getValidDayElement(this._keyboardFocusedDate);
 
     if (isDay) {
       this._handleSelectDate(dayjs(this._keyboardFocusedDate));
@@ -588,10 +527,7 @@ export class Date {
   }
 
   _handleSelectDate(day: Dayjs) {
-    if (
-      this.multiple &&
-      Array.from(this._vm.dates).some((vmDay) => day.isSame(vmDay, 'day'))
-    ) {
+    if (this.multiple && Array.from(this._vm.dates).some((vmDay) => day.isSame(vmDay, 'day'))) {
       return this.removeDate(day);
     }
 
@@ -599,17 +535,14 @@ export class Date {
   }
 
   addDate(date) {
-    if (this.multiple)
-      this.value = `${this.value ? this.value + ',' : ''}${date}`;
+    if (this.multiple) this.value = `${this.value ? this.value + ',' : ''}${date}`;
   }
 
   removeDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
     const currentValues = Array.from(this.value.split(','));
 
-    this.value = currentValues
-      .filter((value) => value !== formattedDate)
-      .join(',');
+    this.value = currentValues.filter((value) => value !== formattedDate).join(',');
     this.eventChange.emit(this.value);
   }
 
@@ -627,11 +560,7 @@ export class Date {
   checkIfExcluded(day: Dayjs) {
     if (this.excludedDates) {
       for (let i = 0; i < this.excludedDatesArray.length; i++) {
-        if (
-          dayjs(this.excludedDatesArray[i])
-            .startOf('day')
-            .isSame(day.startOf('day'))
-        ) {
+        if (dayjs(this.excludedDatesArray[i]).startOf('day').isSame(day.startOf('day'))) {
           return true;
         }
       }
@@ -647,20 +576,14 @@ export class Date {
   render() {
     const endOfLastMonth = this.viewMonth.subtract(1, 'month').endOf('month');
     const startOfNextMonth = this.viewMonth.add(1, 'month').startOf('month');
-    const prevMonthDisabled =
-      this._vm.min && endOfLastMonth.isBefore(this._vm.min);
-    const nextMonthDisabled =
-      this._vm.max && startOfNextMonth.isAfter(this._vm.max);
+    const prevMonthDisabled = this._vm.min && endOfLastMonth.isBefore(this._vm.min);
+    const nextMonthDisabled = this._vm.max && startOfNextMonth.isAfter(this._vm.max);
 
     return (
-      <div
-        class={`${DATEPICKER_CLASSES.DATEPICKER} ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
-      >
+      <div class={`${DATEPICKER_CLASSES.DATEPICKER} ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}>
         <div class={`${DATEPICKER_CLASSES.MONTH_ROW}`}>
           <div
-            class={`${DATEPICKER_CLASSES.PREV_MONTH} ${
-              prevMonthDisabled ? CLASSES.DISABLED : ''
-            }`}
+            class={`${DATEPICKER_CLASSES.PREV_MONTH} ${prevMonthDisabled ? CLASSES.DISABLED : ''}`}
             tabindex="0"
             onClick={() => this.prevMonth()}
           >
@@ -671,9 +594,7 @@ export class Date {
               ${this.viewMonth.format('YYYY')}`}
           </div>
           <div
-            class={`${DATEPICKER_CLASSES.NEXT_MONTH} ${
-              nextMonthDisabled ? CLASSES.DISABLED : ''
-            }`}
+            class={`${DATEPICKER_CLASSES.NEXT_MONTH} ${nextMonthDisabled ? CLASSES.DISABLED : ''}`}
             tabindex={!nextMonthDisabled ? '0' : ''}
             onClick={() => this.nextMonth()}
           >
@@ -682,10 +603,7 @@ export class Date {
         </div>
         <div class={`${DATEPICKER_CLASSES.DAY_NAMES}`}>
           {this._vm.weekDays.map((weekDay) => (
-            <div
-              class={`${DATEPICKER_CLASSES.WEEK_DAY}`}
-              key={weekDay.format('dddd')}
-            >
+            <div class={`${DATEPICKER_CLASSES.WEEK_DAY}`} key={weekDay.format('dddd')}>
               {weekDay.format('dddd').substr(0, 1)}
             </div>
           ))}
@@ -705,13 +623,7 @@ export class Date {
                     ? CLASSES.INACTIVE
                     : ''
                 }
-                ${
-                  Array.from(this._vm.dates).some((vmDay) =>
-                    day.isSame(vmDay, 'day'),
-                  )
-                    ? CLASSES.ACTIVE
-                    : ''
-                }
+                ${Array.from(this._vm.dates).some((vmDay) => day.isSame(vmDay, 'day')) ? CLASSES.ACTIVE : ''}
                 ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
               `}
                 data-date={this.toDayString(day)}

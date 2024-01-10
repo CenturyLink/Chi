@@ -177,7 +177,8 @@ export class Alert {
         ${this.center ? '-center' : ''}
         ${this.closable ? '-close' : ''}
         ${this.size ? `-${this.size}` : ''}`}
-        role="alert">
+        role="alert"
+      >
         {chiIcon}
         {chiSpinner}
         <div class="chi-alert__content">

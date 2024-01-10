@@ -1,18 +1,10 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Prop,
-  h,
-  Watch
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, h, Watch } from '@stencil/core';
 import { CHECKBOX_CLASSES, SR_ONLY } from '../../constants/classes';
 import { ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-checkbox',
-  scoped: true
+  scoped: true,
 })
 export class Checkbox {
   @Element() el: HTMLElement;
@@ -87,7 +79,11 @@ export class Checkbox {
   }
 
   render() {
-    const requiredField = this.required ? <abbr class="chi-label__required" aria-label="Required field">*</abbr> : null;
+    const requiredField = this.required ? (
+      <abbr class="chi-label__required" aria-label="Required field">
+        *
+      </abbr>
+    ) : null;
 
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
@@ -101,7 +97,7 @@ export class Checkbox {
           disabled={this.disabled}
           id={`${this.id}-control`}
           name={this.name}
-          ref={el => (this.input = el)}
+          ref={(el) => (this.input = el)}
           onChange={(ev: Event) => this.toggle(ev)}
           type="checkbox"
         />
