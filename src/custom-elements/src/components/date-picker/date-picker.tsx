@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Listen,
-  Method,
-  Prop,
-  Watch,
-  h,
-  Event,
-  EventEmitter,
-} from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import {
   CHI_TIME_AUTO_SCROLL_DELAY,
@@ -115,16 +105,14 @@ export class DatePicker {
 
     if (newValue && !CHI_STATES.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid state for date picker. If provided, valid values are: ${validValues}. `,
+        `${newValue} is not a valid state for date picker. If provided, valid values are: ${validValues}. `
       );
     }
   }
 
   @Watch('excludedDates')
   updateExcludedDates() {
-    this.excludedDatesArray = this.excludedDates
-      ? this.excludedDates.split(',').map((date) => date.trim())
-      : [];
+    this.excludedDatesArray = this.excludedDates ? this.excludedDates.split(',').map((date) => date.trim()) : [];
   }
 
   @Watch('excludedWeekdays')
@@ -147,9 +135,7 @@ export class DatePicker {
       !(
         this.mode !== 'datetime' &&
         !this.multiple &&
-        new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(
-          e.target.getAttribute('class'),
-        )
+        new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class'))
       )
       // This hack is necessary because currently IE11 doesn't support .classList on SVG elements
     ) {
@@ -158,10 +144,7 @@ export class DatePicker {
   }
 
   _isEscapeKey(e: KeyboardEvent): boolean {
-    return (
-      'key' in e &&
-      (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-    );
+    return 'key' in e && (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE);
   }
 
   _onKeyUp(e: KeyboardEvent) {
@@ -176,9 +159,7 @@ export class DatePicker {
   checkIfExcluded(day: Dayjs) {
     return (
       (this.excludedDates &&
-        this.excludedDatesArray.some((date) =>
-          dayjs(date).startOf('day').isSame(day.startOf('day')),
-        )) ||
+        this.excludedDatesArray.some((date) => dayjs(date).startOf('day').isSame(day.startOf('day')))) ||
       (this.excludedWeekdays && this.excludedWeekdaysArray.includes(day.day()))
     );
   }
@@ -199,10 +180,7 @@ export class DatePicker {
     const validatedDates = [];
 
     inputDates.forEach((date) => {
-      if (
-        this._checkValidDate(date, minDate, maxDate) &&
-        !validatedDates.includes(date)
-      ) {
+      if (this._checkValidDate(date, minDate, maxDate) && !validatedDates.includes(date)) {
         validatedDates.push(date);
       }
     });
@@ -214,19 +192,12 @@ export class DatePicker {
   _checkSingleDate(minDate, maxDate) {
     const inputDate = dayjs(this._input.value, this.format);
 
-    if (
-      dayjs(this._input.value, this.format, true).isValid() &&
-      !this.checkIfExcluded(inputDate)
-    ) {
-      if (
-        dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))
-      ) {
+    if (dayjs(this._input.value, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
+      if (dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))) {
         this.value = this.min;
         this._input.value = this.min;
         this.eventChange.emit(this.value);
-      } else if (
-        dayjs(inputDate).startOf('day').isAfter(dayjs(maxDate).startOf('day'))
-      ) {
+      } else if (dayjs(inputDate).startOf('day').isAfter(dayjs(maxDate).startOf('day'))) {
         this.value = this.max;
         this._input.value = this.max;
         this.eventChange.emit(this.value);
@@ -326,10 +297,7 @@ export class DatePicker {
 
     const time = valueTime.split(':');
     const period = this._getTimePeriod(is24hrTimeFormat, time[0]);
-    const hours =
-      !is24hrTimeFormat && parseInt(time[0]) > 12
-        ? parseInt(time[0]) - 12
-        : parseInt(time[0]);
+    const hours = !is24hrTimeFormat && parseInt(time[0]) > 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
     const hoursCalculated = this.formatTimePeriod(hours);
     const minutes = this.formatTimePeriod(parseInt(time[1]));
 
@@ -344,18 +312,14 @@ export class DatePicker {
 
     setTimeout(() => {
       if (hoursColumn) {
-        const activeHour = hoursColumn.querySelector(
-          `.${TIME_CLASSES.HOUR}.-active`,
-        ) as HTMLElement;
+        const activeHour = hoursColumn.querySelector(`.${TIME_CLASSES.HOUR}.-active`) as HTMLElement;
 
         if (activeHour) {
           hoursColumn.scrollTop = activeHour.offsetTop - 12;
         }
       }
       if (minutesColumn) {
-        const activeMinute = minutesColumn.querySelector(
-          `.${TIME_CLASSES.MINUTE}.-active`,
-        ) as HTMLElement;
+        const activeMinute = minutesColumn.querySelector(`.${TIME_CLASSES.MINUTE}.-active`) as HTMLElement;
 
         if (activeMinute) {
           minutesColumn.scrollTop = activeMinute.offsetTop - 12;
@@ -372,24 +336,18 @@ export class DatePicker {
     if (!activeDate) {
       const currentTime = new Date();
 
-      activeDate = `${
-        currentTime.getMonth() + 1
-      }/${currentTime.getDate()}/${currentTime.getFullYear()}`;
+      activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
     }
 
     chiDate.setAttribute('value', activeDate);
     if (this.timeFormat === '24hr') {
-      this.value = `${activeDate}, ${this.formatTimePeriod(
-        ev.detail.hour,
-      )}:${this.formatTimePeriod(ev.detail.minute)}`;
+      this.value = `${activeDate}, ${this.formatTimePeriod(ev.detail.hour)}:${this.formatTimePeriod(ev.detail.minute)}`;
     } else {
       const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
 
-      this.value = `${activeDate}, ${this.formatTimePeriod(
-        hour,
-      )}:${this.formatTimePeriod(ev.detail.minute)} ${this.formatTimePeriod(
-        ev.detail.period,
-      )}`;
+      this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(
+        ev.detail.minute
+      )} ${this.formatTimePeriod(ev.detail.period)}`;
     }
   }
 
@@ -413,7 +371,7 @@ export class DatePicker {
     document.body.addEventListener('keyup', this._onKeyUp);
   }
 
-  componentDidUnload(): void {
+  disconnectedCallback(): void {
     document.body.removeEventListener('focusin', this._onFocusIn);
     document.body.removeEventListener('click', this._onClick);
     document.body.removeEventListener('keyup', this._onKeyUp);
@@ -445,10 +403,7 @@ export class DatePicker {
       />
     );
     const timeValue = (this.value?.split(', ') || [])[1];
-    const time =
-      this.mode === 'datetime' ? (
-        <chi-time format={this.timeFormat} value={timeValue} />
-      ) : null;
+    const time = this.mode === 'datetime' ? <chi-time format={this.timeFormat} value={timeValue} /> : null;
     const popoverContent =
       this.mode === 'datetime' ? (
         <div class="-d--flex">
@@ -489,17 +444,9 @@ export class DatePicker {
             id={`${this._uuid}-control`}
             class={inputClasses}
             type="text"
-            placeholder={
-              this.mode === 'datetime'
-                ? `${this.format}, --:-- --`
-                : this.format
-            }
+            placeholder={this.mode === 'datetime' ? `${this.format}, --:-- --` : this.format}
             ref={(el) => (this._input = el as HTMLInputElement)}
-            value={
-              this.value && this.multiple
-                ? String(this.value).replace(/,/g, ', ')
-                : this.value
-            }
+            value={this.value && this.multiple ? String(this.value).replace(/,/g, ', ') : this.value}
             onChange={() => {
               this._checkDate();
             }}

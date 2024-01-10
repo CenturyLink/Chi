@@ -4,9 +4,8 @@ import { uuid4 } from '../../utils/utils';
 @Component({
   tag: 'chi-pagination',
   styleUrl: 'pagination.scss',
-  scoped: true
+  scoped: true,
 })
-
 export class Pagination {
   @Element() el: HTMLElement;
   /**
@@ -80,9 +79,11 @@ export class Pagination {
   _goToPage(pageChange: HTMLElement) {
     let pageToGo;
 
-    for (let cur = pageChange;
+    for (
+      let cur = pageChange;
       cur && !cur.classList.contains('chi-button-group');
-      cur = cur.parentNode as HTMLElement) {
+      cur = cur.parentNode as HTMLElement
+    ) {
       if (cur.nodeName === 'BUTTON') {
         pageToGo = cur.getAttribute('data-page');
       }
@@ -139,76 +140,95 @@ export class Pagination {
         }
       }
 
-      return <button
-        data-page={pageToGo}
-        class={
-          `chi-button -flat
+      return (
+        <button
+          data-page={pageToGo}
+          class={`chi-button -flat
         ${this.inverse ? '-light' : ''}
         ${!!icon ? '-icon' : ''}
         ${parseInt(page) === this.currentPage ? '-active' : ''}
         ${this.size ? `-${this.size}` : ''}
         `}
-        onClick={(ev) => {
-          ev.stopPropagation();
-          this._goToPage(ev.target as HTMLElement);
-        }
-        }
-        aria-label={ariaLabel}
-        aria-disabled={state === 'disabled'}
-        disabled={state === 'disabled'}
-        type="button"
-      >
-        <div class="chi-button__content">
-          {!!icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
-        </div>
-      </button>
+          onClick={(ev) => {
+            ev.stopPropagation();
+            this._goToPage(ev.target as HTMLElement);
+          }}
+          aria-label={ariaLabel}
+          aria-disabled={state === 'disabled'}
+          disabled={state === 'disabled'}
+          type="button"
+        >
+          <div class="chi-button__content">
+            {!!icon ? <i class={`chi-icon icon-${icon}`} aria-hidden="true"></i> : page}
+          </div>
+        </button>
+      );
     };
-    const results = this.results > 0 ?
-      <div class={`chi-pagination__results
+    const results =
+      this.results > 0 ? (
+        <div
+          class={`chi-pagination__results
         ${this.size ? `-text--${this.size}` : ''}
-      `}>
-        <span class="chi-pagination__label">{this.results} results</span>
-      </div>
-      : null;
-    const pageSize = this.pageSize ? <div class={`chi-pagination__page-size
+      `}
+        >
+          <span class="chi-pagination__label">{this.results} results</span>
+        </div>
+      ) : null;
+    const pageSize = this.pageSize ? (
+      <div
+        class={`chi-pagination__page-size
       ${this.size ? `-text--${this.size}` : ''}
-    `}>
-      <select
-        class="chi-input"
-        onChange={(ev) => this._pageSizeChange((ev.target as HTMLSelectElement).value)}
-        aria-label="Number of result items per page"
+    `}
       >
-        <option value="20">20</option>
-        <option value="40">40</option>
-        <option value="60">60</option>
-        <option value="80">80</option>
-        <option value="all">All</option>
-      </select>
-      <span class="chi-pagination__label">per page</span>
-    </div> : null;
-    const goToPage = this.pageJumper && !this.compact ? <div class={`chi-pagination__jumper
+        <select
+          class="chi-input"
+          onChange={(ev) => this._pageSizeChange((ev.target as HTMLSelectElement).value)}
+          aria-label="Number of result items per page"
+        >
+          <option value="20">20</option>
+          <option value="40">40</option>
+          <option value="60">60</option>
+          <option value="80">80</option>
+          <option value="all">All</option>
+        </select>
+        <span class="chi-pagination__label">per page</span>
+      </div>
+    ) : null;
+    const goToPage =
+      this.pageJumper && !this.compact ? (
+        <div
+          class={`chi-pagination__jumper
         ${this.size ? `-text--${this.size}` : ''}
-    `}>
-      <label class="chi-pagination__label" htmlFor={this._pageJumperUuid}>Go to page:</label>
-      <input class={`chi-input
+    `}
+        >
+          <label class="chi-pagination__label" htmlFor={this._pageJumperUuid}>
+            Go to page:
+          </label>
+          <input
+            class={`chi-input
         ${this.size ? `-${this.size}` : ''}
         `}
-         id={this._pageJumperUuid}
-         type="text"
-         value=""
-         onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
-      />
-    </div> : null;
+            id={this._pageJumperUuid}
+            type="text"
+            value=""
+            onChange={(ev) => this._jumpToPage((ev.target as HTMLInputElement).value)}
+          />
+        </div>
+      ) : null;
     const startPage = this.firstLast ? addPage('', 'page-first', this.currentPage === 1 ? 'disabled' : '') : null;
-    const lastPage = this.firstLast ? addPage('', 'page-last', this.currentPage === this.pages ? 'disabled' : '') : null;
+    const lastPage = this.firstLast
+      ? addPage('', 'page-last', this.currentPage === this.pages ? 'disabled' : '')
+      : null;
 
     if (this.compact) {
-      const paginationLabel = <div class="chi-pagination__label">
-        {!this.pageJumper ? <strong>{this.currentPage}</strong> : null}
-        <span>of</span>
-        <strong>{this.pages}</strong>
-      </div>;
-      const compactPages = this.pageJumper ?
+      const paginationLabel = (
+        <div class="chi-pagination__label">
+          {!this.pageJumper ? <strong>{this.currentPage}</strong> : null}
+          <span>of</span>
+          <strong>{this.pages}</strong>
+        </div>
+      );
+      const compactPages = this.pageJumper ? (
         <div class="chi-pagination__jumper">
           <input
             type="text"
@@ -218,13 +238,19 @@ export class Pagination {
             aria-label={`Page ${this.currentPage}`}
           />
           {paginationLabel}
-        </div> :
-        paginationLabel;
+        </div>
+      ) : (
+        paginationLabel
+      );
 
       this._pagesToRender.push(compactPages);
     } else {
       this._pagesArray.push(1);
-      for (let pageIndex = this.currentPage - this._distanceFromCurrent; pageIndex <= this.currentPage + this._distanceFromCurrent; pageIndex++) {
+      for (
+        let pageIndex = this.currentPage - this._distanceFromCurrent;
+        pageIndex <= this.currentPage + this._distanceFromCurrent;
+        pageIndex++
+      ) {
         if (pageIndex < this.pages && pageIndex > 1) {
           this._pagesArray.push(pageIndex);
         }
@@ -235,8 +261,11 @@ export class Pagination {
           if (pageIndex - this._lastRenderedPage === 2) {
             this._pagesToRender.push(addPage(this._lastRenderedPage + 1));
           } else if (pageIndex - this._lastRenderedPage !== 1) {
-            const truncateDots = <div class={`chi-button -flat -md -disabled ${this.inverse ? '-light' : ''}`} aria-hidden="true"><div
-              class="chi-button__content">...</div></div>;
+            const truncateDots = (
+              <div class={`chi-button -flat -md -disabled ${this.inverse ? '-light' : ''}`} aria-hidden="true">
+                <div class="chi-button__content">...</div>
+              </div>
+            );
 
             this._pagesToRender.push(truncateDots);
           }
@@ -246,32 +275,33 @@ export class Pagination {
       }
     }
 
-    return <nav
-      class={`
+    return (
+      <nav
+        class={`
         chi-pagination
         ${this.inverse ? '-inverse' : ''}
         ${this.compact ? '-compact' : ''}
       `}
-      role="navigation"
-      aria-label={this.ariaLabel}>
-      <div class="chi-pagination__content">
-        <div class="chi-pagination__start">
-          {results}
-          {pageSize}
-        </div>
-        <div class="chi-pagination__center">
-          <div class="chi-button-group">
-            {startPage}
-            {addPage('', 'chevron-left', this.currentPage === 1 ? 'disabled' : '')}
-            {this._pagesToRender}
-            {addPage('', 'chevron-right', this.currentPage === this.pages ? 'disabled' : '')}
-            {lastPage}
+        role="navigation"
+        aria-label={this.ariaLabel}
+      >
+        <div class="chi-pagination__content">
+          <div class="chi-pagination__start">
+            {results}
+            {pageSize}
           </div>
+          <div class="chi-pagination__center">
+            <div class="chi-button-group">
+              {startPage}
+              {addPage('', 'chevron-left', this.currentPage === 1 ? 'disabled' : '')}
+              {this._pagesToRender}
+              {addPage('', 'chevron-right', this.currentPage === this.pages ? 'disabled' : '')}
+              {lastPage}
+            </div>
+          </div>
+          <div class="chi-pagination__end">{goToPage}</div>
         </div>
-        <div class="chi-pagination__end">
-          {goToPage}
-        </div>
-      </div>
-    </nav>;
+      </nav>
+    );
   }
 }

@@ -3,7 +3,7 @@ import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 @Component({
   tag: 'chi-badge',
   styleUrl: 'badge.scss',
-  scoped: true
+  scoped: true,
 })
 export class Badge {
   @State() slotBadgeContent = true;
@@ -28,7 +28,7 @@ export class Badge {
   /**
    *  to set weight of the badge text { normal, semi-bold, bold }.
    */
-    @Prop({ reflect: true }) textWeight: string;
+  @Prop({ reflect: true }) textWeight: string;
 
   /**
    *  to set size of a badge { xs or sm }.
@@ -44,8 +44,28 @@ export class Badge {
 
   @Watch('color')
   colorValidation(newValue: string) {
-    if (newValue && !['', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for badge. Valid values are primary, success, danger, warning, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 or ''. `);
+    if (
+      newValue &&
+      ![
+        '',
+        'primary',
+        'success',
+        'warning',
+        'danger',
+        'dark',
+        'muted',
+        'secondary',
+        'light',
+        'accent-1',
+        'accent-2',
+        'accent-3',
+        'accent-4',
+        'accent-5',
+      ].includes(newValue)
+    ) {
+      throw new Error(
+        `${newValue} is not a valid color for badge. Valid values are primary, success, danger, warning, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 or ''. `
+      );
     }
   }
 
@@ -67,21 +87,23 @@ export class Badge {
 
   render() {
     return (
-      <div class={`chi-badge
+      <div
+        class={`chi-badge
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
 	        ${this.variant ? `-${this.variant}` : ''}
 	        ${this.textTransform ? `-text--${this.textTransform}` : ''}
           ${this.textWeight ? `-text--${this.textWeight}` : ''}`}
       >
-        {this.slotBadgeContent ?
+        {this.slotBadgeContent ? (
           <div class="chi-badge__content">
             <slot></slot>
-          </div> :
+          </div>
+        ) : (
           <span>
-           <slot></slot>
+            <slot></slot>
           </span>
-        }
+        )}
       </div>
     );
   }

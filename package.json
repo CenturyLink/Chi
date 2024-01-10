@@ -27,7 +27,8 @@
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
     "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test",
-    "cypress": "cypress open"
+    "cy:open": "cypress open",
+    "cy:run:ce": "cypress run --spec 'cypress/e2e/chi-custom-elements/*'"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",
