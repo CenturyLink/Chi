@@ -116,14 +116,6 @@ export const config: Config = {
         };
 
         // @ts-ignore
-        docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
-        docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => {
-          if (a.name > b.name) return 1
-          else if (a.name < b.name) return -1
-          return 0
-        });
-
-        // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
         docs['components'].find(x => x.tag === 'chi-popover')['props'].sort((a, b) => {
           if (a.name > b.name) return 1

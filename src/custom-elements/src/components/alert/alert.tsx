@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { ALERT_COLORS as VALID_COLORS, AlertColors } from '../../constants/color';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
