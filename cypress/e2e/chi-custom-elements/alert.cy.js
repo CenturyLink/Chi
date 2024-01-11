@@ -1,3 +1,5 @@
+const ALERT_TITLE = 'chi-alert__title';
+
 describe('Alert', () => {
   const alertBannerSelectors = [
     'alert-banner-success-default',
@@ -136,6 +138,35 @@ describe('Alert', () => {
         .should('have.class', 'hydrated')
         .children()
         .should('match', 'div.chi-alert.-toast');
+    });
+  });
+
+  describe('Alert Common', () => {
+    before(() => {
+      cy.visit('tests/custom-elements/alert-toast.html');
+    });
+
+    it('Should change displayed title if attribute changes', () => {
+      cy.get('[data-cy="alert-toast-title-base-lg"]', { timeout: 5000 })
+        .scrollIntoView()
+        .as("alert")
+
+      cy.get('@alert')
+        .find(`.${ALERT_TITLE}`)
+        .as('title');
+
+      cy.get("@title")
+        .should('have.text', 'base');
+
+      cy.get('@alert')
+        .should('have.attr', 'title', 'base')
+        
+      cy.get("@alert")
+        .invoke('attr', 'title', 'my new title')
+        .should('have.attr', 'title', 'my new title');
+
+      cy.get('@title')
+        .should('have.text', 'my new title');
     });
   });
 });
