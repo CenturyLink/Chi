@@ -18,7 +18,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-toast-titled-${size}`)
     each val, type in {base: 'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
-        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, class=type, icon=val, title=type)
+        chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, class=type, icon=val, title=type, data-cy=`alert-toast-title-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
       else
         chi-alert.-m--2(type='toast', size=`${size === 'default' ? '' : size}`, color=type, icon=val, title=type)
