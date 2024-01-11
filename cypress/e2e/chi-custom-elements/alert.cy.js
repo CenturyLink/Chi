@@ -1,3 +1,5 @@
+const ALERT_TITLE = 'chi-alert__title';
+
 describe('Alert', () => {
   const alertBannerSelectors = [
     'alert-banner-success-default',
@@ -144,13 +146,13 @@ describe('Alert', () => {
       cy.visit('tests/custom-elements/alert-toast.html');
     });
 
-    it('should change displayed title if attribute changes', () => {
+    it('Should change displayed title if attribute changes', () => {
       cy.get('[data-cy="alert-toast-title-base-lg"]', { timeout: 5000 })
         .scrollIntoView()
         .as("alert")
 
       cy.get('@alert')
-        .find('.chi-alert__title')
+        .find(`.${ALERT_TITLE}`)
         .as('title');
 
       cy.get("@title")
