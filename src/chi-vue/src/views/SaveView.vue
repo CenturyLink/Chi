@@ -135,7 +135,7 @@ const toggleSaveButton = () => {
 const setLabel = (label: SaveViewModes | undefined) => {
   if (!label) return;
 
-  return label.toUpperCase() + label.substring(1);
+  return label[0].toUpperCase() + label.substring(1);
 };
 
 const setSaveViewConfig = (config: SaveViewConfig): SaveViewConfig => {
