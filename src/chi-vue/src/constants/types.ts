@@ -233,20 +233,19 @@ export interface SaveViewSave {
 
 //#region Transfer List
 export interface TransferList {
-  transferListData: TransferListItem[];
   config: TransferListConfig;
+  transferListData: TransferListItem[];
 }
 
 export interface TransferListItem {
-  value: string;
   label: string;
-  selected: boolean;
   locked?: boolean;
+  selected: boolean;
+  value: string;
   wildcard?: boolean;
 }
 
 interface TransferListConfig {
-  searchInput?: boolean;
   checkbox?: boolean;
   columns: {
     from: {
@@ -258,6 +257,7 @@ interface TransferListConfig {
       description: string;
     };
   };
+  searchInput?: boolean;
 }
 
 export interface TransferListColumnItemsActive {
@@ -266,13 +266,12 @@ export interface TransferListColumnItemsActive {
 }
 
 export interface TransferListActions {
-  transferList: Ref<TransferListItem[]>;
   selectedItems: Ref<TransferListColumnItemsActive>;
-  onUpdateTransferList: (list: TransferListItem[]) => void;
-  onSelectItem: (list: TransferListColumnItemsActive) => void;
+  transferList: Ref<TransferListItem[]>;
   onClearSelection: () => void;
+  onSelectItem: (list: TransferListColumnItemsActive) => void;
+  onUpdateTransferList: (list: TransferListItem[]) => void;
 }
-
 //#endregion
 
 //#region Search Input

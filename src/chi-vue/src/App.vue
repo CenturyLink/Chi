@@ -1,8 +1,6 @@
 <template>
   <div class="-p--4">
     <h1>Chi Vue 3</h1>
-    <TransferListView />
-
     <DataTableClientView />
     <DataTableServerView />
     <ExpansionPanelView />
@@ -12,6 +10,7 @@
     <SearchInputView />
     <SaveViewView />
     <CheckboxView />
+    <TransferListView />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-  <div :class="[TRANSFER_LIST_CLASSES.COLUMN]">
-    <div :class="[TRANSFER_LIST_CLASSES.HEADER]">
-      <p :class="[TRANSFER_LIST_CLASSES.TITLE]">
+  <div :class="TRANSFER_LIST_CLASSES.COLUMN">
+    <div :class="TRANSFER_LIST_CLASSES.HEADER">
+      <p :class="TRANSFER_LIST_CLASSES.TITLE">
         {{ title }}
         <template v-if="description">
           <chi-button
@@ -17,6 +17,7 @@
           <chi-popover
             arrow
             variant="text"
+            position="right"
             :id="`transfer-list-popover-${id}`"
             :reference="`#transfer-list-info-popover-${id}`"
           >
@@ -24,11 +25,11 @@
           </chi-popover>
         </template>
       </p>
-      <div :class="[TRANSFER_LIST_CLASSES.HEADER_ACTIONS]">
+      <div :class="TRANSFER_LIST_CLASSES.HEADER_ACTIONS">
         <slot name="header-actions"></slot>
       </div>
     </div>
-    <div :class="[TRANSFER_LIST_CLASSES.SEARCH]">
+    <div :class="TRANSFER_LIST_CLASSES.SEARCH">
       <SearchInput placeholder="Filter" @chiInput="handleFilter" @chiClean="handleClearFilter" />
     </div>
     <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]" @change="handleSelectItem">
@@ -50,8 +51,9 @@
 import { ref, inject } from 'vue';
 import { uuid4 } from '@/utils/utils';
 import { TransferListItem, TransferListActions } from '@/constants/types';
+import { TRANSFER_LIST_CLASSES, SELECT_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
+import { CHI_VUE_KEYS } from '@/constants/constants';
 import SearchInput from '@/components/search-input/SearchInput';
-import { TRANSFER_LIST_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 
 const props = defineProps<{
   title: string;
@@ -64,8 +66,7 @@ const filter = ref<string>('');
 const column = props.type;
 const isToColumn = props.type === 'to';
 const id = uuid4();
-
-const { transferList, selectedItems, onSelectItem } = inject('transferList') as TransferListActions;
+const { transferList, selectedItems, onSelectItem } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
 const handleFilter = (value: string) => {
   filter.value = value;
@@ -104,7 +105,7 @@ const getMenuItemClasses = ({ locked }: TransferListItem) => {
 };
 
 const _getPaddingClass = () => {
-  return props.checkbox || isToColumn ? '-pl--4' : '';
+  return props.checkbox || isToColumn ? UTILITY_CLASSES.PADDING.LEFT[4] : '';
 };
 
 const _getCheckboxClass = () => {

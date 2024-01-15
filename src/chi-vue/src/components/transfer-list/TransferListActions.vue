@@ -1,12 +1,12 @@
 <template>
-  <div :class="[TRANSFER_LIST_CLASSES.ACTIONS]">
+  <div :class="TRANSFER_LIST_CLASSES.ACTIONS">
     <chi-button
+      v-for="action in getTransferListActions()"
       variant="flat"
       type="icon"
-      v-for="action in transferListActions()"
       :key="action.icon"
-      @click="action.event()"
       :disabled="action.disabled()"
+      @click="action.event()"
     >
       <chi-icon :icon="action.icon" />
     </chi-button>
@@ -18,34 +18,35 @@ import { inject } from 'vue';
 import { swapElementsInArray } from '@/utils/utils';
 import { TransferListItem, TransferListActions } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
+import { CHI_VUE_KEYS } from '@/constants/constants';
 
 const props = defineProps<{ move: 'transfer' | 'sort' }>();
 const { transferList, selectedItems, onUpdateTransferList, onClearSelection } = inject(
-  'transferList'
+  CHI_VUE_KEYS.TRANSFER_LIST
 ) as TransferListActions;
 
-const transferListActions = () => {
+const getTransferListActions = () => {
   const actions = {
     transfer: [
       {
         icon: 'arrow-right',
-        event: () => handleTransferAllFromColumn('from'),
-        disabled: () => getMappedCurrentList('from').length === 0,
+        event: () => handleTransferAll('from'),
+        disabled: () => getCurrentList('from').length === 0,
       },
       {
         icon: 'chevron-right',
-        event: () => handleTransferItemsFromColumn('from'),
+        event: () => handleTransferItems('from'),
         disabled: () => selectedItems.value.from.length === 0,
       },
       {
         icon: 'chevron-left',
-        event: () => handleTransferItemsFromColumn('to'),
+        event: () => handleTransferItems('to'),
         disabled: () => selectedItems.value.to.length === 0,
       },
       {
         icon: 'arrow-left',
-        event: () => handleTransferAllFromColumn('to'),
-        disabled: () => getMappedCurrentList('to').filter(({ locked }) => !locked).length === 0,
+        event: () => handleTransferAll('to'),
+        disabled: () => getCurrentList('to').filter(({ locked }) => !locked).length === 0,
       },
     ],
     sort: [
@@ -65,29 +66,25 @@ const transferListActions = () => {
   return actions[props.move];
 };
 
-const handleTransferItemsFromColumn = (direction: 'from' | 'to') => {
+const handleTransferItems = (direction: 'from' | 'to') => {
   const items = selectedItems.value[direction];
-
   const filteredList = transferList.value.filter(({ value }) => !items.includes(value));
-  const itemsToMove = getMappedCurrentList(direction)
+  const itemsToMove = getCurrentList(direction)
     .filter(({ value }) => items.includes(value))
     .map((item) => ({ ...item, selected: !item.selected }));
-
   const newList = [...filteredList, ...itemsToMove];
 
   onUpdateTransferList(newList);
   onClearSelection();
 };
 
-const handleTransferAllFromColumn = (direction: 'from' | 'to') => {
-  const currentColumn = getMappedCurrentList(direction);
-  const targetColumn = getMappedCurrentList(direction === 'from' ? 'to' : 'from');
-
-  const fixedItems = currentColumn.filter(({ locked }) => locked);
-  const itemsToMove = currentColumn.filter(({ locked }) => !locked);
-  const mappedItems = itemsToMove.map((item) => ({ ...item, selected: !item.selected }));
-
-  const newList = [...targetColumn, ...fixedItems, ...mappedItems];
+const handleTransferAll = (direction: 'from' | 'to') => {
+  const currentColumn = getCurrentList(direction);
+  const targetColumn = getCurrentList(direction === 'from' ? 'to' : 'from');
+  const lockedItems = currentColumn.filter(({ locked }) => locked);
+  const unlockedItems = currentColumn.filter(({ locked }) => !locked);
+  const mappedItems = unlockedItems.map((item) => ({ ...item, selected: !item.selected }));
+  const newList = [...targetColumn, ...lockedItems, ...mappedItems];
 
   onUpdateTransferList(newList);
   onClearSelection();
@@ -95,29 +92,26 @@ const handleTransferAllFromColumn = (direction: 'from' | 'to') => {
 
 const onSortItems = (direction: 'up' | 'down') => {
   const itemsToMove = selectedItems.value.to;
-
-  const sorted = updateListOnItemsSorted({ direction, items: itemsToMove });
-  const newList = [...getMappedCurrentList('from'), ...sorted.flat()];
+  const sorted = sortTransferList({ direction, items: itemsToMove });
+  const newList = [...getCurrentList('from'), ...sorted.flat()];
 
   onUpdateTransferList(newList);
 };
 
 const getItemStatus = (item: string, direction: 'up' | 'down') => {
-  const currItemIndex = getMappedCurrentList('to').findIndex(({ value }) => value === item);
-  const currItem = getMappedCurrentList('to')[currItemIndex] as TransferListItem;
-
+  const currItemIndex = getCurrentList('to').findIndex(({ value }) => value === item);
+  const currItem = getCurrentList('to')[currItemIndex] as TransferListItem;
   const nextItemIndex = direction === 'up' ? currItemIndex - 1 : currItemIndex + 1;
-  const nextItem = getMappedCurrentList('to')[nextItemIndex] as TransferListItem;
-
+  const nextItem = getCurrentList('to')[nextItemIndex] as TransferListItem;
   const isDisabled = !nextItem || (nextItem.locked && !currItem?.wildcard);
 
   return { currItemIndex, currItem, nextItemIndex, nextItem, isDisabled };
 };
 
-const updateListOnItemsSorted = ({ direction, items }): TransferListItem[] => {
-  const list = getMappedCurrentList('to');
+const sortTransferList = ({ direction, items }): TransferListItem[] => {
+  const list = getCurrentList('to');
 
-  items.forEach((item) => {
+  items.forEach((item: string) => {
     const { currItemIndex, nextItemIndex, isDisabled } = getItemStatus(item, direction);
 
     if (!isDisabled) {
@@ -132,10 +126,10 @@ const isSortButtonDisabled = (direction: 'up' | 'down') => {
   const selectedItem = selectedItems.value.to[0];
   const { isDisabled } = getItemStatus(selectedItem, direction);
 
-  return !selectedItem ? true : isDisabled;
+  return selectedItem ? isDisabled : true;
 };
 
-function getMappedCurrentList(column: 'from' | 'to' = 'from') {
+function getCurrentList(column: 'from' | 'to' = 'from') {
   return transferList.value.filter(({ selected }) => (column === 'to' ? selected : !selected));
 }
 </script>
