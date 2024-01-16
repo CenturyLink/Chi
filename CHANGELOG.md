@@ -1,4 +1,13 @@
 # CHANGELOG
+## 5.45.0 (January 16, 2024)
+### Components
+#### Added
+* Added: Reusable `mutationObserver` functionality.
+* Added: Alert web component now supports `mutationObserver` functionality.
+### Documentation
+#### Fixed
+* Fixed: Data table and toolbar Vue examples.
+
 ## 5.44.0 (January 2, 2024)
 ### Components
 #### Added
