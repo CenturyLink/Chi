@@ -29,7 +29,7 @@ gulp.task('update:boilerplate:assets', function(done) {
 
   function updateIndexFile(path) {
     gulp.src(`${path}/index.html`)
-      .pipe(replace(/<link rel="stylesheet" href="https:\/\/assets\.ctl\.io\/chi.*\/chi.css.*>/g,
+      .pipe(replace(/<link rel="stylesheet" href="https:\/\/lib.lumen.com\/chi.*\/chi.css.*>/g,
         newCSS))
       .pipe(replace(/<script src="https:\/\/lib.lumen.com\/chi\/.*\/chi.js.*><\/script>/g,
         newJS))
