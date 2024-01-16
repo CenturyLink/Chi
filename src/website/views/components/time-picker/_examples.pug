@@ -59,6 +59,42 @@ h3 Value option
       <chi-time-picker id="unique-id-va1" value="09:00"></chi-time-picker>
   #html-min-max-value.chi-tabs-panel
 
+h3 Seconds
+.example.-mb--3
+  .-p--3
+    div.chi-form__item(style="max-width: 14rem;")
+      chi-label(for="time-picker-seconds") Label
+      chi-time-picker(id="time-picker-seconds", display-seconds)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-seconds
+      li.-active
+        a(href=`#webcomponent-seconds`) Web Component
+      li.-disabled
+        a(href=`#html-seconds`) HTML Blueprint
+  #webcomponent-seconds.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="time-picker-seconds">Label</chi-label>
+      <chi-time-picker id="time-picker-seconds" display-seconds></chi-time-picker>
+  #html-seconds.chi-tabs-panel
+
+h3 24-hour format
+.example.-mb--3
+  .-p--3
+    div.chi-form__item(style="max-width: 14rem;")
+      chi-label(for="time-picker-24hour") Label
+      chi-time-picker(id="time-picker-24hour", format="24hr")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-24hour-format
+      li.-active
+        a(href=`#webcomponent-24hour-format`) Web Component
+      li.-disabled
+        a(href=`#html-24hour-format`) HTML Blueprint
+  #webcomponent-24hour-format.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="time-picker-24hour">Label</chi-label>
+      <chi-time-picker id="time-picker-24hour" format="24hr"></chi-time-picker>
+  #html-24hour-format.chi-tabs-panel
+
 //h3 Excluded hours, minutes and seconds
 //p.-text
 //  | Specify which times to exclude by using the <code>excluded-hours</code> attribute to exclude hours, <code>excluded-minutes</code> to exclude minutes, and <code>excluded-seconds</code> to exclude seconds.
