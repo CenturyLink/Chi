@@ -38,8 +38,9 @@ export const EPANEL = {
 };
 //#endregion
 
-//#region Toolbar keys
-export const TOOLBAR_KEYS = {
-  SEARCH_INPUT: Symbol('chi-toolbar-search'),
-};
+//#region Chi Vue keys
+export const CHI_VUE_KEYS = {
+  TOOLBAR_SEARCH_INPUT: Symbol('chi-toolbar-search'),
+  TRANSFER_LIST: Symbol('chi-transfer-List'),
+}
 //#endregion
