@@ -113,3 +113,11 @@ export const SAVE_VIEW_EVENTS = {
   DEFAULT: 'chiSaveViewDefault',
 };
 //#endregion
+
+//#region Transfer List
+export const TRANSFER_LIST_EVENTS = {
+  SAVE: 'chiTransferListSave',
+  CHANGE: 'chiTransferListChange',
+  RESET: 'chiTransferListReset',
+};
+//#endregion
