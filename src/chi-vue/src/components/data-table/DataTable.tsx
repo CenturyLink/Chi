@@ -1,4 +1,4 @@
-import { Emit, Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Provide, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -36,16 +36,17 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
   DataTableColumn,
+  ToolbarRef,
 } from '@/constants/types';
 import {
   DATA_TABLE_NO_FILTERS_MESSAGE,
   DATA_TABLE_NO_RESULTS_MESSAGE,
   DATA_TABLE_SORT_ICONS,
   SCREEN_BREAKPOINTS,
+  TOOLBAR_KEYS,
 } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
@@ -59,8 +60,8 @@ import { Component, Vue } from '@/build/vue-wrapper';
 import { Transition } from 'vue';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
 import DataTableActions from './DatatableActions';
-import EventBus from '@/utils/EventBus';
 import { JSX } from 'vue/jsx-runtime';
+import { Compare } from '@/utils/Compare';
 
 declare const chi: any;
 
@@ -72,6 +73,9 @@ export default class DataTable extends Vue {
 
   @Prop() dataTableData!: DataTableData;
   @Prop() config!: DataTableConfig;
+
+  @Provide({ to: TOOLBAR_KEYS.SEARCH_INPUT })
+  toolbarSearch: ToolbarRef = {};
 
   @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
   _emitEmptyActionableLink() {
@@ -203,7 +207,6 @@ export default class DataTable extends Vue {
   _expandable!: boolean;
   _resizeTimer?: any;
   _sortConfig?: DataTableSortConfig;
-  _toolbarComponent?: DataTableToolbar;
   _bulkActionsComponent?: DataTableBulkActions;
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
@@ -361,12 +364,12 @@ export default class DataTable extends Vue {
             <i
               class={`
                 ${ICON_CLASS} -xs ${
-                this._sortConfig &&
-                (this._sortConfig.key === this.dataTableData.head[columnIndex].sortBy ||
-                  this._sortConfig.key === columnIndex)
-                  ? DATA_TABLE_SORT_ICONS.ARROW
-                  : DATA_TABLE_SORT_ICONS.SORT
-              }`}
+                  this._sortConfig &&
+                  (this._sortConfig.key === this.dataTableData.head[columnIndex].sortBy ||
+                    this._sortConfig.key === columnIndex)
+                    ? DATA_TABLE_SORT_ICONS.ARROW
+                    : DATA_TABLE_SORT_ICONS.SORT
+                }`}
               style={`${
                 this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
               }`}
@@ -455,6 +458,8 @@ export default class DataTable extends Vue {
     if (slot) {
       return <div>{slot({})}</div>;
     }
+
+    this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
     return null;
   }
 
@@ -887,12 +892,11 @@ export default class DataTable extends Vue {
       return;
     }
 
-    const checkboxId =
-      rowData && typeof rowData === 'object' && rowData.rowNumber
-        ? `checkbox-select-${rowData?.rowId}`
-        : selectAll
-        ? `checkbox-${this._dataTableId}-select-all-rows`
-        : '';
+    const checkboxIds = {
+      object: rowData?.rowNumber ? `checkbox-select-${rowData.rowId}` : '',
+      boolean: selectAll ? `checkbox-${this._dataTableId}-select-all-rows` : '',
+    };
+    const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
 
@@ -1272,17 +1276,8 @@ export default class DataTable extends Vue {
     );
   }
 
-  _addToolbarSearchEventListener() {
-    if (!this._toolbarComponent) {
-      this.emptyMessage =
-        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
-      return;
-    }
-
-    EventBus.on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
-      this.emptyMessage =
-        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
-    });
+  setEmptyMessage() {
+    this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
   }
 
   _handleChiPageSizeChange(ev) {
@@ -1533,8 +1528,13 @@ export default class DataTable extends Vue {
     }
   }
 
+  _initProvides(): void {
+    this.toolbarSearch.callback = this.setEmptyMessage.bind(this);
+  }
+
   beforeMount() {
     this._initDataFromConfig();
+    this._initProvides();
     this.detectScreenBreakpoint();
   }
 
@@ -1656,7 +1656,6 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(data);
 
     this._initializeSelectAllDropdown();
-    this._addToolbarSearchEventListener();
     window.addEventListener('resize', this.resizeHandler);
   }
 
@@ -1907,12 +1906,12 @@ export default class DataTable extends Vue {
 
   _printBody() {
     if (this.dataTableData.body.length > 0) {
-      const bodyRows =
-        this.showSelectedOnlyRowsData?.length > 0
-          ? this.showSelectedOnlyRowsData
-          : this.sortedData && this.sortedData.length > 0
-          ? this.sortedData
-          : this.serializedDataBody;
+      const bodyRowsMappings = {
+        selected: !Compare.isEmptyArray(this.showSelectedOnlyRowsData) ? this.showSelectedOnlyRowsData : null,
+        sorted: !Compare.isEmptyArray(this.sortedData) ? this.sortedData : null,
+        default: this.serializedDataBody ?? [],
+      };
+      const bodyRows = bodyRowsMappings['selected'] || bodyRowsMappings['sorted'] || bodyRowsMappings['default'];
 
       return (
         <tbody>

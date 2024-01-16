@@ -20,13 +20,11 @@ import {
 } from '@/constants/classes';
 import { getElementFilterData } from './FilterUtils';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
 import { useFilterStore } from '@/store';
 import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
-import EventBus from '@/utils/EventBus';
 import { Compare } from '@/utils/Compare';
 import { JSX } from 'vue/jsx-runtime';
 
@@ -46,8 +44,6 @@ export default class DataTableFilters extends Vue {
 
   @Emit(DATA_TABLE_EVENTS.FILTERS_CHANGE)
   _emitFiltersChanged() {
-    EventBus.emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
-
     return this._getUpdatedFiltersObject();
   }
 
@@ -260,23 +256,18 @@ export default class DataTableFilters extends Vue {
       : {};
   }
 
-  mounted() {
-    const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
-
-    if (dataTableToolbarComponent) {
-      (dataTableToolbarComponent as DataTableToolbar)._filters = this;
-    }
-  }
-
   getCustomItemsSlots() {
-    return this.customItems?.reduce((accumulator, currentValue) => {
-      if (this.$slots[currentValue.template]) {
-        return {
-          ...accumulator,
-          [currentValue.template]: this.$slots[currentValue.template],
-        };
-      }
-    }, {} as { [key: string]: any } | undefined);
+    return this.customItems?.reduce(
+      (accumulator, currentValue) => {
+        if (this.$slots[currentValue.template]) {
+          return {
+            ...accumulator,
+            [currentValue.template]: this.$slots[currentValue.template],
+          };
+        }
+      },
+      {} as { [key: string]: any } | undefined
+    );
   }
 
   _advancedFiltersPopOver() {
@@ -332,27 +323,14 @@ export default class DataTableFilters extends Vue {
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
     this.filtersData.filters.forEach((filter: DataTableFilter) => {
-      const filterElement =
-        filter.type === 'select'
-          ? this._createSelectFilter(filter)
-          : filter.type === 'input'
-          ? this._createInputFilter(filter)
-          : filter.type === 'checkbox'
-          ? this._createCheckboxFilter(filter)
-          : filter.type === 'textarea'
-          ? this._createTextareaFilter(filter)
-          : null;
-
-      const filterElementMobile =
-        filter.type === 'select'
-          ? this._createSelectFilter(filter, true)
-          : filter.type === 'input'
-          ? this._createInputFilter(filter, true)
-          : filter.type === 'checkbox'
-          ? this._createCheckboxFilter(filter, true)
-          : filter.type === 'textarea'
-          ? this._createTextareaFilter(filter, true)
-          : null;
+      const filterTypes = {
+        select: this._createSelectFilter,
+        input: this._createInputFilter,
+        checkbox: this._createCheckboxFilter,
+        textarea: this._createTextareaFilter,
+      };
+      const filterElement = filterTypes[filter.type] ? filterTypes[filter.type](filter) : null;
+      const filterElementMobile = filterTypes[filter.type] ? filterTypes[filter.type](filter, true) : null;
 
       if (filterElement && filterElementMobile) {
         if (!filter.advanced) {
