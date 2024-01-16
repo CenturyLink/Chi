@@ -255,16 +255,13 @@ export default class AdvancedFilters extends Vue {
 
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
-        const filterElement =
-          filter.type === 'select'
-            ? this._createSelectFilter(filter)
-            : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-            ? this._createCheckboxFilter(filter)
-            : filter.type === 'textarea'
-            ? this._createTextareaFilter(filter)
-            : null;
+        const filterTypes = {
+          select: this._createSelectFilter,
+          input: this._createInputFilter,
+          checkbox: this._createCheckboxFilter,
+          textarea: this._createTextareaFilter,
+        };
+        const filterElement = filterTypes[filter.type] ? filterTypes[filter.type](filter) : null;
 
         if (filterElement) {
           const accordionItem = (

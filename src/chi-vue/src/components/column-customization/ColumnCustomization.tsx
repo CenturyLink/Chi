@@ -11,13 +11,11 @@ import {
   MODAL_CLASSES,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
 import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '@/components/tooltip/tooltip';
-import EventBus from '@/utils/EventBus';
 
 declare const chi: any;
 
@@ -40,8 +38,6 @@ export default class ColumnCustomization extends Vue {
 
   @Emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE)
   _emitColumnsChange() {
-    EventBus.emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
-
     return this._selectedData;
   }
 
@@ -189,12 +185,7 @@ export default class ColumnCustomization extends Vue {
   }
 
   mounted() {
-    const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
     const modalButton = this.$refs.modalButton;
-
-    if (dataTableToolbarComponent) {
-      (dataTableToolbarComponent as DataTableToolbar)._columns = this;
-    }
 
     this._chiModal = chi.modal(modalButton);
   }

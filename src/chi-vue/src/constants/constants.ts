@@ -37,3 +37,9 @@ export const EPANEL = {
   DEFAULT_TOOLTIP_CONTENT: 'Done',
 };
 //#endregion
+
+//#region Toolbar keys
+export const TOOLBAR_KEYS = {
+  SEARCH_INPUT: Symbol('chi-toolbar-search'),
+};
+//#endregion

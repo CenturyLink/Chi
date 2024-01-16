@@ -8,22 +8,22 @@
     ref="dataTableClient"
     :dataTableData="table"
     :config="config"
-    @chiSelectedRowsChange="(e) => chiSelectedRowsChange(e)"
-    @chiPageChange="(e) => chiPageChange(e)"
-    @chiPageSizeChange="(e) => chiPageSizeChange(e)"
-    @chiDataSorting="(e) => chiDataSorting(e)"
-    @chiRowExpanded="(e) => chiRowExpanded(e)"
-    @chiRowCollapsed="(e) => chiRowCollapsed(e)"
-    @chiRowSelected="(e) => chiRowSelected(e)"
-    @chiRowDeselected="(e) => chiRowDeselected(e)"
-    @chiSelectAll="(e) => chiSelectAll(e)"
-    @chiSelectThisPage="(e) => chiSelectThisPage(e)"
-    @chiSelectAllPages="(e) => chiSelectAllPages(e)"
-    @chiDeselectAll="(e) => chiDeselectAll(e)"
-    @chiDeselectThisPage="(e) => chiDeselectThisPage(e)"
-    @chiDeselectAllPages="(e) => chiDeselectAllPages(e)"
-    @chiExpandAll="(e) => chiExpandAll(e)"
-    @chiCollapseAll="(e) => chiCollapseAll(e)"
+    @chiSelectedRowsChange="chiSelectedRowsChange"
+    @chiPageChange="chiPageChange"
+    @chiPageSizeChange="chiPageSizeChange"
+    @chiDataSorting="chiDataSorting"
+    @chiRowExpanded="chiRowExpanded"
+    @chiRowCollapsed="chiRowCollapsed"
+    @chiRowSelected="chiRowSelected"
+    @chiRowDeselected="chiRowDeselected"
+    @chiSelectAll="chiSelectAll"
+    @chiSelectThisPage="chiSelectThisPage"
+    @chiSelectAllPages="chiSelectAllPages"
+    @chiDeselectAll="chiDeselectAll"
+    @chiDeselectThisPage="chiDeselectThisPage"
+    @chiDeselectAllPages="chiDeselectAllPages"
+    @chiExpandAll="chiExpandAll"
+    @chiCollapseAll="chiCollapseAll"
     @chiEmptyActionableLink="() => chiEmptyActionableLink()"
   >
     <template v-slot:alertsDesc="payload">
@@ -57,13 +57,7 @@
       {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
     </template>
     <template v-slot:toolbar>
-      <DataTableToolbar
-        @chiToolbarFiltersChange="(e) => chiToolbarFiltersChange(e)"
-        @chiToolbarSearch="(e) => chiToolbarSearch(e)"
-        @chiToolbarColumnsChange="(e) => chiToolbarColumnsChange(e)"
-        @chiToolbarColumnsReset="(e) => chiToolbarColumnsReset(e)"
-        @chiToolbarViewsChange="(e) => chiToolbarViewsChange(e)"
-      >
+      <DataTableToolbar>
         <template v-slot:start>
           <SearchInput :portal="true" :dataTableSearch="true" />
           <div class="chi-divider -vertical"></div>
@@ -73,13 +67,13 @@
             <template v-slot:customAdvanced>
               <div class="chi-form__item">
                 <chi-label for="input-1">City</chi-label>
-                <chi-text-input id="input-1" @chiChange="(e) => chiChangeInputOne(e)"></chi-text-input>
+                <chi-text-input id="input-1" @chiChange="chiChangeInputOne"></chi-text-input>
                 <chi-label for="input-2">Zip Code</chi-label>
-                <chi-text-input id="input-2" @chiChange="(e) => chiChangeInputTwo(e)"></chi-text-input>
+                <chi-text-input id="input-2" @chiChange="chiChangeInputTwo"></chi-text-input>
               </div>
             </template>
             <template v-slot:customAdvanced2>
-              <chi-date-picker @chiDateChange="(e) => chiDateChange(e)" />
+              <chi-date-picker @chiDateChange="chiDateChange" />
             </template>
             <template v-slot:customAdvanced3>
               <chi-time-picker />
@@ -96,10 +90,7 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <ColumnCustomization
-              @chiColumnsReset="(e) => chiToolbarColumnsReset(e)"
-              :columnsData="toolbar.columnsData"
-            />
+            <ColumnCustomization :columnsData="toolbar.columnsData" />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -200,7 +191,7 @@
 import { ref } from 'vue';
 import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
-import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
+import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
@@ -252,24 +243,8 @@ const changeEmptyActionable = (state: boolean) => {
   };
 };
 
-const chiToolbarColumnsChange = (e) => {
-  console.log('chiToolbarColumnsChange', e);
-};
-
-const chiToolbarColumnsReset = (e) => {
-  console.log('chiToolbarColumnsReset', e);
-};
-
-const chiColumnsReset = (e) => {
-  console.log('chiColumnsReset', e);
-};
-
 const chiSelectedRowsChange = (e) => {
   console.log('chiSelectedRowsChange', e);
-};
-
-const chiShowSelectedRowsOnly = (e) => {
-  console.log('chiColumnsReset', e);
 };
 
 const chiDeselectAll = (e) => {
@@ -306,18 +281,6 @@ const chiPageSizeChange = (e) => {
 
 const chiDataSorting = (e) => {
   console.log('chiDataSorting', e);
-};
-
-const chiToolbarSearch = (e) => {
-  console.log('chiToolbarSearch', e);
-};
-
-const chiToolbarFiltersChange = (e) => {
-  console.log('chiToolbarFiltersChange', e);
-};
-
-const chiToolbarViewsChange = (e) => {
-  console.log('chiToolbarViewsChange', e);
 };
 
 const chiRowExpanded = (e) => {

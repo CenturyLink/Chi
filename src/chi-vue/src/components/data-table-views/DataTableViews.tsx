@@ -2,10 +2,7 @@ import { Emit, Prop, Watch } from 'vue-property-decorator';
 import { DataTableView } from '@/constants/types';
 import { DATA_TABLE_CLASSES, FORM_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import { findComponent } from '@/utils/utils';
-import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
-import EventBus from '@/utils/EventBus';
 import { Compare } from '@/utils/Compare';
 
 @Component({})
@@ -18,8 +15,6 @@ export default class DataTableViews extends Vue {
 
   @Emit(DATA_TABLE_EVENTS.VIEWS_CHANGE)
   _emitViewsChanged(view: DataTableView | undefined) {
-    EventBus.emit(DATA_TABLE_EVENTS.VIEWS_CHANGE, view);
-
     return view;
   }
 
@@ -32,14 +27,6 @@ export default class DataTableViews extends Vue {
 
   beforeMount(): void {
     this.newSelectedView = this.selectedView || this.defaultView || '';
-  }
-
-  mounted(): void {
-    const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
-
-    if (dataTableToolbarComponent) {
-      (dataTableToolbarComponent as DataTableToolbar)._views = this;
-    }
   }
 
   _handleViewsChange(ev: Event): void {
