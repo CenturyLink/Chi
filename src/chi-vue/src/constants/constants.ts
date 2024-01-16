@@ -42,5 +42,5 @@ export const EPANEL = {
 export const CHI_VUE_KEYS = {
   TOOLBAR_SEARCH_INPUT: Symbol('chi-toolbar-search'),
   TRANSFER_LIST: Symbol('chi-transfer-List'),
-}
+};
 //#endregion
