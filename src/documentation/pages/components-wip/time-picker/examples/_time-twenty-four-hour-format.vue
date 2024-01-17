@@ -29,7 +29,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-time format='24hr'></chi-time>`,
+        webcomponent: `<chi-time format="24hr"></chi-time>`,
         htmlblueprint: ``
       }
     };
