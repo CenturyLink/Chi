@@ -35,5 +35,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Step extends Vue {}
+export default class TimeStep extends Vue {}
 </script>

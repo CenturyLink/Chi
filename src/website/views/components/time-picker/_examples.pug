@@ -4,20 +4,20 @@ h3 Base
 p.-text
 .example.-mb--3
   .-p--3
-    div.chi-form__item(style="max-width: 14rem;")
-      chi-label(for="time-picker-base") Label
-      chi-time-picker(id="time-picker-base")
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__base") Label
+      chi-time-picker(id="example__base")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-with-label
+    ul.chi-tabs#example-base
       li.-active
-        a(href=`#webcomponent-with-label`) Web Component
+        a(href=`#webcomponent-base`) Web Component
       li.-disabled
-        a(href=`#html-with-label`) HTML Blueprint
-  #webcomponent-with-label.chi-tabs-panel.-active
+        a(href=`#html-base`) HTML Blueprint
+  #webcomponent-base.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
-      <chi-label for="time-picker-base">Label</chi-label>
-      <chi-time-picker id="time-picker-base"></chi-time-picker>
-  #html-with-label.chi-tabs-panel
+      <chi-label for="example__base">Label</chi-label>
+      <chi-time-picker id="example__base"></chi-time-picker>
+  #html-base.chi-tabs-panel
 
 h3 Disabled
 p.-text
@@ -26,9 +26,9 @@ p.-text
   | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3(style="z-index: 1;")
   .-p--3
-    div.chi-form__item(style="max-width: 14rem;")
-      chi-label(for="time-picker-disabled") Label
-      chi-time-picker(id="time-picker-disabled" disabled)
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__disabled") Label
+      chi-time-picker(id="example__disabled" disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-active
@@ -37,34 +37,70 @@ p.-text
         a(href=`#html-disabled`) HTML Blueprint
   #webcomponent-disabled.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for="time-picker-disabled">Label</chi-label>
-      <chi-time-picker id="time-picker-disabled" disabled></chi-time-picker>
+      <chi-label for="example__disabled">Label</chi-label>
+      <chi-time-picker id="example__disabled" disabled></chi-time-picker>
   #html-disabled.chi-tabs-panel
 
 h3 Value option
 .example.-mb--3
   .-p--3
-    div.chi-form__item(style="max-width: 14rem;")
-      chi-label(for='unique-id-va1') Time
-      chi-time-picker#unique-id-va1(value='09:00')
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__value-option") Label
+      chi-time-picker(id="example__value-option" value="09:00")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-min-max-value
+    ul.chi-tabs#example-value-option
       li.-active
-        a(href=`#webcomponent-min-max-value`) Web Component
+        a(href=`#webcomponent-value-option`) Web Component
       li.-disabled
-        a(href=`#html-min-max-value`) HTML Blueprint
-  #webcomponent-min-max-value.chi-tabs-panel.-active
+        a(href=`#html-value-option`) HTML Blueprint
+  #webcomponent-value-option.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-label for="unique-id-va1">Time</chi-label>
-      <chi-time-picker id="unique-id-va1" value="09:00"></chi-time-picker>
-  #html-min-max-value.chi-tabs-panel
+      <chi-label for="example__value-option">Label</chi-label>
+      <chi-time-picker id="example__value-option" value="09:00"></chi-time-picker>
+  #html-value-option.chi-tabs-panel
+
+h3 Seconds
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__seconds") Label
+      chi-time-picker(id="example__seconds", display-seconds)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-seconds
+      li.-active
+        a(href=`#webcomponent-seconds`) Web Component
+      li.-disabled
+        a(href=`#html-seconds`) HTML Blueprint
+  #webcomponent-seconds.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="example__seconds">Label</chi-label>
+      <chi-time-picker id="example__seconds" display-seconds></chi-time-picker>
+  #html-seconds.chi-tabs-panel
+
+h3 24-hour format
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__24hour-format") Label
+      chi-time-picker(id="example__24hour-format", format="24hr")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-24hour-format
+      li.-active
+        a(href=`#webcomponent-24hour-format`) Web Component
+      li.-disabled
+        a(href=`#html-24hour-format`) HTML Blueprint
+  #webcomponent-24hour-format.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="example__24hour-format">Label</chi-label>
+      <chi-time-picker id="example__24hour-format" format="24hr"></chi-time-picker>
+  #html-24hour-format.chi-tabs-panel
 
 //h3 Excluded hours, minutes and seconds
 //p.-text
 //  | Specify which times to exclude by using the <code>excluded-hours</code> attribute to exclude hours, <code>excluded-minutes</code> to exclude minutes, and <code>excluded-seconds</code> to exclude seconds.
 //.example.-mb--3
 //  .-p--3
-//    div.chi-form__item(style="max-width: 14rem;")
+//    .chi-form__item(style="max-width: 14rem;")
 //      chi-label(for="time-picker-excluded") Label
 //      chi-time-picker(id="time-picker-excluded", excluded-hours="14, 15", excluded-minutes="00, 01, 02, 03, 04, 05", excluded-seconds="00, 01, 02, 03, 04, 05", display-seconds)
 //  .example-tabs.-pl--2
@@ -87,75 +123,75 @@ h4 Base
   .-p--3
     chi-time
   .example-tabs.-pl--2
-    ul.chi-tabs#example-time
+    ul.chi-tabs#example-time-base
       li.-active
-        a(href=`#webcomponent-time`) Web Component
+        a(href=`#webcomponent-time-base`) Web Component
       li.-disabled
-        a(href=`#html-time`) HTML Blueprint
-  #webcomponent-time.chi-tabs-panel.-active
+        a(href=`#html-time-base`) HTML Blueprint
+  #webcomponent-time-base.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time></chi-time>
-  #html-time.chi-tabs-panel
+  #html-time-base.chi-tabs-panel
 
 h4 Active
 .example.-mb--3
   .-p--3
     chi-time(value="14:00")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-active
+    ul.chi-tabs#example-time-active
       li.-active
-        a(href=`#webcomponent-active`) Web Component
+        a(href=`#webcomponent-time-active`) Web Component
       li.-disabled
-        a(href=`#html-active`) HTML Blueprint
-  #webcomponent-active.chi-tabs-panel.-active
+        a(href=`#html-time-active`) HTML Blueprint
+  #webcomponent-time-active.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time value="14:00"></chi-time>
-  #html-active.chi-tabs-panel
+  #html-time-active.chi-tabs-panel
 
 h4 Seconds
 .example.-mb--3
   .-p--3
     chi-time(display-seconds)
   .example-tabs.-pl--2
-    ul.chi-tabs#example-seconds
+    ul.chi-tabs#example-time-seconds
       li.-active
-        a(href=`#webcomponent-seconds`) Web Component
+        a(href=`#webcomponent-time-seconds`) Web Component
       li.-disabled
-        a(href=`#html-seconds`) HTML Blueprint
-  #webcomponent-seconds.chi-tabs-panel.-active
+        a(href=`#html-time-seconds`) HTML Blueprint
+  #webcomponent-time-seconds.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time display-seconds></chi-time>
-  #html-seconds.chi-tabs-panel
+  #html-time-seconds.chi-tabs-panel
 
 h4 24-hour format
 .example.-mb--3
   .-p--3
-    chi-time(format='24hr')
+    chi-time(format="24hr")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-24hour
+    ul.chi-tabs#example-time-24hour
       li.-active
-        a(href=`#webcomponent-24hour`) Web Component
+        a(href=`#webcomponent-time-24hour`) Web Component
       li.-disabled
-        a(href=`#html-24hour`) HTML Blueprint
-  #webcomponent-24hour.chi-tabs-panel.-active
+        a(href=`#html-time-24hour`) HTML Blueprint
+  #webcomponent-time-24hour.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time format='24hr'></chi-time>
-  #html-24hour.chi-tabs-panel
+      <chi-time format="24hr"></chi-time>
+  #html-time-24hour.chi-tabs-panel
 
 h4 Step
 .example.-mb--3
   .-p--3
     chi-time(stepped, display-seconds)
   .example-tabs.-pl--2
-    ul.chi-tabs#example-step
+    ul.chi-tabs#example-time-step
       li.-active
-        a(href=`#webcomponent-step`) Web Component
+        a(href=`#webcomponent-time-step`) Web Component
       li.-disabled
-        a(href=`#html-step`) HTML Blueprint
-  #webcomponent-step.chi-tabs-panel.-active
+        a(href=`#html-time-step`) HTML Blueprint
+  #webcomponent-time-step.chi-tabs-panel.-active
     :code(lang="html")
       <chi-time stepped display-seconds></chi-time>
-  #html-step.chi-tabs-panel
+  #html-time-step.chi-tabs-panel
 
 script.
   document.addEventListener(

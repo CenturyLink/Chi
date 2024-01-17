@@ -35,5 +35,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Active extends Vue {}
+export default class TimeActive extends Vue {}
 </script>
