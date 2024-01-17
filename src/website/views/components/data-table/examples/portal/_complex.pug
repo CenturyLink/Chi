@@ -901,7 +901,7 @@ script.
     popoverAnimationTimeout: null,
     mounted() {
       const buttonOpenOnHover = document.getElementById(
-        `name-popover-button-${this.id}`
+        `portal-name-popover-button${this.id}`
       );
       const popover = window.chi.popover(buttonOpenOnHover);
       let hoverAnimationTimeout;
@@ -927,8 +927,8 @@ script.
       }
     },
     template: `<div class="-text--truncate">
-        <a :id="'name-popover-button-'+this.id" href="#" :data-target="'#name-popover-'+this.id" position="top-start">{{ this.name }}</a>
-        <section class="chi-popover" :id="'name-popover-'+this.id" aria-modal="true" role="dialog" aria-label={this.name}>
+        <a :id="'portal-name-popover-button'+this.id" href="#" :data-target="'#portal-name-popover-'+this.id" position="top-start">{{ this.name }}</a>
+        <section class="chi-popover" :id="'portal-name-popover-'+this.id" aria-modal="true" role="dialog" aria-label={this.name}>
           <div class="chi-popover__content">
             {{ this.name }}
           </div>
