@@ -105,6 +105,8 @@
   <div class="-p--3">
     <h3>Date picker</h3>
     <chi-date-picker></chi-date-picker>
+    <chi-date-picker mode="datetime" value="01/04/2023, 09:43"></chi-date-picker>
+    <chi-date-picker mode="datetime" value="01/04/2023, 09:43" minutes-step="15"></chi-date-picker>
   </div>
 
   <div class="-p--3">
@@ -251,7 +253,7 @@
 
   <div class="-p--3">
     <h3>Time Picker</h3>
-    <chi-time-picker></chi-time-picker>
+    <chi-time-picker id="time-picker-steps" display-seconds minutes-step="15" seconds-step value="09:08:30"></chi-time-picker>
   </div>
 
   <div class="-p--3">
@@ -264,6 +266,7 @@
 
 <script>
   // Drawer
+  document.addEventListener('chiTimeChange', ev => console.log(ev))
   document.getElementById('drawer-trigger').addEventListener('click', function(){
     document.getElementById('interactive-drawer').toggle();
   });

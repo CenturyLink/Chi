@@ -1,0 +1,64 @@
+---
+title: Chi time
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+
+.test-base
+  span.-text--h2 Chi time base
+  chi-time(data-cy="chi-time-base")
+
+.test-active-with-value
+  span.-text--h2 Chi time active with seconds and value
+  chi-time(data-cy="chi-time-active" display-seconds value="09:32:43")
+
+.test-stepped
+  span.-text--h2 Chi time stepped
+  chi-time(data-cy="chi-time-stepped" stepped display-seconds)
+
+.test-steps-without-value
+  span.-text--h2 Chi time with default steps
+  chi-time(data-cy="chi-time-default-step" value="10:53:32" minutes-step seconds-step display-seconds)
+
+//- minutes steps
+.test-custom-steps-period-change
+  span.-text--h2 Chi time with 5 min step
+  chi-time(data-cy="chi-time-custom-steps-period-change" value="11:57:32" minutes-step="5" display-seconds)
+
+.test-custom-steps-10-min
+  span.-text--h2 Chi time with 10 min step
+  chi-time(data-cy="chi-time-custom-10-min-step" value="11:23:43" minutes-step="10" )
+
+.test-custom-steps-15-min
+  span.-text--h2 Chi time with 15 min step
+  chi-time(data-cy="chi-time-custom-15-min-step" value="11:23:43" minutes-step="15" )
+
+.test-custom-steps-20-min
+  span.-text--h2 Chi time with 20 min step
+  chi-time(data-cy="chi-time-custom-20-min-step" value="11:23:43" minutes-step="20" )
+
+.test-custom-steps-30-min
+  span.-text--h2 Chi time with 30 min step
+  chi-time(data-cy="chi-time-custom-30-min-step" value="11:23:43" minutes-step="30" )
+
+//- seconds steps
+.test-custom-steps-5-seconds
+  span.-text--h2 Chi time with 5 seconds step
+  chi-time(data-cy="chi-time-custom-5-seconds-step" value="11:23:43" display-seconds seconds-step="5" )
+
+.test-custom-steps-10-seconds
+  span.-text--h2 Chi time with 10 seconds step
+  chi-time(data-cy="chi-time-custom-10-seconds-step" value="11:23:43" display-seconds seconds-step="10" )
+
+.test-custom-steps-15-seconds
+  span.-text--h2 Chi time with 15 seconds step
+  chi-time(data-cy="chi-time-custom-15-seconds-step" value="11:23:43" display-seconds seconds-step="15" )
+
+.test-custom-steps-20-seconds
+  span.-text--h2 Chi time with 20 seconds step
+  chi-time(data-cy="chi-time-custom-20-seconds-step" value="11:23:43" display-seconds seconds-step="20" )
+
+.test-custom-steps-30-seconds
+  span.-text--h2 Chi time with 30 seconds step
+  chi-time(data-cy="chi-time-custom-30-seconds-step" value="11:23:43" display-seconds seconds-step="30" )
+
+
