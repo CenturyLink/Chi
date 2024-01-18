@@ -46,6 +46,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                   results?: <code>number</code>;
                 };
                 resultsPerPage?: <code>number</code>;
+                emptyActionable?: <code>DataTableEmptyActionableConfig</code>;
                 style: <code>DataTableStyleConfig</code>;
                 selectable?: <code>boolean | 'radio'</code>;
                 reserveExpansionSlot?: <code>boolean</code>;
@@ -122,7 +123,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 selected?: <code>boolean</code>;
                 selectionDisabled?: <code>boolean</code>;
                 print?: {
-                  isNestedContentPrintDisabled?: boolean;
+                  isNestedContentPrintDisabled?: <code>boolean</code>;
                 };
                 state?: <code>'success' | 'warning' | 'danger' | 'info'</code>;
                 autoExpandedAlignment?: <code>boolean</code>;
@@ -150,6 +151,19 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 key: <code>string</code>;
                 sortBy?: <code>string</code>;
                 direction: <code>'ascending' | 'descending'</code>;
+              }
+        tr
+          td
+            div <code>DataTableEmptyActionableConfig</code>
+          td.-p--0
+            pre.-mb--0.
+              interface DataTableEmptyActionableConfig {
+                isActionable?: <code>boolean</code>;
+                icon?: <code>string</code>;
+                message?: {
+                  actionLink?: <code>string</code>;
+                  text?: <code>string</code>;
+                };
               }
         tr
           td
@@ -350,3 +364,10 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div The user collapses all the rows on the page
           td
             <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiEmptyActionableLink</code>
+          td
+            div The user clicks the empty actionable link
+          td
+            <code>undefined</code>
