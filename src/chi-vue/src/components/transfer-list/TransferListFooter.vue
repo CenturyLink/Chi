@@ -27,18 +27,18 @@
 
 <script lang="ts" setup>
 import { inject } from 'vue';
-import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 import { TransferListItem, TransferListActions } from '@/constants/types';
 import { Compare } from '@/utils/Compare';
 import { UTILITY_CLASSES, TRANSFER_LIST_CLASSES, BUTTON_CLASSES, ICON_CLASS } from '@/constants/classes';
 import { CHI_VUE_KEYS } from '@/constants/constants';
+import { TransferListEmits } from '@/constants/events';
 
 const TOOLTIP_MESSAGE = 'Reset to default columns and order';
 const props = defineProps<{
   originalTransferListData: TransferListItem[];
   savedTransferListData: TransferListItem[];
 }>();
-const emit = defineEmits();
+const emit = defineEmits<TransferListEmits>();
 const { transferList, onUpdateTransferList } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
 const canSave = () => {
@@ -50,7 +50,7 @@ const canReset = () => {
 };
 
 const handleReset = () => {
-  emit(TRANSFER_LIST_EVENTS.RESET);
+  emit('chiTransferListReset');
 };
 
 const handleCancel = () => {
@@ -58,6 +58,6 @@ const handleCancel = () => {
 };
 
 const handleSave = () => {
-  emit(TRANSFER_LIST_EVENTS.SAVE);
+  emit('chiTransferListSave');
 };
 </script>

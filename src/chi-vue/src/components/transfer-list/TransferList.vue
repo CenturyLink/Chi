@@ -31,16 +31,17 @@
 import { ref, provide, readonly, watch } from 'vue';
 import { TransferListItem, TransferListColumnItemsActive, TransferList } from '@/constants/types';
 import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
-import { TRANSFER_LIST_EVENTS } from '@/constants/events';
 import { CHI_VUE_KEYS } from '@/constants/constants';
 import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
+import { TransferListEmits } from '@/constants/events';
+import { unref } from 'vue';
 
 const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
 const props = defineProps<TransferList>();
-const emit = defineEmits();
+const emit = defineEmits<TransferListEmits>();
 
 const transferListData = ref<TransferListItem[]>(props.transferListData);
 const currentList = ref<TransferListItem[]>(props.transferListData);
@@ -49,14 +50,14 @@ const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION
 const onSaveTransferList = () => {
   transferListData.value = currentList.value;
 
-  emit(TRANSFER_LIST_EVENTS.SAVE, currentList.value);
+  emit('chiTransferListSave', currentList.value);
 };
 
 const onResetTransferList = () => {
   transferListData.value = currentList.value;
   currentList.value = props.transferListData;
 
-  emit(TRANSFER_LIST_EVENTS.RESET, props.transferListData);
+  emit('chiTransferListReset', props.transferListData);
 };
 
 const onUpdateTransferList = (list: TransferListItem[]) => {
@@ -72,7 +73,7 @@ const onClearSelection = () => {
 };
 
 watch(currentList, () => {
-  emit(TRANSFER_LIST_EVENTS.CHANGE, currentList.value);
+  emit('chiTransferListChange', currentList.value);
 });
 
 provide(CHI_VUE_KEYS.TRANSFER_LIST, {

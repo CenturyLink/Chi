@@ -129,7 +129,7 @@ const isSortButtonDisabled = (direction: 'up' | 'down') => {
   return selectedItem ? isDisabled : true;
 };
 
-function getCurrentList(column: 'from' | 'to' = 'from') {
+const getCurrentList = (column: 'from' | 'to' = 'from') => {
   return transferList.value.filter(({ selected }) => (column === 'to' ? selected : !selected));
-}
+};
 </script>
