@@ -899,15 +899,24 @@ export default class DataTable extends Vue {
     const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
+    const checkboxDisabled = rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled);
+    const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
+    let checkbox = (
+      <Checkbox
+        disabled={checkboxDisabled}
+        id={checkboxId}
+        onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
+        selected={selected}
+      />
+    );
+
+    if (disabledTooltipMsg) {
+      checkbox = <Tooltip message={disabledTooltipMsg}>{checkbox}</Tooltip>;
+    }
 
     return (
       <div class={this._getSelectableClasses(rowData as DataTableRow)}>
-        <Checkbox
-          disabled={rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled)}
-          id={checkboxId}
-          onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
-          selected={selected}
-        />
+        {checkbox}
         {selectAll && this.showSelectAllDropdown ? this._selectAllDropdown() : null}
       </div>
     );
@@ -929,26 +938,30 @@ export default class DataTable extends Vue {
       return <div class={this._getSelectableClasses(rowData as DataTableRow)}></div>;
     }
 
-    return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
-        <div class={RADIO_CLASSES.RADIO}>
-          <input
-            class={RADIO_CLASSES.INPUT}
-            type="radio"
-            name={radioButtonName}
-            id={radioButtonId}
-            disabled={rowData?.selectionDisabled}
-            onChange={() => {
-              if (rowData) this.selectRow(rowData);
-            }}
-            checked={checkedState}
-          />
-          <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
-            <div class={SR_ONLY}>Select row {radioButtonId}</div>
-          </label>
-        </div>
+    let radioBtn = (
+      <div class={RADIO_CLASSES.RADIO}>
+        <input
+          class={RADIO_CLASSES.INPUT}
+          type="radio"
+          name={radioButtonName}
+          id={radioButtonId}
+          disabled={rowData?.selectionDisabled}
+          onChange={() => {
+            if (rowData) this.selectRow(rowData);
+          }}
+          checked={checkedState}
+        />
+        <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
+          <div class={SR_ONLY}>Select row {radioButtonId}</div>
+        </label>
       </div>
     );
+
+    if (rowData?.selectionDisabled && rowData?.selectableDisabledMessage) {
+      radioBtn = <Tooltip message={rowData.selectableDisabledMessage}>{radioBtn}</Tooltip>;
+    }
+
+    return <div class={this._getSelectableClasses(rowData as DataTableRow)}>{radioBtn}</div>;
   }
 
   _getSelectableClasses(rowData: DataTableRow): string {
