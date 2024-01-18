@@ -1,5 +1,6 @@
 //#region Common
 export const ACTIVE_CLASS = '-active';
+export const ACTIONS_CLASS = '-actions';
 export const CLOSE_CLASS = '-close';
 export const CLOSED_CLASS = '-closed';
 export const LIGHT_CLASS = '-light';

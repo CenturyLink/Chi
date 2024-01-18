@@ -1,5 +1,6 @@
 import { Emit, Prop, Provide, Watch } from 'vue-property-decorator';
 import {
+  ACTIONS_CLASS,
   ACTIVE_CLASS,
   BUTTON_CLASSES,
   COLLAPSED_CLASS,
@@ -412,6 +413,7 @@ export default class DataTable extends Vue {
       const nonSortableColumnHead = (
         <div
           class={`${DATA_TABLE_CLASSES.CELL}
+              ${columnName === 'actions' ? ACTIONS_CLASS : ''}
               ${alignment}
               ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}

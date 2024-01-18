@@ -1,4 +1,4 @@
-import { DATA_TABLE_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
+import { ACTIONS_CLASS, DATA_TABLE_CLASSES, DIVIDER_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import DataTable from '../DataTable';
 
 export class ColumnResize {
@@ -15,18 +15,30 @@ export class ColumnResize {
     this.columnHeaders.forEach((th) => {
       const grip = document.createElement('div');
 
+      if (
+        th.classList.contains(DATA_TABLE_CLASSES.SELECTABLE) ||
+        th.classList.contains(DATA_TABLE_CLASSES.EXPANDABLE) ||
+        th.classList.contains(ACTIONS_CLASS)
+      ) {
+        return;
+      }
+
       th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
       grip.innerHTML = '&nbsp;';
-      grip.style.top = '0';
+      grip.style.top = '0.8rem';
       grip.style.right = '0';
       grip.style.bottom = '0';
       grip.style.width = '1rem';
+      grip.style.height = '1.25rem';
       grip.classList.add(UTILITY_CLASSES.POSITION.ABSOLUTE);
+      grip.classList.add(DIVIDER_CLASSES.DIVIDER);
+      grip.classList.add(DIVIDER_CLASSES.VERTICAL);
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
       grip.addEventListener('mousedown', (e) => this.handlerMouseDown(e, th));
       th.appendChild(grip);
     });
+
     this.elem.addEventListener('mousemove', this.handlerMouseMove);
     this.elem.addEventListener('mouseup', this.handlerMouseUp);
   }
@@ -36,6 +48,7 @@ export class ColumnResize {
     this.thElm = th;
     this.startOffset = th.offsetWidth - e.pageX;
   };
+
   private handlerMouseMove = (e: MouseEvent) => {
     let columnCellsToResize: HTMLElement[] = [];
 
