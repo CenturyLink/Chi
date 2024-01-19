@@ -126,6 +126,7 @@ export const TRANSFER_LIST_CLASSES = {
   SEARCH: 'chi-transfer-list__search',
   TITLE: 'chi-transfer-list__title',
   TRANSFER_LIST: 'chi-transfer-list',
+  RESET_BUTTON: 'chi-transfer-list__reset-button',
 };
 //#endregion
 

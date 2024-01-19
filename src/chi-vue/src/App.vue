@@ -10,6 +10,7 @@
     <SearchInputView />
     <SaveViewView />
     <CheckboxView />
+    <TransferListView />
   </div>
 </template>
 
@@ -23,4 +24,5 @@ import PaginationView from './views/PaginationView.vue';
 import SaveViewView from './views/SaveView.vue';
 import SearchInputView from './views/SearchInputView.vue';
 import TooltipView from './views/TooltipView.vue';
+import TransferListView from './views/TransferList/TransferListView.vue';
 </script>

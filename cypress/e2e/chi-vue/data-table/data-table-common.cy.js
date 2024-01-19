@@ -93,6 +93,7 @@ export const BULK_ACTIONS_CLASSES = {
   LABEL: 'chi-bulk-actions__label'
 };
 export const CHECKBOXES_CLASSES = {
+  CHECKBOX: 'chi-checkbox',
   LABEL: 'chi-checkbox__label'
 };
 
