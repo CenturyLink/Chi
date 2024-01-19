@@ -12,7 +12,7 @@ import {
 import { SearchInputSizes, ToolbarRef } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { Component, Vue } from '@/build/vue-wrapper';
-import { TOOLBAR_KEYS } from '@/constants/constants';
+import { CHI_VUE_KEYS } from '@/constants/constants';
 
 @Component({})
 export default class SearchInput extends Vue {
@@ -25,7 +25,7 @@ export default class SearchInput extends Vue {
   @Prop() portal?: boolean;
   @Prop() readOnly?: boolean;
 
-  @Inject({ from: TOOLBAR_KEYS.SEARCH_INPUT })
+  @Inject({ from: CHI_VUE_KEYS.TOOLBAR_SEARCH_INPUT })
   toolbarSearch?: ToolbarRef;
 
   cleanButtonVisible?: boolean = false;
