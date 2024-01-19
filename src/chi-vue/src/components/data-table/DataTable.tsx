@@ -902,19 +902,15 @@ export default class DataTable extends Vue {
     const checkboxDisabled = rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled);
     const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
     const popoverId = `${checkboxId}-popover`;
-    const popover = disabledTooltipMsg
-      ? <chi-popover
-          id={popoverId}
-          reference={`#${checkboxId}`}
-          position="top"
-          arrow
-          variant="text"
-        >{disabledTooltipMsg}</chi-popover>
-      : null;
+    const popover = disabledTooltipMsg ? (
+      <chi-popover id={popoverId} reference={`#${checkboxId}`} position="top" arrow variant="text">
+        {disabledTooltipMsg}
+      </chi-popover>
+    ) : null;
 
     return (
-      <div 
-        class={this._getSelectableClasses(rowData as DataTableRow)} 
+      <div
+        class={this._getSelectableClasses(rowData as DataTableRow)}
         onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
         onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
       >
@@ -923,7 +919,7 @@ export default class DataTable extends Vue {
           disabled={checkboxDisabled}
           id={checkboxId}
           onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
-          selected={selected}          
+          selected={selected}
         />
         {selectAll && this.showSelectAllDropdown ? this._selectAllDropdown() : null}
       </div>
@@ -947,18 +943,15 @@ export default class DataTable extends Vue {
     }
 
     const popoverId = `${radioButtonId}-popover`;
-    const popover = rowData?.selectionDisabled && rowData?.selectableDisabledMessage
-      ? <chi-popover
-          id={popoverId}
-          reference={`#${radioButtonId}`}
-          position="top"
-          arrow
-          variant="text"
-        >{rowData.selectableDisabledMessage}</chi-popover>
-      : null;
+    const popover =
+      rowData?.selectionDisabled && rowData?.selectableDisabledMessage ? (
+        <chi-popover id={popoverId} reference={`#${radioButtonId}`} position="top" arrow variant="text">
+          {rowData.selectableDisabledMessage}
+        </chi-popover>
+      ) : null;
 
     return (
-      <div 
+      <div
         class={this._getSelectableClasses(rowData as DataTableRow)}
         onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
         onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
@@ -981,8 +974,7 @@ export default class DataTable extends Vue {
           </label>
         </div>
       </div>
-    )
-
+    );
   }
 
   _getSelectableClasses(rowData: DataTableRow): string {
