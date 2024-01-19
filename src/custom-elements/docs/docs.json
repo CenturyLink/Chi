@@ -1720,6 +1720,55 @@
           "required": false
         },
         {
+          "name": "minutesStep",
+          "type": "1 | 10 | 15 | 20 | 30 | 5",
+          "complexType": {
+            "original": "TimePickerTimeSteps",
+            "resolved": "1 | 10 | 15 | 20 | 30 | 5",
+            "references": {
+              "TimePickerTimeSteps": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::TimePickerTimeSteps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "minutes-step",
+          "reflectToAttr": true,
+          "docs": "Renders minutes in stepped format. Defaults to 15 min steps if no value\nis provided (see examples in docs).",
+          "docsTags": [],
+          "default": "15",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "10",
+              "type": "number"
+            },
+            {
+              "value": "15",
+              "type": "number"
+            },
+            {
+              "value": "20",
+              "type": "number"
+            },
+            {
+              "value": "30",
+              "type": "number"
+            },
+            {
+              "value": "5",
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "mode",
           "type": "string",
           "complexType": {
@@ -8615,24 +8664,101 @@
           "required": false
         },
         {
-          "name": "stepped",
-          "type": "boolean",
+          "name": "minutesStep",
+          "type": "1 | 10 | 15 | 20 | 30 | 5",
           "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
+            "original": "TimePickerTimeSteps",
+            "resolved": "1 | 10 | 15 | 20 | 30 | 5",
+            "references": {
+              "TimePickerTimeSteps": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::TimePickerTimeSteps"
+              }
+            }
           },
           "mutable": false,
-          "attr": "stepped",
+          "attr": "minutes-step",
           "reflectToAttr": true,
-          "docs": "To render Minutes and Seconds columns in stepped format",
+          "docs": "Renders minutes in stepped format. Defaults to 15 min steps if no value\nis provided (see examples in docs).",
           "docsTags": [],
+          "default": "15",
           "values": [
             {
-              "type": "boolean"
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "10",
+              "type": "number"
+            },
+            {
+              "value": "15",
+              "type": "number"
+            },
+            {
+              "value": "20",
+              "type": "number"
+            },
+            {
+              "value": "30",
+              "type": "number"
+            },
+            {
+              "value": "5",
+              "type": "number"
             }
           ],
-          "optional": false,
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "secondsStep",
+          "type": "1 | 10 | 15 | 20 | 30 | 5",
+          "complexType": {
+            "original": "TimePickerTimeSteps",
+            "resolved": "1 | 10 | 15 | 20 | 30 | 5",
+            "references": {
+              "TimePickerTimeSteps": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::TimePickerTimeSteps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "seconds-step",
+          "reflectToAttr": true,
+          "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
+          "docsTags": [],
+          "default": "15",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "10",
+              "type": "number"
+            },
+            {
+              "value": "15",
+              "type": "number"
+            },
+            {
+              "value": "20",
+              "type": "number"
+            },
+            {
+              "value": "30",
+              "type": "number"
+            },
+            {
+              "value": "5",
+              "type": "number"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
@@ -8800,6 +8926,104 @@
           "required": false
         },
         {
+          "name": "minutesStep",
+          "type": "1 | 10 | 15 | 20 | 30 | 5",
+          "complexType": {
+            "original": "TimePickerTimeSteps",
+            "resolved": "1 | 10 | 15 | 20 | 30 | 5",
+            "references": {
+              "TimePickerTimeSteps": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::TimePickerTimeSteps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "minutes-step",
+          "reflectToAttr": true,
+          "docs": "Renders minutes in stepped format. Defaults to 15 min steps if no value\nis provided (see examples in docs).",
+          "docsTags": [],
+          "default": "15",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "10",
+              "type": "number"
+            },
+            {
+              "value": "15",
+              "type": "number"
+            },
+            {
+              "value": "20",
+              "type": "number"
+            },
+            {
+              "value": "30",
+              "type": "number"
+            },
+            {
+              "value": "5",
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "secondsStep",
+          "type": "1 | 10 | 15 | 20 | 30 | 5",
+          "complexType": {
+            "original": "TimePickerTimeSteps",
+            "resolved": "1 | 10 | 15 | 20 | 30 | 5",
+            "references": {
+              "TimePickerTimeSteps": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::TimePickerTimeSteps"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "seconds-step",
+          "reflectToAttr": true,
+          "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
+          "docsTags": [],
+          "default": "15",
+          "values": [
+            {
+              "value": "1",
+              "type": "number"
+            },
+            {
+              "value": "10",
+              "type": "number"
+            },
+            {
+              "value": "15",
+              "type": "number"
+            },
+            {
+              "value": "20",
+              "type": "number"
+            },
+            {
+              "value": "30",
+              "type": "number"
+            },
+            {
+              "value": "5",
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "value",
           "type": "string",
           "complexType": {
@@ -8949,6 +9173,11 @@
     },
     "src/constants/constants.ts::TimePickerFormats": {
       "declaration": "\"12hr\" | \"24hr\"",
+      "docstring": "",
+      "path": "src/constants/constants.ts"
+    },
+    "src/constants/constants.ts::TimePickerTimeSteps": {
+      "declaration": "1 | 5 | 10 | 15 | 20 | 30",
       "docstring": "",
       "path": "src/constants/constants.ts"
     },

@@ -5,8 +5,8 @@
       | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
       | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
     .chi-form__item(style="max-width: 14rem;" slot="example")
-      chi-label(for="time-picker-disabled") Label
-      chi-time-picker(id="time-picker-disabled" disabled)
+      chi-label(for="example__disabled") Label
+      chi-time-picker(id="example__disabled" disabled)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -35,8 +35,8 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="time-picker-disabled">Label</chi-label>
-<chi-time-picker id="time-picker-disabled" disabled></chi-time-picker>`,
+        webcomponent: `<chi-label for="example__disabled">Label</chi-label>
+<chi-time-picker id="example__disabled" disabled></chi-time-picker>`,
         htmlblueprint: ``
       }
     };

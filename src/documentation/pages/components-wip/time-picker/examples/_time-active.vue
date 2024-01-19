@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Step" id="step" :tabs="exampleTabs">
-    chi-time(stepped, display-seconds slot="example")
+  <ComponentExample titleSize="h4" title="Active" id="active" :tabs="exampleTabs">
+    chi-time(value="14:00" slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -29,11 +29,11 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-time stepped display-seconds></chi-time>`,
+        webcomponent: `<chi-time value="14:00"></chi-time>`,
         htmlblueprint: ``
       }
     };
   }
 })
-export default class Step extends Vue {}
+export default class TimeActive extends Vue {}
 </script>
