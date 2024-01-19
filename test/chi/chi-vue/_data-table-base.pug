@@ -771,12 +771,7 @@ script.
           ],
         },
       }
-    },
-    mounted() {
-      if (window.Cypress) {
-        window.selectableDataTable = this;
-      }
-    },
+    }
   });
 
   selectableDisabledApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
