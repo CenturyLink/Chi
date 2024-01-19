@@ -1,11 +1,11 @@
 <template>
-  <div :class="[TRANSFER_LIST_CLASSES.COLUMN]">
-    <div :class="[TRANSFER_LIST_CLASSES.HEADER]">
-      <p :class="[TRANSFER_LIST_CLASSES.TITLE]">
+  <div :class="TRANSFER_LIST_CLASSES.COLUMN">
+    <div :class="TRANSFER_LIST_CLASSES.HEADER">
+      <p :class="TRANSFER_LIST_CLASSES.TITLE">
         {{ title }}
         <template v-if="description">
           <chi-button
-            :id="`transfer-list-info-popover-${title}`"
+            :id="`transfer-list-info-popover-${id}`"
             variant="flat"
             type="icon"
             size="xs"
@@ -17,27 +17,29 @@
           <chi-popover
             arrow
             variant="text"
-            :id="`transfer-list-popover-${title}`"
-            :reference="`#transfer-list-info-popover-${title}`"
+            position="right"
+            :id="`transfer-list-popover-${id}`"
+            :reference="`#transfer-list-info-popover-${id}`"
           >
             {{ description }}
           </chi-popover>
         </template>
       </p>
-      <div :class="[TRANSFER_LIST_CLASSES.HEADER_ACTIONS]">
+      <div :class="TRANSFER_LIST_CLASSES.HEADER_ACTIONS">
         <slot name="header-actions"></slot>
       </div>
     </div>
-    <div :class="[TRANSFER_LIST_CLASSES.SEARCH]">
-      <chi-search-input placeholder="Filter" />
+    <div :class="TRANSFER_LIST_CLASSES.SEARCH">
+      <SearchInput placeholder="Filter" @chiInput="handleFilter" @chiClean="handleClearFilter" />
     </div>
-    <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]">
+    <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]" @change="handleSelectItem">
       <option
-        v-for="(item, index) in items"
+        v-for="(item, index) in getFilteredList()"
         :key="index"
         :value="item.value"
         :disabled="isToColumn && item.locked"
         :class="getMenuItemClasses(item)"
+        :selected="isSelected(item.value)"
       >
         {{ item.label }}
       </option>
@@ -45,54 +47,78 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Prop } from 'vue-property-decorator';
-import { Component, Vue } from '@/build/vue-wrapper';
-import { TransferListItem } from '@/constants/types';
-import { SELECT_CLASSES, TRANSFER_LIST_CLASSES } from '@/constants/classes';
+<script lang="ts" setup>
+import { ref, inject } from 'vue';
+import { uuid4 } from '@/utils/utils';
+import { TransferListItem, TransferListActions } from '@/constants/types';
+import { TRANSFER_LIST_CLASSES, SELECT_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
+import { CHI_VUE_KEYS } from '@/constants/constants';
+import SearchInput from '@/components/search-input/SearchInput';
 
-@Component({})
-export default class TransferListColumn extends Vue {
-  @Prop() title!: string;
-  @Prop() type?: 'from' | 'to';
-  @Prop() description?: string;
-  @Prop() searchInput?: boolean;
-  @Prop() checkbox?: boolean;
-  @Prop() items!: TransferListItem[];
+const props = defineProps<{
+  title: string;
+  type: 'from' | 'to';
+  description?: string;
+  searchInput?: boolean;
+  checkbox?: boolean;
+}>();
+const filter = ref<string>('');
+const column = props.type;
+const isToColumn = props.type === 'to';
+const id = uuid4();
+const { transferList, selectedItems, onSelectItem } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
-  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
-  SELECT_CLASSES = SELECT_CLASSES;
+const handleFilter = (value: string) => {
+  filter.value = value;
+};
 
-  isToColumn = this.type === 'to';
-  hasLockedItems = this.items?.some((item) => item.locked);
+const handleClearFilter = () => {
+  filter.value = '';
+};
 
-  getMenuItemClasses({ locked }: TransferListItem) {
-    const classes = [TRANSFER_LIST_CLASSES.MENU_ITEM];
-    const paddingClass = this._getPaddingClass();
-    const checkboxClass = this._getCheckboxClass();
-    const lockedClass = this._getLockedClass(locked);
+const handleSelectItem = (event: Event) => {
+  const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
 
-    classes.push(paddingClass, checkboxClass, lockedClass);
+  onSelectItem({ ...selectedItems.value, [column]: items });
+};
 
-    return classes.join(' ');
-  }
+const getFilteredList = () => {
+  const value = filter.value.toLowerCase();
+  const items = transferList.value.filter(({ selected }) => (isToColumn ? selected : !selected));
 
-  _getPaddingClass() {
-    return this.checkbox || (this.hasLockedItems && this.isToColumn) ? '-pl--4' : '';
-  }
+  return items?.filter(({ label }) => label.toLowerCase().includes(value));
+};
 
-  _getCheckboxClass() {
-    return this.checkbox ? '-checkbox' : '';
-  }
+const isSelected = (value: string) => {
+  return selectedItems.value[column].includes(value);
+};
 
-  _getLockedClass(locked: boolean | undefined) {
-    return locked && this.isToColumn ? '-locked' : '';
-  }
+const getMenuItemClasses = ({ locked }: TransferListItem) => {
+  const classes = [TRANSFER_LIST_CLASSES.MENU_ITEM];
+  const paddingClass = _getPaddingClass();
+  const checkboxClass = _getCheckboxClass();
+  const lockedClass = _getLockedClass(locked);
 
-  toggleInfoPopover() {
-    const popover = document.querySelector(`#transfer-list-popover-${this.title}`) as any;
+  classes.push(paddingClass, checkboxClass, lockedClass);
 
-    popover.toggle();
-  }
-}
+  return classes.join(' ');
+};
+
+const _getPaddingClass = () => {
+  return props.checkbox || isToColumn ? UTILITY_CLASSES.PADDING.LEFT[4] : '';
+};
+
+const _getCheckboxClass = () => {
+  return props.checkbox ? '-checkbox' : '';
+};
+
+const _getLockedClass = (locked: boolean | undefined) => {
+  return locked && isToColumn ? '-locked' : '';
+};
+
+const toggleInfoPopover = () => {
+  const popover = document.querySelector(`#transfer-list-popover-${id}`) as any;
+
+  popover.toggle();
+};
 </script>

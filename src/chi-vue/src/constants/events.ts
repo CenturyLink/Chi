@@ -1,4 +1,4 @@
-import { DataTableRow } from './types';
+import { DataTableRow, TransferListItem } from './types';
 
 //#region Generic events
 export const GENERIC_EVENTS = {
@@ -111,5 +111,13 @@ export const SAVE_VIEW_EVENTS = {
   SAVE_LINK: 'chiSaveLink',
   INPUT: 'chiSaveViewInput',
   DEFAULT: 'chiSaveViewDefault',
+};
+//#endregion
+
+//#region Transfer List
+export type TransferListEmits = {
+  (event: 'chiTransferListChange', payload?: TransferListItem[]): void;
+  (event: 'chiTransferListReset', payload?: TransferListItem[]): void;
+  (event: 'chiTransferListSave', payload?: TransferListItem[]): void;
 };
 //#endregion

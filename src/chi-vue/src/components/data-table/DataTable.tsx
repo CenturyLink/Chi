@@ -43,7 +43,7 @@ import {
   DATA_TABLE_NO_RESULTS_MESSAGE,
   DATA_TABLE_SORT_ICONS,
   SCREEN_BREAKPOINTS,
-  TOOLBAR_KEYS,
+  CHI_VUE_KEYS,
 } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
@@ -74,7 +74,7 @@ export default class DataTable extends Vue {
   @Prop() dataTableData!: DataTableData;
   @Prop() config!: DataTableConfig;
 
-  @Provide({ to: TOOLBAR_KEYS.SEARCH_INPUT })
+  @Provide({ to: CHI_VUE_KEYS.TOOLBAR_SEARCH_INPUT })
   toolbarSearch: ToolbarRef = {};
 
   @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
