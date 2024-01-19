@@ -365,6 +365,13 @@
       }
     }
 
+    .chi-dropdown__trigger {
+      &::before,
+      &::after {
+        content: none
+      }
+    }
+
     .chi-dropdown__menu {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -482,6 +489,16 @@
             height: 2rem;
           }
         }
+
+        &:not(.-vertical) {
+          &.-sm {
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                padding: 1rem 0;
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -545,14 +562,25 @@
           }
 
           &.-sm {
-            &:not(.-vertical):not(.-responsive) {
-              height: 3rem;
-            }
-
             .chi-dropdown {
               .chi-dropdown__trigger {
                 padding: 0.875rem 0;
               }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-lg,
+  &.-xl {
+    .chi-header__navbar {
+      .chi-tabs {
+        &:not(.-vertical) {
+          &.-sm {
+            &:not(.-vertical):not(.-responsive) {
+              height: 3rem;
             }
           }
         }
