@@ -6,6 +6,7 @@ import {
   DatePickerModes,
   DateFormats,
   TimePickerFormats,
+  TimePickerTimeSteps,
 } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
@@ -80,6 +81,11 @@ export class DatePicker {
    * To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'
    */
   @Prop({ reflect: true }) timeFormat?: TimePickerFormats;
+  /**
+   * Renders minutes in stepped format. Defaults to 15 min steps if no value
+   * is provided (see examples in docs).
+   */
+  @Prop({ reflect: true }) minutesStep?: TimePickerTimeSteps;
 
   /**
    * Date change value event
@@ -403,7 +409,9 @@ export class DatePicker {
       />
     );
     const timeValue = (this.value?.split(', ') || [])[1];
-    const time = this.mode === 'datetime' ? <chi-time format={this.timeFormat} value={timeValue} /> : null;
+    const time = this.mode === 'datetime' 
+      ? <chi-time format={this.timeFormat} value={timeValue} minutes-step={this.minutesStep}/> 
+      : null;
     const popoverContent =
       this.mode === 'datetime' ? (
         <div class="-d--flex">

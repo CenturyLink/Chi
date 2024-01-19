@@ -1,0 +1,48 @@
+---
+title: Chi time
+scripts:
+  - js/chi
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+
+-  const padZero = value => ('0' + value).slice(-2);
+-  const hours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+-  const periods = ['AM', 'PM'];
+-  const today = 19;
+-  const active = 23;
+
+-  let hour = 0;
+-  let minute = 0;
+-  let second = 0;
+
+.test-custom-steps-period-change
+  span.-text--h2 Chi time with 5 min step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours
+        each hour in hours
+          if hour === 12
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes
+        while minute < 60
+          if minute === 0
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=5
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=5
+      .chi-time-picker__seconds
+        while second < 60
+          if second === 0
+            .chi-time-picker__second.-active=padZero(second++)
+          else
+            .chi-time-picker__second=padZero(second++)
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'PM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
