@@ -1199,7 +1199,7 @@ describe('Data Table', () => {
           cy.get('@popovers')
             .last()
             .find(`.${ICON_CLASS}`)
-            .should('have.length', 2);x
+            .should('have.length', 2);
           cy.get('@popovers')
             .last()
             .should('contain', 'Due');
