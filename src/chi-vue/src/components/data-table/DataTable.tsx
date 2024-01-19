@@ -901,22 +901,30 @@ export default class DataTable extends Vue {
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
     const checkboxDisabled = rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled);
     const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
-    let checkbox = (
-      <Checkbox
-        disabled={checkboxDisabled}
-        id={checkboxId}
-        onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
-        selected={selected}
-      />
-    );
-
-    if (disabledTooltipMsg) {
-      checkbox = <Tooltip message={disabledTooltipMsg}>{checkbox}</Tooltip>;
-    }
+    const popoverId = `${checkboxId}-popover`;
+    const popover = disabledTooltipMsg
+      ? <chi-popover
+          id={popoverId}
+          reference={`#${checkboxId}`}
+          position="top"
+          arrow
+          variant="text"
+        >{disabledTooltipMsg}</chi-popover>
+      : null;
 
     return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
-        {checkbox}
+      <div 
+        class={this._getSelectableClasses(rowData as DataTableRow)} 
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
+        <Checkbox
+          disabled={checkboxDisabled}
+          id={checkboxId}
+          onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
+          selected={selected}          
+        />
         {selectAll && this.showSelectAllDropdown ? this._selectAllDropdown() : null}
       </div>
     );
@@ -938,30 +946,43 @@ export default class DataTable extends Vue {
       return <div class={this._getSelectableClasses(rowData as DataTableRow)}></div>;
     }
 
-    let radioBtn = (
-      <div class={RADIO_CLASSES.RADIO}>
-        <input
-          class={RADIO_CLASSES.INPUT}
-          type="radio"
-          name={radioButtonName}
-          id={radioButtonId}
-          disabled={rowData?.selectionDisabled}
-          onChange={() => {
-            if (rowData) this.selectRow(rowData);
-          }}
-          checked={checkedState}
-        />
-        <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
-          <div class={SR_ONLY}>Select row {radioButtonId}</div>
-        </label>
+    const popoverId = `${radioButtonId}-popover`;
+    const popover = rowData?.selectionDisabled && rowData?.selectableDisabledMessage
+      ? <chi-popover
+          id={popoverId}
+          reference={`#${radioButtonId}`}
+          position="top"
+          arrow
+          variant="text"
+        >{rowData.selectableDisabledMessage}</chi-popover>
+      : null;
+
+    return (
+      <div 
+        class={this._getSelectableClasses(rowData as DataTableRow)}
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
+        <div class={RADIO_CLASSES.RADIO}>
+          <input
+            class={RADIO_CLASSES.INPUT}
+            type="radio"
+            name={radioButtonName}
+            id={radioButtonId}
+            disabled={rowData?.selectionDisabled}
+            onChange={() => {
+              if (rowData) this.selectRow(rowData);
+            }}
+            checked={checkedState}
+          />
+          <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
+            <div class={SR_ONLY}>Select row {radioButtonId}</div>
+          </label>
+        </div>
       </div>
-    );
+    )
 
-    if (rowData?.selectionDisabled && rowData?.selectableDisabledMessage) {
-      radioBtn = <Tooltip message={rowData.selectableDisabledMessage}>{radioBtn}</Tooltip>;
-    }
-
-    return <div class={this._getSelectableClasses(rowData as DataTableRow)}>{radioBtn}</div>;
   }
 
   _getSelectableClasses(rowData: DataTableRow): string {

@@ -519,28 +519,28 @@ describe('Data Table', () => {
         .should('have.length', 3)
       
       cy.get('@table')
-        .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
-        .as('tooltip')
+        .find('chi-popover')
+        .as('popover')
     });
 
-    it('Should show tooltip only when selection disabled message is provided and selectable is disabled', () => {
+    it('Should show popover only when selection disabled message is provided and selectable is disabled', () => {
       cy.get('@selectables')
         .eq(0)
         .trigger('mouseenter');
-      cy.get('@tooltip')
-        .should('not.have.class', ACTIVE_CLASS);
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
 
       cy.get('@selectables')
         .eq(1)
         .trigger('mouseenter');
-      cy.get('@tooltip')
-        .should('not.have.class', ACTIVE_CLASS);
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
       
       cy.get('@selectables')
         .eq(2)
         .trigger('mouseenter');
-      cy.get('@tooltip')
-        .should('have.class', ACTIVE_CLASS);
+      cy.get('@popover')
+        .should('have.attr', ACTIVE_ATTR);
     });
 
   });
@@ -1199,7 +1199,7 @@ describe('Data Table', () => {
           cy.get('@popovers')
             .last()
             .find(`.${ICON_CLASS}`)
-            .should('have.length', 2);
+            .should('have.length', 2);x
           cy.get('@popovers')
             .last()
             .should('contain', 'Due');
