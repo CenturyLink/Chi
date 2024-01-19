@@ -509,6 +509,42 @@ describe('Data Table', () => {
     });
   });
 
+  describe('Selectable with disabled message', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-selectable-disabled']`)
+        .as('table')
+        .scrollIntoView()
+        .find(`.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}.${DATA_TABLE_CLASSES.SELECTABLE} .${CHECKBOXES_CLASSES.CHECKBOX}`)
+        .as('selectables')
+        .should('have.length', 3)
+      
+      cy.get('@table')
+        .find('chi-popover')
+        .as('popover')
+    });
+
+    it('Should show popover only when selection disabled message is provided and selectable is disabled', () => {
+      cy.get('@selectables')
+        .eq(0)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
+
+      cy.get('@selectables')
+        .eq(1)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
+      
+      cy.get('@selectables')
+        .eq(2)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('have.attr', ACTIVE_ATTR);
+    });
+
+  });
+
   describe('All selected', () => {
     it('Should have the select all checkbox checked by default', () => {
       cy.get(`[data-cy='data-table-all-selected'] .${DATA_TABLE_CLASSES.ROW}`)

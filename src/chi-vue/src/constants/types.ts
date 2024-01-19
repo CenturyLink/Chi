@@ -46,6 +46,7 @@ export interface DataTableRow {
   rowNumber: string;
   selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
+  selectableDisabledMessage?: string;
   parentRowId?: string | null;
   rootLevelRowId?: string | null;
   print?: {

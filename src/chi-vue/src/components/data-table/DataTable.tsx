@@ -899,11 +899,24 @@ export default class DataTable extends Vue {
     const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
+    const checkboxDisabled = rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled);
+    const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
+    const popoverId = `${checkboxId}-popover`;
+    const popover = disabledTooltipMsg ? (
+      <chi-popover id={popoverId} reference={`#${checkboxId}`} position="top" arrow variant="text">
+        {disabledTooltipMsg}
+      </chi-popover>
+    ) : null;
 
     return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
+      <div
+        class={this._getSelectableClasses(rowData as DataTableRow)}
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
         <Checkbox
-          disabled={rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled)}
+          disabled={checkboxDisabled}
           id={checkboxId}
           onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
           selected={selected}
@@ -929,8 +942,21 @@ export default class DataTable extends Vue {
       return <div class={this._getSelectableClasses(rowData as DataTableRow)}></div>;
     }
 
+    const popoverId = `${radioButtonId}-popover`;
+    const popover =
+      rowData?.selectionDisabled && rowData?.selectableDisabledMessage ? (
+        <chi-popover id={popoverId} reference={`#${radioButtonId}`} position="top" arrow variant="text">
+          {rowData.selectableDisabledMessage}
+        </chi-popover>
+      ) : null;
+
     return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
+      <div
+        class={this._getSelectableClasses(rowData as DataTableRow)}
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
         <div class={RADIO_CLASSES.RADIO}>
           <input
             class={RADIO_CLASSES.INPUT}

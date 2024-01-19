@@ -63,6 +63,11 @@ h3 Selectable
   #selectable
     chi-vue-data-table(ref="selectable" data-cy='data-table-selectable', :config="config", :data-table-data="table")
 
+h4 Selectable disabled
+.test-data-table.-p--3.-w--100
+  #selectable-disabled
+    chi-vue-data-table(ref="selectable-disabled" data-cy='data-table-selectable-disabled', :config="config", :data-table-data="table")
+
 h3 All Selected
 .test-data-table.-p--3.-w--100
   #allSelected
@@ -714,6 +719,63 @@ script.
 
   selectableApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
   selectableApp.mount('#selectable');
+
+  const selectableDisabledApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          selectable: true,
+          resultsPerPage: 3,
+          print: {
+            mode: 'screenonly'
+          }
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [
+            {
+              id: "name-1",
+              selectionDisabled: false,
+              data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-2",
+              selectionDisabled: true,
+              data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-3",
+              selectionDisabled: true,
+              selectableDisabledMessage: 'This message is shown',
+              data: ["Name 3", "name-3", "Dec 18, 2020 3:26 PM"],
+            },
+          ],
+        },
+      }
+    }
+  });
+
+  selectableDisabledApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  selectableDisabledApp.mount('#selectable-disabled');
 
   const allSelectedApp = Vue.createApp({
     data() {
