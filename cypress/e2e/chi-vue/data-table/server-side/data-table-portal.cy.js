@@ -195,7 +195,7 @@ describe('Server Side Data Table Portal', () => {
     });
   });
 
-  describe.only('Server side sorting', () => {
+  describe('Server side sorting', () => {
     it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
@@ -279,7 +279,7 @@ describe('Server Side Data Table Portal', () => {
       });
     });
 
-    describe.only('Full server sort', () => {
+    describe('Full server sort', () => {
       it('Should sort by default when fullServerSort property is not present', () => {
         cy.get(`[data-cy='data-table-portal-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
             .first()
