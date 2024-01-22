@@ -25,6 +25,7 @@
     div(v-if="$store.state.themes.theme === 'portal'")
       <BasePortal />
       <HeaderImpersonationPortal />
+      <HeaderDropdownPortal />
 
     div(v-if="$store.state.themes.theme === 'centurylink'")
       <BaseCenturylink />
@@ -45,6 +46,7 @@ import BasePortal from './_portal/_base_header_portal.vue';
 import BaseCenturylink from './_centurylink/_base_centurylink.vue';
 import HeaderTitle from './_header_title.vue';
 import HeaderImpersonationPortal from './_portal/_header_impersonation_portal.vue';
+import HeaderDropdownPortal from './_portal/_header_dropdown_portal.vue';
 import HeaderTitleButtons from './_header_title_buttons.vue';
 import HeaderCollapseSearch from './_header_collapse_search.vue';
 import HeaderMobileSecondary from './_header_mobile_secondary.vue';
@@ -66,6 +68,7 @@ import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue
     BaseCenturylink,
     HeaderTitle,
     HeaderImpersonationPortal,
+    HeaderDropdownPortal,
     HeaderTitleButtons,
     HeaderCollapseSearch,
     HeaderMobileSecondary,
