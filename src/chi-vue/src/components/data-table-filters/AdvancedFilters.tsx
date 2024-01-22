@@ -10,47 +10,19 @@ import {
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import { getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
-import { getModule } from 'vuex-module-decorators';
-import store from '@/store/index';
+import { useFilterStore } from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 import { Component, Vue } from '@/build/vue-wrapper';
 import { Compare } from '@/utils/Compare';
-
-Vue.config.ignoredElements = [
-  'chi-alert',
-  'chi-app-layout',
-  'chi-badge',
-  'chi-brand',
-  'chi-button',
-  'chi-carousel',
-  'chi-date',
-  'chi-date-picker',
-  'chi-drawer',
-  'chi-expansion-panel',
-  'chi-icon',
-  'chi-label',
-  'chi-link',
-  'chi-marketing-icon',
-  'chi-number-input',
-  'chi-pagination',
-  'chi-phone-input',
-  'chi-popover',
-  'chi-progress',
-  'chi-search-input',
-  'chi-spinner',
-  'chi-text-input',
-  'chi-textarea',
-  'chi-time',
-  'chi-time-picker',
-  'chi-toggle-switch',
-];
+import { JSX } from 'vue/jsx-runtime';
 
 declare const chi: any;
+
 @Component({
   components: {
     AdvancedFiltersPopoverFooter,
@@ -86,8 +58,8 @@ export default class AdvancedFilters extends Vue {
     this._advancedFilterButtonId = `button__${this._advancedFilterUuid}`;
     this._advancedFilterPopoverId = `popover__${this._advancedFilterUuid}`;
 
-    if (!this.storeModule && this.$store) {
-      this.storeModule = getModule(store, this.$store);
+    if (!this.storeModule) {
+      this.storeModule = useFilterStore();
     }
   }
 
@@ -106,7 +78,7 @@ export default class AdvancedFilters extends Vue {
       (dataTableFiltersComponent as DataTableFilters)._advancedFilterComponent = this;
     }
 
-    if (!this._filtersTooltip) {
+    if (!this._filtersTooltip && this.$refs.filtersButton) {
       this._filtersTooltip = chi.tooltip(this.$refs.filtersButton as HTMLElement);
     }
   }
@@ -116,7 +88,7 @@ export default class AdvancedFilters extends Vue {
   }
 
   _createSelectFilter(filter: DataTableFilter) {
-    const options = filter.options?.map(option => {
+    const options = filter.options?.map((option) => {
       return (
         <option value={option.value} selected={filter.value === option.value}>
           {option.label}
@@ -131,7 +103,8 @@ export default class AdvancedFilters extends Vue {
             ? `${this._calculateFilterId(filter.name)}-desktop`
             : `${this._calculateFilterId(filter.name)}-mobile`
         }
-        class={`${FORM_CLASSES.FORM_ITEM}`}>
+        class={`${FORM_CLASSES.FORM_ITEM}`}
+      >
         {this.mobile && (
           <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
             {filter.label}
@@ -143,7 +116,8 @@ export default class AdvancedFilters extends Vue {
           value={this.filterElementValueLive[filter.id]}
           class={`${SELECT_CLASSES.SELECT} ${this.mobile ? UTILITY_CLASSES.MARGIN.BOTTOM[1] : ''}`}
           data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}
+        >
           {options}
         </select>
       </div>
@@ -176,7 +150,8 @@ export default class AdvancedFilters extends Vue {
             : `${this._calculateFilterId(filter.name)}-mobile`
         }
         class={`
-              ${FORM_CLASSES.FORM_ITEM}`}>
+              ${FORM_CLASSES.FORM_ITEM}`}
+      >
         {this.mobile && (
           <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
             {filter.label}
@@ -223,14 +198,16 @@ export default class AdvancedFilters extends Vue {
         class={`
               ${FORM_CLASSES.FORM_ITEM}
               ${UTILITY_CLASSES.DISPLAY.FLEX}
-              ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
+              ${UTILITY_CLASSES.JUSTIFY.CENTER}`}
+      >
         <div
           class={[
             CHECKBOX_CLASSES.CHECKBOX,
             this.mobile
               ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
               : UTILITY_CLASSES.ALIGN_SELF.CENTER,
-          ]}>
+          ]}
+        >
           <input
             id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
             aria-label={`Filter by ${filter.label || filter.name}`}
@@ -248,25 +225,25 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
-  beforeDestroy() {
-    this._filtersTooltip.dispose();
+  beforeUnmount() {
+    this._filtersTooltip?.dispose();
   }
 
   _createCustomItem(filter: DataTableCustomItem) {
-    const customItemSlot =
-      this.$scopedSlots?.default &&
-      this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
+    const slot = this.$slots[filter.template];
+    const customItemSlot = slot ? slot({}) : null;
 
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
         {this.mobile && (
           <label
             for={this.mobile ? `${filter.template}-mobile` : `${filter.template}-desktop`}
-            class={FORM_CLASSES.LABEL}>
+            class={FORM_CLASSES.LABEL}
+          >
             {filter.label}
           </label>
         )}
-        {customItemSlot && customItemSlot[filter.template as keyof typeof customItemSlot]}
+        {customItemSlot}
       </div>
     );
   }
@@ -278,16 +255,13 @@ export default class AdvancedFilters extends Vue {
 
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
-        const filterElement =
-          filter.type === 'select'
-            ? this._createSelectFilter(filter)
-            : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-            ? this._createCheckboxFilter(filter)
-            : filter.type === 'textarea'
-            ? this._createTextareaFilter(filter)
-            : null;
+        const filterTypes = {
+          select: this._createSelectFilter,
+          input: this._createInputFilter,
+          checkbox: this._createCheckboxFilter,
+          textarea: this._createTextareaFilter,
+        };
+        const filterElement = filterTypes[filter.type] ? filterTypes[filter.type](filter) : null;
 
         if (filterElement) {
           const accordionItem = (
@@ -313,7 +287,8 @@ export default class AdvancedFilters extends Vue {
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
           ${BUTTON_CLASSES.FLAT}
-          `}>
+          `}
+      >
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true" />
         </div>
@@ -347,10 +322,12 @@ export default class AdvancedFilters extends Vue {
             title="Filters"
             modal
             drag
-            closable>
+            closable
+          >
             <button
               class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
-              onClick={(event: Event) => this._expandCollapseAccordions(event)}>
+              onClick={(event: Event) => this._expandCollapseAccordions(event)}
+            >
               {this.isExpanded ? 'Collapse All' : 'Expand All'}
             </button>
             <div class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZE_CLASSES.SM}`} ref="advancedFiltersAccordion">
@@ -371,8 +348,9 @@ export default class AdvancedFilters extends Vue {
     return advancedFiltersRender;
   }
 
+  @Emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE)
   _emitAdvancedFiltersChange() {
-    this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
+    // This is intentional
   }
 
   _applyAdvancedFiltersChange() {

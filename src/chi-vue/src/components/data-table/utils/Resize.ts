@@ -12,7 +12,7 @@ export class ColumnResize {
     this.dataTable = dataTable;
     this.elem = this.dataTable.$el as HTMLElement;
     this.columnHeaders = this.elem.querySelectorAll(`.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`);
-    this.columnHeaders.forEach(th => {
+    this.columnHeaders.forEach((th) => {
       const grip = document.createElement('div');
 
       th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
@@ -24,7 +24,7 @@ export class ColumnResize {
       grip.classList.add(UTILITY_CLASSES.POSITION.ABSOLUTE);
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
-      grip.addEventListener('mousedown', e => this.handlerMouseDown(e, th));
+      grip.addEventListener('mousedown', (e) => this.handlerMouseDown(e, th));
       th.appendChild(grip);
     });
     this.elem.addEventListener('mousemove', this.handlerMouseMove);
@@ -32,7 +32,7 @@ export class ColumnResize {
   }
 
   private handlerMouseDown = (e: MouseEvent, th: HTMLElement) => {
-    this.dataTable._preventSortOnResize = true;
+    this.dataTable.preventSortOnResize = true;
     this.thElm = th;
     this.startOffset = th.offsetWidth - e.pageX;
   };
@@ -47,8 +47,9 @@ export class ColumnResize {
             this.elem.querySelectorAll(
               `
               .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW} .${DATA_TABLE_CLASSES.CELL}:nth-child(${i + 1}),
-              .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW_CHILD} .${DATA_TABLE_CLASSES.CELL}:nth-child(${i +
-                1}),
+              .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW_CHILD} .${DATA_TABLE_CLASSES.CELL}:nth-child(${
+                i + 1
+              }),
               .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW_GRAND_CHILD} .${
                 DATA_TABLE_CLASSES.CELL
               }:nth-child(${i + 1})
@@ -58,7 +59,7 @@ export class ColumnResize {
         }
       }
 
-      columnCellsToResize.forEach(column => {
+      columnCellsToResize.forEach((column) => {
         if (this.thElm) {
           column.setAttribute('style', `width: ${this.thElm.style.width} !important; flex: none !important`);
         }
@@ -68,7 +69,7 @@ export class ColumnResize {
 
   private handlerMouseUp = () => {
     setTimeout(() => {
-      this.dataTable._preventSortOnResize = false;
+      this.dataTable.preventSortOnResize = false;
     }, 0);
     this.thElm = null;
   };

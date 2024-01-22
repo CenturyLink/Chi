@@ -44,6 +44,18 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td
             div
               | undefined
+        tr
+          td
+            div
+              code selectedView
+          td
+            div To define the selected view in the toolbar.
+          td
+            div
+              code string
+          td
+            div
+              | undefined
 
 h4 Filters
 section.chi-table.chi-table__options.-bordered.-my--3
@@ -234,42 +246,6 @@ section.chi-table.chi-table__options.-bordered.-my--3
         tr
           td
             div
-              code chiToolbarFiltersChange
-          td
-            div To user has changed the filter options of the data table
-          td
-            div
-              code DataTableFilters[]
-        tr
-          td
-            div
-              code chiToolbarSearch
-          td
-            div The user has made a search in the data table
-          td
-            div
-              code string
-        tr
-          td
-            div
-              code chiToolbarColumnsChange
-          td
-            div The user has changed the configuration of the columns
-          td
-            div
-              code DataTableColumns[]
-        tr
-          td
-            div
-              code chiToolbarViewsChange
-          td
-            div The user has selected a view
-          td
-            div
-              code DataTableView
-        tr
-          td
-            div
               code chiViewSave
           td
             div The user has created or edited a view
@@ -334,3 +310,12 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td
             div
               code string
+        tr
+          td
+            div
+              code chiSaveViewDefault
+          td
+            div Triggered when the user changed the default checkbox value
+          td
+            div
+              code boolean

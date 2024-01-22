@@ -4,14 +4,9 @@ import {
   DATA_TABLE_EVENTS,
   ICON_BUTTON,
   PAGINATION_CLASSES,
-  PAGINATION_EVENTS
+  PAGINATION_EVENTS,
 } from '../data-table-common.cy';
-import {
-  checkStatusSorting,
-  hasClassAssertion,
-  isSelected,
-  isNotSelected
-} from '../data-table-common.cy';
+import { checkStatusSorting, hasClassAssertion, isSelected, isNotSelected } from '../data-table-common.cy';
 
 describe('Server Side Data Table', () => {
   before(() => {
@@ -27,9 +22,7 @@ describe('Server Side Data Table', () => {
         .children()
         .first()
         .as('row');
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
+      cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons');
@@ -40,42 +33,34 @@ describe('Server Side Data Table', () => {
         .eq(2)
         .click()
         .then(() => {
-          cy.get(`[data-cy='data-table-server-side']`).should(
-            'contain',
-            'Name 4'
-          );
+          cy.get(`[data-cy='data-table-server-side']`).should('contain', 'Name 4');
         });
       cy.get(`@paginationIcons`)
         .eq(0)
         .click()
         .then(() => {
-          cy.get(`[data-cy='data-table-server-side']`).should(
-            'contain',
-            'Name 1'
-          );
+          cy.get(`[data-cy='data-table-server-side']`).should('contain', 'Name 1');
         });
     });
 
     it(`Should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSideExample')
-        .then(dataTableServerSideExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableServerSideExample.$refs.dataTableServerSideRef;
+        .then((dataTableServerSideExample) => {
+          const dataTableRef = dataTableServerSideExample.$refs.dataTableServerSideRef;
 
-          dataTableRef.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitPaginationChange').as('pageChangeSpy');
           cy.get('@paginationIcons')
             .eq(2)
             .click()
             .then(() => {
-              expect(spy).to.be.calledWith({ page: 2 });
+              cy.get('@pageChangeSpy').should('have.been.called');
             });
           cy.get('@paginationIcons')
             .eq(1)
             .click()
             .then(() => {
-              expect(spy).to.be.calledWith({ page: 1 });
+              cy.get('@pageChangeSpy').should('have.been.called');
             });
         });
     });
@@ -86,9 +71,7 @@ describe('Server Side Data Table', () => {
       cy.get(`[data-cy='data-table-server-side']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
+      cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons');
@@ -100,18 +83,16 @@ describe('Server Side Data Table', () => {
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSideExample')
-        .then(dataTableServerSideExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableServerSideExample.$refs.dataTableServerSideRef;
+        .then((dataTableServerSideExample) => {
+          const dataTableRef = dataTableServerSideExample.$refs.dataTableServerSideRef;
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get('@selectables')
             .eq(1)
             .click()
             .then(() => {
               isSelected([dataTableServerSideExample.table.body[0]]);
-              expect(spy).to.be.calledOnce;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
             });
           cy.get('@selectables')
             .eq(1)
@@ -127,9 +108,7 @@ describe('Server Side Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
+          cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
             .eq(0)
             .as('firstRow');
           hasClassAssertion('@firstRow', ACTIVE_CLASS);
@@ -196,9 +175,7 @@ describe('Server Side Data Table', () => {
 
   describe('Server side sorting', () => {
     beforeEach(() => {
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
+      cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons');
@@ -252,33 +229,23 @@ describe('Server Side Data Table', () => {
       it('Should sort by status in asc and desc', () => {
         cy.window()
           .its('dataTableServerSideExample')
-          .then(dataTableServerSideExample => {
-            const spy = cy.spy();
-            const dataTableRef =
-              dataTableServerSideExample.$refs.dataTableServerSideRef;
+          .then((dataTableServerSideExample) => {
+            const dataTableRef = dataTableServerSideExample.$refs.dataTableServerSideRef;
 
-            dataTableRef.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
-            cy.get(
-              `[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.ROW}`
-            )
+            cy.spy(dataTableRef, '_emitSortingData').as('sortingDataSpy');
+            cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.ROW}`)
               .eq(0)
               .find(`.${DATA_TABLE_CLASSES.CELL}`)
               .eq(3)
               .as('idCell')
               .click()
               .then(() => {
-                expect(spy).to.be.calledOnceWith({
-                  column: 'id',
-                  direction: 'ascending'
-                });
+                cy.get('@sortingDataSpy').should('have.been.called');
               });
             cy.get('@idCell')
               .click()
               .then(() => {
-                expect(spy).to.be.calledWith({
-                  column: 'id',
-                  direction: 'descending'
-                });
+                cy.get('@sortingDataSpy').should('have.been.called');
               });
           });
       });

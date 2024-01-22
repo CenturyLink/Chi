@@ -1,18 +1,16 @@
-import {
-  Component,
-  Event,
-  EventEmitter,
-  Prop,
-  Watch,
-  h, Element
-} from '@stencil/core';
+import { Component, Event, EventEmitter, Prop, h, Element } from '@stencil/core';
 import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS, UTILITY_CLASSES } from '../../constants/classes';
-import { CHI_TIME_SCROLL_ADJUSTMENT, TimePickerFormats } from '../../constants/constants';
+import {
+  CHI_TIME_SCROLL_ADJUSTMENT,
+  TimePickerFormats,
+  TimePickerTimeSteps,
+  TIME_PICKER_TIME_STEPS,
+} from '../../constants/constants';
 
 @Component({
   tag: 'chi-time',
   styleUrl: 'time.scss',
-  scoped: true
+  scoped: true,
 })
 export class Time {
   /**
@@ -31,24 +29,37 @@ export class Time {
   @Prop({ reflect: true }) format: TimePickerFormats = '12hr';
 
   /**
-   * To render Minutes and Seconds columns in stepped format
+   * @deprecated Use minutesStep and secondsStep instead.
+   * To render Minutes and Seconds columns in 15 min and 10 second steps.
    */
-  @Prop({ reflect: true }) stepped: boolean;
+  @Prop({ reflect: true }) stepped?: boolean;
+
+  /**
+   * Renders minutes in stepped format. Defaults to 15 min steps if no value
+   * is provided (see examples in docs).
+   */
+  @Prop({ reflect: true }) minutesStep?: TimePickerTimeSteps;
+
+  /**
+   * Renders seconds in stepped format. Defaults to 10 seconds if
+   * no value is provided (see examples in docs).
+   */
+  @Prop({ reflect: true }) secondsStep?: TimePickerTimeSteps;
 
   /**
    *  To disable specific hours
    */
-  @Prop({ reflect: true }) _excludedHours: string;
+  @Prop({ reflect: true }) _excludedHours?: string;
 
   /**
    *  To disable specific minutes
    */
-  @Prop({ reflect: true }) _excludedMinutes: string;
+  @Prop({ reflect: true }) _excludedMinutes?: string;
 
   /**
    *  To disable specific seconds
    */
-  @Prop({ reflect: true }) _excludedSeconds: string;
+  @Prop({ reflect: true }) _excludedSeconds?: string;
 
   @Element() el: HTMLElement;
 
@@ -61,115 +72,125 @@ export class Time {
   excludedMinutesArray = [];
   excludedSecondsArray = [];
 
-  @Watch('excluded-hours')
-  updateExcludedHours() {
-    if (this._excludedHours) {
-      this._excludedHours.split(',').map(time => {
-        this.excludedHoursArray.push(time.trim());
-      });
-    }
-  }
-
-  @Watch('excluded-minutes')
-  updateExcludedMinutes() {
-    if (this._excludedMinutes) {
-      this._excludedMinutes.split(',').map(time => {
-        this.excludedMinutesArray.push(time.trim());
-      });
-    }
-  }
-
-  @Watch('excluded-seconds')
-  updateExcludedSeconds() {
-    if (this._excludedSeconds) {
-      this._excludedSeconds.split(',').map(time => {
-        this.excludedSecondsArray.push(time.trim());
-      });
-    }
-  }
-
-  @Watch('value')
-  timeChanged(newValue: string, oldValue: string) {
-    if (newValue !== oldValue) {
-      this.value = newValue;
-    }
-  }
-
-  // ToDo Validate Value
-  // validateTime(time: string) {
-  //   return /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
-  // }
+  private minutesToDisplay = [];
+  private secondsToDisplay = [];
 
   /**
    * Time change value event
    */
   @Event({ eventName: 'chiTimeChange' }) eventChange: EventEmitter;
 
-  calculateTimePeriods() {
-    const currentTime = new Date(),
-      hours = currentTime.getHours(),
-      minutes = currentTime.getMinutes(),
-      seconds = currentTime.getSeconds();
+  componentWillLoad() {
+    this.updateTimeSteps();
+    this.validateTimeSteps();
+    this.selectTimeAndPeriod();
+    this.updateExcluded();
 
-    if (!this.value) {
-      this.value = `${this.formatTimePeriod(hours)}:${this.formatTimePeriod(minutes)}:${this.formatTimePeriod(seconds)}`;
-    }
-
-    const time = this.value.split(':');
-
-    this._hour = time[0];
-    if (this.stepped) {
-      const currentMinute = parseInt(time[1]);
-      const currentSecond = parseInt(time[2]);
-
-      if (currentMinute % 15 === 0 || currentMinute === 0) {
-        this._minute = time[1];
-      } else if (currentMinute > 52.5) {
-        this._minute = '00';
-      } else {
-        const remainder = currentMinute % 15;
-
-        if (remainder < 7.5) {
-          this._minute = this.formatTimePeriod(currentMinute - remainder);
-        } else {
-          this._minute = this.formatTimePeriod(currentMinute + (15 - remainder));
-        }
-      }
-
-      if (currentSecond % 10 === 0 || currentSecond === 0) {
-        this._second = time[2];
-      } else if (currentSecond > 52.5) {
-        this._second = '00';
-      } else {
-        const remainder = currentSecond % 10;
-
-        if (remainder < 5) {
-          this._second = this.formatTimePeriod(currentSecond - remainder);
-        } else {
-          this._second = this.formatTimePeriod(currentSecond + (10 - remainder));
-        }
-      }
-    } else {
-      this._minute = time[1];
-      this._second = time[2] ? time[2] : '00';
-    }
-    this._period = !(this.format === '24hr') && parseInt(this._hour) < 12 ? 'am' : 'pm';
+    this.updateValue();
   }
 
-  connectedCallback() {
-    this.calculateTimePeriods();
-    this.updateExcludedHours();
-    this.updateExcludedMinutes();
-    this.updateExcludedSeconds();
+  validateTimeSteps() {
+    if (this.minutesStep && !TIME_PICKER_TIME_STEPS.includes(this.minutesStep)) {
+      throw new Error(`Property minutes-step is invalid. Must be one of ${TIME_PICKER_TIME_STEPS.join(',')}`);
+    }
+    if (this.secondsStep && !TIME_PICKER_TIME_STEPS.includes(this.secondsStep)) {
+      throw new Error(`Property seconds-step is invalid. Must be one of ${TIME_PICKER_TIME_STEPS.join(',')}`);
+    }
   }
 
-  formatTimePeriod(period: number) {
-    return String(period).length > 1 ? String(period) : `0${period}`;
-  };
+  /**
+   * @returns array with integers from 0 to 59 in step intervals.
+   */
+  timeRange(step = 1) {
+    return Array.from({ length: 59 / step + 1 }, (_, index) => index * step);
+  }
+
+  updateExcluded() {
+    const getValues = (list = '') => list.split(',').map((i) => i.trim());
+
+    this.excludedHoursArray = getValues(this._excludedHours);
+    this.excludedMinutesArray = getValues(this._excludedMinutes);
+    this.excludedSecondsArray = getValues(this._excludedSeconds);
+  }
+
+  updateTimeSteps() {
+    if (this.stepped || Number.isNaN(this.minutesStep)) {
+      this.minutesStep = 15;
+    }
+    if (this.stepped || Number.isNaN(this.secondsStep)) {
+      this.secondsStep = 10;
+    }
+
+    this.minutesToDisplay = this.timeRange(this.minutesStep);
+    this.secondsToDisplay = this.timeRange(this.secondsStep);
+  }
+
+  /**
+   * Validates property 'value'
+   *
+   */
+  validateTime(time: string) {
+    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
+
+    if (!isValid) {
+      throw new Error('Provided "value" is not valid. Provide a value in the form hh:mm:ss');
+    }
+
+    return isValid;
+  }
+
+  formatTimePeriod(period: number | string) {
+    return String(period).padStart(2, '0');
+  }
+
+  updateValue() {
+    const newValue = [this._hour, this._minute, this._second].join(':');
+
+    if (newValue !== this.value) {
+      this.value = newValue;
+      this.emitTimeValueEvent();
+    }
+  }
+
+  /**
+   * Selects hour minute and second properties from
+   * this.value or current time.
+   */
+  selectTimeAndPeriod() {
+    let time = new Date();
+
+    if (this.value && this.validateTime(this.value)) {
+      const [hours, minutes, seconds] = this.value.split(':').map((i) => parseInt(i));
+      time.setHours(hours, minutes, seconds || 0);
+    }
+
+    const [hours, minutes, seconds] = this.getRoundedTime(time);
+
+    this._period = !(this.format === '24hr') && parseInt(hours) < 12 ? 'am' : 'pm';
+    this._hour = hours;
+    this._minute = minutes;
+    this._second = seconds;
+  }
+
+  /**
+   * Rounds current time to the defined minutes and second steps.
+   */
+  getRoundedTime(time: Date) {
+    const minutesCoeff = 1000 * 60 * this.minutesStep;
+    const secondsCoeff = 1000 * this.secondsStep;
+
+    if (!this.minutesToDisplay.includes(time.getMinutes())) {
+      time = new Date(Math.ceil(time.getTime() / minutesCoeff) * minutesCoeff);
+    } else if (!this.secondsToDisplay.includes(time.getSeconds())) {
+      time = new Date(Math.ceil(time.getTime() / secondsCoeff) * secondsCoeff);
+    }
+
+    return [time.getHours(), time.getMinutes(), time.getSeconds()].map(this.formatTimePeriod);
+  }
 
   hours() {
-    const hourFormat = (this.format === '24hr') ? 24 : 12;
-    const startHour = (this.format === '24hr') ? '00' : '12';
+    const hourFormat = this.format === '24hr' ? 24 : 12;
+    const startHour = this.format === '24hr' ? '00' : '12';
     let hourToSet: string;
     const setHour = (hour: string) => {
       if (this.format === '24hr') {
@@ -202,17 +223,17 @@ export class Time {
       const valueHour = parseInt(this.value.split(':')[0]);
       let hourStatus = '';
 
-      if (this._hour === hour ||
-        (!(this.format === '24hr') &&
-          this._period === 'pm' &&
-          parseInt(hour) + 12 === parseInt(this._hour)
-        ) ||
-        (this._period === 'am' && (parseInt(hour) === 12 && valueHour === 0))
+      if (
+        this._hour === hour ||
+        (!(this.format === '24hr') && this._period === 'pm' && parseInt(hour) + 12 === parseInt(this._hour)) ||
+        (this._period === 'am' && parseInt(hour) === 12 && valueHour === 0)
       ) {
         hourStatus = ACTIVE_CLASS;
       } else {
-        if (this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
-          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))) {
+        if (
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour))) ||
+          this.excludedHoursArray.includes(this.formatTimePeriod(parseInt(hour) + 12))
+        ) {
           hourStatus = DISABLED_CLASS;
         }
       }
@@ -221,11 +242,16 @@ export class Time {
     };
 
     const hoursToDisplay = [
-      <div data-hour={startHour} class={`
+      <div
+        data-hour={startHour}
+        class={`
         ${TIME_CLASSES.HOUR}
         ${hourStatus(startHour)}
         `}
-           onClick={() => setHour(String(hourFormat))}>{startHour}</div>
+        onClick={() => setHour(String(hourFormat))}
+      >
+        {startHour}
+      </div>,
     ];
 
     Array.from(Array(hourFormat), (_, i) => {
@@ -233,135 +259,94 @@ export class Time {
 
       if (i > 0) {
         hoursToDisplay.push(
-          <div data-hour={hour} class={`
+          <div
+            data-hour={hour}
+            class={`
             ${TIME_CLASSES.HOUR}
             ${hourStatus(hour)}
           `}
-            onClick={() => setHour(hour)}>
+            onClick={() => setHour(hour)}
+          >
             {hour}
           </div>
         );
       }
     });
 
+    return <div class={`${TIME_CLASSES.HOURS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{hoursToDisplay}</div>;
+  }
+
+  /**
+   * Calculates class to apply, active or disabled
+   * @param value value to check what class to apply
+   * @param activeValue value to apply active class
+   * @param excludedValues array of excluded values
+   */
+  getStateClass(value: string, activeValue: string, excludedValues: string[]) {
+    let minuteState = '';
+
+    if (parseInt(activeValue) === parseInt(value)) {
+      minuteState = ACTIVE_CLASS;
+    } else if (excludedValues.includes(value)) {
+      minuteState = DISABLED_CLASS;
+    }
+
+    return minuteState;
+  }
+
+  /**
+   * Generates minute element to show
+   * @param minute
+   * @returns
+   */
+  getMinuteElement(minute: string) {
     return (
-      <div class={`${TIME_CLASSES.HOURS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>
-        {hoursToDisplay}
+      <div
+        class={`
+        ${TIME_CLASSES.MINUTE}
+        ${this.getStateClass(minute, this._minute, this.excludedMinutesArray)}
+      `}
+        onClick={() => {
+          this._minute = minute;
+          this.updateValue();
+        }}
+      >
+        {minute}
       </div>
     );
   }
 
   minutes() {
-    const setMinute = (minute: string) => {
-      this._minute = minute;
-      this.value = `${this._hour}:${this._minute}:${this._second}`;
-      this.emitTimeValueEvent();
-    };
-    const minuteState = (minute: string) => {
-      let minuteState = '';
-
-      if (parseInt(this._minute) === parseInt(minute)) {
-        minuteState = ACTIVE_CLASS;
-      } else {
-        if (this.excludedMinutesArray.includes(minute)) {
-          minuteState = DISABLED_CLASS;
-        }
-      }
-
-      return minuteState;
-    };
-    const minutesToDisplay = [
-      <div class={`
-      ${TIME_CLASSES.MINUTE}
-      ${minuteState('00')}
-      `}
-       onClick={() => setMinute('00')}>00</div>
-    ];
-
-    Array.from(Array(60), (_, i) => {
-      const minute = this.formatTimePeriod(i);
-      const displayMinute = () => {
-        minutesToDisplay.push(<div class={`
-        ${TIME_CLASSES.MINUTE}
-        ${minuteState(minute)}
-        `}
-         onClick={() => setMinute(minute)}>{minute}</div>);
-      };
-
-      if (i > 0) {
-        if (this.stepped) {
-          if (i % 15 === 0) {
-            displayMinute();
-          }
-        } else {
-          displayMinute();
-        }
-      }
-    });
-
     return (
-      <div class={`${TIME_CLASSES.MINUTES} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
-        minutesToDisplay
-      }</div>
+      <div class={`${TIME_CLASSES.MINUTES} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>
+        {this.minutesToDisplay.map((minute) => this.getMinuteElement(this.formatTimePeriod(minute)))}
+      </div>
+    );
+  }
+
+  getSecondsElement(second: string) {
+    return (
+      <div
+        class={`
+          ${TIME_CLASSES.SECOND}
+          ${this.getStateClass(second, this._second, this.excludedSecondsArray)}
+        `}
+        onClick={() => {
+          this._second = second;
+          this.updateValue();
+        }}
+      >
+        {second}
+      </div>
     );
   }
 
   seconds() {
-    const setSecond = (second: string) => {
-      this._second = second;
-      this.value = `${this._hour}:${this._minute}:${this._second}`;
-      this.emitTimeValueEvent();
-    };
-    const secondsState = (second: string) => {
-      let secondState = '';
-
-      if (parseInt(this._second) === parseInt(second)) {
-        secondState = ACTIVE_CLASS;
-      } else {
-        if (this.excludedMinutesArray.includes(second)) {
-          secondState = DISABLED_CLASS;
-        }
-      }
-
-      return secondState;
-    };
-    const secondsToDisplay = [
-      <div class={`
-        ${TIME_CLASSES.SECOND}
-        ${secondsState('00')}
-        `}
-       onClick={() => setSecond('00')}>00</div>
-    ];
-
-    Array.from(Array(60), (_, i) => {
-      const second = this.formatTimePeriod(i);
-      const displaySecond = () => {
-        secondsToDisplay.push(<div class={`
-          ${TIME_CLASSES.SECOND}
-          ${secondsState(second)}
-          `}
-        onClick={() => setSecond(second)}>{second}</div>);
-      };
-
-      if (i > 0) {
-        if (this.stepped) {
-          if (i % 10 === 0) {
-            displaySecond();
-          }
-        } else {
-          displaySecond();
-        }
-      }
-    });
-
-    if (this.displaySeconds) {
-      return (
-        <div class={`${TIME_CLASSES.SECONDS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
-          secondsToDisplay
-        }</div>
-      );
-    }
-    return;
+    return this.displaySeconds ? (
+      <div class={`${TIME_CLASSES.SECONDS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>
+        {this.secondsToDisplay.map((second) => this.getSecondsElement(this.formatTimePeriod(second)))}
+      </div>
+    ) : undefined;
   }
 
   periods() {
@@ -404,13 +389,11 @@ export class Time {
 
       return (
         <div class={TIME_CLASSES.PERIODS}>
-          <div
-            class={periodClasses('am')}
-            onClick={() => setPeriod('am')}>AM
+          <div class={periodClasses('am')} onClick={() => setPeriod('am')}>
+            AM
           </div>
-          <div
-            class={periodClasses('pm')}
-            onClick={() => setPeriod('pm')}>PM
+          <div class={periodClasses('pm')} onClick={() => setPeriod('pm')}>
+            PM
           </div>
         </div>
       );
@@ -424,7 +407,7 @@ export class Time {
       minute: this._minute,
       second: this._second,
       period: this._period,
-      value: this.value
+      value: this.value,
     });
   }
 
@@ -463,9 +446,7 @@ export class Time {
       periods = this.periods();
 
     return (
-      <div
-        class={TIME_CLASSES.TIME}
-      >
+      <div class={TIME_CLASSES.TIME}>
         <div class={TIME_CLASSES.CONTENT}>
           {hours}
           {minutes}

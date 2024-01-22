@@ -1,19 +1,29 @@
-module.exports = {
+export default {
   root: true,
   env: {
-    node: true
+    node: true,
+    es2022: true,
   },
-  'extends': [
-    'plugin:vue/essential',
+  extends: [
+    'plugin:vue/vue3-essential',
     'eslint:recommended',
-    '@vue/typescript/recommended'
+    '@vue/typescript/recommended',
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-console': 'off',
+    'no-debugger': import.meta.env.MODE === 'production' ? 'warn' : 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+    'vue/no-deprecated-slot-attribute': 'warn',
     '@typescript-eslint/no-explicit-any': ['off'],
-  }
-}
+    '@typescript-eslint/no-unused-vars': ['off'],
+  },
+};

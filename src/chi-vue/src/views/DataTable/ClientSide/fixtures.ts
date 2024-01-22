@@ -137,89 +137,91 @@ const exampleColumns = [
   },
 ];
 
-const exampleFilters = [
-  {
-    name: 'status',
-    type: 'select',
-    id: 'myoption1',
-    label: 'Selector',
-    options: [
-      {
-        label: 'Active',
-        value: 'active',
-      },
-      {
-        label: 'Inactive',
-        value: 'inactive',
-      },
-    ],
-    value: 'active',
-  },
-  {
-    name: 'input',
-    placeholder: 'Input filter',
-    type: 'input',
-    value: '',
-    id: 'myoption2',
-    label: 'Input Filter',
-  },
-  {
-    name: 'checkbox',
-    type: 'checkbox',
-    checked: false,
-    id: 'myoption3',
-    label: 'Checkbox',
-  },
-  {
-    name: 'statusAdvanced',
-    label: 'Status',
-    type: 'select',
-    id: 'myoption4',
-    options: [
-      {
-        label: 'Active',
-        value: 'active',
-        selected: false,
-      },
-      {
-        label: 'Inactive',
-        value: 'inactive',
-        selected: false,
-      },
-    ],
-    advanced: true,
-    value: 'active',
-  },
-  {
-    name: 'inputAdvanced',
-    label: 'Label',
-    id: 'myoption5',
-    advanced: true,
-  },
-  {
-    name: 'textareaAdvanced',
-    label: 'textarea',
-    id: 'myoption6',
-    type: 'textarea',
-    advanced: true,
-  },
-  {
-    name: 'checkboxAdvanced',
-    id: 'myoption7',
-    label: 'Advanced Checkbox',
-    type: 'checkbox',
-    advanced: true,
-  },
-  {
-    name: 'input',
-    placeholder: 'Input filter',
-    type: 'input',
-    value: '',
-    id: 'myoption8',
-    label: 'Input',
-    advanced: true,
-  },
-];
+const exampleFilters = {
+  filters: [
+    {
+      name: 'status',
+      type: 'select',
+      id: 'myoption1',
+      label: 'Selector',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+        },
+      ],
+      value: 'active',
+    },
+    {
+      name: 'input',
+      placeholder: 'Input filter',
+      type: 'input',
+      value: '',
+      id: 'myoption2',
+      label: 'Input Filter',
+    },
+    {
+      name: 'checkbox',
+      type: 'checkbox',
+      checked: false,
+      id: 'myoption3',
+      label: 'Checkbox',
+    },
+    {
+      name: 'statusAdvanced',
+      label: 'Status',
+      type: 'select',
+      id: 'myoption4',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+          selected: false,
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+          selected: false,
+        },
+      ],
+      advanced: true,
+      value: 'active',
+    },
+    {
+      name: 'inputAdvanced',
+      label: 'Label',
+      id: 'myoption5',
+      advanced: true,
+    },
+    {
+      name: 'textareaAdvanced',
+      label: 'textarea',
+      id: 'myoption6',
+      type: 'textarea',
+      advanced: true,
+    },
+    {
+      name: 'checkboxAdvanced',
+      id: 'myoption7',
+      label: 'Advanced Checkbox',
+      type: 'checkbox',
+      advanced: true,
+    },
+    {
+      name: 'input',
+      placeholder: 'Input filter',
+      type: 'input',
+      value: '',
+      id: 'myoption8',
+      label: 'Input',
+      advanced: true,
+    },
+  ],
+};
 
 const customItems = [
   {
@@ -436,6 +438,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021067',
     selectionDisabled: true,
+    selectableDisabledMessage: 'This is a test message for disabled checkboxes or radio buttons',
     nestedContent: {
       table: {
         data: [

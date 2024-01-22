@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 export function uuid4() {
   let uuid = '',
     ii;
@@ -35,15 +33,17 @@ export function contains(ancestorElement: HTMLElement, descendantElement: HTMLEl
   }
 }
 
-export function findComponent(startComponent: Vue, componentName: string) {
+export function findComponent(startComponent: any, componentName: string) {
   let component = null;
   let parent = startComponent.$parent;
+
   while (parent && !component) {
-    if (parent.$options.name === componentName) {
+    if (parent.name === componentName) {
       component = parent;
     }
     parent = parent.$parent;
   }
+
   return component;
 }
 
@@ -60,7 +60,7 @@ export function copyObject(src: any) {
 }
 
 export function copyArrayOfObjects(originArray: any[]) {
-  return originArray.map(object => {
+  return originArray.map((object) => {
     return copyObject(object);
   });
 }
@@ -69,10 +69,10 @@ export function printElement(content: string, title: string) {
   const win = window.open();
   const styleSheets =
     Array.from(document.head.getElementsByTagName('link'))
-      .map(el => el.outerHTML)
+      .map((el) => el.outerHTML)
       .reduce((previousValue, currentValue) => previousValue + currentValue, '') +
     Array.from(document.head.getElementsByTagName('style'))
-      .map(el => el.outerHTML)
+      .map((el) => el.outerHTML)
       .reduce((previousValue, currentValue) => previousValue || '' + currentValue, '');
 
   if (!win) {
@@ -112,4 +112,8 @@ export function deepCopy(obj: any): any {
       return newObj;
     }, {} as any);
   }
+}
+
+export function swapElementsInArray<T>(array: T[], index1: number, index2: number) {
+  array[index1] = array.splice(index2, 1, array[index1])[0];
 }

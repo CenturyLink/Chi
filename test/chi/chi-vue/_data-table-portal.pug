@@ -1,608 +1,630 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(src=`../../js/chi.js`)
 
 h2 Data Table Portal
 h3 Portal
 .test-data-table.-p--3.-w--100
   #portal
-    chi-vue-data-table(data-cy='data-table-portal', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-portal', :config="config", :data-table-data="table")
 
 h3 Portal Empty
 .test-data-table.-p--3.-w--100
   #portalEmpty
-    chi-vue-data-table(data-cy='data-table-portal-empty', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-portal-empty', :config="config", :data-table-data="table")
 
 h3 Portal Accordion
 .test-data-table.-p--3.-w--100
   #portalAccordion
-    chi-vue-data-table(ref="portalAccordion" data-cy='data-table-portal-accordion', :config="config", :data="table")
+    chi-vue-data-table(ref="portalAccordion" data-cy='data-table-portal-accordion', :config="config", :data-table-data="table")
 
 h3 Portal Accordion Child
 .test-data-table.-p--3.-w--100
   #portalAccordionChild
-    chi-vue-data-table(data-cy='data-table-portal-accordion-child', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-portal-accordion-child', :config="config", :data-table-data="table")
 
 h3 Portal -- Accordion Expanded -- Child Expanded
 .test-data-table.-p--3.-w--100
   #portalAccordionChildExpanded
-    chi-vue-data-table(data-cy='data-table-portal-accordion-child-expanded', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-portal-accordion-child-expanded', :config="config", :data-table-data="table")
 
 h2 Data Table Server Side (Portal)
 
 .test-data-table.-p--3.-w--100
   #base-server-side-portal
-    chi-vue-data-table(data-cy='data-table-server-side-portal' ref="dataTableServerSidePortalRef" :config="config", :data="table")
+    chi-vue-data-table(
+      data-cy='data-table-server-side-portal' 
+      ref="dataTableServerSidePortalRef" 
+      :config="config", 
+      :data-table-data="table"
+      @chi-page-change="(e) => chiPageChange(e)"
+      @chi-selected-rows-change="(e) => chiSelectedRowsChange(e)"
+      @chi-data-sorting="(e) => chiDataSorting(e)"
+    )
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
 
 script.
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+  const portalApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [
+            {
+              id: "name-1",
+              data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-2",
+              data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-3",
+              data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            },
+            {
+              id: "name-4",
+              data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-5",
+              data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-6",
+              data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+            },
+          ],
+        },
+      }
     },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: true,
-        },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
-      },
-    },
-  }).$mount("#portal");
+  });
 
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        noResultsMessage:
-          "No matches found. Please revise search criteria and try again.",
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: true,
-        },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [],
-      },
-    },
-  }).$mount("#portalEmpty");
+  portalApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalApp.mount('#portal');
 
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+  const portalEmptyApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          noResultsMessage:
+            "No matches found. Please revise search criteria and try again.",
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [],
+        },
+      }
     },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: false,
+  });
+
+  portalEmptyApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalEmptyApp.mount('#portalEmpty');
+
+  const portalAccordionApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [
+            {
+              id: "name-1",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-2",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-3",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            },
+            {
+              id: "name-4",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-5",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-6",
+              nestedContent: {
+                value: "Accordion content",
+              },
+              data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+            },
+          ],
         },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [
-          {
-            id: "name-1",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
-      },
+      }
     },
     mounted(){
       if (window.Cypress) {
         window.portalAccordionDataTable = this;
       }
     }
-  }).$mount("#portalAccordion");
+  });
 
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: false,
-        },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [
-          {
-            id: "name-1",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-1-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-1-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-2-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-2-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-3-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-3-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-4-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-4-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-5-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-5-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-6-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-6-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
-              },
-            },
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
-      },
-    },
-  }).$mount("#portalAccordionChild");
+  portalAccordionApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalAccordionApp.mount('#portalAccordion');
 
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: false,
+  const portalAccordionChildApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
         },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [
-          {
-            id: "name-1",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "child-name-1",
-                    nestedContent: {
-                      table: {
-                        data: [
-                          {
-                            id: "grandchild-name-1-0",
-                            data: [
-                              "Grand-child Name 1",
-                              "grandchild-name-1-0",
-                              "Dec 18, 2020 2:38 AM",
-                            ],
-                          },
-                        ],
-                      },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [
+            {
+              id: "name-1",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-1-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
                     },
-                    expanded: false,
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 3:26 PM",
-                    ],
-                  },
-                ],
+                    {
+                      id: "name-1-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
             },
-            expanded: true,
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-2-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-2-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
+            {
+              id: "name-2",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-2-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-2-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
             },
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-3-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-3-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
+            {
+              id: "name-3",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-3-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-3-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
             },
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-4-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-4-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
+            {
+              id: "name-4",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-4-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-4-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
             },
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-5-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-5-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
+            {
+              id: "name-5",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-5-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-5-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
             },
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            nestedContent: {
-              table: {
-                data: [
-                  {
-                    id: "name-6-0",
-                    data: [
-                      "Child Name 1",
-                      "child-name-1",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                  {
-                    id: "name-6-1",
-                    data: [
-                      "Child Name 2",
-                      "child-name-2",
-                      "Dec 18, 2020 2:38 AM",
-                    ],
-                  },
-                ],
+            {
+              id: "name-6",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-6-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-6-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
               },
+              data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
             },
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
-      },
+          ],
+        },
+      }
     },
-  }).$mount("#portalAccordionChildExpanded");
+  });
+
+  portalAccordionChildApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalAccordionChildApp.mount('#portalAccordionChild');
+
+  const portalAccordionChildExpandedApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID" },
+            lastLogin: { label: "Last Login" },
+          },
+          body: [
+            {
+              id: "name-1",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "child-name-1",
+                      nestedContent: {
+                        table: {
+                          data: [
+                            {
+                              id: "grandchild-name-1-0",
+                              data: [
+                                "Grand-child Name 1",
+                                "grandchild-name-1-0",
+                                "Dec 18, 2020 2:38 AM",
+                              ],
+                            },
+                          ],
+                        },
+                      },
+                      expanded: false,
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 3:26 PM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              expanded: true,
+              data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-2",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-2-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-2-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-3",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-3-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-3-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            },
+            {
+              id: "name-4",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-4-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-4-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+            },
+            {
+              id: "name-5",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-5-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-5-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+            },
+            {
+              id: "name-6",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "name-6-0",
+                      data: [
+                        "Child Name 1",
+                        "child-name-1",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                    {
+                      id: "name-6-1",
+                      data: [
+                        "Child Name 2",
+                        "child-name-2",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+            },
+          ],
+        },
+      }
+    },
+  });
+
+  portalAccordionChildExpandedApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalAccordionChildExpandedApp.mount('#portalAccordionChildExpanded');
 
   const page1Portal = [
     {
@@ -730,34 +752,75 @@ script.
     },
   ];
 
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+  const portalBaseServerSide = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          mode: 'serverside',
+          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'lg',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            hideOnSinglePage: true,
+            pages: 2,
+            pageJumper: true,
+          },
+          selectable: true,
+          reserveExpansionSlot: true,
+          columnSizes: {
+            xs: [10, 10, 10, 0, 10, 10, 10, 5],
+            sm: [10, 10, 10, 0, 10, 10, 10, 5],
+            md: [15, 5, 15, 0, 15, 15, 15, 5],
+            lg: [15, 5, 15, 0, 15, 15, 15, 5],
+            xl: [15, 5, 10, 15, 15, 15, 15, 5],
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
+            lastLogin: { label: "Last Login" },
+          },
+          body: page1Portal
+        },
+        sortedData: []
+      }
     },
     methods: {
       fakeApiCall(page) {
-        if(this.$data.sortedData.length){
-          return page === 1 ? this.sortedData.slice(0, this.$data.config.resultsPerPage) : page === 2 ? this.sortedData.slice(this.$data.config.resultsPerPage) : null
+        if(this.sortedData.length) {
+          return page === 1 ? this.sortedData.slice(0, this.config.resultsPerPage) : page === 2 ? this.sortedData.slice(this.config.resultsPerPage) : null
         }
         return page === 1 ? page1Portal : page === 2 ? page2Portal : null;
       },
-      pagination(e) {
+      chiPageChange(e) {
         const apiResponsePageData = this.fakeApiCall(Number(e.page));
 
-        this.$data.config = {
-          ...this.$data.config,
+        this.config = {
+          ...this.config,
           pagination: {
-            ...this.$data.config.pagination,
+            ...this.config.pagination,
             activePage: Number(e.page),
           },
         };
-        this.$data.table = {
-          ...this.$data.table,
+        this.table = {
+          ...this.table,
           body: apiResponsePageData
         };
       },
-      selection(selectedRows) {
-        const copiedTableBodyData = [...this.$data.table.body];
+      chiSelectedRowsChange(selectedRows) {
+        const copiedTableBodyData = [...this.table.body];
         const flagRowSelection = (levelData, id, action) => {
           const dataRow = levelData.find((row) => row.id === id);
 
@@ -782,13 +845,13 @@ script.
 
           flagRowSelection(copiedTableBodyData, row.id, isSelected ? 'select' : 'deselect');
         });
-        this.$data.table = {
-          ...this.$data.table,
+        this.table = {
+          ...this.table,
           body: copiedTableBodyData,
         };
       },
-      sortData(e) {
-        if(!e.direction){
+      chiDataSorting(e) {
+        if(!e.direction) {
           this.sortedData = [];
 
           const apiResponsePageData = this.fakeApiCall(this.config.pagination.activePage);
@@ -797,7 +860,7 @@ script.
             ...this.table,
             body: [...apiResponsePageData],
           };
-        } else{
+        } else {
           const columnIndex = Object.keys(this.table.head).indexOf(e.column);
           const copiedTableBodyData = [...page1Portal].concat(page2Portal);
 
@@ -805,9 +868,9 @@ script.
             const statusA = a.data[columnIndex].payload.status;
             const statusB = b.data[columnIndex].payload.status;
 
-            if(e.direction === "ascending"){
+            if(e.direction === "ascending") {
               return ((statusA < statusB) ? -1 : ((statusA > statusB) ? 1 : 0));
-            } else{
+            } else {
               return ((statusA < statusB) ? 1 : ((statusA > statusB) ? -1 : 0));
             }
           });
@@ -815,7 +878,7 @@ script.
           this.sortedData = copiedTableBodyData;
           this.table = {
             ...this.table,
-            body:  this.sortedData.slice(0, this.config.resultsPerPage),
+            body: this.sortedData.slice(0, this.config.resultsPerPage),
           };
         }
       }
@@ -825,57 +888,7 @@ script.
         window.dataTableServerSidePortalExample = this;
       }
     },
-    updated() {
-      this.$refs.dataTableServerSidePortalRef.$on("chiPageChange", (e) => {
-        this.pagination(e);
-      });
-      this.$refs.dataTableServerSidePortalRef.$on("chiSelectedRowsChange", (e) => {
-        this.selection(e);
-      });
-      this.$refs.dataTableServerSidePortalRef.$on("chiDataSorting", (e) => {
-        this.sortData(e);
-      })
-    },
-    data: {
-      config: {
-        columnResize: true,
-        mode: 'serverside',
-        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
-        style: {
-          portal: true,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: 'lg',
-          striped: true,
-        },
-        pagination: {
-          activePage: 1,
-          compact: true,
-          firstLast: true,
-          hideOnSinglePage: true,
-          pages: 2,
-          pageJumper: true,
-        },
-        selectable: true,
-        reserveExpansionSlot: true,
-        columnSizes: {
-          xs: [10, 10, 10, 0, 10, 10, 10, 5],
-          sm: [10, 10, 10, 0, 10, 10, 10, 5],
-          md: [15, 5, 15, 0, 15, 15, 15, 5],
-          lg: [15, 5, 15, 0, 15, 15, 15, 5],
-          xl: [15, 5, 10, 15, 15, 15, 15, 5],
-        },
-        resultsPerPage: 3,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
-          lastLogin: { label: "Last Login" },
-        },
-        body: page1Portal
-      },
-      sortedData: []
-    },
-  }).$mount("#base-server-side-portal");
+  });
+
+  portalBaseServerSide.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalBaseServerSide.mount('#base-server-side-portal');

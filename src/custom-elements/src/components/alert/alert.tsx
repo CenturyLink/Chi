@@ -1,10 +1,11 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
 import { ALERT_COLORS as VALID_COLORS, AlertColors } from '../../constants/color';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-alert',
   styleUrl: 'alert.scss',
-  scoped: true
+  scoped: true,
 })
 export class Alert {
   @Element() el;
@@ -53,17 +54,11 @@ export class Alert {
    *  custom event when trying to dismiss an alert.
    */
   @Event() dismissAlert: EventEmitter<void>;
-
+  
   /**
    *  To define alert title
    */
-  @State() alertTitle: string;
-
-  @State() alertActions: boolean;
-
-  @State() alertClickableIcon: boolean;
-
-  private mutationObserver;
+  @Prop({ attribute: 'title' }) alertTitle?: string;
 
   @Watch('type')
   typeValidation(newValue: string) {
@@ -84,51 +79,29 @@ export class Alert {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (newValue && !['sm', 'md', 'lg'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for an alert. Alerts only support sm, md (default), and lg sizes.`);
+      throw new Error(
+        `${newValue} is not a valid size for an alert. Alerts only support sm, md (default), and lg sizes.`
+      );
     }
   }
 
-  connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title']
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.alertTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
-  }
-
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
 
   componentWillLoad() {
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
+  }
 
-    if (this.el.getAttribute('title')) {
-      this.alertTitle = this.el.getAttribute('title');
-    }
+  connectedCallback() {
+    addMutationObserver.call(this);
+  }
 
-    if (Array.from(this.el.querySelectorAll("[slot=chi-alert__actions]")).length > 0) {
-      this.alertActions = true;
-    }
+  _hasAlertActions() {
+    return Array.from(this.el.querySelectorAll('[slot=chi-alert__actions]')).length > 0
+  }
 
-    if (Array.from(this.el.querySelectorAll("[slot=chi-alert__clickable-icon]")).length > 0) {
-      this.alertClickableIcon = true;
-    }
+  _hasClickableIcon() {
+    return Array.from(this.el.querySelectorAll('[slot=chi-alert__clickable-icon]')).length > 0
   }
 
   _dismissAlert() {
@@ -138,24 +111,38 @@ export class Alert {
     this.dismissAlert.emit();
   }
 
-  
   render() {
     const spinnerSizeMapping = {
       sm: 'sm',
       md: 'sm',
       lg: 'sm--2',
-      xl: 'sm--2'
+      xl: 'sm--2',
     };
 
-    const chiIcon = (!this.spinner) && this.icon && <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
+    const chiIcon = !this.spinner && this.icon && (
+      <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>
+    );
     const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
-    const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
-    const chiSpinner = this.spinner && <chi-spinner class="chi-alert__spinner" size={spinnerSizeMapping[this.size] || 'sm'} />;
-    const chiClickableIcon = this.alertClickableIcon && <div class="chi-alert__clickable-icon"><slot name="chi-alert__clickable-icon"></slot></div>;
-    const chiButton = (this.closable || this.type === 'toast') && <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />
+    const chiActions = this._hasAlertActions() && (
+      <div class="chi-alert__actions">
+        <slot name="chi-alert__actions"></slot>
+      </div>
+    );
+    const chiSpinner = this.spinner && (
+      <chi-spinner class="chi-alert__spinner" size={spinnerSizeMapping[this.size] || 'sm'} />
+    );
+    const chiClickableIcon = this._hasClickableIcon() && (
+      <div class="chi-alert__clickable-icon">
+        <slot name="chi-alert__clickable-icon"></slot>
+      </div>
+    );
+    const chiButton = (this.closable || this.type === 'toast') && (
+      <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />
+    );
 
     return (
-      <div class={`chi-alert
+      <div
+        class={`chi-alert
         ${this.type ? `-${this.type}` : ''}
         ${this.color ? `-${this.color}` : ''}
         ${this.center ? '-center' : ''}
@@ -167,7 +154,9 @@ export class Alert {
         {chiSpinner}
         <div class="chi-alert__content">
           {alertTitle}
-          <p class="chi-alert__text"><slot></slot></p>
+          <p class="chi-alert__text">
+            <slot></slot>
+          </p>
           {chiActions}
         </div>
         {chiButton}

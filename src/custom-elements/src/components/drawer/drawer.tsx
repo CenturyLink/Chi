@@ -7,10 +7,9 @@ import { contains } from '../../utils/utils';
 @Component({
   tag: 'chi-drawer',
   styleUrl: 'drawer.scss',
-  scoped: true
+  scoped: true,
 })
 export class Drawer {
-
   @Element() el;
 
   /**
@@ -197,7 +196,7 @@ export class Drawer {
     const mutationObserverConfig = {
       attributes: true,
       attributeOldValue: true,
-      attributeFilter: ['title']
+      attributeFilter: ['title'],
     };
 
     if (!this.mutationObserver) {
@@ -213,10 +212,6 @@ export class Drawer {
     this.mutationObserver.observe(observerTarget, mutationObserverConfig);
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
-
   private _documentClickHandler = (ev): void => {
     const drawerElement = this.el.querySelector('.chi-drawer');
     const drawerCloseButton = this.nonClosable ? null : drawerElement.querySelector('button.-close');
@@ -224,12 +219,10 @@ export class Drawer {
 
     if (!this.preventAutoHide) {
       if (drawerElement.classList.contains('-active')) {
-        const clickOnCloseButton = drawerCloseButton &&
-          clickTarget === drawerCloseButton ||
-          contains(drawerCloseButton, clickTarget);
+        const clickOnCloseButton =
+          (drawerCloseButton && clickTarget === drawerCloseButton) || contains(drawerCloseButton, clickTarget);
 
-        this.active = contains(drawerElement, clickTarget) &&
-          !clickOnCloseButton;
+        this.active = contains(drawerElement, clickTarget) && !clickOnCloseButton;
       }
     }
   };
@@ -248,18 +241,21 @@ export class Drawer {
     document.addEventListener('click', this._documentClickHandler);
   }
 
-  componentDidUnload() {
+  disconnectedCallback() {
     document.removeEventListener('click', this._documentClickHandler);
+    this.mutationObserver.disconnect();
   }
 
   render() {
     // TODO: change this into <chi-button/> element.
-    const xIconProperties = {icon: 'x'};
-    const closeButton = <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
-      <div class="chi-button__content">
-        <chi-icon {...xIconProperties}></chi-icon>
-      </div>
-    </button>;
+    const xIconProperties = { icon: 'x' };
+    const closeButton = (
+      <button class="chi-button -icon -close" onClick={() => this.hide()} aria-label="Close">
+        <div class="chi-button__content">
+          <chi-icon {...xIconProperties}></chi-icon>
+        </div>
+      </button>
+    );
 
     const drawer = (
       <div
@@ -267,45 +263,46 @@ export class Drawer {
         ${this.position ? `-${this.position}` : ''}
         ${this._animationClasses}
         ${this.portal ? '-portal' : ''}
-      `}>
-        {this.noHeader
-          ? !this.nonClosable
-            ? [
-              closeButton,
+      `}
+      >
+        {this.noHeader ? (
+          !this.nonClosable ? (
+            [closeButton, <slot></slot>]
+          ) : (
+            <slot></slot>
+          )
+        ) : !this.nonClosable ? (
+          [
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">{this.drawerTitle}</span>
+              {closeButton}
+            </div>,
+            <div class="chi-drawer__content">
               <slot></slot>
-            ]
-            : <slot></slot>
-          : !this.nonClosable
-            ? [
-              <div class="chi-drawer__header">
-                <span class="chi-drawer__title">{this.drawerTitle}</span>
-                {closeButton}
-              </div>,
-              <div class="chi-drawer__content">
-                <slot></slot>
-              </div>
-            ]
-            : [
-              <div class="chi-drawer__header">
-                <span class="chi-drawer__title">{this.drawerTitle}</span>
-              </div>,
-              <div class="chi-drawer__content">
-                <slot></slot>
-              </div>
-            ]
-        }
+            </div>,
+          ]
+        ) : (
+          [
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">{this.drawerTitle}</span>
+            </div>,
+            <div class="chi-drawer__content">
+              <slot></slot>
+            </div>,
+          ]
+        )}
       </div>
     );
 
     if (this.backdrop || this.backdrop === '') {
       return (
-        <div class={`chi-backdrop -animated
+        <div
+          class={`chi-backdrop -animated
           ${this.backdrop === 'inverse' ? '-inverse' : ''}
           ${this._backdropAnimationClasses}
-        `}>
-          <div class="chi-backdrop__wrapper">
-            {drawer}
-          </div>
+        `}
+        >
+          <div class="chi-backdrop__wrapper">{drawer}</div>
         </div>
       );
     } else {

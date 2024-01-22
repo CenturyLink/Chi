@@ -1,5 +1,5 @@
 <template>
-  <ChiTooltip message="Download">
+  <Tooltip message="Download">
     <div class="chi-dropdown">
       <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="Download" data-position="bottom-end">
         <div class="chi-button__content">
@@ -11,23 +11,18 @@
         <a class="chi-dropdown__menu-item" href="#">Download All Current Results</a>
       </div>
     </div>
-  </ChiTooltip>
+  </Tooltip>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
 import Tooltip from '../../../components/tooltip/tooltip';
 
 declare const chi: any;
 
-@Component({
-  components: {
-    ChiTooltip: Tooltip,
-  },
-})
-export default class ExampleDownloadIcon extends Vue {
-  mounted() {
-    chi.dropdown(this.$refs.dropdownTrigger);
-  }
-}
+const dropdownTrigger = ref(null);
+
+onMounted(() => {
+  chi.dropdown(dropdownTrigger.value);
+});
 </script>

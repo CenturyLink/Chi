@@ -1,17 +1,18 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 script(src=`../../js/chi.js`)
 
 h2 Column Customization
 h3 Base
-.test-column-customization.-p--3.-w--100
-  chi-vue-column-customization(id="base" data-cy="column-customization-base" ref="baseColumnCustomizationRef" :columns-data="columnsData")
+.test-column-customization.-p--3#base
+  chi-vue-column-customization(data-cy="column-customization-base" ref="baseColumnCustomizationRef" :columns-data="columnsData")
 
 h3 No Locked Columns
-.test-column-customization.-p--3.-w--100
-  chi-vue-column-customization(id="no-locked" data-cy="column-customization-no-locked" :columns-data="columnsData")
+.test-column-customization.-p--3#no-locked
+  chi-vue-column-customization(data-cy="column-customization-no-locked" :columns-data="columnsData")
 
 script.
   const exampleColumns = [
@@ -63,21 +64,23 @@ script.
     },
   ];
 
-  new Vue({
-    components: {
-      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
-    },
-    data: {
-      columnsData: {
-        columns: exampleColumns,
-      },
+  const baseApp = Vue.createApp({
+    data() {
+      return {
+        columnsData: {
+          columns: exampleColumns,
+        },
+      }
     },
     mounted() {
       if (window.Cypress) {
         window.baseColumnCustomizationExample = this;
       }
     }
-  }).$mount("#base");
+  });
+
+  baseApp.component('chiVueColumnCustomization', window["chi-vue"].library.components.ChiColumnCustomization);
+  baseApp.mount('#base');
 
   const exampleColumnsWithoutLocked = [
     {
@@ -126,13 +129,15 @@ script.
     },
   ];
 
-  new Vue({
-    components: {
-      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
+  const noLockedApp = Vue.createApp({
+    data() {
+      return {
+        columnsData: {
+          columns: exampleColumnsWithoutLocked,
+        },
+      }
     },
-    data: {
-      columnsData: {
-        columns: exampleColumnsWithoutLocked,
-      },
-    }
-  }).$mount("#no-locked");
+  });
+
+  noLockedApp.component('chiVueColumnCustomization', window["chi-vue"].library.components.ChiColumnCustomization);
+  noLockedApp.mount('#no-locked');

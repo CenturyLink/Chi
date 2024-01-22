@@ -1,13 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Prop,
-  State,
-  Watch,
-  h
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
@@ -15,7 +6,7 @@ import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
 @Component({
   tag: 'chi-search-input',
   styleUrl: 'search-input.scss',
-  scoped: true
+  scoped: true,
 })
 export class SearchInput {
   /**
@@ -92,7 +83,7 @@ export class SearchInput {
   /**
    * Triggered when the user clicked in one of the autocomplete elements
    */
-  @Event({ eventName: 'chiSearchInputItemSelected'}) eventItemSelected: EventEmitter<DropdownMenuItem>
+  @Event({ eventName: 'chiSearchInputItemSelected' }) eventItemSelected: EventEmitter<DropdownMenuItem>;
 
   @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
   @State() menuItemsFiltered: DropdownMenuItem[] = [];
@@ -103,9 +94,7 @@ export class SearchInput {
     const validValues = TEXT_INPUT_SIZES.join(', ');
 
     if (newValue && !TEXT_INPUT_SIZES.includes(newValue)) {
-      throw new Error(
-        `${newValue} is not a valid size for input. If provided, valid values are: ${validValues}. `
-      );
+      throw new Error(`${newValue} is not a valid size for input. If provided, valid values are: ${validValues}. `);
     }
   }
 
@@ -147,20 +136,14 @@ export class SearchInput {
     this._handleFilter(newValue);
   }
 
-  _setHighlightedValue(
-    list: DropdownMenuItem[],
-    text: string
-  ): DropdownMenuItem[] {
+  _setHighlightedValue(list: DropdownMenuItem[], text: string): DropdownMenuItem[] {
     if (!text) {
       return list;
     }
 
-    return list.map(item => {
+    return list.map((item) => {
       const regex = new RegExp(text, 'gi');
-      const newValue = item.title.replace(
-        regex,
-        match => `<span class="-text--normal">${match}</span>`
-      );
+      const newValue = item.title.replace(regex, (match) => `<span class="-text--normal">${match}</span>`);
 
       return { ...item, title: `<strong>${newValue}</strong>` };
     });
@@ -175,9 +158,7 @@ export class SearchInput {
   }
 
   _getAutocompleteDropdown() {
-    return this.el.querySelector(
-      '#dropdown-autocomplete'
-    ) as HTMLChiDropdownElement;
+    return this.el.querySelector('#dropdown-autocomplete') as HTMLChiDropdownElement;
   }
 
   _handleFilter(text: string): void {
@@ -256,13 +237,13 @@ export class SearchInput {
         visible-items={visibleItems}
       >
         {trigger}
-        {this.menuItemsFiltered.map(item => (
+        {this.menuItemsFiltered.map((item) => (
           <a
             class={DROPDOWN_CLASSES.MENU_ITEM}
             href={item.href}
             slot="menu"
             innerHTML={item.title}
-            onClick={ev => this._handleSelectItem(ev, item)}
+            onClick={(ev) => this._handleSelectItem(ev, item)}
           ></a>
         ))}
       </chi-dropdown>
@@ -290,10 +271,10 @@ export class SearchInput {
         name={this.name || ''}
         disabled={this.disabled}
         id={this.el.id ? `${this.el.id}-control` : null}
-        onFocus={ev => this._handleFocus(ev)}
+        onFocus={(ev) => this._handleFocus(ev)}
         onBlur={() => this.eventBlur.emit()}
-        onInput={ev => this._handleValueInput(ev)}
-        onChange={ev => this._handleValueChange(ev)}
+        onInput={(ev) => this._handleValueInput(ev)}
+        onChange={(ev) => this._handleValueChange(ev)}
         autocomplete="off"
         aria-label="search input"
         readonly={this.readonly}
@@ -301,11 +282,7 @@ export class SearchInput {
     );
 
     const searchXIcon = this._cleanButtonVisible ? (
-      <button
-        class="chi-button -icon -close -xs"
-        onClick={this._clearInputField}
-        aria-label="Clear"
-      >
+      <button class="chi-button -icon -close -xs" onClick={this._clearInputField} aria-label="Clear">
         <div class="chi-button__content">
           <i class="chi-icon icon-x" aria-hidden="true"></i>
         </div>

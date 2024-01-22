@@ -3,7 +3,7 @@ import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
 @Component({
   tag: 'chi-link',
   styleUrl: 'link.scss',
-  scoped: true
+  scoped: true,
 })
 export class Link {
   @State() slotLinkContent = true;
@@ -63,7 +63,9 @@ export class Link {
   @Watch('size')
   sizeValidation(newValue: string) {
     if (!!newValue && !['xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for link. If provided, valid values are xs, sm, md, lg, or xl. `);
+      throw new Error(
+        `${newValue} is not a valid size for link. If provided, valid values are xs, sm, md, lg, or xl. `
+      );
     }
   }
 
@@ -76,24 +78,26 @@ export class Link {
 
   render() {
     return (
-      <a class={`chi-link
+      <a
+        class={`chi-link
           ${this.cta ? '-cta' : ''}
           ${this.disabled ? '-disabled' : ''}
           ${this.size ? `-${this.size}` : ''}
           ${this.noHoverUnderline ? `-no-hover-underline` : ''}`}
-          href={this.href}
-          hreflang={this.hreflang}
-          target={this.target}
-          rel={this.rel}
-          download={this.download}
-          {...(this.alternativeText && {'aria-label': this.alternativeText})}
+        href={this.href}
+        hreflang={this.hreflang}
+        target={this.target}
+        rel={this.rel}
+        download={this.download}
+        {...(this.alternativeText && { 'aria-label': this.alternativeText })}
       >
-        {this.slotLinkContent ?
+        {this.slotLinkContent ? (
           <div class="chi-link__content">
             <slot></slot>
-          </div> :
+          </div>
+        ) : (
           <slot></slot>
-        }
+        )}
       </a>
     );
   }

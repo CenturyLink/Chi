@@ -1,8 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     .chi-form__item(style="max-width: 14rem;" slot="example")
-      chi-label(for="time-picker-base") Label
-      chi-time-picker(id="time-picker-base")
+      chi-label(for="example__base") Label
+      chi-time-picker(id="example__base")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -31,8 +31,8 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="time-picker-base">Label</chi-label>
-<chi-time-picker id="time-picker-base"></chi-time-picker>`,
+        webcomponent: `<chi-label for="example__base">Label</chi-label>
+<chi-time-picker id="example__base"></chi-time-picker>`,
         htmlblueprint: ``
       }
     };

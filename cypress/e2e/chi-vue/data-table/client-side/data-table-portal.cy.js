@@ -161,9 +161,8 @@ describe('Data Table Portal', () => {
         .its('portalAccordionDataTable')
         .then(portalAccordionDataTable => {
           const component = portalAccordionDataTable.$refs.portalAccordion;
-          const spy = cy.spy();
 
-          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.EXPANDED}`, spy);
+          cy.spy(component, '_emitExpandedRow').as('expandedSpy');
           cy.get(
             `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
           )
@@ -172,7 +171,7 @@ describe('Data Table Portal', () => {
             .as('expandableButton')
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@expandedSpy').should('have.been.called');
             });
           cy.get('@expandableButton').click();
         });
@@ -183,7 +182,6 @@ describe('Data Table Portal', () => {
         .its('portalAccordionDataTable')
         .then(portalAccordionDataTable => {
           const component = portalAccordionDataTable.$refs.portalAccordion;
-          const spy = cy.spy();
 
           cy.get(
             `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
@@ -192,11 +190,11 @@ describe('Data Table Portal', () => {
             .eq(0)
             .as('expandableButton')
             .click();
-          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED}`, spy);
+          cy.spy(component, '_emitCollapsedRow').as('collapsedSpy');
           cy.get('@expandableButton')
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@collapsedSpy').should('have.been.called');
             });
         });
     });

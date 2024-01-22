@@ -1,46 +1,46 @@
 <template>
-  <div id="dataTableServerView">
-    <h2>Data Table Server Side Pagination</h2>
-    <ChiDataTable
-      :data="table"
-      :config="config"
-      ref="dataTableServer"
-      @chiDataSorting="e => sorting(e)"
-      @chiPageChange="e => pagination(e)"
-      @chiSelectedRowsChange="e => selection(e)"
-      @chiRowSelected="e => rowSelected(e)"
-      @chiRowDeselected="e => rowDeselected(e)"
-      @chiSelectAll="e => selectAll(e)"
-      @chiDeselectAll="e => deselectAll(e)"
-    >
-      <template #icon="payload">
-        <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
-      </template>
-      <template #ticketId="payload">
-        <TicketPopover :id="payload.id" />
-      </template>
-      <template #status="payload">
-        <div :class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`">
-          <span class="-text--truncate">{{ payload.status }}</span>
+  <h2 class="-mt--10">Data Table Server Side Pagination</h2>
+  <DataTable
+    ref="dataTableServer"
+    :dataTableData="table"
+    :config="config"
+    @chiDataSorting="(e) => chiDataSorting(e)"
+    @chiPageChange="(e) => chiPageChange(e)"
+    @chiSelectedRowsChange="(e) => chiSelectedRowsChange(e)"
+    @chiRowSelected="(e) => chiRowSelected(e)"
+    @chiRowDeselected="(e) => chiRowDeselected(e)"
+    @chiSelectAll="(e) => chiSelectAll(e)"
+    @chiDeselectAll="(e) => chiDeselectAll(e)"
+  >
+    <template v-slot:icon="payload">
+      <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
+    </template>
+    <template v-slot:ticketId="payload">
+      <ExamplePopover :id="payload.id" />
+    </template>
+    <template v-slot:status="payload">
+      <div :class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`">
+        <span class="-text--truncate">{{ payload.status }}</span>
+      </div>
+    </template>
+    <template #accordionContent="payload">
+      <div class="chi-alert -success" role="alert">
+        <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
+        <div class="chi-alert__content">
+          <p class="chi-alert__text">
+            Custom content rendered by the provided template. ID:
+            <strong>{{ payload.id }}</strong>
+          </p>
         </div>
-      </template>
-      <template #accordionContent="payload">
-        <div class="chi-alert -success" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
-          <div class="chi-alert__content">
-            <p class="chi-alert__text">
-              Custom content rendered by the provided template. ID:
-              <strong>{{ payload.id }}</strong>
-            </p>
-          </div>
-        </div>
-      </template>
-      <template #date="payload">
-        {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
-      </template>
-      <template #bulkActions>
-        <ChiDataTableBulkActions uuid="example-server-side-uuid" :selectedRows="selectedFirstLevelRows.length">
-          <div class="chi-bulk-actions__buttons" slot="start">
+      </div>
+    </template>
+    <template v-slot:date="payload">
+      {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
+    </template>
+    <template v-slot:bulk-actions>
+      <DataTableBulkActions uuid="example-server-side-uuid" :selectedRows="selectedFirstLevelRow.length">
+        <template v-slot:start>
+          <div class="chi-bulk-actions__buttons">
             <div class="chi-bulk-actions__buttons-mobile -z--40">
               <chi-button variant="flat" type="icon" aria-label="Edit">
                 <chi-icon icon="edit"></chi-icon>
@@ -74,134 +74,128 @@
               </chi-button>
             </div>
           </div>
-        </ChiDataTableBulkActions>
-      </template>
-      <template #loadingSkeleton>
-        <div class="-d--flex -flex--column -w--100">
-          <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
-          <div class="chi-skeleton -xs -w--90 -w-lg--70 -mt--2"></div>
-          <div class="chi-skeleton -xs -w--95 -w-lg--80 -mt--1"></div>
-          <div class="chi-skeleton -xs -w--55 -w-lg--55 -mt--1"></div>
-        </div>
-      </template>
-    </ChiDataTable>
-  </div>
+        </template>
+      </DataTableBulkActions>
+    </template>
+    <template v-slot:loadingSkeleton>
+      <div class="-d--flex -flex--column -w--100">
+        <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
+        <div class="chi-skeleton -xs -w--90 -w-lg--70 -mt--2"></div>
+        <div class="chi-skeleton -xs -w--95 -w-lg--80 -mt--1"></div>
+        <div class="chi-skeleton -xs -w--55 -w-lg--55 -mt--1"></div>
+      </div>
+    </template>
+  </DataTable>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
+import { ref } from 'vue';
 import DataTable from '../../../components/data-table/DataTable';
-import TicketPopover from '../DataTableTemplates/example-popover.vue';
-import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
-import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
-import SearchInput from '../../../components/search-input/SearchInput';
-import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
-import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleTableHead, exampleTablePage1, exampleTablePage2 } from './fixtures';
-import { DataTablePageChange, DataTableSorting } from '../../../constants/events';
-import { DataTableRow } from '../../../constants/types';
+import DataTableBulkActions from '@/components/data-table-bulk-actions/DataTableBulkActions';
+import ExamplePopover from '../DataTableTemplates/example-popover.vue';
+import { DataTableRow } from '@/constants/types';
+import { DataTableSorting } from '@/constants/events';
 
-@Component({
-  components: {
-    ChiDataTable: DataTable,
-    ChiDataTableToolbar: DataTableToolbar,
-    ChiDataTableBulkActions: DataTableBulkActions,
-    ChiSearchInput: SearchInput,
-    ChiDataTableFilters: DataTableFilters,
-    ChiColumnCustomization: ColumnCustomization,
-    TicketPopover,
-  },
-  data: () => {
-    return {
-      config: exampleConfig,
-      table: {
-        head: exampleTableHead,
-        body: exampleTablePage1,
-      },
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      selectedFirstLevelRows: [],
-    };
-  },
-})
-export default class DataTableServerView extends Vue {
-  mockApiCall(page: number) {
-    return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
-  }
+const config = ref(exampleConfig);
+const table = ref({
+  head: exampleTableHead,
+  body: exampleTablePage1,
+});
+const months = ref([
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]);
+const selectedFirstLevelRow = ref<DataTableRow[]>([]);
 
-  rowSelected(rowData: DataTableRow) {
-    this.$data.selectedFirstLevelRows.push(rowData);
-    console.log('Row selected', rowData);
-  }
+const mockApiCall = (page: number) => {
+  return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
+};
 
-  rowDeselected(rowData: DataTableRow) {
-    const indexOfRow = this.$data.selectedFirstLevelRows.findIndex((row: DataTableRow) => row.rowId === rowData.rowId);
+const chiRowSelected = (rowData: DataTableRow) => {
+  selectedFirstLevelRow.value.push(rowData);
+  console.log('chiRowSelected', rowData);
+};
 
-    this.$data.selectedFirstLevelRows.splice(indexOfRow, 1);
-    console.log('Row deselected', rowData);
-  }
+const chiRowDeselected = (rowData: DataTableRow) => {
+  const indexOfRow = selectedFirstLevelRow.value.findIndex((row: DataTableRow) => row.rowId === rowData.rowId);
 
-  pagination(e: DataTablePageChange) {
-    // A mock API call to swap the page respective data provided to the Data Table
-    const apiResponsePageData = this.mockApiCall(e.page);
+  selectedFirstLevelRow.value.splice(indexOfRow, 1);
+  console.log('chiRowDeselected', rowData);
+};
 
-    this.$data.config = {
-      ...this.$data.config,
-      pagination: {
-        ...this.$data.config.pagination,
-        activePage: e.page,
-      },
-    };
-    this.$data.table = {
-      ...this.$data.table,
-      body: apiResponsePageData,
-    };
-  }
+const chiPageChange = (e) => {
+  // A mock API call to swap the page respective data provided to the Data Table
+  const apiResponsePageData = mockApiCall(e.page) as any;
 
-  sorting(e: DataTableSorting) {
-    // Perform custom Server Side sorting based on the column and direction data you receive from data table event
-    console.log(e);
-  }
+  config.value = {
+    ...config.value,
+    pagination: {
+      ...config.value.pagination,
+      activePage: e.page,
+    },
+  };
+  table.value = {
+    ...table.value,
+    body: apiResponsePageData,
+  };
+};
 
-  selectAll(e: DataTableRow[]) {
-    console.log('Select All', e);
-  }
+const chiDataSorting = (e: DataTableSorting) => {
+  // Perform custom Server Side sorting based on the column and direction data you receive from data table event
+  console.log('chiDataSorting', e);
+};
 
-  deselectAll(e: DataTableRow[]) {
-    console.log('Deselect All', e);
-  }
+const chiSelectAll = (e: DataTableRow[]) => {
+  console.log('chiSelectAll', e);
+};
 
-  selection(selectedRows: DataTableRow[]) {
-    const copiedTableBodyData = [...this.$data.table.body];
-    const flagRowSelection = (levelData: DataTableRow[], id: string, action: 'select' | 'deselect') => {
-      const dataRow = levelData.find((row: DataTableRow) => row.id === id);
+const chiDeselectAll = (e: DataTableRow[]) => {
+  console.log('chiDeselectAll', e);
+};
 
-      if (dataRow) {
-        const nestedRows =
-          dataRow.nestedContent && dataRow.nestedContent.table && dataRow.nestedContent.table.data
-            ? dataRow.nestedContent.table.data
-            : undefined;
+const chiSelectedRowsChange = (selectedRows: DataTableRow[]) => {
+  const copiedTableBodyData = [...table.value.body];
+  const flagRowSelection = (levelData: any[], id: string, action: 'select' | 'deselect') => {
+    const dataRow = levelData.find((row: DataTableRow) => row.id === id);
 
-        dataRow.selected = action === 'select';
+    if (dataRow) {
+      const nestedRows =
+        dataRow.nestedContent && dataRow.nestedContent.table && dataRow.nestedContent.table.data
+          ? dataRow.nestedContent.table.data
+          : undefined;
 
-        if (nestedRows) {
-          dataRow.nestedContent.table.data.forEach((subRow: DataTableRow) =>
-            flagRowSelection(nestedRows, subRow.id, action)
-          );
-        }
+      dataRow.selected = action === 'select';
+
+      if (nestedRows) {
+        dataRow.nestedContent.table.data.forEach((subRow: DataTableRow) =>
+          flagRowSelection(nestedRows, subRow.id, action)
+        );
       }
-    };
+    }
+  };
 
-    copiedTableBodyData.forEach((row: DataTableRow) => {
-      const isSelected = selectedRows?.some((selectedRow: DataTableRow) => selectedRow.id === row.id);
+  copiedTableBodyData.forEach((row: any) => {
+    const isSelected = selectedRows?.some((selectedRow: DataTableRow) => selectedRow.id === row.id);
 
-      flagRowSelection(copiedTableBodyData, row.id, isSelected ? 'select' : 'deselect');
-    });
-    this.$data.table = {
-      ...this.$data.table,
-      body: copiedTableBodyData,
-    };
-  }
-}
+    flagRowSelection(copiedTableBodyData, row.id, isSelected ? 'select' : 'deselect');
+  });
+
+  table.value = {
+    ...table.value,
+    body: copiedTableBodyData,
+  };
+
+  console.log('chiSelectedRowsChange', selectedRows);
+};
 </script>
-
-<style lang="scss"></style>

@@ -1,19 +1,20 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="../../chi-vue/umd/index.umd.js")
 script(src=`../../js/chi.js`)
 
 h2 Expansion Panel - Tests
 #app
   h3 Base
   chi-vue-expansion-panel(step="1" title="Panel title 1" :state="active === 0 ? 'active' : active > 0 ? 'done' : 'pending'" data-cy="base-expansion-panel-1")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -21,19 +22,19 @@ h2 Expansion Panel - Tests
       | entered or selected in step 1.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' @click="active = 0" data-chi-epanel-action='change')
         | Change
   chi-vue-expansion-panel(step="2" title="Panel title 2" :state="active === 1 ? 'active' : active > 1 ? 'done' : 'pending'" data-cy="base-expansion-panel-2")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -41,21 +42,21 @@ h2 Expansion Panel - Tests
       | entered or selected in step 2.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
         | Change
   chi-vue-expansion-panel(step="3" title="Panel title 3" :state="active === 2 ? 'active' : active > 2 ? 'done' : 'pending'" data-cy="base-expansion-panel-3")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -63,24 +64,24 @@ h2 Expansion Panel - Tests
       | entered or selected in step 3.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
         | Finish
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
 
   h3.-pt--6 State
   h4 Done State
   chi-vue-expansion-panel(step="1" title="Panel title 1" state="done" data-cy="state-expansion-panel-done")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -88,20 +89,20 @@ h2 Expansion Panel - Tests
       | entered or selected in step 1.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
   h4.-pt--3 Active State
   chi-vue-expansion-panel(step="2" title="Panel title 2" state="active" data-cy="state-expansion-panel-active")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -109,22 +110,22 @@ h2 Expansion Panel - Tests
       | entered or selected in step 2.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
   h4.-pt--3 Pending State
   chi-vue-expansion-panel(step="3" title="Panel title 3" state="pending" data-cy="state-expansion-panel-pending")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -132,24 +133,24 @@ h2 Expansion Panel - Tests
       | entered or selected in step 3.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Finish
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
 
   h3.-pt--6 Number
   h4 Numbered Expansion Panel 
   chi-vue-expansion-panel(step="1" title="Panel Title 1" state="active" data-cy="number-expansion-panel-numbered")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -157,20 +158,20 @@ h2 Expansion Panel - Tests
       | entered or selected in step 1.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
   h4.-pt--3 Non Numbered Expansion Panel
   chi-vue-expansion-panel(title="Panel Title 2" state="active" data-cy="number-expansion-panel-non-numbered")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -178,24 +179,24 @@ h2 Expansion Panel - Tests
       | entered or selected in step 2.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
   
   h3.-pt--6 Border
   h4 Non Bordered Expansion Panel
   chi-vue-expansion-panel(step="1" title="Panel Title 1" :bordered="false" state="active" data-cy="border-expansion-panel-non-bordered")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -203,22 +204,22 @@ h2 Expansion Panel - Tests
       | entered or selected in step 2.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
   h4.-pt--3 Bordered Expansion Panel
   chi-vue-expansion-panel(step="1" title="Panel Title 2" :bordered="true" state="active" data-cy="border-expansion-panel-bordered")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    div(slot='done')
+    template(v-slot:done)
       | Use this area to present
       br
       | a read-only summary of what the user
@@ -226,71 +227,75 @@ h2 Expansion Panel - Tests
       | entered or selected in step 2.
       br
       | (e.g.) a package selection
-    div(slot='footer')
+    template(v-slot:footer)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    div(slot='change')
+    template(v-slot:change)
       chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
         | Change
 
   h3.-pt--6 Slots
   chi-vue-expansion-panel(step="1" title="Panel title 1" :bordered="true" state="done" data-cy="slot-expansion-panel-done")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    .done-slot(slot='done')
-      | Use this area to present
-      br
-      | a read-only summary of what the user
-      br
-      | entered or selected in step 2.
-      br
-      | (e.g.) a package selection
-    div(slot='footer')
-    div(slot='footerStart')
+    template(v-slot:done)
+      .done-slot
+        | Use this area to present
+        br
+        | a read-only summary of what the user
+        br
+        | entered or selected in step 2.
+        br
+        | (e.g.) a package selection
+    template(v-slot:footer-start)
       | Sample footer text
-    div(slot='footerEnd')
+    template(v-slot:footer-end)
       chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
       chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    chi-button(color='primary' slot='change' variant='flat' data-chi-epanel-action='change')
-      | Change
+    template(v-slot:change)
+      chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
+        | Change
   chi-vue-expansion-panel(step="2" title="Panel title 2" :bordered="true" state="active" data-cy="slot-expansion-panel-active")
-    div(slot='active')
+    template(v-slot:active)
       .chi-epanel__subtitle
         | Optional subtitle
       p.chi-epanel__text
         | Content in expansion panel (e.g. a form to select a product package)
-    .done-slot(slot='done')
-      | Use this area to present
-      br
-      | a read-only summary of what the user
-      br
-      | entered or selected in step 2.
-      br
-      | (e.g.) a package selection
-    div(slot='footer')
-      chi-button(color='primary' slot='footerStart' data-chi-epanel-action='previous')
+    template(v-slot:done)
+      .done-slot
+        | Use this area to present
+        br
+        | a read-only summary of what the user
+        br
+        | entered or selected in step 2.
+        br
+        | (e.g.) a package selection
+    template(v-slot:footer-start)
+      chi-button(color='primary' data-chi-epanel-action='previous')
         | Previous
-      chi-button(color='primary' slot='footerEnd' data-chi-epanel-action='next')
+    template(v-slot:footer-end)
+      chi-button(color='primary' data-chi-epanel-action='next')
         | Continue
-    chi-button(color='primary' slot='change' variant='flat' data-chi-epanel-action='change')
-      | Change
+    template(v-slot:change)
+      chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
+        | Change
 
 script.
-  new Vue({
-    components: {
-      ChiVueExpansionPanel: window["chi-vue"].library.components.ChiExpansionPanel
-    },
-    data: () => {
+  const app = Vue.createApp({
+    data() {
       return {
         active: 0,
         states: ['done', 'active', 'pending', 'disabled'],
-      };
-    }
-  }).$mount("#app")
+      }
+    },
+  });
+
+  app.component('chiVueExpansionPanel', window["chi-vue"].library.components.ChiExpansionPanel);
+  app.mount('#app');

@@ -17,16 +17,11 @@ import {
   ICON_CLASS,
   INFO_ICON_CLASS,
   PAGINATION_CLASSES,
-  PAGINATION_EVENTS,
   RADIO_CLASSES,
   TOOLTIP_CLASSES,
-  UTILITY_CLASSES
+  UTILITY_CLASSES,
 } from '../data-table-common.cy';
-import {
-  checkDateSorting,
-  checkStatusSorting,
-  hasClassAssertion
-} from '../data-table-common.cy';
+import { checkDateSorting, checkStatusSorting, hasClassAssertion } from '../data-table-common.cy';
 
 describe('Data Table', () => {
   before(() => {
@@ -69,10 +64,10 @@ describe('Data Table', () => {
       { el: '@body', class: DATA_TABLE_CLASSES.BODY },
       { el: `@row`, class: DATA_TABLE_CLASSES.ROW },
       { el: `@cell`, class: DATA_TABLE_CLASSES.CELL },
-      { el: `@footer`, class: DATA_TABLE_CLASSES.FOOTER }
+      { el: `@footer`, class: DATA_TABLE_CLASSES.FOOTER },
     ];
 
-    selectors.forEach(sel => {
+    selectors.forEach((sel) => {
       it(`${sel.el} should have class .${sel.class}`, () => {
         hasClassAssertion(sel.el, sel.class);
       });
@@ -102,9 +97,7 @@ describe('Data Table', () => {
 
     describe('Pagination', () => {
       beforeEach(() => {
-        cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
-          'pagination'
-        );
+        cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
       });
 
       it(`Should show label 'per page'`, () => {
@@ -119,18 +112,17 @@ describe('Data Table', () => {
       it('Should trigger next and prev page', () => {
         cy.window()
           .its('baseDataTable')
-          .then(baseDataTable => {
+          .then((baseDataTable) => {
             const component = baseDataTable.$refs.base;
-            const spy = cy.spy();
 
-            component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+            cy.spy(component, '_emitPaginationChange').as('pageChangeSpy');
             cy.get(`@pagination`)
               .find(`.${ICON_BUTTON}`)
               .as('paginationIcons')
               .eq(2)
               .click()
               .then(() => {
-                expect(spy).to.be.calledOnce;
+                cy.get('@pageChangeSpy').should('have.been.called');
                 cy.get(`@pagination`)
                   .find(`button[data-page='2']`)
                   .eq(0)
@@ -142,7 +134,7 @@ describe('Data Table', () => {
               .eq(1)
               .click()
               .then(() => {
-                expect(spy).to.be.calledTwice;
+                cy.get('@pageChangeSpy').should('have.been.called');
                 cy.get(`@pagination`)
                   .find(`button[data-page='1']`)
                   .eq(1)
@@ -195,7 +187,7 @@ describe('Data Table', () => {
           .eq(2)
           .as('pageOneButton')
           .click()
-          .then(res => {
+          .then((res) => {
             hasClassAssertion(res, `${ACTIVE_CLASS}`);
             cy.get(`@row`).should('contain', 'Updated Name 1');
           });
@@ -229,11 +221,10 @@ describe('Data Table', () => {
       it('Should change number of page results', () => {
         cy.window()
           .its('baseDataTable')
-          .then(baseDataTable => {
+          .then((baseDataTable) => {
             const component = baseDataTable.$refs.base;
-            const spy = cy.spy();
 
-            component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
+            cy.spy(component, '_emitPaginationSize').as('pageSizeChangeSpy');
             cy.get('@body')
               .find(`.${DATA_TABLE_CLASSES.ROW}`)
               .should('have.length', 3);
@@ -242,7 +233,7 @@ describe('Data Table', () => {
               .as('pagSelect')
               .select('40')
               .then(() => {
-                expect(spy).to.be.called;
+                cy.get('@pageSizeChangeSpy').should('have.been.called');
                 cy.get(`@pagination`)
                   .find(`button[data-page='2']`)
                   .should('have.attr', 'disabled');
@@ -257,15 +248,14 @@ describe('Data Table', () => {
 
     describe('Default (non-truncation)', () => {
       it(`Should not have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
-        cy.get(
-          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-        ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+        cy.get(`[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`).should(
+          'not.have.class',
+          DATA_TABLE_CLASSES.TRUNCATED
+        );
       });
 
       it(`Should not contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
-        cy.get(
-          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-        )
+        cy.get(`[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`)
           .children()
           .should('not.have.class', UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
       });
@@ -274,15 +264,14 @@ describe('Data Table', () => {
 
   describe('Truncation', () => {
     it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
-      cy.get(
-        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`
-      ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+      cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`).should(
+        'not.have.class',
+        DATA_TABLE_CLASSES.TRUNCATED
+      );
     });
 
     it(`Should contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
-      cy.get(
-        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-      )
+      cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`)
         .find(`.${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}`)
         .should('exist');
     });
@@ -292,9 +281,9 @@ describe('Data Table', () => {
     headCellsTooltips.forEach((isVisible, index) => {
       const assertion = !isVisible ? 'not.exist' : 'exist';
 
-      it(`Tooltip element ${index} should ${
+      it(`Tooltip element ${index} should ${!isVisible ? 'not' : ''} exist as the label is ${
         !isVisible ? 'not' : ''
-      } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
+      } truncated`, () => {
         cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
           .eq(index)
@@ -328,9 +317,7 @@ describe('Data Table', () => {
     });
 
     it('Should have no rows', () => {
-      cy.get(
-        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-      ).should('not.exist');
+      cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`).should('not.exist');
     });
 
     it('Should have footer', () => {
@@ -342,9 +329,7 @@ describe('Data Table', () => {
 
   describe('Empty Actionable', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY_ACTIONABLE}`, () => {
-      cy.get(
-        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
-      )
+      cy.get(`[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
         .as('empty');
@@ -359,9 +344,9 @@ describe('Data Table', () => {
     });
 
     it('Should have no rows', () => {
-      cy.get(
-        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-      ).should('not.exist');
+      cy.get(`[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`).should(
+        'not.exist'
+      );
     });
 
     it('Should have footer', () => {
@@ -371,9 +356,7 @@ describe('Data Table', () => {
     });
 
     it('Should show the correct icon', () => {
-      cy.get(
-        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
-      )
+      cy.get(`[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`chi-icon`)
         .should('have.attr', 'icon', 'circle-plus-outline');
     });
@@ -381,46 +364,31 @@ describe('Data Table', () => {
 
   describe('No border', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.NO_BORDER}`, () => {
-      hasClassAssertion(
-        `[data-cy='data-table-no-border']`,
-        DATA_TABLE_CLASSES.NO_BORDER
-      );
+      hasClassAssertion(`[data-cy='data-table-no-border']`, DATA_TABLE_CLASSES.NO_BORDER);
     });
   });
 
   describe('Striped', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.STRIPED}`, () => {
-      hasClassAssertion(
-        `[data-cy='data-table-striped']`,
-        DATA_TABLE_CLASSES.STRIPED
-      );
+      hasClassAssertion(`[data-cy='data-table-striped']`, DATA_TABLE_CLASSES.STRIPED);
     });
   });
 
   describe('Hover', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.HOVER}`, () => {
-      hasClassAssertion(
-        `[data-cy='data-table-hover']`,
-        DATA_TABLE_CLASSES.HOVER
-      );
+      hasClassAssertion(`[data-cy='data-table-hover']`, DATA_TABLE_CLASSES.HOVER);
     });
   });
 
   describe('Bordered', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.BORDERED}`, () => {
-      hasClassAssertion(
-        `[data-cy='data-table-bordered']`,
-        DATA_TABLE_CLASSES.BORDERED
-      );
+      hasClassAssertion(`[data-cy='data-table-bordered']`, DATA_TABLE_CLASSES.BORDERED);
     });
   });
 
   describe('Active', () => {
     it(`Should have class .${ACTIVE_CLASS}`, () => {
-      hasClassAssertion(
-        `[data-cy='data-table-active'] .${DATA_TABLE_CLASSES.ROW}`,
-        ACTIVE_CLASS
-      );
+      hasClassAssertion(`[data-cy='data-table-active'] .${DATA_TABLE_CLASSES.ROW}`, ACTIVE_CLASS);
     });
   });
 
@@ -434,7 +402,7 @@ describe('Data Table', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.SELECTABLE}`, () => {
       const rows = [0, 1, 2, 3];
 
-      rows.forEach(rowIndex => {
+      rows.forEach((rowIndex) => {
         cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -447,16 +415,15 @@ describe('Data Table', () => {
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('selectableDataTable')
-        .then(selectableDataTable => {
+        .then((selectableDataTable) => {
           const component = selectableDataTable.$refs.selectable;
-          const spy = cy.spy();
 
-          component.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(component, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get('@selectables')
             .eq(0)
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
             });
           cy.get('@selectables')
             .eq(0)
@@ -469,18 +436,14 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`
-          ).as('rows');
+          cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`).as('rows');
           hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
           cy.get('@rows')
             .find('input')
             .as('checkboxes')
             .should('be.checked');
         });
-      cy.get(
-        `[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
+      cy.get(`[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`)
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons')
         .eq(1)
@@ -510,9 +473,7 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
+          cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
             .eq(0)
             .as('firstRow');
           hasClassAssertion('@firstRow', ACTIVE_CLASS);
@@ -530,9 +491,7 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`
-          )
+          cy.get(`[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`)
             .find(`.${ICON_BUTTON}`)
             .as('paginationIcons')
             .eq(1)
@@ -542,15 +501,48 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          hasClassAssertion(
-            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`,
-            ACTIVE_CLASS
-          );
+          hasClassAssertion(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`, ACTIVE_CLASS);
         });
       cy.get('@selectables')
         .eq(1)
         .click();
     });
+  });
+
+  describe('Selectable with disabled message', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-selectable-disabled']`)
+        .as('table')
+        .scrollIntoView()
+        .find(`.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}.${DATA_TABLE_CLASSES.SELECTABLE} .${CHECKBOXES_CLASSES.CHECKBOX}`)
+        .as('selectables')
+        .should('have.length', 3)
+      
+      cy.get('@table')
+        .find('chi-popover')
+        .as('popover')
+    });
+
+    it('Should show popover only when selection disabled message is provided and selectable is disabled', () => {
+      cy.get('@selectables')
+        .eq(0)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
+
+      cy.get('@selectables')
+        .eq(1)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('not.have.attr', ACTIVE_ATTR);
+      
+      cy.get('@selectables')
+        .eq(2)
+        .trigger('mouseenter');
+      cy.get('@popover')
+        .should('have.attr', ACTIVE_ATTR);
+    });
+
   });
 
   describe('All selected', () => {
@@ -572,9 +564,7 @@ describe('Data Table', () => {
         .as('checkboxes')
         .should('be.checked');
 
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
+      cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons')
@@ -595,27 +585,19 @@ describe('Data Table', () => {
 
   describe('Data Table Select All (Dropdown)', () => {
     beforeEach(() => {
-      cy.get(
-        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`
-      )
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
         .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
         .as('selectAllDropdown');
 
-      cy.get(
-        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`
-      )
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
         .find(`.${CHI_DROPDOWN_MENU}`)
         .as('selectAllDropdownMenu');
 
-      cy.get(
-        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.BODY}`
-      )
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
 
-      cy.get(
-        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`
-      )
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
         .find(`.${PAGINATION_CLASSES.CENTER}`)
         .find(`.${CHI_BUTTON_CONTENT}`)
         .as('pages');
@@ -628,7 +610,7 @@ describe('Data Table', () => {
     });
 
     it('Should select all rows on the current page', () => {
-      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdown').click({ force: true });
       cy.get('@selectAllDropdownMenu')
         .contains('Select all items, this page')
         .click();
@@ -639,9 +621,7 @@ describe('Data Table', () => {
 
       cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
 
-      cy.get(
-        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`
-      )
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
         .find(`.${PAGINATION_CLASSES.CENTER}`)
         .find(`.${CHI_BUTTON_CONTENT}`)
         .contains(2)
@@ -655,7 +635,7 @@ describe('Data Table', () => {
     });
 
     it('Should select all rows on each page', () => {
-      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdown').click({ force: true });
       cy.get('@selectAllDropdownMenu')
         .contains('Select all items, all pages')
         .click();
@@ -678,7 +658,7 @@ describe('Data Table', () => {
     });
 
     it('Should deselect all rows on each page', () => {
-      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdown').click({ force: true });
       cy.get('@selectAllDropdownMenu')
         .contains('Deselect all')
         .click();
@@ -712,7 +692,7 @@ describe('Data Table', () => {
     it(`Should have class .${RADIO_CLASSES.RADIO}`, () => {
       const rows = [1, 2, 3];
 
-      rows.forEach(rowIndex => {
+      rows.forEach((rowIndex) => {
         cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -736,16 +716,15 @@ describe('Data Table', () => {
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('radioDataTable')
-        .then(radioDataTable => {
+        .then((radioDataTable) => {
           const component = radioDataTable.$refs.radio;
-          const spy = cy.spy();
 
-          component.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(component, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get('@radios')
             .eq(0)
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
             });
           cy.get('@radios')
             .eq(0)
@@ -758,9 +737,7 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
+          cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
             .eq(1)
             .find('input')
             .should('be.checked');
@@ -772,9 +749,7 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
+          cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
             .eq(1)
             .find('input')
             .should('not.be.checked');
@@ -786,9 +761,7 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-radio'] .${PAGINATION_CLASSES.PAGINATION}`
-          )
+          cy.get(`[data-cy='data-table-radio'] .${PAGINATION_CLASSES.PAGINATION}`)
             .find(`.${ICON_BUTTON}`)
             .as('paginationIcons')
             .eq(1)
@@ -798,9 +771,7 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          cy.get(
-            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
+          cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
             .eq(1)
             .find('input')
             .should('be.checked');
@@ -812,7 +783,7 @@ describe('Data Table', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
 
-      rows.forEach(rowIndex => {
+      rows.forEach((rowIndex) => {
         cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -825,18 +796,17 @@ describe('Data Table', () => {
     it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.EXPANDED} event`, () => {
       cy.window()
         .its('accordionDataTable')
-        .then(accordionDataTable => {
+        .then((accordionDataTable) => {
           const component = accordionDataTable.$refs.accordion;
-          const spy = cy.spy();
 
-          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.EXPANDED}`, spy);
+          cy.spy(component, '_emitExpandedRow').as('expandedRowSpy');
           cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
             .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
             .eq(0)
             .as('expandableButton')
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@expandedRowSpy').should('have.been.called');
             });
           cy.get('@expandableButton').click();
         });
@@ -845,11 +815,10 @@ describe('Data Table', () => {
     it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED} event`, () => {
       cy.window()
         .its('accordionDataTable')
-        .then(accordionDataTable => {
+        .then((accordionDataTable) => {
           const component = accordionDataTable.$refs.accordion;
-          const spy = cy.spy();
 
-          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED}`, spy);
+          cy.spy(component, '_emitCollapsedRow').as('collapsedRowSpy');
           cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
             .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
             .eq(0)
@@ -858,7 +827,7 @@ describe('Data Table', () => {
           cy.get('@expandableButton')
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@collapsedRowSpy').should('have.been.called');
             });
         });
     });
@@ -880,9 +849,7 @@ describe('Data Table', () => {
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows')
         .should('not.have.class', `${EXPANDED_CLASS}`);
-      cy.get(
-        `[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
-      )
+      cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
         .eq(0)
         .as('childRowContainer')
         .should('have.css', 'display', 'none');
@@ -893,11 +860,7 @@ describe('Data Table', () => {
         .click()
         .then(() => {
           hasClassAssertion('@rows', `${EXPANDED_CLASS}`);
-          cy.get('@childRowContainer').should(
-            'not.have.css',
-            'display',
-            'none'
-          );
+          cy.get('@childRowContainer').should('not.have.css', 'display', 'none');
         });
       cy.get('@expandableButton')
         .click()
@@ -909,15 +872,11 @@ describe('Data Table', () => {
 
   describe('Expand/Collapse', () => {
     beforeEach(() => {
-      cy.get(
-        `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`
-      )
+      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`)
         .find(`button.-expand`)
         .as('expandAllButton');
 
-      cy.get(
-        `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY}`
-      )
+      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
     });
@@ -928,16 +887,12 @@ describe('Data Table', () => {
       cy.get('@expandAllButton').click();
 
       cy.get('@rows').should('have.class', `${EXPANDED_CLASS}`);
-      rows.forEach(rowIndex => {
-        cy.get(
-          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
-        )
+      rows.forEach((rowIndex) => {
+        cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
           .eq(rowIndex)
           .should('not.have.css', 'display', 'none');
 
-        cy.get(
-          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"][id*="-child"]`
-        )
+        cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"][id*="-child"]`)
           .eq(rowIndex)
           .should('not.have.css', 'display', 'none');
       });
@@ -948,12 +903,10 @@ describe('Data Table', () => {
 
       cy.get('@expandAllButton').click();
       cy.get('@rows').should('have.class', '-collapsed');
-      rows.forEach(rowIndex => {
-        cy.get(
-          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
-        )
+      rows.forEach((rowIndex) => {
+        cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
           .eq(rowIndex)
-          .should('not.have.css', 'display', 'none');
+          .should('have.css', 'display', 'none');
       });
     });
   });
@@ -967,20 +920,16 @@ describe('Data Table', () => {
       });
 
       it(`Should have class .${DATA_TABLE_CLASSES.SORTING}`, () => {
-        hasClassAssertion(
-          `[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.CELL}`,
-          DATA_TABLE_CLASSES.SORTING
-        );
+        hasClassAssertion(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.CELL}`, DATA_TABLE_CLASSES.SORTING);
       });
 
       it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
         cy.window()
           .its('sortingDataTable')
-          .then(sortingDataTable => {
+          .then((sortingDataTable) => {
             const component = sortingDataTable.$refs.sorting;
-            const spy = cy.spy();
 
-            component.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
+            cy.spy(component, '_emitSortingData').as('sortingSpy');
             cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
               .eq(0)
               .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -990,7 +939,7 @@ describe('Data Table', () => {
               cy.get('@firstCell')
                 .click()
                 .then(() => {
-                  expect(spy).to.be.called;
+                  cy.get('@sortingSpy').should('have.been.called');
                 });
             }
             cy.reload();
@@ -1010,7 +959,7 @@ describe('Data Table', () => {
           .find(`.${ICON_CLASS}`)
           .as('sortIcon');
 
-        cy.get('@sortIcon').then(icon => {
+        cy.get('@sortIcon').then((icon) => {
           cy.wait(500);
           hasClassAssertion(icon, `${ARROW_SORT_CLASS}`);
           cy.get('@firstCell')
@@ -1023,7 +972,7 @@ describe('Data Table', () => {
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Name 1');
-        cy.get('@sortIcon').then(icon => {
+        cy.get('@sortIcon').then((icon) => {
           cy.get(icon).should('have.css', 'transform', 'none');
           cy.get('@firstCell')
             .click()
@@ -1041,47 +990,41 @@ describe('Data Table', () => {
         cy.reload();
       });
 
-      it(
-        `Should sort by status using a custom template`,
-        { retries: 2 },
-        () => {
-          const statuses = ['active', 'inact', 'active'];
+      it(`Should sort by status using a custom template`, { retries: 2 }, () => {
+        const statuses = ['active', 'inact', 'active'];
 
-          checkStatusSorting(statuses);
-          cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
-            .eq(0)
-            .find(`.${DATA_TABLE_CLASSES.CELL}`)
-            .eq(1)
-            .as('idCell')
-            .click()
-            .then(() => {
-              const actives = ['active', 'active', 'active'];
+        checkStatusSorting(statuses);
+        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
+          .eq(0)
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(1)
+          .as('idCell')
+          .click()
+          .then(() => {
+            const actives = ['active', 'active', 'active'];
 
-              checkStatusSorting(actives);
-            });
-          cy.get('@idCell')
-            .click()
-            .then(() => {
-              const inactives = ['inact', 'inact', 'inact'];
+            checkStatusSorting(actives);
+          });
+        cy.get('@idCell')
+          .click()
+          .then(() => {
+            const inactives = ['inact', 'inact', 'inact'];
 
-              checkStatusSorting(inactives);
-            });
-          cy.reload();
-        }
-      );
+            checkStatusSorting(inactives);
+          });
+        cy.reload();
+      });
 
       it(`Should sort by date`, () => {
         const dates = ['6 Jan 2018', '5 Jul 2018', '5 Apr 2019'];
         const datesAsc = ['5 Mar 2017', '6 Jan 2018', '5 Feb 2018'];
         const datesDesc = ['5 Apr 2019', '9 Nov 2018', '5 Jul 2018'];
 
-        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
-          .eq(0)
-          .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(2)
+        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.ROW} .${DATA_TABLE_CLASSES.CELL}[data-column='date']`)
           .as('dateCell');
 
         checkDateSorting(dates);
+        cy.get('@dateCell').find('chi-button i', { timeout: 3000 }).should('be.visible');
         cy.get('@dateCell').click();
         checkDateSorting(datesAsc);
         cy.get('@dateCell').click();
@@ -1099,17 +1042,13 @@ describe('Data Table', () => {
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Surname 2');
-        cy.get(
-          `[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`
-        )
+        cy.get(`[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`)
           .eq(1)
           .click();
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Name 5');
-        cy.get(
-          `[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`
-        )
+        cy.get(`[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`)
           .eq(0)
           .click();
         cy.get('@rows')
@@ -1138,9 +1077,7 @@ describe('Data Table', () => {
 
     describe('Default sorting desc', () => {
       it(`Should have descending sorting by default`, () => {
-        cy.get(
-          `[data-cy='data-table-sorting-desc'] .${DATA_TABLE_CLASSES.BODY}`
-        )
+        cy.get(`[data-cy='data-table-sorting-desc'] .${DATA_TABLE_CLASSES.BODY}`)
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
           .eq(0)
@@ -1156,16 +1093,12 @@ describe('Data Table', () => {
 
     describe('Unsorted', () => {
       it(`Should sort by name with all 3 steps`, () => {
-        cy.get(
-          `[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.BODY}`
-        )
+        cy.get(`[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.BODY}`)
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
           .first()
           .should('contain', 'Name 2');
-        cy.get(
-          `[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.ROW}`
-        )
+        cy.get(`[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.ROW}`)
           .first()
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
           .first()
@@ -1208,7 +1141,7 @@ describe('Data Table', () => {
   describe('Sizes', () => {
     const sizes = ['-xs', '-sm', '-md', '-lg', '-xl'];
 
-    sizes.forEach(size => {
+    sizes.forEach((size) => {
       it(`Should have class .${size}`, () => {
         hasClassAssertion(`[data-cy='data-table${size}']`, size);
       });
@@ -1346,17 +1279,12 @@ describe('Data Table', () => {
     it('Should select "Show selected only" and show all the selected rows', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
-        .then(dataTableBulkActionsExample => {
+        .then((dataTableBulkActionsExample) => {
           const paginationResults = '1';
           const selected = '1';
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
 
-          dataTableRef.$on(
-            `${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`,
-            spy
-          );
+          cy.spy(dataTableRef, '_emitShowSelectedOnly').as('showSelectedOnlySpy');
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
               `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
@@ -1380,7 +1308,7 @@ describe('Data Table', () => {
                 )
                 .contains(`Actions (${selected} Items Selected)`);
               cy.get('@rows').should('have.length', 1);
-              expect(spy).to.be.calledOnce;
+              cy.get('@showSelectedOnlySpy').should('have.been.called');
             });
         });
     });
@@ -1388,17 +1316,12 @@ describe('Data Table', () => {
     it('Should deselect "Show selected only" and show data table is still in its original state', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
-        .then(dataTableBulkActionsExample => {
+        .then((dataTableBulkActionsExample) => {
           const paginationResults = '6';
           const selected = '1';
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
 
-          dataTableRef.$on(
-            `${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`,
-            spy
-          );
+          cy.spy(dataTableRef, '_emitShowSelectedOnly').as('showSelectedOnlySpy');
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
               `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
@@ -1430,7 +1353,7 @@ describe('Data Table', () => {
                 )
                 .contains(`Actions (${selected} Items Selected)`);
               cy.get('@rows').should('have.length', 3);
-              expect(spy).to.be.calledOnce;
+              cy.get('@showSelectedOnlySpy').should('have.been.called');
             });
         });
     });
@@ -1438,17 +1361,13 @@ describe('Data Table', () => {
     it('Should reset data table rows to the initial state when closing bulk actions clicking the X button', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
-        .then(dataTableBulkActionsExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+        .then((dataTableBulkActionsExample) => {
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
           const paginationResults = '6';
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
+          cy.spy(dataTableRef, '_emitChiBulkActionsCancel').as('cancelSpy');
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`
-            )
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1464,7 +1383,7 @@ describe('Data Table', () => {
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
-              expect(spy).to.be.calledOnce;
+              cy.get('@cancelSpy').should('have.been.called');
             });
         });
     });
@@ -1472,13 +1391,11 @@ describe('Data Table', () => {
     it.skip('Should reset data table rows to the initial state when closing bulk actions having "Show selected only" mode enabled', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
-        .then(dataTableBulkActionsExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+        .then((dataTableBulkActionsExample) => {
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
           const paginationResults = '6';
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
+          cy.spy(dataTableRef, '_emitChiBulkActionsCancel').as('cancelSpy');
           cy.get('@selectables')
             .eq(1)
             .click();
@@ -1489,9 +1406,7 @@ describe('Data Table', () => {
             )
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`
-            )
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1507,7 +1422,7 @@ describe('Data Table', () => {
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
-              expect(spy).to.be.calledOnce;
+              cy.get('@cancelSpy').should('have.been.called');
             });
         });
     });
@@ -1533,12 +1448,6 @@ describe('Data Table', () => {
     it('The number of selected rows should remain the same when navigating to page 2', () => {
       const selected = '1';
 
-      cy.get('@selectables')
-        .first()
-        .click();
-      cy.get('@selectables')
-        .eq(1)
-        .click();
       cy.get(`@pagination`)
         .find(`.${ICON_BUTTON}`)
         .eq(1)

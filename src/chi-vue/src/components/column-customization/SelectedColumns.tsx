@@ -1,4 +1,4 @@
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import { DataTableColumn } from '@/constants/types';
 import './column-customization.scss';
 import { findComponent } from '@/utils/utils';
@@ -31,27 +31,29 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       return (
         <option
           disabled={column.locked}
-          onClick={() => this._triggerSelectRowState()}
+          onClick={() => this._emitColumnsSelected()}
           value={column.name}
-          class={column.locked ? '-locked' : ''}>
+          class={column.locked ? '-locked' : ''}
+        >
           {column.label || column.name}
         </option>
       );
     });
   }
 
-  beforeDestroy() {
+  beforeUnmount() {
     if (this._ColumnCustomizationContent) {
       (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
     }
   }
 
-  _triggerSelectRowState() {
-    this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_SELECTED);
+  @Emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_SELECTED)
+  _emitColumnsSelected() {
+    // This is intentional
   }
 
   render() {
-    const standardOptions = this.$props.standardColumns ? this._generateOptions(this.$props.standardColumns) : null;
+    const standardOptions = this.standardColumns ? this._generateOptions(this.standardColumns) : null;
 
     return (
       <div>

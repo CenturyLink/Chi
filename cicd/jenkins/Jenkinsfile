@@ -244,8 +244,9 @@ pipeline {
         parallel {
           stage ('Building Custom elements') {
             agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
+              dockerfile {
+                filename getNodeAgentBlock('custom-elements')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -735,6 +736,9 @@ PolicyDocument
                     fi
                   """, label: "Cleaning before pushing to AssetsServer"
                   jslGitHubCloneRepo('ux-chi-AssetsServer')
+                  
+                  def packageJson = readJSON file: 'package.json'
+                  
                   env.CHECK = sh (
                     script: """#!/bin/bash
                       if [[ -d ux-chi-AssetsServer/chi/${packageJson.version} ]]
@@ -763,7 +767,7 @@ PRDesc
                     git config user.email "scmauto@lumen.com"
                     git config user.name "SCMAUTO"
                     git commit -m "CHI_${packageJson.version}"
-                    git push --set-upstream origin CHI_${packageJson.version}"
+                    git push --set-upstream origin "CHI_${packageJson.version}"
                   """, label: "Pushing branch to AssetsServer"
                   if ( env.CHECK == "NO" ) {
                     dir ('ux-chi-AssetsServer') {
@@ -1109,7 +1113,7 @@ def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
-  if (scope == 'chi-vue') {
+  if (scope == 'chi-vue' || scope == 'custom-elements') {
     nodeVersion = '20'
   }
 

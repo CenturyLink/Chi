@@ -405,7 +405,8 @@
         ".test-dropdown-variants-color",
         ".test-dropdown-button-sizes",
         ".test-dropdown-button-disabled",
-        ".test-dropdown-button-uppercase"
+        ".test-dropdown-button-uppercase",
+        ".test-dropdown-button-font-weight"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -825,6 +826,26 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [".test-states", ".test-hide-label-states", ".test-sizes"],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "time",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/time.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-custom-steps-period-change"
+      ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true

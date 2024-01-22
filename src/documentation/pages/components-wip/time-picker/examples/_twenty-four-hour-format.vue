@@ -1,6 +1,8 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="24-hour format" id="twenty-four-hour-format" :tabs="exampleTabs">
-    chi-time(format='24hr' slot="example")
+  <ComponentExample titleSize="h4" title="24-hour format" id="24hour" :tabs="exampleTabs">
+    .chi-form__item(style="max-width: 14rem;" slot="example")
+      chi-label(for="example__24hour-format") Label
+      chi-time-picker(id="example__24hour-format" format="24hr")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -29,7 +31,8 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-time format='24hr'></chi-time>`,
+        webcomponent: `<chi-label for="example__24hour-format">Label</chi-label>
+<chi-time-picker id="example__24hour-format" format="24hr"></chi-time-picker>`,
         htmlblueprint: ``
       }
     };

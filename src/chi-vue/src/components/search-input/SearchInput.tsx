@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Inject, Prop, Watch } from 'vue-property-decorator';
 import {
   BUTTON_CLASSES,
   CLOSE_CLASS,
@@ -9,11 +9,10 @@ import {
   INPUT_CLASSES,
   SEARCH_INPUT_CLASSES,
 } from '@/constants/classes';
-import { SearchInputSizes } from '@/constants/types';
+import { SearchInputSizes, ToolbarRef } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
-import { findComponent } from '@/utils/utils';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { CHI_VUE_KEYS } from '@/constants/constants';
 
 @Component({})
 export default class SearchInput extends Vue {
@@ -26,34 +25,44 @@ export default class SearchInput extends Vue {
   @Prop() portal?: boolean;
   @Prop() readOnly?: boolean;
 
-  cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
-  inputValue = this.$props.value || '';
+  @Inject({ from: CHI_VUE_KEYS.TOOLBAR_SEARCH_INPUT })
+  toolbarSearch?: ToolbarRef;
 
-  _handleValueInput(ev: Event) {
-    const newValue = (ev.target as HTMLInputElement).value;
+  cleanButtonVisible?: boolean = false;
+  inputValue = '';
 
-    this.inputValue = newValue;
-    this.cleanButtonVisible = newValue !== '';
-    this.$emit(SEARCH_INPUT_EVENTS.INPUT, newValue);
+  @Emit(SEARCH_INPUT_EVENTS.INPUT)
+  _emitInput(value: string) {
+    return value;
   }
 
-  _cleanInput() {
-    const input = this.$refs.input;
-
-    this.inputValue = '';
-    this.cleanButtonVisible = false;
-    this.$emit(SEARCH_INPUT_EVENTS.CLEAN);
-    (input as HTMLInputElement).focus();
+  @Emit(SEARCH_INPUT_EVENTS.CHANGE)
+  _emitChange(value: string) {
+    return value;
   }
 
-  mounted() {
-    if (this.$props.dataTableSearch) {
-      const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
-
-      if (dataTableToolbarComponent) {
-        (dataTableToolbarComponent as DataTableToolbar)._searchComponent = this;
-      }
+  @Emit(SEARCH_INPUT_EVENTS.SEARCH)
+  _emitSearch(value: string) {
+    if (this.toolbarSearch?.callback) {
+      this.toolbarSearch.callback();
     }
+
+    return value;
+  }
+
+  @Emit(SEARCH_INPUT_EVENTS.FOCUS)
+  _emitFocus() {
+    // This is intentional
+  }
+
+  @Emit(SEARCH_INPUT_EVENTS.BLUR)
+  _emitBlur() {
+    // This is intentional
+  }
+
+  @Emit(SEARCH_INPUT_EVENTS.CLEAN)
+  _emitClean() {
+    // This is intentional
   }
 
   @Watch('value')
@@ -61,6 +70,32 @@ export default class SearchInput extends Vue {
     if (newValue !== oldValue) {
       this.inputValue = newValue;
     }
+  }
+
+  _handleValueInput(ev: Event) {
+    const newValue = (ev.target as HTMLInputElement).value;
+
+    this.inputValue = newValue;
+    this.cleanButtonVisible = newValue !== '';
+    this._emitInput(newValue);
+  }
+
+  _cleanInput() {
+    const input = this.$refs.input;
+
+    this.inputValue = '';
+    this.cleanButtonVisible = false;
+    this._emitClean();
+    (input as HTMLInputElement).focus();
+  }
+
+  _initDataFromProps(): void {
+    this.cleanButtonVisible = !!(this.value && !this.disabled);
+    this.inputValue = this.value || '';
+  }
+
+  beforeMount() {
+    this._initDataFromProps();
   }
 
   render() {
@@ -71,21 +106,21 @@ export default class SearchInput extends Vue {
         class={`
         ${INPUT_CLASSES.INPUT}
         ${SEARCH_INPUT_CLASSES.SEARCH_INPUT}
-        ${this.$props.size ? `-${this.$props.size}` : ''}
+        ${this.size ? `-${this.size}` : ''}
       `}
-        placeholder={this.$props.placeholder || ''}
+        placeholder={this.placeholder || ''}
         value={this.inputValue}
-        name={this.$props.name || null}
-        disabled={this.$props.disabled}
-        onFocus={() => this.$emit(SEARCH_INPUT_EVENTS.FOCUS)}
-        onBlur={() => this.$emit(SEARCH_INPUT_EVENTS.BLUR)}
+        name={this.name || ''}
+        disabled={this.disabled}
+        onFocus={() => this._emitFocus()}
+        onBlur={() => this._emitBlur()}
         onInput={(ev: Event) => this._handleValueInput(ev)}
         onChange={(ev: Event) => {
-          this.$emit(SEARCH_INPUT_EVENTS.CHANGE, (ev.target as HTMLInputElement).value);
+          this._emitChange((ev.target as HTMLInputElement).value);
         }}
         autocomplete="off"
         aria-label="search input"
-        readonly={this.$props.readOnly}
+        readonly={this.readOnly}
       />
     );
 
@@ -96,11 +131,12 @@ export default class SearchInput extends Vue {
         ${CLOSE_CLASS}
         ${GENERIC_SIZE_CLASSES.XS}`}
         onClick={() => {
-          if (!this.$props.readOnly) {
+          if (!this.readOnly) {
             this._cleanInput();
           }
         }}
-        aria-label="Clear">
+        aria-label="Clear"
+      >
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
         </div>
@@ -112,15 +148,18 @@ export default class SearchInput extends Vue {
         class={`
         ${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON}
         ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.BG_NONE}
+        ${this.size ? `-${this.size}` : ''}
         `}
-        onClick={() => this.$emit(SEARCH_INPUT_EVENTS.SEARCH, this.inputValue)}
-        aria-label="Search">
+        onClick={() => this._emitSearch(this.inputValue)}
+        aria-label="Search"
+      >
         <div class={BUTTON_CLASSES.CONTENT}>
           <i
             class={`
           ${ICON_CLASS} icon-search
           `}
-            aria-hidden="true"></i>
+            aria-hidden="true"
+          ></i>
         </div>
       </button>
     );
@@ -136,6 +175,6 @@ export default class SearchInput extends Vue {
     );
     const toolbar = <div class={DATA_TABLE_CLASSES.SEARCH}>{formItem}</div>;
 
-    return this.$props.dataTableSearch ? toolbar : formItem;
+    return this.dataTableSearch ? toolbar : formItem;
   }
 }

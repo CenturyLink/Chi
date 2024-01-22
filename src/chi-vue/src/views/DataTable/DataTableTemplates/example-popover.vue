@@ -20,38 +20,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
+import { onMounted } from 'vue';
 
-// eslint-disable-next-line
 declare const chi: any;
 
-@Component({
-  components: {},
-  props: {
-    id: String,
-  },
-})
-export default class ExamplePopover extends Vue {
-  mounted() {
-    const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
-    const popover = chi.popover(buttonOpenOnHover);
-    let hoverAnimationTimeout: number;
+const props = defineProps<{
+  id?: string;
+}>();
 
-    if (buttonOpenOnHover) {
-      buttonOpenOnHover.addEventListener('mouseenter', function() {
-        hoverAnimationTimeout = setTimeout(() => {
-          popover.show();
-        }, 300);
-      });
+onMounted(() => {
+  const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${props.id}`);
+  const popover = chi.popover(buttonOpenOnHover);
+  let hoverAnimationTimeout: any;
 
-      buttonOpenOnHover.addEventListener('mouseleave', function() {
-        if (hoverAnimationTimeout) {
-          clearTimeout(hoverAnimationTimeout);
-        }
-        popover.hide();
-      });
-    }
+  if (buttonOpenOnHover) {
+    buttonOpenOnHover.addEventListener('mouseenter', function () {
+      hoverAnimationTimeout = setTimeout(() => {
+        popover.show();
+      }, 300);
+    });
+
+    buttonOpenOnHover.addEventListener('mouseleave', function () {
+      if (hoverAnimationTimeout) {
+        clearTimeout(hoverAnimationTimeout);
+      }
+      popover.hide();
+    });
   }
-}
+});
 </script>

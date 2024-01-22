@@ -1,13 +1,12 @@
 import { Component, Element, Prop, h } from '@stencil/core';
-import { ChiStates, STATES } from "../../constants/states";
-import { FORM_CLASSES, STATUS_CLASS } from "../../constants/classes";
+import { ChiStates, STATES } from '../../constants/states';
+import { FORM_CLASSES, STATUS_CLASS } from '../../constants/classes';
 
 @Component({
   tag: 'chi-helper-message',
   styleUrl: 'helper-message.scss',
-  scoped: true
+  scoped: true,
 })
-
 export class HelperMessage {
   @Element() el: HTMLElement;
 

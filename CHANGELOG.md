@@ -1,4 +1,26 @@
 # CHANGELOG
+## 5.45.0 (January 16, 2024)
+### Components
+#### Added
+* Added: Reusable `mutationObserver` functionality.
+* Added: Alert web component now supports `mutationObserver` functionality.
+### Documentation
+#### Fixed
+* Fixed: Data table and toolbar Vue examples.
+
+## 5.44.0 (January 2, 2024)
+### Components
+#### Added
+* Added: Datepicker component now supports keyboard functionality to improve accessibility.
+* Added: Dropdown web component now supports `font-weight` attribute.
+* Added: Number input events `chiFocus`, `chiBlur` and `chiClick`.
+### Documentation
+#### Changed
+* Changed: Chi documentation URLs changed from `assets.ctl.io` to `lib.lumen.com`.
+* Changed: Framework specific boilerplates section on the installation page has been updated to the latest versions.
+#### Fixed
+* Fixed: Button Danger section duplicated in Portal theme.
+
 ## 5.43.0 (December 12, 2023)
 ### Components
 #### Added

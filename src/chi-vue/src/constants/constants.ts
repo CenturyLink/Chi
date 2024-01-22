@@ -37,3 +37,10 @@ export const EPANEL = {
   DEFAULT_TOOLTIP_CONTENT: 'Done',
 };
 //#endregion
+
+//#region Chi Vue keys
+export const CHI_VUE_KEYS = {
+  TOOLBAR_SEARCH_INPUT: Symbol('chi-toolbar-search'),
+  TRANSFER_LIST: Symbol('chi-transfer-List'),
+};
+//#endregion

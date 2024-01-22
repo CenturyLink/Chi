@@ -53,6 +53,7 @@ const DROPDOWN_DATA_CY = {
   HOVER: '[data-cy="hover-dropdown"]',
   ANIMATE: '[data-cy="animate-dropdown"]',
   VISIBLE_ITEMS: '[data-cy="visible-items-dropdown"]',
+  FONT_WEIGHT: '[data-cy="font-weight-dropdown"]',
   POSITION: positions.map(position => {
     return {
       selector: `[data-cy="position-dropdown-${position.placement}"]`,
@@ -151,6 +152,22 @@ describe('Dropdown', () => {
           cy.get(`@dropdownMenu`).should('be.visible');
           expect(angle).to.equal(180);
         });
+    });
+  });
+
+  describe('Font Weight', () => {
+    beforeEach(() => {
+      cy.get(DROPDOWN_DATA_CY.FONT_WEIGHT)
+        .find(DROPDOWN_TRIGGER)
+        .as('dropdownTrigger');
+    });
+
+    it('Should have attribute font-weight', () => {
+      cy.get(DROPDOWN_DATA_CY.FONT_WEIGHT).should('have.attr', 'font-weight', 'normal');
+    });
+
+    it('Should add -text--normal class on the button element', () => {
+      hasClassAssertion('@dropdownTrigger', '-text--normal')
     });
   });
 
@@ -375,7 +392,7 @@ describe('Dropdown', () => {
       });
     });
 
-    describe.only('Dynamically change menu items', () => {
+    describe('Dynamically change menu items', () => {
       beforeEach(() => {
         cy.get(`[data-cy='dynamic-dropdown'] ${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
           .as('dropdownMenuItems');

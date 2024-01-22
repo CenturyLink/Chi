@@ -1,51 +1,50 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import { CHECKBOX_CLASSES, SR_ONLY } from '@/constants/classes';
 import { GENERIC_EVENTS } from '@/constants/events';
 import { CheckboxState } from '@/constants/types';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { JSX } from 'vue/jsx-runtime';
 
 @Component({})
 export default class Checkbox extends Vue {
   @Prop({ required: true }) id!: string;
   @Prop() label?: string;
   @Prop() name?: string;
-  @Prop() selected?: CheckboxState;
+  @Prop() selected!: CheckboxState;
   @Prop() disabled?: boolean;
 
-  state = this.selected;
+  state: CheckboxState = false;
 
   @Watch('selected')
-  dataState(newValue: CheckboxState, oldValue: CheckboxState) {
+  watchSelected(newValue: CheckboxState, oldValue: CheckboxState): void {
     if (newValue !== oldValue) {
       this.state = newValue;
-      this._updateCheckboxState();
     }
   }
 
+  @Watch('state')
+  watchState(newValue: CheckboxState, oldValue: CheckboxState): void {
+    if (newValue !== oldValue) {
+      this.state = oldValue === 'indeterminate' ? false : newValue;
+    }
+  }
+
+  @Emit(GENERIC_EVENTS.CHANGE)
   _emitChange(ev: Event) {
-    this.$emit(GENERIC_EVENTS.CHANGE, ev);
+    return ev;
   }
 
-  _updateCheckboxState() {
-    const checkbox = this.$refs.checkbox as HTMLInputElement;
-
-    if (this.state === 'indeterminate') {
-      checkbox.indeterminate = true;
-    } else {
-      checkbox.indeterminate = false;
-    }
+  beforeMount(): void {
+    this.state = this.selected;
   }
 
-  mounted() {
-    this._updateCheckboxState();
-  }
-
-  render() {
+  render(): JSX.Element {
     return (
       <div class={CHECKBOX_CLASSES.CHECKBOX} key={this.id}>
         <input
-          v-model={this.state}
           class={`${CHECKBOX_CLASSES.INPUT} ${this.state === 'indeterminate' && CHECKBOX_CLASSES.INDETERMINATE}`}
+          v-model={this.state}
+          indeterminate={this.state === 'indeterminate'}
           disabled={this.disabled}
           id={this.id}
           name={this.name}

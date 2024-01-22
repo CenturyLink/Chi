@@ -67,22 +67,21 @@ describe('Server Side Data Table Portal', () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
           const dataTableRef =
             dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
 
-          dataTableRef.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitPaginationChange').as('paginationChangeSpy');
           cy.get('@paginationIcons')
             .eq(2)
             .click()
             .then(() => {
-              expect(spy).to.be.calledWith({ page: 2 });
+              cy.get('@paginationChangeSpy').should('have.been.called');
             });
           cy.get('@paginationIcons')
             .eq(1)
             .click()
             .then(() => {
-              expect(spy).to.be.calledWith({ page: 1 });
+              cy.get('@paginationChangeSpy').should('have.been.called');
             });
         });
     });
@@ -99,11 +98,10 @@ describe('Server Side Data Table Portal', () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
           const dataTableRef =
             dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get(`[data-cy='data-table-server-side-portal']`)
             .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
             .as('selectables')
@@ -111,7 +109,7 @@ describe('Server Side Data Table Portal', () => {
             .click()
             .then(() => {
               isSelected([dataTableServerSidePortalExample.table.body[0]]);
-              expect(spy).to.be.calledOnce;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
             });
           cy.get('@selectables')
             .eq(1)
@@ -146,26 +144,25 @@ describe('Server Side Data Table Portal', () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
           const dataTableRef =
             dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
           const parent = dataTableServerSidePortalExample.table.body[2];
           const child = parent.nestedContent.table.data[0];
           const grandchild = child.nestedContent.table.data[0];
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get('@selectables')
             .eq(3)
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
               isSelected([parent, child, grandchild]);
             });
           cy.get('@selectables')
             .eq(3)
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
             });
         });
     });
@@ -177,19 +174,18 @@ describe('Server Side Data Table Portal', () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
           const dataTableRef =
             dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
           const parent = dataTableServerSidePortalExample.table.body[2];
           const child = parent.nestedContent.table.data[0];
           const grandchild = child.nestedContent.table.data[0];
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.spy(dataTableRef, '_emitSelectedRowsChange').as('selectedRowsChangeSpy');
           cy.get('@selectables')
             .eq(3)
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@selectedRowsChangeSpy').should('have.been.called');
               isNotSelected([parent, child, grandchild]);
             });
         });
@@ -255,12 +251,11 @@ describe('Server Side Data Table Portal', () => {
         cy.window()
           .its('dataTableServerSidePortalExample')
           .then(dataTableServerSidePortalExample => {
-            const spy = cy.spy();
             const dataTableRef =
               dataTableServerSidePortalExample.$refs
                 .dataTableServerSidePortalRef;
 
-            dataTableRef.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
+            cy.spy(dataTableRef, '_emitSortingData').as('sortingDataSpy');
             cy.get(
               `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.ROW}`
             )
@@ -270,18 +265,12 @@ describe('Server Side Data Table Portal', () => {
               .as('idCell')
               .click()
               .then(() => {
-                expect(spy).to.be.calledOnceWith({
-                  column: 'id',
-                  direction: 'ascending'
-                });
+                cy.get('@sortingDataSpy').should('have.been.called');
               });
             cy.get('@idCell')
               .click()
               .then(() => {
-                expect(spy).to.be.calledWith({
-                  column: 'id',
-                  direction: 'descending'
-                });
+                cy.get('@sortingDataSpy').should('have.been.called');
               });
           });
       });

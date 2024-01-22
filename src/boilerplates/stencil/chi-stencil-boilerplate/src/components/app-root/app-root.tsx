@@ -17,11 +17,7 @@ export class AppRoot {
             class="-d--flex -w--100 -h--100 -align-items--center -justify-content--center"
           >
             <main>
-              <stencil-router>
-                <stencil-route-switch scrollTopOffset={0}>
-                  <stencil-route url="/" component="app-home" exact={true} />
-                </stencil-route-switch>
-              </stencil-router>
+              <app-home></app-home>
             </main>
           </div>
         </div>

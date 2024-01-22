@@ -1,5 +1,4 @@
 # chi-vue
-
 ## Project setup
 ```
 npm install
@@ -12,18 +11,24 @@ npm run serve
 
 ### Compiles and minifies for production
 ```
-npm run build
+LIB: npm run build:component
+UMD: npm run build:umd
 ```
 
 ### Lints and fixes files
 ```
 npm run lint
+npm run prettier
+npm run prettier:checker
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
+## 3.0.0 (December 18, 2023)
+* Migration from Vue 2 to Vue 3
+
 ## 2.6.0 (October 17, 2023)
 ### Components
 #### Added

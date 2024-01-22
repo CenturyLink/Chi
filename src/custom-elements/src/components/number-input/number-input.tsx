@@ -1,20 +1,11 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Prop,
-  State,
-  Watch,
-  h
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-number-input',
   styleUrl: 'number-input.scss',
-  scoped: true
+  scoped: true,
 })
 export class NumberInput {
   /**
@@ -102,9 +93,7 @@ export class NumberInput {
   /**
    * Triggered when the element's value committed by the user is an invalid number
    */
-  @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
-    void
-  >;
+  @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<void>;
 
   /**
    * Triggered when the user sets focus on the element.
@@ -166,10 +155,10 @@ export class NumberInput {
   }
 
   emitEventsOnClick(ev: Event) {
-    this.chiFocus.emit()
+    this.chiFocus.emit();
     this.chiChange.emit(this.value);
     this.chiInput.emit(this.value);
-    this.chiClick.emit(ev)
+    this.chiClick.emit(ev);
   }
 
   private increment(clickEv: Event) {
@@ -182,7 +171,7 @@ export class NumberInput {
       });
     }
 
-    this.emitEventsOnClick(clickEv)
+    this.emitEventsOnClick(clickEv);
   }
 
   private decrement(clickEv: Event) {
@@ -195,7 +184,7 @@ export class NumberInput {
       });
     }
 
-    this.emitEventsOnClick(clickEv)
+    this.emitEventsOnClick(clickEv);
   }
 
   /**
@@ -205,18 +194,16 @@ export class NumberInput {
     return (
       <input
         type="number"
-        ref={el => (this._numberInput = el as HTMLInputElement)}
-        class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
-          this.state ? `-${this.state}` : ''
-        }`}
+        ref={(el) => (this._numberInput = el as HTMLInputElement)}
+        class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${this.state ? `-${this.state}` : ''}`}
         disabled={this.disabled}
         required={this.required}
         step={this.step}
         max={this.max}
         min={this.min}
         value={this.value}
-        onChange={ev => this.handleChange(ev)}
-        onInput={ev => this.handleInput(ev)}
+        onChange={(ev) => this.handleChange(ev)}
+        onInput={(ev) => this.handleInput(ev)}
         onFocus={() => this.chiFocus.emit()}
         onBlur={() => this.chiBlur.emit()}
         id={this.el.id ? `${this.el.id}-control` : null}
@@ -230,12 +217,12 @@ export class NumberInput {
         {this.getInput()}
         <button
           disabled={this.isDecreaseDisabled()}
-          onClick={ev => this.decrement(ev)}
+          onClick={(ev) => this.decrement(ev)}
           aria-label="Decrease"
         ></button>
         <button
           disabled={this.isIncreaseDisabled()}
-          onClick={ev => this.increment(ev)}
+          onClick={(ev) => this.increment(ev)}
           aria-label="Increase"
         ></button>
       </div>
@@ -244,14 +231,12 @@ export class NumberInput {
 
   getExpandedNumberInput() {
     return (
-      <div
-        class={`chi-number-input -expanded ${this.size ? `-${this.size}` : ''}`}
-      >
+      <div class={`chi-number-input -expanded ${this.size ? `-${this.size}` : ''}`}>
         {this.getInput()}
         <button
           class="chi-button -icon"
           disabled={this.isDecreaseDisabled()}
-          onClick={ev => this.decrement(ev)}
+          onClick={(ev) => this.decrement(ev)}
           aria-label="Decrease"
         >
           <div class="chi-button__content">
@@ -261,7 +246,7 @@ export class NumberInput {
         <button
           class="chi-button -icon"
           disabled={this.isIncreaseDisabled()}
-          onClick={ev => this.increment(ev)}
+          onClick={(ev) => this.increment(ev)}
           aria-label="Increase"
         >
           <div class="chi-button__content">
@@ -277,25 +262,15 @@ export class NumberInput {
   }
 
   isIncreaseDisabled() {
-    return !!(
-      this.max &&
-      (Number(this.value) + this.step > this.max ||
-        Number(this.value) >= this.max)
-    );
+    return !!(this.max && (Number(this.value) + this.step > this.max || Number(this.value) >= this.max));
   }
 
   getHelperMessage() {
-    return (
-      <chi-helper-message state={this.inputstyle}>
-        {this.helperMessage}
-      </chi-helper-message>
-    );
+    return <chi-helper-message state={this.inputstyle}>{this.helperMessage}</chi-helper-message>;
   }
 
   render() {
-    let input = this.expanded
-      ? this.getExpandedNumberInput()
-      : this.getBaseNumberInput();
+    let input = this.expanded ? this.getExpandedNumberInput() : this.getBaseNumberInput();
 
     if (this.helperMessage) {
       input = (
