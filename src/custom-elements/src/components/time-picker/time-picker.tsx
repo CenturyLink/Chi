@@ -1,6 +1,6 @@
 import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { CHI_TIME_AUTO_SCROLL_DELAY, TimePickerFormats } from '../../constants/constants';
+import { CHI_TIME_AUTO_SCROLL_DELAY, TimePickerFormats, TimePickerTimeSteps } from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
 
@@ -48,6 +48,18 @@ export class TimePicker {
    * Indicates whether the time picker popover is open or closed
    */
   @Prop({ reflect: true, mutable: true }) active = false;
+
+  /**
+   * Renders minutes in stepped format. Defaults to 15 min steps if no value
+   * is provided (see examples in docs).
+   */
+  @Prop({ reflect: true }) minutesStep?: TimePickerTimeSteps;
+
+  /**
+   * Renders seconds in stepped format. Defaults to 10 seconds if
+   * no value is provided (see examples in docs).
+   */
+  @Prop({ reflect: true }) secondsStep?: TimePickerTimeSteps;
 
   @Element() el: HTMLElement;
 
@@ -180,6 +192,8 @@ export class TimePicker {
           excluded-seconds={this._excludedSeconds}
           format={this.format}
           value={this.value}
+          seconds-step={this.secondsStep}
+          minutes-step={this.minutesStep}
         />
       </chi-popover>
     );

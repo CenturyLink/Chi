@@ -9,6 +9,7 @@
     <ExcludedDatesWeekDays />
     <Error />
     <DatePickerDateTime />
+    <DatePickerDateTimeStepped />
     <DatePickerMultipleDates />
     h3 Calendar
     p.-text An example of a date picker calendar not attached to any element.
@@ -30,6 +31,7 @@ import CalendarMultipleActiveDates from './_calendar-multiple-active-dates.vue';
 import ExcludedDatesWeekDays from './_excluded-dates-week-days.vue';
 import Error from './_error.vue';
 import DatePickerDateTime from './_date-picker-date-time.vue';
+import DatePickerDateTimeStepped from './_date-picker-date-time-stepped.vue';
 import ExcludedDates from './_excluded-dates.vue';
 import BaseDatePicker from './_base-date-picker.vue';
 import Disabled from './_disabled.vue';
@@ -47,6 +49,7 @@ import CalendarDateTime from './_calendar-date-time.vue';
     ExcludedDatesWeekDays,
     Error,
     DatePickerDateTime,
+    DatePickerDateTimeStepped,
     ExcludedDates,
     BaseDatePicker,
     Disabled,
