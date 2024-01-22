@@ -1593,7 +1593,12 @@ export default class DataTable extends Vue {
     this._dataTableNumber = dataTableNumber;
     this._dataTableId = `dt-${this._dataTableNumber}`;
 
-    if (!isFullServerSort && this.config.defaultSort && this.config.defaultSort.key && this.config.defaultSort.direction) {
+    if (
+      !isFullServerSort &&
+      this.config.defaultSort &&
+      this.config.defaultSort.key &&
+      this.config.defaultSort.direction
+    ) {
       this._sortConfig = {
         key: this.config.defaultSort.key,
         direction: this.config.defaultSort.direction,
