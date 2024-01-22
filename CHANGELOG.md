@@ -1,4 +1,19 @@
 # CHANGELOG
+## 5.46.0 (January 23, 2024)
+### Components
+#### Added
+* Added: Time picker now supports `minutes-step` and `seconds-steps` attributes to define steps for minute and seconds respectively.
+* Added: Data table now supports popover when checkboxes and radio buttons are disabled.
+#### Fixed
+* Fixed: Data table `selectAll` functionality for checkbox in header was not working as expected after Vue3 migration.
+* Fixed: Toolbar `eventBus` event was not working as expected after Vue3 migration.
+### Documentation
+#### Added
+* Added: Data table `emptyActionable` config in properties tab.
+* Added: Time picker 24-hour format and seconds examples.
+#### Fixed
+* Fixed: Data table popover `ids` in complex example in Portal Enterprise theme.
+
 ## 5.45.0 (January 16, 2024)
 ### Components
 #### Added
