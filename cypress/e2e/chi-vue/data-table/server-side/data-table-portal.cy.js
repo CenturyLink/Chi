@@ -1,8 +1,11 @@
 import {
   ACTIVE_CLASS,
+  ARROW_SORT_CLASS,
+  ARROW_UP_CLASS,
   DATA_TABLE_CLASSES,
   DATA_TABLE_EVENTS,
   ICON_BUTTON,
+  ICON_CLASS,
   PAGINATION_CLASSES,
   PAGINATION_EVENTS
 } from '../data-table-common.cy';
@@ -192,7 +195,7 @@ describe('Server Side Data Table Portal', () => {
     });
   });
 
-  describe('Server side sorting', () => {
+  describe.only('Server side sorting', () => {
     it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
@@ -273,6 +276,38 @@ describe('Server Side Data Table Portal', () => {
                 cy.get('@sortingDataSpy').should('have.been.called');
               });
           });
+      });
+    });
+
+    describe.only('Full server sort', () => {
+      it('Should sort by default when fullServerSort property is not present', () => {
+        cy.get(`[data-cy='data-table-portal-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
+            .first()
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(3)
+            .find(`.${ICON_CLASS}`)
+            .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+      });
+  
+      it('Should not sort by default when fullServerSort property is set to true', () => {
+        cy.get(`[data-cy='data-table-portal-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
+            .first()
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(3)
+            .find(`.${ICON_CLASS}`)
+            .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+      });
+      
+      it('Should sort by default when fullServerSort property is set to false', () => {
+        cy.get(`[data-cy='data-table-portal-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`)
+          .first()
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(3)
+          .find(`.${ICON_CLASS}`)
+          .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
       });
     });
   });

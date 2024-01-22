@@ -1,8 +1,11 @@
 import {
   ACTIVE_CLASS,
+  ARROW_SORT_CLASS,
+  ARROW_UP_CLASS,
   DATA_TABLE_CLASSES,
   DATA_TABLE_EVENTS,
   ICON_BUTTON,
+  ICON_CLASS,
   PAGINATION_CLASSES,
   PAGINATION_EVENTS,
 } from '../data-table-common.cy';
@@ -174,16 +177,13 @@ describe('Server Side Data Table', () => {
   });
 
   describe('Server side sorting', () => {
-    beforeEach(() => {
+    it('Should sort by status in asc and desc', () => {
+      const statuses = ['active', 'inact', 'active'];
+
       cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons');
-    });
-
-    it('Should sort by status in asc and desc', () => {
-      const statuses = ['active', 'inact', 'active'];
-
       cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
@@ -227,6 +227,10 @@ describe('Server Side Data Table', () => {
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
       it('Should sort by status in asc and desc', () => {
+        cy.get(`[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`)
+          .as('pagination')
+          .find(`.${ICON_BUTTON}`)
+          .as('paginationIcons');
         cy.window()
           .its('dataTableServerSideExample')
           .then((dataTableServerSideExample) => {
@@ -248,6 +252,38 @@ describe('Server Side Data Table', () => {
                 cy.get('@sortingDataSpy').should('have.been.called');
               });
           });
+      });
+    });
+
+    describe('Full server sort', () => {
+      it('Should sort by default when fullServerSort property is not present', () => {
+        cy.get(`[data-cy='data-table-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
+            .first()
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(3)
+            .find(`.${ICON_CLASS}`)
+            .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+      });
+  
+      it('Should not sort by default when fullServerSort property is set to true', () => {
+        cy.get(`[data-cy='data-table-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
+            .first()
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(3)
+            .find(`.${ICON_CLASS}`)
+            .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+      });
+      
+      it('Should sort by default when fullServerSort property is set to false', () => {
+        cy.get(`[data-cy='data-table-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`)
+          .first()
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(3)
+          .find(`.${ICON_CLASS}`)
+          .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
       });
     });
   });
