@@ -233,6 +233,8 @@ p.-text
 
 h3 Date Time
 p.-text
+  | Minutes can be shown in steps of 5, 10, 15, 20, or 30 minutes.
+  | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 min if no value is provided).
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
@@ -250,6 +252,29 @@ p.-text
       <chi-label for="date-time">Date</chi-label>
       <chi-date-picker id="date-time" mode="datetime"></chi-date-picker>
   #html-datetime.chi-tabs-panel
+
+h4 Date Time stepped
+p.-text
+  | Minutes can be shown in steps of 5, 10, 15, 20, or 30 minutes or seconds.
+  | Use the property <code>minutes-step="value"</code> to define the step for the 
+  | minutes (defaults to 15 min) if no value is provided.
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-time-stepped')
+        | Date Time
+      chi-date-picker(id="date-time-stepped" mode="datetime" minutes-step="5")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-datetime
+      li.-active
+        a(href=`#webcomponent-datetime-stepped`) Web Component
+      li.-disabled
+        a(href=`#html-datetime-stepped`) HTML Blueprint
+  #webcomponent-datetime-stepped.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-time">Date</chi-label>
+      <chi-date-picker id="date-time" mode="datetime" minutes-step="5"></chi-date-picker>
+  #html-datetime-stepped.chi-tabs-panel
 
 h3 Multiple dates
 p.-text Use the attribute <code>multiple</code> to allow the user to select multiple dates.

@@ -11,3 +11,4 @@ export { default as ChiPagination } from '@/components/pagination/pagination';
 export { default as ChiSearchInput } from '@/components/search-input/SearchInput';
 export { default as ChiSaveView } from '@/components/data-table-save-view/SaveView';
 export { default as ChiTooltip } from '@/components/tooltip/tooltip';
+export { default as ChiTransferList } from '@/components/transfer-list/TransferList.vue';

@@ -1,5 +1,3 @@
-// sass-lint:disable no-misspelled-properties
-
 .chi-transfer-list {
   &__content {
     align-items: center;
@@ -37,34 +35,39 @@
 
   &__menu {
     height: 12.5rem;
-    overflow: auto;
   }
 
   &__menu-item {
     position: relative;
 
-    &.-checkbox:before,
-    &.-locked:before {
-      font-family: $font-family-icon;
-      left: 0.125rem;
-      padding-right: 0.5rem;
-      padding-left: 0.5rem;
-      position: absolute;
+    &.-checkbox,
+    &.-locked {
+      &::before {
+        font-family: $font-family-icon;
+        left: 0.125rem;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        position: absolute;
+      }
     }
 
     &.-checkbox {
-      &:before {
+      &::before {
         content: '\e91d';
       }
 
-      &:checked:before {
-        content: '\e91c';
-        color: $transfer-list-checkbox-icon-color;
+      &:checked {
+        &::before {
+          content: '\e91c';
+          color: $transfer-list-checkbox-icon-color;
+        }
       }
     }
 
-    &.-locked:before {
-      content: '\e959';
+    &.-locked {
+      &::before {
+        content: '\e959';
+      }
     }
   }
 
@@ -80,5 +83,13 @@
   &__actions {
     display: flex;
     flex-direction: column;
+  }
+
+  &__reset-button:not(:disabled) {
+    .chi-button__content {
+      span {
+        color: $transfer-list-reset-button-color;
+      }
+    }
   }
 }

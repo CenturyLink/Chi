@@ -58,6 +58,9 @@ export const CHI_TIME_SCROLL_ADJUSTMENT = 24;
 export const TIME_PICKER_FORMATS = ['12hr', '24hr'] as const;
 export type TimePickerFormats = typeof TIME_PICKER_FORMATS[number];
 
+export const TIME_PICKER_TIME_STEPS = [1,5,10,15,20,30] as const;
+export type TimePickerTimeSteps = typeof TIME_PICKER_TIME_STEPS[number];
+
 export type MouseCursorPosition = { x: number; y: number };
 
 export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];

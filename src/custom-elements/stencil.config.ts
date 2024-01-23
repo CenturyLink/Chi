@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { JsonDocs } from './docs/docs';
+import { JsonDocsComponent } from '@stencil/core/internal';
 
 const IS_DEV = process.argv?.indexOf('--dev') > -1;
 
@@ -146,6 +147,19 @@ export const config: Config = {
           else if (a.name < b.name) return -1
           return 0
         });
+
+        // Remove stepped property from chi-time
+        const chiTime = docs['components'].find(x => x.tag === 'chi-time') as JsonDocsComponent;
+        chiTime["props"] = chiTime["props"].filter(({name}) => name !== 'stepped');
+
+        // Add default value for minute-steps and seconds-step properties
+        docs['components'].filter(
+          ({tag}) => ["chi-time", "chi-date-picker", "chi-time-picker"].includes(tag)
+        ).forEach(component => component.props.forEach(prop => {
+          if (['minutesStep', 'secondsStep'].includes(prop.name)) {
+            prop.default = "15"
+          }
+        }));
 
         docs['components'].map(component => {
           const checkIfPrivate = ['props', 'methods', 'events'];

@@ -438,6 +438,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021067',
     selectionDisabled: true,
+    selectableDisabledMessage: 'This is a test message for disabled checkboxes or radio buttons',
     nestedContent: {
       table: {
         data: [

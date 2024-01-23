@@ -1,5 +1,7 @@
 import {
   ACTIVE_CLASS,
+  ARROW_SORT_CLASS,
+  ARROW_UP_CLASS,
   DATA_TABLE_CLASSES,
   DATA_TABLE_EVENTS,
   ICON_BUTTON,
@@ -7,6 +9,7 @@ import {
   PAGINATION_EVENTS
 } from '../data-table-common.cy';
 import {
+  checkCorrectIcon,
   checkStatusSorting,
   hasClassAssertion,
   isSelected,
@@ -273,6 +276,26 @@ describe('Server Side Data Table Portal', () => {
                 cy.get('@sortingDataSpy').should('have.been.called');
               });
           });
+      });
+    });
+
+    describe('Full server sort', () => {
+      it('Should sort by default when fullServerSort property is not present', () => {
+        const row = `[data-cy='data-table-portal-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`;
+    
+        checkCorrectIcon(row, ARROW_UP_CLASS);
+      });
+  
+      it('Should not sort by default when fullServerSort property is set to true', () => {
+        const row = `[data-cy='data-table-portal-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`;
+
+        checkCorrectIcon(row, ARROW_SORT_CLASS);
+      });
+      
+      it('Should sort by default when fullServerSort property is set to false', () => {
+        const row = `[data-cy='data-table-portal-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`;
+        
+        checkCorrectIcon(row, ARROW_UP_CLASS);
       });
     });
   });

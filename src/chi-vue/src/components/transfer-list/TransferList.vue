@@ -1,51 +1,86 @@
 <template>
-  <div :class="[TRANSFER_LIST_CLASSES.TRANSFER_LIST]">
-    <div :class="[TRANSFER_LIST_CLASSES.CONTENT]">
+  <div :class="TRANSFER_LIST_CLASSES.TRANSFER_LIST">
+    <div :class="TRANSFER_LIST_CLASSES.CONTENT">
       <TransferListColumn
         type="from"
         :title="config.columns.from.title"
         :description="config.columns.from.description"
-        :items="listFrom"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
-      <TransferListActions />
+      <TransferListActions move="transfer" />
       <TransferListColumn
         type="to"
         :title="config.columns.to.title"
         :description="config.columns.to.description"
-        :items="listTo"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
       />
+      <TransferListActions move="sort" />
     </div>
-    <TransferListFooter />
+    <TransferListFooter
+      :originalTransferListData="props.transferListData"
+      :savedTransferListData="transferListData"
+      @chiTransferListSave="onSaveTransferList"
+      @chiTransferListReset="onResetTransferList"
+    />
   </div>
 </template>
 
-<script lang="ts">
-import { Prop } from 'vue-property-decorator';
-import { Component, Vue } from '@/build/vue-wrapper';
+<script lang="ts" setup>
+import { ref, provide, readonly, watch } from 'vue';
+import { TransferListItem, TransferListColumnItemsActive, TransferList } from '@/constants/types';
+import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
+import { CHI_VUE_KEYS } from '@/constants/constants';
 import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
-import { TransferListConfig, TransferListItem } from '@/constants/types';
-import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
+import { TransferListEmits } from '@/constants/events';
+import { unref } from 'vue';
 
-@Component({
-  components: {
-    TransferListColumn,
-    TransferListActions,
-    TransferListFooter,
-  },
-})
-export default class TransferList extends Vue {
-  @Prop() transferListData!: TransferListItem[];
-  @Prop() config!: TransferListConfig;
+const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
-  TRANSFER_LIST_CLASSES = TRANSFER_LIST_CLASSES;
+const props = defineProps<TransferList>();
+const emit = defineEmits<TransferListEmits>();
 
-  listFrom = this.transferListData.filter((item) => !item.selected);
-  listTo = this.transferListData.filter((item) => item.selected);
-}
+const transferListData = ref<TransferListItem[]>(props.transferListData);
+const currentList = ref<TransferListItem[]>(props.transferListData);
+const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION);
+
+const onSaveTransferList = () => {
+  transferListData.value = currentList.value;
+
+  emit('chiTransferListSave', currentList.value);
+};
+
+const onResetTransferList = () => {
+  transferListData.value = currentList.value;
+  currentList.value = props.transferListData;
+
+  emit('chiTransferListReset', props.transferListData);
+};
+
+const onUpdateTransferList = (list: TransferListItem[]) => {
+  currentList.value = list;
+};
+
+const onSelectItem = (list: TransferListColumnItemsActive) => {
+  selectedItems.value = list;
+};
+
+const onClearSelection = () => {
+  selectedItems.value = DEFAULT_ITEMS_SELECTION;
+};
+
+watch(currentList, () => {
+  emit('chiTransferListChange', currentList.value);
+});
+
+provide(CHI_VUE_KEYS.TRANSFER_LIST, {
+  transferList: readonly(currentList),
+  selectedItems: readonly(selectedItems),
+  onUpdateTransferList,
+  onSelectItem,
+  onClearSelection,
+});
 </script>

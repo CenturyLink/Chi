@@ -43,7 +43,7 @@ import {
   DATA_TABLE_NO_RESULTS_MESSAGE,
   DATA_TABLE_SORT_ICONS,
   SCREEN_BREAKPOINTS,
-  TOOLBAR_KEYS,
+  CHI_VUE_KEYS,
 } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
@@ -74,7 +74,7 @@ export default class DataTable extends Vue {
   @Prop() dataTableData!: DataTableData;
   @Prop() config!: DataTableConfig;
 
-  @Provide({ to: TOOLBAR_KEYS.SEARCH_INPUT })
+  @Provide({ to: CHI_VUE_KEYS.TOOLBAR_SEARCH_INPUT })
   toolbarSearch: ToolbarRef = {};
 
   @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
@@ -187,6 +187,7 @@ export default class DataTable extends Vue {
   emptyActionableContent = defaultConfig.emptyActionable;
   preventSortOnResize? = false;
   actions = defaultConfig.actions;
+  fullServerSort? = false;
 
   private sortable = false;
   private sortedData?: DataTableRow[] = [];
@@ -899,11 +900,24 @@ export default class DataTable extends Vue {
     const checkboxId = checkboxIds[typeof rowData] || checkboxIds[typeof selectAll];
     const allVisibleRowsSelectionDisabled =
       this.slicedData.length > 0 && this.slicedData.every((row: DataTableRow) => row.selectionDisabled);
+    const checkboxDisabled = rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled);
+    const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
+    const popoverId = `${checkboxId}-popover`;
+    const popover = disabledTooltipMsg ? (
+      <chi-popover id={popoverId} reference={`#${checkboxId}`} position="top" arrow variant="text">
+        {disabledTooltipMsg}
+      </chi-popover>
+    ) : null;
 
     return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
+      <div
+        class={this._getSelectableClasses(rowData as DataTableRow)}
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
         <Checkbox
-          disabled={rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled)}
+          disabled={checkboxDisabled}
           id={checkboxId}
           onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
           selected={selected}
@@ -929,8 +943,21 @@ export default class DataTable extends Vue {
       return <div class={this._getSelectableClasses(rowData as DataTableRow)}></div>;
     }
 
+    const popoverId = `${radioButtonId}-popover`;
+    const popover =
+      rowData?.selectionDisabled && rowData?.selectableDisabledMessage ? (
+        <chi-popover id={popoverId} reference={`#${radioButtonId}`} position="top" arrow variant="text">
+          {rowData.selectableDisabledMessage}
+        </chi-popover>
+      ) : null;
+
     return (
-      <div class={this._getSelectableClasses(rowData as DataTableRow)}>
+      <div
+        class={this._getSelectableClasses(rowData as DataTableRow)}
+        onMouseenter={() => popover && this._toggleInfoPopover(popoverId)}
+        onMouseleave={() => popover && this._toggleInfoPopover(popoverId)}
+      >
+        {popover}
         <div class={RADIO_CLASSES.RADIO}>
           <input
             class={RADIO_CLASSES.INPUT}
@@ -1499,7 +1526,11 @@ export default class DataTable extends Vue {
     return dataToRender;
   }
 
-  _initDataFromConfig(): void {
+  _initProvides(): void {
+    this.toolbarSearch.callback = this.setEmptyMessage.bind(this);
+  }
+
+  beforeCreate(): void {
     this.activePage =
       this.config.pagination.activePage || this.config.activePage || defaultConfig.pagination.activePage || 1;
     this.resultsPerPage = this.config.resultsPerPage || defaultConfig.resultsPerPage || 10;
@@ -1522,18 +1553,14 @@ export default class DataTable extends Vue {
       ? this.config.emptyActionable
       : defaultConfig.emptyActionable;
     this.actions = this.config?.actions || defaultConfig.actions || [];
+    this.fullServerSort = Boolean(this.config?.defaultSort?.fullServerSort);
 
     if (this.actions?.length) {
       this.dataTableData.head.actions = { label: 'Actions', align: 'right' };
     }
   }
 
-  _initProvides(): void {
-    this.toolbarSearch.callback = this.setEmptyMessage.bind(this);
-  }
-
   beforeMount() {
-    this._initDataFromConfig();
     this._initProvides();
     this.detectScreenBreakpoint();
   }
@@ -1559,11 +1586,14 @@ export default class DataTable extends Vue {
   }
 
   created() {
+    const isServerSide = this.mode === DataTableModes.SERVER;
+    const isFullServerSort = isServerSide && this.fullServerSort;
+
     dataTableNumber += 1;
     this._dataTableNumber = dataTableNumber;
     this._dataTableId = `dt-${this._dataTableNumber}`;
 
-    if (this.config.defaultSort && this.config.defaultSort.key && this.config.defaultSort.direction) {
+    if (!isFullServerSort && this.config.defaultSort?.key && this.config.defaultSort?.direction) {
       this._sortConfig = {
         key: this.config.defaultSort.key,
         direction: this.config.defaultSort.direction,

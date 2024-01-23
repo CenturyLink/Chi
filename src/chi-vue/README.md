@@ -26,6 +26,14 @@ npm run prettier:checker
 See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
+## 3.1.0 (January 23, 2024)
+### Components
+#### Added
+* Added: Data table now supports popover when checkboxes and radio buttons are disabled.
+#### Fixed
+* Fixed: Data table selectAll functionality checkbox in header was not working as expected after Vue3 migration.
+* Fixed: Toolbar Eventbus event was not working as expected after Vue3 migration.
+
 ## 3.0.0 (December 18, 2023)
 * Migration from Vue 2 to Vue 3
 

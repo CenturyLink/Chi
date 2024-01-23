@@ -25,7 +25,9 @@ export default class Checkbox extends Vue {
   @Watch('state')
   watchState(newValue: CheckboxState, oldValue: CheckboxState): void {
     if (newValue !== oldValue) {
-      this.state = oldValue === 'indeterminate' ? false : newValue;
+      const isCheckboxIndeterminate = oldValue === 'indeterminate' && this.selected === 'indeterminate';
+
+      this.state = isCheckboxIndeterminate ? false : newValue;
     }
   }
 
