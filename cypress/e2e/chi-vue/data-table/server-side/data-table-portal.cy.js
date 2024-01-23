@@ -5,11 +5,11 @@ import {
   DATA_TABLE_CLASSES,
   DATA_TABLE_EVENTS,
   ICON_BUTTON,
-  ICON_CLASS,
   PAGINATION_CLASSES,
   PAGINATION_EVENTS
 } from '../data-table-common.cy';
 import {
+  checkCorrectIcon,
   checkStatusSorting,
   hasClassAssertion,
   isSelected,
@@ -281,33 +281,21 @@ describe('Server Side Data Table Portal', () => {
 
     describe('Full server sort', () => {
       it('Should sort by default when fullServerSort property is not present', () => {
-        cy.get(`[data-cy='data-table-portal-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
-            .first()
-            .find(`.${DATA_TABLE_CLASSES.CELL}`)
-            .eq(3)
-            .find(`.${ICON_CLASS}`)
-            .as('sortIcon');
-        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+        const row = `[data-cy='data-table-portal-server-side-default-sort'] .${DATA_TABLE_CLASSES.ROW}`;
+    
+        checkCorrectIcon(row, ARROW_UP_CLASS);
       });
   
       it('Should not sort by default when fullServerSort property is set to true', () => {
-        cy.get(`[data-cy='data-table-portal-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`)
-            .first()
-            .find(`.${DATA_TABLE_CLASSES.CELL}`)
-            .eq(3)
-            .find(`.${ICON_CLASS}`)
-            .as('sortIcon');
-        hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+        const row = `[data-cy='data-table-portal-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`;
+
+        checkCorrectIcon(row, ARROW_SORT_CLASS);
       });
       
       it('Should sort by default when fullServerSort property is set to false', () => {
-        cy.get(`[data-cy='data-table-portal-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`)
-          .first()
-          .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(3)
-          .find(`.${ICON_CLASS}`)
-          .as('sortIcon');
-        hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+        const row = `[data-cy='data-table-portal-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`;
+        
+        checkCorrectIcon(row, ARROW_UP_CLASS);
       });
     });
   });
