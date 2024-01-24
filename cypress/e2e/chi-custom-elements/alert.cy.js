@@ -57,7 +57,6 @@ describe('Alert', () => {
     });
   });
 
-
   describe('Alert Bubble', () => {
     before(() => {
       cy.visit('tests/custom-elements/alert-bubble.html');
