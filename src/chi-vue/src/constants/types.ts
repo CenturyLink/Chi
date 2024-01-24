@@ -82,9 +82,10 @@ export interface DataTableColumnDescription {
 }
 
 export interface DataTableSortConfig {
+  direction: 'ascending' | 'descending';
+  fullServerSort?: boolean;
   key: string;
   sortBy?: string;
-  direction: 'ascending' | 'descending';
 }
 export enum DataTableModes {
   CLIENT = 'clientside',
