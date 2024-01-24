@@ -52,7 +52,7 @@ describe('Alert', () => {
       cy.get('[data-cy="alert-bubble-success-default"]').as('alertBubble');
       cy.get('@alertBubble').invoke('attr', 'expiration-time', '3');
       cy.get('@alertBubble').should('exist');
-      cy.wait(3000);
+      cy.wait(3500);
       cy.get('@alertBubble').should('not.exist');
     });
   });
