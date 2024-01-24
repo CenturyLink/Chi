@@ -97,11 +97,13 @@ export class Alert {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
 
-    this.timeoutReference = setTimeout(() => {
-      if (this.el && this.el.parentNode) {
+    if (this.expirationTime) {
+      this.timeoutReference = setTimeout(() => {
+        if (this.el && this.el.parentNode) {
           this._dismissAlert();
-      }
-  }, this.expirationTime * 1000);
+        }
+      }, this.expirationTime * 1000);
+    }
   }
 
   connectedCallback() {

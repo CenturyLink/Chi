@@ -43,7 +43,7 @@ describe('Alert', () => {
     cy.get(el).should('have.class', value);
   };
   
-  describe.only('Alert auto closing', () => {
+  describe('Alert auto closing', () => {
     beforeEach(() => {
       cy.visit('tests/custom-elements/alert-bubble.html');
     });
