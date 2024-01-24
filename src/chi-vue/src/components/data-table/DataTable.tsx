@@ -188,6 +188,7 @@ export default class DataTable extends Vue {
   emptyActionableContent = defaultConfig.emptyActionable;
   preventSortOnResize? = false;
   actions = defaultConfig.actions;
+  fullServerSort? = false;
 
   private sortable = false;
   private sortedData?: DataTableRow[] = [];
@@ -1527,7 +1528,11 @@ export default class DataTable extends Vue {
     return dataToRender;
   }
 
-  _initDataFromConfig(): void {
+  _initProvides(): void {
+    this.toolbarSearch.callback = this.setEmptyMessage.bind(this);
+  }
+
+  beforeCreate(): void {
     this.activePage =
       this.config.pagination.activePage || this.config.activePage || defaultConfig.pagination.activePage || 1;
     this.resultsPerPage = this.config.resultsPerPage || defaultConfig.resultsPerPage || 10;
@@ -1550,18 +1555,14 @@ export default class DataTable extends Vue {
       ? this.config.emptyActionable
       : defaultConfig.emptyActionable;
     this.actions = this.config?.actions || defaultConfig.actions || [];
+    this.fullServerSort = Boolean(this.config?.defaultSort?.fullServerSort);
 
     if (this.actions?.length) {
       this.dataTableData.head.actions = { label: 'Actions', align: 'right' };
     }
   }
 
-  _initProvides(): void {
-    this.toolbarSearch.callback = this.setEmptyMessage.bind(this);
-  }
-
   beforeMount() {
-    this._initDataFromConfig();
     this._initProvides();
     this.detectScreenBreakpoint();
   }
@@ -1587,11 +1588,14 @@ export default class DataTable extends Vue {
   }
 
   created() {
+    const isServerSide = this.mode === DataTableModes.SERVER;
+    const isFullServerSort = isServerSide && this.fullServerSort;
+
     dataTableNumber += 1;
     this._dataTableNumber = dataTableNumber;
     this._dataTableId = `dt-${this._dataTableNumber}`;
 
-    if (this.config.defaultSort && this.config.defaultSort.key && this.config.defaultSort.direction) {
+    if (!isFullServerSort && this.config.defaultSort?.key && this.config.defaultSort?.direction) {
       this._sortConfig = {
         key: this.config.defaultSort.key,
         direction: this.config.defaultSort.direction,

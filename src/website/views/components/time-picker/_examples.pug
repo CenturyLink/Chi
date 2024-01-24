@@ -95,25 +95,47 @@ h3 24-hour format
       <chi-time-picker id="example__24hour-format" format="24hr"></chi-time-picker>
   #html-24hour-format.chi-tabs-panel
 
-//h3 Excluded hours, minutes and seconds
-//p.-text
-//  | Specify which times to exclude by using the <code>excluded-hours</code> attribute to exclude hours, <code>excluded-minutes</code> to exclude minutes, and <code>excluded-seconds</code> to exclude seconds.
-//.example.-mb--3
-//  .-p--3
-//    .chi-form__item(style="max-width: 14rem;")
-//      chi-label(for="time-picker-excluded") Label
-//      chi-time-picker(id="time-picker-excluded", excluded-hours="14, 15", excluded-minutes="00, 01, 02, 03, 04, 05", excluded-seconds="00, 01, 02, 03, 04, 05", display-seconds)
-//  .example-tabs.-pl--2
-//    ul.chi-tabs#example-excluded-times
-//      li.-active
-//        a(href=`#webcomponent-excluded-times`) Web Component
-//      li.-disabled
-//        a(href=`#html-excluded-times`) HTML Blueprint
-//  #webcomponent-excluded-times.chi-tabs-panel.-active
-//    :code(lang="html",style="height:20rem")
-//      <chi-label for="unique-id-et1">Time</chi-label>
-//      <chi-time-picker id="unique-id-et1" excluded-hours="14, 15"></chi-time-picker>
-//  #html-excluded-times.chi-tabs-panel
+h3 Step
+p.-text
+  | Minutes and seconds can be shown in steps of 1, 5, 10, 15, 20, or 30 minutes or seconds.
+  | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 minutes)
+  | and the property <code>seconds-step</code> to define the step for the minutes (defaults to 10 seconds).
+
+h4 Minutes step
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__minutes-step") Label
+      chi-time-picker(id="example__minutes-step", minutes-step="20")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-minutes-step
+      li.-active
+        a(href=`#webcomponent-minutes-step`) Web Component
+      li.-disabled
+        a(href=`#html-minutes-step`) HTML Blueprint
+  #webcomponent-minutes-step.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="example__minutes-step">Label</chi-label>
+      <chi-time-picker id="example__minutes-step" minutes-step="20"></chi-time-picker>
+  #html-minutes-step.chi-tabs-panel
+
+h4 Seconds step
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width: 14rem;")
+      chi-label(for="example__seconds-step") Label
+      chi-time-picker(id="example__seconds-step", seconds-step="30", display-seconds)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-seconds-step
+      li.-active
+        a(href=`#webcomponent-seconds-step`) Web Component
+      li.-disabled
+        a(href=`#html-seconds-step`) HTML Blueprint
+  #webcomponent-seconds-step.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="example__seconds-step">Label</chi-label>
+      <chi-time-picker id="example__seconds-step" seconds-step="30" display-seconds></chi-time-picker>
+  #html-seconds-step.chi-tabs-panel
 
 h3 Time
 p.-text
@@ -180,22 +202,39 @@ h4 24-hour format
 
 h4 Step
 p.-text
-  | Minutes and seconds can be shown in steps of 5, 10, 15, 20, or 30 minutes or seconds. 
-  | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 min)
+  | Minutes and seconds can be shown in steps of 1, 5, 10, 15, 20, or 30 minutes or seconds.
+  | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 minutes)
   | and the property <code>seconds-step</code> to define the step for the minutes (defaults to 10 seconds).
+
+h5 Minutes step
 .example.-mb--3
   .-p--3
-    chi-time(minutes-step="20", seconds-step="30", display-seconds)
+    chi-time(minutes-step="20")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-time-step
+    ul.chi-tabs#example-time-minutes-step
       li.-active
-        a(href=`#webcomponent-time-step`) Web Component
+        a(href=`#webcomponent-time-minutes-step`) Web Component
       li.-disabled
-        a(href=`#html-time-step`) HTML Blueprint
-  #webcomponent-time-step.chi-tabs-panel.-active
+        a(href=`#html-time-minutes-step`) HTML Blueprint
+  #webcomponent-time-minutes-step.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-time minutes-step="20" seconds-step="30" display-seconds></chi-time>
-  #html-time-step.chi-tabs-panel
+      <chi-time minutes-step="20"></chi-time>
+  #html-time-minutes-step.chi-tabs-panel
+
+h5 Seconds step
+.example.-mb--3
+  .-p--3
+    chi-time(seconds-step="30", display-seconds)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-time-seconds-step
+      li.-active
+        a(href=`#webcomponent-time-seconds-step`) Web Component
+      li.-disabled
+        a(href=`#html-time-seconds-step`) HTML Blueprint
+  #webcomponent-time-seconds-step.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-time seconds-step="30" display-seconds></chi-time>
+  #html-time-seconds-step.chi-tabs-panel
 
 script.
   document.addEventListener(

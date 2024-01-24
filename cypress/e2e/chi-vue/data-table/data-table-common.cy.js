@@ -34,10 +34,10 @@ export const DATA_TABLE_CLASSES = {
   STRIPED: '-striped',
   SORTING: '-sorting',
   COMPACT: '-compact',
-  TRUNCATED: '-truncated'
+  TRUNCATED: '-truncated',
 };
 export const RADIO_CLASSES = {
-  RADIO: 'chi-radio'
+  RADIO: 'chi-radio',
 };
 export const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
@@ -49,7 +49,7 @@ export const PAGINATION_CLASSES = {
   START: 'chi-pagination__start',
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
-  JUMPER: 'chi-pagination__jumper'
+  JUMPER: 'chi-pagination__jumper',
 };
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
@@ -60,28 +60,28 @@ export const DATA_TABLE_EVENTS = {
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
-    SEARCH: 'chiToolbarSearch'
+    SEARCH: 'chiToolbarSearch',
   },
   EXPANSION: {
     EXPANDED: 'chiRowExpanded',
-    COLLAPSED: 'chiRowCollapsed'
+    COLLAPSED: 'chiRowCollapsed',
   },
   BULK_ACTIONS: {
     SHOW_SELECTED_ONLY: 'chiShowSelectedRowsOnly',
-    CANCEL: 'chiCancel'
-  }
+    CANCEL: 'chiCancel',
+  },
 };
 export const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
-  PAGE_SIZE: 'chiPageSizeChange'
+  PAGE_SIZE: 'chiPageSizeChange',
 };
 export const UTILITY_CLASSES = {
   TYPOGRAPHY: {
-    TEXT_TRUNCATE: '-text--truncate'
-  }
+    TEXT_TRUNCATE: '-text--truncate',
+  },
 };
 export const TOOLTIP_CLASSES = {
-  TOOLTIP: 'chi-tooltip'
+  TOOLTIP: 'chi-tooltip',
 };
 export const BULK_ACTIONS_CLASSES = {
   BULK_ACTIONS: 'chi-bulk-actions',
@@ -90,18 +90,18 @@ export const BULK_ACTIONS_CLASSES = {
   BUTTONS: 'chi-bulk-actions__buttons',
   BUTTONS_DESKTOP: 'chi-bulk-actions__buttons-desktop',
   BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
-  LABEL: 'chi-bulk-actions__label'
+  LABEL: 'chi-bulk-actions__label',
 };
 export const CHECKBOXES_CLASSES = {
   CHECKBOX: 'chi-checkbox',
-  LABEL: 'chi-checkbox__label'
+  LABEL: 'chi-checkbox__label',
 };
 
 export const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
 };
 
-export const checkStatusSorting = statuses => {
+export const checkStatusSorting = (statuses) => {
   statuses.forEach((status, index) => {
     cy.get('@rows')
       .eq(index)
@@ -109,7 +109,7 @@ export const checkStatusSorting = statuses => {
   });
 };
 
-export const checkDateSorting = dates => {
+export const checkDateSorting = (dates) => {
   dates.forEach((date, index) => {
     cy.get('@rows')
       .eq(index)
@@ -117,10 +117,20 @@ export const checkDateSorting = dates => {
   });
 };
 
-export const isSelected = elements => {
-  elements.forEach(el => expect(el.selected).to.be.true);
+export const isSelected = (elements) => {
+  elements.forEach((el) => expect(el.selected).to.be.true);
 };
 
-export const isNotSelected = elements => {
-  elements.forEach(el => expect(el.selected).to.be.false);
+export const isNotSelected = (elements) => {
+  elements.forEach((el) => expect(el.selected).to.be.false);
+};
+
+export const checkCorrectIcon = (row, icon) => {
+  cy.get(row)
+    .first()
+    .find(`.${DATA_TABLE_CLASSES.CELL}`)
+    .eq(3)
+    .find(`.${ICON_CLASS}`)
+    .as('sortIcon');
+  hasClassAssertion('@sortIcon', icon);
 };
