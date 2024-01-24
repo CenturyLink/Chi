@@ -42,6 +42,21 @@ describe('Alert', () => {
   const alertAssertion = (el, value) => {
     cy.get(el).should('have.class', value);
   };
+  
+  describe.only('Alert auto closing', () => {
+    beforeEach(() => {
+      cy.visit('tests/custom-elements/alert-bubble.html');
+    });
+  
+    it('Alert should auto close with expirationTime attribute set', () => {
+      cy.get('[data-cy="alert-bubble-success-default"]').as('alertBubble');
+      cy.get('@alertBubble').invoke('attr', 'expiration-time', '3');
+      cy.get('@alertBubble').should('exist');
+      cy.wait(3000);
+      cy.get('@alertBubble').should('not.exist');
+    });
+  });
+
 
   describe('Alert Bubble', () => {
     before(() => {

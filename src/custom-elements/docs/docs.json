@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-01-22T10:50:56",
+  "timestamp": "2024-01-23T23:46:41",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.10.0",
+    "version": "4.11.0",
     "typescriptVersion": "5.3.3"
   },
   "components": [
@@ -97,6 +97,27 @@
             {
               "value": "warning",
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "expirationTime",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "expiration-time",
+          "reflectToAttr": true,
+          "docs": "to set the alert expiration time (seconds).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
             }
           ],
           "optional": false,
