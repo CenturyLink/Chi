@@ -20,7 +20,7 @@
     &-end {
       display: flex;
       flex-direction: column-reverse;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
 
       .chi-button + .chi-button {
         margin-bottom: 0.5rem;
@@ -56,9 +56,10 @@
     }
 
     &-heading {
+      color: $app-layout-header-title-color;
       font-size: $font-size-h3;
       font-weight: $font-weight-black;
-      color: $app-layout-header-title-color;
+      line-height: $app-layout-header-line-height;
       margin: 0;
       padding-right: 1rem;
 
@@ -102,15 +103,15 @@
   &__header,
   &__content,
   &__alert {
-    margin: 0 1rem 1rem;
+    margin: 0 1rem 2rem;
     position: relative;
 
     @include respond-to(sm) {
-      margin: 0 1.5rem 1rem;
+      margin: 0 1.5rem 2rem;
     }
 
     @include respond-to(md) {
-      margin: 0 2rem 1rem;
+      margin: 0 2rem 2rem;
     }
 
     @include respond-to(lg) {
