@@ -25,7 +25,7 @@ export class ColumnResize {
 
       th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
       grip.innerHTML = '&nbsp;';
-      grip.style.top = '0.8rem';
+      grip.style.top = '0.625rem';
       grip.style.right = '0';
       grip.style.bottom = '0';
       grip.style.width = '1rem';
