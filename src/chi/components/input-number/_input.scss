@@ -50,7 +50,7 @@ input {
         &:not([disabled]) {
           &.-#{$type} {
             border-color: map-get(map-get($color-semantic, $type), border-color);
-    
+
             &:focus,
             &.-focus {
               box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);

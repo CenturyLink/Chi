@@ -32,7 +32,6 @@ h3 Portal -- Accordion Expanded -- Child Expanded
     chi-vue-data-table(data-cy='data-table-portal-accordion-child-expanded', :config="config", :data-table-data="table")
 
 h2 Data Table Server Side (Portal)
-
 .test-data-table.-p--3.-w--100
   #base-server-side-portal
     chi-vue-data-table(
@@ -45,6 +44,43 @@ h2 Data Table Server Side (Portal)
       @chi-data-sorting="(e) => chiDataSorting(e)"
     )
       template(#status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
+
+
+h3 Data Table Server Side (Portal) Default Sort
+.test-data-table.-p--3.-w--100
+  #portal-base-server-side-default-sort
+    chi-vue-data-table(
+      data-cy='data-table-portal-server-side-default-sort' 
+      :config="config", 
+      :data-table-data="table"
+    )
+      template(v-slot:status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
+
+h3 Data Table Server Side (Portal) Default Sort with Prop: true
+.test-data-table.-p--3.-w--100
+  #portal-base-server-side-no-default-sort
+    chi-vue-data-table(
+      data-cy='data-table-portal-server-side-no-default-sort' 
+      :config="config", 
+      :data-table-data="table"
+    )
+      template(v-slot:status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
+
+h3 Data Table Server Side (Portal) Default Sort with Prop: false
+.test-data-table.-p--3.-w--100
+  #portal-base-server-side-default-sort-with-prop
+    chi-vue-data-table(
+      data-cy='data-table-portal-server-side-default-sort-with-prop' 
+      :config="config", 
+      :data-table-data="table"
+    )
+      template(v-slot:status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
 
@@ -892,3 +928,167 @@ script.
 
   portalBaseServerSide.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
   portalBaseServerSide.mount('#base-server-side-portal');
+
+  const portalPaseServerSideDefaultSortApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          mode: 'serverside',
+          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'lg',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            hideOnSinglePage: true,
+            pages: 2,
+            pageJumper: true,
+          },
+          defaultSort: {
+            key: "id",
+            sortBy: "string",
+            direction: "ascending",
+          },
+          selectable: true,
+          reserveExpansionSlot: true,
+          columnSizes: {
+            xs: [10, 10, 10, 0, 10, 10, 10, 5],
+            sm: [10, 10, 10, 0, 10, 10, 10, 5],
+            md: [15, 5, 15, 0, 15, 15, 15, 5],
+            lg: [15, 5, 15, 0, 15, 15, 15, 5],
+            xl: [15, 5, 10, 15, 15, 15, 15, 5],
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
+            lastLogin: { label: "Last Login" },
+          },
+          body: page1Portal
+        },
+      }
+    },
+  });
+
+  portalPaseServerSideDefaultSortApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalPaseServerSideDefaultSortApp.mount('#portal-base-server-side-default-sort');
+  
+  const portalBaseServerSideNoDefaultSortApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          mode: 'serverside',
+          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'lg',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            hideOnSinglePage: true,
+            pages: 2,
+            pageJumper: true,
+          },
+          defaultSort: {
+            key: "id",
+            sortBy: "string",
+            direction: "ascending",
+            fullServerSort: true,
+          },
+          selectable: true,
+          reserveExpansionSlot: true,
+          columnSizes: {
+            xs: [10, 10, 10, 0, 10, 10, 10, 5],
+            sm: [10, 10, 10, 0, 10, 10, 10, 5],
+            md: [15, 5, 15, 0, 15, 15, 15, 5],
+            lg: [15, 5, 15, 0, 15, 15, 15, 5],
+            xl: [15, 5, 10, 15, 15, 15, 15, 5],
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
+            lastLogin: { label: "Last Login" },
+          },
+          body: page1Portal
+        },
+      }
+    },
+  });
+
+  portalBaseServerSideNoDefaultSortApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalBaseServerSideNoDefaultSortApp.mount('#portal-base-server-side-no-default-sort');
+ 
+  const portalBaseServerSideDefaultSortWithPropApp = Vue.createApp({
+    data() {
+      return {
+        config: {
+          columnResize: true,
+          mode: 'serverside',
+          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'lg',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: true,
+            firstLast: true,
+            hideOnSinglePage: true,
+            pages: 2,
+            pageJumper: true,
+          },
+          defaultSort: {
+            key: "id",
+            sortBy: "string",
+            direction: "ascending",
+            fullServerSort: false,
+          },
+          selectable: true,
+          reserveExpansionSlot: true,
+          columnSizes: {
+            xs: [10, 10, 10, 0, 10, 10, 10, 5],
+            sm: [10, 10, 10, 0, 10, 10, 10, 5],
+            md: [15, 5, 15, 0, 15, 15, 15, 5],
+            lg: [15, 5, 15, 0, 15, 15, 15, 5],
+            xl: [15, 5, 10, 15, 15, 15, 15, 5],
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name" },
+            id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
+            lastLogin: { label: "Last Login" },
+          },
+          body: page1Portal
+        },
+      }
+    },
+  });
+
+  portalBaseServerSideDefaultSortWithPropApp.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  portalBaseServerSideDefaultSortWithPropApp.mount('#portal-base-server-side-default-sort-with-prop');
