@@ -18,10 +18,11 @@
     <InlineLabelGrid />
     <InlineTextareas />
 
-    h3 Icons
-    <LeftAligned />
-    <RightAligned />
-    <LeftRightAligned />
+    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      h3 Icons
+      <LeftAligned />
+      <RightAligned />
+      <LeftRightAligned />
 
     <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)"/>
     <SizesPortal v-else />
