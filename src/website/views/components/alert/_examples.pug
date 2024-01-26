@@ -741,74 +741,6 @@ p.-text
         })
       </script>
 
-h4 Auto closing alert
-p.-text
-.example.-mb--3
-  .-p--3#auto-close-wrapper
-    chi-button#auto-close-trigger-button(color='primary')
-      | Click me to show the alert
-    chi-alert.-mt--2#auto-close-alert(title='Warning', color='warning', icon='warning', closable, expiration-time="4")
-      | This is auto closing warning alert
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-auto-close
-      li.-active
-        a(href=`#webcomponent-portal-auto-close`) Web Component
-      li
-        a(href=`#html-portal-auto-close`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-portal-auto-close
-    :code(lang="html")
-      <!-- Trigger -->
-      <chi-button id="alert-trigger-button" color="primary">Click me to show the alert</chi-button>
-
-      <!-- Alert -->
-      <chi-alert id="auto-close-alert" icon="warning" expiration-time="3" >
-        This is auto closing warning alert
-      </chi-alert>
-
-      <!-- Javascript -->
-      <script>
-        const autoCloseAlertTrigger = document.getElementById('alert-trigger-button');
-
-        autoCloseAlertTrigger.addEventListener('chiClick', () => {
-          <!-- Include your custom logic here to launch the alert -->
-        })
-      </script>
-
-  .chi-tabs-panel#html-portal-auto-close
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires additional JavaScript.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button class="chi-button -primary" id="alert-trigger-button">Click me to show the alert</button>
-
-      <!-- Alert -->
-      <div class="chi-alert" role="alert" id="auto-close-alert">
-        <i class="chi-alert__icon chi-icon icon-warning" aria-hidden="true"></i>
-        <div class="chi-alert__content">
-            <p class="chi-alert__text">This is auto closing warning alert</p>
-        </div>
-        <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
-            <div class="chi-button__content">
-                <i class="chi-icon icon-x" aria-hidden="true"></i>
-            </div>
-        </button>
-      </div>
-
-      <!-- Javascript -->
-      <script>
-        const autoCloseAlertTrigger = document.getElementById('alert-trigger-button');
-        const autoCloseAlert = document.getElementById('auto-close-alert');
-
-        setTimeout(() => {
-            autoCloseAlert.parentNode.removeChild(autoCloseAlert);
-        }, this.expirationTime * 1000);
-
-        autoCloseAlertTrigger.addEventListener('click', () => {
-          <!-- Include your custom logic here to launch the alert -->
-        })
-      </script>
-
 .-portal--hide
   h4 Clickable
   p.-text
@@ -1711,6 +1643,74 @@ h4 Titled
           </div>
         </button>
       </div>
+
+h4 Auto closing alert
+p.-text
+.example.-mb--3
+  .-p--3#auto-close-wrapper
+    chi-button#auto-close-trigger-button(color='primary')
+      | Click me to show the alert
+    chi-alert.-mt--2#auto-close-alert(type='toast', title='Warning', color='warning', icon='warning', expiration-time="4")
+      | This is auto closing alert
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-auto-close
+      li.-active
+        a(href=`#webcomponent-portal-auto-close`) Web Component
+      li
+        a(href=`#html-portal-auto-close`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal-auto-close
+    :code(lang="html")
+      <!-- Trigger -->
+      <chi-button id="alert-trigger-button" color="primary">Click me to show the alert</chi-button>
+
+      <!-- Alert -->
+      <chi-alert id="auto-close-alert" type='toast' icon="warning" expiration-time="4" >
+        This is auto closing alert
+      </chi-alert>
+
+      <!-- Javascript -->
+      <script>
+        const autoCloseAlertTrigger = document.getElementById('alert-trigger-button');
+
+        autoCloseAlertTrigger.addEventListener('chiClick', () => {
+          <!-- Include your custom logic here to launch the alert -->
+        })
+      </script>
+
+  .chi-tabs-panel#html-portal-auto-close
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires additional JavaScript.
+    :code(lang="html")
+      <!-- Trigger -->
+      <button class="chi-button -primary" id="alert-trigger-button">Click me to show the alert</button>
+
+      <!-- Alert -->
+      <div class="chi-alert -toast" role="alert" id="auto-close-alert">
+        <i class="chi-alert__icon chi-icon icon-warning" aria-hidden="true"></i>
+        <div class="chi-alert__content">
+            <p class="chi-alert__text">This is auto closing warning alert</p>
+        </div>
+        <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+                <i class="chi-icon icon-x" aria-hidden="true"></i>
+            </div>
+        </button>
+      </div>
+
+      <!-- Javascript -->
+      <script>
+        const autoCloseAlertTrigger = document.getElementById('alert-trigger-button');
+        const autoCloseAlert = document.getElementById('auto-close-alert');
+
+        setTimeout(() => {
+            autoCloseAlert.parentNode.removeChild(autoCloseAlert);
+        }, this.expirationTime * 1000);
+
+        autoCloseAlertTrigger.addEventListener('click', () => {
+          <!-- Include your custom logic here to launch the alert -->
+        })
+      </script>
 
 .-portal--hide
   h4 Sizes

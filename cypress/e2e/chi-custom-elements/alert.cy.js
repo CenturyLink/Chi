@@ -45,15 +45,15 @@ describe('Alert', () => {
   
   describe('Alert auto closing', () => {
     beforeEach(() => {
-      cy.visit('tests/custom-elements/alert-bubble.html');
+      cy.visit('tests/custom-elements/alert-toast.html');
     });
   
     it('Alert should auto close with expirationTime attribute set', () => {
-      cy.get('[data-cy="alert-bubble-success-default"]').as('alertBubble');
-      cy.get('@alertBubble').invoke('attr', 'expiration-time', '3');
-      cy.get('@alertBubble').should('exist');
+      cy.get('[data-cy="alert-toast-success-default"]').as('alertToast');
+      cy.get('@alertToast').invoke('attr', 'expiration-time', '3');
+      cy.get('@alertToast').should('exist');
       cy.wait(3500);
-      cy.get('@alertBubble').should('not.exist');
+      cy.get('@alertToast').should('not.exist');
     });
   });
 

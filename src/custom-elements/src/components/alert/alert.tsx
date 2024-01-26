@@ -97,7 +97,7 @@ export class Alert {
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
 
-    if (this.expirationTime) {
+    if (this.type === 'toast' && this.expirationTime) {
       this.timeoutReference = setTimeout(() => {
         if (this.el && this.el.parentNode) {
           this._dismissAlert();
