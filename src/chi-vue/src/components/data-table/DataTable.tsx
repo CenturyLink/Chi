@@ -906,7 +906,7 @@ export default class DataTable extends Vue {
     const disabledTooltipMsg = checkboxDisabled && rowData?.selectableDisabledMessage;
     const popoverId = `${checkboxId}-popover`;
     const popover = disabledTooltipMsg ? (
-      <chi-popover id={popoverId} reference={`#${checkboxId}`} position="top" arrow variant="text">
+      <chi-popover id={popoverId} reference={`#${checkboxId}`} position="top-start" arrow variant="text">
         {disabledTooltipMsg}
       </chi-popover>
     ) : null;
@@ -948,7 +948,7 @@ export default class DataTable extends Vue {
     const popoverId = `${radioButtonId}-popover`;
     const popover =
       rowData?.selectionDisabled && rowData?.selectableDisabledMessage ? (
-        <chi-popover id={popoverId} reference={`#${radioButtonId}`} position="top" arrow variant="text">
+        <chi-popover id={popoverId} reference={`#${radioButtonId}`} position="top-start" arrow variant="text">
           {rowData.selectableDisabledMessage}
         </chi-popover>
       ) : null;
