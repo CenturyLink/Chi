@@ -1,11 +1,6 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Step" id="step" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | Minutes and seconds can be shown in steps of 5, 10, 15, 20, or 30 minutes or seconds.
-      | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 min)
-      | and the property <code>seconds-step</code> to define the step for the minutes (defaults to 10 seconds).
-    chi-time(minutes-step="20" seconds-step="30" display-seconds slot="example")
-
+  <ComponentExample titleSize="h4" title="Minutes step" id="time-minutes-step" :tabs="exampleTabs">
+    chi-time(minutes-step="20" slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -34,10 +29,10 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `<!-- Steps with default values of 15 min and 10 seconds -->
-<chi-time minutes-step seconds-step display-seconds></chi-time>
-<!-- Steps with custom values of 120 min and 30 seconds -->
-<chi-time minutes-step="20" seconds-step="30" display-seconds></chi-time>`,
+        webcomponent: `<!-- Minutes step with default value (15 minutes) -->
+<chi-time minutes-step></chi-time>
+<!-- Minutes step with custom value of 20 minutes -->
+<chi-time minutes-step="20"></chi-time>`,
         htmlblueprint: ``
       }
     };
