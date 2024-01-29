@@ -1,4 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-button',
@@ -106,6 +107,10 @@ export class Button {
     if (!this.el.querySelector('chi-icon') && !this.el.querySelector('chi-spinner')) {
       this.slotBtnContent = false;
     }
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   _buttonClicked() {
