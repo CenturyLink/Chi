@@ -85,7 +85,6 @@ export class Alert {
     }
   }
 
-
   componentWillLoad() {
     this.typeValidation(this.type);
     this.colorValidation(this.color);
@@ -122,7 +121,7 @@ export class Alert {
     const chiIcon = !this.spinner && this.icon && (
       <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>
     );
-    const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
+    const alertTitle = this.alertTitle ? <p class="chi-alert__title">{this.alertTitle}</p> : '';
     const chiActions = this._hasAlertActions() && (
       <div class="chi-alert__actions">
         <slot name="chi-alert__actions"></slot>
