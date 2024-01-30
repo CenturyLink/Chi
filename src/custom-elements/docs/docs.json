@@ -103,6 +103,27 @@
           "required": false
         },
         {
+          "name": "expirationTime",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "expiration-time",
+          "reflectToAttr": true,
+          "docs": "to set the alert expiration time (seconds).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "icon",
           "type": "string",
           "complexType": {
