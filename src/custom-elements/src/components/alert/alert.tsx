@@ -46,6 +46,11 @@ export class Alert {
   @Prop({ reflect: true }) closable = false;
 
   /**
+   *  to set the alert expiration time (seconds).
+   */
+  @Prop({ reflect: true }) expirationTime: number;
+
+  /**
    * To render alert with Spinner
    */
   @Prop({ reflect: true }) spinner = false;
@@ -59,6 +64,8 @@ export class Alert {
    *  To define alert title
    */
   @Prop({ attribute: 'title' }) alertTitle?: string;
+
+  timeoutReference: any;
 
   @Watch('type')
   typeValidation(newValue: string) {
@@ -89,6 +96,14 @@ export class Alert {
     this.typeValidation(this.type);
     this.colorValidation(this.color);
     this.sizeValidation(this.size);
+
+    if (this.type === 'toast' && this.expirationTime) {
+      this.timeoutReference = setTimeout(() => {
+        if (this.el && this.el.parentNode) {
+          this._dismissAlert();
+        }
+      }, this.expirationTime * 1000);
+    }
   }
 
   connectedCallback() {
@@ -108,6 +123,11 @@ export class Alert {
       this.el.parentNode.removeChild(this.el);
     }
     this.dismissAlert.emit();
+    
+    if (this.timeoutReference) {
+      clearTimeout(this.timeoutReference);
+      this.timeoutReference = null;
+    }
   }
 
   render() {
