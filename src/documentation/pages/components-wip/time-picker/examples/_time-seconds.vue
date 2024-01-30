@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Seconds" id="seconds" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Seconds" id="time-seconds" :tabs="exampleTabs">
     chi-time(display-seconds slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
