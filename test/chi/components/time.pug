@@ -1,41 +1,168 @@
 ---
 title: Chi time
-scripts:
-  - js/chi
 ---
-script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 -  const padZero = value => ('0' + value).slice(-2);
 -  const hours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 -  const periods = ['AM', 'PM'];
--  const today = 19;
--  const active = 23;
 
--  let hour = 0;
 -  let minute = 0;
 -  let second = 0;
 
-.test-custom-steps-period-change
-  span.-text--h2 Chi time with 5 min step
+.test-base
+  span.-text--h2 Chi time base
   .chi-time-picker
     .chi-time-picker__content
-      .chi-time-picker__hours
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 22
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-seconds
+  span.-text--h2 Chi time with seconds
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 9
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 32
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute++
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute++
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 43
+            .chi-time-picker__second.-active=padZero(second++)
+          else
+            .chi-time-picker__second=padZero(second++)
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-stepped
+  span.-text--h2 Chi time stepped
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 10
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 45
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=15
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=15
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 50
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=10
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=10
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-default-steps
+  span.-text--h2 Chi time with default steps
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 10
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 15
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=15
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=15
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 20
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=10
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=10
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+//- minutes steps
+-  minute = 0;
+-  second = 0;
+
+.test-minutes-step-5-seconds
+  span.-text--h2 Chi time with 5 min step with seconds
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
         each hour in hours
           if hour === 12
             .chi-time-picker__hour.-active=padZero(hour)
           else
             .chi-time-picker__hour=padZero(hour)
-      .chi-time-picker__minutes
+      .chi-time-picker__minutes.-position--relative
         while minute < 60
-          if minute === 0
+          if minute === 5
             .chi-time-picker__minute.-active=padZero(minute)
             - minute+=5
           else
             .chi-time-picker__minute=padZero(minute)
             - minute+=5
-      .chi-time-picker__seconds
+      .chi-time-picker__seconds.-position--relative
         while second < 60
-          if second === 0
+          if second === 32
             .chi-time-picker__second.-active=padZero(second++)
           else
             .chi-time-picker__second=padZero(second++)
@@ -46,3 +173,322 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
           else
             .chi-time-picker__period=period
 
+-  minute = 0;
+-  second = 0;
+
+.test-minutes-step-10
+  span.-text--h2 Chi time with 10 min step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 20
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=10
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=10
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-minutes-step-15
+  span.-text--h2 Chi time with 15 min step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 30
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=15
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=15
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-minutes-step-20
+  span.-text--h2 Chi time with 20 min step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 40
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=20
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=20
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-minutes-step-30
+  span.-text--h2 Chi time with 30 min step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 30
+            .chi-time-picker__minute.-active=padZero(minute)
+            - minute+=30
+          else
+            .chi-time-picker__minute=padZero(minute)
+            - minute+=30
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+//- seconds steps
+-  minute = 0;
+-  second = 0;
+
+.test-seconds-step-5
+  span.-text--h2 Chi time with 5 seconds step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 23
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 45
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=5
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=5
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-seconds-step-10
+  span.-text--h2 Chi time with 10 seconds step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 23
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 50
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=10
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=10
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-seconds-step-15
+  span.-text--h2 Chi time with 15 seconds step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 23
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 15
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=15
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=15
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-seconds-step-20
+  span.-text--h2 Chi time with 20 seconds step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 23
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 20
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=20
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=20
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+-  minute = 0;
+-  second = 0;
+
+.test-seconds-step-30
+  span.-text--h2 Chi time with 30 seconds step
+  .chi-time-picker
+    .chi-time-picker__content
+      .chi-time-picker__hours.-position--relative
+        each hour in hours
+          if hour === 11
+            .chi-time-picker__hour.-active=padZero(hour)
+          else
+            .chi-time-picker__hour=padZero(hour)
+      .chi-time-picker__minutes.-position--relative
+        while minute < 60
+          if minute === 23
+            .chi-time-picker__minute.-active=padZero(minute++)
+          else
+            .chi-time-picker__minute=padZero(minute++)
+      .chi-time-picker__seconds.-position--relative
+        while second < 60
+          if second === 30
+            .chi-time-picker__second.-active=padZero(second)
+            - second+=30
+          else
+            .chi-time-picker__second=padZero(second)
+            - second+=30
+      .chi-time-picker__periods
+        each period in periods
+          if period === 'AM'
+            .chi-time-picker__period.-active=period
+          else
+            .chi-time-picker__period=period
+
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hours
+    const hoursColumns = document.querySelectorAll('.chi-time-picker__hours')
+
+    hoursColumns.forEach(hoursColumn => {
+      const activeHour = hoursColumn.querySelector('.chi-time-picker__hour.-active')
+
+      if (activeHour) {
+        hoursColumn.scrollTop = activeHour.offsetTop - 24;
+      }
+    })
+
+    // Minutes
+    const minutesColumns = document.querySelectorAll('.chi-time-picker__minutes')
+
+    minutesColumns.forEach(minutesColumn => {
+      const activeMinute = minutesColumn.querySelector('.chi-time-picker__minute.-active')
+
+      if (activeMinute) {
+        minutesColumn.scrollTop = activeMinute.offsetTop - 24;
+      }
+    })
+
+    // Seconds
+    const secondsColumns = document.querySelectorAll('.chi-time-picker__seconds')
+
+    secondsColumns.forEach(minutesColumn => {
+      const activeSecond = minutesColumn.querySelector('.chi-time-picker__second.-active')
+
+      if (activeSecond) {
+        minutesColumn.scrollTop = activeSecond.offsetTop - 24;
+      }
+    })
+  })
