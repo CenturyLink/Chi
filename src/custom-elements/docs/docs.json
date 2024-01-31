@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-01-25T08:59:38",
+  "timestamp": "2024-01-30T17:01:09",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.11.0",
@@ -100,6 +100,27 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "expirationTime",
+          "type": "number",
+          "complexType": {
+            "original": "number",
+            "resolved": "number",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "expiration-time",
+          "reflectToAttr": true,
+          "docs": "to set the alert expiration time (seconds).",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
@@ -2396,7 +2417,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "active",
           "reflectToAttr": true,
           "docs": "To set the state of Dropdown",
@@ -6814,7 +6835,56 @@
           "required": false
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "hideList",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "hideList() => Promise<void>",
+          "parameters": [],
+          "docs": "Hide the autocomplete menu list",
+          "docsTags": []
+        },
+        {
+          "name": "showList",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLInputElement": {
+                "location": "global",
+                "id": "global::HTMLInputElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "showList() => Promise<void>",
+          "parameters": [],
+          "docs": "Show the autocomplete menu list",
+          "docsTags": []
+        }
+      ],
       "events": [
         {
           "event": "chiBlur",
