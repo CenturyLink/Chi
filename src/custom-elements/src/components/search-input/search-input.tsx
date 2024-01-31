@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
@@ -107,6 +107,28 @@ export class SearchInput {
     }
   }
 
+  /**
+   * Show the autocomplete menu list
+   */
+  @Method()
+  async showList() {
+    const dropdown = this._getAutocompleteDropdown();
+    const input = this.el.querySelector('input[type=search]') as HTMLInputElement;
+
+    dropdown?.show();
+    input?.focus();
+  }
+
+  /**
+   * Hide the autocomplete menu list
+   */
+  @Method()
+  async hideList() {
+    const dropdown = this._getAutocompleteDropdown();
+
+    dropdown?.hide();
+  }
+
   //#region Lifecycle hooks
   connectedCallback(): void {
     this.menuItemsFiltered = this.menuItems;
@@ -178,7 +200,7 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: Event, item: DropdownMenuItem): void => {
+  _handleSelectItem = (ev: Event): void => {
     ev.preventDefault();
 
     const title = (ev.target as HTMLAnchorElement).innerText;
@@ -189,7 +211,7 @@ export class SearchInput {
     this.value = title;
     dropdown.hide();
     this._clearFilterMenuItems();
-    this.eventItemSelected.emit(item);
+    this.eventItemSelected.emit(this.selectedItem);
   };
 
   _handleValueChange(valueChange: Event): void {
@@ -229,13 +251,7 @@ export class SearchInput {
     const visibleItems = this.visibleItems ?? null;
 
     return (
-      <chi-dropdown
-        id="dropdown-autocomplete"
-        position="bottom"
-        prevent-item-selected
-        fluid
-        visible-items={visibleItems}
-      >
+      <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
         {this.menuItemsFiltered.map((item) => (
           <a
@@ -243,7 +259,7 @@ export class SearchInput {
             href={item.href}
             slot="menu"
             innerHTML={item.title}
-            onClick={(ev) => this._handleSelectItem(ev, item)}
+            onClick={(ev) => this._handleSelectItem(ev)}
           ></a>
         ))}
       </chi-dropdown>
