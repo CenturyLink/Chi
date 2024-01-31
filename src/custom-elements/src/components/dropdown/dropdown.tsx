@@ -21,7 +21,7 @@ export class Dropdown {
   /**
    * To set the state of Dropdown
    */
-  @Prop({ reflect: true }) active = false;
+  @Prop({ mutable: true, reflect: true }) active = false;
   /**
    * To enable the description of Dropdown menu item
    */

@@ -1,285 +1,255 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en" class="chi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-
-  <!-- CHOOSE WHERE TO GET CHI STYLESHEET -->
-
-  <!--  LOCALHOST: if you have to test style changes -->
-  <!-- <link rel="stylesheet" href="http://localhost:8000/chi.css"> -->
-
-  <!--  PRODUCTION: no need to test style changes -->
-  <link rel="stylesheet" href="https://lib.lumen.com/chi/5.46.0/chi-portal.css" integrity="sha256-2niCM5+yqI32p+fYmR+DYudTifSyJR91iue0HNbZxd8=" crossorigin="anonymous">
-
-  <script src="https://lib.lumen.com/chi/5.46.0/js/chi.js" integrity="sha256-QrqSLxUsQwxddEI9YvRqsMWwEqkADI9P5z9mBHfqaFQ=" crossorigin="anonymous"></script>
-  <link rel="icon" href="assets/favicon.ico">
-
-  <title>Chi - Custom elements</title>
-  <script type="module" src="/build/ux-chi-ce.esm.js"></script>
-
-
-
-</head>
-<body class="-p--5">
-
-  <div class="-p--3">
-    <h3>Alert</h3>
-    <chi-alert color="success" icon="circle-check">This is an alert</chi-alert>
-  </div>
-
-  <div class="-p--3">
-    <h3>Badge</h3>
-    <chi-badge color="primary">This is a primary badge</chi-badge>
-  </div>
-
-  <div class="-p--3">
-    <h3>Brand</h3>
-    <chi-brand></chi-brand>
-  </div>
-
-
-  <div class="-p--3">
-    <h3>Button</h3>
-    <chi-button color="secondary">This is secondary button</chi-button>
-  </div>
-
-  <div class="-p--3">
-    <h3>Carousel</h3>
-    <chi-carousel autoplay>
-      <div class="-d--flex" slot="items">
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 1
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 2
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 3
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 4
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 5
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 6
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 7
-          </div>
-        </div>
-        <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem;">
-          <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
-            Custom item 8
-          </div>
-        </div>
-      </div>
-    </chi-carousel>
-  </div>
-
-  <div class="-p--3">
-    <h3>Checkbox</h3>
-    <chi-checkbox label="Checkbox" checked></chi-checkb>
-  </div>
-
-  <div class="-p--3">
-    <h3>Date</h3>
-    <chi-date></chi-date>
-  </div>
-
-  <div class="-p--3">
-    <h3>Date picker</h3>
-    <chi-date-picker></chi-date-picker>
-    <chi-date-picker mode="datetime" value="01/04/2023, 09:43"></chi-date-picker>
-    <chi-date-picker mode="datetime" value="01/04/2023, 09:43" minutes-step="15"></chi-date-picker>
-  </div>
-
-  <div class="-p--3">
-    <h3>Drawer</h3>
-    <!-- Trigger -->
-    <chi-button id="drawer-trigger" variant="flat" type="icon">
-      <chi-icon icon="menu" size="sm--2"></chi-icon>
-      <span>Click to open drawer.</span>
-    </chi-button>
-
-    <!-- Drawer -->
-    <chi-drawer id="interactive-drawer" position="left" backdrop no-header>
-      <div class="-p--2 -pt--6 -text">Drawer content here</div>
-    </chi-drawer>  
-  </div>
-
-  <div class="-p--3">
-    <h3>Dropdown</h3>
-    <chi-dropdown button="Open drodopwn">
-      <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
-      <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
-      <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
-      <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
-    </chi-dropdown>
-  </div>
-
-  <div class="-p--3">
-    <h3>Expansion panel</h3>
-    <chi-expansion-panel step="1" title="Panel title" state="active" state-icon>
-      <div slot="active">
-        <div class="chi-epanel__subtitle">
-          Optional subtitle
-        </div>
-        <p class="chi-epanel__text">
-          Content in expansion panel (e.g. a form to select a product package)
-        </p>
-      </div>
-      <div slot="footer">
-        <chi-button color="primary">
-          Continue
-        </chi-button>
-      </div>
-    </chi-expansion-panel>
-    <chi-expansion-panel step="2" title="Panel title">
-      <p class="chi-epanel__text">
-        Content in expansion panel (e.g. a form to select a product package)
-      </p>
-    </chi-expansion-panel>
-    <chi-expansion-panel step="3" title="Panel title">
-      <p class="chi-epanel__text">
-        Content in expansion panel (e.g. a form to select a product package)
-      </p>
-    </chi-expansion-panel>
-    <chi-expansion-panel step="4" title="Panel title">
-      <p class="chi-epanel__text">
-        Content in expansion panel (e.g. a form to select a product package)
-      </p>
-    </chi-expansion-panel>
-  </div>
-
-  <div class="-p--3">
-    <h3>Helper message</h3>
-    <chi-helper-message state="success">This is a helper message</chi-helper-mess>
-  </div>
-
-  <div class="-p--3">
-    <h3>Icon</h3>
-    <chi-icon icon="atom"></chi-icon>
-  </div>
-
-  <div class="-p--3">
-    <h3>Label</h3>
-    <chi-label>This is a label</chi-lab>
-  </div>
-
-  <div class="-p--3">
-    <h3>Link</h3>
-    <chi-link href="www.google.com" target="_blank">Google</chi-link>
-  </div>
-
-  <div class="-p--3">
-    <h3>Marketing icon</h3>
-    <chi-marketing-icon icon="business-big-data"></chi-marketing-ico>
-  </div>
-
-  <div class="-p--3">
-    <h3>Number input</h3>
-    <chi-number-input min="0" max="100" step="5" value="5"></chi-number-input>
-  </div>
-
-  <div class="-p--3">
-    <h3>Pagination</h3>
-    <chi-pagination></chi-pagination>
-  </div>
-
-  <div class="-p--3">
-    <h3>Phone input</h3>
-    <chi-phone-input></chi-phone-input>
-  </div>
-
-  <div class="-p--3">
-    <h3>Popover</h3>
-    <div class="-position--relative" style="height: 100px;">
-      <chi-popover variant="text" active position="right">
-        Popover content
-      </chi-popover>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://lib.lumen.com/chi/5.46.0/assets/themes/lumen/images/favicon.svg"
+    />
+    <link rel="alternate icon" href="https://lib.lumen.com/chi/5.46.0/assets/themes/lumen/images/favicon.ico" />
+    <!-- <link rel="stylesheet" href="http://localhost:8000/chi.css"> -->
+    <link rel="stylesheet" href="https://lib.lumen.com/chi/5.46.0/chi-portal.css" />
+    <script src="https://lib.lumen.com/chi/5.46.0/js/chi.js"></script>
+    <link rel="icon" href="assets/favicon.ico" />
+    <title>Chi - Custom elements</title>
+    <script type="module" src="/build/ux-chi-ce.esm.js"></script>
+  </head>
+  <body>
+    <div class="-p--3">
+      <h3>Alert</h3>
+      <chi-alert color="success" icon="circle-check">This is an alert</chi-alert>
     </div>
-  </div>
+    <div class="-p--3">
+      <h3>Badge</h3>
+      <chi-badge color="primary">This is a primary badge</chi-badge>
+    </div>
+    <div class="-p--3">
+      <h3>Brand</h3>
+      <chi-brand></chi-brand>
+    </div>
+    <div class="-p--3">
+      <h3>Button</h3>
+      <chi-button color="secondary">This is secondary button</chi-button>
+    </div>
+    <div class="-p--3">
+      <h3>Carousel</h3>
+      <chi-carousel autoplay>
+        <div class="-d--flex" slot="items">
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 1
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 2
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 3
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 4
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 5
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 6
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 7
+            </div>
+          </div>
+          <div class="chi-carousel__item -p--1" style="width: 18.1rem; height: 7rem">
+            <div class="-w--100 -h--100 -bg--grey-10 -d--flex -align-items--center -justify-content--center">
+              Custom item 8
+            </div>
+          </div>
+        </div>
+      </chi-carousel>
+    </div>
+    <div class="-p--3">
+      <h3>Checkbox</h3>
+      <chi-checkbox label="Checkbox" checked></chi-checkbox>
+    </div>
+    <div class="-p--3">
+      <h3>Date</h3>
+      <chi-date></chi-date>
+    </div>
+    <div class="-p--3">
+      <h3>Date picker</h3>
+      <chi-date-picker></chi-date-picker>
+      <chi-date-picker mode="datetime" value="01/04/2023, 09:43"></chi-date-picker>
+      <chi-date-picker mode="datetime" value="01/04/2023, 09:43" minutes-step="15"></chi-date-picker>
+    </div>
+    <div class="-p--3">
+      <h3>Drawer</h3>
+      <!-- Trigger -->
+      <chi-button id="drawer-trigger" variant="flat" type="icon">
+        <chi-icon icon="menu" size="sm--2"></chi-icon>
+        <span>Click to open drawer.</span>
+      </chi-button>
 
-  <div class="-p--3">
-    <h3>Progress</h3>
-    <chi-progress value="50"></chi-progress>
-  </div>
-
-  <div class="-p--3">
-    <h3>Search input</h3>
-    <chi-search-input></chi-search-input>
-  </div>
-
-  <div class="-p--3">
-    <h3>Spinner</h3>
-    <chi-spinner></chi-spinner>
-  </div>
-
-  <div class="-p--3">
-    <h3>Tabs</h3>
-    <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1"></chi-tabs>
-  </div>
-
-  <div class="-p--3">
-    <h3>Text input</h3>
-    <chi-text-input></chi-text-input>
-  </div>
-
-  <div class="-p--3">
-    <h3>Text area</h3>
-    <chi-textarea></chi-textarea>
-  </div>
-
-  <div class="-p--3">
-    <h3>Time</h3>
-    <chi-time  value="11:57:32" minutes-step="5" display-seconds></chi-time>
-  </div>
-
-  <div class="-p--3">
-    <h3>Time Picker</h3>
-    <chi-time-picker id="time-picker-steps" display-seconds minutes-step="15" seconds-step value="09:08:30"></chi-time-picker>
-  </div>
-
-  <div class="-p--3">
-    <h3>Toggle-switch</h3>
-    <chi-switch id="toggle-1" label="This is a toggle switch"></chi-switch>
-  </div>
-
-</body>
+      <!-- Drawer -->
+      <chi-drawer id="interactive-drawer" position="left" backdrop no-header>
+        <div class="-p--2 -pt--6 -text">Drawer content here</div>
+      </chi-drawer>
+    </div>
+    <div class="-p--3">
+      <h3>Dropdown</h3>
+      <chi-dropdown button="Open drodopwn">
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+      </chi-dropdown>
+    </div>
+    <div class="-p--3">
+      <h3>Expansion panel</h3>
+      <chi-expansion-panel step="1" title="Panel title" state="active" state-icon>
+        <div slot="active">
+          <div class="chi-epanel__subtitle">Optional subtitle</div>
+          <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+        </div>
+        <div slot="footer">
+          <chi-button color="primary"> Continue </chi-button>
+        </div>
+      </chi-expansion-panel>
+      <chi-expansion-panel step="2" title="Panel title">
+        <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+      </chi-expansion-panel>
+      <chi-expansion-panel step="3" title="Panel title">
+        <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+      </chi-expansion-panel>
+      <chi-expansion-panel step="4" title="Panel title">
+        <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+      </chi-expansion-panel>
+    </div>
+    <div class="-p--3">
+      <h3>Helper message</h3>
+      <chi-helper-message state="success">This is a helper message</chi-helper-message>
+    </div>
+    <div class="-p--3">
+      <h3>Icon</h3>
+      <chi-icon icon="atom"></chi-icon>
+    </div>
+    <div class="-p--3">
+      <h3>Label</h3>
+      <chi-label>This is a label</chi-label>
+    </div>
+    <div class="-p--3">
+      <h3>Link</h3>
+      <chi-link href="www.google.com" target="_blank">Google</chi-link>
+    </div>
+    <div class="-p--3">
+      <h3>Marketing icon</h3>
+      <chi-marketing-icon icon="business-big-data"></chi-marketing-icon>
+    </div>
+    <div class="-p--3">
+      <h3>Number input</h3>
+      <chi-number-input min="0" max="100" step="5" value="5"></chi-number-input>
+    </div>
+    <div class="-p--3">
+      <h3>Pagination</h3>
+      <chi-pagination></chi-pagination>
+    </div>
+    <div class="-p--3">
+      <h3>Phone input</h3>
+      <chi-phone-input></chi-phone-input>
+    </div>
+    <div class="-p--3">
+      <h3>Popover</h3>
+      <div class="-position--relative" style="height: 100px">
+        <chi-popover variant="text" active position="right"> Popover content </chi-popover>
+      </div>
+    </div>
+    <div class="-p--3">
+      <h3>Progress</h3>
+      <chi-progress value="50"></chi-progress>
+    </div>
+    <div class="-p--3">
+      <h3>Search input</h3>
+      <chi-search-input></chi-search-input>
+      <h4>Autocomplete</h4>
+      <chi-search-input id="autocomplete" mode="autocomplete" visible-items="3"></chi-search-input>
+    </div>
+    <div class="-p--3">
+      <h3>Spinner</h3>
+      <chi-spinner></chi-spinner>
+    </div>
+    <div class="-p--3">
+      <h3>Tabs</h3>
+      <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1"></chi-tabs>
+    </div>
+    <div class="-p--3">
+      <h3>Text input</h3>
+      <chi-text-input></chi-text-input>
+    </div>
+    <div class="-p--3">
+      <h3>Text area</h3>
+      <chi-textarea></chi-textarea>
+    </div>
+    <div class="-p--3">
+      <h3>Time</h3>
+      <chi-time value="11:57:32" minutes-step="5" display-seconds></chi-time>
+    </div>
+    <div class="-p--3">
+      <h3>Time Picker</h3>
+      <chi-time-picker
+        id="time-picker-steps"
+        display-seconds
+        minutes-step="15"
+        seconds-step
+        value="09:08:30"
+      ></chi-time-picker>
+    </div>
+    <div class="-p--3">
+      <h3>Toggle-switch</h3>
+      <chi-switch id="toggle-1" label="This is a toggle switch"></chi-switch>
+    </div>
+  </body>
 </html>
 
 <script>
   // Drawer
-  document.addEventListener('chiTimeChange', ev => console.log(ev))
-  document.getElementById('drawer-trigger').addEventListener('click', function(){
+  document.addEventListener('chiTimeChange', (ev) => console.log(ev));
+  document.getElementById('drawer-trigger').addEventListener('click', function () {
     document.getElementById('interactive-drawer').toggle();
   });
 
   // Tabs
   document.getElementById('chi-tabs-example').tabs = [
     {
-      label: 'Active tab', 
-      id: 'chi-tabs-example-tab-1', 
+      label: 'Active tab',
+      id: 'chi-tabs-example-tab-1',
     },
     {
-      label: 'Tab Link', 
-      id: 'chi-tabs-example-tab-2', 
+      label: 'Tab Link',
+      id: 'chi-tabs-example-tab-2',
     },
-  ]
+  ];
+
+  // Autocomplete
+  const searchInput = document.getElementById('autocomplete');
+
+  searchInput.addEventListener('chiSearchInputItemSelected', (e) => console.log(e));
+  searchInput.menuItems = [
+    { title: 'Item 1', href: '#' },
+    { title: 'Item 2', href: '#' },
+    { title: 'Item 3', href: '#' },
+    { title: 'Item 4', href: '#' },
+    { title: 'Item 5', href: '#' },
+  ];
 </script>
