@@ -26,6 +26,11 @@ npm run prettier:checker
 See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
+## 3.2.0 (January 31, 2024)
+### Components
+#### Added
+* Added: Data table resize handler functionality that allows dynamic resize of columns.
+
 ## 3.1.0 (January 23, 2024)
 ### Components
 #### Added

@@ -48,7 +48,7 @@ export class Alert {
   /**
    *  to set the alert expiration time (seconds).
    */
-  @Prop({ reflect: true }) expirationTime: number;
+  @Prop({ reflect: true }) expirationTime?: number;
 
   /**
    * To render alert with Spinner
