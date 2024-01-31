@@ -1,25 +1,25 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
-    <Headings />
-    <LineHeight />
-    <Alignment />
-    <Decoration />
-    <Transform />
-    <Weight />
-    <Wrapping />
+    //- <Headings />
+    //- <LineHeight />
+    //- <Alignment />
+    //- <Decoration />
+    //- <Transform />
+    //- <Weight />
+    //- <Wrapping />
 
-    <TitleAnchor title="Text colors" id="text-colors" titleSize="h2"/>
-    p.-text
-      | Change text colors with contextual classes.
+    //- <TitleAnchor title="Text colors" id="text-colors" titleSize="h2"/>
+    //- p.-text
+    //-   | Change text colors with contextual classes.
 
-    <Brand />
-    <Semantic />
-    <Complimentary v-if="$store.state.themes.theme === 'lumen'" />
+    //- <Brand />
+    //- <Semantic />
+    //- <Complimentary v-if="$store.state.themes.theme === 'lumen'" />
 
-    <TitleAnchor title="Responsiveness" id="text-responsiveness" titleSize="h2"/>
-    <Sizes />
-    <LineHeights />
-    <AlignmentResponsiveness />
+    //- <TitleAnchor title="Responsiveness" id="text-responsiveness" titleSize="h2"/>
+    //- <Sizes />
+    //- <LineHeights />
+    //- <AlignmentResponsiveness />
 </template>
 
 <script lang="ts">
