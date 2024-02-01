@@ -154,7 +154,7 @@ title: Chi time
             .chi-time-picker__hour=padZero(hour)
       .chi-time-picker__minutes.-position--relative
         while minute < 60
-          if minute === 5
+          if minute === 0
             .chi-time-picker__minute.-active=padZero(minute)
             - minute+=5
           else
@@ -162,7 +162,7 @@ title: Chi time
             - minute+=5
       .chi-time-picker__seconds.-position--relative
         while second < 60
-          if second === 32
+          if second === 0
             .chi-time-picker__second.-active=padZero(second++)
           else
             .chi-time-picker__second=padZero(second++)
