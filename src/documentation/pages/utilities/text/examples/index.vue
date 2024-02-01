@@ -5,7 +5,7 @@
     <LineHeight />
     <Alignment />
     <Decoration />
-    <Transform />
+    //- <Transform />
     <Weight />
     <Wrapping />
 
