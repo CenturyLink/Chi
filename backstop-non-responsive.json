@@ -1691,7 +1691,20 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-custom-steps-period-change"
+        ".test-base",
+        ".test-seconds",
+        ".test-stepped",
+        ".test-default-steps",
+        ".test-minutes-step-5-seconds",
+        ".test-minutes-step-10",
+        ".test-minutes-step-15",
+        ".test-minutes-step-20",
+        ".test-minutes-step-30",
+        ".test-seconds-step-5",
+        ".test-seconds-step-10",
+        ".test-seconds-step-15",
+        ".test-seconds-step-20",
+        ".test-seconds-step-30"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

@@ -55,24 +55,19 @@ describe('Time', function() {
     cy.visit('tests/custom-elements/time.html');
   });
 
-  it('Base chi-time should select current time', function() {
-    const time = new Date();
-    const currentHour12hFormat = time.getHours() % 12;
-    const currentMinute = time.getMinutes();
-    const period = time.getHours() > 12 ? 'PM' : 'AM';
-
+  it('Base chi-time should select 11:22 AM', function() {
     cy.get('[data-cy="chi-time-base"]', { timeout: 30000 }).as('base');
 
-    checkActiveTime('@base', { hour: currentHour12hFormat, minute: currentMinute, period });
+    checkActiveTime('@base', { hour: '11', minute: '22', period: 'AM' });
   });
 
-  it('Active chi-time with value and seconds should select provided value', function() {
-    cy.get('[data-cy="chi-time-active"]').as('active');
+  it('Seconds chi-time should select 09:32:43 AM and display seconds', function() {
+    cy.get('[data-cy="chi-time-seconds"]').as('active');
 
     checkActiveTime('@active', { hour: '09', minute: '32', period: 'AM', seconds: '43' });
   });
 
-  it('Stepped time should select 15 min and 10 seconds intervals', function() {
+  it('Stepped chi-time should select 15 min and 10 seconds intervals', function() {
     cy.get('[data-cy="chi-time-stepped"]')
       .as('stepped')
       .find(`.${TIME_CLASSES.minute}`)
@@ -83,8 +78,8 @@ describe('Time', function() {
       .should('have.text', TIME_STEPS_TEXT[10]);
   });
 
-  it('Default minute and seconds steps should select 15 min and 10 seconds intervals', function() {
-    cy.get('[data-cy="chi-time-default-step"]')
+  it('Default minutes and seconds steps chi-time should select 15 min and 10 seconds intervals', function() {
+    cy.get('[data-cy="chi-time-default-steps"]')
       .as('default-step')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[15]);
@@ -94,8 +89,8 @@ describe('Time', function() {
       .should('have.text', TIME_STEPS_TEXT[10]);
   });
 
-  it('Should round up the value and change period if needed', function() {
-    cy.get('[data-cy="chi-time-custom-steps-period-change"]')
+  it('Minutes stepped chi-time should round up and change period if needed', function() {
+    cy.get('[data-cy="chi-time-minutes-step-5-seconds"]')
       .as('change-period');
 
     checkActiveTime('@change-period', {
@@ -103,46 +98,46 @@ describe('Time', function() {
     })
   });
 
-  it('Minutes steps should show only the selected intervals', function() {
-    cy.get('[data-cy="chi-time-custom-steps-period-change"]')
+  it('Minutes stepped chi-time should show only the selected intervals', function() {
+    cy.get('[data-cy="chi-time-minutes-step-5-seconds"]')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[5]);
 
-    cy.get('[data-cy="chi-time-custom-10-min-step"]')
+    cy.get('[data-cy="chi-time-minutes-step-10"]')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[10]);
 
-    cy.get('[data-cy="chi-time-custom-15-min-step"]')
+    cy.get('[data-cy="chi-time-minutes-step-15"]')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[15]);
 
-    cy.get('[data-cy="chi-time-custom-20-min-step"]')
+    cy.get('[data-cy="chi-time-minutes-step-20"]')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[20]);
 
-    cy.get('[data-cy="chi-time-custom-30-min-step"]')
+    cy.get('[data-cy="chi-time-minutes-step-30"]')
       .find(`.${TIME_CLASSES.minute}`)
       .should('have.text', TIME_STEPS_TEXT[30]);
   });
 
-  it('Seconds steps should show only the selected intervals', function() {
-    cy.get('[data-cy="chi-time-custom-5-seconds-step"]')
+  it('Seconds stepped chi-time should show only the selected intervals', function() {
+    cy.get('[data-cy="chi-time-seconds-step-5"]')
       .find(`.${TIME_CLASSES.second}`)
       .should('have.text', TIME_STEPS_TEXT[5]);
 
-    cy.get('[data-cy="chi-time-custom-10-seconds-step"]')
+    cy.get('[data-cy="chi-time-seconds-step-10"]')
       .find(`.${TIME_CLASSES.second}`)
       .should('have.text', TIME_STEPS_TEXT[10]);
 
-    cy.get('[data-cy="chi-time-custom-15-seconds-step"]')
+    cy.get('[data-cy="chi-time-seconds-step-15"]')
       .find(`.${TIME_CLASSES.second}`)
       .should('have.text', TIME_STEPS_TEXT[15]);
 
-    cy.get('[data-cy="chi-time-custom-20-seconds-step"]')
+    cy.get('[data-cy="chi-time-seconds-step-20"]')
       .find(`.${TIME_CLASSES.second}`)
       .should('have.text', TIME_STEPS_TEXT[20]);
 
-    cy.get('[data-cy="chi-time-custom-30-seconds-step"]')
+    cy.get('[data-cy="chi-time-seconds-step-30"]')
       .find(`.${TIME_CLASSES.second}`)
       .should('have.text', TIME_STEPS_TEXT[30]);
   });
