@@ -1,4 +1,5 @@
 import { Component, Element, Prop, h, Watch } from '@stencil/core';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 const VALID_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'];
 
@@ -31,6 +32,10 @@ export class Label {
     if (newValue && VALID_SIZES.indexOf(newValue) === -1) {
       throw new Error('Not valid size (' + newValue + '). Valid values are xs, sm, md, lg or xl. ');
     }
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   render() {
