@@ -8,25 +8,20 @@ const IS_DEV = process.argv?.indexOf('--dev') > -1;
 export const config: Config = {
   namespace: 'ux-chi-ce',
   devServer: {
-    openBrowser: IS_DEV
+    openBrowser: IS_DEV,
   },
   sourceMap: IS_DEV,
   buildEs5: true,
   plugins: [
-    sass(
-      {
-        // @ts-ignore
-        includePaths: [
-          '../chi/'
-        ],
-        injectGlobalPaths: [
-        ]
-      }
-    )
+    sass({
+      // @ts-ignore
+      includePaths: ['../chi/'],
+      injectGlobalPaths: [],
+    }),
   ],
   outputTargets: [
     {
-      type: 'dist'
+      type: 'dist',
     },
     {
       type: 'docs-custom',
@@ -37,12 +32,10 @@ export const config: Config = {
 
         for (let [tag, propName] of Object.entries(titleAttributeChanges)) {
           // @ts-ignore
-          const componentProps = docs['components'].find(x => x.tag === tag)['props'];
+          const componentProps = docs['components'].find((x) => x.tag === tag)['props'];
           // @ts-ignore
-          componentProps.find(prop => prop.name === propName)['name'] = 'title';
-          componentProps.sort(
-            (a,b) => a.name.localeCompare(b.name)
-          );
+          componentProps.find((prop) => prop.name === propName)['name'] = 'title';
+          componentProps.sort((a, b) => a.name.localeCompare(b.name));
         }
         const popoverTitleProp = {
           name: 'title',
@@ -55,11 +48,11 @@ export const config: Config = {
           default: false,
           values: [
             {
-              type: 'string'
-            }
+              type: 'string',
+            },
           ],
           optional: false,
-          required: false
+          required: false,
         };
 
         const drawerTitleProp = {
@@ -73,11 +66,11 @@ export const config: Config = {
           default: false,
           values: [
             {
-              type: 'string'
-            }
+              type: 'string',
+            },
           ],
           optional: false,
-          required: false
+          required: false,
         };
 
         const epanelTitleProp = {
@@ -91,11 +84,11 @@ export const config: Config = {
           default: false,
           values: [
             {
-              type: 'string'
-            }
+              type: 'string',
+            },
           ],
           optional: false,
-          required: false
+          required: false,
         };
 
         const appLayoutTitleProp = {
@@ -109,78 +102,89 @@ export const config: Config = {
           default: false,
           values: [
             {
-              type: 'string'
-            }
+              type: 'string',
+            },
           ],
           optional: false,
-          required: false
+          required: false,
         };
 
         // @ts-ignore
-        docs['components'].find(x => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
-        docs['components'].find(x => x.tag === 'chi-popover')['props'].sort((a, b) => {
-          if (a.name > b.name) return 1
-          else if (a.name < b.name) return -1
-          return 0
-        });
+        docs['components'].find((x) => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
+        docs['components']
+          .find((x) => x.tag === 'chi-popover')
+          ['props'].sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else if (a.name < b.name) return -1;
+            return 0;
+          });
 
         // @ts-ignore
-        docs['components'].find(x => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
-        docs['components'].find(x => x.tag === 'chi-drawer')['props'].sort((a, b) => {
-          if (a.name > b.name) return 1
-          else if (a.name < b.name) return -1
-          return 0
-        });
+        docs['components'].find((x) => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
+        docs['components']
+          .find((x) => x.tag === 'chi-drawer')
+          ['props'].sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else if (a.name < b.name) return -1;
+            return 0;
+          });
 
         // @ts-ignore
-        docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
-        docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].sort((a, b) => {
-          if (a.name > b.name) return 1
-          else if (a.name < b.name) return -1
-          return 0
-        });
+        docs['components'].find((x) => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
+        docs['components']
+          .find((x) => x.tag === 'chi-expansion-panel')
+          ['props'].sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else if (a.name < b.name) return -1;
+            return 0;
+          });
 
         // @ts-ignore
-        docs['components'].find(x => x.tag === 'chi-main')['props'].push(appLayoutTitleProp);
-        docs['components'].find(x => x.tag === 'chi-main')['props'].sort((a, b) => {
-          if (a.name > b.name) return 1
-          else if (a.name < b.name) return -1
-          return 0
-        });
+        docs['components'].find((x) => x.tag === 'chi-main')['props'].push(appLayoutTitleProp);
+        docs['components']
+          .find((x) => x.tag === 'chi-main')
+          ['props'].sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else if (a.name < b.name) return -1;
+            return 0;
+          });
 
         // Remove stepped property from chi-time
-        const chiTime = docs['components'].find(x => x.tag === 'chi-time') as JsonDocsComponent;
-        chiTime["props"] = chiTime["props"].filter(({name}) => name !== 'stepped');
+        const chiTime = docs['components'].find((x) => x.tag === 'chi-time') as JsonDocsComponent;
+        chiTime['props'] = chiTime['props'].filter(({ name }) => name !== 'stepped');
 
         // Add default value for minute-steps and seconds-step properties
-        docs['components'].filter(
-          ({tag}) => ["chi-time", "chi-date-picker", "chi-time-picker"].includes(tag)
-        ).forEach(component => component.props.forEach(prop => {
-          if (['minutesStep', 'secondsStep'].includes(prop.name)) {
-            prop.default = "15"
-          }
-        }));
+        docs['components']
+          .filter(({ tag }) => ['chi-time', 'chi-date-picker', 'chi-time-picker'].includes(tag))
+          .forEach((component) =>
+            component.props.forEach((prop) => {
+              if (['minutesStep', 'secondsStep'].includes(prop.name)) {
+                prop.default = '15';
+              }
+            })
+          );
 
-        docs['components'].map(component => {
+        docs['components'].map((component) => {
           const checkIfPrivate = ['props', 'methods', 'events'];
 
-          Array.prototype.forEach.call(
-            checkIfPrivate,
-            (propertyTypeToCheck) => {
-              const titleToCheck = propertyTypeToCheck === 'events' ? 'event' : 'name';
+          Array.prototype.forEach.call(checkIfPrivate, (propertyTypeToCheck) => {
+            const titleToCheck = propertyTypeToCheck === 'events' ? 'event' : 'name';
 
-              component[propertyTypeToCheck] = component[propertyTypeToCheck]
-                .filter(propertyToCheck => {
-                  return propertyToCheck[titleToCheck].split('')[0] !== '_';
-                })
-            }
-          );
+            component[propertyTypeToCheck] = component[propertyTypeToCheck].filter((propertyToCheck) => {
+              return propertyToCheck[titleToCheck].split('')[0] !== '_';
+            });
+          });
         });
-      }
+      },
     },
     {
       type: 'www',
-      serviceWorker: null
-    }
-  ]
+      serviceWorker: null,
+    },
+  ],
+  extras: {
+    // We want to be able to use this library in Vite projects.
+    // https://stenciljs.com/docs/config-extras#experimentalimportinjection
+    experimentalImportInjection: true,
+  },
 };
