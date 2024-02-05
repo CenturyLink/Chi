@@ -53,7 +53,7 @@
         nav.chi-header__navbar
           .chi-header__start
             .-d--none.-d-lg--flex
-              ul.chi-tabs.-inverse.-sm
+              ul.chi-tabs.-inverse.-xs
                 li
                   .chi-dropdown.chi-dropdown__hover
                     a.chi-dropdown__trigger.-text--uppercase(href='#') Categories

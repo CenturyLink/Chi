@@ -603,18 +603,16 @@
   &.-xl {
     .chi-header__navbar {
       .chi-dropdown__menu {
-        .chi-dropdown__menu-item {
-          &::before {
-            border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
-            border-style: solid;
-            border-width: 0.625rem 0.75rem 0 0.75rem;
-            content: '';
-            height: 1rem;
-            left: 1rem;
-            position: absolute;
-            top: 0;
-            width: 1rem;
-          }
+        &::before {
+          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
+          border-style: solid;
+          border-width: 0.625rem 0.75rem 0 0.75rem;
+          content: '';
+          height: 1rem;
+          left: 1rem;
+          position: absolute;
+          top: 0;
+          width: 1rem;
         }
       }
     }
