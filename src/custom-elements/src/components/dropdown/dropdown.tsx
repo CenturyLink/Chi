@@ -121,7 +121,7 @@ export class Dropdown {
   private _customTrigger: boolean;
 
   connectedCallback() {
-    addMutationObserver.call(this, this.setMenuHeight());
+    addMutationObserver.call(this, this.setMenuHeight);
     
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
 
