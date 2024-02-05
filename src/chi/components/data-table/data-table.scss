@@ -672,11 +672,8 @@ $sizes: (
     }
 
     .chi-data-table__footer {
-      display: none;
-
       @include respond-to(md) {
         background-color: $data-table-footer-background-color;
-        display: block;
         padding: 0.5rem 1rem;
 
         .chi-pagination__content {
@@ -693,6 +690,18 @@ $sizes: (
                 }
               }
             }
+          }
+        }
+      }
+
+      .chi-pagination__content {
+        flex-direction: row;
+
+        .chi-pagination__end {
+          display: none;
+
+          @include respond-to(md) {
+            display: flex;
           }
         }
       }
