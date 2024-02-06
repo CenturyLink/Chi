@@ -1,15 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Impersonation header" id="header_impersonation_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  <ComponentExample title="Dropdown menu header" id="dropdown_menu_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3(slot="example")
-      header.chi-header.-lg.-impersonation
-        .chi-impersonation-bar
-          .chi-impersonation-bar__content
-            span.chi-impersonation-bar__label Signed in as:
-            strong.chi-impersonation-bar__username User
-            div.chi-impersonation-bar__divider.chi-divider.-vertical.-h--75
-            button.chi-button.-flat.-xs.-icon(id="button-portal-logout", ref="button-portal-logout", aria-label="Sign out", data-tooltip="Sign out", data-position="bottom")
-              .chi-button__content
-                i.chi-icon.icon-logout(aria-hidden="true")
+      header.chi-header.-lg
         nav.chi-header__content
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -18,11 +10,11 @@
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
             .-d--flex.-d-lg--none
-              button#drawer-trigger-portal-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-2', ref="drawer-trigger-portal-pib2", aria-label="Toggle navigation")
+              button#drawer-trigger-portal-pib3.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-3', aria-label="Toggle navigation", ref="drawer-trigger-portal-pib3")
                 .chi-button__content
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
             .chi-dropdown.-d--none.-d-lg--flex
-              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu2" ref="button-portal-site-menu2") App Name
+              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu3" ref="button-portal-site-menu3") App Name
               .chi-dropdown__menu.-list.-w--lg
                 a.chi-dropdown__menu-item.-h--auto.-active(href="#")
                   span.chi-dropdown__menu-item_title App Name
@@ -35,13 +27,13 @@
                   span.chi-dropdown__menu-item_text App description
           .chi-header__end
             div.-d--none.-d-lg--flex
-              button.chi-button.-flat.-icon(id="button-portal-notification2" ref="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
+              button.chi-button.-flat.-icon(id="button-portal-notification3" ref="button-portal-notification3" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
                 .chi-button__content
-                  i.chi-icon.icon-bell-outline(aria-hidden="true")
+                  i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
                   div.chi-badge.-dark.-xs 2
               .chi-divider.-vertical
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu2", ref="button-portal-user-menu2", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu3", ref="button-portal-user-menu3", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -50,7 +42,7 @@
                     i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu2", ref="button-portal-eid-menu2", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu3", ref="button-portal-eid-menu3", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -60,6 +52,29 @@
                     span Item 2
         nav.chi-header__navbar
           .chi-header__start
+            .-d--none.-d-lg--flex
+              ul.chi-tabs.-inverse.-xs
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Categories
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Category 1
+                      a.chi-dropdown__menu-item(href='#') Category 2
+                      a.chi-dropdown__menu-item(href='#') Category 3
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Solutions
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Solution 1
+                      a.chi-dropdown__menu-item(href='#') Solution 2
+                      a.chi-dropdown__menu-item(href='#') Solution 3
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Resources
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Resource 1
+                      a.chi-dropdown__menu-item(href='#') Resource 2
+                      a.chi-dropdown__menu-item(href='#') Resource 3
           .chi-header__end
             ul.chi-header__navbar-menu
               li
@@ -70,7 +85,7 @@
                 a(href='#' target='_blank') Contact Us
       .chi-backdrop.-closed
         .chi-backdrop__wrapper
-          div#drawer-portal-2.chi-drawer.-left.-menu.-position--absolute
+          div#drawer-portal-3.chi-drawer.-left.-menu.-position--absolute
             .chi-drawer__header
               button(class='chi-button -icon -close', aria-label='Close')
                 .chi-button__content
@@ -81,12 +96,9 @@
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>          
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>        
   </ComponentExample>
 </template>
 
@@ -112,16 +124,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<header class="chi-header -lg -impersonation">
-  <div class="chi-impersonation-bar">
-    <div class="chi-impersonation-bar__content">
-      <span class="chi-impersonation-bar__label">Signed in as:</span><strong class="chi-impersonation-bar__username">User</strong>
-      <div class="chi-impersonation-bar__divider chi-divider -vertical -h--75"></div>
-      <button class="chi-button -flat -xs -icon" id="button-portal-logout" aria-label="Sign out" data-tooltip="Sign out" data-position="bottom">
-        <div class="chi-button__content"><i class="chi-icon icon-logout" aria-hidden="true"></i></div>
-      </button>
-    </div>
-  </div>
+        htmlblueprint: `<header class="chi-header -lg">
   <nav class="chi-header__content">
     <div class="chi-header__brand">
       <a class="chi-brand" href="#" aria-label="Lumen">
@@ -133,41 +136,83 @@ declare const chi: any;
     </div>
     <div class="chi-header__start">
       <div class="-d--flex -d-lg--none">
-        <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-portal-pib2" data-target="#drawer-1" aria-label="Toggle navigation">
+        <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-portal-pib3" data-target="#drawer-1" aria-label="Toggle navigation">
           <div class="chi-button__content"><i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i></div>
         </button>
       </div>
       <div class="chi-dropdown -d--none -d-lg--flex">
-        <button class="chi-button -flat chi-dropdown__trigger -text--xl -px--1 -animate" id="button-portal-site-menu2">App Name</button>
+        <button class="chi-button -flat chi-dropdown__trigger -text--xl -px--1 -animate" id="button-portal-site-menu3">App Name</button>
         <div class="chi-dropdown__menu -list -w--lg"><a class="chi-dropdown__menu-item -h--auto -active" href="#"><span class="chi-dropdown__menu-item_title">App Name</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 2</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 3</span><span class="chi-dropdown__menu-item_text">App description</span></a></div>
       </div>
     </div>
     <div class="chi-header__end">
       <div class="-d--none -d-lg--flex">
-        <button class="chi-button -flat -icon" id="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
-          <div class="chi-button__content"><i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
+        <button class="chi-button -flat -icon" id="button-portal-notification3" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
             <div class="chi-badge -dark -xs">2</div>
           </div>
         </button>
         <div class="chi-divider -vertical"></div>
         <div class="chi-dropdown -d--none -d-lg--flex">
-          <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-user-menu2" data-position="bottom-end">Menu</button>
+          <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-user-menu3" data-position="bottom-end">Menu</button>
           <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
         </div>
         <div class="chi-dropdown -d--none -d-lg--flex">
-          <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-eid-menu2" data-position="bottom-end">Menu</button>
+          <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-eid-menu3" data-position="bottom-end">Menu</button>
           <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
         </div>
       </div>
     </div>
   </nav>
   <nav class="chi-header__navbar">
-    <div class="chi-header__start"></div>
+    <div class="chi-header__start">
+      <div class="-d--none -d-lg--flex">
+        <ul class="chi-tabs -inverse -sm">
+          <li>
+            <div class="chi-dropdown chi-dropdown__hover">
+              <a class="chi-dropdown__trigger -text--uppercase" href="#">Categories</a>
+              <div class="chi-dropdown__menu -w--lg">
+                <a class="chi-dropdown__menu-item" href="#">Category 1</a>
+                <a class="chi-dropdown__menu-item" href="#">Category 2</a>
+                <a class="chi-dropdown__menu-item" href="#">Category 3</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="chi-dropdown chi-dropdown__hover">
+              <a class="chi-dropdown__trigger -text--uppercase" href="#">Solutions</a>
+              <div class="chi-dropdown__menu -w--lg">
+                <a class="chi-dropdown__menu-item" href="#">Solution 1</a>
+                <a class="chi-dropdown__menu-item" href="#">Solution 2</a>
+                <a class="chi-dropdown__menu-item" href="#">Solution 3</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="chi-dropdown chi-dropdown__hover">
+              <a class="chi-dropdown__trigger -text--uppercase" href="#">Resources</a>
+              <div class="chi-dropdown__menu -w--lg">
+                <a class="chi-dropdown__menu-item" href="#">Resource 1</a>
+                <a class="chi-dropdown__menu-item" href="#">Resource 2</a>
+                <a class="chi-dropdown__menu-item" href="#">Resource 3</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="chi-header__end">
       <ul class="chi-header__navbar-menu">
-        <li><a href="#" target="_blank">Explore Lumen</a></li>
-        <li><a href="#" target="_blank">Help</a></li>
-        <li><a href="#" target="_blank">Contact Us</a></li>
+        <li>
+          <a href="#" target="_blank">Explore Lumen</a>
+        </li>
+        <li>
+          <a href="#" target="_blank">Help</a>
+        </li>
+        <li>
+          <a href="#" target="_blank">Contact Us</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -193,25 +238,23 @@ declare const chi: any;
 
 <!-- JavaScript -->
 <script>
-  chi.drawer(document.getElementById('drawer-trigger-portal-pib2'));
-  chi.dropdown(document.getElementById('button-portal-site-menu2'));
-  chi.dropdown(document.getElementById('button-portal-user-menu2'));
-  chi.dropdown(document.getElementById('button-portal-eid-menu2'));
-  chi.tooltip(document.getElementById('button-portal-logout'));
-  chi.tooltip(document.getElementById('button-portal-notification2'));
+  chi.drawer(document.getElementById('drawer-trigger-portal-pib3'));
+  chi.dropdown(document.getElementById('button-portal-site-menu3'));
+  chi.dropdown(document.getElementById('button-portal-user-menu3'));
+  chi.dropdown(document.getElementById('button-portal-eid-menu3'));
+  chi.tooltip(document.getElementById('button-portal-notification3'));
 <\/script>`
       }
     };
   }
 })
-export default class HeaderImpersonationPortal extends Vue {
+export default class BasePortal extends Vue {
   mounted() {
-    chi.drawer(this.$refs['drawer-trigger-portal-pib2'] as HTMLElement);
-    chi.dropdown(this.$refs['button-portal-site-menu2'] as HTMLElement);
-    chi.dropdown(this.$refs['button-portal-user-menu2'] as HTMLElement);
-    chi.dropdown(this.$refs['button-portal-eid-menu2'] as HTMLElement);
-    chi.tooltip(this.$refs['button-portal-logout'] as HTMLElement);
-    chi.tooltip(this.$refs['button-portal-notification2'] as HTMLElement);
+    chi.drawer(this.$refs['drawer-trigger-portal-pib3'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-site-menu3'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-user-menu3'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-eid-menu3'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-notification3'] as HTMLElement);
   }
 }
 </script>

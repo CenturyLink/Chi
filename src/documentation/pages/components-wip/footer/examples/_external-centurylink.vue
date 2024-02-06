@@ -52,7 +52,7 @@
                 li(v-for="(item, index) in footerLinks" :key="index")
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
-                | &copy; 2023 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
+                | &copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -171,7 +171,7 @@ export default class ExternalCenturylink extends Vue {
         <div class="chi-footer__links">
           <ul>${footerItemLinks}
           </ul>
-          <div class="chi-footer__copyright">&copy; 2023 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
+          <div class="chi-footer__copyright">&copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
         </div>
       </div>
     </div>
