@@ -22,7 +22,7 @@ const generateLumenFooter = (dropdownId) => {
             <ul>
               ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
             </ul>
-            <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+            <div class="chi-footer__copyright">&copy; 2024 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ const generateCenturylinkFooter = () => {
             <ul>
               ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
             </ul>
-            <div class="chi-footer__copyright">&copy; 2023 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
+            <div class="chi-footer__copyright">&copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ const generateBrightspeedFooter = (dropdownId) => {
             <ul>
               ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
             </ul>
-            <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+            <div class="chi-footer__copyright">&copy; 2024 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
         </div>
       </div>
