@@ -26,6 +26,11 @@ npm run prettier:checker
 See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
+## 3.2.1 (February 7, 2024)
+### Components
+#### Fixed
+* Fixed: Chi vue plugin installation mode.
+
 ## 3.2.0 (January 31, 2024)
 ### Components
 #### Added
