@@ -1,8 +1,8 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     <Size />
-    //- <Headings />
-    <LineHeight />
+    <Headings />
+    //- <LineHeight />
     <Alignment />
     <Decoration />
     <Transform />
