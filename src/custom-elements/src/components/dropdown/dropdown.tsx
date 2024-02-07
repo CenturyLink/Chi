@@ -11,6 +11,7 @@ import {
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 import { FontWeight } from '../../constants/types';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-dropdown',
@@ -118,9 +119,10 @@ export class Dropdown {
   private _dropdownMenuElement: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
-  private _mutationObserver: MutationObserver;
 
   connectedCallback() {
+    addMutationObserver.call(this, this.setMenuHeight);
+    
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
 
     this._customTrigger = !!triggerSlotElement;
@@ -139,28 +141,14 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
-    this._addItemListObserver();
   }
 
   componentWillLoad() {
     this._getDropdownMenuSlots();
-    this._setMutationObserver();
   }
 
   disconnectedCallback() {
     this._removeEventListeners();
-    this._mutationObserver.disconnect();
-  }
-
-  /**
-   * Sets a MutationObserver of this element DOM tree force a re-render when child
-   * nodes change.
-   * This is to avoid the new dynamically added elements in the slot=menu
-   * are rendered outside the dropdwon.
-   */
-  _setMutationObserver() {
-    this._mutationObserver = new MutationObserver(this.updatePopper.bind(this));
-    this._mutationObserver.observe(this.el, { childList: true });
   }
 
   @Watch('position')
@@ -228,12 +216,6 @@ export class Dropdown {
       removeOnDestroy: true,
       placement: this.position || 'bottom',
     });
-  }
-
-  _addItemListObserver() {
-    const observer = new MutationObserver(() => this.setMenuHeight());
-
-    observer.observe(this._dropdownMenuElement, { childList: true });
   }
 
   _getDropdownMenuSlots() {
