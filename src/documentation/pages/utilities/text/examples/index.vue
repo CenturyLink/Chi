@@ -2,7 +2,7 @@
   .chi-grid__container.-pt--3
     //- <Size />
     //- <Headings />
-    //- <LineHeight />
+    <LineHeight />
     <Alignment />
     <Decoration />
     <Transform />
