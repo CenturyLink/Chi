@@ -3,7 +3,7 @@
     //- <Size />
     //- <Headings />
     //- <LineHeight />
-    //- <Alignment />
+    <Alignment />
     <Decoration />
     <Transform />
     <Weight />
