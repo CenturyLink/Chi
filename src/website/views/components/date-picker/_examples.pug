@@ -182,6 +182,45 @@ p.-text
       <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="02/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024"></chi-date-picker>
   #html-excluded-days-dates.chi-tabs-panel
 
+h3 Message
+p.-text
+  | Use the <code>helper-message</code> attribute to provide users with additional information, validation feedback, and other helpful information.
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-message')
+        | Date
+      chi-date-picker(id="date-message" helper-message="Optional helper message")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-with-message
+      li.-active
+        a(href=`#webcomponent-with-message`) Web Component
+      li
+        a(href=`#html-with-message`) HTML Blueprint
+  #webcomponent-with-message.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-message">Date</chi-label>
+      <chi-date-picker id="date-message" helper-message="Please enter a date."></chi-date-picker>
+      
+  #html-with-message.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="datepicker-message">Date</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input id="datepicker-message" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+          <i class="chi-icon icon-date" aria-hidden="true"></i>
+        </div>
+        <div class="chi-label -status">Optional helper message</div>
+      </div>
+
+      <script>chi.datePicker(document.getElementById('datepicker-message'));</script>  
+
 h3 Error
 p.-text
   | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
@@ -192,10 +231,8 @@ p.-text
     div(style="max-width: 14rem;")
       chi-label(for='date-error')
         | Date
-      chi-date-picker(id="date-error" state="danger")
-    .chi-label.-status.-danger
-      chi-icon(icon='circle-warning')
-      | Please select a date.
+      chi-date-picker(id="date-error" state="danger" helper-message="Please enter a date.")
+
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-error
       li.-active
@@ -205,11 +242,7 @@ p.-text
   #webcomponent-with-error.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-error">Date</chi-label>
-      <chi-date-picker id="date-error" state="danger"></chi-date-picker>
-      <div class="chi-label -status -danger">
-        <chi-icon icon="circle-warning"></chi-icon>
-        Please select a date.
-      </div>
+      <chi-date-picker id="date-error" state="danger" helper-message="Please enter a date."></chi-date-picker>
   #html-with-error.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
