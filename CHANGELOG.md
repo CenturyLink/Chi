@@ -1,4 +1,26 @@
 # CHANGELOG
+## 5.47.0 (February 7, 2024)
+### Components
+#### Added
+* Added: Search input methods `showList` and `hideList`.
+* Added: Data table footer visible in mobile views in Portal Enterprise theme.
+* Added: Alert type Toast now supports `expiration-time` attribute that sets expiration time.
+* Added: Button web component now supports `mutationObserver` functionality.
+* Added: Dropdown web component now supports `mutationObserver` functionality.
+* Added: Label web component now supports `mutationObserver` functionality.
+#### Changed
+* Changed: App layout title line-height and subtitle margins in mobile views.
+#### Fixed
+* Fixed: Search input event `chiSearchInputItemSelected`.
+* Fixed: Alert web component dynamic change of title.
+### Documentation
+#### Added
+* Added: Header large  with navbar example in Portal Enterprise theme.
+* Added: Time and Time picker examples for `minutes-step` and `seconds-steps` attributes.
+#### Changed
+* Changed: Textarea icons sections has been hidden in Portal Enterprise theme.
+* Changed: App layout and footer examples have changed copyright year to 2024.
+
 ## 5.46.0 (January 23, 2024)
 ### Components
 #### Added
