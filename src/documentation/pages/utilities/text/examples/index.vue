@@ -4,10 +4,10 @@
     //- <Headings />
     //- <LineHeight />
     //- <Alignment />
-    //- <Decoration />
-    //- <Transform />
-    //- <Weight />
-    //- <Wrapping />
+    <Decoration />
+    <Transform />
+    <Weight />
+    <Wrapping />
 
     <TitleAnchor title="Text colors" id="text-colors" titleSize="h2"/>
     p.-text
