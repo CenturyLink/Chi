@@ -6,14 +6,10 @@ import { CHI_VERSION } from './constants';
 const pluginOptionsSchema = z.object({
   chiOptions: z
     .object({
-      forceVersion: z.string().optional().default(CHI_VERSION),
-      theme: z.enum(['lumen', 'portal', 'brightspeed', 'centuryLink', 'colt']).optional().default('portal'),
+      forceVersion: z.string().optional(),
+      theme: z.enum(['lumen', 'portal', 'brightspeed', 'centuryLink', 'colt']).optional(),
     })
-    .optional()
-    .default({
-      forceVersion: CHI_VERSION,
-      theme: 'portal',
-    }),
+    .optional(),
 });
 
 type ChiVueOptions = z.infer<typeof pluginOptionsSchema>;
@@ -21,8 +17,8 @@ type ChiVueOptions = z.infer<typeof pluginOptionsSchema>;
 export const ChiVue: Plugin<ChiVueOptions> = {
   install(app, opt?: unknown) {
     const options = pluginOptionsSchema.parse(opt);
-    const chiVersion = options.chiOptions.forceVersion;
-    const chiTheme = options.chiOptions.theme;
+    const chiVersion = options.chiOptions?.forceVersion ?? CHI_VERSION;
+    const chiTheme = options.chiOptions?.theme ?? 'portal';
 
     importCss(chiVersion, chiTheme);
     importJs(window);
