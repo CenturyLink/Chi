@@ -3,7 +3,7 @@
     <table class="-text">
       <thead>
       <tr>
-        <th v-for="{ className, title } in tableColumns" :class="className" v-html="title" />
+        <th v-for="{ className, title } in tableColumns" :class="className ? className : ''" v-html="title" />
       </tr>
       </thead>
       <tbody>
@@ -38,17 +38,20 @@ export default class TableComponent extends Vue {
       {
         title: this.title ? this.title : 'Class',
         key: 'class',
-        width: '25%'
+        width: '25%',
+        className: ''
       },
       {
         title: 'Value',
         key: 'value',
-        width: '35%'
+        width: '35%',
+        className: ''
       },
       {
         title: 'Result',
         key: 'result',
-        width: ''
+        width: '',
+        className: ''
       }
     ]
   }
