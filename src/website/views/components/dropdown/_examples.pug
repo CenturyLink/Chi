@@ -961,7 +961,7 @@ h3 Search Input
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       chi-dropdown(active prevent-auto-hide)
-        chi-search-input(size="sm" placeholder="Search" slot="menu")
+        chi-search-input(size="sm" placeholder="Search" slot="menu-header") 
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -975,7 +975,7 @@ h3 Search Input
   .chi-tabs-panel.-active#webcomponent-search
     :code(lang="html")
       <chi-dropdown active>
-        <chi-search-input size="sm" placeholder="Search" slot="menu"></chi-search-input>
+        <chi-search-input size="sm" placeholder="Search" slot="menu-header"></chi-search-input>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -984,18 +984,22 @@ h3 Search Input
   .chi-tabs-panel#html-search
     :code(lang="html")
       <div class="chi-dropdown__menu">
-        <div class="chi-input__wrapper -icon--right">
-          <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
-          <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-search" aria-hidden="true"></i>
-            </div>
-          </button>
+        <div class="chi-dropdown__menu-header -mb--1">
+          <div class="chi-input__wrapper -icon--right">
+            <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
+            <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-search" aria-hidden="true"></i>
+              </div>
+            </button>
+          </div>
         </div>
-        <a class="chi-dropdown__menu-item" href="#">Item 1</a>
-        <a class="chi-dropdown__menu-item" href="#">Item 2</a>
-        <a class="chi-dropdown__menu-item" href="#">Item 3</a>
-        <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        <div class="chi-dropdown__menu-items-wrapper"> 
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
       </div>
 
 h3 Checkboxes
