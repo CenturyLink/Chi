@@ -4,9 +4,7 @@
       | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
       | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
     div(slot="example")
-      <TableComponent v-if="columns" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered columns" />
-      <TableComponent v-if="getContent" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered getContent" />
-      <TableComponent v-if="generateUtilitiesTextContent" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered generateUtilitiesTextContent" />
+      <TableComponent v-if="isGenerateUtilitiesTextAvailable" :data="sizes" :columns="columns" :getContent="safeGetContent" additionalClasses="-mb-0 -bordered generateUtilitiesTextContent" />
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -29,14 +27,18 @@ import { generateUtilitiesTextContent } from '~/utilities/utilities';
           label: 'HTML Blueprint',
         }
       ],
-      columns: utilitiesTextColumns
+      columns: utilitiesTextColumns,
+      isGenerateUtilitiesTextAvailable: false
     };
   },
-  mounted() {
-    console.log('columns', this.$data.columns)
-    console.log('data', this.$data)
-    console.log('generateUtilitiesTextContent', generateUtilitiesTextContent)
-  }
+  async created() {
+    try {
+      const { generateUtilitiesTextContent } = await import('~/utilities/utilities');
+      this.$data.isGenerateUtilitiesTextAvailable = !!generateUtilitiesTextContent;
+    } catch (error) {
+      console.error('Failed to load generateUtilitiesTextContent:', error);
+    }
+  },
 })
 export default class Size extends Vue {
   sizes = [
@@ -62,6 +64,12 @@ export default class Size extends Vue {
 
   getContent(column: ITableColumn, content: ITableContent) {
     return generateUtilitiesTextContent(column, content);
+  }
+
+  safeGetContent(column: ITableColumn, content: ITableContent) {
+    if (this.$data.isGenerateUtilitiesTextAvailable) {
+      return generateUtilitiesTextContent(column, content);
+    }
   }
 }
 </script>
