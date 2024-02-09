@@ -4,7 +4,7 @@
       | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
       | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
     div(slot="example")
-      <TableComponent v-if="isGenerateUtilitiesTextAvailable" :data="sizes" :columns="columns" :getContent="safeGetContent" additionalClasses="-mb-0 -bordered generateUtilitiesTextContent" />
+      <TableComponent v-if="isGenerateUtilitiesTextAvailable" :data="sizes" :columns="columns" :getContent="safeGetContent" additionalClasses="-mb-0 -bordered" />
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
