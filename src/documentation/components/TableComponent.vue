@@ -10,7 +10,7 @@
       <tr v-for="content in data" :disabled="content.disabled" :class="content.className? content.className : ''">
         <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
           <!-- <span v-html="generateContent(column, content)" /> -->
-          this is content static
+          this is content static content
         </td>
       </tr>
       </tbody>
