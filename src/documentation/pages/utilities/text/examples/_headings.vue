@@ -2,7 +2,7 @@
   <ComponentExample padding="-p--0" title="Text headings" id="text-headings" titleSize="h2" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Use classes <code>-text--h1</code> through <code>-text--h6</code> to match Chi's default heading sizes.
-    <TableComponent slot="example" :data="headings" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
+    <TableComponent v-if="columns && getContent && generateUtilitiesTextContent" slot="example" :data="headings" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
