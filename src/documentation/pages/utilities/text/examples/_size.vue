@@ -3,10 +3,16 @@
     p.-text(slot="example-description")
       | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
       | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
-    <div> generateUtilitiesTextContent {{ !!generateUtilitiesTextContent }}</div>
-    <div> getContent{{ !!getContent }}</div>
-    <div> columns{{ !!columns }}</div>
-    <TableComponent v-if="columns && getContent && generateUtilitiesTextContent" slot="example" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
+      <div> generateUtilitiesTextContent {{ !!generateUtilitiesTextContent }}</div>
+      <div> getContent{{ !!getContent }}</div>
+      <div> columns{{ !!columns }}</div>
+    div(slot="example")
+      | columns
+      <TableComponent v-if="columns" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
+      | getContent
+      <TableComponent v-if="getContent" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
+      | generateUtilitiesTextContent
+      <TableComponent v-if="generateUtilitiesTextContent" :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
