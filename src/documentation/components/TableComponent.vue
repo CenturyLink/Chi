@@ -65,8 +65,7 @@ export default class TableComponent extends Vue {
     console.log('column',  column)
     console.log('content', content)
     console.log('getContent', this.getContent)
-    if(column && content) return this.getContent(column, content);
-    return '';
+    return this.getContent(column, content);
   }
 }
 </script>

@@ -4,7 +4,7 @@
       | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
       | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
     div(slot="example")
-      <TableComponent v-if="isGenerateUtilitiesTextAvailable" :data="sizes" :columns="columns" :getContent="safeGetContent" additionalClasses="-mb-0 -bordered" />
+      <TableComponent :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -31,14 +31,14 @@ import { generateUtilitiesTextContent } from '~/utilities/utilities';
       isGenerateUtilitiesTextAvailable: false
     };
   },
-  async created() {
-    try {
-      const { generateUtilitiesTextContent } = await import('~/utilities/utilities');
-      this.$data.isGenerateUtilitiesTextAvailable = !!generateUtilitiesTextContent;
-    } catch (error) {
-      console.error('Failed to load generateUtilitiesTextContent:', error);
-    }
-  },
+  // async created() {
+  //   try {
+  //     const { generateUtilitiesTextContent } = await import('~/utilities/utilities');
+  //     this.$data.isGenerateUtilitiesTextAvailable = !!generateUtilitiesTextContent;
+  //   } catch (error) {
+  //     console.error('Failed to load generateUtilitiesTextContent:', error);
+  //   }
+  // },
 })
 export default class Size extends Vue {
   sizes = [
@@ -64,12 +64,6 @@ export default class Size extends Vue {
 
   getContent(column: ITableColumn, content: ITableContent) {
     return generateUtilitiesTextContent(column, content);
-  }
-
-  safeGetContent(column: ITableColumn, content: ITableContent) {
-    if (this.$data.isGenerateUtilitiesTextAvailable) {
-      return generateUtilitiesTextContent(column, content);
-    }
   }
 }
 </script>
