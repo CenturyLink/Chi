@@ -30,15 +30,7 @@ import { generateUtilitiesTextContent } from '~/utilities/utilities';
       columns: utilitiesTextColumns,
       isGenerateUtilitiesTextAvailable: false
     };
-  },
-  // async created() {
-  //   try {
-  //     const { generateUtilitiesTextContent } = await import('~/utilities/utilities');
-  //     this.$data.isGenerateUtilitiesTextAvailable = !!generateUtilitiesTextContent;
-  //   } catch (error) {
-  //     console.error('Failed to load generateUtilitiesTextContent:', error);
-  //   }
-  // },
+  }
 })
 export default class Size extends Vue {
   sizes = [

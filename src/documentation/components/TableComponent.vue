@@ -9,8 +9,7 @@
       <tbody>
       <tr v-for="content in data" :disabled="content.disabled" :class="content.className? content.className : ''">
         <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
-          <!-- <span v-html="generateContent(column, content)" /> -->
-          <span>{{ generateContent(column, content)}}</span>
+          <span v-html="generateContent(column, content)" />
         </td>
       </tr>
       </tbody>
