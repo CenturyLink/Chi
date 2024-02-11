@@ -1,16 +1,16 @@
 <template lang="pug">
   div
     <TableComponent :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
-    <ComponentExample padding="-p--0" title="Text size" id="text-size" titleSize="h2" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
-      p.-text(slot="example-description")
-        | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
-        | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
-      div(slot="example")
-        <TableComponent :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
-      <pre class="language-html" slot="code-htmlblueprint">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </ComponentExample>
+    //- <ComponentExample padding="-p--0" title="Text size" id="text-size" titleSize="h2" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
+    //-   p.-text(slot="example-description")
+    //-     | Text size supports the following sizes: <code>-text--2xs</code>, <code>-text--xs</code>, <code>-text--sm</code>, <code>-text--md</code>,
+    //-     | <code>-text--lg</code>, and <code>-text--xl</code>. The default size is <code>-text--md</code>.
+    //-   div(slot="example")
+    //-     <TableComponent :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
+    //-   <pre class="language-html" slot="code-htmlblueprint">
+    //-     <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+    //-   </pre>
+    //- </ComponentExample>
 </template>
 
 <script lang="ts">
