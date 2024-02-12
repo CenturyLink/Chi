@@ -2,23 +2,20 @@
   <li v-for="link in items" :class="{
     '-active': route.fullPath.includes(link.to || link.href)
   }">
-    <NuxtLink :to="`/${link.to || link.href}`">
-      {{ link.label }}
-    </NuxtLink>
-    <!-- <template v-if="isDev">
+    <template v-if="isDev">
       <NuxtLink :to="`/${link.to}`">
         {{ link.label }}
       </NuxtLink>
     </template>
 
-    <template>
+    <template v-else>
       <a v-if="link.href && link.source === 'pug'" :href="`${$config.public.baseUrl}${link.href}`">
         {{ link.label }}
       </a>
       <NuxtLink v-else-if="link.to" :to="`/${link.to}`">
         {{ link.label }}
       </NuxtLink>
-    </template> -->
+    </template>
   </li>
 </template>
 
