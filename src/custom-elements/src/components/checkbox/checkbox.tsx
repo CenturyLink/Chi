@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, h, Watch } from '@stencil/core';
 import { CHECKBOX_CLASSES, SR_ONLY } from '../../constants/classes';
 import { ChiStates } from '../../constants/states';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-checkbox',
@@ -51,6 +52,7 @@ export class Checkbox {
 
   connectedCallback() {
     this.id = this.el.getAttribute('id');
+    addMutationObserver.call(this);
   }
 
   toggle(ev: Event) {
