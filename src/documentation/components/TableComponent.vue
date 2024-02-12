@@ -8,8 +8,8 @@
       </thead>
       <tbody>
       <tr v-for="content in data" :disabled="content.disabled" :class="content.className? content.className : ''">
-        <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
-          <span v-if="(column && column.key && content && content.name)"  v-html="generateContent(column, content)" />
+        <td v-for="column in tableColumns" :key="content.value" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
+          <span v-if="(column && column.key && content.name && content.value)"  v-html="generateContent(column, content)" />
         </td>
       </tr>
       </tbody>
