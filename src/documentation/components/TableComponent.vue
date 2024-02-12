@@ -1,6 +1,6 @@
 <template>
   <section :class="['chi-table', additionalClasses]">
-    <table v-if="getContent" class="-text">
+    <table class="-text">
       <thead>
       <tr>
         <th v-for="{ className, title } in tableColumns" :class="className ? className : ''" v-html="title" />
@@ -8,8 +8,8 @@
       </thead>
       <tbody>
       <tr v-for="content in data" :disabled="content.disabled" :class="content.className? content.className : ''">
-        <td v-for="column in tableColumns" :key="content.value" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
-          <span v-if="(column && column.key && content.name && content.value)"  v-html="generateContent(column, content)" />
+        <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.className ? content[column.key]?.className : ''">
+          <span v-html="generateContent(column, content)" />
         </td>
       </tr>
       </tbody>
