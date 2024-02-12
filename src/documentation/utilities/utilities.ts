@@ -22,15 +22,13 @@ export const generateUtilitiesTextContent = (
 ): string => {
   switch (column.key) {
     case 'class':
-      return `<td class="-w--30 -w-md--20" width="20%">
-            <code>-text--${content.name}</code>
+      return `<code>-text--${content.name}</code>
             <dl class="-text -text--xs -mt--2">
               <dt class="-text--bold">Font-size:</dt>
               <dt>${content.value[0]}</dt>
               <dt class="-text--bold -mt--1">Line-height:</dt>
               <dt>${content.value[1]}</dt>
-            </dl>
-          </td>`;
+            </dl>`;
     case 'value':
       return `<p class="-text--${content.name} -px--1">The quick brown fox jumps over the lazy dog.</p>`;
     default:
