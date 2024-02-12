@@ -34,7 +34,6 @@
       | Use methods <code>.show()</code>, <code>.hide()</code>, and <code>.toggle()</code>
       | to control popover visibility.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

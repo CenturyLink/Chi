@@ -17,7 +17,6 @@
       .chi-tab__description
         | To render a progress element, use the <code>progress</code> HTML5 tag. Set the value attribute to indicate the current progress.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -65,5 +64,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Base extends Vue {}
+export default class Base extends Vue { }
 </script>

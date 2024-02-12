@@ -12,7 +12,6 @@
         | initialize it with the chi.tooltip factory method.
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

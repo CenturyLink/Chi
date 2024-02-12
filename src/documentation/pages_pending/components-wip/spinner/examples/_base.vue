@@ -16,7 +16,6 @@
         br
         | Wrap spinners in <code>chi-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

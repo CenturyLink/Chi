@@ -17,7 +17,6 @@
       .chi-tab__description
         | Remove the <code>-active</code> class to hide the popover.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

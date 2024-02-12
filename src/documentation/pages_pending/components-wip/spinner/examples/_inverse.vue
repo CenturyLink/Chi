@@ -12,7 +12,6 @@
       .chi-tab__description
         | Apply the class <code>-inverse</code> to render spinners on light backgrounds.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

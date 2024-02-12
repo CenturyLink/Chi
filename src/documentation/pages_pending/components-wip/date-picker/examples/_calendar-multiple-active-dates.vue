@@ -10,7 +10,6 @@
       .chi-tab__description
         span.-text--grey Use class <code>-active</code> for the selected date
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

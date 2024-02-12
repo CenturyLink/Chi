@@ -2,25 +2,25 @@
 <ComponentExample title="Outline" id="outline" :tabs="exampleTabs" padding="-p--0">
   template(#example)
     .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--2.-text--center
-            chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
-            chi-badge(class='-m--1', color='success', variant='outline')= 'Success'
-            chi-badge(class='-m--1', color='warning', variant='outline')= 'Warning'
-            chi-badge(class='-m--1', color='danger', variant='outline')= 'Danger'
-            chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
-            chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
-        .chi-col.-w--12
-          .-p--2.-text--center
-            chi-badge(class='-m--1', color='accent-1', variant='outline')= 'Accent-1'
-            chi-badge(class='-m--1', color='accent-2', variant='outline')= 'Accent-2'
-            chi-badge(class='-m--1', color='accent-3', variant='outline')= 'Accent-3'
-            chi-badge(class='-m--1', color='accent-4', variant='outline')= 'Accent-4'
-            chi-badge(class='-m--1', color='accent-5', variant='outline')= 'Accent-5'
-        .chi-col.-w--12
-          .-p--2.-bg--black.-text--center
-            chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
-            chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
+      .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
+          chi-badge(class='-m--1', color='success', variant='outline')= 'Success'
+          chi-badge(class='-m--1', color='warning', variant='outline')= 'Warning'
+          chi-badge(class='-m--1', color='danger', variant='outline')= 'Danger'
+          chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
+          chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
+      .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='accent-1', variant='outline')= 'Accent-1'
+          chi-badge(class='-m--1', color='accent-2', variant='outline')= 'Accent-2'
+          chi-badge(class='-m--1', color='accent-3', variant='outline')= 'Accent-3'
+          chi-badge(class='-m--1', color='accent-4', variant='outline')= 'Accent-4'
+          chi-badge(class='-m--1', color='accent-5', variant='outline')= 'Accent-5'
+      .chi-col.-w--12
+        .-p--2.-bg--black.-text--center
+          chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
+          chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
 
   template(#code-webcomponent)
     .chi-tab__description
@@ -31,7 +31,6 @@
     .chi-tab__description
       | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

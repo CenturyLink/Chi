@@ -31,7 +31,6 @@
       .p--text.chi-tab__description
         | To render bordered panels, apply the class <code>-bordered</code>.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

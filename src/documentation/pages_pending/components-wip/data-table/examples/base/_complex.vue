@@ -61,7 +61,6 @@
             Copy(lang="html" :code="codeSnippets.popoverExample")
           #vertical-base-3.chi-tabs-panel(role='tabpanel')
             Copy(lang="html" :code="codeSnippets.dropdownExample")
-
   </ComponentExample>
 </template>
 

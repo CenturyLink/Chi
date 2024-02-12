@@ -18,7 +18,6 @@
         | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
         | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -101,5 +100,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SizesPortal extends Vue {}
+export default class SizesPortal extends Vue { }
 </script>

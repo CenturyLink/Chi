@@ -21,7 +21,6 @@
     template(v-for="tab in headTabs" #["`code-${exampleId}-${tab.id}-htmlblueprint`"] :key="tab.id")
       <JSNeeded />
       Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
-
   </ComponentExample>
 </template>
 

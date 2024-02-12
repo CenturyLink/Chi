@@ -16,7 +16,6 @@
         | To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

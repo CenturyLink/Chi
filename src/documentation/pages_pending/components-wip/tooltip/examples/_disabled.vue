@@ -14,7 +14,6 @@
         | to achieve the same behavior.
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

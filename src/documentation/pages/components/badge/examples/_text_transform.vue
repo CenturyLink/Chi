@@ -15,7 +15,6 @@
       .chi-tab__description
         | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

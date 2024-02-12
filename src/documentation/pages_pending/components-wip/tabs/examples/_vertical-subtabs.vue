@@ -22,7 +22,6 @@
 
     template(#["`code-vertical-subtabs-${tab.id}-htmlblueprint`" :key="tab.id"] v-for="tab in headTabs")
       Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
-
   </ComponentExample>
 </template>
 

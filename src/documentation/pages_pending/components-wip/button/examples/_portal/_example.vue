@@ -20,7 +20,6 @@
         | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and
         | <code>&lt;input&gt;</code> elements.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -63,5 +62,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ExamplesPortal extends Vue {}
+export default class ExamplesPortal extends Vue { }
 </script>

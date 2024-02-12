@@ -16,7 +16,6 @@
       | Use the <code>-text--normal</code> text utility class to render badges in a normal font-weight,
       | <code>-text--semi-bold</code> to render badges in a semi-bold font-weight <code>-text--bold</code> to render badges in a bold font-weight.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

@@ -15,7 +15,6 @@
         | of Elements and initialize all at once.
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

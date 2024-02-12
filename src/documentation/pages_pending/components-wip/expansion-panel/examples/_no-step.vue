@@ -32,7 +32,6 @@
         | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
         | and removing <code>chi-epanel__number</code>.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

@@ -14,7 +14,6 @@
 
   template(#code-htmlblueprint)
     Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-
 </ComponentExample>
 
 p.-text

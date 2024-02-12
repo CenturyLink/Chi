@@ -17,7 +17,6 @@
     template(#code-htmlblueprint)
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -68,5 +67,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class MinMaxStepExpanded extends Vue {}
+export default class MinMaxStepExpanded extends Vue { }
 </script>

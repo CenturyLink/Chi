@@ -20,7 +20,6 @@
       Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
     template(#code-htmlblueprint)
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -88,5 +87,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Help extends Vue {}
+export default class Help extends Vue { }
 </script>

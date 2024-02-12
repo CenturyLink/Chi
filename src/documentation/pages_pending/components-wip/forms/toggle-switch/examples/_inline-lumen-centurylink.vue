@@ -15,7 +15,6 @@
     .p--text.chi-tab__description
       | Apply the <code>-inline</code> class to <code>chi-form__item</code> to display switches inline.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 
@@ -68,5 +67,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineLumenCenturyLink extends Vue {}
+export default class InlineLumenCenturyLink extends Vue { }
 </script>

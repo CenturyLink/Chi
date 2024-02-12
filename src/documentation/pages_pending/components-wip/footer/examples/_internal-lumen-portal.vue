@@ -28,7 +28,6 @@
   template(#code-htmlblueprint)
     <JSNeeded />
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

@@ -8,7 +8,6 @@
       <JSNeeded />
         .chi-tab__description Use class <code>-inactive</code> for deactivated dates.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

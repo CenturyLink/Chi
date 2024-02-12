@@ -25,7 +25,6 @@
         | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
         | no need to include it on the code.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
     </ComponentExample>
 </template>
 

@@ -14,7 +14,6 @@
       span
         | Use the class <code>chi-pagination</code> to render a pagination component.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 
@@ -105,5 +104,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BaseLumenCenturyLink extends Vue {}
+export default class BaseLumenCenturyLink extends Vue { }
 </script>

@@ -15,7 +15,6 @@
     .chi-tab__description
       | Use the <code>-xs</code> modifier class to render even smaller badges.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

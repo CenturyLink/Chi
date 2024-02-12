@@ -14,7 +14,6 @@
         | Apply the class <code>-label--hide</code> to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
         | in close proximity to other text that clearly describes its purpose.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -52,5 +51,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SwitchHiddenPortal extends Vue {}
+export default class SwitchHiddenPortal extends Vue { }
 </script>

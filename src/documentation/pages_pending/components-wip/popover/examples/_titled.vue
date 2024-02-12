@@ -13,7 +13,6 @@
       .chi-tab__description
         | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

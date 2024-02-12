@@ -16,7 +16,6 @@
     template(#code-htmlblueprint)
       <JSNeeded />
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -54,5 +53,5 @@ declare const chi: any;
     };
   },
 })
-export default class Hover extends Vue {}
+export default class Hover extends Vue { }
 </script>

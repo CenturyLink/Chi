@@ -17,7 +17,6 @@
       .chi-tab__description
         | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

@@ -17,7 +17,6 @@
           br
           | Use the class <code>-today</code> for the current date
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

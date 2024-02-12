@@ -23,7 +23,6 @@
       | You can prevent automatic hiding behavior by
       | setting <code>preventAutoHide</code> to <code>true</code>
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

@@ -30,7 +30,6 @@
     .chi-tab__description
       | To render a badge without background and border, apply the class <code>-flat</code>.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

@@ -12,7 +12,6 @@
 
   template(#code-htmlblueprint)
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 

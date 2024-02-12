@@ -37,7 +37,6 @@
       .chi-tab__description
         | To render toolbar, use the class <code>chi-toolbar</code>.
       Copy(lang="html" :code"codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

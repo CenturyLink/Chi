@@ -20,7 +20,6 @@
         | Use <a href="../../utilities/color">icon color utilities</a> such as <code>-icon--success</code>
         | and <code>-icon--danger</code> to change the color of any spinner.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -66,5 +65,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ColorSemantic extends Vue {}
+export default class ColorSemantic extends Vue { }
 </script>

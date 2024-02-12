@@ -20,7 +20,6 @@
 
   template(v-for="tab in headTabs" v-slot:[`code-size-${tab.id}-htmlblueprint`])
     Copy(lang="html" :code="codeSnippets.htmlblueprint[tab.id]")
-
 </ComponentExample>
 </template>
 

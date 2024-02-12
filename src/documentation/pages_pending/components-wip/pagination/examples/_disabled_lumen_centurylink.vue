@@ -25,7 +25,6 @@
         span
           | Add the attribute <code>disabled</code> to any button to render in a disabled state.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

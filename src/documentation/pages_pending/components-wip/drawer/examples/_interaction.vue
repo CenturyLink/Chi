@@ -40,7 +40,6 @@
         | Use the function <code>chi.drawer(elem)</code> to instantiate a new drawer component in the DOM element passed as a parameter.
         | You must use the trigger element as the parameter.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 

@@ -36,7 +36,6 @@
       .chi-tab__description
         | To render toolbar, use the class <code>chi-toolbar</code>.
       Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
   </ComponentExample>
 </template>
 
@@ -450,5 +449,5 @@ data: () => {
     };
   },
 })
-export default class Base extends Vue {}
+export default class Base extends Vue { }
 </script>

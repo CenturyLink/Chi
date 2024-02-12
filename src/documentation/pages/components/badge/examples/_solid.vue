@@ -33,7 +33,6 @@
       | To display a badge, use the class <code>chi-badge</code>.
       | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-
 </ComponentExample>
 </template>
 
