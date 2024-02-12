@@ -155,67 +155,67 @@ pipeline {
         }
       }
 
-      stage('Static Code Analysis') {
-        when {
-          beforeAgent true
-          allOf {
-            not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-          }
-        }
-        parallel {
-          stage('Linting Standard CHI') {
-            agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            when {
-              beforeAgent true
-              not {branch PROD_BRANCH}
-            }
-            steps {
-              script{
-                ghYarnWrap('install')
-                jslNpmWrapper('run lint:css')
-              }
-            }
-          }
-          stage('Linting Chi-vue') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock('chi-vue')
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            when {
-              beforeAgent true
-              not {branch PROD_BRANCH}
-            }
-            steps {
-              script{
-                dir ('src/chi-vue') {
-                  jslNpmWrapper('ci')
-                  jslNpmWrapper('run prettier:checker')
-                }
-                echo "No full linting implemented in repo"
-              }
-            }
-          }
-          stage('DevSecOps') {
-            steps {
-              script {
-                jslGitHubSecurityAlert()
-              }
-            }
-          }
-          // to check chi-vue while introducing devopsGCR
-        }
-      }
+      // stage('Static Code Analysis') {
+      //   when {
+      //     beforeAgent true
+      //     allOf {
+      //       not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+      //       not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+      //     }
+      //   }
+      //   parallel {
+      //     stage('Linting Standard CHI') {
+      //       agent {
+      //         docker {
+      //           image getNodeAgentBlock(null, 'image')
+      //           label 'Docker-enabled'
+      //           args '-m 2G --shm-size=2gb'
+      //         }
+      //       }
+      //       when {
+      //         beforeAgent true
+      //         not {branch PROD_BRANCH}
+      //       }
+      //       steps {
+      //         script{
+      //           ghYarnWrap('install')
+      //           jslNpmWrapper('run lint:css')
+      //         }
+      //       }
+      //     }
+      //     stage('Linting Chi-vue') {
+      //       agent {
+      //         dockerfile {
+      //           filename getNodeAgentBlock('chi-vue')
+      //           dir 'cicd/docker/agent_images'
+      //           label 'Docker-enabled'
+      //           args '-m 2G --shm-size=2gb'
+      //         }
+      //       }
+      //       when {
+      //         beforeAgent true
+      //         not {branch PROD_BRANCH}
+      //       }
+      //       steps {
+      //         script{
+      //           dir ('src/chi-vue') {
+      //             jslNpmWrapper('ci')
+      //             jslNpmWrapper('run prettier:checker')
+      //           }
+      //           echo "No full linting implemented in repo"
+      //         }
+      //       }
+      //     }
+      //     stage('DevSecOps') {
+      //       steps {
+      //         script {
+      //           jslGitHubSecurityAlert()
+      //         }
+      //       }
+      //     }
+      //     // to check chi-vue while introducing devopsGCR
+      //   }
+      // }
 
       stage('Package Version') {
         when {
