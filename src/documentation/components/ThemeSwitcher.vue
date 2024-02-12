@@ -1,6 +1,8 @@
 <template>
   <div class="chi-dropdown -w--100">
-    <button ref="switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
+    <button
+      ref="switcher"
+      class="-theme-switch chi-button -fluid chi-dropdown__trigger">
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm">Theme</span>
         <div class="-d--flex -w--100">
