@@ -12,6 +12,7 @@ import {
 
 const DOCS_ENV = process.env.DOCS_ENV || '';
 const IS_DEV = DOCS_ENV === 'development';
+const IS_PR = DOCS_ENV === 'pr';
 const BASE_URL = BASE_URLS_FOR_ENVS[DOCS_ENV] || '/';
 const DOCS_JSON_URL = BASE_URL + (IS_DEV
   ? 'docs.json'
@@ -99,6 +100,9 @@ export default defineNuxtConfig({
           experimentalDecorators: true,
         },
       },
+      // keep console.logs in pr instances
+      // https://github.com/nuxt/nuxt/issues/19702
+      ...(IS_PR ? {drop: []} : {})
     },
     server: {
       watch: [
@@ -122,6 +126,13 @@ export default defineNuxtConfig({
         ...NAVIGATION_COMPONENTS_ITEMS.map(item => `/${item.href}`),
         ...NAVIGATION_TEMPLATE_ITEMS.map(item => `/${item.href}`),
       ]
+    },
+    esbuild: {
+      options: {
+        // keep console.logs in pr instances
+        // https://github.com/nuxt/nuxt/issues/19702
+        ...(IS_PR ? {drop: []} : {})
+      }
     }
   },
   // imports css https://github.com/nuxt/nuxt/issues/12215
