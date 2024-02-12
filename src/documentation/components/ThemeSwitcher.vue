@@ -60,13 +60,12 @@ interface AssetToReplace {
 @NuxtComponent({})
 export default class ThemeSwitcher extends Vue {
   themeSwitcherDropdown: any;
-  // Type any can be removed once the component is fully migrated to Vue.
-  selectedTheme: any = useSelectedTheme();
+  selectedTheme = useSelectedTheme();
 
   getThemeSwitcherTriggerIcon() {
     const excludedThemes = ['portal', 'colt', 'brightspeed'];
 
-    return excludedThemes.includes(this.selectedTheme as any) ? 'lumen' : this.selectedTheme;
+    return excludedThemes.includes(this.selectedTheme) ? 'lumen' : this.selectedTheme;
   }
 
   get themeName() {

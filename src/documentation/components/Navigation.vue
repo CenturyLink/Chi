@@ -74,7 +74,6 @@ declare const chi: any;
 export default class Navigation extends Vue {
   config = useRuntimeConfig().public;
   baseUrl = this.config.baseUrl;
-  isDev = this.config.isDev;
 
   [x: string]: any;
   chiAccordion: any;
@@ -104,7 +103,14 @@ export default class Navigation extends Vue {
 </script>
 
 <style>
-.-theme-lumen nav.docs-sidenav>nav>ul.chi-tabs.-vertical>li>ul.chi-tabs__subtabs>li>a.-active {
+.-theme-lumen
+  nav.docs-sidenav
+  > nav
+  > ul.chi-tabs.-vertical
+  > li
+  > ul.chi-tabs__subtabs
+  > li
+  > a.-active {
   background-color: #e0f3ff;
   box-shadow: inset 0.125rem 0 0 #0075c9;
   color: #0262b9;

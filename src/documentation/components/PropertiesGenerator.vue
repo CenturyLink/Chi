@@ -102,6 +102,7 @@
 
 <script lang="ts">
 import { Vue, Prop } from 'vue-facing-decorator';
+
 @NuxtComponent({})
 export default class PropertiesGenerator extends Vue {
   props = []

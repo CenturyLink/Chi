@@ -195,4 +195,3 @@ export default class Header extends Vue {
 }
 </script>
 <style scoped lang="scss"></style>
-../utilities/vue-wrapper
