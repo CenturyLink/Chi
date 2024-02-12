@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="External" id="external-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="External" id="external-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Show the external footer for all public facing webpages.
-    footer.chi-footer(slot='example')
+  template(#example)
+    footer.chi-footer
       .chi-footer__content
         .chi-footer__external
           .chi-footer__external-content.-mw--1200
@@ -62,39 +64,36 @@
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
     </Wrapper>
-  </ComponentExample>
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ILink } from '../../../../models/models';
+import { Component, Vue } from 'vue-facing-decorator';
+import { type ILink } from '../../../../models/models';
 import { CENTURY_FOOTER_LINKS, EXTERNAL_CENTURYLINKS_CONTENTS } from '../../../../fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      footerLinks: CENTURY_FOOTER_LINKS,
-      externalContents: EXTERNAL_CENTURYLINKS_CONTENTS,
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class ExternalCenturylink extends Vue {
+
+
+  footerLinks = CENTURY_FOOTER_LINKS;
+  externalContents = EXTERNAL_CENTURYLINKS_CONTENTS;
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component'
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint'
+    }
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``
+  }
 
   created() {
     this._setCodeSnippet();
@@ -104,14 +103,14 @@ export default class ExternalCenturylink extends Vue {
     let socialLinks = '', footerItemLinks = '';
 
     this.$data.externalContents.socialLinks.forEach((link: ILink) => {
-        socialLinks += `
+      socialLinks += `
               <a href="${link.href}" aria-label="${link.ariaLabel}" rel="noopener" target="_blank">
                 <i class="chi-icon icon-logo-${link.iconName} -md" aria-hidden="true"></i>
               </a>`;
     });
 
     this.$data.footerLinks.forEach((link: ILink) => {
-          footerItemLinks += `
+      footerItemLinks += `
             <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
     });
 
@@ -182,7 +181,7 @@ export default class ExternalCenturylink extends Vue {
   generateLinkCodeSnippet(keyName: string) {
     let linkCodeSnippet = '';
     this.$data.externalContents[keyName].forEach((link: ILink) => {
-          linkCodeSnippet += `
+      linkCodeSnippet += `
               <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
     });
     return linkCodeSnippet;
