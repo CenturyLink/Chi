@@ -863,6 +863,15 @@ PRDesc
           script {
             if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
               env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+              unstash name: "smokeTests"
+              zip zipFile: 'smoke_tests.zip', dir: "cypress/reports/smokeTests"
+              if (env.SMOKE_TEST_FAILURE == false) {
+                echo "deployment success"
+                jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+              } else {
+                echo "failures detected in deployment!"
+                jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed AFTER deployment")
+              }
               echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
               jslAdoptionMain('cypress/reports/smokeTests/*.xml')
             } else {
