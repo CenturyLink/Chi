@@ -1,11 +1,11 @@
 import {
-  ILanguage,
-  ILink,
-  IThemes,
-  IZIndex,
-  IBreakpoints,
-  ThemesColor,
-  ITableHead,
+  type ILanguage,
+  type ILink,
+  type IThemes,
+  type IZIndex,
+  type IBreakpoints,
+  type ThemesColor,
+  type ITableHead,
 } from '~/models/models';
 import { COLORS } from  '~/constants/constants';
 

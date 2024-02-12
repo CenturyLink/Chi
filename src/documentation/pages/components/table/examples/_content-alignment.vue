@@ -1,54 +1,54 @@
 <template lang="pug">
   <ComponentExample title="Content Alignment" id="content-alignment" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | Chi also supports additional content alignment with inline text align utilities applying the modifier class
-      | <code>-text--left</code>, <code>-text--center</code> or <code>-text--right</code>.
-    <TableComponent :data="rows" :columns="tableHead" :getContent="getContent" additionalClasses="" slot="example" />
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    template(#example-description)
+      p.-text
+        | Chi also supports additional content alignment with inline text align utilities applying the modifier class
+        | <code>-text--left</code>, <code>-text--center</code> or <code>-text--right</code>.
+    template(#example)
+      <TableComponent :data="rows" :columns="tableHead" :getContent="getContent" additionalClasses="" />
+    template(#code-webcomponent)
+      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+    template(#code-htmlblueprint)
+      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn } from "~/models/models";
-import { getTableHead } from "~/fixtures/fixtures";
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn } from '~/models/models';
+import { getTableHead } from '~/fixtures/fixtures';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       rows: [
         {
           cell1: { name: 'Name 1', className: '-text--left' },
           cell2: { name: 'name-1', className: '-text--center' },
-          cell3: { name: 'Dec 18, 2020 3:26 PM', className: '-text--right' }
+          cell3: { name: 'Dec 18, 2020 3:26 PM', className: '-text--right' },
         },
         {
           cell1: { name: 'Name 2', className: '-text--left' },
           cell2: { name: 'name-2', className: '-text--center' },
-          cell3: { name: 'Dec 18, 2020 2:38 AM', className: '-text--right' }
+          cell3: { name: 'Dec 18, 2020 2:38 AM', className: '-text--right' },
         },
         {
           cell1: { name: 'Name 3', className: '-text--left' },
           cell2: { name: 'name-3', className: '-text--center' },
-          cell3: { name: 'Nov 5, 2020 10:15 AM', className: '-text--right' }
+          cell3: { name: 'Nov 5, 2020 10:15 AM', className: '-text--right' },
         },
       ],
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -77,10 +77,10 @@ import { getTableHead } from "~/fixtures/fixtures";
             <td class="-text--right">2020 3:26 PM</td>
         </tr>
     </tbody>
-</table>`
+</table>`,
       },
     };
-  }
+  },
 })
 export default class ContentAlignment extends Vue {
   getContent(column: ITableColumn, content: any) {

@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Spacing'
-    }
+      title: 'Chi - Spacing',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Spacing extends Vue {}
 </script>

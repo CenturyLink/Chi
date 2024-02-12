@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Breakpoints from './_breakpoints.vue';
 import BreakpointsSpecific from './_breakpoints-specific.vue';
 import Baseline from './_baseline.vue';
@@ -35,7 +35,7 @@ import TextTop from './_text-top.vue';
 import TextBottom from './_text-bottom.vue';
 import TableCellElements from './_table-cell.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Breakpoints,
     BreakpointsSpecific,
@@ -45,9 +45,8 @@ import TableCellElements from './_table-cell.vue';
     Bottom,
     TextTop,
     TextBottom,
-    TableCellElements
-  }
+    TableCellElements,
+  },
 })
-
 export default class Examples extends Vue {}
 </script>

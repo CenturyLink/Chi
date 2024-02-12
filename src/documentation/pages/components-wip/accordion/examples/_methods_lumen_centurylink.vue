@@ -1,64 +1,60 @@
 <template lang="pug">
   <ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    button(@click="toggleOne", slot="example").chi-button#toggle-accordion-1 Toggle item 1
-    button(@click="toggleTwo", slot="example").chi-button.-ml--1#toggle-accordion-2 Toggle item 2
-    .chi-accordion.-mt--2#individual-accordion-items(slot="example")
-      .chi-accordion__item.-expanded
-        button.chi-accordion__trigger
-          i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__title
-            | Accordion
-        .chi-accordion__content
-          .chi-accordion
-            .chi-accordion__item(ref="invividual-accordion-item-1")
-              button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__title
-                  | Accordion item 1
-              .chi-accordion__content
-                p.chi-accordion__text Content of Accordion item 1
-            .chi-accordion__item(ref="invividual-accordion-item-2")
-              button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__title
-                  | Accordion item 2
-              .chi-accordion__content
-                p.chi-accordion__text Content of Accordion item 2
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
+    template(#example)
+      button(@click="toggleOne").chi-button#toggle-accordion-1 Toggle item 1
+      button(@click="toggleTwo").chi-button.-ml--1#toggle-accordion-2 Toggle item 2
+      .chi-accordion.-mt--2#individual-accordion-items
+        .chi-accordion__item.-expanded
+          button.chi-accordion__trigger
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+            .chi-accordion__title
+              | Accordion
+          .chi-accordion__content
+            .chi-accordion
+              .chi-accordion__item(ref="invividual-accordion-item-1")
+                button.chi-accordion__trigger
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
+                  .chi-accordion__title
+                    | Accordion item 1
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 1
+              .chi-accordion__item(ref="invividual-accordion-item-2")
+                button.chi-accordion__trigger
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
+                  .chi-accordion__title
+                    | Accordion item 2
+                .chi-accordion__content
+                  p.chi-accordion__text Content of Accordion item 2
+    template(#code-webcomponent)
+      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+    template(#code-htmlblueprint)
       <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+      Copy(lang="html" :code="codeSnippets.htmlblueprint")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
+@NuxtComponent({})
+export default class MethodsLumenCenturyLink extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
 <button class="chi-button" id="toggle-accordion-2">Toggle item 2</button>
 
 <div class="chi-accordion" id="individual-accordion-items">
@@ -104,28 +100,19 @@ declare const chi: any;
   toggleAccordionTwo.addEventListener("click", () => {
     individualAccordions.toggle(document.getElementById("invividual-accordion-item-2"));
   });
-<\/script>`
-      }
-    };
+<\/script>`,
   }
-})
-export default class MethodsLumenCenturyLink extends Vue {
+
   individualAccordions: any;
 
   toggleOne() {
-    this.individualAccordions.toggle(this.$refs[
-      'invividual-accordion-item-1'
-    ] as HTMLElement);
+    this.individualAccordions.toggle(this.$refs['invividual-accordion-item-1'] as HTMLElement);
   }
   toggleTwo() {
-    this.individualAccordions.toggle(this.$refs[
-      'invividual-accordion-item-2'
-    ] as HTMLElement);
+    this.individualAccordions.toggle(this.$refs['invividual-accordion-item-2'] as HTMLElement);
   }
   mounted() {
-    const accordionMethods = document.getElementById(
-      'individual-accordion-items'
-    );
+    const accordionMethods = document.getElementById('individual-accordion-items');
 
     this.individualAccordions = chi.accordion(accordionMethods);
   }

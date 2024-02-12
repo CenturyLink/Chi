@@ -1,58 +1,59 @@
 <template lang="pug">
   <ComponentExample title="Baseline" id="baseline" titleSize="h4" padding="-p--3" :tabs="exampleTabs" :showSnippetTabs="false">
-    .-mb--2.-d--flex.-show--example.-bg--grey-10(slot="example" style="height:7rem;")
-      .-text.-p--2 Item
-      .-text.-p--2.-align-self--baseline Aligned Item
-      .-text.-p--2 Item
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    template(#example)
+      .-mb--2.-d--flex.-show--example.-bg--grey-10(style="height:7rem;")
+        .-text.-p--2 Item
+        .-text.-p--2.-align-self--baseline Aligned Item
+        .-text.-p--2 Item
+    template(#code-htmlblueprint)
+      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 const htmlSource = [
   {
-    value: "Item",
+    value: 'Item',
   },
   {
-    className: "-align-self--baseline",
-    value: "Aligned Item",
+    className: '-align-self--baseline',
+    value: 'Aligned Item',
   },
   {
-    value: "Item",
+    value: 'Item',
   },
 ];
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
     };
-  }
+  },
 })
 export default class Baseline extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
-    }
+      htmlblueprint: this.generateHtml(),
+    };
   }
 
   generateHtml() {
-    const content = htmlSource.map(({ value, className }) => `  <div${className ? ` class="${className}"` : ""}>${value}</div>`).join('\n');
+    const content = htmlSource
+      .map(({ value, className }) => `  <div${className ? ` class="${className}"` : ''}>${value}</div>`)
+      .join('\n');
 
-    return (
-      `<div class="-d--flex">
+    return `<div class="-d--flex">
 ${content}
-</div>`)
+</div>`;
   }
 }
 </script>

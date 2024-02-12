@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Shadow'
+      title: 'Chi - Shadow',
     };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Shadow extends Vue {}
 </script>

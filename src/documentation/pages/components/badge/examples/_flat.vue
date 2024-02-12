@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Flat" id="flat" :tabs="exampleTabs" padding="-p--0">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Flat" id="flat" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--2.-text--center
           chi-badge(class='-m--1', color='primary', variant='flat')= 'Primary'
@@ -20,42 +21,37 @@
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | To render a badge without background and border, apply the class <code>-flat</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To render a badge without background and border, apply the class <code>-flat</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
+@NuxtComponent({})
+export default class Flat extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<!-- For light backgrounds -->
 <chi-badge color="primary" variant="flat">Primary</chi-badge>
 <chi-badge color="success" variant="flat">Success</chi-badge>
 <chi-badge color="warning" variant="flat">Warning</chi-badge>
@@ -72,7 +68,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- For dark backgrounds -->
 <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
 <chi-badge color="light" variant="flat">Light</chi-badge>`,
-        htmlblueprint: `<!-- For light backgrounds -->
+    htmlblueprint: `<!-- For light backgrounds -->
 <div class="chi-badge -primary -flat">
   <span>Primary</span>
 </div>
@@ -114,10 +110,7 @@ import { Component, Vue } from 'vue-property-decorator';
 </div>
 <div class="chi-badge -light -flat">
   <span>Light</span>
-</div>`
-      }
-    };
-  }
-})
-export default class Flat extends Vue {}
+</div>`,
+  };
+}
 </script>

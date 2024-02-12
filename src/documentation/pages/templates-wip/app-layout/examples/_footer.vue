@@ -1,5 +1,5 @@
 <script>
-import {Vue} from "vue-property-decorator";
+import {Vue} from "vue-facing-decorator";
 import {FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS} from "~/fixtures/fixtures";
 
 const generateLumenFooter = (dropdownId) => {

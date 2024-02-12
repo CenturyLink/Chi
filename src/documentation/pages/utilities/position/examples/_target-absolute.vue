@@ -1,39 +1,36 @@
 <template lang="pug">
   <ComponentExample title="Absolute" id="target-absolute" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
-    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    template(#code-htmlblueprint)
+      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { SIZES } from '~/constants/constants';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
+          label: 'HTML Blueprint',
+        },
+      ],
     };
-  }
+  },
 })
 export default class TargetAbsolute extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
+      htmlblueprint: this.generateHtml(),
     };
   }
 
   generateHtml() {
-    return SIZES.map(
-      (size: string) => `<div class="-position-${size}--absolute"></div>`
-    ).join('\n');
+    return SIZES.map((size: string) => `<div class="-position-${size}--absolute"></div>`).join('\n');
   }
 }
 </script>

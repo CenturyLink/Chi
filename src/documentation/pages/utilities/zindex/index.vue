@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Z-index'
-    }
+      title: 'Chi - Z-index',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class ZIndex extends Vue {}
 </script>

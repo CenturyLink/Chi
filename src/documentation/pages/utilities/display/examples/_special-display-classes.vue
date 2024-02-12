@@ -6,32 +6,27 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { displayDefaultColumns } from "~/fixtures/fixtures";
-import { ITableColumn, ITableContent } from "~/models/models";
+import { Vue } from 'vue-facing-decorator';
+import { displayDefaultColumns } from '~/fixtures/fixtures';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 
-@Component({
-  data: () => {
-    return {
-      values: [
-        {
-          name: '-sr--only',
-          value: 'Screen reader only'
-        },
-        {
-          name: '-d-screen--only',
-          value: ['display: block;', 'on @media screen,', 'display: none;', 'on @media print.']
-        },
-        {
-          name: '-d-print--only',
-          value: ['display: none;', 'on @media screen,', 'display: block;', 'on @media print.']
-        }
-      ],
-      columns: displayDefaultColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class SpecialDisplayClasses extends Vue {
+  values = [
+    {
+      name: '-sr--only',
+      value: 'Screen reader only',
+    },
+    {
+      name: '-d-screen--only',
+      value: ['display: block;', 'on @media screen,', 'display: none;', 'on @media print.'],
+    },
+    {
+      name: '-d-print--only',
+      value: ['display: none;', 'on @media screen,', 'display: block;', 'on @media print.'],
+    },
+  ]
+  columns = displayDefaultColumns
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

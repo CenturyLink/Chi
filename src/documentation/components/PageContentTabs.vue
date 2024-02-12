@@ -2,11 +2,7 @@
   <div class="chi-grid__container">
     <nav class="docs-tabs">
       <ul class="chi-tabs -animated" id="page-content-tabs">
-        <li
-          :class="[tab.active ? '-active' : '']"
-          v-for="tab in tabs"
-          :key="tab.id"
-        >
+        <li :class="[tab.active ? '-active' : '']" v-for="tab in tabs" :key="tab.id">
           <a :href="'#' + tab.id">
             {{ tab.label }}
           </a>
@@ -17,17 +13,16 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Themes } from '../models/models';
-import { ITabs } from '../models/models';
+import { Vue , Prop} from 'vue-facing-decorator';
+
+import { type ITabs } from '../models/models';
 
 declare const chi: any;
 
-@Component({})
+@NuxtComponent({})
 export default class PageContentTabs extends Vue {
   @Prop() tabs?: ITabs[];
 
-  theme: Themes = this.$store.state.themes.theme;
   chiTabs: any;
 
   mounted() {

@@ -11,27 +11,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = ['chi-brand', 'chi-popover'];
+// Vue.config.ignoredElements = ['chi-brand', 'chi-popover'];
 
-@Component({
+@NuxtComponent({
   components: {
     Accessibility,
     Examples,
-    PageContentTabs,
-    Properties
+    Properties,
   },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs
-    };
-  }
 })
-export default class Table extends Vue {}
+export default class Table extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>

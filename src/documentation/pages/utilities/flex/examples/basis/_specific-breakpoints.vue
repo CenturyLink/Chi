@@ -7,36 +7,34 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      columns: [
-        {
-          title: `Flex-basis Class`,
-          key: 'cell1',
-          width: '40%',
-        },
-        {
-          title: 'Value',
-          key: 'cell2',
-          width: ''
-        },
-      ],
-    };
-  }
-})
+@NuxtComponent({})
 export default class SpecificBreakpoints extends Vue {
+  columns = [
+    {
+      title: `Flex-basis Class`,
+      key: 'cell1',
+      width: '40%',
+    },
+    {
+      title: 'Value',
+      key: 'cell2',
+      width: '',
+    },
+  ]
   types = ['auto', '0', '*'];
   breakpoints = ['sm', 'md', 'lg', 'xl'];
 
   getRows() {
-    return this.breakpoints.map(breakpoint =>
-      this.types.map(type => ({
-        cell1: `<code>-flex-basis-${breakpoint}--${type}</code>`,
-        cell2: `Visible only from <code>${breakpoint}</code>${type === '*' ? ', can be incremented by 5%' : ''}`
-      }))).flat();
+    return this.breakpoints
+      .map((breakpoint) =>
+        this.types.map((type) => ({
+          cell1: `<code>-flex-basis-${breakpoint}--${type}</code>`,
+          cell2: `Visible only from <code>${breakpoint}</code>${type === '*' ? ', can be incremented by 5%' : ''}`,
+        }))
+      )
+      .flat();
   }
 }
 </script>

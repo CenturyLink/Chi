@@ -1,22 +1,16 @@
 <template lang="pug">
-  div
-    <TitleBar title="Border" description="Use shorthand border utility classes to control border, border width and border color on elements." />
-    <Examples />
+<TitleBar title="Border" description="Use shorthand border utility classes to control border, border width and border color on elements." />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
-  head() {
-    return {
-      title: 'Chi - Border'
-    }
-  },
+@NuxtComponent({
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Border extends Vue {}
 </script>

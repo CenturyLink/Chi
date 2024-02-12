@@ -1,60 +1,51 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Framework specific boilerplates" id="framework-specific-boilerplates" titleSize="h2" additionalClasses="-lh--4" />
-    <TableComponent :data="values" :columns="columns" :getContent="getContent" additionalClasses="-mt--3 -mb--3 -bordered -text--center" />
+<TitleAnchor title="Framework specific boilerplates" id="framework-specific-boilerplates" titleSize="h2" additionalClasses="-lh--4" />
+<TableComponent :data="values" :columns="columns" :getContent="getContent" additionalClasses="-mt--3 -mb--3 -bordered -text--center" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from "~/models/models";
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 
 declare const chi: any;
 
-const columns = [
-  {
-    title: '',
-    key: 'class',
-  },
-  {
-    title: 'chi.css',
-    key: 'css',
-  },
-  {
-    title: 'chi.js',
-    key: 'js',
-  },
-  {
-    title: 'Web components',
-    key: 'webComponents',
-  },
-  {
-    title: 'Favicon',
-    key: 'favicon',
-  },
-  {
-    title: 'Download',
-    key: 'download',
-  }
-];
-const values = ['Vue', 'Stencil', 'Angular', 'React'];
-
-  @Component({
-  data: () => {
-    return {
-      stylesheet: {
-        htmlblueprint: (version: string) => `<link rel="stylesheet" href="https://lib.lumen.com/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
-      },
-      values,
-      columns
-    }
-  }
-})
+@NuxtComponent({})
 export default class Boilerplates extends Vue {
+  stylesheet = {
+    htmlblueprint: (version: string) => `<link rel="stylesheet" href="https://lib.lumen.com/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`,
+  };
+  values = ['Vue', 'Stencil', 'Angular', 'React'];
+  columns = [
+    {
+      title: '',
+      key: 'class',
+    },
+    {
+      title: 'chi.css',
+      key: 'css',
+    },
+    {
+      title: 'chi.js',
+      key: 'js',
+    },
+    {
+      title: 'Web components',
+      key: 'webComponents',
+    },
+    {
+      title: 'Favicon',
+      key: 'favicon',
+    },
+    {
+      title: 'Download',
+      key: 'download',
+    },
+  ];
+
   mounted() {
-    chi.expansionPanel(
-      document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
-      {mode: 'accordion'}
-    );
+    chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'), {
+      mode: 'accordion',
+    });
   }
 
   getContent(column: ITableColumn, content: ITableContent) {
@@ -74,7 +65,7 @@ export default class Boilerplates extends Vue {
   }
 
   get version() {
-    return this.$store.state.themes.version;
+    return useChiVersion();
   }
 }
 </script>

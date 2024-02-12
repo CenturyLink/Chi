@@ -70,22 +70,18 @@
     p.-text
       | Accordion component has a dispose function to free all the resources attached to the element, such as event listeners
       | and object data. You should call this method when you want to remove the component.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory1" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory1")
 
     p.-text
       | It is safe to call the <code>accordion</code> method more than once, as it will return any previously created accordion component
       | associated with the element.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory2" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `
@@ -102,9 +98,9 @@ import { Component, Vue } from 'vue-property-decorator';
         accordion === accordion2; // returns true
 
         accordion.dispose(); // Only have to do it once.
-      `
+      `,
     };
-  }
+  },
 })
 export default class Properties extends Vue {}
 </script>

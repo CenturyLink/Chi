@@ -1,35 +1,29 @@
 <template lang="pug">
-  div
-    <TitleBar title="Breadcrumb" description="Breadcrumbs are used to help users identify where they are in a sites page hierarchy." :tabs="pageTabs" />
-    .chi-grid__container.-pt--3
-      .chi-tabs-panel.-active#examples
-        <Examples />
-      .chi-tabs-panel#properties
-        <Properties />
-      .chi-tabs-panel#accessibility
-        <Accessibility />
+<TitleBar title="Breadcrumb" description="Breadcrumbs are used to help users identify where they are in a sites page hierarchy." :tabs="pageTabs" />
+.chi-grid__container.-pt--3
+  .chi-tabs-panel.-active#examples
+    <Examples />
+  .chi-tabs-panel#properties
+    <Properties />
+  .chi-tabs-panel#accessibility
+    <Accessibility />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+import { Vue } from 'vue-facing-decorator';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import Examples from './examples/index.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '@/constants/constants';
 
-@Component({
+@NuxtComponent({
   components: {
     Accessibility,
-    PageContentTabs,
     Properties,
-    Examples
-  },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs
-    };
+    Examples,
   }
 })
-export default class Breadcrumb extends Vue {}
+export default class Breadcrumb extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>

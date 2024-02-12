@@ -57,18 +57,11 @@ export const COMPONENT_EXAMPLE_EVENTS = {
   CHI_HEAD_TABS_CHANGE: 'chiHeadTabsChange'
 };
 
-export const DOCS_ENV = process.env.DOCS_ENV;
 export const BASE_URLS_FOR_ENVS = {
   production: `/chi/${CHI_VERSION}/`, // assets.ctl.io, lib.lumen.io, staging
   development: '/', // Local
   pr: '/' // PR instances
 };
-
-export const BASE_URL =
-  DOCS_ENV &&
-  (DOCS_ENV === 'production' || DOCS_ENV === 'pr' || DOCS_ENV === 'development')
-    ? BASE_URLS_FOR_ENVS[DOCS_ENV]
-    : '/';
 
 export const SECTION_URLS = {
   gettingStarted: `getting-started`,
@@ -76,7 +69,7 @@ export const SECTION_URLS = {
   components: `components`,
   foundations: `foundations`,
   templates: `templates`
-} 
+}
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
@@ -90,11 +83,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     label: 'Alert',
     source: 'pug'
   },
-  {
-    to: `components/avatar`,
-    label: 'Avatar',
-    source: 'vue'
-  },
+  { to: `components/avatar`, label: 'Avatar', source: 'vue' },
   {
     to: `components/badge`,
     label: 'Badge',
@@ -362,6 +351,32 @@ export const NAVIGATION_UTILITIES_ITEMS = [
   { to: `utilities/text`, label: 'Text' },
   { to: `utilities/vertical-align`, label: 'Vertical-align' },
   { to: `utilities/zindex`, label: 'Z-index' },
+];
+export const NAVIGATION_GETTING_STARTED_ITEMS = [
+  // TODO: check this...
+  { href: `${SECTION_URLS.gettingStarted}/introduction`, label: 'Introduction', source: 'pug'},
+  { href: `${SECTION_URLS.gettingStarted}/installation`, label: 'Installation', source: 'pug'},
+  { href: `${SECTION_URLS.gettingStarted}/development-workflow`, label: 'Development workflow', source: 'pug'},
+  { href: `${SECTION_URLS.gettingStarted}/browsers-devices`, label: 'Browser support', source: 'pug'},
+  { href: `${SECTION_URLS.gettingStarted}/whats-new`, label: "What's new", source: 'pug'},
+];
+
+export const NAVIGATION_FOUNDATIONS_ACCESIBILITY = [
+  { href: `${SECTION_URLS.foundations}/accessibility/overview`, label: 'Overview', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/using-keyboard`, label: 'Using the keyboard', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/page-structure`, label: 'Page structure', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/color-sensory`, label: 'Color and sensory', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/images`, label: 'Images', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/text`, label: 'Text', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/links-and-forms`, label: 'Links and forms', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/tables`, label: 'Tables', source: 'pug'},
+  { href: `${SECTION_URLS.foundations}/accessibility/other`, label: 'Other', source: 'pug'},
+];
+
+export const NAVIGATION_FOUNDATIONS = [
+  { href: `${SECTION_URLS.foundations}/color`, label: 'Color', source: 'pug' },
+  { href: `${SECTION_URLS.foundations}/design-tokens`, label: 'Design tokens', source: 'pug' },
+  { href: `${SECTION_URLS.foundations}/grid`, label: 'Grid', source: 'pug' },
 ];
 
 export const CHI_VISIBLE_VERSION = [

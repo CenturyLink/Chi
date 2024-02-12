@@ -16,56 +16,42 @@
         | To use the old method of including Chi in your project, include the ES5, browser prepared, JavaScript
         | file from the Lumen Assets Server. In this solution Popper.js and Day.js are bundled into the file.
       .-mb--2
-        <Copy id="stylesheet">
-          <pre class="language-html" slot="code">
-          <code v-highlight="stylesheet.htmlblueprint.jsFile(version)" lang='bash' class="html"></code>
-          </pre>
-        </Copy>
+        <Copy id="stylesheet" :code="stylesheet.htmlblueprint.jsFile(version)" lang="javascript" />
     #chi-js-tabs--amd.chi-tabs-panel
       p.-text
         | If you use RequireJS or any other AMD compatible module loader in your project, you will find the AMD compatible
         | version in the <code>amd</code> folder. Then, you will have to update your require configuration:
-      <Copy id="stylesheet">
-        <pre class="language-html" slot="code">
-          <code v-highlight="stylesheet.htmlblueprint.amd" lang='bash' class="html"></code>
-        </pre>
-      </Copy>
+      <Copy id="stylesheet" :code="stylesheet.htmlblueprint.amd" lang='javascript' />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      tabs: [
-        { title: 'JavaScript file', link: 'file' },
-        { title: 'AMD module', link: 'amd' },
-      ],
-      stylesheet: {
-        htmlblueprint: {
-          jsFile: (version: string) => `<script src="https://lib.lumen.com/chi/${version}/js/chi.js" integrity="sha256-6QhYmHCoTdqje2hbaXewfi4/GRD7ar8PaJNc/txRYpw=" crossorigin="anonymous">\x3C/script>`,
-          amd: `'chi': {
+@NuxtComponent({})
+export default class JavaScript extends Vue {
+  tabs = [{ title: 'JavaScript file', link: 'file' }, { title: 'AMD module', link: 'amd' }];
+  stylesheet = {
+    htmlblueprint: {
+      jsFile: (version: string) =>
+        `<script src="https://lib.lumen.com/chi/${version}/js/chi.js" integrity="sha256-6QhYmHCoTdqje2hbaXewfi4/GRD7ar8PaJNc/txRYpw=" crossorigin="anonymous">\x3C/script>`,
+      amd: `'chi': {
   path: [CHI_PATH, 'amd', 'chi'].join('/'),
   shim: {
     deps: ['Popper'],
     exports: 'chi'
   }
-}`
-        }
-      },
-    }
-  }
-})
-export default class JavaScript extends Vue {
+}`,
+    },
+  };
+
   mounted() {
     chi.tab(document.getElementById('chi-js-tabs'));
   }
 
   get version() {
-    return this.$store.state.themes.version;
+    return useChiVersion().value;
   }
 }
 </script>

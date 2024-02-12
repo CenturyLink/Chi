@@ -1,22 +1,21 @@
 <template lang="pug">
-  div
-    <TitleBar title="Page structure" />
-    <Examples />
+<TitleBar title="Page structure" />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Page structure'
-    }
+      title: 'Page structure',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class PageStructure extends Vue {}
 </script>

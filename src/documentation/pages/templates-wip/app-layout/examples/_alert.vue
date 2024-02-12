@@ -1,54 +1,56 @@
 <template lang="pug">
   <ComponentExample title="Base with alert" id="base_with_alert" :tabs="exampleTabs" padding="0">
-    chi-main(title='Page Title' slot="example")
-      chi-alert(color='info' icon='circle-info' slot='page-alert' closable) This is a page level info alert
-      .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-      div(slot="footer")
-        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
-        div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
-        div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
+    template(#example)
+      chi-main(title='Page Title')
+        template(#page-alert)
+          chi-alert(color='info' icon='circle-info' closable) This is a page level info alert
+          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
+        template(#footer)
+          template(v-if="['lumen', 'portal'].includes(selectedTheme)")
+            div(v-html="footers.lumen")
+          template(v-if="selectedTheme === 'centurylink'")
+            div(v-html="footers.centurylink")
+          template(v-if="selectedTheme === 'brightspeed'")
+            div(v-html="footers.brightspeed")
 
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    template(#code-webcomponent)
+      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+    template(#code-htmlblueprint)
+      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import {
   generateAllExampleFooters,
-  generateExampleFooter
+  generateExampleFooter,
 } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      footers: generateAllExampleFooters('alert-language-dropdown-button'),
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: '',
-        htmlblueprint: ''
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class Alert extends Vue {
+  footers = generateAllExampleFooters('alert-language-dropdown-button');
+
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: '',
+    htmlblueprint: '',
+  };
+
+  selectedTheme = useSelectedTheme();
+
   mounted() {
     const languageDropdown = document.getElementById('alert-language-dropdown-button');
 
@@ -64,16 +66,19 @@ export default class Alert extends Vue {
   }
 
   _setCodeSnippets() {
-    const footerTemplate = generateExampleFooter(this.$store.state.themes.theme);
+    const footerTemplate = generateExampleFooter(this.selectedTheme);
 
-    this.$data.codeSnippets.webcomponent = `<chi-main title="Page Title">
+    this.codeSnippets.webcomponent = `<chi-main title="Page Title">
   <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
   <!-- Page content goes here -->
   ${footerTemplate}
 </chi-main>
 
-${this.$store.state.themes.theme === 'centurylink' ? '' : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`}`;
-    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
+${this.selectedTheme === 'centurylink'
+        ? ''
+        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+      }`;
+    this.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__alert">
     <div class="chi-alert -info -close" role="alert">
       <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
@@ -102,7 +107,10 @@ ${this.$store.state.themes.theme === 'centurylink' ? '' : `<script>chi.dropdown(
   ${footerTemplate}
 </div>
 
-${this.$store.state.themes.theme === 'centurylink' ? '' : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`}`;
+${this.selectedTheme === 'centurylink'
+        ? ''
+        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+      }`;
   }
 }
 </script>

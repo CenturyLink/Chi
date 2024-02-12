@@ -1,7 +1,7 @@
 <template lang="pug">
   header.chi-header.docs-header.-z--20
     #version-check.-w--100
-    style(type='text/css').
+    component(is="style" type='text/css').
       .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
       .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
       .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
@@ -97,13 +97,13 @@
         )
           .chi-button__content
             i.chi-icon.-sm--2.icon-menu(aria-hidden='true')
-        <a class="docs-header__logo" aria-label='Portal' :href="BASE_URL">
+        <a class="docs-header__logo" aria-label='Portal' :href="baseUrl">
           chi-brand#header-logo(logo='lumen')
         </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
       .chi-header__start
         #docsearch.-chi-search
-        script(v-html="algoliaScript")
+        component(is="script" v-html="algoliaScript")
       .chi-header__end
         .chi-dropdown
           button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
@@ -146,25 +146,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { BASE_URL, CHI_VISIBLE_VERSION } from '../constants/constants';
+import { Vue } from 'vue-facing-decorator';
+import { CHI_VISIBLE_VERSION } from '../constants/constants';
 import { CHI_VERSION as ACTIVE_CHI_VERSION } from '../constants/configs';
 import { algoliaScript } from '../constants/scripts';
 
 declare const chi: any;
 
-Vue.config.ignoredElements = ['chi-brand'];
-@Component({
-  data: () => {
-    return {
-      algoliaScript,
-      CHI_VISIBLE_VERSION,
-      ACTIVE_CHI_VERSION,
-      BASE_URL
-    };
-  }
-})
+@NuxtComponent({})
 export default class Header extends Vue {
+  CHI_VISIBLE_VERSION = CHI_VISIBLE_VERSION;
+  baseUrl = useRuntimeConfig().public.baseUrl;
+  ACTIVE_CHI_VERSION = ACTIVE_CHI_VERSION;
+  algoliaScript = algoliaScript;
   versionDropdown: any;
   supportDropdown: any;
   githubButtonTooltip: any;
@@ -201,3 +195,4 @@ export default class Header extends Vue {
 }
 </script>
 <style scoped lang="scss"></style>
+../utilities/vue-wrapper

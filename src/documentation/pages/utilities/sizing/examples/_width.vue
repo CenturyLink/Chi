@@ -12,34 +12,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { sizingColumns } from '~/fixtures/fixtures';
 
-
-@Component({
-  data: () => {
-    return {
-      columns: sizingColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class Width extends Vue {
+  columns = sizingColumns
   types = ['auto', '*'];
   breakpoints = ['sm', 'md', 'lg', 'xl'];
 
   get allBreakpointsRows() {
-    return this.types.map(type => ({
+    return this.types.map((type) => ({
       class: `<code>-w--${type}</code>`,
-      value: type === '*' ? 'can be incremented by 5%' : `<code>width: ${type};</code>`
-    }))
+      value: type === '*' ? 'can be incremented by 5%' : `<code>width: ${type};</code>`,
+    }));
   }
 
   get specificBreakpointsRows() {
-    return this.breakpoints.map(breakpoint =>
-      this.types.map(type => ({
-        class: `<code>-w-${breakpoint}--${type}</code>`,
-        value: `Visible only from <code>${breakpoint}</code>${type === '*' ? ', can be incremented by 5%' : ''}`
-      }))).flat();
+    return this.breakpoints
+      .map((breakpoint) =>
+        this.types.map((type) => ({
+          class: `<code>-w-${breakpoint}--${type}</code>`,
+          value: `Visible only from <code>${breakpoint}</code>${type === '*' ? ', can be incremented by 5%' : ''}`,
+        }))
+      )
+      .flat();
   }
 }
 </script>

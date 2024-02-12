@@ -1,33 +1,34 @@
 <template lang="pug">
   <ComponentExample title="Auto margin" id="auto-margin" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
-    p.-text(slot="example-description") Apply margin auto to an element
-    .example-spacing-margin.-d--flex(slot="example")
-      .-m--auto.example-spacing-padding
-        .example-spacing-padding__block
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    template(#example-description)
+      p.-text Apply margin auto to an element
+    template(#example)
+      .example-spacing-margin.-d--flex
+        .-m--auto.example-spacing-padding
+          .example-spacing-padding__block
+    template(#code-htmlblueprint)
+      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
-        htmlblueprint: `<div class="-m--auto"></div>`
-      }
+        htmlblueprint: `<div class="-m--auto"></div>`,
+      },
     };
-  }
+  },
 })
 export default class AutoMargin extends Vue {}
 </script>

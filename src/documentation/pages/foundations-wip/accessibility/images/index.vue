@@ -1,22 +1,21 @@
 <template lang="pug">
-  div
-    <TitleBar title="Images" />
-    <Examples />
+<TitleBar title="Images" />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Images'
-    }
+      title: 'Chi - Images',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Images extends Vue {}
 </script>

@@ -1,25 +1,24 @@
 <template lang="pug">
-  header.docs-titlebar
-    .chi-grid__container
-      <h1 class="docs-titlebar__title">{{title}}</h1>
-      .docs-titlebar__description(v-if="description") {{description}}
-    <PageContentTabs v-if="$props.tabs" :tabs="$props.tabs" />
+Title {{ title }}
+header.docs-titlebar
+  .chi-grid__container
+    <h1 class="docs-titlebar__title">{{title}}</h1>
+    .docs-titlebar__description(v-if="description") {{description}}
+  <PageContentTabs v-if="tabs" :tabs="tabs" />
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Themes } from '../models/models';
-import { ITabs } from '../models/models';
+import { Vue, Prop } from 'vue-facing-decorator';
+import { type ITabs } from '../models/models';
 
 declare const chi: any;
 
-@Component({})
+@NuxtComponent({})
 export default class BaseExample extends Vue {
   @Prop() title?: string;
   @Prop() description?: string;
   @Prop() tabs?: ITabs[];
 
-  theme: Themes = this.$store.state.themes.theme;
   chiTabs: any;
 
   mounted() {

@@ -1,22 +1,21 @@
 <template lang="pug">
-  div
-    <TitleBar title="Links and forms" />
-    <Examples />
+<TitleBar title="Links and forms" />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Links and forms'
-    }
+      title: 'Chi - Links and forms',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class LinksForms extends Vue {}
 </script>

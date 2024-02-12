@@ -1,18 +1,18 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <Setup />
-    <Testing />
-    <FileStructure />
-    <HtmlTag />
-    <ComponentTsClass />
-    <Typescript />
-    <Properties />
-    <Styling />
-    <Rules />
+.chi-grid__container.-pt--3
+  <Setup />
+  <Testing />
+  <FileStructure />
+  <HtmlTag />
+  <ComponentTsClass />
+  <Typescript />
+  <Properties />
+  <Styling />
+  <Rules />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Setup from './_setup.vue';
 import Testing from './_testing.vue';
 import FileStructure from './_file-structure.vue';
@@ -23,7 +23,7 @@ import Properties from './_properties.vue';
 import Styling from './_styling.vue';
 import Rules from './_rules.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Setup,
     Testing,
@@ -34,7 +34,7 @@ import Rules from './_rules.vue';
     Properties,
     Styling,
     Rules,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>

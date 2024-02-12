@@ -1,22 +1,15 @@
 <template>
   <div class="chi-dropdown -w--100">
-    <button
-      ref="switcher"
-      class="-theme-switch chi-button -fluid chi-dropdown__trigger"
-    >
+    <button ref="switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
       <div class="chi-button__content -flex--column">
-        <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm"
-          >Theme</span
-        >
+        <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm">Theme</span>
         <div class="-d--flex -w--100">
           <div class="-align-items--center -mr--1">
             <nuxt-img
               class="-favicon"
               width="16"
               height="16"
-              :src="
-                `/themes/${getThemeSwitcherTriggerIcon()}/images/favicon.svg`
-              "
+              :src="`/themes/${getThemeSwitcherTriggerIcon()}/images/favicon.svg`"
             />
           </div>
           <div class="-theme-name">
@@ -28,45 +21,22 @@
     <div class="chi-dropdown__menu" x-placement="bottom-start">
       <a
         v-bind:class="[
-          this.$store.state.themes.theme === 'centurylink' ? '-active' : '',
+          selectedTheme === 'centurylink' ? '-active' : '',
           'theme-trigger-centurylink',
-          'chi-dropdown__menu-item'
+          'chi-dropdown__menu-item',
         ]"
         @click="setTheme('centurylink')"
-        ><nuxt-img
-          class="-mr--1"
-          width="16"
-          height="16"
-          :src="`/themes/centurylink/images/favicon.svg`"
-        />
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/centurylink/images/favicon.svg`" />
         <div class="-theme-name">CenturyLink</div></a
       ><a
-        v-bind:class="[
-          this.$store.state.themes.theme === 'lumen' ? '-active' : '',
-          'theme-trigger-lumen',
-          'chi-dropdown__menu-item'
-        ]"
+        v-bind:class="[selectedTheme === 'lumen' ? '-active' : '', 'theme-trigger-lumen', 'chi-dropdown__menu-item']"
         @click="setTheme('lumen')"
-        ><nuxt-img
-          class="-mr--1"
-          width="16"
-          height="16"
-          :src="`/themes/lumen/images/favicon.svg`"
-        />
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
         <div class="-theme-name">Lumen</div></a
       ><a
-        v-bind:class="[
-          this.$store.state.themes.theme === 'portal' ? '-active' : '',
-          'theme-trigger-portal',
-          'chi-dropdown__menu-item'
-        ]"
+        v-bind:class="[selectedTheme === 'portal' ? '-active' : '', 'theme-trigger-portal', 'chi-dropdown__menu-item']"
         @click="setTheme('portal')"
-        ><nuxt-img
-          class="-mr--1"
-          width="16"
-          height="16"
-          :src="`/themes/lumen/images/favicon.svg`"
-        />
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
       >
     </div>
@@ -74,12 +44,12 @@
 </template>
 
 <script lang="ts">
-import { Themes } from '../models/models';
-import { THEMES } from '../constants/constants';
-import { Component, Vue } from 'vue-property-decorator';
-import { BASE_URL, TEMP_DEVELOPMENT_FALLBACK_URL } from '../constants/constants';
-import { getTheme } from './../store/themes'
+import { type Themes } from '@/models/models';
+import { THEMES } from '@/constants/constants';
+import { Vue } from 'vue-facing-decorator';
+import { TEMP_DEVELOPMENT_FALLBACK_URL } from '@/constants/constants';
 import { capitalize } from '@/utilities/utilities';
+
 
 declare const chi: any;
 interface AssetToReplace {
@@ -87,31 +57,24 @@ interface AssetToReplace {
   id: string;
 }
 
-@Component({
-  data: () => {
-    return {
-      BASE_URL
-    };
-  }
-})
+@NuxtComponent({})
 export default class ThemeSwitcher extends Vue {
   themeSwitcherDropdown: any;
-  themes = THEMES;
+  // Type any can be removed once the component is fully migrated to Vue.
+  selectedTheme: any = useSelectedTheme();
 
   getThemeSwitcherTriggerIcon() {
-    const theme = this.$store.state.themes.theme;
     const excludedThemes = ['portal', 'colt', 'brightspeed'];
 
-    return excludedThemes.includes(theme) ? 'lumen' : theme;
+    return excludedThemes.includes(this.selectedTheme as any) ? 'lumen' : this.selectedTheme;
   }
 
   get themeName() {
-    const theme = this.$store.state.themes.theme;
     const excludedThemes = ['colt', 'brightspeed'];
 
-    return excludedThemes.includes(theme)
+    return excludedThemes.includes(this.selectedTheme)
       ? 'Lumen'
-      : THEMES[theme as keyof typeof THEMES].label;
+      : THEMES[this.selectedTheme as keyof typeof THEMES].label || 'Lumen';
   }
 
   setTheme(theme: Themes): void {
@@ -141,13 +104,14 @@ export default class ThemeSwitcher extends Vue {
         });
       }
     });
+
     brandLogo.setAttribute(
       'logo',
       theme === 'centurylink' ? 'centurylink' : 'lumen'
     );
 
-    this.$store.commit('themes/set', theme);
-    this.setNewRoute(theme);
+    this.selectedTheme = theme;
+    this.setUrlTheme(theme);
   }
 
   mounted() {
@@ -160,24 +124,31 @@ export default class ThemeSwitcher extends Vue {
     this.setThemeFromUrl();
   }
 
-  setThemeFromUrl() {
-    const urlTheme = this.$store.$router.currentRoute.query?.theme as string;
-    const theme = getTheme(urlTheme);
+  getUrlTheme() {
+    return useRoute().query?.theme?.toString() || '';
+  }
 
-    if (theme) {
-      this.$store.commit('themes/set', theme);
+
+  setThemeFromUrl() {
+    const theme = this.getUrlTheme()?.toLowerCase();
+    const isValidTheme = Object.keys(THEMES).includes(theme);
+
+    if (isValidTheme) {
       this.setTheme(theme as Themes);
-      this.setNewRoute(theme);
     }
   }
 
-  setNewRoute(theme: string) {
-    const currentRoute = this.$store.$router.currentRoute;
-    const currentTheme = currentRoute.query?.theme?.toString();
-    const newTheme = theme !== 'centurylink' ? capitalize(theme) : 'CenturyLink';
-    const newRoute = currentTheme ? currentRoute.fullPath.replace(currentTheme, newTheme) : {path: currentRoute.fullPath, query: {theme: newTheme}};
-
-    this.$router.push(newRoute);
+  async setUrlTheme(newTheme: string) {
+    const urlTheme = this.getUrlTheme();
+    if (newTheme !== urlTheme) {
+      const queryTheme = newTheme === 'centurylink' ? 'CenturyLink' : capitalize(newTheme);
+      await navigateTo({
+        path: useRoute().path,
+        query: {
+          theme: queryTheme
+        }
+      })
+    }
   }
 
   beforeDestroy() {

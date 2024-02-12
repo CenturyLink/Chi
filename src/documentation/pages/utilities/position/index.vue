@@ -5,18 +5,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Examples from './examples/index.vue'
+import { Vue } from 'vue-facing-decorator';
+import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   head() {
     return {
-      title: 'Chi - Position'
-    }
+      title: 'Chi - Position',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Position extends Vue {}
 </script>
