@@ -8,9 +8,9 @@ console.log('Path:', path)
 console.log('Dev mode:', isDev)
 
 if (path === '/' && isDev) {
-  await navigateTo({
-    path: `/${SECTION_URLS.gettingStarted}${isDev ? '-wip' : ''}`,
-    query,
-  });
+  // await navigateTo({
+  //   path: `/${SECTION_URLS.gettingStarted}${isDev ? '-wip' : ''}`,
+  //   query,
+  // });
 }
 </script>
