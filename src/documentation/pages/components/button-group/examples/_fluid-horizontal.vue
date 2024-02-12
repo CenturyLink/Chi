@@ -1,13 +1,13 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Horizontal" id="fluid-horizontal" :tabs="exampleTabs">
-    template(#example)
-      .chi-button-group.-fluid
-        button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Horizontal" id="fluid-horizontal" :tabs="exampleTabs">
+  template(#example)
+    .chi-button-group.-fluid
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">

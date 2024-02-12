@@ -1,16 +1,16 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
-        | To render a button group, wrap a series of buttons in a div and apply the class <code>chi-button-group</code>.
-    template(#example)
-      .chi-button-group
-        button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | To render a button group, wrap a series of buttons in a div and apply the class <code>chi-button-group</code>.
+  template(#example)
+    .chi-button-group
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">

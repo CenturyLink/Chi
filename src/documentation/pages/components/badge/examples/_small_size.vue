@@ -1,21 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Small" titleSize="h4" id="small_size" :tabs="exampleTabs" padding="-p--2">
-    template(#example)
-      chi-badge(size='sm', class='-m--1')= 'Badge'
-      chi-badge(size='sm', class='-m--1', variant='flat')
-        chi-icon(icon='atom')
-        span Badge
+<ComponentExample title="Small" titleSize="h4" id="small_size" :tabs="exampleTabs" padding="-p--2">
+  template(#example)
+    chi-badge(size='sm', class='-m--1')= 'Badge'
+    chi-badge(size='sm', class='-m--1', variant='flat')
+      chi-icon(icon='atom')
+      span Badge
 
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | Use the <code>-sm</code> modifier class to render small badges.
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Use the <code>-sm</code> modifier class to render small badges.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

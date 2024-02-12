@@ -1,41 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    template(#example)
-      .chi-accordion#example-portal-base
-        .chi-accordion__item
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion 1
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-        .chi-accordion__item.-expanded
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion 2
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-        .chi-accordion__item
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion 3
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-        .chi-accordion__item
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion 4
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      <JSNeeded />
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+<ComponentExample title="Base" id="base_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+  template(#example)
+    .chi-accordion#example-portal-base
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion 1
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion 2
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion 3
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion 4
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

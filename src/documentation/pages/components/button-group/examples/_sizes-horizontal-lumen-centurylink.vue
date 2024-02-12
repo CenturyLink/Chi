@@ -1,16 +1,16 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Horizontal" id="sizes-horizontal-lumen-centurylink" :tabs="exampleTabs">
-    template(#example)
-      div(v-for="size in sizes")
-        p.-text--bold -{{size}}
-        .-d--flex.-flex--wrap
-          .chi-button-group
-            button(:class="`chi-button -${size}`"  v-for="item in Array(3).fill(0)") Button
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Horizontal" id="sizes-horizontal-lumen-centurylink" :tabs="exampleTabs">
+  template(#example)
+    div(v-for="size in sizes")
+      p.-text--bold -{{size}}
+      .-d--flex.-flex--wrap
+        .chi-button-group
+          button(:class="`chi-button -${size}`"  v-for="item in Array(3).fill(0)") Button
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
