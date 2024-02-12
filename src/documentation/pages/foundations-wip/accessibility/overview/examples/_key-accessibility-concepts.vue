@@ -3,7 +3,7 @@ template(v-for="({ title, url, text }) in concepts")
   <TitleAnchor :title="title" :id="url" />
   p.-text.-mt--0 {{ text }}
 h3
-  | <a class="-text--h4 -text--body -m--0" href='../other'>Other</a>
+  | <a class="-text--h4 -text--body -m--0" href='#other'>Other</a>
 ul.-text.-mt--0
   li <strong>Time-based Media:</strong> Provide alternatives for time-based media.
   li <strong>Distinguishable:</strong> Make it easier for users to see and hear content including separating foreground from background.

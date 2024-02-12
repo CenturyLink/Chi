@@ -21,6 +21,15 @@ const CHI_ASSETS_SOURCE_URL = IS_DEV
   ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/`
   : BASE_URL;
 
+const IGNORED_ROUTES = [
+  ...NAVIGATION_GETTING_STARTED_ITEMS,
+  ...NAVIGATION_FOUNDATIONS,
+  ...NAVIGATION_FOUNDATIONS_ACCESIBILITY,
+  ...NAVIGATION_COMPONENTS_ITEMS,
+  ...NAVIGATION_TEMPLATE_ITEMS,
+].filter(i => i.source === 'pug').map(i => `/${i.href}`)
+
+
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -88,6 +97,15 @@ export default defineNuxtConfig({
     // 'highlight.js/styles/github.css'
   ],
   devtools: { enabled: true },
+  experimental: {
+    defaults: {
+      // https://nuxt.com/docs/api/components/nuxt-link#overwriting-defaults
+      nuxtLink: {
+        // no need, the active class is applied to the parent in navigation (li not a)
+        // activeClass: '-active'
+      }
+    }
+  },
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => tag.startsWith('chi-'),
@@ -112,19 +130,22 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    output: {
-      // publicDir: 'dist'
-    },
+    // output: {
+    //   publicDir: 'dist'
+    // },
+    // https://nitro.unjs.io/config#prerender
     prerender: {
       ignore: [
-        '/',
-        ...NAVIGATION_GETTING_STARTED_ITEMS.map(item => `/${item.href}`),
-        ...NAVIGATION_FOUNDATIONS.map(item => `/${item.href}`),
-        ...NAVIGATION_FOUNDATIONS_ACCESIBILITY.map(item => `/${item.href}`),
-        '/installation',
-        '/components/icon', // To-do, must be removed after full migration
-        ...NAVIGATION_COMPONENTS_ITEMS.map(item => `/${item.href}`),
-        ...NAVIGATION_TEMPLATE_ITEMS.map(item => `/${item.href}`),
+        // '/',
+        // '/installation',
+        // '/components/icon', // To-do, must be removed after full migration
+        ...IGNORED_ROUTES,
+        // to be migrated
+        '/templates-wip/card',
+        '/templates-wip/app-layout',
+        '/components-wip/',
+        // Non existant..
+        '/getting-started-wip/whats-new'
       ]
     },
     esbuild: {

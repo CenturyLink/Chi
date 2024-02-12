@@ -1,5 +1,5 @@
 <template lang="pug">
-(<ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+<ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
   template(#example)
     button(@click="toggleOne").chi-button#toggle-accordion-1 Toggle item 1
     button(@click="toggleTwo").chi-button.-ml--1#toggle-accordion-2 Toggle item 2
@@ -30,7 +30,7 @@
   template(#code-htmlblueprint)
     <JSNeeded />
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-</ComponentExample>)
+</ComponentExample>
 </template>
 
 <script lang="ts">

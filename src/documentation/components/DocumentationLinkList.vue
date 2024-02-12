@@ -2,20 +2,23 @@
   <li v-for="link in items" :class="{
     '-active': route.fullPath.includes(link.to || link.href)
   }">
-    <template v-if="isDev">
+    <NuxtLink :to="`/${link.to || link.href}`">
+      {{ link.label }}
+    </NuxtLink>
+    <!-- <template v-if="isDev">
       <NuxtLink :to="`/${link.to}`">
         {{ link.label }}
       </NuxtLink>
     </template>
 
-    <template v-else>
-      <NuxtLink v-if="link.to && link.source === 'vue'" :to="`/${link.to}`">
-        {{ link.label }}
-      </NuxtLink>
-      <a v-else :href="`${baseUrl}${link.href}`">
+    <template>
+      <a v-if="link.href && link.source === 'pug'" :href="`${$config.public.baseUrl}${link.href}`">
         {{ link.label }}
       </a>
-    </template>
+      <NuxtLink v-else-if="link.to" :to="`/${link.to}`">
+        {{ link.label }}
+      </NuxtLink>
+    </template> -->
   </li>
 </template>
 
@@ -23,6 +26,7 @@
 const props = defineProps(['links']);
 const route = useRoute();
 const isDev = useRuntimeConfig().public.isDev;
+
 
 const getWipUrl = item => {
   if (item.source === 'pug') {

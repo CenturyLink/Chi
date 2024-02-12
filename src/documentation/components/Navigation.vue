@@ -72,9 +72,6 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class Navigation extends Vue {
-  config = useRuntimeConfig().public;
-  baseUrl = this.config.baseUrl;
-
   [x: string]: any;
   chiAccordion: any;
   SECTION_URLS = SECTION_URLS;
