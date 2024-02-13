@@ -3,6 +3,7 @@ import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-text-input',
@@ -161,6 +162,10 @@ export class TextInput {
     this.iconRightColorValidation(this.iconRightColor);
     this.sizeValidation(this.size);
     this.typeValidation(this.type);
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   render() {
