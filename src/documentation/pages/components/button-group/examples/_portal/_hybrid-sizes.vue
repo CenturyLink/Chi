@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Hybrid buttons sizes" id="hybrid-buttons-sizes-portal" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
-        | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
-        |  <code>lg</code>.
-        | The default size is <code>md</code>.
-    template(#example)
-      .-p--0.-d--flex.-flex--column(v-for="size in sizes")
-        p.-text--bold.-pl--1.-mb--0 -{{size}}
-        .chi-button-group.-m--1
-          button(:class="`chi-button -${size}`") Button
-          button(:class="`chi-button -${size} -icon`", aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-atom(aria-hidden="true")
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Hybrid buttons sizes" id="hybrid-buttons-sizes-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>.
+      | The default size is <code>md</code>.
+  template(#example)
+    .-p--0.-d--flex.-flex--column(v-for="size in sizes")
+      p.-text--bold.-pl--1.-mb--0 -{{size}}
+      .chi-button-group.-m--1
+        button(:class="`chi-button -${size}`") Button
+        button(:class="`chi-button -${size} -icon`", aria-label="Button action")
+          .chi-button__content
+            i.chi-icon.icon-atom(aria-hidden="true")
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">

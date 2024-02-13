@@ -2,16 +2,13 @@
   <ComponentExample title="Base with alert" id="base_with_alert" :tabs="exampleTabs" padding="0">
     template(#example)
       chi-main(title='Page Title')
-        template(#page-alert)
+        div(slot="page-alert")
           chi-alert(color='info' icon='circle-info' closable) This is a page level info alert
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-        template(#footer)
-          template(v-if="['lumen', 'portal'].includes(selectedTheme)")
-            div(v-html="footers.lumen")
-          template(v-if="selectedTheme === 'centurylink'")
-            div(v-html="footers.centurylink")
-          template(v-if="selectedTheme === 'brightspeed'")
-            div(v-html="footers.brightspeed")
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
+        div(slot="footer")
+          div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
+          div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
+          div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
 
     template(#code-webcomponent)
       Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
@@ -31,6 +28,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class Alert extends Vue {
+  selectedTheme = useSelectedTheme()
   footers = generateAllExampleFooters('alert-language-dropdown-button');
 
   exampleTabs = [

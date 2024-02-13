@@ -1,16 +1,16 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Vertical" id="vertical" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
-        | To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
-    template(#example)
-      .chi-button-group.-vertical
-        button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Vertical" id="vertical" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
+  template(#example)
+    .chi-button-group.-vertical
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">

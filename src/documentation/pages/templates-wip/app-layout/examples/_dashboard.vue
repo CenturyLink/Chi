@@ -2,13 +2,13 @@
 <ComponentExample title="Dashboard with header background" id="dashboard" :tabs="exampleTabs" padding="0">
   template(#example)
     chi-main(title='Page title' format='fixed-width' header-background)
-      template(#help-icon)
+      div(slot='help-icon')
         chi-button#dashboard__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' @click="togglePopover")
           chi-icon(icon='circle-question-outline')
-      template(#help-icon)
+      div(slot='help-icon')
         chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#dashboard__help-button')
           | Popover content.
-      template(#header-actions)
+      div(slot='header-actions')
         chi-button(color='primary' size='sm') Button
       .chi-css-grid.-grid-rows--176
         .chi-css-col.-col-lg--6.-col-xl--4.-row--2
@@ -88,7 +88,7 @@
               .chi-card__title Widget
               chi-link(size='md' href='#' cta='cta') View
             .chi-card__content Content here
-      template(#footer)
+      div(slot="footer")
         template(v-if="['lumen', 'portal'].includes(selectedTheme)")
           div(v-html="footers.lumen")
         template(v-if="selectedTheme === 'centurylink'")

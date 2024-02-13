@@ -3,7 +3,7 @@
     template(#example)
       chi-main(backlink='Back link' title='Page title')
         .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-        template(#footer)
+        div(slot="footer")
           template(v-if="['lumen', 'portal'].includes(selectedTheme)")
             div(v-html="footers.lumen")
           template(v-if="selectedTheme === 'centurylink'")

@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-
+import { standardComponentPageTabs } from '~/constants/constants';
 import Examples from './examples/index.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
@@ -20,9 +20,13 @@ import Accessibility from './_accessibility.vue';
   components: {
     Examples,
     Properties,
-    Accessibility,
+    Accessibility
   },
-
+  data: () => {
+    return {
+      pageTabs: standardComponentPageTabs
+    };
+  },
   layout() {
     return 'wide';
   },

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  ClientOnly
     div(v-if="props.length")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3

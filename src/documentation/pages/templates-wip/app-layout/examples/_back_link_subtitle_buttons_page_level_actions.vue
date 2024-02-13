@@ -3,16 +3,13 @@
     template(#example)
       chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle')
         .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-        template(#page-level__actions)
+        div(slot='page-level__actions')
           button.chi-button.-primary.-outline.-bg--white Cancel
           button.chi-button.-primary.-ml--1 Submit
-        template(#footer)
-          template(v-if="['lumen', 'portal'].includes(selectedTheme)")
-            div(v-html="footers.lumen")
-          template(v-if="selectedTheme === 'centurylink'")
-            div(v-html="footers.centurylink")
-          template(v-if="selectedTheme === 'brightspeed'")
-            div(v-html="footers.brightspeed")
+        div(slot="footer")
+          div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
+          div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
+          div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
     template(#code-webcomponent)
       .chi-tab__description
         | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
@@ -34,6 +31,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
+  selectedTheme = useSelectedTheme()
   footers = generateAllExampleFooters('back-link-subtitle-buttons-page-level-actions-language-dropdown-button');
   exampleTabs = [
     {

@@ -3,15 +3,12 @@
     template(#example)
       chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle')
         .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-        template(#header-actions)
+        div(slot='header-actions')
           button.chi-button.-primary Primary
-        template(#footer)
-          template(v-if="['lumen', 'portal'].includes(selectedTheme)")
-            div(v-html="footers.lumen")
-          template(v-if="selectedTheme === 'centurylink'")
-            div(v-html="footers.centurylink")
-          template(v-if="selectedTheme === 'brightspeed'")
-            div(v-html="footers.brightspeed")
+        div(slot="footer")
+          div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
+          div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
+          div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
 
     template(#code-webcomponent)
       .chi-tab__description

@@ -80,17 +80,17 @@
               .chi-card__title Widget
               chi-link(size='md' href='#' cta='cta') View
             .chi-card__content Content here
-            template(#page-alert)
-        chi-alert(color='info' icon='circle-info' closable) This is a page level info alert
-      template(#help-icon)
+            div(slot='page-alert')
+              chi-alert(color='info' icon='circle-info' closable) This is a page level info alert
+      div(slot='help-icon')
         chi-button#dashboard-alert__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' @click="togglePopover")
           chi-icon(icon='circle-question-outline')
-      template(#help-icon)
+      div(slot='help-icon')
         chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#dashboard-alert__help-button')
           | Popover content.
-      template(#header-actions)
+      div(slot='header-actions')
         chi-button(color='primary' size='sm') Button
-      template(#footer)
+      div(slot="footer")
         template(v-if="['lumen', 'portal'].includes(selectedTheme)")
           div(v-html="footers.lumen")
         template(v-if="selectedTheme === 'centurylink'")

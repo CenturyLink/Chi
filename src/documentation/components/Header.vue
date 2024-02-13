@@ -1,94 +1,95 @@
 <template lang="pug">
   header.chi-header.docs-header.-z--20
     #version-check.-w--100
-    component(is="style" type='text/css').
-      .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
-      .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
-      .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
-        background-color: #e6f0ff;
-        color: #0047bb;
-        font-weight: 600;
-      }
-      .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
-        background-color: #fff1bf;
-        color: #000;
-        font-weight: 600;
-      }
-      .chi-brand {
-        margin: 0;
-      }
-      @media only screen and (min-width: 992px) {
-        .chi .docs-header__logo .chi-brand {
-          margin: 0 3rem 0 0;
+    ClientOnly
+      component(is="style" type='text/css').
+        .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
+        .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
+        .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
+          background-color: #e6f0ff;
+          color: #0047bb;
+          font-weight: 600;
         }
-      }
-      .chi .docs-header__logo .chi-brand.-centurylink {
-        width: 6.09375rem;
-      }
-      @media only screen and (min-width: 768px) {
+        .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
+          background-color: #fff1bf;
+          color: #000;
+          font-weight: 600;
+        }
+        .chi-brand {
+          margin: 0;
+        }
+        @media only screen and (min-width: 992px) {
+          .chi .docs-header__logo .chi-brand {
+            margin: 0 3rem 0 0;
+          }
+        }
         .chi .docs-header__logo .chi-brand.-centurylink {
-          margin: 0 3rem 0 0;
-          width: 9.75rem;
+          width: 6.09375rem;
         }
-      }
-      .chi .docs-header__logo .chi-brand.-centurylink > img,
-      .chi .docs-header__logo .chi-brand.-centurylink > svg {
-        height: 1.25rem;
-        width: 6.09375rem;
-      }
-      @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 768px) {
+          .chi .docs-header__logo .chi-brand.-centurylink {
+            margin: 0 3rem 0 0;
+            width: 9.75rem;
+          }
+        }
         .chi .docs-header__logo .chi-brand.-centurylink > img,
         .chi .docs-header__logo .chi-brand.-centurylink > svg {
-          height: 2rem;
-          width: 9.75rem;
+          height: 1.25rem;
+          width: 6.09375rem;
         }
-      }
-      .chi .docs-header__logo .chi-brand.-lumen {
-        width: 7.1875rem;
-      }
-      @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 768px) {
+          .chi .docs-header__logo .chi-brand.-centurylink > img,
+          .chi .docs-header__logo .chi-brand.-centurylink > svg {
+            height: 2rem;
+            width: 9.75rem;
+          }
+        }
         .chi .docs-header__logo .chi-brand.-lumen {
-          margin: 0 1rem 0 0;
-          width: 8.75rem;
+          width: 7.1875rem;
         }
-      }
-      @media only screen and (min-width: 992px) {
-        .chi .docs-header__logo .chi-brand.-lumen {
-          margin: 0 3rem 0 0;
+        @media only screen and (min-width: 768px) {
+          .chi .docs-header__logo .chi-brand.-lumen {
+            margin: 0 1rem 0 0;
+            width: 8.75rem;
+          }
         }
-      }
-      .chi .docs-header__logo .chi-brand.-lumen > img,
-      .chi .docs-header__logo .chi-brand.-lumen > svg {
-        height: 1rem;
-        width: 7.1875rem;
-      }
-      @media only screen and (min-width: 768px) {
+        @media only screen and (min-width: 992px) {
+          .chi .docs-header__logo .chi-brand.-lumen {
+            margin: 0 3rem 0 0;
+          }
+        }
         .chi .docs-header__logo .chi-brand.-lumen > img,
         .chi .docs-header__logo .chi-brand.-lumen > svg {
-          height: 1.25rem;
-          width: 8.75rem;
+          height: 1rem;
+          width: 7.1875rem;
         }
-      }
-      .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-input {
-        height: 2.5rem !important;
-      }
-      .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-icon {
-        color: #0262b9;
-        font-size: 1.25rem;
-        height: 1.25rem;
-        line-height: 1.25rem;
-        top: 0.625rem;
-        width: 1.25rem;
-      }
-      .chi.theme-portal .example .example-tabs .chi-tabs,
-      .chi.theme-brightspeed .example .example-tabs .chi-tabs {
-        height: 3rem;
-      }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li > a,
-      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li > a {
-        line-height: 1.5rem;
-        padding: 0.75rem 0;
-      }
+        @media only screen and (min-width: 768px) {
+          .chi .docs-header__logo .chi-brand.-lumen > img,
+          .chi .docs-header__logo .chi-brand.-lumen > svg {
+            height: 1.25rem;
+            width: 8.75rem;
+          }
+        }
+        .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-input {
+          height: 2.5rem !important;
+        }
+        .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-icon {
+          color: #0262b9;
+          font-size: 1.25rem;
+          height: 1.25rem;
+          line-height: 1.25rem;
+          top: 0.625rem;
+          width: 1.25rem;
+        }
+        .chi.theme-portal .example .example-tabs .chi-tabs,
+        .chi.theme-brightspeed .example .example-tabs .chi-tabs {
+          height: 3rem;
+        }
+        .chi.theme-portal .example .example-tabs .chi-tabs > li > a,
+        .chi.theme-brightspeed .example .example-tabs .chi-tabs > li > a {
+          line-height: 1.5rem;
+          padding: 0.75rem 0;
+        }
     nav.chi-header__content
       #header-brand.chi-header__brand
         button#drawer-trigger-1.chi-button.-icon.-flat.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(

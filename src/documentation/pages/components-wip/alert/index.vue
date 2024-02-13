@@ -1,13 +1,12 @@
 <template lang="pug">
-div
-  <TitleBar title="Alert" description="Alert messages provide contextual feedback for user actions." :tabs="pageTabs" />
-  .chi-grid__container.-pt--3
-    #examples.chi-tabs-panel.-active
-      <Examples />
-    #properties.chi-tabs-panel
-      <Properties />
-    #accessibility.chi-tabs-panel
-      <Accessibility />
+<TitleBar title="Alert" description="Alert messages provide contextual feedback for user actions." :tabs="pageTabs" />
+.chi-grid__container.-pt--3
+  #examples.chi-tabs-panel.-active
+    <Examples />
+  #properties.chi-tabs-panel
+    <Properties />
+  #accessibility.chi-tabs-panel
+    <Accessibility />
 </template>
 
 <script lang="ts">

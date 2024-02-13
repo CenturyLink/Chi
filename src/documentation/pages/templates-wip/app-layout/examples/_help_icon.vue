@@ -2,20 +2,17 @@
   <ComponentExample title="Base with help icon" id="base_with_help_icon" :tabs="exampleTabs" padding="0">
   template(#example)
     chi-main(title='Page title')
-      template(#help-icon)
+      div(slot='help-icon')
         chi-button#help-icon__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' @click="togglePopover")
           chi-icon(icon='circle-question-outline')
-      template(#help-icon)
+      div(slot='help-icon')
         chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#help-icon__help-button')
           | Popover content.
       .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-    template(#footer)
-      template(v-if="['lumen', 'portal'].includes(selectedTheme)")
-        div(v-html="footers.lumen")
-      template(v-if="selectedTheme === 'centurylink'")
-        div(v-html="footers.centurylink")
-      template(v-if="selectedTheme === 'brightspeed'")
-        div(v-html="footers.brightspeed")
+      div(slot="footer")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
+        div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
+        div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
 
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
