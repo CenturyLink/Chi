@@ -6,11 +6,14 @@
     .-position--relative.-z--0.-overflow--hidden(style='height:30rem;')
       chi-drawer(position='bottom' :no-header="!showHeader ? true : false" :title="showHeader ? 'Drawer title here' : null" active backdrop prevent-auto-hide :key="key")
         .-p--2.-text Drawer content here
-  template(#["`code-${exampleId}-${tab.id}-webcomponent`"] v-for="tab in headTabs" :key="tab.id")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-webcomponent`])
     Copy(:code="tab.codeSnippets.webComponent.code" lang="html")
-  template(#["`code-${exampleId}-${tab.id}-vue`"] v-for="tab in headTabs" :key="tab.id")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-vue`])
     Copy(:code="tab.codeSnippets.vue.code" lang="html")
-  template(#["`code-${exampleId}-${tab.id}-htmlblueprint`"] :key="tab.id" v-for="tab in headTabs")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-htmlblueprint`])
     <JSNeeded />
     Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
 </ComponentExample>

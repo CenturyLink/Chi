@@ -8,15 +8,16 @@
     .-position--relative.-z--0.-overflow--hidden(style='height:15rem;')
       chi-drawer(position='left' :non-closable="closable ? true : false" active backdrop prevent-auto-hide no-header)
         .-p--2.-pt--6.-text Drawer content here
-  template(#["`code-${exampleId}-${tab.id}-webcomponent`"] v-for="tab in headTabs" :key="tab.id")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-webcomponent`])
     .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
     Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
 
-  template(#["`code-${exampleId}-${tab.id}-vue`"] v-for="tab in headTabs" :key="tab.id")
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-vue`])
     .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
     Copy(lang="html" :code="tab.codeSnippets.vue.code")
 
-  template(v-for="tab in headTabs" #["`code-${exampleId}-${tab.id}-htmlblueprint`"] :key="tab.id")
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-htmlblueprint`])
     <JSNeeded />
     Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
 </ComponentExample>

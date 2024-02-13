@@ -1,24 +1,24 @@
 <template lang="pug">
-  <ComponentExample title="Reference element" id="reference-element" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
+<ComponentExample title="Reference element" id="reference-element" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | A reference element can be set up for advanced positioning.
       | The popover will be positioned relative to this element.
-    template(#example)
-      chi-button#example-3-button(@click="togglePopover") Click me!
-      chi-popover(ref="popover" position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
-        | Popover content
+  template(#example)
+    chi-button#example-3-button(@click="togglePopover") Click me!
+    chi-popover(ref="popover" position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
+      | Popover content
 
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Use the <code>reference</code> attribute with a
-        | CSS selector to properly reference an element.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the <code>reference</code> attribute with a
+      | CSS selector to properly reference an element.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      <JSNeeded />
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

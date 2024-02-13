@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
-        | Popover components are absolutely positioned. For this example we have forced a relative position.
-    template(#example)
-      .-position--relative(style="height: 53px;")
-        chi-popover(active, variant="text", prevent-auto-hide)
-          | Popover content
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Remove the <code>active</code> attribute to hide the popover.
-        | Use the <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+<ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | Popover components are absolutely positioned. For this example we have forced a relative position.
+  template(#example)
+    .-position--relative(style="height: 53px;")
+      chi-popover(active, variant="text", prevent-auto-hide)
+        | Popover content
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Remove the <code>active</code> attribute to hide the popover.
+      | Use the <code>variant="text"</code> attribute to display text content in a <code>&lt;p&gt;</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | Remove the <code>-active</code> class to hide the popover.
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Remove the <code>-active</code> class to hide the popover.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

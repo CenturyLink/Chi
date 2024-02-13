@@ -140,12 +140,13 @@ export default defineNuxtConfig({
         // '/installation',
         // '/components/icon', // To-do, must be removed after full migration
         ...IGNORED_ROUTES,
+        // TODO some errors here
+        '/components-wip',
+        '/templates-wip/app-layout/examples/_footer',
         // to be migrated
-        '/templates-wip/card',
-        '/templates-wip/app-layout',
-        '/components-wip/',
-        // Non existant..
-        '/getting-started-wip/whats-new'
+        '/components-wip/data-table',
+        '/components-wip/popover',
+        '/components-wip/toolbar',
       ]
     },
     esbuild: {
@@ -158,11 +159,11 @@ export default defineNuxtConfig({
   },
   // imports css https://github.com/nuxt/nuxt/issues/12215
   // error with chivue
-  // build: {
-  //   transpile: [
-  //     '@centurylink/chi-vue'
-  //   ]
-  // },
+  build: {
+    transpile: [
+      '@centurylink/chi-vue'
+    ]
+  },
   modules: ['@nuxt/image', 'nuxt3-class-component'],
   // dev server config https://nitro.unjs.io/config
   typescript: {

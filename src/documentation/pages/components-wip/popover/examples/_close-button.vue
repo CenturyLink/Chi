@@ -8,7 +8,8 @@
         variant="text"
         arrow
         reference="#button-example-popover-closable-1"
-        closable)
+        closable
+      )
         | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 

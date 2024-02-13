@@ -40,7 +40,7 @@ export default class SizesPortal extends Vue {
       label: 'HTML Blueprint',
     },
   ]
-  sizes: ['xs', 'sm', 'md', 'lg']
+  sizes = ['xs', 'sm', 'md', 'lg']
   codeSnippets = {
     webcomponent: `<!-- xs -->
 <chi-button color="primary" size="xs">Button</chi-button>
@@ -112,7 +112,6 @@ export default class SizesPortal extends Vue {
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
   }
   tooltipTexts: any[] = [];
-  sizes = ['xs', 'sm', 'md', 'lg'];
 
   mounted() {
     this.sizes.forEach((size: string) => {

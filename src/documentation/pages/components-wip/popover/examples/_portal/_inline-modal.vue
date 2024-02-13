@@ -1,27 +1,28 @@
 <template lang="pug">
-  <ComponentExample title="Inline Modal" id="inline-modal-portal" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
+<ComponentExample title="Inline Modal" id="inline-modal-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use Inline Modals to imitate the style of a Modal and the behavior of a Popover. This is useful for advanced
       | filtering in Data Tables.
-    template(#example)
-      .-position--relative(style="height: 106px;")
-        chi-popover(
-          modal
-          closable
-          title="Popover title"
-          active
-          prevent-auto-hide)
-          | Popover content
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Use the <code>modal</code> attribute to style a Popover as an inline Modal.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#example)
+    .-position--relative(style="height: 106px;")
+      chi-popover(
+        modal
+        closable
+        title="Popover title"
+        active
+        prevent-auto-hide
+      )
+        | Popover content
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the <code>modal</code> attribute to style a Popover as an inline Modal.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
+  template(#code-htmlblueprint)
 
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Destructive action confirmation" id="destructive-action-confirmation" :tabs="exampleTabs">
-    template(#example)
-      .-position--relative(style="height: 146px;")
-        chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
-          | Are you sure you want to delete this?
-          div(slot="chi-popover__footer")
-            chi-button(color="danger") Delete
-          div(slot="chi-popover__footer")
-            chi-button Cancel
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+<ComponentExample titleSize="h4" title="Destructive action confirmation" id="destructive-action-confirmation" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative(style="height: 146px;")
+      chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
+        | Are you sure you want to delete this?
+        div(slot="chi-popover__footer")
+          chi-button(color="danger") Delete
+        div(slot="chi-popover__footer")
+          chi-button Cancel
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

@@ -1,20 +1,20 @@
 <template lang="pug">
-  <ComponentExample title="Open on hover" id="open-on-hover" :tabs="exampleTabs">
-    template(#example)
-      .-position--relative
-        chi-button#button-open-on-hover(@chiMouseEnter="show" @chiMouseLeave="hide" @click="toggle") Hover me!
-        chi-popover(ref="popover" variant="text", arrow,  reference="#button-open-on-hover")
-          | Popover content
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Use the available methods to show / hide popover when <code>chiMouseEnter</code>, <code>chiMouseLeave</code> or any other event is triggered
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+<ComponentExample title="Open on hover" id="open-on-hover" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative
+      chi-button#button-open-on-hover(@chiMouseEnter="show" @chiMouseLeave="hide" @click="toggle") Hover me!
+      chi-popover(ref="popover" variant="text", arrow,  reference="#button-open-on-hover")
+        | Popover content
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the available methods to show / hide popover when <code>chiMouseEnter</code>, <code>chiMouseLeave</code> or any other event is triggered
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | Use the available methods to show / hide popover when <code>mouseEnter</code>, <code>mouseLeave</code> or any other event is triggered
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Use the available methods to show / hide popover when <code>mouseEnter</code>, <code>mouseLeave</code> or any other event is triggered
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

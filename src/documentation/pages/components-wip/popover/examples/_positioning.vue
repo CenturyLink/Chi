@@ -1,27 +1,27 @@
 <template lang="pug">
-  <ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
-    template(#example-description)
-      p.-text
-        | Further positions can be used in this mode: <code>top</code>,
-        | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
-        | <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
-        | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
-        | <code>left-end</code>.
-    template(#example)
-      .chi-grid.-no-gutter.-px-xl--3
-        .chi-col(:class="getClasses(pos)" v-for="pos in ['top', 'left', '', 'right', 'bottom']")
-          div.-w--75.-text.-text--muted.-text--center.-lh--2(v-if="pos === ''") Click buttons to see popover positions
-          template(v-else)
-            div.-p--1.-py-sm--3(v-for="position in positions[pos]")
-              chi-button(@click="togglePopover(`popover-${position.position}`)" :id="`button-${position.position}`") {{ position.label }}
-              chi-popover(:ref="`popover-${position.position}`" :position="position.position", title="Popover title", variant="text", arrow, :reference="`#button-${position.position}`")
-                | This popover is {{ position.position }} positioned.
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent")
-    template(#code-htmlblueprint)
-      <JSNeeded />
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+<ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | Further positions can be used in this mode: <code>top</code>,
+      | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
+      | <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
+      | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
+      | <code>left-end</code>.
+  template(#example)
+    .chi-grid.-no-gutter.-px-xl--3
+      .chi-col(:class="getClasses(pos)" v-for="pos in ['top', 'left', '', 'right', 'bottom']")
+        div.-w--75.-text.-text--muted.-text--center.-lh--2(v-if="pos === ''") Click buttons to see popover positions
+        template(v-else)
+          div.-p--1.-py-sm--3(v-for="position in positions[pos]")
+            chi-button(@click="togglePopover(`popover-${position.position}`)" :id="`button-${position.position}`") {{ position.label }}
+            chi-popover(:ref="`popover-${position.position}`" :position="position.position", title="Popover title", variant="text", arrow, :reference="`#button-${position.position}`")
+              | This popover is {{ position.position }} positioned.
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

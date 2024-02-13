@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <client-only placeholder="loading...">
+    <client-only placeholder="Loading...">
       <Interaction />
       <Position />
       <Backdrop />

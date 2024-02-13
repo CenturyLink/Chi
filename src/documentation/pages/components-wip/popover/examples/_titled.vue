@@ -1,19 +1,19 @@
 <template lang="pug">
-  <ComponentExample title="Titled" id="titled" :tabs="exampleTabs">
-    template(#example)
-      .-position--relative(style="height: 87px;")
-        chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
-          | Popover content
-    template(#code-webcomponent)
-      .chi-tab__description
-        | Use the <code>title</code> attribute to display a title.
-      Copy(lang="html" :code="codeSnippets.webcomponent")
+<ComponentExample title="Titled" id="titled" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative(style="height: 87px;")
+      chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
+        | Popover content
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the <code>title</code> attribute to display a title.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">

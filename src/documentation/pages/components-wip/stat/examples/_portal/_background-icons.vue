@@ -37,7 +37,7 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class BackgroundIconsPortal extends Vue {
-  stats: [
+  stats = [
     {
       value: 'ALL',
       title: 'Services',
@@ -75,7 +75,7 @@ export default class BackgroundIconsPortal extends Vue {
       icon: 'platform-connected-security',
     },
   ]
-  exampleTabs: [
+  exampleTabs = [
     {
       active: true,
       id: 'webcomponent',

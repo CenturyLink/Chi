@@ -49,8 +49,6 @@ export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
     htmlblueprint: '',
   };
 
-  selectedTheme = useSelectedTheme();
-
   mounted() {
     const languageDropdown = document.getElementById(
       'back-link-subtitle-buttons-page-level-actions-language-dropdown-button'

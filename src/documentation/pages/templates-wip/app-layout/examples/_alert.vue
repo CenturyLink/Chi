@@ -47,8 +47,6 @@ export default class Alert extends Vue {
     htmlblueprint: '',
   };
 
-  selectedTheme = useSelectedTheme();
-
   mounted() {
     const languageDropdown = document.getElementById('alert-language-dropdown-button');
 

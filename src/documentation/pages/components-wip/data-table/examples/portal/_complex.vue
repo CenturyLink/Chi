@@ -11,7 +11,6 @@
         chi-dropdown-example(:id="payload.id")
       template(#toolbar)
         chi-data-table-toolbar
-          template(v-slot:start)
           template(v-slot:end)
             chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
               chi-icon(icon="print")
