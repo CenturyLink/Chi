@@ -5,7 +5,7 @@
       | Use the attribute <code>pagination</code> to render carousel with pagination.
     template(#example)
       chi-carousel(pagination single)
-        template(#items)
+        div(slot="items")
           .-d--flex
             .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
               .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center

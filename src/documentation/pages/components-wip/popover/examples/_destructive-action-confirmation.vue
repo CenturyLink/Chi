@@ -4,9 +4,9 @@
       .-position--relative(style="height: 146px;")
         chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
           | Are you sure you want to delete this?
-          template(#chi-popover__footer)
+          div(slot="chi-popover__footer")
             chi-button(color="danger") Delete
-          template(#chi-popover__footer)
+          div(slot="chi-popover__footer")
             chi-button Cancel
     template(#code-webcomponent)
       .chi-tab__description

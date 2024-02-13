@@ -1,5 +1,4 @@
 <template>
-  <ClientOnly>
     <div class="example-wrapper">
       <TitleAnchor v-if="title" :id="id" :title="title" :titleSize="titleSize" :showTitle="showTitle" />
       <slot name="example-description"></slot>
@@ -68,7 +67,6 @@
         </div>
       </div>
     </div>
-  </ClientOnly>
 </template>
 
 <style>

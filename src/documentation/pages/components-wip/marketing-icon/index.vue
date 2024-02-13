@@ -19,8 +19,6 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = ['chi-marketing-icon', 'chi-brand'];
-
 @NuxtComponent({
   components: {
     Accessibility,

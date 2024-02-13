@@ -2,7 +2,7 @@
   <ComponentExample title="Carousel" id="carousel-portal" :tabs="exampleTabs">
     template(#example)
       chi-carousel
-        template(#items)
+        div(slot="items")
           .chi-stat
             div(v-for="(stat, index) in stats" :key="index" style="max-width: 168px; min-width: 168px; width: 168px;" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
               .chi-stat__content
@@ -137,5 +137,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CarouselPortal extends Vue {}
+export default class CarouselPortal extends Vue { }
 </script>

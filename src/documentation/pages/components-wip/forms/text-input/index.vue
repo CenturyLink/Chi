@@ -18,8 +18,6 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = ['chi-text-input', 'chi-brand', 'chi-popover', 'chi-icon', 'chi-button', 'chi-label'];
-
 @NuxtComponent({
   components: {
     Accessibility,

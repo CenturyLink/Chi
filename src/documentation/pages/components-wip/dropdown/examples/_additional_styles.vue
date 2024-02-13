@@ -16,7 +16,7 @@
             :disabled='button.disabled'
             :class=`index && '-ml--2'`
           )
-            template(#menu)
+            div(slot="menu")
               a.chi-dropdown__menu-item(v-for="i in [1,2,3,4]" :key="`${button.text}-${i}`" href="#")
                 span Item {{ i }}
         </ClientOnly>

@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-import { TabsListInterface } from '~/models/models';
+import { type TabsListInterface } from '~/models/models';
 
 @NuxtComponent({})
 export default class AdditionalSizesHorizontal extends Vue {
@@ -37,17 +37,6 @@ export default class AdditionalSizesHorizontal extends Vue {
       label: 'HTML Blueprint',
     },
   ]
-  exampleTabs = [
-    {
-      active: true,
-      id: 'webcomponent',
-      label: 'Web Component',
-    },
-    {
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
-    },
-  ];
 
   tabLinks = [
     {

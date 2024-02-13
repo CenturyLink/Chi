@@ -1,32 +1,30 @@
 <template lang="pug">
-  <ComponentExample title="Close button" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeClosable(e)" padding="-p--0">
-    template(#example-description)
-      p.-text Close buttons provide users with a consistent way to exit Drawers.
-      | Fo  r special cases, such as requiring users to perform a task
-      | th  at auto-closes the Drawer when complete, a close button may be removed.
-    template(#example)
-      .-position--relative.-z--0.-overflow--hidden(style='height:15rem;')
-        chi-drawer(position='left' :non-closable="closable ? true : false" active backdrop prevent-auto-hide no-header)
-          .-p--2.-pt--6.-text Drawer content here
-    template(#["`code-${exampleId}-${tab.id}-webcomponent`"] v-for="tab in headTabs" :key="tab.id")
-      .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
-        | {{ tab.codeSnippets.webComponent.description }}
-      Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
+<ComponentExample title="Close button" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeClosable(e)" padding="-p--0">
+  template(#example-description)
+    p.-text Close buttons provide users with a consistent way to exit Drawers.
+      | For special cases, such as requiring users to perform a task
+      | that auto-closes the Drawer when complete, a close button may be removed.
+  template(#example)
+    .-position--relative.-z--0.-overflow--hidden(style='height:15rem;')
+      chi-drawer(position='left' :non-closable="closable ? true : false" active backdrop prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
+  template(#["`code-${exampleId}-${tab.id}-webcomponent`"] v-for="tab in headTabs" :key="tab.id")
+    .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
+    Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
 
-    template(#["`code-${exampleId}-${tab.id}-vue`"] v-for="tab in headTabs" :key="tab.id")
-      .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
-        | {{ tab.codeSnippets.vue.description }}
-      Copy(lang="html" :code="tab.codeSnippets.vue.code")
+  template(#["`code-${exampleId}-${tab.id}-vue`"] v-for="tab in headTabs" :key="tab.id")
+    .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
+    Copy(lang="html" :code="tab.codeSnippets.vue.code")
 
-    template(v-for="tab in headTabs" #["`code-${exampleId}-${tab.id}-htmlblueprint`"] :key="tab.id")
-      <JSNeeded />
-      Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
-  </ComponentExample>
+  template(v-for="tab in headTabs" #["`code-${exampleId}-${tab.id}-htmlblueprint`"] :key="tab.id")
+    <JSNeeded />
+    Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+</ComponentExample>
 </template>
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-import { IHeadTabs } from '../../../../models/models';
+import { type IHeadTabs } from '@/models/models';
 
 @NuxtComponent({})
 export default class CloseButton extends Vue {
@@ -214,7 +212,7 @@ methods: {
   closable = false;
 
   changeClosable(e: IHeadTabs) {
-    this.closable = e.id === 'closable' ? false : true;
+    this.closable = e.id !== 'closable';
   }
 }
 </script>

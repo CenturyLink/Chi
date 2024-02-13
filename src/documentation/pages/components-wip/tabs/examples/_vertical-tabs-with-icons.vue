@@ -19,11 +19,12 @@
             ul.chi-tabs__subtabs(v-if="link.subLinks")
               li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
                 a(href='#') {{subLink.text}}
-    template(#["`code-vertical-tabs-with-icons-${tab.id}-webcomponent`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
+    //- template(v-for="tab in headTabs")
+    //-   template(#["`code-vertical-tabs-with-icons-${tab.id}-webcomponent`"])
+    //-     Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
 
-    template(#["`code-vertical-tabs-with-icons-${tab.id}-htmlblueprint`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+    //-   template(#["`code-vertical-tabs-with-icons-${tab.id}-htmlblueprint`"])
+    //-     Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
   </ComponentExample>
 </template>
 

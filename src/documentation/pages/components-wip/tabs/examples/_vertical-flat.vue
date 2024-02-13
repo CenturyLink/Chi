@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-import { TabsListInterface } from '~/models/models';
+import { type TabsListInterface } from '~/models/models';
 
 @NuxtComponent({})
 export default class VerticalFlat extends Vue {

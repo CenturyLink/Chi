@@ -4,18 +4,18 @@
     .p-text(class="-mb--3 -text")
       | Toggle switch supports different sizes: <code>xs</code>, <code>sm</code>.
       | The default size is <code>xs</code>.
-    template(#example)
-      .-p--2
-        .chi-form__item
-          chi-switch(id='toggle15',label='Label', size='xs')
-      .-p--2
-        .chi-form__item
-          chi-switch(id='toggle16',label='Label', size='sm')
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
-  </ComponentExample>
+  template(#example)
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle15',label='Label', size='xs')
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle16',label='Label', size='sm')
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">

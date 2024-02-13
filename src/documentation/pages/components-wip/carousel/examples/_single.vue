@@ -5,7 +5,7 @@
       | Use the attribute <code>single</code> to render single item per view.
     template(#example)
       chi-carousel(single)
-        template(#items)
+        div(slot="items")
           .chi-carousel__item.-p--1(style="height: 10rem;"  v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
             .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
               | {{ item }}

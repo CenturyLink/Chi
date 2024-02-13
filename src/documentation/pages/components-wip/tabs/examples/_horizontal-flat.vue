@@ -1,26 +1,28 @@
 <template lang="pug">
-  <ComponentExample title="Flat" id="horizontal-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
-    template(#example)
-      .-px--3.-bg--white(:class="isPortal ? '-pt--2' : ''")
-        chi-tabs(:active-tab='activeTab' id='example__horizontal-flat' @chiTabChange='chiTabChange' sliding-border)
-        .-py--3
-          div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
-            .-text {{tabContent.text}}
+<ComponentExample title="Flat" id="horizontal-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
+  template(#example)
+    .-px--3.-bg--white(:class="isPortal ? '-pt--2' : ''")
+      chi-tabs(:active-tab='activeTab' id='example__horizontal-flat' @chiTabChange='chiTabChange' sliding-border)
+      .-py--3
+        div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
+          .-text {{tabContent.text}}
 
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-    template(#code-htmlblueprint)
-      <JSNeeded />
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
 import { Vue, Prop } from 'vue-facing-decorator';
-import { TabsListInterface } from '~/models/models';
+import { type TabsListInterface } from '~/models/models';
 
 @NuxtComponent({})
 export default class HorizontalFlat extends Vue {
+  @Prop() isPortal?: boolean;
+
   exampleTabs = [
     {
       active: true,
@@ -32,7 +34,6 @@ export default class HorizontalFlat extends Vue {
       label: 'HTML Blueprint',
     },
   ];
-  @Prop() isPortal?: boolean;
 
   activeTab = 'tab-a';
 
@@ -131,7 +132,7 @@ ${this.generateTabsContentHtml(false)}
 
   mounted() {
     const element = document.querySelector('#example__horizontal-flat') as TabsListInterface;
-
+    console.log('tabs is', element)
     if (element) {
       element.tabs = this.tabLinks;
     }

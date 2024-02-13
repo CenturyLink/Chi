@@ -30,7 +30,7 @@ import VNode from 'vue';
 
 @NuxtComponent({})
 export default class Positioning extends Vue {
-  positions: {
+  positions = {
     top: [
       { label: 'Top start', position: 'top-start' },
       { label: 'Top', position: 'top' },
@@ -52,7 +52,7 @@ export default class Positioning extends Vue {
       { label: 'Bottom end', position: 'bottom-end' },
     ],
   }
-  exampleTabs: [
+  exampleTabs = [
     {
       active: true,
       id: 'webcomponent',
@@ -174,6 +174,7 @@ export default class Positioning extends Vue {
 <!-- JavaScript -->
 <script>chi.popover(document.querySelectorAll('[data-popover-content]'));<\/script>`,
   }
+
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as VNode[])[0] as any).toggle();
   }

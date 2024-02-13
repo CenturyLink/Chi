@@ -2,8 +2,7 @@
   div
     h2 Recommended layout
     p.-text Use this layout to ensure the sidenav renders correctly in your project.
-    template(#code-htmlblueprint)
-      Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
 </template>
 
 <script lang="ts">

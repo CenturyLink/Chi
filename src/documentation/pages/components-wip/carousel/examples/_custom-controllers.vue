@@ -5,13 +5,13 @@
         | Use <code>slot="previous"</code> and <code>slot="next"</code> to provide custom controllers to carousel.
     template(#example)
       chi-carousel(single)
-        template(#previous)
+        div(slot="previous")
           button.examplePreviousButton
             i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
-        template(#next)
+        div(slot="next")
           button.exampleNextButton
             i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
-        template(#items)
+        div(slot="items")
           .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
             | {{ item }}
     template(#code-webcomponent)
@@ -82,7 +82,7 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CustomControllers extends Vue {}
+export default class CustomControllers extends Vue { }
 </script>
 
 <style>

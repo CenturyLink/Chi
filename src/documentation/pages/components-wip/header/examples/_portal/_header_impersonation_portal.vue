@@ -198,15 +198,14 @@ export default class HeaderImpersonationPortal extends Vue {
   chi.tooltip(document.getElementById('button-portal-notification2'));
 <\/script>`
   }
-};
 
-mounted() {
-  chi.drawer(this.$refs['drawer-trigger-portal-pib2'] as HTMLElement);
-  chi.dropdown(this.$refs['button-portal-site-menu2'] as HTMLElement);
-  chi.dropdown(this.$refs['button-portal-user-menu2'] as HTMLElement);
-  chi.dropdown(this.$refs['button-portal-eid-menu2'] as HTMLElement);
-  chi.tooltip(this.$refs['button-portal-logout'] as HTMLElement);
-  chi.tooltip(this.$refs['button-portal-notification2'] as HTMLElement);
-}
+  mounted() {
+    chi.drawer(this.$refs['drawer-trigger-portal-pib2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-site-menu2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-user-menu2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-eid-menu2'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-logout'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-notification2'] as HTMLElement);
+  }
 }
 </script>

@@ -5,9 +5,9 @@
       | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
       | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
       | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-    template(#example)
-      .chi-form__item
-        chi-switch(id='toggle-portal-di1', size="xs", label='Label', disabled)
+  template(#example)
+    .chi-form__item
+      chi-switch(id='toggle-portal-di1', size="xs", label='Label', disabled)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)

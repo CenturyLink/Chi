@@ -2,7 +2,7 @@
 <ComponentExample title="Base" id="base" :tabs="exampleTabs">
   template(#example)
     chi-carousel
-      template(#items)
+      div(slot="items")
         .-d--flex
           .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8]" :key="item")
             .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
@@ -66,5 +66,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Base extends Vue {}
+export default class Base extends Vue { }
 </script>

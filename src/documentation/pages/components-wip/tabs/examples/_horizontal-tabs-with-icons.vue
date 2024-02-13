@@ -16,11 +16,11 @@
             )
               i.chi-icon.icon-atom(aria-hidden="true")
               span {{link.text}}
-    template(#["`code-horizontal-tabs-with-icons-${tab.id}-webcomponent`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
-
-    template(#["`code-horizontal-tabs-with-icons-${tab.id}-htmlblueprint`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+    //- template(v-for="tab in headTabs")
+    //-   template(#["`code-horizontal-tabs-with-icons-${tab.id}-webcomponent`"])
+    //-     Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
+    //-   template(#["`code-horizontal-tabs-with-icons-${tab.id}-htmlblueprint`"])
+    //-     Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
   </ComponentExample>
 </template>
 

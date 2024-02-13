@@ -5,18 +5,18 @@
     template(#example)
       .-mw--720.-mx--auto
         chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
-          template(#active)
+          div(slot="active")
             .chi-epanel__subtitle
               | {{ panel.subtitle }}
             p.chi-epanel__text
               | {{ panel.content }}
-          template(#done)
+          div(slot="done")
             | {{ panel.doneContent }}
-          template(#footer)
+          div(slot="footer")
             chi-button(@click="active -= 1" v-if="index")
               | Previous
             chi-button(@click="active += 1" color="primary") Continue
-          template(#change)
+          div(slot="change")
             chi-button(@click="active = index" color="primary" variant="flat")
               | Change
     template(#code-webcomponent)

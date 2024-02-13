@@ -1,28 +1,28 @@
 <template lang="pug">
-  <ComponentExample title="Vertical Subtabs" id="vertical-subtabs" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab">
-    template(#example)
-      div(:class="['-p--3', isInverse ? '-bg--black' : '-bg--white']")
-        ul.chi-tabs.-vertical(
-          :id="`example-vertical-with-icons-${activeHeadTab}`"
-          :class="[isInverse ? '-inverse' : '']"
-          role="tablist"
-          aria-label="chi-tabs-vertical")
-          li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-            a(
-              :href="`#${link.href}`"
-              role="tab"
-              aria-selected="true"
-              :aria-controls="link.href"
-            ) {{link.text}}
-            ul.chi-tabs__subtabs(v-if="link.subLinks")
-              li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-                a(href='#') {{subLink.text}}
-    template(#["`code-vertical-subtabs-${tab.id}-webcomponent`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
-
-    template(#["`code-vertical-subtabs-${tab.id}-htmlblueprint`" :key="tab.id"] v-for="tab in headTabs")
-      Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
-  </ComponentExample>
+<ComponentExample title="Vertical Subtabs" id="vertical-subtabs" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab">
+  template(#example)
+    div(:class="['-p--3', isInverse ? '-bg--black' : '-bg--white']")
+      ul.chi-tabs.-vertical(
+        :id="`example-vertical-with-icons-${activeHeadTab}`"
+        :class="[isInverse ? '-inverse' : '']"
+        role="tablist"
+        aria-label="chi-tabs-vertical")
+        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+          a(
+            :href="`#${link.href}`"
+            role="tab"
+            aria-selected="true"
+            :aria-controls="link.href"
+          ) {{link.text}}
+          ul.chi-tabs__subtabs(v-if="link.subLinks")
+            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+              a(href='#') {{subLink.text}}
+  //- template(v-for="tab in headTabs")
+  //-   template(#["`code-vertical-subtabs-${tab.id}-webcomponent`"])
+  //-     Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
+  //-   template(#["`code-vertical-subtabs-${tab.id}-htmlblueprint`"])
+  //-     Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+</ComponentExample>
 </template>
 
 <script lang="ts">

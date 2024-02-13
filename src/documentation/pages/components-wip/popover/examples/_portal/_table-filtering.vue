@@ -12,12 +12,12 @@
               i.chi-icon.icon-chevron-down(aria-hidden="true")
             .chi-accordion__content
               p.chi-accordion__text Filter content goes here
-        template(#chi-popover__footer)
+        div(slot="chi-popover__footer")
           button.chi-button.-flat.-icon.-xs.-py--0(ref="tooltipButton" data-tooltip='Clear all filters')
             .chi-button__content.-flex--column.-align-items--center
               i.chi-icon.icon-reset.-sm--2.-mr--0
               span.-text--uppercase.-text--primary.-text--2xs Clear
-        template(#chi-popover__footer)
+        div(slot="chi-popover__footer")
           .chi-divider.-vertical
           chi-button Cancel
           chi-button(color='primary') Apply

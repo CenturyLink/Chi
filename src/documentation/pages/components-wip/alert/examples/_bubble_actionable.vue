@@ -2,8 +2,8 @@
   <ComponentExample title="Actionable" titleSize="h4" id="bubble_actionable" padding="-p--1" :tabs="exampleTabs">
     template(#example)
       chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable) This is a large closable success alert
-        //- template(#chi-alert__actions)
-        //-   chi-button(color='primary') Action
+        div(slot="chi-alert__actions")
+          chi-button(color='primary') Action
     template(#code-webcomponent)
       .chi-tab__description
         span

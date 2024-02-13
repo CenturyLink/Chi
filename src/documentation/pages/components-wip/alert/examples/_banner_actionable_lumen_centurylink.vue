@@ -4,10 +4,8 @@
       .-p--1.-bg--grey-20
         ClientOnly
           chi-alert.-m--2(type='banner', icon='flag', size='lg', title="Base", closable)
-            //- template(#default)
-            //-   p This is a large closable alert
-            //- template(#chi-alert__actions)
-            //-   chi-button(color='primary') Action
+            |  This is a large closable alert
+            chi-button(color='primary' slot="chi-alert__actions") Action
     template(#code-webcomponent)
       .chi-tab__description
         span

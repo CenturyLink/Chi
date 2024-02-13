@@ -1,6 +1,6 @@
 <template>
   <li v-for="link in items" :class="{
-    '-active': route.fullPath.includes(link.to || link.href)
+    '-active': route.fullPath.endsWith(link.to || link.href)
   }">
     <template v-if="isDev">
       <NuxtLink :to="`/${link.to}`">
