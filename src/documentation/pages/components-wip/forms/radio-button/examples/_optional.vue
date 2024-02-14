@@ -2,7 +2,7 @@
   <ComponentExample title="Optional" id="optional" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use <code>optional</code> to help emphasize a group of radio button options are not required and can be skipped.
+        | Use <code>optional</code> to help emphasize a group of radio button options are not required and can be skipped.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

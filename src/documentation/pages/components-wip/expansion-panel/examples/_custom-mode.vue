@@ -2,12 +2,12 @@
   <ComponentExample title="Custom mode" id="custom-mode" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     template(#example-description)
       p.-text
-      | Write your own custom mode by adding a handler for state changes of the expansion panels in the configuration, and
-      | writing your own functions for the <code>active</code>, <code>done</code>, <code>pending</code>,
-      | <code>disabled</code>, <code>toggle</code>, <code>next</code> and <code>previous</code> actions. In the
-      | example, the component behaves similar to the accordion but alternates between <code>done</code> and
-      | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
-      | functions are for documentation purposes only because they clone the functionality of the default ones.
+        | Write your own custom mode by adding a handler for state changes of the expansion panels in the configuration, and
+        | writing your own functions for the <code>active</code>, <code>done</code>, <code>pending</code>,
+        | <code>disabled</code>, <code>toggle</code>, <code>next</code> and <code>previous</code> actions. In the
+        | example, the component behaves similar to the accordion but alternates between <code>done</code> and
+        | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
+        | functions are for documentation purposes only because they clone the functionality of the default ones.
     template(#example)
       .-mw--720.-mx--auto
         .chi-epanel(data-chi-epanel-group='example__custom-mode' v-for="(panel, index) in panels" :class="panel.isDone ? '-done' : ''")

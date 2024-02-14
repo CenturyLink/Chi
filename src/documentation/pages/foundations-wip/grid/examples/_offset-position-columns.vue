@@ -2,8 +2,8 @@
   <ComponentExample title="Offset Positioning of Columns" id="offset-position-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     template(#example-description)
       p.-text
-      | You may position columns with an offset of one or more column units
-      | by specifying an offset size class on your column.
+        | You may position columns with an offset of one or more column units
+        | by specifying an offset size class on your column.
     template(#example)
       .chi-grid.-mb--2.-show--example()
         .chi-col(v-for="item in gridColumns" :key="item" :class="item")

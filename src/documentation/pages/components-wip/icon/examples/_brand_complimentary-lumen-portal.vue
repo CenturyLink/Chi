@@ -2,7 +2,7 @@
   <ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | More icon colors that can be used to compliment the primary brand palette.
+        | More icon colors that can be used to compliment the primary brand palette.
     template(#example)
       .chi-grid.-no-gutter
         .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center

@@ -2,7 +2,7 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | An initial value is optional. If an initial value is not provided, <code>0</code> will be taken as default.
+        | An initial value is optional. If an initial value is not provided, <code>0</code> will be taken as default.
     template(#example)
       .chi-form__item
         chi-label(for="example-1") Label

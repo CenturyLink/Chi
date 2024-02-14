@@ -2,9 +2,9 @@
   <ComponentExample title="Responsiveness" id="responsiveness" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use <code>-labels-{breakpoint}--hide</code> to hide step component labels on specific breakpoints or
-      | <code>-labels--hide</code> to hide on all breakpoints. Breakpoints supported are <code>sm</code>,
-      | <code>md</code>, <code>lg</code>, and <code>xl</code>. Labels are shown on all breakpoints by default.
+        | Use <code>-labels-{breakpoint}--hide</code> to hide step component labels on specific breakpoints or
+        | <code>-labels--hide</code> to hide on all breakpoints. Breakpoints supported are <code>sm</code>,
+        | <code>md</code>, <code>lg</code>, and <code>xl</code>. Labels are shown on all breakpoints by default.
     template(#example)
       ul.chi-steps.-labels-md--hide.-p-sm--5
         li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")

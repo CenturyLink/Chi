@@ -2,9 +2,9 @@
   <ComponentExample title="Grid" id="grid" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use <code>chi-grid</code> to render a group of checkboxes in a responsive grid.
-      | In the example below, the checkboxes display in 4 columns on medium screens and up,
-      | 2 columns on small screens, and 1 column on x-small screens.
+        | Use <code>chi-grid</code> to render a group of checkboxes in a responsive grid.
+        | In the example below, the checkboxes display in 4 columns on medium screens and up,
+        | 2 columns on small screens, and 1 column on x-small screens.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-mb--1

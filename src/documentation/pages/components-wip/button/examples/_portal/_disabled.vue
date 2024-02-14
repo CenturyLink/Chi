@@ -2,8 +2,8 @@
   <ComponentExample titleSize="h2" title="Disabled" id="disabled-portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
-      | or <code>-disabled</code> class.
+        | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
+        | or <code>-disabled</code> class.
     template(#example)
       .-d--flex.-align-items--center
         .-pr--2

@@ -2,8 +2,8 @@
   <ComponentExample title="Floating Label" id="floating-label" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use floating labels to keep the placeholder visible when no label is attached to the input.
-      | <strong>Note:</strong> Chi only supports floating labels on <code>-md</code>, <code>-lg</code> and <code>-xl</code> inputs.
+        | Use floating labels to keep the placeholder visible when no label is attached to the input.
+        | <strong>Note:</strong> Chi only supports floating labels on <code>-md</code>, <code>-lg</code> and <code>-xl</code> inputs.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
@@ -26,8 +26,8 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class FloatingLabel extends Vue {
-  sizes: ['md', 'lg', 'xl']
-  exampleTabs: [
+  sizes = ['md', 'lg', 'xl']
+  exampleTabs = [
     {
       disabled: true,
       id: 'webcomponent',

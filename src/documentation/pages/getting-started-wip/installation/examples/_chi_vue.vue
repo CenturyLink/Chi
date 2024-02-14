@@ -38,11 +38,13 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
+import { CHI_VERSION } from '@/constants/configs'
 
 declare const chi: any;
 
 @NuxtComponent({})
 export default class ChiVue extends Vue {
+  version = CHI_VERSION
   tabs = [
     { title: '.npmrc', link: 'npmrc' },
     { title: 'package.json', link: 'package' },

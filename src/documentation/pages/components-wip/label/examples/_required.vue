@@ -2,7 +2,7 @@
   <ComponentExample title="Required / Optional" id="required" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use attribute <code>required</code> or <code>optional</code> if you need to indicate required / optional fields.
+        | Use attribute <code>required</code> or <code>optional</code> if you need to indicate required / optional fields.
     template(#example)
       chi-label(for="input-2", required) Label
       input#input-2-control.-sr--only

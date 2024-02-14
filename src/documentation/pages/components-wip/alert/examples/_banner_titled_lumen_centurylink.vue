@@ -2,13 +2,13 @@
   <ComponentExample title="Titled" titleSize="h4" id="banner_titled_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | The title will automatically get colored based on the alerts semantic color class.
-      | To override the title color, apply a text color utility class.
+        | The title will automatically get colored based on the alerts semantic color class.
+        | To override the title color, apply a text color utility class.
     template(#example)
       chi-alert.-m--2(type='banner', icon='flag', title="Base")
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-        chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
+        chi-alert.-m--2(color=type, icon=val, title=type)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
     template(#code-webcomponent)

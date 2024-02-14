@@ -2,8 +2,8 @@
   <ComponentExample title="Floating labels" id="floating-labels-lumen-centurylink" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
-      | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
+        | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
+        | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
     template(#example)
       .chi-col.-w--12.-p--2(v-for="size in sizes")
         .chi-input__wrapper.-floating-label(style="max-width:20rem" :ref="`label-${size}`")

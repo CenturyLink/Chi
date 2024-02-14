@@ -2,9 +2,9 @@
   <ComponentExample title="Label" id="label" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Add text to a divider and apply the class <code>-label</code> to include a label.
-      | This method is especially useful for login and sign up forms.
-      | Label text size can be changed by applying text utility classes such as <code>-text</code>, <code>-text--sm</code>, or <code>-text--lg</code>.
+        | Add text to a divider and apply the class <code>-label</code> to include a label.
+        | This method is especially useful for login and sign up forms.
+        | Label text size can be changed by applying text utility classes such as <code>-text</code>, <code>-text--sm</code>, or <code>-text--lg</code>.
     template(#example)
       .chi-divider.-text.-label or
     template(#code-webcomponent)

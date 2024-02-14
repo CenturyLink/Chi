@@ -2,8 +2,8 @@
   <ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs" additionalClasses="-text">
     template(#example-description)
       p.-text
-      | Links support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
-      | By default, links inherit the font-size of their parent element.
+        | Links support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+        | By default, links inherit the font-size of their parent element.
     template(#example)
       each size in ['xs', 'sm', 'md', 'lg', 'xl']
         p.-text--bold= size

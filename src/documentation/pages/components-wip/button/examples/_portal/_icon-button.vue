@@ -2,8 +2,8 @@
   <ComponentExample titleSize="h2" title="Icon buttons" id="icon-buttons-portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | For interfaces with limited space, an Icon button can
-      | be used for common actions such as editing, deleting, closing, etc.
+        | For interfaces with limited space, an Icon button can
+        | be used for common actions such as editing, deleting, closing, etc.
     template(#example)
       .-d--flex
         chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' ref="edit" data-tooltip='Edit')

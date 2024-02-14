@@ -2,7 +2,7 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p--0">
     template(#example-description)
       p.-text
-      | The base logo is used on white or light-colored backgrounds that provide sufficient contrast.
+        | The base logo is used on white or light-colored backgrounds that provide sufficient contrast.
     template(#example)
       .-p--3.-d--flex.-justify-content--around.-align-items--center
         chi-link(href="#", alternative-text="Lumen")

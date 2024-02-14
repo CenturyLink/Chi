@@ -2,9 +2,9 @@
   <ComponentExample title="Error" id="error" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>-danger</code> state to provide feedback to users when an input fails to validate.
-      | To meet accessibility requirements, danger inputs must include an error message explaining the
-      | failure and/or how to correct it.
+        | Use the <code>-danger</code> state to provide feedback to users when an input fails to validate.
+        | To meet accessibility requirements, danger inputs must include an error message explaining the
+        | failure and/or how to correct it.
     template(#example)
       .chi-form__item
         .chi-checkbox

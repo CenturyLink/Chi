@@ -2,12 +2,12 @@
   <ComponentExample title="Min/Max/Step" id="min-max-step" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
-      | Use the <code>step</code> attribute to indicate the expected granularity.
-      <br><br>
-      | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
-      | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
-      | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+        | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
+        | Use the <code>step</code> attribute to indicate the expected granularity.
+        <br><br>
+        | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
+        | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
+        | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
     template(#example)
       .chi-form__item
         chi-label(for="unique-id-mms1") Label

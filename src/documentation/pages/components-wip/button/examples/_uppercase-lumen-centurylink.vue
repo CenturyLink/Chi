@@ -2,9 +2,9 @@
   <ComponentExample titleSize="h2" title="Uppercase" id="uppercase-lumen-centurylink" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
-      | to further emphasize button text labels and distinguish them from surrounding content.
-      span.-d--block.-mt--2
+        | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
+        | to further emphasize button text labels and distinguish them from surrounding content.
+        span.-d--block.-mt--2
         | <strong>Note:</strong> Uppercase styled text can cause rendering issues in certain locales.
     template(#example)
       .-d--flex

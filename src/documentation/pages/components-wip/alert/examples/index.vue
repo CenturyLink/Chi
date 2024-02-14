@@ -12,10 +12,10 @@ div
   <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
     <BubbleCenteredLumenCenturyLink />
     <BubbleTitled />
+    <BubbleSpinner />
     <BubbleSizesLumenCenturyLink />
     <BubbleClosableLumenCenturyLink />
     <BubbleActionable />
-    <BubbleSpinner />
 
     div.chi-divider.-my--6.-bt--2
 
@@ -43,10 +43,10 @@ div
 
   <div v-if='selectedTheme === "portal"'>
     <BubbleTitled />
+    <BubbleSpinner />
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-    <BubbleSpinner />
   </div>
 </template>
 

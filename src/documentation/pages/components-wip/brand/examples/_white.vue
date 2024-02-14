@@ -2,7 +2,7 @@
   <ComponentExample title="White" id="white" :tabs="exampleTabs" padding="-p--0">
     template(#example-description)
       p.-text
-      | The white logo is used on blue or other dark-colored backgrounds that provide sufficient contrast.
+        | The white logo is used on blue or other dark-colored backgrounds that provide sufficient contrast.
     template(#example)
       .-p--3.-bg--black.-d--flex.-justify-content--around.-align-items--center
         chi-link(href="#", alternative-text="Lumen")

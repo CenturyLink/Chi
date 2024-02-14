@@ -2,7 +2,7 @@
   <ComponentExample title="Compact" id="compact" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use <code>-compact</code> when vertical space is limited.
+        | Use <code>-compact</code> when vertical space is limited.
     template(#example)
       .chi-stat.-compact
         div(v-for="(stat, index) in stats" :key="index" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")

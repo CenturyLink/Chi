@@ -2,7 +2,7 @@
 <ComponentExample title="Simple" id="simple" padding="-p--0" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
+      | Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
   template(#example)
     .chi-backdrop.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper

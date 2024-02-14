@@ -2,7 +2,7 @@
 <ComponentExample title="Inverse Backdrop" padding="-p--0" id="inverse-backdrop" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Invert a modals backdrop by applying the class <code>-inverse.</code>
+      | Invert a modals backdrop by applying the class <code>-inverse.</code>
   template(#example)
     .chi-backdrop.-inverse.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper

@@ -2,8 +2,8 @@
   <ComponentExample title="Search box" id="search_box" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     template(#example-description)
       p.-text
-      | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
-      | smaller padding at the sides.
+        | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
+        | smaller padding at the sides.
     template(#example)
       .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
         .chi-dropdown__menu.-active

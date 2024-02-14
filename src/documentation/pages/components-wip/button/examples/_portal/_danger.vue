@@ -2,8 +2,8 @@
   <ComponentExample titleSize="h2" title="Danger" id="danger-portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
-      | a Danger button may be used.
+        | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
+        | a Danger button may be used.
     template(#example)
       chi-button.-mr--2(color='danger')= 'Button'
       chi-button.-mr--2(variant='outline', color='danger')= 'Button'

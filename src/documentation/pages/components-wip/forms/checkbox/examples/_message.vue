@@ -2,7 +2,7 @@
   <ComponentExample title="Message" id="message" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Add a message below a checkbox to store descriptions, validation feedback, and other helpful information.
+        | Add a message below a checkbox to store descriptions, validation feedback, and other helpful information.
     template(#example)
       .chi-form__item
         .chi-checkbox

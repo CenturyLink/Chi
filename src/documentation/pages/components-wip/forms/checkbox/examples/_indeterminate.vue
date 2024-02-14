@@ -2,8 +2,8 @@
   <ComponentExample title="Indeterminate" id="indeterminate" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | A checkbox cannot be set to <code>indeterminate</code> state by an HTML attribute - it must be set by JavaScript.
-      | Use the class <code>-indeterminate</code> to achieve the corresponding style of the checkbox.
+        | A checkbox cannot be set to <code>indeterminate</code> state by an HTML attribute - it must be set by JavaScript.
+        | Use the class <code>-indeterminate</code> to achieve the corresponding style of the checkbox.
     template(#example)
       .chi-form__item
         .chi-checkbox

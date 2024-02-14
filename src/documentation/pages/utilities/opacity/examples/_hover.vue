@@ -2,7 +2,7 @@
   <ComponentExample padding="-p--2" title="Hover" id="opacity-hover" :tabs="exampleTabs" :showSnippetTabs="false">
     template(#example-description)
       p.-text
-      | Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
+        | Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
     template(#example)
       .chi-grid.-no-gutter
         .chi-col.-w--6.-w-md--4.-w-lg--2(v-for="opacity in opacities")

@@ -2,7 +2,7 @@
   <ComponentExample title="Required" id="required" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>required</code> boolean attribute to indicate which radio buttons must be completed before submitting a form.
+        | Use the <code>required</code> boolean attribute to indicate which radio buttons must be completed before submitting a form.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

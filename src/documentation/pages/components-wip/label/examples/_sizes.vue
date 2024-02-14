@@ -2,8 +2,8 @@
   <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Label supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>.
-      | The default size is <code>md</code>.
+        | Label supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>.
+        | The default size is <code>md</code>.
     template(#example)
       each size, index in ['xs', 'sm', 'md', 'lg', 'xl']
         chi-label(for=`input-${index}`, size=size) Label

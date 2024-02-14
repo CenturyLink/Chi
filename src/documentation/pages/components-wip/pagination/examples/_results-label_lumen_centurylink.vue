@@ -2,7 +2,7 @@
   <ComponentExample title="Results Label" id="results-label-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     template(#example-description)
       p.-text
-      | Add a label to indicate the total number of results.
+        | Add a label to indicate the total number of results.
     template(#example)
       .chi-grid.-no-gutter
         .chi-col.-w--12(v-for="item in [1, 2]")

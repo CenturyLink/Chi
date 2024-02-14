@@ -2,7 +2,7 @@
 <ComponentExample title="Divider" id="divider" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
   template(#example-description)
     p.-text
-    | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
+      | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
   template(#example)
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       .chi-dropdown__menu.-active

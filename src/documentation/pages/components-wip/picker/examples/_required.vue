@@ -2,7 +2,7 @@
   <ComponentExample titleSize="h4" title="Required" id="required" :tabs="exampleTabs" padding="-p--4">
     template(#example-description)
       p.-text
-      | Use the <code>required</code> boolean attribute to indicate which pickers must be completed before submitting a form.
+        | Use the <code>required</code> boolean attribute to indicate which pickers must be completed before submitting a form.
     template(#example)
       fieldset
         legend.chi-label

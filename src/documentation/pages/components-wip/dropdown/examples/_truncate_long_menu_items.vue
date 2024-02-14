@@ -2,7 +2,7 @@
   <ComponentExample title="Truncate long menu-items" titleSize="h4" id="truncate_long_menu_items" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     template(#example-description)
       p.-text
-      | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
+        | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
     template(#example)
       .chi-dropdown__menu.-active(style="width:10rem")
         a.chi-dropdown__menu-item(href='#exampleLink') Item 1

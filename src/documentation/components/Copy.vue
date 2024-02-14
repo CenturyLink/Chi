@@ -12,7 +12,7 @@
 </template>
 
 <style>
-highlightjs code.hljs {
+code.hljs {
   display: unset;
   padding: 0 !important;
 }

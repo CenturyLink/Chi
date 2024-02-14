@@ -2,9 +2,9 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p-lg--6" additionalClasses="-bg--grey-10">
     template(#example-description)
       p.-text
-      | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
-      | This will enable panels to work together as a sequential form. When a panel is activated,
-      | the previous expanding panels will get the done state and the next will get the pending state.
+        | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
+        | This will enable panels to work together as a sequential form. When a panel is activated,
+        | the previous expanding panels will get the done state and the next will get the pending state.
     template(#example)
       .-mw--720.-mx--auto
         chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Panel title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")

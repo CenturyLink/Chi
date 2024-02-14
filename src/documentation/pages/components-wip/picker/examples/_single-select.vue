@@ -2,7 +2,7 @@
   <ComponentExample title="Single-select pickers" id="single-select-pickers" :tabs="exampleTabs" padding="-p--4">
     template(#example-description)
       p.-text
-      | Use single-select pickers when only one option can be chosen.
+        | Use single-select pickers when only one option can be chosen.
     template(#example)
       fieldset
         legend.chi-label Legend

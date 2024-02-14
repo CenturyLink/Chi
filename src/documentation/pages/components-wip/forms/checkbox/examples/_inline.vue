@@ -2,7 +2,7 @@
   <ComponentExample title="Inline" id="inline" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display two or more checkboxes in one row.
+        | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display two or more checkboxes in one row.
     template(#example)
       legend.chi-label Select options
       .chi-form__item.-inline

@@ -2,7 +2,7 @@
   <ComponentExample title="State Icon" id="state-icon" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     template(#example-description)
       p.-text
-      | Use state icon to render an icon that corresponds with the state of the panel.
+        | Use state icon to render an icon that corresponds with the state of the panel.
     template(#example)
       .-mw--720.-mx--auto
         chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" :title="panel.title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :state-icon="true")

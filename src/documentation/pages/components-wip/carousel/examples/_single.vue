@@ -2,7 +2,7 @@
   <ComponentExample title="Single element per view" id="single" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the attribute <code>single</code> to render single item per view.
+        | Use the attribute <code>single</code> to render single item per view.
     template(#example)
       chi-carousel(single)
         div(slot="items")

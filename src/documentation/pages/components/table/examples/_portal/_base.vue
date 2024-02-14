@@ -2,8 +2,8 @@
 <ComponentExample title="Portal" id="base-portal" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Enable portal styling by applying class <code>-portal</code>. To display a row in active / selected state,
-    | apply class <code>-active</code> to the <code>tr</code>.
+      | Enable portal styling by applying class <code>-portal</code>. To display a row in active / selected state,
+      | apply class <code>-active</code> to the <code>tr</code>.
   template(#example)
     table.chi-table.-portal
       thead

@@ -2,8 +2,8 @@
   <ComponentExample title="Long Tooltips" id="long" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
-      | use the <a href="../../components/popover">Popover</a> component
+        | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
+        | use the <a href="../../components/popover">Popover</a> component
     template(#example)
       button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
       'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +

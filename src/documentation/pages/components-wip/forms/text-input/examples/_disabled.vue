@@ -2,9 +2,9 @@
   <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
-      | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
-      | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
+        | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+        | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+        | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5

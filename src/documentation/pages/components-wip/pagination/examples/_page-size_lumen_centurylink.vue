@@ -2,7 +2,7 @@
   <ComponentExample title="Page Size" id="page-size-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     template(#example-description)
       p.-text
-      | Allow users to configure the number of result items per page.
+        | Allow users to configure the number of result items per page.
     template(#example)
       .chi-grid.-no-gutter
         .chi-col.-w--12(v-for="item in [1, 2]")

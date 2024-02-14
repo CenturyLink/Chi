@@ -2,8 +2,8 @@
   <ComponentExample title="Menu item states" id="states" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     template(#example-description)
       p.-text
-      | Menu items support the following states: <code>initial</code>, <code>active</code>, <code>disabled</code> and
-      | <code>hover</code>.
+        | Menu items support the following states: <code>initial</code>, <code>active</code>, <code>disabled</code> and
+        | <code>hover</code>.
     template(#example)
       .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
         .chi-dropdown__menu.-active

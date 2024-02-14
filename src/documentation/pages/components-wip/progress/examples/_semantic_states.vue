@@ -2,8 +2,8 @@
   <ComponentExample title="Semantic States" id="semantic_states" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use semantic colors to communicate meaning to users. Use green (<code>-success</code>) for positive, blue (base state) for informative,
-      | red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
+        | Use semantic colors to communicate meaning to users. Use green (<code>-success</code>) for positive, blue (base state) for informative,
+        | red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
     template(#example)
       .-py--2
         .chi-label Success

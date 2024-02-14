@@ -2,7 +2,7 @@
 <ComponentExample title="Scrolling long content" id="scrollable-long-content" padding="-p--0" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
+      | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
   template(#example)
     .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
       .chi-backdrop__wrapper

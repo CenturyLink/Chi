@@ -58,11 +58,6 @@
           tab.active ? '-active' : ''
         ]" v-for="tab in tabs" :key="tab.id" :id="'example-' + id + '-' + tab.id" :ref="`tab-panel-${tab.id}`"
           role="tabpanel">
-          <div class="clipboard">
-            <button class="clipboard__button chi-button -xs -flat" @click="() => copy(`tab-panel-${tab.id}`)">
-              Copy
-            </button>
-          </div>
           <slot :name="'code-' + tab.id"></slot>
         </div>
       </div>

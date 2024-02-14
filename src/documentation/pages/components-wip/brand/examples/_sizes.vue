@@ -4,9 +4,9 @@
   <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" padding="-p--0">
     template(#example-description)
       p.-text
-      | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
-      | <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
-      | The default size is <code>md</code>.
+        | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
+        | <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+        | The default size is <code>md</code>.
     template(#example)
       .chi-grid.-no-gutter.-overflow--auto
         .chi-col.-w--12

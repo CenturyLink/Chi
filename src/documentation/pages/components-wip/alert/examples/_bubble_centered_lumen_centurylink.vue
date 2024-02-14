@@ -2,8 +2,8 @@
   <ComponentExample title="Centered" titleSize="h4" id="bubble_centered_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      |  <strong>Note:</strong> Use sparingly. Centered Bubble alerts should only be used to render brief messages on centered forms
-      |  such as those found on Sign In and Sign Up screens. Centered alerts do not support titles.
+        |  <strong>Note:</strong> Use sparingly. Centered Bubble alerts should only be used to render brief messages on centered forms
+        |  such as those found on Sign In and Sign Up screens. Centered alerts do not support titles.
     template(#example)
       chi-alert.-m--2(color='danger', icon='circle-warning', center)
         | This is a centered danger alert

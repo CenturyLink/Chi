@@ -2,7 +2,7 @@
   <ComponentExample title="Pagination" id="pagination" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the attribute <code>pagination</code> to render carousel with pagination.
+        | Use the attribute <code>pagination</code> to render carousel with pagination.
     template(#example)
       chi-carousel(pagination single)
         div(slot="items")

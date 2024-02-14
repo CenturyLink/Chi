@@ -2,7 +2,7 @@
   <ComponentExample title="No Underline on Hover" id="no-hover-underline" :tabs="exampleTabs" additionalClasses="-text">
     template(#example-description)
       p.-text
-      | Use to remove a link's underline on hover.
+        | Use to remove a link's underline on hover.
     template(#example)
       chi-link(href="#" no-hover-underline) Link
     template(#code-webcomponent)

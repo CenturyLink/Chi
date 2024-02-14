@@ -2,7 +2,7 @@
   <ComponentExample titleSize="h2" title="Fluid" id="fluid-portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use Fluid buttons to stretch the full width of the parent container.
+        | Use Fluid buttons to stretch the full width of the parent container.
     template(#example)
       button(class=`chi-button -primary -fluid -justify-content--center -mb--2`) Primary
       button(class=`chi-button -fluid -justify-content--center`) Secondary

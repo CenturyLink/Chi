@@ -2,7 +2,7 @@
   <ComponentExample titleSize="h2" title="Fluid" id="fluid-lumen-centurylink" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use Fluid buttons to stretch the full width of the parent container.
+        | Use Fluid buttons to stretch the full width of the parent container.
     template(#example)
       .chi-form__item
         button(class=`chi-button -fluid -mb--2`) Button

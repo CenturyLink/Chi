@@ -2,7 +2,7 @@
   <ComponentExample title="Inline" id="inline" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Apply <code>-inline</code> to display two or more radio buttons in one row.
+        | Apply <code>-inline</code> to display two or more radio buttons in one row.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

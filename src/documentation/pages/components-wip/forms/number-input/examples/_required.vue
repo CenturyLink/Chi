@@ -2,12 +2,12 @@
   <ComponentExample title="Required" id="required" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>required</code> boolean attribute to indicate which inputs must be completed before submitting a form.
-      | To render a required input, apply the <code>required</code> attribute to the input. It is also
-      | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
-      | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
-      | the <code>required</code> attribute is not supported on the label. Please use the alternate method
-      | specified below for rendering a red asterisk within the label.
+        | Use the <code>required</code> boolean attribute to indicate which inputs must be completed before submitting a form.
+        | To render a required input, apply the <code>required</code> attribute to the input. It is also
+        | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
+        | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
+        | the <code>required</code> attribute is not supported on the label. Please use the alternate method
+        | specified below for rendering a red asterisk within the label.
     template(#example)
       .chi-form__item
         chi-label(for="unique-id-re1" required) Label

@@ -2,7 +2,7 @@
   <ComponentExample title="Stacked" id="stacked" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Group checkboxes in <code>chi-form__item</code> for easy stacking.
+        | Group checkboxes in <code>chi-form__item</code> for easy stacking.
     template(#example)
       legend.chi-label Select options
       .chi-form__item

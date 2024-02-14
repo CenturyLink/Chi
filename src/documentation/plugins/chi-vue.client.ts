@@ -11,7 +11,6 @@ export default defineNuxtPlugin(nuxtApp => {
       return
     }
     const newName = name.replace("Chi", "ChiVue")
-    console.debug(`Registering ${newName}`)
     nuxtApp.vueApp.component(
         newName,
         component

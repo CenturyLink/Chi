@@ -2,9 +2,9 @@
   <ComponentExample title="Error" id="error-lumen-centurylink" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
-      | To meet accessibility requirements, danger inputs must include an error message explaining the
-      | failure and/or how to correct it.
+        | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
+        | To meet accessibility requirements, danger inputs must include an error message explaining the
+        | failure and/or how to correct it.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5

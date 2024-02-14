@@ -2,8 +2,8 @@
   <ComponentExample title="Checked" id="checked" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>checked</code> boolean attribute to set the default value of
-      | a checkbox to true.
+        | Use the <code>checked</code> boolean attribute to set the default value of
+        | a checkbox to true.
     template(#example)
       .chi-form__item
         .chi-checkbox

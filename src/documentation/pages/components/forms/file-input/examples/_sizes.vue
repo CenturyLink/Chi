@@ -2,9 +2,9 @@
 ComponentExample(title="Sizes" id="sizes" :tabs="exampleTabs")
   template(#example-description)
     p.-text
-    | File inputs support sizes:
-    span(v-html="getSizesByTheme()")
-    | . The default size is <code>-md</code>.
+      | File inputs support sizes:
+      span(v-html="getSizesByTheme()")
+      | . The default size is <code>-md</code>.
   template(#example)
     .-p--2(
       v-for="(size, index) in sizes[selectedTheme]"

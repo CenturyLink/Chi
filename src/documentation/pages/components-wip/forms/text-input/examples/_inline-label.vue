@@ -2,7 +2,7 @@
   <ComponentExample title="Inline Label" id="inline-label" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Apply the class <code>-row</code> to <code>chi-form__item</code> to render labels and inputs inline.
+        | Apply the class <code>-row</code> to <code>chi-form__item</code> to render labels and inputs inline.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5

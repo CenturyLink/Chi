@@ -2,7 +2,7 @@
   <ComponentExample title="Checked" id="checked" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>checked</code> boolean attribute to set the default value of a radio button input to true.
+        | Use the <code>checked</code> boolean attribute to set the default value of a radio button input to true.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

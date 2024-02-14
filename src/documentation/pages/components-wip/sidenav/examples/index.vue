@@ -8,9 +8,9 @@
     div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       h2 Active Usage
       p.-text
-      | The <code>-active</code> class can be applied to <code>ul.chi-sidenav__list &gt; li</code>
-      | for activating the elements in the sidenav menu, <code>.drawer</code> for opening the <a href="../drawer/">drawer</a>,
-      | and <code>ul.chi-sidenav__drawer-list &gt; li</code> for activating the menu items inside the drawer.
+        | The <code>-active</code> class can be applied to <code>ul.chi-sidenav__list &gt; li</code>
+        | for activating the elements in the sidenav menu, <code>.drawer</code> for opening the <a href="../drawer/">drawer</a>,
+        | and <code>ul.chi-sidenav__drawer-list &gt; li</code> for activating the menu items inside the drawer.
 
       h2 Sizes
       p.-text Sidenav supports the following sizes: <code>-sm</code>, <code>-md</code> and <code>-lg</code>. The default size is <code>-md</code>.

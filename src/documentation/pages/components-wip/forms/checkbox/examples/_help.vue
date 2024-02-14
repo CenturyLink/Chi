@@ -2,8 +2,8 @@
   <ComponentExample title="Help" id="help" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
-      | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+        | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+        | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
     template(#example)
       .chi-form__item
         .chi-checkbox

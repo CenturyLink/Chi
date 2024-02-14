@@ -2,8 +2,8 @@
 <ComponentExample title="Center" padding="-p--0" id="center" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Modals can also be placed in the middle of the page by applying the class <code>-center</code>
-    | to <code>chi-backdrop</code>.
+      | Modals can also be placed in the middle of the page by applying the class <code>-center</code>
+      | to <code>chi-backdrop</code>.
   template(#example)
     .chi-backdrop.-center.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper

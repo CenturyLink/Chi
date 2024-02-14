@@ -2,8 +2,8 @@
   <ComponentExample title="Radio Button List" id="radio-button-list" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Radio button lists are used to wrap a series of radio buttons in a list.
-      | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
+        | Radio button lists are used to wrap a series of radio buttons in a list.
+        | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

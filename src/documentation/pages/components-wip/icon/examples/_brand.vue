@@ -2,7 +2,7 @@
 <ComponentExample title="Brand" titleSize="h4" id="brand" padding="-p--0" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | Brand icon colors reinforce Lumen's brand.
+      | Brand icon colors reinforce Lumen's brand.
   template(#example)
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center

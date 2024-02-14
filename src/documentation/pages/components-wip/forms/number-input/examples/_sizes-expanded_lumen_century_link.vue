@@ -2,8 +2,8 @@
   <ComponentExample title="Sizes" id="sizes-expanded_lumen_century_link" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Expanded number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
+        | Expanded number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+        |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
     template(#example)
       .-d--flex.-flex--column
         each size in ['xs', 'sm', 'md', 'lg', 'xl']

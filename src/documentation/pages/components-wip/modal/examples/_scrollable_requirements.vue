@@ -2,8 +2,8 @@
 <ComponentExample title="Requirements" titleSize="h4" id="scrollable-requirements" padding="-p--0" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-    | A max-height must be defined on <code>chi-modal__content</code>. Use max-height utility classes
-    | such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
+      | A max-height must be defined on <code>chi-modal__content</code>. Use max-height utility classes
+      | such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
   template(#example)
     .chi-backdrop.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper

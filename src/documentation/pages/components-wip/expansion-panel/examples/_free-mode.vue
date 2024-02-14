@@ -2,8 +2,8 @@
   <ComponentExample title="Free mode" id="free-mode" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     template(#example-description)
       p.-text
-      | In this mode there is no automated action triggered when an element activates,
-      | so you will need to manage all custom behavior.
+        | In this mode there is no automated action triggered when an element activates,
+        | so you will need to manage all custom behavior.
     template(#example)
       .-mw--720.-mx--auto
         .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode' v-for="(panel, index) in panels" :class="panel.isActive ? '-active' : ''")

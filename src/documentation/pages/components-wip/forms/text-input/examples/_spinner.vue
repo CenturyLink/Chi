@@ -2,7 +2,7 @@
   <ComponentExample title="Spinner" id="spinner" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>spinner</code> attribute to let users know when information is saving or loading.
+        | Use the <code>spinner</code> attribute to let users know when information is saving or loading.
     template(#example)
       .chi-grid
         .chi-form__item.-mb--2(style="max-width:20rem")

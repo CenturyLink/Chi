@@ -11,12 +11,12 @@ import { Vue } from 'vue-facing-decorator';
 @NuxtComponent({})
 export default class ComponentTsClass extends Vue {
   codeSnippets = {
-    htmlblueprint: `@NuxtComponent({
+    htmlblueprint: `@Component({
   tag: 'chi-button'
 })
 export class Button { ... }
 
-@NuxtComponent({
+@Component({
   tag: 'chi-icon'
 })
 export class Icon { ... }`,

@@ -2,7 +2,7 @@
 <ComponentExample title="Page Jumper" id="page-jumper-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
   template(#example-description)
     p.-text
-    | Add a page jumper to allow users to jump to a specific page of results.
+      | Add a page jumper to allow users to jump to a specific page of results.
   template(#example)
     .chi-grid.-no-gutter
       .chi-col.-w--12(v-for="item in [1, 2]")

@@ -2,8 +2,8 @@
   <ComponentExample titleSize="h4" title="Switch List" id="switch-list-lumen-centurylink" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Switch lists are used to wrap a series of switches in a list.
-      | To render, apply the class <code>-list</code> to <code>chi-form__item</code>.
+        | Switch lists are used to wrap a series of switches in a list.
+        | To render, apply the class <code>-list</code> to <code>chi-form__item</code>.
     template(#example)
       legend.chi-label Select options
       ul.chi-form__item.-list(style="max-width:20rem")

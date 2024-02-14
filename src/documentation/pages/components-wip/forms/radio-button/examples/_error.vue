@@ -2,8 +2,8 @@
   <ComponentExample title="Error" id="error" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made. Once a selection has been made, the state must be removed.
-      | To meet accessibility requirements, danger inputs must include an error message explaining the failure and/or how to correct it.
+        | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made. Once a selection has been made, the state must be removed.
+        | To meet accessibility requirements, danger inputs must include an error message explaining the failure and/or how to correct it.
     template(#example)
       fieldset
         legend(class="chi-label") Select an option

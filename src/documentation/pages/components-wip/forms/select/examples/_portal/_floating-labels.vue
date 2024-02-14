@@ -2,7 +2,7 @@
   <ComponentExample title="Floating labels" id="floating-labels-portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
+        | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
     template(#example)
       .chi-col.-w--12.-p--2(v-for="size in sizes")
         .chi-input__wrapper.-floating-label(style="max-width:20rem" :ref="`label-${size}`")

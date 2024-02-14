@@ -2,8 +2,8 @@
   <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>. The default size is <code>md</code>.
+        | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+        |  <code>lg</code>. The default size is <code>md</code>.
     template(#example)
       .-d--flex.-flex--column
         each size in ['xs', 'sm', 'md', 'lg']

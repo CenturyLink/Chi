@@ -2,7 +2,7 @@
   <ComponentExample title="Message" id="message" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Add a message below an input to store descriptions, validation feedback, and other helpful information.
+        | Add a message below an input to store descriptions, validation feedback, and other helpful information.
     template(#example)
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5

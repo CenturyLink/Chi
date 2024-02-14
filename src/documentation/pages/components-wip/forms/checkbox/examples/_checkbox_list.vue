@@ -2,8 +2,8 @@
   <ComponentExample title="Checkbox List" id="checkbox_list" :tabs="exampleTabs">
     template(#example-description)
       p.-text
-      | Checkbox lists are used to wrap a series of checkboxes in a list.
-      | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
+        | Checkbox lists are used to wrap a series of checkboxes in a list.
+        | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
     template(#example)
       legend.chi-label Select options
       ul.chi-form__item.-list(style="max-width:20rem")
