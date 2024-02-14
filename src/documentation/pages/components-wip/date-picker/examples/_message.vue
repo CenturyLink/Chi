@@ -45,7 +45,7 @@
     </div>
     <div class="chi-label -status -danger">
       <i class="chi-icon circle-warning" aria-hidden="true"></i>
-      Please select a date.
+      Optional helper message
     </div>
   </div>
   
