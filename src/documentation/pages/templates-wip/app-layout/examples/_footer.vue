@@ -92,6 +92,5 @@ export const generateAllExampleFooters = (dropdownId = 'language-dropdown-button
   brightspeed: generateExampleFooter('brightspeed', dropdownId),
 });
 
-export default class Footer extends Vue {
-}
+export default class Footer extends Vue {}
 </script>

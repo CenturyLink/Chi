@@ -132,7 +132,6 @@ ${this.generateTabsContentHtml(false)}
 
   mounted() {
     const element = document.querySelector('#example__horizontal-flat') as TabsListInterface;
-    console.log('tabs is', element)
     if (element) {
       element.tabs = this.tabLinks;
     }
