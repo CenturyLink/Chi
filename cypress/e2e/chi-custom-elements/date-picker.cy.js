@@ -286,9 +286,9 @@ describe('Date picker', function() {
     cy.get('[data-cy="test-input-error"]').as('testInputError');
 
     cy.get('@testInputError')
-      .find('chi-date-picker').should('exist')
+      .find('chi-date-picker')
       .should('have.attr', 'helper-message', `${helperMessage}`)
-      .find('chi-helper-message').should('exist')
+      .find('chi-helper-message')
       .contains('div', `${helperMessage}`);
   });
 
