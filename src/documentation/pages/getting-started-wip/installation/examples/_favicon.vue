@@ -4,7 +4,7 @@
     .chi-badge.-dark.-outline.-xs.-mr--1
       span Optional
     p.-text A favicon is a small icon associated with a webpage that is typically displayed in a browser's address bar, bookmarks, and tabs. To add a Lumen favicon to your project, insert the following code before the closing <code>&lt;head&gt;</code> tag.
-    <Copy id="stylesheet" lang="bash" :code="stylesheet.htmlblueprint(version, theme)" />
+    <Copy id="stylesheet" lang="html" :code="stylesheet.htmlblueprint(version, theme)" />
 </template>
 
 <script lang="ts">

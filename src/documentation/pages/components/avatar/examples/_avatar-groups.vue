@@ -6,8 +6,8 @@
       | Render an avatar group by wrapping an avatar in the class <code>chi-avatar-group</code>.
   template(#example)
     .chi-grid
-      template(v-for="color in colors" v-if="color !== 'secondary'")
-        .-mb--1.chi-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3
+      template(v-for="color in colors")
+        .-mb--1.chi-col.-w--6.-w-sm--4.-w-md--6.-w-lg--4.-w-xl--3(v-if="color !== 'secondary'")
           .chi-avatar-group
             div(:class="`chi-avatar -${color}`") L
             = `Label {{color}}`

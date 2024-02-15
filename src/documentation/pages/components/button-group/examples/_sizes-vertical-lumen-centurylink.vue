@@ -6,6 +6,7 @@
       .-d--flex.-flex--wrap
         .chi-button-group.-vertical.-fluid(style="width:12rem")
           button(:class="`chi-button -${size}`"  v-for="item in Array(3).fill(0)") Button
+
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)

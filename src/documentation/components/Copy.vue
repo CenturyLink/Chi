@@ -6,7 +6,7 @@
       </button>
     </div>
     <ClientOnly>
-      <highlightjs :language="lang" :code="code" />
+      <highlightjs :language="lang" :code="code" :class="`language-${lang}`" autodetect/>
     </ClientOnly>
   </div>
 </template>
@@ -52,7 +52,7 @@ import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 })
 export default class Copy extends Vue {
   @Prop({ default: '' }) id?: string;
-  @Prop({ default: ''}) code?: string;
-  @Prop({default: 'html'}) lang?: string
+  @Prop({ default: '' }) code?: string;
+  @Prop({ default: '' }) lang?: string
 }
 </script>

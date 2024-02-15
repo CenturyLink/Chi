@@ -19,11 +19,6 @@ import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '@/constants/constants';
 
 @NuxtComponent({
-  head() {
-    return {
-      title: 'Chi - Expansion panel',
-    };
-  },
   components: {
     Accessibility,
     Examples,
