@@ -6,7 +6,7 @@
       </button>
     </div>
     <ClientOnly>
-      <highlightjs :language="lang" :code="code" :class="`language-${lang}`" autodetect/>
+      <highlightjs :code="code" :class="`language-${lang}`" :autodetect="false"/>
     </ClientOnly>
   </div>
 </template>

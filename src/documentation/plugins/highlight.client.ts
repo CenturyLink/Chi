@@ -5,7 +5,9 @@
  */
 import 'highlight.js/styles/github.css';
 import hljsVuePlugin from '@highlightjs/vue-plugin';
-import 'highlight.js/lib/common';
+
+// uncomment to enable language importing and colouring
+// import 'highlight.js/lib/common';
 
 export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.vueApp.use(hljsVuePlugin);
