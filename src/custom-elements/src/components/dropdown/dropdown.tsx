@@ -121,8 +121,6 @@ export class Dropdown {
   private _customTrigger: boolean;
 
   connectedCallback() {
-    addMutationObserver.call(this, this.setMenuHeight);
-    
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
 
     this._customTrigger = !!triggerSlotElement;
@@ -130,17 +128,17 @@ export class Dropdown {
       this._referenceElement = triggerSlotElement;
     } else if (this.reference) {
       const reference = document.querySelector(this.reference);
-
       if (reference) {
         this._referenceElement = reference;
       }
     }
   }
-
+  
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
+    addMutationObserver.call(this, this.setMenuHeight);
   }
 
   componentWillLoad() {
@@ -236,7 +234,8 @@ export class Dropdown {
   }
 
   setMenuHeight() {
-    const menuItems = this._getDropdownMenuItems();
+    const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
+
     const itemsToShow = this.visibleItems
       ? menuItems.length < this.visibleItems
         ? menuItems.length

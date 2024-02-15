@@ -199,7 +199,7 @@ pipeline {
             steps {
               script{
                 dir ('src/chi-vue') {
-                  ghYarnWrap('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run prettier:checker')
                 }
                 echo "No full linting implemented in repo"
@@ -601,7 +601,7 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  ghYarnWrap('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run build:component')
                   jslNpmWrapper('pack')
                   jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
@@ -1001,7 +1001,7 @@ def chiVueNexusPublish() {
             cat package.json
           '''
           def versionExists = ''
-          ghYarnWrap('install')
+          jslNpmWrapper('ci')
           jslNpmWrapper('run build:component')
           try {
               versionExists = jslNpmWrapper("info ${commitJson.name}@${commitJson.version} version", true)

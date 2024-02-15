@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stenci
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-textarea',
@@ -130,6 +131,10 @@ export class Textarea {
     this.iconLeftColorValidation(this.iconLeftColor);
     this.iconRightColorValidation(this.iconRightColor);
     this.sizeValidation(this.size);
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   render() {
