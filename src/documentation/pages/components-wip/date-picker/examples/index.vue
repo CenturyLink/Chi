@@ -7,6 +7,7 @@
     <ExcludedWeekDays />
     <ExcludedDates />
     <ExcludedDatesWeekDays />
+    <Message />
     <Error />
     <DatePickerDateTime />
     <DatePickerDateTimeStepped />
@@ -29,6 +30,7 @@ import DatePickerMultipleDates from './_date-picker-multiple-dates.vue';
 import ExcludedWeekDays from './_excluded-week-days.vue';
 import CalendarMultipleActiveDates from './_calendar-multiple-active-dates.vue';
 import ExcludedDatesWeekDays from './_excluded-dates-week-days.vue';
+import Message from './_message.vue';
 import Error from './_error.vue';
 import DatePickerDateTime from './_date-picker-date-time.vue';
 import DatePickerDateTimeStepped from './_date-picker-date-time-stepped.vue';
@@ -48,6 +50,7 @@ import CalendarDateTime from './_calendar-date-time.vue';
     CalendarMultipleActiveDates,
     ExcludedDatesWeekDays,
     Error,
+    Message,
     DatePickerDateTime,
     DatePickerDateTimeStepped,
     ExcludedDates,

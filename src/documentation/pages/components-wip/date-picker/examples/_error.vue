@@ -6,10 +6,7 @@
       | failure and/or how to correct it.
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__date_error') Date
-      chi-date-picker(id="example__date_error" state="danger")
-      .chi-label.-status.-danger
-        chi-icon(icon='circle-warning')  
-        | Please select a date.
+      chi-date-picker(id="example__date_error" state="danger" helper-message='Please select a date.')      
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -41,11 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="example__datepicker_date_error">Date</chi-label>
-<chi-date-picker id="example__datepicker_date_error" state="danger"></chi-date-picker>
-<div class="chi-label -status -danger">
-  <chi-icon icon="circle-warning"></chi-icon>
-  Please select a date.
-</div>`,
+<chi-date-picker id="example__datepicker_date_error" state="danger" helper-message="Please select a date."></chi-date-picker>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__datepicker_error">Date</label>
   <div class="chi-input__wrapper -icon--right">
