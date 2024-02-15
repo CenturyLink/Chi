@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-data-table" :tabs="exampleTabs">
     template(#example)
-      chi-data-table(:config='config', :data='table')
+      ChiDataTable(:config='config', :dataTableData='table')
     template(#code-vue)
       Copy(:code="codeSnippets.vue" lang="html")
     template(#code-htmlblueprint)

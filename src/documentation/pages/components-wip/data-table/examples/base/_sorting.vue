@@ -2,7 +2,7 @@
   div
     <ComponentExample v-for="sortType in sortingTypes" :key="sortType.id" :title="sortType.title" :id="sortType.id" :tabs="exampleTabs">
       template(#example)
-        chi-data-table(:config='getConfig(sortType.defaultSort)', :data='table')
+        ChiDataTable(:config='getConfig(sortType.defaultSort)', :dataTableData='table')
       template(#code-vue)
         .chi-tab__description
           | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable

@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Complex" id="complex-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config="config", :data="table", ref='dataTableComplex',)
+    ChiDataTable(:config="config", :dataTableData="table", ref='dataTableComplex',)
       template(#status="payload")
         i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
         span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
@@ -10,7 +10,7 @@
       template(#actions="payload")
         chi-dropdown-example(:id="payload.id")
       template(#toolbar)
-        chi-data-table-toolbar
+        ChiDataTableToolbar
           template(v-slot:end)
             chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
               chi-icon(icon="print")
@@ -51,8 +51,6 @@
           li
             a(href='#vertical-portal-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-portal-3') ExampleDropdown.vue
           li.chi-sliding-border
-        script.
-          chi.tab(document.getElementById('example-vertical-portal'));
       .-flex--grow1
         #vertical-portal-1.chi-tabs-panel.-active(role='tabpanel')
           Copy(lang="html" :code="codeSnippets.dataTableExample")
@@ -77,6 +75,9 @@ import DropdownExample from './../dropdown-example.vue'
     printTable() {
       (this.$refs.dataTableComplex as any)?.print("Data table - Complex");
     },
+  },
+  mounted() {
+    chi.tab(document.getElementById('example-vertical-portal'))
   },
   data: () => {
     return {

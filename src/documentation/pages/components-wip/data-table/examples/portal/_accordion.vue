@@ -1,15 +1,13 @@
 <template lang="pug">
-  <ComponentExample v-for="accordion in accordionTypes" :title="accordion.title" :id="accordion.id" :key="accordion.id"  :tabs="exampleTabs">
+template(v-for="accordion in accordionTypes")
+  <ComponentExample :title="accordion.title" :id="accordion.id" :tabs="exampleTabs">
     template(#example)
-      chi-data-table(:config='config', :data='accordion.table')
+      ChiDataTable(:config='config', :dataTableData='accordion.table')
+
     template(#code-vue)
       .chi-tab__description
         | Use <code>nestedContent</code> property to provide data of row accordion content
       Copy(lang="html" :code="accordion.codeSnippetVue")
-
-    template(#code-htmlblueprint)
-
-      Copy(lang="html" :code="codeSnippets.htmlblueprint")
   </ComponentExample>
 </template>
 

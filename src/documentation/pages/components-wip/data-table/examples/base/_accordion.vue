@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Accordion" id="accordion-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='config', :data='table')
+    ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>nestedContent</code> property to provide data of row accordion content.

@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Base" id="base-portal-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='config', :data='table')
+    ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>portal</code> config to achieve portal styling

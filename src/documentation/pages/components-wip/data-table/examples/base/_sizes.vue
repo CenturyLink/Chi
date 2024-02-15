@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample v-for="size in sizes" :key="size" :title="`Size -${size}`" :id="`size-${size}-data-table`" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='getConfig(size)', :data='table')
+    ChiDataTable(:config='getConfig(size)', :dataTableData='table')
   template(#code-vue)
     Copy(lang="html" :code="getVueCode(size)")
 

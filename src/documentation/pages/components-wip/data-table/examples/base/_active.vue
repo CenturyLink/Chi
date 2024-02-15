@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Active" id="active-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='config', :data='table')
+    ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>active</code> property to achieve active state of rows

@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Selectable" id="selectable-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='config', :data='table')
+    ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>selectable</code> config to render rows with selectable checkboxes
@@ -14,7 +14,7 @@
 
 <ComponentExample title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='getRadioSelectionConfig()', :data='table')
+    ChiDataTable(:config='getRadioSelectionConfig()', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>selectable</code> config to render rows with radio buttons

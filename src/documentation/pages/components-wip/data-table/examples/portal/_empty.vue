@@ -2,7 +2,7 @@
 <TitleAnchor title="Empty" />
 <ComponentExample v-for="dataTable in emptyDataTables" :title="dataTable.title" titleSize="h4" :id="dataTable.id" :key="dataTable.id" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config="getConfig(dataTable.config)" :data='table')
+    ChiDataTable(:config="getConfig(dataTable.config)" :dataTableData='table')
 
   template(#code-vue)
     .chi-tab__description(v-if="dataTable.description" v-html="dataTable.description")

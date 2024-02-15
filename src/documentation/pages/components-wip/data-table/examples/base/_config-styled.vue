@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample v-for="styledDataTable in styledDataTables" :title="styledDataTable.title" :key="styledDataTable.id" :id="styledDataTable.id" :tabs="exampleTabs">
   template(#example)
-    chi-data-table(:config='getConfig(styledDataTable.style)' :key="styledDataTable.id" :data='table')
+    ChiDataTable(:config='getConfig(styledDataTable.style)' :key="styledDataTable.id" :dataTableData='table')
   template(#code-vue)
     .chi-tab__description(v-html="styledDataTable.description")
     Copy(lang="html" :code="getVueCode(styledDataTable.style)")
