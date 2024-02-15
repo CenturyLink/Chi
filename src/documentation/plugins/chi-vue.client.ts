@@ -5,15 +5,26 @@ import * as ChiVueLibrary from '@centurylink/chi-vue';
 
 import { ChiVue } from '@centurylink/chi-vue';
 
+const components = [
+  "ChiPagination",
+  "ChiDataTableToolbar",
+  "ChiDataTable",
+  "ChiDataTableBulkActions",
+  "ChiDataTableFilters",
+  "ChiDataTableViews",
+  "ChiDrawer",
+  "ChiSearchInput",
+  "ChiTooltip",
+  "ChiColumnCustomization",
+  "ChiSaveView",
+  "ChiExpansionPanel",
+]
+
 export default defineNuxtPlugin(nuxtApp => {
-  Object.entries(ChiVueLibrary).forEach(([name, component]) => {
-    if (name === "ChiVue" || name === 'registerChiJs'){
-      return
-    }
-    const newName = name.replace("Chi", "ChiVue")
+  components.forEach(name => {
     nuxtApp.vueApp.component(
-        newName,
-        component
+        name,
+        ChiVueLibrary[name]
     )
   })
   // nuxtApp.vueApp.use(ChiVue, {});

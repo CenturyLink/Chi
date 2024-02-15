@@ -164,7 +164,7 @@ export default defineNuxtConfig({
       '@centurylink/chi-vue'
     ]
   },
-  modules: ['@nuxt/image', 'nuxt3-class-component'],
+  modules: ['@nuxt/image', 'nuxt3-class-component', '@pinia/nuxt'],
   // dev server config https://nitro.unjs.io/config
   typescript: {
     // TODO: fix this errors

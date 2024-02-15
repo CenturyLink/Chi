@@ -458,7 +458,7 @@ const views = [
 
 export const exampleToolbar = {
   customItemsData: customItems,
-  filtersData: filters,
+  filtersData: {filters},
   columnsData: {
     columns: columns
   },

@@ -1,28 +1,29 @@
 <template lang="pug">
 h2 Examples
 
-BaseExample
-<Titled />
-<Arrow />
-<ReferenceElement />
+ClientOnly(fallback="Loading examples...")
+  BaseExample
+  <Titled />
+  <Arrow />
+  <ReferenceElement />
 
-div(v-if="selectedTheme === 'portal'")
-  <InlineModalPortal />
-  <DraggablePortal />
-div(v-else)
-  <DraggableLumenCenturyLink />
+  div(v-if="selectedTheme === 'portal'")
+    <InlineModalPortal />
+    <DraggablePortal />
+  div(v-else)
+    <DraggableLumenCenturyLink />
 
-<OpenOnHover />
-<CloseButton />
-<Positioning />
-<Interaction />
-<AutoHide />
+  <OpenOnHover />
+  <CloseButton />
+  <Positioning />
+  <Interaction />
+  <AutoHide />
 
-h3 Popover with custom content
-p.--text Popovers can be used to display any kind of custom content (even other components).
+  h3 Popover with custom content
+  p.--text Popovers can be used to display any kind of custom content (even other components).
 
-<DestructiveActionConfirmation />
-<TableFilteringPortal v-if="selectedTheme === 'portal'" />
+  <DestructiveActionConfirmation />
+  <TableFilteringPortal v-if="selectedTheme === 'portal'" />
 </template>
 
 <script lang="ts">

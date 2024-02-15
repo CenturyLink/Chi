@@ -1,43 +1,45 @@
 <template lang="pug">
-  <ComponentExample title="Base with save view" :id="id" :tabs="exampleTabs" additionalStyle="position: static;">
-    template(#example)
-      chi-data-table-toolbar
-        template(v-slot:start)
-          chi-search-input(:data-table-search='true')
-          .chi-divider.-vertical
-          chi-data-table-views(:views='toolbar.viewsData')
-          .chi-divider.-vertical
-          chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
-            template(v-slot:custom-one)
-              chi-label(for=`example__${id}_filter_input-1`) City
-              chi-text-input(id=`example__${id}_filter_input-1`)
-              chi-label(for=`example__${id}_filter_input-2`) Zip Code
-              chi-text-input(id=`example__${id}_filter_input-2`)
-            template(v-slot:custom-two)
-              chi-date-picker
-        template(v-slot:end)
-          chi-tooltip(message="Refresh")
-            button.chi-button.-icon.-flat(aria-label="Refresh")
-              .chi-button__content
-                i.chi-icon.icon-refresh(aria-hidden="true")
-          chi-tooltip(message="Download")
-            button.chi-button.-icon.-flat(aria-label="Download")
-              .chi-button__content
-                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
-          chi-column-customization(:columns-data='toolbar.columnsData')
-      chi-save-view(:active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title")
-    template(#code-webcomponent)
-      Copy(lang="html" :code="codeSnippets.webcomponent")
-    template(#code-vue)
-      .chi-tab__description
-        | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
-      Copy(lang="html" :code="codeSnippets.vue")
+<ComponentExample title="Base with save view" :id="id" :tabs="exampleTabs" additionalStyle="position: static;">
+  template(#example)
+    ChiDataTableToolbar
+      template(#start)
+        ChiSearchInput(:dataTableSearch="true")
+        .chi-divider.-vertical
+        ChiDataTableViews(:views="toolbar.viewsData")
+        .chi-divider.-vertical
+        ChiDataTableFilters.-ml--2(:filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData")
+          template(#customAdvanced)
+            .chi-form__item
+              <chi-label for="input-1">City</chi-label>
+              <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+              <chi-label for="input-2">Zip Code</chi-label>
+              <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          template(#customAdvanced2)
+            chi-date-picker(@chiDateChange="e => dateChangeHandler(e)")
+      template(#end)
+        ChiTooltip(message="Refresh")
+          button.chi-button.-icon.-flat(aria-label="Refresh")
+            .chi-button__content
+              i.chi-icon.icon-refresh(aria-hidden="true")
+        ChiTooltip(message="Download")
+          button.chi-button.-icon.-flat(aria-label="Download")
+            .chi-button__content
+              i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+        ChiColumnCustomization(:columnsData="toolbar.columnsData")
+    ChiSaveView(
+      :config="saveView"
+    )
 
-    template(#code-htmlblueprint)
-      .chi-tab__description
-        | To render toolbar, use the class <code>chi-toolbar</code>.
-      Copy(lang="html" :code"codeSnippets.htmlblueprint")
-  </ComponentExample>
+  template(#code-vue)
+    .chi-tab__description
+      | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
+    Copy(lang="html" :code="codeSnippets.vue")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To render toolbar, use the class <code>chi-toolbar</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
