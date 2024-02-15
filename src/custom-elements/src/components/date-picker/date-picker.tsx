@@ -78,6 +78,10 @@ export class DatePicker {
    */
   @Prop({ reflect: true }) state?: ChiStates;
   /**
+   * To display an additional helper text message below the Date Picker
+   */
+  @Prop({ reflect: true }) helperMessage?: string;
+  /**
    * To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'
    */
   @Prop({ reflect: true }) timeFormat?: TimePickerFormats;
@@ -438,6 +442,10 @@ export class DatePicker {
       ${this.state ? '-' + this.state : ''}
     `;
 
+    const helperMessage = this.helperMessage && (
+      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
+    );
+
     return [
       // TODO: This input should be chi-input in the future and will pass through
       // some of its configuration attributes.
@@ -462,6 +470,7 @@ export class DatePicker {
           />
           <chi-icon icon="date"></chi-icon>
         </div>
+        {helperMessage}
         {!this.disabled && chiPopover}
       </div>,
     ];
