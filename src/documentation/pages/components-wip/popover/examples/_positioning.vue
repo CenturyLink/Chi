@@ -26,7 +26,6 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-import VNode from 'vue';
 
 @NuxtComponent({})
 export default class Positioning extends Vue {
