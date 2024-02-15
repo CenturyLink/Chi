@@ -28,6 +28,7 @@ const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
+const helperMessage = 'Please enter a date.';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -279,6 +280,16 @@ describe('Date picker', function() {
     cy.get('[data-cy="test-input-error"]')
       .find('input')
       .should('have.class', `${DANGER_CLASS}`);
+  });
+
+  it(`Should show a message when helper-message attribute is provided`, () => {
+    cy.get('[data-cy="test-input-error"]').as('testInputError');
+
+    cy.get('@testInputError')
+      .find('chi-date-picker')
+      .should('have.attr', 'helper-message', `${helperMessage}`)
+      .find('chi-helper-message')
+      .contains('div', `${helperMessage}`);
   });
 
   it('Date-picker should show Time Picker with 24hr format. ', function() {
