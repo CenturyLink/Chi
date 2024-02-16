@@ -11,11 +11,12 @@ ComponentExample(title="Color" id="color" :tabs="exampleTabs" :headTabs="headTab
   template(#example)
     .-p--0
       .chi-grid.-align-items--end
-        .chi-col.-w--2.-text--center(v-for="color in colors")
+        template(v-for="color in colors")
           template(v-if="color !== 'secondary'")
-            div(:class="`chi-avatar -${color}`") {{ showIconAvatar ? '' : 'AA' }}
-              i(v-if="showIconAvatar" aria-hidden="true").chi-icon.icon-user
-            p.-text {{ color }}
+            .chi-col.-w--2.-text--center
+              div(:class="`chi-avatar -${color}`") {{ showIconAvatar ? '' : 'AA' }}
+                i(v-if="showIconAvatar" aria-hidden="true").chi-icon.icon-user
+              p.-text {{ color }}
 
   template(v-for="tab in headTabs" v-slot:[`code-color-${tab.id}-htmlblueprint`])
     Copy(lang="html" :code="codeSnippets.htmlblueprint[tab.id]")
