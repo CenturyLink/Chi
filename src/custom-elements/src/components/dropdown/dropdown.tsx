@@ -233,6 +233,12 @@ export class Dropdown {
     return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
   }
 
+  getTotalElementHeight(element: HTMLElement) {
+    return parseInt(getComputedStyle(element).getPropertyValue('height'), 10) + 
+      parseInt(getComputedStyle(element).getPropertyValue('margin-top'), 10) + 
+      parseInt(getComputedStyle(element).getPropertyValue('margin-bottom'), 10);
+  }
+
   setMenuHeight() {
     const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
 
@@ -245,10 +251,10 @@ export class Dropdown {
     let newHeight = 0;
 
     for (let i = 0; i < itemsToShow; i++) {
-      newHeight += menuItems[i].offsetHeight;
+      newHeight += this.getTotalElementHeight(menuItems[i]);
     }
 
-    if (this._menuFooter || this._menuHeader) {
+    if (this.visibleItems && (this._menuFooter || this._menuHeader)) {
       this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
     } else {
       const padding = this.getPadding('top') + this.getPadding('bottom');
@@ -318,8 +324,6 @@ export class Dropdown {
   async show() {
     this.setDisplay('block');
     this.active = true;
-
-    this.setMenuHeight();
 
     if (this._popper) {
       this._popper.update();
