@@ -315,7 +315,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-5-seconds(
       data-target="#popover-minutes-step-5-seconds"
     )
-      input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="01:25:00 am")
+      input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="01:10:00 am")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -331,7 +331,7 @@ script(type='module' src='../../js/chi.js')
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 25
+                if minute === 10
                   .chi-time-picker__minute.-active=padZero(minute)
                   - minute+=5
                 else
@@ -567,7 +567,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-5(
       data-target="#popover-seconds-step-5"
     )
-      input#seconds-step-5-control.chi-input.-focus(type="text" value="01:30:25 am")
+      input#seconds-step-5-control.chi-input.-focus(type="text" value="01:30:10 am")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -589,7 +589,7 @@ script(type='module' src='../../js/chi.js')
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__seconds.-position--relative
               while second < 60
-                if second === 25
+                if second === 10
                   .chi-time-picker__second.-active=padZero(second)
                   - second+=5
                 else
