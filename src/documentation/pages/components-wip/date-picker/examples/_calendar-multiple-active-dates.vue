@@ -1,49 +1,40 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Multiple active dates" id="calendar-multiple-active-dates" :tabs="exampleTabs">
-    chi-date(multiple, value="03/10/2024,03/11/2024,03/12/2024" slot="example")
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description Specify multiple active dates by separating the dates with a comma
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        span.-text--grey Use class <code>-active</code> for the selected date
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Multiple active dates" id="calendar-multiple-active-dates" :tabs="exampleTabs">
+  template(#example)
+    chi-date(multiple, value="03/10/2024,03/11/2024,03/12/2024")
+  template(#code-webcomponent)
+    .chi-tab__description Specify multiple active dates by separating the dates with a comma
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span.-text--grey Use class <code>-active</code> for the selected date
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      datePickerDates: Array.from(Array(31).keys()),
-      datePickerDayNames: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-date value="03/10/2024,03/11/2024,03/12/2024" multiple></chi-date>`,
-        htmlblueprint: ``,
-      },
-    };
-  },
-})
+@NuxtComponent({})
 export default class CalendarMultipleActiveDates extends Vue {
+  datePickerDates = Array.from(Array(30).keys());
+  datePickerDayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: `<chi-date value="03/10/2024,03/11/2024,03/12/2024" multiple></chi-date>`,
+    htmlblueprint: ``,
+  }
   created() {
     this._setCodeSnippets();
   }
@@ -52,17 +43,17 @@ export default class CalendarMultipleActiveDates extends Vue {
     let datePickerDates = '';
     let datePickerDayNames = '';
 
-    this.$data.datePickerDates.forEach((day: number) => {
+    this.datePickerDates.forEach((day: number) => {
       datePickerDates += `
-    <div class="chi-datepicker__day ${day >= 9 && day <= 11 ? '-active' : ''}">${day + 1}</div>`
+    <div class="chi-datepicker__day ${day >= 9 && day <= 11 ? '-active' : ''}">${day + 1}</div>`;
     });
 
-    this.$data.datePickerDayNames.forEach((dayName: string) => {
+    this.datePickerDayNames.forEach((dayName: string) => {
       datePickerDayNames += `
-    <div class="chi-datepicker__week-day">${dayName}</div>`
+    <div class="chi-datepicker__week-day">${dayName}</div>`;
     });
 
-    this.$data.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
+    this.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
   <div class="chi-datepicker__month-row">
     <div class="prev">
       <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
@@ -76,7 +67,7 @@ export default class CalendarMultipleActiveDates extends Vue {
   </div>
   <div class="chi-datepicker__days">${datePickerDates}
   </div>
-</div>`
+</div>`;
   }
 }
 </script>

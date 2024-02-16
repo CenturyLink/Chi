@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Table filtering" id="table-filtering-portal" :tabs="exampleTabs">
-    .-position--relative(slot="example" style="height: 640px;")
+<ComponentExample titleSize="h4" title="Table filtering" id="table-filtering-portal" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative(style="height: 640px;")
       chi-popover(position='top' title='Filter' variant='custom' modal drag closable active prevent-auto-hide)
         button.chi-button(class='-flat -primary -sm -no-hover -px--0 -mb--1 -text--normal' @click="expandAll") Expand All
         .chi-accordion.-sm(ref="accordion")
@@ -11,44 +12,44 @@
               i.chi-icon.icon-chevron-down(aria-hidden="true")
             .chi-accordion__content
               p.chi-accordion__text Filter content goes here
-        button.chi-button.-flat.-icon.-xs.-py--0(slot='chi-popover__footer' ref="tooltipButton" data-tooltip='Clear all filters')
-          .chi-button__content.-flex--column.-align-items--center
-            i.chi-icon.icon-reset.-sm--2.-mr--0
-            span.-text--uppercase.-text--primary.-text--2xs Clear
-        .chi-divider.-vertical(slot='chi-popover__footer')
-        chi-button(slot='chi-popover__footer') Cancel
-        chi-button(slot='chi-popover__footer' color='primary') Apply
-    <pre class="language-html" slot='code-webcomponent'>
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot='code-htmlblueprint'>
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+        div(slot="chi-popover__footer")
+          button.chi-button.-flat.-icon.-xs.-py--0(ref="tooltipButton" data-tooltip='Clear all filters')
+            .chi-button__content.-flex--column.-align-items--center
+              i.chi-icon.icon-reset.-sm--2.-mr--0
+              span.-text--uppercase.-text--primary.-text--2xs Clear
+        div(slot="chi-popover__footer")
+          .chi-divider.-vertical
+          chi-button Cancel
+          chi-button(color='primary') Apply
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      accordionIndexes: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-popover position="top" title="Filter" variant="custom" modal drag closable active prevent-auto-hide>
+@NuxtComponent({})
+export default class TableFilteringPortal extends Vue {
+  accordionIndexes: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+  exampleTabs: [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component'
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint'
+    }
+  ]
+  codeSnippets = {
+    webcomponent: `<chi-popover position="top" title="Filter" variant="custom" modal drag closable active prevent-auto-hide>
   <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
   <div class="chi-accordion -sm" id="example-base">
     <div class="chi-accordion__item -expanded">
@@ -174,7 +175,7 @@ declare const chi: any;
 
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
 <\/script>`,
-        htmlblueprint: `<section class="chi-popover -active -closable -draggable -modal" aria-modal="true" role="dialog" aria-label="Popover title">
+    htmlblueprint: `<section class="chi-popover -active -closable -draggable -modal" aria-modal="true" role="dialog" aria-label="Popover title">
   <button class="chi-button -xs -icon -close" aria-label="Close">
     <div class="chi-button__content">
       <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -249,11 +250,7 @@ declare const chi: any;
 
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
 <\/script>`
-      }
-    };
-  }
-})
-export default class TableFilteringPortal extends Vue {
+  };
   accordion: any;
 
   mounted() {

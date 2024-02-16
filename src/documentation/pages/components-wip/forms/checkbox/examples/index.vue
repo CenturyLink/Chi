@@ -1,8 +1,8 @@
 <template lang="pug">
   div
     h2 Examples
-   
-    <Base />
+
+    BaseExample
     <Checked />
     <Indeterminate />
     <Disabled />
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Checked from './_checked.vue';
 import Indeterminate from './_indeterminate.vue';
@@ -34,9 +34,9 @@ import Grid from './_grid.vue';
 import Inline from './_inline.vue';
 import CheckboxList from './_checkbox_list.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Checked,
     Indeterminate,
     Disabled,
@@ -47,8 +47,8 @@ import CheckboxList from './_checkbox_list.vue';
     Stacked,
     Grid,
     Inline,
-    CheckboxList
-  }
+    CheckboxList,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

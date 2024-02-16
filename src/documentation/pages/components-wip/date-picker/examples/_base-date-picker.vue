@@ -1,24 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-date-picker" :tabs="exampleTabs">
-    div(style="max-width: 14rem;" slot="example")
+<ComponentExample title="Base" id="base-date-picker" :tabs="exampleTabs">
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='date') Date
       chi-date-picker(id="date")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -48,5 +45,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class BaseDatePicker extends Vue {}
+export default class BaseDatePicker extends Vue { }
 </script>

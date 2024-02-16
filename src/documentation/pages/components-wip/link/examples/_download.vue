@@ -1,35 +1,35 @@
 <template lang="pug">
-  <ComponentExample title="Download" id="download" :tabs="exampleTabs" additionalClasses="-text">
-    p.-text(slot="example-description")
-      | Use download to prompt users to save a page or document instead of navigating to it. 
-      | The download attribute accepts an optional value used to name the file. 
+<ComponentExample title="Download" id="download" :tabs="exampleTabs" additionalClasses="-text">
+  template(#example-description)
+    p.-text
+      | Use download to prompt users to save a page or document instead of navigating to it.
+      | The download attribute accepts an optional value used to name the file.
       | If no value is provided, the original filename is used.
-    chi-link(href="#" slot="example" download) Link
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-link(href="#" download) Link
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Use default filename -->
@@ -41,10 +41,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <a class="chi-link" href="#" download>Link</a>
 
 <!-- Specify custom filename -->
-<a class="chi-link" href="#" download="custom-filename">Link</a>`
-      }
+<a class="chi-link" href="#" download="custom-filename">Link</a>`,
+      },
     };
-  }
+  },
 })
-export default class Download extends Vue {}
+export default class Download extends Vue { }
 </script>

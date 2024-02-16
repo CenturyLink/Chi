@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Simple" id="simple" padding="-p--0" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Simple" id="simple" padding="-p--0" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code> for a simple and customizable modal.
-    .chi-backdrop.-p--6.-position--relative.-z--0(slot="example")
+  template(#example)
+    .chi-backdrop.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper
         section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
           button(class='chi-button -icon -close', aria-label='Close')
@@ -15,22 +17,18 @@
               | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
               | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
             button.chi-button.-primary.-lg.-mt--1 Action
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -75,5 +73,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class SimpleLumenCenturyLink extends Vue {}
+export default class SimpleLumenCenturyLink extends Vue { }
 </script>

@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Examples" id="examples-portal" :tabs="exampleTabs">
-    p.-text(slot="example-description" class="-mb--3 -text")
+<ComponentExample titleSize="h2" title="Examples" id="examples-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text(class="-mb--3 -text")
       | Use the primary button example for high emphasis actions, secondary button example for medium
       | emphasis actions, and tertiary button example for low emphasis actions.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       .-d--flex.-align-items--center
         .-pr--2
           chi-button(color="primary") Primary
@@ -11,24 +13,20 @@
           chi-button Secondary
         .-pr--2
           chi-button(size="xs") Tertiary
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
-        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-        | <code>&lt;input&gt;</code> elements.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    .p--text.chi-tab__description
+      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and
+      | <code>&lt;input&gt;</code> elements.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -64,5 +62,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class ExamplesPortal extends Vue {}
+export default class ExamplesPortal extends Vue { }
 </script>

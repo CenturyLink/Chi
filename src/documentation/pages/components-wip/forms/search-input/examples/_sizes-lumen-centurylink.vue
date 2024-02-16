@@ -1,31 +1,29 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
-        |  <code>lg</code>, <code>xl</code>.
-        | The default size is <code>md</code>.
-    .-p--0(slot="example")
+<ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>, <code>xl</code>.
+      | The default size is <code>md</code>.
+  template(#example)
+    .-p--0
       .chi-grid(v-for="size in sizes")
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
           p.-text.-text--bold {{size}}
           .chi-form__item
             chi-search-input(:size='size' value="Sample Text")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -154,5 +152,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class SizesLumenCenturyLink extends Vue {}
+export default class SizesLumenCenturyLink extends Vue { }
 </script>

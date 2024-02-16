@@ -1,21 +1,22 @@
 <template lang="pug">
-    <ComponentExample title="Accordion" id="accordion-data-table" :tabs="exampleTabs">
-      chi-data-table(:config='config', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description
-          | Use <code>nestedContent</code> property to provide data of row accordion content.
-        pre.language-html
-          code(v-highlight="codeSnippets.vue" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="codeSnippets.htmlblueprint" class="html")
-    </ComponentExample>
-  </template>
-  
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<ComponentExample title="Accordion" id="accordion-data-table" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='config', :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description
+      | Use <code>nestedContent</code> property to provide data of row accordion content.
+    Copy(lang="html" :code="codeSnippets.vue")
 
-@Component({
+  template(#code-htmlblueprint)
+
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
+  </template>
+
+<script lang="ts">
+import { Vue } from 'vue-facing-decorator';
+
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -23,7 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -34,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -66,70 +67,46 @@ import { Component, Vue } from 'vue-property-decorator';
             expanded: true,
             id: 'name-1',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-2',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-3',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
             nestedContent: {
-              value: "Accordion content",
+              value: 'Accordion content',
             },
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
       codeSnippets: {
         vue: `<!-- Vue component -->
@@ -403,4 +380,3 @@ data: {
 })
 export default class DataTableAccordion extends Vue { }
 </script>
-  

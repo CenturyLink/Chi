@@ -1,41 +1,32 @@
 <template lang="pug">
-  <ComponentExample title="Flat" id="tabbed-navigation-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-pb--4">
-    chi-tabs(slot="example" active-tab='tab-tnf-a' id='example__tabbed_navigation_flat' sliding-border)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Flat" id="tabbed-navigation-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-pb--4">
+  template(#example)
+    chi-tabs(active-tab='tab-tnf-a' id='example__tabbed_navigation_flat' sliding-border)
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { TabsListInterface } from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type TabsListInterface } from '~/models/models';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class TabbedNavigationFlat extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
   tabLinks = [
     {
       label: 'Active Tab',
@@ -43,11 +34,11 @@ export default class TabbedNavigationFlat extends Vue {
       children: [
         {
           label: 'Elem 1',
-          id: 'tab-tnf-a-1'
+          id: 'tab-tnf-a-1',
         },
         {
           label: 'Elem 2',
-          id: 'tab-tnf-a-2'
+          id: 'tab-tnf-a-2',
         },
         {
           label: 'Elem 3 more',
@@ -55,7 +46,7 @@ export default class TabbedNavigationFlat extends Vue {
           children: [
             {
               label: 'Elem 3.1',
-              id: 'tab-tnf-a-3-1'
+              id: 'tab-tnf-a-3-1',
             },
             {
               label: 'Elem 3.2',
@@ -63,57 +54,57 @@ export default class TabbedNavigationFlat extends Vue {
               children: [
                 {
                   label: 'Elem 3.2.1',
-                  id: 'tab-tnf-a-3-2-1'
+                  id: 'tab-tnf-a-3-2-1',
                 },
                 {
                   label: 'Elem 3.2.2',
-                  id: 'tab-tnf-a-3-2-2'
+                  id: 'tab-tnf-a-3-2-2',
                 },
                 {
                   label: 'Elem 3.2.3',
-                  id: 'tab-tnf-a-3-2-3'
-                }
-              ]
+                  id: 'tab-tnf-a-3-2-3',
+                },
+              ],
             },
             {
               label: 'Elem 3.3',
-              id: 'tab-tnf-a-3-3'
+              id: 'tab-tnf-a-3-3',
             },
             {
               label: 'Elem 3.4',
-              id: 'tab-tnf-a-3-4'
-            }
-          ]
+              id: 'tab-tnf-a-3-4',
+            },
+          ],
         },
         {
           label: 'Elem 4',
-          id: 'tab-tnf-a-4'
-        }
-      ]
+          id: 'tab-tnf-a-4',
+        },
+      ],
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-b'
+      id: 'tab-tnf-b',
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-c'
+      id: 'tab-tnf-c',
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-d'
+      id: 'tab-tnf-d',
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-e'
+      id: 'tab-tnf-e',
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-f'
+      id: 'tab-tnf-f',
     },
     {
       label: 'Tab Link',
-      id: 'tab-tnf-g'
+      id: 'tab-tnf-g',
     },
     {
       label: 'Tab Dropdown',
@@ -121,7 +112,7 @@ export default class TabbedNavigationFlat extends Vue {
       children: [
         {
           label: 'Element 1',
-          id: 'tab-tnf-h-1'
+          id: 'tab-tnf-h-1',
         },
         {
           label: 'Element 2',
@@ -129,11 +120,11 @@ export default class TabbedNavigationFlat extends Vue {
           children: [
             {
               label: 'Elem 1',
-              id: 'tab-tnf-h-2-1'
+              id: 'tab-tnf-h-2-1',
             },
             {
               label: 'Elem 2',
-              id: 'tab-tnf-h-2-2'
+              id: 'tab-tnf-h-2-2',
             },
             {
               label: 'Elem 3 more',
@@ -141,31 +132,31 @@ export default class TabbedNavigationFlat extends Vue {
               children: [
                 {
                   label: 'Elem 3.1',
-                  id: 'tab-tnf-h-2-3-1'
+                  id: 'tab-tnf-h-2-3-1',
                 },
                 {
                   label: 'Elem 3.2',
-                  id: 'tab-tnf-h-2-3-2'
+                  id: 'tab-tnf-h-2-3-2',
                 },
                 {
                   label: 'Elem 3.3',
-                  id: 'tab-tnf-h-2-3-3'
-                }
-              ]
+                  id: 'tab-tnf-h-2-3-3',
+                },
+              ],
             },
             {
               label: 'Elem 4',
-              id: 'tab-tnf-h-2-4'
-            }
-          ]
+              id: 'tab-tnf-h-2-4',
+            },
+          ],
         },
         {
           label: 'Element 3',
-          id: 'tab-tnf-h-3'
-        }
+          id: 'tab-tnf-h-3',
+        },
       ]
-    }
-  ]
+    },
+  ];
 
   get codeSnippets() {
     return {
@@ -305,7 +296,7 @@ export default class TabbedNavigationFlat extends Vue {
     }
   ];
 <\/script>`,
-        htmlblueprint: `<ul id="navigationExample-1" class="chi-tabs">
+      htmlblueprint: `<ul id="navigationExample-1" class="chi-tabs">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger" href="#">Active tab</a>
     <div class="chi-dropdown__menu">
@@ -331,38 +322,41 @@ ${this.generateTabsNestedLinksHtml([1, 2, 3])}
 <script>
   const navigationElem = document.getElementById('#navigationExample-1');
   chi.navigation(navigationElem);
-<\/script>`
-    }
+<\/script>`,
+    };
   }
 
   generateTabsLinksHtml() {
-    return [1, 2, 3, 4, 5, 6].map(() => {
-      return (`  <li>
+    return [1, 2, 3, 4, 5, 6]
+      .map(() => {
+        return `  <li>
     <a href="#">Tab Link</a>
-  </li>`
-      )
-    }).join('\n');
+  </li>`;
+      })
+      .join('\n');
   }
 
   generateTabsNestedLinksHtml(array: number[]) {
-    return array.map((item: number) => {
-      return (`      <a class="chi-dropdown__menu-item" href="#">Element ${item}</a>`
-      )
-    }).join('\n');
+    return array
+      .map((item: number) => {
+        return `      <a class="chi-dropdown__menu-item" href="#">Element ${item}</a>`;
+      })
+      .join('\n');
   }
 
   generateTabsDropdownLinksHtml() {
-    return [1, 2, 3, 4].map((item: number) => {
-      return (`<a class="chi-dropdown__menu-item" href="#">Elem 3.${item}</a>`
-      )
-    }).join('');
+    return [1, 2, 3, 4]
+      .map((item: number) => {
+        return `<a class="chi-dropdown__menu-item" href="#">Elem 3.${item}</a>`;
+      })
+      .join('');
   }
 
   mounted() {
-    const element = document.querySelector('#example__tabbed_navigation_flat') as TabsListInterface
+    const element = document.querySelector('#example__tabbed_navigation_flat') as TabsListInterface;
 
     if (element) {
-      element.tabs = this.tabLinks
+      element.tabs = this.tabLinks;
     }
   }
 }

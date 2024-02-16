@@ -8,17 +8,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import CompactBaseLumenCenturyLink from './_base_lumen_centurylink.vue';
 import CompactPageJumperLumenCenturyLink from './_page-jumper_lumen_centurylink.vue';
 import CompactFirstLastPageButtonsLumenCenturyLink from './_first-last-page-buttons_lumen_centurylink.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     CompactBaseLumenCenturyLink,
     CompactPageJumperLumenCenturyLink,
-    CompactFirstLastPageButtonsLumenCenturyLink
-  }
+    CompactFirstLastPageButtonsLumenCenturyLink,
+  },
 })
 export default class Compact extends Vue {}
 </script>

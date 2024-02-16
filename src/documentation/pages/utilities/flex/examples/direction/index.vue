@@ -10,21 +10,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import RowReverse from './_row-reverse.vue';
 import Row from './_row.vue';
 import Column from './_column.vue';
 import ColumnReverse from './_column-reverse.vue';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Row,
     RowReverse,
     Column,
     ColumnReverse,
     SpecificBreakpoints,
-  }
+  },
 })
 export default class Direction extends Vue {}
 </script>

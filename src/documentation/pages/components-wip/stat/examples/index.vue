@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-if="selectedTheme === 'portal'")
       <BasePortal />
       <BackgroundIconsPortal />
       <Compact key="isPortal" />
@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BaseLumenCenturyLink from './_base-lumen-centurylink.vue';
 import CenterLumenCenturyLink from './_center-lumen-centurylink.vue';
 import BackgroundIconsLumenCenturyLink from './_background-icons-lumen-centurylink.vue';
@@ -24,7 +24,7 @@ import BasePortal from './_portal/_base.vue';
 import BackgroundIconsPortal from './_portal/_background-icons.vue';
 import CarouselPortal from './_portal/_carousel.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BaseLumenCenturyLink,
     CenterLumenCenturyLink,
@@ -32,8 +32,10 @@ import CarouselPortal from './_portal/_carousel.vue';
     Compact,
     BasePortal,
     BackgroundIconsPortal,
-    CarouselPortal
-  }
+    CarouselPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

@@ -1,49 +1,42 @@
 <template lang="pug">
-  <ComponentExample title="Close button" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeClosable(e)" padding="-p--0">
-    p.-text(slot="example-description") Close buttons provide users with a consistent way to exit Drawers.
+<ComponentExample title="Close button" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeClosable(e)" padding="-p--0">
+  template(#example-description)
+    p.-text Close buttons provide users with a consistent way to exit Drawers.
       | For special cases, such as requiring users to perform a task
       | that auto-closes the Drawer when complete, a close button may be removed.
-    .-position--relative.-z--0.-overflow--hidden(style='height:15rem;' slot="example")
+  template(#example)
+    .-position--relative.-z--0.-overflow--hidden(style='height:15rem;')
       chi-drawer(position='left' :non-closable="closable ? true : false" active backdrop prevent-auto-hide no-header)
         .-p--2.-pt--6.-text Drawer content here
-    <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
-      .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
-        | {{ tab.codeSnippets.webComponent.description }}
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper :slot="`code-${exampleId}-${tab.id}-vue`" v-for="tab in headTabs" :key="tab.id">
-      .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
-        | {{ tab.codeSnippets.vue.description }}
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.vue.code" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-htmlblueprint`" :key="tab.id">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-webcomponent`])
+    .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
+    Copy(lang="html" :code="tab.codeSnippets.webComponent.code")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-vue`])
+    .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
+    Copy(lang="html" :code="tab.codeSnippets.vue.code")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-htmlblueprint`])
+    <JSNeeded />
+    Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { IHeadTabs } from '../../../../models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type IHeadTabs } from '@/models/models';
 
-@Component({
-  data: () => {
-    return {
-      headTabs: [
-        {
-          active: true,
-          id: 'closable',
-          label: 'Closable',
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Trigger -->
+@NuxtComponent({})
+export default class CloseButton extends Vue {
+  headTabs = [
+    {
+      active: true,
+      id: 'closable',
+      label: 'Closable',
+      codeSnippets: {
+        webComponent: {
+          code: `<!-- Trigger -->
 <chi-button id="drawer-close-button-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
@@ -61,10 +54,10 @@ import { IHeadTabs } from '../../../../models/models';
     drawer.toggle();
     // or drawer.active = !drawer.active;
   });
-<\/script>`
-            },
-            vue: {
-              code: `<!-- Trigger -->
+<\/script>`,
+        },
+        vue: {
+          code: `<!-- Trigger -->
 <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
   <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
 </button>
@@ -89,12 +82,12 @@ methods: {
     this.drawerActive = !this.drawerActive;
   }
 }`,
-              description: `Drawer visibility depends on the prop <code>active</code>.
+          description: `Drawer visibility depends on the prop <code>active</code>.
               Chi Vue Drawer component does not automatically hide when the close button is clicked as prop mutation is an anti-pattern in Vue.
-              Use the events <code>chiDrawerHide</code> and <code>chiDrawerClickOutside</code> to set <code>active</code> to false and hide the Drawer.`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
+              Use the events <code>chiDrawerHide</code> and <code>chiDrawerClickOutside</code> to set <code>active</code> to false and hide the Drawer.`,
+        },
+        htmlBlueprint: {
+          code: `<!-- Trigger -->
 <button id="drawer-close-button-trigger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-close-button" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
@@ -118,16 +111,16 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-close-button-trigger'));<\/script>`
-            }
-          }
+<script>chi.drawer(document.getElementById('drawer-close-button-trigger'));<\/script>`,
         },
-        {
-          id: 'non-closable',
-          label: 'Non closable',
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Trigger -->
+      },
+    },
+    {
+      id: 'non-closable',
+      label: 'Non closable',
+      codeSnippets: {
+        webComponent: {
+          code: `<!-- Trigger -->
 <chi-button id="drawer-close-button-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
@@ -146,10 +139,10 @@ methods: {
     // or drawer.active = !drawer.active;
   });
 <\/script>`,
-              description: `Use the <code>non-closable</code> attribute to render Drawer without a close button`
-            },
-            vue: {
-              code: `<!-- Trigger -->
+          description: `Use the <code>non-closable</code> attribute to render Drawer without a close button`,
+        },
+        vue: {
+          code: `<!-- Trigger -->
 <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
   <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
 </button>
@@ -174,10 +167,10 @@ methods: {
     this.drawerActive = !this.drawerActive;
   }
 }`,
-              description: `Use the prop <code>nonClosable</code> to render Drawer without a close button`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
+          description: `Use the prop <code>nonClosable</code> to render Drawer without a close button`,
+        },
+        htmlBlueprint: {
+          code: `<!-- Trigger -->
 <button id="drawer-close-button-triger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-close-button" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
@@ -196,34 +189,31 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-close-button-triger'));<\/script>`
-            }
-          }
-        }
-      ],
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
+<script>chi.drawer(document.getElementById('drawer-close-button-triger'));<\/script>`,
         },
-        {
-          id: 'vue',
-          label: 'Vue'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      exampleId: 'close-button',
-      closable: false
-    };
-  }
-})
-export default class CloseButton extends Vue {
+      },
+    },
+  ]
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'vue',
+      label: 'Vue',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  exampleId = 'close-button';
+  closable = false;
+
   changeClosable(e: IHeadTabs) {
-    this.$data.closable = e.id === 'closable' ? false : true;
+    this.closable = e.id !== 'closable';
   }
 }
 </script>

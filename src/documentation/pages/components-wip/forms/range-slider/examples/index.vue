@@ -1,10 +1,10 @@
 <template lang="pug">
   div
     h2 Examples
-    p.-text To render a range slider, apply the class <code>chi-range-slider</code> to an <code>input type="range"</code>. 
+    p.-text To render a range slider, apply the class <code>chi-range-slider</code> to an <code>input type="range"</code>.
       | Range widths are fluid by default.
 
-    <Base />
+    BaseExample
     <Disabled />
     <MultipleLabels />
     h2 Achieve consistent rendering
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import BaseConsistent from './_base_consistent.vue';
 import Disabled from './_disabled.vue';
@@ -33,9 +33,9 @@ import RadioConsistent from './_radio_consistent.vue';
 import RadioDisabled from './_radio_disabled.vue';
 import RadioSlider from './_radio_slider.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     MultipleLabels,
     BaseConsistent,
@@ -44,7 +44,7 @@ import RadioSlider from './_radio_slider.vue';
     RadioSlider,
     RadioDisabled,
     RadioConsistent,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

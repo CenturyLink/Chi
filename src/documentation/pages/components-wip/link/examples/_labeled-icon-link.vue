@@ -1,35 +1,35 @@
 <template lang="pug">
-  <ComponentExample title="Labeled Icon Link" id="labeled-icon-link" :tabs="exampleTabs" additionalClasses="-text">
-    p.-text(slot="example-description")
+<ComponentExample title="Labeled Icon Link" id="labeled-icon-link" :tabs="exampleTabs" additionalClasses="-text">
+  template(#example-description)
+    p.-text
       | Use labeled icon links to render both text and icons inside link tags.
-    chi-link(href="#" slot="example")
+  template(#example)
+    chi-link(href="#")
       chi-icon(icon="circle-question-outline")
       span Help
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-link href="#">
@@ -41,10 +41,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
     <span>Help</span>
   </div>
-</a>`
-      }
+</a>`,
+      },
     };
-  }
+  },
 })
-export default class LabeledIconLink extends Vue {}
+export default class LabeledIconLink extends Vue { }
 </script>

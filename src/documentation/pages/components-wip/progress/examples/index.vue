@@ -2,20 +2,20 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <SemanticStates />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import SemanticStates from './_semantic_states.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
-    SemanticStates
-  }
+    BaseExample: Base,
+    SemanticStates,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

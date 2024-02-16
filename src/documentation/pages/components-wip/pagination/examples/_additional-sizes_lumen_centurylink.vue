@@ -1,46 +1,44 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional-sizes-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
-    p.-text(slot="example-description")
+<ComponentExample title="Additional Sizes" id="additional-sizes-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
+  template(#example-description)
+    p.-text
       | Pagination supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
         .-p--3(v-for="size in sizes" :class="item === 2 ? '-bg--black' : ''")
           p.-text--bold(:class="item === 2 ? '-text--white' : ''") -{{size}}
           chi-pagination(pages="5", current-page="3", :inverse="item === 2 ? true : false", :size="size")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'vue',
-          label: 'Vue'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({})
+export default class AdditionalSizesLumenCenturyLink extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'vue',
+      label: 'Vue',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: `<!-- For light backgrounds -->
 <chi-pagination pages="5" current-page="3" size="xs"></chi-pagination>
 <chi-pagination pages="5" current-page="3" size="sm"></chi-pagination>
 <chi-pagination pages="5" current-page="3" size="md"></chi-pagination>
@@ -53,7 +51,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-pagination pages="5" current-page="3" size="md" inverse></chi-pagination>
 <chi-pagination pages="5" current-page="3" size="lg" inverse></chi-pagination>
 <chi-pagination pages="5" current-page="3" size="xl" inverse></chi-pagination>`,
-        htmlblueprint: `<!-- For light backgrounds -->
+    htmlblueprint: `<!-- For light backgrounds -->
 <!-- xs -->
 <nav class="chi-pagination" role="navigation" aria-label="Pagination">
   <div class="chi-pagination__content">
@@ -324,7 +322,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <div class="chi-pagination__end"></div>
   </div>
 </nav>`,
-        vue: `<!-- For light backgrounds -->
+    vue: `<!-- For light backgrounds -->
 <ChiPagination :pages="5" :currentPage="3" size="xs" />
 <ChiPagination :pages="5" :currentPage="3" size="sm" />
 <ChiPagination :pages="5" :currentPage="3" size="md" />
@@ -336,12 +334,8 @@ import { Component, Vue } from 'vue-property-decorator';
 <ChiPagination :pages="5" :currentPage="3" size="sm" :inverse="true" />
 <ChiPagination :pages="5" :currentPage="3" size="md" :inverse="true" />
 <ChiPagination :pages="5" :currentPage="3" size="lg" :inverse="true" />
-<ChiPagination :pages="5" :currentPage="3" size="xl" :inverse="true" />`
-      }
-    };
+<ChiPagination :pages="5" :currentPage="3" size="xl" :inverse="true" />`,
   }
-})
-export default class AdditionalSizesLumenCenturyLink extends Vue {
   sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 }
 </script>

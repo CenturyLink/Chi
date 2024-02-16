@@ -1,37 +1,36 @@
 <template lang="pug">
-  <ComponentExample title="Inline Inputs" id="inline-inputs" :tabs="exampleTabs">
-    .-d--flex(slot="example")
+<ComponentExample title="Inline Inputs" id="inline-inputs" :tabs="exampleTabs">
+  template(#example)
+    .-d--flex
       .chi-form__item.-inline.-flex--grow1
         chi-label(for='example__inline-input01') Label
         chi-text-input(id='example__inline-input01')
       .chi-form__item.-inline.-flex--grow1
         chi-label(for='example__inline-input02') Label
         chi-text-input(id='example__inline-input02')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="-d--flex">
@@ -53,10 +52,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <label class="chi-label" for="example__inline-input02">Label</label>
     <input class="chi-input" type="text" id="example__inline-input02">
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class InlineInputs extends Vue {}
+export default class InlineInputs extends Vue { }
 </script>

@@ -1,31 +1,27 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Inline" id="inline-lumen-centurylink" :tabs="exampleTabs">
-    .-d--flex(slot="example")
+<ComponentExample titleSize="h4" title="Inline" id="inline-lumen-centurylink" :tabs="exampleTabs">
+  template(#example)
+    .-d--flex
       .chi-form__item.-inline
         chi-switch(id='toggle5', label='Label')
       .chi-form__item.-inline
         chi-switch(id='toggle6', label='Label')
-    <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
-        | Apply the <code>-inline</code> class to <code>chi-form__item</code> for displaying toggle switches inline.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
-        | Apply the <code>-inline</code> class to <code>chi-form__item</code> to display switches inline.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .p--text.chi-tab__description
+      | Apply the <code>-inline</code> class to <code>chi-form__item</code> for displaying toggle switches inline.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .p--text.chi-tab__description
+      | Apply the <code>-inline</code> class to <code>chi-form__item</code> to display switches inline.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -46,7 +42,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item -inline">
   <chi-switch id="toggle6" label="Label"></chi-switch>
 </div>`,
-    htmlblueprint: `<fieldset>
+        htmlblueprint: `<fieldset>
   <legend class="chi-label">Configure options</legend>
   <div class="chi-form__item -inline">
     <label class="chi-switch" for="toggle5">
@@ -71,5 +67,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class InlineLumenCenturyLink extends Vue {}
+export default class InlineLumenCenturyLink extends Vue { }
 </script>

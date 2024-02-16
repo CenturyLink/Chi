@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Disabled />
     <Readonly />
     <Placeholder />
@@ -11,7 +11,7 @@
     <Optional />
     <Help />
     <Message />
-    <ErrorLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <ErrorLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <ErrorPortal v-else />
 
     h2 Layout Variations
@@ -25,7 +25,7 @@
     <LeftAligned />
     <RightAligned />
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <LeftRightAlignedCenturyLink />
       <SizesLumenCenturyLink  />
     div(v-else)
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import Readonly from './_readonly.vue';
@@ -58,9 +58,9 @@ import LeftRightAlignedPortal from './_portal/_left-right-aligned.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     Readonly,
     Placeholder,
@@ -81,8 +81,10 @@ import SizesPortal from './_portal/_sizes.vue';
     LeftRightAlignedCenturyLink,
     LeftRightAlignedPortal,
     SizesLumenCenturyLink,
-    SizesPortal
-  }
+    SizesPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

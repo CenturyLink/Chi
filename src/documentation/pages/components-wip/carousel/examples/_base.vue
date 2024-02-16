@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    chi-carousel(slot="example")
-      .-d--flex(slot="items")
-        .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8]" :key="item")
-          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 
-            | {{ item }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  template(#example)
+    chi-carousel
+      div(slot="items")
+        .-d--flex
+          .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8]" :key="item")
+            .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
+              | {{ item }}
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -62,9 +62,9 @@ import { Component, Vue } from 'vue-property-decorator';
   </div>
 </chi-carousel>`,
         htmlblueprint: ``,
-      }
-    }
-  }
+      },
+    };
+  },
 })
-export default class Base extends Vue {}
+export default class Base extends Vue { }
 </script>

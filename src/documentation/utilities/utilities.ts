@@ -1,4 +1,4 @@
-import { ITableColumn, ITableContent } from '~/models/models';
+import { type ITableColumn, type ITableContent } from '@/models/models';
 
 export const generateBasicUtilitiesColorContent = (
   column: ITableColumn,

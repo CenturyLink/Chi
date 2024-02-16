@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample :tabs="exampleTabs" additionalClasses="-bg--grey-20">
-    .chi-app.-bg--grey-10(slot="example")
+<ComponentExample :tabs="exampleTabs" additionalClasses="-bg--grey-20">
+  template(#example)
+    .chi-app.-bg--grey-10
       header.chi-header
         .chi-header__content.-justify-content--center
           .chi-header__brand
@@ -14,24 +15,23 @@
               h2.-text--h3 Internal Server Error
               p.-text.-pb--2
                 | We're sorry, the server encountered an internal error and was unable to complete your request.
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -56,10 +56,10 @@ import { Component, Vue } from 'vue-property-decorator';
       </div>
     </div>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class BaseBrightspeed extends Vue {}
+export default class BaseBrightspeed extends Vue { }
 </script>

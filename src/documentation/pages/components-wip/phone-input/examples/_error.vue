@@ -1,46 +1,46 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="error" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Error" id="error" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>danger</code> state to provide feedback to users when phone number fails to validate.
       | To meet accessibility requirements, phone input must include an error message explaining the
       | failure and/or how to correct it.
-    div(style="max-width: 18rem;" slot="example")
+  template(#example)
+    div(style="max-width: 18rem;")
       chi-label(for="phone-input-error") Phone Number
       chi-phone-input(id="phone-input-error" state="danger" helper-message="Invalid phone number")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="phone-input-error">Phone Number</chi-label>
 <chi-phone-input id="phone-input-error" state="danger" helper-message="Invalid phone number"></chi-phone-input>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
-export default class Error extends Vue {}
+export default class Error extends Vue { }
 </script>

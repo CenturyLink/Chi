@@ -1,23 +1,21 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Stacked" id="stacked-portal" :tabs="exampleTabs">
-    div(slot="example")
-      .chi-form__item
-        chi-switch(id='portal-toggle3', size="xs", label='Label')
-      .chi-form__item
-        chi-switch(id='portal-toggle4', size="xs", label='Label')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Stacked" id="stacked-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item
+      chi-switch(id='portal-toggle3', size="xs", label='Label')
+    .chi-form__item
+      chi-switch(id='portal-toggle4', size="xs", label='Label')
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -63,5 +61,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class StackedPortal extends Vue {}
+export default class StackedPortal extends Vue { }
 </script>

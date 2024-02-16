@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Help" id="help" :tabs="exampleTabs">
-    p.-text(slot="example-description") Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover. 
+<ComponentExample title="Help" id="help" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
       | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    fieldset(slot="example")
+  template(#example)
+    fieldset
       .chi-label__wrapper
         legend.chi-label Select an option
         .chi-label__help
@@ -17,47 +19,38 @@
           template(v-for="item in pickers")
             input.chi-picker__input(type='radio', name='example__help', :id="`example__help_${item}`")
             label(:for="`example__help_${item}`") Option {{ item }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      pickers: [1, 2, 3],
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class Help extends Vue {
+  pickers = [1, 2, 3]
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``,
+  }
   helpButton: any;
 
   created() {
@@ -71,13 +64,13 @@ export default class Help extends Vue {
   _setCodeSnippets() {
     let pickerInputs = '';
 
-    this.$data.pickers.forEach((option: number) => {
+    this.pickers.forEach((option: number) => {
       pickerInputs += `
       <input class="chi-picker__input" type="radio" name="example__help" id="example__help_${option}">
       <label for="example__help_${option}">Option ${option}</label>`;
     });
 
-    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+    this.codeSnippets.htmlblueprint = `<fieldset>
   <div class="chi-label__wrapper">
     <legend class="chi-label">Select an option</legend>
     <div class="chi-label__help">

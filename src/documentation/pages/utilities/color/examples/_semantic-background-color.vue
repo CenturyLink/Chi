@@ -10,15 +10,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
 import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      colors: [
+@NuxtComponent({})
+export default class SemanticBackgroundColor extends Vue {
+  colors = [
         COLORS.SUCCESS,
         COLORS.SUCCESS_LIGHT,
         COLORS.SUCCESS_LIGHTER,
@@ -33,13 +32,8 @@ import { COLORS } from '~/constants/constants';
         COLORS.DANGER_LIGHTER,
         COLORS.MUTED,
         COLORS.MUTED_LIGHT,
-        COLORS.MUTED_LIGHTER
+        COLORS.MUTED_LIGHTER,
       ]
-    }
-  }
-})
-
-export default class SemanticBackgroundColor extends Vue {
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

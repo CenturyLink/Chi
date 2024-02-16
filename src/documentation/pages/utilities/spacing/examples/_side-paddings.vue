@@ -1,75 +1,71 @@
 <template lang="pug">
-  <ComponentExample title="Side Paddings" id="side-paddings" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
-    p.-text(slot="example-description")
+<ComponentExample title="Side Paddings" id="side-paddings" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
+  template(#example-description)
+    p.-text
       | Apply padding to specific sides of an element by adding <code>t</code>,
       | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
       | to the class name.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .-mr--3.example-spacing-padding(v-for="className in classNames" :class="className.name")
         .example-spacing-padding__block
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    };
-  }
-})
+@NuxtComponent({})
 export default class SidePaddings extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
   classNames = [
     {
       name: '-pt--3',
-      value: 'padding-top'
+      value: 'padding-top',
     },
     {
       name: '-pb--3',
-      value: 'padding-bottom'
+      value: 'padding-bottom',
     },
     {
       name: '-pl--3',
-      value: 'padding-left'
+      value: 'padding-left',
     },
     {
       name: '-pr--3',
-      value: 'padding-right'
+      value: 'padding-right',
     },
     {
       name: '-px--3',
-      value: 'padding-left and padding-right'
+      value: 'padding-left and padding-right',
     },
     {
       name: '-py--3',
-      value: 'padding-top and padding-bottom'
-    }
-  ]
+      value: 'padding-top and padding-bottom',
+    },
+  ];
 
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
-    }
+      htmlblueprint: this.generateHtml(),
+    };
   }
 
   generateHtml() {
-    return this.classNames.map(({ name, value }) => {
-      return (
-        `<!-- ${value} -->
-<div class="${name}"></div>`
-      )
-    }).join('\n');
+    return this.classNames
+      .map(({ name, value }) => {
+        return `<!-- ${value} -->
+<div class="${name}"></div>`;
+      })
+      .join('\n');
   }
 }
 </script>

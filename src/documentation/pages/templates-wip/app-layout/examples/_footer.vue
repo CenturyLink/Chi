@@ -1,5 +1,4 @@
 <script>
-import {Vue} from "vue-property-decorator";
 import {FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS} from "~/fixtures/fixtures";
 
 const generateLumenFooter = (dropdownId) => {
@@ -91,7 +90,4 @@ export const generateAllExampleFooters = (dropdownId = 'language-dropdown-button
   centurylink: generateExampleFooter('centurylink', dropdownId),
   brightspeed: generateExampleFooter('brightspeed', dropdownId),
 });
-
-export default class Footer extends Vue {
-}
 </script>

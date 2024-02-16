@@ -1,43 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Required" id="required" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Required" id="required" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>required</code> boolean attribute to indicate which inputs must be completed before submitting a form.
       | To render a required input, apply the <code>required</code> attribute to the input. It is also
       | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
       | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
       | the <code>required</code> attribute is not supported on the label. Please use the alternate method
-      | specified below for rendering a red asterisk within the label. 
-    .chi-form__item(slot="example")
+      | specified below for rendering a red asterisk within the label.
+  template(#example)
+    .chi-form__item
       chi-label(for="unique-id-re1" required) Label
-      chi-number-input#unique-id-re1(required) 
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded /> 
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+      chi-number-input#unique-id-re1(required)
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-re1" required>Label</chi-label>
@@ -54,10 +52,10 @@ import { Component, Vue } from 'vue-property-decorator';
   </div>
 </div>
 
-<script>chi.numberInput(document.getElementById('unique-id-re1'));<\/script>`
-      }
+<script>chi.numberInput(document.getElementById('unique-id-re1'));<\/script>`,
+      },
     };
-  }
+  },
 })
-export default class Required extends Vue {}
+export default class Required extends Vue { }
 </script>

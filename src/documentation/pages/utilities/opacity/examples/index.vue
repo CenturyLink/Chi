@@ -1,7 +1,7 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     <TitleAnchor title="Examples" id="opacity-title" titleSize="h2"/>
-    <Base />
+    BaseExample
     <Hover />
 
     <TitleAnchor title="Responsive" id="opacity-responsive" titleSize="h2"/>
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Hover from './_hover.vue';
 import BreakpointsBase from './_breakpoints-base.vue';
@@ -35,9 +35,9 @@ import BreakpointsSpecific from './_breakpoints-specific.vue';
 import BreakpointsBaseHover from './_breakpoints-base-hover.vue';
 import BreakpointsSpecificHover from './_breakpoints-specific-hover.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Hover,
     BreakpointsBase,
     BreakpointsBaseHover,
@@ -45,5 +45,5 @@ import BreakpointsSpecificHover from './_breakpoints-specific-hover.vue';
     BreakpointsSpecificHover,
   },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

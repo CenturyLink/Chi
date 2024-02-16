@@ -1,40 +1,37 @@
 <template lang="pug">
 <ComponentExample title="Default" titleSize="h4" id="banner_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-  <Wrapper slot='example'>
+  template(#example)
     chi-alert.-m--2(type='banner', icon='flag')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, type='banner')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-  </Wrapper>
-  <Wrapper slot='code-webcomponent'>
-    pre.language-html
-      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-  </Wrapper>
-  <Wrapper slot='code-htmlblueprint'>
-    pre.language-html
-      code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-  </Wrapper>
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
 </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Base - No semantic color defined -->
@@ -102,10 +99,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-alert__content">
     <p class="chi-alert__text">This is a muted alert</p>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class BannerDefaultLumenCenturyLink extends Vue {}
+export default class BannerDefaultLumenCenturyLink extends Vue { }
 </script>

@@ -1,44 +1,43 @@
 <template lang="pug">
-  <ComponentExample title="Semantic States" id="semantic_states" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | Use semantic colors to communicate meaning to users. Use green (<code>-success</code>) for positive, blue (base state) for informative, 
+<ComponentExample title="Semantic States" id="semantic_states" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | Use semantic colors to communicate meaning to users. Use green (<code>-success</code>) for positive, blue (base state) for informative,
       | red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
-    <Wrapper slot="example">
-      .-py--2
-        .chi-label Success
-        chi-progress(value="75" max="100" state="success")
-      .-py--2
-        .chi-label Warning
-        chi-progress(value="50" max="100" state="warning")
-      .-py--2
-        .chi-label Danger
-        chi-progress(value="25" max="100" state="danger")
-    </Wrapper>  
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    .-py--2
+      .chi-label Success
+      chi-progress(value="75" max="100" state="success")
+    .-py--2
+      .chi-label Warning
+      chi-progress(value="50" max="100" state="warning")
+    .-py--2
+      .chi-label Danger
+      chi-progress(value="25" max="100" state="danger")
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Success -->
@@ -62,10 +61,10 @@ import { Component, Vue } from 'vue-property-decorator';
 
 <!-- Danger -->
 <div class="chi-label" id="example-7">Danger</div>
-<progress aria-labelledby="example-7" class="-danger" value="25" max="100"></progress>`
-      }
+<progress aria-labelledby="example-7" class="-danger" value="25" max="100"></progress>`,
+      },
     };
-  }
+  },
 })
 export default class SemanticStates extends Vue {}
 </script>

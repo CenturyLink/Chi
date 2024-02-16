@@ -40,22 +40,18 @@
     p.-text
       | Sidenav component has a dispose function to free all the resources attached to the element, such as event listeners
       | and object data. You should call this method when you want to remove the component.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory1" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory1")
 
     p.-text
       | It is safe to call the <code>sidenav</code> method more than once, as it will return any previously created sidenav component
       | associated with the element.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory2" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `var elem = document.getElementById('sidenav-1');
@@ -68,9 +64,9 @@ var elem2 = document.getElementById('sidenav-2');
 var sidenav2 = chi.sidenav(elem2);
 sidenav === sidenav2; // returns true
 
-sidenav.dispose(); // Only have to do it once.`
+sidenav.dispose(); // Only have to do it once.`,
     };
-  }
+  },
 })
-export default class Properties extends Vue {}
+export default class Properties extends Vue { }
 </script>

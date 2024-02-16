@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="With Avatar" id="with-avatar" padding="-p--0" :tabs="exampleTabs">
-    .-p-md--5(slot="example")
+<ComponentExample title="With Avatar" id="with-avatar" padding="-p--0" :tabs="exampleTabs">
+  template(#example)
+    .-p-md--5()
       .chi-activity
         .chi-activity__day
           .chi-activity__header
@@ -34,19 +35,17 @@
                   |  Password change for user trent.anderson
                 .chi-activity__end-footer
                   | Admin
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

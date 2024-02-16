@@ -11,36 +11,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './_examples/index.vue';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = [
-  'chi-textarea',
-  'chi-brand',
-  'chi-text-input',
-  'chi-label',
-  'chi-date-picker'
-];
-
-@Component({
+@NuxtComponent({
   components: {
     Examples,
     Accessibility,
-    PageContentTabs,
-    Properties
+    Properties,
   },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs
-    };
-  },
+
   layout() {
     return 'wide';
-  }
+  },
 })
-export default class Tooltip extends Vue {}
+export default class Tooltip extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>

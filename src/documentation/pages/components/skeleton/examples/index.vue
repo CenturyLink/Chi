@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Rounded />
     <CircleSkeleton />
     <Square />
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Rounded from './_rounded.vue';
 import CircleSkeleton from './_circle.vue';
@@ -21,16 +21,16 @@ import RoundedSquare from './_rounded-square.vue';
 import ComplexCombination from './_complex-combination.vue';
 import Sizes from './_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Rounded,
     CircleSkeleton,
     Square,
     RoundedSquare,
     ComplexCombination,
-    Sizes
-  }
+    Sizes,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

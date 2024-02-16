@@ -1,24 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="date-disabled" :tabs="exampleTabs" additionalStyle="z-index: 1;">
-    div(style="max-width: 14rem;" slot="example")
+<ComponentExample title="Disabled" id="date-disabled" :tabs="exampleTabs" additionalStyle="z-index: 1;">
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__datepicker_date_2') Date
       chi-date-picker(id="example__datepicker_date_2", disabled)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -48,5 +45,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Disabled extends Vue {}
+export default class Disabled extends Vue { }
 </script>

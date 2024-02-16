@@ -1,25 +1,25 @@
 <template lang="pug">
-  <ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | More icon colors that can be used to compliment the primary brand palette.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
         div(v-for="color in colors" :class="`chi-icon -${color} -m--1`")
           svg
             use(xlink:href='#icon-atom')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -43,5 +43,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class BrandComplimentaryLumenPortal extends Vue {}
+export default class BrandComplimentaryLumenPortal extends Vue { }
 </script>

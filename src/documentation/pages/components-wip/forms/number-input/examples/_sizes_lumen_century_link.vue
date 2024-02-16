@@ -1,42 +1,40 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes_lumen_century_link" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Sizes" id="sizes_lumen_century_link" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
-    .-d--flex.-flex--column(slot="example")
+  template(#example)
+    .-d--flex.-flex--column
       each size in ['xs', 'sm', 'md', 'lg', 'xl']
         .-py--2
           .chi-form__item
             chi-label(for=`example-sizes-${size}`) Label
-            chi-number-input(size=`${size}`, id=`example-sizes-${size}`) 
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded /> 
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+            chi-number-input(size=`${size}`, id=`example-sizes-${size}`)
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
@@ -111,10 +109,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <button aria-label="Increase"></button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-xl'));<\/script>`
-      }
+<script>chi.numberInput(document.getElementById('input-example-xl'));<\/script>`,
+      },
     };
-  }
+  },
 })
-export default class SizesLumenCenturyLink extends Vue {}
+export default class SizesLumenCenturyLink extends Vue { }
 </script>

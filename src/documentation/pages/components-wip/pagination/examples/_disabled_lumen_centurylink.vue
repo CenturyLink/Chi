@@ -1,58 +1,52 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
         .-p--3(:class="item === 2 ? '-bg--black' : ''")
           p.-text--bold(:class="item === 2 ? '-text--white' : ''") Disabled previous button
           chi-pagination(pages="5" current-page="1" :inverse="item === 2 ? true : false")
           p.-text--bold(:class="item === 2 ? '-text--white' : ''") Disabled next button
           chi-pagination(pages="5" current-page="5" :inverse="item === 2 ? true : false")
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        span
-          | <code>chi-pagination</code> automatically disables previous / next pages if current page is first or last
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-vue">
-      .chi-tab__description
-        span
-          | <code>ChiPagination</code> automatically disables previous / next pages if current page is first or last
-      <pre class="language-html" >
-        <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        span
-          | Add the attribute <code>disabled</code> to any button to render in a disabled state.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | <code>chi-pagination</code> automatically disables previous / next pages if current page is first or last
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-vue)
+    .chi-tab__description
+      span
+        | <code>ChiPagination</code> automatically disables previous / next pages if current page is first or last
+    Copy(lang="html" :code="codeSnippets.vue")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | Add the attribute <code>disabled</code> to any button to render in a disabled state.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
@@ -120,10 +114,10 @@ import { Component, Vue } from 'vue-property-decorator';
 
 <!-- For dark backgrounds -->
 <ChiPagination :pages="5" :currentPage="1" :inverse="true" />
-<ChiPagination :pages="5" :currentPage="5" :inverse="true" />`
-      }
+<ChiPagination :pages="5" :currentPage="5" :inverse="true" />`,
+      },
     };
-  }
+  },
 })
-export default class DisabledLumenCenturyLink extends Vue {}
+export default class DisabledLumenCenturyLink extends Vue { }
 </script>

@@ -1,41 +1,37 @@
 <template lang="pug">
-  <ComponentExample title="Titled" id="titled" :tabs="exampleTabs">
-    .-position--relative(style="height: 87px;" slot="example")      
+<ComponentExample title="Titled" id="titled" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative(style="height: 87px;")
       chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
         | Popover content
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | Use the <code>title</code> attribute to display a title.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the <code>title</code> attribute to display a title.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Add <code>chi-popover__header</code> and <code>chi-popover__title</code> to display a title.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-popover title="Popover title" variant="text" active>
@@ -48,10 +44,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-popover__content">
     <p class="chi-popover__text">Popover content</p>
   </div>
-</section>`
-      }
+</section>`,
+      },
     };
-  }
+  },
 })
-export default class Titled extends Vue {}
+export default class Titled extends Vue { }
 </script>

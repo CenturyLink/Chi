@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Help" id="help" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Help" id="help" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
       | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       .chi-label__wrapper
         chi-label(for='unique-id-he1') Label
         .chi-label__help
@@ -12,34 +14,30 @@
           chi-popover(ref="popover" id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
             | Helpful information goes here.
       chi-number-input#unique-id-he1
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded /> 
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-label__wrapper">
@@ -90,10 +88,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <script>
   chi.numberInput(document.getElementById('unique-id-he1'));
   chi.popover(document.getElementById('example__help-button'));
-<\/script>`
-      }
+<\/script>`,
+      },
     };
-  }
+  },
 })
-export default class Help extends Vue {}
+export default class Help extends Vue { }
 </script>

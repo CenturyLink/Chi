@@ -8,19 +8,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { displayDefaultColumns } from "~/fixtures/fixtures";
-import { ITableColumn, ITableContent } from "~/models/models";
+import { Vue } from 'vue-facing-decorator';
+import { displayDefaultColumns } from '~/fixtures/fixtures';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 
-@Component({
-  data: () => {
-    return {
-      values: ['sm', 'md', 'lg', 'xl'],
-      columns: displayDefaultColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class TargetSpecificBreakpoints extends Vue {
+  values: ['sm', 'md', 'lg', 'xl']
+  columns: displayDefaultColumns
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Open on hover" id="open-on-hover" :tabs="exampleTabs" padding="-p--0">
-    .-d--flex.-overflow--hidden(slot="example")
+<ComponentExample title="Open on hover" id="open-on-hover" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .-d--flex.-overflow--hidden
       aside.chi-sidenav.-flex--shrink0.-animated(ref="sidenav")
         .chi-sidenav__content
           nav
@@ -36,49 +37,44 @@
                     | External
                     i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
-        p(v-for="itm in [1, 2, 3, 4]") Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        p(v-for="itm in [1, 2, 3, 4]") Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      menuItems: ['1', '2', '3', '4'],
-      drawerMenuItems: ['1', '2'],
-      activeMenuItem: '1',
-      activeDrawerMenuItem: '2',
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<aside class="chi-sidenav" id="sidenav-1">
+@NuxtComponent({})
+export default class OpenOnHover extends Vue {
+  menuItems = ['1', '2', '3', '4']
+  drawerMenuItems = ['1', '2']
+  activeMenuItem = '1'
+  activeDrawerMenuItem = '2'
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<aside class="chi-sidenav" id="sidenav-1">
   <div class="chi-sidenav__content">
     <nav>
       <ul class="chi-sidenav__list">
@@ -550,16 +546,12 @@ declare const chi: any;
     openOnHover: true,
     autoClose: true
   });
-<\/script>`
-      }
-    };
+<\/script>`,
   }
-})
-export default class OpenOnHover extends Vue {
   mounted() {
     chi.sidenav(this.$refs.sidenav, {
       openOnHover: true,
-      autoClose: true
+      autoClose: true,
     });
   }
 }

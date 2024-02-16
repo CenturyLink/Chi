@@ -7,44 +7,39 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from "~/models/models";
-import { defaultColumns } from "~/fixtures/fixtures";
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { defaultColumns } from '~/fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      columns: defaultColumns,
-      values: [
-        {
-          name: 'baseline',
-          value: 'baseline'
-        },
-        {
-          name: 'top',
-          value: 'top'
-        },
-        {
-          name: 'middle',
-          value: 'middle'
-        },
-        {
-          name: 'bottom',
-          value: 'bottom'
-        },
-        {
-          name: 'text-top',
-          value: 'text-top'
-        },
-        {
-          name: 'text-bottom',
-          value: 'text-bottom'
-        }
-      ]
-    };
-  },
-})
+@NuxtComponent({})
 export default class Breakpoints extends Vue {
+  columns = defaultColumns;
+  values = [
+    {
+      name: 'baseline',
+      value: 'baseline',
+    },
+    {
+      name: 'top',
+      value: 'top',
+    },
+    {
+      name: 'middle',
+      value: 'middle',
+    },
+    {
+      name: 'bottom',
+      value: 'bottom',
+    },
+    {
+      name: 'text-top',
+      value: 'text-top',
+    },
+    {
+      name: 'text-bottom',
+      value: 'text-bottom',
+    },
+  ]
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':
@@ -54,6 +49,6 @@ export default class Breakpoints extends Vue {
       default:
         return '';
     }
-  };
+  }
 }
 </script>

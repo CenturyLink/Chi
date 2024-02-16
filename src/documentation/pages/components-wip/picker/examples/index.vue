@@ -4,7 +4,7 @@
     h3 Multi-select pickers
     p.-text Use multi-select pickers when more than one option can be chosen.
 
-    <Base />
+    BaseExample
     <Checked />
     <Disabled />
     <Required />
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Checked from './_checked.vue';
 import Disabled from './_disabled.vue';
@@ -35,9 +35,9 @@ import CheckboxDescription from './_checkbox-description.vue';
 import RadioButton from './_radio-button.vue';
 import RadioButtonDescription from './_radio-button-description.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Checked,
     Disabled,
     Required,
@@ -48,8 +48,8 @@ import RadioButtonDescription from './_radio-button-description.vue';
     Checkbox,
     CheckboxDescription,
     RadioButton,
-    RadioButtonDescription
-  }
+    RadioButtonDescription,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Help" id="help" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Help" id="help" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
       | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           .chi-label__wrapper
@@ -14,33 +16,29 @@
               chi-popover(ref="popover" position='top' variant='text' arrow reference='#example__help-button')
                 | Helpful information goes here.
           chi-text-input(id='example__label-with-icon')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
@@ -84,10 +82,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <input class="chi-input" id="example__label-with-icon" type="text">
 </div>
 
-<script>chi.popover(document.getElementById('example__help-button'));<\/script>`
-      }
+<script>chi.popover(document.getElementById('example__help-button'));<\/script>`,
+      },
     };
-  }
+  },
 })
-export default class Help extends Vue {}
+export default class Help extends Vue { }
 </script>

@@ -1,12 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Further positions can be used in this mode: <code>top</code>,
       | <code>right</code>, <code>bottom</code>, <code>left</code>, <code>top-start</code>,
       | <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
       | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
       | <code>left-end</code>.
-    .chi-grid.-no-gutter.-px-xl--3(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter.-px-xl--3
       .chi-col(:class="getClasses(pos)" v-for="pos in ['top', 'left', '', 'right', 'bottom']")
         div.-w--75.-text.-text--muted.-text--center.-lh--2(v-if="pos === ''") Click buttons to see popover positions
         template(v-else)
@@ -14,60 +16,54 @@
             chi-button(@click="togglePopover(`popover-${position.position}`)" :id="`button-${position.position}`") {{ position.label }}
             chi-popover(:ref="`popover-${position.position}`" :position="position.position", title="Popover title", variant="text", arrow, :reference="`#button-${position.position}`")
               | This popover is {{ position.position }} positioned.
-    <pre class="language-html" slot='code-webcomponent'>
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot='code-htmlblueprint'>
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import VNode from 'vue';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      positions: {
-        top: [
-          { label: 'Top start', position: 'top-start' },
-          { label: 'Top', position: 'top' },
-          { label: 'Top end', position: 'top-end' }
-        ],
-        left: [
-          { label: 'Left start', position: 'left-start' },
-          { label: 'Left', position: 'left' },
-          { label: 'Left end', position: 'left-end' }
-        ],
-        right: [
-          { label: 'Right start', position: 'right-start' },
-          { label: 'Right', position: 'right' },
-          { label: 'Right end', position: 'right-end' }
-        ],
-        bottom: [
-          { label: 'Bottom start', position: 'bottom-start' },
-          { label: 'Bottom', position: 'bottom' },
-          { label: 'Bottom end', position: 'bottom-end' }
-        ]
-      },
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- Top -->
+@NuxtComponent({})
+export default class Positioning extends Vue {
+  positions = {
+    top: [
+      { label: 'Top start', position: 'top-start' },
+      { label: 'Top', position: 'top' },
+      { label: 'Top end', position: 'top-end' },
+    ],
+    left: [
+      { label: 'Left start', position: 'left-start' },
+      { label: 'Left', position: 'left' },
+      { label: 'Left end', position: 'left-end' },
+    ],
+    right: [
+      { label: 'Right start', position: 'right-start' },
+      { label: 'Right', position: 'right' },
+      { label: 'Right end', position: 'right-end' },
+    ],
+    bottom: [
+      { label: 'Bottom start', position: 'bottom-start' },
+      { label: 'Bottom', position: 'bottom' },
+      { label: 'Bottom end', position: 'bottom-end' },
+    ],
+  }
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: `<!-- Top -->
 <chi-button id="example-4-t-button">Top popover</chi-button>
 <chi-popover id="example-4-t-popover" position="top" title="Popover title" variant="text" arrow reference="#example-4-t-button">
   This popover is top positioned.
@@ -138,7 +134,7 @@ import VNode from 'vue';
 <chi-popover id="example-4-le-popover" position="left-end" title="Popover title" variant="text" arrow reference="#example-4-le-button">
   This popover is left-end positioned.
 </chi-popover>`,
-        htmlblueprint: `<!-- Top -->
+    htmlblueprint: `<!-- Top -->
 <button data-position='top' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is top positioned.</p></div>' class="chi-button">Top popover</button>
 
 <!-- Top Start -->
@@ -175,12 +171,9 @@ import VNode from 'vue';
 <button class="chi-button" data-position='left-end' data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">This popover is left end positioned.</p></div>'>Left end popover</button>
 
 <!-- JavaScript -->
-<script>chi.popover(document.querySelectorAll('[data-popover-content]'));<\/script>`
-      }
-    };
+<script>chi.popover(document.querySelectorAll('[data-popover-content]'));<\/script>`,
   }
-})
-export default class Positioning extends Vue {
+
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as VNode[])[0] as any).toggle();
   }

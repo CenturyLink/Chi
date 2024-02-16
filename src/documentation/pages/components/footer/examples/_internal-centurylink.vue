@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Internal" id="internal-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Internal" id="internal-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Show the internal footer for authenticated users.
-    footer.chi-footer(slot='example')
+  template(#example)
+    footer.chi-footer
       .chi-footer__content
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
@@ -12,63 +14,54 @@
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
                 | &copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ILink } from '../../../../models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ILink } from '../../../../models/models';
 import { CENTURY_FOOTER_LINKS } from '../../../../fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      centuryFooterLinks: CENTURY_FOOTER_LINKS,
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class InternalCenturylink extends Vue {
-
+  centuryFooterLinks = CENTURY_FOOTER_LINKS
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``,
+  }
   created() {
-    this._setCodeSnippets()
+    this._setCodeSnippets();
   }
 
   _setCodeSnippets() {
     let centuryFooterLinks = '';
 
-    this.$data.centuryFooterLinks.forEach((footerLink: ILink) => {
+    this.centuryFooterLinks.forEach((footerLink: ILink) => {
       centuryFooterLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''}>${footerLink.title}</a>
-            </li>`
-    })
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''
+        }>${footerLink.title}</a>
+            </li>`;
+    });
 
-    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
+    this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
@@ -80,7 +73,7 @@ export default class InternalCenturylink extends Vue {
       </div>
     </div>
   </div>
-</footer>`
+</footer>`;
   }
 }
 </script>

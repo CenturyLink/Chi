@@ -5,7 +5,7 @@
       | To display steps, apply the class <code>chi-steps</code> to a unordered list <code>ul</code>
       | and indicate the active link with the class <code>-active</code> in the corresponding li tag.
 
-    <Base />
+    BaseExample
     <HorizontalLabels />
     <Vertical />
 
@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import HorizontalLabels from './_horizontal-labels.vue';
 import Vertical from './_vertical.vue';
@@ -27,15 +27,15 @@ import SmallHorizontal from './_small-horizontal.vue';
 import SmallVertical from './_small-vertical.vue';
 import Responsiveness from './_responsiveness.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     HorizontalLabels,
     Vertical,
     SmallHorizontal,
     SmallVertical,
-    Responsiveness
-  }
+    Responsiveness,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

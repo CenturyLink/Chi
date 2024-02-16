@@ -1,49 +1,47 @@
 <template lang="pug">
-  <ComponentExample title="Titled" titleSize="h4" id="banner_titled_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Titled" titleSize="h4" id="banner_titled_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | The title will automatically get colored based on the alerts semantic color class.
       | To override the title color, apply a text color utility class.
-    <Wrapper slot='example'>
-      chi-alert.-m--2(type='banner', icon='flag', title="Base")
-        | This is a base alert
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-        chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
-          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-    </Wrapper>
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        span
-          | Use <code>title=""</code> attribute to add a title to an Alert.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        span
-          | Use <code>chi-alert__title</code> class to add a title to an Alert.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+  template(#example)
+    chi-alert.-m--2(type='banner', icon='flag', title="Base")
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val, title=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | Use <code>title=""</code> attribute to add a title to an Alert.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | Use <code>chi-alert__title</code> class to add a title to an Alert.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Base - No semantic color defined -->
@@ -117,10 +115,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <p class="chi-alert__title">Muted</p>
     <p class="chi-alert__text">This is a muted alert</p>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class BannerTitledLumenCenturyLink extends Vue {}
+export default class BannerTitledLumenCenturyLink extends Vue { }
 </script>

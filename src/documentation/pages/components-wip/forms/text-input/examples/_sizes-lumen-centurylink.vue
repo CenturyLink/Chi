@@ -1,41 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Text inputs supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, and <code>xl</code>.
       | The default size is <code>md</code>.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-grid
           .chi-col.-w--12.-mb--2(v-for="size in ['xs', 'sm', 'md', 'lg', 'xl']")
             .chi-form__item
               chi-label(:for="`example__size-${size}`") Label
               chi-text-input(:size="size", value="Sample Text", :id="`example__size-${size}`")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
@@ -77,10 +77,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item">
   <label class="chi-label" for="example__size-xl">Label</label>
   <input type="text" class="chi-input -xl" id="example__size-xl">
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class SizesLumenCenturyLink extends Vue {}
+export default class SizesLumenCenturyLink extends Vue { }
 </script>

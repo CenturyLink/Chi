@@ -1,24 +1,25 @@
 <template lang="pug">
-  <ComponentExample title="Single element per view" id="single" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Single element per view" id="single" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the attribute <code>single</code> to render single item per view.
-    chi-carousel(single slot="example")
-      .chi-carousel__item.-p--1(style="height: 10rem;" slot="items" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
-        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
-          | {{ item }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-carousel(single)
+      div(slot="items")
+        .chi-carousel__item.-p--1(style="height: 10rem;"  v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
+          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
+            | {{ item }}
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -63,9 +64,9 @@ import { Component, Vue } from 'vue-property-decorator';
   </div>
 </chi-carousel>`,
         htmlblueprint: ``,
-      }
-    }
-  }
+      },
+    };
+  },
 })
-export default class Single extends Vue {}
+export default class Single extends Vue { }
 </script>

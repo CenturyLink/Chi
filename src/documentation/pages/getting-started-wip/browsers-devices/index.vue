@@ -1,22 +1,16 @@
 <template lang="pug">
-  div
-    <TitleBar title="Browser support" />
-    <Examples />
+<TitleBar title="Browser support" />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
-  head() {
-    return {
-      title: 'Chi - Browser support'
-    }
-  },
+@NuxtComponent({
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class BrowsersDevices extends Vue {}
 </script>

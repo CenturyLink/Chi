@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Complex" id="complex-data-table" :tabs="exampleTabs">
-    chi-data-table(:config="config", :data="table", ref='dataTableComplex', slot="example")
+<ComponentExample title="Complex" id="complex-data-table" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config="config" :dataTableData="table" ref='dataTableComplex')
       template(#status="payload")
         i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
         span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
@@ -9,11 +10,10 @@
       template(#actions="payload")
         chi-dropdown-example(:id="payload.id")
       template(#toolbar)
-        chi-data-table-toolbar
-          template(v-slot:start)
-          template(v-slot:end)
+        ChiDataTableToolbar
+          template(#end)
             chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
-              chi-icon(icon="print") 
+              chi-icon(icon="print")
       template(#bulkActions)
         .chi-bulk-actions__buttons
           .chi-bulk-actions__buttons-mobile.-z--40
@@ -38,41 +38,36 @@
             chi-button(size='xs' aria-label='Print')
               chi-icon(icon='arrow-to-bottom')
               span Print
-    <Wrapper slot='code-vue'>
-      .chi-tab__description.-p--2
-        | Create reusable Vue components based on your needs and use them as custom templates for Data Table cells and row accordions
-      .-d--flex.-no-gutter.-bt--1
-        .-bg--grey-15.-pt--3.-br--1(style="width: 14rem;")
-          ul#example-vertical-base.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-base')
-            li.-active
-              a(href='#vertical-base-1' role='tab' aria-selected='true' aria-controls='vertical-base-1') ExampleDataTable.vue
-            li
-              a(href='#vertical-base-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') ExamplePopover.vue
-            li
-              a(href='#vertical-base-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') ExampleDropdown.vue
-            li.chi-sliding-border
-          script.
-            chi.tab(document.getElementById('example-vertical-base'));
-        .-flex--grow1
-          #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
-            pre.language-html
-              code(v-highlight="codeSnippets.dataTableExample" class="html")
-          #vertical-base-2.chi-tabs-panel(role='tabpanel')
-            pre.language-html
-              code(v-highlight="codeSnippets.popoverExample" class="html")
-          #vertical-base-3.chi-tabs-panel(role='tabpanel')
-            pre.language-html
-              code(v-highlight="codeSnippets.dropdownExample" class="html")
-    </Wrapper>
-  </ComponentExample>
+
+  template(#code-vue)
+    .chi-tab__description.-p--2
+      | Create reusable Vue components based on your needs and use them as custom templates for Data Table cells and row accordions
+    .-d--flex.-no-gutter.-bt--1
+      .-bg--grey-15.-pt--3.-br--1(style="width: 14rem;")
+        ul#example-vertical-base.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-base')
+          li.-active
+            a(href='#vertical-base-1' role='tab' aria-selected='true' aria-controls='vertical-base-1') ExampleDataTable.vue
+          li
+            a(href='#vertical-base-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') ExamplePopover.vue
+          li
+            a(href='#vertical-base-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') ExampleDropdown.vue
+          li.chi-sliding-border
+      .-flex--grow1
+        #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
+          Copy(lang="html" :code="codeSnippets.dataTableExample")
+        #vertical-base-2.chi-tabs-panel(role='tabpanel')
+          Copy(lang="html" :code="codeSnippets.popoverExample")
+        #vertical-base-3.chi-tabs-panel(role='tabpanel')
+          Copy(lang="html" :code="codeSnippets.dropdownExample")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import PopoverExample from './../popover-example.vue'
 import DropdownExample from './../dropdown-example.vue'
 
-@Component({
+@NuxtComponent({
   components: {
     ChiPopoverExample: PopoverExample,
     ChiDropdownExample: DropdownExample,
@@ -81,6 +76,9 @@ import DropdownExample from './../dropdown-example.vue'
     printTable() {
       (this.$refs.dataTableComplex as any)?.print("Data table - Complex");
     },
+  },
+  mounted() {
+    chi.tab(document.getElementById('example-vertical-base'))
   },
   data: () => {
     return {
@@ -1946,7 +1944,5 @@ beforeDestroy() {
     };
   },
 })
-export default class DataTableComplex extends Vue {
-
-}
+export default class DataTableComplex extends Vue { }
 </script>

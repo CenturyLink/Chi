@@ -1,46 +1,43 @@
 <template lang="pug">
-  <ComponentExample title="Default" titleSize="h4" id="toast_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    <Wrapper slot='example'>
-      chi-alert.-m--2(type='toast', icon='flag')
-        | This is a base alert
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-        chi-alert.-m--2(type='toast', icon=val, color=type)
-          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-    </Wrapper>
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        span
-          | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        span
-          | To use a toast alert, apply the class <code>-toast</code>.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Default" titleSize="h4" id="toast_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
+  template(#example)
+    chi-alert.-m--2(type='toast', icon='flag')
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(type='toast', icon=val, color=type)
+        =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | To use a toast alert, apply the class <code>-toast</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Base - No semantic color defined -->
@@ -138,10 +135,10 @@ import { Component, Vue } from 'vue-property-decorator';
       <i class="chi-icon icon-x" aria-hidden="true"></i>
     </div>
   </button>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class ToastDefaultLumenCenturyLink extends Vue {}
+export default class ToastDefaultLumenCenturyLink extends Vue { }
 </script>

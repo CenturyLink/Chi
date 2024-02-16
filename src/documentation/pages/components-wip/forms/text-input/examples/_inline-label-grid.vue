@@ -1,34 +1,33 @@
 <template lang="pug">
-  <ComponentExample title="Inline Label - width controlled using grid" id="inline-label-grid" :tabs="exampleTabs">
-    .chi-form__item.-row.chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Inline Label - width controlled using grid" id="inline-label-grid" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item.-row.chi-grid.-no-gutter
       chi-label.chi-col.-w--3(for='example__inline-label-grid') Label width 3 columns
       .chi-col.-w--9
         chi-text-input(id='example__inline-label-grid')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item -row chi-grid -no-gutter">
@@ -38,10 +37,10 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item -row chi-grid -no-gutter">
   <label class="chi-label chi-col -w--3" for="example__inline-label-grid">Label</label>
   <input class="chi-input chi-col -w--9" type="text" id="example__inline-label-grid">
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class InlineLabelGrid extends Vue {}
+export default class InlineLabelGrid extends Vue { }
 </script>

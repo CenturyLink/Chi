@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" additionalStyle="position: static;" :tabs="exampleTabs">
-    .-p--0(slot="example")
+<ComponentExample title="Base" id="base" additionalStyle="position: static;" :tabs="exampleTabs">
+  template(#example)
+    .-p--0
       .-d--flex.-justify-content--start.-align-items--start
         button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1' ref="baseModal")
           | Click me to open the modal
@@ -17,41 +18,36 @@
             footer.chi-modal__footer
               button.chi-button(data-dismiss='modal') Cancel
               button.chi-button.-primary Save
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<!-- Trigger -->
+@NuxtComponent({})
+export default class Base extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<!-- Trigger -->
 <button id="modal-trigger-1" class="chi-button chi-modal__trigger" data-target="#modal-1">
   Launch demo modal
 </button>
@@ -81,16 +77,12 @@ declare const chi: any;
 
 <!-- JavaScript -->
 <script>chi.modal(document.getElementById('modal-trigger-1'));<\/script>`,
-      },
-    };
-  },
-})
-export default class Base extends Vue {
+  }
   modal: any;
 
   mounted() {
     this.modal = chi.modal(this.$refs.baseModal as HTMLElement);
-  } 
+  }
 
   beforeDestroy() {
     this.modal.dispose();

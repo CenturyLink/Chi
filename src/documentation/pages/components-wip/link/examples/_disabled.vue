@@ -1,40 +1,40 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs" additionalClasses="-text">
-    p.-text(slot="example-description")
+<ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs" additionalClasses="-text">
+  template(#example-description)
+    p.-text
       | Make links appear inactive by adding the <code>disabled</code> boolean attribute or <code>-disabled</code> class.
-    chi-link(href="#" slot="example" disabled) Link
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-link(href="#" disabled) Link
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-link href="#" disabled>Link</chi-link>`,
-        htmlblueprint: `<a class="chi-link -disabled" href="#">Link</a>`
-      }
+        htmlblueprint: `<a class="chi-link -disabled" href="#">Link</a>`,
+      },
     };
-  }
+  },
 })
-export default class Disabled extends Vue {}
+export default class Disabled extends Vue { }
 </script>

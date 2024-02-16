@@ -1,30 +1,26 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Switch with Hidden Label" id="switch-hidden-label-portal" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
+<ComponentExample titleSize="h4" title="Switch with Hidden Label" id="switch-hidden-label-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item
       chi-switch(id='portal-toggle8', size="xs", label='Label', hide-label)
-    <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
-        | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
-        | in close proximity to other text that clearly describes its purpose.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
-        | Apply the class <code>-label--hide</code> to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
-        | in close proximity to other text that clearly describes its purpose.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .p--text.chi-tab__description
+      | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+      | in close proximity to other text that clearly describes its purpose.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .p--text.chi-tab__description
+      | Apply the class <code>-label--hide</code> to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+      | in close proximity to other text that clearly describes its purpose.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -55,5 +51,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class SwitchHiddenPortal extends Vue {}
+export default class SwitchHiddenPortal extends Vue { }
 </script>

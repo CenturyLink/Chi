@@ -1,8 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Carousel" id="carousel-portal" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      chi-carousel
-        .chi-stat(slot="items")
+<ComponentExample title="Carousel" id="carousel-portal" :tabs="exampleTabs">
+  template(#example)
+    chi-carousel
+      div(slot="items")
+        .chi-stat
           div(v-for="(stat, index) in stats" :key="index" style="max-width: 168px; min-width: 168px; width: 168px;" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
             .chi-stat__content
               .chi-stat-metric
@@ -10,59 +11,57 @@
                   | {{ index + 1 }}
                 .chi-stat-metric__title
                   | {{ stat.title }}
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       stats: [
         {
-          title: 'High Utilization'
+          title: 'High Utilization',
         },
         {
-          title: 'Critical Performing'
+          title: 'Critical Performing',
         },
         {
-          title: 'Services Down'
+          title: 'Services Down',
         },
         {
-          title: 'Scheduled Maintenance'
+          title: 'Scheduled Maintenance',
         },
         {
-          title: 'High Utilization'
+          title: 'High Utilization',
         },
         {
-          title: 'Critical Performing'
+          title: 'Critical Performing',
         },
         {
-          title: 'Services Down'
+          title: 'Services Down',
         },
         {
-          title: 'Scheduled Maintenance'
-        }
+          title: 'Scheduled Maintenance',
+        },
       ],
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-carousel>
@@ -133,10 +132,10 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
   </div>
 </chi-carousel>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
-export default class CarouselPortal extends Vue {}
+export default class CarouselPortal extends Vue { }
 </script>

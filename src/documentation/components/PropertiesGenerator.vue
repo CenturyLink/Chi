@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    div(v-if="isPropsLoaded")
+  ClientOnly
+    div(v-if="props.length")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto')
@@ -101,24 +101,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Vue, Prop } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      props: [],
-      events: [],
-      methods: [],
-      docs: Vue.prototype.$chiDocs
-    };
-  },
-  computed: {
-    isPropsLoaded() {
-      return this.$data.props.length > 0;
-    }
-  }
-})
+@NuxtComponent({})
 export default class PropertiesGenerator extends Vue {
+  props = []
+  events = []
+  methods =  []
+  docs = useDocsJson();
+
   @Prop({ required: true }) tag!: string;
 
   getEventDetailType(detail: string): string {
@@ -126,15 +117,15 @@ export default class PropertiesGenerator extends Vue {
   }
 
   created() {
-    if (this.$data.docs) {
-      const component = this.$data.docs.components?.find(
+    if (this.docs) {
+      const component = this.docs.components?.find(
         (component: {tag: string}) => component.tag === this.tag
       );
 
       if (component) {
-        this.$data.props = component.props;
-        this.$data.events = component.events;
-        this.$data.methods = component.methods;
+        this.props = component.props;
+        this.events = component.events;
+        this.methods = component.methods;
       }
     }
   }

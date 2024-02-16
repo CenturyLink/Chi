@@ -1,40 +1,38 @@
 <template lang="pug">
-  <ComponentExample title="First and Last page buttons" id="compact-first-last-page-buttons-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="First and Last page buttons" id="compact-first-last-page-buttons-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
         .-p--3(:class="item === 2 ? '-bg--black' : ''")
           chi-pagination(pages="3" current-page="2" compact page-jumper first-last :inverse="item === 2 ? true : false")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
-         {
+        {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
@@ -120,10 +118,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :firstLast="true" />
 
 <!-- For dark backgrounds -->
-<ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :firstLast="true" :inverse="true" />`
-      }
+<ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :firstLast="true" :inverse="true" />`,
+      },
     };
-  }
+  },
 })
-export default class CompactFirstLastPageButtonsLumenCenturyLink extends Vue {}
+export default class CompactFirstLastPageButtonsLumenCenturyLink extends Vue { }
 </script>

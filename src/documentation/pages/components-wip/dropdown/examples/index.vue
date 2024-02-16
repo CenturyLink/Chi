@@ -7,7 +7,7 @@
       | activator must reference the dropdown with a <code>data-target</code> attribute.
       | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
 
-    <Base />
+    BaseExample
     <AdditionalStyles />
     <DataTarget />
     <Hover />
@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import AdditionalStyles from './_additional_styles.vue';
 import DataTarget from './_data_target.vue';
@@ -59,10 +59,10 @@ import TruncateLongMenuItems from './_truncate_long_menu_items.vue';
 import FlexibleHeight from './_flexible_height.vue';
 import VisibleItems from './_visible_items.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Animated,
-    Base,
+    BaseExample: Base,
     AdditionalStyles,
     CheckboxesBase,
     CheckboxesIcons,
@@ -80,8 +80,8 @@ import VisibleItems from './_visible_items.vue';
     States,
     ToggleSwitch,
     TruncateLongMenuItems,
-    VisibleItems
-  }
+    VisibleItems,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>

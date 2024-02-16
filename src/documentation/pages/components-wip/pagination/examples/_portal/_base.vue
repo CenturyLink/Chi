@@ -1,40 +1,38 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-compact-portal" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Base" id="base-compact-portal" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3
           chi-pagination(pages="3" current-page="2" size="xs" compact first-last)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
-         {
+        {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
@@ -69,10 +67,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <div class="chi-pagination__end"></div>
   </div>
 </nav>`,
-        vue: `<ChiPagination :pages="3" :currentPage="2" :compact="true" :firstLast="true" size="xs" />`
-      }
+        vue: `<ChiPagination :pages="3" :currentPage="2" :compact="true" :firstLast="true" size="xs" />`,
+      },
     };
-  }
+  },
 })
-export default class CompactBasePortal extends Vue {}
+export default class CompactBasePortal extends Vue { }
 </script>

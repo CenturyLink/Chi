@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Position" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeDrawerPosition(e)" padding="-p--0">
-    .-position--relative.-z--0.-overflow--hidden(style='height:30rem;' slot="example")
+<ComponentExample title="Position" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeDrawerPosition(e)" padding="-p--0">
+  template(#example)
+    .-position--relative.-z--0.-overflow--hidden(style='height:30rem;')
       .-p--3
         .-text.-mb--1(v-for="item in [1,2,3]") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit.
           | Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna.
@@ -13,36 +14,33 @@
           | Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
       chi-drawer(:position="drawerPosition" active prevent-auto-hide no-header)
         .-p--2.-pt--6.-text Drawer content here
-    <pre class="language-html" v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-webcomponent`" :key="tab.id">
-      <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
-    </pre>
-    <pre class="language-html" v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-vue`" :key="tab.id">
-      <code v-highlight="tab.codeSnippets.vue.code" class="html"></code>
-    </pre>
-    <Wrapper v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-htmlblueprint`" :key="tab.id">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-webcomponent`])
+    Copy(lang="html" :code="tab.codeSnippets.webComponent.code" class="html")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-vue`])
+    Copy(lang="html" :code="tab.codeSnippets.vue.code" class="html")
+
+  template(v-for="tab in headTabs" #[`code-${exampleId}-${tab.id}-htmlblueprint`])
+    <JSNeeded />
+    Copy(lang="html" :code="tab.codeSnippets.htmlBlueprint.code")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { IHeadTabs } from '../../../../models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type IHeadTabs } from '@/models/models';
 
-@Component({
-  data: () => {
+@NuxtComponent({})
+export default class Position extends Vue {
+  headTabs = ['left', 'right', 'top', 'bottom'].map((position, index) => {
     return {
-      headTabs: ['left', 'right', 'top', 'bottom'].map((position, index) => {
-        return {
-          active: position === 'left',
-          id: position,
-          label: position.charAt(0).toUpperCase() + position.slice(1),
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Trigger -->
+      active: position === 'left',
+      id: position,
+      label: position.charAt(0).toUpperCase() + position.slice(1),
+      codeSnippets: {
+        webComponent: {
+          code: `<!-- Trigger -->
 <chi-button id="drawer-position-${position}-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
@@ -60,10 +58,10 @@ import { IHeadTabs } from '../../../../models/models';
     drawer.toggle();
     // or drawer.active = !drawer.active;
   });
-<\/script>`
-            },
-            vue: {
-              code: `<!-- Trigger -->
+<\/script>`,
+        },
+        vue: {
+          code: `<!-- Trigger -->
 <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
   <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
 </button>
@@ -86,10 +84,10 @@ methods: {
   toggleDrawer() {
     this.drawerActive = !this.drawerActive;
   }
-}`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
+}`,
+        },
+        htmlBlueprint: {
+          code: `<!-- Trigger -->
 <button id="drawer-position-${position}-trigger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-position-${position}" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
@@ -109,34 +107,30 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-position-${position}-trigger'));<\/script>`
-            }
-          }
-        };
-      }),
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
+<script>chi.drawer(document.getElementById('drawer-position-${position}-trigger'));<\/script>`,
         },
-        {
-          id: 'vue',
-          label: 'Vue'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      drawerPosition: 'left',
-      exampleId: 'position'
+      },
     };
-  }
-})
-export default class Position extends Vue {
+  })
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'vue',
+      label: 'Vue',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  drawerPosition = 'left';
+  exampleId = 'position';
   changeDrawerPosition(e: IHeadTabs) {
-    this.$data.drawerPosition = e.id;
+    this.drawerPosition = e.id;
   }
 }
 </script>

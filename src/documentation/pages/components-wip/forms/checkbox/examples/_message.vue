@@ -1,38 +1,38 @@
 <template lang="pug">
-  <ComponentExample title="Message" id="message" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Message" id="message" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Add a message below a checkbox to store descriptions, validation feedback, and other helpful information.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       .chi-checkbox
         input(type="checkbox" class="chi-checkbox__input" id="checkbox-me1")
         label(for="checkbox-me1" class="chi-checkbox__label") Checkbox
       .chi-label.-status Optional helper message
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -42,10 +42,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <label class="chi-checkbox__label" for="checkbox-me1">Checkbox</label>
   </div>
   <div class="chi-label -status">Optional helper message</div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class Message extends Vue {}
 </script>

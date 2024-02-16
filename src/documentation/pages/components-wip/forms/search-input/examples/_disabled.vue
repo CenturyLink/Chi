@@ -1,29 +1,27 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Use the <code>disabled</code> boolean attribute to prevent users from interacting with a search input.
-        | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
-        | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-    .chi-grid(slot="example")
+<ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Use the <code>disabled</code> boolean attribute to prevent users from interacting with a search input.
+      | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+      | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           chi-search-input(value="Sample text" disabled)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -67,5 +65,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Disabled extends Vue {}
+export default class Disabled extends Vue { }
 </script>

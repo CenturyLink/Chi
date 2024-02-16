@@ -1,34 +1,28 @@
 <template>
-  <div
-    :key="id"
-    :id="'example-' + id"
-    :ref="`tab-panel-${id}`"
-    role="tabpanel"
-  >
+  <div :key="id" :id="'example-' + id" :ref="`tab-panel-${id}`" role="tabpanel">
     <div class="clipboard">
-      <button
-        class="clipboard__button chi-button -xs -flat"
-        @click="() => copy(`tab-panel-${id}`)"
-      >
+      <button class="clipboard__button chi-button -xs -flat" @click="() => copy(`tab-panel-${id}`)">
         Copy
       </button>
     </div>
-    <slot name="code"></slot>
+    <ClientOnly>
+      <highlightjs :code="code" :class="`language-${lang}`" :autodetect="false"/>
+    </ClientOnly>
   </div>
 </template>
 
 <style>
-pre code.hljs {
+code.hljs {
   display: unset;
-  padding: 0;
+  padding: 0 !important;
 }
 </style>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import { Vue, Prop } from 'vue-facing-decorator';
 import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
-@Component({
+@NuxtComponent({
   methods: {
     copy(id: string) {
       const tabElement = (this.$refs[id] as HTMLElement);
@@ -58,5 +52,7 @@ import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 })
 export default class Copy extends Vue {
   @Prop({ default: '' }) id?: string;
+  @Prop({ default: '' }) code?: string;
+  @Prop({ default: '' }) lang?: string
 }
 </script>

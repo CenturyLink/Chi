@@ -1,56 +1,53 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" titleSize="h4" id="banner_sizes_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    <Wrapper slot='example'>
-      p.-text--bold.-ml--2 sm
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
-        | This is a small success alert
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm', title="Success")
-        | This is a small success alert
-      p.-text--bold.-ml--2 md (default)
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success')
-        | This is a success alert
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success', title="Success")
-        | This is a success alert
-      p.-text--bold.-ml--2 lg
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
-        | This is a large success alert
-      chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
-        | This is a large success alert
-    </Wrapper>
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        span
-          | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        span
-          | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Sizes" titleSize="h4" id="banner_sizes_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
+  template(#example)
+    p.-text--bold.-ml--2 sm
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
+      | This is a small success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm', title="Success")
+      | This is a small success alert
+    p.-text--bold.-ml--2 md (default)
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success')
+      | This is a success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', title="Success")
+      | This is a success alert
+    p.-text--bold.-ml--2 lg
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg')
+      | This is a large success alert
+    chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
+      | This is a large success alert
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Small -->
@@ -121,10 +118,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <p class="chi-alert__title">Success</p>
     <p class="chi-alert__text">This is a large success alert</p>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
-export default class BannerSizesLumenCenturyLink extends Vue {}
+export default class BannerSizesLumenCenturyLink extends Vue { }
 </script>

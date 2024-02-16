@@ -1,46 +1,42 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-consistent" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
+<ComponentExample title="Base" id="base-consistent" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item
       label(class="chi-label", for="range04") Range label
       .chi-input__wrapper
         input(class="chi-range-slider", id="range04", type="range", ref="range")
         .chi-input__progress
         .chi-input__thumb
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
+@NuxtComponent({})
+export default class BaseConsistent extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="range04">Range label</label>
   <div class="chi-input__wrapper">
     <input class="chi-range-slider" type="range" id="range04">
@@ -50,11 +46,7 @@ declare const chi: any;
 </div>
 
 <script>chi.rangeSlider(document.getElementById('range04'));<\/script>`,
-      },
-    };
-  },
-})
-export default class BaseConsistent extends Vue {
+  }
   rangeSlider: any;
 
   mounted() {

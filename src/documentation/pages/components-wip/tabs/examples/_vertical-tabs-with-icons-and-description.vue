@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons and description" id="vertical-tabs-with-icons-and-description" titleSize="h4" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
-    .-bg--white(slot="example")
+<ComponentExample title="Vertical tabs with icons and description" id="vertical-tabs-with-icons-and-description" titleSize="h4" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
+  template(#example)
+    .-bg--white
       .-p--3
         ul.chi-tabs.-icons.-vertical.-list(
           id="example-vertical-with-icons-and-description"
@@ -22,38 +23,30 @@
                   span.chi-tabs_item-title {{subLink.text}}
                   span.chi-tabs_item-text(v-if="subLink.description" ) {{subLink.description}}
 
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="codeSnippets.webComponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlBlueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webComponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlBlueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class VerticalTabsWithIconsAndDescription extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
   tabLinks = [
     {
       href: '',
@@ -69,26 +62,26 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
+          description: 'Subtab description',
         },
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
+          description: 'Subtab description',
         },
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
-        }
+          description: 'Subtab description',
+        },
       ]
     },
     {
       href: '',
       text: 'Tab Link',
-      description: 'Tab description'
-    }
-  ]
+      description: 'Tab description',
+    },
+  ];
 
   get codeSnippets() {
     return {
@@ -118,20 +111,21 @@ ${this.subTabsLinksHtml}
       <span class="chi-tabs_item-text">Tab description</span>
     </a>
   </li>
-</ul>`
-    }
+</ul>`,
+    };
   }
 
   get subTabsLinksHtml() {
-    return this.tabLinks.map(() => {
-      return (`      <li>
+    return this.tabLinks
+      .map(() => {
+        return `      <li>
         <a class="chi-tabs_item" href="#">
           <span class="chi-tabs_item-title">Subtab Link</span>
           <span class="chi-tabs_item-text">Subtab description</span>
         </a>
-      </li>`
-      )
-    }).join('\n');
+      </li>`;
+      })
+      .join('\n');
   }
 }
 </script>

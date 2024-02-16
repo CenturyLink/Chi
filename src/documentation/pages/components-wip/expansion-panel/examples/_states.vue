@@ -1,20 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="States" id="states" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
-    div(slot="example-description")
-      p.-text
-        | Expansion panels have four states: <code>active</code>, <code>pending</code>, <code>done</code> and
-        | <code>disabled</code>. When <code>pending</code> (default state), only the title is shown. When
-        | <code>active</code>, panels expand to show content or forms. When <code>done</code>, content or form
-        | data is presented in a read only state. When <code>disabled</code>, a muted title is shown in a
-        | non-clickable state.
-      p.-text
-        | The four examples below differ only by state. Thanks to the state support and two internal hiding utility
-        | classes we can represent the different states of the same content changing only the property.
-      p.-text
-        | An optional cancel button can also be included to exit the expansion panel workflow.
-    .-mw--720.-mx--auto(slot="example")
+<ComponentExample title="States" id="states" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
+  template(#example-description)
+    p.-text
+      | Expansion panels have four states: <code>active</code>, <code>pending</code>, <code>done</code> and
+      | <code>disabled</code>. When <code>pending</code> (default state), only the title is shown. When
+      | <code>active</code>, panels expand to show content or forms. When <code>done</code>, content or form
+      | data is presented in a read only state. When <code>disabled</code>, a muted title is shown in a
+      | non-clickable state.
+    p.-text
+      | The four examples below differ only by state. Thanks to the state support and two internal hiding utility
+      | classes we can represent the different states of the same content changing only the property.
+    p.-text
+      | An optional cancel button can also be included to exit the expansion panel workflow.
+  template(#example)
+    .-mw--720.-mx--auto
       chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" :title="panel.title" :state="getState(panel.state, active, index)")
-        div(slot='active')
+        div(slot="active")
           .chi-epanel__subtitle
             | {{ panel.subtitle }}
           p.chi-epanel__text
@@ -27,74 +28,74 @@
           chi-button(@click="active -= 1" v-if="index")
             | Previous
           chi-button(@click="active += 1" color="primary") Continue
-        chi-button(slot="change" @click="active = index" color="primary" variant="flat")
-          | Change
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+        div(slot="change")
+          chi-button(@click="active = index" color="primary" variant="flat")
+            | Change
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       active: 1,
       panels: [
         {
-          state: "done",
-          content: "Content for the panel in done state",
-          title: "Done state",
-          subtitle: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection"
+          state: 'done',
+          content: 'Content for the panel in done state',
+          title: 'Done state',
+          subtitle: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection',
         },
         {
-          state: "active",
-          content: "Content for the panel in active state",
-          title: "Active state",
-          subtitle: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) shipping address"
+          state: 'active',
+          content: 'Content for the panel in active state',
+          title: 'Active state',
+          subtitle: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) shipping address',
         },
         {
-          state: "pending",
-          content: "Content for the panel in pending state",
-          title: "Pending state",
-          subtitle: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) installation date"
+          state: 'pending',
+          content: 'Content for the panel in pending state',
+          title: 'Pending state',
+          subtitle: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) installation date',
         },
         {
-          state: "disabled",
-          content: "Content for the panel in disabled state",
-          title: "Disabled state",
-          subtitle: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.)"
-        }
+          state: 'disabled',
+          content: 'Content for the panel in disabled state',
+          title: 'Disabled state',
+          subtitle: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.)',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Done state -->
@@ -137,8 +138,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
 <!-- Disabled state -->
 <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>`,
-        vue:
-`<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : panel.state">
+        vue: `<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : panel.state">
   <div slot="active">
     <div class="chi-epanel__subtitle">
       {{ panel.title }}
@@ -327,19 +327,19 @@ data: {
       </div>
     </div>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
   },
   methods: {
     getState: (state: string, active: number, index: number) => {
       if (state === 'disabled') {
-        return state
+        return state;
       }
 
       return active === index ? 'active' : active > index ? 'done' : 'pending';
-    }
-  }
+    },
+  },
 })
-export default class States extends Vue {}
+export default class States extends Vue { }
 </script>

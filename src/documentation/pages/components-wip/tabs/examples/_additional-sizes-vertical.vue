@@ -1,85 +1,82 @@
 <template lang="pug">
-  <ComponentExample title="Vertical" id="additional-sizes-vertical" :tabs="exampleTabs" additionalClasses="-pb--4" titleSize="h4">
-    div(slot="example")
-      p.-text--bold Small
-      .chi-divider.-mb--2
-      ul.chi-tabs.-vertical.-sm
-        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-          a(
-            :href="`#${link.href}`"
-            role="tab"
-            aria-selected="true"
-            :aria-controls="link.href"
-          ) {{link.text}}
-          ul.chi-tabs__subtabs(v-if="link.subLinks")
-            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-              a(href='#') {{subLink.text}}
-      p.-text--bold.-mt--6 Medium (Base)
-      .chi-divider.-mb--2
-      ul.chi-tabs.-vertical
-        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-          a(
-            :href="`#${link.href}`"
-            role="tab"
-            aria-selected="true"
-            :aria-controls="link.href"
-          ) {{link.text}}
-          ul.chi-tabs__subtabs(v-if="link.subLinks")
-            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-              a(href='#') {{subLink.text}}
-      p.-text--bold.-mt--6 Large
-      .chi-divider.-mb--2
-      ul.chi-tabs.-vertical.-lg
-        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-          a(
-            :href="`#${link.href}`"
-            role="tab"
-            aria-selected="true"
-            :aria-controls="link.href"
-          ) {{link.text}}
-          ul.chi-tabs__subtabs(v-if="link.subLinks")
-            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-              a(href='#') {{subLink.text}}
-      p.-text--bold.-mt--6 X-Large
-      .chi-divider.-mb--2
-      ul.chi-tabs.-vertical.-xl
-        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-          a(
-            :href="`#${link.href}`"
-            role="tab"
-            aria-selected="true"
-            :aria-controls="link.href"
-          ) {{link.text}}
-          ul.chi-tabs__subtabs(v-if="link.subLinks")
-            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-              a(href='#') {{subLink.text}}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="codeSnippets.webComponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlBlueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Vertical" id="additional-sizes-vertical" :tabs="exampleTabs" additionalClasses="-pb--4" titleSize="h4">
+  template(#example)
+    p.-text--bold Small
+    .chi-divider.-mb--2
+    ul.chi-tabs.-vertical.-sm
+      li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+        a(
+          :href="`#${link.href}`"
+          role="tab"
+          aria-selected="true"
+          :aria-controls="link.href"
+        ) {{link.text}}
+        ul.chi-tabs__subtabs(v-if="link.subLinks")
+          li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+            a(href='#') {{subLink.text}}
+    p.-text--bold.-mt--6 Medium (Base)
+    .chi-divider.-mb--2
+    ul.chi-tabs.-vertical
+      li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+        a(
+          :href="`#${link.href}`"
+          role="tab"
+          aria-selected="true"
+          :aria-controls="link.href"
+        ) {{link.text}}
+        ul.chi-tabs__subtabs(v-if="link.subLinks")
+          li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+            a(href='#') {{subLink.text}}
+    p.-text--bold.-mt--6 Large
+    .chi-divider.-mb--2
+    ul.chi-tabs.-vertical.-lg
+      li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+        a(
+          :href="`#${link.href}`"
+          role="tab"
+          aria-selected="true"
+          :aria-controls="link.href"
+        ) {{link.text}}
+        ul.chi-tabs__subtabs(v-if="link.subLinks")
+          li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+            a(href='#') {{subLink.text}}
+    p.-text--bold.-mt--6 X-Large
+    .chi-divider.-mb--2
+    ul.chi-tabs.-vertical.-xl
+      li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+        a(
+          :href="`#${link.href}`"
+          role="tab"
+          aria-selected="true"
+          :aria-controls="link.href"
+        ) {{link.text}}
+        ul.chi-tabs__subtabs(v-if="link.subLinks")
+          li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+            a(href='#') {{subLink.text}}
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webComponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlBlueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
-
+@NuxtComponent({})
 export default class AdditionalSizesVertical extends Vue {
   exampleTabs = [
     {
       disabled: true,
       id: 'webcomponent',
-      label: 'Web Component'
+      label: 'Web Component',
     },
     {
       active: true,
       id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
+      label: 'HTML Blueprint',
+    },
+  ];
 
   tabLinks = [
     {
@@ -90,68 +87,69 @@ export default class AdditionalSizesVertical extends Vue {
         {
           href: '',
           text: 'Subtab Link',
-          active: true
+          active: true,
         },
         {
           href: '',
-          text: 'Subtab Link'
+          text: 'Subtab Link',
         },
         {
           href: '',
-          text: 'Subtab Link'
-        }
+          text: 'Subtab Link',
+        },
       ]
     },
     {
       href: '',
-      text: 'Tab Link'
+      text: 'Tab Link',
     },
     {
       href: '',
-      text: 'Tab Link'
-    }
-  ]
+      text: 'Tab Link',
+    },
+  ];
 
   sizes = [
     {
       name: 'Small',
-      value: 'sm'
+      value: 'sm',
     },
     {
       name: 'Medium (Base)',
-      value: 'md'
+      value: 'md',
     },
     {
       name: 'Large',
-      value: 'lg'
+      value: 'lg',
     },
     {
       name: 'X-Large',
-      value: 'xl'
+      value: 'xl',
     },
-  ]
+  ];
 
   get codeSnippets() {
     return {
       webComponent: '',
-      htmlBlueprint: this.tabsHtml
-    }
+      htmlBlueprint: this.tabsHtml,
+    };
   }
 
   get subTabsHtml() {
-    return this.tabLinks.map((_, index) => {
-      const isFirstItem = index === 0;
-      return (`      <li${isFirstItem ? ' class="-active"' : ''}>
+    return this.tabLinks
+      .map((_, index) => {
+        const isFirstItem = index === 0;
+        return `      <li${isFirstItem ? ' class="-active"' : ''}>
         <a href="#">Subtab Link</a>
-      </li>`
-      )
-    }).join('\n');
+      </li>`;
+      })
+      .join('\n');
   }
 
   get tabsHtml() {
-    return this.sizes.map(({ name, value }) => {
-      return (
-        `<!-- ${name} -->
+    return this.sizes
+      .map(({ name, value }) => {
+        return `<!-- ${name} -->
 <ul class="chi-tabs -vertical${value === 'md' ? '' : ` -${value}`}">
   <li class="-active">
     <a href="#">Active Tab</a>
@@ -165,9 +163,9 @@ ${this.subTabsHtml}
   <li>
     <a href="#">Tab Link</a>
   </li>
-</ul>`
-      )
-    }).join('\n\n');
+</ul>`;
+      })
+      .join('\n\n');
   }
 }
 </script>

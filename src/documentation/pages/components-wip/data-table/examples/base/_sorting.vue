@@ -1,27 +1,26 @@
 <template lang="pug">
-  div
-    <ComponentExample v-for="sortType in sortingTypes" :key="sortType.id" :title="sortType.title" :id="sortType.id" :tabs="exampleTabs">
-      chi-data-table(:config='getConfig(sortType.defaultSort)', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description
-          | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable
-        pre.language-html
-          code(v-highlight="getVueCode(sortType.defaultSort)" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="getHtmlCode(sortType.defaultSort)" class="html")
-    </ComponentExample>
+<ComponentExample v-for="sortType in sortingTypes" :key="sortType.id" :title="sortType.title" :id="sortType.id" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='getConfig(sortType.defaultSort)', :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description
+      | Use <code>sortBy</code> and <code>sortDataType</code> properties to make the column sortable
+    Copy(:code="getVueCode(sortType.defaultSort)" lang="html")
+
+  template(#code-htmlblueprint)
+    Copy(:code="getHtmlCode(sortType.defaultSort)" lang="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 type DefaultSortType = {
   key: string;
   direction: 'ascending' | 'descending';
 } | null;
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       sortingTypes: [
@@ -144,11 +143,11 @@ type DefaultSortType = {
   },
   methods: {
     getConfig(defaultSort: DefaultSortType) {
-        return {
-          ...this.$data.config,
-          ...(defaultSort ? { defaultSort: defaultSort } : {})
-        };
-      },
+      return {
+        ...this.config,
+        ...(defaultSort ? { defaultSort: defaultSort } : {})
+      };
+    },
     getHtmlCode(defaultSort: DefaultSortType) {
       return `<div class="chi-data-table">
   <div class="chi-data-table__head">
@@ -270,7 +269,7 @@ data: {
       hover: false,
       size: 'md',
       striped: false,
-    },${defaultSort ?`
+    },${defaultSort ? `
     defaultSort: {
       key: 'name',
       direction: ${defaultSort.direction},

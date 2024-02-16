@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Interaction from './_interaction.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Interaction
-  }
+    Interaction,
+  },
 })
 export default class Examples extends Vue {}
 </script>

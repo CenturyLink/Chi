@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Icons" id="icons" :tabs="exampleTabs">
-    fieldset(slot="example")
+<ComponentExample title="Icons" id="icons" :tabs="exampleTabs">
+  template(#example)
+    fieldset
       legend.chi-label Select an option
       .chi-picker-group
         .chi-picker-group__content
@@ -9,47 +10,38 @@
             label(:ref="`tooltip-${item}`" :for="`example__icons_${item}`" :data-tooltip="`Option ${item}`" data-position="bottom")
               span.-sr--only Option {{ item }}
               i.chi-icon.icon-atom.-sm(aria-hidden="true")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      pickers: [1, 2, 3],
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class Icons extends Vue {
+  pickers = [1, 2, 3]
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``,
+  }
   tooltips: any[] = [];
 
   created() {
@@ -57,17 +49,15 @@ export default class Icons extends Vue {
   }
 
   mounted() {
-    this.$data.pickers.forEach((item: string) => {
-      this.tooltips.push(
-        chi.tooltip(this.$refs[`tooltip-${item}`] as HTMLElement)
-      );
+    this.pickers.forEach((item: string) => {
+      this.tooltips.push(chi.tooltip(this.$refs[`tooltip-${item}`] as HTMLElement));
     });
   }
 
   _setCodeSnippets() {
     let pickerInputs = '';
 
-    this.$data.pickers.forEach((option: number) => {
+    this.pickers.forEach((option: number) => {
       const checked = option === 1 ? ' checked' : '';
 
       pickerInputs += `
@@ -78,7 +68,7 @@ export default class Icons extends Vue {
       </label>`;
     });
 
-    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+    this.codeSnippets.htmlblueprint = `<fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">${pickerInputs}

@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="External" id="external-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="External" id="external-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Show the external footer for all public facing webpages.
-    footer.chi-footer(slot='example')
+  template(#example)
+    footer.chi-footer
       .chi-footer__content
         .chi-footer__external
           .chi-footer__external-content.-mw--1200
@@ -53,48 +55,41 @@
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
                 | &copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(:code="codeSnippets.webcomponent" lang="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(:code="codeSnippets.htmlblueprint" lang="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ILink } from '../../../../models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ILink } from '../../../../models/models';
 import { CENTURY_FOOTER_LINKS, EXTERNAL_CENTURYLINKS_CONTENTS } from '../../../../fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      footerLinks: CENTURY_FOOTER_LINKS,
-      externalContents: EXTERNAL_CENTURYLINKS_CONTENTS,
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class ExternalCenturylink extends Vue {
+
+
+  footerLinks = CENTURY_FOOTER_LINKS;
+  externalContents = EXTERNAL_CENTURYLINKS_CONTENTS;
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component'
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint'
+    }
+  ]
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``
+  }
 
   created() {
     this._setCodeSnippet();
@@ -103,19 +98,19 @@ export default class ExternalCenturylink extends Vue {
   _setCodeSnippet() {
     let socialLinks = '', footerItemLinks = '';
 
-    this.$data.externalContents.socialLinks.forEach((link: ILink) => {
-        socialLinks += `
+    this.externalContents.socialLinks.forEach((link: ILink) => {
+      socialLinks += `
               <a href="${link.href}" aria-label="${link.ariaLabel}" rel="noopener" target="_blank">
                 <i class="chi-icon icon-logo-${link.iconName} -md" aria-hidden="true"></i>
               </a>`;
     });
 
-    this.$data.footerLinks.forEach((link: ILink) => {
-          footerItemLinks += `
+    this.footerLinks.forEach((link: ILink) => {
+      footerItemLinks += `
             <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
     });
 
-    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
+    this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__external">
       <div class="chi-footer__external-content -mw--1200">
@@ -181,8 +176,8 @@ export default class ExternalCenturylink extends Vue {
 
   generateLinkCodeSnippet(keyName: string) {
     let linkCodeSnippet = '';
-    this.$data.externalContents[keyName].forEach((link: ILink) => {
-          linkCodeSnippet += `
+    this.externalContents[keyName].forEach((link: ILink) => {
+      linkCodeSnippet += `
               <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
     });
     return linkCodeSnippet;

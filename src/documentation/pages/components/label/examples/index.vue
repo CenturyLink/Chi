@@ -1,28 +1,26 @@
 <template lang="pug">
-  <Wrapper>
-    h2 Examples
+h2 Examples
 
-    <Base />
-    <Required />
-    <Sizes />
-    <Associate />
-  </Wrapper>
+BaseExample
+<Required />
+<Sizes />
+<Associate />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Required from './_required.vue';
 import Sizes from './_sizes.vue';
 import Associate from './_associate.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Required,
     Sizes,
-    Associate
-  }
+    Associate,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>
