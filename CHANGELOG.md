@@ -1,4 +1,16 @@
 # CHANGELOG
+## 5.48.0 (February 14, 2024)
+### Components
+#### Added
+* Added: Text input web component now supports `mutationObserver` functionality.
+* Added: Checkbox web component now supports `mutationObserver` functionality.
+* Added: Textarea web component now supports `mutationObserver` functionality.
+#### Fixed
+* Fixed: Dropdown menu height calculation.
+### Documentation
+#### Fixed
+* Fixed: Text utilities size and headings sections that were rendering incorrect.
+
 ## 5.47.0 (February 7, 2024)
 ### Components
 #### Added
