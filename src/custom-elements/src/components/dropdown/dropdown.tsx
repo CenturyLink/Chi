@@ -11,7 +11,6 @@ import {
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 import { FontWeight } from '../../constants/types';
-import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-dropdown',
@@ -119,6 +118,7 @@ export class Dropdown {
   private _dropdownMenuElement: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
+  private _mutationObserver: MutationObserver;
 
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
@@ -138,7 +138,8 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
-    addMutationObserver.call(this, this.setMenuHeight);
+    this.setMenuHeight();
+    this._addItemListObserver();
   }
 
   componentWillLoad() {
@@ -147,6 +148,7 @@ export class Dropdown {
 
   disconnectedCallback() {
     this._removeEventListeners();
+    this._mutationObserver.disconnect();
   }
 
   @Watch('position')
@@ -201,6 +203,11 @@ export class Dropdown {
 
     this._initializePopper();
     this._popper.update();
+  }
+
+  _addItemListObserver() {
+    this._mutationObserver = new MutationObserver(() => this.setMenuHeight());
+    this._mutationObserver.observe(this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper : this._dropdownMenuElement, { childList: true });
   }
 
   _initializePopper() {
