@@ -11,6 +11,7 @@ import {
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 import { FontWeight } from '../../constants/types';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-dropdown',
@@ -118,7 +119,6 @@ export class Dropdown {
   private _dropdownMenuElement: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
-  private _mutationObserver: MutationObserver;
 
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
@@ -139,7 +139,7 @@ export class Dropdown {
     this._componentLoaded = true;
     this._addEventListeners();
     this.setMenuHeight();
-    this._addItemListObserver();
+    addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true});
   }
 
   componentWillLoad() {
@@ -148,7 +148,6 @@ export class Dropdown {
 
   disconnectedCallback() {
     this._removeEventListeners();
-    this._mutationObserver.disconnect();
   }
 
   @Watch('position')
@@ -205,11 +204,6 @@ export class Dropdown {
     this._popper.update();
   }
 
-  _addItemListObserver() {
-    this._mutationObserver = new MutationObserver(() => this.setMenuHeight());
-    this._mutationObserver.observe(this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper : this._dropdownMenuElement, { childList: true });
-  }
-
   _initializePopper() {
     this._popper = new Popper(this._referenceElement, this._dropdownMenuElement, {
       modifiers: {
@@ -247,26 +241,22 @@ export class Dropdown {
   }
 
   setMenuHeight() {
-    const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
+    if (this.visibleItems) {
+      const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
 
-    const itemsToShow = this.visibleItems
-      ? menuItems.length < this.visibleItems
-        ? menuItems.length
-        : this.visibleItems
-      : menuItems.length;
+      const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length: this.visibleItems
+      let newHeight = 0;
 
-    let newHeight = 0;
+      for (let i = 0; i < itemsToShow; i++) {
+        newHeight += this.getTotalElementHeight(menuItems[i]);
+      }
 
-    for (let i = 0; i < itemsToShow; i++) {
-      newHeight += this.getTotalElementHeight(menuItems[i]);
-    }
-
-    if (this.visibleItems && (this._menuFooter || this._menuHeader)) {
-      this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
-    } else {
-      const padding = this.getPadding('top') + this.getPadding('bottom');
-
-      this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+      if (this._menuFooter || this._menuHeader) {
+        this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+      } else {
+        const padding = this.getPadding('top') + this.getPadding('bottom');
+        this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+      }
     }
   }
 
