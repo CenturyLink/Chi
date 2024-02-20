@@ -82,7 +82,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/accordion`,
     label: 'Accordion',
-    source: 'pug'
+    source: 'vue'
   },
   { to: `components/activity`, label: 'Activity', source: 'vue' },
   {
@@ -103,7 +103,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/brand`,
     label: 'Brand',
-    source: 'pug'
+    source: 'vue'
   },
   {
     to: `components/breadcrumb`,
@@ -123,7 +123,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/card`,
     label: 'Card',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/carousel`,
@@ -178,7 +178,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/footer`,
     label: 'Footer',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/header`,
@@ -193,7 +193,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/label`,
     label: 'Label',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/marketing-icon`,
@@ -203,7 +203,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/mobile-navigation`,
     label: 'Mobile navigation',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/modal`,
