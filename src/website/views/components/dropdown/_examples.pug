@@ -731,6 +731,94 @@ h3 Search input
 
       <script>chi.dropdown(document.getElementById('example__dropdown-with-search'));</script>
 
+h3 Retain Selection
+.example.-mb--3
+  .-p--3
+    chi-dropdown(button=`Dropdown, click me` retain-selection)
+      a.chi-dropdown__menu-item(slot='menu') Item 1
+      a.chi-dropdown__menu-item(slot='menu') Item 2
+      a.chi-dropdown__menu-item(slot='menu') Item 3
+      a.chi-dropdown__menu-item(slot='menu') Item 4
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-dropdown-retain-selection
+      li.-active
+        a(href=`#webcomponent-dropdown-retain-selection`) Web Component
+      li
+        a(href=`#html-dropdown-retain-selection`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-dropdown-retain-selection
+    .chi-tab__description
+      span.-text--grey
+        | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
+        | as active and see the selected item when the dropdown is closed.
+    :code(lang="html")
+      <chi-dropdown button="Dropdown, click me" retain-selection>
+        <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
+        <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
+        <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
+        <a class="chi-dropdown__menu-item" slot="menu">Item 4</a>
+      </chi-dropdown>
+  .chi-tabs-panel#html-dropdown-retain-selection
+    :code(lang="html")
+      <div class="chi-dropdown">
+        <button id="example__dropdown-retain-selection" style="width: 180px;"
+        class="chi-button chi-dropdown__trigger -d--flex -justify-content--between">Dropdown, click me</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item">Item 1</a>
+          <a class="chi-dropdown__menu-item">Item 2</a>
+          <a class="chi-dropdown__menu-item">Item 3</a>
+          <a class="chi-dropdown__menu-item">Item 4</a>
+        </div>
+      </div>
+
+      <script>
+        chi.dropdown(document.getElementById('example__dropdown-retain-selection'));
+        function setupDropdownMenu(dropdownMenuSelector, triggerButtonSelector) {
+          // Get the dropdown menu and trigger button by selectors
+          const dropdownMenu = document.querySelector(dropdownMenuSelector);
+          const triggerButton = document.querySelector(triggerButtonSelector);
+
+          function handleClick(event) {
+            // Get all items in the dropdown menu
+            const items = dropdownMenu.querySelectorAll('.chi-dropdown__menu-item');
+
+            // Remove '-active' class from all items
+            items.forEach(item => {
+              item.classList.remove('-active');
+            });
+
+            // Add '-active' class to the clicked item
+            event.currentTarget.classList.add('-active');
+
+            // Update the trigger button text content
+            updateTriggerButton(triggerButton, event.currentTarget.textContent);
+          }
+
+          function updateTriggerButton(button, textContent) {
+            // Clear existing content
+            button.textContent = '';
+
+            // Create a new span element
+            var span = document.createElement('span');
+            span.style.overflow = 'hidden';
+            span.style.textOverflow = 'ellipsis';
+            span.style.whiteSpace = 'nowrap';
+            span.textContent = textContent;
+
+            // Append the span to the button
+            button.appendChild(span);
+          }
+
+          // Add event listeners to each dropdown menu item
+          const menuItems = dropdownMenu.querySelectorAll('.chi-dropdown__menu-item');
+          menuItems.forEach(item => {
+            item.addEventListener('click', handleClick);
+          });
+        }
+
+        // Call the function with the appropriate selectors
+        setupDropdownMenu('.chi-dropdown__menu', '.chi-dropdown__trigger');
+      </script>
+
 h2 Menu
 h3 Menu item states
 p.-text

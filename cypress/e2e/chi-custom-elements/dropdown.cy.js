@@ -54,6 +54,8 @@ const DROPDOWN_DATA_CY = {
   ANIMATE: '[data-cy="animate-dropdown"]',
   VISIBLE_ITEMS: '[data-cy="visible-items-dropdown"]',
   FONT_WEIGHT: '[data-cy="font-weight-dropdown"]',
+  DYNAMIC: '[data-cy="dynamic-dropdown"]',
+  RETAIN_SELECTION: '[data-cy="retain-selection-dropdown"]',
   POSITION: positions.map(position => {
     return {
       selector: `[data-cy="position-dropdown-${position.placement}"]`,
@@ -394,7 +396,8 @@ describe('Dropdown', () => {
 
     describe('Dynamically change menu items', () => {
       beforeEach(() => {
-        cy.get(`[data-cy='dynamic-dropdown'] ${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
+        cy.get(DROPDOWN_DATA_CY.DYNAMIC)
+          .find(`${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
           .as('dropdownMenuItems');
         cy.get("[data-cy='add-items-btn']")
           .as('addItemsBtn');
@@ -404,6 +407,30 @@ describe('Dropdown', () => {
         cy.get('@dropdownMenuItems').should('have.length', 3);
         cy.get('@addItemsBtn').click();
         cy.get('@dropdownMenuItems').should('have.length', 4);
+      });
+    })
+
+    describe('retainSelection property', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.RETAIN_SELECTION)
+          .find(`${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
+          .as('dropdownMenuItems');
+        cy.get(DROPDOWN_DATA_CY.RETAIN_SELECTION)
+          .find(DROPDOWN_TRIGGER)
+          .as('dropdownTrigger');
+        cy.get('@dropdownTrigger').click();
+      });
+
+      it('Should set trigger value to selected option', () => {
+        cy.get('@dropdownMenuItems').first().click();
+        cy.get('@dropdownMenuItems').first().invoke('text').then((text) => {
+          cy.get('@dropdownTrigger').find('span').should('have.text', text);
+        });
+      });
+
+      it('Should set active class on selected option', () => {
+        cy.get('@dropdownMenuItems').first().click();
+        cy.get('@dropdownMenuItems').first().should('have.class', ACTIVE_CLASS);
       });
     })
   });
