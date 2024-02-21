@@ -235,9 +235,12 @@ export class Dropdown {
   }
 
   getTotalElementHeight(element: HTMLElement) {
-    return parseInt(getComputedStyle(element).getPropertyValue('height'), 10) + 
-      parseInt(getComputedStyle(element).getPropertyValue('margin-top'), 10) + 
-      parseInt(getComputedStyle(element).getPropertyValue('margin-bottom'), 10);
+    const computedStyle = getComputedStyle(element);
+    
+    return ['height', 'margin-top', 'margin-bottom'].reduce(
+      (totalHeight, prop) => totalHeight + parseInt(computedStyle.getPropertyValue(prop), 10),
+      0
+    );
   }
 
   setMenuHeight() {
