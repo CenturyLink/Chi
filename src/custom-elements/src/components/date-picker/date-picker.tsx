@@ -13,6 +13,7 @@ import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ChiStates, CHI_STATES } from '../../constants/states';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-date-picker',
@@ -363,6 +364,10 @@ export class DatePicker {
 
   formatTimePeriod(period: number): string {
     return period.toString().length > 1 ? period.toString() : `0${period}`;
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this, () => console.log('Mut. Obs. Date Picker!'));
   }
 
   componentWillLoad(): void {
