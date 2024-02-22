@@ -141,9 +141,9 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
   ],
   socialLinks: [
     {
-      href: 'https://www.twitter.com/lumentechco',
-      ariaLabel: 'Lumen on Twitter',
-      iconName: 'twitter'
+      href: 'https://www.x.com/lumentechco',
+      ariaLabel: 'Lumen on X',
+      iconName: 'x'
     },
     {
       href: 'https://www.linkedin.com/company/lumen-tech',
@@ -252,9 +252,9 @@ export const EXTERNAL_CENTURYLINKS_CONTENTS: { [key: string]: ILink[] } = {
   ],
   socialLinks: [
     {
-      href: 'https://twitter.com/centurylink',
-      ariaLabel: 'CenturyLink on Twitter',
-      iconName: 'twitter'
+      href: 'https://x.com/centurylink',
+      ariaLabel: 'CenturyLink on X',
+      iconName: 'x'
     },
     {
       href: 'https://www.linkedin.com/company/lumen-tech',
