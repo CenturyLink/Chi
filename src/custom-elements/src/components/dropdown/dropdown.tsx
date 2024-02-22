@@ -310,12 +310,12 @@ export class Dropdown {
     if(this.retainSelection) {
       this._value = item.textContent;
       this.hide();
+      this.truncateButtonText()
       this.setActiveClassOnMenuItem();
-      this.useTruncationOnButtonText()
     }
   };
 
-  useTruncationOnButtonText() {
+  truncateButtonText() {
     const button = this._referenceElement.getElementsByTagName('button')[0]
     button.textContent = '';
     
