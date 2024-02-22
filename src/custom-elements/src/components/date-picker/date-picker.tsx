@@ -367,7 +367,7 @@ export class DatePicker {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this, () => console.log('Mut. Obs. Date Picker!'));
+    addMutationObserver.call(this);
   }
 
   componentWillLoad(): void {
