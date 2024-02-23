@@ -73,6 +73,21 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
     .-position--relative(style="width:14rem;")
       chi-date-picker(data-cy="test-time-minutesStep-picker-3" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step, active)
 
+.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-4", style="height: 450px;")
+  span.-text--h2 Date Picker with minutesStep = 10
+    .-position--relative(style="width:14rem;")
+      chi-date-picker(data-cy="test-time-minutesStep-picker-4" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step="10", active)
+
+.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-5", style="height: 450px;")
+  span.-text--h2 Date Picker with minutesStep = 20
+    .-position--relative(style="width:14rem;")
+      chi-date-picker(data-cy="test-time-minutesStep-picker-5" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step="20", active)
+
+.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-6", style="height: 450px;")
+  span.-text--h2 Date Picker with minutesStep = 1
+    .-position--relative(style="width:14rem;")
+      chi-date-picker(data-cy="test-time-minutesStep-picker-6" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step="1", active)
+
 .test-time-format-24hr-view.-py--2(data-cy="test-time-format-24hrx")
   span.-text--h2 Test time format view
   .-d--flex
