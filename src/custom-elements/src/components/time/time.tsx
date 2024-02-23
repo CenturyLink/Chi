@@ -130,10 +130,10 @@ export class Time {
    *
    */
   validateTime(time: string) {
-    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
+    const isValid = /([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?(\s([AaPp][Mm]))?$/.test(time);
 
     if (!isValid) {
-      throw new Error('Provided "value" is not valid. Provide a value in the form hh:mm:ss');
+      throw new Error('Provided "value" is not valid. Provide a value in the form hh:mm:ss ?(am|pm)');
     }
 
     return isValid;
@@ -158,18 +158,33 @@ export class Time {
    */
   selectTimeAndPeriod() {
     let time = new Date();
+    let inputPeriod: string | undefined;
 
     if (this.value && this.validateTime(this.value)) {
-      const [hours, minutes, seconds] = this.value.split(':').map((i) => parseInt(i));
-      time.setHours(hours, minutes, seconds || 0);
+      const [hourMinSec, period] = this.value.trim().split(' ');
+      const [hours, minutes, seconds = 0] = hourMinSec.split(':').map((i) => parseInt(i));
+
+      time.setHours(hours, minutes, seconds);
+
+      if (this.format === '12hr' && period) {
+        inputPeriod = period.toLocaleLowerCase();
+      }
     }
 
     const [hours, minutes, seconds] = this.getRoundedTime(time);
 
-    this._period = !(this.format === '24hr') && parseInt(hours) < 12 ? 'am' : 'pm';
     this._hour = hours;
     this._minute = minutes;
-    this._second = seconds;
+    if (this.displaySeconds) {
+      this._second = seconds;
+    }
+    if (this.format === '12hr') {
+      if (inputPeriod === undefined) {
+        this._period = parseInt(hours) < 12 ? 'am' : 'pm';
+      } else {
+        this._period = inputPeriod;
+      }
+    }
   }
 
   /**

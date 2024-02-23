@@ -30,6 +30,7 @@ const dayToReturn =
 const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 const chiDateChange = 'chiDateChange';
+const chiDatePickerChange = 'chiDatePickerChange';
 const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
 
@@ -64,12 +65,12 @@ describe('Date picker', function() {
         });
     });
 
-    it(`Changing the input's date value emits the ${chiDateChange} event`, function() {
+    it(`Changing the input's date value emits the ${chiDatePickerChange} event`, function() {
       const date = '12/02/2021';
       const spy = cy.spy();
 
       cy.get('@picker').then(el => {
-        el.on(chiDateChange, spy);
+        el.on(chiDatePickerChange, spy);
       });
 
       cy.get('@picker')
@@ -85,12 +86,12 @@ describe('Date picker', function() {
         });
     });
 
-    it(`Changing the date through chi-date selection emits the ${chiDateChange} event from chi-date-picker`, function() {
+    it(`Changing the date through chi-date selection emits the ${chiDatePickerChange} event from chi-date-picker`, function() {
       const date = '01/30/2019';
       const spy = cy.spy();
 
       cy.get('@picker').then(el => {
-        el.on(chiDateChange, spy);
+        el.on(chiDatePickerChange, spy);
       });
 
       cy.get('@picker')

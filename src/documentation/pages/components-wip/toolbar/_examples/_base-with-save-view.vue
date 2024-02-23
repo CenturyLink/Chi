@@ -101,7 +101,7 @@ export default class BaseWithSaveView extends Vue {
         </div>
       </template>
       <template v-slot:customAdvanced2>
-        <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+        <chi-date-picker @chiDatePickerChange="e => dateChangeHandler(e)" />
       </template>
     </ChiDataTableFilters>
   </template>

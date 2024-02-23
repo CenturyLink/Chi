@@ -73,7 +73,7 @@
               </div>
             </template>
             <template v-slot:customAdvanced2>
-              <chi-date-picker @chiDateChange="chiDateChange" />
+              <chi-date-picker @chiDatePickerChange="chiDatePickerChange" />
             </template>
             <template v-slot:customAdvanced3>
               <chi-time-picker />
@@ -299,8 +299,8 @@ const chiRowDeselected = (rowData: DataTableRow) => {
   console.log('chiRowDeselected', rowData);
 };
 
-const chiDateChange = (e) => {
-  console.log('chiDateChange', e);
+const chiDatePickerChange = (e) => {
+  console.log('chiDatePickerChange', e);
 };
 
 const chiChangeInputOne = (e) => {
