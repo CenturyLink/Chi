@@ -40,6 +40,10 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
+   * To provide the name of an icon to display as trigger of the Dropdown 
+   */
+  @Prop() icon?: string;
+  /**
    * To set the color of the button. The value is directly passed to
    * chi-button element if present  { primary, secondary, danger, dark, light }.
    */
@@ -393,26 +397,39 @@ export class Dropdown {
   }
 
   renderTrigger() {
-    return this.button ? (
-      <chi-button
-        onChiClick={this.handlerClickTrigger}
-        onChiMouseEnter={this.handlerMouseEnter}
-        class={`
-        ${this.fluid ? FLUID_CLASS : ''}
-      `}
-        extra-class={this.getExtraClassForTriggerButton()}
-        color={`${this.color || ''}`}
-        variant={`${this.variant || ''}`}
-        size={`${this.size || ''}`}
-        uppercase={this.uppercase}
-        disabled={this.disabled}
-        ref={(ref) => (this._referenceElement = ref)}
-      >
-        {this.button}
-      </chi-button>
-    ) : this._customTrigger ? (
-      <slot name="trigger" />
-    ) : null;
+    if (this.icon) {
+      return this.renderIcon();
+    } else if (this.button) {
+      return this.renderButton();
+    } else if (this._customTrigger) {
+      return (<slot name="trigger" />);
+    } else {
+      return null;
+    }
+  }
+
+  renderIcon() {
+    return (<chi-icon icon={this.icon}
+      extraClass={`${DROPDOWN_CLASSES.ICON} ${DROPDOWN_CLASSES.TRIGGER}`}
+      onClick={this.handlerClickTrigger}
+      onMouseEnter={this.handlerMouseEnter} />);
+  }
+
+  renderButton() {
+    return (<chi-button
+      onChiClick={this.handlerClickTrigger}
+      onChiMouseEnter={this.handlerMouseEnter}
+      class={`${this.fluid ? FLUID_CLASS : ''}`}
+      extra-class={this.getExtraClassForTriggerButton()}
+      color={`${this.color || ''}`}
+      variant={`${this.variant || ''}`}
+      size={`${this.size || ''}`}
+      uppercase={this.uppercase}
+      disabled={this.disabled}
+      ref={(ref) => (this._referenceElement = ref)}
+    >
+      {this.button}
+    </chi-button>);
   }
 
   getExtraClassForTriggerButton() {

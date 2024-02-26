@@ -255,6 +255,10 @@
   }
 }
 
+.chi-dropdown__icon {
+  cursor: pointer;
+}
+
 .chi-dropdown__trigger {
   &.chi-button {
     &:not(.-uppercase) {
