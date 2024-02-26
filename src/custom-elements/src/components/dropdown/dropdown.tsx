@@ -133,13 +133,13 @@ export class Dropdown {
       }
     }
   }
-  
+
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
     this.setMenuHeight();
-    addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true});
+    addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true });
   }
 
   componentWillLoad() {
@@ -236,18 +236,18 @@ export class Dropdown {
 
   getTotalElementHeight(element: HTMLElement) {
     const computedStyle = getComputedStyle(element);
-    
-    return ['height', 'margin-top', 'margin-bottom'].reduce(
-      (totalHeight, prop) => totalHeight + parseInt(computedStyle.getPropertyValue(prop), 10),
-      0
-    );
+    const styles = ['height', 'margin-top', 'margin-bottom'];
+
+    return styles.reduce((totalHeight, prop) => totalHeight + parseInt(computedStyle.getPropertyValue(prop), 10), 0);
   }
 
   setMenuHeight() {
     if (this.visibleItems) {
-      const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
+      const menuItems = (
+        this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children
+      ) as HTMLAnchorElement[];
 
-      const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length: this.visibleItems
+      const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
       let newHeight = 0;
 
       for (let i = 0; i < itemsToShow; i++) {
@@ -258,6 +258,7 @@ export class Dropdown {
         this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
       } else {
         const padding = this.getPadding('top') + this.getPadding('bottom');
+
         this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
       }
     }
