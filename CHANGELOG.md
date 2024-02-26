@@ -1,4 +1,16 @@
 # CHANGELOG
+## 5.49.0 (February 21, 2024)
+### Components
+#### Added
+* Added: Badge web component now supports `mutationObserver` functionality.
+* Added: Helper message web component now supports `mutationObserver` functionality.
+* Added: Number input web component now supports `mutationObserver` functionality.
+#### Fixed
+* Fixed: Tabbed navigation bar `see more...` functionality.
+### Documentation
+#### Added
+* Added: Helper message to Date picker in message and error sections.
+
 ## 5.48.0 (February 14, 2024)
 ### Components
 #### Added
