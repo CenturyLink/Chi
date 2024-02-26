@@ -36,7 +36,6 @@ import TransferListColumn from './TransferListColumn.vue';
 import TransferListActions from './TransferListActions.vue';
 import TransferListFooter from './TransferListFooter.vue';
 import { TransferListEmits } from '@/constants/events';
-import { unref } from 'vue';
 
 const DEFAULT_ITEMS_SELECTION = { from: [], to: [] };
 
