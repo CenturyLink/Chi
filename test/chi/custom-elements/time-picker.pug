@@ -1,0 +1,262 @@
+---
+title: Chi time picker
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+
+//- Base
+.test-base
+  span.-text--h2 Chi time picker base
+  chi-label(for="base") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-base"
+    id="base"
+    value="01:30"
+  )
+
+//- Active
+.test-active(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker active
+  chi-label(for="active") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-active"
+    id="active"
+    active
+    value="01:30"
+  )
+
+//- Disabled
+.test-disabled
+  span.-text--h2 Chi time picker disabled
+  chi-label(for="disabled") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-disabled"
+    id="disabled"
+    disabled
+  )
+
+//- Disabled with value
+.test-disabled-value
+  span.-text--h2 Chi time picker disabled with value
+  chi-label(for="disabled-value") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-disabled-value"
+    id="disabled-value"
+    disabled
+    value="01:30"
+  )
+
+//- Display with seconds
+.test-display-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker with seconds
+  chi-label(for="display-seconds") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-display-seconds"
+    id="display-seconds"
+    display-seconds
+    active
+    value="01:30:45"
+  )
+
+//- 12hr format
+.test-12hr-format(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 12hr format
+  chi-label(for="format-12") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-12hr-format"
+    id="format-12"
+    format="12hr"
+    active
+    value="14:30"
+  )
+
+//- 24hr format
+.test-24hr-format(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 24hr format
+  chi-label(for="picker-24hr-format") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-24hr-format"
+    id="picker-24hr-format"
+    format="24hr"
+    active
+    value="14:30"
+  )
+
+//- 24hr format with seconds
+.test-24hr-format-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 24hr format with seconds
+  chi-label(for="picker-24hr-format-seconds") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-24hr-format-seconds"
+    id="picker-24hr-format-seconds"
+    display-seconds
+    format="24hr"
+    active
+    value="14:30:45"
+  )
+
+//- Minutes step default
+.test-minutes-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default minutes step
+  chi-label(for="minutes-step-default") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-default"
+    id="minutes-step-default"
+    minutes-step
+    active
+    value="01:20"
+  )
+
+//- Minutes step 5 with seconds
+.test-minutes-step-5-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 5 minutes step with seconds
+  chi-label(for="minutes-step-5-seconds") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-5-seconds"
+    id="minutes-step-5-seconds"
+    minutes-step="5"
+    display-seconds
+    active
+    value="01:06:45"
+  )
+
+//- Minutes step 10
+.test-minutes-step-10(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 10 minutes step
+  chi-label(for="minutes-step-10") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-10"
+    id="minutes-step-10"
+    minutes-step="10"
+    active
+    value="01:25"
+  )
+
+//- Minutes step 15
+.test-minutes-step-15(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 15 minutes step
+  chi-label(for="minutes-step-15") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-15"
+    id="minutes-step-15"
+    minutes-step="15"
+    active
+    value="01:27"
+  )
+
+//- Minutes step 20
+.test-minutes-step-20(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 20 minutes step
+  chi-label(for="minutes-step-20") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-20"
+    id="minutes-step-20"
+    minutes-step="20"
+    active
+    value="01:28"
+  )
+
+//- Minutes step 30
+.test-minutes-step-30(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 30 minutes step
+  chi-label(for="minutes-step-30") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-step-30"
+    id="minutes-step-30"
+    minutes-step="30"
+    active
+    value="11:31"
+  )
+
+//- Seconds step default
+.test-seconds-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default seconds step
+  chi-label(for="seconds-step-default") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-default"
+    id="seconds-step-default"
+    seconds-step
+    display-seconds
+    active
+    value="01:30:15"
+  )
+
+//- Seconds step 5
+.test-seconds-step-5(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 5 seconds step
+  chi-label(for="seconds-step-5") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-5"
+    id="seconds-step-5"
+    seconds-step="5"
+    display-seconds
+    active
+    value="01:30:06"
+  )
+
+//- Seconds step 10
+.test-seconds-step-10(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 10 seconds step
+  chi-label(for="seconds-step-10") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-10"
+    id="seconds-step-10"
+    seconds-step="10"
+    display-seconds
+    active
+    value="01:30:25"
+  )
+
+//- Seconds step 15
+.test-seconds-step-15(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 15 seconds step
+  chi-label(for="seconds-step-15") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-15"
+    id="seconds-step-15"
+    seconds-step="15"
+    display-seconds
+    active
+    value="01:30:27"
+  )
+
+//- Seconds step 20
+.test-seconds-step-20(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 20 seconds step
+  chi-label(for="seconds-step-20") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-20"
+    id="seconds-step-20"
+    seconds-step="20"
+    display-seconds
+    active
+    value="01:30:28"
+  )
+
+//- Seconds step 30
+.test-seconds-step-30(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 30 seconds step
+  chi-label(for="seconds-step-30") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-seconds-step-30"
+    id="seconds-step-30"
+    seconds-step="30"
+    display-seconds
+    active
+    value="01:30:29"
+  )
+
+//- Minutes and seconds step default
+.test-minutes-seconds-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default minutes and seconds step
+  chi-label(for="minutes-seconds-step-default") Label
+  chi-time-picker(
+    data-cy="chi-time-picker-minutes-seconds-step-default"
+    id="minutes-seconds-step-default"
+    minutes-step
+    seconds-step
+    display-seconds
+    active
+    value="01:30:45"
+  )
+
+div(style="padding-bottom: 300px;")

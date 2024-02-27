@@ -24,11 +24,6 @@ updates:
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
-    ignore:
-      # The version 5.1.0 introduces an issue in the build proccess
-      # Remove it once it's fixed
-      - dependency-name: "vite"
-        versions: [">=5.1.0"]
   - package-ecosystem: "npm"
     directory: "/src/custom-elements"
     schedule:

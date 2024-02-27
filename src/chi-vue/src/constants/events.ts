@@ -14,6 +14,7 @@ export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
   SELECTED_ROW: 'chiRowSelected',
   DESELECTED_ROW: 'chiRowDeselected',
+  CLICKED_ROW: 'chiRowClick',
   SELECTED_ALL_DEPRECATED: 'chiSelectAll',
   SELECTED_ALL: 'chiSelectThisPage',
   SELECTED_ALL_PAGES: 'chiSelectAllPages',
