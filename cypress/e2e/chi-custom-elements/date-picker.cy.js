@@ -13,12 +13,6 @@ const hour = '07';
 const noonHour = '00';
 const minute = '30';
 const period = 'PM';
-const minutesStep = '5';
-const minutesStep2 = '30';
-const minutesStep1 = '1';
-const minutesStep10 = '10';
-const minutesStep15 = '15';
-const minutesStep20 = '20';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
 const dateObject = new Date();
@@ -35,6 +29,9 @@ const today =
 const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
+import {
+  DATE_PICKER_MINUTESSTEP_VALUES
+} from './common/data-picker-common.cy';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -489,280 +486,50 @@ describe('Date picker', function() {
       .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
   });
 
-  it(`Date-picker should show minutes by ${minutesStep} steps`, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-1"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-1"]').as('testTimeMinutesStepPicker');
+  DATE_PICKER_MINUTESSTEP_VALUES.forEach( (item) => {
+    it(`Date-picker should show minutes by minutesStep = ${+item.minutesStep} `, function() {
+      cy.get(item.el).as('testTimeMinutesStep');
+      cy.get(item.picker).as('testTimeMinutesStepPicker');
 
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
-
-    cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', `${minutesStep}`);
-
-    cy.get('@testTimeMinutesStepPicker')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
-    
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStepPicker')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep );
-      })
-
-    // Select minutes  
-    cy.get('@testTimeMinutesStepPicker')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .click();
-
-    cy.get('@testTimeMinutesStepPicker')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStepPicker')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
-  });
-
-  it(`Date-picker should show minutes by ${minutesStep2} steps`, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-2"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-2"]').as('testTimeMinutesStepPicker');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
-
-    cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', `${minutesStep2}`);
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
-
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep2 );
-      })
-
-    // Select minutes  
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .click();
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
-  });
-
-  it(`Date-picker should show minutes by ${minutesStep3} steps (default)`, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-3"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-3"]').as('testTimeMinutesStepPicker');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
+      cy.get('@testTimeMinutesStep')
+        .find('input')
+        .scrollIntoView()
+        .focus()
+        .get('@testTimeMinutesStep')
+        .find('chi-popover[active]')
+        .should('have.attr', 'active');
 
       cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', '' );
+        .should('have.attr', 'minutes-step', parseInt(item.minutesStep) );
 
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
+      cy.get('@testTimeMinutesStep')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(noonHour)
+        .should('have.class', '-active');
 
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep3 );
-      })
+      // Iterate through minutes-list to verify its length
+      cy.get('@testTimeMinutesStep')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .each((item, index, list) => { })
+        .then((list) => {
+          expect(list).to.have.length( 60 / parseInt(item.minutesStep) );
+        })
+        
+      // Select minutes  
+      cy.get('@testTimeMinutesStep')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(item.minutesStep)
+        .click();
 
-    // Select minutes  
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .click();
+      cy.get('@testTimeMinutesStep')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(item.minutesStep)
+        .should('have.class', '-active');
 
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
-  });
-
-  it(`Date-picker should show minutes by ${minutesStep4} steps `, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-4"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-4"]').as('testTimeMinutesStepPicker');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
-
-    cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', `${minutesStep4}` );
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
-
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep4 );
-      })
-
-    // Select minutes  
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .click();
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
-  });
-
-  it(`Date-picker should show minutes by ${minutesStep5} steps `, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-5"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-5"]').as('testTimeMinutesStepPicker');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
-
-      cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', `${minutesStep5}` );
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
-
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep5 );
-      })
-
-    // Select minutes  
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minutesStep5)
-      .click();
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minutesStep5)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minutesStep5}`);
-  });
-
-  it(`Date-picker should show minutes by ${minutesStep6} steps `, function() {
-    cy.get('[data-cy="test-time-minutesStep-section-6"]').as('testTimeMinutesStep');
-    cy.get('[data-cy="test-time-minutesStep-picker-6"]').as('testTimeMinutesStepPicker');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .scrollIntoView()
-      .focus()
-      .get('@testTimeMinutesStep')
-      .find('chi-popover[active]')
-      .should('have.attr', 'active');
-
-      cy.get('@testTimeMinutesStepPicker')
-      .should('have.attr', 'minutes-step', `${minutesStep6}` );
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(noonHour)
-      .should('have.class', '-active');
-
-    // Iterate through minutes-list to verify its length
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .each((item, index, list) => {
-        //cy.log( item.text() );
-      })
-      .then((list) => {
-        expect(list).to.have.length( 60 / minutesStep6 );
-      })
-
-    // Select minutes  
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .click();
-
-    cy.get('@testTimeMinutesStep')
-      .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minute)
-      .should('have.class', '-active');
-
-    cy.get('@testTimeMinutesStep')
-      .find('input')
-      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+      cy.get('@testTimeMinutesStep')
+        .find('input')
+        .should('have.value', `11/22/2018, ${noonHour}:${item.minutesStep}`);
+    });
   });
 
   describe('Keyboard navigation', function() {
