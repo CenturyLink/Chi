@@ -275,6 +275,7 @@ export class Dropdown {
 
     menuItems.forEach((item: HTMLElement) => {
       const isActive = item.textContent === this._value;
+      
       item.classList.toggle(ACTIVE_CLASS, isActive);
     });
   }
@@ -282,6 +283,7 @@ export class Dropdown {
   setFixedWidth() {
     if (this.retainSelection && this._referenceElement) {
       const button = this._referenceElement.getElementsByTagName('button')[0];
+      
       button.style.width = `${this._referenceElement.offsetWidth}px`;
       button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
     }
