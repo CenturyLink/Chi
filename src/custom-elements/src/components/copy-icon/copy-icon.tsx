@@ -1,12 +1,12 @@
-import { Component, Prop, Element, h } from '@stencil/core';
+import { Component, Prop, Element, h, Event, EventEmitter } from '@stencil/core';
 import { IconSizes } from '../../constants/size';
 import { IconColors } from '../../constants/color';
-
+import { COPY_MESSAGE, COPIED_MESSAGE } from '../../constants/constants';
 declare const chi: any;
 
 @Component({
   tag: 'chi-copy-icon',
-  scoped: true
+  scoped: true,
 })
 export class CopyIcon {
   @Element() el: HTMLElement;
@@ -27,8 +27,10 @@ export class CopyIcon {
    */
   @Prop({ reflect: true }) disabled?: boolean;
 
-  beforeCopyMsg = "Copy to clipboard";
-  afterCopyMsg = "Copied to clipboard";
+  /**
+   * Triggered when the user clicks on copy
+   */
+  @Event() chiCopy: EventEmitter<string>;
 
   private tooltip: any;
 
@@ -54,9 +56,10 @@ export class CopyIcon {
     }
   }
 
-  onClick() {
+  handlerClick() {
     navigator.clipboard?.writeText(this.text);
-    this.setTooltipMsg(this.afterCopyMsg);
+    this.chiCopy.emit(this.text);
+    this.setTooltipMsg(COPIED_MESSAGE);
   }
 
   /**
@@ -66,20 +69,18 @@ export class CopyIcon {
     this.tooltip._tooltipContent.innerText = message;
   }
 
-
   render() {
-    return <chi-button
-      type="icon"
-      variant="flat"
-      disabled={this.disabled}
-      data-tooltip={this.beforeCopyMsg} 
-      onChiClick={() => this.onClick()} 
-      onChiMouseLeave={() => this.setTooltipMsg(this.beforeCopyMsg)}
-    >
-      <chi-icon 
-        icon="copy" 
-        size={this.size}
-        ></chi-icon>
-    </chi-button>
+    return (
+      <chi-button
+        type="icon"
+        variant="flat"
+        disabled={this.disabled}
+        data-tooltip={COPY_MESSAGE}
+        onChiClick={() => this.handlerClick()}
+        onChiMouseLeave={() => this.setTooltipMsg(COPY_MESSAGE)}
+      >
+        <chi-icon icon="copy" size={this.size}></chi-icon>
+      </chi-button>
+    );
   }
 }
