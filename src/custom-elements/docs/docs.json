@@ -2782,6 +2782,27 @@
           "required": false
         },
         {
+          "name": "retainSelection",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "retain-selection",
+          "reflectToAttr": false,
+          "docs": "To retain the selection of the menu item and display it as the trigger",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "string",
           "complexType": {
