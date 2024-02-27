@@ -732,6 +732,9 @@ h3 Search input
       <script>chi.dropdown(document.getElementById('example__dropdown-with-search'));</script>
 
 h3 Retain Selection
+p.-text
+  | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
+  | as active and see the selected item when the dropdown is closed.
 .example.-mb--3
   .-p--3
     chi-dropdown(button=`Dropdown, click me` retain-selection)
@@ -746,10 +749,6 @@ h3 Retain Selection
       li
         a(href=`#html-dropdown-retain-selection`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-dropdown-retain-selection
-    .chi-tab__description
-      span.-text--grey
-        | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
-        | as active and see the selected item when the dropdown is closed.
     :code(lang="html")
       <chi-dropdown button="Dropdown, click me" retain-selection>
         <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
@@ -772,51 +771,8 @@ h3 Retain Selection
 
       <script>
         chi.dropdown(document.getElementById('example__dropdown-retain-selection'));
-        function setupDropdownMenu(dropdownMenuSelector, triggerButtonSelector) {
-          // Get the dropdown menu and trigger button by selectors
-          const dropdownMenu = document.querySelector(dropdownMenuSelector);
-          const triggerButton = document.querySelector(triggerButtonSelector);
 
-          function handleClick(event) {
-            // Get all items in the dropdown menu
-            const items = dropdownMenu.querySelectorAll('.chi-dropdown__menu-item');
-
-            // Remove '-active' class from all items
-            items.forEach(item => {
-              item.classList.remove('-active');
-            });
-
-            // Add '-active' class to the clicked item
-            event.currentTarget.classList.add('-active');
-
-            // Update the trigger button text content
-            updateTriggerButton(triggerButton, event.currentTarget.textContent);
-          }
-
-          function updateTriggerButton(button, textContent) {
-            // Clear existing content
-            button.textContent = '';
-
-            // Create a new span element
-            var span = document.createElement('span');
-            span.style.overflow = 'hidden';
-            span.style.textOverflow = 'ellipsis';
-            span.style.whiteSpace = 'nowrap';
-            span.textContent = textContent;
-
-            // Append the span to the button
-            button.appendChild(span);
-          }
-
-          // Add event listeners to each dropdown menu item
-          const menuItems = dropdownMenu.querySelectorAll('.chi-dropdown__menu-item');
-          menuItems.forEach(item => {
-            item.addEventListener('click', handleClick);
-          });
-        }
-
-        // Call the function with the appropriate selectors
-        setupDropdownMenu('.chi-dropdown__menu', '.chi-dropdown__trigger');
+        <!-- Include your custom logic here to retain dropdown selection -->
       </script>
 
 h2 Menu

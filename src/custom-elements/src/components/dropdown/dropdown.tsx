@@ -138,7 +138,7 @@ export class Dropdown {
       }
     }
   }
-  
+
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
@@ -240,7 +240,9 @@ export class Dropdown {
   }
 
   setMenuHeight() {
-    const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
+    const menuItems = (
+      this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children
+    ) as HTMLAnchorElement[];
 
     const itemsToShow = this.visibleItems
       ? menuItems.length < this.visibleItems
@@ -267,16 +269,16 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     menuItems.forEach((item: HTMLElement) => {
-      if (item.textContent === this._value) item.classList.add(ACTIVE_CLASS)
-      else item.classList.remove(ACTIVE_CLASS);
+      const isActive = item.textContent === this._value;
+      item.classList.toggle(ACTIVE_CLASS, isActive);
     });
   }
 
   setFixedWidth() {
-    if(this.retainSelection && this._referenceElement) {
-      const button = this._referenceElement.getElementsByTagName('button')[0]
+    if (this.retainSelection && this._referenceElement) {
+      const button = this._referenceElement.getElementsByTagName('button')[0];
       button.style.width = `${this._referenceElement.offsetWidth}px`;
-      button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN)
+      button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
     }
   }
 
@@ -305,25 +307,23 @@ export class Dropdown {
   };
 
   handlerSelectedMenuItem = (item) => {
-    this.eventItemSelected.emit(this);
+    this.eventItemSelected.emit(item.text);
 
-    if(this.retainSelection) {
+    if (this.retainSelection) {
       this._value = item.textContent;
       this.hide();
-      this.truncateButtonText()
+      this.truncateButtonText();
       this.setActiveClassOnMenuItem();
     }
   };
 
   truncateButtonText() {
-    const button = this._referenceElement.getElementsByTagName('button')[0]
+    const button = this._referenceElement.getElementsByTagName('button')[0];
+    const span = document.createElement('span');
+
     button.textContent = '';
-    
-    var span = document.createElement('span');
-    span.style.overflow = 'hidden';
-    span.style.textOverflow = 'ellipsis';
-    span.style.whiteSpace = 'nowrap';
     span.textContent = this._value;
+    span.classList.add(UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
     button.appendChild(span);
   }
 
@@ -435,6 +435,8 @@ export class Dropdown {
   }
 
   renderTrigger() {
+    const itemSelected = (this.retainSelection && this._value) ?? this.button;
+
     return this.button ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
@@ -450,7 +452,7 @@ export class Dropdown {
         disabled={this.disabled}
         ref={(ref) => (this._referenceElement = ref)}
       >
-        {this.retainSelection && this._value ? this._value : this.button}
+        {itemSelected}
       </chi-button>
     ) : this._customTrigger ? (
       <slot name="trigger" />

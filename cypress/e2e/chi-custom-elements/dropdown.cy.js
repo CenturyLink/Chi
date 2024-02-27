@@ -302,7 +302,7 @@ describe('Dropdown', () => {
       it('Should trigger the appropriate hide event when the dropdown menu is opened', () => {
         const spy = cy.spy();
 
-        cy.get('@dropdown').then(el => {
+        cy.get('@dropdown').then((el) => {
           el.on('chiDropdownShow', spy);
         });
         cy.get(`@dropdownMenu`).should('not.be.visible');
@@ -329,7 +329,7 @@ describe('Dropdown', () => {
       it('Should trigger the appropriate hide event when the dropdown menu is hidden', () => {
         const spy = cy.spy();
 
-        cy.get('@dropdown').then(el => {
+        cy.get('@dropdown').then((el) => {
           el.on('chiDropdownHide', spy);
         });
         cy.get(`@dropdownMenu`).should('be.visible');
@@ -380,7 +380,7 @@ describe('Dropdown', () => {
       it('Should receive an event when a menu item is selected', () => {
         const spy = cy.spy();
 
-        cy.get('@dropdown').then(el => {
+        cy.get('@dropdown').then((el) => {
           el.on('chiDropdownItemSelected', spy);
         });
         cy.get(`@dropdownTrigger`).click();
@@ -399,8 +399,7 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.DYNAMIC)
           .find(`${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
           .as('dropdownMenuItems');
-        cy.get("[data-cy='add-items-btn']")
-          .as('addItemsBtn');
+        cy.get("[data-cy='add-items-btn']").as('addItemsBtn');
       });
 
       it('Should add one item to the dropdown', () => {
@@ -408,9 +407,9 @@ describe('Dropdown', () => {
         cy.get('@addItemsBtn').click();
         cy.get('@dropdownMenuItems').should('have.length', 4);
       });
-    })
+    });
 
-    describe('retainSelection property', () => {
+    describe('RetainSelection', () => {
       beforeEach(() => {
         cy.get(DROPDOWN_DATA_CY.RETAIN_SELECTION)
           .find(`${DROPDOWN_MENU} ${DROPDOWN_MENU_ITEM}`)
@@ -422,16 +421,27 @@ describe('Dropdown', () => {
       });
 
       it('Should set trigger value to selected option', () => {
-        cy.get('@dropdownMenuItems').first().click();
-        cy.get('@dropdownMenuItems').first().invoke('text').then((text) => {
-          cy.get('@dropdownTrigger').find('span').should('have.text', text);
-        });
+        cy.get('@dropdownMenuItems')
+          .first()
+          .click();
+        cy.get('@dropdownMenuItems')
+          .first()
+          .invoke('text')
+          .then((text) => {
+            cy.get('@dropdownTrigger')
+              .find('span')
+              .should('have.text', text);
+          });
       });
 
       it('Should set active class on selected option', () => {
-        cy.get('@dropdownMenuItems').first().click();
-        cy.get('@dropdownMenuItems').first().should('have.class', ACTIVE_CLASS);
+        cy.get('@dropdownMenuItems')
+          .first()
+          .click();
+        cy.get('@dropdownMenuItems')
+          .first()
+          .should('have.class', ACTIVE_CLASS);
       });
-    })
+    });
   });
 });
