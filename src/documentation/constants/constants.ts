@@ -80,9 +80,9 @@ export const SECTION_URLS = {
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
-    href: `components/accordion`,
+    to: `components/accordion`,
     label: 'Accordion',
-    source: 'pug'
+    source: 'vue'
   },
   { to: `components/activity`, label: 'Activity', source: 'vue' },
   {
@@ -101,9 +101,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue'
   },
   {
-    href: `components/brand`,
+    to: `components/brand`,
     label: 'Brand',
-    source: 'pug'
+    source: 'vue'
   },
   {
     to: `components/breadcrumb`,
@@ -121,9 +121,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue'
   },
   {
-    href: `components/card`,
+    to: `components/card`,
     label: 'Card',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/carousel`,
@@ -176,9 +176,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue'
   },
   {
-    href: `components/footer`,
+    to: `components/footer`,
     label: 'Footer',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/header`,
@@ -191,9 +191,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/label`,
+    to: `components/label`,
     label: 'Label',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/marketing-icon`,
@@ -201,9 +201,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/mobile-navigation`,
+    to: `components/mobile-navigation`,
     label: 'Mobile navigation',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/modal`,
