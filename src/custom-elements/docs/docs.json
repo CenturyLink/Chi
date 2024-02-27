@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-02-14T06:27:22",
+  "timestamp": "2024-02-22T10:40:53",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.12.2",
+    "version": "4.12.3",
     "typescriptVersion": "5.3.3"
   },
   "components": [
@@ -1644,6 +1644,27 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Date Picker",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "locale",
           "type": "\"de\" | \"en\" | \"es\" | \"fr\" | \"ja\" | \"pt\" | \"zh\"",
           "complexType": {
@@ -2064,6 +2085,7 @@
         "chi-date",
         "chi-time",
         "chi-popover",
+        "chi-helper-message",
         "chi-icon"
       ],
       "dependencyGraph": {
@@ -2071,6 +2093,7 @@
           "chi-date",
           "chi-time",
           "chi-popover",
+          "chi-helper-message",
           "chi-icon"
         ],
         "chi-date": [
@@ -2080,6 +2103,9 @@
           "chi-button"
         ],
         "chi-button": [
+          "chi-icon"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }
@@ -3211,6 +3237,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "chi-date-picker",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea"
@@ -3221,6 +3248,9 @@
       "dependencyGraph": {
         "chi-helper-message": [
           "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-helper-message"
         ],
         "chi-number-input": [
           "chi-helper-message"

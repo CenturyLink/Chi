@@ -11,6 +11,7 @@
     @chiRowDeselected="(e) => chiRowDeselected(e)"
     @chiSelectAll="(e) => chiSelectAll(e)"
     @chiDeselectAll="(e) => chiDeselectAll(e)"
+    @chiRowClick="(e) => chiRowClick(e)"
   >
     <template v-slot:icon="payload">
       <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
@@ -162,6 +163,10 @@ const chiSelectAll = (e: DataTableRow[]) => {
 
 const chiDeselectAll = (e: DataTableRow[]) => {
   console.log('chiDeselectAll', e);
+};
+
+const chiRowClick = (e) => {
+  console.log('chiRowClick', e);
 };
 
 const chiSelectedRowsChange = (selectedRows: DataTableRow[]) => {
