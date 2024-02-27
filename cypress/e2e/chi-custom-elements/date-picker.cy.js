@@ -639,7 +639,7 @@ describe('Date picker', function() {
       .find('chi-popover[active]')
       .should('have.attr', 'active');
 
-      cy.get('@testTimeMinutesStepPicker')
+    cy.get('@testTimeMinutesStepPicker')
       .should('have.attr', 'minutes-step', `${minutesStep4}` );
 
     cy.get('@testTimeMinutesStep')
