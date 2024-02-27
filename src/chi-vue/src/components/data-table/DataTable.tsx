@@ -118,6 +118,11 @@ export default class DataTable extends Vue {
     return newRowData;
   }
 
+  @Emit(DATA_TABLE_EVENTS.CLICKED_ROW)
+  _emitClickedRow(rowData: DataTableRow) {
+    return rowData;
+  }
+
   @Emit(DATA_TABLE_EVENTS.SELECTED_ALL_PAGES)
   _emitSelectAllPages(rows: DataTableRow[]) {
     return rows;
@@ -1242,6 +1247,7 @@ export default class DataTable extends Vue {
         ${hasState ? state : ''}
         `}
         role="row"
+        onClick={() => this._emitClickedRow(bodyRow)}
       >
         {rowCells}
       </div>

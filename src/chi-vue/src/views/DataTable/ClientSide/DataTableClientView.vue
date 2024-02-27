@@ -25,6 +25,7 @@
     @chiExpandAll="chiExpandAll"
     @chiCollapseAll="chiCollapseAll"
     @chiEmptyActionableLink="() => chiEmptyActionableLink()"
+    @chiRowClick="chiRowClick"
   >
     <template v-slot:alertsDesc="payload">
       <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -321,6 +322,10 @@ const chiExpandAll = (e) => {
 
 const chiCollapseAll = (e) => {
   console.log('chiCollapseAll', e);
+};
+
+const chiRowClick = (e) => {
+  console.log('chiRowClick', e);
 };
 
 const chiEmptyActionableLink = () => {
