@@ -57,14 +57,23 @@ ul.chi-tabs.-vertical.-lg.-animated
                             li(class=`${'foundations/accessibility/tables' === path ? "-active" : ""}`)
                               a(href=`${rootPath}foundations/accessibility/tables`) Tables
                             li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/other`) Other
-                            
+                              a(href=`${rootPath}foundations/accessibility/other`) Other            
                 else
                   -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
-                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
-                    a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button' || section.title == 'Link'
-                        .-sr--only component
+                  if section.title === 'Alert'
+                    li
+                      a(href=`${rootPath}components/accordion`) Accordion
+                    li
+                      a(href=`${rootPath}components/activity`) Activity
+                    li(class=section.path === path ? '-active' + portalOnly : portalOnly)
+                      a(href=`${rootPath}${section.path}`) #{section.title}
+                        if section.title == 'Button' || section.title == 'Link'
+                          .-sr--only component
+                  else
+                    li(class=section.path === path ? '-active' + portalOnly : portalOnly)
+                      a(href=`${rootPath}${section.path}`) #{section.title}
+                        if section.title == 'Button' || section.title == 'Link'
+                          .-sr--only component
                   if section.title == 'Card' && section.template
                     li
                       a(href=`${rootPath}templates/error-404`) Error 404
@@ -72,10 +81,6 @@ ul.chi-tabs.-vertical.-lg.-animated
                       a(href=`${rootPath}templates/error-500`) Error 500
                     li
                       a(href=`${rootPath}templates/state`) State
-                  li
-                    a(href=`${rootPath}components/accordion`) Accordion
-                  li
-                    a(href=`${rootPath}components/activity`) Activity
                   if section.title === 'Alert'
                     li
                       a(href=`${rootPath}components/avatar`) Avatar
@@ -154,10 +159,20 @@ ul.chi-tabs.-vertical.-lg.-animated
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                 else
                   -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
-                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
-                    a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button' || section.title == 'Link'
-                        .-sr--only component
+                  if section.title === 'Alert'
+                    li
+                      a(href=`${rootPath}components/accordion`) Accordion
+                    li
+                      a(href=`${rootPath}components/activity`) Activity
+                    li(class=section.path === path ? '-active' + portalOnly : portalOnly)
+                      a(href=`${rootPath}${section.path}`) #{section.title}
+                        if section.title == 'Button' || section.title == 'Link'
+                          .-sr--only component
+                  else
+                    li(class=section.path === path ? '-active' + portalOnly : portalOnly)
+                      a(href=`${rootPath}${section.path}`) #{section.title}
+                        if section.title == 'Button' || section.title == 'Link'
+                          .-sr--only component
                   if section.title == 'Card' && section.template
                     li
                       a(href=`${rootPath}templates/error-404`) Error 404
@@ -165,10 +180,6 @@ ul.chi-tabs.-vertical.-lg.-animated
                       a(href=`${rootPath}templates/error-500`) Error 500
                     li
                       a(href=`${rootPath}templates/state`) State
-                  li
-                    a(href=`${rootPath}components/accordion`) Accordion
-                  li
-                    a(href=`${rootPath}components/activity`) Activity
                   if section.title === 'Alert'
                     li
                       a(href=`${rootPath}components/avatar`) Avatar
