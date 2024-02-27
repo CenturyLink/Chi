@@ -2,6 +2,7 @@ import { Component, Prop, Element, h, Event, EventEmitter } from '@stencil/core'
 import { IconSizes } from '../../constants/size';
 import { IconColors } from '../../constants/color';
 import { COPY_MESSAGE, COPIED_MESSAGE } from '../../constants/constants';
+
 declare const chi: any;
 
 @Component({
@@ -46,6 +47,7 @@ export class CopyIcon {
     if (this.tooltip) {
       this.removeTooltip();
     }
+    
     this.tooltip = chi.tooltip(this.el.querySelector('[data-tooltip]'));
   }
 
