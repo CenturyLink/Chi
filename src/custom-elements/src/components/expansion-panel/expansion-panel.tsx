@@ -1,6 +1,7 @@
 import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
 import { EPANEL_CLASSES, GENERIC_SIZE_CLASSES, ICON_CLASS, ICONS, UTILITY_CLASSES } from '../../constants/classes';
 import { EPANEL_TOOLTIP_CONTENT } from '../../constants/constants';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
@@ -43,7 +44,6 @@ export class ExpansionPanel {
    */
   @Prop({ reflect: true }) stateIconTooltip = EPANEL_TOOLTIP_CONTENT;
 
-  private mutationObserver;
   private tooltip: any;
 
   @Watch('state')
@@ -56,24 +56,17 @@ export class ExpansionPanel {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title'],
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.epanelTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+    addMutationObserver.call(this, () => 
+      {
+        this.epanelTitle = this.el.title;
+      },
+      { 
+        attributes: true, 
+        attributeOldValue: true, 
+        attributeFilter: ['title'], 
+        childList: true 
+      }
+    );
   }
 
   componentWillLoad() {
@@ -93,7 +86,6 @@ export class ExpansionPanel {
       this.tooltip.dispose();
       this.tooltip = null;
     }
-    this.mutationObserver.disconnect();
   }
 
   render() {
