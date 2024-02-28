@@ -13,6 +13,9 @@ const hour = '07';
 const noonHour = '00';
 const minute = '30';
 const period = 'PM';
+const minutesStep = '5';
+const minutesStep2 = '30';
+const minutesStepDefault = '15';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
 const dateObject = new Date();
@@ -28,6 +31,7 @@ const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
+const helperMessage = 'Please enter a date.';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -281,6 +285,16 @@ describe('Date picker', function() {
       .should('have.class', `${DANGER_CLASS}`);
   });
 
+  it(`Should show a message when helper-message attribute is provided`, () => {
+    cy.get('[data-cy="test-input-error"]').as('testInputError');
+
+    cy.get('@testInputError')
+      .find('chi-date-picker')
+      .should('have.attr', 'helper-message', `${helperMessage}`)
+      .find('chi-helper-message')
+      .contains('div', `${helperMessage}`);
+  });
+
   it('Date-picker should show Time Picker with 24hr format. ', function() {
     cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
 
@@ -468,6 +482,144 @@ describe('Date picker', function() {
       .should('have.class', '-active');
 
     cy.get('@testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+  });
+
+  it(`Date-picker should show minutes by ${minutesStep} steps`, function() {
+    cy.get('[data-cy="test-time-minutesStep-section-1"]').as('testTimeMinutesStep');
+    cy.get('[data-cy="test-time-minutesStep-picker-1"]').as('testTimeMinutesStepPicker');
+
+    cy.get('@testTimeMinutesStep')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeMinutesStep')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    cy.get('@testTimeMinutesStepPicker')
+      .should('have.attr', 'minutes-step', `${minutesStep}`);
+
+    cy.get('@testTimeMinutesStepPicker')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(noonHour)
+      .should('have.class', '-active');
+    
+    // Iterate through minutes-list to verify its length
+    cy.get('@testTimeMinutesStepPicker')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .each((item, index, list) => {
+        //cy.log( item.text() );
+      })
+      .then((list) => {
+        expect(list).to.have.length( 60 / minutesStep );
+      })
+
+    // Select minutes  
+    cy.get('@testTimeMinutesStepPicker')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .click();
+
+    cy.get('@testTimeMinutesStepPicker')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeMinutesStepPicker')
+      .find('input')
+      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+  });
+
+  it(`Date-picker should show minutes by ${minutesStep2} steps`, function() {
+    cy.get('[data-cy="test-time-minutesStep-section-2"]').as('testTimeMinutesStep');
+    cy.get('[data-cy="test-time-minutesStep-picker-2"]').as('testTimeMinutesStepPicker');
+
+    cy.get('@testTimeMinutesStep')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeMinutesStep')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    cy.get('@testTimeMinutesStepPicker')
+      .should('have.attr', 'minutes-step', `${minutesStep2}`);
+
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(noonHour)
+      .should('have.class', '-active');
+
+    // Iterate through minutes-list to verify its length
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .each((item, index, list) => {
+        //cy.log( item.text() );
+      })
+      .then((list) => {
+        expect(list).to.have.length( 60 / minutesStep2 );
+      })
+
+    // Select minutes  
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .click();
+
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeMinutesStep')
+      .find('input')
+      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+  });
+
+  it(`Date-picker should show minutes by ${minutesStepDefault} steps (default)`, function() {
+    cy.get('[data-cy="test-time-minutesStep-section-3"]').as('testTimeMinutesStep');
+    cy.get('[data-cy="test-time-minutesStep-picker-3"]').as('testTimeMinutesStepPicker');
+
+    cy.get('@testTimeMinutesStep')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeMinutesStep')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+      cy.get('@testTimeMinutesStepPicker')
+      .should('have.attr', 'minutes-step', '' );
+
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(noonHour)
+      .should('have.class', '-active');
+
+    // Iterate through minutes-list to verify its length
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .each((item, index, list) => {
+        //cy.log( item.text() );
+      })
+      .then((list) => {
+        expect(list).to.have.length( 60 / minutesStepDefault );
+      })
+
+    // Select minutes  
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .click();
+
+    cy.get('@testTimeMinutesStep')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeMinutesStep')
       .find('input')
       .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
   });

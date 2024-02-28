@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
 import { CHI_STATES, ChiStates } from '../../constants/states';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-number-input',
@@ -124,6 +125,7 @@ export class NumberInput {
   _numberInput!: HTMLInputElement;
 
   connectedCallback() {
+    addMutationObserver.call(this);
     this.initialValue = this.value;
   }
 
