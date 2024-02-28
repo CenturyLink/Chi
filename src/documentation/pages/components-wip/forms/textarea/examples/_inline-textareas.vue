@@ -57,5 +57,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineTextareas extends Vue { }
+export default class InlineTextareas extends Vue {}
 </script>

@@ -49,5 +49,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class HeaderNoBorderLumenCenturylink extends Vue { }
+export default class HeaderNoBorderLumenCenturylink extends Vue {}
 </script>

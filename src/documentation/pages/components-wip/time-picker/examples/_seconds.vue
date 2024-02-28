@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Seconds extends Vue { }
+export default class Seconds extends Vue {}
 </script>

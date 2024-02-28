@@ -62,5 +62,5 @@ Array.prototype.forEach.call(inputFiles, function(input) {
     };
   },
 })
-export default class Base extends Vue { }
+export default class Base extends Vue {}
 </script>

@@ -42,5 +42,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ExcludedDatesWeekDays extends Vue { }
+export default class ExcludedDatesWeekDays extends Vue {}
 </script>

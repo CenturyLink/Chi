@@ -34,5 +34,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class TimeBase extends Vue { }
+export default class TimeBase extends Vue {}
 </script>

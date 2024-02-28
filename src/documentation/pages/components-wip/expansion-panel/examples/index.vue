@@ -33,5 +33,5 @@ import CustomMode from './_custom-mode.vue';
     CustomMode,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

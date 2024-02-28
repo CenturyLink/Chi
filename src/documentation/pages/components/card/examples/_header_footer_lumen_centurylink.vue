@@ -54,5 +54,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class HeaderFooterLumenCenturylink extends Vue { }
+export default class HeaderFooterLumenCenturylink extends Vue {}
 </script>

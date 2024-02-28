@@ -99,5 +99,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SizesPortal extends Vue { }
+export default class SizesPortal extends Vue {}
 </script>

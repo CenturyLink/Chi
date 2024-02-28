@@ -38,5 +38,5 @@ import DashboardAlert from './_dashboard_alert.vue';
     DashboardAlert,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

@@ -34,7 +34,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class Help extends Vue {
-  pickers = [1, 2, 3]
+  pickers = [1, 2, 3];
   exampleTabs = [
     {
       disabled: true,
@@ -46,11 +46,11 @@ export default class Help extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   helpButton: any;
 
   created() {

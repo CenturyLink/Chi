@@ -268,5 +268,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DataTableTwoTier extends Vue { }
+export default class DataTableTwoTier extends Vue {}
 </script>

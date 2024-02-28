@@ -22,7 +22,7 @@ export default class AllBreakpoints extends Vue {
       key: 'cell2',
       width: '',
     },
-  ]
+  ];
   types = ['auto', '0', '*'];
 
   getRows() {

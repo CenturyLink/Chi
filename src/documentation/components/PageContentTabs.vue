@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Vue , Prop} from 'vue-facing-decorator';
+import { Vue, Prop } from 'vue-facing-decorator';
 
 import { type ITabs } from '../models/models';
 

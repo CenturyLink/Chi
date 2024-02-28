@@ -56,10 +56,10 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class OpenOnHover extends Vue {
-  menuItems = ['1', '2', '3', '4']
-  drawerMenuItems = ['1', '2']
-  activeMenuItem = '1'
-  activeDrawerMenuItem = '2'
+  menuItems = ['1', '2', '3', '4'];
+  drawerMenuItems = ['1', '2'];
+  activeMenuItem = '1';
+  activeDrawerMenuItem = '2';
   exampleTabs = [
     {
       disabled: true,
@@ -71,7 +71,7 @@ export default class OpenOnHover extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<aside class="chi-sidenav" id="sidenav-1">
@@ -547,7 +547,7 @@ export default class OpenOnHover extends Vue {
     autoClose: true
   });
 <\/script>`,
-  }
+  };
   mounted() {
     chi.sidenav(this.$refs.sidenav, {
       openOnHover: true,

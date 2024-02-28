@@ -149,7 +149,7 @@ export default class Interaction extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- Trigger -->
@@ -559,7 +559,7 @@ export default class Interaction extends Vue {
 <script>
   chi.mobilenav(document.querySelector("#mobile-navigation-interaction-trigger"));
 <\/script>`,
-  }
+  };
   mounted() {
     chi.mobilenav(document.querySelector('#mobile-navigation-interaction-trigger'));
   }

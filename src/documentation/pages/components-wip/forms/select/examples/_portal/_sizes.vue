@@ -33,7 +33,7 @@ export default class SizesPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- xs -->
@@ -67,7 +67,7 @@ export default class SizesPortal extends Vue {
     <option>-lg - Select -</option>
   </select>
 </div>`,
-  }
+  };
   sizes = ['xs', 'sm', 'md', 'lg'];
 }
 </script>

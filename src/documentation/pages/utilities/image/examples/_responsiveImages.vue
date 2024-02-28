@@ -36,5 +36,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ResponsiveImages extends Vue { }
+export default class ResponsiveImages extends Vue {}
 </script>

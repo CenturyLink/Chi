@@ -62,7 +62,7 @@ export default class Interaction extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<!-- Trigger -->
 <chi-button id="drawer-interaction-trigger" variant="flat" type="icon">
@@ -132,7 +132,7 @@ methods: {
 
 <!-- JavaScript -->
 <script>chi.drawer(document.getElementById('drawer-interaction-trigger'));<\/script>`,
-  }
+  };
   toggleDrawer() {
     (this.$refs.drawer as any).toggle();
   }

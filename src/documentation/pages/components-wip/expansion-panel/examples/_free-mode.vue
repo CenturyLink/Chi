@@ -50,13 +50,13 @@ export default class FreeMode extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   panels = [
     { title: 'Panel 1', isActive: true },
     { title: 'Panel 2', isActive: false },
     { title: 'Panel 3', isActive: false },
     { title: 'Panel 4', isActive: false },
-  ]
+  ];
   codeSnippets = {
     htmlblueprint: `<div class="chi-epanel -no-step -active" data-chi-epanel-group="example__free-mode">
   <div class="chi-epanel__header">
@@ -140,7 +140,7 @@ export default class FreeMode extends Vue {
     {mode: 'free'}
   );
 <\/script>`,
-  }
+  };
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]');
     chi.expansionPanel(panel, { mode: 'free' });

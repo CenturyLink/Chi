@@ -35,7 +35,7 @@ export default class TruncateLongMenuItems extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-dropdown__menu">
@@ -49,7 +49,7 @@ export default class TruncateLongMenuItems extends Vue {
 
 <!-- Tooltip for truncated text -->
 <\script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-  }
+  };
   mounted() {
     chi.tooltip(document.getElementById('example-truncated-menu-item'));
   }

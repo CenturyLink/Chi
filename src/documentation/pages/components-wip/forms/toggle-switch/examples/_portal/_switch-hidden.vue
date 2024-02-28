@@ -51,5 +51,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SwitchHiddenPortal extends Vue { }
+export default class SwitchHiddenPortal extends Vue {}
 </script>

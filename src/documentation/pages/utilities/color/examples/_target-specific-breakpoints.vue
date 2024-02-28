@@ -10,7 +10,6 @@ import { Vue } from 'vue-facing-decorator';
 import { type ITableColumn, type ITableContent } from '~/models/models';
 import { defaultColumns } from '~/fixtures/fixtures';
 
-
 @NuxtComponent({})
 export default class TargetSpecificBreakpoints extends Vue {
   sizes = ['sm', 'md', 'lg', 'xl'];

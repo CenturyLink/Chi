@@ -274,5 +274,5 @@ data: {
     };
   },
 })
-export default class DataTableBasePortal extends Vue { }
+export default class DataTableBasePortal extends Vue {}
 </script>

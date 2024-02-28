@@ -50,7 +50,7 @@ export default class Positioning extends Vue {
       { label: 'Bottom', position: 'bottom' },
       { label: 'Bottom end', position: 'bottom-end' },
     ],
-  }
+  };
   exampleTabs = [
     {
       active: true,
@@ -61,7 +61,7 @@ export default class Positioning extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<!-- Top -->
 <chi-button id="example-4-t-button">Top popover</chi-button>
@@ -172,7 +172,7 @@ export default class Positioning extends Vue {
 
 <!-- JavaScript -->
 <script>chi.popover(document.querySelectorAll('[data-popover-content]'));<\/script>`,
-  }
+  };
 
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as VNode[])[0] as any).toggle();

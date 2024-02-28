@@ -27,7 +27,7 @@ export default class BrandBorderColor extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   borders = [
     {
       className: 'base-light',

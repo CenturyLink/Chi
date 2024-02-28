@@ -80,7 +80,7 @@ export default class NestedPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion" id="example-portal-nested">
@@ -163,7 +163,7 @@ export default class NestedPortal extends Vue {
 
   chi.accordion(accordionNested);
 <//script>`,
-  }
+  };
   mounted() {
     const accordionNested = document.getElementById('example-portal-nested');
 

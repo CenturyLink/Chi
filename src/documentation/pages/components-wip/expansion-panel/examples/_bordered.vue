@@ -312,5 +312,5 @@ data: {
     },
   },
 })
-export default class Bordered extends Vue { }
+export default class Bordered extends Vue {}
 </script>

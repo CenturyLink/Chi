@@ -18,7 +18,7 @@ import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '@/constants/constants';
 
 definePageMeta({
-  layout: 'wide'
+  layout: 'wide',
 });
 
 @NuxtComponent({

@@ -39,7 +39,7 @@ export default class Disabled extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     vue: `<ChiTooltip message="Tooltip message for a disabled button">
@@ -52,7 +52,7 @@ export default class Disabled extends Vue {
 </span>
 
 <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));<\/script>`,
-  }
+  };
   mounted() {
     chi.tooltip(this.$refs.disabled);
   }

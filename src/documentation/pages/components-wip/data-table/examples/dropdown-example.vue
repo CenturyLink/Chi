@@ -30,7 +30,7 @@ declare const chi: any;
 @NuxtComponent({})
 export default class DropdownExample extends Vue {
   @Prop() id!: number;
-  dropdown: null
+  dropdown: null;
 
   mounted() {
     this.dropdown = chi.dropdown(document.getElementById(`action-button-${this.id}`));

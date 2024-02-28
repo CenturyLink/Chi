@@ -124,7 +124,8 @@ export default class ColorCustomization extends Vue {
 <div class="chi-avatar -primary">
 <i class="chi-icon icon-user" aria-hidden="true"></i>
 </div>`,
-    }}
+    },
+  };
 
   headTabChanged(headTab: IHeadTabs) {
     this.showIconAvatar = headTab.id === 'icon';

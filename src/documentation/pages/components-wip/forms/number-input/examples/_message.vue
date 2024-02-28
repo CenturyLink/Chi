@@ -50,5 +50,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Message extends Vue { }
+export default class Message extends Vue {}
 </script>

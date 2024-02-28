@@ -29,7 +29,7 @@ import { CENTURY_FOOTER_LINKS } from '../../../../fixtures/fixtures';
 
 @NuxtComponent({})
 export default class InternalCenturylink extends Vue {
-  centuryFooterLinks = CENTURY_FOOTER_LINKS
+  centuryFooterLinks = CENTURY_FOOTER_LINKS;
   exampleTabs = [
     {
       disabled: true,
@@ -41,11 +41,11 @@ export default class InternalCenturylink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }
@@ -56,8 +56,9 @@ export default class InternalCenturylink extends Vue {
     this.centuryFooterLinks.forEach((footerLink: ILink) => {
       centuryFooterLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''
-        }>${footerLink.title}</a>
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${
+                footerLink.class ? ' class="' + footerLink.class + '"' : ''
+              }>${footerLink.title}</a>
             </li>`;
     });
 

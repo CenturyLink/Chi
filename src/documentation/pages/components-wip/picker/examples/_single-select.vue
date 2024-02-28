@@ -53,5 +53,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SingleSelectPickers extends Vue { }
+export default class SingleSelectPickers extends Vue {}
 </script>

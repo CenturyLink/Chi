@@ -39,7 +39,7 @@ export default class CloseButton extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="button-example-popover-closable-1">With title</chi-button>
 <chi-popover id="popover-example-popover-closable-1" title="Title" variant="text" arrow reference="#button-example-popover-closable-1" closable>
@@ -78,7 +78,7 @@ export default class CloseButton extends Vue {
     popoverInstance.hide();
   });
 <\/script>`,
-  }
+  };
   togglePopover() {
     (this.$refs.popover as any).toggle();
   }

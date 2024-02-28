@@ -125,7 +125,7 @@ export default class Positioning extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- Top start -->
@@ -239,7 +239,7 @@ export default class Positioning extends Vue {
 
 <!-- JavaScript -->
 <\script>chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));<\/script>`,
-  }
+  };
   mounted() {
     chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));
   }

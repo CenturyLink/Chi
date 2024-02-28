@@ -64,8 +64,8 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-import PopoverExample from './../popover-example.vue'
-import DropdownExample from './../dropdown-example.vue'
+import PopoverExample from './../popover-example.vue';
+import DropdownExample from './../dropdown-example.vue';
 
 @NuxtComponent({
   components: {
@@ -74,11 +74,11 @@ import DropdownExample from './../dropdown-example.vue'
   },
   methods: {
     printTable() {
-      (this.$refs.dataTableComplex as any)?.print("Data table - Complex");
+      (this.$refs.dataTableComplex as any)?.print('Data table - Complex');
     },
   },
   mounted() {
-    chi.tab(document.getElementById('example-vertical-base'))
+    chi.tab(document.getElementById('example-vertical-base'));
   },
   data: () => {
     return {
@@ -87,19 +87,19 @@ import DropdownExample from './../dropdown-example.vue'
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-          disabled: true
-        }
+          disabled: true,
+        },
       ],
       config: {
         columnResize: false,
@@ -125,12 +125,18 @@ import DropdownExample from './../dropdown-example.vue'
           direction: 'ascending',
         },
         showExpandAll: true,
-        showSelectAllDropdown: true
+        showSelectAllDropdown: true,
       },
       table: {
         head: {
           name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
+          status: {
+            label: 'Status',
+            sortable: true,
+            sortBy: 'status',
+            sortDataType: 'string',
+            description: 'Helpful information goes here.',
+          },
           userID: { label: 'User ID', key: true, icon: 'user' },
           lastLogin: { label: 'Last Login', key: true },
           actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
@@ -138,70 +144,70 @@ import DropdownExample from './../dropdown-example.vue'
         body: [
           {
             expanded: true,
-            id: "name-1",
+            id: 'name-1',
             data: [
-              { template: "name", payload: { name: "Name 1", id: "name-1" } },
+              { template: 'name', payload: { name: 'Name 1', id: 'name-1' } },
               {
-                template: "status",
-                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                template: 'status',
+                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
               },
-              "user-name-1",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-1',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-1" },
+                template: 'actions',
+                payload: { id: 'name-1' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-1",
+                    id: 'child-1-name-1',
                     data: [
-                      "Child 1 Name 1",
+                      'Child 1 Name 1',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-1",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-1',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-1" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-1' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-1",
+                            id: 'grandchild-1-name-1',
                             data: [
-                              "Grand Child 1 Name 1",
+                              'Grand Child 1 Name 1',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-1",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-1',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-1" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-1' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-1",
+                            id: 'grandchild-2-name-1',
                             data: [
-                              "Grand Child 2 Name 1",
+                              'Grand Child 2 Name 1',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-1",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-1',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-1" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-1' },
                               },
                             ],
                           },
@@ -210,52 +216,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-1",
+                    id: 'child-2-name-1',
                     data: [
-                      "Child 2 Name 1",
+                      'Child 2 Name 1',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-1",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-1',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-1" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-1' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-1",
+                            id: 'grandchild-3-name-1',
                             data: [
-                              "Grand Child 3 Name 1",
+                              'Grand Child 3 Name 1',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-1",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-1',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-1" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-1' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-1",
+                            id: 'grandchild-4-name-1',
                             data: [
-                              "Grand Child 4 Name 1",
+                              'Grand Child 4 Name 1',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-1",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-1',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-1" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-1' },
                               },
                             ],
                           },
@@ -268,70 +274,70 @@ import DropdownExample from './../dropdown-example.vue'
             },
           },
           {
-            id: "name-2",
+            id: 'name-2',
             data: [
-              { template: "name", payload: { name: "Name 2", id: "name-2" } },
+              { template: 'name', payload: { name: 'Name 2', id: 'name-2' } },
               {
-                template: "status",
-                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                template: 'status',
+                payload: { status: 'Due', icon: 'warning', color: 'warning' },
               },
-              "user-name-2",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-2',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-2" },
+                template: 'actions',
+                payload: { id: 'name-2' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-2",
+                    id: 'child-1-name-2',
                     data: [
-                      "Child 1 Name 2",
+                      'Child 1 Name 2',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-2",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-2',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-2" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-2' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-2",
+                            id: 'grandchild-1-name-2',
                             data: [
-                              "Grand Child 1 Name 2",
+                              'Grand Child 1 Name 2',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-2",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-2',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-2" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-2' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-2",
+                            id: 'grandchild-2-name-2',
                             data: [
-                              "Grand Child 2 Name 2",
+                              'Grand Child 2 Name 2',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-2",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-2',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-2" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-2' },
                               },
                             ],
                           },
@@ -340,52 +346,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-2",
+                    id: 'child-2-name-2',
                     data: [
-                      "Child 2 Name 2",
+                      'Child 2 Name 2',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-2",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-2',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-2" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-2' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-2",
+                            id: 'grandchild-3-name-2',
                             data: [
-                              "Grand Child 3 Name 2",
+                              'Grand Child 3 Name 2',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-2",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-2',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-2" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-2' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-2",
+                            id: 'grandchild-4-name-2',
                             data: [
-                              "Grand Child 4 Name 2",
+                              'Grand Child 4 Name 2',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-2",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-2',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-2" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-2' },
                               },
                             ],
                           },
@@ -398,76 +404,76 @@ import DropdownExample from './../dropdown-example.vue'
             },
           },
           {
-            id: "name-3",
+            id: 'name-3',
             data: [
               {
-                template: "name",
+                template: 'name',
                 payload: {
-                  name: "Name 3",
-                  id: "name-3",
+                  name: 'Name 3',
+                  id: 'name-3',
                 },
               },
               {
-                template: "status",
-                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                template: 'status',
+                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
               },
-              "user-name-3",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-3',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-3" },
+                template: 'actions',
+                payload: { id: 'name-3' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-3",
+                    id: 'child-1-name-3',
                     data: [
-                      "Child 1 Name 3",
+                      'Child 1 Name 3',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-3",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-3',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-3" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-3' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-3",
+                            id: 'grandchild-1-name-3',
                             data: [
-                              "Grand Child 1 Name 3",
+                              'Grand Child 1 Name 3',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-3",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-3',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-3" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-3' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-3",
+                            id: 'grandchild-2-name-3',
                             data: [
-                              "Grand Child 2 Name 3",
+                              'Grand Child 2 Name 3',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-3",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-3',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-3" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-3' },
                               },
                             ],
                           },
@@ -476,52 +482,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-3",
+                    id: 'child-2-name-3',
                     data: [
-                      "Child 2 Name 3",
+                      'Child 2 Name 3',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-3",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-3',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-3" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-3' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-3",
+                            id: 'grandchild-3-name-3',
                             data: [
-                              "Grand Child 3 Name 3",
+                              'Grand Child 3 Name 3',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-3",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-3',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-3" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-3' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-3",
+                            id: 'grandchild-4-name-3',
                             data: [
-                              "Grand Child 4 Name 3",
+                              'Grand Child 4 Name 3',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-3",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-3',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-3" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-3' },
                               },
                             ],
                           },
@@ -534,76 +540,76 @@ import DropdownExample from './../dropdown-example.vue'
             },
           },
           {
-            id: "name-4",
+            id: 'name-4',
             data: [
               {
-                template: "name",
+                template: 'name',
                 payload: {
-                  name: "Name 4",
-                  id: "name-4",
+                  name: 'Name 4',
+                  id: 'name-4',
                 },
               },
               {
-                template: "status",
-                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                template: 'status',
+                payload: { status: 'Due', icon: 'warning', color: 'warning' },
               },
-              "user-name-4",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-4',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-4" },
+                template: 'actions',
+                payload: { id: 'name-4' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-4",
+                    id: 'child-1-name-4',
                     data: [
-                      "Child 1 Name 4",
+                      'Child 1 Name 4',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-4",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-4',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-4" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-4' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-4",
+                            id: 'grandchild-1-name-4',
                             data: [
-                              "Grand Child 1 Name 4",
+                              'Grand Child 1 Name 4',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-4",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-4',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-4" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-4' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-4",
+                            id: 'grandchild-2-name-4',
                             data: [
-                              "Grand Child 2 Name 4",
+                              'Grand Child 2 Name 4',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-4",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-4',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-4" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-4' },
                               },
                             ],
                           },
@@ -612,52 +618,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-4",
+                    id: 'child-2-name-4',
                     data: [
-                      "Child 2 Name 4",
+                      'Child 2 Name 4',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-4",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-4',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-4" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-4' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-4",
+                            id: 'grandchild-3-name-4',
                             data: [
-                              "Grand Child 3 Name 4",
+                              'Grand Child 3 Name 4',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-4",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-4',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-4" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-4' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-4",
+                            id: 'grandchild-4-name-4',
                             data: [
-                              "Grand Child 4 Name 4",
+                              'Grand Child 4 Name 4',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-4",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-4',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-4" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-4' },
                               },
                             ],
                           },
@@ -670,76 +676,76 @@ import DropdownExample from './../dropdown-example.vue'
             },
           },
           {
-            id: "name-5",
+            id: 'name-5',
             data: [
               {
-                template: "name",
+                template: 'name',
                 payload: {
-                  name: "Name 5",
-                  id: "name-5",
+                  name: 'Name 5',
+                  id: 'name-5',
                 },
               },
               {
-                template: "status",
-                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                template: 'status',
+                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
               },
-              "user-name-5",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-5',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-5" },
+                template: 'actions',
+                payload: { id: 'name-5' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-5",
+                    id: 'child-1-name-5',
                     data: [
-                      "Child 1 Name 5",
+                      'Child 1 Name 5',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-5",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-5',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-5" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-5' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-5",
+                            id: 'grandchild-1-name-5',
                             data: [
-                              "Grand Child 1 Name 5",
+                              'Grand Child 1 Name 5',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-5",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-5',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-5" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-5' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-5",
+                            id: 'grandchild-2-name-5',
                             data: [
-                              "Grand Child 2 Name 5",
+                              'Grand Child 2 Name 5',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-5",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-5',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-5" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-5' },
                               },
                             ],
                           },
@@ -748,52 +754,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-5",
+                    id: 'child-2-name-5',
                     data: [
-                      "Child 2 Name 5",
+                      'Child 2 Name 5',
                       {
-                        template: "status",
-                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                        template: 'status',
+                        payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                       },
-                      "user-name-5",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-5',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-5" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-5' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-5",
+                            id: 'grandchild-3-name-5',
                             data: [
-                              "Grand Child 3 Name 5",
+                              'Grand Child 3 Name 5',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-5",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-5',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-5" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-5' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-5",
+                            id: 'grandchild-4-name-5',
                             data: [
-                              "Grand Child 4 Name 5",
+                              'Grand Child 4 Name 5',
                               {
-                                template: "status",
-                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
+                                template: 'status',
+                                payload: { status: 'Overdue', icon: 'circle-alert', color: 'danger' },
                               },
-                              "user-name-5",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-5',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-5" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-5' },
                               },
                             ],
                           },
@@ -806,76 +812,76 @@ import DropdownExample from './../dropdown-example.vue'
             },
           },
           {
-            id: "name-6",
+            id: 'name-6',
             data: [
               {
-                template: "name",
+                template: 'name',
                 payload: {
-                  name: "Name 6",
-                  id: "name-6",
+                  name: 'Name 6',
+                  id: 'name-6',
                 },
               },
               {
-                template: "status",
-                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                template: 'status',
+                payload: { status: 'Due', icon: 'warning', color: 'warning' },
               },
-              "user-name-6",
-              "18 Dec 2020 3:26 p.m.",
+              'user-name-6',
+              '18 Dec 2020 3:26 p.m.',
               {
-                template: "actions",
-                payload: { id: "name-6" },
+                template: 'actions',
+                payload: { id: 'name-6' },
               },
             ],
             nestedContent: {
               table: {
                 data: [
                   {
-                    id: "child-1-name-6",
+                    id: 'child-1-name-6',
                     data: [
-                      "Child 1 Name 6",
+                      'Child 1 Name 6',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-6",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-6',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-1-name-6" },
+                        template: 'actions',
+                        payload: { id: 'child-1-name-6' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-1-name-6",
+                            id: 'grandchild-1-name-6',
                             data: [
-                              "Grand Child 1 Name 6",
+                              'Grand Child 1 Name 6',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-6",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-6',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-6" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-1-name-6' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-2-name-6",
+                            id: 'grandchild-2-name-6',
                             data: [
-                              "Grand Child 2 Name 6",
+                              'Grand Child 2 Name 6',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-6",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-6',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-6" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-2-name-6' },
                               },
                             ],
                           },
@@ -884,52 +890,52 @@ import DropdownExample from './../dropdown-example.vue'
                     },
                   },
                   {
-                    id: "child-2-name-6",
+                    id: 'child-2-name-6',
                     data: [
-                      "Child 2 Name 6",
+                      'Child 2 Name 6',
                       {
-                        template: "status",
-                        payload: { status: "Due", icon: 'warning', color: 'warning' },
+                        template: 'status',
+                        payload: { status: 'Due', icon: 'warning', color: 'warning' },
                       },
-                      "user-name-6",
-                      "18 Dec 2020 2:38 a.m.",
+                      'user-name-6',
+                      '18 Dec 2020 2:38 a.m.',
                       {
-                        template: "actions",
-                        payload: { id: "child-2-name-6" },
+                        template: 'actions',
+                        payload: { id: 'child-2-name-6' },
                       },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "grandchild-3-name-6",
+                            id: 'grandchild-3-name-6',
                             data: [
-                              "Grand Child 3 Name 6",
+                              'Grand Child 3 Name 6',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-6",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-6',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-6" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-3-name-6' },
                               },
                             ],
                           },
                           {
-                            id: "grandchild-4-name-6",
+                            id: 'grandchild-4-name-6',
                             data: [
-                              "Grand Child 4 Name 6",
+                              'Grand Child 4 Name 6',
                               {
-                                template: "status",
-                                payload: { status: "Due", icon: 'warning', color: 'warning' },
+                                template: 'status',
+                                payload: { status: 'Due', icon: 'warning', color: 'warning' },
                               },
-                              "user-name-6",
-                              "18 Dec 2020 2:38 a.m.",
+                              'user-name-6',
+                              '18 Dec 2020 2:38 a.m.',
                               {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-6" },
+                                template: 'actions',
+                                payload: { id: 'grandchild-4-name-6' },
                               },
                             ],
                           },
@@ -1939,10 +1945,10 @@ mounted() {
 }
 beforeDestroy() {
   this.dropdown.dispose();
-}`
+}`,
       },
     };
   },
 })
-export default class DataTableComplex extends Vue { }
+export default class DataTableComplex extends Vue {}
 </script>

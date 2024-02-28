@@ -31,7 +31,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
-  selectedTheme = useSelectedTheme()
+  selectedTheme = useSelectedTheme();
   footers = generateAllExampleFooters('back-link-subtitle-buttons-page-level-actions-language-dropdown-button');
   exampleTabs = [
     {
@@ -75,10 +75,11 @@ export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
   ${footerTemplate}
 </chi-main>
 
-${this.selectedTheme === 'centurylink'
-        ? ''
-        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }`;
+${
+  this.selectedTheme === 'centurylink'
+    ? ''
+    : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+}`;
     this.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
@@ -104,10 +105,11 @@ ${this.selectedTheme === 'centurylink'
   ${footerTemplate}
 </div>
 
-${this.selectedTheme === 'centurylink'
-        ? ''
-        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }`;
+${
+  this.selectedTheme === 'centurylink'
+    ? ''
+    : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+}`;
   }
 }
 </script>

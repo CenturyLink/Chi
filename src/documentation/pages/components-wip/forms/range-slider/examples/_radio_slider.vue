@@ -39,8 +39,8 @@ export default class RadioSlider extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
-  rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years']
+  ];
+  rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -73,7 +73,7 @@ export default class RadioSlider extends Vue {
 </div>
 
 <script>chi.rangeSlider(document.getElementById('range07'));<\/script>`,
-  }
+  };
   rangeSlider: any;
 
   mounted() {

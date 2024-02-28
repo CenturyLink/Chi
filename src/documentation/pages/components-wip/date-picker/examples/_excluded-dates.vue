@@ -42,5 +42,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ExcludedDates extends Vue { }
+export default class ExcludedDates extends Vue {}
 </script>

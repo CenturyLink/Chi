@@ -32,5 +32,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Top extends Vue { }
+export default class Top extends Vue {}
 </script>

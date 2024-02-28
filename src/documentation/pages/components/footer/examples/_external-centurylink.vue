@@ -70,33 +70,32 @@ import { CENTURY_FOOTER_LINKS, EXTERNAL_CENTURYLINKS_CONTENTS } from '../../../.
 
 @NuxtComponent({})
 export default class ExternalCenturylink extends Vue {
-
-
   footerLinks = CENTURY_FOOTER_LINKS;
   externalContents = EXTERNAL_CENTURYLINKS_CONTENTS;
   exampleTabs = [
     {
       disabled: true,
       id: 'webcomponent',
-      label: 'Web Component'
+      label: 'Web Component',
     },
     {
       active: true,
       id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
+      label: 'HTML Blueprint',
+    },
+  ];
   codeSnippets = {
     webcomponent: ``,
-    htmlblueprint: ``
-  }
+    htmlblueprint: ``,
+  };
 
   created() {
     this._setCodeSnippet();
   }
 
   _setCodeSnippet() {
-    let socialLinks = '', footerItemLinks = '';
+    let socialLinks = '',
+      footerItemLinks = '';
 
     this.externalContents.socialLinks.forEach((link: ILink) => {
       socialLinks += `
@@ -107,7 +106,9 @@ export default class ExternalCenturylink extends Vue {
 
     this.footerLinks.forEach((link: ILink) => {
       footerItemLinks += `
-            <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
+            <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
+              link.class ? ' class="' + link.class + '"' : ''
+            }>${link.title}</a></li>`;
     });
 
     this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
@@ -171,14 +172,16 @@ export default class ExternalCenturylink extends Vue {
       </div>
     </div>
   </div>
-</footer>`
+</footer>`;
   }
 
   generateLinkCodeSnippet(keyName: string) {
     let linkCodeSnippet = '';
     this.externalContents[keyName].forEach((link: ILink) => {
       linkCodeSnippet += `
-              <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
+              <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
+                link.class ? ' class="' + link.class + '"' : ''
+              }>${link.title}</a></li>`;
     });
     return linkCodeSnippet;
   }

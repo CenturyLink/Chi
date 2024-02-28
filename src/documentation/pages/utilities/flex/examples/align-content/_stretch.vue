@@ -29,5 +29,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Stretch extends Vue { }
+export default class Stretch extends Vue {}
 </script>

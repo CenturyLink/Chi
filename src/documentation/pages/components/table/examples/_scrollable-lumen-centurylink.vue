@@ -94,5 +94,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ScrollableLumenCenturyLink extends Vue { }
+export default class ScrollableLumenCenturyLink extends Vue {}
 </script>

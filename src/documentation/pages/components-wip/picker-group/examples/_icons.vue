@@ -25,7 +25,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class Icons extends Vue {
-  pickers = [1, 2, 3]
+  pickers = [1, 2, 3];
   exampleTabs = [
     {
       disabled: true,
@@ -37,11 +37,11 @@ export default class Icons extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   tooltips: any[] = [];
 
   created() {

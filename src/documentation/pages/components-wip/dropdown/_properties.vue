@@ -101,5 +101,5 @@ dropdown === dropdown2; // returns true`,
     };
   },
 })
-export default class Properties extends Vue { }
+export default class Properties extends Vue {}
 </script>

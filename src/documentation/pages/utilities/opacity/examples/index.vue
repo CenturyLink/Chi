@@ -45,5 +45,5 @@ import BreakpointsSpecificHover from './_breakpoints-specific-hover.vue';
     BreakpointsSpecificHover,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

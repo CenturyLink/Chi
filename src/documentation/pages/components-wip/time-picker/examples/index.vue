@@ -64,5 +64,5 @@ import TimeSecondsStep from './_time-seconds-step.vue';
     TimeSecondsStep,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

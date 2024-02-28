@@ -42,7 +42,7 @@ export default class Help extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -63,7 +63,7 @@ export default class Help extends Vue {
 </div>
 
 <script>chi.popover(document.getElementById('example__help-button'));<\/script>`,
-  }
+  };
   mounted() {
     chi.popover(document.getElementById('example__help-button'));
   }

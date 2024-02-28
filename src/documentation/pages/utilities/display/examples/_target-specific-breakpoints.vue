@@ -14,8 +14,8 @@ import { type ITableColumn, type ITableContent } from '~/models/models';
 
 @NuxtComponent({})
 export default class TargetSpecificBreakpoints extends Vue {
-  values: ['sm', 'md', 'lg', 'xl']
-  columns: displayDefaultColumns
+  values: ['sm', 'md', 'lg', 'xl'];
+  columns: displayDefaultColumns;
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

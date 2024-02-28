@@ -1,9 +1,6 @@
 import { type ITableColumn, type ITableContent } from '@/models/models';
 
-export const generateBasicUtilitiesColorContent = (
-  column: ITableColumn,
-  content: ITableContent
-): string => {
+export const generateBasicUtilitiesColorContent = (column: ITableColumn, content: ITableContent): string => {
   switch (column.key) {
     case 'class':
       return `<code>-bg--${content.name}</code>`;
@@ -16,10 +13,7 @@ export const generateBasicUtilitiesColorContent = (
   }
 };
 
-export const generateUtilitiesTextContent = (
-  column: ITableColumn,
-  content: ITableContent
-): string => {
+export const generateUtilitiesTextContent = (column: ITableColumn, content: ITableContent): string => {
   switch (column.key) {
     case 'class':
       return `<code>-text--${content.name}</code>

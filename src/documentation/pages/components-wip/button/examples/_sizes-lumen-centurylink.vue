@@ -35,8 +35,8 @@ export default class SizesLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
-  sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+  ];
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
   codeSnippets = {
     webcomponent: `<!-- xs -->
 <chi-button size="xs">Button</chi-button>
@@ -112,7 +112,7 @@ export default class SizesLumenCenturyLink extends Vue {
 
 <!-- Icon button tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-  }
+  };
   tooltipTexts: any[] = [];
 
   mounted() {

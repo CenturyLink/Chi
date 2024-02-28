@@ -25,7 +25,7 @@ export default class BrandIconColor extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   iconsForLightBg = ['icon--dark', 'icon--primary', 'icon--grey'];
   iconsForDarkBg = ['icon--secondary', 'icon--light'];
 

@@ -107,8 +107,7 @@ export default class Foundations extends Vue {
     },
     {
       title: 'Robust',
-      text:
-        'Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.',
+      text: 'Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.',
       question:
         'Is the website compliant with the standards, and does it work with the assistive technologies - including websites, online documents, multimedia and other information formats?',
       items: [

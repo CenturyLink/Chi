@@ -283,10 +283,11 @@ export default class Dashboard extends Vue {
   ${footerTemplate}
 </chi-main>
 
-<script>${this.selectedTheme === 'centurylink'
+<script>${
+      this.selectedTheme === 'centurylink'
         ? ''
         : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`
-      }
+    }
   document.querySelector("#example__help-button")
     .addEventListener("click", function() {
       var popoverElem = document.querySelector("#example__help-popover");
@@ -444,10 +445,11 @@ export default class Dashboard extends Vue {
   ${footerTemplate}
 </div>
 
-<script>${this.selectedTheme === 'centurylink'
+<script>${
+      this.selectedTheme === 'centurylink'
         ? ''
         : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`
-      }
+    }
   chi.popover(document.getElementById('example__help-button'));
 <\/script>`;
   }

@@ -747,5 +747,5 @@ data: () => {
     };
   },
 })
-export default class BaseWithSaveViewAndBulkActionsPortalBrightSpeed extends Vue { }
+export default class BaseWithSaveViewAndBulkActionsPortalBrightSpeed extends Vue {}
 </script>

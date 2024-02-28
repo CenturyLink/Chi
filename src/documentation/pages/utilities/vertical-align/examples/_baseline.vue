@@ -30,5 +30,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Baseline extends Vue { }
+export default class Baseline extends Vue {}
 </script>

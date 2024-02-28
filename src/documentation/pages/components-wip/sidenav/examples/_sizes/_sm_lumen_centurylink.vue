@@ -56,10 +56,10 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class SmSizeLumenCenturyLink extends Vue {
-  menuItems = ['1', '2', '3', '4']
-  drawerMenuItems = ['1', '2']
-  activeMenuItem = '1'
-  activeDrawerMenuItem = '2'
+  menuItems = ['1', '2', '3', '4'];
+  drawerMenuItems = ['1', '2'];
+  activeMenuItem = '1';
+  activeDrawerMenuItem = '2';
   exampleTabs = [
     {
       disabled: true,
@@ -71,7 +71,7 @@ export default class SmSizeLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<aside class="chi-sidenav -sm" id="sidenav-3">
@@ -542,7 +542,7 @@ export default class SmSizeLumenCenturyLink extends Vue {
 </aside>
 
 <script>chi.sidenav(document.getElementById('sidenav-3'));<\/script>`,
-  }
+  };
   mounted() {
     chi.sidenav(this.$refs.sidenav);
   }

@@ -56,7 +56,7 @@ export default class BaseLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion" id="example-base">
@@ -103,7 +103,7 @@ export default class BaseLumenCenturyLink extends Vue {
 
   chi.accordion(accordionBase);
   <\/script>`,
-  }
+  };
 
   mounted() {
     const accordionBase = document.getElementById('example-base');

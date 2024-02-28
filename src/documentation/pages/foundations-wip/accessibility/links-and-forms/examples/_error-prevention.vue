@@ -70,13 +70,11 @@ import { Vue } from 'vue-facing-decorator';
         },
         {
           title: 'Checked',
-          text:
-            'Data entered by the user is checked for input errors and the user is provided an opportunity to correct them',
+          text: 'Data entered by the user is checked for input errors and the user is provided an opportunity to correct them',
         },
         {
           title: 'Confirmed',
-          text:
-            'A mechanism is available for reviewing, confirming, and correcting information before finalizing the submission',
+          text: 'A mechanism is available for reviewing, confirming, and correcting information before finalizing the submission',
         },
       ],
     };

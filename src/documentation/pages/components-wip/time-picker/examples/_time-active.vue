@@ -34,5 +34,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class TimeActive extends Vue { }
+export default class TimeActive extends Vue {}
 </script>

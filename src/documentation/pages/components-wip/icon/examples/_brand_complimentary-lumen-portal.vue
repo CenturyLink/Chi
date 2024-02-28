@@ -43,5 +43,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BrandComplimentaryLumenPortal extends Vue { }
+export default class BrandComplimentaryLumenPortal extends Vue {}
 </script>

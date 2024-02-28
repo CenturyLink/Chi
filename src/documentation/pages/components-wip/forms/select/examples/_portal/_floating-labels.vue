@@ -39,7 +39,7 @@ export default class FloatingLabelsPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div id="floating-label-md" class="chi-input__wrapper -floating-label">
@@ -63,7 +63,7 @@ export default class FloatingLabelsPortal extends Vue {
 </div>
 
 <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));<\/script>`,
-  }
+  };
   sizes = ['md', 'lg'];
 
   mounted() {

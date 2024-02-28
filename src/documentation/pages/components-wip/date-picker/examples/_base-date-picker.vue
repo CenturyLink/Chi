@@ -45,5 +45,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BaseDatePicker extends Vue { }
+export default class BaseDatePicker extends Vue {}
 </script>

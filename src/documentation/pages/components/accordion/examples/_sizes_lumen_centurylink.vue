@@ -40,7 +40,7 @@ export default class SizesLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- sm-->
@@ -102,7 +102,7 @@ export default class SizesLumenCenturyLink extends Vue {
   chi.accordion(document.getElementById('example-size-lg'));
   chi.accordion(document.getElementById('example-size-xl'));
 <\/script>`,
-  }
+  };
 
   mounted() {
     chi.accordion(document.getElementById('example-size-sm'));

@@ -65,7 +65,7 @@ export default class VerticalSubtabs extends Vue {
           href: '',
           text: 'Subtab Link',
         },
-      ]
+      ],
     },
     {
       href: '',

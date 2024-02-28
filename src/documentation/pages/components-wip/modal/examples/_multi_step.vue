@@ -80,5 +80,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class MultiStep extends Vue { }
+export default class MultiStep extends Vue {}
 </script>

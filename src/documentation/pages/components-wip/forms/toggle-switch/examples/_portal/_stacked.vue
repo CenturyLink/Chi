@@ -61,5 +61,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class StackedPortal extends Vue { }
+export default class StackedPortal extends Vue {}
 </script>

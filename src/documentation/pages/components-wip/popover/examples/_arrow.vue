@@ -100,5 +100,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Arrow extends Vue { }
+export default class Arrow extends Vue {}
 </script>

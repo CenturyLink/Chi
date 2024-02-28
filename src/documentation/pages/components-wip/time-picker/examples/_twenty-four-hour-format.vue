@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class TwentyFourHourFormat extends Vue { }
+export default class TwentyFourHourFormat extends Vue {}
 </script>

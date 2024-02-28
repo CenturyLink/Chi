@@ -86,5 +86,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class AlertPortal extends Vue { }
+export default class AlertPortal extends Vue {}
 </script>

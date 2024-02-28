@@ -22,7 +22,7 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class Checked extends Vue {
-  pickers = [1, 2, 3]
+  pickers = [1, 2, 3];
   exampleTabs = [
     {
       disabled: true,
@@ -34,11 +34,11 @@ export default class Checked extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

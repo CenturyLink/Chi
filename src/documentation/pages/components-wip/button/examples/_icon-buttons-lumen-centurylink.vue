@@ -35,7 +35,7 @@ export default class IconButtonLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<!-- base -->
 <chi-button type="icon" alternative-text="Edit" data-tooltip="Edit">
@@ -65,7 +65,7 @@ export default class IconButtonLumenCenturyLink extends Vue {
 
 <!-- Tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-  }
+  };
   tooltip: any;
   tooltipFlat: any;
 

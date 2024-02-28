@@ -62,5 +62,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Associate extends Vue { }
+export default class Associate extends Vue {}
 </script>

@@ -78,5 +78,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ModalSubtitleLumenCenturyLink extends Vue { }
+export default class ModalSubtitleLumenCenturyLink extends Vue {}
 </script>

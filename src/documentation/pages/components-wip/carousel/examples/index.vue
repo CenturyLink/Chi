@@ -25,5 +25,5 @@ import CustomControllers from './_custom-controllers.vue';
     CustomControllers,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

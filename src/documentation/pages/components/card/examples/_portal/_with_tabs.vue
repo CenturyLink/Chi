@@ -46,7 +46,7 @@ export default class WithTabsPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-card">
@@ -76,7 +76,7 @@ export default class WithTabsPortal extends Vue {
     }
   );
 <\/script>`,
-  }
+  };
   mounted() {
     chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
   }

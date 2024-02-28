@@ -25,8 +25,8 @@ export default class SpecialDisplayClasses extends Vue {
       name: '-d-print--only',
       value: ['display: none;', 'on @media screen,', 'display: block;', 'on @media print.'],
     },
-  ]
-  columns = displayDefaultColumns
+  ];
+  columns = displayDefaultColumns;
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

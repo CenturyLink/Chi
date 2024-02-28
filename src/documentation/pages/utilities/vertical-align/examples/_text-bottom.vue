@@ -32,5 +32,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class TextBottom extends Vue { }
+export default class TextBottom extends Vue {}
 </script>

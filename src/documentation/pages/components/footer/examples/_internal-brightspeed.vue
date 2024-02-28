@@ -39,8 +39,8 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class InternalBrightspeed extends Vue {
-  footerLinks = FOOTER_LINKS
-  languageItems = FOOTER_LANGUAGE_DROPDOWN_ITEMS
+  footerLinks = FOOTER_LINKS;
+  languageItems = FOOTER_LANGUAGE_DROPDOWN_ITEMS;
   exampleTabs = [
     {
       disabled: true,
@@ -52,11 +52,11 @@ export default class InternalBrightspeed extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   dropdown: any;
 
   created() {
@@ -69,15 +69,17 @@ export default class InternalBrightspeed extends Vue {
 
     this.languageItems.forEach((language: ILanguage, index: number) => {
       languageOptions += `
-            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${language.href}">${language.name
-        }</a>`;
+            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${language.href}">${
+              language.name
+            }</a>`;
     });
 
     this.footerLinks.forEach((footerLink: ILink) => {
       footerLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''
-        }>${footerLink.title}</a>
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${
+                footerLink.class ? ' class="' + footerLink.class + '"' : ''
+              }>${footerLink.title}</a>
             </li>`;
     });
     this.codeSnippets.htmlblueprint = `<footer class="chi-footer">

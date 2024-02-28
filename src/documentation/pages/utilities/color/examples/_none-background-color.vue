@@ -13,7 +13,7 @@ import { COLORS } from '~/constants/constants';
 
 @NuxtComponent({})
 export default class NoneBackgroundColor extends Vue {
-  colors = [COLORS.BG_NONE]
+  colors = [COLORS.BG_NONE];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

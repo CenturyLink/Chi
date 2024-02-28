@@ -113,5 +113,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CompactBaseLumenCenturyLink extends Vue { }
+export default class CompactBaseLumenCenturyLink extends Vue {}
 </script>

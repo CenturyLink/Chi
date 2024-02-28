@@ -38,5 +38,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CTA extends Vue { }
+export default class CTA extends Vue {}
 </script>

@@ -25,5 +25,5 @@ import Icons from './_icons.vue';
     Icons,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

@@ -40,5 +40,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InputMask extends Vue { }
+export default class InputMask extends Vue {}
 </script>

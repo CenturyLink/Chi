@@ -105,9 +105,9 @@ import { Vue, Prop } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class PropertiesGenerator extends Vue {
-  props = []
-  events = []
-  methods =  []
+  props = [];
+  events = [];
+  methods = [];
   docs = useDocsJson();
 
   @Prop({ required: true }) tag!: string;
@@ -118,9 +118,7 @@ export default class PropertiesGenerator extends Vue {
 
   created() {
     if (this.docs) {
-      const component = this.docs.components?.find(
-        (component: {tag: string}) => component.tag === this.tag
-      );
+      const component = this.docs.components?.find((component: { tag: string }) => component.tag === this.tag);
 
       if (component) {
         this.props = component.props;

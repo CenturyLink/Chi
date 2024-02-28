@@ -50,5 +50,5 @@ import CheckboxList from './_checkbox_list.vue';
     CheckboxList,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

@@ -32,5 +32,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ResponsiveBorderColor extends Vue { }
+export default class ResponsiveBorderColor extends Vue {}
 </script>

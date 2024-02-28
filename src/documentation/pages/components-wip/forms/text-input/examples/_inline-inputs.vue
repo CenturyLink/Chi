@@ -57,5 +57,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineInputs extends Vue { }
+export default class InlineInputs extends Vue {}
 </script>

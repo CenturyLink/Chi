@@ -46,7 +46,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   tabLinks = [
     {
       href: '',
@@ -74,7 +74,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
           text: 'Subtab Link',
           description: 'Subtab description',
         },
-      ]
+      ],
     },
     {
       href: '',

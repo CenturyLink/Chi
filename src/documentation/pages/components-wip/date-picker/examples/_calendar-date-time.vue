@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CalendarDateTime extends Vue { }
+export default class CalendarDateTime extends Vue {}
 </script>

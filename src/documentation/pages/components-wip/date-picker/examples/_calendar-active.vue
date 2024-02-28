@@ -28,11 +28,11 @@ export default class CalendarActive extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-date value="05/15/2024"></chi-date>`,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

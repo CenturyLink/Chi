@@ -13,10 +13,12 @@
         <ul class="chi-tabs__subtabs">
           <li>
             <div class="chi-accordion accessibility-accordion" ref="accessibilityAccordion">
-              <div :class="{
-                'chi-accordion__item -bg--none': true,
-                '-expanded': $route.fullPath.includes('/accessibility/')
-              }">
+              <div
+                :class="{
+                  'chi-accordion__item -bg--none': true,
+                  '-expanded': $route.fullPath.includes('/accessibility/'),
+                }"
+              >
                 <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accessibility</div>
                   <i class="chi-icon icon-chevron-down -xs" aria-hidden="true"></i>
@@ -40,7 +42,7 @@
       </li>
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.templates) }">
         <div class="chi-collection__title">Templates</div>
-        <DocumentationLinkList :links="NAVIGATION_TEMPLATE_ITEMS"/>
+        <DocumentationLinkList :links="NAVIGATION_TEMPLATE_ITEMS" />
       </li>
     </ul>
   </nav>
@@ -55,7 +57,7 @@ import {
   NAVIGATION_GETTING_STARTED_ITEMS,
   SECTION_URLS,
   NAVIGATION_FOUNDATIONS_ACCESIBILITY,
-  NAVIGATION_FOUNDATIONS
+  NAVIGATION_FOUNDATIONS,
 } from '@/constants/constants';
 
 declare const chi: any;
@@ -78,7 +80,6 @@ export default class Navigation extends Vue {
     if (accordionElement) {
       this.chiAccordion = chi.accordion(accordionElement);
     }
-
   }
 
   beforeDestroy() {
@@ -90,14 +91,7 @@ export default class Navigation extends Vue {
 </script>
 
 <style>
-.-theme-lumen
-  nav.docs-sidenav
-  > nav
-  > ul.chi-tabs.-vertical
-  > li
-  > ul.chi-tabs__subtabs
-  > li
-  > a.-active {
+.-theme-lumen nav.docs-sidenav > nav > ul.chi-tabs.-vertical > li > ul.chi-tabs__subtabs > li > a.-active {
   background-color: #e0f3ff;
   box-shadow: inset 0.125rem 0 0 #0075c9;
   color: #0262b9;

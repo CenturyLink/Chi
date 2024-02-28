@@ -24,7 +24,7 @@ export default class ZIndexExample extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
 
   get codeSnippets() {
     return {

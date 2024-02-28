@@ -69,5 +69,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Pagination extends Vue { }
+export default class Pagination extends Vue {}
 </script>

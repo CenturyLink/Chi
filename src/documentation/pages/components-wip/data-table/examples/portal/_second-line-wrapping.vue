@@ -288,5 +288,5 @@ data: {
     };
   },
 })
-export default class DataTableSecondLineWrapping extends Vue { }
+export default class DataTableSecondLineWrapping extends Vue {}
 </script>

@@ -44,5 +44,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class IconLink extends Vue { }
+export default class IconLink extends Vue {}
 </script>

@@ -61,5 +61,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleActionable extends Vue { }
+export default class BubbleActionable extends Vue {}
 </script>

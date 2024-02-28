@@ -33,5 +33,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BrandComplimentaryIconColor extends Vue { }
+export default class BrandComplimentaryIconColor extends Vue {}
 </script>

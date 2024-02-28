@@ -63,5 +63,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ErrorPortal extends Vue { }
+export default class ErrorPortal extends Vue {}
 </script>

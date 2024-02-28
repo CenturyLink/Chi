@@ -36,7 +36,7 @@ export default class MultipleConsistent extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -53,7 +53,7 @@ export default class MultipleConsistent extends Vue {
 </div>
 
 <script>chi.rangeSlider(document.getElementById('range06'));<\/script>`,
-  }
+  };
   rangeSlider: any;
 
   mounted() {

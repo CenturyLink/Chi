@@ -45,18 +45,18 @@ export default class AdditionalStyles extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   buttons = [
     { text: 'Primary', color: 'primary' },
     { text: 'Primary outline', color: 'primary', variant: 'outline' },
     { text: 'Primary flat', color: 'primary', variant: 'flat' },
     { text: 'Flat', variant: 'flat' },
     { text: 'Disabled', disabled: true },
-  ]
+  ];
   codeSnippets = {
     webcomponent: '',
     htmlblueprint: '',
-  }
+  };
   mounted() {
     this.codeSnippets.webcomponent = this.buttons.map(this.getWebComponentSnippet).join('\n\n');
     this.codeSnippets.htmlblueprint = [
@@ -79,8 +79,8 @@ export default class AdditionalStyles extends Vue {
     const chiDropdown = button.disabled
       ? "<chi-dropdown position='bottom' button='Disabled' disabled>"
       : `<chi-dropdown position='bottom' button='${button.text}'` +
-      (button.color ? ` color='${button.color}'` : '') +
-      (button.variant ? ` variant='${button.variant}'>` : '>');
+        (button.color ? ` color='${button.color}'` : '') +
+        (button.variant ? ` variant='${button.variant}'>` : '>');
 
     return [
       `<!-- ${button.text} button -->`,
@@ -101,7 +101,7 @@ export default class AdditionalStyles extends Vue {
     const chiDropdown = button.disabled
       ? `  <button id="dropdown-styles-4" class="chi-button chi-dropdown__trigger" disabled>${button.text}</button>`
       : `<button id="dropdown-styles-${button.text.replace(' ', '-').toLowerCase()}" ` +
-      `class="chi-button chi-dropdown__trigger${extraClasses}">${button.text}</button>`;
+        `class="chi-button chi-dropdown__trigger${extraClasses}">${button.text}</button>`;
 
     return [
       `<!-- ${button.text} button -->`,

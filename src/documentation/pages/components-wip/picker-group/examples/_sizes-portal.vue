@@ -38,8 +38,8 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class SizesPortal extends Vue {
-  pickers = [1, 2, 3]
-  sizes = ['xs', 'sm', 'md', 'lg']
+  pickers = [1, 2, 3];
+  sizes = ['xs', 'sm', 'md', 'lg'];
   exampleTabs = [
     {
       disabled: true,
@@ -51,11 +51,11 @@ export default class SizesPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: '',
     htmlblueprint: '',
-  }
+  };
   tooltips: any[] = [];
 
   created() {

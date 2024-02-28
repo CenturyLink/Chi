@@ -46,5 +46,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Inverse extends Vue { }
+export default class Inverse extends Vue {}
 </script>

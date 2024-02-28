@@ -81,5 +81,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BaseCenturylink extends Vue { }
+export default class BaseCenturylink extends Vue {}
 </script>

@@ -53,5 +53,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleCenteredLumenCenturyLink extends Vue { }
+export default class BubbleCenteredLumenCenturyLink extends Vue {}
 </script>

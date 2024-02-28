@@ -51,5 +51,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SwitchHiddenLumenCenturyLink extends Vue { }
+export default class SwitchHiddenLumenCenturyLink extends Vue {}
 </script>

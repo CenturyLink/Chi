@@ -39,5 +39,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DatePickerMultipleDates extends Vue { }
+export default class DatePickerMultipleDates extends Vue {}
 </script>

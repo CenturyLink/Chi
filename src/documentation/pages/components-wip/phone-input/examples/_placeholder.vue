@@ -42,5 +42,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Placeholder extends Vue { }
+export default class Placeholder extends Vue {}
 </script>

@@ -37,7 +37,7 @@ export default class TruncatedPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion -truncated">
@@ -51,7 +51,7 @@ export default class TruncatedPortal extends Vue {
     </div>
   </div>
 </div>`,
-  }
+  };
   mounted() {
     chi.accordion(document.getElementById('example-portal-truncated'));
   }

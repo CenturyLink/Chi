@@ -207,5 +207,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class FeedStories extends Vue { }
+export default class FeedStories extends Vue {}
 </script>

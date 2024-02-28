@@ -60,5 +60,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DestructiveActionConfirmation extends Vue { }
+export default class DestructiveActionConfirmation extends Vue {}
 </script>

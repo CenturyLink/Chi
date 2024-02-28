@@ -96,7 +96,7 @@ export default class BasePortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<header class="chi-header -lg">
@@ -178,7 +178,7 @@ export default class BasePortal extends Vue {
   chi.dropdown(document.getElementById('button-portal-eid-menu'));
   chi.tooltip(document.getElementById('button-portal-notification'));
 <\/script>`,
-  }
+  };
   mounted() {
     chi.drawer(this.$refs['drawer-trigger-portal-pib'] as HTMLElement);
     chi.dropdown(this.$refs['button-portal-site-menu'] as HTMLElement);

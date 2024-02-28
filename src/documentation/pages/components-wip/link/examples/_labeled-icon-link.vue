@@ -46,5 +46,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class LabeledIconLink extends Vue { }
+export default class LabeledIconLink extends Vue {}
 </script>

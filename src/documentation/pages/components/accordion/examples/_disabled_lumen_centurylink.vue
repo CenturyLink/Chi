@@ -56,5 +56,5 @@ declare const chi: any;
     };
   },
 })
-export default class DisabledLumenCenturyLink extends Vue { }
+export default class DisabledLumenCenturyLink extends Vue {}
 </script>

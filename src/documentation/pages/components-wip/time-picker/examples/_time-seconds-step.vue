@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class TimeStep extends Vue { }
+export default class TimeStep extends Vue {}
 </script>

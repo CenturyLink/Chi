@@ -40,7 +40,7 @@ export default class Long extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     vue: `<ChiTooltip message="Lorem ipsum...">
@@ -49,7 +49,7 @@ export default class Long extends Vue {
     htmlblueprint: `<button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
 
 <script>chi.tooltip(document.getElementById('data-tooltip'));<\/script>`,
-  }
+  };
   mounted() {
     chi.tooltip(this.$refs.long);
   }

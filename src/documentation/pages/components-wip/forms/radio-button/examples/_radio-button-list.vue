@@ -94,5 +94,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class RadioButtonList extends Vue { }
+export default class RadioButtonList extends Vue {}
 </script>

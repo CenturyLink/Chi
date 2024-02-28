@@ -95,5 +95,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ScrollablePortal extends Vue { }
+export default class ScrollablePortal extends Vue {}
 </script>

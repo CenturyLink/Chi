@@ -72,5 +72,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CompactBasePortal extends Vue { }
+export default class CompactBasePortal extends Vue {}
 </script>

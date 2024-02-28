@@ -60,5 +60,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Checked extends Vue { }
+export default class Checked extends Vue {}
 </script>

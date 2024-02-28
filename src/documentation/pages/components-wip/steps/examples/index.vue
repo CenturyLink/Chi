@@ -37,5 +37,5 @@ import Responsiveness from './_responsiveness.vue';
     Responsiveness,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

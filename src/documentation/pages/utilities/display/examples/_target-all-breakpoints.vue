@@ -12,8 +12,8 @@ import { displayDefaultColumns } from '~/fixtures/fixtures';
 
 @NuxtComponent({})
 export default class TargetAllBreakpoints extends Vue {
-  values = ['none', 'inline', 'inline-block', 'block', 'table', 'table-cell', 'table-row', 'flex', 'inline-flex']
-  columns = displayDefaultColumns
+  values = ['none', 'inline', 'inline-block', 'block', 'table', 'table-cell', 'table-row', 'flex', 'inline-flex'];
+  columns = displayDefaultColumns;
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

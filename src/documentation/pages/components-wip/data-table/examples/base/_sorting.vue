@@ -25,33 +25,33 @@ type DefaultSortType = {
     return {
       sortingTypes: [
         {
-          title: "Sorting",
-          id: "sorting-data-table",
-          defaultSort: null
+          title: 'Sorting',
+          id: 'sorting-data-table',
+          defaultSort: null,
         },
         {
-          title: "Default Sorting -- Ascending",
-          id: "sorting-ascending-data-table",
+          title: 'Default Sorting -- Ascending',
+          id: 'sorting-ascending-data-table',
           defaultSort: {
             key: 'name',
             direction: 'ascending',
           },
         },
         {
-          title: "Default Sorting -- Descending",
-          id: "sorting-descending-data-table",
+          title: 'Default Sorting -- Descending',
+          id: 'sorting-descending-data-table',
           defaultSort: {
             key: 'name',
             direction: 'descending',
           },
-        }
+        },
       ],
       exampleTabs: [
         {
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -62,7 +62,7 @@ type DefaultSortType = {
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -91,53 +91,29 @@ type DefaultSortType = {
         body: [
           {
             id: 'name-1',
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-2',
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
     };
   },
@@ -145,14 +121,16 @@ type DefaultSortType = {
     getConfig(defaultSort: DefaultSortType) {
       return {
         ...this.config,
-        ...(defaultSort ? { defaultSort: defaultSort } : {})
+        ...(defaultSort ? { defaultSort: defaultSort } : {}),
       };
     },
     getHtmlCode(defaultSort: DefaultSortType) {
       return `<div class="chi-data-table">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
-      <button class="chi-data-table__cell -sorting ${defaultSort ? '-active' : ''} ${defaultSort?.direction === 'descending' ? '-descending' : ''}">
+      <button class="chi-data-table__cell -sorting ${defaultSort ? '-active' : ''} ${
+        defaultSort?.direction === 'descending' ? '-descending' : ''
+      }">
         <div>Name</div>
         <i class="chi-icon -xs icon-arrow-sort" aria-hidden="true"></i>
       </button>
@@ -252,7 +230,7 @@ type DefaultSortType = {
       </div>
     </nav>
   </div>
-</div>`
+</div>`;
     },
     getVueCode(defaultSort: DefaultSortType) {
       return `<!-- Vue component -->
@@ -269,11 +247,15 @@ data: {
       hover: false,
       size: 'md',
       striped: false,
-    },${defaultSort ? `
+    },${
+      defaultSort
+        ? `
     defaultSort: {
       key: 'name',
       direction: ${defaultSort.direction},
-    },` : ''}
+    },`
+        : ''
+    }
     pagination: {
       activePage: 1,
       compact: false,
@@ -339,9 +321,9 @@ data: {
       },
     ]
   }
-}`
+}`;
     },
-  }
+  },
 })
-export default class DataTableSorting extends Vue { }
+export default class DataTableSorting extends Vue {}
 </script>

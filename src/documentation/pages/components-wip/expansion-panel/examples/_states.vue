@@ -341,5 +341,5 @@ data: {
     },
   },
 })
-export default class States extends Vue { }
+export default class States extends Vue {}
 </script>

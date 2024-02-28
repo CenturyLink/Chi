@@ -81,7 +81,7 @@ export default class ExpandCollapseAllPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<button class="chi-button" id="expand-all-portal">Expand all</button>
@@ -171,7 +171,7 @@ export default class ExpandCollapseAllPortal extends Vue {
     expandCollapseAccordion.collapseAll();
   });
 <\/script>`,
-  }
+  };
   accordion: any;
 
   expandAll() {

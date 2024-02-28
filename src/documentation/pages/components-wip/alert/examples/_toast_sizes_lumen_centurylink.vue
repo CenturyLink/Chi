@@ -147,5 +147,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ToastSizesLumenCenturyLink extends Vue { }
+export default class ToastSizesLumenCenturyLink extends Vue {}
 </script>

@@ -41,5 +41,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DatePickerDateTimeStepped extends Vue { }
+export default class DatePickerDateTimeStepped extends Vue {}
 </script>

@@ -83,5 +83,5 @@ import VisibleItems from './_visible_items.vue';
     VisibleItems,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

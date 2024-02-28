@@ -32,7 +32,7 @@ export default class DraggableLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="example-draggable-button">Click me!</chi-button>
 
@@ -48,7 +48,7 @@ export default class DraggableLumenCenturyLink extends Vue {
   });
 <\/script>`,
     htmlblueprint: ``,
-  }
+  };
   togglePopover() {
     (this.$refs.popover as any).toggle();
   }

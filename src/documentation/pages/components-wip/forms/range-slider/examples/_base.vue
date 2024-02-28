@@ -30,7 +30,7 @@ export default class Base extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -39,7 +39,7 @@ export default class Base extends Vue {
 </div>
 
 <script>chi.rangeSlider(document.getElementById('range01'));<\/script>`,
-  }
+  };
   rangeSlider: any;
 
   mounted() {

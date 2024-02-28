@@ -87,5 +87,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Help extends Vue { }
+export default class Help extends Vue {}
 </script>

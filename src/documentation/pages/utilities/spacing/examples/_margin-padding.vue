@@ -31,5 +31,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class MarginPadding extends Vue { }
+export default class MarginPadding extends Vue {}
 </script>

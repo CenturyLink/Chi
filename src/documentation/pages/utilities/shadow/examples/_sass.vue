@@ -30,5 +30,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SASS extends Vue { }
+export default class SASS extends Vue {}
 </script>

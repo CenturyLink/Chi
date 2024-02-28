@@ -39,5 +39,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ExcludedWeekDays extends Vue { }
+export default class ExcludedWeekDays extends Vue {}
 </script>

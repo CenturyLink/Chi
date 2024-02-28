@@ -73,5 +73,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class RadioDisabled extends Vue { }
+export default class RadioDisabled extends Vue {}
 </script>

@@ -98,14 +98,14 @@ export default class HeaderImpersonationPortal extends Vue {
     {
       disabled: true,
       id: 'webcomponent',
-      label: 'Web Component'
+      label: 'Web Component',
     },
     {
       active: true,
       id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
+      label: 'HTML Blueprint',
+    },
+  ];
 
   codeSnippets = {
     webcomponent: ``,
@@ -196,8 +196,8 @@ export default class HeaderImpersonationPortal extends Vue {
   chi.dropdown(document.getElementById('button-portal-eid-menu2'));
   chi.tooltip(document.getElementById('button-portal-logout'));
   chi.tooltip(document.getElementById('button-portal-notification2'));
-<\/script>`
-  }
+<\/script>`,
+  };
 
   mounted() {
     chi.drawer(this.$refs['drawer-trigger-portal-pib2'] as HTMLElement);

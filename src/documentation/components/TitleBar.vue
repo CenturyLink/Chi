@@ -24,7 +24,7 @@ export default class BaseExample extends Vue {
   mounted() {
     const chiTabs = document.getElementById('page-content-tabs');
     if (chiTabs) {
-      this.chiTabs =  chi.tab(chiTabs);
+      this.chiTabs = chi.tab(chiTabs);
     }
   }
 

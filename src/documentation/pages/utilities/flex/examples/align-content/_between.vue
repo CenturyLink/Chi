@@ -29,5 +29,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Between extends Vue { }
+export default class Between extends Vue {}
 </script>

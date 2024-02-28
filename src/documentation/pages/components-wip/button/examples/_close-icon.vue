@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CloseIcon extends Vue { }
+export default class CloseIcon extends Vue {}
 </script>

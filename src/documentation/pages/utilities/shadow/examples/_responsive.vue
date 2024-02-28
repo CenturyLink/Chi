@@ -22,7 +22,7 @@ export default class Responsive extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   responsiveSizes: string[] = ['-s--5 -s-md--0', '-s-md--5 -s-xl--0', '-s-xl--5'];
 
   get codeSnippets() {

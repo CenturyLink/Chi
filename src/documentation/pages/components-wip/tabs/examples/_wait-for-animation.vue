@@ -36,7 +36,7 @@ export default class WaitForAnimation extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   tabLinks = [
     {
       href: '?tab=1',

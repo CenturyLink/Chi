@@ -17,5 +17,5 @@ import SemanticStates from './_semantic_states.vue';
     SemanticStates,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

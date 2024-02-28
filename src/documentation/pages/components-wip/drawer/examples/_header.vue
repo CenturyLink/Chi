@@ -192,7 +192,7 @@ methods: {
         },
       },
     },
-  ]
+  ];
   exampleTabs = [
     {
       active: true,
@@ -207,7 +207,7 @@ methods: {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   exampleId = 'header';
   showHeader = true;
 

@@ -36,7 +36,7 @@ export default class ReferenceElement extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="example-3-button">Click me!</chi-button>
 
@@ -66,7 +66,7 @@ export default class ReferenceElement extends Vue {
 <!-- Method 2 - Data Content -->
 <button id='popover-1' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
 <script>chi.popover(document.getElementById('popover-1'));<\/script>`,
-  }
+  };
   togglePopover() {
     (this.$refs.popover as any).toggle();
   }

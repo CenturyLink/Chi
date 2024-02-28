@@ -62,5 +62,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ExamplesPortal extends Vue { }
+export default class ExamplesPortal extends Vue {}
 </script>

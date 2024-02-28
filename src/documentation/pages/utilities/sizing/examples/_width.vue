@@ -17,7 +17,7 @@ import { sizingColumns } from '~/fixtures/fixtures';
 
 @NuxtComponent({})
 export default class Width extends Vue {
-  columns = sizingColumns
+  columns = sizingColumns;
   types = ['auto', '*'];
   breakpoints = ['sm', 'md', 'lg', 'xl'];
 

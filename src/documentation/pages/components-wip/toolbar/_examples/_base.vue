@@ -452,5 +452,5 @@ data: () => {
     };
   },
 })
-export default class Base extends Vue { }
+export default class Base extends Vue {}
 </script>

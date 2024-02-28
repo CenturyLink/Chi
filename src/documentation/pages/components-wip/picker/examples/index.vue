@@ -51,5 +51,5 @@ import RadioButtonDescription from './_radio-button-description.vue';
     RadioButtonDescription,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

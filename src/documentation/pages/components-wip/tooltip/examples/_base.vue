@@ -37,7 +37,7 @@ export default class Base extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     vue: `<ChiTooltip message="Your tooltip text on a button">
@@ -47,7 +47,7 @@ export default class Base extends Vue {
 
 <script>chi.tooltip(document.getElementById('tooltip-1'));<\/script>
 `,
-  }
+  };
   mounted() {
     chi.tooltip(this.$refs.base);
   }

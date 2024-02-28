@@ -21,7 +21,7 @@ import { standardComponentPageTabs } from '@/constants/constants';
     Accessibility,
     Properties,
     Examples,
-  }
+  },
 })
 export default class Breadcrumb extends Vue {
   pageTabs = standardComponentPageTabs;

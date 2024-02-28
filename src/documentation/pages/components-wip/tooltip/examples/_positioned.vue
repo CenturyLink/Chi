@@ -40,29 +40,29 @@ export default class Positioning extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   tooltipButtons: [
     {
-      text: 'Top Tooltip',
-      dataTooltip: 'Your top tooltip text',
-      position: 'top',
+      text: 'Top Tooltip';
+      dataTooltip: 'Your top tooltip text';
+      position: 'top';
     },
     {
-      text: 'Right Tooltip',
-      dataTooltip: 'Your right tooltip text',
-      position: 'right',
+      text: 'Right Tooltip';
+      dataTooltip: 'Your right tooltip text';
+      position: 'right';
     },
     {
-      text: 'Bottom Tooltip',
-      dataTooltip: 'Your bottom tooltip tex',
-      position: 'bottom',
+      text: 'Bottom Tooltip';
+      dataTooltip: 'Your bottom tooltip tex';
+      position: 'bottom';
     },
     {
-      text: 'Left Tooltip',
-      dataTooltip: 'Your left tooltip text',
-      position: 'left',
+      text: 'Left Tooltip';
+      dataTooltip: 'Your left tooltip text';
+      position: 'left';
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     vue: `<ChiTooltip message="Your top tooltip text" position="top">
@@ -84,7 +84,7 @@ export default class Positioning extends Vue {
 
 <script>chi.tooltip(document.getElementById('data-tooltip'));<\/script>
 `,
-  }
+  };
   mounted() {
     this.tooltipButtons.forEach((tooltip: { position: string }) => {
       chi.tooltip(this.$refs[`data-tooltip-${tooltip.position}`]);

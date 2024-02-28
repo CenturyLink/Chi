@@ -69,5 +69,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DotControllers extends Vue { }
+export default class DotControllers extends Vue {}
 </script>

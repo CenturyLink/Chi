@@ -110,5 +110,5 @@ methods: {
     };
   },
 })
-export default class Backdrop extends Vue { }
+export default class Backdrop extends Vue {}
 </script>

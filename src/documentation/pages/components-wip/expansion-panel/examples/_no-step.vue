@@ -292,5 +292,5 @@ data: {
     };
   },
 })
-export default class NoStep extends Vue { }
+export default class NoStep extends Vue {}
 </script>

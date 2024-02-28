@@ -110,5 +110,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ScrollableRequirements extends Vue { }
+export default class ScrollableRequirements extends Vue {}
 </script>

@@ -31,5 +31,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Transparent extends Vue { }
+export default class Transparent extends Vue {}
 </script>

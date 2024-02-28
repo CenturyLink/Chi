@@ -41,7 +41,7 @@ export default class AutoHide extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<!-- Auto hide -->
 <chi-popover id="example-6-popover-auto-hide-popover" position="top" title="Popover title" variant="text" arrow reference="#example-6-auto-hide-button">
@@ -67,7 +67,7 @@ export default class AutoHide extends Vue {
     preventAutoHide: true
   });
 <\/script>`,
-  }
+  };
   togglePopover(popoverRef: string) {
     (this.$refs[popoverRef] as any).toggle();
   }

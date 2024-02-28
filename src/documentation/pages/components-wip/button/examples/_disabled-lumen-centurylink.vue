@@ -41,5 +41,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DisabledLumenCenturyLink extends Vue { }
+export default class DisabledLumenCenturyLink extends Vue {}
 </script>

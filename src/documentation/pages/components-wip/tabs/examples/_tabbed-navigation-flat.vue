@@ -26,7 +26,7 @@ export default class TabbedNavigationFlat extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   tabLinks = [
     {
       label: 'Active Tab',
@@ -154,7 +154,7 @@ export default class TabbedNavigationFlat extends Vue {
           label: 'Element 3',
           id: 'tab-tnf-h-3',
         },
-      ]
+      ],
     },
   ];
 

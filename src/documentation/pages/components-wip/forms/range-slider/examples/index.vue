@@ -46,5 +46,5 @@ import RadioSlider from './_radio_slider.vue';
     RadioConsistent,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

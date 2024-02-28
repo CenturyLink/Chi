@@ -94,5 +94,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BackgroundIconsLumenCenturyLink extends Vue { }
+export default class BackgroundIconsLumenCenturyLink extends Vue {}
 </script>

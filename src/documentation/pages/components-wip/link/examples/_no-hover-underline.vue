@@ -36,5 +36,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class NoHoverUnderline extends Vue { }
+export default class NoHoverUnderline extends Vue {}
 </script>

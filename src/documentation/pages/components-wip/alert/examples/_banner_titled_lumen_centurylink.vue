@@ -120,5 +120,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BannerTitledLumenCenturyLink extends Vue { }
+export default class BannerTitledLumenCenturyLink extends Vue {}
 </script>

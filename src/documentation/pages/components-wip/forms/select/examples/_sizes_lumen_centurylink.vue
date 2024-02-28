@@ -33,7 +33,7 @@ export default class SizesLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- xs -->
@@ -75,7 +75,7 @@ export default class SizesLumenCenturyLink extends Vue {
     <option>-xl - Select -</option>
   </select>
 </div>`,
-  }
+  };
   sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 }
 </script>

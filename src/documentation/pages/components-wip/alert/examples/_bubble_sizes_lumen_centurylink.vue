@@ -123,5 +123,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleSizesLumenCenturyLink extends Vue { }
+export default class BubbleSizesLumenCenturyLink extends Vue {}
 </script>

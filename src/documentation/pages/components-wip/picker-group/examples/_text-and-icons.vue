@@ -23,7 +23,7 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class TextAndIcons extends Vue {
-  pickers = [1, 2, 3]
+  pickers = [1, 2, 3];
   exampleTabs = [
     {
       disabled: true,
@@ -35,11 +35,11 @@ export default class TextAndIcons extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }
@@ -52,15 +52,17 @@ export default class TextAndIcons extends Vue {
 
       pickerInputs += `
       <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_${option}"${checked}>
-      <label for="example__text_and_icons_${option}">${option === 1 || option === 3
+      <label for="example__text_and_icons_${option}">${
+        option === 1 || option === 3
           ? `
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>`
           : ''
-        }
-        <span>Radio${option}</span>${option === 2 || option === 3
-          ? `
+      }
+        <span>Radio${option}</span>${
+          option === 2 || option === 3
+            ? `
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>`
-          : ''
+            : ''
         }
       </label>`;
     });

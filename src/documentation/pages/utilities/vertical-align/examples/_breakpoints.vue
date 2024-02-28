@@ -39,7 +39,7 @@ export default class Breakpoints extends Vue {
       name: 'text-bottom',
       value: 'text-bottom',
     },
-  ]
+  ];
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

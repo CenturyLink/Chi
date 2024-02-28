@@ -56,7 +56,7 @@ export default class CardPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion -card" id="example-portal-card">
@@ -103,7 +103,7 @@ export default class CardPortal extends Vue {
 
   chi.accordion(accordionCard);
 <\/script>`,
-  }
+  };
   mounted() {
     const accordionCard = document.getElementById('example-portal-card');
 

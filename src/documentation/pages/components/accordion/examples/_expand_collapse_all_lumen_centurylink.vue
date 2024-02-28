@@ -81,7 +81,7 @@ export default class ExpandCollapseAllLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<button class="chi-button" id="expand-all">Expand all</button>
@@ -170,8 +170,8 @@ export default class ExpandCollapseAllLumenCenturyLink extends Vue {
   collapseAll.addEventListener("click", () => {
     expandCollapseAccordion.collapseAll();
   });
-<\/script>`
-  }
+<\/script>`,
+  };
   accordion: any;
 
   expandAll() {

@@ -189,18 +189,18 @@ export default class Properties extends Vue {
 <script>
   var popover = chi.popover(document.getElementById('popover-2'));
   popover.setContent('${this.example_popover_content}');
-<\/script>`
+<\/script>`;
   codeMemory1 = `var elem = document.getElementById('popover');
 var popover = chi.popover(elem);
 // do stuff
-popover.dispose();`
+popover.dispose();`;
   codeMemory2 = `var elem = document.getElementById('popover-1');
 var popover = chi.popover(elem);
 var elem2 = document.getElementById('popover-1');
 var popover2 = chi.popover(elem2);
 popover === popover2; // returns true
 
-popover.dispose(); // Only have to do it once.`
+popover.dispose(); // Only have to do it once.`;
 
   mounted() {
     const popover = chi.popover(this.$refs.button);

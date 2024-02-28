@@ -33,7 +33,7 @@ export default class IconButtonPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
   <chi-icon icon="edit"></chi-icon>
@@ -49,7 +49,7 @@ export default class IconButtonPortal extends Vue {
 
 <!-- Tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-  }
+  };
   tooltip: any;
 
   mounted() {

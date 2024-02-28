@@ -33,7 +33,7 @@ export default class BaseConsistent extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -46,7 +46,7 @@ export default class BaseConsistent extends Vue {
 </div>
 
 <script>chi.rangeSlider(document.getElementById('range04'));<\/script>`,
-  }
+  };
   rangeSlider: any;
 
   mounted() {

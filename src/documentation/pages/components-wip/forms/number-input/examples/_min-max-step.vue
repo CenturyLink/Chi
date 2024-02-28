@@ -59,5 +59,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class MinMaxStep extends Vue { }
+export default class MinMaxStep extends Vue {}
 </script>

@@ -32,7 +32,7 @@ export default class OpenOnHover extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="button-open-on-hover">Hover me!</chi-button>
 <chi-popover id="popover-open-on-hover" variant="text" arrow="arrow" reference="#button-open-on-hover">Popover content</chi-popover>
@@ -87,7 +87,7 @@ export default class OpenOnHover extends Vue {
     popover.toggle();
   });
 <\/script>`,
-  }
+  };
   show() {
     (this.$refs.popover as any).show();
   }

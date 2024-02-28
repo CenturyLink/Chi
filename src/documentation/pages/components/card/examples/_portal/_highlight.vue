@@ -47,5 +47,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class HighlightPortal extends Vue { }
+export default class HighlightPortal extends Vue {}
 </script>

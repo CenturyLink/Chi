@@ -22,7 +22,7 @@ export default class SpecificBreakpoints extends Vue {
       key: 'cell2',
       width: '',
     },
-  ]
+  ];
   types = ['auto', '0', '*'];
   breakpoints = ['sm', 'md', 'lg', 'xl'];
 

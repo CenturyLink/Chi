@@ -27,5 +27,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineFlexboxContainer extends Vue { }
+export default class InlineFlexboxContainer extends Vue {}
 </script>

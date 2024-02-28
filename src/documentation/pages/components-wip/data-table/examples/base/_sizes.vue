@@ -89,7 +89,7 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
   methods: {
-    getConfig(size: typeof this.sizes[number]) {
+    getConfig(size: (typeof this.sizes)[number]) {
       return {
         ...this.config,
         style: {
@@ -98,7 +98,7 @@ import { Vue } from 'vue-facing-decorator';
         },
       };
     },
-    getVueCode(size: typeof this.sizes[number]) {
+    getVueCode(size: (typeof this.sizes)[number]) {
       return `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
 
@@ -181,7 +181,7 @@ data: {
   }
 }`;
     },
-    getHtmlCode(size: typeof this.sizes[number]) {
+    getHtmlCode(size: (typeof this.sizes)[number]) {
       return `<div class="chi-data-table -${size}">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
@@ -286,5 +286,5 @@ data: {
     },
   },
 })
-export default class DataTableSizes extends Vue { }
+export default class DataTableSizes extends Vue {}
 </script>

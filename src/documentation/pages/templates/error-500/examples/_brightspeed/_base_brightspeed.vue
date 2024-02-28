@@ -61,5 +61,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BaseBrightspeed extends Vue { }
+export default class BaseBrightspeed extends Vue {}
 </script>

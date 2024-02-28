@@ -17,44 +17,44 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class PopoverExample extends Vue {
-    @Prop() name!: string;
-    @Prop() id!: number;
+  @Prop() name!: string;
+  @Prop() id!: number;
 
-    popoverAnimationTimeout: null;
-    popover: null;
+  popoverAnimationTimeout: null;
+  popover: null;
 
-    mounted() {
-        let hoverAnimationTimeout: ReturnType<typeof setTimeout> | undefined;
+  mounted() {
+    let hoverAnimationTimeout: ReturnType<typeof setTimeout> | undefined;
 
-        const buttonOpenOnHover = document.getElementById(`name-popover-button-`+this.$props.id);
-        this.popover = chi.popover(buttonOpenOnHover);
+    const buttonOpenOnHover = document.getElementById(`name-popover-button-` + this.$props.id);
+    this.popover = chi.popover(buttonOpenOnHover);
 
-        if (buttonOpenOnHover) {
-            buttonOpenOnHover.addEventListener('mouseenter',  () => {
-                hoverAnimationTimeout = setTimeout(() => {
-                this.show();
-                }, 300);
-            });
+    if (buttonOpenOnHover) {
+      buttonOpenOnHover.addEventListener('mouseenter', () => {
+        hoverAnimationTimeout = setTimeout(() => {
+          this.show();
+        }, 300);
+      });
 
-            buttonOpenOnHover.addEventListener('mouseleave',  () => {
-                if (hoverAnimationTimeout) {
-                    clearTimeout(hoverAnimationTimeout);
-                }
-                this.hide()
-            });
+      buttonOpenOnHover.addEventListener('mouseleave', () => {
+        if (hoverAnimationTimeout) {
+          clearTimeout(hoverAnimationTimeout);
         }
+        this.hide();
+      });
     }
+  }
 
-    beforeDestroy() {
-      this.popover?.dispose();
-    }
+  beforeDestroy() {
+    this.popover?.dispose();
+  }
 
-    show() {
-        this.popover?.show();
-    }
+  show() {
+    this.popover?.show();
+  }
 
-    hide() {
-        this.popover?.hide();
-    }
+  hide() {
+    this.popover?.hide();
+  }
 }
 </script>

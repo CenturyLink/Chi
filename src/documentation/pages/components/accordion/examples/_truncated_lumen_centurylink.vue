@@ -37,7 +37,7 @@ export default class TruncatedLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion -truncated" id="example-truncated">
@@ -57,7 +57,7 @@ export default class TruncatedLumenCenturyLink extends Vue {
 
   chi.accordion(accordionTruncated);
 <\/script>`,
-  }
+  };
   mounted() {
     chi.accordion(document.getElementById('example-truncated'));
   }

@@ -98,11 +98,11 @@ export default class ExternalBrightspeed extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: ``,
-  }
+  };
   dropdown: any;
 
   created() {
@@ -116,8 +116,9 @@ export default class ExternalBrightspeed extends Vue {
     this.footerLinks.forEach((link: ILink) => {
       footerItemLinks += `
             <li>
-              <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''
-        }>${link.title}</a>
+              <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
+                link.class ? ' class="' + link.class + '"' : ''
+              }>${link.title}</a>
             </li>`;
     });
 
@@ -130,8 +131,9 @@ export default class ExternalBrightspeed extends Vue {
 
     this.languageItems.forEach((languageItem: ILanguage, index: number) => {
       languageItemLinks += `
-            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${languageItem.href}">${languageItem.name
-        }</a>`;
+            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${languageItem.href}">${
+              languageItem.name
+            }</a>`;
     });
 
     this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
@@ -217,8 +219,9 @@ export default class ExternalBrightspeed extends Vue {
     this.externalContents[keyName].forEach((link: ILink) => {
       linkCodeSnippet += `
               <li>
-                <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''
-        }>${link.title}</a>
+                <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
+                  link.class ? ' class="' + link.class + '"' : ''
+                }>${link.title}</a>
               </li>`;
     });
     return linkCodeSnippet;

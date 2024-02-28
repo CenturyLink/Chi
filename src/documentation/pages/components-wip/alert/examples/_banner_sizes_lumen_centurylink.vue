@@ -123,5 +123,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BannerSizesLumenCenturyLink extends Vue { }
+export default class BannerSizesLumenCenturyLink extends Vue {}
 </script>

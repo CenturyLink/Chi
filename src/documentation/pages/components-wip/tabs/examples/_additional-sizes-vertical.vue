@@ -97,7 +97,7 @@ export default class AdditionalSizesVertical extends Vue {
           href: '',
           text: 'Subtab Link',
         },
-      ]
+      ],
     },
     {
       href: '',

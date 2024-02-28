@@ -2308,5 +2308,5 @@ data: {
     };
   },
 })
-export default class DataTableAccordionPortal extends Vue { }
+export default class DataTableAccordionPortal extends Vue {}
 </script>

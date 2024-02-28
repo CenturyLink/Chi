@@ -276,5 +276,5 @@ data: {
     };
   },
 })
-export default class DataTableState extends Vue { }
+export default class DataTableState extends Vue {}
 </script>

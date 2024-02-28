@@ -112,5 +112,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DoubleTruncationLumenCenturyLink extends Vue { }
+export default class DoubleTruncationLumenCenturyLink extends Vue {}
 </script>

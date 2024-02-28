@@ -46,5 +46,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineLabelPercent extends Vue { }
+export default class InlineLabelPercent extends Vue {}
 </script>

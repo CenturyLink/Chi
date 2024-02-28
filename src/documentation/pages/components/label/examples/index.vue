@@ -22,5 +22,5 @@ import Associate from './_associate.vue';
     Associate,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

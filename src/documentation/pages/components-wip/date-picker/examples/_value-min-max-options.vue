@@ -56,5 +56,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ValueMinMaxOptions extends Vue { }
+export default class ValueMinMaxOptions extends Vue {}
 </script>

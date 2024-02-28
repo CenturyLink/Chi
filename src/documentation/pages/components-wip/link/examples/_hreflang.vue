@@ -36,5 +36,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Hreflang extends Vue { }
+export default class Hreflang extends Vue {}
 </script>

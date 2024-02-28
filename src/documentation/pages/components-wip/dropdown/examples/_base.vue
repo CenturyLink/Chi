@@ -36,7 +36,7 @@ export default class Base extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-dropdown">
@@ -49,7 +49,7 @@ export default class Base extends Vue {
 </div>
 
 <\script>chi.dropdown(document.getElementById('dropdown-1'));<\/script>`,
-  }
+  };
   mounted() {
     chi.dropdown(document.getElementById('dropdown-1'));
   }

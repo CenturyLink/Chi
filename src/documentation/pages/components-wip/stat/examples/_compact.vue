@@ -84,19 +84,19 @@ export default class Compact extends Vue {
       value2: '2',
       title3: 'Upcoming',
     },
-  ]
+  ];
   exampleTabs: [
     {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component',
+      disabled: true;
+      id: 'webcomponent';
+      label: 'Web Component';
     },
     {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
+      active: true;
+      id: 'htmlblueprint';
+      label: 'HTML Blueprint';
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-stat -compact">
@@ -261,7 +261,7 @@ export default class Compact extends Vue {
   chi.popover(document.getElementById('example__help-button5'));
   chi.popover(document.getElementById('example__help-button6'));
 <\/script>`,
-  }
+  };
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

@@ -37,7 +37,7 @@ export default class MarketingFeatureCards extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   cards = [
     {
       icon: 'people-it-professional',

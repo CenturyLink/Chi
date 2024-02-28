@@ -51,7 +51,7 @@ export default class MethodsPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<button class="chi-button" id="toggle-accordion-portal-1">Toggle item 1</button>
@@ -101,7 +101,7 @@ export default class MethodsPortal extends Vue {
     individualAccordions.toggle(document.getElementById("invividual-portal-accordion-item-2"));
   });
 <\/script>`,
-  }
+  };
   individualAccordions: any;
 
   toggleOne() {

@@ -52,7 +52,7 @@ export default class Interaction extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="example-5-button-show">Show</chi-button>
 <chi-button id="example-5-button-hide">Hide</chi-button>
@@ -106,7 +106,7 @@ export default class Interaction extends Vue {
     popover.toggle()
   });
 <\/script>`,
-  }
+  };
   show() {
     (this.$refs.popover as any).show();
   }

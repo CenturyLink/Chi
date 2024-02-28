@@ -145,5 +145,5 @@ tooltip.dispose(); // Only have to do it once.`,
     };
   },
 })
-export default class Properties extends Vue { }
+export default class Properties extends Vue {}
 </script>

@@ -56,7 +56,7 @@ export default class BasePortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion" id="example-portal-base">
@@ -103,7 +103,7 @@ export default class BasePortal extends Vue {
 
   chi.accordion(accordionBase);
   <//script>`,
-  }
+  };
   mounted() {
     const accordionPortalBase = document.getElementById('example-portal-base');
 

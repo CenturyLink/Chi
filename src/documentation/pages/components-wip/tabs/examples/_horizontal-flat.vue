@@ -124,8 +124,9 @@ ${this.generateTabsContentHtml(false)}
     return this.tabsContent
       .map(({ text, id }, index) => {
         const isFirstItem = index === 0;
-        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${isWebComponent ? `${id}_content` : id
-          }" role="tabpanel">${text}</div>`;
+        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${
+          isWebComponent ? `${id}_content` : id
+        }" role="tabpanel">${text}</div>`;
       })
       .join('\n');
   }

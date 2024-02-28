@@ -37,11 +37,11 @@ export default class BaseCalendar extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-date></chi-date>`,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

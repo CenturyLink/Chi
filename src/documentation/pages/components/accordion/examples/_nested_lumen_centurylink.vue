@@ -80,7 +80,7 @@ export default class NestedLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-accordion" id="nested-accordions">
@@ -163,7 +163,7 @@ export default class NestedLumenCenturyLink extends Vue {
 
   chi.accordion(accordionNested);
 <\/script>`,
-  }
+  };
   mounted() {
     const accordionNested = document.getElementById('example-nested');
 

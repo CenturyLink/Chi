@@ -54,5 +54,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BaseExpanded extends Vue { }
+export default class BaseExpanded extends Vue {}
 </script>

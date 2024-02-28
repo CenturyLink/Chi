@@ -38,7 +38,7 @@ export default class CategoryCards extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   cards = [
     {
       icon: 'products-services',

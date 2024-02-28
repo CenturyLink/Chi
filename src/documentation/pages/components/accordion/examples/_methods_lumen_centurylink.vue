@@ -51,7 +51,7 @@ export default class MethodsLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
@@ -101,7 +101,7 @@ export default class MethodsLumenCenturyLink extends Vue {
     individualAccordions.toggle(document.getElementById("invividual-accordion-item-2"));
   });
 <\/script>`,
-  }
+  };
 
   individualAccordions: any;
 

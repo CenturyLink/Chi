@@ -17,14 +17,14 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 
 definePageMeta({
-  layout: 'wide'
+  layout: 'wide',
 });
 
 @NuxtComponent({
   components: {
     Examples,
     Properties,
-    Accessibility
+    Accessibility,
   },
 })
 export default class AppLayout extends Vue {

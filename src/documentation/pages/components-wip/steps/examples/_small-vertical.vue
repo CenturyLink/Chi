@@ -107,5 +107,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SmallVertical extends Vue { }
+export default class SmallVertical extends Vue {}
 </script>

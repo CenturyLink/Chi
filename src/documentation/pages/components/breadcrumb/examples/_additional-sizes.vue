@@ -28,7 +28,7 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class AdditionalSizes extends Vue {
-  sizes =['xs', 'sm', 'md', 'lg', 'xl'];
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
   exampleTabs = [
     {
       disabled: true,

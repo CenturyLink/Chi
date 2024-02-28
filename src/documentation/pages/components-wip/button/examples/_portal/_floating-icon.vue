@@ -31,7 +31,7 @@ export default class FloatingIconPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button type="float" color="primary" size="lg" alternative-text="Chat with Support" data-tooltip="Chat with Support">
   <chi-icon icon="chat"></chi-icon>
@@ -47,7 +47,7 @@ export default class FloatingIconPortal extends Vue {
 
 <!-- Tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-  }
+  };
   tooltip: any;
 
   mounted() {

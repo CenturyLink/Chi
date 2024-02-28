@@ -28,11 +28,11 @@ export default class CalendarMinMax extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-date min="06/06/2024" max="06/22/2024"></chi-date>`,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

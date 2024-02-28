@@ -46,7 +46,7 @@ export default class Help extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<fieldset>
@@ -75,7 +75,7 @@ export default class Help extends Vue {
 <script>
   chi.popover(document.getElementById('example__help-button'));
 <\/script>`,
-  }
+  };
   mounted() {
     chi.popover(this.$refs.button);
   }

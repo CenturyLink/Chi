@@ -21,7 +21,11 @@ import { Vue } from 'vue-facing-decorator';
 @NuxtComponent({
   data: () => {
     return {
-      textInputs: [{ text: '01', size: '' }, { text: '02', size: 'sm' }, { text: '03', size: 'lg' }],
+      textInputs: [
+        { text: '01', size: '' },
+        { text: '02', size: 'sm' },
+        { text: '03', size: 'lg' },
+      ],
       exampleTabs: [
         {
           active: true,

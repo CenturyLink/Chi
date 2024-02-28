@@ -41,7 +41,7 @@ export default class LightLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     vue: `<ChiTooltip message="Your tooltip text on a button" color="light">
@@ -50,7 +50,7 @@ export default class LightLumenCenturyLink extends Vue {
     htmlblueprint: `<button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Hover me to see tooltip</button>
 
 <script>chi.tooltip(document.getElementById('tooltip-2'));<\/script>`,
-  }
+  };
   mounted() {
     chi.tooltip(this.$refs.light);
   }

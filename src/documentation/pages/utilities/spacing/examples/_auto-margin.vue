@@ -30,5 +30,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class AutoMargin extends Vue { }
+export default class AutoMargin extends Vue {}
 </script>

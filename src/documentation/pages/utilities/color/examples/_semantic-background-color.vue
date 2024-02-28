@@ -18,22 +18,22 @@ import { COLORS } from '~/constants/constants';
 @NuxtComponent({})
 export default class SemanticBackgroundColor extends Vue {
   colors = [
-        COLORS.SUCCESS,
-        COLORS.SUCCESS_LIGHT,
-        COLORS.SUCCESS_LIGHTER,
-        COLORS.INFO,
-        COLORS.INFO_LIGHT,
-        COLORS.INFO_LIGHTER,
-        COLORS.WARNING,
-        COLORS.WARNING_LIGHT,
-        COLORS.WARNING_LIGHTER,
-        COLORS.DANGER,
-        COLORS.DANGER_LIGHT,
-        COLORS.DANGER_LIGHTER,
-        COLORS.MUTED,
-        COLORS.MUTED_LIGHT,
-        COLORS.MUTED_LIGHTER,
-      ]
+    COLORS.SUCCESS,
+    COLORS.SUCCESS_LIGHT,
+    COLORS.SUCCESS_LIGHTER,
+    COLORS.INFO,
+    COLORS.INFO_LIGHT,
+    COLORS.INFO_LIGHTER,
+    COLORS.WARNING,
+    COLORS.WARNING_LIGHT,
+    COLORS.WARNING_LIGHTER,
+    COLORS.DANGER,
+    COLORS.DANGER_LIGHT,
+    COLORS.DANGER_LIGHTER,
+    COLORS.MUTED,
+    COLORS.MUTED_LIGHT,
+    COLORS.MUTED_LIGHTER,
+  ];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

@@ -1,8 +1,6 @@
 <template>
   <div class="chi-dropdown -w--100">
-    <button
-      ref="switcher"
-      class="-theme-switch chi-button -fluid chi-dropdown__trigger">
+    <button ref="switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm">Theme</span>
         <div class="-d--flex -w--100">
@@ -52,7 +50,6 @@ import { Vue } from 'vue-facing-decorator';
 import { TEMP_DEVELOPMENT_FALLBACK_URL } from '@/constants/constants';
 import { capitalize } from '@/utilities/utilities';
 
-
 declare const chi: any;
 interface AssetToReplace {
   type: 'css' | 'docsCss';
@@ -82,7 +79,7 @@ export default class ThemeSwitcher extends Vue {
     const brandLogo = document.getElementById('header-logo') as HTMLElement;
     const assetsToReplace: AssetToReplace[] = [
       { type: 'css', id: 'chi-css' },
-      { type: 'docsCss', id: 'chi-docs-css' }
+      { type: 'docsCss', id: 'chi-docs-css' },
     ];
 
     assetsToReplace.forEach((asset: AssetToReplace) => {
@@ -94,10 +91,7 @@ export default class ThemeSwitcher extends Vue {
         replacementAsset.setAttribute('rel', 'stylesheet');
         replacementAsset.setAttribute('href', replacementHref);
         if (currentAsset.parentNode) {
-          currentAsset.parentNode.insertBefore(
-            replacementAsset,
-            currentAsset.nextSibling
-          );
+          currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
         }
         replacementAsset.addEventListener('load', () => {
           replacementAsset.setAttribute('id', asset.id);
@@ -106,10 +100,7 @@ export default class ThemeSwitcher extends Vue {
       }
     });
 
-    brandLogo.setAttribute(
-      'logo',
-      theme === 'centurylink' ? 'centurylink' : 'lumen'
-    );
+    brandLogo.setAttribute('logo', theme === 'centurylink' ? 'centurylink' : 'lumen');
 
     this.selectedTheme = theme;
     this.setUrlTheme(theme);
@@ -129,7 +120,6 @@ export default class ThemeSwitcher extends Vue {
     return useRoute().query?.theme?.toString() || '';
   }
 
-
   setThemeFromUrl() {
     const theme = this.getUrlTheme()?.toLowerCase();
     const isValidTheme = Object.keys(THEMES).includes(theme);
@@ -146,9 +136,9 @@ export default class ThemeSwitcher extends Vue {
       await navigateTo({
         path: useRoute().path,
         query: {
-          theme: queryTheme
-        }
-      })
+          theme: queryTheme,
+        },
+      });
     }
   }
 

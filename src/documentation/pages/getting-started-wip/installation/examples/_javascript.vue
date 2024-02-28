@@ -31,7 +31,10 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class JavaScript extends Vue {
-  tabs = [{ title: 'JavaScript file', link: 'file' }, { title: 'AMD module', link: 'amd' }];
+  tabs = [
+    { title: 'JavaScript file', link: 'file' },
+    { title: 'AMD module', link: 'amd' },
+  ];
   stylesheet = {
     htmlblueprint: {
       jsFile: (version: string) =>

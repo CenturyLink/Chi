@@ -14,7 +14,7 @@ import { defaultColumns } from '~/fixtures/fixtures';
 
 @NuxtComponent({})
 export default class BreakpointsSpecific extends Vue {
-  columns = defaultColumns
+  columns = defaultColumns;
   sizes = [
     {
       name: 'sm',
@@ -32,7 +32,7 @@ export default class BreakpointsSpecific extends Vue {
       name: 'xl',
       value: 'xl',
     },
-  ]
+  ];
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':

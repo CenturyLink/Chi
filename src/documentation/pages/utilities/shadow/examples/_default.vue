@@ -19,7 +19,7 @@ export default class Default extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   indexes = [0, 1, 2, 3, 4, 5];
 
   get codeSnippets() {

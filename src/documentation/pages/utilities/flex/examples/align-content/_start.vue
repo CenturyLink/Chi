@@ -29,5 +29,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Start extends Vue { }
+export default class Start extends Vue {}
 </script>

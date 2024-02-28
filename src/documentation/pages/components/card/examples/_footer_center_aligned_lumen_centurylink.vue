@@ -49,5 +49,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class FooterCenterAlignedLumenCenturylink extends Vue { }
+export default class FooterCenterAlignedLumenCenturylink extends Vue {}
 </script>

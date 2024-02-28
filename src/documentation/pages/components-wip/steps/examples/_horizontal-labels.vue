@@ -85,5 +85,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class HorizontalLabels extends Vue { }
+export default class HorizontalLabels extends Vue {}
 </script>

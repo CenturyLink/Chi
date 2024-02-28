@@ -48,5 +48,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Disabled extends Vue { }
+export default class Disabled extends Vue {}
 </script>

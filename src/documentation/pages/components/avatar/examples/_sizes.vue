@@ -29,7 +29,6 @@ import { type IHeadTabs } from '~/models/models';
 
 @NuxtComponent({})
 export default class Sizes extends Vue {
-
   exampleTabs = [
     {
       disabled: true,
@@ -41,7 +40,7 @@ export default class Sizes extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   headTabs = [
     {
       active: true,
@@ -56,8 +55,8 @@ export default class Sizes extends Vue {
       id: 'image',
       label: 'Image',
     },
-  ]
-  sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
+  ];
+  sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
   columnWidths = {
     xs: ['4', '3', '1'],
     sm: ['4', '3', '1'],
@@ -67,7 +66,7 @@ export default class Sizes extends Vue {
     lg: ['4', '3', '2'],
     xl: ['6', '3', '2'],
     xxl: ['6', '4', '3'],
-  }
+  };
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: {
@@ -128,7 +127,7 @@ export default class Sizes extends Vue {
   <img src="path/to/image.jpg">
 </div>`,
     },
-  }
+  };
   avatarType = 'initial';
 
   headTabChanged(headTab: IHeadTabs) {

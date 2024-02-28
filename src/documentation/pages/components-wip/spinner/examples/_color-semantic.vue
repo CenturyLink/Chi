@@ -65,5 +65,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ColorSemantic extends Vue { }
+export default class ColorSemantic extends Vue {}
 </script>

@@ -26,7 +26,7 @@ export default class SemanticIconColor extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   icons = ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted'];
 
   get codeSnippets() {

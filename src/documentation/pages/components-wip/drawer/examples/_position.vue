@@ -111,7 +111,7 @@ methods: {
         },
       },
     };
-  })
+  });
   exampleTabs = [
     {
       active: true,
@@ -126,7 +126,7 @@ methods: {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   drawerPosition = 'left';
   exampleId = 'position';
   changeDrawerPosition(e: IHeadTabs) {

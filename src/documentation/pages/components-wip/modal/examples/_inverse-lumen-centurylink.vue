@@ -79,5 +79,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InverseLumenCenturyLink extends Vue { }
+export default class InverseLumenCenturyLink extends Vue {}
 </script>

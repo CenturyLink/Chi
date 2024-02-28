@@ -79,5 +79,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleClosablePortal extends Vue { }
+export default class BubbleClosablePortal extends Vue {}
 </script>

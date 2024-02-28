@@ -32,7 +32,7 @@ export default class TableCellElements extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   columns = [1, 2, 3, 4, 5];
   aligns = ['baseline', 'top', 'middle', 'bottom'];
 

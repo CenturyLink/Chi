@@ -28,7 +28,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class Alert extends Vue {
-  selectedTheme = useSelectedTheme()
+  selectedTheme = useSelectedTheme();
   footers = generateAllExampleFooters('alert-language-dropdown-button');
 
   exampleTabs = [
@@ -70,10 +70,11 @@ export default class Alert extends Vue {
   ${footerTemplate}
 </chi-main>
 
-${this.selectedTheme === 'centurylink'
-        ? ''
-        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }`;
+${
+  this.selectedTheme === 'centurylink'
+    ? ''
+    : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+}`;
     this.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__alert">
     <div class="chi-alert -info -close" role="alert">
@@ -103,10 +104,11 @@ ${this.selectedTheme === 'centurylink'
   ${footerTemplate}
 </div>
 
-${this.selectedTheme === 'centurylink'
-        ? ''
-        : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }`;
+${
+  this.selectedTheme === 'centurylink'
+    ? ''
+    : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+}`;
   }
 }
 </script>

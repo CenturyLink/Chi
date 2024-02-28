@@ -317,5 +317,5 @@ data: {
     };
   },
 })
-export default class StateIcon extends Vue { }
+export default class StateIcon extends Vue {}
 </script>

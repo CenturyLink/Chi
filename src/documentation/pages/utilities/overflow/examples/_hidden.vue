@@ -34,5 +34,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Hidden extends Vue { }
+export default class Hidden extends Vue {}
 </script>

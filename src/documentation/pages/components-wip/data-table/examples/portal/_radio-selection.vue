@@ -298,5 +298,5 @@ data: {
     };
   },
 })
-export default class DataTableRadioSelectionPortal extends Vue { }
+export default class DataTableRadioSelectionPortal extends Vue {}
 </script>

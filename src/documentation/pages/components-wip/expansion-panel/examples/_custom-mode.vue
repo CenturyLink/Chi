@@ -49,13 +49,13 @@ export default class CustomMode extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   panels = [
     { title: 'Panel 1', isDone: true },
     { title: 'Panel 2', isDone: false },
     { title: 'Panel 3', isDone: false },
     { title: 'Panel 4', isDone: false },
-  ]
+  ];
   codeSnippets = {
     htmlblueprint: `<div class="chi-epanel -done" data-chi-epanel-group="example__custom-mode">
   <div class="chi-epanel__header">
@@ -156,7 +156,7 @@ chi.expansionPanel(
   }
 );
 <\/script>`,
-  }
+  };
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]');
     chi.expansionPanel(panel, {

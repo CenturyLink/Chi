@@ -29,5 +29,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Center extends Vue { }
+export default class Center extends Vue {}
 </script>

@@ -137,5 +137,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CarouselPortal extends Vue { }
+export default class CarouselPortal extends Vue {}
 </script>

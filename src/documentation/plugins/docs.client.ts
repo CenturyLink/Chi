@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   const docsStore = useDocsJson();
 
-  $fetch(config.public.docsJsonUrl).then(data => {
+  $fetch(config.public.docsJsonUrl).then((data) => {
     docsStore.value = data;
-  })
+  });
 });

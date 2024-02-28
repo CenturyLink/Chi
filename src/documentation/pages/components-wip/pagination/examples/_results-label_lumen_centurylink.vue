@@ -116,5 +116,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ResultsLabelLumenCenturyLink extends Vue { }
+export default class ResultsLabelLumenCenturyLink extends Vue {}
 </script>

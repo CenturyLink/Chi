@@ -148,5 +148,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleSpinner extends Vue { }
+export default class BubbleSpinner extends Vue {}
 </script>

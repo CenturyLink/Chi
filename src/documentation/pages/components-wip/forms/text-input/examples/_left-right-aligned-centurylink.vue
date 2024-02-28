@@ -53,5 +53,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class LeftRightAlignedCenturyLink extends Vue { }
+export default class LeftRightAlignedCenturyLink extends Vue {}
 </script>

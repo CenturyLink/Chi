@@ -26,9 +26,9 @@ import { Vue } from 'vue-facing-decorator';
 @NuxtComponent({})
 export default class Setup extends Vue {
   codeSnippets = {
-        htmlblueprint: `$ scripts/docker.sh alias
+    htmlblueprint: `$ scripts/docker.sh alias
 $ source ~/.bash_profile`,
-        htmlblueprint1: '$ chi start',
-      }
+    htmlblueprint1: '$ chi start',
+  };
 }
 </script>

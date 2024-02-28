@@ -93,5 +93,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class BubbleSizesPortal extends Vue { }
+export default class BubbleSizesPortal extends Vue {}
 </script>

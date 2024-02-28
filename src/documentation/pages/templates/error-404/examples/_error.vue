@@ -32,7 +32,7 @@ export default class Error extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   ariaLabels: IThemes = {
     lumen: 'Lumen',
     centurylink: 'CenturyLink',

@@ -36,5 +36,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Breakpoints extends Vue { }
+export default class Breakpoints extends Vue {}
 </script>

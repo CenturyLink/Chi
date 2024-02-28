@@ -37,7 +37,7 @@ export default class DataTarget extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<button id="dropdown-2" class="chi-button chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
@@ -50,7 +50,7 @@ export default class DataTarget extends Vue {
 </div>
 
 <\script>chi.dropdown(document.getElementById('dropdown-2'));<\/script>`,
-  }
+  };
   mounted() {
     chi.dropdown(document.getElementById('dropdown-2'));
   }

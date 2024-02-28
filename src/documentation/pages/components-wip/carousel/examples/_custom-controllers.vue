@@ -82,7 +82,7 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CustomControllers extends Vue { }
+export default class CustomControllers extends Vue {}
 </script>
 
 <style>

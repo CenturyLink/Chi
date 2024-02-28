@@ -100,5 +100,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SizesLumenCenturyLink extends Vue { }
+export default class SizesLumenCenturyLink extends Vue {}
 </script>

@@ -40,5 +40,5 @@ import RadioButtonList from './_radio-button-list.vue';
     RadioButtonList,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

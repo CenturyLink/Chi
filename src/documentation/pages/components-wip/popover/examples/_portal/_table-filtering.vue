@@ -36,18 +36,18 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class TableFilteringPortal extends Vue {
-  accordionIndexes: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+  accordionIndexes: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
   exampleTabs: [
     {
-      active: true,
-      id: 'webcomponent',
-      label: 'Web Component'
+      active: true;
+      id: 'webcomponent';
+      label: 'Web Component';
     },
     {
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
+      id: 'htmlblueprint';
+      label: 'HTML Blueprint';
+    },
+  ];
   codeSnippets = {
     webcomponent: `<chi-popover position="top" title="Filter" variant="custom" modal drag closable active prevent-auto-hide>
   <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
@@ -249,7 +249,7 @@ export default class TableFilteringPortal extends Vue {
   });
 
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-<\/script>`
+<\/script>`,
   };
   accordion: any;
 

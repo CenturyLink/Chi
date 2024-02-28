@@ -33,7 +33,7 @@ export default class Indeterminate extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-form__item">
@@ -49,7 +49,7 @@ export default class Indeterminate extends Vue {
 
   checkbox.indeterminate = true;
 <\/script>`,
-  }
+  };
   mounted() {
     const checkbox = document.getElementById('checkbox-ind1');
 

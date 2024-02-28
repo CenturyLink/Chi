@@ -35,7 +35,7 @@ export default class Animated extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-dropdown">
@@ -48,7 +48,7 @@ export default class Animated extends Vue {
 </div>
 
 <\script>chi.dropdown(document.getElementById('dropdown-animate'));<\/script>`,
-  }
+  };
   mounted() {
     chi.dropdown(document.getElementById('dropdown-animate'));
   }

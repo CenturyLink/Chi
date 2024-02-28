@@ -220,8 +220,9 @@ data: {
 }`;
     },
     getHtmlCode(style: ConfigStyleType) {
-      return `<div class="chi-data-table${style.noBorder ? ' -no-border' : ''}${style.bordered ? ' -bordered' : ''}${style.hover ? ' -hover' : ''
-        }">
+      return `<div class="chi-data-table${style.noBorder ? ' -no-border' : ''}${style.bordered ? ' -bordered' : ''}${
+        style.hover ? ' -hover' : ''
+      }">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
       <div class="chi-data-table__cell">
@@ -325,5 +326,5 @@ data: {
     },
   },
 })
-export default class DataTableNoBorder extends Vue { }
+export default class DataTableNoBorder extends Vue {}
 </script>

@@ -42,5 +42,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class InlineLabelGrid extends Vue { }
+export default class InlineLabelGrid extends Vue {}
 </script>

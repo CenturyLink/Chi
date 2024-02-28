@@ -378,5 +378,5 @@ data: {
     };
   },
 })
-export default class DataTableAccordion extends Vue { }
+export default class DataTableAccordion extends Vue {}
 </script>

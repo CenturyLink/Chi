@@ -74,7 +74,7 @@ export default class BackgroundIconsPortal extends Vue {
       title2: 'Recently Closed',
       icon: 'platform-connected-security',
     },
-  ]
+  ];
   exampleTabs = [
     {
       active: true,
@@ -85,7 +85,7 @@ export default class BackgroundIconsPortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<div class="chi-stat">
   <div class="chi-stat__item -active">
@@ -359,7 +359,7 @@ export default class BackgroundIconsPortal extends Vue {
   chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
   chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
 <\/script>`,
-  }
+  };
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

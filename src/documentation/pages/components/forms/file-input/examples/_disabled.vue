@@ -68,5 +68,5 @@ Array.prototype.forEach.call(inputFiles, function(input) {
     };
   },
 })
-export default class Disabled extends Vue { }
+export default class Disabled extends Vue {}
 </script>

@@ -32,7 +32,7 @@ export default class DraggablePortal extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button id="example-modal-draggable-button">Click me!</chi-button>
 
@@ -48,7 +48,7 @@ export default class DraggablePortal extends Vue {
   });
 <\/script>`,
     htmlblueprint: ``,
-  }
+  };
   togglePopover() {
     (this.$refs.popover as any).toggle();
   }

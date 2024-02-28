@@ -140,5 +140,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ToastDefaultLumenCenturyLink extends Vue { }
+export default class ToastDefaultLumenCenturyLink extends Vue {}
 </script>

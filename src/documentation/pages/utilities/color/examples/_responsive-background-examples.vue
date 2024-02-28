@@ -21,7 +21,7 @@ export default class ResponsiveBackgroundExamples extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   examples = [
     {
       className: 'primary',

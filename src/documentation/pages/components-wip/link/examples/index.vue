@@ -44,5 +44,5 @@ import AdditionalSizes from './_additional-sizes.vue';
     AdditionalSizes,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

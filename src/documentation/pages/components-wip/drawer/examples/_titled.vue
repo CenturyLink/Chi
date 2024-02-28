@@ -113,5 +113,5 @@ methods: {
     };
   },
 })
-export default class Titled extends Vue { }
+export default class Titled extends Vue {}
 </script>

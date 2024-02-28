@@ -123,5 +123,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CompactFirstLastPageButtonsLumenCenturyLink extends Vue { }
+export default class CompactFirstLastPageButtonsLumenCenturyLink extends Vue {}
 </script>

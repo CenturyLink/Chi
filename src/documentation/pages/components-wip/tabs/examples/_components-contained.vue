@@ -48,7 +48,7 @@ export default class ComponentsContained extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
 
   get codeSnippets() {
     return {

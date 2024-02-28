@@ -60,7 +60,10 @@ import { Vue } from 'vue-facing-decorator';
           label: 'HTML Blueprint',
         },
       ],
-      items: [['2:50 PM', '2:38 PM', '11:37 PM'], ['5:00 PM', '5:00 PM', '11:20 AM']],
+      items: [
+        ['2:50 PM', '2:38 PM', '11:37 PM'],
+        ['5:00 PM', '5:00 PM', '11:20 AM'],
+      ],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<div class="chi-activity">

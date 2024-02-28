@@ -64,13 +64,11 @@ import { Vue } from 'vue-facing-decorator';
       items: [
         {
           title: 'Prerecorded Audio-only:',
-          text:
-            'An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content',
+          text: 'An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content',
         },
         {
           title: 'Prerecorded Video-only:',
-          text:
-            'Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content',
+          text: 'Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content',
         },
       ],
     };

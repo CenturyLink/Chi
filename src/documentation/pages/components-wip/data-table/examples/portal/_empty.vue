@@ -111,8 +111,9 @@ type ConfigType = {
 <!-- Config and Data -->
 data: {
   config: {
-    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''
-        }
+    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${
+      config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''
+    }
     style: {
       portal: true,
       noBorder: false,
@@ -126,12 +127,13 @@ data: {
       compact: false,
       firstLast: false,
       pageJumper: true,
-    },${config.emptyActionable
-          ? `\n    emptyActionable: {
+    },${
+      config.emptyActionable
+        ? `\n    emptyActionable: {
       isActionable: true,
     },`
-          : ''
-        }
+        : ''
+    }
     resultsPerPage: 3,
   },
   table: {
@@ -161,19 +163,21 @@ data: {
   </div>
   <div class="chi-data-table__body">
     <div class="chi-data-table__row-empty${config.emptyActionable ? ' -actionable' : ''}">
-      ${config.noResultsMessage ? `<div>${config.noResultsMessage}</div>` : ''}${config.noFiltersMessage ? `<i class="-mr--1 chi-icon icon-search"></i>\n      ${config.noFiltersMessage}` : ''
-        }${config.emptyActionable
+      ${config.noResultsMessage ? `<div>${config.noResultsMessage}</div>` : ''}${
+        config.noFiltersMessage ? `<i class="-mr--1 chi-icon icon-search"></i>\n      ${config.noFiltersMessage}` : ''
+      }${
+        config.emptyActionable
           ? `<i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
         <span>
           <a>Add a new or existing service</a>, then manage here.
         </span>`
           : ''
-        }
+      }
     </div>
   </div>
 </div>`;
     },
   },
 })
-export default class DataTableEmptyPortal extends Vue { }
+export default class DataTableEmptyPortal extends Vue {}
 </script>

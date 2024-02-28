@@ -40,7 +40,7 @@ export default class FloatingLabelsLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div id="floating-label-lg" class="chi-input__wrapper -floating-label">
@@ -64,7 +64,7 @@ export default class FloatingLabelsLumenCenturyLink extends Vue {
 </div>
 
 <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));<\/script>`,
-  }
+  };
   floatingLabels: any[] = [];
   sizes = ['lg', 'xl'];
 

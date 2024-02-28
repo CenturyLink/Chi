@@ -37,5 +37,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class DatePickerDateTime extends Vue { }
+export default class DatePickerDateTime extends Vue {}
 </script>

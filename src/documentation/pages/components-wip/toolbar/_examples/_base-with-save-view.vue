@@ -48,9 +48,9 @@ import { exampleToolbar, exampleSaveView } from '../../../../fixtures/fixtures';
 
 @NuxtComponent({})
 export default class BaseWithSaveView extends Vue {
-  toolbar = exampleToolbar
-  saveView = exampleSaveView
-  id = 'base_with_save_view'
+  toolbar = exampleToolbar;
+  saveView = exampleSaveView;
+  id = 'base_with_save_view';
   exampleTabs = [
     {
       disabled: true,
@@ -66,11 +66,11 @@ export default class BaseWithSaveView extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     vue: ``,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

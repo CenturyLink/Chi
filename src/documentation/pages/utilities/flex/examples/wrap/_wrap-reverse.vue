@@ -29,5 +29,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class WrapReverse extends Vue { }
+export default class WrapReverse extends Vue {}
 </script>

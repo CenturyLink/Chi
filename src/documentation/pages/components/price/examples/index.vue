@@ -18,5 +18,5 @@ import Sizes from './_sizes.vue';
     Sizes,
   },
 })
-export default class Examples extends Vue { }
+export default class Examples extends Vue {}
 </script>

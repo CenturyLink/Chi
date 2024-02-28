@@ -44,7 +44,7 @@ export default class Base extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<!-- Trigger -->
@@ -77,7 +77,7 @@ export default class Base extends Vue {
 
 <!-- JavaScript -->
 <script>chi.modal(document.getElementById('modal-trigger-1'));<\/script>`,
-  }
+  };
   modal: any;
 
   mounted() {

@@ -64,7 +64,7 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class CountryRegion extends Vue { }
+export default class CountryRegion extends Vue {}
 </script>
 
 <style scoped>

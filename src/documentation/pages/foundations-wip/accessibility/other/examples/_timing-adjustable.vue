@@ -67,18 +67,15 @@ import { Vue } from 'vue-facing-decorator';
         },
         {
           title: 'Adjust:',
-          text:
-            'The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or',
+          text: 'The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or',
         },
         {
           title: 'Extend:',
-          text:
-            'The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or',
+          text: 'The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or',
         },
         {
           title: 'Real-time Exception:',
-          text:
-            'The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or',
+          text: 'The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or',
         },
         {
           title: 'Essential Exception:',

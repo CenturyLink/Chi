@@ -70,5 +70,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ColorBrand extends Vue { }
+export default class ColorBrand extends Vue {}
 </script>

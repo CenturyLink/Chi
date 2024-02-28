@@ -404,11 +404,12 @@ data: {
       firstLast: false,
       pageJumper: true,
     },
-    selectable: ${selection === 'radio'
-          ? `'radio'`
-          : `${selection}
+    selectable: ${
+      selection === 'radio'
+        ? `'radio'`
+        : `${selection}
     showSelectAllDropdown: true`
-        },
+    },
     resultsPerPage: 3,
   },
   table: {
@@ -472,5 +473,5 @@ data: {
     },
   },
 })
-export default class DataTableSelectable extends Vue { }
+export default class DataTableSelectable extends Vue {}
 </script>

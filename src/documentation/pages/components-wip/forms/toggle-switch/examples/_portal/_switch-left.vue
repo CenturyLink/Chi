@@ -47,5 +47,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class SwitchLeftPortal extends Vue { }
+export default class SwitchLeftPortal extends Vue {}
 </script>

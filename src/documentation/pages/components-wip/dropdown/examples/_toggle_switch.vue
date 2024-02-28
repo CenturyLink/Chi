@@ -95,5 +95,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class ToggleSwitch extends Vue { }
+export default class ToggleSwitch extends Vue {}
 </script>

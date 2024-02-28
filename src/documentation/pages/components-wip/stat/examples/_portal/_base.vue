@@ -66,19 +66,19 @@ export default class BasePortal extends Vue {
       value2: '0',
       title2: 'Recently Closed',
     },
-  ]
+  ];
   exampleTabs: [
     {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component',
+      disabled: true;
+      id: 'webcomponent';
+      label: 'Web Component';
     },
     {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
+      active: true;
+      id: 'htmlblueprint';
+      label: 'HTML Blueprint';
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-stat">
@@ -202,7 +202,7 @@ export default class BasePortal extends Vue {
   chi.popover(document.getElementById('example__portal-base-help-button5'));
   chi.popover(document.getElementById('example__portal-base-help-button6'));
 <\/script>`,
-  }
+  };
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

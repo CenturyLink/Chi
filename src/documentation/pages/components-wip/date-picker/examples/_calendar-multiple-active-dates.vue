@@ -30,11 +30,11 @@ export default class CalendarMultipleActiveDates extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-date value="03/10/2024,03/11/2024,03/12/2024" multiple></chi-date>`,
     htmlblueprint: ``,
-  }
+  };
   created() {
     this._setCodeSnippets();
   }

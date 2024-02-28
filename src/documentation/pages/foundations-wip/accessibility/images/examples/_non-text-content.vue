@@ -75,28 +75,23 @@ import { Vue } from 'vue-facing-decorator';
         },
         {
           title: 'Time-Based Media:',
-          text:
-            'If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content',
+          text: 'If non-text content is time-based media, then text alternatives at least provide descriptive identification of the non-text content',
         },
         {
           title: 'Test:',
-          text:
-            'If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.',
+          text: 'If non-text content is a test or exercise that would be invalid if presented in text, then text alternatives at least provide descriptive identification of the non-text content.',
         },
         {
           title: 'Sensory:',
-          text:
-            'If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.',
+          text: 'If non-text content is primarily intended to create a specific sensory experience, then text alternatives at least provide descriptive identification of the non-text content.',
         },
         {
           title: 'CAPTCHA:',
-          text:
-            'If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities.',
+          text: 'If the purpose of non-text content is to confirm that content is being accessed by a person rather than a computer, then text alternatives that identify and describe the purpose of the non-text content are provided, and alternative forms of CAPTCHA using output modes for different types of sensory perception are provided to accommodate different disabilities.',
         },
         {
           title: 'Decoration, Formatting, Invisible:',
-          text:
-            'If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technologies.',
+          text: 'If non-text content is pure decoration, is used only for visual formatting, or is not presented to users, then it is implemented in a way that it can be ignored by assistive technologies.',
         },
       ],
       secondItems: [
@@ -110,8 +105,7 @@ import { Vue } from 'vue-facing-decorator';
         },
         {
           title: 'Decorative:',
-          text:
-            'Does not add information to the content of a page, and thus the image can have null/empty alt text. Assistive technologies can ignore the image. The image may have adjacent text that sufficiently describes the image.',
+          text: 'Does not add information to the content of a page, and thus the image can have null/empty alt text. Assistive technologies can ignore the image. The image may have adjacent text that sufficiently describes the image.',
         },
       ],
     };

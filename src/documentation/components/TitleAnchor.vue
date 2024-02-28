@@ -28,9 +28,10 @@ export default class TitleAnchor extends Vue {
   baseUrl = useRuntimeConfig().public.baseUrl;
 
   get anchor() {
-    return `<a class="-ml--1" href="${this.baseUrl}${useRoute().path}?theme=${this.theme}#${
-      this.id
-    }">#</a>`.replace(/\/\//g, '/');
+    return `<a class="-ml--1" href="${this.baseUrl}${useRoute().path}?theme=${this.theme}#${this.id}">#</a>`.replace(
+      /\/\//g,
+      '/'
+    );
   }
 
   get titleAnchorClassnames() {

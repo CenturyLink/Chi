@@ -36,7 +36,7 @@ export default class AdditionalSizesLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<!-- For light backgrounds -->
 <chi-pagination pages="5" current-page="3" size="xs"></chi-pagination>
@@ -335,7 +335,7 @@ export default class AdditionalSizesLumenCenturyLink extends Vue {
 <ChiPagination :pages="5" :currentPage="3" size="md" :inverse="true" />
 <ChiPagination :pages="5" :currentPage="3" size="lg" :inverse="true" />
 <ChiPagination :pages="5" :currentPage="3" size="xl" :inverse="true" />`,
-  }
+  };
   sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 }
 </script>

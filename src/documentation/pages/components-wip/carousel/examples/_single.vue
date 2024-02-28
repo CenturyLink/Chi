@@ -68,5 +68,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Single extends Vue { }
+export default class Single extends Vue {}
 </script>

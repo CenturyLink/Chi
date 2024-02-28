@@ -193,7 +193,7 @@ methods: {
         },
       },
     },
-  ]
+  ];
   exampleTabs = [
     {
       active: true,
@@ -208,7 +208,7 @@ methods: {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   exampleId = 'close-button';
   closable = false;
 

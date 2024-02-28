@@ -26,7 +26,7 @@ declare const chi: any;
 
 @NuxtComponent({})
 export default class FloatingLabel extends Vue {
-  sizes = ['md', 'lg', 'xl']
+  sizes = ['md', 'lg', 'xl'];
   exampleTabs = [
     {
       disabled: true,
@@ -38,7 +38,7 @@ export default class FloatingLabel extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="chi-input__wrapper -floating-label">
@@ -59,7 +59,7 @@ export default class FloatingLabel extends Vue {
 <script>
   chi.floatingLabel(document.querySelectorAll('.-floating-label'));
 <\/script>`,
-  }
+  };
   mounted() {
     this.sizes.forEach((size: string) => {
       chi.floatingLabel(this.$refs[`floating-label-${size}`]);

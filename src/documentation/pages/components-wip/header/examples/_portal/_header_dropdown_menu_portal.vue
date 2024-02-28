@@ -113,14 +113,14 @@ export default class BasePortal extends Vue {
     {
       disabled: true,
       id: 'webcomponent',
-      label: 'Web Component'
+      label: 'Web Component',
     },
     {
       active: true,
       id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
+      label: 'HTML Blueprint',
+    },
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<header class="chi-header -lg">
@@ -242,8 +242,8 @@ export default class BasePortal extends Vue {
   chi.dropdown(document.getElementById('button-portal-user-menu3'));
   chi.dropdown(document.getElementById('button-portal-eid-menu3'));
   chi.tooltip(document.getElementById('button-portal-notification3'));
-<\/script>`
-  }
+<\/script>`,
+  };
   mounted() {
     chi.drawer(this.$refs['drawer-trigger-portal-pib3'] as HTMLElement);
     chi.dropdown(this.$refs['button-portal-site-menu3'] as HTMLElement);

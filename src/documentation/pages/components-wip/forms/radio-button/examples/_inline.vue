@@ -60,5 +60,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Inline extends Vue { }
+export default class Inline extends Vue {}
 </script>

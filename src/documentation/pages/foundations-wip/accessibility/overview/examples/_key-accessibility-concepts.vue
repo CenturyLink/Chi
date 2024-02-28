@@ -20,20 +20,17 @@ export default class KeyAccessibilityConcepts extends Vue {
     {
       title: 'Using the keyboard',
       url: 'using-keyboard',
-      text:
-        'The website or application must be completely usable through a keyboard. There can be nothing which requires a mouse.  Blind users who rely on screen readers navigate by using the keyboard. In addition, some users who see the screen perfectly well have impaired motor skills which make it difficult or impossible to control a mouse.',
+      text: 'The website or application must be completely usable through a keyboard. There can be nothing which requires a mouse.  Blind users who rely on screen readers navigate by using the keyboard. In addition, some users who see the screen perfectly well have impaired motor skills which make it difficult or impossible to control a mouse.',
     },
     {
       title: 'Page structure',
       url: 'page-structure',
-      text:
-        'Well-structured content allows more efficient navigation and processing. Use HTML and WAI-ARIA to improve navigation and orientation on web pages and in applications. Mark up should include page regions, labeling regions, headings, and content structure.',
+      text: 'Well-structured content allows more efficient navigation and processing. Use HTML and WAI-ARIA to improve navigation and orientation on web pages and in applications. Mark up should include page regions, labeling regions, headings, and content structure.',
     },
     {
       title: 'Color and sensory',
       url: 'color-sensory',
-      text:
-        'Enables people with visual impairments or color vision deficiencies to interact with digital experiences in the same way as non-visually-impaired people.',
+      text: 'Enables people with visual impairments or color vision deficiencies to interact with digital experiences in the same way as non-visually-impaired people.',
     },
     {
       title: 'Images',
@@ -43,20 +40,17 @@ export default class KeyAccessibilityConcepts extends Vue {
     {
       title: 'Text',
       url: 'text',
-      text:
-        'Genuine text is much more flexible than images. Text can be resized without losing clarity, and background and text colors can be modified to suit the reading preferences of users. Images are more likely to distort and pixelate when resized.',
+      text: 'Genuine text is much more flexible than images. Text can be resized without losing clarity, and background and text colors can be modified to suit the reading preferences of users. Images are more likely to distort and pixelate when resized.',
     },
     {
       title: 'Links and forms',
       url: 'links-and-forms',
-      text:
-        'Users usually prefer simple and short forms. Only ask users to enter what is required to complete the transaction or process. If irrelevant or excessive data is requested, users are more likely to abandon the form.',
+      text: 'Users usually prefer simple and short forms. Only ask users to enter what is required to complete the transaction or process. If irrelevant or excessive data is requested, users are more likely to abandon the form.',
     },
     {
       title: 'Tables',
       url: 'tables',
-      text:
-        'Accessible tables need HTML structural markup that indicates header cells and data cells and defines their relationship. Assistive technologies use this information to provide context to users.',
+      text: 'Accessible tables need HTML structural markup that indicates header cells and data cells and defines their relationship. Assistive technologies use this information to provide context to users.',
     },
   ];
 }

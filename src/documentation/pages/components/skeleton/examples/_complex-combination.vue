@@ -48,7 +48,7 @@ export default class ComplexCombination extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: ``,
     htmlblueprint: `<div class="-mw--480">
@@ -64,7 +64,7 @@ export default class ComplexCombination extends Vue {
     <div class="chi-skeleton -rounded -ml--2 -w--15"></div>
   </div>
 </div>`,
-  }
+  };
   isSkeletonVisible = true;
 
   toggleSkeletonVisibility() {

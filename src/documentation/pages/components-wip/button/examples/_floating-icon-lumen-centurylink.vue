@@ -30,7 +30,7 @@ export default class FloatingIconLumenCenturyLink extends Vue {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
-  ]
+  ];
   codeSnippets = {
     webcomponent: `<chi-button type="float" color="primary" size="xl" alternative-text="Chat with Support" data-tooltip="Chat with Support">
   <chi-icon icon="chat"></chi-icon>
@@ -40,7 +40,7 @@ export default class FloatingIconLumenCenturyLink extends Vue {
     <i class="chi-icon icon-chat" aria-hidden="true"></i>
   </div>
 </button>`,
-  }
+  };
   tooltip: any;
 
   mounted() {
