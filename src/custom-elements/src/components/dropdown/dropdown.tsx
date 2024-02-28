@@ -90,6 +90,10 @@ export class Dropdown {
    */
   @Prop() visibleItems?: number;
   /**
+   * To retain the selection of the menu item and display it as the trigger
+   */
+  @Prop() retainSelection?: boolean;
+  /**
    * Triggered when hiding the Dropdown
    */
   @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
@@ -110,6 +114,7 @@ export class Dropdown {
   @State() _menuHeader: boolean;
   @State() _menuFooter: boolean;
   @State() _forceRender: boolean;
+  @State() _value: string;
 
   @Element() el: HTMLElement;
 
@@ -138,6 +143,7 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
+    this.setFixedWidth();
     this.setMenuHeight();
     addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true });
   }
@@ -264,6 +270,25 @@ export class Dropdown {
     }
   }
 
+  setActiveClassOnMenuItem() {
+    const menuItems = this._getDropdownMenuItems();
+
+    menuItems.forEach((item: HTMLElement) => {
+      const isActive = item.textContent === this._value;
+      
+      item.classList.toggle(ACTIVE_CLASS, isActive);
+    });
+  }
+
+  setFixedWidth() {
+    if (this.retainSelection && this._referenceElement) {
+      const button = this._referenceElement.getElementsByTagName('button')[0];
+      
+      button.style.width = `${this._referenceElement.offsetWidth}px`;
+      button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
+    }
+  }
+
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
@@ -288,9 +313,26 @@ export class Dropdown {
     }
   };
 
-  handlerSelectedMenuItem = () => {
-    this.eventItemSelected.emit();
+  handlerSelectedMenuItem = (item) => {
+    this.eventItemSelected.emit(item.text);
+
+    if (this.retainSelection) {
+      this._value = item.textContent;
+      this.hide();
+      this.truncateButtonText();
+      this.setActiveClassOnMenuItem();
+    }
   };
+
+  truncateButtonText() {
+    const button = this._referenceElement.getElementsByTagName('button')[0];
+    const span = document.createElement('span');
+
+    button.textContent = '';
+    span.textContent = this._value;
+    span.classList.add(UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
+    button.appendChild(span);
+  }
 
   handlerClickTrigger = () => {
     this.toggle();
@@ -380,7 +422,7 @@ export class Dropdown {
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this));
+      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
     });
   }
 
@@ -393,11 +435,13 @@ export class Dropdown {
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.removeEventListener('click', this.handlerSelectedMenuItem);
+      item.removeEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
     });
   }
 
   renderTrigger() {
+    const itemSelected = (this.retainSelection && this._value) ?? this.button;
+
     return this.button ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
@@ -413,7 +457,7 @@ export class Dropdown {
         disabled={this.disabled}
         ref={(ref) => (this._referenceElement = ref)}
       >
-        {this.button}
+        {itemSelected}
       </chi-button>
     ) : this._customTrigger ? (
       <slot name="trigger" />
