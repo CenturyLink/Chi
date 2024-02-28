@@ -13,6 +13,7 @@ export const importCss = (version: string, theme: 'lumen' | 'portal' | 'brightsp
   if (!hrefExists) {
     const cssLink = document.createElement('link');
 
+    cssLink.id = 'chi-theme';
     cssLink.rel = 'stylesheet';
     cssLink.href = createUrl();
     cssLink.crossOrigin = 'anonymous';

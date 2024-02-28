@@ -3,60 +3,138 @@ title: Chi time
 ---
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
+//- Base
 .test-base
   span.-text--h2 Chi time base
-  chi-time(data-cy="chi-time-base" value="11:22")
+  chi-time(data-cy="chi-time-base" value="08:30")
 
+//- Display with seconds
 .test-seconds
   span.-text--h2 Chi time with seconds
-  chi-time(data-cy="chi-time-seconds" display-seconds value="09:32:43")
+  chi-time(data-cy="chi-time-seconds" display-seconds value="08:30:45")
 
-.test-stepped
-  span.-text--h2 Chi time stepped
-  chi-time(data-cy="chi-time-stepped" stepped display-seconds value="10:45:50")
+//- 12hr format
+.test-12hr-format
+  span.-text--h2 Chi time 12hr format
+  chi-time(data-cy="chi-time-12hr-format" format="12hr" value="14:30")
 
-.test-default-steps
-  span.-text--h2 Chi time with default steps
-  chi-time(data-cy="chi-time-default-steps" value="10:15:20" minutes-step seconds-step display-seconds)
+//- 24hr format
+.test-24hr-format
+  span.-text--h2 Chi time 24hr format
+  chi-time(data-cy="chi-time-24hr-format" format="24hr" value="14:30")
 
-//- minutes steps
+//- 24hr format with seconds
+.test-24hr-format-seconds
+  span.-text--h2 Chi time 24hr format with seconds
+  chi-time(
+    data-cy="chi-time-24hr-format-seconds"
+    value="14:30:45"
+    display-seconds
+    format="24hr"
+  )
+
+//- Minutes step default
+.test-minutes-step-default
+  span.-text--h2 Chi time default minutes step
+  chi-time(data-cy="chi-time-minutes-step-default" value="08:20" minutes-step)
+
+//- Minutes step 5 with seconds
 .test-minutes-step-5-seconds
-  span.-text--h2 Chi time with 5 min step with seconds
-  chi-time(data-cy="chi-time-minutes-step-5-seconds" value="11:57:32" minutes-step="5" display-seconds)
+  span.-text--h2 Chi time 5 minutes step with seconds
+  chi-time(
+    data-cy="chi-time-minutes-step-5-seconds"
+    value="08:21:45"
+    minutes-step="5"
+    display-seconds
+  )
 
+//- Minutes step 10
 .test-minutes-step-10
-  span.-text--h2 Chi time with 10 min step
-  chi-time(data-cy="chi-time-minutes-step-10" value="11:20" minutes-step="10")
+  span.-text--h2 Chi time 10 minutes step
+  chi-time(data-cy="chi-time-minutes-step-10" value="08:25" minutes-step="10")
 
+//- Minutes step 15
 .test-minutes-step-15
-  span.-text--h2 Chi time with 15 min step
-  chi-time(data-cy="chi-time-minutes-step-15" value="11:30" minutes-step="15")
+  span.-text--h2 Chi time 15 minutes step
+  chi-time(data-cy="chi-time-minutes-step-15" value="08:27" minutes-step="15")
 
+//- Minutes step 20
 .test-minutes-step-20
-  span.-text--h2 Chi time with 20 min step
-  chi-time(data-cy="chi-time-minutes-step-20" value="11:40" minutes-step="20")
+  span.-text--h2 Chi time 20 minutes step
+  chi-time(data-cy="chi-time-minutes-step-20" value="08:28" minutes-step="20")
 
+//- Minutes step 30
 .test-minutes-step-30
-  span.-text--h2 Chi time with 30 min step
-  chi-time(data-cy="chi-time-minutes-step-30" value="11:30" minutes-step="30")
+  span.-text--h2 Chi time 30 minutes step
+  chi-time(data-cy="chi-time-minutes-step-30" value="11:31" minutes-step="30")
 
-//- seconds steps
+//- Seconds step default
+.test-seconds-step-default
+  span.-text--h2 Chi time default seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-default"
+    value="08:30:15"
+    display-seconds
+    seconds-step
+  )
+
+//- Seconds step 5
 .test-seconds-step-5
-  span.-text--h2 Chi time with 5 seconds step
-  chi-time(data-cy="chi-time-seconds-step-5" value="11:23:45" display-seconds seconds-step="5")
+  span.-text--h2 Chi time 5 seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-5"
+    value="08:30:21"
+    display-seconds
+    seconds-step="5"
+  )
 
+//- Seconds step 10
 .test-seconds-step-10
-  span.-text--h2 Chi time with 10 seconds step
-  chi-time(data-cy="chi-time-seconds-step-10" value="11:23:50" display-seconds seconds-step="10")
+  span.-text--h2 Chi time 10 seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-10"
+    value="08:30:25"
+    display-seconds
+    seconds-step="10"
+  )
 
+//- Seconds step 15
 .test-seconds-step-15
-  span.-text--h2 Chi time with 15 seconds step
-  chi-time(data-cy="chi-time-seconds-step-15" value="11:23:15" display-seconds seconds-step="15")
+  span.-text--h2 Chi time 15 seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-15"
+    value="08:30:27"
+    display-seconds
+    seconds-step="15"
+  )
 
+//- Seconds step 20
 .test-seconds-step-20
-  span.-text--h2 Chi time with 20 seconds step
-  chi-time(data-cy="chi-time-seconds-step-20" value="11:23:20" display-seconds seconds-step="20")
+  span.-text--h2 Chi time 20 seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-20"
+    value="08:30:28"
+    display-seconds
+    seconds-step="20"
+  )
 
+//- Seconds step 30
 .test-seconds-step-30
-  span.-text--h2 Chi time with 30 seconds step
-  chi-time(data-cy="chi-time-seconds-step-30" value="11:23:30" display-seconds seconds-step="30")
+  span.-text--h2 Chi time 30 seconds step
+  chi-time(
+    data-cy="chi-time-seconds-step-30"
+    value="08:30:29"
+    display-seconds
+    seconds-step="30"
+  )
+
+//- Minutes and seconds step default
+.test-minutes-seconds-step-default
+  span.-text--h2 Chi time default minutes and seconds step
+  chi-time(
+    data-cy="chi-time-minutes-seconds-step-default"
+    value="08:30:45"
+    display-seconds
+    minutes-step
+    seconds-step
+  )
