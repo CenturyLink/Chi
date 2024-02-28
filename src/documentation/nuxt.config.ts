@@ -14,12 +14,8 @@ const DOCS_ENV = process.env.DOCS_ENV || '';
 const IS_DEV = DOCS_ENV === 'development';
 const IS_PR = DOCS_ENV === 'pr';
 const BASE_URL = BASE_URLS_FOR_ENVS[DOCS_ENV] || '/';
-const DOCS_JSON_URL = BASE_URL + (IS_DEV
-  ? 'docs.json'
-  : 'js/ce/docs.json');
-const CHI_ASSETS_SOURCE_URL = IS_DEV
-  ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/`
-  : BASE_URL;
+const DOCS_JSON_URL = BASE_URL + (IS_DEV ? 'docs.json' : 'js/ce/docs.json');
+const CHI_ASSETS_SOURCE_URL = IS_DEV ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/` : BASE_URL;
 
 const IGNORED_ROUTES = [
   ...NAVIGATION_GETTING_STARTED_ITEMS,
@@ -27,9 +23,9 @@ const IGNORED_ROUTES = [
   ...NAVIGATION_FOUNDATIONS_ACCESIBILITY,
   ...NAVIGATION_COMPONENTS_ITEMS,
   ...NAVIGATION_TEMPLATE_ITEMS,
-].filter(i => i.source === 'pug').map(i => `/${i.href}`)
-
-
+]
+  .filter((i) => i.source === 'pug')
+  .map((i) => `/${i.href}`);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -93,7 +89,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: [ ],
+  css: [],
   devtools: { enabled: IS_DEV },
   vue: {
     compilerOptions: {
@@ -110,11 +106,8 @@ export default defineNuxtConfig({
     },
     // Watch files to hot reload.
     server: {
-      watch: [
-        "./pages/**/*.vue",
-        "./**/*.ts" ,
-      ]
-    }
+      watch: ['./pages/**/*.vue', './**/*.ts'],
+    },
   },
   nitro: {
     // https://nitro.unjs.io/config#prerender
@@ -124,30 +117,28 @@ export default defineNuxtConfig({
         ...IGNORED_ROUTES,
         '/installation',
         '/getting-started',
-        '../'
-      ]
+        '../',
+      ],
     },
     esbuild: {
       options: {
         // keep console.logs in pr instances
         // https://github.com/nuxt/nuxt/issues/19702
-        ...(IS_PR ? {drop: []} : {})
-      }
-    }
+        ...(IS_PR ? { drop: [] } : {}),
+      },
+    },
   },
   // error with chivue
   // imports css https://github.com/nuxt/nuxt/issues/12215
   build: {
-    transpile: [
-      '@centurylink/chi-vue'
-    ]
+    transpile: ['@centurylink/chi-vue'],
   },
   modules: ['@nuxt/image', 'nuxt3-class-component', '@pinia/nuxt'],
   runtimeConfig: {
     public: {
       docsJsonUrl: DOCS_JSON_URL,
       baseUrl: BASE_URL,
-      isDev: IS_DEV
-    }
-  }
+      isDev: IS_DEV,
+    },
+  },
 });

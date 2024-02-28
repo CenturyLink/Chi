@@ -6,9 +6,7 @@
     <ul class="chi-tabs -vertical -lg -animated">
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.gettingStarted) }">
         <div class="chi-collection__title">Getting Started</div>
-        <ul class="chi-tabs__subtabs">
-          <DocumentationLinkList :links="NAVIGATION_GETTING_STARTED_ITEMS" />
-        </ul>
+        <DocumentationLinkList :links="NAVIGATION_GETTING_STARTED_ITEMS" />
       </li>
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.foundations) }">
         <div class="chi-collection__title">Foundations</div>
@@ -24,9 +22,7 @@
                   <i class="chi-icon icon-chevron-down -xs" aria-hidden="true"></i>
                 </button>
                 <div class="chi-accordion__content -p--0">
-                  <ul class="chi-tabs__subtabs">
-                    <DocumentationLinkList :links="NAVIGATION_FOUNDATIONS_ACCESIBILITY" />
-                  </ul>
+                  <DocumentationLinkList :links="NAVIGATION_FOUNDATIONS_ACCESIBILITY" />
                 </div>
               </div>
             </div>
@@ -36,21 +32,15 @@
       </li>
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.components) }">
         <div class="chi-collection__title">Components</div>
-        <ul class="chi-tabs__subtabs">
-          <DocumentationLinkList :links="NAVIGATION_COMPONENTS_ITEMS" />
-        </ul>
+        <DocumentationLinkList :links="NAVIGATION_COMPONENTS_ITEMS" />
       </li>
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.utilities) }">
         <div class="chi-collection__title">Utilities</div>
-        <ul class="chi-tabs__subtabs">
-          <DocumentationLinkList :links="NAVIGATION_UTILITIES_ITEMS" />
-        </ul>
+        <DocumentationLinkList :links="NAVIGATION_UTILITIES_ITEMS" />
       </li>
       <li :class="{ '-active': $route.fullPath.includes(SECTION_URLS.templates) }">
         <div class="chi-collection__title">Templates</div>
-        <ul class="chi-tabs__subtabs">
-          <DocumentationLinkList :links="NAVIGATION_TEMPLATE_ITEMS"/>
-        </ul>
+        <DocumentationLinkList :links="NAVIGATION_TEMPLATE_ITEMS"/>
       </li>
     </ul>
   </nav>

@@ -16,20 +16,18 @@ import Examples from './examples/index.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 
+definePageMeta({
+  layout: 'wide'
+});
+
 @NuxtComponent({
   components: {
     Examples,
     Properties,
     Accessibility
   },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs
-    };
-  },
-  layout() {
-    return 'wide';
-  },
 })
-export default class AppLayout extends Vue {}
+export default class AppLayout extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>
