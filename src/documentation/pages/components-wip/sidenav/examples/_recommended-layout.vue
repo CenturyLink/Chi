@@ -2,15 +2,13 @@
   div
     h2 Recommended layout
     p.-text Use this layout to ensure the sidenav renders correctly in your project.
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeSnippets: {
@@ -21,10 +19,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="-flex--grow1">
     <!-- Page content goes here -->
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class RecommendedLayout extends Vue {}
 </script>

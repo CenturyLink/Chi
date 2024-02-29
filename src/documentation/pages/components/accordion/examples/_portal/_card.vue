@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Card" id="card_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    .chi-accordion.-card#example-portal-card(slot="example")
+<ComponentExample title="Card" id="card_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+  template(#example)
+    .chi-accordion.-card#example-portal-card
       .chi-accordion__item
         button.chi-accordion__trigger
           i.chi-icon.icon-chevron-down(aria-hidden="true")
@@ -29,41 +30,36 @@
             | Accordion 4
         .chi-accordion__content
           p.chi-accordion__text Content goes here
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-accordion -card" id="example-portal-card">
+@NuxtComponent({})
+export default class CardPortal extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<div class="chi-accordion -card" id="example-portal-card">
   <div class="chi-accordion__item">
     <button class="chi-accordion__trigger">
       <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
@@ -106,12 +102,8 @@ declare const chi: any;
   const accordionCard = document.getElementById('example-portal-card');
 
   chi.accordion(accordionCard);
-<\/script>`
-      }
-    };
-  }
-})
-export default class CardPortal extends Vue {
+<\/script>`,
+  };
   mounted() {
     const accordionCard = document.getElementById('example-portal-card');
 

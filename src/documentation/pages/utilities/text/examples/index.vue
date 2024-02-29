@@ -15,7 +15,7 @@
 
     <Brand />
     <Semantic />
-    <Complimentary v-if="$store.state.themes.theme === 'lumen'" />
+    <Complimentary v-if="selectedTheme === 'lumen'" />
 
     <TitleAnchor title="Responsiveness" id="text-responsiveness" titleSize="h2"/>
     <Sizes />
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Size from './_size.vue';
 import Headings from './_headings.vue';
 import LineHeight from './_line-height.vue';
@@ -40,7 +40,7 @@ import Sizes from './_sizes.vue';
 import LineHeights from './_line-heights.vue';
 import AlignmentResponsiveness from './_alignment-responsiveness.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Size,
     Headings,
@@ -55,8 +55,10 @@ import AlignmentResponsiveness from './_alignment-responsiveness.vue';
     Complimentary,
     Sizes,
     LineHeights,
-    AlignmentResponsiveness
+    AlignmentResponsiveness,
   },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

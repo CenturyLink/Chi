@@ -1,45 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Base" id="base-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
         .-p--3(:class="item === 2 ? '-bg--black' : ''")
           chi-pagination(pages="5" current-page="3" :inverse="item === 2 ? true : false")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        span
-          | Use the class <code>chi-pagination</code> to render a pagination component.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | Use the class <code>chi-pagination</code> to render a pagination component.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
-         {
+        {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
@@ -103,10 +99,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <ChiPagination :pages="5" :currentPage="3" />
 
 <!-- For dark backgrounds -->
-<ChiPagination :pages="5" :currentPage="3" :inverse="true" />`
-      }
+<ChiPagination :pages="5" :currentPage="3" :inverse="true" />`,
+      },
     };
-  }
+  },
 })
 export default class BaseLumenCenturyLink extends Vue {}
 </script>

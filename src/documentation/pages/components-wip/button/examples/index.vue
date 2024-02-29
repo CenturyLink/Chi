@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       h2 Examples
       p.-text
         | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import DisabledLumenCenturyLink from './_disabled-lumen-centurylink.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SolidLumenCenturyLink from './_solid-lumen-centurylink.vue';
@@ -53,7 +53,7 @@ import FloatingIconPortal from './_portal/_floating-icon.vue';
 import DangerPortal from './_portal/_danger.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     SolidLumenCenturyLink,
     OutlineLumenCenturyLink,
@@ -75,7 +75,9 @@ import SizesPortal from './_portal/_sizes.vue';
     FloatingIconPortal,
     DangerPortal,
     SizesPortal,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

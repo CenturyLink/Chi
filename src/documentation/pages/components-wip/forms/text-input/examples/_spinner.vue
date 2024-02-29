@@ -1,36 +1,36 @@
 <template lang="pug">
-  <ComponentExample title="Spinner" id="spinner" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Spinner" id="spinner" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>spinner</code> attribute to let users know when information is saving or loading.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-form__item.-mb--2(style="max-width:20rem")
         chi-label(for="example__spinner") Label
         chi-text-input(spinner id="example__spinner")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
@@ -46,10 +46,10 @@ import { Component, Vue } from 'vue-property-decorator';
       <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
     </svg>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class Spinner extends Vue {}
 </script>

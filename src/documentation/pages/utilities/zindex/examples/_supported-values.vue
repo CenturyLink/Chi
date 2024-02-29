@@ -20,15 +20,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { zIndexValues } from '~/fixtures/fixtures';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
-      zIndexValues
-    }
-  }
+      zIndexValues,
+    };
+  },
 })
 export default class SupportedValues extends Vue {}
 </script>

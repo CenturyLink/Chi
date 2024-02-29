@@ -1,23 +1,17 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Border" id="border" />
-    <TableComponent :data="borderColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Border" id="border" />
+<TableComponent :data="borderColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { designTokensColumns } from '~/fixtures/fixtures';
-import {ITableColumn, ITableContent} from '~/models/models';
-import { COLORS } from  '~/constants/constants';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      columns: designTokensColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class Border extends Vue {
+  columns = designTokensColumns;
   lumenBorderColor = [
     { name: 'base-light', value: COLORS.GREY_20.value },
     { name: 'base', value: COLORS.GREY_25.value },
@@ -36,8 +30,8 @@ export default class Border extends Vue {
     { name: 'muted-light', value: COLORS.GREY_30.value },
     { name: COLORS.MUTED.name, value: COLORS.GRAY_60.value },
     { name: 'black', value: COLORS.BLACK.value },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value },
+  ];
 
   centurylinkBorderColor = [
     { name: 'base-light', value: COLORS.GREY_20.value },
@@ -57,12 +51,10 @@ export default class Border extends Vue {
     { name: 'muted-light', value: COLORS.GREY_30.value },
     { name: COLORS.MUTED.name, value: COLORS.GRAY_60.value },
     { name: 'black', value: COLORS.BLACK.value },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value },
+  ];
 
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
 
   get borderColor() {
     if (this.theme === 'centurylink') {
@@ -70,7 +62,6 @@ export default class Border extends Vue {
     }
     return this.lumenBorderColor;
   }
-
 
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {

@@ -158,10 +158,10 @@
                   div <code>DataTableSizes</code>
                 td
                   <code>'xs' | 'sm' | 'md' | 'lg' | 'xl'</code>
-              tr 
-                td 
+              tr
+                td
                   div <code>DataTableColumnDescription</code>
-                td.-p--0 
+                td.-p--0
                   pre.-mb--0.
                     interface DataTableColumnDescription {
                       title?: <code>string</code>;
@@ -169,10 +169,10 @@
                       template?: <code>string</code>;
                       payload?: <code>any</code>;
                     }
-              tr 
-                td 
+              tr
+                td
                   div <code>DataTableAction</code>
-                td.-p--0 
+                td.-p--0
                   pre.-mb--0.
                     interface DataTableAction: {
                       label: <code>string</code>;
@@ -200,12 +200,12 @@
                 td
                   div <code>toggleRow() => void</code>
                 td
-                  div.-mb--1 To expand / collapse specific rows. 
+                  div.-mb--1 To expand / collapse specific rows.
                   div <code>rowId</code> is created using this pattern: <code>row-dt-${dataTableNumber}-${rowId}</code>
                 td
                   | Type: void
                 td
-                  div.-mb--1 row: <code> { rowId: string }</code> 
+                  div.-mb--1 row: <code> { rowId: string }</code>
                   div action?: <code>'expand' | 'collapse'</code>
               tr
                 td
@@ -357,8 +357,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
+@NuxtComponent({})
 export default class Properties extends Vue {}
 </script>

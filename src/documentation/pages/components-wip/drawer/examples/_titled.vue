@@ -1,43 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Titled" id="titled" :tabs="exampleTabs" padding="-p--0">
-    .-position--relative.-z--0.-overflow--hidden(style='height:30rem;' slot="example")
+<ComponentExample title="Titled" id="titled" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .-position--relative.-z--0.-overflow--hidden(style='height:30rem;')
       chi-drawer(position='left' title='Drawer title here' backdrop active prevent-auto-hide)
         .-p--2.-text Drawer content here
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Trigger -->
@@ -68,7 +64,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <ChiDrawer
   position="left"
   :active="this.drawerActive"
-  title="Drawer title here" 
+  title="Drawer title here"
   backdrop
 >
   <div class="-p--2 -text">Drawer content here</div>
@@ -112,10 +108,10 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-titled-trigger'));<\/script>`
-      }
+<script>chi.drawer(document.getElementById('drawer-titled-trigger'));<\/script>`,
+      },
     };
-  }
+  },
 })
 export default class Titled extends Vue {}
 </script>

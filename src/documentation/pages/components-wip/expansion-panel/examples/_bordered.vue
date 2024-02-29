@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
-    p.-text(slot="example-description") Use bordered to apply borders to panels and contain them in card styled boxes.
-    .-mw--720.-mx--auto(slot="example")
+<ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
+  template(#example-description)
+    p.-text Use bordered to apply borders to panels and contain them in card styled boxes.
+  template(#example)
+    .-mw--720.-mx--auto
       chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
-        div(slot='active')
+        div(slot="active")
           .chi-epanel__subtitle
             | {{ panel.subtitle }}
           p.chi-epanel__text
@@ -14,79 +16,75 @@
           chi-button(@click="active -= 1" v-if="index")
             | Previous
           chi-button(@click="active += 1" color="primary") Continue
-        chi-button(slot='change' @click="active = index" color="primary" variant="flat")
-          | Change
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | To render bordered panels, apply the property <code>bordered</code>.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      .p--text.chi-tab__description
-        | To render bordered panels, apply the class <code>-bordered</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+        div(slot="change")
+          chi-button(@click="active = index" color="primary" variant="flat")
+            | Change
+  template(#code-webcomponent)
+    .chi-tab__description
+      | To render bordered panels, apply the property <code>bordered</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    .p--text.chi-tab__description
+      | To render bordered panels, apply the class <code>-bordered</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       active: 1,
       panels: [
         {
-          state: "done",
-          content: "Content goes here",
-          subtitle: "Optional subtitle",
-          title: "Done State",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1.",
+          state: 'done',
+          content: 'Content goes here',
+          subtitle: 'Optional subtitle',
+          title: 'Done State',
+          doneContent: 'Use this area to present a read-only summary of what the user entered or selected in step 1.',
         },
         {
-          state: "active",
-          content: "Content goes here",
-          subtitle: "Optional subtitle",
-          title: "Active State",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2.",
+          state: 'active',
+          content: 'Content goes here',
+          subtitle: 'Optional subtitle',
+          title: 'Active State',
+          doneContent: 'Use this area to present a read-only summary of what the user entered or selected in step 2.',
         },
         {
-          state: "pending",
-          content: "Content goes here",
-          subtitle: "Optional subtitle",
-          title: "Pending State",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3.",
+          state: 'pending',
+          content: 'Content goes here',
+          subtitle: 'Optional subtitle',
+          title: 'Pending State',
+          doneContent: 'Use this area to present a read-only summary of what the user entered or selected in step 3.',
         },
         {
-          state: "disabled",
-          content: "Content goes here",
-          subtitle: "Optional subtitle",
-          title: "Disabled State",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4.",
-        }
+          state: 'disabled',
+          content: 'Content goes here',
+          subtitle: 'Optional subtitle',
+          title: 'Disabled State',
+          doneContent: 'Use this area to present a read-only summary of what the user entered or selected in step 4.',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Done state -->
@@ -122,8 +120,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-expansion-panel title="Pending panel" bordered></chi-expansion-panel>
 <!-- Disabled state -->
 <chi-expansion-panel title="Disabled panel" bordered state="disabled"></chi-expansion-panel>`,
-        vue:
-`<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title"
+        vue: `<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title"
             :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :bordered="true" >
   <div slot="active">
     <div class="chi-epanel__subtitle">
@@ -301,8 +298,8 @@ data: {
       </div>
     </div>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
   },
   methods: {
@@ -312,8 +309,8 @@ data: {
       }
 
       return active === index ? 'active' : active > index ? 'done' : 'pending';
-    }
-  }
+    },
+  },
 })
 export default class Bordered extends Vue {}
 </script>

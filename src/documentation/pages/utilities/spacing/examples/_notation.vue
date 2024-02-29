@@ -29,29 +29,28 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
-
+@NuxtComponent({})
 export default class Notation extends Vue {
   sides = [
     {
       class: 't',
-      value: 'top'
+      value: 'top',
     },
     {
       class: 'b',
-      value: 'bottom'
+      value: 'bottom',
     },
     {
       class: 'l',
-      value: 'left'
+      value: 'left',
     },
     {
       class: 'r',
-      value: 'right'
+      value: 'right',
     },
-  ]
+  ];
 
   breakpoints = [
     { class: 'sm', value: 'sm and larger' },

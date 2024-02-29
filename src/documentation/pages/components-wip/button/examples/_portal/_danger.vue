@@ -1,26 +1,25 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Danger" id="danger-portal" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h2" title="Danger" id="danger-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
       | a Danger button may be used.
-    <Wrapper slot="example">
-      chi-button.-mr--2(color='danger')= 'Button'
-      chi-button.-mr--2(variant='outline', color='danger')= 'Button'
-      chi-button(variant='outline', color='danger', size='xs')= 'Button'
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-button.-mr--2(color='danger')= 'Button'
+    chi-button.-mr--2(variant='outline', color='danger')= 'Button'
+    chi-button(variant='outline', color='danger', size='xs')= 'Button'
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

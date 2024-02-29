@@ -1,21 +1,15 @@
 <template lang="pug">
-  div
-    <TitleBar title="Color" />
-    <Examples />
+<TitleBar title="Color" />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
-  head() {
-    return {
-      title: 'Chi - Color'
-    }
-  },
+@NuxtComponent({
   components: {
-    Examples
+    Examples,
   },
 })
 export default class Color extends Vue {}

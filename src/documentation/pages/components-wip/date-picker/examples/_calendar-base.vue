@@ -1,55 +1,47 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Base" id="calendar-base" :tabs="exampleTabs">
-    chi-date(slot="example")   
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-        .chi-tab__description
-          | Use the classes <code>-month-starts-on-sun</code>,
-          | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
-          | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
-          | locate the first day in the correct cell.
-          br
-          | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
-          | of the desired locale.
-          br
-          | Use the class <code>-today</code> for the current date
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample titleSize="h4" title="Base" id="calendar-base" :tabs="exampleTabs">
+  template(#example)
+    chi-date
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+      .chi-tab__description
+        | Use the classes <code>-month-starts-on-sun</code>,
+        | <code>-month-starts-on-mon</code>, <code>-month-starts-on-tue</code>, <code>-month-starts-on-wed</code>,
+        | <code>-month-starts-on-thu</code>, <code>-month-starts-on-fri</code> and <code>-month-starts-on-sat</code> to
+        | locate the first day in the correct cell.
+        br
+        | Use the classes <code>-week-starts-on-sun</code> or <code>-week-starts-on-mon</code> to fit the week definition
+        | of the desired locale.
+        br
+        | Use the class <code>-today</code> for the current date
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      datePickerDates: Array.from(Array(30).keys()),
-      datePickerDayNames: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-date></chi-date>`,
-        htmlblueprint: ``
-      },
-    };
-  },
-})
+@NuxtComponent({})
 export default class BaseCalendar extends Vue {
+  datePickerDates = Array.from(Array(30).keys());
+  datePickerDayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<chi-date></chi-date>`,
+    htmlblueprint: ``,
+  };
   created() {
     this._setCodeSnippets();
   }
@@ -58,17 +50,17 @@ export default class BaseCalendar extends Vue {
     let datePickerDates = '';
     let datePickerDayNames = '';
 
-    this.$data.datePickerDates.forEach((day: number) => {
+    this.datePickerDates.forEach((day: number) => {
       datePickerDates += `
-    <div class="chi-datepicker__day">${day + 1}</div>`
+    <div class="chi-datepicker__day">${day + 1}</div>`;
     });
 
-    this.$data.datePickerDayNames.forEach((dayName: string) => {
+    this.datePickerDayNames.forEach((dayName: string) => {
       datePickerDayNames += `
-    <div class="chi-datepicker__week-day">${dayName}</div>`
+    <div class="chi-datepicker__week-day">${dayName}</div>`;
     });
 
-    this.$data.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
+    this.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
   <div class="chi-datepicker__month-row">
     <div class="prev">
       <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>

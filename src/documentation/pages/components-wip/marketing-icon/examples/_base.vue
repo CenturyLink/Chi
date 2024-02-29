@@ -1,42 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    chi-marketing-icon(icon="business-big-data" slot="example")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  template(#example)
+    chi-marketing-icon(icon="business-big-data")
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-marketing-icon icon="business-big-data"></chi-marketing-icon>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>

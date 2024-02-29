@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import HorizontalFlat from './_horizontal-flat.vue';
 import VerticalFlat from './_vertical-flat.vue';
 import VerticalSolid from './_vertical-solid.vue';
@@ -60,7 +60,7 @@ import ComponentsContained from './_components-contained.vue';
 import WaitForAnimation from './_wait-for-animation.vue';
 import VerticalTreeTabs from './_vertical-tree-tabs.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     TabbedNavigationFlat,
     TabbedNavigationSolid,
@@ -78,15 +78,13 @@ import VerticalTreeTabs from './_vertical-tree-tabs.vue';
     Bordered,
     AdditionalSizesHorizontal,
     AdditionalSizesVertical,
-    VerticalTreeTabs
-  }
+    VerticalTreeTabs,
+  },
 })
 export default class Examples extends Vue {
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
   get hideThemes() {
-    return this.theme !== 'portal' && this.theme !== 'colt' && this.theme !== 'brightspeed'
+    return this.theme !== 'portal' && this.theme !== 'colt' && this.theme !== 'brightspeed';
   }
 }
 </script>

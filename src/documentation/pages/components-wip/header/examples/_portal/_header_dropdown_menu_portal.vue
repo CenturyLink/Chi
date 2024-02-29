@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Dropdown menu header" id="dropdown_menu_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
-    .-p--3(slot="example")
+<ComponentExample title="Dropdown menu header" id="dropdown_menu_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  template(#example)
+    .-p--3
       header.chi-header.-lg
         nav.chi-header__content
           .chi-header__brand
@@ -93,38 +94,36 @@
             .chi-drawer__content
               .-px--2.-pt--2.-text
                 | Drawer content here
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>        
+
+  template(#code-webcomponent)
+    Copy(:code="codeSnippets.webcomponent" lang="html")
+  template(#code-htmlblueprint)
+    Copy(:code="codeSnippets.htmlblueprint" lang="html")
   </ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<header class="chi-header -lg">
+@NuxtComponent({})
+export default class BasePortal extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<header class="chi-header -lg">
   <nav class="chi-header__content">
     <div class="chi-header__brand">
       <a class="chi-brand" href="#" aria-label="Lumen">
@@ -243,12 +242,8 @@ declare const chi: any;
   chi.dropdown(document.getElementById('button-portal-user-menu3'));
   chi.dropdown(document.getElementById('button-portal-eid-menu3'));
   chi.tooltip(document.getElementById('button-portal-notification3'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class BasePortal extends Vue {
+<\/script>`,
+  };
   mounted() {
     chi.drawer(this.$refs['drawer-trigger-portal-pib3'] as HTMLElement);
     chi.dropdown(this.$refs['button-portal-site-menu3'] as HTMLElement);

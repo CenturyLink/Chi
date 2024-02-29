@@ -12,17 +12,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 import AllBreakpoints from './_all-breakpoints.vue';
 import Examples from './_examples.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     AllBreakpoints,
     SpecificBreakpoints,
     Examples,
-  }
+  },
 })
 export default class Basis extends Vue {}
 </script>

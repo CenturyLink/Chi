@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Checked />
     <Disabled />
     <Required />
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Checked from './_checked.vue';
 import Disabled from './_disabled.vue';
@@ -27,9 +27,9 @@ import Error from './_error.vue';
 import Inline from './_inline.vue';
 import RadioButtonList from './_radio-button-list.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Checked,
     Disabled,
     Required,
@@ -37,8 +37,8 @@ import RadioButtonList from './_radio-button-list.vue';
     Help,
     Error,
     Inline,
-    RadioButtonList
-  }
+    RadioButtonList,
+  },
 })
 export default class Examples extends Vue {}
 </script>

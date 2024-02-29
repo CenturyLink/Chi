@@ -1,42 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    div(style="max-width: 18rem;" slot="example")
+<ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  template(#example)
+    div(style="max-width: 18rem;")
       chi-label(for="phone-input-base") Phone Number
       chi-phone-input(id="phone-input-base")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="phone-input-base">Phone Number</chi-label>
 <chi-phone-input id="phone-input-base"></chi-phone-input>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>
