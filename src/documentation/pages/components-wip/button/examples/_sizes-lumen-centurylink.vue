@@ -1,45 +1,44 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description" class="-mb--3 -text")
+<ComponentExample titleSize="h2" title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text(class="-mb--3 -text")
       | Buttons support the following sizes: Extra Small (xs), Small (sm), Medium (md), Large (lg), and Extra Large (xl).
       | The default size is <code>md</code>.
-    div(slot="example" v-for="size in sizes")
+  template(#example)
+    div(v-for="size in sizes")
       p.-text--bold.-pl--2 {{size}}
       div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
         chi-button(:size='size') Button
         chi-button.-ml--2(:size='size' type='icon' alternative-text='Button action' :ref="`Button-${size}`" data-tooltip='Button action' data-position='bottom')
           chi-icon(icon='atom')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
-      codeSnippets: {
-        webcomponent: `<!-- xs -->
+@NuxtComponent({})
+export default class SizesLumenCenturyLink extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+  codeSnippets = {
+    webcomponent: `<!-- xs -->
 <chi-button size="xs">Button</chi-button>
 <chi-button type="icon" size="xs" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
   <chi-icon icon="atom"></chi-icon>
@@ -71,7 +70,7 @@ declare const chi: any;
 
 <!-- Icon button tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-        htmlblueprint: `<!-- xs -->
+    htmlblueprint: `<!-- xs -->
 <button class="chi-button -xs">Button</button>
 <button class="chi-button -xs -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
   <div class="chi-button__content">
@@ -113,13 +112,8 @@ declare const chi: any;
 
 <!-- Icon button tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-      },
-    };
-  },
-})
-export default class SizesLumenCenturyLink extends Vue {
+  };
   tooltipTexts: any[] = [];
-  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
   mounted() {
     this.sizes.forEach((size: string) => {

@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h3 Examples
-    p.-text 
+    p.-text
       | To use headers, apply the class <code>chi-header</code> to <code>&lt;header&gt;</code>
       | and wrap all content in <code>chi-header__content</code>. Use <code>chi-header__start</code>
       | to position elements at the start of the header and <code>chi-header__end</code> to
@@ -11,8 +11,8 @@
       | By default, all content stored in headers will render in drawer
       | components when the viewport is too small to accommodate.
 
-    div(v-if="$store.state.themes.theme === 'lumen'")
-      <Base />
+    div(v-if="selectedTheme === 'lumen'")
+      BaseExample
       <HeaderTitle />
       <HeaderTitleButtons />
       <HeaderCollapseSearch />
@@ -22,12 +22,12 @@
       <SizesLarge />
       <SizesXLarge />
 
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-if="selectedTheme === 'portal'")
       <BasePortal />
       <HeaderImpersonationPortal />
       <HeaderDropdownMenuPortal />
 
-    div(v-if="$store.state.themes.theme === 'centurylink'")
+    div(v-if="selectedTheme === 'centurylink'")
       <BaseCenturylink />
       <HeaderTitleCenturylink />
       <HeaderTitleButtonCenturylink />
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import BasePortal from './_portal/_base_header_portal.vue';
 import BaseCenturylink from './_centurylink/_base_centurylink.vue';
@@ -61,9 +61,9 @@ import SizesMediumCenturylink from './_centurylink/_sizes_medium_centurylink.vue
 import SizesLargeCenturylink from './_centurylink/_sizes_large_centurylink.vue';
 import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     BasePortal,
     BaseCenturylink,
     HeaderTitle,
@@ -81,8 +81,10 @@ import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue
     SizesXLarge,
     SizesMediumCenturylink,
     SizesLargeCenturylink,
-    SizesXLargeCenturylink
-  }
+    SizesXLargeCenturylink,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

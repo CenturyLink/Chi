@@ -1,5 +1,5 @@
 export const THEMES = ['centurylink', 'lumen', 'portal'] as const;
-export type Themes = typeof THEMES[number];
+export type Themes = (typeof THEMES)[number];
 
 interface CodeSnippets {
   code: string;

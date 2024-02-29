@@ -1,7 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Truncated" id="truncated_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    p.-text(slot="example-description") Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
-    .chi-accordion.-truncated#example-truncated(slot="example")
+<ComponentExample title="Truncated" id="truncated_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+  template(#example-description)
+    p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
+  template(#example)
+    .chi-accordion.-truncated#example-truncated
       .chi-accordion__item
         button.chi-accordion__trigger
           i.chi-icon.icon-chevron-down(aria-hidden="true")
@@ -9,41 +11,36 @@
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
         .chi-accordion__content
           p.chi-accordion__text Content goes here
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-accordion -truncated" id="example-truncated">
+@NuxtComponent({})
+export default class TruncatedLumenCenturyLink extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<div class="chi-accordion -truncated" id="example-truncated">
   <div class="chi-accordion__item">
     <button class="chi-accordion__trigger">
       <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
@@ -59,12 +56,8 @@ declare const chi: any;
   const accordionTruncated = document.getElementById('example-truncated');
 
   chi.accordion(accordionTruncated);
-<\/script>`
-      }
-    };
-  }
-})
-export default class TruncatedLumenCenturyLink extends Vue {
+<\/script>`,
+  };
   mounted() {
     chi.accordion(document.getElementById('example-truncated'));
   }

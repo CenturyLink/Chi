@@ -1,46 +1,46 @@
 <template lang="pug">
-  <ComponentExample title="Placeholder" id="placeholder" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Placeholder" id="placeholder" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>placeholder</code> attribute to provide users with an example of the type of data
       | that can be entered into a Phone input. <strong>Note:</strong> Placeholder text is not persistent and visually
       | disappears when a value is entered.
-    div(style="max-width: 18rem;" slot="example")
+  template(#example)
+    div(style="max-width: 18rem;")
       chi-label(for="phone-input-placeholder") Phone Number
       chi-phone-input(id="phone-input-placeholder" placeholder="e.g. (123) 456-7890")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="phone-input-placeholder">Phone Number</chi-label>
 <chi-phone-input id="phone-input-placeholder" placeholder="e.g. (123) 456-7890"></chi-phone-input>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
 export default class Placeholder extends Vue {}
 </script>

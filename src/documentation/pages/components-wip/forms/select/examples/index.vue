@@ -3,14 +3,14 @@
     h2 Examples
     p.-text To render a select, apply the class <code>chi-select</code> to a <code>select</code>.
 
-    <Base />
+    BaseExample
     <Disabled />
     <Required />
     <Optional />
     <Help />
     <Message />
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <ErrorLumenCenturyLink />
       <SizesLumenCenturyLink />
       <FloatingLabelsLumenCenturyLink />
@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import Required from './_required.vue';
@@ -35,9 +35,9 @@ import SizesPortal from './_portal/_sizes.vue';
 import FloatingLabelsLumenCenturyLink from './_floating-labels_lumen_centurylink.vue';
 import FloatingLabelsPortal from './_portal/_floating-labels.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     Required,
     Optional,
@@ -48,8 +48,10 @@ import FloatingLabelsPortal from './_portal/_floating-labels.vue';
     SizesLumenCenturyLink,
     SizesPortal,
     FloatingLabelsLumenCenturyLink,
-    FloatingLabelsPortal
-  }
+    FloatingLabelsPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

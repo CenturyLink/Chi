@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Fluid" id="fluid-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h2" title="Fluid" id="fluid-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use Fluid buttons to stretch the full width of the parent container.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       button(class=`chi-button -fluid -mb--2`) Button
       button(class=`chi-button -fluid -justify-content--center`) Button
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

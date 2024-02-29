@@ -1,12 +1,14 @@
 <template lang="pug">
 -  var sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" padding="-p--0">
-    p.-text(slot="example-description")
+<ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" padding="-p--0">
+  template(#example-description)
+    p.-text
       | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
       | <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
       | The default size is <code>md</code>.
-    .chi-grid.-no-gutter.-overflow--auto(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter.-overflow--auto
       .chi-col.-w--12
         .-p--3
           each size in sizes
@@ -21,31 +23,29 @@
               p.-text--bold= size
               chi-link(href="#", alternative-text="CenturyLink")
                 chi-brand(logo='centurylink', size=size)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
@@ -227,10 +227,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- CenturyLink -->
 <a class="chi-brand -xxl" href="/" aria-label="CenturyLink">
   <img src="https://lib.lumen.com/images/centurylink-logo.svg" alt="CenturyLink">
-</a>`
-      }
+</a>`,
+      },
     };
-  }
+  },
 })
 export default class Sizes extends Vue {}
 </script>

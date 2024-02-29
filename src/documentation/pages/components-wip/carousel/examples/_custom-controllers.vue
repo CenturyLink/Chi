@@ -1,40 +1,43 @@
 <template lang="pug">
-  <ComponentExample title="Custom Controllers" id="custom-controllers" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Custom Controllers" id="custom-controllers" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>slot="previous"</code> and <code>slot="next"</code> to provide custom controllers to carousel.
-    chi-carousel(single slot="example")
-      button.examplePreviousButton(slot="previous")
-        i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
-      button.exampleNextButton(slot="next")
-        i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
-      .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", slot="items" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
-        | {{ item }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-carousel(single)
+      div(slot="previous")
+        button.examplePreviousButton
+          i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
+      div(slot="next")
+        button.exampleNextButton
+          i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
+      div(slot="items")
+        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
+          | {{ item }}
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-carousel single>
@@ -74,10 +77,10 @@ import { Component, Vue } from 'vue-property-decorator';
     opacity: 1;
   }
 </style>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
 export default class CustomControllers extends Vue {}
 </script>

@@ -1,16 +1,16 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <BrowserSupport />
+.chi-grid__container.-pt--3
+  BrowserSupport
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BrowserSupport from './_browser-support.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    BrowserSupport
-  }
+    BrowserSupport,
+  },
 })
 export default class Examples extends Vue {}
 </script>

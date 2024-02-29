@@ -1,52 +1,47 @@
 <template lang="pug">
-  <ComponentExample title="Close button" id="close-button" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      chi-button#button-example-popover-closable-1(@click="togglePopover") Click Me!
-      chi-popover(
-        ref="popover"
-        title="Title"
-        variant="text"
-        arrow
-        reference="#button-example-popover-closable-1"
-        closable)
-        | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </Wrapper>
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | Use the attribute <code>closable</code> to render the Popover with a close button.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Close button" id="close-button" :tabs="exampleTabs">
+  template(#example)
+    chi-button#button-example-popover-closable-1(@click="togglePopover") Click Me!
+    chi-popover(
+      ref="popover"
+      title="Title"
+      variant="text"
+      arrow
+      reference="#button-example-popover-closable-1"
+      closable
+    )
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      | sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the attribute <code>closable</code> to render the Popover with a close button.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-button id="button-example-popover-closable-1">With title</chi-button>
+@NuxtComponent({})
+export default class CloseButton extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<chi-button id="button-example-popover-closable-1">With title</chi-button>
 <chi-popover id="popover-example-popover-closable-1" title="Title" variant="text" arrow reference="#button-example-popover-closable-1" closable>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 </chi-popover>
@@ -59,7 +54,7 @@ import { Component, Vue } from 'vue-property-decorator';
       popover.toggle();
   });
 <\/script>`,
-        htmlblueprint: `<button class="chi-button" id="button-example-popover-closable-html" data-target="#popover-example-popover-closable-html">Popover</button>
+    htmlblueprint: `<button class="chi-button" id="button-example-popover-closable-html" data-target="#popover-example-popover-closable-html">Popover</button>
 <section class="chi-popover -closable" id="popover-example-popover-closable-html" aria-modal="true" role="dialog" aria-label="Popover title">
   <button class="chi-button -xs -icon -close" id="close-popover-button" aria-label="Close">
     <div class="chi-button__content">
@@ -82,12 +77,8 @@ import { Component, Vue } from 'vue-property-decorator';
   closeButton.addEventListener("click", function () {
     popoverInstance.hide();
   });
-<\/script>`
-      }
-    };
-  }
-})
-export default class CloseButton extends Vue {
+<\/script>`,
+  };
   togglePopover() {
     (this.$refs.popover as any).toggle();
   }

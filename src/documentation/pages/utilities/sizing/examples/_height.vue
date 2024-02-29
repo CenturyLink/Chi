@@ -12,33 +12,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { sizingColumns } from '~/fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      columns: sizingColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class Height extends Vue {
+  columns = sizingColumns;
   types = ['auto', '25', '50', '75', '100'];
   breakpoints = ['sm', 'md', 'lg', 'xl'];
 
   get allBreakpointsRows() {
-    return this.types.map(type => ({
+    return this.types.map((type) => ({
       class: `<code>-h--${type}</code>`,
-      value: `<code>height: ${type}${type !== 'auto' ? '%' : ''};</code>`
-    }))
+      value: `<code>height: ${type}${type !== 'auto' ? '%' : ''};</code>`,
+    }));
   }
 
   get specificBreakpointsRows() {
-    return this.breakpoints.map(breakpoint =>
-      this.types.map(type => ({
-        class: `<code>-h-${breakpoint}--${type}</code>`,
-        value: `Visible only from <code>${breakpoint}</code>`
-      }))).flat();
+    return this.breakpoints
+      .map((breakpoint) =>
+        this.types.map((type) => ({
+          class: `<code>-h-${breakpoint}--${type}</code>`,
+          value: `Visible only from <code>${breakpoint}</code>`,
+        }))
+      )
+      .flat();
   }
 }
 </script>

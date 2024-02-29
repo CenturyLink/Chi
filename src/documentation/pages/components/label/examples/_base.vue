@@ -1,41 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      chi-label(for="input-1") Label
-      input#input-1-control.-sr--only
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>   
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  template(#example)
+    chi-label(for="input-1") Label
+    input#input-1-control.-sr--only
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label>Label</chi-label>`,
-        htmlblueprint: `<label class="chi-label">Label</label>`
-      }
+        htmlblueprint: `<label class="chi-label">Label</label>`,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>

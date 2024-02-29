@@ -13,22 +13,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Width from './_width.vue';
 import WidthExamples from './_width-examples.vue';
 import Height from './_height.vue';
 import HeightExamples from './_height-examples.vue';
 import MaximumWidthHeight from './_maximum-width-height.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Width,
     WidthExamples,
     Height,
     HeightExamples,
-    MaximumWidthHeight
-  }
+    MaximumWidthHeight,
+  },
 })
-export default class Examples extends Vue {
-}
+export default class Examples extends Vue {}
 </script>

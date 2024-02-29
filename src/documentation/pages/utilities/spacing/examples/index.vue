@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Notation from './_notation.vue';
 import Margins from './_margins.vue';
 import SideMargins from './_side-margins.vue';
@@ -22,7 +22,7 @@ import MarginPadding from './_margin-padding.vue';
 import AutoMargin from './_auto-margin.vue';
 import Breakpoints from './_breakpoints.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Notation,
     Margins,
@@ -31,8 +31,8 @@ import Breakpoints from './_breakpoints.vue';
     SidePadding,
     MarginPadding,
     AutoMargin,
-    Breakpoints
-  }
+    Breakpoints,
+  },
 })
 export default class Examples extends Vue {}
 </script>

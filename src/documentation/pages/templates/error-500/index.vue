@@ -6,14 +6,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+import { Vue } from 'vue-facing-decorator';
+
 import Examples from './examples/index.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    PageContentTabs,
-    Examples
+    Examples,
   },
 })
 export default class Error500 extends Vue {}

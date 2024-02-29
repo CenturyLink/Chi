@@ -1,38 +1,37 @@
 <template lang="pug">
-  <ComponentExample title="Required / Optional" id="required" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Required / Optional" id="required" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use attribute <code>required</code> or <code>optional</code> if you need to indicate required / optional fields.
-    <Wrapper slot="example">
-      chi-label(for="input-2", required) Label
-      input#input-2-control.-sr--only
-      chi-label(for="input-3", optional) Label
-      input#input-3-control.-sr--only
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-label(for="input-2", required) Label
+    input#input-2-control.-sr--only
+    chi-label(for="input-3", optional) Label
+    input#input-3-control.-sr--only
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Required -->
@@ -50,10 +49,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <label class="chi-label">
   Label
   <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
-</label>`
-      }
+</label>`,
+      },
     };
-  }
+  },
 })
 export default class Required extends Vue {}
 </script>

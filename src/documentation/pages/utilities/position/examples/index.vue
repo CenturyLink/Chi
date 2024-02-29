@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Static from './_static.vue';
 import Relative from './_relative.vue';
 import Fixed from './_fixed.vue';
@@ -50,7 +50,7 @@ import TargetRelative from './_target-relative.vue';
 import TargetStatic from './_target-static.vue';
 import TargetSticky from './_target-sticky.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Static,
     Relative,
@@ -65,8 +65,8 @@ import TargetSticky from './_target-sticky.vue';
     TargetFixed,
     TargetRelative,
     TargetStatic,
-    TargetSticky
-  }
+    TargetSticky,
+  },
 })
 export default class Examples extends Vue {}
 </script>

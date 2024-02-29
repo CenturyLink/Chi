@@ -1,46 +1,42 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" titleSize="h4" id="sizes-portal" :tabs="exampleTabs">
-    .chi-grid.-align-items--end(slot="example")
+<ComponentExample title="Sizes" titleSize="h4" id="sizes-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-grid.-align-items--end
       .-p--2(v-for="size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']")
         chi-spinner(:size="size", color='primary' class='-m--1')
         p.-text.-text--center {{size}}
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | By default, spinners are rendered at 16x16px (<code>sm</code>).
-        | Set <code>size</code> attribute to render spinners larger or smaller: <code>xs</code>,
-        | <code>sm</code>, <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | By default, spinners render at 16x16px (<code>-sm</code>).
-        | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
-        | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | By default, spinners are rendered at 16x16px (<code>sm</code>).
+      | Set <code>size</code> attribute to render spinners larger or smaller: <code>xs</code>,
+      | <code>sm</code>, <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | By default, spinners render at 16x16px (<code>-sm</code>).
+      | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
+      | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs : 12x12px -->
@@ -99,10 +95,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <svg class="chi-spinner -icon--primary -xxl" viewBox="0 0 66 66">
   <title>Loading</title>
   <circle class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6"></circle>
-</svg>`
-      }
+</svg>`,
+      },
     };
-  }
+  },
 })
 export default class SizesPortal extends Vue {}
 </script>

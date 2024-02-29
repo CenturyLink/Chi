@@ -1,45 +1,40 @@
 <template lang="pug">
-  <ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
-    p.-text(slot="example-description")
-      | Grid containers can accommodate any number of columns, however, the 
-      | grid system is restricted to a maximum of 12 column units per row. 
-      | Overflowing the 12 column units will automatically wrap additional 
-      | columns onto a new row. For example, the following layout is the 
+<ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
+  template(#example-description)
+    p.-text
+      | Grid containers can accommodate any number of columns, however, the
+      | grid system is restricted to a maximum of 12 column units per row.
+      | Overflowing the 12 column units will automatically wrap additional
+      | columns onto a new row. For example, the following layout is the
       | result of having 24 column units in a single container:
-    
-    .chi-grid.-mb--2.-show--example(slot="example")
+  template(#example)
+    .chi-grid.-mb--2.-show--example()
       .chi-col(v-for="item in grid4Columns" :key="item" class="-w--3")
       .chi-col(v-for="item in grid2Columns" :key="item" class="-w--6")
-    
-    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-      <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
-    </pre>
-  </ComponentExample>
+
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint3Cols" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    };
-  }
-})
+@NuxtComponent({})
 export default class ColumnWrapping extends Vue {
   grid2Columns = Array(2).fill('chi-col');
   grid4Columns = Array(4).fill('chi-col');
+  exampleTabs = [
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
 
   get codeSnippets() {
     return {
-      htmlblueprint3Cols: this.generateHtml()
+      htmlblueprint3Cols: this.generateHtml(),
     };
   }
 
@@ -56,9 +51,7 @@ ${this.generateHtmlList(this.grid2Columns, '6')}
   }
 
   generateHtmlList(array: string[], length: string) {
-    return `${array
-      .map(() => `  <div class="chi-col -w--${length}"></div>`)
-      .join('\n')}`;
+    return `${array.map(() => `  <div class="chi-col -w--${length}"></div>`).join('\n')}`;
   }
 }
 </script>

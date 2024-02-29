@@ -1,12 +1,11 @@
 <template lang="pug">
-  div
-    h2 Web Component
-    <PropertiesGenerator tag="chi-badge" />
+h2 Web Component
+<PropertiesGenerator tag="chi-badge" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
+@NuxtComponent({})
 export default class Properties extends Vue {}
 </script>

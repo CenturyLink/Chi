@@ -1,22 +1,22 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h2" title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
       | or <code>-disabled</code> class.
-    chi-button(color='primary' slot="example" disabled) Button
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    chi-button(color='primary' disabled) Button
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

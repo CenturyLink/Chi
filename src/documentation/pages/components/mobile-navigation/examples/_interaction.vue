@@ -1,15 +1,12 @@
 <template lang="pug">
-  - var example=0;
-  - var menuItems=['1', '2', '3', '4'];
-  - var drawerMenuItems=['1', '2'];
-  -
-    var active = {
-      menuItem: '1',
-      drawerMenuItem: '2'
-    };
+- var example=0;
+- var menuItems=['1', '2', '3', '4'];
+- var drawerMenuItems=['1', '2'];
+- var active = { menuItem: '1', drawerMenuItem: '2' };
 
-  <ComponentExample title="Interaction" id="interaction" padding="-p--0" :tabs="exampleTabs">
-    .-mb--3.-overflow--hidden(slot="example")
+<ComponentExample title="Interaction" id="interaction" padding="-p--0" :tabs="exampleTabs">
+  template(#example)
+    .-mb--3.-overflow--hidden
       .-position--relative.-z--0.-overflow--hidden(style='height:25rem;')
         .-p--3
           .-d--flex.-align-items--center
@@ -18,13 +15,13 @@
                 i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
             b.-ml--2 Click menu button to open Mobile navigation
           each i in [1, 2]
-            p.-text.-mb--3 
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. 
-              | Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum 
-              | dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus 
-              | convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae 
-              | lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. 
-              | Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. 
+            p.-text.-mb--3
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit.
+              | Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum
+              | dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus
+              | convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae
+              | lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam.
+              | Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum.
               | Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
         .chi-mobile-nav#mobile-navigation-example
           .chi-backdrop.-closed.-position--absolute
@@ -126,41 +123,36 @@
                             span
                               | External
                               i.chi-icon.icon-external-link.-xs(aria-hidden="true")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<!-- Trigger -->
+@NuxtComponent({})
+export default class Interaction extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<!-- Trigger -->
 <button class="chi-button -icon -flat" id="mobile-navigation-interaction-trigger" data-target="#mobile-navigation-example" aria-label="Open Menu">
   <div class="chi-button__content">
     <i class="chi-icon icon-menu -sm--2" aria-hidden="true"></i>
@@ -566,16 +558,10 @@ declare const chi: any;
 <!-- JavaScript -->
 <script>
   chi.mobilenav(document.querySelector("#mobile-navigation-interaction-trigger"));
-<\/script>`
-      }
-    };
-  }
-})
-export default class Interaction extends Vue {
+<\/script>`,
+  };
   mounted() {
-    chi.mobilenav(
-      document.querySelector('#mobile-navigation-interaction-trigger')
-    );
+    chi.mobilenav(document.querySelector('#mobile-navigation-interaction-trigger'));
   }
 }
 </script>

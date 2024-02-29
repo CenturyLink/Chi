@@ -3,7 +3,7 @@
     h2 Examples
     p.-text To render accordion, use the class <code>chi-accordion</code>.
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <BaseLumenCenturyLink />
       <NestedLumenCenturyLink />
       <MethodsLumenCenturyLink />
@@ -12,7 +12,7 @@
       <TruncatedLumenCenturyLink />
       <SizesLumenCenturyLink />
 
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-if="selectedTheme === 'portal'")
       <BasePortal />
       <CardPortal />
       <NestedPortal />
@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BaseLumenCenturyLink from './_base_lumen_centurylink.vue';
 import NestedLumenCenturyLink from './_nested_lumen_centurylink.vue';
 import MethodsLumenCenturyLink from './_methods_lumen_centurylink.vue';
@@ -41,7 +41,7 @@ import DisabledPortal from './_portal/_disabled.vue';
 import TruncatedPortal from './_portal/_truncated.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BaseLumenCenturyLink,
     BasePortal,
@@ -58,7 +58,9 @@ import SizesPortal from './_portal/_sizes.vue';
     TruncatedPortal,
     SizesLumenCenturyLink,
     SizesPortal,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

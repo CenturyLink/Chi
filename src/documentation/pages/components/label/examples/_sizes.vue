@@ -1,38 +1,37 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
-      | Label supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>. 
+<ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
+      | Label supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
-    <Wrapper slot="example">
-      each size, index in ['xs', 'sm', 'md', 'lg', 'xl']
-        chi-label(for=`input-${index}`, size=size) Label
-        input.-sr--only(id=`input-${index}`)
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    each size, index in ['xs', 'sm', 'md', 'lg', 'xl']
+      chi-label(for=`input-${index}`, size=size) Label
+      input.-sr--only(id=`input-${index}`)
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
@@ -62,10 +61,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <label class="chi-label -lg">Label</label>
 
 <!-- xl -->
-<label class="chi-label -xl">Label</label>`
-      }
+<label class="chi-label -xl">Label</label>`,
+      },
     };
-  }
+  },
 })
 export default class Sizes extends Vue {}
 </script>
