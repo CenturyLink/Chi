@@ -1,51 +1,50 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalStyle="position: static;">
-    chi-data-table-toolbar(slot="example")
-      template(v-slot:start)
-        chi-search-input(:data-table-search='true')
+<ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalStyle="position: static;">
+  template(#example)
+    ChiDataTableToolbar
+      template(#start)
+        ChiSearchInput(:dataTableSearch="true")
         .chi-divider.-vertical
-        chi-data-table-views(:views='toolbar.viewsData')
+        ChiDataTableViews(:views="toolbar.viewsData")
         .chi-divider.-vertical
-        chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
-          template(v-slot:custom-one)
-            chi-label(for='example__base_filter_input-1') City
-            chi-text-input#example__base_filter_input-1
-            chi-label(for='example__base_filter_input-2') Zip Code
-            chi-text-input#example__base_filter_input-2
-          template(v-slot:custom-two)
-            chi-date-picker
-      template(v-slot:end)
-        chi-tooltip(message="Refresh")
-          button.chi-button.-icon.-flat(aria-label="Refresh")
-            .chi-button__content
-              i.chi-icon.icon-refresh(aria-hidden="true")
-        chi-tooltip(message="Download")
-          button.chi-button.-icon.-flat(aria-label="Download")
-            .chi-button__content
-              i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
-        chi-column-customization(:columns-data='toolbar.columnsData')
-    pre(class="language-html" slot="code-webcomponent")
-      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    <Wrapper slot="code-vue">
-      .chi-tab__description
-        | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
-      pre(class="language-html")
-        code(v-highlight="$data.codeSnippets.vue" class="html")
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | To render toolbar, use the class <code>chi-toolbar</code>.
-      pre(class="language-html")
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+        ChiDataTableFilters.-ml--2(:filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData")
+          template(#customAdvanced)
+            .chi-form__item
+              <chi-label for="input-1">City</chi-label>
+              <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+              <chi-label for="input-2">Zip Code</chi-label>
+              <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          template(#customAdvanced2)
+            chi-date-picker(@chiDateChange="e => dateChangeHandler(e)")
+      template(#end)
+        ChiTooltip(message="Download")
+          .chi-dropdown
+            button(ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="Download" data-position="bottom-end")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+            .chi-dropdown__menu
+              a.chi-dropdown__menu-item(href="#") Download All Data
+              a.chi-dropdown__menu-item(href="#") Download All Current Results
+        ChiColumnCustomization(:columnsData="toolbar.columnsData")
+
+
+  template(#code-vue)
+    .chi-tab__description
+      | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
+    Copy(lang="html" :code="codeSnippets.vue")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To render toolbar, use the class <code>chi-toolbar</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { exampleToolbar } from '../../../../fixtures/fixtures';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       toolbar: exampleToolbar,
@@ -53,18 +52,18 @@ import { exampleToolbar } from '../../../../fixtures/fixtures';
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
 
         {
           active: true,
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -247,7 +246,9 @@ data: () => {
   return {
     toolbar: {
       customItemsData: customItems,
-      filtersData: filters,
+      filtersData: {
+        filters: filters
+      },
       columnsData: {
         columns: columns
       },
@@ -446,10 +447,10 @@ data: () => {
   chi.drawer(document.getElementById('example__base_drawer_trigger-1'));
   chi.drawer(document.getElementById('example__base_drawer_trigger-2'));
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-<\/script>`
-      }
+<\/script>`,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>

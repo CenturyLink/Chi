@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import UserState from './_userState.vue';
 import ApplicationState from './_applicationState.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     UserState,
-    ApplicationState
-  }
+    ApplicationState,
+  },
 })
 export default class Examples extends Vue {}
 </script>

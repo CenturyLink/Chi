@@ -1,86 +1,80 @@
 <template lang="pug">
-  <ComponentExample title="Responsive background-color examples" id="responsive-background-examples" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
+<ComponentExample title="Responsive background-color examples" id="responsive-background-examples" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
+  template(#example)
     .-text.-b--1.-p--3.-m--1(
-      slot="example"
       v-for="example in examples"
       :class="generateClassName(example.className, example.additionalClassName)"
       :style="`color:${example.textColor ? example.textColor : 'white'}`") {{ generateClassName(example.className, example.additionalClassName) }}
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    };
-  }
-})
+@NuxtComponent({})
 export default class ResponsiveBackgroundExamples extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
   examples = [
     {
       className: 'primary',
       size: 'on all breakpoints',
-      additionalClassName: ''
+      additionalClassName: '',
     },
     {
       className: 'secondary',
       textColor: 'black',
       additionalClassName: 'sm',
-      size: 'from sm'
+      size: 'from sm',
     },
     {
       className: 'warning',
       additionalClassName: 'md',
-      size: 'from md'
+      size: 'from md',
     },
     {
       className: 'danger',
       additionalClassName: 'lg',
-      size: 'from lg'
+      size: 'from lg',
     },
     {
       className: 'black',
       additionalClassName: 'xl',
-      size: 'from xl'
+      size: 'from xl',
     },
     {
       className: 'none',
       textColor: 'black',
       size: 'on all breakpoints',
       additionalClassName: '',
-      noColor: true
-    }
-  ]
+      noColor: true,
+    },
+  ];
 
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
-    }
+      htmlblueprint: this.generateHtml(),
+    };
   }
 
   generateHtml() {
-    return this.examples.map(({ className, size, additionalClassName, noColor }) => {
-      return (
-        `<!-- background${noColor ? '' : '-color'} ${className} ${size} -->
-<div class="${this.generateClassName(className, additionalClassName)}"></div>`
-      )
-    }).join('\n');
+    return this.examples
+      .map(({ className, size, additionalClassName, noColor }) => {
+        return `<!-- background${noColor ? '' : '-color'} ${className} ${size} -->
+<div class="${this.generateClassName(className, additionalClassName)}"></div>`;
+      })
+      .join('\n');
   }
 
   generateClassName(base = '', additional = '') {
-    return `-bg${additional ? `-${additional}` : ''}--${base}`
+    return `-bg${additional ? `-${additional}` : ''}--${base}`;
   }
 }
 </script>

@@ -1,21 +1,20 @@
 <template lang="pug">
-  <ComponentExample title="Date Time" id="date-picker-date-time" :tabs="exampleTabs">
-    div(style="max-width: 14rem;" slot="example")
+<ComponentExample title="Date Time" id="date-picker-date-time" :tabs="exampleTabs">
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__datepicker_date_time') Date Time
       chi-date-picker(id="example__datepicker_date_time" mode="datetime")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

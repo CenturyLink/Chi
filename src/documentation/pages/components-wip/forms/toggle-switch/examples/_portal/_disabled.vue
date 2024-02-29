@@ -1,24 +1,24 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Disabled" id="disabled-portal" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h4" title="Disabled" id="disabled-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
       | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
       | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-      .chi-form__item(slot="example")
-        chi-switch(id='toggle-portal-di1', size="xs", label='Label', disabled)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    .chi-form__item
+      chi-switch(id='toggle-portal-di1', size="xs", label='Label', disabled)
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

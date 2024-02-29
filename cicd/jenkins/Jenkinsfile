@@ -278,8 +278,9 @@ pipeline {
           }
           stage ('Building Vue documentation system') {
             agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
+              dockerfile {
+                filename getNodeAgentBlock('vue-documentation')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -1113,7 +1114,7 @@ def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
-  if (scope == 'chi-vue' || scope == 'custom-elements') {
+  if (scope == 'chi-vue' || scope == 'custom-elements' || scope == 'vue-documentation') {
     nodeVersion = '20'
   }
 

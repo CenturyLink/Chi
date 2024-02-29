@@ -11,27 +11,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = ['chi-icon', 'chi-button', 'chi-brand'];
-
-@Component({
+@NuxtComponent({
   components: {
     Examples,
     Accessibility,
-    PageContentTabs,
-    Properties
+    Properties,
   },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs
-    };
-  }
 })
-export default class DatePicker extends Vue {}
+export default class DatePicker extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>

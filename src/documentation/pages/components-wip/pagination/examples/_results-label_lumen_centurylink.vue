@@ -1,42 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Results Label" id="results-label-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
-    p.-text(slot="example-description")
+<ComponentExample title="Results Label" id="results-label-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
+  template(#example-description)
+    p.-text
       | Add a label to indicate the total number of results.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12(v-for="item in [1, 2]")
         .-p--3(:class="item === 2 ? '-bg--black' : ''")
           chi-pagination(pages="12" current-page="3" results="240" :inverse="item === 2 ? true : false")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
-         {
+        {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
@@ -112,10 +111,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <ChiPagination :pages="12" :currentPage="3" :results="240" />
 
 <!-- For dark backgrounds -->
-<ChiPagination :pages="12" :currentPage="3" :results="240" :inverse="true" />`
-      }
+<ChiPagination :pages="12" :currentPage="3" :results="240" :inverse="true" />`,
+      },
     };
-  }
+  },
 })
 export default class ResultsLabelLumenCenturyLink extends Vue {}
 </script>

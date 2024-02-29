@@ -8,36 +8,31 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from "~/models/models";
-import { defaultColumns } from "~/fixtures/fixtures";
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { defaultColumns } from '~/fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      columns: defaultColumns,
-      sizes: [
-        {
-          name: 'sm',
-          value: 'sm',
-        },
-        {
-          name: 'md',
-          value: 'md',
-        },
-        {
-          name: 'lg',
-          value: 'lg',
-        },
-        {
-          name: 'xl',
-          value: 'xl',
-        }
-      ]
-    };
-  },
-})
+@NuxtComponent({})
 export default class BreakpointsSpecific extends Vue {
+  columns = defaultColumns;
+  sizes = [
+    {
+      name: 'sm',
+      value: 'sm',
+    },
+    {
+      name: 'md',
+      value: 'md',
+    },
+    {
+      name: 'lg',
+      value: 'lg',
+    },
+    {
+      name: 'xl',
+      value: 'xl',
+    },
+  ];
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'class':
@@ -47,6 +42,6 @@ export default class BreakpointsSpecific extends Vue {
       default:
         return '';
     }
-  };
+  }
 }
 </script>

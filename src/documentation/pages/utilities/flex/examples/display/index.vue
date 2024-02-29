@@ -8,12 +8,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import FlexboxContainer from './_flexbox-container.vue';
 import InlineFlexboxContainer from './_inline-flexbox-container.vue';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     FlexboxContainer,
     InlineFlexboxContainer,

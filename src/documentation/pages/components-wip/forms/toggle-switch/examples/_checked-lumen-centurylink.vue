@@ -1,23 +1,23 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Checked" id="checked-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h4" title="Checked" id="checked-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>checked</code> boolean attribute to set the default value of
       | a toggle switch to true.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       chi-switch(id='toggle-ch1',label='Label' checked)
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

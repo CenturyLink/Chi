@@ -1,0 +1,898 @@
+---
+title: Chi time picker
+---
+script(type='module' src='../../js/chi.js')
+
+- const padZero = value => ('0' + value).slice(-2);
+- const hours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+- const hours24 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+- const periods = ['AM', 'PM'];
+
+- let minute = 0;
+- let second = 0;
+
+//- Base
+.test-base
+  span.-text--h2 Chi time picker base
+  label.chi-label.-md(for="base-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-base(
+      data-target="#popover-base"
+    )
+      input#base-control.chi-input(type="text" value="01:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-base
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Active
+.test-active(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker active
+  label.chi-label.-md(for="active-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-active(
+      data-target="#popover-active"
+    )
+      input#active-control.chi-input.-focus(type="text" value="01:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-active.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Disabled
+.test-disabled
+  span.-text--h2 Chi time picker disabled
+  label.chi-label.-md(for="disabled-control") Label
+  div.-disabled
+    .chi-input__wrapper.-icon--right
+      input#disabled-control.chi-input(type="text" placeholder="--:-- --" disabled)
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+
+- minute = 0;
+- second = 0;
+
+//- Disabled with value
+.test-disabled-value
+  span.-text--h2 Chi time picker disabled with value
+  label.chi-label.-md(for="disabled-value-control") Label
+  div.-disabled
+    .chi-input__wrapper.-icon--right
+      input#disabled-value-control.chi-input(type="text" value="01:30" disabled)
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+
+- minute = 0;
+- second = 0;
+
+//- Display with seconds
+.test-display-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker with seconds
+  label.chi-label.-md(for="display-seconds-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-display-seconds(
+      data-target="#popover-display-seconds"
+    )
+      input#display-seconds-control.chi-input.-focus(type="text" value="01:30:45")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-display-seconds.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 45
+                  .chi-time-picker__second.-active=padZero(second++)
+                else
+                  .chi-time-picker__second=padZero(second++)
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- 12hr format
+.test-12hr-format(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 12hr format
+  label.chi-label.-md(for="12hr-format-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-12hr-format(
+      data-target="#popover-12hr-format"
+    )
+      input#12hr-format-control.chi-input.-focus(type="text" value="02:30 pm")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-12hr-format.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 2
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'PM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- 24hr format
+.test-24hr-format(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 24hr format
+  label.chi-label.-md(for="24hr-format-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-24hr-format(
+      data-target="#popover-24hr-format"
+    )
+      input#24hr-format-control.chi-input.-focus(type="text" value="14:30")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-24hr-format.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours24
+                if hour === 14
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+
+- minute = 0;
+- second = 0;
+
+//- 24hr format with seconds
+.test-24hr-format-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 24hr format with seconds
+  label.chi-label.-md(for="24hr-format-seconds-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-24hr-format-seconds(
+      data-target="#popover-24hr-format-seconds"
+    )
+      input#24hr-format-seconds-control.chi-input.-focus(type="text" value="14:30:45")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-24hr-format-seconds.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours24
+                if hour === 14
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 45
+                  .chi-time-picker__second.-active=padZero(second++)
+                else
+                  .chi-time-picker__second=padZero(second++)
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step default
+.test-minutes-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default minutes step
+  label.chi-label.-md(for="minutes-step-default-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-default(
+      data-target="#popover-minutes-step-default"
+    )
+      input#minutes-step-default-control.chi-input.-focus(type="text" value="01:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-default.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=15
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=15
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step 5 with seconds
+.test-minutes-step-5-seconds(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 5 minutes step with seconds
+  label.chi-label.-md(for="minutes-step-5-seconds-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-5-seconds(
+      data-target="#popover-minutes-step-5-seconds"
+    )
+      input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="01:10:00 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-5-seconds.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 10
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=5
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=5
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 00
+                  .chi-time-picker__second.-active=padZero(second++)
+                else
+                  .chi-time-picker__second=padZero(second++)
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step 10
+.test-minutes-step-10(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 10 minutes step
+  label.chi-label.-md(for="minutes-step-10-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-10(
+      data-target="#popover-minutes-step-10"
+    )
+      input#minutes-step-10-control.chi-input.-focus(type="text" value="01:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-10.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=10
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=10
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step 15
+.test-minutes-step-15(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 15 minutes step
+  label.chi-label.-md(for="minutes-step-15-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-15(
+      data-target="#popover-minutes-step-15"
+    )
+      input#minutes-step-15-control.chi-input.-focus(type="text" value="01:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-15.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=15
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=15
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step 20
+.test-minutes-step-20(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 20 minutes step
+  label.chi-label.-md(for="minutes-step-20-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-20(
+      data-target="#popover-minutes-step-20"
+    )
+      input#minutes-step-20-control.chi-input.-focus(type="text" value="01:40 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-20.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 40
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=20
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=20
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes step 30
+.test-minutes-step-30(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 30 minutes step
+  label.chi-label.-md(for="minutes-step-30-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-step-30(
+      data-target="#popover-minutes-step-30"
+    )
+      input#minutes-step-30-control.chi-input.-focus(type="text" value="12:00 pm")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-30.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 12
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 00
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=30
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=30
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'PM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step default
+.test-seconds-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default seconds step
+  label.chi-label.-md(for="seconds-step-default-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-default(
+      data-target="#popover-seconds-step-default"
+    )
+      input#seconds-step-default-control.chi-input.-focus(type="text" value="01:30:20 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-default.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 20
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=10
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=10
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step 5
+.test-seconds-step-5(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 5 seconds step
+  label.chi-label.-md(for="seconds-step-5-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-5(
+      data-target="#popover-seconds-step-5"
+    )
+      input#seconds-step-5-control.chi-input.-focus(type="text" value="01:30:10 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-5.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 10
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=5
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=5
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step 10
+.test-seconds-step-10(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 10 seconds step
+  label.chi-label.-md(for="seconds-step-10-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-10(
+      data-target="#popover-seconds-step-10"
+    )
+      input#seconds-step-10-control.chi-input.-focus(type="text" value="01:30:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-10.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 30
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=10
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=10
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step 15
+.test-seconds-step-15(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 15 seconds step
+  label.chi-label.-md(for="seconds-step-15-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-15(
+      data-target="#popover-seconds-step-15"
+    )
+      input#seconds-step-15-control.chi-input.-focus(type="text" value="01:30:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-15.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 30
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=15
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=15
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step 20
+.test-seconds-step-20(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 20 seconds step
+  label.chi-label.-md(for="seconds-step-20-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-20(
+      data-target="#popover-seconds-step-20"
+    )
+      input#seconds-step-20-control.chi-input.-focus(type="text" value="01:30:40 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-20.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 40
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=20
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=20
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Seconds step 30
+.test-seconds-step-30(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker 30 seconds step
+  label.chi-label.-md(for="seconds-step-30-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-seconds-step-30(
+      data-target="#popover-seconds-step-30"
+    )
+      input#seconds-step-30-control.chi-input.-focus(type="text" value="01:30:30 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-30.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute++)
+                else
+                  .chi-time-picker__minute=padZero(minute++)
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 30
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=30
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=30
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+- minute = 0;
+- second = 0;
+
+//- Minutes and seconds step default
+.test-minutes-seconds-step-default(style="padding-bottom: 300px;")
+  span.-text--h2 Chi time picker default minutes and seconds step
+  label.chi-label.-md(for="minutes-seconds-step-default-control") Label
+  div
+    .chi-input__wrapper.-icon--right#input-minutes-seconds-step-default(
+      data-target="#popover-minutes-seconds-step-default"
+    )
+      input#minutes-seconds-step-default-control.chi-input.-focus(type="text" value="01:30:50 am")
+      .chi-icon
+        svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
+          use(href="#icon-circle-clock-outline")
+    section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-seconds-step-default.-active
+      .chi-popover__content
+        .chi-time-picker
+          .chi-time-picker__content
+            .chi-time-picker__hours.-position--relative
+              each hour in hours
+                if hour === 1
+                  .chi-time-picker__hour.-active=padZero(hour)
+                else
+                  .chi-time-picker__hour=padZero(hour)
+            .chi-time-picker__minutes.-position--relative
+              while minute < 60
+                if minute === 30
+                  .chi-time-picker__minute.-active=padZero(minute)
+                  - minute+=15
+                else
+                  .chi-time-picker__minute=padZero(minute)
+                  - minute+=15
+            .chi-time-picker__seconds.-position--relative
+              while second < 60
+                if second === 50
+                  .chi-time-picker__second.-active=padZero(second)
+                  - second+=10
+                else
+                  .chi-time-picker__second=padZero(second)
+                  - second+=10
+            .chi-time-picker__periods
+              each period in periods
+                if period === 'AM'
+                  .chi-time-picker__period.-active=period
+                else
+                  .chi-time-picker__period=period
+
+div(style="padding-bottom: 300px;")
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    const popoverConfig = {
+      arrow: false,
+      preventAutoHide: true,
+      position: 'bottom'
+    };
+
+    chi.popover(document.getElementById('input-active'), popoverConfig);
+    chi.popover(document.getElementById('input-display-seconds'), popoverConfig);
+    chi.popover(document.getElementById('input-12hr-format'), popoverConfig);
+    chi.popover(document.getElementById('input-24hr-format'), popoverConfig);
+    chi.popover(document.getElementById('input-24hr-format-seconds'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-default'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-5-seconds'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-10'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-15'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-20'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-step-30'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-default'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-5'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-10'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-15'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-20'), popoverConfig);
+    chi.popover(document.getElementById('input-seconds-step-30'), popoverConfig);
+    chi.popover(document.getElementById('input-minutes-seconds-step-default'), popoverConfig);
+
+    // Hours
+    const hoursColumns = document.querySelectorAll('.chi-time-picker__hours');
+
+    hoursColumns.forEach(hoursColumn => {
+      const activeHour = hoursColumn.querySelector('.chi-time-picker__hour.-active');
+
+      if (activeHour) {
+        hoursColumn.scrollTop = activeHour.offsetTop - 24;
+      }
+    });
+
+    // Minutes
+    const minutesColumns = document.querySelectorAll('.chi-time-picker__minutes');
+
+    minutesColumns.forEach(minutesColumn => {
+      const activeMinute = minutesColumn.querySelector('.chi-time-picker__minute.-active');
+
+      if (activeMinute) {
+        minutesColumn.scrollTop = activeMinute.offsetTop - 24;
+      }
+    });
+
+    // Seconds
+    const secondsColumns = document.querySelectorAll('.chi-time-picker__seconds');
+
+    secondsColumns.forEach(minutesColumn => {
+      const activeSecond = minutesColumn.querySelector('.chi-time-picker__second.-active');
+
+      if (activeSecond) {
+        minutesColumn.scrollTop = activeSecond.offsetTop - 24;
+      }
+    });
+  });

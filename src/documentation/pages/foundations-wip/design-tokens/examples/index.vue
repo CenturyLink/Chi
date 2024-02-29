@@ -1,22 +1,22 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <ColorText />
-    <ColorIcon />
-    <Background />
-    <Border />
-    <ColorSystem />
-    <FontFamily />
-    <FontWeight />
-    <FontSizeText />
-    <FontSizeHeading />
-    <FontSizeSystem />
-    <BorderRadius />
-    <Opacity />
-    <ZIndex />
+.chi-grid__container.-pt--3
+  <ColorText />
+  <ColorIcon />
+  <Background />
+  <Border />
+  <ColorSystem />
+  <FontFamily />
+  <FontWeight />
+  <FontSizeText />
+  <FontSizeHeading />
+  <FontSizeSystem />
+  <BorderRadius />
+  <Opacity />
+  <ZIndex />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import ColorText from './_color-text.vue';
 import ColorIcon from './_color-icon.vue';
 import Background from './_background.vue';
@@ -31,7 +31,7 @@ import BorderRadius from './_border-radius.vue';
 import Opacity from './_opacity.vue';
 import ZIndex from './_z-index.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     ColorText,
     ColorIcon,

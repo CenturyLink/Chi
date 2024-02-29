@@ -1,21 +1,15 @@
 <template lang="pug">
-  div
-    <TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a misspelled URL." />
-    <Examples />
+<TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a misspelled URL." />
+<Examples />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
 
-@Component({
-  head() {
-    return {
-      title: 'Chi - Error-404'
-    }
-  },
+@NuxtComponent({
   components: {
-    Examples
+    Examples,
   },
 })
 export default class Error404 extends Vue {}

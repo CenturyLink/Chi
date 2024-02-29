@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import SupportedValues from './_supported-values.vue';
 import ZIndexExample from './_z-index-example.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     SupportedValues,
-    ZIndexExample
+    ZIndexExample,
   },
 })
 export default class Examples extends Vue {}

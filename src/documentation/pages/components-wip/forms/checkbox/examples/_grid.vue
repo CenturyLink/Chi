@@ -1,10 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Grid" id="grid" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Grid" id="grid" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>chi-grid</code> to render a group of checkboxes in a responsive grid.
       | In the example below, the checkboxes display in 4 columns on medium screens and up,
       | 2 columns on small screens, and 1 column on x-small screens.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-mb--1
         legend.chi-label Select options
       each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -13,32 +15,30 @@
             .chi-checkbox
               input(type="checkbox" class="chi-checkbox__input" id=`checkbox-g${i}`)
               label(for=`checkbox-g${i}` class="chi-checkbox__label")="Option " + i
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -144,10 +144,10 @@ import { Component, Vue } from 'vue-property-decorator';
       </div>
     </div>
   </div>
-</fieldset>`
-      }
+</fieldset>`,
+      },
     };
-  }
+  },
 })
 export default class Grid extends Vue {}
 </script>

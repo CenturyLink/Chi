@@ -6,16 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { COLORS } from '~/constants/constants';
 
-@Component({})
+@NuxtComponent({})
 export default class BrandBackgroundColor extends Vue {
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
   get isNotCenturylink() {
     return this.theme !== 'centurylink';
   }
@@ -30,8 +28,8 @@ export default class BrandBackgroundColor extends Vue {
         value: this.isNotCenturylink ? COLORS.SECONDARY.value : COLORS.SECONDARY_CENTURYLINK.value,
       },
       COLORS.BLACK,
-      COLORS.WHITE
-    ]
+      COLORS.WHITE,
+    ];
   }
 
   getContent(column: ITableColumn, content: ITableContent) {

@@ -1,54 +1,52 @@
 <template lang="pug">
-  <ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--2">
-    p.-text(slot="example-description") Icons can be placed before, after, or on both sides of text.
-    <Wrapper slot="example">
-      chi-badge(class='-m--1')
-        chi-icon(icon='plus', size='xs')
-        span Badge
-      chi-badge(class='-m--1')
-        span Badge
-        chi-icon(icon='x', size='xs')
-      chi-badge(class='-m--1', variant='flat', color='success')
-        chi-icon(icon='circle')
-        span Active
-      chi-badge(class='-m--1', variant='flat', color='warning')
-        chi-icon(icon='circle-clock')
-        span Away
-      chi-badge(class='-m--1', variant='flat', color='danger')
-        chi-icon(icon='circle-minus')
-        span Do not Disturb
-      chi-badge(class='-m--1', variant='flat', color='muted')
-        chi-icon(icon='circle')
-        span Offline
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--2">
+  template(#example-description)
+  p.-text Icons can be placed before, after, or on both sides of text.
+  template(#example)
+    chi-badge(class='-m--1')
+      chi-icon(icon='plus', size='xs')
+      span Badge
+    chi-badge(class='-m--1')
+      span Badge
+      chi-icon(icon='x', size='xs')
+    chi-badge(class='-m--1', variant='flat', color='success')
+      chi-icon(icon='circle')
+      span Active
+    chi-badge(class='-m--1', variant='flat', color='warning')
+      chi-icon(icon='circle-clock')
+      span Away
+    chi-badge(class='-m--1', variant='flat', color='danger')
+      chi-icon(icon='circle-minus')
+      span Do not Disturb
+    chi-badge(class='-m--1', variant='flat', color='muted')
+      chi-icon(icon='circle')
+      span Offline
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-badge>
+@NuxtComponent({})
+export default class IconBadges extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<chi-badge>
   <chi-icon icon="plus" size="xs"></chi-icon>
   <span>Badge</span>
 </chi-badge>
@@ -72,7 +70,7 @@ import { Component, Vue } from 'vue-property-decorator';
   <chi-icon icon="circle"></chi-icon>
   <span>Offline</span>
 </chi-badge>`,
-        htmlblueprint: `<div class="chi-badge">
+    htmlblueprint: `<div class="chi-badge">
   <div class="chi-badge__content">
     <i class="chi-icon -xs icon-plus" aria-hidden="true"></i>
     <span>Badge</span>
@@ -107,10 +105,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <i class="chi-icon icon-circle" aria-hidden="true"></i>
     <span>Offline</span>
   </div>
-</div>`
-      }
-    };
-  }
-})
-export default class IconBadges extends Vue {}
+</div>`,
+  };
+}
 </script>

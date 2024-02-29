@@ -9,7 +9,8 @@ $icon-sizes: (
   md: $icon-size-md,
   lg: $icon-size-lg,
   xl: $icon-size-xl,
-  xxl: $icon-size-xxl);
+  xxl: $icon-size-xxl,
+);
 
 i {
   &[class^='icon-'],
@@ -33,6 +34,26 @@ i {
       }
     }
   }
+}
+
+.icon-api-outline::before {
+  content: '\ea19';
+}
+
+.icon-logo-x::before {
+  content: '\ea1b';
+}
+
+.icon-calendar-circle-x::before {
+  content: '\ea1c';
+}
+
+.icon-calendar-circle-clock::before {
+  content: '\ea1d';
+}
+
+.icon-calendar-circle-alert::before {
+  content: '\ea1a';
 }
 
 .icon-flag-off::before {

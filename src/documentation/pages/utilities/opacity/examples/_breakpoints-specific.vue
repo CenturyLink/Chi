@@ -16,14 +16,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
-  sizes: ["sm", 'md', 'lg', 'xl']
+      sizes: ['sm', 'md', 'lg', 'xl'],
     };
-  }
+  },
 })
 export default class BreakpointsSpecific extends Vue {}
 </script>

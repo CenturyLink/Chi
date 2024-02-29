@@ -1,53 +1,50 @@
 <template lang="pug">
-  <ComponentExample title="Default" titleSize="h4" id="bubble_default" padding="-p--1" :tabs="exampleTabs">
-    <Wrapper slot='example'>
-      chi-alert.-m--2(icon='flag')
-        | This is a base alert
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-        chi-alert.-m--2(color=type, icon=val)
-          = `This is ${type === "info" ? "an" : "a"} ${type} alert`
-    </Wrapper>
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        span
-          | To render an alert use the tag <code>chi-alert</code>.
-          | Use the color attribute to define a semantic color that corresponds to the meaning
-          | or value state of your alert. Supported colors include <code>success</code>, <code>danger</code>, <code>warning</code>,
-          | <code>info</code>, and <code>muted</code>. If no color is defined, alerts will default to the base style which uses the body
-          | text color. This is useful for displaying neutral alerts with no specific value state.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        span
-          | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
-          | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
-          | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
-          | text color. This is useful for displaying neutral alerts with no specific value state.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+<ComponentExample title="Default" titleSize="h4" id="bubble_default" padding="-p--1" :tabs="exampleTabs">
+  template(#example)
+    chi-alert.-m--2(icon='flag')
+      | This is a base alert
+    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      chi-alert.-m--2(color=type, icon=val)
+        = `This is ${type === "info" ? "an" : "a"} ${type} alert`
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | To render an alert use the tag <code>chi-alert</code>.
+        | Use the color attribute to define a semantic color that corresponds to the meaning
+        | or value state of your alert. Supported colors include <code>success</code>, <code>danger</code>, <code>warning</code>,
+        | <code>info</code>, and <code>muted</code>. If no color is defined, alerts will default to the base style which uses the body
+        | text color. This is useful for displaying neutral alerts with no specific value state.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
+        | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
+        | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
+        | text color. This is useful for displaying neutral alerts with no specific value state.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Base - No semantic color defined -->
@@ -115,10 +112,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-alert__content">
     <p class="chi-alert__text">This is a muted alert</p>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class BubbleDefault extends Vue {}
 </script>

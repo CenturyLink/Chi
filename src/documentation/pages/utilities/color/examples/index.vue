@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BrandIconColor from './_brand-icon-color.vue';
 import SemanticIconColor from './_semantic-icon-color.vue';
 import BrandComplimentaryIconColor from './_brand-complimentary-icon-color.vue';
@@ -32,7 +32,7 @@ import NoneBackgroundColor from './_none-background-color.vue';
 import TargetSpecificBreakpoints from './_target-specific-breakpoints.vue';
 import ResponsiveBackgroundExamples from './_responsive-background-examples.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BrandIconColor,
     SemanticIconColor,
@@ -43,13 +43,11 @@ import ResponsiveBackgroundExamples from './_responsive-background-examples.vue'
     NoneBackgroundColor,
     TargetSpecificBreakpoints,
     ResponsiveBackgroundExamples,
-    BrandBackgroundColor
-  }
+    BrandBackgroundColor,
+  },
 })
 export default class Examples extends Vue {
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
   get hideCenturylink() {
     return this.theme !== 'centurylink';
   }

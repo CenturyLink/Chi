@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Feed with stories" id="feed-stories" padding="-p--0" :tabs="exampleTabs">
-    .-p-md--5(slot="example")
+<ComponentExample title="Feed with stories" id="feed-stories" padding="-p--0" :tabs="exampleTabs">
+  template(#example)
+    .-p-md--5
       .chi-activity.-feed.-stories
         .chi-activity__day
           .chi-activity__content
@@ -74,19 +75,16 @@
                         .-time 3 minutes ago
                 .chi-activity__end-footer
                   | 04/21/2019
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -103,7 +101,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-    htmlblueprint: `<div class="chi-activity -feed -stories">
+        htmlblueprint: `<div class="chi-activity -feed -stories">
   <div class="chi-activity__day">
     <div class="chi-activity__content">
       <div class="chi-activity__item">

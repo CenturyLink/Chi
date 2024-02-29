@@ -1,78 +1,70 @@
 <template lang="pug">
-  <ComponentExample title="Vertical Tree Tabs" id="vertical-tree-tabs" titleSize="h4" :tabs="exampleTabs">
-    div(slot="example")
-      .-p--3
-        ul.chi-tabs.-vertical.-icons.-list.-tree.-lg(
-          id="example-vertical-with-icons-and-description"
-          role="tablist"
-          aria-label="chi-tabs-vertical")
-          li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-            a.chi-tabs_item(
-              :href="`#${link.href}`"
-              role="tab"
-              aria-selected="true"
-              :aria-controls="link.href"
-            )
-              i.chi-icon.icon-atom(aria-hidden="true")
-              span.chi-tabs_item-title {{link.text}}
-              span.chi-tabs_item-text(v-if="link.description" ) {{link.description}}
-              button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
-                .chi-button__content
-                  i.chi-icon.icon-more-vert(aria-hidden="true")
-            ul.chi-tabs__subtabs(v-if="link.subLinks")
-              li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
-                a.chi-tabs_item(href='#')
-                  span.chi-tabs_item-title {{subLink.text}}
-                  span.chi-tabs_item-text(v-if="subLink.description" ) {{subLink.description}}
-                  button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
-                    .chi-button__content
-                      i.chi-icon.icon-more-vert(aria-hidden="true")
-                ul.chi-tabs__subtabs(v-if="subLink.subLinks")
-                  li(v-for="innerSubLink in subLink.subLinks" :class="[innerSubLink.active ? '-active' : '']")
-                    a.chi-tabs_item(href='#')
-                      span.chi-tabs_item-title {{innerSubLink.text}}
-                      span.chi-tabs_item-text(v-if="innerSubLink.description" ) {{innerSubLink.description}}
-                      button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
-                        .chi-button__content
-                          i.chi-icon.icon-more-vert(aria-hidden="true")
+<ComponentExample title="Vertical Tree Tabs" id="vertical-tree-tabs" titleSize="h4" :tabs="exampleTabs">
+  template(#example)
+    .-p--3
+      ul.chi-tabs.-vertical.-icons.-list.-tree.-lg(
+        id="example-vertical-with-icons-and-description"
+        role="tablist"
+        aria-label="chi-tabs-vertical")
+        li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
+          a.chi-tabs_item(
+            :href="`#${link.href}`"
+            role="tab"
+            aria-selected="true"
+            :aria-controls="link.href"
+          )
+            i.chi-icon.icon-atom(aria-hidden="true")
+            span.chi-tabs_item-title {{link.text}}
+            span.chi-tabs_item-text(v-if="link.description" ) {{link.description}}
+            button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert(aria-hidden="true")
+          ul.chi-tabs__subtabs(v-if="link.subLinks")
+            li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
+              a.chi-tabs_item(href='#')
+                span.chi-tabs_item-title {{subLink.text}}
+                span.chi-tabs_item-text(v-if="subLink.description" ) {{subLink.description}}
+                button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                  .chi-button__content
+                    i.chi-icon.icon-more-vert(aria-hidden="true")
+              ul.chi-tabs__subtabs(v-if="subLink.subLinks")
+                li(v-for="innerSubLink in subLink.subLinks" :class="[innerSubLink.active ? '-active' : '']")
+                  a.chi-tabs_item(href='#')
+                    span.chi-tabs_item-title {{innerSubLink.text}}
+                    span.chi-tabs_item-text(v-if="innerSubLink.description" ) {{innerSubLink.description}}
+                    button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                      .chi-button__content
+                        i.chi-icon.icon-more-vert(aria-hidden="true")
 
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webComponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlBlueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webComponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlBlueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class VerticalTabsWithIconsAndDescription extends Vue {
-    tabLinks = [
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  tabLinks = [
     {
       href: '',
       text: 'Active Tab',
-      active: true
+      active: true,
     },
     {
       href: '',
@@ -82,7 +74,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
+          description: 'Subtab description',
         },
         {
           href: '',
@@ -92,31 +84,30 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
             {
               href: '',
               text: 'Subtab Link',
-              description: 'Subtab description'
+              description: 'Subtab description',
             },
             {
               href: '',
               text: 'Subtab Link',
-              description: 'Subtab description'
-            }
-          ]
+              description: 'Subtab description',
+            },
+          ],
         },
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
-        }
-      ]
+          description: 'Subtab description',
+        },
+      ],
     },
     {
       href: '',
       text: 'Tab Link',
-      description: 'Tab description'
-    }
-  ]
+      description: 'Tab description',
+    },
+  ];
 
-  tabLink = (
-    `<a class="chi-tabs_item" href="#">
+  tabLink = `<a class="chi-tabs_item" href="#">
       <i class="chi-icon icon-atom" aria-hidden="true"></i>
       <span class="chi-tabs_item-title">Tab Link</span>
       <span class="chi-tabs_item-text">Tab description</span>
@@ -125,11 +116,9 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
           <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
         </div>
       </button>
-    </a>`
-  )
+    </a>`;
 
-  subLink = (
-    `<a class="chi-tabs_item" href="#">
+  subLink = `<a class="chi-tabs_item" href="#">
           <span class="chi-tabs_item-title">Subtab Link</span>
           <span class="chi-tabs_item-text">Subtab description</span>
           <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
@@ -137,11 +126,9 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
               <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
             </div>
           </button>
-        </a>`
-  )
+        </a>`;
 
-  innerSubLink = (
-    `<a class="chi-tabs_item" href="#">
+  innerSubLink = `<a class="chi-tabs_item" href="#">
               <span class="chi-tabs_item-title">Subtab Link</span>
               <span class="chi-tabs_item-text">Subtab description</span>
               <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
@@ -149,8 +136,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
                   <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
                 </div>
               </button>
-            </a>`
-  )
+            </a>`;
 
   codeSnippets = {
     webComponent: '',
@@ -191,7 +177,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
   <li>
     ${this.tabLink}
   </li>
-</ul>`
-  }
+</ul>`,
+  };
 }
 </script>

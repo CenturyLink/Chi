@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Center" padding="-p--0" id="center" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Center" padding="-p--0" id="center" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Modals can also be placed in the middle of the page by applying the class <code>-center</code>
       | to <code>chi-backdrop</code>.
-    .chi-backdrop.-center.-p--6.-position--relative.-z--0(slot="example")
+  template(#example)
+    .chi-backdrop.-center.-p--6.-position--relative.-z--0
       .chi-backdrop__wrapper
         section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
           header.chi-modal__header
@@ -16,22 +18,18 @@
           footer.chi-modal__footer
             button.chi-button Cancel
             button.chi-button.-primary Save
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>        
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

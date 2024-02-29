@@ -2,21 +2,21 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Placeholder />
     <DefaultCountry />
     <Value />
     <Disabled />
     <Error />
     <InputMask />
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-if="selectedTheme === 'portal'")
       <SizesPortal />
     div(v-else)
       <SizesLumenCenturyLink />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Placeholder from './_placeholder.vue';
 import DefaultCountry from './_default-country.vue';
@@ -27,9 +27,9 @@ import SizesLumenCenturyLink from './_sizes_lumen_centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
 import InputMask from './_input-mask.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Placeholder,
     DefaultCountry,
     Value,
@@ -37,8 +37,10 @@ import InputMask from './_input-mask.vue';
     Error,
     SizesLumenCenturyLink,
     SizesPortal,
-    InputMask
-  }
+    InputMask,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

@@ -1,94 +1,93 @@
 <template lang="pug">
-  <ComponentExample title="Feed with stories and operation icons" id="feed-stories-icons" padding="-p--0" :tabs="exampleTabs">
-    .-p-md--5(slot="example")
-      .chi-activity.-feed.-stories
-        .chi-activity__day
-          .chi-activity__content
-            .chi-activity__item
-              .chi-activity__start
-                div
-                  i.chi-icon.icon-circle-play-outline(aria-hidden="true")
-                  .chi-avatar
-                    img(src='../../../../assets/images/avatar.jpg', alt="avatar")
-              .chi-activity__end
-                .chi-activity__end-header
-                  strong trent.anderson
-                  |  deployed
-                  strong  Active Directory
-                .chi-activity__end-content
-                  ul
-                    li
-                      i.chi-icon.-icon--success.icon-check(aria-hidden="true")
-                      div
-                        div Instance successfully deployed
-                        .-time 1 minute ago
-                    li
-                      i.chi-icon.-icon--success.icon-check(aria-hidden="true")
-                      div
-                        div Machine active-directory-vbo8o-1 successfully deployed
-                        .-time 2 minutes ago
-                    li
-                      i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
-                      div
-                        div Executing install:Active Directory in machine active-directory-vbo8o-1
-                        .-time 2 minutes ago
-                    li
-                      i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
-                      div
-                        div Updating machine IPs
-                        .-time 3 minutes ago
-                .chi-activity__end-footer
-                  | 04/22/2019
-        .chi-activity__day
-          .chi-activity__content
-            .chi-activity__item
-              .chi-activity__start
-                div
-                  i.chi-icon.icon-circle-play-outline(aria-hidden="true")
-                  .chi-avatar
-                    img(src='../../../../assets/images/avatar.jpg', alt="avatar")
-              .chi-activity__end
-                .chi-activity__end-header
-                  strong trent.anderson
-                  |  deployed
-                  strong  Active Directory
-                .chi-activity__end-content
-                  ul
-                    li
-                      i.chi-icon.-icon--success.icon-check(aria-hidden="true")
-                      div
-                        div Instance successfully deployed
-                        .-time 1 minute ago
-                    li
-                      i.chi-icon.-icon--success.icon-check(aria-hidden="true")
-                      div
-                        div Machine active-directory-vbo8o-1 successfully deployed
-                        .-time 2 minutes ago
-                    li
-                      i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
-                      div
-                        div Executing install:Active Directory in machine active-directory-vbo8o-1
-                        .-time 2 minutes ago
-                    li
-                      i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
-                      div
-                        div Updating machine IPs
-                        .-time 3 minutes ago
-                .chi-activity__end-footer
-                  | 04/21/2019
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Feed with stories and operation icons" id="feed-stories-icons" padding="-p--0" :tabs="exampleTabs">
+  template(#example)
+    .-p-md--5
+    .chi-activity.-feed.-stories
+      .chi-activity__day
+        .chi-activity__content
+          .chi-activity__item
+            .chi-activity__start
+              div
+                i.chi-icon.icon-circle-play-outline(aria-hidden="true")
+                .chi-avatar
+                  img(src='../../../../assets/images/avatar.jpg', alt="avatar")
+            .chi-activity__end
+              .chi-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .chi-activity__end-content
+                ul
+                  li
+                    i.chi-icon.-icon--success.icon-check(aria-hidden="true")
+                    div
+                      div Instance successfully deployed
+                      .-time 1 minute ago
+                  li
+                    i.chi-icon.-icon--success.icon-check(aria-hidden="true")
+                    div
+                      div Machine active-directory-vbo8o-1 successfully deployed
+                      .-time 2 minutes ago
+                  li
+                    i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
+                    div
+                      div Executing install:Active Directory in machine active-directory-vbo8o-1
+                      .-time 2 minutes ago
+                  li
+                    i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
+                    div
+                      div Updating machine IPs
+                      .-time 3 minutes ago
+              .chi-activity__end-footer
+                | 04/22/2019
+      .chi-activity__day
+        .chi-activity__content
+          .chi-activity__item
+            .chi-activity__start
+              div
+                i.chi-icon.icon-circle-play-outline(aria-hidden="true")
+                .chi-avatar
+                  img(src='../../../../assets/images/avatar.jpg', alt="avatar")
+            .chi-activity__end
+              .chi-activity__end-header
+                strong trent.anderson
+                |  deployed
+                strong  Active Directory
+              .chi-activity__end-content
+                ul
+                  li
+                    i.chi-icon.-icon--success.icon-check(aria-hidden="true")
+                    div
+                      div Instance successfully deployed
+                      .-time 1 minute ago
+                  li
+                    i.chi-icon.-icon--success.icon-check(aria-hidden="true")
+                    div
+                      div Machine active-directory-vbo8o-1 successfully deployed
+                      .-time 2 minutes ago
+                  li
+                    i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
+                    div
+                      div Executing install:Active Directory in machine active-directory-vbo8o-1
+                      .-time 2 minutes ago
+                  li
+                    i.chi-icon.-icon--muted.icon-circle-plus-outline(aria-hidden="true")
+                    div
+                      div Updating machine IPs
+                      .-time 3 minutes ago
+              .chi-activity__end-footer
+                | 04/21/2019
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -105,7 +104,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-      htmlblueprint: `<div class="chi-activity -feed -stories">
+        htmlblueprint: `<div class="chi-activity -feed -stories">
   <div class="chi-activity__day">
     <div class="chi-activity__content">
       <div class="chi-activity__item">

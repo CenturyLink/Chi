@@ -1,37 +1,37 @@
 <template lang="pug">
-  <ComponentExample title="Inline Label" id="inline-label" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Inline Label" id="inline-label" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Apply the class <code>-row</code> to <code>chi-form__item</code> to render labels and inputs inline.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item.-row
           chi-label(for='example__inline-label') Label
           chi-text-input(id='example__inline-label')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item -row">
@@ -41,10 +41,10 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item -row">
   <label class="chi-label" for="example__inline-label">Label</label>
   <input class="chi-input" type="text" id="example__inline-label">
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class InlineLabel extends Vue {}
 </script>

@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Table with header cells in the top row and first column" id="header-cells-in-top-row-portal" :tabs="exampleTabs">
-    .chi-card(slot="example")
+<ComponentExample title="Table with header cells in the top row and first column" id="header-cells-in-top-row-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-card
       .chi-card__header
         .chi-card__title Title
       .chi-card__content.-p--0
@@ -52,45 +53,31 @@
               tr
                 th(scope='row') BER1
                 td(v-for="(header, index) in 11" :key="index") 31
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
-      headers: [
-        'ABY1',
-        'AKN4',
-        'ANT1',
-        'ANT2',
-        'ATL12',
-        'ATL14',
-        'AUS1',
-        'AUS1',
-        'AUS3',
-        'BCH1',
-        'BER1'
-      ],
+      headers: ['ABY1', 'AKN4', 'ANT1', 'ANT2', 'ATL12', 'ATL14', 'AUS1', 'AUS1', 'AUS3', 'BCH1', 'BER1'],
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -279,10 +266,10 @@ import { Component, Vue } from 'vue-property-decorator';
             </table>
         </div>
     </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class HeaderCellsInTopRowPortal extends Vue {}
 </script>

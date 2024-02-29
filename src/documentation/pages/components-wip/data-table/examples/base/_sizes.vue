@@ -1,20 +1,19 @@
 <template lang="pug">
-  div
-    <ComponentExample v-for="size in sizes" :key="size" :title="`Size -${size}`" :id="`size-${size}-data-table`" :tabs="exampleTabs">
-      chi-data-table(:config='getConfig(size)', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        pre.language-html
-          code(v-highlight="getVueCode(size)" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="getHtmlCode(size)" class="html")
-    </ComponentExample>
+<ComponentExample v-for="size in sizes" :key="size" :title="`Size -${size}`" :id="`size-${size}-data-table`" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='getConfig(size)', :dataTableData='table')
+  template(#code-vue)
+    Copy(lang="html" :code="getVueCode(size)")
+
+  template(#code-htmlblueprint)
+    Copy(:code="getHtmlCode(size)" lang="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       sizes: ['xs', 'sm', 'md', 'lg', 'xl'] as const,
@@ -23,7 +22,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -34,7 +33,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -63,67 +62,43 @@ import { Component, Vue } from 'vue-property-decorator';
         body: [
           {
             id: 'name-1',
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-2',
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
     };
   },
   methods: {
-    getConfig(size: typeof this.$data.sizes[number]) {
+    getConfig(size: (typeof this.sizes)[number]) {
       return {
-        ...this.$data.config,
+        ...this.config,
         style: {
-          ...this.$data.config.styles,
-          size: size
-        }
+          ...this.config.styles,
+          size: size,
+        },
       };
     },
-    getVueCode(size: typeof this.$data.sizes[number]) {
+    getVueCode(size: (typeof this.sizes)[number]) {
       return `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
 
@@ -204,9 +179,9 @@ data: {
       },
     ]
   }
-}`
+}`;
     },
-    getHtmlCode(size: typeof this.$data.sizes[number]) {
+    getHtmlCode(size: (typeof this.sizes)[number]) {
       return `<div class="chi-data-table -${size}">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
@@ -307,9 +282,9 @@ data: {
       </div>
     </nav>
   </div>
-</div>`
+</div>`;
     },
-  }
+  },
 })
-export default class DataTableSizes extends Vue { }
+export default class DataTableSizes extends Vue {}
 </script>

@@ -1,98 +1,93 @@
 <template lang="pug">
-  <ComponentExample title="Background Icons" id="background-icons-portal" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      .chi-stat
-        div(v-for="(stat, index) in stats" :key="index" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | {{ stat.value }}
-              .chi-stat-metric__title
-                | {{ stat.title }}
-            .chi-stat-submetric(v-if="stat.value2")
-              .chi-stat-submetric__value
-                | {{ stat.value2 }}
-              .chi-stat-submetric__title
-                | {{ stat.title2 }}
-            .chi-stat-background-icon(v-if="!stat.active")
-              chi-marketing-icon(:icon="stat.icon")
-            .chi-label__help(v-if="!stat.active")
-              button.chi-button.-icon.-xs.-flat(:id="`button-bg-icons-portal-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
-                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-      chi-popover(v-for="index in stats.length-1" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-bg-icons-portal-${index}`" arrow)
-        .chi-popover__content
-          p.chi-popover__text
-            | Helpful information goes here.
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html" >
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>  
-  </ComponentExample>
+<ComponentExample title="Background Icons" id="background-icons-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-stat
+      div(v-for="(stat, index) in stats" :key="index" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
+        .chi-stat__content
+          .chi-stat-metric
+            .chi-stat-metric__value
+              | {{ stat.value }}
+            .chi-stat-metric__title
+              | {{ stat.title }}
+          .chi-stat-submetric(v-if="stat.value2")
+            .chi-stat-submetric__value
+              | {{ stat.value2 }}
+            .chi-stat-submetric__title
+              | {{ stat.title2 }}
+          .chi-stat-background-icon(v-if="!stat.active")
+            chi-marketing-icon(:icon="stat.icon")
+          .chi-label__help(v-if="!stat.active")
+            button.chi-button.-icon.-xs.-flat(:id="`button-bg-icons-portal-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
+              i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+    chi-popover(v-for="index in stats.length-1" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-bg-icons-portal-${index}`" arrow)
+      .chi-popover__content
+        p.chi-popover__text
+          | Helpful information goes here.
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      stats: [
-        {
-          value: 'ALL',
-          title: 'Services',
-          active: true
-        },
-        {
-          value: '366',
-          title: 'Communications',
-          icon: 'platform-voice-unified-communications'
-        },
-        {
-          value: '932',
-          title: 'Hybrid & Cloud IT',
-          value2: '0',
-          title2: 'Recently Closed',
-          icon: 'platform-it-agility-hybrid-cloud'
-        },
-        {
-          value: '301',
-          title: 'Managed & IT Services',
-          value2: '6',
-          title2: 'Recently Closed',
-          icon: 'business-support-ticket'
-        },
-        {
-          value: '100',
-          title: 'Networking & Cloud IT',
-          icon: 'platform-adaptive-networking'
-        },
-        {
-          value: '2',
-          title: 'Security',
-          value2: '0',
-          title2: 'Recently Closed',
-          icon: 'platform-connected-security'
-        }
-      ],
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<div class="chi-stat">
+@NuxtComponent({})
+export default class BackgroundIconsPortal extends Vue {
+  stats = [
+    {
+      value: 'ALL',
+      title: 'Services',
+      active: true,
+    },
+    {
+      value: '366',
+      title: 'Communications',
+      icon: 'platform-voice-unified-communications',
+    },
+    {
+      value: '932',
+      title: 'Hybrid & Cloud IT',
+      value2: '0',
+      title2: 'Recently Closed',
+      icon: 'platform-it-agility-hybrid-cloud',
+    },
+    {
+      value: '301',
+      title: 'Managed & IT Services',
+      value2: '6',
+      title2: 'Recently Closed',
+      icon: 'business-support-ticket',
+    },
+    {
+      value: '100',
+      title: 'Networking & Cloud IT',
+      icon: 'platform-adaptive-networking',
+    },
+    {
+      value: '2',
+      title: 'Security',
+      value2: '0',
+      title2: 'Recently Closed',
+      icon: 'platform-connected-security',
+    },
+  ];
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<div class="chi-stat">
   <div class="chi-stat__item -active">
     <div class="chi-stat__content">
       <div class="chi-stat-metric">
@@ -228,7 +223,7 @@ import { Component, Vue } from 'vue-property-decorator';
   chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
   chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
 <\/script>`,
-        htmlblueprint: `<div class="chi-stat">
+    htmlblueprint: `<div class="chi-stat">
   <div class="chi-stat__item -active">
     <div class="chi-stat__content">
       <div class="chi-stat-metric">
@@ -363,12 +358,8 @@ import { Component, Vue } from 'vue-property-decorator';
   chi.popover(document.getElementById('example__portal-bgicons-help-button4'));
   chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
   chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class BackgroundIconsPortal extends Vue {
+<\/script>`,
+  };
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

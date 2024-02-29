@@ -1,24 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Value, min and max options" id="value-min-max-options" :tabs="exampleTabs">
-    div(style="max-width: 14rem;" slot="example")
+<ComponentExample title="Value, min and max options" id="value-min-max-options" :tabs="exampleTabs">
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__datepicker_date_min_max') Date
       chi-date-picker(id="example__datepicker_date_min_max", value="01/24/2024", min="01/14/2024", max="02/07/2024")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

@@ -2,7 +2,7 @@
   div
     h2 Examples
     <client-only placeholder="loading...">
-      div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
         <BaseLumenCenturyLink />
         <DisabledLumenCenturyLink />
         <TruncationLumenCenturyLink />
@@ -12,14 +12,14 @@
         <PageJumperLumenCenturyLink />
         <Compact />
         <AdditionalSizesLumenCenturyLink />
-        
+
       div(v-else)
         <Portal />
     </client-only>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BaseLumenCenturyLink from './_base_lumen_centurylink.vue';
 import DisabledLumenCenturyLink from './_disabled_lumen_centurylink.vue';
 import TruncationLumenCenturyLink from './_truncation_lumen_centurylink.vue';
@@ -31,7 +31,7 @@ import Compact from './_compact/index.vue';
 import AdditionalSizesLumenCenturyLink from './_additional-sizes_lumen_centurylink.vue';
 import Portal from './_portal/index.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BaseLumenCenturyLink,
     DisabledLumenCenturyLink,
@@ -42,8 +42,10 @@ import Portal from './_portal/index.vue';
     PageJumperLumenCenturyLink,
     Compact,
     AdditionalSizesLumenCenturyLink,
-    Portal
-  }
+    Portal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

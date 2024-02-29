@@ -1,52 +1,50 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Empty" />
-    <ComponentExample v-for="dataTable in emptyDataTables" :title="dataTable.title" titleSize="h4" :id="dataTable.id" :key="dataTable.id" :tabs="exampleTabs">
-      chi-data-table(:config="getConfig(dataTable.config)" :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description(v-if="dataTable.description" v-html="dataTable.description")
-        pre.language-html
-          code(v-highlight="getVueCode(dataTable.config)" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="getHtmlCode(dataTable.config)" class="html")
-    </ComponentExample>
+<TitleAnchor title="Empty" />
+<ComponentExample v-for="dataTable in emptyDataTables" :title="dataTable.title" titleSize="h4" :id="dataTable.id" :key="dataTable.id" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config="getConfig(dataTable.config)" :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description(v-if="dataTable.description" v-html="dataTable.description")
+    Copy(lang="html" :code="getVueCode(dataTable.config)")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 type ConfigType = {
   [key: string]: any;
 };
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       emptyDataTables: [
         {
-          title: "No Results",
-          id: "no-results-data-table",
-          description: "Use <code>noResultsMessage</code> config to customize the no results data message",
+          title: 'No Results',
+          id: 'no-results-data-table',
+          description: 'Use <code>noResultsMessage</code> config to customize the no results data message',
           config: {
             noResultsMessage: 'No matching results',
-          }
-        }, {
-          title: "No Filters",
-          id: "no-filters-data-table",
-          description: "Use <code>noFiltersMessage</code> config to customize the no filters data message",
+          },
+        },
+        {
+          title: 'No Filters',
+          id: 'no-filters-data-table',
+          description: 'Use <code>noFiltersMessage</code> config to customize the no filters data message',
           config: {
-            noFiltersMessage: "Search for or select at least one filter to get results",
-          }
-        }, {
-          title: "Empty Actionable",
-          id: "empty-actionable-data-table",
+            noFiltersMessage: 'Search for or select at least one filter to get results',
+          },
+        },
+        {
+          title: 'Empty Actionable',
+          id: 'empty-actionable-data-table',
           description: null,
           config: {
             emptyActionable: {
               isActionable: true,
             },
-          }
+          },
         },
       ],
       exampleTabs: [
@@ -54,7 +52,7 @@ type ConfigType = {
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -65,7 +63,7 @@ type ConfigType = {
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -98,9 +96,9 @@ type ConfigType = {
   methods: {
     getConfig(config: ConfigType) {
       return {
-        ...this.$data.config,
-        ...config
-      }
+        ...this.config,
+        ...config,
+      };
     },
     getVueCode(config: ConfigType) {
       return `<!-- Vue component -->
@@ -109,7 +107,9 @@ type ConfigType = {
 <!-- Config and Data -->
 data: {
   config: {
-    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''}
+    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${
+      config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''
+    }
     style: {
       portal: false,
       noBorder: false,
@@ -123,9 +123,13 @@ data: {
       compact: false,
       firstLast: false,
       pageJumper: true,
-    },${config.emptyActionable ? `\n    emptyActionable: {
+    },${
+      config.emptyActionable
+        ? `\n    emptyActionable: {
       isActionable: true,
-    },` : ''}
+    },`
+        : ''
+    }
     resultsPerPage: 3,
   },
   table: {
@@ -136,7 +140,7 @@ data: {
     },
     body: []
   }
-}`
+}`;
     },
     getHtmlCode(config: ConfigType) {
       return `<div class="chi-data-table">
@@ -155,15 +159,21 @@ data: {
   </div>
   <div class="chi-data-table__body">
     <div class="chi-data-table__row-empty${config.emptyActionable ? ' -actionable' : ''}">
-      ${config.noResultsMessage ? `<div>${config.noResultsMessage}</div>` : ''}${config.noFiltersMessage ? `<i class="-mr--1 chi-icon icon-search"></i>\n      ${config.noFiltersMessage}` : ''}${config.emptyActionable ? `<i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
+      ${config.noResultsMessage ? `<div>${config.noResultsMessage}</div>` : ''}${
+        config.noFiltersMessage ? `<i class="-mr--1 chi-icon icon-search"></i>\n      ${config.noFiltersMessage}` : ''
+      }${
+        config.emptyActionable
+          ? `<i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
         <span>
           <a>Add a new or existing service</a>, then manage here.
-        </span>` : ''}
+        </span>`
+          : ''
+      }
     </div>
   </div>
-</div>`
-    }
-  }
+</div>`;
+    },
+  },
 })
-export default class DataTableEmpty extends Vue { }
+export default class DataTableEmpty extends Vue {}
 </script>

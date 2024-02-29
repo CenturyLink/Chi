@@ -4,13 +4,13 @@
     h3 Props
     h4 Search Input
     p.-text
-      | Please visit Search input dedicated documentation page <a href="../forms/search-input/#props">here</a>
-    h4 Views 
-    section.chi-table.chi-table__options.-bordered.-my--3 
+      | Please visit Search input dedicated documentation page <a href="/components/forms/search-input/#props">here</a>
+    h4 Views
+    section.chi-table.chi-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
         table.-text(cellpadding='0' cellspacing='0')
-          thead 
-            tr 
+          thead
+            tr
               th
                 div Property
               th
@@ -307,8 +307,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
+@NuxtComponent({})
 export default class Properties extends Vue {}
 </script>

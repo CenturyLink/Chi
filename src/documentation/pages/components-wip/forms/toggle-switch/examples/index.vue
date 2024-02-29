@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h3 Examples
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <BaseLumenCenturyLink />
       <CheckedLumenCenturyLink />
       <DisabledLumenCenturyLink />
@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BaseLumenCenturyLink from './_base-lumen-centurylink.vue';
 import DisabledLumenCenturyLink from './_disabled-lumen-centurylink.vue';
 import CheckedLumenCenturyLink from './_checked-lumen-centurylink.vue';
@@ -46,7 +46,7 @@ import SwitchLeftPortal from './_portal/_switch-left.vue';
 import SwitchHiddenPortal from './_portal/_switch-hidden.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BaseLumenCenturyLink,
     CheckedLumenCenturyLink,
@@ -66,7 +66,9 @@ import SizesPortal from './_portal/_sizes.vue';
     SwitchLeftPortal,
     SwitchHiddenPortal,
     SizesPortal,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

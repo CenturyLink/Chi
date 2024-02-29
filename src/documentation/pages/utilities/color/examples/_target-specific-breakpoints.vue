@@ -6,23 +6,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from '~/models/models';
-import { defaultColumns } from "~/fixtures/fixtures";
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { defaultColumns } from '~/fixtures/fixtures';
 
-const sizes = ['sm', 'md', 'lg', 'xl']
-const colors = ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
-
-@Component({
-  data: () => {
-    return {
-      columns: defaultColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class TargetSpecificBreakpoints extends Vue {
+  sizes = ['sm', 'md', 'lg', 'xl'];
+  colors = [
+    'none',
+    'primary',
+    'secondary',
+    'white',
+    'black',
+    'muted',
+    'grey',
+    'grey-20',
+    'grey-30',
+    'success',
+    'info',
+    'warning',
+    'danger',
+  ];
+  columns = defaultColumns;
   get values() {
-    return sizes.map(size => colors.map(color => { return { name: `${ size }--${color}`, value: size } })).flat()
+    return this.sizes
+      .map((size) =>
+        this.colors.map((color) => {
+          return { name: `${size}--${color}`, value: size };
+        })
+      )
+      .flat();
   }
 
   getContent(column: ITableColumn, content: ITableContent) {
