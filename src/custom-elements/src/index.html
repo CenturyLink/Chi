@@ -84,6 +84,39 @@
       <h3>Checkbox</h3>
       <chi-checkbox label="Checkbox" checked></chi-checkbox>
     </div>
+    <div id="copy-icon" class="-p--3">
+      <h3>Chi copy icon</h3>
+      <div class="-d--flex -justify-content--around">
+        <div>
+          <h4>Base</h4>
+          <chi-copy-icon text="This text will be copied"></chi-copy-icon>
+        </div>
+        <div>
+          <h4>Disabled</h4>
+          <chi-copy-icon disabled></chi-copy-icon>
+        </div>
+        <div>
+          <h4>Embeded in chi-text-input</h4>
+          <!-- As an example on how it cam be used with text-input, should be implemented in the component. -->
+          <div class="-d--flex -align-items--center -w--100">
+            <div class="chi-input__wrapper flex--grow1">
+              <chi-text-input></chi-text-input>
+            </div>
+            <chi-copy-icon></chi-copy-icon>
+          </div>
+        </div>
+        <div>
+          <h4>Embeded in chi-textarea</h4>
+          <!-- As an example on how it cam be used with text-input, should be implemented in the component. -->
+          <div class="-d--flex -align-items--center -w--100">
+            <div class="chi-input__wrapper flex--grow1">
+              <chi-textarea></chi-textarea>
+            </div>
+            <chi-copy-icon></chi-copy-icon>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="-p--3">
       <h3>Date</h3>
       <chi-date></chi-date>
@@ -252,4 +285,13 @@
     { title: 'Item 4', href: '#' },
     { title: 'Item 5', href: '#' },
   ];
+
+  // copy icons embeded in inputs, listeners to update copy value
+  [...document.querySelectorAll('#copy-icon .chi-input__wrapper')].forEach(wrapper => {
+    const copyIcon = wrapper.nextElementSibling;
+    wrapper.children[0].addEventListener('chiChange', ev => {
+      copyIcon.setAttribute('text', ev.detail);
+    })
+  });
+
 </script>

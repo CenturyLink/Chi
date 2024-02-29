@@ -74,3 +74,6 @@ export const EXTRA_COUNTRIES = [
 ];
 
 export const EPANEL_TOOLTIP_CONTENT = 'Done';
+
+export const COPY_MESSAGE = 'Copy to clipboard';
+export const COPIED_MESSAGE = 'Copied to clipboard';
