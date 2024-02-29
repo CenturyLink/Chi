@@ -3,6 +3,7 @@ import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
 import { contains } from '../../utils/utils';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-drawer',
@@ -64,7 +65,6 @@ export class Drawer {
 
   private animation: ThreeStepsAnimation;
 
-  private mutationObserver;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -192,24 +192,15 @@ export class Drawer {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title'],
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.drawerTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+    addMutationObserver.call(this, () => {
+        this.drawerTitle = this.el.title;
+      },
+      { attributes: true, 
+        attributeOldValue: true, 
+        attributeFilter: ['title'], 
+        childList: true 
+      }
+    );
   }
 
   private _documentClickHandler = (ev): void => {
@@ -243,7 +234,6 @@ export class Drawer {
 
   disconnectedCallback() {
     document.removeEventListener('click', this._documentClickHandler);
-    this.mutationObserver.disconnect();
   }
 
   render() {
