@@ -276,20 +276,10 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-icon",
-        "chi-spinner",
-        "chi-button"
-      ],
+      "dependencies": ["chi-icon", "chi-spinner", "chi-button"],
       "dependencyGraph": {
-        "chi-alert": [
-          "chi-icon",
-          "chi-spinner",
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ]
+        "chi-alert": ["chi-icon", "chi-spinner", "chi-button"],
+        "chi-button": ["chi-icon"]
       }
     },
     {
@@ -792,31 +782,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-alert",
-        "chi-carousel",
-        "chi-dropdown",
-        "chi-popover"
-      ],
-      "dependencies": [
-        "chi-icon"
-      ],
+      "dependents": ["chi-alert", "chi-carousel", "chi-dropdown", "chi-popover"],
+      "dependencies": ["chi-icon"],
       "dependencyGraph": {
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-alert": [
-          "chi-button"
-        ],
-        "chi-carousel": [
-          "chi-button"
-        ],
-        "chi-dropdown": [
-          "chi-button"
-        ],
-        "chi-popover": [
-          "chi-button"
-        ]
+        "chi-button": ["chi-icon"],
+        "chi-alert": ["chi-button"],
+        "chi-carousel": ["chi-button"],
+        "chi-dropdown": ["chi-button"],
+        "chi-popover": ["chi-button"]
       }
     },
     {
@@ -978,18 +951,10 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-button",
-        "chi-icon"
-      ],
+      "dependencies": ["chi-button", "chi-icon"],
       "dependencyGraph": {
-        "chi-carousel": [
-          "chi-button",
-          "chi-icon"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ]
+        "chi-carousel": ["chi-button", "chi-icon"],
+        "chi-button": ["chi-icon"]
       }
     },
     {
@@ -1496,19 +1461,11 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-date-picker"
-      ],
-      "dependencies": [
-        "chi-icon"
-      ],
+      "dependents": ["chi-date-picker"],
+      "dependencies": ["chi-icon"],
       "dependencyGraph": {
-        "chi-date": [
-          "chi-icon"
-        ],
-        "chi-date-picker": [
-          "chi-date"
-        ]
+        "chi-date": ["chi-icon"],
+        "chi-date-picker": ["chi-date"]
       }
     },
     {
@@ -2081,33 +2038,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-date",
-        "chi-time",
-        "chi-popover",
-        "chi-helper-message",
-        "chi-icon"
-      ],
+      "dependencies": ["chi-date", "chi-time", "chi-popover", "chi-helper-message", "chi-icon"],
       "dependencyGraph": {
-        "chi-date-picker": [
-          "chi-date",
-          "chi-time",
-          "chi-popover",
-          "chi-helper-message",
-          "chi-icon"
-        ],
-        "chi-date": [
-          "chi-icon"
-        ],
-        "chi-popover": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ]
+        "chi-date-picker": ["chi-date", "chi-time", "chi-popover", "chi-helper-message", "chi-icon"],
+        "chi-date": ["chi-icon"],
+        "chi-popover": ["chi-button"],
+        "chi-button": ["chi-icon"],
+        "chi-helper-message": ["chi-icon"]
       }
     },
     {
@@ -2418,13 +2355,9 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-icon"
-      ],
+      "dependencies": ["chi-icon"],
       "dependencyGraph": {
-        "chi-drawer": [
-          "chi-icon"
-        ]
+        "chi-drawer": ["chi-icon"]
       }
     },
     {
@@ -3040,26 +2973,13 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-search-input",
-        "chi-tabs"
-      ],
-      "dependencies": [
-        "chi-button"
-      ],
+      "dependents": ["chi-search-input", "chi-tabs"],
+      "dependencies": ["chi-button"],
       "dependencyGraph": {
-        "chi-dropdown": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-search-input": [
-          "chi-dropdown"
-        ],
-        "chi-tabs": [
-          "chi-dropdown"
-        ]
+        "chi-dropdown": ["chi-button"],
+        "chi-button": ["chi-icon"],
+        "chi-search-input": ["chi-dropdown"],
+        "chi-tabs": ["chi-dropdown"]
       }
     },
     {
@@ -3257,31 +3177,14 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-date-picker",
-        "chi-number-input",
-        "chi-text-input",
-        "chi-textarea"
-      ],
-      "dependencies": [
-        "chi-icon"
-      ],
+      "dependents": ["chi-date-picker", "chi-number-input", "chi-text-input", "chi-textarea"],
+      "dependencies": ["chi-icon"],
       "dependencyGraph": {
-        "chi-helper-message": [
-          "chi-icon"
-        ],
-        "chi-date-picker": [
-          "chi-helper-message"
-        ],
-        "chi-number-input": [
-          "chi-helper-message"
-        ],
-        "chi-text-input": [
-          "chi-helper-message"
-        ],
-        "chi-textarea": [
-          "chi-helper-message"
-        ]
+        "chi-helper-message": ["chi-icon"],
+        "chi-date-picker": ["chi-helper-message"],
+        "chi-number-input": ["chi-helper-message"],
+        "chi-text-input": ["chi-helper-message"],
+        "chi-textarea": ["chi-helper-message"]
       }
     },
     {
@@ -3456,39 +3359,17 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-alert": [
-          "chi-icon"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-carousel": [
-          "chi-icon"
-        ],
-        "chi-date": [
-          "chi-icon"
-        ],
-        "chi-date-picker": [
-          "chi-icon"
-        ],
-        "chi-drawer": [
-          "chi-icon"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ],
-        "chi-number-input": [
-          "chi-icon"
-        ],
-        "chi-text-input": [
-          "chi-icon"
-        ],
-        "chi-textarea": [
-          "chi-icon"
-        ],
-        "chi-time-picker": [
-          "chi-icon"
-        ]
+        "chi-alert": ["chi-icon"],
+        "chi-button": ["chi-icon"],
+        "chi-carousel": ["chi-icon"],
+        "chi-date": ["chi-icon"],
+        "chi-date-picker": ["chi-icon"],
+        "chi-drawer": ["chi-icon"],
+        "chi-helper-message": ["chi-icon"],
+        "chi-number-input": ["chi-icon"],
+        "chi-text-input": ["chi-icon"],
+        "chi-textarea": ["chi-icon"],
+        "chi-time-picker": ["chi-icon"]
       }
     },
     {
@@ -4484,18 +4365,10 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-icon",
-        "chi-helper-message"
-      ],
+      "dependencies": ["chi-icon", "chi-helper-message"],
       "dependencyGraph": {
-        "chi-number-input": [
-          "chi-icon",
-          "chi-helper-message"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ]
+        "chi-number-input": ["chi-icon", "chi-helper-message"],
+        "chi-helper-message": ["chi-icon"]
       }
     },
     {
@@ -6060,32 +5933,14 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-search-input",
-        "chi-text-input"
-      ],
+      "dependencies": ["chi-search-input", "chi-text-input"],
       "dependencyGraph": {
-        "chi-phone-input": [
-          "chi-search-input",
-          "chi-text-input"
-        ],
-        "chi-search-input": [
-          "chi-dropdown"
-        ],
-        "chi-dropdown": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-text-input": [
-          "chi-icon",
-          "chi-spinner",
-          "chi-helper-message"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ]
+        "chi-phone-input": ["chi-search-input", "chi-text-input"],
+        "chi-search-input": ["chi-dropdown"],
+        "chi-dropdown": ["chi-button"],
+        "chi-button": ["chi-icon"],
+        "chi-text-input": ["chi-icon", "chi-spinner", "chi-helper-message"],
+        "chi-helper-message": ["chi-icon"]
       }
     },
     {
@@ -6521,26 +6376,13 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-date-picker",
-        "chi-time-picker"
-      ],
-      "dependencies": [
-        "chi-button"
-      ],
+      "dependents": ["chi-date-picker", "chi-time-picker"],
+      "dependencies": ["chi-button"],
       "dependencyGraph": {
-        "chi-popover": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-date-picker": [
-          "chi-popover"
-        ],
-        "chi-time-picker": [
-          "chi-popover"
-        ]
+        "chi-popover": ["chi-button"],
+        "chi-button": ["chi-icon"],
+        "chi-date-picker": ["chi-popover"],
+        "chi-time-picker": ["chi-popover"]
       }
     },
     {
@@ -7046,25 +6888,13 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-phone-input"
-      ],
-      "dependencies": [
-        "chi-dropdown"
-      ],
+      "dependents": ["chi-phone-input"],
+      "dependencies": ["chi-dropdown"],
       "dependencyGraph": {
-        "chi-search-input": [
-          "chi-dropdown"
-        ],
-        "chi-dropdown": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-phone-input": [
-          "chi-search-input"
-        ]
+        "chi-search-input": ["chi-dropdown"],
+        "chi-dropdown": ["chi-button"],
+        "chi-button": ["chi-icon"],
+        "chi-phone-input": ["chi-search-input"]
       }
     },
     {
@@ -7146,18 +6976,11 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-alert",
-        "chi-text-input"
-      ],
+      "dependents": ["chi-alert", "chi-text-input"],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-alert": [
-          "chi-spinner"
-        ],
-        "chi-text-input": [
-          "chi-spinner"
-        ]
+        "chi-alert": ["chi-spinner"],
+        "chi-text-input": ["chi-spinner"]
       }
     },
     {
@@ -7591,19 +7414,11 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-dropdown"
-      ],
+      "dependencies": ["chi-dropdown"],
       "dependencyGraph": {
-        "chi-tabs": [
-          "chi-dropdown"
-        ],
-        "chi-dropdown": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ]
+        "chi-tabs": ["chi-dropdown"],
+        "chi-dropdown": ["chi-button"],
+        "chi-button": ["chi-icon"]
       }
     },
     {
@@ -8216,26 +8031,12 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-phone-input"
-      ],
-      "dependencies": [
-        "chi-icon",
-        "chi-spinner",
-        "chi-helper-message"
-      ],
+      "dependents": ["chi-phone-input"],
+      "dependencies": ["chi-icon", "chi-spinner", "chi-helper-message"],
       "dependencyGraph": {
-        "chi-text-input": [
-          "chi-icon",
-          "chi-spinner",
-          "chi-helper-message"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ],
-        "chi-phone-input": [
-          "chi-text-input"
-        ]
+        "chi-text-input": ["chi-icon", "chi-spinner", "chi-helper-message"],
+        "chi-helper-message": ["chi-icon"],
+        "chi-phone-input": ["chi-text-input"]
       }
     },
     {
@@ -8707,18 +8508,10 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-icon",
-        "chi-helper-message"
-      ],
+      "dependencies": ["chi-icon", "chi-helper-message"],
       "dependencyGraph": {
-        "chi-textarea": [
-          "chi-icon",
-          "chi-helper-message"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ]
+        "chi-textarea": ["chi-icon", "chi-helper-message"],
+        "chi-helper-message": ["chi-icon"]
       }
     },
     {
@@ -8925,18 +8718,11 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [
-        "chi-date-picker",
-        "chi-time-picker"
-      ],
+      "dependents": ["chi-date-picker", "chi-time-picker"],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-date-picker": [
-          "chi-time"
-        ],
-        "chi-time-picker": [
-          "chi-time"
-        ]
+        "chi-date-picker": ["chi-time"],
+        "chi-time-picker": ["chi-time"]
       }
     },
     {
@@ -9241,23 +9027,11 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [
-        "chi-popover",
-        "chi-time",
-        "chi-icon"
-      ],
+      "dependencies": ["chi-popover", "chi-time", "chi-icon"],
       "dependencyGraph": {
-        "chi-time-picker": [
-          "chi-popover",
-          "chi-time",
-          "chi-icon"
-        ],
-        "chi-popover": [
-          "chi-button"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ]
+        "chi-time-picker": ["chi-popover", "chi-time", "chi-icon"],
+        "chi-popover": ["chi-button"],
+        "chi-button": ["chi-icon"]
       }
     }
   ],
