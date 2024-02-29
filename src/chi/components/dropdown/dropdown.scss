@@ -256,8 +256,8 @@
   }
 }
 
-.chi-dropdown__icon {
-  cursor: pointer;
+.chi-dropdown__icon.chi-dropdown__trigger::after {
+  display: none !important;
 }
 
 .chi-dropdown__trigger {

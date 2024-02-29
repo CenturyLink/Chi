@@ -40,9 +40,13 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
-   * To provide the name of an icon to display as trigger of the Dropdown 
+   * To provide the name of an icon to display as trigger of the Dropdown
    */
   @Prop() icon?: string;
+  /**
+   * To provide icon alternative text
+   */
+  @Prop() iconAlternativeText?: string;
   /**
    * To set the color of the button. The value is directly passed to
    * chi-button element if present  { primary, secondary, danger, dark, light }.
@@ -279,7 +283,7 @@ export class Dropdown {
 
     menuItems.forEach((item: HTMLElement) => {
       const isActive = item.textContent === this._value;
-      
+
       item.classList.toggle(ACTIVE_CLASS, isActive);
     });
   }
@@ -287,7 +291,7 @@ export class Dropdown {
   setFixedWidth() {
     if (this.retainSelection && this._referenceElement) {
       const button = this._referenceElement.getElementsByTagName('button')[0];
-      
+
       button.style.width = `${this._referenceElement.offsetWidth}px`;
       button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
     }
@@ -444,9 +448,13 @@ export class Dropdown {
   }
 
   renderTrigger() {
-    const itemSelected = (this.retainSelection && this._value) ?? this.button;
+    const itemSelected = this.icon ? (
+      <chi-icon icon={this.icon}></chi-icon>
+    ) : (
+      (this.retainSelection && this._value) ?? this.button
+    );
 
-    return this.button ? (
+    return this.button || this.icon ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
@@ -459,6 +467,8 @@ export class Dropdown {
         size={`${this.size || ''}`}
         uppercase={this.uppercase}
         disabled={this.disabled}
+        type={this.icon ? 'icon' : ''}
+        alternative-text={this.iconAlternativeText || ''}
         ref={(ref) => (this._referenceElement = ref)}
       >
         {itemSelected}
@@ -475,6 +485,7 @@ export class Dropdown {
       ${this.active ? ACTIVE_CLASS : ''}
       ${this.fluid ? FLUID_CLASS : ''}
       ${this.animateChevron ? ANIMATE_CLASS : ''}
+      ${this.icon ? DROPDOWN_CLASSES.ICON : ''}
     `;
   }
 

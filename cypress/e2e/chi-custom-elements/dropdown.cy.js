@@ -56,6 +56,7 @@ const DROPDOWN_DATA_CY = {
   FONT_WEIGHT: '[data-cy="font-weight-dropdown"]',
   DYNAMIC: '[data-cy="dynamic-dropdown"]',
   RETAIN_SELECTION: '[data-cy="retain-selection-dropdown"]',
+  ICON: '[data-cy="icon-dropdown"]',
   POSITION: positions.map(position => {
     return {
       selector: `[data-cy="position-dropdown-${position.placement}"]`,
@@ -441,6 +442,21 @@ describe('Dropdown', () => {
         cy.get('@dropdownMenuItems')
           .first()
           .should('have.class', ACTIVE_CLASS);
+      });
+    });
+
+    describe('Icon', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.ICON)
+          .find(DROPDOWN_TRIGGER)
+          .as('dropdownTrigger');
+      });
+
+      it('Should display icon as trigger', () => {
+        hasClassAssertion('@dropdownTrigger', 'chi-dropdown__icon');
+        cy.get('@dropdownTrigger')
+          .find('chi-icon')
+          .should('exist');
       });
     });
   });
