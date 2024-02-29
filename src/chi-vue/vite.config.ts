@@ -1,4 +1,4 @@
-import { fileURLToPath, URL } from 'node:url';
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
@@ -39,7 +39,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@': resolve(__dirname, './src'),
     },
   },
   build: {
@@ -50,9 +50,9 @@ export default defineConfig({
     lib: {
       name: 'ChiVue',
       entry: [
-        fileURLToPath(new URL('./src/build/index.ts', import.meta.url)),
-        fileURLToPath(new URL('./src/build/components.ts', import.meta.url)),
-        fileURLToPath(new URL('./src/build/plugin/chi-vue-plugin.ts', import.meta.url)),
+        resolve(__dirname, './src/build/index.ts'),
+        resolve(__dirname, './src/build/components.ts'),
+        resolve(__dirname, './src/build/plugin/chi-vue-plugin.ts'),
       ],
       formats: ['es'],
     },

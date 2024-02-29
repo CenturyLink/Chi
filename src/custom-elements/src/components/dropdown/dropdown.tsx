@@ -94,6 +94,10 @@ export class Dropdown {
    */
   @Prop() visibleItems?: number;
   /**
+   * To retain the selection of the menu item and display it as the trigger
+   */
+  @Prop() retainSelection?: boolean;
+  /**
    * Triggered when hiding the Dropdown
    */
   @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
@@ -114,6 +118,7 @@ export class Dropdown {
   @State() _menuHeader: boolean;
   @State() _menuFooter: boolean;
   @State() _forceRender: boolean;
+  @State() _value: string;
 
   @Element() el: HTMLElement;
 
@@ -137,12 +142,14 @@ export class Dropdown {
       }
     }
   }
-  
+
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     this._addEventListeners();
-    addMutationObserver.call(this, this.setMenuHeight);
+    this.setFixedWidth();
+    this.setMenuHeight();
+    addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true });
   }
 
   componentWillLoad() {
@@ -237,27 +244,52 @@ export class Dropdown {
     return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
   }
 
+  getTotalElementHeight(element: HTMLElement) {
+    const computedStyle = getComputedStyle(element);
+    const styles = ['height', 'margin-top', 'margin-bottom'];
+
+    return styles.reduce((totalHeight, prop) => totalHeight + parseInt(computedStyle.getPropertyValue(prop), 10), 0);
+  }
+
   setMenuHeight() {
-    const menuItems = (this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children) as HTMLAnchorElement[];
+    if (this.visibleItems) {
+      const menuItems = (
+        this._dropdownMenuItemsWrapper ? this._dropdownMenuItemsWrapper.children : this._dropdownMenuElement.children
+      ) as HTMLAnchorElement[];
 
-    const itemsToShow = this.visibleItems
-      ? menuItems.length < this.visibleItems
-        ? menuItems.length
-        : this.visibleItems
-      : menuItems.length;
+      const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
+      let newHeight = 0;
 
-    let newHeight = 0;
+      for (let i = 0; i < itemsToShow; i++) {
+        newHeight += this.getTotalElementHeight(menuItems[i]);
+      }
 
-    for (let i = 0; i < itemsToShow; i++) {
-      newHeight += menuItems[i].offsetHeight;
+      if (this._menuFooter || this._menuHeader) {
+        this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
+      } else {
+        const padding = this.getPadding('top') + this.getPadding('bottom');
+
+        this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+      }
     }
+  }
 
-    if (this._menuFooter || this._menuHeader) {
-      this._dropdownMenuItemsWrapper.style.height = `${newHeight}px`;
-    } else {
-      const padding = this.getPadding('top') + this.getPadding('bottom');
+  setActiveClassOnMenuItem() {
+    const menuItems = this._getDropdownMenuItems();
 
-      this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
+    menuItems.forEach((item: HTMLElement) => {
+      const isActive = item.textContent === this._value;
+      
+      item.classList.toggle(ACTIVE_CLASS, isActive);
+    });
+  }
+
+  setFixedWidth() {
+    if (this.retainSelection && this._referenceElement) {
+      const button = this._referenceElement.getElementsByTagName('button')[0];
+      
+      button.style.width = `${this._referenceElement.offsetWidth}px`;
+      button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
     }
   }
 
@@ -285,9 +317,26 @@ export class Dropdown {
     }
   };
 
-  handlerSelectedMenuItem = () => {
-    this.eventItemSelected.emit();
+  handlerSelectedMenuItem = (item) => {
+    this.eventItemSelected.emit(item.text);
+
+    if (this.retainSelection) {
+      this._value = item.textContent;
+      this.hide();
+      this.truncateButtonText();
+      this.setActiveClassOnMenuItem();
+    }
   };
+
+  truncateButtonText() {
+    const button = this._referenceElement.getElementsByTagName('button')[0];
+    const span = document.createElement('span');
+
+    button.textContent = '';
+    span.textContent = this._value;
+    span.classList.add(UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
+    button.appendChild(span);
+  }
 
   handlerClickTrigger = () => {
     this.toggle();
@@ -322,8 +371,6 @@ export class Dropdown {
   async show() {
     this.setDisplay('block');
     this.active = true;
-
-    this.setMenuHeight();
 
     if (this._popper) {
       this._popper.update();
@@ -379,7 +426,7 @@ export class Dropdown {
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this));
+      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
     });
   }
 
@@ -392,44 +439,33 @@ export class Dropdown {
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.removeEventListener('click', this.handlerSelectedMenuItem);
+      item.removeEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
     });
   }
 
   renderTrigger() {
-    if (this.icon) {
-      return this.renderIcon();
-    } else if (this.button) {
-      return this.renderButton();
-    } else if (this._customTrigger) {
-      return (<slot name="trigger" />);
-    } else {
-      return null;
-    }
-  }
+    const itemSelected = (this.retainSelection && this._value) ?? this.button;
 
-  renderIcon() {
-    return (<chi-icon icon={this.icon}
-      extraClass={`${DROPDOWN_CLASSES.ICON} ${DROPDOWN_CLASSES.TRIGGER}`}
-      onClick={this.handlerClickTrigger}
-      onMouseEnter={this.handlerMouseEnter} />);
-  }
-
-  renderButton() {
-    return (<chi-button
-      onChiClick={this.handlerClickTrigger}
-      onChiMouseEnter={this.handlerMouseEnter}
-      class={`${this.fluid ? FLUID_CLASS : ''}`}
-      extra-class={this.getExtraClassForTriggerButton()}
-      color={`${this.color || ''}`}
-      variant={`${this.variant || ''}`}
-      size={`${this.size || ''}`}
-      uppercase={this.uppercase}
-      disabled={this.disabled}
-      ref={(ref) => (this._referenceElement = ref)}
-    >
-      {this.button}
-    </chi-button>);
+    return this.button ? (
+      <chi-button
+        onChiClick={this.handlerClickTrigger}
+        onChiMouseEnter={this.handlerMouseEnter}
+        class={`
+        ${this.fluid ? FLUID_CLASS : ''}
+      `}
+        extra-class={this.getExtraClassForTriggerButton()}
+        color={`${this.color || ''}`}
+        variant={`${this.variant || ''}`}
+        size={`${this.size || ''}`}
+        uppercase={this.uppercase}
+        disabled={this.disabled}
+        ref={(ref) => (this._referenceElement = ref)}
+      >
+        {itemSelected}
+      </chi-button>
+    ) : this._customTrigger ? (
+      <slot name="trigger" />
+    ) : null;
   }
 
   getExtraClassForTriggerButton() {
