@@ -1,57 +1,54 @@
 <template lang="pug">
-  <ComponentExample title="Base with help icon" id="base_with_help_icon" :tabs="exampleTabs" padding="0">
-  chi-main(title='Page title' slot="example")
-    chi-button#help-icon__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon' @click="togglePopover")
-      chi-icon(icon='circle-question-outline')
-    chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#help-icon__help-button' slot='help-icon')
-      | Popover content.
+<ComponentExample title="Base with help icon" id="base_with_help_icon" :tabs="exampleTabs" padding="0">
+template(#example)
+  chi-main(title='Page title')
+    div(slot='help-icon')
+      chi-button#help-icon__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' @click="togglePopover")
+        chi-icon(icon='circle-question-outline')
+    div(slot='help-icon')
+      chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#help-icon__help-button')
+        | Popover content.
     .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
     div(slot="footer")
-      div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
-      div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
-      div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
+      div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
+      div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
+      div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
 
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-  </pre>
-  </ComponentExample>
+template(#code-webcomponent)
+  Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+template(#code-htmlblueprint)
+  Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import {
   generateAllExampleFooters,
-  generateExampleFooter
+  generateExampleFooter,
 } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      footers: generateAllExampleFooters('help-icon-language-dropdown-button'),
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: '',
-        htmlblueprint: ''
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class HelpIcon extends Vue {
+  selectedTheme = useSelectedTheme();
+  footers = generateAllExampleFooters('help-icon-language-dropdown-button');
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: '',
+    htmlblueprint: '',
+  };
   mounted() {
     const languageDropdown = document.getElementById('help-icon-language-dropdown-button');
 
@@ -71,9 +68,9 @@ export default class HelpIcon extends Vue {
   }
 
   _setCodeSnippets() {
-    const footerTemplate = generateExampleFooter(this.$store.state.themes.theme);
+    const footerTemplate = generateExampleFooter(this.selectedTheme);
 
-    this.$data.codeSnippets.webcomponent = `<chi-main title="Page title">
+    this.codeSnippets.webcomponent = `<chi-main title="Page title">
   <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
     <chi-icon icon="circle-question-outline"></chi-icon>
   </chi-button>
@@ -84,14 +81,18 @@ export default class HelpIcon extends Vue {
   ${footerTemplate}
 </chi-main>
 
-<script>${this.$store.state.themes.theme === 'centurylink' ? '' : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`}
+<script>${
+      this.selectedTheme === 'centurylink'
+        ? ''
+        : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`
+    }
   document.querySelector("#example__help-button")
     .addEventListener("click", function() {
       var popoverElem = document.querySelector("#example__help-popover");
       popoverElem.toggle();
     });
 <\/script>`;
-    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
+    this.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
@@ -117,7 +118,11 @@ export default class HelpIcon extends Vue {
   ${footerTemplate}
 </div>
 
-<script>${this.$store.state.themes.theme === 'centurylink' ? '' : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`}
+<script>${
+      this.selectedTheme === 'centurylink'
+        ? ''
+        : `\n  chi.dropdown(document.getElementById('language-dropdown-button'));`
+    }
   chi.popover(document.getElementById('example__help-button'));
 <\/script>`;
   }

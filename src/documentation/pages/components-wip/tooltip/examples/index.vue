@@ -2,29 +2,31 @@
   div
     h2 Examples
 
-    <Base />
-    <LightLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    BaseExample
+    <LightLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <Disabled />
     <Positioning />
     <Long />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Long from './_long.vue';
 import Disabled from './_disabled.vue';
 import LightLumenCenturyLink from './_light-lumen-centurylink.vue';
 import Positioning from './_positioned.vue';
 import Base from './_base.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Long,
     Disabled,
     LightLumenCenturyLink,
     Positioning,
-    Base,
-  }
+    BaseExample: Base,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

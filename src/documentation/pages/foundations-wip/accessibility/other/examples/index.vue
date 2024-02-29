@@ -1,18 +1,18 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <PrerecordedAudioVideo />
-    <CaptionsPrerecorded />
-    <AudioDescription />
-    <CaptionsLive />
-    <AudioPrerecorded />
-    <AudioControl />
-    <TimingAdjustable />
-    <PauseStopHide />
-    <ThreeFlashes />
+.chi-grid__container.-pt--3
+  <PrerecordedAudioVideo />
+  <CaptionsPrerecorded />
+  <AudioDescription />
+  <CaptionsLive />
+  <AudioPrerecorded />
+  <AudioControl />
+  <TimingAdjustable />
+  <PauseStopHide />
+  <ThreeFlashes />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import PrerecordedAudioVideo from './_prerecorded-audio-video.vue';
 import CaptionsPrerecorded from './_captions-prerecorded.vue';
 import AudioDescription from './_audio-description.vue';
@@ -23,7 +23,7 @@ import TimingAdjustable from './_timing-adjustable.vue';
 import PauseStopHide from './_pause-stop-hide.vue';
 import ThreeFlashes from './_three-flashes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     PrerecordedAudioVideo,
     CaptionsPrerecorded,
@@ -34,7 +34,7 @@ import ThreeFlashes from './_three-flashes.vue';
     TimingAdjustable,
     PauseStopHide,
     ThreeFlashes,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>

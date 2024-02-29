@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Impersonation header" id="header_impersonation_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
-    .-p--3(slot="example")
+<ComponentExample title="Impersonation header" id="header_impersonation_portal" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  template(#example)
+    .-p--3
       header.chi-header.-lg.-impersonation
         .chi-impersonation-bar
           .chi-impersonation-bar__content
@@ -78,41 +79,37 @@
             .chi-drawer__content
               .-px--2.-pt--2.-text
                 | Drawer content here
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>          
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<header class="chi-header -lg -impersonation">
+@NuxtComponent({})
+export default class HeaderImpersonationPortal extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<header class="chi-header -lg -impersonation">
   <div class="chi-impersonation-bar">
     <div class="chi-impersonation-bar__content">
       <span class="chi-impersonation-bar__label">Signed in as:</span><strong class="chi-impersonation-bar__username">User</strong>
@@ -199,12 +196,9 @@ declare const chi: any;
   chi.dropdown(document.getElementById('button-portal-eid-menu2'));
   chi.tooltip(document.getElementById('button-portal-logout'));
   chi.tooltip(document.getElementById('button-portal-notification2'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class HeaderImpersonationPortal extends Vue {
+<\/script>`,
+  };
+
   mounted() {
     chi.drawer(this.$refs['drawer-trigger-portal-pib2'] as HTMLElement);
     chi.dropdown(this.$refs['button-portal-site-menu2'] as HTMLElement);

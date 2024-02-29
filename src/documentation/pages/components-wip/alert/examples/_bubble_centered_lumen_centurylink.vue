@@ -1,44 +1,43 @@
 <template lang="pug">
-  <ComponentExample title="Centered" titleSize="h4" id="bubble_centered_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Centered" titleSize="h4" id="bubble_centered_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       |  <strong>Note:</strong> Use sparingly. Centered Bubble alerts should only be used to render brief messages on centered forms
       |  such as those found on Sign In and Sign Up screens. Centered alerts do not support titles.
-    chi-alert.-m--2(color='danger', icon='circle-warning', center, slot='example')
+  template(#example)
+    chi-alert.-m--2(color='danger', icon='circle-warning', center)
       | This is a centered danger alert
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        span
-          | Use the attribute <code>center</code> to center the content of a Bubble Alert.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        span
-          | Apply the class <code>-center</code> to center the content of a Bubble Alert.
-      pre.language-html
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      span
+        | Use the attribute <code>center</code> to center the content of a Bubble Alert.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      span
+        | Apply the class <code>-center</code> to center the content of a Bubble Alert.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-alert color="danger" icon="circle-warning" center>
@@ -49,10 +48,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-alert__content">
     <p class="chi-alert__text">This is a centered danger alert</p>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class BubbleCenteredLumenCenturyLink extends Vue {}
 </script>

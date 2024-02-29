@@ -1,10 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Components contained" id="components-contained" :tabs="exampleTabs" titleSize="h4" additionalClasses="-pb--4">
-    p.-text(slot="example-description")
+<ComponentExample title="Components contained" id="components-contained" :tabs="exampleTabs" titleSize="h4" additionalClasses="-pb--4">
+  template(#example-description)
+    p.-text
       | As navigation component is built from other primitive Chi components, most of the components behavior
       | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
       | on the dropdowns to make the chevron rotate when activated.
-    ul.chi-tabs.chi-navigationExample#navigation-components-contained(slot="example")
+  template(#example)
+    ul.chi-tabs.chi-navigationExample#navigation-components-contained
       li.chi-dropdown.-active
         a.chi-dropdown__trigger.-animate(href='#') Active Tab
         .chi-dropdown__menu
@@ -20,43 +22,34 @@
         a.chi-dropdown__trigger.-animate(href='#') Tab Link
         .chi-dropdown__menu
           a.chi-dropdown__menu-item(v-for="item in [1, 2, 3]" href='#exampleHashTarget') Element {{ item }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class ComponentsContained extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+
   get codeSnippets() {
     return {
       webcomponent: ``,
@@ -82,24 +75,26 @@ ${this.tabsLinksHtml}
   </li>
 </ul>
 
-<script>chi.navigation(document.getElementById('navigation-components-contained'));<\/script>`
-    }
+<script>chi.navigation(document.getElementById('navigation-components-contained'));<\/script>`,
+    };
   }
 
   get tabsLinksHtml() {
-    return [1, 2].map(() => {
-      return (`  <li>
+    return [1, 2]
+      .map(() => {
+        return `  <li>
     <a href="#">Tab Link</a>
-  </li>`
-      )
-    }).join('\n');
+  </li>`;
+      })
+      .join('\n');
   }
 
   generateTabsDropdownLinksHtml(array: number[], name: string) {
-    return array.map(item => {
-      return (`<a class="chi-dropdown__menu-item" href="#">${name}${item}</a>`
-      )
-    }).join('');
+    return array
+      .map((item) => {
+        return `<a class="chi-dropdown__menu-item" href="#">${name}${item}</a>`;
+      })
+      .join('');
   }
 
   mounted() {

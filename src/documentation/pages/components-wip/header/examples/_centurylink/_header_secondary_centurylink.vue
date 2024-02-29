@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Header with mobile secondary menu" id="header_mobile_secondary_centurylink" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
-    .-p--3(slot="example")
+<ComponentExample title="Header with mobile secondary menu" id="header_mobile_secondary_centurylink" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  template(#example)
+    .-p--3
       header.chi-header
         nav.chi-header__content
           .chi-header__brand
@@ -32,32 +33,30 @@
             span Menu
           .chi-header__end
             i.chi-icon.icon-chevron-down.-mx--1.-mr-lg--0(aria-hidden="true")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>    
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -169,10 +168,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- Javascript -->
 <script>chi.drawer(document.getElementById('drawer-trigger-ctl-ms1'));<\/script>
 <script>chi.drawer(document.getElementById('drawer-trigger-ctl-ms2'));<\/script>
-<script>chi.drawer(document.getElementById('drawer-trigger-ctl-ms3'));<\/script>`
-      }
+<script>chi.drawer(document.getElementById('drawer-trigger-ctl-ms3'));<\/script>`,
+      },
     };
-  }
+  },
 })
 export default class HeaderMobileSecondaryCenturylink extends Vue {}
 </script>

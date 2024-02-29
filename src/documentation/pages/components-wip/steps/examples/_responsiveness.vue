@@ -1,40 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Responsiveness" id="responsiveness" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Responsiveness" id="responsiveness" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>-labels-{breakpoint}--hide</code> to hide step component labels on specific breakpoints or
       | <code>-labels--hide</code> to hide on all breakpoints. Breakpoints supported are <code>sm</code>,
       | <code>md</code>, <code>lg</code>, and <code>xl</code>. Labels are shown on all breakpoints by default.
-    <Wrapper slot="example">
-      ul.chi-steps.-labels-md--hide.-p-sm--5
-        li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
-          div.chi-steps__icon
-            div.chi-steps__content
-              a.chi-steps__item-title(href='#') {{ step.title }}
-          div.chi-steps__line(v-if="step.title !== 'Step 5'")
-      p.-text--center
-        | -labels-md--hide
-      ul.chi-steps.-horizontal-label.-labels-lg--hide.-pt--2.-p-sm--4
-        li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
-          div.chi-steps__icon
-            div.chi-steps__content
-              a.chi-steps__item-title(href='#') {{ step.title }}
-          div.chi-steps__line(v-if="step.title !== 'Step 5'")
-      p.-text--center
-        | -labels-lg--hide
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    ul.chi-steps.-labels-md--hide.-p-sm--5
+      li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
+        div.chi-steps__icon
+          div.chi-steps__content
+            a.chi-steps__item-title(href='#') {{ step.title }}
+        div.chi-steps__line(v-if="step.title !== 'Step 5'")
+    p.-text--center
+      | -labels-md--hide
+    ul.chi-steps.-horizontal-label.-labels-lg--hide.-pt--2.-p-sm--4
+      li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
+        div.chi-steps__icon
+          div.chi-steps__content
+            a.chi-steps__item-title(href='#') {{ step.title }}
+        div.chi-steps__line(v-if="step.title !== 'Step 5'")
+    p.-text--center
+      | -labels-lg--hide
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       steps: [
@@ -42,19 +41,19 @@ import { Component, Vue } from 'vue-property-decorator';
         { title: 'Step 2', class: '-completed' },
         { title: 'Step 3', class: '-active' },
         { title: 'Step 4', class: '' },
-        { title: 'Step 5', class: '' }
+        { title: 'Step 5', class: '' },
       ],
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -136,10 +135,10 @@ import { Component, Vue } from 'vue-property-decorator';
       <a class="chi-steps__item-title" href="#">Step 5</a>
     </div>
   </li>
-</ul>`
-      }
+</ul>`,
+      },
     };
-  }
+  },
 })
 export default class Responsiveness extends Vue {}
 </script>

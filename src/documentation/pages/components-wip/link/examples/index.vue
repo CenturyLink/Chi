@@ -1,8 +1,8 @@
 <template lang="pug">
   div
     h2 Examples
-   
-    <Base />
+
+    BaseExample
     <Disabled />
     <NoHoverUnderline />
     <CTA />
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import NoHoverUnderline from './_no-hover-underline.vue';
@@ -29,9 +29,9 @@ import Download from './_download.vue';
 import Hreflang from './_hreflang.vue';
 import AdditionalSizes from './_additional-sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     NoHoverUnderline,
     CTA,
@@ -41,8 +41,8 @@ import AdditionalSizes from './_additional-sizes.vue';
     Rel,
     Download,
     Hreflang,
-    AdditionalSizes
-  }
+    AdditionalSizes,
+  },
 })
 export default class Examples extends Vue {}
 </script>

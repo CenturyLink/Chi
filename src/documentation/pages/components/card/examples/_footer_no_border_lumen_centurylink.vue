@@ -1,39 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Footer No Border" id="footer_no_border_lumen_centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description") Apply the class <code>-no-border</code> on <code>chi-card__footer</code> to remove the default border.
-    .chi-card(style="max-width:20rem;" slot="example")
+<ComponentExample title="Footer No Border" id="footer_no_border_lumen_centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Apply the class <code>-no-border</code> on <code>chi-card__footer</code> to remove the default border.
+  template(#example)
+    .chi-card(style="max-width:20rem;")
       .chi-card__content
         .chi-card__caption
           | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
           | Ut felis magna, facilisis ut malesuada nec.
       .chi-card__footer.-no-border
         button.chi-button.-primary Action
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -44,10 +44,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-card__footer -no-border">
     <button class="chi-button -primary">Action</button>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class FooterNoBorderLumenCenturylink extends Vue {}
 </script>

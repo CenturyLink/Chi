@@ -2,23 +2,26 @@
   div
     h2 Examples
     client-only(placeholder="loading...")
-      <Base />
+      BaseExample
       <BaseWithSaveView />
-      <BaseWithSaveViewAndBulkActionsPortalBrightSpeed v-if="['portal', 'brightspeed'].includes($store.state.themes.theme)" />
+      template(v-if="['portal', 'brightspeed'].includes(selectedTheme)")
+      <BaseWithSaveViewAndBulkActionsPortalBrightSpeed />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import BaseWithSaveView from './_base-with-save-view.vue';
 import BaseWithSaveViewAndBulkActionsPortalBrightSpeed from './_portal/_base-with-save-view-bulk-actions.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     BaseWithSaveView,
-    BaseWithSaveViewAndBulkActionsPortalBrightSpeed
-  }
+    BaseWithSaveViewAndBulkActionsPortalBrightSpeed,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

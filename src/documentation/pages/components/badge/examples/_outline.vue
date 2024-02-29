@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Outline" id="outline" :tabs="exampleTabs" padding="-p--0">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Outline" id="outline" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--2.-text--center
           chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
@@ -21,42 +22,36 @@
           chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
 
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
+@NuxtComponent({})
+export default class Outline extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<!-- For light backgrounds -->
 <chi-badge color="primary" variant="outline">Primary</chi-badge>
 <chi-badge color="success" variant="outline">Success</chi-badge>
 <chi-badge color="warning" variant="outline">Warning</chi-badge>
@@ -73,7 +68,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- For dark backgrounds -->
 <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
 <chi-badge color="light" variant="outline">Light</chi-badge>`,
-        htmlblueprint: `<!-- For light backgrounds -->
+    htmlblueprint: `<!-- For light backgrounds -->
 <div class="chi-badge -primary -outline">
   <span>Primary</span>
 </div>
@@ -115,10 +110,7 @@ import { Component, Vue } from 'vue-property-decorator';
 </div>
 <div class="chi-badge -light -outline">
   <span>Light</span>
-</div>`
-      }
-    };
-  }
-})
-export default class Outline extends Vue {}
+</div>`,
+  };
+}
 </script>

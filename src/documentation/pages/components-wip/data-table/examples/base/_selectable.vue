@@ -1,34 +1,35 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Selectable" id="selectable-data-table" :tabs="exampleTabs">
-      chi-data-table(:config='config', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description
-          | Use <code>selectable</code> config to render rows with selectable checkboxes
-        pre.language-html
-          code(v-highlight="getRadioSelectionVueCode(true)" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="codeSnippets.htmlblueprintCheckbox" class="html")
-    </ComponentExample>
+<ComponentExample title="Selectable" id="selectable-data-table" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='config', :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description
+      | Use <code>selectable</code> config to render rows with selectable checkboxes
+    Copy(lang="html" :code="getRadioSelectionVueCode(true)")
 
-    <ComponentExample title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs">
-      chi-data-table(:config='getRadioSelectionConfig()', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description
-          | Use <code>selectable</code> config to render rows with radio buttons
-        pre.language-html
-          code(v-highlight="getRadioSelectionVueCode('radio')" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="codeSnippets.htmlblueprintRadio" class="html")
-    </ComponentExample>
+  template(#code-htmlblueprint)
+
+    Copy(lang="html" :code="codeSnippets.htmlblueprintCheckbox")
+</ComponentExample>
+
+<ComponentExample title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='getRadioSelectionConfig()', :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description
+      | Use <code>selectable</code> config to render rows with radio buttons
+    Copy(lang="html" :code="getRadioSelectionVueCode('radio')")
+
+  template(#code-htmlblueprint)
+
+    Copy(lang="html" :code="codeSnippets.htmlblueprintRadio")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -36,7 +37,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -47,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -78,53 +79,29 @@ import { Component, Vue } from 'vue-property-decorator';
         body: [
           {
             id: 'name-1',
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-2',
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
       codeSnippets: {
         htmlblueprintRadio: `<div class="chi-data-table">
@@ -401,8 +378,8 @@ import { Component, Vue } from 'vue-property-decorator';
   methods: {
     getRadioSelectionConfig() {
       return {
-        ...this.$data.config,
-        selectable: 'radio'
+        ...this.config,
+        selectable: 'radio',
       };
     },
     getRadioSelectionVueCode(selection: boolean | 'radio') {
@@ -427,8 +404,12 @@ data: {
       firstLast: false,
       pageJumper: true,
     },
-    selectable: ${selection === 'radio' ? `'radio'` : `${selection}
-    showSelectAllDropdown: true`},
+    selectable: ${
+      selection === 'radio'
+        ? `'radio'`
+        : `${selection}
+    showSelectAllDropdown: true`
+    },
     resultsPerPage: 3,
   },
   table: {
@@ -488,9 +469,9 @@ data: {
       },
     ]
   }
-}`
-    }
-  }
+}`;
+    },
+  },
 })
-export default class DataTableSelectable extends Vue { }
+export default class DataTableSelectable extends Vue {}
 </script>

@@ -1,43 +1,41 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Destructive action confirmation" id="destructive-action-confirmation" :tabs="exampleTabs">
-    .-position--relative(style="height: 146px;" slot="example")      
+<ComponentExample titleSize="h4" title="Destructive action confirmation" id="destructive-action-confirmation" :tabs="exampleTabs">
+  template(#example)
+    .-position--relative(style="height: 146px;")
       chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
         | Are you sure you want to delete this?
-        chi-button(slot="chi-popover__footer" color="danger") Delete
-        chi-button(slot="chi-popover__footer") Cancel
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+        div(slot="chi-popover__footer")
+          chi-button(color="danger") Delete
+        div(slot="chi-popover__footer")
+          chi-button Cancel
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-popover position="top" title="Are you sure?" variant="text" active arrow>
@@ -57,10 +55,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <button class="chi-button">Cancel</button>
   </div>
   <div class="chi-popover__arrow"></div>
-</section>`
-      }
+</section>`,
+      },
     };
-  }
+  },
 })
 export default class DestructiveActionConfirmation extends Vue {}
 </script>

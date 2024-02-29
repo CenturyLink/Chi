@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Solid" id="solid" :tabs="exampleTabs" padding="-p--0">
-    .chi-grid.-no-gutter(slot="example")
+<ComponentExample title="Solid" id="solid" :tabs="exampleTabs" padding="-p--0">
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--2.-text--center
           chi-badge(class='-m--1')= 'Base'
@@ -21,44 +22,38 @@
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary')= 'Secondary'
           chi-badge(class='-m--1', color='light')= 'Light'
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
-        | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | To display a badge, use the class <code>chi-badge</code>.
-        | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
+      | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To display a badge, use the class <code>chi-badge</code>.
+      | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
+@NuxtComponent({})
+export default class Solid extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<!-- For light backgrounds -->
 <chi-badge>Base</chi-badge>
 <chi-badge color="primary">Primary</chi-badge>
 <chi-badge color="success">Success</chi-badge>
@@ -76,7 +71,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- For dark backgrounds -->
 <chi-badge color="secondary">Secondary</chi-badge>
 <chi-badge color="light">Light</chi-badge>`,
-        htmlblueprint: `<!-- For light backgrounds -->
+    htmlblueprint: `<!-- For light backgrounds -->
 <div class="chi-badge">
   <span>Base</span>
 </div>
@@ -121,10 +116,7 @@ import { Component, Vue } from 'vue-property-decorator';
 </div>
 <div class="chi-badge -light">
   <span>Light</span>
-</div>`
-      }
-    };
-  }
-})
-export default class Solid extends Vue {}
+</div>`,
+  };
+}
 </script>

@@ -1,62 +1,53 @@
 <template lang="pug">
-  <ComponentExample title="Viewport-Specific Column Sizing" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-    p.-text(slot="example-description")
-      | The columns in the following rows will be 50% wide until they are in 
-      | the configured viewport, at which point they will become 12 column 
+<ComponentExample title="Viewport-Specific Column Sizing" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  template(#example-description)
+    p.-text
+      | The columns in the following rows will be 50% wide until they are in
+      | the configured viewport, at which point they will become 12 column
       | units wide.
-    
-    .-show--example.chi-grid.-mb--3(slot="example" v-for="{className} in gridColumns" :key="className")
+  template(#example)
+    .-show--example.chi-grid.-mb--3( v-for="{className} in gridColumns" :key="className")
       .chi-col.-w--6(:class="className")
 
-    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
-    };
-  }
-})
+@NuxtComponent({})
 export default class ViewportColumnSizing extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
   gridColumns = [
     {
-      comment:
-        '<!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->',
-      className: '-w-sm--12'
+      comment: '<!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->',
+      className: '-w-sm--12',
     },
     {
-      comment:
-        '<!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->',
-      className: '-w-md--12'
+      comment: '<!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->',
+      className: '-w-md--12',
     },
     {
-      comment:
-        '<!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->',
-      className: '-w-lg--12'
+      comment: '<!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->',
+      className: '-w-lg--12',
     },
     {
-      comment:
-        '<!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->',
-      className: '-w-xl--12'
-    }
+      comment: '<!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->',
+      className: '-w-xl--12',
+    },
   ];
 
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
+      htmlblueprint: this.generateHtml(),
     };
   }
 

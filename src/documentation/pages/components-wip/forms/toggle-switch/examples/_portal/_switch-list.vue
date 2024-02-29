@@ -1,31 +1,30 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Switch List" id="switch-list-portal" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h4" title="Switch List" id="switch-list-portal" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Switch lists are used to wrap a series of switches in a list.
       | To render, apply the class <code>-list</code> to <code>chi-form__item</code>.
-    <Wrapper slot="example">
-      legend.chi-label Select options
-      ul.chi-form__item.-list(style="max-width:20rem")
-        li.chi-form__item(v-for="toggle in toggleList")
-          label.chi-switch.-xs(:for="`${toggle}`")
-            span.chi-switch__label Label
-            input(type="checkbox", class="chi-switch__input", :id="`${toggle}`")
-            span(class="chi-switch__content")
-              span.chi-switch__thumb
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    legend.chi-label Select options
+    ul.chi-form__item.-list(style="max-width:20rem")
+      li.chi-form__item(v-for="toggle in toggleList")
+        label.chi-switch.-xs(:for="`${toggle}`")
+          span.chi-switch__label Label
+          input(type="checkbox", class="chi-switch__input", :id="`${toggle}`")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

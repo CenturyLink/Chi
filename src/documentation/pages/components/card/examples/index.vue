@@ -3,9 +3,9 @@
     h2 Examples
     p.-text To display a card, use the class <code>chi-card</code>.
 
-    <Base />
+    BaseExample
 
-    <div v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
+    <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
       <ActiveLumenCenturylink />
       <NoBorderLumenCenturylink />
       <Empty />
@@ -27,7 +27,7 @@
       <HeaderFooterSmallLumenCenturylink />
     </div>
 
-    <div v-if="$store.state.themes.theme === 'portal'">
+    <div v-if="selectedTheme === 'portal'">
       <Header />
       <HighlightPortal />
       <WithTabsPortal />
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import ActiveLumenCenturylink from './_active_lumen_centurylink.vue';
 import NoBorderLumenCenturylink from './_no_border_lumen_centurylink.vue';
@@ -60,10 +60,10 @@ import HeaderFooterSmallLumenCenturylink from './_header_footer_small_lumen_cent
 import HighlightPortal from './_portal/_highlight.vue';
 import WithTabsPortal from './_portal/_with_tabs.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     ActiveLumenCenturylink,
-    Base,
+    BaseExample: Base,
     NoBorderLumenCenturylink,
     Empty,
     TitledLumenCenturylink,
@@ -83,8 +83,10 @@ import WithTabsPortal from './_portal/_with_tabs.vue';
     HeaderFooterLumenCenturylink,
     HeaderFooterSmallLumenCenturylink,
     HighlightPortal,
-    WithTabsPortal
-  }
+    WithTabsPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

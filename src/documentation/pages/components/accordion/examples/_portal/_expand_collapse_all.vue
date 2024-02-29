@@ -1,8 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_all_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
-    button(@click="expandAll" slot="example").chi-button.-primary.-outline#expand-all-portal Expand all
-    button(@click="collapseAll" slot="example").chi-button.-primary.-outline.-ml--1#collapse-all-portal Collapse all
-    .chi-accordion.-mt--2#expand-collapse-portal(slot="example")
+<ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_all_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
+  template(#example)
+    button(@click="expandAll").chi-button.-primary.-outline#expand-all-portal Expand all
+    button(@click="collapseAll").chi-button.-primary.-outline.-ml--1#collapse-all-portal Collapse all
+    .chi-accordion.-mt--2#expand-collapse-portal
       .chi-accordion__item.-expanded
         button.chi-accordion__trigger
           .chi-accordion__title
@@ -54,41 +55,36 @@
                       i.chi-icon.icon-chevron-down(aria-hidden="true")
                     .chi-accordion__content
                       p.chi-accordion__text Content of Accordion item 2.2
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<button class="chi-button" id="expand-all-portal">Expand all</button>
+@NuxtComponent({})
+export default class ExpandCollapseAllPortal extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<button class="chi-button" id="expand-all-portal">Expand all</button>
 <button class="chi-button" id="collapse-all-portal">Collapse all</button>
 
 <div class="chi-accordion" id="expand-collapse-portal">
@@ -174,12 +170,8 @@ declare const chi: any;
   collapseAll.addEventListener("click", () => {
     expandCollapseAccordion.collapseAll();
   });
-<\/script>`
-      }
-    };
-  }
-})
-export default class ExpandCollapseAllPortal extends Vue {
+<\/script>`,
+  };
   accordion: any;
 
   expandAll() {
@@ -189,9 +181,7 @@ export default class ExpandCollapseAllPortal extends Vue {
     this.accordion.collapseAll();
   }
   mounted() {
-    const accordionExpandAll = document.getElementById(
-      'expand-collapse-portal'
-    );
+    const accordionExpandAll = document.getElementById('expand-collapse-portal');
 
     this.accordion = chi.accordion(accordionExpandAll);
   }
