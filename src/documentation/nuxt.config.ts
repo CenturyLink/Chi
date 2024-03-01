@@ -112,6 +112,8 @@ export default defineNuxtConfig({
   nitro: {
     // https://nitro.unjs.io/config#prerender
     prerender: {
+      crawlLinks: true,
+      failOnError: false,
       ignore: [
         // uses regex or begins with to match routes
         ...IGNORED_ROUTES,
