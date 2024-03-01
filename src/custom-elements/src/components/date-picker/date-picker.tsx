@@ -73,18 +73,22 @@ export class DatePicker {
    * To allow the user to select multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
+  
   /**
    * To define state color of Date Picker
    */
   @Prop({ reflect: true }) state?: ChiStates;
+  
   /**
    * To display an additional helper text message below the Date Picker
    */
   @Prop({ reflect: true }) helperMessage?: string;
+  
   /**
    * To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'
    */
-  @Prop({ reflect: true }) timeFormat?: TimePickerFormats;
+  @Prop({ reflect: true }) timeFormat?: TimePickerFormats = '12hr';
+  
   /**
    * Renders minutes in stepped format. Defaults to 15 min steps if no value
    * is provided (see examples in docs).
@@ -264,58 +268,8 @@ export class DatePicker {
     return Promise.resolve(this.value);
   }
 
-  @Listen('chiDateChange')
-  handleDateChange(ev) {
-    if (ev.target.nodeName === 'CHI-DATE') {
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      this.eventChange.emit(ev.detail);
-    }
-    ev.stopPropagation();
-    this._input.value = ev.detail;
-    if (this.mode === 'datetime') {
-      this.handleDateTimeChange(ev);
-    } else {
-      this.value = ev.detail;
-    }
-
-    if (!this.multiple) {
-      this.active = false;
-      this._input.blur();
-    }
-  }
-
-  _getTimePeriod(is24h, hours) {
-    let period = '';
-
-    if (!is24h) {
-      period = parseInt(hours) >= 12 ? 'pm' : 'am';
-    }
-
-    return period;
-  }
-
-  handleDateTimeChange(ev) {
-    const chiTime = this.el.querySelector('.chi-popover__content chi-time');
-    const valueTime = chiTime.getAttribute('value');
-    const timeFormat = chiTime.getAttribute('format');
-    const is24hrTimeFormat = timeFormat === '24hr';
-
-    if (!valueTime) {
-      return;
-    }
-
-    const time = valueTime.split(':');
-    const period = this._getTimePeriod(is24hrTimeFormat, time[0]);
-    const hours = !is24hrTimeFormat && parseInt(time[0]) > 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
-    const hoursCalculated = this.formatTimePeriod(hours);
-    const minutes = this.formatTimePeriod(parseInt(time[1]));
-
-    this.value = `${ev.detail}, ${hoursCalculated}:${minutes} ${period}`;
-  }
-
   @Listen('chiPopoverShow')
-  handlePopoverOpen(ev) {
+  handlePopoverOpen(ev: CustomEvent) {
     ev.stopPropagation();
     const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`);
     const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`);
@@ -338,27 +292,78 @@ export class DatePicker {
     }, CHI_TIME_AUTO_SCROLL_DELAY);
   }
 
+  @Listen('chiDateChange')
+  handleDateChange(ev: CustomEvent) {
+    const target = ev.target as HTMLElement;
+
+    if (target.nodeName.toUpperCase() === 'CHI-DATE-PICKER') {
+      return;
+    }
+
+    this._input.value = ev.detail;
+    this.updateInternalValue(ev.detail);
+
+    if (!this.multiple) {
+      this.active = false;
+      this._input.blur();
+    }
+
+    this.eventChange.emit(this.value);
+  }
+
   @Listen('chiTimeChange')
-  handleTimeChange(ev) {
+  handleTimeChange(ev: CustomEvent) {
     const chiDate = this.el.querySelector('.chi-popover__content chi-date');
     let activeDate = chiDate.getAttribute('value');
 
-    if (!activeDate) {
-      const currentTime = new Date();
+    let value = this.value;
 
-      activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
+    if (this.mode === 'datetime') {
+      value = this.value.split(', ')[0]
     }
 
-    chiDate.setAttribute('value', activeDate);
-    if (this.timeFormat === '24hr') {
-      this.value = `${activeDate}, ${this.formatTimePeriod(ev.detail.hour)}:${this.formatTimePeriod(ev.detail.minute)}`;
-    } else {
-      const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    this.setInternalValue(activeDate || value, ev.detail);
 
-      this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(
-        ev.detail.minute
-      )} ${this.formatTimePeriod(ev.detail.period)}`;
+    this.eventChange.emit(this.value);
+  }
+
+  updateInternalValue(date: string) {
+    if (this.mode === 'date') {
+      this.value = date;
     }
+    if (this.mode === 'datetime') {
+      const chiTime = this.el.querySelector('.chi-popover__content chi-time');
+      const valueTime = chiTime.getAttribute('value');
+
+      if (!valueTime) return;
+
+      const [hourMinSec, period] = valueTime.trim().split(' ');
+      const [hour, minute] = hourMinSec.split(':');
+      const time = { hour, minute, period };
+
+      this.setInternalValue(date, time);
+    }
+  }
+
+  setInternalValue(date: string, time?) {
+    if (!time) {
+      this.value = date;
+      return;
+    }
+
+    const hour = this.timeFormat === '12hr'
+      ? time.hour > 12 ? time.hour - 12 : time.hour
+      : time.hour;
+    const formattedHour = this.formatTimePeriod(hour);
+    const formattedMinute = this.formatTimePeriod(time.minute);
+    const formattedTime = `${formattedHour}:${formattedMinute}`;
+
+    let value = `${date}, ${formattedTime}`;
+    if (this.timeFormat === '12hr') {
+      value += ` ${time.period}`;
+    }
+
+    this.value = value;
   }
 
   formatTimePeriod(period: number): string {
@@ -373,6 +378,15 @@ export class DatePicker {
     this._onClick = this._onClick.bind(this);
     this._onKeyUp = this._onKeyUp.bind(this);
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
+
+    if (this.value === undefined && !this.disabled) {
+      const currentTime = new Date();
+      const day = this.formatTimePeriod(currentTime.getDate());
+      const month = this.formatTimePeriod(currentTime.getMonth() + 1);
+      const year = this.formatTimePeriod(currentTime.getFullYear());
+
+      this.value = `${month}/${day}/${year}`;
+    }
   }
 
   componentDidLoad(): void {
@@ -413,7 +427,7 @@ export class DatePicker {
       />
     );
     const timeValue = (this.value?.split(', ') || [])[1];
-    const time = this.mode === 'datetime' 
+    const time = this.mode === 'datetime'
       ? <chi-time format={this.timeFormat} value={timeValue} minutes-step={this.minutesStep}/> 
       : null;
     const popoverContent =
