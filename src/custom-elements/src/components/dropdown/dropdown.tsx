@@ -13,6 +13,8 @@ import { contains } from '../../utils/utils';
 import { FontWeight } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
+declare const chi: any;
+
 @Component({
   tag: 'chi-dropdown',
   styleUrl: 'dropdown.scss',
@@ -47,6 +49,10 @@ export class Dropdown {
    * To provide icon alternative text
    */
   @Prop() iconAlternativeText?: string;
+  /**
+   * To provide icon data tooltip
+   */
+  @Prop() iconDataTooltip?: string;
   /**
    * To set the color of the button. The value is directly passed to
    * chi-button element if present  { primary, secondary, danger, dark, light }.
@@ -150,6 +156,7 @@ export class Dropdown {
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
+    this._loadTooltip();
     this._addEventListeners();
     this.setFixedWidth();
     this.setMenuHeight();
@@ -229,6 +236,12 @@ export class Dropdown {
       removeOnDestroy: true,
       placement: this.position || 'bottom',
     });
+  }
+
+  _loadTooltip() {
+    if (this.iconDataTooltip) {
+      chi.tooltip(this.el.querySelector('[data-tooltip]'));
+    }
   }
 
   _getDropdownMenuSlots() {
@@ -469,6 +482,7 @@ export class Dropdown {
         disabled={this.disabled}
         type={this.icon ? 'icon' : ''}
         alternative-text={this.iconAlternativeText || ''}
+        data-tooltip={this.iconDataTooltip || ''}
         ref={(ref) => (this._referenceElement = ref)}
       >
         {itemSelected}
