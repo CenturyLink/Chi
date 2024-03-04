@@ -358,7 +358,6 @@ export class Tabs {
     this._setSeeMoreTriggerElement();
     this.setAvailableSpace();
     this.setListOverflow();
-    this.isSeeMoreVisible = this.tabs.findIndex((li) => li.overflow) !== -1;
     this.activeTabElement = this.getActiveTabTrigger();
     this.setSlidingBorderStyles();
     this.hideAllDropdowns();
@@ -454,25 +453,53 @@ export class Tabs {
     this.setListOverflow();
   }
 
+  /**
+   * Checks what elements fit in the available space and sets overflow
+   * to the items hat do not fit.
+   */
   setListOverflow() {
-    const copyTabsData = JSON.stringify(this.tabs);
+    const copyTabsData = structuredClone(this.tabs);
 
     let usedSpace = 0;
+    this.isSeeMoreVisible = false;
 
     for (let i = 0; i < this.lisArrayLength; i++) {
-      if (usedSpace + this.liSizes[i] + this.seeMoreTriggerElementWidth <= this.availableSpace) {
+      const isLastElement = i + 1 === this.lisArrayLength;
+      const seeMoreTriggerElementWidth = isLastElement ? 0 : this.seeMoreTriggerElementWidth;
+      const elementFits = usedSpace + this.liSizes[i] + seeMoreTriggerElementWidth <= this.availableSpace;
+
+      if (!this.isSeeMoreVisible && elementFits) {
         usedSpace += this.liSizes[i];
         this.tabs[i].overflow = false;
-        this.isSeeMoreVisible = false;
       } else {
         this.tabs[i].overflow = true;
         this.isSeeMoreVisible = true;
       }
     }
 
-    if (JSON.stringify(this.tabs) !== copyTabsData) {
+    if (this._stringifyTabs(this.tabs) !==  this._stringifyTabs(copyTabsData)) {
       this.dropdownKey += 1;
     }
+  }
+
+  /**
+   * Stringifies tabs by removing circular references
+   */
+  _stringifyTabs(tabs: TabTrigger[]) {
+    const removeParent = (tab: TabTrigger) => {
+      const { children, id, label, overflow, target, href } = tab;
+
+      return {
+        children: children?.map(removeParent),
+        id,
+        label,
+        overflow,
+        target,
+        href,
+      };
+    };
+  
+    return JSON.stringify(tabs.map(removeParent));
   }
 
   setSlidingBorderStyles() {

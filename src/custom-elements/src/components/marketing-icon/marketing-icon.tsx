@@ -1,9 +1,10 @@
-import { Component, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Prop, Watch, h } from '@stencil/core';
 import { calculateClasses } from '../../utils/utils';
 import { MARKETING_ICON_SIZES as VALID_SIZES, MarketingIconSizes } from '../../constants/size';
 import { spriteFilled } from './sprites/filled';
 import { spriteOutline } from './sprites/outline';
 import { MARKETING_ICON_MODES, ChiMarketingIconModes } from '../../constants/types';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 let loadedIcons = {
   filled: 0,
@@ -16,6 +17,7 @@ let loadedIcons = {
   scoped: true,
 })
 export class MarketingIcon {
+  @Element() el: HTMLElement;
   /**
    * Icon to be rendered.
    */
@@ -58,6 +60,10 @@ export class MarketingIcon {
         `${this.variant} is not a valid mode of Marketing Icon. If provided, valid values are: ${validValues}. `
       );
     }
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   componentWillLoad(): void {
