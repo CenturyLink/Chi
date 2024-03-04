@@ -9,19 +9,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import NoWrap from './_no-wrap.vue';
 import Wrap from './_wrap.vue';
 import WrapReverse from './_wrap-reverse.vue';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     NoWrap,
     Wrap,
     WrapReverse,
     SpecificBreakpoints,
-  }
+  },
 })
 export default class WrapExample extends Vue {}
 </script>

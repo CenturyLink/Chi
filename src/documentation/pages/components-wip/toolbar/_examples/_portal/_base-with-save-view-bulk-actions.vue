@@ -1,93 +1,89 @@
 <template lang="pug">
-  <ComponentExample title="Base with save view and bulk actions" id="base-with-save-view-and-bulk-actions-portal" additionalStyle="position: static;" additionalClasses="-position--relative" :tabs="exampleTabs">
-    div(slot="example")
-      chi-data-table-toolbar
-        template(v-slot:start)
-          chi-search-input(:data-table-search='true')
-          .chi-divider.-vertical
-          chi-data-table-views(:views='toolbar.viewsData')
-          .chi-divider.-vertical
-          chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
-            template(v-slot:custom-one)
-              chi-label(for='example__base_with_save_view_and_bulk_actions_input-1') City
-              chi-text-input#example__base_with_save_view_and_bulk_actions_input-1
-              chi-label(for='example__base_with_save_view_and_bulk_actions_input-2') Zip Code
-              chi-text-input#example__base_with_save_view_and_bulk_actions_input-2
-            template(v-slot:custom-two)
-              chi-date-picker
-        template(v-slot:end)
-          chi-tooltip(message="Refresh")
-            button.chi-button.-icon.-flat(aria-label="Refresh")
-              .chi-button__content
-                i.chi-icon.icon-refresh(aria-hidden="true")
-          chi-tooltip(message="Download")
-            button.chi-button.-icon.-flat(aria-label="Download")
-              .chi-button__content
-                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
-          chi-column-customization(:columns-data='toolbar.columnsData')
-      chi-save-view(:active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title")
-      .chi-bulk-actions
-        .chi-bulk-actions__top.-position--absolute
-          button.chi-button.-flat.-px--1 Select all
-          button.chi-button.-flat.-px--1 Cancel
-        .chi-bulk-actions__start
-          .chi-bulk-actions__results
-            .chi-bulk-actions__label Actions (10 Selected)
+<ComponentExample title="Base with save view and bulk actions" id="base-with-save-view-and-bulk-actions-portal" additionalStyle="position: static;" additionalClasses="-position--relative" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTableToolbar
+      template(#start)
+        ChiSearchInput(:dataTableSearch="true")
+        .chi-divider.-vertical
+        ChiDataTableViews(:views="toolbar.viewsData")
+        .chi-divider.-vertical
+        ChiDataTableFilters.-ml--2(:filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData")
+          template(#customAdvanced)
             .chi-form__item
-              .chi-checkbox
-                input#checkbox-ba1.chi-checkbox__input(type='checkbox')
-                label.chi-checkbox__label(for='checkbox-ba1') Show Selected Only
-          .chi-divider.-vertical
-          .chi-bulk-actions__buttons
-            .chi-bulk-actions__buttons-mobile.-position--absolute
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Edit')
-                chi-icon(icon='edit')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Compose')
-                chi-icon(icon='compose')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Delete')
-                chi-icon(icon='delete')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Print')
-                chi-icon(icon='print')
-            .chi-bulk-actions__buttons-desktop
-              chi-button(size='xs')
-                chi-icon(icon='arrow-to-bottom')
-                span Download
-              chi-button(size='xs')
-                chi-icon(icon='compose')
-                span Compose
-              chi-button(size='xs')
-                chi-icon(icon='delete')
-                span Delete
-              chi-button(size='xs')
-                chi-icon(icon='print')
-                span Print
-        .chi-bulk-actions__end
-          chi-button(type='close')
-    pre(class="language-html" slot="code-webcomponent")
-      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    <Wrapper slot="code-vue">
-      .chi-tab__description
-        | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
-      pre(class="language-html")
-        code(v-highlight="$data.codeSnippets.vue" class="html")
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      .chi-tab__description
-        | To render toolbar, use the class <code>chi-toolbar</code>.
-      pre(class="language-html")
-        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
-    </Wrapper>
-  </ComponentExample>
+              <chi-label for="input-1">City</chi-label>
+              <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+              <chi-label for="input-2">Zip Code</chi-label>
+              <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          template(#customAdvanced2)
+            chi-date-picker(@chiDateChange="e => dateChangeHandler(e)")
+      template(#end)
+        ChiTooltip(message="Refresh")
+          button.chi-button.-icon.-flat(aria-label="Refresh")
+            .chi-button__content
+              i.chi-icon.icon-refresh(aria-hidden="true")
+        ChiTooltip(message="Download")
+          button.chi-button.-icon.-flat(aria-label="Download")
+            .chi-button__content
+              i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+        ChiColumnCustomization(:columnsData="toolbar.columnsData")
+    ChiSaveView(
+      :config="saveView"
+    )
+    .chi-bulk-actions
+      .chi-bulk-actions__start
+        .chi-bulk-actions__results
+          .chi-bulk-actions__label Actions (10 Selected)
+          .chi-form__item
+            .chi-checkbox
+              input#checkbox-ba1.chi-checkbox__input(type='checkbox')
+              label.chi-checkbox__label(for='checkbox-ba1') Show Selected Only
+        .chi-divider.-vertical
+        .chi-bulk-actions__buttons
+          .chi-bulk-actions__buttons-mobile.-position--absolute
+            chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Edit')
+              chi-icon(icon='edit')
+            chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Compose')
+              chi-icon(icon='compose')
+            chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Delete')
+              chi-icon(icon='delete')
+            chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Print')
+              chi-icon(icon='print')
+          .chi-bulk-actions__buttons-desktop
+            chi-button(size='xs')
+              chi-icon(icon='arrow-to-bottom')
+              span Download
+            chi-button(size='xs')
+              chi-icon(icon='compose')
+              span Compose
+            chi-button(size='xs')
+              chi-icon(icon='delete')
+              span Delete
+            chi-button(size='xs')
+              chi-icon(icon='print')
+              span Print
+      .chi-bulk-actions__end
+        chi-button(type='close')
+
+  template(#code-webcomponent)
+    Copy(:code="codeSnippets.webcomponent" lang="html")
+
+  template(#code-vue)
+    .chi-tab__description
+      | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
+    Copy(:code="codeSnippets.vue" lang="html")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | To render toolbar, use the class <code>chi-toolbar</code>.
+    Copy(:code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import {
-  exampleToolbar,
-  exampleSaveView
-} from '../../../../../fixtures/fixtures';
+import { Vue } from 'vue-facing-decorator';
+import { exampleToolbar, exampleSaveView } from '../../../../../fixtures/fixtures';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       toolbar: exampleToolbar,
@@ -96,17 +92,17 @@ import {
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         vue: `<!-- Vue component -->
@@ -746,10 +742,10 @@ data: () => {
   chi.drawer(document.getElementById('example__base_with_save_view_and_bulk_actions_drawer_trigger-1'));
   chi.drawer(document.getElementById('example__base_with_save_view_and_bulk_actions_drawer_trigger-2'));
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-<\/script>`
-      }
+<\/script>`,
+      },
     };
-  }
+  },
 })
 export default class BaseWithSaveViewAndBulkActionsPortalBrightSpeed extends Vue {}
 </script>

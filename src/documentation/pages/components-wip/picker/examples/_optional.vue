@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Optional" id="optional" :tabs="exampleTabs" padding="-p--4">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h4" title="Optional" id="optional" :tabs="exampleTabs" padding="-p--4">
+  template(#example-description)
+    p.-text
       | Use <code>optional</code> to help emphasize pickers that are not required and can be skipped.
-    fieldset(slot="example")
+  template(#example)
+    fieldset
       legend.chi-label
         | Select options
         abbr.chi-label__optional(aria-label="Optional field") (optional)
@@ -11,32 +13,30 @@
           input(type="checkbox", class="chi-picker__input", name=`unique-name-mop`, id=`unique-id-mop${i}`)
           label(for=`unique-id-mop${i}`)
             = 'Option ' + `${i}`
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -53,10 +53,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <input class="chi-picker__input" name="unique-name-mop" type="checkbox" id="unique-id-mop2">
     <label for="unique-id-mop2">Option 2</label>
   </div>
-</fieldset>`
-      }
+</fieldset>`,
+      },
     };
-  }
+  },
 })
 export default class Optional extends Vue {}
 </script>

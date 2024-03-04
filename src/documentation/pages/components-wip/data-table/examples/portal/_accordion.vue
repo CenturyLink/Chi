@@ -1,28 +1,26 @@
 <template lang="pug">
-    div
-      <ComponentExample v-for="accordion in accordionTypes" :title="accordion.title" :id="accordion.id" :key="accordion.id"  :tabs="exampleTabs">
-        chi-data-table(:config='config', :data='accordion.table' slot="example")
-        <Wrapper slot='code-vue'>
-          .chi-tab__description
-            | Use <code>nestedContent</code> property to provide data of row accordion content
-          pre.language-html
-            code(v-highlight="accordion.codeSnippetVue" class="html")
-        </Wrapper>
-        pre.language-html(slot="code-htmlblueprint")
-          code(v-highlight="accordion.codeSnippetHtml" class="html")
-      </ComponentExample>
-</template>
-  
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+template(v-for="accordion in accordionTypes")
+  <ComponentExample :title="accordion.title" :id="accordion.id" :tabs="exampleTabs">
+    template(#example)
+      ChiDataTable(:config='config', :dataTableData='accordion.table')
 
-@Component({
+    template(#code-vue)
+      .chi-tab__description
+        | Use <code>nestedContent</code> property to provide data of row accordion content
+      Copy(lang="html" :code="accordion.codeSnippetVue")
+  </ComponentExample>
+</template>
+
+<script lang="ts">
+import { Vue } from 'vue-facing-decorator';
+
+@NuxtComponent({
   data: () => {
     return {
       accordionTypes: [
         {
-          title: "Accordion",
-          id: "accordion-portal-data-table",
+          title: 'Accordion',
+          id: 'accordion-portal-data-table',
           table: {
             head: {
               name: { label: 'Name' },
@@ -34,70 +32,46 @@ import { Component, Vue } from 'vue-property-decorator';
                 expanded: true,
                 id: 'name-1',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 1',
-                  'name-1',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-2',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 2',
-                  'name-2',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-3',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 3',
-                  'name-3',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
               },
               {
                 id: 'name-4',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 4',
-                  'name-4',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-5',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 5',
-                  'name-5',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-6',
                 nestedContent: {
-                  value: "Accordion content",
+                  value: 'Accordion content',
                 },
-                data: [
-                  'Name 6',
-                  'name-6',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
               },
-            ]
+            ],
           },
           codeSnippetVue: `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -363,11 +337,11 @@ data: {
         </nav>
       </div>
     </div>
-  </div>`
+  </div>`,
         },
         {
-          title: "Accordion Child",
-          id: "accordion-child-data-table",
+          title: 'Accordion Child',
+          id: 'accordion-child-data-table',
           table: {
             head: {
               name: { label: 'Name', key: true, bold: true },
@@ -383,28 +357,16 @@ data: {
                     data: [
                       {
                         id: 'name-1-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-1-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 1',
-                  'name-1',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-2',
@@ -413,28 +375,16 @@ data: {
                     data: [
                       {
                         id: 'name-2-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-2-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 2',
-                  'name-2',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-3',
@@ -443,28 +393,16 @@ data: {
                     data: [
                       {
                         id: 'name-3-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-3-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 3',
-                  'name-3',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
               },
               {
                 id: 'name-4',
@@ -473,28 +411,16 @@ data: {
                     data: [
                       {
                         id: 'name-4-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-4-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 4',
-                  'name-4',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-5',
@@ -503,28 +429,16 @@ data: {
                     data: [
                       {
                         id: 'name-5-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-5-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 5',
-                  'name-5',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-6',
@@ -533,30 +447,18 @@ data: {
                     data: [
                       {
                         id: 'name-6-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                       },
                       {
                         id: 'name-6-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                       },
                     ],
                   },
                 },
-                data: [
-                  'Name 6',
-                  'name-6',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
               },
-            ]
+            ],
           },
           codeSnippetVue: `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -1054,11 +956,11 @@ data: {
         </nav>
       </div>
     </div>
-  </div>`
+  </div>`,
         },
         {
-          title: "Accordion Grand Child",
-          id: "accordion-grand-child-data-table",
+          title: 'Accordion Grand Child',
+          id: 'accordion-grand-child-data-table',
           table: {
             head: {
               name: { label: 'Name', key: true, bold: true },
@@ -1075,29 +977,17 @@ data: {
                       {
                         expanded: true,
                         id: 'name-1-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1105,29 +995,17 @@ data: {
                       },
                       {
                         id: 'name-1-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1136,11 +1014,7 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 1',
-                  'name-1',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-2',
@@ -1149,29 +1023,17 @@ data: {
                     data: [
                       {
                         id: 'name-2-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1179,29 +1041,17 @@ data: {
                       },
                       {
                         id: 'name-2-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1210,11 +1060,7 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 2',
-                  'name-2',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-3',
@@ -1223,29 +1069,17 @@ data: {
                     data: [
                       {
                         id: 'name-3-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1253,29 +1087,17 @@ data: {
                       },
                       {
                         id: 'name-3-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1284,11 +1106,7 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 3',
-                  'name-3',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
               },
               {
                 id: 'name-4',
@@ -1297,29 +1115,17 @@ data: {
                     data: [
                       {
                         id: 'name-4-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1327,29 +1133,17 @@ data: {
                       },
                       {
                         id: 'name-4-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1358,11 +1152,7 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 4',
-                  'name-4',
-                  '18 Dec 2020 3:26 p.m.',
-                ],
+                data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
               },
               {
                 id: 'name-5',
@@ -1371,29 +1161,17 @@ data: {
                     data: [
                       {
                         id: 'name-5-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1401,29 +1179,17 @@ data: {
                       },
                       {
                         id: 'name-5-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1432,11 +1198,7 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 5',
-                  'name-5',
-                  '18 Dec 2020 2:38 a.m.',
-                ],
+                data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
               },
               {
                 id: 'name-6',
@@ -1445,29 +1207,17 @@ data: {
                     data: [
                       {
                         id: 'name-6-0',
-                        data: [
-                          'Child Name 1',
-                          'child-name-1',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1475,29 +1225,17 @@ data: {
                       },
                       {
                         id: 'name-6-1',
-                        data: [
-                          'Child Name 2',
-                          'child-name-2',
-                          '18 Dec 2020 2:38 a.m.',
-                        ],
+                        data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                         nestedContent: {
                           table: {
                             data: [
                               {
                                 id: 'name-1-0',
-                                data: [
-                                  'Child Name 1',
-                                  'child-name-1',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 1', 'child-name-1', '18 Dec 2020 2:38 a.m.'],
                               },
                               {
                                 id: 'name-1-1',
-                                data: [
-                                  'Child Name 2',
-                                  'child-name-2',
-                                  '18 Dec 2020 2:38 a.m.',
-                                ],
+                                data: ['Child Name 2', 'child-name-2', '18 Dec 2020 2:38 a.m.'],
                               },
                             ],
                           },
@@ -1506,13 +1244,9 @@ data: {
                     ],
                   },
                 },
-                data: [
-                  'Name 6',
-                  'name-6',
-                  '5 Nov 2020 10:15 a.m.',
-                ],
+                data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
               },
-            ]
+            ],
           },
           codeSnippetVue: `<!-- Vue component -->
 <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -2531,15 +2265,15 @@ data: {
         </nav>
       </div>
     </div>
-  </div>`
-        }
+  </div>`,
+        },
       ],
       exampleTabs: [
         {
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -2550,7 +2284,7 @@ data: {
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -2574,6 +2308,5 @@ data: {
     };
   },
 })
-export default class DataTableAccordionPortal extends Vue { }
+export default class DataTableAccordionPortal extends Vue {}
 </script>
-  

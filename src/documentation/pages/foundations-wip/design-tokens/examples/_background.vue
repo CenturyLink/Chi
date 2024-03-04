@@ -1,23 +1,17 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Background" id="background" />
-    <TableComponent :data="backgroundColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Background" id="background" />
+<TableComponent :data="backgroundColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { designTokensColumns } from '~/fixtures/fixtures';
-import {ITableColumn, ITableContent} from '~/models/models';
-import { COLORS } from  '~/constants/constants';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      columns: designTokensColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class Background extends Vue {
+  columns = designTokensColumns;
   lumenBackgroundColor = [
     { name: 'base', value: COLORS.WHITE.value, contrast: '15.4:1' },
     { name: 'base-dark', value: COLORS.GREY_15.value, contrast: '14.1:1' },
@@ -44,8 +38,8 @@ export default class Background extends Vue {
     { name: 'muted-light', value: COLORS.MUTED_LIGHT.value, contrast: '13.4:1' },
     { name: COLORS.MUTED.name, value: COLORS.MUTED.value, contrast: '7.4:1' },
     { name: 'black', value: COLORS.BLACK.value, contrast: '21:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' },
+  ];
 
   centurylinkBackgroundColor = [
     { name: 'base', value: COLORS.WHITE.value, contrast: '15.4:1' },
@@ -77,8 +71,8 @@ export default class Background extends Vue {
     { name: 'muted-light', value: COLORS.GREY_20.value, contrast: '13.4:1' },
     { name: COLORS.MUTED.name, value: COLORS.MUTED.value, contrast: '7.4:1' },
     { name: 'black', value: COLORS.BLACK.value, contrast: '21:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' },
+  ];
 
   brightspeedBackgroundColor = [
     { name: 'base', value: COLORS.WHITE.value, contrast: '15.4:1' },
@@ -106,12 +100,10 @@ export default class Background extends Vue {
     { name: 'muted-light', value: COLORS.MUTED_LIGHT.value, contrast: '13.4:1' },
     { name: COLORS.MUTED.name, value: COLORS.MUTED.value, contrast: '7.4:1' },
     { name: 'black', value: COLORS.BLACK.value, contrast: '21:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '15.4:1' },
+  ];
 
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
 
   get backgroundColor() {
     if (this.theme === 'centurylink') {
@@ -122,7 +114,6 @@ export default class Background extends Vue {
     return this.lumenBackgroundColor;
   }
 
-
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'token':
@@ -131,7 +122,9 @@ export default class Background extends Vue {
         return `<div class="-text">${content.value}</div>`;
       case 'example':
         const isSpecial = content.name === 'white' || content.name === 'base';
-        return `<div class="-text -rounded -w--80 ${isSpecial ? '-s--1' : ''}" style="height:1rem;background-color:${content.value}"></div>`;
+        return `<div class="-text -rounded -w--80 ${isSpecial ? '-s--1' : ''}" style="height:1rem;background-color:${
+          content.value
+        }"></div>`;
       case 'contrast':
         return `<i class="chi-icon icon-check -xs -icon--success -mr--1" aria-hidden="true"></i>
 <span>${content.contrast}</span>`;

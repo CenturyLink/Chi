@@ -1,21 +1,22 @@
 <template lang="pug">
-    <ComponentExample title="Second line wrapping" id="second-line-wrapping-data-table" :tabs="exampleTabs">
-      chi-data-table(:config='config', :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description
-          | Use <code>cellWrap</code> config to achieve the two line wrapping
-        pre.language-html
-          code(v-highlight="codeSnippets.vue" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="codeSnippets.htmlblueprint" class="html")
-    </ComponentExample>
-</template>
-  
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+<ComponentExample title="Second line wrapping" id="second-line-wrapping-data-table" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='config', :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description
+      | Use <code>cellWrap</code> config to achieve the two line wrapping
+    Copy(lang="html" :code="codeSnippets.vue")
 
-@Component({
+  template(#code-htmlblueprint)
+
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
+</template>
+
+<script lang="ts">
+import { Vue } from 'vue-facing-decorator';
+
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -23,7 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -34,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -58,7 +59,8 @@ import { Component, Vue } from 'vue-property-decorator';
       table: {
         head: {
           name: {
-            label: 'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell',
+            label:
+              'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell',
             key: true,
             bold: true,
           },
@@ -84,37 +86,21 @@ import { Component, Vue } from 'vue-property-decorator';
           },
           {
             id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
       codeSnippets: {
         vue: `<!-- Vue component -->
@@ -302,6 +288,5 @@ data: {
     };
   },
 })
-export default class DataTableSecondLineWrapping extends Vue { }
+export default class DataTableSecondLineWrapping extends Vue {}
 </script>
-  

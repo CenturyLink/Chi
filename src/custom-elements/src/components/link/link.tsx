@@ -1,4 +1,5 @@
 import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-link',
@@ -67,6 +68,10 @@ export class Link {
         `${newValue} is not a valid size for link. If provided, valid values are xs, sm, md, lg, or xl. `
       );
     }
+  }
+
+  connectedCallback() {
+    addMutationObserver.call(this);
   }
 
   componentWillLoad() {

@@ -1,21 +1,21 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <Description />
-    <MeaningfulSequence />
-    <BypassBlocks />
-    <PageTitled />
-    <LinkPurpose />
-    <MultipleWays />
-    <HeadingsLabels />
-    <LanguagePage />
-    <LanguageParts />
-    <Parsing />
-    <ConsistentNavigation />
-    <ConsistentIdentification />
+.chi-grid__container.-pt--3
+  <Description />
+  <MeaningfulSequence />
+  <BypassBlocks />
+  <PageTitled />
+  <LinkPurpose />
+  <MultipleWays />
+  <HeadingsLabels />
+  <LanguagePage />
+  <LanguageParts />
+  <Parsing />
+  <ConsistentNavigation />
+  <ConsistentIdentification />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Description from './_description.vue';
 import MeaningfulSequence from './_meaningful-sequence.vue';
 import BypassBlocks from './_bypass_blocks.vue';
@@ -29,7 +29,7 @@ import Parsing from './_parsing.vue';
 import ConsistentNavigation from './_consistant-navigation.vue';
 import ConsistentIdentification from './_consistant-identification.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Description,
     MeaningfulSequence,
@@ -43,7 +43,7 @@ import ConsistentIdentification from './_consistant-identification.vue';
     Parsing,
     ConsistentNavigation,
     ConsistentIdentification,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>

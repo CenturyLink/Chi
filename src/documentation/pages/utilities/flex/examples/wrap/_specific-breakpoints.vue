@@ -11,15 +11,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       breakpoints: ['sm', 'md', 'lg', 'xl'],
       types: ['nowrap', 'wrap', 'wrap-reverse'],
     };
-  }
+  },
 })
 export default class WrapSpecificBreakpoints extends Vue {}
 </script>

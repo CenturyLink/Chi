@@ -1,32 +1,30 @@
 <template lang="pug">
-  div 
-    h2 Examples
+h2 Examples
+ClientOnly
+  div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+    <Complex />
+    BaseExample
+    <Empty />
+    <ConfigStyled />
+    <Active />
+    <Selectable />
+    <Accordion />
+    <Sorting />
+    <Sizes />
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <Complex />
-      <Base />
-      <Empty />
-      <ConfigStyled />
-      <Active />
-      <Selectable />
-      <Accordion />
-      <Sorting />
-      <Sizes />
-    
-    div(v-if="['portal', 'brightspeed', 'colt'].includes($store.state.themes.theme)")
-      <ComplexPortal />
-      <BasePortal />
-      <SecondLineWrapping />
-      <State />
-      <EmptyPortal />
-      <RadioSelectionPortal />
-      <AccordionPortal />
-      <TwoTierHeader />
- 
+  div(v-if="['portal', 'brightspeed', 'colt'].includes(selectedTheme)")
+    <ComplexPortal />
+    <BasePortal />
+    <SecondLineWrapping />
+    <State />
+    <EmptyPortal />
+    <RadioSelectionPortal />
+    <AccordionPortal />
+    <TwoTierHeader />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Accordion from './base/_accordion.vue';
 import Active from './base/_active.vue';
 import Base from './base/_base.vue';
@@ -46,12 +44,12 @@ import State from './portal/_state.vue';
 import TwoTierHeader from './portal/_two-tier.vue';
 import ComplexPortal from './portal/_complex.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Complex,
     Accordion,
     Active,
-    Base,
+    BaseExample: Base,
     Empty,
     Selectable,
     Sizes,
@@ -64,8 +62,10 @@ import ComplexPortal from './portal/_complex.vue';
     SecondLineWrapping,
     State,
     TwoTierHeader,
-    ComplexPortal
-  }
+    ComplexPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

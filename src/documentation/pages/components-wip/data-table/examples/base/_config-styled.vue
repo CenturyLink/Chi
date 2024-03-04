@@ -1,66 +1,66 @@
 <template lang="pug">
-  div
-    <ComponentExample v-for="styledDataTable in styledDataTables" :title="styledDataTable.title" :key="styledDataTable.id" :id="styledDataTable.id" :tabs="exampleTabs">
-      chi-data-table(:config='getConfig(styledDataTable.style)' :key="styledDataTable.id" :data='table' slot="example")
-      <Wrapper slot='code-vue'>
-        .chi-tab__description(v-html="styledDataTable.description")
-        pre.language-html
-          code(v-highlight="getVueCode(styledDataTable.style)" class="html")
-      </Wrapper>
-      pre.language-html(slot="code-htmlblueprint")
-        code(v-highlight="getHtmlCode(styledDataTable.style)" class="html")
-    </ComponentExample>
+<ComponentExample v-for="styledDataTable in styledDataTables" :title="styledDataTable.title" :key="styledDataTable.id" :id="styledDataTable.id" :tabs="exampleTabs">
+  template(#example)
+    ChiDataTable(:config='getConfig(styledDataTable.style)' :key="styledDataTable.id" :dataTableData='table')
+  template(#code-vue)
+    .chi-tab__description(v-html="styledDataTable.description")
+    Copy(lang="html" :code="getVueCode(styledDataTable.style)")
+
+  template(#code-htmlblueprint)
+
+    Copy(lang="html" :code="getHtmlCode(styledDataTable.style)")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 type ConfigStyleType = {
   [key: string]: boolean;
 };
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       styledDataTables: [
         {
-          title: "No Border",
-          id: "no-border-data-table",
-          description: "Use <code>noBorder</code> config to remove the borders",
+          title: 'No Border',
+          id: 'no-border-data-table',
+          description: 'Use <code>noBorder</code> config to remove the borders',
           style: {
-            noBorder: true
-          }
+            noBorder: true,
+          },
         },
         {
-          title: "Striped",
-          id: "striped-data-table",
-          description: "Use <code>striped</code> config to achieve striped styles",
+          title: 'Striped',
+          id: 'striped-data-table',
+          description: 'Use <code>striped</code> config to achieve striped styles',
           style: {
-            striped: true
-          }
+            striped: true,
+          },
         },
         {
-          title: "Hover",
-          id: "hover-data-table",
-          description: "Use <code>hover</code> config to achieve hover styles",
+          title: 'Hover',
+          id: 'hover-data-table',
+          description: 'Use <code>hover</code> config to achieve hover styles',
           style: {
-            hover: true
-          }
+            hover: true,
+          },
         },
         {
-          title: "Bordered",
-          id: "bordered-data-table",
-          description: "Use <code>bordered</code> config to achieve bordered styles",
+          title: 'Bordered',
+          id: 'bordered-data-table',
+          description: 'Use <code>bordered</code> config to achieve bordered styles',
           style: {
-            bordered: true
-          }
-        }
+            bordered: true,
+          },
+        },
       ],
       exampleTabs: [
         {
           active: false,
           id: 'webcomponent',
           label: 'Web Component',
-          disabled: true
+          disabled: true,
         },
         {
           active: true,
@@ -71,7 +71,7 @@ type ConfigStyleType = {
           active: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
-        }
+        },
       ],
       config: {
         columnResize: true,
@@ -100,64 +100,40 @@ type ConfigStyleType = {
         body: [
           {
             id: 'name-1',
-            data: [
-              'Name 1',
-              'name-1',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 1', 'name-1', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-2',
-            data: [
-              'Name 2',
-              'name-2',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 2', 'name-2', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-3',
-            data: [
-              'Name 3',
-              'name-3',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 3', 'name-3', '5 Nov 2020 10:15 a.m.'],
           },
           {
             id: 'name-4',
-            data: [
-              'Name 4',
-              'name-4',
-              '18 Dec 2020 3:26 p.m.',
-            ],
+            data: ['Name 4', 'name-4', '18 Dec 2020 3:26 p.m.'],
           },
           {
             id: 'name-5',
-            data: [
-              'Name 5',
-              'name-5',
-              '18 Dec 2020 2:38 a.m.',
-            ],
+            data: ['Name 5', 'name-5', '18 Dec 2020 2:38 a.m.'],
           },
           {
             id: 'name-6',
-            data: [
-              'Name 6',
-              'name-6',
-              '5 Nov 2020 10:15 a.m.',
-            ],
+            data: ['Name 6', 'name-6', '5 Nov 2020 10:15 a.m.'],
           },
-        ]
+        ],
       },
     };
   },
   methods: {
     getConfig(style: ConfigStyleType) {
       return {
-        ...this.$data.config,
+        ...this.config,
         style: {
-          ...this.$data.config.style,
-          ...style
-        }
+          ...this.config.style,
+          ...style,
+        },
       };
     },
     getVueCode(style: ConfigStyleType) {
@@ -241,10 +217,12 @@ data: {
       },
     ]
   }
-}`
+}`;
     },
     getHtmlCode(style: ConfigStyleType) {
-      return `<div class="chi-data-table${style.noBorder ? ' -no-border' : ''}${style.bordered ? ' -bordered' : ''}${style.hover ? ' -hover' : ''}">
+      return `<div class="chi-data-table${style.noBorder ? ' -no-border' : ''}${style.bordered ? ' -bordered' : ''}${
+        style.hover ? ' -hover' : ''
+      }">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
       <div class="chi-data-table__cell">
@@ -344,9 +322,9 @@ data: {
       </div>
     </nav>
   </div>
-</div>`
-    }
-  }
+</div>`;
+    },
+  },
 })
-export default class DataTableNoBorder extends Vue { }
+export default class DataTableNoBorder extends Vue {}
 </script>

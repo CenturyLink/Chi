@@ -1,28 +1,29 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="date-error" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Error" id="date-error" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
       | To meet accessibility requirements, danger date picker must include an error message explaining the
       | failure and/or how to correct it.
-    div(style="max-width: 14rem;" slot="example")
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__date_error') Date
-      chi-date-picker(id="example__date_error" state="danger" helper-message='Please select a date.')      
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+      chi-date-picker(id="example__date_error" state="danger")
+      .chi-label.-status.-danger
+        chi-icon(icon='circle-warning')
+        | Please select a date.
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -38,7 +39,11 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="example__datepicker_date_error">Date</chi-label>
-<chi-date-picker id="example__datepicker_date_error" state="danger" helper-message="Please select a date."></chi-date-picker>`,
+<chi-date-picker id="example__datepicker_date_error" state="danger"></chi-date-picker>
+<div class="chi-label -status -danger">
+  <chi-icon icon="circle-warning"></chi-icon>
+  Please select a date.
+</div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__datepicker_error">Date</label>
   <div class="chi-input__wrapper -icon--right">

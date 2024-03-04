@@ -26,6 +26,11 @@ npm run prettier:checker
 See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
+## 3.3.0 (February 28, 2024)
+### Components
+#### Added
+* Added: Data table `chiRowClick` event.
+
 ## 3.2.1 (February 7, 2024)
 ### Components
 #### Fixed

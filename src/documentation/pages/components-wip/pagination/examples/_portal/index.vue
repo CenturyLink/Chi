@@ -6,15 +6,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import CompactBasePortal from './_base.vue';
 import ResultsLabelPortal from './_results-label.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     CompactBasePortal,
-    ResultsLabelPortal
-  }
+    ResultsLabelPortal,
+  },
 })
 export default class Portal extends Vue {}
 </script>

@@ -1,40 +1,41 @@
 <template lang="pug">
-  <ComponentExample title="Spinners in Text Inputs" titleSize="h4" id="spinner-texts" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      .chi-form__item.-mb--2(v-for="item in $data.textInputs" :key="item.text" style="max-width:20rem")
-        chi-label(:for="'spinner-input-' + item") Label
-        chi-text-input(:id="'spinner-input-' + item.text" spinner :size="item.size")
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | Use the <code>spinner</code> attribute to render a spinner inside a text input. This lets users know when information is saving or loading.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample title="Spinners in Text Inputs" titleSize="h4" id="spinner-texts" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item.-mb--2(v-for="item in textInputs" :key="item.text" style="max-width:20rem")
+      chi-label(:for="'spinner-input-' + item") Label
+      chi-text-input(:id="'spinner-input-' + item.text" spinner :size="item.size")
+
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Use the <code>spinner</code> attribute to render a spinner inside a text input. This lets users know when information is saving or loading.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
-      textInputs: [{text: '01', size: ''}, {text: '02', size: 'sm'}, {text: '03', size: 'lg'}],
+      textInputs: [
+        { text: '01', size: '' },
+        { text: '02', size: 'sm' },
+        { text: '03', size: 'lg' },
+      ],
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Medium (Base) -->
@@ -85,10 +86,10 @@ import { Component, Vue } from 'vue-property-decorator';
     </svg>
     </div>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class SpinnerTexts extends Vue {}
 </script>

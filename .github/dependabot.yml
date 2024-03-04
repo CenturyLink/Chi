@@ -7,16 +7,6 @@ updates:
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
-    ignore:
-      # Change this once we are on Nuxt 3
-      - dependency-name: "nuxt"
-        versions: [">=2.15.8"]
-      - dependency-name: "@nuxt/types"
-        versions: [">=2.15.8"]
-      - dependency-name: "copy-webpack-plugin"
-        versions: [">=7.0.0"]
-      - dependency-name: "@nuxt/image"
-        versions: [">=0.7.1"]
   - package-ecosystem: "npm"
     directory: "/src/chi-vue"
     schedule:
@@ -24,11 +14,6 @@ updates:
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
-    ignore:
-      # The version 5.1.0 introduces an issue in the build proccess
-      # Remove it once it's fixed
-      - dependency-name: "vite"
-        versions: [">=5.1.0"]
   - package-ecosystem: "npm"
     directory: "/src/custom-elements"
     schedule:

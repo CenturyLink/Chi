@@ -1,28 +1,28 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Icons support the following sizes:
       | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
       | By default, icons render at 16x16px (<code>sm</code>). Two alternate small values are available for
       | specific app scenarios. Use <code>sm--2</code> for displaying 20px icons within a 40px container
       | (e.g. large button), and <code>sm--3</code> for displaying 24px icons within a 48px container.
-    .chi-grid.-align-items--end(slot="example")
+  template(#example)
+    .chi-grid.-align-items--end
       div.-p--2.-m--1(v-for="size in sizes")
         chi-icon(icon="atom", :size='size')
         p.-text.-text--center {{size}}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

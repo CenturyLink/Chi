@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Left + Right Aligned" id="left-right-aligned-portal" :tabs="exampleTabs">
-    .chi-grid(slot="example")
+<ComponentExample title="Left + Right Aligned" id="left-right-aligned-portal" :tabs="exampleTabs">
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           chi-label(for="example__portal-icon-left-right-aligned") Label
@@ -10,31 +11,29 @@
             value="Sample Text"
             id="example__portal-icon-left-right-aligned"
           )
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
@@ -48,10 +47,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <i class="chi-icon icon-search" aria-hidden="true"></i>
     <i class="chi-icon icon-check" aria-hidden="true"></i>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class LeftRightAlignedPortal extends Vue {}
 </script>

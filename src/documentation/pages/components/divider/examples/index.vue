@@ -1,32 +1,33 @@
 <template lang="pug">
-  div
-    h2 Examples
-    p.-text To render a divider, apply the class <code>chi-divider</code> to an <code>hr</code> or <code>div</code> tag.
+h2 Examples
+p.-text To render a divider, apply the class <code>chi-divider</code> to an <code>hr</code> or <code>div</code> tag.
 
-    <Base />
-    <Vertical />
-    <Inverse />
-    <Label />
+<DividerBase />
+<Vertical />
+<Inverse />
+<Label />
 
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+<SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Vertical from './_vertical.vue';
 import Inverse from './_inverse.vue';
 import Label from './_label.vue';
 import SizesLumenCenturyLink from './_sizes_lumen_centurylink.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    DividerBase: Base,
     Vertical,
     Inverse,
     Label,
-    SizesLumenCenturyLink
-  }
+    SizesLumenCenturyLink,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

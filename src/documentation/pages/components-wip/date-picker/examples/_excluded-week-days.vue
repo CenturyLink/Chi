@@ -1,22 +1,22 @@
 <template lang="pug">
-  <ComponentExample title="Excluded week days" id="excluded-week-days" :tabs="exampleTabs">
-    p.-text(slot="example-description") Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
-    div(style="max-width: 14rem;" slot="example")
+<ComponentExample title="Excluded week days" id="excluded-week-days" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__datepicker_date_excluded_weekdays') Date
       chi-date-picker(id="example__datepicker_date_excluded_weekdays", excluded-weekdays="0, 6")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

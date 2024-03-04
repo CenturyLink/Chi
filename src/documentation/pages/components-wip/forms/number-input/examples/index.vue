@@ -2,15 +2,15 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Disabled />
     <MinMaxStep />
     <Required />
     <Help />
     <Message />
     <Error />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
-    <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <SizesPortal v-if="selectedTheme === 'portal'" />
 
     h2 Expanded version
 
@@ -18,12 +18,12 @@
     <DisabledExpanded />
     <MinMaxStepExpanded />
     <ErrorExpanded />
-    <SizesExpandedLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
-    <SizesExpandedPortal v-if="$store.state.themes.theme === 'portal'" />
+    <SizesExpandedLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <SizesExpandedPortal v-if="selectedTheme === 'portal'" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import MinMaxStep from './_min-max-step.vue';
@@ -40,9 +40,9 @@ import ErrorExpanded from './_error-expanded.vue';
 import SizesExpandedLumenCenturyLink from './_sizes-expanded_lumen_century_link.vue';
 import SizesExpandedPortal from './_portal/_sizes-expanded.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     MinMaxStep,
     Required,
@@ -56,8 +56,10 @@ import SizesExpandedPortal from './_portal/_sizes-expanded.vue';
     MinMaxStepExpanded,
     ErrorExpanded,
     SizesExpandedPortal,
-    SizesExpandedLumenCenturyLink
-  }
+    SizesExpandedLumenCenturyLink,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

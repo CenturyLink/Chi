@@ -109,7 +109,7 @@
               div
                 code chiModalShown
             td
-                | Modal has been shown to the user and is fully visible. The animation has completed.
+              | Modal has been shown to the user and is fully visible. The animation has completed.
           tr
             td
               div
@@ -122,22 +122,18 @@
     p.-text
       | Modal components have a dispose function to free all resources attached to the element,
       | such as event listeners and object data. You should call this method when you want to remove the component.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory1" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory1")
 
     p.-text
       | It is safe to call the <code>modal</code> method more than once,
       | as it will return any previously created modal component associated with the trigger.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory2" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `var elem = document.getElementById('modal-1');
@@ -150,10 +146,9 @@ var elem2 = document.getElementById('modal-1');
 var modal2 = chi.modal(elem2);
 modal === modal2; // returns true
 
-modal.dispose(); // Only have to do it once.`
+modal.dispose(); // Only have to do it once.`,
     };
-  }
+  },
 })
-
 export default class Properties extends Vue {}
 </script>

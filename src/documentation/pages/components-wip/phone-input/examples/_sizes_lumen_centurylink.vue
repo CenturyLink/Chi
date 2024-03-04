@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Phone input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
-    div(style="max-width: 18rem;" slot="example")
+  template(#example)
+    div(style="max-width: 18rem;")
       .-mb--2.chi-form__item
         chi-label(for="phone-input-xs") xs
         chi-phone-input(id="phone-input-xs" size="xs")
@@ -18,40 +20,38 @@
       .chi-form__item
         chi-label(for="phone-input-xl") xl
         chi-phone-input(id="phone-input-xl" size="xl")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
 <chi-label for="phone-input-xs">xs</chi-label>
-<chi-phone-input id="phone-input-xs" size="xs"></chi-phone-input>    
+<chi-phone-input id="phone-input-xs" size="xs"></chi-phone-input>
 <!-- sm -->
 <chi-label for="phone-input-sm">sm</chi-label>
-<chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>    
+<chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>
 <!-- md -->
 <chi-label for="phone-input-md">md</chi-label>
 <chi-phone-input id="phone-input-md" size="md"></chi-phone-input>
@@ -61,10 +61,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- xl -->
 <chi-label for="phone-input-xl">xl</chi-label>
 <chi-phone-input id="phone-input-xl" size="xl"></chi-phone-input>`,
-        htmlblueprint: ``
-      }
+        htmlblueprint: ``,
+      },
     };
-  }
+  },
 })
 export default class SizesLumenCenturyLink extends Vue {}
 </script>

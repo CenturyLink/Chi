@@ -1,43 +1,42 @@
 <template lang="pug">
- .chi-grid__container.-pt--3
-      <TitleAnchor title="Overview" id="overview" titleSize="h2" />
-      p.-text
-        | Grids accelerate the development process by imposing a set of constraints 
-        | that guide developers where to place elements and how to size them. Adhering 
-        | to the grid ensures no matter what Lumen webpage or application customers use, 
-        | they are provided with a consistent and familiar experience.
+.chi-grid__container.-pt--3
+  <TitleAnchor title="Overview" id="overview" titleSize="h2" />
+  p.-text
+    | Grids accelerate the development process by imposing a set of constraints
+    | that guide developers where to place elements and how to size them. Adhering
+    | to the grid ensures no matter what Lumen webpage or application customers use,
+    | they are provided with a consistent and familiar experience.
 
-      <TitleAnchor title="Layout Grid" id="layout-grid" titleSize="h2" />
-      p.-text
-        | Chi includes a responsive mobile-first 12-column layout grid. Built on the 
-        | flexbox standards, the Chi layout grid allows for complex layouts with 
-        | minimal markup and styles.
+  <TitleAnchor title="Layout Grid" id="layout-grid" titleSize="h2" />
+  p.-text
+    | Chi includes a responsive mobile-first 12-column layout grid. Built on the
+    | flexbox standards, the Chi layout grid allows for complex layouts with
+    | minimal markup and styles.
 
-      <Breakpoints />
-      <AutomaticLayout />
-      <RemovingGutters />
-      <CustomizingGridLayout />
-      <ColumnSizing />
-      <MixingSizesAutomatic />
-      <AvailableColumnSizes />
-      <ColumnWrapping />
-      <OffsetPositionColumns />
-      <AvailableOffsetSizes />
-      <ReorderingColumns />
-      <ResponsiveLayout />
-      <ViewportColumnSizing />
-      <ColumnStacking />
-      <ColumnOffset />
-      <Alignment />
-      <AlignTop />
-      <AlignCenter />
-      <AlignBottom />
-      <ColumnSpecificVerticalAlignment />
-  
+  <Breakpoints />
+  <AutomaticLayout />
+  <RemovingGutters />
+  <CustomizingGridLayout />
+  <ColumnSizing />
+  <MixingSizesAutomatic />
+  <AvailableColumnSizes />
+  <ColumnWrapping />
+  <OffsetPositionColumns />
+  <AvailableOffsetSizes />
+  <ReorderingColumns />
+  <ResponsiveLayout />
+  <ViewportColumnSizing />
+  <ColumnStacking />
+  <ColumnOffset />
+  <Alignment />
+  <AlignTop />
+  <AlignCenter />
+  <AlignBottom />
+  <ColumnSpecificVerticalAlignment />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Breakpoints from './_breakpoints.vue';
 import AutomaticLayout from './_automatic-layout.vue';
 import RemovingGutters from './_removing-gutters.vue';
@@ -59,7 +58,7 @@ import AlignCenter from './_align-center.vue';
 import AlignBottom from './_align-bottom.vue';
 import ColumnSpecificVerticalAlignment from './_column-specific-vertical-alignment.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Breakpoints,
     AutomaticLayout,
@@ -80,8 +79,8 @@ import ColumnSpecificVerticalAlignment from './_column-specific-vertical-alignme
     AlignTop,
     AlignCenter,
     AlignBottom,
-    ColumnSpecificVerticalAlignment
-  }
+    ColumnSpecificVerticalAlignment,
+  },
 })
 export default class Examples extends Vue {}
 </script>

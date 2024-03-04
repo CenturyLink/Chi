@@ -1,34 +1,33 @@
 <template lang="pug">
-  <ComponentExample title="Inline Label - width controlled using percent" id="inline-label-percent" :tabs="exampleTabs">
-    .chi-form__item.-row(slot="example")
+<ComponentExample title="Inline Label - width controlled using percent" id="inline-label-percent" :tabs="exampleTabs">
+  template(#example)
+    .chi-form__item.-row
       chi-label.-w--50(for='example__inline-label-percent') Label width 50%
       .-w--50
         chi-text-input(id='example__inline-label-percent')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item -row">
@@ -42,10 +41,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="-w--50">
     <input class="chi-input" type="text" id="example__inline-label-percent">
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class InlineLabelPercent extends Vue {}
 </script>

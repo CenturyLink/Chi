@@ -1,29 +1,11 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.json", "src/**/*.vue"],
   "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "noImplicitThis": true,
-    "strict": true,
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "declaration": true,
-    "importHelpers": true,
-    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "baseUrl": ".",
-    "noImplicitAny": false,
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-  }
+    "strict": true
+  },
+  "include": ["vite.config.ts"]
 }

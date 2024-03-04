@@ -1,43 +1,42 @@
 <template lang="pug">
-  <ComponentExample title="Results Label" id="results-label-portal" :tabs="exampleTabs" padding="-p--0">
-    p.-text(slot="example-description")
+<ComponentExample title="Results Label" id="results-label-portal" :tabs="exampleTabs" padding="-p--0">
+  template(#example-description)
+    p.-text
       | Add a label to indicate the total number of results.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3
           chi-pagination(pages="12" current-page="3" size="xs" results="240" compact first-last)
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-@Component({
+import { Vue } from 'vue-facing-decorator';
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
-         {
+        {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-pagination pages="12" current-page="3" results="240" size="xs"></chi-pagination>`,
@@ -72,10 +71,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <div class="chi-pagination__end"></div>
   </div>
 </nav>`,
-        vue: `<ChiPagination :pages="3" :results="240" :currentPage="2" :compact="true" :firstLast="true" size="xs" />`
-      }
+        vue: `<ChiPagination :pages="3" :results="240" :currentPage="2" :compact="true" :firstLast="true" size="xs" />`,
+      },
     };
-  }
+  },
 })
 export default class ResultsLabelPortal extends Vue {}
 </script>

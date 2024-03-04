@@ -1,40 +1,40 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Warning" id="warning" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h4" title="Warning" id="warning" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Render a warning state by applying the modifier class <code>-row--warning</code>.
-    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" />
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { getTableHead } from "~/fixtures/fixtures";
+import { Vue } from 'vue-facing-decorator';
+import { getTableHead } from '~/fixtures/fixtures';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       rows: [
         { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
-        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', className: "-row--warning" },
-        { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', className: '-row--warning' },
+        { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' },
       ],
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -63,10 +63,10 @@ import { getTableHead } from "~/fixtures/fixtures";
             <td>Nov 5, 2020 10:15 AM</td>
         </tr>
     </tbody>
-</table>`
+</table>`,
       },
     };
-  }
+  },
 })
 export default class Warning extends Vue {
   get tableHead() {

@@ -1,28 +1,27 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes-portal" :tabs="exampleTabs">
-    .p-text(slot="example-description" class="-mb--3 -text")
+<ComponentExample title="Sizes" id="sizes-portal" :tabs="exampleTabs">
+  template(#example-description)
+    .p-text(class="-mb--3 -text")
       | Toggle switch supports different sizes: <code>xs</code>, <code>sm</code>.
       | The default size is <code>xs</code>.
-    div(slot="example")
-      .-p--2
-        .chi-form__item
-          chi-switch(id='toggle15',label='Label', size='xs')
-      .-p--2
-        .chi-form__item
-          chi-switch(id='toggle16',label='Label', size='sm')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle15',label='Label', size='xs')
+    .-p--2
+      .chi-form__item
+        chi-switch(id='toggle16',label='Label', size='sm')
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

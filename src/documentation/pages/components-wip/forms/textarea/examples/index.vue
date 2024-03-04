@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Disabled />
     <Readonly />
     <Placeholder />
@@ -18,18 +18,18 @@
     <InlineLabelGrid />
     <InlineTextareas />
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       h3 Icons
       <LeftAligned />
       <RightAligned />
       <LeftRightAligned />
 
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)"/>
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)"/>
     <SizesPortal v-else />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import Readonly from './_readonly.vue';
@@ -49,9 +49,9 @@ import LeftRightAligned from './_left-right-aligned.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Disabled,
     Readonly,
     Placeholder,
@@ -68,8 +68,10 @@ import SizesPortal from './_portal/_sizes.vue';
     RightAligned,
     LeftRightAligned,
     SizesLumenCenturyLink,
-    SizesPortal
-  }
+    SizesPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

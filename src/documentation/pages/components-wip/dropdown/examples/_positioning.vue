@@ -1,12 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Dropdown is prepared to work with positioning libraries like Popper.js. That is why we support the data-position
       | attribute. Chevron orientation will change depending on its value. Valid values are <code>default</code>,
       | <code>initial</code>, <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>,
       | <code>top-start</code>, <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
       | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
-    .chi-grid.-no-gutter.-px-xl--3(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter.-px-xl--3
       .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
         div.-p--1
           .chi-dropdown
@@ -97,41 +99,36 @@
               a.chi-dropdown__menu-item(href='#exampleLink') Item 1
               a.chi-dropdown__menu-item(href='#exampleLink') Item 2
               a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<!-- Top start -->
+@NuxtComponent({})
+export default class Positioning extends Vue {
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<!-- Top start -->
 <div class="chi-dropdown">
   <button class="chi-button chi-dropdown__trigger" id="dropdown-top-start" data-position="top-start">Top start</button>
   <div class="chi-dropdown__menu">
@@ -241,16 +238,10 @@ declare const chi: any;
 </div>
 
 <!-- JavaScript -->
-<\script>chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));<\/script>`
-      }
-    };
-  }
-})
-export default class Positioning extends Vue {
+<\script>chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));<\/script>`,
+  };
   mounted() {
-    chi.dropdown(
-      document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger')
-    );
+    chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));
   }
 }
 </script>

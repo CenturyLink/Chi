@@ -1,21 +1,19 @@
 <template lang="pug">
-  <Wrapper>
-    h3 Additional Sizes
-    <SmallSize />
-    <ExtraSmallSize />
-  </Wrapper>
+h3 Additional Sizes
+<SmallSize />
+<ExtraSmallSize />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import SmallSize from './_small_size.vue';
 import ExtraSmallSize from './_extra_small_size.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     SmallSize,
-    ExtraSmallSize
-  }
+    ExtraSmallSize,
+  },
 })
 export default class AdditionalSizes extends Vue {}
 </script>

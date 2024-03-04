@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample titleSize="h3" title="Flat" padding="-p--0" id="flat-lumen-centurylink" :tabs="exampleTabs">
-    .-d--flex(slot="example")
+<ComponentExample titleSize="h3" title="Flat" padding="-p--0" id="flat-lumen-centurylink" :tabs="exampleTabs">
+  template(#example)
+    .-d--flex
       .chi-grid.-no-gutter
         .chi-col.-w--12.-w-md--6
           .-p--3.-d--flex(style="justify-content: center;")
@@ -12,24 +13,20 @@
             each type, val in {Secondary:'secondary', Light:'light'}
               div.-pr--2
                 chi-button(color=type, variant='flat')= val
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
-        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-        | <code>&lt;input&gt;</code> elements.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    .p--text.chi-tab__description
+      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and
+      | <code>&lt;input&gt;</code> elements.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -52,7 +49,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <!-- For dark backgrounds -->
 <chi-button color="secondary" variant="flat">Secondary</chi-button>
 <chi-button color="light" variant="flat">Light</chi-button>`,
-    htmlblueprint: `<!-- For light backgrounds -->
+        htmlblueprint: `<!-- For light backgrounds -->
 <button class="chi-button -flat">Base</button>
 <button class="chi-button -primary -flat">Primary</button>
 <button class="chi-button -dark -flat">Dark</button>

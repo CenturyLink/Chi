@@ -1,25 +1,19 @@
 <template lang="pug">
-  div
-    <TitleBar title="Card" description="A collection of templates built with responsive Cards." />
-    <Examples />
+  .chi-grid__container.-pt--3
+    <MarketingFeatureCards />
+    <CategoryCards />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Examples from './examples/index.vue';
+import { Vue } from 'vue-facing-decorator';
+import MarketingFeatureCards from '~/pages/templates-wip/card/examples/_marketing-feature-cards.vue';
+import CategoryCards from '~/pages/templates-wip/card/examples/_category-cards.vue';
 
-@Component({
-  head() {
-    return {
-      title: 'Chi - Card'
-    }
-  },
+@NuxtComponent({
   components: {
-    Examples
+    MarketingFeatureCards,
+    CategoryCards,
   },
-  layout() {
-    return 'wide';
-  }
 })
-export default class Card extends Vue {}
+export default class Examples extends Vue {}
 </script>
