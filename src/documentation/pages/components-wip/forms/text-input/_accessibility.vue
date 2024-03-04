@@ -1,5 +1,5 @@
 <template lang="pug">
-  h2 Accessibility
+h2 Accessibility
 h3 Keyboard Navigation
 table.chi-table
   thead
