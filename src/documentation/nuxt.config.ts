@@ -114,9 +114,14 @@ export default defineNuxtConfig({
   nitro: {
     // https://nitro.unjs.io/config#prerender
     prerender: {
+      // uses regex or begins with to match routes
       ignore: [
-        // uses regex or begins with to match routes
         ...IGNORED_ROUTES,
+        // should be removed once getting-started has been migrated
+        '/getting-started',
+        '/installation',
+        '/getting-started',
+        '../',
         `^(?!${BASE_URL.replace('/', '\/').replace(".", "\.")}).*`
       ],
     },
