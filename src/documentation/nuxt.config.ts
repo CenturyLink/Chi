@@ -26,14 +26,14 @@ const IGNORED_ROUTES = [
   ...NAVIGATION_TEMPLATE_ITEMS,
 ]
   .filter((i) => i.source === 'pug')
-  .map((i) => `/${i.href}`);
+  .map((i) => `${BASE_URL}${i.href}`);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {},
   // https://nuxt.com/docs/api/nuxt-config#app
   app: {
-    baseUrl: BASE_URL,
+    baseURL: BASE_URL,
     // Global page headers: https://nuxt.com/docs/api/nuxt-config#head
     head: {
       meta: [
@@ -117,10 +117,7 @@ export default defineNuxtConfig({
       ignore: [
         // uses regex or begins with to match routes
         ...IGNORED_ROUTES,
-        '/installation',
-        '/getting-started',
-        '../',
-        `/chi/${CHI_VERSION}`
+        `^(?!${BASE_URL.replace('/', '\/').replace(".", "\.")}).*`
       ],
     },
     esbuild: {
