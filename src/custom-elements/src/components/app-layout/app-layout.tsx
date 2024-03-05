@@ -1,5 +1,6 @@
 import { Component, Element, Prop, Watch, h, State, Event, EventEmitter } from '@stencil/core';
 import { AppLayoutFormats, APP_LAYOUT_FORMATS } from '../../constants/constants';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-main',
@@ -54,8 +55,6 @@ export class AppLayout {
    */
   @Event({ eventName: 'chiBacklinkClick' }) eventBacklinkClick: EventEmitter;
 
-  private mutationObserver;
-
   @Watch('format')
   typeValidation(newValue: string) {
     if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
@@ -66,40 +65,24 @@ export class AppLayout {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title'],
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.target.title) {
-            this.appLayoutTitle = mutation.target.title;
-            this.el.removeAttribute('title');
-          }
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+    addMutationObserver.call(this, () => {
+        if (this.el.title) {
+          this.appLayoutTitle = this.el.title;
+          this.el.removeAttribute('title');
+        }
+      },
+      { attributes: true, 
+        attributeOldValue: true, 
+        attributeFilter: ['title'], 
+        childList: true 
+      }
+    );
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
-  }
+  disconnectedCallback() {}
 
   componentWillLoad() {
     this.typeValidation(this.format);
-
-    if (this.el.getAttribute('title')) {
-      this.appLayoutTitle = this.el.getAttribute('title');
-      this.el.removeAttribute('title');
-    }
 
     if (this.el.querySelector('[slot=help-icon]')) {
       this.appLayoutHelpIcon = true;
