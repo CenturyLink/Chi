@@ -2,7 +2,7 @@
 <ComponentExample title="Additional Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-      | Use border top <a href="../../utilities/border">utilities</a> such as
+      | Use border top <a :href="`${baseUrl}utilities/border`">utilities</a> such as
       | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.
   template(#example)
     p.-text.-m--0
@@ -33,6 +33,7 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class SizesLumenCenturyLink extends Vue {
+  baseUrl = useRuntimeConfig().public.baseUrl;
   exampleTabs = [
     {
       disabled: true,

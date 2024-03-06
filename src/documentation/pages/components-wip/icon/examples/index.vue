@@ -8,8 +8,8 @@
     h3 Using Icons
     p.-text
       | Chi icons can be added to projects in one of two ways: Web Component (SVG) or HTML Blueprint (Web Font).
-      | The Web Component approach is dependent on your project using Chi's <a href="../../getting-started/installation">Web Components</a>.
-      | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a href="../../getting-started/installation">Chi CSS</a>.
+      | The Web Component approach is dependent on your project using Chi's <a :href="`${baseUrl}getting-started/installation`">Web Components</a>.
+      | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a :href="`${baseUrl}getting-started/installation`">Chi CSS</a>.
     h3 Examples
     BaseExample
     <Sizes />
@@ -44,5 +44,6 @@ import Sizes from './_sizes.vue';
 })
 export default class Examples extends Vue {
   selectedTheme = useSelectedTheme();
+  baseUrl = useRuntimeConfig().public.baseUrl;
 }
 </script>
