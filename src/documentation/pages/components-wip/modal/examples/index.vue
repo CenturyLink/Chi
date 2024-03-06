@@ -6,14 +6,14 @@
       | and modal footer (optional).
       | By default modals are aligned to the top of the page.
 
-      <Base />
+      BaseExample
       <Center />
       h3 Scrollable
-      p.-text 
+      p.-text
         | Enable scrolling if the height of the modal's content is larger than the modal's content container.
       <ScrollableRequirements />
       <ScrollableLongContent />
-      div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
         <ModalSubtitleLumenCenturyLink />
         <InverseLumenCenturyLink />
         <NoBorderLumenCenturyLink />
@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import AlertPortal from './_alert-portal.vue';
 import Base from './_base.vue';
 import NoBorderLumenCenturyLink from './_noborder-lumen-centurylink.vue';
@@ -37,10 +37,10 @@ import ScrollableRequirements from './_scrollable_requirements.vue';
 import SimpleLumenCenturyLink from './_simple-lumen-centurylink.vue';
 import MultiStep from './_multi_step.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     AlertPortal,
-    Base,
+    BaseExample: Base,
     NoBorderLumenCenturyLink,
     Center,
     InverseLumenCenturyLink,
@@ -49,7 +49,9 @@ import MultiStep from './_multi_step.vue';
     ModalSubtitleLumenCenturyLink,
     SimpleLumenCenturyLink,
     MultiStep,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

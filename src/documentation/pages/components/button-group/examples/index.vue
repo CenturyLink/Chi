@@ -1,37 +1,36 @@
 <template lang="pug">
-  div 
-    h3 Examples
-    <Base />
-    <Vertical />
-    h3 Fluid buttons
-    p.-text
-      | Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
-    <FluidHorizontal />
-    <FluidVertical />
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      h3 Sizes
-      p.-text
-        | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
-        |  <code>-lg</code>, <code>-xl</code>.
-        | The default size is <code>-md</code>.
-      <SizesHorizontalLumenCenturyLink />
-      <SizesVerticalLumenCenturyLink />
-      <HybridButtons />
-      <HybridSizesLumenCenturyLink />
-    div(v-else)
-      h3 Sizes
-      p.-text
-        | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
-        |  <code>-lg</code>.
-        | The default size is <code>-md</code>.
-      <SizesHorizontalPortal />
-      <SizesVerticalPortal />
-      <HybridButtons />
-      <HybridSizesPortal />
+h3 Examples
+<ButtonGroupBase />
+<Vertical />
+h3 Fluid buttons
+p.-text
+  | Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
+<FluidHorizontal />
+<FluidVertical />
+div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+  h3 Sizes
+  p.-text
+    | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>.
+    | The default size is <code>-md</code>.
+  <SizesHorizontalLumenCenturyLink />
+  <SizesVerticalLumenCenturyLink />
+  <HybridButtons />
+  <HybridSizesLumenCenturyLink />
+div(v-else)
+  h3 Sizes
+  p.-text
+    | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>.
+    | The default size is <code>-md</code>.
+  <SizesHorizontalPortal />
+  <SizesVerticalPortal />
+  <HybridButtons />
+  <HybridSizesPortal />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import FluidHorizontal from './_fluid-horizontal.vue';
 import FluidVertical from './_fluid-vertical.vue';
@@ -44,9 +43,9 @@ import SizesHorizontalLumenCenturyLink from './_sizes-horizontal-lumen-centuryli
 import SizesVerticalLumenCenturyLink from './_sizes-vertical-lumen-centurylink.vue';
 import Vertical from './_vertical.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    ButtonGroupBase: Base,
     Vertical,
     FluidHorizontal,
     FluidVertical,
@@ -57,7 +56,9 @@ import Vertical from './_vertical.vue';
     HybridSizesPortal,
     SizesHorizontalPortal,
     SizesVerticalPortal,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

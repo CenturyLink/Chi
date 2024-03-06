@@ -2,24 +2,24 @@
   div
     h2 Examples
     h3 Backdrop
-    <Base />
+    BaseExample
     <Inverse />
     h3 Contextual
-    <SpinnerButtonsPortal v-if="$store.state.themes.theme === 'portal'" />
+    <SpinnerButtonsPortal v-if="selectedTheme === 'portal'" />
     <SpinnerButtonsLumenCenturyLink v-else />
     <SpinnerTexts />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <SizesPortal v-else />
     h3 Colors
     p.-text
       | By default, spinners are rendered in the same color as the text color defined on their parent container.
       | Easily change a spinners color using the examples below.
     <ColorBrand />
-    <ColorSemantic />   
+    <ColorSemantic />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Inverse from './_inverse.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
@@ -30,9 +30,9 @@ import ColorSemantic from './_color-semantic.vue';
 import SizesPortal from './_sizes-portal.vue';
 import SpinnerButtonsLumenCenturyLink from './_spinner-buttons-lumen-centurylink.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Inverse,
     SizesLumenCenturyLink,
     SizesPortal,
@@ -41,7 +41,9 @@ import SpinnerButtonsLumenCenturyLink from './_spinner-buttons-lumen-centurylink
     SpinnerButtonsLumenCenturyLink,
     ColorBrand,
     ColorSemantic,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

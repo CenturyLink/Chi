@@ -1,16 +1,16 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <InfoAndRelationships />
+.chi-grid__container.-pt--3
+  <InfoAndRelationships />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import InfoAndRelationships from './_info-and-relationships.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    InfoAndRelationships
-  }
+    InfoAndRelationships,
+  },
 })
 export default class Examples extends Vue {}
 </script>

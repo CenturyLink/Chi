@@ -1,11 +1,11 @@
 <template lang="pug">
   div
     h2 Examples
-    <Base />
+    BaseExample
     <NoBorder />
     <Striped />
     <Hover />
-    <BasePortal v-if="$store.state.themes.theme === 'portal'" />
+    <BasePortal v-if="selectedTheme === 'portal'" />
     h3 Row States
     p.-text Chi offers a wide variety of modifiers to express different row states.
     <Disabled />
@@ -14,8 +14,8 @@
     <Danger />
     <Info />
     h3 Column Sorting
-    p.-text 
-      | To express column sorting, apply the class <code>-sorted</code> with one of the following modifiers: 
+    p.-text
+      | To express column sorting, apply the class <code>-sorted</code> with one of the following modifiers:
       | <code>-ascending</code> or <code>-descending</code>.
     <Ascending />
     <Descending />
@@ -30,11 +30,11 @@
     <SizeMd />
     <SizeLg />
     <SizeXl />
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-if="selectedTheme === 'portal'")
       <SelectablePortal />
       <ScrollablePortal />
       <TwoTierHeaderPortal />
-      <HeaderCellsInTopRowPortal /> 
+      <HeaderCellsInTopRowPortal />
     div(v-else)
       <SelectableLumenCenturyLink />
       <ScrollableLumenCenturyLink />
@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import NoBorder from './_no-border.vue';
 import Striped from './_striped.vue';
@@ -69,9 +69,9 @@ import SelectablePortal from './_portal/_selectable.vue';
 import ScrollablePortal from './_portal/_scrollable.vue';
 import TwoTierHeaderPortal from './_portal/_two-tier-header.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     NoBorder,
     Striped,
     Hover,
@@ -95,8 +95,10 @@ import TwoTierHeaderPortal from './_portal/_two-tier-header.vue';
     SelectablePortal,
     ScrollablePortal,
     TwoTierHeaderPortal,
-    HeaderCellsInTopRowPortal
-  }
+    HeaderCellsInTopRowPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

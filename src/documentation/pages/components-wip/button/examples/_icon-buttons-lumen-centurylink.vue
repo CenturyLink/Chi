@@ -1,47 +1,43 @@
 <template lang="pug">
-  <ComponentExample titleSize="h2" title="Icon buttons" id="icon-button-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample titleSize="h2" title="Icon buttons" id="icon-button-lumen-centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | For interfaces with limited space, an Icon button can
       | be used for common actions such as editing, deleting, closing, etc.
-    <Wrapper slot="example">
-      chi-button(type='icon' alternative-text='Edit' ref='edit' data-tooltip='Edit')
-        chi-icon(icon='edit')
-      chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' ref='editFlat' data-tooltip='Edit')
-        chi-icon(icon='edit')
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#example)
+    chi-button(type='icon' alternative-text='Edit' ref='edit' data-tooltip='Edit')
+      chi-icon(icon='edit')
+    chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' ref='editFlat' data-tooltip='Edit')
+      chi-icon(icon='edit')
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: `<!-- base -->
+@NuxtComponent({})
+export default class IconButtonLumenCenturyLink extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<!-- base -->
 <chi-button type="icon" alternative-text="Edit" data-tooltip="Edit">
   <chi-icon icon="edit"></chi-icon>
 </chi-button>
@@ -53,7 +49,7 @@ declare const chi: any;
 
 <!-- Tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-        htmlblueprint: `<!-- base -->
+    htmlblueprint: `<!-- base -->
 <button class="chi-button -icon" aria-label="Edit" data-tooltip="Edit">
   <div class="chi-button__content">
     <i class="chi-icon icon-edit" aria-hidden="true"></i>
@@ -69,11 +65,7 @@ declare const chi: any;
 
 <!-- Tooltip -->
 <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
-      },
-    };
-  },
-})
-export default class IconButtonLumenCenturyLink extends Vue {
+  };
   tooltip: any;
   tooltipFlat: any;
 

@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
-    .-p--3(slot="example")
+<ComponentExample title="Base" id="base" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  template(#example)
+    .-p--3
       header.chi-header
         nav.chi-header__content
           .chi-header__brand
@@ -10,32 +11,30 @@
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
           .chi-header__end
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -49,10 +48,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <div class="chi-header__start"></div>
     <div class="chi-header__end"></div>
   </nav>
-</header>`
-      }
+</header>`,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>

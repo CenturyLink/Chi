@@ -1,52 +1,49 @@
 <template lang="pug">
-  <ComponentExample title="Arrow" id="arrow" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Arrow" id="arrow" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Popovers support arrows to indicate the element they originate from. Arrows can be located anywhere around the Popover.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--6.-w-md--4.-w-xl--3(v-for="position in ['Top', 'Right', 'Bottom', 'Left']")
         h4.-text--h5.-mb--3 {{ position }}
         .-position--relative(:style="position === 'Bottom' ? 'height: 100px; top: -12px' : 'height: 100px;'")
           chi-popover(:position="position.toLowerCase()", variant="text", active, arrow, prevent-auto-hide)
             | Popover content
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | Add the attribute <code>arrow</code> and use the attribute <code>position</code>
-        | with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
-        | <code>left</code> to position the arrow in the proper place.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot='code-htmlblueprint'>
-      .chi-tab__description
-        | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
-        | <code>chi-popover--left</code> to position the arrow in the proper place.
-        | If you use a position engine such as Popper.js (used by Chi), the attribute <code>x-placement</code> should be used instead of
-        | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
-        | no need to include it on the code.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Add the attribute <code>arrow</code> and use the attribute <code>position</code>
+      | with the values: <code>top</code>, <code>right</code>, <code>bottom</code> and
+      | <code>left</code> to position the arrow in the proper place.
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    .chi-tab__description
+      | Use the classes <code>chi-popover--top</code>, <code>chi-popover--right</code>, <code>chi-popover--bottom</code> and
+      | <code>chi-popover--left</code> to position the arrow in the proper place.
+      | If you use a position engine such as Popper.js (used by Chi), the attribute <code>x-placement</code> should be used instead of
+      | these classes. It accepts all the values Popper.js does. Popper.js sets this attribute automatically, so there is
+      | no need to include it on the code.
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- Top -->
@@ -98,10 +95,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <p class="chi-popover__text">Popover content</p>
   </div>
   <div class="chi-popover__arrow"></div>
-</section>`
-      }
+</section>`,
+      },
     };
-  }
+  },
 })
 export default class Arrow extends Vue {}
 </script>

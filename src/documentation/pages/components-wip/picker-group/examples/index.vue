@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    <Base />
+    BaseExample
     <Checked />
     <Disabled />
     <Required />
@@ -14,21 +14,21 @@
     p.-text
       | Picker groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
       | On smaller viewports, fluid pickers stack.
-    
+
     <Fluid />
-    <AlignmentLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <AlignmentLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <DisableFluidity />
 
     h2 Content Variations
 
     <TextAndIcons />
     <Icons />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <SizesPortal v-else />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Checked from './_checked.vue';
 import Disabled from './_disabled.vue';
@@ -44,9 +44,9 @@ import Icons from './_icons.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_sizes-portal.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Checked,
     Disabled,
     Required,
@@ -59,8 +59,10 @@ import SizesPortal from './_sizes-portal.vue';
     TextAndIcons,
     Icons,
     SizesLumenCenturyLink,
-    SizesPortal
-  }
+    SizesPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

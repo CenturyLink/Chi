@@ -11,30 +11,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+import { Vue } from 'vue-facing-decorator';
+
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import Examples from './examples/index.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '@/constants/constants';
 
-Vue.config.ignoredElements = ['chi-link', 'chi-brand'];
-
-@Component({
+@NuxtComponent({
   components: {
     Accessibility,
-    PageContentTabs,
     Properties,
-    Examples
-  },
-  data: () => {
-    return {
-      pageTabs: standardComponentPageTabs,
-    }
+    Examples,
   },
 })
 export default class Brand extends Vue {
-  mounted() {
-  }
+  pageTabs = standardComponentPageTabs;
 }
 </script>

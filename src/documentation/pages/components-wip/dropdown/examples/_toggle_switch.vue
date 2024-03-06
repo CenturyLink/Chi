@@ -1,6 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Toggle Switch" id="toggle_switch" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
-    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+<ComponentExample title="Toggle Switch" id="toggle_switch" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
+  template(#example)
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
       .chi-dropdown__menu.-active
         legend.chi-dropdown__menu-item Configure options
         .chi-dropdown__menu-item
@@ -24,35 +25,31 @@
               span(class="chi-switch__content")
                 span.chi-switch__thumb
               span.chi-switch__label App notifications
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -93,10 +90,10 @@ import { Component, Vue } from 'vue-property-decorator';
       </div>
     </div>
   </fieldset>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class ToggleSwitch extends Vue {}
 </script>

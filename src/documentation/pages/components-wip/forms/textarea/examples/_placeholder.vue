@@ -1,39 +1,39 @@
 <template lang="pug">
-  <ComponentExample title="Placeholder" id="placeholder" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Placeholder" id="placeholder" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use the <code>placeholder</code> attribute to provide users with an example of the type of data
       | that can be entered into an input. <strong>Note:</strong> Placeholder text is not persistent and visually
       | disappears when a value is entered.
-    .chi-grid(slot="example")
+  template(#example)
+    .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6
         .chi-form__item
           chi-label(for="example__placeholder") Label
           chi-textarea(id="example__placeholder" placeholder="Placeholder")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
@@ -43,10 +43,10 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__placeholder">Label</label>
   <textarea class="chi-input" id="example__placeholder" placeholder="Placeholder"></textarea>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class Placeholder extends Vue {}
 </script>

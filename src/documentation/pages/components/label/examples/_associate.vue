@@ -1,41 +1,40 @@
 <template lang="pug">
-  <ComponentExample title="Associate label with form elements" id="associate" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Associate label with form elements" id="associate" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Label is important for accessibility of form elements.
-    div(style="max-width: 17rem;" slot="example")
+  template(#example)
+    div(style="max-width: 17rem;")
       chi-label(for='number-input') Label
       chi-number-input#number-input
       chi-label.-mt--1(for='chi-date-picker') Label
       chi-date-picker#chi-date-picker
-    <Wrapper slot="code-webcomponent">
-      .chi-tab__description
-        | Associate <code>chi-label</code> with supported form-control web components 
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    .chi-tab__description
+      | Associate <code>chi-label</code> with supported form-control web components
+    Copy(lang="html" :code="codeSnippets.webcomponent")
+
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="number-input">Label</chi-label>
@@ -58,10 +57,10 @@ import { Component, Vue } from 'vue-property-decorator';
     <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
     <i class="chi-icon icon-date -icon--muted" aria-hidden="true"></i>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class Associate extends Vue {}
 </script>

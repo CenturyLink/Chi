@@ -3,7 +3,7 @@
     h2 Web Component
     <PropertiesGenerator tag="chi-search-input" />
 
-    h2 Chi Vue 
+    h2 Chi Vue
     h3 Props
     section.chi-table.chi-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
@@ -164,8 +164,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({})
+@NuxtComponent({})
 export default class Properties extends Vue {}
 </script>

@@ -1,32 +1,26 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Z-index" id="x-index" titleSize="h2" />
-    <TableComponent :data="elementZindex" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Z-index" id="x-index" titleSize="h2" />
+<TableComponent :data="elementZindex" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import {ITableColumn, ITableContent} from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 
-@Component({
-  data: () => {
-    return {
-      columns: [
-        {
-          title: 'Token',
-          key: 'token',
-          width: '35%'
-        },
-        {
-          title: 'Value',
-          key: 'value',
-          width: '65%'
-        }
-      ]
-    };
-  }
-})
+@NuxtComponent({})
 export default class ZIndex extends Vue {
+  columns = [
+    {
+      title: 'Token',
+      key: 'token',
+      width: '35%',
+    },
+    {
+      title: 'Value',
+      key: 'value',
+      width: '65%',
+    },
+  ];
   elementZindex = [
     { name: '0', value: '0' },
     { name: '10', value: '10' },
@@ -38,7 +32,7 @@ export default class ZIndex extends Vue {
     { name: '70', value: '70' },
     { name: '80', value: '80' },
     { name: '90', value: '90' },
-  ]
+  ];
 
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {

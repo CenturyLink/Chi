@@ -1,107 +1,105 @@
 <template lang="pug">
-  <ComponentExample title="Compact" id="compact" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Compact" id="compact" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>-compact</code> when vertical space is limited.
-    <Wrapper slot="example">
-      .chi-stat.-compact
-        div(v-for="(stat, index) in stats" :key="index" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | {{ stat.title }}
-              .chi-label__help
-                button.chi-button.-icon.-xs.-flat(:id="`button-compact-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
-                  i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | {{ stat.value }}
-              .chi-stat-submetric__title
-                | {{ stat.title2 }}
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | {{ stat.value2 }}
-              .chi-stat-submetric__title
-                | {{ stat.title3 }}
-      chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-${index}`" arrow)
-        .chi-popover__content
-          p.chi-popover__text
-            | Helpful information goes here.
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>  
-  </ComponentExample>
+  template(#example)
+    .chi-stat.-compact
+      div(v-for="(stat, index) in stats" :key="index" :class="stat.active ? 'chi-stat__item -active' : 'chi-stat__item'")
+        .chi-stat__content
+          .chi-stat-metric
+            .chi-stat-metric__title
+              | {{ stat.title }}
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(:id="`button-compact-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+          .chi-stat-submetric
+            .chi-stat-submetric__value
+              | {{ stat.value }}
+            .chi-stat-submetric__title
+              | {{ stat.title2 }}
+          .chi-stat-submetric
+            .chi-stat-submetric__value
+              | {{ stat.value2 }}
+            .chi-stat-submetric__title
+              | {{ stat.title3 }}
+    chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-${index}`" arrow)
+      .chi-popover__content
+        p.chi-popover__text
+          | Helpful information goes here.
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      stats: [
-        {
-          title: 'Utilization',
-          value: '4',
-          title2: 'High',
-          value2: '16',
-          title3: 'Elevated'
-        },
-        {
-          title: 'Performance',
-          value: '0',
-          title2: 'Critical',
-          value2: '1',
-          title3: 'Impacted'
-        },
-        {
-          title: 'Status',
-          value: '12',
-          title2: 'Down',
-          value2: '333',
-          title3: 'Up',
-          active: true
-        },
-        {
-          title: 'Threshold alerts',
-          value: '0',
-          title2: 'Warnings',
-          value2: '0',
-          title3: 'Watches'
-        },
-        {
-          title: 'Repair tickets',
-          value: '2',
-          title2: 'Active',
-          value2: '1',
-          title3: 'Closed'
-        },
-        {
-          title: 'Sch maintenance',
-          value: '2',
-          title2: 'In progress',
-          value2: '2',
-          title3: 'Upcoming'
-        }
-      ],
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-stat -compact">
+@NuxtComponent({})
+export default class Compact extends Vue {
+  stats = [
+    {
+      title: 'Utilization',
+      value: '4',
+      title2: 'High',
+      value2: '16',
+      title3: 'Elevated',
+    },
+    {
+      title: 'Performance',
+      value: '0',
+      title2: 'Critical',
+      value2: '1',
+      title3: 'Impacted',
+    },
+    {
+      title: 'Status',
+      value: '12',
+      title2: 'Down',
+      value2: '333',
+      title3: 'Up',
+      active: true,
+    },
+    {
+      title: 'Threshold alerts',
+      value: '0',
+      title2: 'Warnings',
+      value2: '0',
+      title3: 'Watches',
+    },
+    {
+      title: 'Repair tickets',
+      value: '2',
+      title2: 'Active',
+      value2: '1',
+      title3: 'Closed',
+    },
+    {
+      title: 'Sch maintenance',
+      value: '2',
+      title2: 'In progress',
+      value2: '2',
+      title3: 'Upcoming',
+    },
+  ];
+  exampleTabs: [
+    {
+      disabled: true;
+      id: 'webcomponent';
+      label: 'Web Component';
+    },
+    {
+      active: true;
+      id: 'htmlblueprint';
+      label: 'HTML Blueprint';
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<div class="chi-stat -compact">
   <div class="chi-stat__item">
     <div class="chi-stat__content">
       <div class="chi-stat-metric">
@@ -262,12 +260,8 @@ import { Component, Vue } from 'vue-property-decorator';
   chi.popover(document.getElementById('example__help-button4'));
   chi.popover(document.getElementById('example__help-button5'));
   chi.popover(document.getElementById('example__help-button6'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class Compact extends Vue {
+<\/script>`,
+  };
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

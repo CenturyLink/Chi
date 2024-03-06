@@ -795,6 +795,7 @@
       "dependents": [
         "chi-alert",
         "chi-carousel",
+        "chi-copy-icon",
         "chi-dropdown",
         "chi-popover"
       ],
@@ -809,6 +810,9 @@
           "chi-button"
         ],
         "chi-carousel": [
+          "chi-button"
+        ],
+        "chi-copy-icon": [
           "chi-button"
         ],
         "chi-dropdown": [
@@ -1188,6 +1192,192 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/copy-icon/copy-icon.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-copy-icon",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "IconColors",
+            "resolved": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+            "references": {
+              "IconColors": {
+                "location": "import",
+                "path": "../../constants/color",
+                "id": "src/constants/color.ts::IconColors"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "Color of the Icon.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "To disable the copy button",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "IconSizes",
+            "resolved": "string",
+            "references": {
+              "IconSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::IconSizes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Size of the icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "text",
+          "reflectToAttr": false,
+          "docs": "Text to be copied to clipboard",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiCopy",
+          "detail": "string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicks on copy",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button",
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-copy-icon": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/date/date.tsx",
@@ -3489,6 +3679,7 @@
         "chi-alert",
         "chi-button",
         "chi-carousel",
+        "chi-copy-icon",
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
@@ -3508,6 +3699,9 @@
           "chi-icon"
         ],
         "chi-carousel": [
+          "chi-icon"
+        ],
+        "chi-copy-icon": [
           "chi-icon"
         ],
         "chi-date": [
@@ -9328,6 +9522,16 @@
       "docstring": "",
       "path": "src/constants/states.ts"
     },
+    "src/constants/size.ts::IconSizes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/color.ts::IconColors": {
+      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "docstring": "",
+      "path": "src/constants/color.ts"
+    },
     "src/constants/constants.ts::DataLocales": {
       "declaration": "\"es\" | \"en\" | \"pt\" | \"fr\" | \"de\" | \"ja\" | \"zh\"",
       "docstring": "",
@@ -9357,16 +9561,6 @@
       "declaration": "\"normal\"",
       "docstring": "",
       "path": "src/constants/types.ts"
-    },
-    "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
-      "docstring": "",
-      "path": "src/constants/color.ts"
-    },
-    "src/constants/size.ts::IconSizes": {
-      "declaration": "string",
-      "docstring": "",
-      "path": "src/constants/size.ts"
     },
     "src/constants/size.ts::MarketingIconSizes": {
       "declaration": "string",

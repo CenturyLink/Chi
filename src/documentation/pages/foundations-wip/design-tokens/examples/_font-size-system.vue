@@ -1,22 +1,16 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Font size - headings" id="font-size-headings" />
-    <TableComponent :data="fontHeadingSize" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Font size - headings" id="font-size-headings" />
+<TableComponent :data="fontHeadingSize" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import {ITableColumn, ITableContent} from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { designTokens3Columns } from '~/fixtures/fixtures';
 
-@Component({
-  data: () => {
-    return {
-      columns: designTokens3Columns
-    };
-  }
-})
+@NuxtComponent({})
 export default class FontSizeHeading extends Vue {
+  columns = designTokens3Columns;
   fontHeadingSize = [
     { name: '1', value: ['11px', '0.6875rem'] },
     { name: '2', value: ['12px', '0.75rem'] },
@@ -38,7 +32,7 @@ export default class FontSizeHeading extends Vue {
     { name: '18', value: ['80px', '5rem'] },
     { name: '19', value: ['96px', '6rem'] },
     { name: '20', value: ['120px', '7.5rem'] },
-  ]
+  ];
 
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
@@ -47,7 +41,7 @@ export default class FontSizeHeading extends Vue {
       case 'value':
         return `<div class="-text">${content.value[1]}</div> <div class="-text">${content.value[0]}</div>`;
       case 'example':
-        return `<div class="-text" style="font-size:${content.value[1]};line-height:${content.value[0]};">Aa</div>`
+        return `<div class="-text" style="font-size:${content.value[1]};line-height:${content.value[0]};">Aa</div>`;
       default:
         return '';
     }

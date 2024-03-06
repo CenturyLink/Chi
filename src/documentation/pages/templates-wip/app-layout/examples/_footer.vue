@@ -1,6 +1,5 @@
 <script>
-import {Vue} from "vue-property-decorator";
-import {FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS} from "~/fixtures/fixtures";
+import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '~/fixtures/fixtures';
 
 const generateLumenFooter = (dropdownId) => {
   return `<footer class="chi-footer">
@@ -15,19 +14,24 @@ const generateLumenFooter = (dropdownId) => {
               </div>
             </a>
             <div class="chi-dropdown__menu -w--sm -text--body">
-              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(({href, name}, index) => `<a class="chi-dropdown__menu-item${ index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`).join('\n              ')}
+              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(
+                ({ href, name }, index) =>
+                  `<a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`
+              ).join('\n              ')}
             </div>
           </div>
           <div class="chi-footer__links">
             <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
+              ${FOOTER_LINKS.map(({ href, title }) => `<li><a href="${href}">${title}</a></li>`).join(
+                '\n              '
+              )}
             </ul>
             <div class="chi-footer__copyright">&copy; 2024 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
         </div>
       </div>
     </div>
-  </footer>`
+  </footer>`;
 };
 
 const generateCenturylinkFooter = () => {
@@ -37,14 +41,16 @@ const generateCenturylinkFooter = () => {
         <div class="chi-footer__internal-content -mw--1200">
           <div class="chi-footer__links">
             <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
+              ${FOOTER_LINKS.map(({ href, title }) => `<li><a href="${href}">${title}</a></li>`).join(
+                '\n              '
+              )}
             </ul>
             <div class="chi-footer__copyright">&copy; 2024 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
           </div>
         </div>
       </div>
     </div>
-  </footer>`
+  </footer>`;
 };
 
 const generateBrightspeedFooter = (dropdownId) => {
@@ -60,19 +66,24 @@ const generateBrightspeedFooter = (dropdownId) => {
               </div>
             </a>
             <div class="chi-dropdown__menu -w--sm -text--body">
-              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(({href, name}, index) => `<a class="chi-dropdown__menu-item${ index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`).join('\n              ')}
+              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(
+                ({ href, name }, index) =>
+                  `<a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`
+              ).join('\n              ')}
             </div>
           </div>
           <div class="chi-footer__links">
             <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
+              ${FOOTER_LINKS.map(({ href, title }) => `<li><a href="${href}">${title}</a></li>`).join(
+                '\n              '
+              )}
             </ul>
             <div class="chi-footer__copyright">&copy; 2024 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
         </div>
       </div>
     </div>
-  </footer>`
+  </footer>`;
 };
 
 export const generateExampleFooter = (theme = 'lumen', dropdownId = 'language-dropdown-button') => {
@@ -91,7 +102,4 @@ export const generateAllExampleFooters = (dropdownId = 'language-dropdown-button
   centurylink: generateExampleFooter('centurylink', dropdownId),
   brightspeed: generateExampleFooter('brightspeed', dropdownId),
 });
-
-export default class Footer extends Vue {
-}
 </script>

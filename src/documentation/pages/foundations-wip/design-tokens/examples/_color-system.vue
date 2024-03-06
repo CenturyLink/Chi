@@ -1,22 +1,16 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Color System" id="color-system" />
-    <TableComponent :data="systemColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Color System" id="color-system" />
+<TableComponent :data="systemColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { colorKits, designTokens3Columns } from '~/fixtures/fixtures';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 
-@Component({
-  data: () => {
-    return {
-      columns: designTokens3Columns
-    };
-  }
-})
+@NuxtComponent({})
 export default class ColorSystem extends Vue {
+  columns = designTokens3Columns;
   lumenSystemColor = [
     ...colorKits.gray,
     ...colorKits.red,
@@ -32,7 +26,7 @@ export default class ColorSystem extends Vue {
     ...colorKits.orange,
     ...colorKits.black,
     ...colorKits.white,
-  ]
+  ];
 
   centurylinkSystemColor = [
     ...colorKits.gray,
@@ -49,7 +43,7 @@ export default class ColorSystem extends Vue {
     ...colorKits.orangeCenturylink,
     ...colorKits.black,
     ...colorKits.white,
-  ]
+  ];
 
   brightspeedSystemColor = [
     ...colorKits.greyBrightspeed,
@@ -66,11 +60,9 @@ export default class ColorSystem extends Vue {
     ...colorKits.orangeBrightspeed,
     ...colorKits.black,
     ...colorKits.white,
-  ]
+  ];
 
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
 
   get systemColor() {
     if (this.theme === 'centurylink') {
@@ -81,7 +73,6 @@ export default class ColorSystem extends Vue {
     return this.lumenSystemColor;
   }
 
-
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {
       case 'token':
@@ -90,7 +81,9 @@ export default class ColorSystem extends Vue {
         return `<div class="-text">${content.value}</div>`;
       case 'example':
         const isSpecial = content.name === 'white';
-        return `<div class="-text -rounded -w--100 -w-lg--60 ${isSpecial ? '-s--1' : ''}" style="height:1rem;background-color:${content.value}"></div>`;
+        return `<div class="-text -rounded -w--100 -w-lg--60 ${
+          isSpecial ? '-s--1' : ''
+        }" style="height:1rem;background-color:${content.value}"></div>`;
       default:
         return '';
     }

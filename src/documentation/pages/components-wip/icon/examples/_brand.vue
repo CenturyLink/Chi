@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Brand" titleSize="h4" id="brand" padding="-p--0" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Brand" titleSize="h4" id="brand" padding="-p--0" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Brand icon colors reinforce Lumen's brand.
-    .chi-grid.-no-gutter(slot="example")
+  template(#example)
+    .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
         div(v-for="color in colors" :class="`chi-icon -${color} -m--1`")
           svg
@@ -17,19 +19,17 @@
             div(class=`chi-icon -icon--light -m--1`)
               svg
                 use(xlink:href='#icon-atom')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

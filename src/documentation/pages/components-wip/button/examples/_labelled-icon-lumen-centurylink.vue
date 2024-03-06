@@ -1,30 +1,28 @@
 <template lang="pug">
-  <ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-icon-lumen-centurylink" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      chi-button
-        chi-icon(icon='atom')
-        span Button
-      chi-button.-mr--2.-ml--2()
-        span Button
-        chi-icon(icon='atom')
-      chi-button
-        chi-icon(icon='atom')
-        span Button
-        chi-icon(icon='atom')
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+<ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-icon-lumen-centurylink" :tabs="exampleTabs">
+  template(#example)
+    chi-button
+      chi-icon(icon='atom')
+      span Button
+    chi-button.-mr--2.-ml--2()
+      span Button
+      chi-icon(icon='atom')
+    chi-button
+      chi-icon(icon='atom')
+      span Button
+      chi-icon(icon='atom')
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

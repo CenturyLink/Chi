@@ -3,19 +3,19 @@
     h2 Examples
     div
       <CountryRegion />
-      <Sizes />     
+      <Sizes />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import CountryRegion from './_country_region.vue';
 import Sizes from './_sizes.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     CountryRegion,
     Sizes,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>

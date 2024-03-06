@@ -37,24 +37,20 @@
     p.-text
       | Input number components have a dispose function to free all resources attached to the element, such as event
       | listeners and object data. You should call this method when you want to remove the component.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory1" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory1")
 
     p.-text
       span.chi-badge.-dark.-sm.-mr--1
         span Tip
       | It is safe to call the <code>numberInput</code> method more than once, as it will return any previously created
       | number input component associated to the input.
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory2" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `
@@ -71,9 +67,9 @@ var inputNumberComponent2 = chi.numberInput(elem2);
 inputNumberComponent === inputNumberComponent2; // returns true
 
 inputNumberComponent.dispose(); // Only have to do it once.
-      `
+      `,
     };
-  }
+  },
 })
 export default class Properties extends Vue {}
 </script>

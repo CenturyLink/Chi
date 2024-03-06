@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Start from './_start.vue';
 import End from './_end.vue';
 import Center from './_center.vue';
@@ -21,7 +21,7 @@ import Between from './_between.vue';
 import Stretch from './_stretch.vue';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Start,
     End,
@@ -30,7 +30,7 @@ import SpecificBreakpoints from './_specific-breakpoints.vue';
     Between,
     Stretch,
     SpecificBreakpoints,
-  }
+  },
 })
 export default class AlignContent extends Vue {}
 </script>

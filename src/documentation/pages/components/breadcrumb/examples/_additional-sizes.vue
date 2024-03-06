@@ -1,51 +1,49 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs">
-    p.-text(slot="example-description") 
+<ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Breadcrumbs support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
       | <code>-lg</code>, and <code>-xl</code>. The default size is <code>-md</code>.
-    <Wrapper slot="example">
-      div(v-for="size in sizes" :key="size")
-        p.-text--bold -{{size}}
-        nav.chi-breadcrumb.-mb--2(:class="`-${size}`", aria-label='Breadcrumb')
-          ol
-            li.chi-breadcrumb__item
-              a(href='#') Parent
-            li.chi-breadcrumb__item
-              a(href='#') Child 1
-            li.chi-breadcrumb__item.-active
-              a(href='#',aria-current="page") Child 2
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    div(v-for="size in sizes")
+      p.-text--bold -{{size}}
+      nav.chi-breadcrumb.-mb--2(:class="`-${size}`", aria-label='Breadcrumb')
+        ol
+          li.chi-breadcrumb__item
+            a(href='#') Parent
+          li.chi-breadcrumb__item
+            a(href='#') Child 1
+          li.chi-breadcrumb__item.-active
+            a(href='#',aria-current="page") Child 2
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
-  data: () => {
-    return {
-      sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<!-- xs -->
+@NuxtComponent({})
+export default class AdditionalSizes extends Vue {
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: `<!-- xs -->
 <nav class="chi-breadcrumb -xs" aria-label="Breadcrumb">
   <ol>
     <li class="chi-breadcrumb__item">
@@ -103,10 +101,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <a href="#" aria-current="page">Child</a>
     </li>
   </ol>
-</nav>`
-      }
-    };
-  }
-})
-export default class AdditionalSizes extends Vue {}
+</nav>`,
+  };
+}
 </script>

@@ -1,40 +1,38 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="error" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Error" id="error" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Use <code>danger</code> to provide feedback to users when input data fails to validate.
       | To meet accessibility requirements, danger inputs must include an error message explaining the
       | failure and/or how to correct it.
-    .chi-form__item(slot="example")
+  template(#example)
+    .chi-form__item
       chi-label(for="unique-id-er1") Quantity
       chi-number-input#unique-id-er1(inputstyle="danger" helper-message="Please enter a quantity.")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-er1">Quantity</chi-label>
@@ -49,10 +47,10 @@ import { Component, Vue } from 'vue-property-decorator';
   <div class="chi-label -status -danger">Please enter a quantity.</div>
 </div>
 
-<script>chi.numberInput(document.getElementById('unique-id-er1'));<\/script>`
-      }
+<script>chi.numberInput(document.getElementById('unique-id-er1'));<\/script>`,
+      },
     };
-  }
+  },
 })
 export default class Error extends Vue {}
 </script>

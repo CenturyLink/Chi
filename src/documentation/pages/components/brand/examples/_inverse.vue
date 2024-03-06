@@ -1,25 +1,25 @@
 <template lang="pug">
-  <ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-p--0">
-    p.-text(slot="example-description")
+<ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-p--0">
+  template(#example-description)
+    p.-text
       | The inverse logo is used on black or dark-colored backgrounds that provide sufficient contrast.
-    .-p--3.-bg--black.-d--flex.-justify-content--around.-align-items--center(slot="example")
+  template(#example)
+    .-p--3.-bg--black.-d--flex.-justify-content--around.-align-items--center
       chi-link(href="#", alternative-text="Lumen")
         chi-brand(logo='lumen', color='inverse')
       chi-link(href="#", alternative-text="CenturyLink")
         chi-brand(logo='centurylink', color='inverse')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
@@ -62,9 +62,9 @@ import { Component, Vue } from 'vue-property-decorator';
 <a class="chi-brand -centurylink -inverse" href="/" aria-label="CenturyLink">
   <img src="https://lib.lumen.com/images/centurylink-logo-inverse.svg" alt="CenturyLink">
 </a>`,
-      }
-    }
-  }
+      },
+    };
+  },
 })
 export default class Inverse extends Vue {}
 </script>

@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import ValueMinMaxOptions from './_value-min-max-options.vue';
 import BaseCalendar from './_calendar-base.vue';
 import CalendarActive from './_calendar-active.vue';
@@ -40,7 +40,7 @@ import Disabled from './_disabled.vue';
 import CalendarMinMax from './_calendar-min-max.vue';
 import CalendarDateTime from './_calendar-date-time.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     ValueMinMaxOptions,
     BaseCalendar,
@@ -58,7 +58,7 @@ import CalendarDateTime from './_calendar-date-time.vue';
     Disabled,
     CalendarMinMax,
     CalendarDateTime,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>

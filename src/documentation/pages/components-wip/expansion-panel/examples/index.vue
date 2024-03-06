@@ -2,7 +2,7 @@
   div
     h2 Examples
     <client-only placeholder="loading...">
-      <Base />
+      BaseExample
       <States />
       <StateIcon />
       <NoStep />
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import States from './_states.vue';
 import StateIcon from './_state_icon.vue';
@@ -22,16 +22,16 @@ import Bordered from './_bordered.vue';
 import FreeMode from './_free-mode.vue';
 import CustomMode from './_custom-mode.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     States,
     StateIcon,
     NoStep,
     Bordered,
     FreeMode,
     CustomMode,
-  }
+  },
 })
 export default class Examples extends Vue {}
 </script>
