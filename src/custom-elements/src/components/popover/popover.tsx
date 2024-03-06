@@ -345,10 +345,6 @@ export class Popover {
       this._animationClasses = CLASSES.ACTIVE;
     }
 
-    if (this.el.getAttribute('title')) {
-      this.popoverTitle = this.el.getAttribute('title');
-    }
-
     if (Array.from(this.el.querySelectorAll(`[slot=${POPOVER_CLASSES.FOOTER}]`)).length > 0) {
       this.popoverFooter = true;
     }
