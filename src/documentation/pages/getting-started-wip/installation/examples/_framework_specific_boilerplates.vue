@@ -54,7 +54,7 @@ export default class Boilerplates extends Vue {
       case 'class':
         return `<span class="-text--bold">${content}</span>`;
       case 'download':
-        return `<a href="../../boilerplates/chi-vue-es6-boilerplate.zip" class="chi-button">
+        return `<a href="/boilerplates/chi-vue-es6-boilerplate.zip" class="chi-button">
                     <div class="chi-button__content">
                         <i aria-hidden="true" class="chi-icon icon-circle-arrow-down-outline"></i>
                         <span>Download</span>

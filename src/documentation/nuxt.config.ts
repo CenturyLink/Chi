@@ -121,10 +121,7 @@ export default defineNuxtConfig({
         ...IGNORED_ROUTES,
         // should be removed once getting-started has been migrated
         '/getting-started',
-        '/installation',
-        '/getting-started',
-        '../',
-        `^(?!${BASE_URL.replace('/', '\/').replace(".", "\.")}).*`
+        `${BASE_URL}installation`
       ],
     },
     esbuild: {

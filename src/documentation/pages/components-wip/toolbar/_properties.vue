@@ -4,7 +4,7 @@
     h3 Props
     h4 Search Input
     p.-text
-      | Please visit Search input dedicated documentation page <a href="/components/forms/search-input/#props">here</a>
+      | Please visit Search input dedicated documentation page <a :href="`${baseUrl}components/forms/search-input/#props`">here</a>
     h4 Views
     section.chi-table.chi-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
@@ -310,5 +310,7 @@
 import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
-export default class Properties extends Vue {}
+export default class Properties extends Vue {
+  baseUrl = useRuntimeConfig().public.baseUrl;
+}
 </script>
