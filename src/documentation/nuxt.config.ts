@@ -1,4 +1,3 @@
-import { CHI_VERSION } from './constants/configs';
 import {
   NAVIGATION_COMPONENTS_ITEMS,
   NAVIGATION_TEMPLATE_ITEMS,
@@ -10,6 +9,7 @@ import {
   NAVIGATION_FOUNDATIONS_ACCESIBILITY,
   NAVIGATION_GETTING_STARTED_ITEMS,
 } from './constants/constants';
+import { defineNuxtConfig } from 'nuxt/config';
 
 const DOCS_ENV = process.env.DOCS_ENV || '';
 const IS_DEV = DOCS_ENV === 'development';
@@ -108,7 +108,9 @@ export default defineNuxtConfig({
     },
     // Watch files to hot reload.
     server: {
-      watch: ['./pages/**/*.vue', './**/*.ts'],
+      watch: {
+        ignored: ['!./pages/**/*.vue', '!./**/*.ts']
+      }
     },
   },
   nitro: {
