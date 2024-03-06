@@ -5,6 +5,7 @@ import { Drag } from '../../utils/Drag';
 import { ANIMATION_DURATION, CLASSES, ESCAPE_KEYCODE } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
 import { POPOVER_CLASSES } from '../../constants/classes';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-popover',
@@ -333,7 +334,9 @@ export class Popover {
     }
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    addMutationObserver.call(this, undefined, { childList: true, subtree: true } );
+  }
 
   componentWillLoad(): void {
     this.positionValidation(this.position);
