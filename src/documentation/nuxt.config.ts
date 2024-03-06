@@ -1,3 +1,4 @@
+import { CHI_VERSION } from './constants/configs';
 import {
   NAVIGATION_COMPONENTS_ITEMS,
   NAVIGATION_TEMPLATE_ITEMS,
@@ -32,6 +33,7 @@ export default defineNuxtConfig({
   alias: {},
   // https://nuxt.com/docs/api/nuxt-config#app
   app: {
+    baseUrl: BASE_URL,
     // Global page headers: https://nuxt.com/docs/api/nuxt-config#head
     head: {
       meta: [
@@ -112,14 +114,13 @@ export default defineNuxtConfig({
   nitro: {
     // https://nitro.unjs.io/config#prerender
     prerender: {
-      crawlLinks: true,
-      failOnError: false,
       ignore: [
         // uses regex or begins with to match routes
         ...IGNORED_ROUTES,
         '/installation',
         '/getting-started',
         '../',
+        `/chi/${CHI_VERSION}`
       ],
     },
     esbuild: {

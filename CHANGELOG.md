@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.51.1 (March 4, 2024)
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Nuxt Vue urls.
+
 ## 5.51.0 (March 1, 2024)
 
 ### Components
