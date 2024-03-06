@@ -256,10 +256,6 @@
   }
 }
 
-.chi-dropdown__icon.chi-dropdown__trigger::after {
-  display: none !important;
-}
-
 .chi-dropdown__trigger {
   &.chi-button {
     &:not(.-uppercase) {
@@ -410,6 +406,14 @@
       line-height: 1.2rem;
       margin-left: $dropdown-trigger-icon-margin-left;
       width: 0.75rem;
+    }
+
+    &.chi-dropdown__icon {
+      &:not([data-position^='left']) {
+        &::after {
+          display: none;
+        }
+      }
     }
 
     &.-lg,

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-03-01T10:14:11",
+  "timestamp": "2024-03-06T12:33:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.11.0",
@@ -2655,7 +2655,7 @@
           "required": false
         },
         {
-          "name": "iconAlternativeText",
+          "name": "iconTooltipMessage",
           "type": "string",
           "complexType": {
             "original": "string",
@@ -2663,28 +2663,7 @@
             "references": {}
           },
           "mutable": false,
-          "attr": "icon-alternative-text",
-          "reflectToAttr": false,
-          "docs": "To provide icon alternative text",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "iconDataTooltip",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "icon-data-tooltip",
+          "attr": "icon-tooltip-message",
           "reflectToAttr": false,
           "docs": "To provide icon data tooltip",
           "docsTags": [],
