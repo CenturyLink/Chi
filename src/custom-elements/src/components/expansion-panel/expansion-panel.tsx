@@ -1,4 +1,4 @@
-import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
+import { Component, Prop, Watch, h, Element } from '@stencil/core';
 import { EPANEL_CLASSES, GENERIC_SIZE_CLASSES, ICON_CLASS, ICONS, UTILITY_CLASSES } from '../../constants/classes';
 import { EPANEL_TOOLTIP_CONTENT } from '../../constants/constants';
 import { addMutationObserver } from '../../utils/mutationObserver';
