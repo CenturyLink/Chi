@@ -1,19 +1,19 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
-    <NonTextContent />
-    <ImagesOfText />
+.chi-grid__container.-pt--3
+  <NonTextContent />
+  <ImagesOfText />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import NonTextContent from './_non-text-content.vue';
 import ImagesOfText from './_images-of-text.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     NonTextContent,
-    ImagesOfText
-  }
+    ImagesOfText,
+  },
 })
 export default class Examples extends Vue {}
 </script>

@@ -10,36 +10,30 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
 import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      colors: [
-        COLORS.SUCCESS,
-        COLORS.SUCCESS_LIGHT,
-        COLORS.SUCCESS_LIGHTER,
-        COLORS.INFO,
-        COLORS.INFO_LIGHT,
-        COLORS.INFO_LIGHTER,
-        COLORS.WARNING,
-        COLORS.WARNING_LIGHT,
-        COLORS.WARNING_LIGHTER,
-        COLORS.DANGER,
-        COLORS.DANGER_LIGHT,
-        COLORS.DANGER_LIGHTER,
-        COLORS.MUTED,
-        COLORS.MUTED_LIGHT,
-        COLORS.MUTED_LIGHTER
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class SemanticBackgroundColor extends Vue {
+  colors = [
+    COLORS.SUCCESS,
+    COLORS.SUCCESS_LIGHT,
+    COLORS.SUCCESS_LIGHTER,
+    COLORS.INFO,
+    COLORS.INFO_LIGHT,
+    COLORS.INFO_LIGHTER,
+    COLORS.WARNING,
+    COLORS.WARNING_LIGHT,
+    COLORS.WARNING_LIGHTER,
+    COLORS.DANGER,
+    COLORS.DANGER_LIGHT,
+    COLORS.DANGER_LIGHTER,
+    COLORS.MUTED,
+    COLORS.MUTED_LIGHT,
+    COLORS.MUTED_LIGHTER,
+  ];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

@@ -1,63 +1,56 @@
 <template lang="pug">
-  <ComponentExample title="Long Tooltips" id="long" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Long Tooltips" id="long" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
-      | use the <a href="../../components/popover">Popover</a> component
+      | use the <a :href="`${baseUrl}components/popover`">Popover</a> component
+  template(#example)
     button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
     'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
-    'maximus faucibus suscipit nibh.' slot="example" ref="long").chi-button.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+      'maximus faucibus suscipit nibh.' ref="long").chi-button.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          active: true,
-          id: 'vue',
-          label: 'Vue',
-        },
-        {
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        vue: `<ChiTooltip message="Lorem ipsum...">
+@NuxtComponent({})
+export default class Long extends Vue {
+  baseUrl = useRuntimeConfig().public.baseUrl;
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'vue',
+      label: 'Vue',
+    },
+    {
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    vue: `<ChiTooltip message="Lorem ipsum...">
   <button class="chi-button">Hover me to see tooltip</button>
 </ChiTooltip>`,
-        htmlblueprint: `<button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
+    htmlblueprint: `<button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
 
 <script>chi.tooltip(document.getElementById('data-tooltip'));<\/script>`,
-      },
-    };
-  },
-})
-export default class Long extends Vue {
+  };
   mounted() {
     chi.tooltip(this.$refs.long);
   }

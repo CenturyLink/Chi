@@ -167,9 +167,9 @@
                 div
                   code CustomEvent&lt;string&gt;
 
-    h3 Methods 
+    h3 Methods
     section.chi-table.chi-table__options.-bordered.-my--3
-      div(style='overflow-x:auto;') 
+      div(style='overflow-x:auto;')
         table.-text(cellpadding='0' cellspacing='0')
           thead
             tr
@@ -349,19 +349,18 @@
     p.-text
       | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
       | and object data. You should call this method when you want to remove the component.
-    pre.language-javascript
-       code.javascript(v-highlight="$data.codeMemory1")
+    Copy(lang="javascript" :code="codeMemory1")
+
     p.-text
       | It is safe to call the <code>drawer</code> method more than once, as it will return any previously created drawer component
       | associated with the trigger.
-    pre.language-javascript
-      code.javascript(v-highlight="$data.codeMemory2")
+    Copy(lang="javascript" :code="codeMemory2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `var elem = document.getElementById('drawer-1');
@@ -374,9 +373,9 @@ var elem2 = document.getElementById('drawer-2');
 var drawer2 = chi.drawer(elem2);
 drawer === drawer2; // returns true
 
-drawer.dispose(); // Only have to do it once.`
+drawer.dispose(); // Only have to do it once.`,
     };
-  }
+  },
 })
 export default class Properties extends Vue {}
 </script>

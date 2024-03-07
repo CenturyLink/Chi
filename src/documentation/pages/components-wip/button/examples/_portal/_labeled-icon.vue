@@ -1,23 +1,22 @@
 <template lang="pug">
-  <ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
-    .-d--flex(slot="example")
+<ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
+  template(#example)
+    .-d--flex
       .-pr--2
         chi-button(size='xs')
           chi-icon(icon='edit')
           span Edit
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [

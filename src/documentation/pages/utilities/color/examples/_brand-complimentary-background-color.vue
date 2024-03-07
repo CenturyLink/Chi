@@ -6,23 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
 import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      colors: [
-        COLORS.NAVY,
-        COLORS.GREY
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class BrandComplimentaryBackgroundColor extends Vue {
+  colors = [COLORS.NAVY, COLORS.GREY];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

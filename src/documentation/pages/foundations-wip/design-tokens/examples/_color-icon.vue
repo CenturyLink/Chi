@@ -1,23 +1,17 @@
 <template lang="pug">
-  div
-    <TitleAnchor title="Icon" id="color-icon" />
-    <TableComponent :data="iconColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
+<TitleAnchor title="Icon" id="color-icon" />
+<TableComponent :data="iconColor" :columns="columns" :getContent="getContent" additionalClasses="-xs -mt--2 -mb--4 -lumen--show" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import { designTokensColumns } from '~/fixtures/fixtures';
-import {ITableColumn, ITableContent} from '~/models/models';
-import { COLORS } from  '~/constants/constants';
+import { type ITableColumn, type ITableContent } from '~/models/models';
+import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      columns: designTokensColumns
-    };
-  }
-})
+@NuxtComponent({})
 export default class ColorIcon extends Vue {
+  columns = designTokensColumns;
   lumenIconColor = [
     { name: 'base', value: COLORS.GREY.value, contrast: '10.2:1' },
     { name: 'primary', value: COLORS.PRIMARY.value, contrast: '4.8:1' },
@@ -30,8 +24,8 @@ export default class ColorIcon extends Vue {
     { name: 'muted-light', value: COLORS.GRAY_50.value, contrast: '3.1:1' },
     { name: COLORS.MUTED.name, value: COLORS.GRAY_60.value, contrast: '5.6:1' },
     { name: 'muted-dark', value: COLORS.MUTED.value, contrast: '7.4:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' },
+  ];
 
   centurylinkIconColor = [
     { name: 'base', value: COLORS.GRAY_100.value, contrast: '15.4:1' },
@@ -45,8 +39,8 @@ export default class ColorIcon extends Vue {
     { name: 'muted-light', value: COLORS.GRAY_50.value, contrast: '3.1:1' },
     { name: COLORS.MUTED.name, value: COLORS.GRAY_60.value, contrast: '5.6:1' },
     { name: 'muted-dark', value: COLORS.MUTED.value, contrast: '7.4:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' },
+  ];
 
   brightspeedIconColor = [
     { name: 'base', value: COLORS.BLACK.value, contrast: '21:1' },
@@ -60,20 +54,18 @@ export default class ColorIcon extends Vue {
     { name: 'muted-light', value: COLORS.GRAY_50.value, contrast: '3.1:1' },
     { name: COLORS.MUTED.name, value: COLORS.GRAY_60.value, contrast: '5.6:1' },
     { name: 'muted-dark', value: COLORS.MUTED.value, contrast: '7.4:1' },
-    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' }
-  ]
+    { name: COLORS.WHITE.name, value: COLORS.WHITE.value, contrast: '21:1' },
+  ];
 
   generatePortalIconColor() {
     const portalIconColor = [...this.lumenIconColor];
-    const portalBase = { name: 'base', value: COLORS.BLUE_75.value, contrast: '6.1:1' }
+    const portalBase = { name: 'base', value: COLORS.BLUE_75.value, contrast: '6.1:1' };
     portalIconColor[0] = portalBase;
     portalIconColor[1] = portalBase;
     return portalIconColor;
   }
 
-  get theme() {
-    return this.$store.state.themes.theme;
-  }
+  theme = useSelectedTheme();
 
   get iconColor() {
     if (this.theme === 'centurylink') {
@@ -85,7 +77,6 @@ export default class ColorIcon extends Vue {
     }
     return this.lumenIconColor;
   }
-
 
   getContent(column: ITableColumn, content: ITableContent) {
     switch (column.key) {

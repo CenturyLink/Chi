@@ -1,33 +1,33 @@
 <template lang="pug">
-  div
-    h2 Examples
+h2 Examples
 
-    <Base />
-    <Titled />
-    <Arrow />
-    <ReferenceElement />
+ClientOnly(fallback="Loading examples...")
+  BaseExample
+  <Titled />
+  <Arrow />
+  <ReferenceElement />
 
-    div(v-if="$store.state.themes.theme === 'portal'")
-      <InlineModalPortal />
-      <DraggablePortal />
-    div(v-else)
-      <DraggableLumenCenturyLink />
+  div(v-if="selectedTheme === 'portal'")
+    <InlineModalPortal />
+    <DraggablePortal />
+  div(v-else)
+    <DraggableLumenCenturyLink />
 
-    <OpenOnHover />
-    <CloseButton />
-    <Positioning />
-    <Interaction />
-    <AutoHide />
+  <OpenOnHover />
+  <CloseButton />
+  <Positioning />
+  <Interaction />
+  <AutoHide />
 
-    h3 Popover with custom content
-    p.--text Popovers can be used to display any kind of custom content (even other components).
-    
-    <DestructiveActionConfirmation />
-    <TableFilteringPortal v-if="$store.state.themes.theme === 'portal'" />
+  h3 Popover with custom content
+  p.--text Popovers can be used to display any kind of custom content (even other components).
+
+  <DestructiveActionConfirmation />
+  <TableFilteringPortal v-if="selectedTheme === 'portal'" />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Titled from './_titled.vue';
 import Arrow from './_arrow.vue';
@@ -43,9 +43,9 @@ import AutoHide from './_auto-hide.vue';
 import DestructiveActionConfirmation from './_destructive-action-confirmation.vue';
 import TableFilteringPortal from './_portal/_table-filtering.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     Titled,
     Arrow,
     ReferenceElement,
@@ -58,8 +58,10 @@ import TableFilteringPortal from './_portal/_table-filtering.vue';
     Interaction,
     AutoHide,
     DestructiveActionConfirmation,
-    TableFilteringPortal
-  }
+    TableFilteringPortal,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

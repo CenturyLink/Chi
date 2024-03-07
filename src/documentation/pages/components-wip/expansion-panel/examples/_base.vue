@@ -1,12 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p-lg--6" additionalClasses="-bg--grey-10">
-    p.-text(slot="example-description")
+<ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p-lg--6" additionalClasses="-bg--grey-10">
+  template(#example-description)
+    p.-text
       | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
       | This will enable panels to work together as a sequential form. When a panel is activated,
       | the previous expanding panels will get the done state and the next will get the pending state.
-    .-mw--720.-mx--auto(slot="example")
+  template(#example)
+    .-mw--720.-mx--auto
       chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Panel title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
-        div(slot='active')
+        div(slot="active")
           .chi-epanel__subtitle
             | {{ panel.title }}
           p.chi-epanel__text
@@ -17,70 +19,70 @@
           chi-button(@click="active -= 1" v-if="index")
             | Previous
           chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'Finish' : 'Continue' }}
-        chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+        div(slot="change")
+          chi-button(@click="active = index" color="primary" variant="flat")
             | Change
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-vue)
+    Copy(lang="html" :code="codeSnippets.vue" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'vue',
-          label: 'Vue'
+          label: 'Vue',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       active: 0,
       panels: [
         {
-          state: "done",
-          content: "Content in expansion panel (e.g. a form to select a product package)",
-          title: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection"
+          state: 'done',
+          content: 'Content in expansion panel (e.g. a form to select a product package)',
+          title: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection',
         },
         {
-          state: "active",
-          content: "Content in expansion panel (e.g. a form to enter shipping address)",
-          title: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2. (e.g.) shipping address"
+          state: 'active',
+          content: 'Content in expansion panel (e.g. a form to enter shipping address)',
+          title: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 2. (e.g.) shipping address',
         },
         {
-          state: "pending",
-          content: "Content in expansion panel (e.g. a form to select installation date)",
-          title: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3. (e.g.) installation date"
+          state: 'pending',
+          content: 'Content in expansion panel (e.g. a form to select installation date)',
+          title: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 3. (e.g.) installation date',
         },
         {
-          state: "disabled",
-          content: "Content in expansion panel (e.g. a form to enter payment method)",
-          title: "Optional subtitle",
-          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4. (e.g.) payment method"
-        }
+          state: 'disabled',
+          content: 'Content in expansion panel (e.g. a form to enter payment method)',
+          title: 'Optional subtitle',
+          doneContent:
+            'Use this area to present a read-only summary of what the user entered or selected in step 4. (e.g.) payment method',
+        },
       ],
       codeSnippets: {
         webcomponent: `<chi-expansion-panel step="1" title="Panel title" state="active">
@@ -102,8 +104,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
 <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
 `,
-        vue:
-`<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'">
+        vue: `<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'">
   <div slot="active">
     <div class="chi-epanel__subtitle">
       {{ panel.title }}
@@ -285,10 +286,10 @@ data: {
     </div>
   </div>
 </div>
-`
-      }
+`,
+      },
     };
-  }
+  },
 })
 export default class Base extends Vue {}
 </script>

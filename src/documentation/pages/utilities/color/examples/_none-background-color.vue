@@ -6,22 +6,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from '~/models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ITableColumn, type ITableContent } from '~/models/models';
 import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
 import { COLORS } from '~/constants/constants';
 
-@Component({
-  data: () => {
-    return {
-      colors: [
-        COLORS.BG_NONE
-      ]
-    }
-  }
-})
-
+@NuxtComponent({})
 export default class NoneBackgroundColor extends Vue {
+  colors = [COLORS.BG_NONE];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

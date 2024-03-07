@@ -1,38 +1,37 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs" additionalClasses="-text">
-    p.-text(slot="example-description")
-      | Links support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>. 
+<ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs" additionalClasses="-text">
+  template(#example-description)
+    p.-text
+      | Links support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
       | By default, links inherit the font-size of their parent element.
-    <Wrapper slot="example">
-      each size in ['xs', 'sm', 'md', 'lg', 'xl']
-        p.-text--bold= size
-        chi-link(href="#", size=size) Link
-    </Wrapper>
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#example)
+    each size in ['xs', 'sm', 'md', 'lg', 'xl']
+      p.-text--bold= size
+      chi-link(href="#", size=size) Link
+
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
@@ -62,10 +61,10 @@ import { Component, Vue } from 'vue-property-decorator';
 <a class="chi-link -lg" href="#">Link</a>
 
 <!-- xl -->
-<a class="chi-link -xl" href="#">Link</a>`
-      }
+<a class="chi-link -xl" href="#">Link</a>`,
+      },
     };
-  }
+  },
 })
 export default class AdditionalSizes extends Vue {}
 </script>

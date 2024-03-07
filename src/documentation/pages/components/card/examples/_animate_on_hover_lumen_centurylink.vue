@@ -1,7 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Animate on Hover" id="animate_on_hover_lumen_centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description") Animate a card on hover by applying the class <code>-hover--animate</code>.
-    .chi-grid(slot="example")
+<ComponentExample title="Animate on Hover" id="animate_on_hover_lumen_centurylink" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text Animate a card on hover by applying the class <code>-hover--animate</code>.
+  template(#example)
+    .chi-grid
       .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
         .chi-card.-align--center.-hover--animate
           .chi-card__content
@@ -34,32 +36,30 @@
             .chi-card__caption
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web Component'
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
+          label: 'HTML Blueprint',
+        },
       ],
       codeSnippets: {
         webcomponent: ``,
@@ -84,10 +84,10 @@ import { Component, Vue } from 'vue-property-decorator';
       <span class="-text--xs -text--grey">Sublabel</span>
     </div>
   </div>
-</div>`
-      }
+</div>`,
+      },
     };
-  }
+  },
 })
 export default class AnimateOnHoverLumenCenturylink extends Vue {}
 </script>

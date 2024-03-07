@@ -11,19 +11,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import TargetSpecificBreakpoints from './_target-specific-breakpoints.vue';
 import SpecialDisplayClasses from './_special-display-classes.vue';
 import TargetAllBreakpoints from './_target-all-breakpoints.vue';
 import DisplayExamples from './_display-examples.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     TargetAllBreakpoints,
     TargetSpecificBreakpoints,
     SpecialDisplayClasses,
-    DisplayExamples
-  }
+    DisplayExamples,
+  },
 })
 export default class Examples extends Vue {}
 </script>

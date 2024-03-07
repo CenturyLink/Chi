@@ -59,9 +59,7 @@
       | Tab components have a dispose function to free all resources attached to the element, such as event listeners
       | and object data. You should call this method when you want to remove the component.
 
-    <pre class="language-javascript">
-      <code v-highlight="$data.codeMemory1" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory1")
 
     p.-text
       span.chi-badge.-dark.-sm.-mr--1
@@ -69,9 +67,7 @@
       | It is safe to call the tab method more than once, as it will return any previously created tabs component
       | associated with the trigger.
 
-    <pre class="language-javascript">
-    <code v-highlight="$data.codeMemory2" class="javascript"></code>
-    </pre>
+    Copy(:code="codeMemory2" lang="javascript")
 
     h5 chi.navigation()
     p.-text
@@ -80,9 +76,7 @@
       | call to tab and dropdown inner components dispose function as the navigation one will free resources of all
       | internal components automatically.
 
-    <pre class="language-javascript">
-    <code v-highlight="$data.codeMemory3" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory3")
 
     p.-text
       span.chi-badge.-dark.-sm.-mr--1
@@ -90,15 +84,13 @@
       | It is safe to call the <code>navigation</code> factory function more than once, as it will return any previously
       | created navigation component associated to the element.
 
-    <pre class="language-javascript">
-    <code v-highlight="$data.codeMemory4" class="javascript"></code>
-    </pre>
+    Copy(lang="javascript" :code="codeMemory4")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       codeMemory1: `var elem = document.getElementById('example-tabs');
@@ -122,9 +114,9 @@ var elem2 = document.getElementById('navigation-1');
 var navigationComponent2 = chi.navigation(elem2);
 navigationComponent === navigationComponent2; // returns true
 
-navigationComponent.dispose(); // Only have to do it once.`
+navigationComponent.dispose(); // Only have to do it once.`,
     };
-  }
+  },
 })
 export default class Properties extends Vue {}
 </script>

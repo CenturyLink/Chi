@@ -1,8 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Internal" id="internal-brightspeed" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Internal" id="internal-brightspeed" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Show the internal footer for authenticated users.
-    footer.chi-footer(slot='example')
+  template(#example)
+    footer.chi-footer
       .chi-footer__content
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
@@ -21,70 +23,66 @@
               .chi-footer__copyright
                 | &copy; 2024 Lumen Technologies. All Rights Reserved.
                 | Lumen is a registered trademark in the United States, EU and certain other countries.
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    <JSNeeded />
+    Copy(lang="html" :code="codeSnippets.htmlblueprint")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { ILanguage, ILink } from '../../../../models/models';
+import { Vue } from 'vue-facing-decorator';
+import { type ILanguage, type ILink } from '../../../../models/models';
 import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../../../../fixtures/fixtures';
 declare const chi: any;
 
-@Component({
-  data: () => {
-    return {
-      footerLinks: FOOTER_LINKS,
-      languageItems: FOOTER_LANGUAGE_DROPDOWN_ITEMS,
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web Component'
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: ``
-      }
-    };
-  }
-})
+@NuxtComponent({})
 export default class InternalBrightspeed extends Vue {
+  footerLinks = FOOTER_LINKS;
+  languageItems = FOOTER_LANGUAGE_DROPDOWN_ITEMS;
+  exampleTabs = [
+    {
+      disabled: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      active: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: ``,
+    htmlblueprint: ``,
+  };
   dropdown: any;
 
   created() {
-    this._setCodeSnippets()
+    this._setCodeSnippets();
   }
 
   _setCodeSnippets() {
-    let languageOptions = '', footerLinks = '';
+    let languageOptions = '',
+      footerLinks = '';
 
-    this.$data.languageItems.forEach((language: ILanguage, index: number) => {
+    this.languageItems.forEach((language: ILanguage, index: number) => {
       languageOptions += `
-            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${language.href}">${language.name}</a>`;
+            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${language.href}">${
+              language.name
+            }</a>`;
     });
 
-    this.$data.footerLinks.forEach((footerLink: ILink) => {
+    this.footerLinks.forEach((footerLink: ILink) => {
       footerLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''}>${footerLink.title}</a>
-            </li>`
-    })
-    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${
+                footerLink.class ? ' class="' + footerLink.class + '"' : ''
+              }>${footerLink.title}</a>
+            </li>`;
+    });
+    this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
@@ -108,7 +106,7 @@ export default class InternalBrightspeed extends Vue {
   </div>
 </footer>
 
-<script>chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));<\/script>`
+<script>chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));<\/script>`;
   }
 
   mounted() {

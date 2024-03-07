@@ -1,35 +1,22 @@
 <template>
-  <h2
-    v-if="titleSize === 'h2' && showTitle"
-    :class="titleAnchorClassnames"
-    :id="id"
-  >
+  <h2 v-if="titleSize === 'h2' && showTitle" :class="titleAnchorClassnames" :id="id">
     {{ title }}
     <span v-html="anchor" />
   </h2>
-  <h3
-    v-else-if="titleSize === 'h3' && showTitle"
-    :class="titleAnchorClassnames"
-    :id="id"
-  >
+  <h3 v-else-if="titleSize === 'h3' && showTitle" :class="titleAnchorClassnames" :id="id">
     {{ title }}
     <span v-html="anchor" />
   </h3>
-  <h4
-    v-else-if="titleSize === 'h4' && showTitle"
-    :class="titleAnchorClassnames"
-    :id="id"
-  >
+  <h4 v-else-if="titleSize === 'h4' && showTitle" :class="titleAnchorClassnames" :id="id">
     {{ title }}
     <span v-html="anchor" />
   </h4>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { themeNames } from './../store/themes';
+import { Vue, Prop } from 'vue-facing-decorator';
 
-@Component({})
+@NuxtComponent({})
 export default class TitleAnchor extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
@@ -37,12 +24,14 @@ export default class TitleAnchor extends Vue {
   @Prop({ default: true }) showTitle?: boolean;
   @Prop() additionalClasses?: string;
 
-  get anchor() {
-    return `<a class="-ml--1" href="${process.env.BASE_URL}${this.$store.$router.currentRoute.path}?theme=${this.theme}#${this.id}">#</a>`.replace(/\/\//g, '/');
-  }
+  theme = useSelectedTheme();
+  baseUrl = useRuntimeConfig().public.baseUrl;
 
-  get theme() {
-    return themeNames.find((theme: string) => theme === this.$store.state.themes.theme);
+  get anchor() {
+    return `<a class="-ml--1" href="${this.baseUrl}${useRoute().path}?theme=${this.theme}#${this.id}">#</a>`.replace(
+      /\/\//g,
+      '/'
+    );
   }
 
   get titleAnchorClassnames() {

@@ -146,19 +146,17 @@
     p.-text
       | Expansion panel components have a dispose function to free all resources attached to the element, such as event
       | listeners and object data. You should call this method when you want to remove the component.
-    pre.language-javascript
-      code.javascript(v-highlight="$data.code1")
+    Copy(lang="javascript" :code="code1")
     p.-text
       | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
       | expansion panel component associated to the element.
-    pre.language-javascript
-      code.javascript(v-highlight="$data.code2")
+    Copy(lang="javascript" :code="code2")
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       code1: `var elemArray = document.querySelectorAll('[data-chi-epanel-group="groupName"]');
@@ -173,9 +171,9 @@ var elem2 = document.getElementById('expansion-panel-1');
 var expansionPanelComponent2 = chi.expansionPanel(elem2);
 expansionPanelComponent === expansionPanelComponent2; // returns true
 
-expansionPanelComponent.dispose(); // Only have to do it once.`
+expansionPanelComponent.dispose(); // Only have to do it once.`,
     };
-  }
+  },
 })
 export default class Properties extends Vue {}
 </script>

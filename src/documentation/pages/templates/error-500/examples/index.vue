@@ -1,27 +1,29 @@
 <template lang="pug">
   div
-    div(v-if="$store.state.themes.theme === 'lumen' || $store.state.themes.theme === 'portal'")
-      <Base />
+    div(v-if="selectedTheme === 'lumen' || selectedTheme === 'portal'")
+      BaseExample
 
-    div(v-if="$store.state.themes.theme === 'centurylink'")
+    div(v-if="selectedTheme === 'centurylink'")
       <BaseCenturylink />
 
-    div(v-if="$store.state.themes.theme === 'brightspeed'")
+    div(v-if="selectedTheme === 'brightspeed'")
       <BaseBrightspeed />
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BaseCenturylink from './_centurylink/_base_centurylink.vue';
 import BaseBrightspeed from './_brightspeed/_base_brightspeed.vue';
 import Base from './_base.vue';
 
-@Component({
+@NuxtComponent({
   components: {
-    Base,
+    BaseExample: Base,
     BaseCenturylink,
     BaseBrightspeed,
-  }
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

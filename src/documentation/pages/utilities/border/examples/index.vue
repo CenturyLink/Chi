@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import Notation from './_notation.vue';
 import BorderSides from './_border-sides.vue';
 import Breakpoints from './_breakpoints.vue';
@@ -28,7 +28,7 @@ import SemanticBorderColor from './_border-color-semantic.vue';
 import TransparentBorderColor from './_border-color-transparent.vue';
 import ResponsiveBorderColor from './_border-color-responsive.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     Notation,
     BorderSides,
@@ -37,8 +37,8 @@ import ResponsiveBorderColor from './_border-color-responsive.vue';
     BrandBorderColor,
     SemanticBorderColor,
     TransparentBorderColor,
-    ResponsiveBorderColor
-  }
+    ResponsiveBorderColor,
+  },
 })
 export default class Examples extends Vue {}
 </script>

@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   h2 Examples
-  
+
   h3 Bubble
   p.-text
     | Bubble alerts are designed for displaying inline messages and notifications within forms, panels, cards, and other content areas.
@@ -9,13 +9,13 @@ div
 
   <BubbleDefault />
 
-  <div v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
+  <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
     <BubbleCenteredLumenCenturyLink />
     <BubbleTitled />
+    <BubbleSpinner />
     <BubbleSizesLumenCenturyLink />
     <BubbleClosableLumenCenturyLink />
     <BubbleActionable />
-    <BubbleSpinner />
 
     div.chi-divider.-my--6.-bt--2
 
@@ -41,17 +41,17 @@ div
     <ToastSizesLumenCenturyLink />
   </div>
 
-  <div v-if='$store.state.themes.theme === "portal"'>
+  <div v-if='selectedTheme === "portal"'>
     <BubbleTitled />
+    <BubbleSpinner />
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-    <BubbleSpinner />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 import BubbleCenteredLumenCenturyLink from './_bubble_centered_lumen_centurylink.vue';
 import BubbleSizesLumenCenturyLink from './_bubble_sizes_lumen_centurylink.vue';
 import BubbleClosableLumenCenturyLink from './_bubble_closable_lumen_centurylink.vue';
@@ -71,7 +71,7 @@ import BubbleSizesPortal from './_portal/_bubble_sizes.vue';
 import BubbleClosablePortal from './_portal/_bubble_closable.vue';
 import BubbleSpinner from './_bubble_spinner.vue';
 
-@Component({
+@NuxtComponent({
   components: {
     BubbleDefault,
     BubbleCenteredLumenCenturyLink,
@@ -90,8 +90,10 @@ import BubbleSpinner from './_bubble_spinner.vue';
     ToastSizesLumenCenturyLink,
     BubbleSizesPortal,
     BubbleClosablePortal,
-    BubbleSpinner
-  }
+    BubbleSpinner,
+  },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue {
+  selectedTheme = useSelectedTheme();
+}
 </script>

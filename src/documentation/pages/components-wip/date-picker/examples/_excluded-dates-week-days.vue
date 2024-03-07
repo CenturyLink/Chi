@@ -1,25 +1,25 @@
 <template lang="pug">
-  <ComponentExample title="Excluded dates and week days" id="excluded-dates-week-days" :tabs="exampleTabs">
-    p.-text(slot="example-description")
+<ComponentExample title="Excluded dates and week days" id="excluded-dates-week-days" :tabs="exampleTabs">
+  template(#example-description)
+    p.-text
       | Disable dates - <code>excluded-dates="01/23/2024, 05/25/2024"</code>
       br
       | Disable days - <code>excluded-weekdays="0, 6"</code>
-    div(style="max-width: 14rem;" slot="example")
+  template(#example)
+    div(style="max-width: 14rem;")
       chi-label(for='example__datepicker_excluded_days_dates') Date
       chi-date-picker(id="example__datepicker_excluded_days_dates", excluded-dates="01/23/2024, 05/25/2024, 07/03/2024, 09/12/2024, 12/12/2024", excluded-weekdays="0, 6")
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+</ComponentExample>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue } from 'vue-facing-decorator';
 
-@Component({
+@NuxtComponent({
   data: () => {
     return {
       exampleTabs: [
