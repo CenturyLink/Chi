@@ -61,7 +61,7 @@ export class Drawer {
   /**
    *  To define drawer title. Not compatible with noHeader
    */
-  @State() drawerTitle: string;
+  @Prop({ attribute: 'title', reflect: true }) drawerTitle: string;
 
   private animation: ThreeStepsAnimation;
 
@@ -192,15 +192,7 @@ export class Drawer {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this, () => {
-        this.drawerTitle = this.el.title;
-      },
-      { attributes: true, 
-        attributeOldValue: true, 
-        attributeFilter: ['title'], 
-        childList: true 
-      }
-    );
+    addMutationObserver.call(this);
   }
 
   private _documentClickHandler = (ev): void => {
@@ -219,10 +211,6 @@ export class Drawer {
   };
 
   componentWillLoad(): void {
-    if (this.el.getAttribute('title')) {
-      this.drawerTitle = this.el.getAttribute('title');
-    }
-
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
