@@ -32,7 +32,7 @@ export class ExpansionPanel {
   /**
    * to set the title of the panel
    */
-  @State() epanelTitle: string;
+  @Prop({ attribute: 'title', reflect: true }) epanelTitle: string;
 
   /**
    * to render a state icon within the panel
@@ -56,24 +56,10 @@ export class ExpansionPanel {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this, () => 
-      {
-        this.epanelTitle = this.el.title;
-      },
-      { 
-        attributes: true, 
-        attributeOldValue: true, 
-        attributeFilter: ['title'], 
-        childList: true 
-      }
-    );
+    addMutationObserver.call(this);
   }
 
   componentWillLoad() {
-    if (this.el.getAttribute('title')) {
-      this.epanelTitle = this.el.getAttribute('title');
-    }
-
     this.stateValidation(this.state);
   }
 
