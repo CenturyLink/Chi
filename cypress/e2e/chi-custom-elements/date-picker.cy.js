@@ -30,8 +30,8 @@ const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
 import {
-  DATE_PICKER_MINUTESSTEP_VALUES
-} from './common/data-picker-common.cy';
+  DATE_PICKER_MINUTES_STEP_VALUES
+} from './common/date-picker-common.cy';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -486,21 +486,17 @@ describe('Date picker', function() {
       .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
   });
 
-  DATE_PICKER_MINUTESSTEP_VALUES.forEach( (item) => {
-    it(`Date-picker should show minutes by minutesStep = ${+item.minutesStep} `, function() {
+  DATE_PICKER_MINUTES_STEP_VALUES.forEach( (item) => {
+    it(`Date-picker should show minutes by minutesStep = ${+item.minutes} `, function() {
       cy.get(item.el).as('testTimeMinutesStep');
       cy.get(item.picker).as('testTimeMinutesStepPicker');
 
       cy.get('@testTimeMinutesStep')
-        .find('input')
-        .scrollIntoView()
-        .focus()
-        .get('@testTimeMinutesStep')
         .find('chi-popover[active]')
         .should('have.attr', 'active');
 
       cy.get('@testTimeMinutesStepPicker')
-        .should('have.attr', 'minutes-step', parseInt(item.minutesStep) );
+        .should('have.attr', 'minutes-step', parseInt(item.minutes) );
 
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
@@ -510,25 +506,25 @@ describe('Date picker', function() {
       // Iterate through minutes-list to verify its length
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
-        .each((item, index, list) => { })
+        .each((item, index, list) => {})
         .then((list) => {
-          expect(list).to.have.length( 60 / parseInt(item.minutesStep) );
+          expect(list).to.have.length( 60 / parseInt(item.minutes) );
         })
         
       // Select minutes  
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
-        .contains(item.minutesStep)
+        .contains(item.minutes)
         .click();
 
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
-        .contains(item.minutesStep)
+        .contains(item.minutes)
         .should('have.class', '-active');
 
       cy.get('@testTimeMinutesStep')
         .find('input')
-        .should('have.value', `11/22/2018, ${noonHour}:${item.minutesStep}`);
+        .should('have.value', `11/22/2018, ${noonHour}:${item.minutes}`);
     });
   });
 
