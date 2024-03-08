@@ -65,21 +65,17 @@ export class AppLayout {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this, () => {
+    addMutationObserver.call(
+      this,
+      () => {
         if (this.el.title) {
           this.appLayoutTitle = this.el.title;
           this.el.removeAttribute('title');
         }
       },
-      { attributes: true, 
-        attributeOldValue: true, 
-        attributeFilter: ['title'], 
-        childList: true 
-      }
+      { attributes: true, attributeOldValue: true, attributeFilter: ['title'], childList: true }
     );
   }
-
-  disconnectedCallback() {}
 
   componentWillLoad() {
     this.typeValidation(this.format);
