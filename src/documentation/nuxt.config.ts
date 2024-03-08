@@ -9,6 +9,7 @@ import {
   NAVIGATION_FOUNDATIONS_ACCESIBILITY,
   NAVIGATION_GETTING_STARTED_ITEMS,
 } from './constants/constants';
+import { defineNuxtConfig } from 'nuxt/config';
 
 const DOCS_ENV = process.env.DOCS_ENV || '';
 const IS_DEV = DOCS_ENV === 'development';
@@ -25,13 +26,14 @@ const IGNORED_ROUTES = [
   ...NAVIGATION_TEMPLATE_ITEMS,
 ]
   .filter((i) => i.source === 'pug')
-  .map((i) => `/${i.href}`);
+  .map((i) => `${BASE_URL}${i.href}`);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   alias: {},
   // https://nuxt.com/docs/api/nuxt-config#app
   app: {
+    baseURL: BASE_URL,
     // Global page headers: https://nuxt.com/docs/api/nuxt-config#head
     head: {
       meta: [
@@ -106,18 +108,20 @@ export default defineNuxtConfig({
     },
     // Watch files to hot reload.
     server: {
-      watch: ['./pages/**/*.vue', './**/*.ts'],
+      watch: {
+        ignored: ['!./pages/**/*.vue', '!./**/*.ts']
+      }
     },
   },
   nitro: {
     // https://nitro.unjs.io/config#prerender
     prerender: {
+      // uses regex or begins with to match routes
       ignore: [
-        // uses regex or begins with to match routes
         ...IGNORED_ROUTES,
-        '/installation',
+        // should be removed once getting-started has been migrated
         '/getting-started',
-        '../',
+        `${BASE_URL}installation`
       ],
     },
     esbuild: {

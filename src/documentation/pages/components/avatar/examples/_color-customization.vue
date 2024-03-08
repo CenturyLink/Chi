@@ -2,7 +2,7 @@
 ComponentExample(title="Color" id="color" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="headTabChanged")
   template(#example-description)
     p.-text
-      | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
+      | Both icon and initial avatars support <a :href="`${baseUrl}foundations/color/`">Chi colors</a>.
       | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,
       | <code>-pink</code>, <code>-purple</code>, <code>-indigo</code>, <code>-navy</code>, <code>-blue</code>,
       | <code>-teal</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
@@ -28,6 +28,7 @@ import { type IHeadTabs } from '~/models/models';
 
 @NuxtComponent({})
 export default class ColorCustomization extends Vue {
+  baseUrl = useRuntimeConfig().public.baseUrl;
   showIconAvatar = false;
   exampleTabs = [
     {

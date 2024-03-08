@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-02-28T09:21:27",
+  "timestamp": "2024-03-06T18:57:14",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.12.4",
+    "version": "4.12.5",
     "typescriptVersion": "5.3.3"
   },
   "components": [
@@ -276,10 +276,20 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-icon", "chi-spinner", "chi-button"],
+      "dependencies": [
+        "chi-icon",
+        "chi-spinner",
+        "chi-button"
+      ],
       "dependencyGraph": {
-        "chi-alert": ["chi-icon", "chi-spinner", "chi-button"],
-        "chi-button": ["chi-icon"]
+        "chi-alert": [
+          "chi-icon",
+          "chi-spinner",
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -782,14 +792,35 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-alert", "chi-carousel", "chi-dropdown", "chi-popover"],
-      "dependencies": ["chi-icon"],
+      "dependents": [
+        "chi-alert",
+        "chi-carousel",
+        "chi-copy-icon",
+        "chi-dropdown",
+        "chi-popover"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-button": ["chi-icon"],
-        "chi-alert": ["chi-button"],
-        "chi-carousel": ["chi-button"],
-        "chi-dropdown": ["chi-button"],
-        "chi-popover": ["chi-button"]
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-alert": [
+          "chi-button"
+        ],
+        "chi-carousel": [
+          "chi-button"
+        ],
+        "chi-copy-icon": [
+          "chi-button"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ]
       }
     },
     {
@@ -951,10 +982,18 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-button", "chi-icon"],
+      "dependencies": [
+        "chi-button",
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-carousel": ["chi-button", "chi-icon"],
-        "chi-button": ["chi-icon"]
+        "chi-carousel": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -1153,6 +1192,192 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/copy-icon/copy-icon.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-copy-icon",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "IconColors",
+            "resolved": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+            "references": {
+              "IconColors": {
+                "location": "import",
+                "path": "../../constants/color",
+                "id": "src/constants/color.ts::IconColors"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": true,
+          "docs": "Color of the Icon.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
+              "type": "string"
+            },
+            {
+              "value": "grey",
+              "type": "string"
+            },
+            {
+              "value": "info",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            },
+            {
+              "value": "muted",
+              "type": "string"
+            },
+            {
+              "value": "navy",
+              "type": "string"
+            },
+            {
+              "value": "orange",
+              "type": "string"
+            },
+            {
+              "value": "primary",
+              "type": "string"
+            },
+            {
+              "value": "secondary",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "To disable the copy button",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "IconSizes",
+            "resolved": "string",
+            "references": {
+              "IconSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::IconSizes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Size of the icon",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "text",
+          "reflectToAttr": false,
+          "docs": "Text to be copied to clipboard",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiCopy",
+          "detail": "string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicks on copy",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button",
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-copy-icon": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/date/date.tsx",
@@ -1461,11 +1686,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-date-picker"],
-      "dependencies": ["chi-icon"],
+      "dependents": [
+        "chi-date-picker"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-date": ["chi-icon"],
-        "chi-date-picker": ["chi-date"]
+        "chi-date": [
+          "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-date"
+        ]
       }
     },
     {
@@ -2038,13 +2271,33 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-date", "chi-time", "chi-popover", "chi-helper-message", "chi-icon"],
+      "dependencies": [
+        "chi-date",
+        "chi-time",
+        "chi-popover",
+        "chi-helper-message",
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-date-picker": ["chi-date", "chi-time", "chi-popover", "chi-helper-message", "chi-icon"],
-        "chi-date": ["chi-icon"],
-        "chi-popover": ["chi-button"],
-        "chi-button": ["chi-icon"],
-        "chi-helper-message": ["chi-icon"]
+        "chi-date-picker": [
+          "chi-date",
+          "chi-time",
+          "chi-popover",
+          "chi-helper-message",
+          "chi-icon"
+        ],
+        "chi-date": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -2355,9 +2608,13 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-icon"],
+      "dependencies": [
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-drawer": ["chi-icon"]
+        "chi-drawer": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -2973,13 +3230,26 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-search-input", "chi-tabs"],
-      "dependencies": ["chi-button"],
+      "dependents": [
+        "chi-search-input",
+        "chi-tabs"
+      ],
+      "dependencies": [
+        "chi-button"
+      ],
       "dependencyGraph": {
-        "chi-dropdown": ["chi-button"],
-        "chi-button": ["chi-icon"],
-        "chi-search-input": ["chi-dropdown"],
-        "chi-tabs": ["chi-dropdown"]
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-tabs": [
+          "chi-dropdown"
+        ]
       }
     },
     {
@@ -3177,14 +3447,31 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-date-picker", "chi-number-input", "chi-text-input", "chi-textarea"],
-      "dependencies": ["chi-icon"],
+      "dependents": [
+        "chi-date-picker",
+        "chi-number-input",
+        "chi-text-input",
+        "chi-textarea"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-helper-message": ["chi-icon"],
-        "chi-date-picker": ["chi-helper-message"],
-        "chi-number-input": ["chi-helper-message"],
-        "chi-text-input": ["chi-helper-message"],
-        "chi-textarea": ["chi-helper-message"]
+        "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-helper-message"
+        ],
+        "chi-number-input": [
+          "chi-helper-message"
+        ],
+        "chi-text-input": [
+          "chi-helper-message"
+        ],
+        "chi-textarea": [
+          "chi-helper-message"
+        ]
       }
     },
     {
@@ -3348,6 +3635,7 @@
         "chi-alert",
         "chi-button",
         "chi-carousel",
+        "chi-copy-icon",
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
@@ -3359,17 +3647,42 @@
       ],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-alert": ["chi-icon"],
-        "chi-button": ["chi-icon"],
-        "chi-carousel": ["chi-icon"],
-        "chi-date": ["chi-icon"],
-        "chi-date-picker": ["chi-icon"],
-        "chi-drawer": ["chi-icon"],
-        "chi-helper-message": ["chi-icon"],
-        "chi-number-input": ["chi-icon"],
-        "chi-text-input": ["chi-icon"],
-        "chi-textarea": ["chi-icon"],
-        "chi-time-picker": ["chi-icon"]
+        "chi-alert": [
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-carousel": [
+          "chi-icon"
+        ],
+        "chi-copy-icon": [
+          "chi-icon"
+        ],
+        "chi-date": [
+          "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-icon"
+        ],
+        "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-number-input": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
+          "chi-icon"
+        ],
+        "chi-textarea": [
+          "chi-icon"
+        ],
+        "chi-time-picker": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -4365,10 +4678,18 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-icon", "chi-helper-message"],
+      "dependencies": [
+        "chi-icon",
+        "chi-helper-message"
+      ],
       "dependencyGraph": {
-        "chi-number-input": ["chi-icon", "chi-helper-message"],
-        "chi-helper-message": ["chi-icon"]
+        "chi-number-input": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -5933,14 +6254,32 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-search-input", "chi-text-input"],
+      "dependencies": [
+        "chi-search-input",
+        "chi-text-input"
+      ],
       "dependencyGraph": {
-        "chi-phone-input": ["chi-search-input", "chi-text-input"],
-        "chi-search-input": ["chi-dropdown"],
-        "chi-dropdown": ["chi-button"],
-        "chi-button": ["chi-icon"],
-        "chi-text-input": ["chi-icon", "chi-spinner", "chi-helper-message"],
-        "chi-helper-message": ["chi-icon"]
+        "chi-phone-input": [
+          "chi-search-input",
+          "chi-text-input"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
+          "chi-icon",
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -6376,13 +6715,26 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-date-picker", "chi-time-picker"],
-      "dependencies": ["chi-button"],
+      "dependents": [
+        "chi-date-picker",
+        "chi-time-picker"
+      ],
+      "dependencies": [
+        "chi-button"
+      ],
       "dependencyGraph": {
-        "chi-popover": ["chi-button"],
-        "chi-button": ["chi-icon"],
-        "chi-date-picker": ["chi-popover"],
-        "chi-time-picker": ["chi-popover"]
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-date-picker": [
+          "chi-popover"
+        ],
+        "chi-time-picker": [
+          "chi-popover"
+        ]
       }
     },
     {
@@ -6888,13 +7240,25 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-phone-input"],
-      "dependencies": ["chi-dropdown"],
+      "dependents": [
+        "chi-phone-input"
+      ],
+      "dependencies": [
+        "chi-dropdown"
+      ],
       "dependencyGraph": {
-        "chi-search-input": ["chi-dropdown"],
-        "chi-dropdown": ["chi-button"],
-        "chi-button": ["chi-icon"],
-        "chi-phone-input": ["chi-search-input"]
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-phone-input": [
+          "chi-search-input"
+        ]
       }
     },
     {
@@ -6976,11 +7340,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-alert", "chi-text-input"],
+      "dependents": [
+        "chi-alert",
+        "chi-text-input"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-alert": ["chi-spinner"],
-        "chi-text-input": ["chi-spinner"]
+        "chi-alert": [
+          "chi-spinner"
+        ],
+        "chi-text-input": [
+          "chi-spinner"
+        ]
       }
     },
     {
@@ -7414,11 +7785,19 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-dropdown"],
+      "dependencies": [
+        "chi-dropdown"
+      ],
       "dependencyGraph": {
-        "chi-tabs": ["chi-dropdown"],
-        "chi-dropdown": ["chi-button"],
-        "chi-button": ["chi-icon"]
+        "chi-tabs": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -8031,12 +8410,26 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-phone-input"],
-      "dependencies": ["chi-icon", "chi-spinner", "chi-helper-message"],
+      "dependents": [
+        "chi-phone-input"
+      ],
+      "dependencies": [
+        "chi-icon",
+        "chi-spinner",
+        "chi-helper-message"
+      ],
       "dependencyGraph": {
-        "chi-text-input": ["chi-icon", "chi-spinner", "chi-helper-message"],
-        "chi-helper-message": ["chi-icon"],
-        "chi-phone-input": ["chi-text-input"]
+        "chi-text-input": [
+          "chi-icon",
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-phone-input": [
+          "chi-text-input"
+        ]
       }
     },
     {
@@ -8508,10 +8901,18 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-icon", "chi-helper-message"],
+      "dependencies": [
+        "chi-icon",
+        "chi-helper-message"
+      ],
       "dependencyGraph": {
-        "chi-textarea": ["chi-icon", "chi-helper-message"],
-        "chi-helper-message": ["chi-icon"]
+        "chi-textarea": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
+        ]
       }
     },
     {
@@ -8718,11 +9119,18 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": ["chi-date-picker", "chi-time-picker"],
+      "dependents": [
+        "chi-date-picker",
+        "chi-time-picker"
+      ],
       "dependencies": [],
       "dependencyGraph": {
-        "chi-date-picker": ["chi-time"],
-        "chi-time-picker": ["chi-time"]
+        "chi-date-picker": [
+          "chi-time"
+        ],
+        "chi-time-picker": [
+          "chi-time"
+        ]
       }
     },
     {
@@ -9027,11 +9435,23 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": ["chi-popover", "chi-time", "chi-icon"],
+      "dependencies": [
+        "chi-popover",
+        "chi-time",
+        "chi-icon"
+      ],
       "dependencyGraph": {
-        "chi-time-picker": ["chi-popover", "chi-time", "chi-icon"],
-        "chi-popover": ["chi-button"],
-        "chi-button": ["chi-icon"]
+        "chi-time-picker": [
+          "chi-popover",
+          "chi-time",
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
       }
     }
   ],
@@ -9050,6 +9470,16 @@
       "declaration": "\"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/states.ts"
+    },
+    "src/constants/size.ts::IconSizes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/color.ts::IconColors": {
+      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "docstring": "",
+      "path": "src/constants/color.ts"
     },
     "src/constants/constants.ts::DataLocales": {
       "declaration": "\"es\" | \"en\" | \"pt\" | \"fr\" | \"de\" | \"ja\" | \"zh\"",
@@ -9080,16 +9510,6 @@
       "declaration": "\"normal\"",
       "docstring": "",
       "path": "src/constants/types.ts"
-    },
-    "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
-      "docstring": "",
-      "path": "src/constants/color.ts"
-    },
-    "src/constants/size.ts::IconSizes": {
-      "declaration": "string",
-      "docstring": "",
-      "path": "src/constants/size.ts"
     },
     "src/constants/size.ts::MarketingIconSizes": {
       "declaration": "string",
