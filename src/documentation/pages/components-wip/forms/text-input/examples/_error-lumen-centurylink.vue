@@ -13,8 +13,8 @@
           chi-text-input(
             id="example__danger"
             state="danger"
-            )
-          .chi-label.-status.-danger Please enter a name.
+            helper-message="Please enter a name"
+          )
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -42,13 +42,15 @@ import { Vue } from 'vue-facing-decorator';
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
   <chi-label for="example__danger">Name</chi-label>
-  <chi-text-input id="example__danger" state="danger"></chi-text-input>
-  <div class="chi-label -status -danger">Please enter a name.</div>
+  <chi-text-input id="example__danger" state="danger" helper-message="Please enter a name"></chi-text-input>
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__danger">Name</label>
   <input type="text" class="chi-input -danger" id="example__danger">
-  <div class="chi-label -status -danger">Please enter a name.</div>
+  <div class="chi-label -status -danger">
+    <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+    Please enter a name
+  </div>
 </div>`,
       },
     };
