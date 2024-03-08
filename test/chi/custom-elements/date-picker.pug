@@ -12,6 +12,7 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 - const date2 = '01/24/2019';
 - const mode = 'datetime';
 - const timeFormat = '24hr';
+- const minutesStep = [1,5,10,15,20,30];
 
 .test-active.-py--2(data-cy="test-active")
   span.-text--h2 Active
@@ -58,20 +59,11 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
     .-position--relative(style="width:14rem;")
       chi-date-picker(data-cy="test-time-format-24hr-picker" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, active)
 
-.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-1", style="height: 450px;")
-  span.-text--h2 Date Picker with minutesStep = 5
-    .-position--relative(style="width:14rem;")
-      chi-date-picker(data-cy="test-time-minutesStep-picker-1" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step="5", active)
-
-.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-2", style="height: 450px;")
-  span.-text--h2 Date Picker with minutesStep = 30
-    .-position--relative(style="width:14rem;")
-      chi-date-picker(data-cy="test-time-minutesStep-picker-2" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step="30", active)
-
-.test-time-format-24hr-picker.-py--2(data-cy="test-time-minutesStep-section-3", style="height: 450px;")
-  span.-text--h2 Date Picker with no value provided in minutesStep (default)
-    .-position--relative(style="width:14rem;")
-      chi-date-picker(data-cy="test-time-minutesStep-picker-3" value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step, active)
+each min in minutesStep
+  div(data-cy=`test-time-minutesStep-section-${min}`, style="height: 450px;", class=`test-time-minutesStep-section-${min} -py--2`)
+    span.-text--h2 Date Picker with minutesStep = #{min}
+      .-position--relative(style="width:14rem;")
+        chi-date-picker(data-cy=`test-time-minutesStep-picker-${min}` value='11/22/2018, 00:00', min=dateMin, mode=mode, time-format=timeFormat, minutes-step=`${min}`, active)
 
 .test-time-format-24hr-view.-py--2(data-cy="test-time-format-24hrx")
   span.-text--h2 Test time format view
