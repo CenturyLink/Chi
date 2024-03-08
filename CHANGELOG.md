@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 5.52.0 (March 7, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Text input accessibility page.
+- Added: Textarea accessibility page.
+
 ## 5.51.1 (March 4, 2024)
 
 ### Documentation
