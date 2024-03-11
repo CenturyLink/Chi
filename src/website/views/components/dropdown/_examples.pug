@@ -781,7 +781,7 @@ p.-text
     | There is an available property, <code>icon</code>, which allows adding an icon as the dropdown trigger.
   .example.-mb--3
     .-p--3
-      chi-dropdown(icon="more-vert" icon-data-tooltip="More options" icon-alternative-text="More options")
+      chi-dropdown(icon="more-vert" icon-data-tooltip="More options")
         a.chi-dropdown__menu-item(slot='menu') Item 1
         a.chi-dropdown__menu-item(slot='menu') Item 2
         a.chi-dropdown__menu-item(slot='menu') Item 3
@@ -794,7 +794,7 @@ p.-text
           a(href=`#html-dropdown-icon`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-dropdown-icon
       :code(lang="html")
-        <chi-dropdown icon="more-vert" icon-data-tooltip="More options" icon-alternative-text="More options">
+        <chi-dropdown icon="more-vert" icon-data-tooltip="More options">
           <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
           <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
           <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
@@ -803,7 +803,7 @@ p.-text
     .chi-tabs-panel#html-dropdown-icon
       :code(lang="html")
         <div class="chi-dropdown">
-          <button id="example__dropdown-icon" class="chi-button chi-dropdown__trigger chi__dropdown-icon" 
+          <button id="example__dropdown-icon" class="chi-button chi-dropdown__trigger chi-dropdown__icon" 
             aria-label="More options" data-tooltip="More options"> 
             <div class="chi-button__content">
               <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
@@ -828,7 +828,7 @@ p.-text
     | There is available property <code>icon</code> which allows to add an icon as the dropdown trigger.
   .example.-mb--3
     .-p--3
-      chi-dropdown(icon="more-vert" variant="flat" icon-data-tooltip="More options" icon-alternative-text="More options")
+      chi-dropdown(icon="more-vert" variant="flat" icon-data-tooltip="More options")
         a.chi-dropdown__menu-item(slot='menu') Item 1
         a.chi-dropdown__menu-item(slot='menu') Item 2
         a.chi-dropdown__menu-item(slot='menu') Item 3
@@ -841,7 +841,7 @@ p.-text
           a(href=`#html-portal-dropdown-icon`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-dropdown-icon
       :code(lang="html")
-        <chi-dropdown icon="more-vert" variant="flat" icon-data-tooltip="More options" icon-alternative-text="More options">
+        <chi-dropdown icon="more-vert" variant="flat" icon-data-tooltip="More options">
           <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
           <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
           <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
@@ -850,7 +850,7 @@ p.-text
     .chi-tabs-panel#html-portal-dropdown-icon
       :code(lang="html")
         <div class="chi-dropdown">
-          <button id="example__dropdown-icon" class="chi-button -flat chi-dropdown__trigger chi__dropdown-icon" 
+          <button id="example__dropdown-icon" class="chi-button -flat chi-dropdown__trigger chi-dropdown__icon" 
             aria-label="More options" data-tooltip="More options"> 
             <div class="chi-button__content">
               <i class="chi-icon icon-more-vert" aria-hidden="true"></i>

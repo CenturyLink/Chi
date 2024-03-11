@@ -5,7 +5,7 @@
       | There is an available property, <code>icon</code>, which allows adding an icon as the dropdown trigger.
   template(#example)
     .chi-dropdown
-      button#example__dropdown-icon.chi-button.chi-dropdown__trigger.chi__dropdown-icon(aria-label="More options" data-tooltip="More options")
+      button#example__dropdown-icon.chi-button.chi-dropdown__trigger.chi-dropdown__icon(aria-label="More options" data-tooltip="More options")
         .chi-button__content
           i.chi-icon.icon-more-vert(aria-hidden="true")
       .chi-dropdown__menu
@@ -42,7 +42,7 @@ export default {
     const codeSnippets = {
       webcomponent: ``,
       htmlblueprint: `<div class="chi-dropdown">
-    <button id="example__dropdown-icon" class="chi-button chi-dropdown__trigger chi__dropdown-icon" 
+    <button id="example__dropdown-icon" class="chi-button chi-dropdown__trigger chi-dropdown__icon" 
     aria-label="More options" data-tooltip="More options"> 
         <div class="chi-button__content">
             <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
