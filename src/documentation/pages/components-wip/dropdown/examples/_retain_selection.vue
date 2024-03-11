@@ -1,18 +1,18 @@
 <template lang="pug">
 <ComponentExample title="Retain selection" id="retain_selection" :tabs="exampleTabs">
-      template(#example-description)
-        p.-text
-            | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
-            | as active and see the selected item when the dropdown is closed.
-      template(#example)
-        .chi-dropdown(ref="dropdownElement")
-            button#example__dropdown-retain-selection.chi-button.chi-dropdown__trigger.-d--flex.-justify-content--between(style="width: 180px;") {{ selectedItem }}
-            .chi-dropdown__menu
-                a.chi-dropdown__menu-item(v-for="item in items" :key="item" :class="{'-active': selectedItem === item}" @click="onChange") {{ item }}
-      template(#code-webcomponent)
-        Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-      template(#code-htmlblueprint)
-        Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+  template(#example-description)
+    p.-text
+      | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
+      | as active and see the selected item when the dropdown is closed.
+  template(#example)
+    .chi-dropdown(ref="dropdownElement")
+      button#example__dropdown-retain-selection.chi-button.chi-dropdown__trigger.-d--flex.-justify-content--between(style="width: 180px;") {{ selectedItem }}
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(v-for="item in items" :key="item" :class="{'-active': selectedItem === item}" @click="onChange") {{ item }}
+  template(#code-webcomponent)
+    Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
 </ComponentExample>
 </template>
 
