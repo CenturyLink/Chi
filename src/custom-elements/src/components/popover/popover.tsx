@@ -5,6 +5,7 @@ import { Drag } from '../../utils/Drag';
 import { ANIMATION_DURATION, CLASSES, ESCAPE_KEYCODE } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
 import { POPOVER_CLASSES } from '../../constants/classes';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-popover',
@@ -71,7 +72,7 @@ export class Popover {
   /**
    *  To define popover title
    */
-  @State() popoverTitle: string;
+  @Prop({ attribute: 'title', reflect: true }) popoverTitle: string;
 
   /**
    *  To define popover footer
@@ -93,7 +94,6 @@ export class Popover {
   private _closePreventedTimeout: number;
   private _documentClickHandler: () => void;
   private _documentKeyHandler: (event: KeyboardEvent) => void;
-  private mutationObserver;
   private _drag: Drag;
 
   @Watch('position')
@@ -335,24 +335,7 @@ export class Popover {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title'],
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.popoverTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+    addMutationObserver.call(this, undefined, { childList: true, subtree: true } );
   }
 
   componentWillLoad(): void {
@@ -360,10 +343,6 @@ export class Popover {
     this.referenceElementChanged(this.reference);
     if (this.active) {
       this._animationClasses = CLASSES.ACTIVE;
-    }
-
-    if (this.el.getAttribute('title')) {
-      this.popoverTitle = this.el.getAttribute('title');
     }
 
     if (Array.from(this.el.querySelectorAll(`[slot=${POPOVER_CLASSES.FOOTER}]`)).length > 0) {
@@ -404,7 +383,6 @@ export class Popover {
     this._componentLoaded = false;
     document.removeEventListener('click', this._documentClickHandler);
     document.removeEventListener('keyup', this._documentKeyHandler);
-    this.mutationObserver.disconnect();
   }
 
   componentDidUpdate(): void {

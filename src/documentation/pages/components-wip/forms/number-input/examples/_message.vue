@@ -6,7 +6,7 @@
   template(#example)
     .chi-form__item
       chi-label(for="unique-id-me1") Label
-      chi-number-input#unique-id-me1(helper-message="Optional helper message.")
+      chi-number-input#unique-id-me1(helper-message="Optional helper message")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -34,7 +34,7 @@ import { Vue } from 'vue-facing-decorator';
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-me1">Label</chi-label>
-<chi-number-input id="unique-id-me1" helper-message="Optional helper message."></chi-number-input>`,
+<chi-number-input id="unique-id-me1" helper-message="Optional helper message"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="unique-id-me1">Label</label>
   <div class="chi-number-input">
