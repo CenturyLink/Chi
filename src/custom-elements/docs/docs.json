@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-03-06T18:57:14",
+  "timestamp": "2024-03-11T11:19:16",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.12.5",
@@ -2352,6 +2352,27 @@
           "required": false
         },
         {
+          "name": "drawerTitle",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "To define drawer title. Not compatible with noHeader",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "noHeader",
           "type": "boolean",
           "complexType": {
@@ -3276,6 +3297,27 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "epanelTitle",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to set the title of the panel",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -6393,6 +6435,27 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "popoverTitle",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "To define popover title",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
