@@ -52,7 +52,7 @@ $transition-duration: 0.2s;
 
     @include respond-to(sm) {
       & > .chi-epanel__number {
-        width: 7.5%;
+        width: 5%;
 
         & ~ .chi-epanel__title,
         & ~ .chi-epanel__name {
