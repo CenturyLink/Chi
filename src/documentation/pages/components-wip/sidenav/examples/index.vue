@@ -9,7 +9,7 @@
       h2 Active Usage
       p.-text
         | The <code>-active</code> class can be applied to <code>ul.chi-sidenav__list &gt; li</code>
-        | for activating the elements in the sidenav menu, <code>.drawer</code> for opening the <a href="/components/drawer/">drawer</a>,
+        | for activating the elements in the sidenav menu, <code>.drawer</code> for opening the <a :href="`${baseUrl}components/drawer/`">drawer</a>,
         | and <code>ul.chi-sidenav__drawer-list &gt; li</code> for activating the menu items inside the drawer.
 
       h2 Sizes
@@ -42,5 +42,6 @@ import RecommendedLayout from './_recommended-layout.vue';
 })
 export default class Examples extends Vue {
   selectedTheme = useSelectedTheme();
+  baseUrl = useRuntimeConfig().public.baseUrl;
 }
 </script>
