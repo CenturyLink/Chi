@@ -2,7 +2,7 @@
 <ComponentExample title="Retain selection" id="retain_selection" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-      | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
+      | There is an available property, <code>retain-selection</code>, which allows retaining the selected item in the dropdown 
       | as active and see the selected item when the dropdown is closed.
   template(#example)
     .chi-dropdown(ref="dropdownElement")
@@ -36,28 +36,32 @@ export default {
 
     const exampleTabs = [
       {
-        disabled: true,
+        active: true,
         id: 'webcomponent',
         label: 'Web Component',
       },
       {
-        active: true,
         id: 'htmlblueprint',
         label: 'HTML Blueprint',
       },
     ];
 
     const codeSnippets = {
-      webcomponent: ``,
+      webcomponent: `<chi-dropdown button="Dropdown, click me" retain-selection>
+  <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
+  <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
+  <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
+  <a class="chi-dropdown__menu-item" slot="menu">Item 4</a>
+</chi-dropdown>`,
       htmlblueprint: `<div class="chi-dropdown">
-    <button id="example__dropdown-retain-selection" style="width: 180px;"
-    class="chi-button chi-dropdown__trigger -d--flex -justify-content--between">Dropdown, click me</button>
-    <div class="chi-dropdown__menu">
-      <a class="chi-dropdown__menu-item">Item 1</a>
-      <a class="chi-dropdown__menu-item">Item 2</a>
-      <a class="chi-dropdown__menu-item">Item 3</a>
-      <a class="chi-dropdown__menu-item">Item 4</a>
-    </div>
+  <button id="example__dropdown-retain-selection" style="width: 180px;"
+  class="chi-button chi-dropdown__trigger -d--flex -justify-content--between">Dropdown, click me</button>
+  <div class="chi-dropdown__menu">
+    <a class="chi-dropdown__menu-item">Item 1</a>
+    <a class="chi-dropdown__menu-item">Item 2</a>
+    <a class="chi-dropdown__menu-item">Item 3</a>
+    <a class="chi-dropdown__menu-item">Item 4</a>
+  </div>
 </div>
 
 <\script>

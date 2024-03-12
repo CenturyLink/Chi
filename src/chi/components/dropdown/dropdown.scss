@@ -365,6 +365,10 @@
     &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
       color: $dropdown-button-text-color;
 
+      &.chi-dropdown__icon {
+        color: $dropdown-trigger-icon-color;
+      }
+
       &:not(.-flat) {
         border: $dropdown-button-border-width solid $dropdown-button-border-color;
 
