@@ -2845,6 +2845,48 @@
           "required": false
         },
         {
+          "name": "icon",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "icon",
+          "reflectToAttr": false,
+          "docs": "To provide the name of an icon to display as trigger of the Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "iconTooltipMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "icon-tooltip-message",
+          "reflectToAttr": false,
+          "docs": "To provide icon data tooltip",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "complexType": {
@@ -3256,10 +3298,12 @@
         "chi-tabs"
       ],
       "dependencies": [
+        "chi-icon",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-dropdown": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
@@ -3681,6 +3725,7 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
+        "chi-dropdown",
         "chi-helper-message",
         "chi-number-input",
         "chi-text-input",
@@ -3708,6 +3753,9 @@
           "chi-icon"
         ],
         "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-dropdown": [
           "chi-icon"
         ],
         "chi-helper-message": [
@@ -6309,6 +6357,7 @@
           "chi-dropdown"
         ],
         "chi-dropdown": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
@@ -7314,6 +7363,7 @@
           "chi-dropdown"
         ],
         "chi-dropdown": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
@@ -7856,6 +7906,7 @@
           "chi-dropdown"
         ],
         "chi-dropdown": [
+          "chi-icon",
           "chi-button"
         ],
         "chi-button": [
