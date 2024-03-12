@@ -87,7 +87,7 @@ const DROPDOWN_DATA_CY = {
 };
 const DROPDOWN_TRIGGER = '.chi-button.chi-dropdown__trigger';
 const DROPDOWN_MENU = '.chi-dropdown__menu';
-const DROPDOWN_ICON = '.chi-dropdown__icon';
+const DROPDOWN_ICON = 'chi-dropdown__icon';
 const DROPDOWN_MENU_ITEM = '.chi-dropdown__menu-item';
 const ACTIVE_CLASS = '-active';
 

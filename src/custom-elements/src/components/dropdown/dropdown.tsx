@@ -237,7 +237,7 @@ export class Dropdown {
   }
 
   _createTooltip() {
-    if (!chi.icon || !this.iconTooltipMessage) return;
+    if (!this.icon || !this.iconTooltipMessage) return;
 
     this._tooltip = chi.tooltip(this.el.querySelector('[data-tooltip]'));
   }
