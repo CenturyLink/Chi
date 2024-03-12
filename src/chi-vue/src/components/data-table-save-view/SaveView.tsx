@@ -170,7 +170,7 @@ export default class SaveView extends Vue {
     this.mainLabel = this.config.label?.main || defaultConfig.label?.main;
     this.inputLabel = this.config.input?.label || defaultConfig.input?.label;
     this.resultsLabel = this.config.label?.results || defaultConfig.label?.results;
-    this.saveButtonDisabled = !!this.config.saveButtonDisabled || defaultConfig.saveButtonDisabled;
+    this.saveButtonDisabled = this.config.saveButtonDisabled ?? defaultConfig.saveButtonDisabled;
   }
 
   render() {

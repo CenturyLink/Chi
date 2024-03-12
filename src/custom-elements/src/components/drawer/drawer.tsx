@@ -3,6 +3,7 @@ import { CARDINAL_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION, CLASSES } from '../../constants/constants';
 import { contains } from '../../utils/utils';
+import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
   tag: 'chi-drawer',
@@ -60,11 +61,10 @@ export class Drawer {
   /**
    *  To define drawer title. Not compatible with noHeader
    */
-  @State() drawerTitle: string;
+  @Prop({ attribute: 'title', reflect: true }) drawerTitle: string;
 
   private animation: ThreeStepsAnimation;
 
-  private mutationObserver;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -192,24 +192,7 @@ export class Drawer {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title'],
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.drawerTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+    addMutationObserver.call(this);
   }
 
   private _documentClickHandler = (ev): void => {
@@ -228,10 +211,6 @@ export class Drawer {
   };
 
   componentWillLoad(): void {
-    if (this.el.getAttribute('title')) {
-      this.drawerTitle = this.el.getAttribute('title');
-    }
-
     this.positionValidation(this.position);
     this._animationClasses = this.active ? CLASSES.ACTIVE : '';
     this._backdropAnimationClasses = this.active ? '' : CLASSES.CLOSED;
@@ -243,7 +222,6 @@ export class Drawer {
 
   disconnectedCallback() {
     document.removeEventListener('click', this._documentClickHandler);
-    this.mutationObserver.disconnect();
   }
 
   render() {
