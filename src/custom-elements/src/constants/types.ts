@@ -36,6 +36,13 @@ export interface DropdownMenuItem {
   href: string;
 }
 
+export interface Time {
+  hour: number;
+  minute: number;
+  second?: number;
+  period: string;
+}
+
 export enum TabTriggerSizes {
   Height = 'height',
   Width = 'width'
