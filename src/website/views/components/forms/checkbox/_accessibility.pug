@@ -1,85 +1,87 @@
 h2 Accessibility
 h3 Keyboard Navigation
 table.chi-table
-  thead
-    tr  
-      th Key
-      th Function
-  tbody
-    tr
-      td <code>Tab</code>
-      td Moves focus to the next focusable element          
-    tr
-      td <code>Shift + Tab</code>
-      td Moves focus to the previous focusable element       
-    tr
-      td <code>Space</code>
-      td Toggles checkbox between checked and unchecked states
-h3 Roles and attributes
+thead
+  tr  
+    th Key
+    th Function
+tbody
+  tr
+    td <code>Tab</code>
+    td Moves focus to the next focusable element          
+  tr
+    td <code>Shift + Tab</code>
+    td Moves focus to the previous focusable element       
+  tr
+    td <code>Space</code>
+    td Toggles checkbox between checked and unchecked states
 p.-text
-  | The list below describes roles and attributes that component already has  
-table.chi-table
-  thead
-    tr
-      th.-pr--8 Role                   
-      th.-pr--8 Attribute  
-      th Element
-      th Usage
-  tbody
-    tr
-      td <code>checkbox</code>
-      td 
-      td <code>div</code>
-      td Identifies the <code>div</code> element as a checkbox. The child text content of this div provides the accessible name of the checkbox          
-    tr
-      td 
-      td <code>tabIndex="0"</code>
-      td <code>div</code>
-      td Includes the checkbox in the page <code>Tab</code> sequence       
-    tr
-      td 
-      td <code>aria-invalid</code>
-      td <code>input</code>
-      td Turns to true if <code>state=invalid</code> is provided
+| For comprehensive details on keyboard support for input fields, refer to our <a href="https://lib.lumen.com/chi/5.52.0/foundations/accessibility/using-keyboard/">Keyboard Control Guide.</a>
+p.-text
+| Visit <a href="https://webaim.org/techniques/keyboard/">WebAIM</a> for keyboard techniques.
 
-h3 Considerations for developers
-ul.-text
-  li Some assistive technology reads the legend text for each fieldset, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
-  li The <code>fieldset</code> surrounds the entire grouping of checkboxes or radio buttons. The <code>legend</code> provides a description for the grouping.
+.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
+    .chi-card.-widget
+      .chi-card__header 
+        .chi-card__title.-text--normal Guidance for developers
+      .chi-card__content 
+        .chi-card__caption
+          ul.-text
+            li Use clear and descriptive labels for checkboxes to help users understand their purpose.
+            li Ensure each checkbox has an associated <code>label</code> element using the <code>for</code> attribute to match the <code>id</code> attribute of the checkbox.
+            li Assign unique <code>id</code> attributes to each checkbox to maintain accessibility and prevent conflicts.
+            li The <code>fieldset</code> surrounds the entire grouping of checkboxes or radio buttons. The <code>legend</code> provides a description for the grouping.
+            li Use the <code>aria-describedby</code> attribute to associate error messages with checkboxes for accessibility.
+            li Ensure that error messages are tagged with unique id attributes and referenced correctly with <code>aria-describedby</code> on corresponding checkboxes. 
+  
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
+    .chi-card.-widget
+      .chi-card__header 
+        .chi-card__title.-text--normal Guidance for designers
+      .chi-card__content 
+        .chi-card__caption 
+          ul.-text
+            li Ensure focus indicators are clearly visible to aid navigation for keyboard users.
+            li Keep input labels visible, even when fields are focused.
+            li Use contrasting colors for text and backgrounds to enhance readability.
+            li Design clear error states and feedback for accessibility.
+            li Use spacing, typography, and visual cues effectively.
+            li Maintain consistency in the design of checkboxes to provide a cohesive user experience.
 
 p.-text 
-  | Find live examples in the <a href="https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes" target="_blank">A11y style guide</a>.  
+| Find live examples in the <a href="https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes" target="_blank">A11y style guide</a>.  
 
 h3 Roles and attributes
 p.-text 
-  | The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+| WAI-ARIA provides a grouping role that functions similarly to fieldset and legend.
 table.chi-table
-  thead
-    tr
-      th Role
-      th Element
-      th Usage
-  tbody
-    tr
-      td <code>group</code>
-      td <code>div</code>
-      td Identifies the <code>div</code> element as a group container for the checkboxes.
+thead
+  tr
+    th Role
+    th Element
+    th Usage
+tbody
+  tr
+    td <code>group</code>
+    td <code>div</code>
+    td Identifies the <code>div</code> element as a group container for the checkboxes.
 
 h3 Resources
 ul.-text
-  li
-    a(href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox/") W3 checkbox example: 
-    | Detailed information about the accordion accessible behavior.
-  li
-    a(href="https://a11y-style-guide.com/ ") A11y Style Guide:  
-    | Gives core recommendations for the accessible checkboxes. 
-  li  
-    a(href="https://www.w3.org/WAI/tutorials/forms/") W3C Forms Tutorial:  
-    | Provides guidance on creating accessible forms.
-  li  
-    a(href="https://www.digitala11y.com/") DigitalA11y Project: 
-    | Find examples of accessible checkboxes
+li
+  a(href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox/") W3 checkbox example: 
+  |  Information about the accordion accessible behavior.
+li
+  a(href="https://a11y-style-guide.com/ ") A11y Style Guide:  
+  | Gives core recommendations for the accessible checkboxes. 
+li  
+  a(href="https://www.w3.org/WAI/tutorials/forms/") W3C Forms Tutorial:  
+  | Provides guidance on creating accessible forms.
+li  
+  a(href="https://www.digitala11y.com/") DigitalA11y Project: 
+  | Find examples of accessible checkboxes.
 
 h3 Other recommendations
 p.-text
-  | Explore additional accessibility tips in the general <a href="https://assets.ctl.io/chi/5.51.1/foundations/accessibility/overview/">Accessibility Guide.</a>
+| Explore additional accessibility tips in the general <a href="https://lib.lumen.com/chi/5.52.0/foundations/accessibility/overview">Accessibility Guide.</a>
