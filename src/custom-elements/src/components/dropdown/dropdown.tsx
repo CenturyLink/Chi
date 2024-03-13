@@ -46,7 +46,7 @@ export class Dropdown {
    */
   @Prop() icon?: string;
   /**
-   * To provide icon data tooltip
+   * To provide icon tooltip message
    */
   @Prop() iconTooltipMessage?: string;
   /**

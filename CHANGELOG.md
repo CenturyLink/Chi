@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 5.53.0 (March 13, 2024)
+
+### Components
+
+#### Added
+
+- Added: Date picker web component now supports `mutationObserver` functionality.
+- Added: Drawer web component now supports `mutationObserver` functionality.
+- Added: App layout web component now supports `mutationObserver` functionality.
+- Added: Popover web component now supports `mutationObserver` functionality.
+- Added: Expansion panel web component now supports `mutationObserver` functionality.
+- Added: Dropdown web component now supports `icon` attribute.
+
+#### Changed
+
+- Changed: Expansion panel width between step number and title has been increased.
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Helper message in text input, number input and date picker examples have removed period for consistency with Brand guidelines.
+
 ## 5.52.0 (March 7, 2024)
 
 ### Documentation
