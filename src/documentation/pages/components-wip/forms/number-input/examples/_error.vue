@@ -8,7 +8,7 @@
   template(#example)
     .chi-form__item
       chi-label(for="unique-id-er1") Quantity
-      chi-number-input#unique-id-er1(inputstyle="danger" helper-message="Please enter a quantity.")
+      chi-number-input#unique-id-er1(inputstyle="danger" helper-message="Please enter a quantity")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -36,7 +36,7 @@ import { Vue } from 'vue-facing-decorator';
       ],
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-er1">Quantity</chi-label>
-<chi-number-input id="unique-id-er1" inputstyle="danger" helper-message="Please enter a quantity."></chi-number-input>`,
+<chi-number-input id="unique-id-er1" inputstyle="danger" helper-message="Please enter a quantity"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="unique-id-er1">Quantity</label>
   <div class="chi-number-input">
@@ -44,7 +44,10 @@ import { Vue } from 'vue-facing-decorator';
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
-  <div class="chi-label -status -danger">Please enter a quantity.</div>
+  <div class="chi-label -status -danger">
+    <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+    Please enter a quantity
+  </div>
 </div>
 
 <script>chi.numberInput(document.getElementById('unique-id-er1'));<\/script>`,
