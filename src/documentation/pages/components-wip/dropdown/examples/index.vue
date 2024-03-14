@@ -21,6 +21,8 @@
     <Icons />
     <SearchBox />
     <VisibleItems />
+    <RetainSelection />
+    <IconTrigger />
 
     h3 Checkboxes
     <CheckboxesBase />
@@ -58,6 +60,8 @@ import PlainText from './_plain_text.vue';
 import TruncateLongMenuItems from './_truncate_long_menu_items.vue';
 import FlexibleHeight from './_flexible_height.vue';
 import VisibleItems from './_visible_items.vue';
+import RetainSelection from './_retain_selection.vue';
+import IconTrigger from './_icon_trigger.vue';
 
 @NuxtComponent({
   components: {
@@ -81,6 +85,8 @@ import VisibleItems from './_visible_items.vue';
     ToggleSwitch,
     TruncateLongMenuItems,
     VisibleItems,
+    RetainSelection,
+    IconTrigger
   },
 })
 export default class Examples extends Vue {}
