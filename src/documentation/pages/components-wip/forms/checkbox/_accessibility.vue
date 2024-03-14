@@ -51,7 +51,7 @@
               li Maintain consistency in the design of checkboxes to provide a cohesive user experience.
   
   p.-text 
-      | Find live examples in the <a href="https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes" target="_blank">A11y style guide</a>.  
+    | Find live examples in the <a href="https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes" target="_blank">A11y style guide</a>.  
     
   h3 Roles and attributes
   p.-text 
@@ -72,7 +72,7 @@
   ul.-text
     li
       a(href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/examples/checkbox/") W3 checkbox example: 
-      |  Information about the accordion accessible behavior.
+      | Information about the accordion accessible behavior.
     li
       a(href="https://a11y-style-guide.com/ ") A11y Style Guide:  
       | Gives core recommendations for the accessible checkboxes. 
@@ -88,12 +88,12 @@
     | Explore additional accessibility tips in the general <a :href="`${CHI_URL}/foundations/accessibility/overview`">Accessibility Guide.</a>
 </template>
  
- <script lang="ts">
+<script lang="ts">
   import { Vue } from 'vue-facing-decorator';
   import { TEMP_DEVELOPMENT_FALLBACK_URL as CHI_URL } from '~/constants/constants';
   
   @NuxtComponent({})
   export default class Accessibility extends Vue { 
-  CHI_URL = CHI_URL
+    CHI_URL = CHI_URL
   }
-  </script>
+</script>
