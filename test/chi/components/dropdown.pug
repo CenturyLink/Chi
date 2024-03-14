@@ -85,6 +85,43 @@ div(class=`test-dropdown-icons -w--100`)
             use(xlink:href='#icon-logout')
         = "Logout"
 
+div(class=`test-dropdown-icons-right -w--100` style='width: 500px; height: 350px;')
+  span.-text--h2 Icons Right Aligned
+  .-d--flex
+    .chi-dropdown__menu.-active
+      a.chi-dropdown__menu-item(href='#')
+        = "New"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-file-outline')
+      a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+        = "Save"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-arrow-to-bottom')
+      .chi-divider
+      a.chi-dropdown__menu-item(href='#')
+        = "Send"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-mail')
+      a.chi-dropdown__menu-item.-active(href='#')
+        = "Buy"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-cart')
+      a.chi-dropdown__menu-item.-hover(href='#')
+        = "Share"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-users')
+      .chi-divider
+      a.chi-dropdown__menu-item(href='#')
+        = "Logout"
+        .chi-icon.-icon--right
+          svg
+            use(xlink:href='#icon-logout')
+
 div(class=`test-dropdown-searchBox -w--100`)
   span.-text--h2 Search box
   .-d--flex
