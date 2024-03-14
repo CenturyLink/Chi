@@ -184,6 +184,7 @@ export class Tabs {
         id={`subLevelDropdown-${tab.id}`}
         position={isFirstLevel ? 'bottom-start' : 'right-start'}
         reference={`#${tab.id}`}
+        visible-items={tab.visibleItems}
         key={`${tab.id}-${this.dropdownKey}`}
       >
         {this.getDropdownMenuItems(tab, firstLevelId)}

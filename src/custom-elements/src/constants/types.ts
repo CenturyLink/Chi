@@ -24,6 +24,7 @@ export interface TabTrigger {
   overflow: boolean;
   target?: string;
   href?: string;
+  visibleItems?: number;
 }
 
 export interface TabTriggerPosition {
