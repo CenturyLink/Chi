@@ -20,13 +20,12 @@ export default class PopoverExample extends Vue {
   @Prop() name!: string;
   @Prop() id!: number;
 
-  popoverAnimationTimeout: null;
-  popover: null;
+  popover: any;
 
   mounted() {
     let hoverAnimationTimeout: ReturnType<typeof setTimeout> | undefined;
+    const buttonOpenOnHover = document.getElementById(`name-popover-button-` + this.id);
 
-    const buttonOpenOnHover = document.getElementById(`name-popover-button-` + this.$props.id);
     this.popover = chi.popover(buttonOpenOnHover);
 
     if (buttonOpenOnHover) {

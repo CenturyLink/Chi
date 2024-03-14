@@ -1,29 +1,25 @@
 <template lang="pug">
-<ComponentExample title="Selectable" id="selectable-data-table" :tabs="exampleTabs">
+ComponentExample(title="Selectable" id="selectable-data-table" :tabs="exampleTabs")
   template(#example)
     ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>selectable</code> config to render rows with selectable checkboxes
-    Copy(lang="html" :code="getRadioSelectionVueCode(true)")
-
+    Copy(lang="html" :code="getSelectableTableVueCode(true)")
   template(#code-htmlblueprint)
-
     Copy(lang="html" :code="codeSnippets.htmlblueprintCheckbox")
-</ComponentExample>
 
-<ComponentExample title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs">
+
+ComponentExample(title="Radio Selection" id="radio-selection-data-table" :tabs="exampleTabs")
   template(#example)
     ChiDataTable(:config='getRadioSelectionConfig()', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>selectable</code> config to render rows with radio buttons
-    Copy(lang="html" :code="getRadioSelectionVueCode('radio')")
-
+    Copy(lang="html" :code="getSelectableTableVueCode('radio')")
   template(#code-htmlblueprint)
-
     Copy(lang="html" :code="codeSnippets.htmlblueprintRadio")
-</ComponentExample>
+
 </template>
 
 <script lang="ts">
@@ -121,7 +117,6 @@ import { Vue } from 'vue-facing-decorator';
   </div>
   <div class="chi-data-table__body">
     <fieldset>
-      <legend class="--sr-only">Select a Row</legend>
       <div class="chi-data-table__row">
         <div class="chi-data-table__cell -selectable">
           <div class="chi-radio">
@@ -139,7 +134,7 @@ import { Vue } from 'vue-facing-decorator';
           <div>18 Dec 2020 3:26 p.m.</div>
         </div>
       </div>
-      <div class="chi-data-table__row -selected">
+      <div class="chi-data-table__row">
         <div class="chi-data-table__cell -lh--1 -selectable">
           <div class="chi-radio">
             <input type="radio" class="chi-radio__input" id="radio-ba3" name="radios">
@@ -157,6 +152,7 @@ import { Vue } from 'vue-facing-decorator';
         </div>
       </div>
       <div class="chi-data-table__row">
+        <legend class="-sr--only">Select a Row</legend>
         <div class="chi-data-table__cell -lh--1 -selectable">
           <div class="chi-radio">
             <input type="radio" class="chi-radio__input" id="radio-ba4" name="radios">
@@ -180,7 +176,7 @@ import { Vue } from 'vue-facing-decorator';
       <div class="chi-pagination__content">
         <div class="chi-pagination__start">
           <div class="chi-pagination__results">
-            <span class="chi-pagination__label">240 results</span>
+            <span class="chi-pagination__label">6 results</span>
           </div>
           <div class="chi-pagination__page-size">
             <div class="chi-dropdown">
@@ -203,13 +199,8 @@ import { Vue } from 'vue-facing-decorator';
                 <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
               </div>
             </button>
-            <button class="chi-button -flat" aria-label="Page 1">1</button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
             <button class="chi-button -flat" aria-label="Page 2">2</button>
-            <button class="chi-button -flat -active" aria-label="Page 3">3</button>
-            <button class="chi-button -flat" aria-label="Page 4">4</button>
-            <button class="chi-button -flat" aria-label="Page 5">5</button>
-            <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
-            <button class="chi-button -flat" aria-label="Page 12">12</button>
             <button class="chi-button -icon -flat" aria-label="Next page">
               <div class="chi-button__content">
                 <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
@@ -281,7 +272,7 @@ import { Vue } from 'vue-facing-decorator';
         <div>18 Dec 2020 3:26 p.m.</div>
       </div>
     </div>
-    <div class="chi-data-table__row -selected">
+    <div class="chi-data-table__row">
       <div class="chi-data-table__cell -lh--1 -selectable">
         <div class="chi-checkbox">
           <input type="checkbox" class="chi-checkbox__input" id="checkbox-ba3">
@@ -325,7 +316,7 @@ import { Vue } from 'vue-facing-decorator';
       <div class="chi-pagination__content">
         <div class="chi-pagination__start">
           <div class="chi-pagination__results">
-            <span class="chi-pagination__label">240 results</span>
+            <span class="chi-pagination__label">6 results</span>
           </div>
           <div class="chi-pagination__page-size">
             <div class="chi-dropdown">
@@ -348,13 +339,8 @@ import { Vue } from 'vue-facing-decorator';
                 <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
               </div>
             </button>
-            <button class="chi-button -flat" aria-label="Page 1">1</button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
             <button class="chi-button -flat" aria-label="Page 2">2</button>
-            <button class="chi-button -flat -active" aria-label="Page 3">3</button>
-            <button class="chi-button -flat" aria-label="Page 4">4</button>
-            <button class="chi-button -flat" aria-label="Page 5">5</button>
-            <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
-            <button class="chi-button -flat" aria-label="Page 12">12</button>
             <button class="chi-button -icon -flat" aria-label="Next page">
               <div class="chi-button__content">
                 <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
@@ -382,9 +368,9 @@ import { Vue } from 'vue-facing-decorator';
         selectable: 'radio',
       };
     },
-    getRadioSelectionVueCode(selection: boolean | 'radio') {
+    getSelectableTableVueCode(selection: boolean | 'radio') {
       return `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
@@ -404,12 +390,11 @@ data: {
       firstLast: false,
       pageJumper: true,
     },
-    selectable: ${
-      selection === 'radio'
-        ? `'radio'`
-        : `${selection}
+    selectable: ${selection === 'radio'
+          ? `'radio'`
+          : `${selection},
     showSelectAllDropdown: true`
-    },
+        },
     resultsPerPage: 3,
   },
   table: {
@@ -473,5 +458,5 @@ data: {
     },
   },
 })
-export default class DataTableSelectable extends Vue {}
+export default class DataTableSelectable extends Vue { }
 </script>

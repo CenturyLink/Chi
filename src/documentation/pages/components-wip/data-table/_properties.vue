@@ -268,6 +268,13 @@
                 td
                   <code>DataTableRow</code>
               tr
+                td
+                  div <code>chiRowClick</code>
+                td
+                  div The user clicks in a row
+                td
+                  <code>DataTableRow</code>
+              tr
                 td.-d--flex.-align-items--center
                   div <code>chiSelectAll</code>
                   chi-badge(class='-ml--1', size="xs")= 'Deprecated'
