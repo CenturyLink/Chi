@@ -477,7 +477,7 @@ export class Tabs {
       }
     }
 
-    if (this._stringifyTabs(this.tabs) !==  this._stringifyTabs(copyTabsData)) {
+    if (this._stringifyTabs(this.tabs) !== this._stringifyTabs(copyTabsData)) {
       this.dropdownKey += 1;
     }
   }
@@ -498,7 +498,7 @@ export class Tabs {
         href,
       };
     };
-  
+
     return JSON.stringify(tabs.map(removeParent));
   }
 
