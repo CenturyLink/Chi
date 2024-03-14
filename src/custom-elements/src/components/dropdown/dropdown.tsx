@@ -13,6 +13,8 @@ import { contains } from '../../utils/utils';
 import { FontWeight } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
+declare const chi: any;
+
 @Component({
   tag: 'chi-dropdown',
   styleUrl: 'dropdown.scss',
@@ -39,6 +41,14 @@ export class Dropdown {
    * To provide the value of base-style button as trigger of the Dropdown
    */
   @Prop() button?: string;
+  /**
+   * To provide the name of an icon to display as trigger of the Dropdown
+   */
+  @Prop() icon?: string;
+  /**
+   * To provide icon tooltip message
+   */
+  @Prop() iconTooltipMessage?: string;
   /**
    * To set the color of the button. The value is directly passed to
    * chi-button element if present  { primary, secondary, danger, dark, light }.
@@ -124,6 +134,7 @@ export class Dropdown {
   private _dropdownMenuElement: any;
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
+  private _tooltip: any;
 
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
@@ -146,6 +157,7 @@ export class Dropdown {
     this.setFixedWidth();
     this.setMenuHeight();
     addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true });
+    setTimeout(() => this._createTooltip(), 100);
   }
 
   componentWillLoad() {
@@ -154,6 +166,7 @@ export class Dropdown {
 
   disconnectedCallback() {
     this._removeEventListeners();
+    this._removeTooltip();
   }
 
   @Watch('position')
@@ -223,6 +236,19 @@ export class Dropdown {
     });
   }
 
+  _createTooltip() {
+    if (!this.icon || !this.iconTooltipMessage) return;
+
+    this._tooltip = chi.tooltip(this.el.querySelector('[data-tooltip]'));
+  }
+
+  _removeTooltip() {
+    if (this._tooltip) {
+      this._tooltip.dispose();
+      this._tooltip = null;
+    }
+  }
+
   _getDropdownMenuSlots() {
     const menuHeader = this.el.querySelector('[slot=menu-header]');
     const menuFooter = this.el.querySelector('[slot=menu-footer]');
@@ -275,7 +301,7 @@ export class Dropdown {
 
     menuItems.forEach((item: HTMLElement) => {
       const isActive = item.textContent === this._value;
-      
+
       item.classList.toggle(ACTIVE_CLASS, isActive);
     });
   }
@@ -283,7 +309,7 @@ export class Dropdown {
   setFixedWidth() {
     if (this.retainSelection && this._referenceElement) {
       const button = this._referenceElement.getElementsByTagName('button')[0];
-      
+
       button.style.width = `${this._referenceElement.offsetWidth}px`;
       button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
     }
@@ -439,29 +465,42 @@ export class Dropdown {
     });
   }
 
-  renderTrigger() {
-    const itemSelected = (this.retainSelection && this._value) ?? this.button;
+  _setButtonContent() {
+    const icon = <chi-icon icon={this.icon}></chi-icon>;
+    const button = (this.retainSelection && this._value) ?? this.button;
 
-    return this.button ? (
+    return this.icon ? icon : button;
+  }
+
+  renderTrigger() {
+    const buttonContent = this._setButtonContent();
+    const color = this.color ?? '';
+    const fluidClass = this.fluid ? FLUID_CLASS : '';
+    const variant = this.variant ?? '';
+    const size = this.size ?? '';
+    const type = this.icon ? 'icon' : '';
+    const tooltip = this.iconTooltipMessage ?? '';
+    const isNotCustomTrigger = this.button || this.icon;
+    const customTriggerElement = this._customTrigger ? (<slot name="trigger" />) : null;
+
+    return isNotCustomTrigger ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
-        class={`
-        ${this.fluid ? FLUID_CLASS : ''}
-      `}
+        class={fluidClass}
         extra-class={this.getExtraClassForTriggerButton()}
-        color={`${this.color || ''}`}
-        variant={`${this.variant || ''}`}
-        size={`${this.size || ''}`}
+        color={color}
+        variant={variant}
+        size={size}
         uppercase={this.uppercase}
         disabled={this.disabled}
+        type={type}
+        data-tooltip={tooltip}
         ref={(ref) => (this._referenceElement = ref)}
       >
-        {itemSelected}
+        {buttonContent}
       </chi-button>
-    ) : this._customTrigger ? (
-      <slot name="trigger" />
-    ) : null;
+    ) : customTriggerElement
   }
 
   getExtraClassForTriggerButton() {
@@ -471,6 +510,7 @@ export class Dropdown {
       ${this.active ? ACTIVE_CLASS : ''}
       ${this.fluid ? FLUID_CLASS : ''}
       ${this.animateChevron ? ANIMATE_CLASS : ''}
+      ${this.icon ? DROPDOWN_CLASSES.ICON : ''}
     `;
   }
 

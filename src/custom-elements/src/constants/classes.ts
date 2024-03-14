@@ -103,6 +103,7 @@ export const STAT_CLASSES = {
 export const DROPDOWN_CLASSES = {
   DROPDOWN: 'chi-dropdown',
   TRIGGER: 'chi-dropdown__trigger',
+  ICON: 'chi-dropdown__icon',
   MENU: 'chi-dropdown__menu',
   MENU_CONTENT: 'chi-dropdown__menu-content',
   MENU_ITEM: 'chi-dropdown__menu-item',

@@ -733,7 +733,7 @@ h3 Search input
 
 h3 Retain Selection
 p.-text
-  | There is available property <code>retain-selection</code> which allows to retain the selected item in the dropdown 
+  | There is an available property, <code>retain-selection</code>, which allows retaining the selected item in the dropdown 
   | as active and see the selected item when the dropdown is closed.
 .example.-mb--3
   .-p--3
@@ -774,6 +774,100 @@ p.-text
 
         <!-- Include your custom logic here to retain dropdown selection -->
       </script>
+
+.-portal--hide
+  h3 Icon
+  p.-text
+    | There is an available property, <code>icon</code>, which allows adding an icon as the dropdown trigger.
+  .example.-mb--3
+    .-p--3
+      chi-dropdown(icon="more-vert" icon-tooltip-message="More options")
+        a.chi-dropdown__menu-item(slot='menu') Item 1
+        a.chi-dropdown__menu-item(slot='menu') Item 2
+        a.chi-dropdown__menu-item(slot='menu') Item 3
+        a.chi-dropdown__menu-item(slot='menu') Item 4
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-dropdown-retain-selection
+        li.-active
+          a(href=`#webcomponent-dropdown-icon`) Web Component
+        li
+          a(href=`#html-dropdown-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-dropdown-icon
+      :code(lang="html")
+        <chi-dropdown icon="more-vert" icon-tooltip-message="More options">
+          <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 4</a>
+        </chi-dropdown>
+    .chi-tabs-panel#html-dropdown-icon
+      :code(lang="html")
+        <div class="chi-dropdown">
+          <button id="example__dropdown-icon" class="chi-button chi-dropdown__trigger chi-dropdown__icon" 
+            aria-label="More options" data-tooltip="More options"> 
+            <div class="chi-button__content">
+              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
+            </div>
+          </button>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item">Item 1</a>
+            <a class="chi-dropdown__menu-item">Item 2</a>
+            <a class="chi-dropdown__menu-item">Item 3</a>
+            <a class="chi-dropdown__menu-item">Item 4</a>
+          </div>
+        </div>
+
+        <script>
+          chi.dropdown(document.getElementById('example__dropdown-icon'));
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+        </script>
+
+.-portal--show
+  h3 Icon
+  p.-text
+    | There is an available property, <code>icon</code>, which allows adding an icon as the dropdown trigger.
+  .example.-mb--3
+    .-p--3
+      chi-dropdown(icon="more-vert" variant="flat" icon-tooltip-message="More options")
+        a.chi-dropdown__menu-item(slot='menu') Item 1
+        a.chi-dropdown__menu-item(slot='menu') Item 2
+        a.chi-dropdown__menu-item(slot='menu') Item 3
+        a.chi-dropdown__menu-item(slot='menu') Item 4
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-dropdown-retain-selection
+        li.-active
+          a(href=`#webcomponent-portal-dropdown-icon`) Web Component
+        li
+          a(href=`#html-portal-dropdown-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-dropdown-icon
+      :code(lang="html")
+        <chi-dropdown icon="more-vert" variant="flat" icon-tooltip-message="More options">
+          <a class="chi-dropdown__menu-item" slot="menu">Item 1</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 2</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 3</a>
+          <a class="chi-dropdown__menu-item" slot="menu">Item 4</a>
+        </chi-dropdown>
+    .chi-tabs-panel#html-portal-dropdown-icon
+      :code(lang="html")
+        <div class="chi-dropdown">
+          <button id="example__dropdown-icon" class="chi-button -flat chi-dropdown__trigger chi-dropdown__icon" 
+            aria-label="More options" data-tooltip="More options"> 
+            <div class="chi-button__content">
+              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
+            </div>
+          </button>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item">Item 1</a>
+            <a class="chi-dropdown__menu-item">Item 2</a>
+            <a class="chi-dropdown__menu-item">Item 3</a>
+            <a class="chi-dropdown__menu-item">Item 4</a>
+          </div>
+        </div>
+
+        <script>
+          chi.dropdown(document.getElementById('example__dropdown-icon'));
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+        </script>
 
 h2 Menu
 h3 Menu item states
@@ -1658,6 +1752,6 @@ script.
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-button'))
       chi.dropdown(document.getElementById('dropdown-2'));
-      chi.tooltip(document.getElementById('example-truncated-menu-item'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
     }
   );
