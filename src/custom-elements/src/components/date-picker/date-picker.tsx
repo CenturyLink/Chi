@@ -7,12 +7,13 @@ import {
   DateFormats,
   TimePickerFormats,
   TimePickerTimeSteps,
+  ESCAPE_KEYCODE
 } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ChiStates, CHI_STATES } from '../../constants/states';
-import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { Time } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
@@ -74,18 +75,22 @@ export class DatePicker {
    * To allow the user to select multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
+
   /**
    * To define state color of Date Picker
    */
   @Prop({ reflect: true }) state?: ChiStates;
+
   /**
    * To display an additional helper text message below the Date Picker
    */
   @Prop({ reflect: true }) helperMessage?: string;
+
   /**
    * To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'
    */
-  @Prop({ reflect: true }) timeFormat?: TimePickerFormats;
+  @Prop({ reflect: true }) timeFormat?: TimePickerFormats = '12hr';
+
   /**
    * Renders minutes in stepped format. Defaults to 15 min steps if no value
    * is provided (see examples in docs).
@@ -109,6 +114,7 @@ export class DatePicker {
 
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
+  time: Time | undefined;
 
   @Watch('state')
   stateValidation(newValue: ChiStates) {
@@ -203,7 +209,11 @@ export class DatePicker {
   _checkSingleDate(minDate, maxDate) {
     const inputDate = dayjs(this._input.value, this.format);
 
-    if (dayjs(this._input.value, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
+    const inputValue = this.mode === 'datetime'
+      ? this._input.value.split(', ')[0]
+      : this._input.value;
+
+    if (dayjs(inputValue, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
       if (dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))) {
         this.value = this.min;
         this._input.value = this.min;
@@ -265,58 +275,8 @@ export class DatePicker {
     return Promise.resolve(this.value);
   }
 
-  @Listen('chiDateChange')
-  handleDateChange(ev) {
-    if (ev.target.nodeName === 'CHI-DATE') {
-      ev.preventDefault();
-      ev.stopImmediatePropagation();
-      this.eventChange.emit(ev.detail);
-    }
-    ev.stopPropagation();
-    this._input.value = ev.detail;
-    if (this.mode === 'datetime') {
-      this.handleDateTimeChange(ev);
-    } else {
-      this.value = ev.detail;
-    }
-
-    if (!this.multiple) {
-      this.active = false;
-      this._input.blur();
-    }
-  }
-
-  _getTimePeriod(is24h, hours) {
-    let period = '';
-
-    if (!is24h) {
-      period = parseInt(hours) >= 12 ? 'pm' : 'am';
-    }
-
-    return period;
-  }
-
-  handleDateTimeChange(ev) {
-    const chiTime = this.el.querySelector('.chi-popover__content chi-time');
-    const valueTime = chiTime.getAttribute('value');
-    const timeFormat = chiTime.getAttribute('format');
-    const is24hrTimeFormat = timeFormat === '24hr';
-
-    if (!valueTime) {
-      return;
-    }
-
-    const time = valueTime.split(':');
-    const period = this._getTimePeriod(is24hrTimeFormat, time[0]);
-    const hours = !is24hrTimeFormat && parseInt(time[0]) > 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
-    const hoursCalculated = this.formatTimePeriod(hours);
-    const minutes = this.formatTimePeriod(parseInt(time[1]));
-
-    this.value = `${ev.detail}, ${hoursCalculated}:${minutes} ${period}`;
-  }
-
   @Listen('chiPopoverShow')
-  handlePopoverOpen(ev) {
+  handlePopoverOpen(ev: CustomEvent) {
     ev.stopPropagation();
     const hoursColumn = this.el.querySelector(`.${TIME_CLASSES.HOURS}`);
     const minutesColumn = this.el.querySelector(`.${TIME_CLASSES.MINUTES}`);
@@ -339,27 +299,61 @@ export class DatePicker {
     }, CHI_TIME_AUTO_SCROLL_DELAY);
   }
 
-  @Listen('chiTimeChange')
-  handleTimeChange(ev) {
-    const chiDate = this.el.querySelector('.chi-popover__content chi-date');
-    let activeDate = chiDate.getAttribute('value');
+  handleDateChange(ev: CustomEvent) {
+    ev.stopPropagation();
 
-    if (!activeDate) {
-      const currentTime = new Date();
+    const date = ev.detail;
 
-      activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
+    if (this.mode === 'date') {
+      this.value = date;
+      this._input.value = date;
     }
 
-    chiDate.setAttribute('value', activeDate);
-    if (this.timeFormat === '24hr') {
-      this.value = `${activeDate}, ${this.formatTimePeriod(ev.detail.hour)}:${this.formatTimePeriod(ev.detail.minute)}`;
-    } else {
-      const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+    if (this.mode === 'datetime' && this.time) {
+      const time = this.formatTime(this.time);
 
-      this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(
-        ev.detail.minute
-      )} ${this.formatTimePeriod(ev.detail.period)}`;
+      this.value = `${date}, ${time}`;
+      this._input.value = this.value;
     }
+
+    if (!this.multiple) {
+      this.active = false;
+      this._input.blur();
+    }
+
+    this.eventChange.emit(this.value);
+  }
+
+  handleTimeChange(ev: CustomEvent) {
+    ev.stopPropagation();
+
+    if (ev.detail) {
+      const { hour, minute, second, period } = ev.detail;
+      this.time = {
+        hour: parseInt(hour),
+        minute: parseInt(minute),
+        second: parseInt(second),
+        period,
+      };
+    }
+
+    if (!this.value) {
+      return;
+    }
+
+    const date = this._getChiDateValue();
+    const time = this.formatTime(ev.detail);
+    this.value = `${date}, ${time}`;
+    this.eventChange.emit(this.value);
+  }
+
+  formatTime(time: Time): string {
+    const hour = this.timeFormat === '12hr' && time.hour > 12 ? time.hour - 12 : time.hour;
+    const formattedHour = this.formatTimePeriod(hour);
+    const formattedMinute = this.formatTimePeriod(time.minute);
+    return this.timeFormat === '12hr'
+      ? `${formattedHour}:${formattedMinute} ${time.period}`
+      : `${formattedHour}:${formattedMinute}`;
   }
 
   formatTimePeriod(period: number): string {
@@ -396,7 +390,7 @@ export class DatePicker {
     let value = this.value;
 
     if (this.mode === 'datetime') {
-      value = this.value ? this.value.split(',')[0] : null;
+      value = this.value ? this.value.split(', ')[0] : null;
     }
 
     return value;
@@ -415,12 +409,19 @@ export class DatePicker {
         excluded-weekdays={this.excludedWeekdays}
         excluded-dates={this.excludedDates}
         multiple={this.multiple}
+        onChiDateChange={(ev) => this.handleDateChange(ev)}
       />
     );
     const timeValue = (this.value?.split(', ') || [])[1];
-    const time = this.mode === 'datetime' 
-      ? <chi-time format={this.timeFormat} value={timeValue} minutes-step={this.minutesStep}/> 
-      : null;
+    const time =
+      this.mode === 'datetime' ? (
+        <chi-time
+          format={this.timeFormat}
+          value={timeValue}
+          minutes-step={this.minutesStep}
+          onChiTimeChange={(ev) => this.handleTimeChange(ev)}
+        />
+      ) : null;
     const popoverContent =
       this.mode === 'datetime' ? (
         <div class="-d--flex">

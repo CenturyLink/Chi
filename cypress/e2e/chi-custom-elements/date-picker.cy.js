@@ -29,6 +29,9 @@ const today =
 const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
+const placeholder = 'MM/DD/YYYY';
+const placeholderTime = 'MM/DD/YYYY, --:-- --';
+
 import {
   DATE_PICKER_MINUTES_STEP_VALUES
 } from './common/date-picker-common.cy';
@@ -526,6 +529,82 @@ describe('Date picker', function() {
         .find('input')
         .should('have.value', `11/22/2018, ${noonHour}:${item.minutes}`);
     });
+  });
+
+  it(`Date-picker with no value should show placeholder`, function() {
+    cy.get('[data-cy="test-time-noValue-picker"]').as('testTimeNoValuePicker');
+
+    cy.get('@testTimeNoValuePicker')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeNoValuePicker')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    cy.get('@testTimeNoValuePicker')
+      .find('input')
+      .should('have.value', '')
+      .should('have.attr', 'placeholder', placeholder);
+
+    const date = '12/02/2021';
+    const spy = cy.spy();
+
+    cy.get('@testTimeNoValuePicker').then(el => {
+      el.on(chiDateChange, spy);
+    });
+
+    cy.get('@testTimeNoValuePicker')
+      .find('input')
+      .clear()
+      .type(`${date}{Enter}`)
+      .then(() => {
+        expect(spy).to.be.calledOnce;
+        expect(spy.getCall(0).args[0].detail).to.equal(date);
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+          chiDatePicker
+        );
+      });
+  });
+
+  it(`Date-picker with Time Picker and no value should show placeholder`, function() {
+    cy.get('[data-cy="test-time-noValue-dateTime-picker"]').as('testTimeNoValueDateTime');
+
+    cy.get('@testTimeNoValueDateTime')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeNoValueDateTime')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    cy.get('@testTimeNoValueDateTime')
+      .find('input')
+      .should('have.value', '')
+      .should('have.attr', 'placeholder', placeholderTime);
+
+    cy.get('@testTimeNoValueDateTime')
+      .find('chi-time')
+      .should('exist');
+
+    const dateTime = '12/02/2021, 02:05';
+    const spy = cy.spy();
+
+    cy.get('@testTimeNoValueDateTime').then(el => {
+      el.on(chiDateChange, spy);
+    });
+  
+    cy.get('@testTimeNoValueDateTime')
+      .find('input')
+      .clear()
+      .type(`${dateTime}{Enter}`)
+      .then(() => {
+        expect(spy).to.be.calledOnce;
+        expect(spy.getCall(0).args[0].detail).to.equal(dateTime);
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+          chiDatePicker
+        );
+      });
   });
 
   describe('Keyboard navigation', function() {

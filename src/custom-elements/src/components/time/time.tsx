@@ -130,7 +130,7 @@ export class Time {
    *
    */
   validateTime(time: string) {
-    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(time);
+    const isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?\s*([AaPp][Mm])?$/.test(time);
 
     if (!isValid) {
       throw new Error('Provided "value" is not valid. Provide a value in the form hh:mm:ss');
@@ -160,13 +160,20 @@ export class Time {
     let time = new Date();
 
     if (this.value && this.validateTime(this.value)) {
-      const [hours, minutes, seconds] = this.value.split(':').map((i) => parseInt(i));
+      const [hourMinSec, period] = this.value.trim().split(' ');
+      const [hours, minutes, seconds] = hourMinSec.split(':').map((i) => parseInt(i));
+
       time.setHours(hours, minutes, seconds || 0);
+      if (period) {
+        this._period = period.toLocaleLowerCase();
+      }
     }
 
     const [hours, minutes, seconds] = this.getRoundedTime(time);
 
-    this._period = !(this.format === '24hr') && parseInt(hours) < 12 ? 'am' : 'pm';
+    if (!this._period) {
+      this._period = this.format === '12hr' && parseInt(hours) < 12 ? 'am' : 'pm';
+    }
     this._hour = hours;
     this._minute = minutes;
     this._second = seconds;
@@ -351,7 +358,7 @@ export class Time {
 
   periods() {
     const hour = parseInt(this.value.split(':')[0]);
-    if (!(this.format === '24hr')) {
+    if (this.format === '12hr') {
       const periodClasses = (period: 'am' | 'pm') => {
         let periodStatus = TIME_CLASSES.PERIOD;
 
