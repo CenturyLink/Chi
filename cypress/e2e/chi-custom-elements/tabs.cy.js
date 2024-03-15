@@ -3,8 +3,10 @@
 const TAB_SELECTORS = {
   triggers: '.chi-tabs__trigger',
   showMore: '.chi-tabs__show-more',
+  dropdownMenu: '.chi-dropdown__menu',
   dropdownItems: 'chi-dropdown[active] .chi-dropdown__menu-item',
 };
+const VISIBLE_ITEMS_ATTR = 'visible-items';
 
 describe('Tabs', () => {
   describe('Overflow items', () => {
@@ -51,6 +53,38 @@ describe('Tabs', () => {
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
         .should('have.length', 10);
+    });
+
+    it('Should make dropdown scrollable', function() {
+      const firstLevelExample = 'tab-e';
+      const secondLevelExample = 'tab-e-1';
+
+      // First level
+      cy.get('@base')
+        .find(`#${firstLevelExample}`)
+        .wait(1000)
+        .click();
+
+      cy.get('@base')
+        .find(`[reference="#${firstLevelExample}"]`).as(firstLevelExample)
+        .should('have.attr', VISIBLE_ITEMS_ATTR, 3);
+
+      cy.get(`@${firstLevelExample}`)
+        .find(TAB_SELECTORS.dropdownMenu)
+        .should('not.have.css', 'height', '0px');
+
+      // Second level
+      cy.get('@base')
+        .find(`#${secondLevelExample}`)
+        .click();
+
+      cy.get('@base')
+        .find(`[reference="#${secondLevelExample}"]`).as(secondLevelExample)
+        .should('have.attr', VISIBLE_ITEMS_ATTR, 2);
+
+      cy.get(`@${secondLevelExample}`)
+        .find(TAB_SELECTORS.dropdownMenu)
+        .should('not.have.css', 'height', '0px');
     });
   });
 });
