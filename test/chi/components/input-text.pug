@@ -21,9 +21,10 @@ mixin label(size)
   }
   ) Label
 
-mixin icon(name)
+mixin icon(name, size)
   .chi-icon(class={
-    [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1
+    [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1,
+    [`-${size}`]: size
   })
     svg
       if name == 'success'
@@ -276,3 +277,136 @@ each size in ['xs', 'sm', 'md', 'lg', 'xl']
                         svg
                           use(xlink:href='#icon-circle-warning')
                     | Optional helper message
+
+each size in ['xs', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-copy-text-button-${size}`)
+    span.-text--h2=`Text Input / Copy text button / ${size}`
+    table(cellpadding="0" cellspacing="0" width="1800px")
+      each style in ['default', 'success', 'warning', 'danger']
+        tr
+          td
+            small= `${style}`
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}`)
+                .chi-input__wrapper.-flex--grow1
+                  input.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}-with-right-icon`)
+                .chi-input__wrapper.-flex--grow1.-icon--right
+                  input.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                  +icon('search')
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}-with-left-icon`)
+                .chi-input__wrapper.-flex--grow1.-icon--left
+                  input.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                  +icon('atom')
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}-readonly`)
+                .chi-input__wrapper.-flex--grow1
+                  input.chi-input(readonly type='text' class=`-${size} -${style}` value="Some text")
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}-with-help-message`)
+                .chi-input__wrapper.-flex--grow1
+                  input.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+              .-d--flex
+                .chi-label.-status(class=`-${style}`)
+                  if style == 'success'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-check')
+                  else if style == 'warning'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-warning')
+                  else if style == 'danger'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-warning')
+                  | Optional helper message
+          td
+            .-m--3
+              .-d--flex.-align-items--center(id=`test-copy-button-${size}-${style}-with-left-right-icons-help-message`)
+                .chi-input__wrapper.-flex--grow1.-icon--left.-icon--right
+                  input.chi-input(readonly type='text' class=`-${size} -${style}` value="Some text")
+                  +icon('atom')
+                  +icon('search')
+                button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                  .chi-button__content
+                    if size == 'xs' || size == 'sm'
+                      +icon("copy", 'xs')
+                    else if size == 'md'
+                      +icon("copy", 'sm')
+                    else if size == 'lg'
+                      +icon("copy", 'sm--2')
+                    else if size == 'xl'
+                      +icon("copy", 'sm--3')
+              .-d--flex
+                .chi-label.-status(class=`-${style}`)
+                  if style == 'success'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-check')
+                  else if style == 'warning'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-warning')
+                  else if style == 'danger'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-warning')
+                  | Optional helper message
