@@ -135,7 +135,7 @@ export default defineNuxtConfig({
   // error with chivue
   // imports css https://github.com/nuxt/nuxt/issues/12215
   build: {
-    transpile: ['@centurylink/chi-vue'],
+    transpile: ['@centurylink/chi-vue', '@centurylink/chi-builder'],
   },
   modules: ['@nuxt/image', 'nuxt3-class-component', '@pinia/nuxt'],
   runtimeConfig: {
