@@ -24,6 +24,7 @@ export interface TabTrigger {
   overflow: boolean;
   target?: string;
   href?: string;
+  visibleItems?: number;
 }
 
 export interface TabTriggerPosition {
@@ -34,6 +35,13 @@ export interface TabTriggerPosition {
 export interface DropdownMenuItem {
   title: string;
   href: string;
+}
+
+export interface Time {
+  hour: number;
+  minute: number;
+  second?: number;
+  period: string;
 }
 
 export enum TabTriggerSizes {
