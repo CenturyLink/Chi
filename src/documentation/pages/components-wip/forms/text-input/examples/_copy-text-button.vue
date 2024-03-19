@@ -2,7 +2,7 @@
 <ComponentExample title="Copy text button" id="copy-text" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-      | Use the <code>show-copy</code> attribute to show a copy icon that provides the user the
+      | Use the <code>copy-text</code> attribute to show a copy icon that provides the user the
       | ability to copy the input value into the clipboard.
 
   template(#example)
@@ -11,7 +11,7 @@
         .chi-form__item
           chi-label(for="example__copy-text-button") Label
           chi-text-input(
-            show-copy
+            copy-text
             value="Sample Text"
             id="example__copy-text-button"
           )
@@ -43,7 +43,7 @@ export default class CopyTextButton extends Vue {
   codeSnippets = {
     webcomponent: `<div class="chi-form__item">
   <chi-label for="example__copy-text-button">Label</chi-label>
-  <chi-text-input value="Sample Text" id="example__copy-text-button" show-copy></chi-text-input>
+  <chi-text-input value="Sample Text" id="example__copy-text-button" copy-text></chi-text-input>
 </div>`,
     htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__copy-text-button">Label</label>

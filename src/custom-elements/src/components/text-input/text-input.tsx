@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Fragment, Prop, Watch, h } from '@stencil/core';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -75,7 +75,7 @@ export class TextInput {
   /**
    * To show copy text icon
    */
-  @Prop({ reflect: true }) showCopy = false;
+  @Prop({ reflect: true }) copyText = false;
   /**
    * To define -hover, -focus statuses
    */
@@ -214,7 +214,7 @@ export class TextInput {
       xl: 'sm--3',
     };
 
-    return this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
+    return this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] ?? 'sm'} />;
   }
 
   _getHelperMessage() {
@@ -222,7 +222,7 @@ export class TextInput {
   }
 
   _shouldWrapInput() {
-    return Boolean(this.iconLeft || this.iconRight || this.spinner || this.helperMessage || this.showCopy);
+    return Boolean(this.iconLeft || this.iconRight || this.spinner || this.helperMessage || this.copyText);
   }
 
   _addCopyText(input: HTMLElement) {
@@ -244,20 +244,20 @@ export class TextInput {
 
   _addHelperMessage(input: HTMLElement) {
     return (
-      <div>
+      <Fragment>
         {input}
         {this._getHelperMessage()}
-      </div>
+      </Fragment>
     );
   }
 
   _getWrappedInput(input: HTMLInputElement) {
     const inputClasses = [
       'chi-input__wrapper',
-      this.iconLeft ? '-icon--left' : '',
-      this.iconRight ? '-icon--right' : '',
-      this.showCopy ? '-flex--grow1' : '',
-    ].join(' ');
+      this.iconLeft && '-icon--left',
+      this.iconRight && '-icon--right',
+      this.copyText && '-flex--grow1',
+    ].filter(Boolean).join(' ');
 
     input = (
       <div class={inputClasses}>
@@ -268,7 +268,7 @@ export class TextInput {
       </div>
     );
 
-    if (this.showCopy) {
+    if (this.copyText) {
       input = this._addCopyText(input);
     }
 
