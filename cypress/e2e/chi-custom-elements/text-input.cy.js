@@ -3,12 +3,13 @@ const SELECTORS = {
   CHI_ICON: 'chi-icon',
   LABEL: '.chi-label',
   CHI_HELPER_MESSAGE: 'chi-helper-message',
-  HELPER_MESSAGE_MD: '.test-helper-message-md'
+  HELPER_MESSAGE_MD: '.test-helper-message-md',
+  COPY_TEXT_BUTTON: 'chi-copy-text .chi-button',
 };
 const CLASSES = {
   WARNING: '-warning',
   DANGER: '-danger',
-  SUCCESS: '-success'
+  SUCCESS: '-success',
 };
 
 describe('Text Input', () => {
@@ -29,12 +30,8 @@ describe('Text Input', () => {
     it('Should initiate with helper-message attribute', () => {
       cy.get('@textInput')
         .first()
-        .then(textInput => {
-          cy.get(textInput).should(
-            'have.attr',
-            'helper-message',
-            'Optional helper message'
-          );
+        .then((textInput) => {
+          cy.get(textInput).should('have.attr', 'helper-message', 'Optional helper message');
           cy.get(textInput)
             .find(SELECTORS.CHI_HELPER_MESSAGE)
             .should('exist');
@@ -44,7 +41,7 @@ describe('Text Input', () => {
     it('Should have a danger state helper message', () => {
       cy.get('@textInput')
         .eq(3)
-        .then(textInput => {
+        .then((textInput) => {
           cy.get(textInput).should('have.attr', 'state', 'danger');
           cy.get(textInput)
             .find(SELECTORS.LABEL)
@@ -55,6 +52,33 @@ describe('Text Input', () => {
             .should('have.attr', 'href', '#icon-circle-warning')
             .should('exist');
         });
+    });
+  });
+
+  describe('Copy text button', () => {
+    it('Should update the value to copy and copy to clipboard', () => {
+      const newInputValue = 'This should be updated';
+
+      cy.get('.test-copy-text-button-xs')
+        .find(SELECTORS.CHI_TEXT_INPUT)
+        .eq('0')
+        .as('chiTextInput');
+
+      cy.get('@chiTextInput')
+        .scrollIntoView()
+        .find('input')
+        .clear()
+        .type(newInputValue);
+
+      cy.get('@chiTextInput')
+        .find(SELECTORS.COPY_TEXT_BUTTON)
+        .click();
+
+      cy.window().then((win) => {
+        win.navigator.clipboard.readText().then((text) => {
+          expect(text).to.eq(newInputValue);
+        });
+      });
     });
   });
 });

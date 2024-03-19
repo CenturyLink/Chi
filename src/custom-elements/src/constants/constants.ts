@@ -5,7 +5,10 @@ export const CLASSES = {
   DISABLED: '-disabled',
   INACTIVE: '-inactive',
   TRANSITIONING: '-transitioning',
-  TODAY: '-today'
+  TODAY: '-today',
+  FLEX: '-d--flex',
+  ALIGN_ITEMS_CENTER: '-align-items--center'
+
 };
 export const RESPONSIVE_BREAKPOINTS = {
   sm: 576,
