@@ -165,7 +165,7 @@ export class TimePicker {
 
   @Listen('chiTimeChange')
   handleTimeChange(ev) {
-    const timePickerInput = document.getElementById(this._uuid) as HTMLInputElement;
+    const timePickerInput = document.getElementById(`${this._uuid}-control`) as HTMLInputElement;
     const formatTimePeriod = (period: number) => {
       return String(period).length > 1 ? String(period) : `0${period}`;
     };

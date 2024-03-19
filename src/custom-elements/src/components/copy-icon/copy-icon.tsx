@@ -47,7 +47,7 @@ export class CopyIcon {
     if (this.tooltip) {
       this.removeTooltip();
     }
-    
+
     this.tooltip = chi.tooltip(this.el.querySelector('[data-tooltip]'));
   }
 
