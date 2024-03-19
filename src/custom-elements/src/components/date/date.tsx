@@ -99,10 +99,11 @@ export class Date {
   }
 
   _handleNewDateValue(newValue: string) {
+    dayjs.extend(customParseFormat);
     if (this.multiple) {
       this._vm.dates = newValue.split(',').map((valueDay) => this.fromString(valueDay)) || [];
     } else {
-      const date = dayjs(newValue).format(this.format);
+      const date = dayjs(newValue, this.format).format(this.format);
 
       this._vm.dates = [this.fromString(date)];
     }
