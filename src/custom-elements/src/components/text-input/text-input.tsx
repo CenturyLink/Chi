@@ -1,8 +1,8 @@
-import { Component, Element, Event, EventEmitter, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Fragment, Prop, Watch, h } from '@stencil/core';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
-import { TEXT_INPUT_TYPES, TextInputTypes } from '../../constants/constants';
+import { TEXT_INPUT_TYPES, TextInputTypes, CLASSES } from '../../constants/constants';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
@@ -73,10 +73,16 @@ export class TextInput {
    */
   @Prop({ reflect: true }) spinner = false;
   /**
+   * To show copy text icon
+   */
+  @Prop({ reflect: true }) copyText = false;
+  /**
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
-
+  /**
+   * Extra classes to apply to input
+   */
   @Prop() extraClass: string;
 
   /**
@@ -168,15 +174,15 @@ export class TextInput {
     addMutationObserver.call(this);
   }
 
-  render() {
-    const input = (
+  getInput(): HTMLInputElement {
+    return (
       <input
         type={this.type}
         class={`chi-input
-        ${this.state ? `-${this.state}` : ''}
-        ${this.size ? `-${this.size}` : ''}
-        ${this._status ? `-${this._status}` : ''}
-        ${this.extraClass ? this.extraClass : ''}
+          ${this.state ? `-${this.state}` : ''}
+          ${this.size ? `-${this.size}` : ''}
+          ${this._status ? `-${this._status}` : ''}
+          ${this.extraClass ? this.extraClass : ''}
         `}
         placeholder={this.placeholder || ''}
         value={this.value}
@@ -190,35 +196,94 @@ export class TextInput {
         onChange={(ev) => this._handleValueChange(ev)}
       />
     );
-    const iconClasses = `
-      ${this.iconLeft ? '-icon--left' : ''}
-      ${this.iconRight ? '-icon--right' : ''}
-    `;
+  }
+
+  _getIconLeft() {
+    return this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
+  }
+
+  _getIconRight() {
+    return this.iconRight && !this.spinner && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+  }
+
+  _getSpinner() {
     const spinnerSizeMapping = {
       sm: 'xs',
       md: 'sm',
       lg: 'sm--2',
       xl: 'sm--3',
     };
-    const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
-    const iconRight = this.iconRight && !this.spinner && (
-      <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />
+
+    return this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] ?? 'sm'} />;
+  }
+
+  _getHelperMessage() {
+    return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+  }
+
+  _shouldWrapInput() {
+    return Boolean(this.iconLeft || this.iconRight || this.spinner || this.helperMessage || this.copyText);
+  }
+
+  _addCopyText(input: HTMLElement) {
+    const copySizeMapping = {
+      xs: 'xs',
+      sm: 'xs',
+      md: 'sm',
+      lg: 'sm--2',
+      xl: 'sm--3',
+    };
+
+    return (
+      <div class={`${CLASSES.FLEX} ${CLASSES.ALIGN_ITEMS_CENTER}`}>
+        {input}
+        <chi-copy-text text={this.value} disabled={this.disabled} size={copySizeMapping[this.size]}></chi-copy-text>
+      </div>
     );
-    const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
-    const helperMessage = this.helperMessage && (
-      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
+  }
+
+  _addHelperMessage(input: HTMLElement) {
+    return (
+      <Fragment>
+        {input}
+        {this._getHelperMessage()}
+      </Fragment>
+    );
+  }
+
+  _getWrappedInput(input: HTMLInputElement) {
+    const inputClasses = [
+      'chi-input__wrapper',
+      this.iconLeft && '-icon--left',
+      this.iconRight && '-icon--right',
+      this.copyText && '-flex--grow1',
+    ].filter(Boolean).join(' ');
+
+    input = (
+      <div class={inputClasses}>
+        {input}
+        {this._getIconLeft()}
+        {this._getIconRight()}
+        {this._getSpinner()}
+      </div>
     );
 
-    if (this.iconLeft || this.iconRight || this.spinner || this.helperMessage) {
-      return (
-        <div class={`chi-input__wrapper ${iconClasses}`}>
-          {input}
-          {iconLeft}
-          {iconRight}
-          {spinner}
-          {helperMessage}
-        </div>
-      );
+    if (this.copyText) {
+      input = this._addCopyText(input);
+    }
+
+    if (this.helperMessage) {
+      input = this._addHelperMessage(input);
+    }
+
+    return input;
+  }
+
+  render() {
+    let input = this.getInput();
+
+    if (this._shouldWrapInput()) {
+      input = this._getWrappedInput(input);
     }
 
     return input;

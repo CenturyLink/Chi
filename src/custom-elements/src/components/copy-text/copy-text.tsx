@@ -6,10 +6,10 @@ import { COPY_MESSAGE, COPIED_MESSAGE } from '../../constants/constants';
 declare const chi: any;
 
 @Component({
-  tag: 'chi-copy-icon',
+  tag: 'chi-copy-text',
   scoped: true,
 })
-export class CopyIcon {
+export class CopyText {
   @Element() el: HTMLElement;
   /**
    * Text to be copied to clipboard
@@ -35,19 +35,15 @@ export class CopyIcon {
 
   private tooltip: any;
 
-  componentDidRender() {
-    this.loadTooltip();
+  componentDidLoad() {
+    setTimeout(() => this.createTooltip(), 100);
   }
 
   disconnectedCallback() {
     this.removeTooltip();
   }
 
-  loadTooltip() {
-    if (this.tooltip) {
-      this.removeTooltip();
-    }
-
+  createTooltip() {
     this.tooltip = chi.tooltip(this.el.querySelector('[data-tooltip]'));
   }
 
