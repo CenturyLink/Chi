@@ -1,36 +1,37 @@
 <template lang="pug">
-  div
-    h2 Examples
+ClientOnly
+  h2 Examples
 
-    BaseExample
-    <Disabled />
-    <Readonly />
-    <Placeholder />
-    <Spinner />
-    <Required />
-    <Optional />
-    <Help />
-    <Message />
-    <ErrorLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
-    <ErrorPortal v-else />
+  BaseExample
+  <Disabled />
+  <Readonly />
+  <Placeholder />
+  <Spinner />
+  <Required />
+  <Optional />
+  <Help />
+  <Message />
+  <CopyTextButton />
+  <ErrorLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+  <ErrorPortal v-else />
 
-    h2 Layout Variations
-    <InlineLabel />
-    <InlineLabelPercent />
-    <InlineLabelGrid />
-    <InlineInputs />
-    <FloatingLabel />
+  h2 Layout Variations
+  <InlineLabel />
+  <InlineLabelPercent />
+  <InlineLabelGrid />
+  <InlineInputs />
+  <FloatingLabel />
 
-    h2 Icons
-    <LeftAligned />
-    <RightAligned />
+  h2 Icons
+  <LeftAligned />
+  <RightAligned />
 
-    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
-      <LeftRightAlignedCenturyLink />
-      <SizesLumenCenturyLink  />
-    div(v-else)
-      <LeftRightAlignedPortal />
-      <SizesPortal />
+  div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+    <LeftRightAlignedCenturyLink />
+    <SizesLumenCenturyLink  />
+  div(v-else)
+    <LeftRightAlignedPortal />
+    <SizesPortal />
 </template>
 
 <script lang="ts">
@@ -57,6 +58,7 @@ import LeftRightAlignedCenturyLink from './_left-right-aligned-centurylink.vue';
 import LeftRightAlignedPortal from './_portal/_left-right-aligned.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
+import CopyTextButton from './_copy-text-button.vue'
 
 @NuxtComponent({
   components: {
@@ -82,6 +84,7 @@ import SizesPortal from './_portal/_sizes.vue';
     LeftRightAlignedPortal,
     SizesLumenCenturyLink,
     SizesPortal,
+    CopyTextButton
   },
 })
 export default class Examples extends Vue {
