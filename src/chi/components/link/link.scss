@@ -21,7 +21,7 @@ $sizes: (
   xl: (
     font-size: $font-size-xl,
     line-height: $line-height-xl,
-  )
+  ),
 );
 
 a,
@@ -44,7 +44,7 @@ a,
 
   &.-cta {
     align-self: flex-start;
-    font-weight: $font-weight-semi-bold;
+    font-weight: $link-cta-font-weight;
     padding-left: $link-cta-padding-left;
     padding-right: $link-cta-padding-right;
     position: relative;

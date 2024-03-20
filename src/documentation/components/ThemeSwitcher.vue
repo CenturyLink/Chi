@@ -4,7 +4,7 @@
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm">Theme</span>
         <div class="-d--flex -w--100">
-          <div class="-align-items--center -mr--1">
+          <div class="-d--flex -align-items--center -mr--1">
             <nuxt-img
               class="-favicon"
               width="16"

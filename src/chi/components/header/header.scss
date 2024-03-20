@@ -336,6 +336,7 @@
             }
 
             > a {
+              color: $header-navbar-link-color;
               font-size: $header-navbar-tab-xs-link-font-size;
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
@@ -430,6 +431,30 @@
 
       .chi-tabs {
         align-self: center;
+
+        // Inverse rules are for backwards compatibility: old headers rendered inverse tabs on a dark background navbar
+
+        &,
+        &.-inverse {
+          & > li.chi-sliding-border {
+            background-color: $header-navbar-tab-active-border-color;
+          }
+        }
+
+        &:not(.-vertical) {
+          &:not(.-responsive) {
+            &:not(.-sliding) {
+              &:not(.-inverse),
+              &.-inverse {
+                li.-active {
+                  & > a {
+                    box-shadow: $header-navbar-tab-active-box-shadow;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -471,7 +496,7 @@
       min-height: $header-lg-navbar-height;
 
       a {
-        font-size: $font-size-base;
+        font-size: $header-lg-navbar-font-size;
         line-height: $line-height-sm;
       }
 
@@ -551,35 +576,38 @@
           li {
             @include respond-to(xl) {
               &:not(:first-child) {
-                margin-left: 3.5rem;
+                margin-left: 1.25rem;
               }
             }
 
-            & > a {
+            & > a,
+            .chi-dropdown__trigger {
+              color: $header-navbar-text-color;
               font-size: $header-xl-navbar-tab-link-font-size;
               font-weight: $font-weight-semi-bold;
-            }
-          }
 
-          &.-sm {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.875rem 0;
+              &:hover {
+                background-color: $color-background-white;
               }
             }
           }
-        }
-      }
-    }
-  }
 
-  &.-xl {
-    .chi-header__navbar {
-      .chi-tabs {
-        &:not(.-vertical) {
           &.-sm {
+            li {
+              & > a {
+                line-height: 1.25rem;
+                padding: 0.625rem 1.5rem;
+              }
+            }
+
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                padding: 0.625rem 1.5rem;
+              }
+            }
+
             &:not(.-vertical):not(.-responsive) {
-              height: 3rem;
+              height: 2.5rem;
             }
           }
         }
@@ -590,29 +618,10 @@
         padding-top: 1rem;
 
         .chi-dropdown__menu-item {
-          font-size: $font-size-lg;
+          font-size: $font-size-md;
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
-        }
-      }
-    }
-  }
-
-  &.-lg,
-  &.-xl {
-    .chi-header__navbar {
-      .chi-dropdown__menu {
-        &::before {
-          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
-          border-style: solid;
-          border-width: 0.625rem 0.75rem 0 0.75rem;
-          content: '';
-          height: 1rem;
-          left: 1rem;
-          position: absolute;
-          top: 0;
-          width: 1rem;
         }
       }
     }

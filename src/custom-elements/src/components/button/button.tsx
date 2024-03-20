@@ -45,6 +45,11 @@ export class Button {
   @Prop({ reflect: true }) uppercase = false;
 
   /**
+   *  to render a button in a raindrop shape.
+   */
+  @Prop({ reflect: true }) raindrop = false;
+
+  /**
    *  to center align the text.
    */
   @Prop({ reflect: true }) center = false;
@@ -149,6 +154,7 @@ export class Button {
           ${this.type ? `-${this.type}` : ''}
           ${this.size ? `-${this.size}` : ''}
           ${this.uppercase ? '-uppercase' : ''}
+          ${this.raindrop ? '-raindrop' : ''}
           ${this.fluid ? '-fluid' : ''}
           ${this.fluid && this.center ? '-justify-content--center' : ''}
           ${this.disabled ? '-disabled' : ''}

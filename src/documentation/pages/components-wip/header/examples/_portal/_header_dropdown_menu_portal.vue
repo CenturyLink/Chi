@@ -167,7 +167,7 @@ export default class BasePortal extends Vue {
   <nav class="chi-header__navbar">
     <div class="chi-header__start">
       <div class="-d--none -d-lg--flex">
-        <ul class="chi-tabs -inverse -sm">
+        <ul class="chi-tabs -sm">
           <li>
             <div class="chi-dropdown chi-dropdown__hover">
               <a class="chi-dropdown__trigger -text--uppercase" href="#">Categories</a>

@@ -175,6 +175,10 @@
     .chi-main__background {
       z-index: 0;
     }
+
+    .chi-main__title-heading {
+      color: $app-layout-header-background-title-color;
+    }
   }
 
   &__background {

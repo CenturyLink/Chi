@@ -23,7 +23,14 @@
       width: 100%;
 
       .docs-titlebar {
-        background-color: $color-grey-15;
+        background: $color-teal-100;
+        color: $color-text-white;
+        // Yellow-Orange Gradient
+        // background: $color-yellow-40;
+        // background: linear-gradient(90deg, rgba($color-yellow-40, 1) 0%, rgba($color-orange-50, 1) 100%);
+        // Red-Orange Gradient
+        // background: $color-red-50;
+        // background: linear-gradient(90deg, rgba($color-red-50, 1) 0%, rgba($color-orange-50, 1) 100%);
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -59,13 +66,39 @@
           }
 
           .docs-titlebar__description {
-            color: $color-grey-70;
+            color: $color-grey-30;
             font-size: $font-size-base;
             line-height: $line-height;
             @include respond-to(lg) {
               font-size: $font-size-lg;
               line-height: $line-height-lg;
               margin: 0 0 1rem;
+            }
+          }
+
+          .docs-tabs {
+            .chi-tabs {
+              &:not(.-vertical):not(.-responsive) {
+                li {
+                  a {
+                    color: $color-white;
+
+                    &:hover {
+                      color: $color-red-50;
+                    }
+                  }
+                  &.-active {
+                    a {
+                      border-bottom-color: $color-red-50;
+                      box-shadow: inset 0 -0.125rem 0 $color-red-50;
+                      color: $color-red-50;
+                    }
+                  }
+                  &.chi-sliding-border {
+                    background-color: $color-red-40;
+                  }
+                }
+              }
             }
           }
         }
@@ -107,26 +140,31 @@
             h5,
             h6 {
               display: flex;
-              font-weight: $font-weight-semi-bold;
+              //font-weight: $font-weight-semi-bold;
             }
 
             h1 {
-              font-size: $font-size-h2;
+              font-size: $font-size-h1;
               font-weight: $font-weight-extra-bold;
-              line-height: 3rem;
+              //line-height: 3rem;
               margin: 1rem 0;
             }
 
             h2 {
-              font-size: $font-size-h3;
-              line-height: 2rem;
+              //font-size: $font-size-h3;
+              font-weight: 800;
+              //line-height: 2rem;
               margin: 1rem 0;
+
+              &.-text--bold {
+                font-weight: 800 !important;
+              }
             }
 
             h3 {
-              font-size: $font-size-h4;
-              line-height: 2rem;
-              margin: 0.5rem 0;
+              //font-size: $font-size-h4;
+              //line-height: 2rem;
+              margin: 0.5em 0;
 
               > a {
                 cursor: pointer;
@@ -134,21 +172,21 @@
             }
 
             h4 {
-              font-size: $font-size-h5;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
+              //font-size: $font-size-h5;
+              //line-height: 1.5rem;
+              margin: 0.5em 0;
             }
 
             h5 {
-              font-size: $font-size-h6;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
+              //font-size: $font-size-h6;
+              //line-height: 1.5rem;
+              margin: 0.5em 0;
             }
 
             h6 {
-              font-size: $font-size-sm;
-              line-height: 1.25rem;
-              margin: 0.5rem 0;
+              //font-size: $font-size-sm;
+              //line-height: 1.25rem;
+              margin: 0.5em 0;
             }
           }
         }
@@ -165,7 +203,7 @@
           border-top: 0.0625rem solid $color-grey-25;
         }
 
-        pre[class*="language-"] {
+        pre[class*='language-'] {
           border-top: 0.0625rem solid $color-grey-25;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
@@ -180,16 +218,16 @@
             padding: 1rem 1rem 0 1rem;
           }
 
-          pre[class*="language-"] {
+          pre[class*='language-'] {
             border-top: 0;
           }
         }
 
-        & > .clipboard:first-child + pre[class*="language-"] {
+        & > .clipboard:first-child + pre[class*='language-'] {
           border-top: 0;
         }
 
-        .code-block>pre {
+        .code-block > pre {
           border-top: 0;
         }
       }
@@ -205,9 +243,9 @@
 
       .example-opacity {
         background: linear-gradient(45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
-        linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0),
-        linear-gradient(-45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0);
+          linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
+          linear-gradient(45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0),
+          linear-gradient(-45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0);
         background-position: 0 0, 0 6px, 6px -6px, -6px 0;
         background-size: 12px 12px;
         overflow: hidden;
@@ -247,7 +285,7 @@
           background: $color-background-primary;
           height: 3rem;
           width: 3rem;
-        }      
+        }
       }
     }
 
@@ -358,7 +396,7 @@
         cursor: pointer;
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
-  
+
         &:hover,
         &:focus {
           opacity: 1;
@@ -371,9 +409,9 @@
   // Grid and Flexbox container example styles
 
   .-show--example {
-    [class*="chi-col"]:before {
-      background-color: $color-blue-20;
-      box-shadow: inset 0 0 0 1px $color-blue-30;
+    [class*='chi-col']:before {
+      background-color: $color-teal-20;
+      box-shadow: inset 0 0 0 1px $color-teal-30;
       content: attr(class);
       display: block;
       font-size: 0.875rem;
@@ -383,11 +421,11 @@
       text-overflow: ellipsis;
       white-space: pre;
     }
-  
+
     & > div:not(.chi-col),
     & > p {
-      background-color: $color-blue-20;
-      box-shadow: inset 0 0 0 1px $color-blue-30;
+      background-color: $color-teal-20;
+      box-shadow: inset 0 0 0 1px $color-teal-30;
     }
   }
 
