@@ -96,6 +96,11 @@
       .chi-icon,
       .chi-flag-icon {
         margin-right: 0.75rem;
+
+        &.-icon--right {
+          margin-right: 0;
+          margin-left: 0.75rem;
+        }
       }
 
       &:not(.-active) {
