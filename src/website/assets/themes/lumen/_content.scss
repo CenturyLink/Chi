@@ -25,12 +25,6 @@
       .docs-titlebar {
         background: $color-teal-100;
         color: $color-text-white;
-        // Yellow-Orange Gradient
-        // background: $color-yellow-40;
-        // background: linear-gradient(90deg, rgba($color-yellow-40, 1) 0%, rgba($color-orange-50, 1) 100%);
-        // Red-Orange Gradient
-        // background: $color-red-50;
-        // background: linear-gradient(90deg, rgba($color-red-50, 1) 0%, rgba($color-orange-50, 1) 100%);
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -140,20 +134,16 @@
             h5,
             h6 {
               display: flex;
-              //font-weight: $font-weight-semi-bold;
             }
 
             h1 {
               font-size: $font-size-h1;
               font-weight: $font-weight-extra-bold;
-              //line-height: 3rem;
               margin: 1rem 0;
             }
 
             h2 {
-              //font-size: $font-size-h3;
               font-weight: 800;
-              //line-height: 2rem;
               margin: 1rem 0;
 
               &.-text--bold {
@@ -162,8 +152,6 @@
             }
 
             h3 {
-              //font-size: $font-size-h4;
-              //line-height: 2rem;
               margin: 0.5em 0;
 
               > a {
@@ -172,20 +160,14 @@
             }
 
             h4 {
-              //font-size: $font-size-h5;
-              //line-height: 1.5rem;
               margin: 0.5em 0;
             }
 
             h5 {
-              //font-size: $font-size-h6;
-              //line-height: 1.5rem;
               margin: 0.5em 0;
             }
 
             h6 {
-              //font-size: $font-size-sm;
-              //line-height: 1.25rem;
               margin: 0.5em 0;
             }
           }

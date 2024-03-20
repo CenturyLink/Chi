@@ -19,7 +19,7 @@ $button-colors: (
     border-color-outline-active: $button-primary-outline-active-border-color,
     border-color-flat-hover: $button-primary-flat-hover-border-color,
     border-color-flat-active: $button-primary-flat-active-border-color,
-    focus-outline: $button-primary-solid-focus-outline,
+    focus-color-outline: $button-primary-solid-focus-outline,
     text-color: $button-primary-solid-text-color,
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
@@ -42,7 +42,7 @@ $button-colors: (
     border-color-outline-active: $button-secondary-outline-active-border-color,
     border-color-flat-hover: $button-secondary-flat-hover-border-color,
     border-color-flat-active: $button-secondary-flat-active-border-color,
-    focus-outline: $button-secondary-solid-focus-outline,
+    focus-color-outline: $button-secondary-solid-focus-outline,
     text-color: $button-secondary-solid-text-color,
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
@@ -65,7 +65,7 @@ $button-colors: (
     border-color-outline-active: $button-dark-outline-active-border-color,
     border-color-flat-hover: $button-dark-flat-hover-border-color,
     border-color-flat-active: $button-dark-flat-active-border-color,
-    focus-outline: $button-dark-solid-focus-outline,
+    focus-color-outline: $button-dark-solid-focus-outline,
     text-color: $button-dark-solid-text-color,
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
@@ -88,7 +88,7 @@ $button-colors: (
     border-color-outline-active: $button-danger-outline-active-border-color,
     border-color-flat-hover: $button-danger-flat-hover-border-color,
     border-color-flat-active: $button-danger-flat-active-border-color,
-    focus-outline: $button-danger-solid-focus-outline,
+    focus-color-outline: $button-danger-solid-focus-outline,
     text-color: $button-danger-solid-text-color,
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
@@ -111,7 +111,7 @@ $button-colors: (
     border-color-outline-active: $button-light-outline-active-border-color,
     border-color-flat-hover: $button-light-flat-hover-border-color,
     border-color-flat-active: $button-light-flat-active-border-color,
-    focus-outline: $button-light-solid-focus-outline,
+    focus-color-outline: $button-light-solid-focus-outline,
     text-color: $button-light-solid-text-color,
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
@@ -572,7 +572,7 @@ $sizes: (
 
       &:focus,
       &.-focus {
-        outline: map-get(map-get($button-colors, $color), focus-outline);
+        outline: map-get(map-get($button-colors, $color), focus-color-outline);
       }
 
       &[disabled],
