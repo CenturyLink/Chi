@@ -100,9 +100,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue',
   },
   {
-    href: `components/button`,
+    to: `components/button`,
     label: 'Button',
-    source: 'pug',
+    source: 'vue',
   },
   {
     to: `components/button-group`,

@@ -3,8 +3,6 @@
  */
 import * as ChiVueLibrary from '@centurylink/chi-vue';
 
-import { ChiVue } from '@centurylink/chi-vue';
-
 const components = [
   'ChiPagination',
   'ChiDataTableToolbar',
@@ -24,5 +22,4 @@ export default defineNuxtPlugin((nuxtApp) => {
   components.forEach((name) => {
     nuxtApp.vueApp.component(name, ChiVueLibrary[name]);
   });
-  // nuxtApp.vueApp.use(ChiVue, {});
 });
