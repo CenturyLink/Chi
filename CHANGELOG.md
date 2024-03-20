@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 5.54.0 (March 20, 2024)
+
+### Components
+
+#### Added
+
+- Added: Copy text button web component.
+- Added: Tabbed navigation bar now supports `visibleItems` property.
+- Added: Dropdown menu items now support icon right position.
+
+#### Fixed
+
+- Fixed: Date picker value empty when value has not been defined.
+- Fixed: Date picker format "DD/MM/YYYY" was causing days and months switch each other.
+
+### Documentation
+
+#### Added
+
+- Added: Radio button accessibility page.
+- Added: Copy text button section in text input page.
+
 ## 5.53.0 (March 13, 2024)
 
 ### Components
