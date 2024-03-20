@@ -1157,15 +1157,15 @@ $link-cta-padding-right: 0;
 $link-cta-hover-color: $color-teal-100;
 
 // Marketing icon
-$marketing-icon-primary-color: $color-black;
-$marketing-icon-secondary-color: $color-orange-50;
-$marketing-icon-tertiary-color: $color-red-70;
+$marketing-icon-primary-color: $color-teal-100;
+$marketing-icon-secondary-color: $color-red-50;
 $marketing-icon-shadow-color: $color-teal-25;
+$marketing-icon-tertiary-color: $color-red-50;
 $marketing-icon-size-xs: 4.5rem;
 $marketing-icon-size-sm: 5rem;
 $marketing-icon-size-md: 6rem;
 $marketing-icon-size-lg: 8rem;
-$marketing-icon-outline-fill: $color-black;
+$marketing-icon-outline-fill: $marketing-icon-primary-color;
 
 // Mobile navigation
 $mobile-nav-background-color: $color-background-white;

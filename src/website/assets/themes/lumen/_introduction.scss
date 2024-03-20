@@ -76,31 +76,6 @@
                 width: auto;
               }
 
-              &.-primary {
-                color: $color-text-white;
-                background-color: $color-red-50;
-                border-color: $color-red-50;
-                font-weight: bold;
-                /* Orange
-                color: $color-text-white;
-                background-color: $color-orange-50;
-                border-color: $color-orange-50;
-                font-weight: bold;
-                */
-
-                &:hover {
-                  color: $color-text-white;
-                  background-color: $color-red-60;
-                  border-color: $color-red-60;
-                }
-
-                &:active {
-                  color: $color-text-white;
-                  background-color: $color-red-50;
-                  border-color: $color-red-50;
-                }
-              }
-
               &.-dark {
                 color: $color-text-white;
                 border-color: $color-white;
