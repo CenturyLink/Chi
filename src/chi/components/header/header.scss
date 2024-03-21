@@ -429,10 +429,10 @@
         }
       }
 
+      // sass-lint:disable-block force-element-nesting
+
       .chi-tabs {
         align-self: center;
-
-        // Inverse rules are for backwards compatibility: old headers rendered inverse tabs on a dark background navbar
 
         &,
         &.-inverse {

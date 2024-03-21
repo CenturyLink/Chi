@@ -94,6 +94,14 @@ a,
     }
   }
 
+  &.-underline {
+    text-decoration: underline;
+
+    &:hover {
+      color: $link-underline-hover-color;
+    }
+  }
+
   &.-no-hover-underline {
     &:hover {
       text-decoration: none;

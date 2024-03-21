@@ -3638,6 +3638,28 @@
           "required": false
         },
         {
+          "name": "underline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "underline",
+          "reflectToAttr": true,
+          "docs": "to render an underline on a link.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "rel",
           "type": "string",
           "complexType": {

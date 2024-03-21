@@ -344,7 +344,10 @@ $accordion-xl-item-content-padding: 0 1.5rem 1.5rem;
 $alert-background-color: $color-background-white;
 $alert-accent-border-color: $color-icon-info;
 $alert-accent-border-width: 0.5rem;
+$alert-accent-border-radius: 0.5rem 0.25rem 0.25rem 0.5rem;
 $alert-border-color: $color-border-info-light;
+$alert-center-accent-border-height: 0.125rem;
+$alert-border-radius: 0.5rem;
 $alert-title-text-color: $color-text-info;
 $alert-banner-title-text-color: $color-text-info;
 $alert-text-color: $color-text-base;
@@ -900,7 +903,9 @@ $css-grid-gap: 1rem;
 $css-grid-md-gap: 1.5rem;
 
 // Date picker
-$date-picker-input-width: 14rem;
+$date-picker-input-width: 16rem;
+$date-picker-day-border-radius: $border-radius-base;
+$date-picker-padding: 0.5rem;
 $date-picker-day-active-background-color: $color-background-primary;
 $date-picker-day-active-text-color: $color-text-white;
 $date-picker-day-background-color: $color-background-white;
@@ -1155,6 +1160,7 @@ $link-cta-position-right: auto;
 $link-cta-hover-position-right: auto;
 $link-cta-padding-right: 0;
 $link-cta-hover-color: $color-teal-100;
+$link-underline-hover-color: $color-teal-100;
 
 // Marketing icon
 $marketing-icon-primary-color: $color-teal-100;

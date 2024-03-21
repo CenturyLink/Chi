@@ -749,12 +749,12 @@ p.-text
     .-p--3
       chi-link.-d--block.-mb--2(href='#' no-hover-underline)
         chi-alert.-w--100(color='info' icon='file')
-          span.-text--primary.-text--semi-bold.-flex--grow1
+          span.-text--semi-bold.-flex--grow1
             | Complete platform setup
           chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
         chi-alert.-w--100(color='info' icon='settings')
-          span.-text--primary.-text--semi-bold.-flex--grow1
+          span.-text--semi-bold.-flex--grow1
             | Configure your first device
           chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
     .example-tabs.-pl--2
@@ -768,7 +768,7 @@ p.-text
         <!-- Clickable alert using chi-link -->
         <chi-link href="#" class="-d--block" no-hover-underline>
           <chi-alert color="info" icon="file" class="-w--100">
-            <span class="-text--primary -text--semi-bold -flex--grow1">Complete platform setup</span>
+            <span class="-text--semi-bold -flex--grow1">Complete platform setup</span>
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
           </chi-alert>
         </chi-link>
@@ -776,7 +776,7 @@ p.-text
         <!-- Clickable alert using chi-button -->
         <chi-button variant="flat" extra-class="-b--0 -p--0 -text--no-transform -no-hover" fluid>
           <chi-alert color="info" icon="settings" class="-w--100">
-            <span class="-text--primary -text--semi-bold -flex--grow1">Configure your first device</span>
+            <span class="-text--semi-bold -flex--grow1">Configure your first device</span>
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
           </chi-alert>
         </chi-button>
@@ -880,6 +880,7 @@ p.-text
       chi-alert.-m--2(color='success' icon='circle-check' size='lg' title='Success' closable mutable='false')
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions" color='primary') Action
+        chi-button(slot="chi-alert__actions") Action
     .example-tabs.-pl--2
       ul.chi-tabs#example-actionable
         li.-active
@@ -893,6 +894,7 @@ p.-text
         <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
           This is a large closable success alert
           <chi-button slot="chi-alert__actions" color="primary">Action</chi-button>
+          <chi-button slot="chi-alert__actions">Action</chi-button>
         </chi-alert>
     .chi-tabs-panel#html-actionable
       .chi-tab__description
@@ -907,6 +909,7 @@ p.-text
             <p class="chi-alert__text">This is a large closable success alert</p>
             <div class="chi-alert__actions">
               <button class="chi-button -primary">Action</button>
+              <button class="chi-button">Action</button>
             </div>
           </div>
           <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
@@ -1365,6 +1368,7 @@ p.-text
       chi-alert.-m--2(type='banner', icon='flag', size='lg', title="Base", closable, mutable='false')
         | This is a large closable alert
         chi-button(slot="chi-alert__actions", color='primary') Action
+        chi-button(slot="chi-alert__actions") Action
     .example-tabs.-pl--2
       ul.chi-tabs#example-banner-actionable
         li.-active
@@ -1378,6 +1382,7 @@ p.-text
         <chi-alert type="banner" icon="flag" size="lg" title="Base" closable>
           This is a large closable alert
           <chi-button slot="chi-alert__actions" color="primary">Action</chi-button>
+          <chi-button slot="chi-alert__actions">Action</chi-button>
         </chi-alert>
     .chi-tabs-panel#html-banner-actionable
       .chi-tab__description
@@ -1392,6 +1397,7 @@ p.-text
             <p class="chi-alert__text">This is a large closable alert</p>
             <div class="chi-alert__actions">
               <button class="chi-button -primary">Action</button>
+              <button class="chi-button">Action</button>
             </div>
           </div>
           <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
