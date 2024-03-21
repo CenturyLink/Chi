@@ -75,7 +75,10 @@ export class Icon {
 
   private getClass(): string {
     return calculateClasses({
-      prefixed: [{ prefix: '-icon--', value: this.color }, { prefix: '-', value: this.size }],
+      prefixed: [
+        { prefix: '-icon--', value: this.color },
+        { prefix: '-', value: this.size },
+      ],
     });
   }
 

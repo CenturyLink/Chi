@@ -96,6 +96,11 @@
       .chi-icon,
       .chi-flag-icon {
         margin-right: 0.75rem;
+
+        &.-icon--right {
+          margin-right: 0;
+          margin-left: 0.75rem;
+        }
       }
 
       &:not(.-active) {
@@ -365,6 +370,10 @@
     &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
       color: $dropdown-button-text-color;
 
+      &.chi-dropdown__icon {
+        color: $dropdown-trigger-icon-color;
+      }
+
       &:not(.-flat) {
         border: $dropdown-button-border-width solid $dropdown-button-border-color;
 
@@ -407,6 +416,14 @@
       line-height: 1.2rem;
       margin-left: $dropdown-trigger-icon-margin-left;
       width: 0.75rem;
+    }
+
+    &.chi-dropdown__icon {
+      &:not([data-position^='left']) {
+        &::after {
+          display: none;
+        }
+      }
     }
 
     &.-lg,

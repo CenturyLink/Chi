@@ -59,7 +59,7 @@ export class Alert {
    *  custom event when trying to dismiss an alert.
    */
   @Event() dismissAlert: EventEmitter<void>;
-  
+
   /**
    *  To define alert title
    */
@@ -111,11 +111,11 @@ export class Alert {
   }
 
   _hasAlertActions() {
-    return Array.from(this.el.querySelectorAll('[slot=chi-alert__actions]')).length > 0
+    return Array.from(this.el.querySelectorAll('[slot=chi-alert__actions]')).length > 0;
   }
 
   _hasClickableIcon() {
-    return Array.from(this.el.querySelectorAll('[slot=chi-alert__clickable-icon]')).length > 0
+    return Array.from(this.el.querySelectorAll('[slot=chi-alert__clickable-icon]')).length > 0;
   }
 
   _dismissAlert() {
@@ -123,7 +123,7 @@ export class Alert {
       this.el.parentNode.removeChild(this.el);
     }
     this.dismissAlert.emit();
-    
+
     if (this.timeoutReference) {
       clearTimeout(this.timeoutReference);
       this.timeoutReference = null;

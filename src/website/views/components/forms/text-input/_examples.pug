@@ -338,6 +338,61 @@ p.-text
         <div class="chi-label -status">Optional helper message</div>
       </div>
 
+h3 Copy text button
+p.-text
+  | Use the <code>copy-text</code> attribute to show a copy icon that provides the user the 
+  | ability to copy the input value into the clipboard.
+
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__copy-text-button") Label
+          chi-text-input(
+            copy-text,
+            value="Sample Text"
+            id="example__copy-text-button"
+          )
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-icon-left-right
+      li.-active
+        a(href=`#webcomponent-input-icon-left-right`) Web Component
+      li
+        a(href=`#html-input-icon-left-right`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-icon-left-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__copy-text-button">Label</chi-label>
+        <chi-text-input value="Sample Text" id="example__copy-text-button" copy-text></chi-text-input>
+      </div>
+  .chi-tabs-panel#html-input-icon-left-right
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__copy-text-button">Label</label>
+        <div class="-d--flex -align-items--center">
+          <div class="chi-input__wrapper -flex--grow1">
+            <input type="text" class="chi-input" value="Sample text" id="example__copy-text-button">
+          </div>
+      
+          <button id="example_copy-text-button" class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Copy to clipboard">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-copy -sm" aria-hidden="true"></i>
+            </div>
+          </button>
+        </div>
+      </div>
+      
+      <script>
+        document.getElementById('example_copy-text-button').addEventListener('click', () => {
+          navigator.clipboard?.writeText(
+            document.getElementById('example__copy-text-button').getAttribute('value')
+          );
+        });
+
+        <!-- Tooltip -->
+        chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+      </script>
 
 h3 Error
 p.-text
@@ -353,7 +408,7 @@ p.-text
           chi-text-input(
             id="example__portal-danger"
             state="danger"
-            helper-message="Please enter a name.")
+            helper-message="Please enter a name")
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-error
       li.-active
@@ -364,7 +419,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__danger">Name</chi-label>
-        <chi-text-input id="example__danger" state="danger" helper-message="Please enter a name."></chi-text-input>
+        <chi-text-input id="example__danger" state="danger" helper-message="Please enter a name"></chi-text-input>
       </div>
   .chi-tabs-panel#html-portal-error
     :code(lang="html")
@@ -373,7 +428,7 @@ p.-text
         <input type="text" class="chi-input -danger" id="example__portal-danger">
         <div class="chi-label -status -danger">
           <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
-          Please enter a name.
+          Please enter a name
         </div>
       </div>
 

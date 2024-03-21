@@ -231,7 +231,7 @@ p.-text
     div(style="max-width: 16rem;")
       chi-label(for='date-error')
         | Date
-      chi-date-picker(id="date-error" state="danger" helper-message="Please enter a date.")
+      chi-date-picker(id="date-error" state="danger" helper-message="Please enter a date")
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-error
@@ -242,7 +242,7 @@ p.-text
   #webcomponent-with-error.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="date-error">Date</chi-label>
-      <chi-date-picker id="date-error" state="danger" helper-message="Please enter a date."></chi-date-picker>
+      <chi-date-picker id="date-error" state="danger" helper-message="Please enter a date"></chi-date-picker>
   #html-with-error.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -257,8 +257,8 @@ p.-text
           <i class="chi-icon icon-date" aria-hidden="true"></i>
         </div>
         <div class="chi-label -status -danger">
-          <i class="chi-icon circle-warning" aria-hidden="true"></i>
-          Please select a date.
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please select a date
         </div>
       </div>
 
@@ -266,8 +266,6 @@ p.-text
 
 h3 Date Time
 p.-text
-  | Minutes can be shown in steps of 5, 10, 15, 20, or 30 minutes.
-  | Use the property <code>minutes-step</code> to define the step for the minutes (defaults to 15 min if no value is provided).
 .example.-mb--3
   .-p--3
     div(style="max-width: 16rem;")
