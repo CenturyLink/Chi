@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-03-20T08:59:25",
+  "timestamp": "2024-03-22T17:13:36",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.13.0",
@@ -647,6 +647,28 @@
           "attr": "fluid",
           "reflectToAttr": true,
           "docs": "to render a button to fill the parent space.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "raindrop",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "raindrop",
+          "reflectToAttr": true,
+          "docs": "to render a button in a raindrop shape.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -4037,28 +4059,6 @@
           "required": false
         },
         {
-          "name": "underline",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "underline",
-          "reflectToAttr": true,
-          "docs": "to render an underline on a link.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "rel",
           "type": "string",
           "complexType": {
@@ -4116,6 +4116,28 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "underline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "underline",
+          "reflectToAttr": true,
+          "docs": "to render an underline on a link.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

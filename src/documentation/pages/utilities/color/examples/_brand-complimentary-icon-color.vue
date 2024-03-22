@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Brand complimentary" id="brand-complimentary-icon-color" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0">
+<ComponentExample title="Brand accents" id="brand-complimentary-icon-color" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0">
   template(#example-description)
     p.-text
       | More icon colors that can be used to compliment the primary brand palette.
@@ -25,10 +25,10 @@ import { Vue } from 'vue-facing-decorator';
           label: 'HTML Blueprint',
         },
       ],
-      icons: ['icon--navy', 'icon--orange'],
+      icons: ['icon--accent-1', 'icon--accent-2'],
       codeSnippets: {
-        htmlblueprint: `<i class="chi-icon icon-atom -md -icon--navy" aria-hidden="true"></i>
-<i class="chi-icon icon-atom -md -icon--orange" aria-hidden="true"></i>`,
+        htmlblueprint: `<i class="chi-icon icon-atom -md -icon--accent-1" aria-hidden="true"></i>
+<i class="chi-icon icon-atom -md -icon--accent-2" aria-hidden="true"></i>`,
       },
     };
   },
