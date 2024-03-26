@@ -1,7 +1,11 @@
 <template lang="pug">
 <ComponentExample title="State" id="state-data-table" :tabs="exampleTabs">
   template(#example)
-    ChiDataTable(:config='config', :dataTableData='table')
+    .chi-card.-portal.-bg--white
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        ChiDataTable(:config='config' :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
       | Use <code>state</code> config to achieve state styling
@@ -91,7 +95,7 @@ import { Vue } from 'vue-facing-decorator';
       },
       codeSnippets: {
         vue: `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
@@ -231,26 +235,26 @@ data: {
         <div class="chi-pagination__content">
           <div class="chi-pagination__start">
             <div class="chi-pagination__results">
-              <span class="chi-pagination__label">240 Results</span>
+              <span class="chi-pagination__label">6 Results</span>
             </div>
           </div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
-              <button class="chi-button -icon -flat -xs" aria-label="First page">
+              <button class="chi-button -icon -flat -xs" aria-label="First page" disabled>
                 <div class="chi-button__content">
                   <i class="chi-icon icon-page-first" aria-hidden="true"></i>
                 </div>
               </button>
-              <button class="chi-button -icon -flat -xs" aria-label="Previous page">
+              <button class="chi-button -icon -flat -xs" aria-label="Previous page" disabled>
                 <div class="chi-button__content">
                   <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                 </div>
               </button>
             </div>
             <div class="chi-pagination__label">
-              <strong>2</strong>
+              <strong>1</strong>
               <span>of</span>
-              <strong>3</strong>
+              <strong>2</strong>
             </div>
             <div class="chi-pagination__button-group chi-button-group">
               <button class="chi-button -icon -flat -xs" aria-label="Next page">
@@ -276,5 +280,5 @@ data: {
     };
   },
 })
-export default class DataTableState extends Vue {}
+export default class DataTableState extends Vue { }
 </script>
