@@ -513,15 +513,15 @@ export const COLORS = {
   },
   WARNING: {
     name: 'warning',
-    value: '#A15C00',
+    value: '#996100',
   },
   WARNING_LIGHT: {
     name: 'warning-light',
-    value: '#FAECD9',
+    value: '#FFF8B3',
   },
   WARNING_LIGHTER: {
     name: 'warning-lighter',
-    value: '#FFF8ED',
+    value: '#FEFBDC',
   },
   WARNING_LIGHTER_CENTURYLINK: {
     name: 'warning-lighter',
@@ -529,7 +529,7 @@ export const COLORS = {
   },
   DANGER: {
     name: 'danger',
-    value: '#D62015',
+    value: '#D62C15',
   },
   DANGER_LIGHT: {
     name: 'danger-light',
@@ -541,15 +541,15 @@ export const COLORS = {
   },
   MUTED: {
     name: 'muted',
-    value: '#53565A',
+    value: '#585657',
   },
   MUTED_LIGHT: {
     name: 'muted-light',
-    value: '#EDF0F2',
+    value: '#F2F0F1',
   },
   MUTED_LIGHTER: {
     name: 'muted-lighter',
-    value: '#F8F9F9',
+    value: '#FAFAFA',
   },
   BG_NONE: {
     name: '-bg--none',
@@ -557,19 +557,19 @@ export const COLORS = {
   },
   GREY_15: {
     name: 'grey-15',
-    value: '#F4F5F6',
+    value: '#F6F4F5',
   },
   GREY_20: {
     name: 'grey-20',
-    value: '#EDF0F2',
+    value: '#F2F0F1',
   },
   GREY_25: {
     name: 'grey-25',
-    value: '#DADEE2',
+    value: '#DFDDDE',
   },
   GREY_30: {
     name: 'grey-30',
-    value: '#D0D4D9',
+    value: '#D6D3D4',
   },
   NAVY: {
     name: 'navy',
@@ -601,7 +601,7 @@ export const COLORS = {
   },
   GREY: {
     name: 'grey',
-    value: '#3F4145',
+    value: '#434142',
   },
   BLACK: {
     name: 'black',
@@ -613,19 +613,19 @@ export const COLORS = {
   },
   PRIMARY: {
     name: 'primary',
-    value: '#0075C9',
+    value: '#007981',
   },
   PRIMARY_LIGHTER: {
     name: 'primary-lighter',
-    value: '#F5F8FC',
+    value: '#F2FDFC',
   },
   PRIMARY_DARK: {
     name: 'primary-dark',
-    value: '#00308A',
+    value: '#004347',
   },
   PRIMARY_DARKER: {
     name: 'primary-darker',
-    value: '#001E60',
+    value: '#0F3133',
   },
   PRIMARY_CENTURYLINK: {
     name: 'primary',
@@ -633,11 +633,11 @@ export const COLORS = {
   },
   SECONDARY: {
     name: 'secondary',
-    value: '#38C6F4',
+    value: '#2AEDE5',
   },
   SECONDARY_LIGHT: {
     name: 'secondary-light',
-    value: '#EAF7FB',
+    value: '#D9FDF9',
   },
   SECONDARY_LIGHT_CENTURYLINK: {
     name: 'secondary-light',
@@ -661,23 +661,23 @@ export const COLORS = {
   },
   GRAY_100: {
     name: 'gray-100',
-    value: '#242526',
+    value: '#262425',
   },
   GRAY_90: {
     name: 'gray-90',
-    value: '#313336',
+    value: '#343333',
   },
   GRAY_60: {
     name: 'gray-60',
-    value: '#65686C',
+    value: '#6A6869',
   },
   GRAY_50: {
     name: 'gray-50',
-    value: '#8E9399',
+    value: '#949293',
   },
   GRAY_40: {
     name: 'gray-40',
-    value: '#ACB0B5',
+    value: '#B1B0B0',
   },
   BLUE_100: {
     name: 'blue-100',
@@ -717,23 +717,23 @@ export const COLORS = {
   },
   RED_80: {
     name: 'red-80',
-    value: '#A21810',
+    value: '#A22110',
   },
   RED_60: {
     name: 'red-60',
-    value: '#EE3026',
+    value: '#ED3E27',
   },
   RED_50_LUMEN: {
     name: 'red-50',
-    value: '#FF645C',
+    value: '#F95E4A',
   },
   RED_40: {
     name: 'red-40',
-    value: '#FF9086',
+    value: '#FF9486',
   },
   RED_30: {
     name: 'red-30',
-    value: '#FFC2BD',
+    value: '#FFC5BD',
   },
   YELLOW_60_BRIGHTSPEED: {
     name: 'yellow-60-brightspeed',
@@ -745,7 +745,7 @@ export const COLORS = {
   },
   ORANGE_40: {
     name: 'orange-40',
-    value: '#FA783C',
+    value: '#F99E58',
   },
   PINK_100: {
     name: 'pink-100',
@@ -917,43 +917,47 @@ export const COLORS = {
   },
   TEAL_100: {
     name: 'teal-100',
-    value: '#093134',
+    value: '#0F3133',
   },
   TEAL_90: {
     name: 'teal-90',
-    value: '#07454B',
+    value: '#004347',
   },
   TEAL_80: {
     name: 'teal-80',
-    value: '#08575E',
+    value: '#00555C',
   },
   TEAL_70: {
     name: 'teal-70',
-    value: '#027786',
+    value: '#007981',
   },
   TEAL_60: {
     name: 'teal-60',
-    value: '#038B98',
+    value: '#039198',
   },
   TEAL_50: {
     name: 'teal-50',
-    value: '#0DC7D8',
+    value: '#0CD4D4',
   },
   TEAL_40: {
     name: 'teal-40',
-    value: '#4ED8E4',
+    value: '#2AEDE5',
   },
   TEAL_30: {
     name: 'teal-30',
-    value: '#9DE9F0',
+    value: '#8CF2EF',
+  },
+  TEAL_25: {
+    name: 'teal-25',
+    value: '#B2FFF6',
   },
   TEAL_20: {
     name: 'teal-20',
-    value: '#DCF7FA',
+    value: '#D9FDF9',
   },
   TEAL_10: {
     name: 'teal-10',
-    value: '#F2FCFD',
+    value: '#F2FDFC',
   },
   GREEN_100: {
     name: 'green-100',
@@ -997,79 +1001,79 @@ export const COLORS = {
   },
   YELLOW_100: {
     name: 'yellow-100',
-    value: '#093134',
+    value: '#4E3100',
   },
   YELLOW_90: {
     name: 'yellow-90',
-    value: '#4E2E00',
+    value: '#664100',
   },
   YELLOW_80: {
     name: 'yellow-80',
-    value: '#864D00',
+    value: '#7A4E00',
   },
   YELLOW_70: {
     name: 'yellow-70',
-    value: '#A15C00',
+    value: '#996100',
   },
   YELLOW_50_LUMEN: {
     name: 'yellow-50',
-    value: '#E58500',
+    value: '#E09900',
   },
   YELLOW_40_LUMEN: {
     name: 'yellow-40',
-    value: '#FF9E18',
+    value: '#FDD219',
   },
   YELLOW_30: {
     name: 'yellow-30',
-    value: '#FFCC89',
+    value: '#FDE162',
   },
   YELLOW_20_LUMEN: {
     name: 'yellow-20',
-    value: '#FAECD9',
+    value: '#FFF8B3',
   },
   YELLOW_10: {
     name: 'yellow-10',
-    value: '#FFF8ED',
+    value: '#FEFBDC',
   },
   ORANGE_100: {
     name: 'orange-100',
-    value: '#093134',
+    value: '#5B2600',
   },
   ORANGE_90: {
     name: 'orange-90',
-    value: '#07454B',
+    value: '#723204',
   },
   ORANGE_80: {
     name: 'orange-80',
-    value: '#08575E',
+    value: '#914008',
   },
   ORANGE_70: {
     name: 'orange-70',
-    value: '#027786',
+    value: '#B35009',
   },
   ORANGE_60: {
     name: 'orange-60',
-    value: '#038B98',
+    value: '#E96B0C',
   },
   ORANGE_50: {
     name: 'orange-50',
-    value: '#0DC7D8',
+    value: '#FB8429',
   },
   ORANGE_40_LUMEN: {
     name: 'orange-40',
-    value: '#4ED8E4',
+    value: '#F99E58',
   },
   ORANGE_30: {
     name: 'orange-30',
-    value: '#9DE9F0',
+    value: '#FACAA8',
   },
   ORANGE_20: {
     name: 'orange-20',
-    value: '#DCF7FA',
+    value: '#FDE7D8',
   },
   ORANGE_10: {
     name: 'orange-10',
-    value: '#F2FCFD',
+    value: '#FEF6F0',
   },
   RED_CENTURYLINK_100: {
     name: 'red-100',

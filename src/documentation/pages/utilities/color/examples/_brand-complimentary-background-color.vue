@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h4 Brand complimentary
+    h4 Brand accents
     p.-text More background-colors that can be used to compliment the primary brand palette.
     <TableComponent :data="colors" :getContent="getContent" />
 </template>
@@ -13,7 +13,7 @@ import { COLORS } from '~/constants/constants';
 
 @NuxtComponent({})
 export default class BrandComplimentaryBackgroundColor extends Vue {
-  colors = [COLORS.NAVY, COLORS.GREY];
+  colors = [COLORS.RED_50_LUMEN, COLORS.ORANGE_50];
   getContent(column: ITableColumn, content: ITableContent) {
     return generateBasicUtilitiesColorContent(column, content);
   }

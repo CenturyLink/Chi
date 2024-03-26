@@ -77,7 +77,7 @@
         height: 1rem;
         left: 0;
         position: absolute;
-        top: 0.125rem;
+        top: $radio-label-before-top;
         transition: background-color 0.2s ease-in-out;
         width: 1rem;
       }
@@ -90,7 +90,7 @@
         height: 0.375rem;
         left: 0.3125rem;
         position: absolute;
-        top: 0.4375rem;
+        top: $radio-label-after-top;
         transform: scale(0);
         transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
         width: 0.375rem;

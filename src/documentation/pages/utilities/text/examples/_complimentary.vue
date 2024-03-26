@@ -1,12 +1,12 @@
 <template lang="pug">
-<ComponentExample padding="-p--0" title="Brand complimentary" id="brand-complimentary" :tabs="exampleTabs" :showSnippetTabs="false">
+<ComponentExample padding="-p--0" title="Brand accents" id="brand-complimentary" :tabs="exampleTabs" :showSnippetTabs="false">
   template(#example-description)
     p.-text
       | More text colors that can be used to compliment the primary brand palette.
   template(#example)
     .chi-grid.-no-gutter
       .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
-        .-p--1.-p-sm--2.-text--center(v-for="className in ['navy', 'orange']")
+        .-p--1.-p-sm--2.-text--center(v-for="className in ['accent-1', 'accent-2']")
           p.-text(:class="`-text--${className}`") -text--{{ className }}
   template(#code-htmlblueprint)
     Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
@@ -26,8 +26,8 @@ export default class Complimentary extends Vue {
     },
   ];
   codeSnippets = {
-    htmlblueprint: `<p class="-text--navy">-text--navy</p>
-<p class="-text--orange">-text--orange</p>`,
+    htmlblueprint: `<p class="-text--accent-1">-text--accent-1</p>
+<p class="-text--accent-2">-text--accent-2</p>`,
   };
 }
 </script>

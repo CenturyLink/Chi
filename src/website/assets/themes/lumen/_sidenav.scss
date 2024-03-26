@@ -2,7 +2,6 @@
 @import '../../../../chi/_global-mixins';
 
 .docs-container {
-
   // Mobile sidenav
   .chi-drawer {
     .-theme-switch {
@@ -35,7 +34,7 @@
                   padding-top: 0.5rem;
 
                   .chi-accordion__title {
-                    font-size: $font-size-sm;
+                    font-size: 0.875rem;
                     font-weight: $font-weight-base;
                     line-height: $line-height-sm;
                   }
@@ -60,9 +59,10 @@
 
   // Sidenav theme switcher
   .-theme-switch {
+    border-radius: $border-radius-base;
     position: relative;
 
-    &:not([data-position^=left]) {
+    &:not([data-position^='left']) {
       &::after {
         position: absolute;
         right: 1rem;
@@ -159,7 +159,7 @@
                     padding-top: 0.5rem;
 
                     .chi-accordion__title {
-                      font-size: $font-size-sm;
+                      font-size: 0.875rem;
                       font-weight: $font-weight-base;
                       line-height: $line-height-sm;
                     }

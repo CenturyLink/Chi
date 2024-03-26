@@ -213,6 +213,32 @@ h2 Examples
       :code(lang="html")
         <button class="chi-button -fluid">Button</button>
 
+.-lumen--show
+  h2 Raindrop
+  p.-text
+    | Raindrop buttons are used to provide further emphasis to primary actions
+    | and help distinguish them from surrounding content.
+  .example.-mb--3
+    .-p--3.-d--flex
+      .-pr--2
+        button(class=`chi-button -primary -uppercase -raindrop`) Button
+      .-pr--2
+        button(class=`chi-button -dark -uppercase -raindrop`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-raindrop
+        li.-active
+          a(href=`#webcomponent-uppercase`) Web Component
+        li
+          a(href=`#html-uppercase`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-raindrop
+      :code(lang="html")
+        <chi-button color="primary" uppercase raindrop>Button</chi-button>
+        <chi-button color="dark" uppercase raindrop>Button</chi-button>
+    .chi-tabs-panel#html-raindrop
+      :code(lang="html")
+        <button class="chi-button -primary -uppercase -raindrop">Button</button>
+        <button class="chi-button -dark -uppercase -raindrop">Button</button>
+
 .-portal--show.-brightspeed--show
   p.-text
     | Use the primary button example for high emphasis actions, secondary button example for medium
@@ -680,7 +706,7 @@ p.-text
         div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
           chi-button(size=size color='primary')= 'Button'
           chi-button.-ml--2(size=size)= 'Button'
-          chi-button.-ml--2(size=size type='icon' color='primary' variant='flat' alternative-text='Button action' data-tooltip='Button action' data-position='bottom')
+          chi-button.-ml--2(size=size type='icon' variant='flat' alternative-text='Button action' data-tooltip='Button action' data-position='bottom')
             chi-icon(icon='atom')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-sizes
@@ -692,36 +718,36 @@ p.-text
       :code(lang="html")
         <!-- xs -->
         <chi-button size="xs" color="primary">Button</chi-button>
-        <chi-button size="xs" color="primary" variant="outline">Button</chi-button>
-        <chi-button size="xs" color="primary" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
+        <chi-button size="xs" variant="outline">Button</chi-button>
+        <chi-button size="xs" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- sm -->
         <chi-button size="sm" color="primary">Button</chi-button>
-        <chi-button size="sm" color="primary" variant="outline">Button</chi-button>
-        <chi-button size="sm" color="primary" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
+        <chi-button size="sm" variant="outline">Button</chi-button>
+        <chi-button size="sm" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- md -->
         <chi-button size="md" color="primary">Button</chi-button>
-        <chi-button size="md" color="primary" variant="outline">Button</chi-button>
-        <chi-button size="md" color="primary" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
+        <chi-button size="md" variant="outline">Button</chi-button>
+        <chi-button size="md" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- lg -->
         <chi-button size="lg" color="primary">Button</chi-button>
-        <chi-button size="lg" color="primary" variant="outline">Button</chi-button>
-        <chi-button size="lg" color="primary" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
+        <chi-button size="lg" variant="outline">Button</chi-button>
+        <chi-button size="lg" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- xl -->
         <chi-button size="xl" color="primary">Button</chi-button>
-        <chi-button size="xl" color="primary" variant="outline">Button</chi-button>
-        <chi-button size="xl" color="primary" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
+        <chi-button size="xl" variant="outline">Button</chi-button>
+        <chi-button size="xl" variant="flat" type="icon" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom" />
         </chi-button>
 
@@ -731,8 +757,8 @@ p.-text
       :code(lang="html")
         <!-- xs -->
         <button class="chi-button -xs -primary">Button</button>
-        <button class="chi-button -xs -primary -outline">Button</button>
-        <button class="chi-button -xs -primary -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
+        <button class="chi-button -xs -outline">Button</button>
+        <button class="chi-button -xs -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -740,8 +766,8 @@ p.-text
 
         <!-- sm -->
         <button class="chi-button -sm -primary">Button</button>
-        <button class="chi-button -sm -primary -outline">Button</button>
-        <button class="chi-button -sm -primary -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
+        <button class="chi-button -sm -outline">Button</button>
+        <button class="chi-button -sm -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -749,8 +775,8 @@ p.-text
 
         <!-- md -->
         <button class="chi-button -md -primary">Button</button>
-        <button class="chi-button -md -primary -outline">Button</button>
-        <button class="chi-button -md -primary -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
+        <button class="chi-button -md -outline">Button</button>
+        <button class="chi-button -md -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -758,8 +784,8 @@ p.-text
 
         <!-- lg -->
         <button class="chi-button -lg -primary">Button</button>
-        <button class="chi-button -lg -primary -outline">Button</button>
-        <button class="chi-button -lg -primary -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
+        <button class="chi-button -lg -outline">Button</button>
+        <button class="chi-button -lg -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -767,8 +793,8 @@ p.-text
 
         <!-- xl -->
         <button class="chi-button -xl -primary">Button</button>
-        <button class="chi-button -xl -primary -outline">Button</button>
-        <button class="chi-button -xl -primary -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
+        <button class="chi-button -xl -outline">Button</button>
+        <button class="chi-button -xl -flat -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>

@@ -10,7 +10,7 @@ $states: (
     banner-background-color: $alert-success-banner-background-color,
     bubble-background-color: $alert-success-bubble-background-color,
     color: $alert-success-icon-color,
-    title-color: $alert-success-title-text-color
+    title-color: $alert-success-title-text-color,
   ),
   danger: (
     accent-border-color: $alert-danger-accent-border-color,
@@ -18,7 +18,7 @@ $states: (
     color: $alert-danger-icon-color,
     bubble-background-color: $alert-danger-bubble-background-color,
     banner-background-color: $alert-danger-banner-background-color,
-    title-color: $alert-danger-title-text-color
+    title-color: $alert-danger-title-text-color,
   ),
   warning: (
     accent-border-color: $alert-warning-accent-border-color,
@@ -26,7 +26,7 @@ $states: (
     color: $alert-warning-icon-color,
     bubble-background-color: $alert-warning-bubble-background-color,
     banner-background-color: $alert-warning-banner-background-color,
-    title-color: $alert-warning-title-text-color
+    title-color: $alert-warning-title-text-color,
   ),
   info: (
     accent-border-color: $alert-info-accent-border-color,
@@ -34,7 +34,7 @@ $states: (
     color: $alert-info-icon-color,
     bubble-background-color: $alert-info-bubble-background-color,
     banner-background-color: $alert-info-banner-background-color,
-    title-color: $alert-info-title-text-color
+    title-color: $alert-info-title-text-color,
   ),
   muted: (
     accent-border-color: $alert-muted-accent-border-color,
@@ -42,13 +42,16 @@ $states: (
     color: $alert-muted-icon-color,
     bubble-background-color: $alert-muted-bubble-background-color,
     banner-background-color: $alert-muted-banner-background-color,
-    title-color: $alert-muted-title-text-color
-  )
+    title-color: $alert-muted-title-text-color,
+  ),
 );
+
+// sass-lint:disable force-element-nesting
 
 .chi-alert {
   background-color: $alert-background-color;
   border-color: $alert-border-color;
+  border-radius: $alert-border-radius;
   border-style: solid;
   border-width: 0.0625rem;
   box-shadow: map-get($shadow, 1);
@@ -64,6 +67,7 @@ $states: (
   &:not(.-banner) {
     &::before {
       background-color: $alert-accent-border-color;
+      border-radius: $alert-accent-border-radius;
       content: '';
       height: calc(100% + 0.125rem);
       left: -0.0625rem;
@@ -78,7 +82,7 @@ $states: (
     justify-content: center;
 
     &::before {
-      height: 0.125rem;
+      height: $alert-center-accent-border-height;
       left: 0;
       top: -0.0625rem;
       width: 100%;
@@ -90,14 +94,12 @@ $states: (
     }
   }
 
-  // sass-lint:disable-block force-element-nesting
   .chi-alert__icon,
   .chi-alert__spinner,
   > chi-icon .chi-icon {
     color: $alert-icon-color;
   }
 
-  // sass-lint:disable-block force-element-nesting
   > .chi-icon,
   > chi-icon .chi-icon,
   .chi-alert__icon,
@@ -110,6 +112,13 @@ $states: (
       margin-bottom: $alert-md-icon-margin-y;
       margin-right: $alert-md-icon-margin-right;
       margin-top: $alert-md-icon-margin-y;
+      width: $alert-md-icon-size;
+    }
+  }
+
+  .chi-alert__spinner {
+    .chi-spinner {
+      height: $alert-md-icon-size;
       width: $alert-md-icon-size;
     }
   }
@@ -162,7 +171,7 @@ $states: (
 
       .chi-alert__icon,
       .chi-alert__spinner,
-      > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+      > chi-icon .chi-icon {
         color: map-get(map-get($states, $state), color);
       }
 
@@ -216,7 +225,7 @@ $states: (
   }
 
   > .chi-button,
-  > chi-button .chi-button { // sass-lint:disable-line force-element-nesting
+  > chi-button .chi-button {
     &.-close,
     &.chi-alert__close-button {
       align-self: flex-start;
@@ -237,7 +246,6 @@ $states: (
   &.-lg {
     padding: $alert-lg-padding;
 
-    // sass-lint:disable-block force-element-nesting
     > .chi-icon,
     > chi-icon .chi-icon,
     .chi-alert__icon,
@@ -251,8 +259,15 @@ $states: (
       }
     }
 
+    .chi-alert__spinner {
+      .chi-spinner {
+        height: $alert-lg-icon-size;
+        width: $alert-lg-icon-size;
+      }
+    }
+
     > .chi-button,
-    > chi-button .chi-button { // sass-lint:disable-line force-element-nesting
+    > chi-button .chi-button {
       &.-close,
       &.chi-alert__close-button {
         padding: 0;
@@ -301,7 +316,6 @@ $states: (
   &.-sm {
     padding: $alert-sm-padding;
 
-    // sass-lint:disable-block force-element-nesting
     > .chi-icon,
     > chi-icon .chi-icon,
     .chi-alert__icon,
@@ -311,6 +325,13 @@ $states: (
         font-size: $alert-sm-icon-size;
         height: $alert-sm-icon-size;
         line-height: $alert-sm-icon-size;
+        width: $alert-sm-icon-size;
+      }
+    }
+
+    .chi-alert__spinner {
+      .chi-spinner {
+        height: $alert-sm-icon-size;
         width: $alert-sm-icon-size;
       }
     }
@@ -348,7 +369,6 @@ $states: (
   &:hover,
   &.-hover {
     .chi-alert {
-      // sass-lint:disable-block force-element-nesting
       .chi-alert__icon,
       .chi-alert__spinner,
       & > chi-icon .chi-icon {
@@ -363,3 +383,4 @@ $states: (
     }
   }
 }
+// sass-lint:enable force-element-nesting

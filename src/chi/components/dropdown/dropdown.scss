@@ -379,6 +379,7 @@
 
         &:hover {
           border-color: $dropdown-button-hover-border-color;
+          scale: none;
         }
 
         &:active,

@@ -8,7 +8,7 @@ $sunday-starting-week: (
   wed: 3,
   thu: 4,
   fri: 5,
-  sat: 6
+  sat: 6,
 );
 $monday-starting-week: (
   mon: 0,
@@ -17,7 +17,7 @@ $monday-starting-week: (
   thu: 3,
   fri: 4,
   sat: 5,
-  sun: 6
+  sun: 6,
 );
 
 .sc-chi-date-picker {
@@ -35,7 +35,7 @@ $monday-starting-week: (
   width: $date-picker-input-width;
 
   &__day {
-    border-radius: $border-radius-base;
+    border-radius: $date-picker-day-border-radius;
     font-weight: $font-weight-normal;
     line-height: 2rem;
     text-align: center;
@@ -140,7 +140,6 @@ $monday-starting-week: (
   &.-week-starts-on-sun {
     @each $week-day, $column-start in $sunday-starting-week {
       &.-month-starts-on-#{$week-day} {
-
         .chi-datepicker__day:first-child {
           margin-left: calc(100% * #{$column-start} / 7);
         }
@@ -151,7 +150,6 @@ $monday-starting-week: (
   &.-week-starts-on-mon {
     @each $week-day, $column-start in $monday-starting-week {
       &.-month-starts-on-#{$week-day} {
-
         .chi-datepicker__day:first-child {
           margin-left: calc(100% * #{$column-start} / 7);
         }
@@ -181,7 +179,7 @@ $monday-starting-week: (
 
 .chi-popover {
   .chi-datepicker {
-    padding: 0.5rem 1rem;
+    padding: $date-picker-padding;
   }
 
   &__datepicker,

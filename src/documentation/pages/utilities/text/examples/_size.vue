@@ -7,7 +7,7 @@
   template(#example)
     <TableComponent :data="sizes" :columns="columns" :getContent="getContent" additionalClasses="-mb-0 -bordered" />
   template(#code-htmlblueprint)
-    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
+    Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html example -bt--0")
 </ComponentExample>
 </template>
 

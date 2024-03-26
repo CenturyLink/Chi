@@ -3,11 +3,6 @@
 @import 'themes/lumen/_mixins';
 @import '_global-mixins';
 
-// sass-lint:disable no-color-hex
-$color-from: #00ffff;
-$color-to: rgb(255, 255, 255);
-// sass-lint:enable no-color-hex
-
 html,
 body {
   min-height: 100%;
@@ -27,9 +22,6 @@ body {
 // sass-lint:enable class-name-format
 
 [class^='test-'] {
-  background-image: linear-gradient(to bottom, $color-from 0, $color-to 1px);
-  background-repeat: repeat-y;
-  background-size: 100% $base-unit;
   display: flex;
   flex-direction: column;
   margin: 0 -0.5rem;

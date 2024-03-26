@@ -5,6 +5,7 @@
     BaseExample
     <Disabled />
     <NoHoverUnderline />
+    <Underline />
     <CTA />
     <LabeledIconLink />
     <IconLink />
@@ -20,6 +21,7 @@ import { Vue } from 'vue-facing-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import NoHoverUnderline from './_no-hover-underline.vue';
+import Underline from './_underline.vue';
 import CTA from './_cta.vue';
 import LabeledIconLink from './_labeled-icon-link.vue';
 import IconLink from './_icon-link.vue';
@@ -34,6 +36,7 @@ import AdditionalSizes from './_additional-sizes.vue';
     BaseExample: Base,
     Disabled,
     NoHoverUnderline,
+    Underline,
     CTA,
     LabeledIconLink,
     IconLink,

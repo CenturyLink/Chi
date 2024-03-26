@@ -71,7 +71,7 @@ import { Vue } from 'vue-facing-decorator';
   <nav class="chi-header__navbar">
     <div class="chi-header__start">
       <div class="-d--none -d-lg--flex">
-        <ul class="chi-tabs -inverse -xs -animated">
+        <ul class="chi-tabs -xs -animated">
           <li class="-active">
             <a href="#">Home</a>
           </li>

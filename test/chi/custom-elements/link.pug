@@ -22,3 +22,9 @@ h3 CTA
   each size in sizes
     p.-text--bold=size
     chi-link(size=`${size === 'default' ? '' : size}`, cta, data-cy=`link-cta-${size}`) Link
+
+h3 Underline
+.test-link-underline.-w--100.-text(data-cy="test-link-underline")
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, underline, data-cy=`link-cta-${size}`) Link

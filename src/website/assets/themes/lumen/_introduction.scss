@@ -14,6 +14,7 @@
           }
 
           .docs-titlebar__title {
+            color: $color-text-white;
             display: flex;
             font-size: $font-size-h2;
             font-weight: $font-weight-black;
@@ -34,7 +35,7 @@
           }
 
           .docs-titlebar__description {
-            color: $color-grey-80;
+            color: $color-grey-30;
             display: flex;
             font-size: $font-size-base;
             font-weight: $font-weight-normal;
@@ -76,18 +77,19 @@
               }
 
               &.-dark {
-                color: $color-text-primary;
-                border-color: $color-border-primary;
-                
+                color: $color-text-white;
+                border-color: $color-white;
+                font-weight: bold;
+
                 &:hover {
-                  color: $color-navy-100;
-                  border-color: $color-navy-100;
+                  color: $color-text-white;
+                  border-color: $color-white;
                 }
 
                 &:active {
-                  color: $color-navy-100;
-                  border-color: $color-navy-100;
-                }            
+                  color: $color-text-white;
+                  border-color: $color-white;
+                }
               }
             }
           }
@@ -106,7 +108,7 @@
             }
 
             .shape--1 {
-              border: 0.25rem solid $color-cyan-40;
+              border: 0.25rem solid $color-teal-25;
               height: 9rem;
               left: 18rem;
               position: absolute;
@@ -115,7 +117,7 @@
             }
 
             .shape--2 {
-              border: 0.25rem solid $color-cyan-50;
+              border: 0.25rem solid $color-red-40;
               height: 7rem;
               left: 5rem;
               position: absolute;
@@ -131,7 +133,7 @@
               width: 8rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='none' stroke='#{$color-yellow-20}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
@@ -141,7 +143,7 @@
             }
 
             .shape--4 {
-              border: 0.25rem solid $color-cyan-40;
+              border: 0.25rem solid $color-teal-25;
               border-radius: 4.5rem;
               height: 7rem;
               left: 16rem;
@@ -158,7 +160,7 @@
               width: 14rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='none' stroke='#{$color-yellow-20}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
@@ -168,7 +170,7 @@
             }
 
             .shape--6 {
-              border: 0.25rem solid $color-cyan-50;
+              border: 0.25rem solid $color-red-40;
               border-radius: 4.5rem;
               height: 9rem;
               left: 30rem;
