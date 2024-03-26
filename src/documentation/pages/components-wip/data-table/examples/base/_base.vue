@@ -1,12 +1,11 @@
 <template lang="pug">
-<ComponentExample title="Base" id="base-data-table" :tabs="exampleTabs">
+ComponentExample(title="Base" id="base-data-table" :tabs="exampleTabs")
   template(#example)
     ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     Copy(:code="codeSnippets.vue" lang="html")
   template(#code-htmlblueprint)
     Copy(lang="html" :code="codeSnippets.htmlblueprint")
-</ComponentExample>
 </template>
 
 <script lang="ts">
@@ -86,7 +85,7 @@ import { Vue } from 'vue-facing-decorator';
       },
       codeSnippets: {
         vue: `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
@@ -181,9 +180,85 @@ data: {
     </div>
   </div>
   <div class="chi-data-table__body">
-    <div class="chi-data-table__row-empty">
-      <div>No matching results</div>
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 1</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-1</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>18 Dec 2020 3:26 p.m.</div>
+      </div>
     </div>
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 2</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-2</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>18 Dec 2020 2:38 a.m.</div>
+      </div>
+    </div>
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 3</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-3</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>5 Nov 2020 10:15 a.m.</div>
+      </div>
+    </div>
+  </div>
+  <div class="chi-data-table__footer">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+      <div class="chi-pagination__content">
+        <div class="chi-pagination__start">
+          <div class="chi-pagination__results">
+            <span class="chi-pagination__label">6 results</span>
+          </div>
+          <div class="chi-pagination__page-size">
+            <div class="chi-dropdown">
+              <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-1">20</button>
+              <div class="chi-dropdown__menu -w--xs">
+                <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                <a class="chi-dropdown__menu-item" href="#">40</a>
+                <a class="chi-dropdown__menu-item" href="#">60</a>
+                <a class="chi-dropdown__menu-item" href="#">80</a>
+                <a class="chi-dropdown__menu-item" href="#">All</a>
+              </div>
+            </div>
+            <span class="chi-pagination__label">per page</span>
+          </div>
+        </div>
+        <div class="chi-pagination__center">
+          <div class="chi-pagination__button-group chi-button-group">
+            <button class="chi-button -icon -flat" aria-label="Previous page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+              </div>
+            </button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
+            <button class="chi-button -flat" aria-label="Page 2">2</button>
+            <button class="chi-button -icon -flat" aria-label="Next page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="chi-pagination__end">
+          <div class="chi-pagination__jumper">
+            <label class="chi-pagination__label" for="jumper-input-1">Go to page:</label>
+            <input class="chi-input" type="text" id="jumper-input-1" />
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>`,
       },
