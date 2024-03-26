@@ -121,25 +121,27 @@ type DefaultSortType = {
     getConfig(defaultSort: DefaultSortType) {
       return {
         ...this.config,
-        ...(defaultSort ? { defaultSort: defaultSort } : {}),
+        ...(defaultSort ? { defaultSort } : {}),
       };
     },
     getHtmlCode(defaultSort: DefaultSortType) {
       return `<div class="chi-data-table">
   <div class="chi-data-table__head">
     <div class="chi-data-table__row">
-      <button class="chi-data-table__cell -sorting ${defaultSort ? '-active' : ''} ${
-        defaultSort?.direction === 'descending' ? '-descending' : ''
+      <button class="chi-data-table__cell -sorting${defaultSort ? ' -active' : ''}${
+        defaultSort?.direction === 'descending' ? ' -descending' : ''
       }">
-        <div>Name</div>
+        <div class="-mr--1">Name</div>
+        <i class="chi-icon -xs ${
+          defaultSort ? 'icon-arrow-up' : 'icon-arrow-sort'
+        }"${defaultSort?.direction === 'ascending' ? 'style="transform: rotate(180deg);"' : ''} aria-hidden="true"></i>
+      </button>
+      <button class="chi-data-table__cell -sorting">
+        <div class="-mr--1">ID</div>
         <i class="chi-icon -xs icon-arrow-sort" aria-hidden="true"></i>
       </button>
       <button class="chi-data-table__cell -sorting">
-        <div>ID</div>
-        <i class="chi-icon -xs icon-arrow-sort" aria-hidden="true"></i>
-      </button>
-      <button class="chi-data-table__cell -sorting">
-        <div>Last Login</div>
+        <div class="-mr--1">Last Login</div>
         <i class="chi-icon -xs icon-arrow-sort" aria-hidden="true"></i>
       </button>
     </div>
@@ -184,7 +186,7 @@ type DefaultSortType = {
       <div class="chi-pagination__content">
         <div class="chi-pagination__start">
           <div class="chi-pagination__results">
-            <span class="chi-pagination__label">240 results</span>
+            <span class="chi-pagination__label">6 results</span>
           </div>
           <div class="chi-pagination__page-size">
             <div class="chi-dropdown">
@@ -207,13 +209,8 @@ type DefaultSortType = {
                 <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
               </div>
             </button>
-            <button class="chi-button -flat" aria-label="Page 1">1</button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
             <button class="chi-button -flat" aria-label="Page 2">2</button>
-            <button class="chi-button -flat -active" aria-label="Page 3">3</button>
-            <button class="chi-button -flat" aria-label="Page 4">4</button>
-            <button class="chi-button -flat" aria-label="Page 5">5</button>
-            <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
-            <button class="chi-button -flat" aria-label="Page 12">12</button>
             <button class="chi-button -icon -flat" aria-label="Next page">
               <div class="chi-button__content">
                 <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
@@ -234,7 +231,7 @@ type DefaultSortType = {
     },
     getVueCode(defaultSort: DefaultSortType) {
       return `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
@@ -247,15 +244,14 @@ data: {
       hover: false,
       size: 'md',
       striped: false,
-    },${
-      defaultSort
-        ? `
+    },${defaultSort
+          ? `
     defaultSort: {
       key: 'name',
-      direction: ${defaultSort.direction},
+      direction: '${defaultSort.direction}',
     },`
-        : ''
-    }
+          : ''
+        }
     pagination: {
       activePage: 1,
       compact: false,
@@ -325,5 +321,5 @@ data: {
     },
   },
 })
-export default class DataTableSorting extends Vue {}
+export default class DataTableSorting extends Vue { }
 </script>

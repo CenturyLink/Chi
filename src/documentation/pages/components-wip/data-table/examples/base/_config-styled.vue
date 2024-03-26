@@ -5,9 +5,7 @@
   template(#code-vue)
     .chi-tab__description(v-html="styledDataTable.description")
     Copy(lang="html" :code="getVueCode(styledDataTable.style)")
-
   template(#code-htmlblueprint)
-
     Copy(lang="html" :code="getHtmlCode(styledDataTable.style)")
 </ComponentExample>
 </template>
@@ -138,7 +136,7 @@ type ConfigStyleType = {
     },
     getVueCode(style: ConfigStyleType) {
       return `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
@@ -276,7 +274,7 @@ data: {
       <div class="chi-pagination__content">
         <div class="chi-pagination__start">
           <div class="chi-pagination__results">
-            <span class="chi-pagination__label">240 results</span>
+            <span class="chi-pagination__label">6 results</span>
           </div>
           <div class="chi-pagination__page-size">
             <div class="chi-dropdown">
@@ -299,13 +297,8 @@ data: {
                 <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
               </div>
             </button>
-            <button class="chi-button -flat" aria-label="Page 1">1</button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
             <button class="chi-button -flat" aria-label="Page 2">2</button>
-            <button class="chi-button -flat -active" aria-label="Page 3">3</button>
-            <button class="chi-button -flat" aria-label="Page 4">4</button>
-            <button class="chi-button -flat" aria-label="Page 5">5</button>
-            <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
-            <button class="chi-button -flat" aria-label="Page 12">12</button>
             <button class="chi-button -icon -flat" aria-label="Next page">
               <div class="chi-button__content">
                 <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
