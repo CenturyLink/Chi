@@ -9,6 +9,7 @@ export default class DataTableTooltip extends Vue {
   @Prop() msg!: string;
   @Prop() header?: boolean;
   @Prop() textWrap?: boolean;
+  @Prop() nIcons?: number;
 
   tooltip = false;
 
@@ -38,13 +39,15 @@ export default class DataTableTooltip extends Vue {
       </div>
     );
 
+    const margin = (this.nIcons ?? 0) * 25;
+
     return (
       <div
         onMouseenter={() => this.onShow()}
         onFocus={() => this.onShow()}
         onMouseleave={() => this.onHide()}
         onBlur={() => this.onHide()}
-        style={`max-width: fit-content; width: ${this.header ? 'calc(100% - 20px)' : '100%'};`}
+        style={`max-width: fit-content; width: calc(100% - ${margin}px);`}
       >
         {this.tooltip ? <Tooltip message={this.msg}>{content}</Tooltip> : content}
       </div>
