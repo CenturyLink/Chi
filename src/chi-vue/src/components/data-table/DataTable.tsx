@@ -284,7 +284,7 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getHeadContent(label: string, icon?: string) {
+  _getHeadContent(label: string, icon?: string, nIcons?: number, forceTruncation = false) {
     if (icon) {
       return (
         <Tooltip message={label}>
@@ -293,15 +293,15 @@ export default class DataTable extends Vue {
       );
     }
 
-    if (this.cellWrap) {
-      return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
+    if (this.cellWrap && !forceTruncation) {
+      return <DataTableTooltip textWrap={this.cellWrap} msg={label} nIcons={nIcons} />;
     }
 
-    if (this.config.truncation) {
-      return <DataTableTooltip msg={label} header />;
+    if (this.config.truncation || forceTruncation) {
+      return <DataTableTooltip msg={label} header nIcons={nIcons} />;
     }
 
-    return label;
+    return <span>{label}</span>;
   }
 
   _head() {
@@ -390,6 +390,10 @@ export default class DataTable extends Vue {
             ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
 
+      const nIcons = Number(!!sortIcon) + Number(!!infoIcon);
+
+      const headContent = this._getHeadContent(label as string, icon, nIcons, columnIndex === 'actions');
+
       const sortableColumnHead = (
         <div
           aria-label={`Sort Column ${label}`}
@@ -411,7 +415,7 @@ export default class DataTable extends Vue {
               ${this.dataTableData.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}
         >
-          {this._getHeadContent(label as string, icon)}
+          {headContent}
           {infoIcon}
           {sortIcon}
         </div>
@@ -423,12 +427,13 @@ export default class DataTable extends Vue {
               ${alignment}
               ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
+          data-column={columnName}
           style={`
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.dataTableData.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
           `}
         >
-          {this._getHeadContent(label as string, icon)}
+          {headContent}
           {infoIcon}
         </div>
       );

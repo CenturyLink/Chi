@@ -7,6 +7,7 @@ export class ColumnResize {
   elem!: HTMLElement;
   startOffset?: number;
   thElm?: HTMLElement | null;
+  minWidth: number = 100;
 
   constructor(dataTable: DataTable) {
     this.dataTable = dataTable;
@@ -33,6 +34,7 @@ export class ColumnResize {
       grip.classList.add(UTILITY_CLASSES.POSITION.ABSOLUTE);
       grip.classList.add(DIVIDER_CLASSES.DIVIDER);
       grip.classList.add(DIVIDER_CLASSES.VERTICAL);
+      grip.classList.add(UTILITY_CLASSES.MARGIN.RIGHT[0]);
       grip.style.cursor = 'col-resize';
       grip.classList.add('resize-handle');
       grip.addEventListener('mousedown', (e) => this.handlerMouseDown(e, th));
@@ -47,13 +49,31 @@ export class ColumnResize {
     this.dataTable.preventSortOnResize = true;
     this.thElm = th;
     this.startOffset = th.offsetWidth - e.pageX;
+    this.minWidth = this.calcMinWidth(this.thElm);
+  };
+
+  private calcMinWidth = (thElm: HTMLElement): number => {
+    const isCellWrapOrTrunc = this.dataTable.config.cellWrap || this.dataTable.config.truncation;
+
+    const minWidth =
+      !thElm || isCellWrapOrTrunc
+        ? 100
+        : Array.from(this.thElm?.children || []).reduce((totalWidth, child) => {
+            const style = window.getComputedStyle(child);
+            return totalWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight) + parseFloat(style.width);
+          }, 0);
+
+    return minWidth;
   };
 
   private handlerMouseMove = (e: MouseEvent) => {
     let columnCellsToResize: HTMLElement[] = [];
 
     if (this.thElm && this.startOffset) {
-      this.thElm.setAttribute('style', `width: ${this.startOffset + e.pageX + 'px'}; flex: none !important;`);
+      const width = Math.max(this.startOffset + e.pageX, this.minWidth);
+
+      this.thElm.setAttribute('style', `width: ${width + 'px'}; flex: none !important;`);
+
       for (let i = 0; i < (this.columnHeaders ? this.columnHeaders.length : 0); ++i) {
         if (this.columnHeaders && this.columnHeaders[i] === this.thElm) {
           columnCellsToResize = Array.from(

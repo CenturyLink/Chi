@@ -28,9 +28,9 @@ export const exampleConfig: DataTableConfig = {
   columnSizes: {
     xs: [5, 5, 5, 0, 5, 5, 5, 5],
     sm: [10, 10, 10, 0, 10, 10, 10, 5],
-    md: [15, 5, 15, 0, 15, 15, 15, 5],
-    lg: [15, 5, 15, 0, 15, 15, 15, 5],
-    xl: [15, 5, 10, 15, 15, 15, 15, 5],
+    md: [15, 10, 10, 0, 15, 15, 15, 5],
+    lg: [15, 10, 10, 0, 15, 15, 15, 5],
+    xl: [15, 10, 10, 10, 15, 15, 15, 5],
   },
   resultsPerPage: 10,
   defaultSort: {
@@ -38,8 +38,9 @@ export const exampleConfig: DataTableConfig = {
     sortBy: 'date',
     direction: 'descending',
   },
-  truncation: true,
-  treeSelection: true,
+  // truncation: true,
+  cellWrap: true,
+  // treeSelection: true,
   print: {
     isNestedContentPrintDisabled: true,
   },
@@ -309,17 +310,19 @@ export const exampleTableArrayHead = [
 
 export const exampleTableHead = {
   ticketId: {
+    // label: 'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell',
     label: 'Ticket ID',
     sortable: true,
     sortBy: 'id',
     sortDataType: 'string',
     key: true,
     bold: true,
+    align: 'right',
     description: { title: 'Ticket ID', text: 'This is content for ticket id' },
   },
   alerts: {
     label: 'Alerts',
-    align: 'center',
+    align: 'left',
     description: {
       template: 'alertsDesc',
       payload: {
