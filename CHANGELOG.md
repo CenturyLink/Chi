@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.55.0 (March 27, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Checkbox accessibility page.
+
 ## 5.54.0 (March 20, 2024)
 
 ### Components
