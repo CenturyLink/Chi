@@ -156,7 +156,10 @@ export class Dropdown {
     this._addEventListeners();
     this.setFixedWidth();
     this.setMenuHeight();
-    addMutationObserver.call(this, this.setMenuHeight, { childList: true, subtree: true });
+    addMutationObserver.call(this, this.onMenuItemsChange, {
+      childList: true,
+      subtree: true,
+    });
     setTimeout(() => this._createTooltip(), 100);
   }
 
@@ -273,6 +276,11 @@ export class Dropdown {
     return styles.reduce((totalHeight, prop) => totalHeight + parseInt(computedStyle.getPropertyValue(prop), 10), 0);
   }
 
+  onMenuItemsChange() {
+    this.setMenuHeight();
+    this._addClickEventListeners();
+  }
+
   setMenuHeight() {
     if (this.visibleItems) {
       const menuItems = (
@@ -339,11 +347,11 @@ export class Dropdown {
     }
   };
 
-  handlerSelectedMenuItem = (item) => {
-    this.eventItemSelected.emit(item.text);
+  handlerSelectedMenuItem = (ev) => {
+    this.eventItemSelected.emit(ev.target.text);
 
     if (this.retainSelection) {
-      this._value = item.textContent;
+      this._value = ev.target.textContent;
       this.hide();
       this.truncateButtonText();
       this.setActiveClassOnMenuItem();
@@ -440,16 +448,12 @@ export class Dropdown {
   }
 
   _addEventListeners() {
-    const menuItems = this._getDropdownMenuItems();
-
     document.body.addEventListener('click', this.handlerClick.bind(this));
     document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
-
+    
     if (this.preventItemSelected) return;
 
-    menuItems.forEach((item: HTMLElement) => {
-      item.addEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
-    });
+    this._addClickEventListeners();
   }
 
   _removeEventListeners() {
@@ -461,8 +465,16 @@ export class Dropdown {
     if (this.preventItemSelected) return;
 
     menuItems.forEach((item: HTMLElement) => {
-      item.removeEventListener('click', this.handlerSelectedMenuItem.bind(this, item));
+      item.removeEventListener('click', this.handlerSelectedMenuItem);
     });
+  }
+
+  _addClickEventListeners() {
+    const menuItems = this._getDropdownMenuItems()
+
+    menuItems?.forEach((item: HTMLElement) => {
+      item.addEventListener('click', this.handlerSelectedMenuItem);
+    })
   }
 
   _setButtonContent() {
@@ -481,7 +493,7 @@ export class Dropdown {
     const type = this.icon ? 'icon' : '';
     const tooltip = this.iconTooltipMessage ?? '';
     const isNotCustomTrigger = this.button || this.icon;
-    const customTriggerElement = this._customTrigger ? (<slot name="trigger" />) : null;
+    const customTriggerElement = this._customTrigger ? <slot name="trigger" /> : null;
 
     return isNotCustomTrigger ? (
       <chi-button
@@ -500,7 +512,9 @@ export class Dropdown {
       >
         {buttonContent}
       </chi-button>
-    ) : customTriggerElement
+    ) : (
+      customTriggerElement
+    );
   }
 
   getExtraClassForTriggerButton() {
