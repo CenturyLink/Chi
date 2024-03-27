@@ -1,5 +1,106 @@
 h2 Accessibility
-.chi-card.-align--center.-empty
-  .chi-card__content
-    .chi-card__caption
-      | Accessibility guidelines coming soon
+h3 Keyboard Navigation
+table.chi-table
+  thead
+    tr  
+      th Key
+      th Function
+  tbody
+    tr
+      td <code>Tab</code>
+      td Moves focus to the next focusable element          
+    tr
+      td <code>Shift + Tab</code>
+      td Moves focus to the previous focusable element       
+    tr
+      td <code>Enter</code>,<code>Space</code>
+      td Activates the button
+p.-text
+  | For comprehensive details on keyboard support for buttons, refer to our <a href="https://lib.lumen.com/chi/5.54.0/foundations/accessibility/using-keyboard/" target="_blank">Keyboard Control Guide.</a>
+p.-text
+  | Visit <a href="https://webaim.org/techniques/keyboard/" target="_blank">WebAIM</a> for keyboard techniques.
+
+.chi-grid
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
+    .chi-card.-widget
+      .chi-card__header 
+        .chi-card__title.-text--normal Guidance for developers
+      .chi-card__content 
+        .chi-card__caption
+          ul.-text
+            li A <code>button</code> tag operates without requiring any special configurations. It's advisable to utilize <code>button</code> whenever possible, although alternative elements can be used if supplemented with <code>role="button"</code> and JavaScript to emulate button functionality.
+            li Similar to hyperlinks, you can incorporate <code>class="visuallyhidden"</code> along with descriptive text to provide additional context regarding the button's purpose.
+            li Ensure consistency between visual labels and programmatic labels.
+            li Conceal SVG icons from screen readers when attached to buttons that possess textual labels.
+            li Emphasize button states significance, not solely focusing on button styling. Solely toggling classes to visually manage component states may not effectively communicate these states to users of assistive technologies.
+            li In instances where buttons lack text, it's imperative to append <code>aria-label</code> with a descriptive explanation of the button.
+  
+  .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
+    .chi-card.-widget
+      .chi-card__header 
+        .chi-card__title.-text--normal Guidance for designers
+      .chi-card__content 
+        .chi-card__caption 
+          ul.-text
+            li Ensure that the visual appearance and functional behavior of buttons are consistent across states and contexts.
+            li Ensure sufficient color contrast between the button background and text to improve readability, especially for users with visual impairments. Additionally, avoid relying solely on color as the only means of conveying information or indicating button states.
+            li Design distinct visual indicators for focus and hover states to assist users in navigating interactive elements, particularly for keyboard and mouse users.
+            li Touch Targets: Design buttons with an adequate size and spacing. 
+            li Use spacing, typography, and visual cues effectively.
+
+p.-text 
+  | Find live examples in the <a href="https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes" target="_blank">A11y style guide</a>.  
+
+h3 Roles and attributes
+p.-text 
+  | Below are some key considerations to ensure that our components are fully accessible in various scenarios within your interfaces. These points outline the necessary roles and attributes to keep in mind.
+table.chi-table
+  thead
+    tr
+      th.-pr--10 Attribute
+      th Element
+      th Usage
+  tbody
+    tr
+      td <code>aria-label</code>
+      td <code>div</code>
+      td Specifies a textual value used to label an interactive element. This attribute is mandatory for buttons lacking textual content.
+    tr
+      td <code>aria-labelledby</code>
+      td <code>div</code>
+      td The attribute <code>aria-labelledby</code> designates the element or elements responsible for labeling the applied element. It is essential for buttons lacking text content.
+    
+
+h3 Resources
+ul.-text
+  li
+    a(href="https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/" target="_blank") W3 Button Example: 
+    | Contains comprehensive details regarding the accessibility behavior of the button.
+  li
+    a(href="https://a11y-style-guide.com/style-guide/section-general.html" target="_blank") A11y Style Guide:  
+    | Gives core recommendations for accessible buttons. 
+  li  
+    a(href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role" target="_blank") Mozilla Resources for Developers: 
+    | Find examples of accessible buttons.
+
+h3 Other recommendations
+p.-text
+  | Explore additional accessibility tips in the general <a href="https://lib.lumen.com/chi/5.54.0/foundations/accessibility/overview" target="_blank">Accessibility Guide.</a>
+
+h3 WCAG 2.2 Guidelines
+ul.-text
+  li
+    a(href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2#non-text-content" target="_blank") Non-text Content: 
+    | All non-text content that is presented to the user has a text alternative that serves the equivalent purpose. (Level A)
+  li
+    a(href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2#qr-content-structure-separation-programmatic" target="_blank") Info and Relationships: 
+    | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text. (Level A)
+  li 
+    a(href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2#qr-navigation-mechanisms-descriptive" target="_blank") Headings and Labels: 
+    | Headings and labels describe topic or purpose. (Level AA)
+  li
+    a(href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2#qr-minimize-error-cues" target="_blank") Labels or Instructions: 
+    | Labels or instructions are provided when content requires user input. (Level A)
+  li
+    a(href="https://www.w3.org/WAI/WCAG22/quickref/?versions=2.2#qr-ensure-compat-rsv" target="_blank") Name, Role, Value: 
+    | For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies. (Level A)    
