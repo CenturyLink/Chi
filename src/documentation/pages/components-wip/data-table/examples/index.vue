@@ -21,6 +21,7 @@ ClientOnly
     <RadioSelectionPortal />
     <AccordionPortal />
     <TwoTierHeader />
+
 </template>
 
 <script lang="ts">
@@ -43,6 +44,7 @@ import SecondLineWrapping from './portal/_second-line-wrapping.vue';
 import State from './portal/_state.vue';
 import TwoTierHeader from './portal/_two-tier.vue';
 import ComplexPortal from './portal/_complex.vue';
+
 
 @NuxtComponent({
   components: {

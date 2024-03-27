@@ -129,28 +129,28 @@ import { Vue } from 'vue-facing-decorator';
           <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Location"
             data-column="location" data-sort="ascending" data-label="Location">
             Location
-            <chi-button variant="flat" type="icon>
+            <chi-button variant="flat" type="icon">
               <chi-icon icon="arrow-up" size="xs"></chi-icon>
             </chi-button>
           </div>
           <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column High Utilization"
             data-column="highUtilization" data-sort="ascending" data-label="High Utilization">
             High Utilization
-            <chi-button variant="flat" type="icon>
+            <chi-button variant="flat" type="icon">
               <chi-icon icon="arrow-sort" size="xs"></chi-icon>
             </chi-button>
           </div>
           <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Elevated Utilization"
             data-column="elevatedUtilization" data-sort="ascending" data-label="Elevated Utilization">
             Elevated Utilization
-            <chi-button variant="flat" type="icon>
+            <chi-button variant="flat" type="icon">
               <chi-icon icon="arrow-sort" size="xs"></chi-icon>
             </chi-button>
           </div>
           <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Highest %"
             data-column="highest" data-sort="ascending" data-label="Highest %">
             Highest %
-            <chi-button variant="flat" type="icon>
+            <chi-button variant="flat" type="icon">
               <chi-icon icon="arrow-sort" size="xs"></chi-icon>
             </chi-button>
           </div>

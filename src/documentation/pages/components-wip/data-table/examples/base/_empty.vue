@@ -1,12 +1,13 @@
 <template lang="pug">
-<TitleAnchor title="Empty" />
-<ComponentExample v-for="dataTable in emptyDataTables" :title="dataTable.title" titleSize="h4" :id="dataTable.id" :key="dataTable.id" :tabs="exampleTabs">
+TitleAnchor(title="Empty")
+ComponentExample(v-for="dataTable in emptyDataTables" :title="dataTable.title" titleSize="h4" :id="dataTable.id" :key="dataTable.id" :tabs="exampleTabs")
   template(#example)
     ChiDataTable(:config="getConfig(dataTable.config)" :dataTableData='table')
+  template(#code-htmlblueprint)
+    Copy(lang="html" :code="getHtmlCode(dataTable.config)")
   template(#code-vue)
     .chi-tab__description(v-if="dataTable.description" v-html="dataTable.description")
     Copy(lang="html" :code="getVueCode(dataTable.config)")
-</ComponentExample>
 </template>
 
 <script lang="ts">
@@ -31,7 +32,7 @@ type ConfigType = {
         {
           title: 'No Filters',
           id: 'no-filters-data-table',
-          description: 'Use <code>noFiltersMessage</code> config to customize the no filters data message',
+          description: 'Use <code>noFiltersMessage</code> config to customize the no filters data message.',
           config: {
             noFiltersMessage: 'Search for or select at least one filter to get results',
           },
@@ -97,19 +98,30 @@ type ConfigType = {
     getConfig(config: ConfigType) {
       return {
         ...this.config,
-        ...config,
+        // change noFiltersMessage for noResultsMessage message to show the message without toolbar
+        ...(config.noFiltersMessage ? {noResultsMessage: config.noFiltersMessage} : config)
       };
+    },
+    getTableEmptyRow(config: ConfigType) {
+      return config.emptyActionable
+        ? `<div>
+        <i class="chi-icon icon-circle-plus-outline -icon--grey -lg" aria-hidden="true"></i>
+        <span>
+          <a>Add a new or existing service</a>, then manage here.
+        </span>
+      </div>`
+      : `<i class="-mr--1 chi-icon icon-search"></i>
+      <div>${config.noFiltersMessage || config.noResultsMessage}</div>`
     },
     getVueCode(config: ConfigType) {
       return `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
   config: {
-    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${
-      config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''
-    }
+    columnResize: true,${config.noFiltersMessage ? `\n    noFiltersMessage: '${config.noFiltersMessage}',` : ''}${config.noResultsMessage ? `\n    noResultsMessage: '${config.noResultsMessage}',` : ''
+        }
     style: {
       portal: false,
       noBorder: false,
@@ -123,13 +135,12 @@ data: {
       compact: false,
       firstLast: false,
       pageJumper: true,
-    },${
-      config.emptyActionable
-        ? `\n    emptyActionable: {
+    },${config.emptyActionable
+          ? `\n    emptyActionable: {
       isActionable: true,
     },`
-        : ''
-    }
+          : ''
+        }
     resultsPerPage: 3,
   },
   table: {
@@ -159,21 +170,54 @@ data: {
   </div>
   <div class="chi-data-table__body">
     <div class="chi-data-table__row-empty${config.emptyActionable ? ' -actionable' : ''}">
-      ${config.noResultsMessage ? `<div>${config.noResultsMessage}</div>` : ''}${
-        config.noFiltersMessage ? `<i class="-mr--1 chi-icon icon-search"></i>\n      ${config.noFiltersMessage}` : ''
-      }${
-        config.emptyActionable
-          ? `<i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
-        <span>
-          <a>Add a new or existing service</a>, then manage here.
-        </span>`
-          : ''
-      }
+      ${this.getTableEmptyRow(config)}
     </div>
+  </div>
+  <div class="chi-data-table__footer">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+      <div class="chi-pagination__content">
+        <div class="chi-pagination__start">
+          <div class="chi-pagination__page-size">
+            <div class="chi-dropdown">
+              <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-1">20</button>
+              <div class="chi-dropdown__menu -w--xs">
+                <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                <a class="chi-dropdown__menu-item" href="#">40</a>
+                <a class="chi-dropdown__menu-item" href="#">60</a>
+                <a class="chi-dropdown__menu-item" href="#">80</a>
+                <a class="chi-dropdown__menu-item" href="#">All</a>
+              </div>
+            </div>
+            <span class="chi-pagination__label">per page</span>
+          </div>
+        </div>
+        <div class="chi-pagination__center">
+          <div class="chi-pagination__button-group chi-button-group">
+            <button class="chi-button -icon -flat" aria-label="Previous page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+              </div>
+            </button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
+            <button class="chi-button -icon -flat" aria-label="Next page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="chi-pagination__end">
+          <div class="chi-pagination__jumper">
+            <label class="chi-pagination__label" for="jumper-input-1">Go to page:</label>
+            <input class="chi-input" type="text" id="jumper-input-1" />
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>`;
     },
   },
 })
-export default class DataTableEmpty extends Vue {}
+export default class DataTableEmpty extends Vue { }
 </script>
