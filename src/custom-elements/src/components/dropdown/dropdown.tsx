@@ -279,6 +279,7 @@ export class Dropdown {
   onMenuItemsChange() {
     this.setMenuHeight();
     this._addClickEventListeners();
+    this.setActiveClassOnMenuItem();
   }
 
   setMenuHeight() {
