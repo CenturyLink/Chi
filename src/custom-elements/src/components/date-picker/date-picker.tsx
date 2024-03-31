@@ -213,7 +213,7 @@ export class DatePicker {
       ? this._input.value.split(', ')[0]
       : this._input.value;
 
-    if (dayjs(inputValue, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
+    if (dayjs(inputValue, this.format, false).isValid() && !this.checkIfExcluded(inputDate)) {
       if (dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))) {
         this.value = this.min;
         this._input.value = this.min;
