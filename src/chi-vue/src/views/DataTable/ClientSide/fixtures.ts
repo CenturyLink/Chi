@@ -39,6 +39,7 @@ export const exampleConfig: DataTableConfig = {
     direction: 'descending',
   },
   truncation: true,
+  // cellWrap: true,
   treeSelection: true,
   print: {
     isNestedContentPrintDisabled: true,
@@ -309,6 +310,7 @@ export const exampleTableArrayHead = [
 
 export const exampleTableHead = {
   ticketId: {
+    // label: 'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell',
     label: 'Ticket ID',
     sortable: true,
     sortBy: 'id',
