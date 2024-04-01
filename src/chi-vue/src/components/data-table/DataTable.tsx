@@ -297,7 +297,7 @@ export default class DataTable extends Vue {
       return <DataTableTooltip textWrap={this.cellWrap} msg={label} nIcons={nIcons} />;
     }
 
-    if (this.config.truncation) { 
+    if (this.config.truncation) {
       return <DataTableTooltip msg={label} header nIcons={nIcons} />;
     }
 
