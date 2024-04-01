@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-03-13T09:22:46",
+  "timestamp": "2024-03-26T15:21:50",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.12.6",
-    "typescriptVersion": "5.3.3"
+    "version": "4.13.0",
+    "typescriptVersion": "5.4.2"
   },
   "components": [
     {
@@ -795,7 +795,7 @@
       "dependents": [
         "chi-alert",
         "chi-carousel",
-        "chi-copy-icon",
+        "chi-copy-text",
         "chi-dropdown",
         "chi-popover"
       ],
@@ -812,7 +812,7 @@
         "chi-carousel": [
           "chi-button"
         ],
-        "chi-copy-icon": [
+        "chi-copy-text": [
           "chi-button"
         ],
         "chi-dropdown": [
@@ -1194,9 +1194,9 @@
       "dependencyGraph": {}
     },
     {
-      "filePath": "src/components/copy-icon/copy-icon.tsx",
+      "filePath": "src/components/copy-text/copy-text.tsx",
       "encapsulation": "scoped",
-      "tag": "chi-copy-icon",
+      "tag": "chi-copy-text",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -1364,18 +1364,23 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-text-input"
+      ],
       "dependencies": [
         "chi-button",
         "chi-icon"
       ],
       "dependencyGraph": {
-        "chi-copy-icon": [
+        "chi-copy-text": [
           "chi-button",
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-text-input": [
+          "chi-copy-text"
         ]
       }
     },
@@ -2105,6 +2110,7 @@
           "reflectToAttr": true,
           "docs": "To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'",
           "docsTags": [],
+          "default": "'12hr'",
           "values": [
             {
               "value": "12hr",
@@ -2252,17 +2258,7 @@
       ],
       "listeners": [
         {
-          "event": "chiDateChange",
-          "capture": false,
-          "passive": false
-        },
-        {
           "event": "chiPopoverShow",
-          "capture": false,
-          "passive": false
-        },
-        {
-          "event": "chiTimeChange",
           "capture": false,
           "passive": false
         }
@@ -2876,7 +2872,7 @@
           "mutable": false,
           "attr": "icon-tooltip-message",
           "reflectToAttr": false,
-          "docs": "To provide icon data tooltip",
+          "docs": "To provide icon tooltip message",
           "docsTags": [],
           "values": [
             {
@@ -3721,7 +3717,7 @@
         "chi-alert",
         "chi-button",
         "chi-carousel",
-        "chi-copy-icon",
+        "chi-copy-text",
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
@@ -3743,7 +3739,7 @@
         "chi-carousel": [
           "chi-icon"
         ],
-        "chi-copy-icon": [
+        "chi-copy-text": [
           "chi-icon"
         ],
         "chi-date": [
@@ -6366,9 +6362,14 @@
         "chi-text-input": [
           "chi-icon",
           "chi-spinner",
-          "chi-helper-message"
+          "chi-helper-message",
+          "chi-copy-text"
         ],
         "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-copy-text": [
+          "chi-button",
           "chi-icon"
         ]
       }
@@ -7923,6 +7924,28 @@
       "usage": {},
       "props": [
         {
+          "name": "copyText",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "copy-text",
+          "reflectToAttr": true,
+          "docs": "To show copy text icon",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -7955,7 +7978,7 @@
           "mutable": false,
           "attr": "extra-class",
           "reflectToAttr": false,
-          "docs": "",
+          "docs": "Extra classes to apply to input",
           "docsTags": [],
           "values": [
             {
@@ -8530,15 +8553,24 @@
       "dependencies": [
         "chi-icon",
         "chi-spinner",
-        "chi-helper-message"
+        "chi-helper-message",
+        "chi-copy-text"
       ],
       "dependencyGraph": {
         "chi-text-input": [
           "chi-icon",
           "chi-spinner",
-          "chi-helper-message"
+          "chi-helper-message",
+          "chi-copy-text"
         ],
         "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-copy-text": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
           "chi-icon"
         ],
         "chi-phone-input": [
@@ -9651,7 +9683,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::TabTrigger": {
-      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n}",
+      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n  visibleItems?: number;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
