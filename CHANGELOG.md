@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.56.0 (April 2, 2024)
+
+### Components
+
+#### Added
+
+- Added: Data table resize handler functionality now supports `min-width`.
+
 ## 5.55.0 (March 27, 2024)
 
 ### Documentation
