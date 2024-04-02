@@ -4,7 +4,7 @@
     ChiDataTable(:config='config', :dataTableData='table')
   template(#code-vue)
     .chi-tab__description
-      | Use <code>nestedContent</code> property to provide data of row accordion content.
+      | Use <code>nestedContent</code> property to provide data for the accordion content.
     Copy(lang="html" :code="codeSnippets.vue")
 
   template(#code-htmlblueprint)
@@ -110,25 +110,25 @@ import { Vue } from 'vue-facing-decorator';
       },
       codeSnippets: {
         vue: `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table"></ChiDataTable>
+<ChiDataTable :config="config" :dataTableData="table"></ChiDataTable>
 
 <!-- Config and Data -->
 data: {
   config: {
     columnResize: true,
     style: {
-      portal: true,
+      portal: false,
       noBorder: false,
       bordered: false,
       hover: false,
       size: 'md',
-      striped: true,
+      striped: false,
     },
     pagination: {
       activePage: 1,
-      compact: true,
-      firstLast: true,
-      pageJumper: false,
+      compact: false,
+      firstLast: false,
+      pageJumper: true,
     },
     showExpandAll: true,
     resultsPerPage: 3,
@@ -210,173 +210,136 @@ data: {
     ]
   }
 }`,
-        htmlblueprint: `<div class="chi-card -portal -bg--white -bg-md--grey-15">
-  <div class="chi-card__header -sm">
-    <div class="chi-card__title">Title</div>
-  </div>
-  <div class="chi-card__content -p--0">
-    <div class="chi-data-table -portal -compact">
-      <div role="row" class="chi-data-table__head">
-        <div class="chi-data-table__row">
-          <div class="chi-data-table__cell -expandable -position--relative">
-            <div>
-              <button aria-label="Expand All Rows" class="chi-button -icon -flat -expand -sm">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-squares-minus-outline"></i>
-                </div>
-                <span class="-sr--only">Expand All Rows</span>
-              </button>
-              <div class="chi-tooltip " data-popper-placement="top">
-                <span>Collapse All</span>
-              </div>
-            </div>
-            <div class="-position--absolute resize-handle">&nbsp;</div>
+        htmlblueprint: `<div class="chi-data-table">
+  <div class="chi-data-table__head">
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell -expandable -position--relative">
+        <button class="chi-button -icon -flat -expand -sm">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-squares-plus-outline"></i>
           </div>
-          <div data-label="Name" class="chi-data-table__cell -justify-content-md--start -position--relative">
-              Name <div class="-position--absolute resize-handle">&nbsp;</div>
-          </div>
-          <div data-label="ID" class="chi-data-table__cell -justify-content-md--start -position--relative">
-              ID <div class="-position--absolute resize-handle">&nbsp;</div>
-          </div>
-          <div data-label="Last Login" class="chi-data-table__cell -justify-content-md--start -position--relative">
-              Last Login <div class="-position--absolute resize-handle">&nbsp;</div>
-          </div>
-        </div>
+        </button>
       </div>
-      <div class="chi-data-table__body">
-        <div id="row-dt-1-name-1" data-rownumber="0" data-rowlevel="0" role="row" class="chi-data-table__row -md -expanded">
-          <div role="cell" class="chi-data-table__cell -expandable">
-            <button aria-label="Expand row" data-target="#row-dt-1-name-1-content" class="chi-button -icon -flat -expand -xs">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-minus"></i>
-              </div>
-              <span class="-sr--only">Expand Row</span>
-            </button>
-          </div>
-          <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
-            <div class="-w--100">
-              <div class="-text--truncate">Name 1</div>
-            </div>
-          </div>
-          <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
-            <div class="-w--100">
-              <div class="-text--truncate">name-1</div>
-            </div>
-          </div>
-          <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
-            <div class="-w--100">
-              <div class="-text--truncate">18 Dec 2020 3:26 p.m.</div>
-            </div>
-          </div>
-        </div>
-        <div id="row-dt-1-name-1-content">
-          <div role="row" class="chi-data-table__row-child -p--2">Accordion content</div>
-        </div>
-        <div id="row-dt-1-name-2" data-rownumber="1" data-rowlevel="0" role="row" class="chi-data-table__row -striped -md -collapsed">
-          <div role="cell" class="chi-data-table__cell -expandable">
-            <button aria-label="Expand row" data-target="#row-dt-1-name-2-content" class="chi-button -icon -flat -expand -xs">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-plus"></i>
-              </div>
-              <span class="-sr--only">Expand Row</span>
-            </button>
-          </div>
-          <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
-            <div class="-w--100">
-              <div class="-text--truncate">Name 2</div>
-            </div>
-          </div>
-          <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
-            <div class="-w--100">
-              <div class="-text--truncate">name-2</div>
-            </div>
-          </div>
-          <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
-            <div class="-w--100">
-              <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
-            </div>
-          </div>
-        </div>
-        <div id="row-dt-1-name-2-content" style="display: none;">
-          <div role="row" class="chi-data-table__row-child -p--2">Accordion content</div>
-        </div>
-        <div id="row-dt-1-name-3" data-rownumber="2" data-rowlevel="0" role="row" class="chi-data-table__row -md -collapsed">
-          <div role="cell" class="chi-data-table__cell -expandable">
-            <button aria-label="Expand row" data-target="#row-dt-1-name-3-content" class="chi-button -icon -flat -expand -xs">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-plus"></i>
-              </div>
-              <span class="-sr--only">Expand Row</span>
-            </button>
-          </div>
-          <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
-            <div class="-w--100">
-              <div class="-text--truncate">Name 3</div>
-            </div>
-          </div>
-          <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
-            <div class="-w--100">
-              <div class="-text--truncate">name-3</div>
-            </div>
-          </div>
-          <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
-            <div class="-w--100">
-              <div class="-text--truncate">5 Nov 2020 10:15 a.m.</div>
-            </div>
-          </div>
-        </div>
-        <div id="row-dt-1-name-3-content" style="display: none;">
-          <div role="row" class="chi-data-table__row-child -p--2">Accordion content</div>
-        </div>
+      <div class="chi-data-table__cell">
+        <div>Name</div>
       </div>
-      <div class="chi-data-table__footer">
-        <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
-          <div class="chi-pagination__content">
-            <div class="chi-pagination__start">
-              <div class="chi-pagination__results">
-                <span class="chi-pagination__label">240 Results</span>
-              </div>
-            </div>
-            <div class="chi-pagination__center">
-              <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -xs" aria-label="First page">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-page-first" aria-hidden="true"></i>
-                  </div>
-                </button>
-                <button class="chi-button -icon -flat -xs" aria-label="Previous page">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
-                  </div>
-                </button>
-              </div>
-              <div class="chi-pagination__label">
-                <strong>2</strong>
-                <span>of</span>
-                <strong>3</strong>
-              </div>
-              <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -xs" aria-label="Next page">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                  </div>
-                </button>
-                <button class="chi-button -icon -flat -xs" aria-label="Last page">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-page-last" aria-hidden="true"></i>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <div class="chi-pagination__end"></div>
-          </div>
-        </nav>
+      <div class="chi-data-table__cell">
+        <div>ID</div>
+      </div>
+      <div class="chi-data-table__cell">
+        <div>Last Login</div>
       </div>
     </div>
-  </div>`,
+  </div>
+  <div class="chi-data-table__body">
+    <div class="chi-data-table__row -expanded">
+      <div class="chi-data-table__cell -expandable">
+        <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-minus" aria-hidden="true"></i>
+          </div>
+        </button>
+      </div>
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 1</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-1</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>18 Dec 2020 3:26 p.m. </div>
+      </div>
+    </div>
+    <div class="chi-data-table__row-child -p--2">
+      <div>Accordion content</div>
+    </div>
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell -expandable">
+        <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-plus" aria-hidden="true"></i>
+          </div>
+        </button>
+      </div>
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 2</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-2</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>18 Dec 2020 2:38 a.m. </div>
+      </div>
+    </div>
+    <div class="chi-data-table__row">
+      <div class="chi-data-table__cell -expandable">
+        <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-plus" aria-hidden="true"></i>
+          </div>
+        </button>
+      </div>
+      <div class="chi-data-table__cell" data-label="Name">
+        <div>Name 3</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="ID">
+        <div>name-3</div>
+      </div>
+      <div class="chi-data-table__cell" data-label="Last Login">
+        <div>5 Nov 2020 10:15 a.m.</div>
+      </div>
+    </div>
+  </div>
+  <div class="chi-data-table__footer">
+    <nav class="chi-pagination" role="navigation" aria-label="Pagination">
+      <div class="chi-pagination__content">
+        <div class="chi-pagination__start">
+          <div class="chi-pagination__results">
+            <span class="chi-pagination__label">240 results</span>
+          </div>
+          <div class="chi-pagination__page-size">
+            <div class="chi-dropdown">
+              <button class="chi-button -flat -px--1 chi-dropdown__trigger" id="pagesize-9">20</button>
+              <div class="chi-dropdown__menu -w--xs">
+                <a class="chi-dropdown__menu-item -active" href="#">20</a>
+                <a class="chi-dropdown__menu-item" href="#">40</a>
+                <a class="chi-dropdown__menu-item" href="#">60</a>
+                <a class="chi-dropdown__menu-item" href="#">80</a>
+                <a class="chi-dropdown__menu-item" href="#">All</a>
+              </div>
+            </div>
+            <span class="chi-pagination__label">per page</span>
+          </div>
+        </div>
+        <div class="chi-pagination__center">
+          <div class="chi-pagination__button-group chi-button-group">
+            <button class="chi-button -icon -flat" aria-label="Previous page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+              </div>
+            </button>
+            <button class="chi-button -flat -active" aria-label="Page 1">1</button>
+            <button class="chi-button -flat" aria-label="Page 2">2</button>
+            <button class="chi-button -icon -flat" aria-label="Next page">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="chi-pagination__end">
+          <div class="chi-pagination__jumper">
+            <label class="chi-pagination__label" for="jumper-input-9">Go to page:</label>
+            <input class="chi-input" type="text" id="jumper-input-9" />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>`,
       },
     };
   },
 })
-export default class DataTableAccordion extends Vue {}
+export default class DataTableAccordion extends Vue { }
 </script>

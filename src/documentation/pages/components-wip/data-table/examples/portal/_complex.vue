@@ -1,43 +1,48 @@
 <template lang="pug">
-<ComponentExample title="Complex" id="complex-data-table" :tabs="exampleTabs">
+ComponentExample(title="Complex" id="complex-data-table" :tabs="exampleTabs")
   template(#example)
-    ChiDataTable(:config="config", :dataTableData="table", ref='dataTableComplex',)
-      template(#status="payload")
-        i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
-        span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
-      template(#name="payload")
-        chi-popover-example(:name="payload.name", :id="payload.id")
-      template(#actions="payload")
-        chi-dropdown-example(:id="payload.id")
-      template(#toolbar)
-        ChiDataTableToolbar
-          template(v-slot:end)
-            chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
-              chi-icon(icon="print")
-      template(#bulkActions)
-        .chi-bulk-actions__buttons
-          .chi-bulk-actions__buttons-mobile.-z--40
-            chi-button(variant='flat' type='icon' aria-label='Edit')
-              chi-icon(icon='edit')
-            chi-button(variant='flat' type='icon' aria-label='Compose')
-              chi-icon(icon='compose')
-            chi-button(variant='flat' type='icon' aria-label='Delete')
-              chi-icon(icon='delete')
-            chi-button(variant='flat' type='icon' aria-label='Print')
-              chi-icon(icon='print')
-          .chi-bulk-actions__buttons-desktop
-            chi-button(size='xs' aria-label='Download')
-              chi-icon(icon='arrow-to-bottom')
-              span Download
-            chi-button(size='xs' aria-label='Compose')
-              chi-icon(icon='arrow-to-bottom')
-              span Compose
-            chi-button(size='xs' aria-label='Delete')
-              chi-icon(icon='arrow-to-bottom')
-              span Delete
-            chi-button(size='xs' aria-label='Print')
-              chi-icon(icon='arrow-to-bottom')
-              span Print
+    .chi-card.-portal.-bg--white
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        ChiDataTable(:config="config", :dataTableData="table", ref='dataTableComplex')
+          template(#status="payload")
+            i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
+            span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
+          template(#name="payload")
+            ChiPopoverExample(:name="payload.name", :id="payload.id")
+          //- question -- dropdown is not present in website documentation code --> in examples it is
+          template(#actions="payload")
+            ChiDropdownExample(:id="payload.id")
+          template(#toolbar)
+            ChiDataTableToolbar
+              template(v-slot:end)
+                chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
+                  chi-icon(icon="print")
+          template(#bulk-actions)
+            .chi-bulk-actions__buttons
+              .chi-bulk-actions__buttons-mobile.-z--40
+                chi-button(variant='flat' type='icon' aria-label='Edit')
+                  chi-icon(icon='edit')
+                chi-button(variant='flat' type='icon' aria-label='Compose')
+                  chi-icon(icon='compose')
+                chi-button(variant='flat' type='icon' aria-label='Delete')
+                  chi-icon(icon='delete')
+                chi-button(variant='flat' type='icon' aria-label='Print')
+                  chi-icon(icon='print')
+              .chi-bulk-actions__buttons-desktop
+                chi-button(size='xs' aria-label='Download')
+                  chi-icon(icon='arrow-to-bottom')
+                  span Download
+                chi-button(size='xs' aria-label='Compose')
+                  chi-icon(icon='arrow-to-bottom')
+                  span Compose
+                chi-button(size='xs' aria-label='Delete')
+                  chi-icon(icon='arrow-to-bottom')
+                  span Delete
+                chi-button(size='xs' aria-label='Print')
+                  chi-icon(icon='arrow-to-bottom')
+                  span Print
   template(#code-vue)
     .chi-tab__description.-p--2
       | Create reusable Vue components based on your needs and use them as custom templates for Data Table cells and row accordions
@@ -58,7 +63,6 @@
           Copy(lang="html" :code="codeSnippets.popoverExample")
         #vertical-portal-3.chi-tabs-panel(role='tabpanel')
           Copy(lang="html" :code="codeSnippets.dropdownExample")
-</ComponentExample>
 </template>
 
 <script lang="ts">
@@ -113,9 +117,9 @@ import DropdownExample from './../dropdown-example.vue';
         },
         pagination: {
           activePage: 1,
-          compact: false,
+          compact: true,
           firstLast: true,
-          pageJumper: true,
+          pageJumper: false,
         },
         resultsPerPage: 3,
         defaultSort: {
@@ -950,9 +954,9 @@ import DropdownExample from './../dropdown-example.vue';
       },
       codeSnippets: {
         dataTableExample: `<!-- Vue component -->
-<ChiDataTable :config="config" :data="table" ref="dataTableComplex">
+<ChiDataTable :config="config" :dataTableData="table" ref="dataTableComplex">
   <template #status="payload">
-    <i class="\`chi-icon icon-\${payload.icon} -icon--\${payload.color}\`" aria-hidden="true"></i>
+    <i :class="\`chi-icon icon-\${payload.icon} -icon--\${payload.color}\`" aria-hidden="true"></i>
     <span class="-text--truncate" style="padding-left: 0.5rem;">
       {{ payload.status }}
     </span>
@@ -964,7 +968,7 @@ import DropdownExample from './../dropdown-example.vue';
     <ExampleDropdown :id="payload.id" />
   </template>
   <template #toolbar>
-    <ChiToolbar>
+    <ChiDataTableToolbar>
       <template v-slot:start></template>
       <template v-slot:end>
         <chi-button @chiClick="printTable" variant="flat" type="icon"
@@ -972,9 +976,9 @@ import DropdownExample from './../dropdown-example.vue';
           <chi-icon icon="print"></chi-icon>
         </chi-button>
       </template>
-    </ChiToolbar>
+    </ChiDataTableToolbar>
   </template>
-  <template #bulkActions>
+  <template #bulk-actions>
     <div class="chi-bulk-actions__buttons">
       <div class="chi-bulk-actions__buttons-mobile -z--40">
         <chi-button variant="flat" type="icon" aria-label="Edit">
@@ -1031,9 +1035,9 @@ data: {
     },
     pagination: {
       activePage: 1,
-      compact: false,
+      compact: true,
       firstLast: true,
-      pageJumper: true,
+      pageJumper: false,
     },
     resultsPerPage: 3,
     defaultSort: {
@@ -1870,24 +1874,21 @@ methods: {
 <template>
   <div class="-text--truncate">
     <a
-      :id="\`ticket-popover-button-\${id}\`"
+      :id="\`name-popover-button-\${id}\`"
       href="#"
-      :data-target="\`#ticket-popover-\${id}\`"
+      :data-target="\`#name-popover-\${id}\`"
       position="top-start">
       {{id}}
     </a>
     <section
       class="chi-popover"
-      :id="\`ticket-popover-\${id}\`"
+      :id="\`name-popover-\${id}\`"
       aria-modal="true"
       role="dialog"
-      aria-label="Popover title"
+      :aria-label="name"
     >
-      <header class="chi-popover__header">
-        <h2 class="chi-popover__title">{{ id }}</h2>
-      </header>
       <div class="chi-popover__content">
-        <p class="chi-popover__text">Content for {{ id }}</p>
+        {{ name }}
       </div>
     </section>
   </div>
@@ -1895,9 +1896,9 @@ methods: {
 
 <!-- Mounted -->
 mounted() {
+  let hoverAnimationTimeout: ReturnType<typeof setTimeout> | undefined;
   const buttonOpenOnHover = document.getElementById(\`ticket-popover-button-\${this.$props.id}\`);
   const popover = chi.popover(buttonOpenOnHover);
-  let hoverAnimationTimeout: number;
 
   if (buttonOpenOnHover) {
     buttonOpenOnHover.addEventListener('mouseenter', function() {
@@ -1919,28 +1920,38 @@ beforeDestroy() {
 }`,
         dropdownExample: `<!-- Template -->
 <template>
-  <div class="chi-dropdown">
-    <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options">
+  <div class="chi-dropdown -position--absolute">
+    <button
+      :id="'action-button-' + id"
+      class="chi-button -icon -primary -flat"
+      aria-label="More options"
+      data-position="left-start"
+    >
       <div class="chi-button__content">
         <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
       </div>
     </button>
     <div class="chi-dropdown__menu">
-      <a class="chi-dropdown__menu-item" href="#">
-        <span><i class="chi-icon icon-edit -sm -icon--primary" /></span>
-        <span>Edit</span>
-      </a>
-      <a class="chi-dropdown__menu-item" href="#">
-        <span><i class="chi-icon icon-delete -sm -icon--primary" /></span>
-        <span>Delete</span>
+      <a class="chi-dropdown__menu-item" href="#" v-for="action in actions">
+        <span><chi-icon :icon="action.icon" size="sm" color="primary"></chi-icon></span>
+        <span>{{ action.name }}</span>
       </a>
     </div>
   </div>
 </template>
 
+<!-- Config and data -->
+data: {
+  actions: [
+    {name: 'View', icon: 'check-alt'},
+    {name: 'Edit', icon: 'edit'},
+    {name: 'Delete', icon: 'delete'}
+  ]
+}
+
 <!-- mounted -->
 mounted() {
-  this.dropdown = chi.dropdown(this.$refs.dropdownTrigger);
+  this.dropdown = chi.dropdown(document.getElementById(\`action-button-\${this.id}\`));
 }
 beforeDestroy() {
   this.dropdown.dispose();
