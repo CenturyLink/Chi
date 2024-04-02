@@ -360,6 +360,8 @@ export class Dropdown {
   };
 
   truncateButtonText() {
+    if (this.icon) return;
+
     const button = this._referenceElement.getElementsByTagName('button')[0];
     const span = document.createElement('span');
 
@@ -451,7 +453,7 @@ export class Dropdown {
   _addEventListeners() {
     document.body.addEventListener('click', this.handlerClick.bind(this));
     document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
-    
+
     if (this.preventItemSelected) return;
 
     this._addClickEventListeners();
@@ -471,11 +473,11 @@ export class Dropdown {
   }
 
   _addClickEventListeners() {
-    const menuItems = this._getDropdownMenuItems()
+    const menuItems = this._getDropdownMenuItems();
 
     menuItems?.forEach((item: HTMLElement) => {
       item.addEventListener('click', this.handlerSelectedMenuItem);
-    })
+    });
   }
 
   _setButtonContent() {
