@@ -284,7 +284,7 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getHeadContent(label: string, icon?: string) {
+  _getHeadContent(label: string, icon?: string, nIcons?: number) {
     if (icon) {
       return (
         <Tooltip message={label}>
@@ -294,14 +294,14 @@ export default class DataTable extends Vue {
     }
 
     if (this.cellWrap) {
-      return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
+      return <DataTableTooltip textWrap={this.cellWrap} msg={label} nIcons={nIcons} />;
     }
 
     if (this.config.truncation) {
-      return <DataTableTooltip msg={label} header />;
+      return <DataTableTooltip msg={label} header nIcons={nIcons} />;
     }
 
-    return label;
+    return <span>{label}</span>;
   }
 
   _head() {
@@ -365,7 +365,7 @@ export default class DataTable extends Vue {
         ) : null,
         sortBy = this.dataTableData.head[columnIndex].sortBy,
         sortable = this.dataTableData.head[columnIndex].sortable,
-        alignment = this._cellAlignment(this.dataTableData.head[columnIndex].align || 'left'),
+        alignment = this._cellAlignment(this.dataTableData.head[columnIndex].align ?? 'left'),
         sortIcon = sortable ? (
           <chi-button variant="flat" type="icon" alternative-text="Sort icon">
             <i
@@ -389,7 +389,8 @@ export default class DataTable extends Vue {
           this.config.columnSizes && this._currentScreenBreakpoint
             ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
-
+      const nIcons = Number(!!sortIcon) + Number(!!infoIcon);
+      const headContent = this._getHeadContent(label as string, icon, nIcons);
       const sortableColumnHead = (
         <div
           aria-label={`Sort Column ${label}`}
@@ -411,7 +412,7 @@ export default class DataTable extends Vue {
               ${this.dataTableData.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}
         >
-          {this._getHeadContent(label as string, icon)}
+          {headContent}
           {infoIcon}
           {sortIcon}
         </div>
@@ -423,12 +424,13 @@ export default class DataTable extends Vue {
               ${alignment}
               ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
+          data-column={columnName}
           style={`
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.dataTableData.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
           `}
         >
-          {this._getHeadContent(label as string, icon)}
+          {headContent}
           {infoIcon}
         </div>
       );

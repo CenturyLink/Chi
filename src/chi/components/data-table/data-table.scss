@@ -203,6 +203,7 @@ $sizes: (
     .-cell-wrap {
       display: -webkit-box;
       overflow: hidden;
+      overflow-wrap: break-word;
       white-space: normal;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
