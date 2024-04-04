@@ -4,7 +4,11 @@
     ClientOnly
       component(is="style" type='text/css').
         .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
-        .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
+        .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item {
+          background-color: #d9fdf9;
+          color: #007981;
+          font-weight: 600;
+        }
         .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
           background-color: #e6f0ff;
           color: #0047bb;

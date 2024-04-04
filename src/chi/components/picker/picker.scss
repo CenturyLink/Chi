@@ -10,7 +10,7 @@ $sizes: (
     item-description-font-size: $picker-md-item-description-font-size,
     item-description-line-height: $picker-md-item-description-line-height,
     item-description-margin: $picker-md-item-description-margin,
-    item-description-padding: $picker-md-item-description-padding
+    item-description-padding: $picker-md-item-description-padding,
   ),
   lg: (
     item-font-size: $picker-lg-item-font-size,
@@ -19,8 +19,8 @@ $sizes: (
     item-description-font-size: $picker-lg-item-description-font-size,
     item-description-line-height: $picker-lg-item-description-line-height,
     item-description-margin: $picker-lg-item-description-margin,
-    item-description-padding: $picker-lg-item-description-padding
-  )
+    item-description-padding: $picker-lg-item-description-padding,
+  ),
 );
 $pill-sizes: (
   xs: (
@@ -32,7 +32,7 @@ $pill-sizes: (
     item-padding: $picker-sm-item-padding,
     item-font-size: $picker-sm-item-font-size,
     item-description-line-height: $picker-sm-item-description-line-height,
-  )
+  ),
 );
 
 .chi-picker {
@@ -166,6 +166,7 @@ $pill-sizes: (
 
     &:checked {
       & + label {
+        background-color: $picker-checked-background-color;
         border: solid $border $picker-checked-border-color;
         box-shadow: inset 0 0 0 $border $picker-checked-border-color;
         color: $picker-checked-text-color;
