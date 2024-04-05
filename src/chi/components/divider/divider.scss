@@ -39,5 +39,15 @@
       border-top: 0.0625rem solid $divider-border-color;
       content: '';
     }
+
+    &.-inverse {
+      &::after {
+        border-top: 0.0625rem solid $divider-inverse-border-color
+      }
+  
+      &::before {
+        border-top: 0.0625rem solid $divider-inverse-border-color
+      }
+    }
   }
 }
