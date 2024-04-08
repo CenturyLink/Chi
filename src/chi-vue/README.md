@@ -33,6 +33,14 @@ See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
 
+## 3.4.0 (April 2, 2024)
+
+### Components
+
+#### Added
+
+- Added: Data table resize handler functionality now supports `min-width`.
+
 ## 3.3.1 (March 13, 2024)
 
 ### Components

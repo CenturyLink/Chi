@@ -1,5 +1,32 @@
 # CHANGELOG
 
+## 5.57.0 (April 8, 2024)
+
+### Components
+
+#### Added
+
+- Added: Added: Divider now supports applying `-inverse` to `-label` dividers.
+- Added: Dropdown web component `retain-selection` calculation has been improved to better support menus with search.
+
+### Documentation
+
+#### Added
+
+- Added: Button accessibility page.
+
+#### Changed
+
+- Changed: Accessibility overview page to WCAG 2.2.
+
+## 5.56.0 (April 2, 2024)
+
+### Components
+
+#### Added
+
+- Added: Data table resize handler functionality now supports `min-width`.
+
 ## 5.55.0 (March 27, 2024)
 
 ### Documentation
