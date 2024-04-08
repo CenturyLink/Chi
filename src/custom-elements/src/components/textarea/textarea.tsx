@@ -63,7 +63,7 @@ export class Textarea {
   /**
    * To show copy text icon
    */
-    @Prop({ reflect: true }) copyText = false;
+  @Prop({ reflect: true }) copyText = false;
   /**
    * To define -hover, -focus statuses
    */
@@ -147,8 +147,10 @@ export class Textarea {
       'chi-input',
       this.state && `-${this.state}`,
       this.size && `-${this.size}`,
-      this._status && `-${this._status}`
-    ].filter(Boolean).join(' ');
+      this._status && `-${this._status}`,
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return (
       <textarea
@@ -165,17 +167,15 @@ export class Textarea {
       >
         <slot></slot>
       </textarea>
-    )
-  }
-
-  _getHelperMessage() {
-    return this.helperMessage && (
-      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
     );
   }
 
+  _getHelperMessage() {
+    return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+  }
+
   _getIconsData() {
-    const data = {classes: '', iconRight: null, iconLeft: null};
+    const data = { classes: '', iconRight: null, iconLeft: null };
     const classes = [];
 
     if (this.iconRight) {
@@ -185,7 +185,7 @@ export class Textarea {
 
     if (this.iconLeft) {
       data.iconLeft = <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
-      classes.push('-icon--left')
+      classes.push('-icon--left');
     }
 
     data.classes = classes.join(' ');
@@ -200,7 +200,7 @@ export class Textarea {
   _getWrappedTextarea(textareaElement: HTMLTextAreaElement) {
     const iconsData = this._getIconsData();
     const helperMessage = this._getHelperMessage();
-  
+
     textareaElement = (
       <div class={`chi-input__wrapper ${iconsData.classes}${this.copyText ? ' -flex--grow1' : ''}`}>
         {textareaElement}
