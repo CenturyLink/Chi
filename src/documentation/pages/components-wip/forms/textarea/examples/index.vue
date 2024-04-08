@@ -1,31 +1,31 @@
 <template lang="pug">
-  div
-    h2 Examples
+h2 Examples
 
-    BaseExample
-    <Disabled />
-    <Readonly />
-    <Placeholder />
-    <Required />
-    <Optional />
-    <Help />
-    <Message />
-    <Error />
+BaseExample
+<Disabled />
+<Readonly />
+<Placeholder />
+<Required />
+<Optional />
+<Help />
+<Message />
+<CopyTextButton />
+<Error />
 
-    h3 Layout Variations
-    <InlineLabel />
-    <InlineLabelPercent />
-    <InlineLabelGrid />
-    <InlineTextareas />
+h3 Layout Variations
+<InlineLabel />
+<InlineLabelPercent />
+<InlineLabelGrid />
+<InlineTextareas />
 
-    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
-      h3 Icons
-      <LeftAligned />
-      <RightAligned />
-      <LeftRightAligned />
+div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+  h3 Icons
+  <LeftAligned />
+  <RightAligned />
+  <LeftRightAligned />
 
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)"/>
-    <SizesPortal v-else />
+<SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)"/>
+<SizesPortal v-else />
 </template>
 
 <script lang="ts">
@@ -48,10 +48,13 @@ import RightAligned from './_right-aligned.vue';
 import LeftRightAligned from './_left-right-aligned.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
+import CopyTextButton from './_copy-text-button.vue'
+
 
 @NuxtComponent({
   components: {
     BaseExample: Base,
+    CopyTextButton,
     Disabled,
     Readonly,
     Placeholder,
