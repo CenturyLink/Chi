@@ -15,7 +15,7 @@
             .chi-epanel__text
               ul.-text
                 li(v-for="({ itemTitle, url, itemText }) in items")
-                  | <a class="-text--bold" target="_blank" :href="`https://www.w3.org/TR/WCAG20/#${ url }`" rel="noopener">{{ itemTitle }}:</a> {{ itemText }}
+                  | <a class="-text--bold" target="_blank" :href="`https://www.w3.org/TR/WCAG22/#${ url }`" rel="noopener">{{ itemTitle }}:</a> {{ itemText }}
 </template>
 
 <script lang="ts">
@@ -33,24 +33,24 @@ export default class Foundations extends Vue {
       items: [
         {
           itemTitle: '1.1 Text-alternatives',
-          url: 'text-equiv',
+          url: 'text-alternatives',
           itemText:
             'Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.',
         },
         {
           itemTitle: '1.2 Time-based media',
-          url: 'media-equiv',
+          url: 'time-based-media',
           itemText: 'Provide alternatives for time-based media.',
         },
         {
           itemTitle: '1.3 Adaptable',
-          url: 'content-structure-separation',
+          url: 'adaptable',
           itemText:
             'Create content that can be presented in different ways (for example simpler layout) without losing information or structure.',
         },
         {
           itemTitle: '1.4 Distinguishable',
-          url: 'visual-audio-contrast',
+          url: 'distinguishable',
           itemText: 'Make it easier for users to see and hear content including separating foreground from background.',
         },
       ],
@@ -62,22 +62,22 @@ export default class Foundations extends Vue {
       items: [
         {
           itemTitle: '2.1 Keyboard accessible',
-          url: 'keyboard-operation',
+          url: 'keyboard-accessible',
           itemText: 'Make all functionality available from a keyboard.',
         },
         {
           itemTitle: '2.2 Enough time',
-          url: 'time-limits',
+          url: 'enough-time',
           itemText: 'Provide users enough time to read and use content.',
         },
         {
           itemTitle: '2.3 Seizures',
-          url: 'seizure',
+          url: 'seizures-and-physical-reactions',
           itemText: 'Do not design content in a way that is known to cause seizures.',
         },
         {
           itemTitle: '2.4 Navigable',
-          url: 'navigation-mechanisms',
+          url: 'navigable',
           itemText: 'Provide ways to help users navigate, find content, and determine where they are.',
         },
       ],
@@ -90,17 +90,17 @@ export default class Foundations extends Vue {
       items: [
         {
           itemTitle: '3.1 Readable',
-          url: 'meaning',
+          url: 'readable',
           itemText: 'Make text content readable and understandable.',
         },
         {
           itemTitle: '3.2 Predictable',
-          url: 'consistent-behavior',
+          url: 'predictable',
           itemText: 'Make web pages appear and operate in predictable ways.',
         },
         {
           itemTitle: '3.3 Input Assistance',
-          url: 'minimize-error',
+          url: 'input-assistance',
           itemText: 'Help users avoid and correct mistakes.',
         },
       ],
@@ -113,7 +113,7 @@ export default class Foundations extends Vue {
       items: [
         {
           itemTitle: '4.1 Compatible',
-          url: 'ensure-compat',
+          url: 'compatible',
           itemText: 'Maximize compatibility with current and future user agents, including assistive technologies.',
         },
       ],
