@@ -31,6 +31,8 @@ const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
 const placeholder = 'MM/DD/YYYY';
 const placeholderTime = 'MM/DD/YYYY, --:-- --';
+const dateTimeHyphens = '11-11-2023';
+const dateTimeSpaces = '11 11 2023';
 
 import {
   DATE_PICKER_MINUTES_STEP_VALUES
@@ -280,6 +282,70 @@ describe('Date picker', function() {
       .should('have.value', '03/29/2021')
       .find('[data-date="03/29/2021"]')
       .should('have.class', '-active');
+  });
+
+  describe('Should allow Dates with Hyphens (-) and Spaces', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="test-input-format-picker"]').as('testFormat');
+    });
+
+    it(`Should allow dates with hyphens (-)`, () => {
+      const spy = cy.spy();
+
+      cy.get('@testFormat').then(el => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@testFormat')
+        .find('input')
+        .clear()
+        .type(dateTimeHyphens)
+        .trigger('change')
+        .wait(300)
+        .get('@testFormat')
+        .should('have.attr', 'value', dateTimeHyphens );
+
+      cy.get('@testFormat')
+        .find('input')
+        .clear()
+        .type(`${dateTimeHyphens}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphens);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+            chiDatePicker
+          );
+        });
+    });
+
+    it(`Should allow dates with spaces`, () => {
+      const spy = cy.spy();
+
+      cy.get('@testFormat').then(el => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@testFormat')
+        .find('input')
+        .clear()
+        .type(dateTimeSpaces)
+        .trigger('change')
+        .wait(300)
+        .get('@testFormat')
+        .should('have.attr', 'value', dateTimeSpaces );
+
+      cy.get('@testFormat')
+        .find('input')
+        .clear()
+        .type(`${dateTimeSpaces}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeSpaces);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+            chiDatePicker
+          );
+        });
+    });
   });
 
   it(`Should have ${DANGER_CLASS} class when danger state is provided`, () => {
