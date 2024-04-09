@@ -8,7 +8,7 @@ p.-text
   | 1 in 4 adults in the United States have some type of functional disability.
 
 p.-text
-  | Lumen is required to meet the <a target="_blank" href="https://www.w3.org/TR/WCAG20/" rel="noopener">Web Content Accessibility Guidelines (WCAG 2.0)</a>, Conformance
+  | Lumen is required to meet the <a target="_blank" href="https://www.w3.org/TR/WCAG22/" rel="noopener">Web Content Accessibility Guidelines (WCAG 2.2)</a>, Conformance
   | Levels A and AA success criteria. These guidelines and their success criteria will also satisfy the <a target="_blank" href="https://www.section508.gov/" rel="noopener">Revised Section 508</a>
   | of the U.S. Rehabilitation Act (as of January 18, 2018).
 
