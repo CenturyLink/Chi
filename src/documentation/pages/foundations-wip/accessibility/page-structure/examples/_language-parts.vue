@@ -36,15 +36,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#meaning',
+          url: 'https://www.w3.org/TR/WCAG22/#readable',
           text: '3.1 Readable',
         },
         {
-          url: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-other-lang-id',
+          url: 'https://www.w3.org/TR/WCAG22/#language-of-parts',
           text: '3.1.2 Language of Parts',
         },
       ],
