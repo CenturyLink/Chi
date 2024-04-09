@@ -325,6 +325,7 @@ export const UTILITY_CLASSES = {
   },
   ALIGN_ITEMS: {
     CENTER: '-align-items--center',
+    START: '-align-items--start',
   },
   ALIGN_SELF: {
     CENTER: '-align-self--center',
