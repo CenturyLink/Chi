@@ -47,6 +47,7 @@ label,
 
     .chi-icon {
       margin: 0.125rem 0.375rem 0.125rem 0;
+      color: $color-icon-base;
     }
   }
 
@@ -74,6 +75,15 @@ label,
 
     .chi-icon {
       color: $label-status-warning-icon-color;
+    }
+  }
+
+  &.-info {
+    color: $label-status-info-text-color;
+    font-style: normal;
+
+    .chi-icon {
+      color: $label-status-info-icon-color;
     }
   }
 
