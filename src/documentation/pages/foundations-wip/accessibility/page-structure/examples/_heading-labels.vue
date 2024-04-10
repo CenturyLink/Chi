@@ -32,15 +32,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms',
+          url: 'https://www.w3.org/TR/WCAG22/#navigable',
           text: '2.4 Navigable',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive',
+          url: 'https://www.w3.org/TR/WCAG22/#headings-and-labels',
           text: '2.4.6 Headings and Labels',
         },
       ],
@@ -50,7 +50,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Operable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level AA Success Criteria.',
           mainText: 'Level AA',
         },
       ],

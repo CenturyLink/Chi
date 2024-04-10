@@ -3,6 +3,7 @@ import { CHI_STATES, ChiStates } from '../../constants/states';
 import { ICON_COLORS, IconColors } from '../../constants/color';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { addMutationObserver } from '../../utils/mutationObserver';
+import { UTILITY_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-textarea',
@@ -59,6 +60,10 @@ export class Textarea {
    * To prevent Textarea value from being changed
    */
   @Prop({ reflect: true }) readonly = false;
+  /**
+   * To show copy text icon
+   */
+  @Prop({ reflect: true }) copyText = false;
   /**
    * To define -hover, -focus statuses
    */
@@ -137,14 +142,19 @@ export class Textarea {
     addMutationObserver.call(this);
   }
 
-  render() {
-    const textareaElement = (
+  _getTextAreaElement(): HTMLTextAreaElement {
+    const classes = [
+      'chi-input',
+      this.state && `-${this.state}`,
+      this.size && `-${this.size}`,
+      this._status && `-${this._status}`,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
+    return (
       <textarea
-        class={`chi-input
-        ${this.state ? `-${this.state}` : ''}
-        ${this.size ? `-${this.size}` : ''}
-        ${this._status ? `-${this._status}` : ''}
-        `}
+        class={classes}
         placeholder={this.placeholder || ''}
         name={this.name || ''}
         disabled={this.disabled}
@@ -158,28 +168,79 @@ export class Textarea {
         <slot></slot>
       </textarea>
     );
-    const iconClasses = `
-      ${this.iconLeft ? '-icon--left' : ''}
-      ${this.iconRight ? '-icon--right' : ''}
-    `;
-    const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
-    const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
-    const helperMessage = this.helperMessage && (
-      <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>
+  }
+
+  _getHelperMessage() {
+    return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+  }
+
+  _getIconsData() {
+    const data = { classes: '', iconRight: null, iconLeft: null };
+    const classes = [];
+
+    if (this.iconRight) {
+      data.iconRight = <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+      classes.push('-icon--right');
+    }
+
+    if (this.iconLeft) {
+      data.iconLeft = <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
+      classes.push('-icon--left');
+    }
+
+    data.classes = classes.join(' ');
+
+    return data;
+  }
+
+  _shouldWrapTextarea() {
+    return Boolean(this.iconLeft || this.iconRight || this.helperMessage || this.copyText);
+  }
+
+  _getWrappedTextarea(textareaElement: HTMLTextAreaElement) {
+    const iconsData = this._getIconsData();
+    const helperMessage = this._getHelperMessage();
+
+    textareaElement = (
+      <div class={`chi-input__wrapper ${iconsData.classes}${this.copyText ? ' -flex--grow1' : ''}`}>
+        {textareaElement}
+        {iconsData.iconLeft}
+        {iconsData.iconRight}
+        {helperMessage}
+      </div>
     );
 
-    const textarea =
-      this.iconLeft || this.iconRight || this.helperMessage ? (
-        <div class={`chi-input__wrapper ${iconClasses}`}>
-          {textareaElement}
-          {iconLeft}
-          {iconRight}
-          {helperMessage}
-        </div>
-      ) : (
-        textareaElement
-      );
+    if (this.copyText) {
+      textareaElement = this._addCopyText(textareaElement);
+    }
 
-    return textarea;
+    return textareaElement;
+  }
+
+  _addCopyText(textareaElement: HTMLElement) {
+    const copySizeMapping = {
+      xs: 'xs',
+      sm: 'xs',
+      md: 'sm',
+      lg: 'sm--2',
+      xl: 'sm--3',
+    };
+
+    return (
+      <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.START}`}>
+        {textareaElement}
+        <chi-copy-text text={this.value} disabled={this.disabled} size={copySizeMapping[this.size]}></chi-copy-text>
+      </div>
+    );
+  }
+
+  render() {
+    let textareaElement = this._getTextAreaElement();
+
+    if (this._shouldWrapTextarea()) {
+      textareaElement = this._getWrappedTextarea(textareaElement);
+    }
+
+    return textareaElement;
   }
 }
