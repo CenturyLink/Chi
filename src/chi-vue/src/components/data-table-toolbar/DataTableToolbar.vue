@@ -4,8 +4,7 @@ import ColumnCustomization from '../../components/column-customization/ColumnCus
 import { DataTableColumnsData } from '@/constants/types';
 
 const props = defineProps<{
-  columnCustomizationBtn?: boolean;
-  columnsData?: DataTableColumnsData | {};
+  columnCustomizationData?: DataTableColumnsData;
 }>();
 </script>
 
@@ -17,7 +16,7 @@ const props = defineProps<{
       </div>
       <div :class="`${DATA_TABLE_CLASSES.TOOLBAR}__end`">
         <slot name="end"></slot>
-        <ColumnCustomization v-if="columnCustomizationBtn" :columnsData="columnsData" />
+        <ColumnCustomization v-if="columnCustomizationData" :columnsData="columnCustomizationData" />
       </div>
     </div>
   </div>
