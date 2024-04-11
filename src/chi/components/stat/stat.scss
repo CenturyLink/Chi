@@ -186,7 +186,7 @@
           &.-flat {
             &.-icon {
               .chi-icon {
-                color: $stat-compact-active-title-color;
+                color: $stat-active-info-icon-color;
               }
             }
           }
@@ -197,6 +197,18 @@
     &.-disabled {
       opacity: 0.45;
       pointer-events: none;
+    }
+
+    .chi-label__help {
+      .chi-button {
+        &.-flat {
+          &.-icon {
+            .chi-icon {
+              color: $stat-info-icon-color;
+            }
+          }
+        }
+      }
     }
   }
 

@@ -269,7 +269,7 @@ $icon-size-xxl: 8rem;
 $link-color: $color-teal-80;
 
 // Focus color
-$focus-color: $color-border-secondary-dark;
+$focus-color: $color-teal-70;
 
 // Border radius
 $border-radius-base: 0.25rem; // 4px
@@ -329,14 +329,15 @@ $accordion-xl-item-content-padding: 0 1.5rem 1.5rem;
 
 // Alert
 $alert-background-color: $color-background-white;
+$alert-border-radius: 0.5rem;
 $alert-accent-border-color: $color-icon-info;
 $alert-accent-border-width: 0.5rem;
 $alert-border-color: $color-border-info-light;
-$alert-title-text-color: $color-text-primary;
+$alert-title-text-color: $color-text-info;
 $alert-banner-title-text-color: $color-text-base;
 $alert-text-color: $color-text-base;
 $alert-icon-color: $color-icon-info;
-$alert-close-icon-color: $color-icon-primary;
+$alert-close-icon-color: $color-grey-70;
 $alert-success-accent-border-color: $color-icon-success;
 $alert-success-border-color: $color-border-success-light;
 $alert-success-title-text-color: $color-text-success;
@@ -357,7 +358,7 @@ $alert-warning-banner-background-color: $color-background-warning-light;
 $alert-warning-bubble-background-color: $color-background-warning-lighter;
 $alert-info-accent-border-color: $color-icon-info;
 $alert-info-border-color: $color-border-info-light;
-$alert-info-title-text-color: $color-text-primary;
+$alert-info-title-text-color: $color-text-info;
 $alert-info-icon-color: $color-icon-info;
 $alert-info-banner-background-color: $color-background-info-light;
 $alert-info-bubble-background-color: $color-background-info-lighter;
@@ -397,7 +398,7 @@ $alert-sm-text-line-height: $line-height;
 
 // App layout
 $app-layout-background-color: $color-background-base;
-$app-layout-header-background-color: $color-blue-30;
+$app-layout-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
 $app-layout-sub-header-title-color: $color-grey-80;
 $app-layout-header-line-height: $line-height-xl;
@@ -813,9 +814,10 @@ $button-group-border-width: $button-solid-border-width;
 // Card
 $card-background-color: $color-grey-10;
 $card-border: none;
-$card-active-border-color: $color-border-primary;
-$card-active-title-text-color: $color-text-primary;
-$card-active-icon-color: $color-text-primary;
+$card-border-radius: 0.5rem;
+$card-active-border-color: $color-teal-80;
+$card-active-title-text-color: $color-text-base;
+$card-active-icon-color: $color-teal-70;
 $card-header-background-color: $color-background-white;
 $card-header-border-color: transparent;
 $card-header-box-shadow: none;
@@ -830,7 +832,7 @@ $card-empty-icon-color: $color-text-muted-light;
 $card-content-padding: 2rem;
 $card-tabs-padding: 1rem 2rem;
 $card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
-$card-highlight-background-color: $color-background-secondary-light;
+$card-highlight-background-color: $color-cyan-10;
 $card-highlight-border-color: $color-cyan-20;
 $card-highlight-header-background-color: $color-background-white;
 
@@ -1014,6 +1016,7 @@ $file-input-xl-line-height: $line-height-md;
 $file-input-button-background-color: $button-solid-background-color;
 $file-input-button-border-color: $color-border-base-dark;
 $file-input-button-border-width: $button-solid-border-width;
+$file-input-button-border-radius: $button-border-radius;
 $file-input-button-box-shadow: $button-solid-box-shadow;
 $file-input-button-text-color: $color-text-base;
 $file-input-button-text-label-single: 'Choose File';
@@ -1125,10 +1128,10 @@ $link-cta-padding-right: 0;
 $link-cta-hover-color: $color-teal-100;
 
 // Marketing icon
-$marketing-icon-primary-color: $color-icon-primary-dark;
-$marketing-icon-secondary-color: $color-yellow-40;
-$marketing-icon-tertiary-color: $color-red-60;
-$marketing-icon-shadow-color: $color-icon-secondary;
+$marketing-icon-primary-color: $color-teal-100;
+$marketing-icon-secondary-color: $color-red-50;
+$marketing-icon-tertiary-color: $color-red-50;
+$marketing-icon-shadow-color: $color-teal-25;
 $marketing-icon-size-xs: 4.5rem;
 $marketing-icon-size-sm: 5rem;
 $marketing-icon-size-md: 6rem;
@@ -1166,16 +1169,17 @@ $modal-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0
   0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-close-top: 0.5rem;
 $modal-max-width: 600px;
-$modal-header-background-color: $color-background-secondary;
+$modal-header-background-color: $color-teal-60;
 $modal-header-background-image: none;
+$modal-header-text-color: $color-text-white;
 $modal-header-box-shadow: none;
 $modal-header-min-height: 3.5rem;
 $modal-header-padding: 1rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 1rem;
-$modal-back-link-color: $color-icon-body;
-$modal-close-icon-color: $color-icon-body;
+$modal-back-link-color: $color-text-white;
+$modal-close-icon-color: $color-text-white;
 
 // Number input
 $number-input-arrow-icon-color: $color-icon-primary;
@@ -1437,10 +1441,10 @@ $radio-danger-border-color: $color-border-danger;
 // Range slider
 $range-slider-thumb-background-color: $color-background-white;
 $range-slider-zero-thumb-background-color: $color-grey-50;
-$range-slider-thumb-border-color: $color-border-primary;
+$range-slider-thumb-border-color: $color-teal-80;
 $range-slider-zero-thumb-border-color: $color-grey-50;
 $range-slider-track-background-color: $color-grey-30;
-$range-slider-track-value-background-color: $color-background-primary;
+$range-slider-track-value-background-color: $color-teal-80;
 $range-slider-disabled-opacity: $opacity-60;
 $range-slider-focus-color: $focus-color;
 $range-slider-tick-border-color: $color-border-base-dark;
@@ -1570,30 +1574,32 @@ $spinner-size-xxl: 8rem;
 
 // Stat
 $stat-background-color: $color-background-white;
-$stat-background-icon-color: $color-blue-40;
-$stat-background-icon-opacity: 0.4;
+$stat-background-icon-color: $color-teal-60;
+$stat-background-icon-opacity: 0.2;
 $stat-background-icon-left: 0;
 $stat-background-icon-right: auto;
 $stat-background-icon-icon-left: -1rem;
-$stat-active-background-color: $color-cyan-40;
-$stat-active-background-icon-opacity: 0.5;
+$stat-active-background-color: $color-teal-80;
+$stat-active-background-icon-opacity: 0.4;
 $stat-active-background-icon-color: $color-icon-white;
 $stat-active-box-shadow: none;
-$stat-active-text-color: $color-text-base;
-$stat-border: 0.0625rem solid $color-border-base-dark;
-$stat-hover-border: 0.0625rem solid $color-border-secondary;
+$stat-active-text-color: $color-text-white;
+$stat-active-info-icon-color: $color-text-white;
+$stat-info-icon-color: $color-teal-70;
+$stat-border: 0.0625rem solid $color-teal-60;
+$stat-hover-border: 0.0625rem solid $color-teal-60;
 $stat-active-border: 0.0625rem solid transparent;
 $stat-text-align: center;
-$stat-text-color: $color-text-primary;
+$stat-text-color: $color-grey-70;
 $stat-max-width: 21rem;
 $stat-min-height: 6.5rem;
 $stat-min-width: 10.5rem;
 $stat-padding: 1rem;
-$stat-active-metric-title-color: $color-text-base;
-$stat-active-metric-value-color: $color-text-base;
+$stat-active-metric-title-color: $color-text-white;
+$stat-active-metric-value-color: $color-text-white;
 $stat-card-background-color: $color-background-white;
 $stat-card-border-color: rgba($color-black, 0.12);
-$stat-active-card-border-color: $color-border-primary;
+$stat-active-card-border-color: $color-teal-80;
 $stat-content-align-items: center;
 $stat-content-justify-content: center;
 $stat-content-padding: 0.5rem;
@@ -1604,16 +1610,16 @@ $stat-metric-title-font-weight: $font-weight-bold;
 $stat-metric-title-line-height: $line-height-sm;
 $stat-metric-title-text-transform: uppercase;
 $stat-metric-title-width: 80%;
-$stat-metric-value-color: $color-navy-100;
+$stat-metric-value-color: $color-text-base;
 $stat-metric-value-font-size: 2rem;
 $stat-metric-value-font-weight: $font-weight-bold;
 $stat-metric-value-line-height: 2.5rem;
 
-$stat-active-submetric-text-color: $color-text-base;
+$stat-active-submetric-text-color: $color-text-white;
 $stat-submetric-text-color: $color-text-base;
 $stat-submetric-justify-content: center;
 $stat-submetric-font-size: $font-size-xs;
-$stat-active-notch-border-color: $color-cyan-40;
+$stat-active-notch-border-color: $color-teal-80;
 $stat-active-notch-display: block;
 $stat-compact-active-box-shadow: none;
 $stat-compact-content-padding: 0.5rem 0.75rem;
@@ -1626,8 +1632,8 @@ $stat-compact-title-line-height: $line-height-sm;
 $stat-compact-submetric-color: $color-text-base;
 $stat-compact-submetric-font-size: $font-size-base;
 $stat-compact-submetric-font-weight: $font-weight-bold;
-$stat-compact-active-title-color: $color-text-base;
-$stat-compact-active-submetric-title-color: $color-text-base;
+$stat-compact-active-title-color: $color-text-white;
+$stat-compact-active-submetric-title-color: $color-text-white;
 
 // Steps
 $steps-item-line-border-color: $color-border-muted;
@@ -1667,8 +1673,8 @@ $table-row-danger-background-color: $color-background-danger-light;
 $table-row-info-background-color: $color-background-info-light;
 
 $table-row-cell-disabled-text-color: rgba($color-text-base, 0.4);
-$table-row-active-cell-background-color: $color-background-info-light;
-$table-row-active-cell-accent-border-color: $color-border-primary;
+$table-row-active-cell-background-color: $color-orange-05;
+$table-row-active-cell-accent-border-color: $color-orange-60;
 
 $table-striped-row-background-color: $color-background-muted-lighter;
 $table-bordered-row-cell-border-color: $color-border-base-dark;
@@ -1680,11 +1686,11 @@ $table-fixed-header-row-hover-background-color: $color-background-base-dark;
 $table-fixed-header-striped-row-hover-background-color: $color-background-muted-lighter;
 $table-fixed-header-bordered-row-cell-border-color: $color-border-base-light;
 
-$table-portal-striped-row-even-background-color: $color-navy-10;
+$table-portal-striped-row-even-background-color: $color-grey-10;
 $table-portal-striped-row-odd-background-color: $color-background-white;
-$table-portal-row-even-background-color: $color-navy-10;
-$table-portal-row-active-background-color: $color-navy-20;
-$table-portal-row-hover-background-color: $color-navy-20;
+$table-portal-row-even-background-color: $color-grey-10;
+$table-portal-row-active-background-color: $color-orange-05;
+$table-portal-row-hover-background-color: $color-orange-05;
 
 // Tabs
 $tabs-icon-color: $color-icon-body;
@@ -1738,8 +1744,8 @@ $tabs-solid-xl-font-weight: $font-weight-bold;
 $tabs-solid-vertical-xl-active-border-width: 0.25rem;
 $tabs-solid-horizontal-lg-active-border-width: 0.25rem;
 $tabs-solid-horizontal-md-active-border-width: 0.125rem;
-$tabs-solid-background-color: $color-blue-10;
-$tabs-solid-active-border-color: $color-border-secondary;
+$tabs-solid-background-color: $color-grey-10;
+$tabs-solid-active-border-color: $color-orange-60;
 $tabs-solid-active-background-color: $color-background-white;
 
 // Text input
@@ -1930,7 +1936,7 @@ $time-picker-border-color: $color-border-base;
 // Toggle switch
 $toggle-switch-background-color: $color-grey-50;
 $toggle-switch-thumb-background-color: $color-background-white;
-$toggle-switch-checked-background-color: $color-background-primary;
+$toggle-switch-checked-background-color: $color-teal-80;
 $toggle-switch-checked-thumb-background-color: $color-background-white;
 $toggle-switch-focus-color: $focus-color;
 $toggle-switch-disabled-opacity: $opacity-60;
