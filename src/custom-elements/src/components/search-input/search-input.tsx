@@ -189,7 +189,7 @@ export class SearchInput {
       return item.title.toLowerCase().includes(text.toLowerCase());
     });
 
-    if (!list.length) {
+    if (!list?.length) {
       dropdown.hide();
       return;
     }
@@ -253,7 +253,7 @@ export class SearchInput {
     return (
       <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
-        {this.menuItemsFiltered.map((item) => (
+        {this.menuItemsFiltered?.map((item) => (
           <a
             class={DROPDOWN_CLASSES.MENU_ITEM}
             href={item.href}
