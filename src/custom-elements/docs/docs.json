@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-04-08T10:19:49",
+  "timestamp": "2024-04-11T12:36:35",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.14.1",
-    "typescriptVersion": "5.4.3"
+    "version": "4.15.0",
+    "typescriptVersion": "5.4.4"
   },
   "components": [
     {
@@ -1365,7 +1365,8 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "chi-text-input"
+        "chi-text-input",
+        "chi-textarea"
       ],
       "dependencies": [
         "chi-button",
@@ -1380,6 +1381,9 @@
           "chi-icon"
         ],
         "chi-text-input": [
+          "chi-copy-text"
+        ],
+        "chi-textarea": [
           "chi-copy-text"
         ]
       }
@@ -8587,6 +8591,28 @@
       "usage": {},
       "props": [
         {
+          "name": "copyText",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "copy-text",
+          "reflectToAttr": true,
+          "docs": "To show copy text icon",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "disabled",
           "type": "boolean",
           "complexType": {
@@ -9048,15 +9074,24 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
+        "chi-helper-message",
         "chi-icon",
-        "chi-helper-message"
+        "chi-copy-text"
       ],
       "dependencyGraph": {
         "chi-textarea": [
+          "chi-helper-message",
           "chi-icon",
-          "chi-helper-message"
+          "chi-copy-text"
         ],
         "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-copy-text": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
           "chi-icon"
         ]
       }
