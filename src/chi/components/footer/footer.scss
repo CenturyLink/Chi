@@ -276,6 +276,10 @@
           margin-right: 0.25rem;
           transform: scale(0.875);
 
+          .chi-icon {
+            color: $footer-external-social-link-color;
+          }
+
           &:first-child {
             margin-right: 0.75rem;
           }
@@ -288,6 +292,10 @@
 
           &:hover {
             color: $footer-external-social-hover-link-color;
+
+            .chi-icon {
+              color: $footer-external-social-hover-link-color;
+            }
           }
         }
       }

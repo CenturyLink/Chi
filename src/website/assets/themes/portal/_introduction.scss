@@ -76,18 +76,18 @@
               }
 
               &.-dark {
-                color: $color-text-primary;
-                border-color: $color-border-primary;
-                
+                color: $color-red-65;
+                border-color: $color-red-65;
+
                 &:hover {
-                  color: $color-blue-70;
-                  border-color: $color-border-secondary-dark;
+                  color: $color-red-80;
+                  border-color: $color-red-80;
                 }
 
                 &:active {
-                  color: $color-navy-100;
-                  border-color: $color-blue-80;
-                }            
+                  color: $color-red-90;
+                  border-color: $color-red-90;
+                }
               }
             }
           }

@@ -66,7 +66,7 @@ ol {
     list-style: none;
     padding-left: 0;
 
-    >li {
+    > li {
       display: inline-flex;
       padding: 0 0.5rem;
 
@@ -84,7 +84,7 @@ ol {
     list-style: none;
     padding-left: 0;
 
-    >li {
+    > li {
       list-style: none;
       padding-left: 0;
     }
@@ -238,7 +238,7 @@ small {
 
 .-text--navy,
 .-icon--navy {
-  color: $color-navy-100 !important;
+  color: $color-teal-100 !important;
 }
 
 .-text--orange,
