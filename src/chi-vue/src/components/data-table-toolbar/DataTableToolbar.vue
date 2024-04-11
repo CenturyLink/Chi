@@ -16,7 +16,11 @@ const props = defineProps<{
       </div>
       <div :class="`${DATA_TABLE_CLASSES.TOOLBAR}__end`">
         <slot name="end"></slot>
-        <ColumnCustomization v-if="columnCustomizationData" :columnsData="columnCustomizationData" />
+        <ColumnCustomization
+          v-if="columnCustomizationData"
+          :columnsData="columnCustomizationData"
+          data-cy="column-customization"
+        />
       </div>
     </div>
   </div>
