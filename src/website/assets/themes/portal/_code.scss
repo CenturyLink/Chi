@@ -83,7 +83,7 @@ pre[class*='language-'] {
   color: $color-text-base;
 }
 .token.function {
-  color: $color-red-65;
+  color: $color-red-70;
 }
 
 .language-css .token.string,
@@ -92,17 +92,17 @@ pre[class*='language-'] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: $color-red-65;
+  color: $color-red-70;
 }
 
 .token.entity,
 .token.url,
 .token.variable {
-  color: $color-red-65;
+  color: $color-red-70;
 }
 
 .token.attr-value {
-  color: $color-red-65;
+  color: $color-red-70;
 }
 
 .token.atrule,

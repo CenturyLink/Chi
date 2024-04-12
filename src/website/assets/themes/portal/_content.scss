@@ -71,6 +71,40 @@
               margin: 0 0 1rem;
             }
           }
+
+          .docs-tabs {
+            .chi-tabs {
+              & > li {
+                & > a {
+                  color: $color-text-base;
+
+                  &:hover {
+                    color: $color-text-white;
+                  }
+                }
+
+                &.-active {
+                  & > a {
+                    color: $color-text-white;
+                  }
+                }
+
+                &.chi-sliding-border {
+                  background-color: $color-background-white;
+                }
+              }
+
+              &:not(.-sliding) {
+                & > li {
+                  &.-active {
+                    & > a {
+                      box-shadow: inset 0 -0.125rem 0 $color-border-white;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
 
