@@ -1583,7 +1583,7 @@ $stat-active-background-icon-color: $color-icon-primary;
 $stat-active-box-shadow: 0 0 0 0.0625rem $color-border-primary;
 $stat-active-text-color: $color-text-primary;
 $stat-active-info-icon-color: $stat-active-text-color;
-$stat-info-icon-color: inherit;
+$stat-info-icon-color: $color-text-primary;
 $stat-border: 0.0625rem solid $color-border-base;
 $stat-hover-border: 0.0625rem solid $color-border-base;
 $stat-active-border: 0.0625rem solid $color-border-primary;
