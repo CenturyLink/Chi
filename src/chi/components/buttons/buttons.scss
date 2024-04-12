@@ -111,7 +111,7 @@ $button-colors: (
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
     text-color-outline-active: $button-light-outline-active-text-color,
-  )
+  ),
 );
 
 $border: 0.0625rem;
@@ -128,7 +128,7 @@ $sizes: (
       width: $button-icon-xs-width,
       line-height: $button-icon-xs-line-height,
       font-size: $button-icon-xs-font-size,
-    )
+    ),
   ),
   sm: (
     font-size: $button-sm-font-size,
@@ -141,7 +141,7 @@ $sizes: (
       width: $button-icon-sm-width,
       line-height: $button-icon-sm-line-height,
       font-size: $button-icon-sm-font-size,
-    )
+    ),
   ),
   md: (
     font-size: $button-md-font-size,
@@ -154,7 +154,7 @@ $sizes: (
       width: $button-icon-md-width,
       line-height: $button-icon-md-line-height,
       font-size: $button-icon-md-font-size,
-    )
+    ),
   ),
   lg: (
     font-size: $button-lg-font-size,
@@ -167,7 +167,7 @@ $sizes: (
       width: $button-icon-lg-width,
       line-height: $button-icon-lg-line-height,
       font-size: $button-icon-lg-font-size,
-    )
+    ),
   ),
   xl: (
     font-size: $button-xl-font-size,
@@ -180,8 +180,8 @@ $sizes: (
       width: $button-icon-xl-width,
       line-height: $button-icon-xl-line-height,
       font-size: $button-icon-xl-font-size,
-    )
-  )
+    ),
+  ),
 );
 
 .chi-button {
@@ -298,9 +298,7 @@ $sizes: (
   &.-float {
     border-color: $button-float-border-color;
     border-radius: 50%;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
-    0 6px 10px 0 rgba(0, 0, 0, 0.14),
-    0 1px 16px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 16px 0 rgba(0, 0, 0, 0.12);
     padding: $button-icon-md-padding;
     transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
 
@@ -311,9 +309,8 @@ $sizes: (
 
     &:active,
     &.-active {
-      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
-      0 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0 2px 14px 1px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 2px 14px 1px rgba(0, 0, 0, 0.12);
     }
 
     &[disabled],
@@ -336,7 +333,6 @@ $sizes: (
   }
 
   &.-close {
-
     &,
     .chi-icon {
       color: $button-close-icon-color;
@@ -375,7 +371,6 @@ $sizes: (
       color: $button-outline-active-text-color;
     }
 
-
     &[disabled],
     &.-disabled {
       background-color: $button-outline-disabled-background-color;
@@ -397,6 +392,12 @@ $sizes: (
     border: $button-flat-border-width solid $button-flat-border-color;
     box-shadow: none;
     color: $button-flat-text-color;
+
+    &.-icon {
+      .chi-icon {
+        color: $button-flat-icon-color;
+      }
+    }
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
@@ -430,7 +431,8 @@ $sizes: (
 
       .chi-button__content {
         & > .chi-icon,
-        & > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+        & > chi-icon .chi-icon {
+          // sass-lint:disable-line force-element-nesting
           color: inherit;
           opacity: $button-flat-hover-icon-opacity;
         }
@@ -531,7 +533,6 @@ $sizes: (
     }
   }
 
-
   @each $color in map-keys($button-colors) {
     &.-#{$color} {
       background-color: map-get(map-get($button-colors, $color), background-color);
@@ -586,7 +587,9 @@ $sizes: (
         &.-hover {
           // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-hover);
-          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-hover);
+          border: $button-outline-border-width
+            solid
+            map-get(map-get($button-colors, $color), border-color-outline-hover);
           color: map-get(map-get($button-colors, $color), text-color-outline-hover);
         }
 
@@ -594,7 +597,9 @@ $sizes: (
         &.-active {
           // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-active);
-          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-active);
+          border: $button-outline-border-width
+            solid
+            map-get(map-get($button-colors, $color), border-color-outline-active);
           color: map-get(map-get($button-colors, $color), text-color-outline-active);
         }
 
@@ -639,15 +644,13 @@ $sizes: (
       }
 
       &.-float {
-        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
-        0 6px 10px 0 rgba(0, 0, 0, 0.14),
-        0 1px 16px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+          0 1px 16px 0 rgba(0, 0, 0, 0.12);
 
         &:active,
         &.-active {
-          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
-          0 8px 10px 1px rgba(0, 0, 0, 0.14),
-          0 2px 14px 1px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 2px 14px 1px rgba(0, 0, 0, 0.12);
         }
 
         &[disabled],
