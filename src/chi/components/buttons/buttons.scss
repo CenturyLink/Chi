@@ -23,6 +23,7 @@ $button-colors: (
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
     text-color-outline-active: $button-primary-outline-active-text-color,
+    text-color-flat: $button-primary-flat-text-color,
   ),
   secondary: (
     background-color: $button-secondary-solid-background-color,
@@ -45,6 +46,7 @@ $button-colors: (
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
     text-color-outline-active: $button-secondary-outline-active-text-color,
+    text-color-flat: $button-secondary-flat-text-color,
   ),
   dark: (
     background-color: $button-dark-solid-background-color,
@@ -67,6 +69,7 @@ $button-colors: (
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
     text-color-outline-active: $button-dark-outline-active-text-color,
+    text-color-flat: $button-dark-flat-text-color,
   ),
   danger: (
     background-color: $button-danger-solid-background-color,
@@ -89,6 +92,7 @@ $button-colors: (
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
     text-color-outline-active: $button-danger-outline-active-text-color,
+    text-color-flat: $button-danger-flat-text-color,
   ),
   light: (
     background-color: $button-light-solid-background-color,
@@ -111,6 +115,7 @@ $button-colors: (
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
     text-color-outline-active: $button-light-outline-active-text-color,
+    text-color-flat: $button-light-flat-text-color,
   ),
 );
 
@@ -615,7 +620,7 @@ $sizes: (
         background-color: $button-flat-background-color;
         border: $button-flat-border-width solid transparent;
         box-shadow: none;
-        color: map-get(map-get($button-colors, $color), text-color-outline);
+        color: map-get(map-get($button-colors, $color), text-color-flat);
 
         &:not(.-no-hover) {
           &:hover,
