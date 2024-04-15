@@ -34,15 +34,15 @@ declare const chi: any;
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast',
+          url: 'https://www.w3.org/TR/WCAG22/#distinguishable',
           text: '1.4 Distinguishable',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation',
+          url: 'https://www.w3.org/TR/WCAG22/#images-of-text',
           text: '1.4.5 Images of Text',
         },
       ],
@@ -52,7 +52,7 @@ declare const chi: any;
           mainText: 'Perceivable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level AA Success Criteria.',
           mainText: 'Level AA',
         },
       ],
