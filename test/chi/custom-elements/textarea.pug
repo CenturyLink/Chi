@@ -2,16 +2,20 @@
 title: Textarea
 ---
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(src=`../../js/chi.js`)
+
+- var styles = ['default', 'success', 'warning', 'danger']
+- var states = ['initial', 'hover', 'focus', 'disabled']
 
 each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}`)
     span.-text--h2= `Textarea / ${size}`
     table(cellpadding="0", cellspacing="0", width="1200px")
-      each state in ['initial', 'hover', 'focus', 'disabled']
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'success', 'warning', 'danger']
+          each style in styles
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
@@ -50,11 +54,11 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}-icon-left`)
     span.-text--h2= `Textarea / ${size} / icon left`
     table(cellpadding="0", cellspacing="0", width="1200px")
-      each state in ['initial', 'hover', 'focus', 'disabled']
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'success', 'warning', 'danger']
+          each style in styles
             td(style='vertical-align: bottom')
               .-m--1
                 if state == 'disabled'
@@ -95,11 +99,11 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}-icon-right`)
     span.-text--h2= `Textarea / ${size} / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
-      each state in ['initial', 'hover', 'focus', 'disabled']
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'success', 'warning', 'danger']
+          each style in styles
             td(style='vertical-align: bottom')
               .-m--1
                 if style == 'success'
@@ -161,11 +165,11 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}-icon-left-right`)
     span.-text--h2= `Textarea / ${size} / icon left / icon right`
     table(cellpadding="0", cellspacing="0", width="1200px")
-      each state in ['initial', 'hover', 'focus', 'disabled']
+      each state in states
         tr
           td
             small= `${state}`
-          each style in ['default', 'success', 'warning', 'danger']
+          each style in styles
             td(style='vertical-align: bottom')
               .-m--1
                 if style == 'success'
@@ -230,7 +234,7 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}-helper-message`)
     span.-text--h2=`Textarea / Helper Message / ${size}`
     table(cellpadding="0" cellspacing="0" width="480px")
-      each style in ['default', 'success', 'warning', 'danger']
+      each style in styles
         tr
           td
             small= `${style}`
@@ -241,6 +245,74 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                     state= style == 'default' ? '' : style,
                     helper-message="Optional helper message"
                   ) Value
+
+each size in ['xs', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-copy-text-button-${size}`)
+    span.-text--h2=`Textarea / Copy text button / ${size}`
+    table(cellpadding="0" cellspacing="0" width="2500px")
+      each state in styles
+        tr
+          td
+            small= `${state}`
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                value="Some text",
+                copy-text
+              )
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                icon-right="search",
+                value="Some text",
+                copy-text
+              )
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                icon-left="atom",
+                value="Some text",
+                copy-text
+              )
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                disabled,
+                value="Some text",
+                copy-text
+              )
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                helper-message="Optional helper message",
+                value="Some text",
+                copy-text
+              )
+          td
+            .-m--3
+              chi-textarea(
+                size= size, 
+                state= state != 'default' && state, 
+                icon-left="atom",
+                icon-right="search",
+                helper-message="Optional helper message",
+                value="Some text",
+                copy-text,
+                readonly
+              )
+
+
+
 script.
   function checkAllTextareasRendered() {
   const textareas = document.querySelectorAll('chi-textarea');

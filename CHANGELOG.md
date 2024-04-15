@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## 5.58.0 (April 12, 2024)
+
+### Components
+
+#### Added
+
+- Added: Search input web component `mode="autocomplete"` functionality has been improved to better support empty menu items.
+
+### Documentation
+
+#### Added
+
+- Added: Link accessibility page.
+- Added: Copy text button section in textarea page.
+
+#### Changed
+
+- Changed: Accessibility page structure page to WCAG 2.2.
+
+## 5.57.0 (April 8, 2024)
+
+### Components
+
+#### Added
+
+- Added: Divider now supports applying `-inverse` to `-label` dividers.
+- Added: Dropdown web component `retain-selection` calculation has been improved to better support menus with search.
+
+### Documentation
+
+#### Added
+
+- Added: Button accessibility page.
+
+#### Changed
+
+- Changed: Accessibility overview page to WCAG 2.2.
+
 ## 5.56.0 (April 2, 2024)
 
 ### Components
