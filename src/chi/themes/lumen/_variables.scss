@@ -616,6 +616,7 @@ $button-close-hover-icon-opacity: $opacity-100;
 
 $button-primary-solid-background-color: $color-background-primary;
 $button-primary-solid-border-color: $color-border-primary;
+$button-primary-solid-border-radius: $button-border-radius;
 $button-primary-solid-text-color: $color-text-white;
 $button-primary-solid-hover-background-color: $color-navy-100;
 $button-primary-solid-hover-border-color: $color-navy-100;
@@ -640,6 +641,7 @@ $button-primary-flat-active-background-color: transparent;
 
 $button-secondary-solid-background-color: $color-background-secondary;
 $button-secondary-solid-border-color: $color-border-secondary;
+$button-secondary-solid-border-radius: $button-border-radius;
 $button-secondary-solid-text-color: $color-text-black;
 $button-secondary-solid-hover-background-color: $color-background-secondary-dark;
 $button-secondary-solid-hover-border-color: $color-background-secondary-dark;
@@ -664,6 +666,7 @@ $button-secondary-flat-active-background-color: transparent;
 
 $button-dark-solid-background-color: $color-background-dark;
 $button-dark-solid-border-color: $color-border-dark;
+$button-dark-solid-border-radius: $button-border-radius;
 $button-dark-solid-text-color: $color-text-white;
 $button-dark-solid-hover-background-color: $color-background-black;
 $button-dark-solid-hover-border-color: $color-border-black;
@@ -688,6 +691,7 @@ $button-dark-flat-active-background-color: transparent;
 
 $button-danger-solid-background-color: $color-background-danger;
 $button-danger-solid-border-color: $color-border-danger;
+$button-danger-solid-border-radius: $button-border-radius;
 $button-danger-solid-text-color: $color-text-white;
 $button-danger-solid-hover-background-color: $color-background-danger-dark;
 $button-danger-solid-hover-border-color: $color-border-danger-dark;
@@ -712,6 +716,7 @@ $button-danger-flat-active-background-color: transparent;
 
 $button-light-solid-background-color: $color-background-white;
 $button-light-solid-border-color: $color-border-white;
+$button-light-solid-border-radius: $button-border-radius;
 $button-light-solid-text-color: $color-text-base;
 $button-light-solid-hover-background-color: $color-grey-20;
 $button-light-solid-hover-border-color: $color-border-base-dark;
@@ -1071,6 +1076,8 @@ $header-impersonation-text-color: $color-text-base;
 $header-impersonation-font-size: $font-size-sm;
 $header-impersonation-line-height: $line-height-lg;
 $header-impersonation-username-font-weight: $font-weight-semi-bold;
+$header-brandbar-height: 0.5rem;
+$header-brandbar-background: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 41, 1) 100%);
 $header-navbar-background-image: none;
 $header-navbar-background-color: $color-blue-70;
 $header-navbar-border-color: $color-blue-70;

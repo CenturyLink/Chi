@@ -257,6 +257,13 @@
     }
   }
 
+  .chi-header__brandbar {
+    background: $header-brandbar-background;
+    display: flex;
+    height: $header-brandbar-height;
+    width: 100%;
+  }
+
   .chi-header__navbar {
     background-color: $header-navbar-background-color;
     background-image: $header-navbar-background-image;
