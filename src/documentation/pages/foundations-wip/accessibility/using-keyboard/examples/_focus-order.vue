@@ -35,15 +35,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms',
+          url: 'https://www.w3.org/TR/WCAG22/#navigable',
           text: '2.4 Navigable',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order',
+          url: 'https://www.w3.org/TR/WCAG22/#focus-order',
           text: '2.4.3 Focus Order',
         },
       ],

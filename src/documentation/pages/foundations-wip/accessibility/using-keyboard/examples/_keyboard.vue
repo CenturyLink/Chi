@@ -34,15 +34,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#keyboard-operation',
+          url: 'https://www.w3.org/TR/WCAG22/#keyboard-accessible',
           text: '2.1 Keyboard accessible',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable',
+          url: 'https://www.w3.org/TR/WCAG22/#keyboard',
           text: '2.1.1 Keyboard',
         },
       ],
