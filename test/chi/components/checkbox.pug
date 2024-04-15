@@ -20,7 +20,7 @@ title: Checkbox
           if state === 'required' || state === 'danger'
             abbr.chi-label__required(aria-label="Required field") *
     if state === 'danger' 
-      .chi-label.-status(class={[`-${state}`]: state == 'danger'})
+      .chi-label.-status.-danger
         i.chi-icon.icon-circle-warning(aria-hidden="true")
         | Please accept the terms of service.
 
