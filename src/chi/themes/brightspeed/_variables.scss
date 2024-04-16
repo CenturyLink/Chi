@@ -1093,6 +1093,8 @@ $header-navbar-menu-text-transform: uppercase;
 $header-navbar-menu-line-height: $line-height-sm;
 $header-navbar-dropdown-arrow-color: $color-yellow-45;
 $header-end-text-color: $color-text-black;
+$header-navbar-tab-active-box-shadow: inherit;
+$header-navbar-tab-active-border-color: inherit;
 $header-navbar-tab-xs-height: 2rem;
 $header-navbar-tab-xs-link-font-size: $font-size-base;
 $header-navbar-tab-xs-link-font-weight: $font-weight-semi-bold;
@@ -1101,10 +1103,12 @@ $header-navbar-tab-xs-link-hover-text-decoration: underline;
 $header-height: 3.5rem;
 $header-lg-height: 4rem;
 $header-lg-navbar-height: 2rem;
+$header-lg-navbar-font-size: $font-size-base;
 $header-xl-height: 6rem;
 $header-xl-content-padding: 0 2rem;
 $header-xl-navbar-tab-link-font-size: $font-size-lg;
 $header-xl-navbar-tab-link-line-height: $line-height;
+$header-xl-navbar-tab-hover-background-color: transparent;
 
 // Label
 $label-status-text-color: $color-text-muted;

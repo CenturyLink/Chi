@@ -343,6 +343,7 @@
             }
 
             > a {
+              color: $header-navbar-link-color;
               font-size: $header-navbar-tab-xs-link-font-size;
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
@@ -437,6 +438,28 @@
 
       .chi-tabs {
         align-self: center;
+
+        &,
+        &.-inverse {
+          & > li.chi-sliding-border {
+            background-color: $header-navbar-tab-active-border-color;
+          }
+        }
+
+        &:not(.-vertical) {
+          &:not(.-responsive) {
+            &:not(.-sliding) {
+              &:not(.-inverse),
+              &.-inverse {
+                li.-active {
+                  & > a {
+                    box-shadow: $header-navbar-tab-active-box-shadow;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -478,7 +501,7 @@
       min-height: $header-lg-navbar-height;
 
       a {
-        font-size: $font-size-base;
+        font-size: $header-lg-navbar-font-size;
         line-height: $line-height-sm;
       }
 
@@ -558,20 +581,33 @@
           li {
             @include respond-to(xl) {
               &:not(:first-child) {
-                margin-left: 3.5rem;
+                margin-left: 1.25rem;
               }
             }
 
-            & > a {
+            & > a,
+            .chi-dropdown__trigger {
+              color: $header-navbar-text-color;
               font-size: $header-xl-navbar-tab-link-font-size;
               font-weight: $font-weight-semi-bold;
+
+              &:hover {
+                background-color: $header-xl-navbar-tab-hover-background-color;
+              }
             }
           }
 
           &.-sm {
+            li {
+              & > a {
+                line-height: 1.25rem;
+                padding: 0.625rem 1.5rem;
+              }
+            }
+
             .chi-dropdown {
               .chi-dropdown__trigger {
-                padding: 0.875rem 0;
+                padding: 0.625rem 1.5rem;
               }
             }
           }
@@ -586,7 +622,7 @@
         &:not(.-vertical) {
           &.-sm {
             &:not(.-vertical):not(.-responsive) {
-              height: 3rem;
+              height: 2.5rem;
             }
           }
         }
@@ -597,7 +633,7 @@
         padding-top: 1rem;
 
         .chi-dropdown__menu-item {
-          font-size: $font-size-lg;
+          font-size: $font-size-md;
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
