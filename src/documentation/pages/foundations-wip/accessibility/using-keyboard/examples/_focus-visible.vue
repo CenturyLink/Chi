@@ -52,7 +52,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Operable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level AA Success Criteria.',
           mainText: 'Level AA',
         },
       ],
