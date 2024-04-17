@@ -2,33 +2,33 @@ $sizes: (
   xs: (
     padding: $button-group-horizontal-xs-padding,
     icons: (
-      padding: $button-group-horizontal-xs-icon-padding
-    )
+      padding: $button-group-horizontal-xs-icon-padding,
+    ),
   ),
   sm: (
     padding: $button-group-horizontal-sm-padding,
     icons: (
-      padding: $button-group-horizontal-sm-icon-padding
-    )
+      padding: $button-group-horizontal-sm-icon-padding,
+    ),
   ),
   md: (
     padding: $button-group-horizontal-md-padding,
     icons: (
-      padding: $button-group-horizontal-md-icon-padding
-    )
+      padding: $button-group-horizontal-md-icon-padding,
+    ),
   ),
   lg: (
     padding: $button-group-horizontal-lg-padding,
     icons: (
-      padding: $button-group-horizontal-lg-icon-padding
-    )
+      padding: $button-group-horizontal-lg-icon-padding,
+    ),
   ),
   xl: (
     padding: $button-group-horizontal-xl-padding,
     icons: (
-      padding: $button-group-horizontal-xl-icon-padding
-    )
-  )
+      padding: $button-group-horizontal-xl-icon-padding,
+    ),
+  ),
 );
 
 .chi-button-group {
@@ -37,7 +37,7 @@ $sizes: (
   &:not(.-vertical) {
     .chi-button {
       &:not(.-flat) {
-        border-radius: $border-radius-sharp;
+        border-radius: $border-radius-sharp !important;
         border-right-width: 0;
 
         &:not(:last-child) {
@@ -70,14 +70,14 @@ $sizes: (
         }
 
         &:first-child {
-          border-bottom-left-radius: $border-radius;
-          border-top-left-radius: $border-radius;
+          border-bottom-left-radius: $button-border-radius !important;
+          border-top-left-radius: $button-border-radius !important;
         }
 
         &:last-child {
-          border-bottom-right-radius: $border-radius;
+          border-bottom-right-radius: $button-border-radius !important;
           border-right-width: $button-group-border-width;
-          border-top-right-radius: $border-radius;
+          border-top-right-radius: $button-border-radius !important;
         }
       }
     }

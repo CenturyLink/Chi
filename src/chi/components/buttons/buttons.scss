@@ -445,7 +445,6 @@ $sizes: (
         & > .chi-icon,
         & > chi-icon .chi-icon {
           // sass-lint:disable-line force-element-nesting
-          color: inherit;
           opacity: $button-flat-hover-icon-opacity;
         }
       }
@@ -479,10 +478,6 @@ $sizes: (
       background-color: $button-flat-active-background-color;
       border: $button-flat-border-width solid $button-flat-active-border-color;
       color: $button-flat-active-text-color;
-
-      .chi-icon {
-        color: inherit;
-      }
 
       &:not(.chi-dropdown__trigger) {
         &.-icon {

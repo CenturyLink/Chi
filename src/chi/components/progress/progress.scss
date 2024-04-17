@@ -9,11 +9,11 @@ $states: (
     background-color: $progress-value-warning-background-color,
   ),
   info: (
-    background-color: $progress-value-background-color,
+    background-color: $progress-value-info-background-color,
   ),
   success: (
     background-color: $progress-value-success-background-color,
-  )
+  ),
 );
 
 progress {
@@ -26,7 +26,7 @@ progress {
   border: 0;
   border-radius: $progress-border-radius;
   /* For IE10 / IE 11 / Edge */
-  color:  $progress-value-background-color;
+  color: $progress-value-background-color;
   display: block;
   height: 0.5rem;
   overflow: hidden;

@@ -1322,6 +1322,12 @@ $pagination-page-size-text-color: $color-text-muted-light;
 $pagination-compact-label-text-color: $color-grey-70;
 $pagination-label-page-font-weight: $font-weight-normal;
 
+$pagination-active-border-color: $color-text-primary;
+$pagination-active-text-color: $color-text-primary;
+$pagination-inverse-hover-border-color: $color-border-base-dark;
+$pagination-inverse-active-border-color: $color-border-secondary;
+$pagination-inverse-active-text-color: $color-text-secondary;
+
 $pagination-inverse-text-color: $color-text-white;
 $pagination-inverse-results-text-color: $color-grey-40;
 $pagination-inverse-page-size-divider: rgba(255, 255, 255, 0.2);
@@ -1429,12 +1435,14 @@ $popover-modal-background-color: $popover-background-color;
 $popover-modal-header-background-color: $color-yellow-40;
 $popover-modal-header-background-image: none;
 $popover-modal-close-icon-color: $modal-close-icon-color;
+$popover-modal-header-text-color: inherit;
 $popover-drag-icon-color: $color-icon-body;
 
 // Progress
 $progress-background-color: $color-grey-20;
 $progress-border-radius: $border-radius-base;
 $progress-value-background-color: $color-background-primary;
+$progress-value-info-background-color: $color-icon-info;
 $progress-value-danger-background-color: $color-icon-danger;
 $progress-value-success-background-color: $color-icon-success;
 $progress-value-warning-background-color: $color-icon-warning;
