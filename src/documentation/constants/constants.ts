@@ -185,6 +185,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue',
   },
   {
+    href: `components/link`,
+    label: 'Link',
+    source: 'pug',
+  },
+  {
     href: `components/marketing-icon`,
     label: 'Marketing icon',
     source: 'pug',
