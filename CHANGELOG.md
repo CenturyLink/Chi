@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## 5.59.0 (April 18, 2024)
+
+### Components
+
+#### Changed
+
+- Changed: Helper message icon colors have been updated in Portal theme for consistency with Brand guidelines.
+
+### Documentation
+
+#### Added
+
+- Added: Toggle switch accessibility page.
+
+#### Changed
+
+- Changed: Accessibility using the keyboard page to WCAG 2.2.
+- Changed: Accessibility text page to WCAG 2.2.
+
 ## 5.58.0 (April 12, 2024)
 
 ### Components
