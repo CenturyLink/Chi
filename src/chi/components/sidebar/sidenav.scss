@@ -684,6 +684,45 @@ $sidenav-lg-width: 12.5rem;
       }
     }
   }
+
+  &.-float {
+    .chi-sidenav__content {
+      background-color: transparent;
+      border-right: none;
+      padding-top: 3rem;
+
+      & > nav {
+        background-color: $sidenav-background-color;
+        border: $sidenav-border-right;
+        border-left: 0;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+
+        & > .chi-sidenav__list {
+          & > li {
+            &:first-child {
+              border-top-right-radius: $border-radius;
+            }
+
+            &:last-child {
+              border-bottom-right-radius: $border-radius;
+            }
+          }
+        }
+      }
+    }
+
+    .chi-sidenav__drawers {
+      .chi-drawer {
+        border: $sidenav-border-right;
+        border-radius: $border-radius;
+        box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        margin-left: -0.0625rem;
+      }
+    }
+  }
 }
 
 /* IE11 CSS hack */
