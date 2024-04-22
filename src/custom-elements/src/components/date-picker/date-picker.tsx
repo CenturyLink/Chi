@@ -181,6 +181,14 @@ export class DatePicker {
     );
   }
 
+  _getDelimiter(dateFormat) {
+    return dateFormat.includes('/') ? '/' : dateFormat.includes('-') ? '-' : '/';
+  }
+
+  _getAlternativeDelimiter(dateFormat) {
+    return dateFormat.includes('/') ? '-' : dateFormat.includes('-') ? '/' : '-';
+  }
+
   _checkValidDate(date, minDate, maxDate) {
     const inputDate = dayjs(date, this.format);
 
@@ -193,7 +201,8 @@ export class DatePicker {
   }
 
   _checkMultipleDates(minDate, maxDate) {
-    const inputDates = this._input.value.replace(/ /g, '').split(',');
+    let inputDates = this._input.value.replace(/ /g, '').split(',');
+    inputDates = inputDates.map((date) => date.replace(/[-/]/g, this._getDelimiter(this.format)));
     const validatedDates = [];
 
     inputDates.forEach((date) => {
@@ -209,14 +218,12 @@ export class DatePicker {
   _checkSingleDate(minDate, maxDate) {
     const inputDate = dayjs(this._input.value, this.format);
 
-    const inputValue = this.mode === 'datetime'
-      ? this._input.value.split(', ')[0]
-      : this._input.value;
+    const inputValue = this.mode === 'datetime' ? this._input.value.split(', ')[0] : this._input.value;
 
-    const hyphenFormat = this.format.replace(/\//g, '-');
-    const spaceFormat = this.format.replace(/\//g, ' ');
+    const altFormat = this.format.replace(/[-/]/g, this._getAlternativeDelimiter(this.format));
+    const spaceFormat = this.format.replace(/[-/]/g, ' ');
 
-    if (dayjs(inputValue, [this.format, hyphenFormat, spaceFormat], true).isValid() && !this.checkIfExcluded(inputDate)) {
+    if (dayjs(inputValue, [this.format, altFormat, spaceFormat], true).isValid() && !this.checkIfExcluded(inputDate)) {
       if (dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))) {
         this.value = this.min;
         this._input.value = this.min;
