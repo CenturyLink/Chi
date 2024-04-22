@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Prop, Watch, h } from '@stencil/core';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
 @Component({
@@ -7,8 +7,6 @@ import { addMutationObserver } from '../../utils/mutationObserver';
   scoped: true,
 })
 export class Link {
-  @State() slotLinkContent = true;
-
   @Element() el: HTMLElement;
 
   /**
@@ -71,14 +69,15 @@ export class Link {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this);
+    addMutationObserver.call(this, undefined, { childList: true, subtree: true });
   }
 
   componentWillLoad() {
     this.sizeValidation(this.size);
-    if (!this.el.querySelector('chi-icon')) {
-      this.slotLinkContent = false;
-    }
+  }
+
+  _hasIcon() {
+    return Boolean(this.el.querySelector('chi-icon'));
   }
 
   render() {
@@ -96,13 +95,9 @@ export class Link {
         download={this.download}
         {...(this.alternativeText && { 'aria-label': this.alternativeText })}
       >
-        {this.slotLinkContent ? (
-          <div class="chi-link__content">
-            <slot></slot>
-          </div>
-        ) : (
+        <div class={`${this._hasIcon() ? 'chi-link__content' : ''}`}>
           <slot></slot>
-        )}
+        </div>
       </a>
     );
   }
