@@ -36,6 +36,8 @@ export interface DropdownMenuItem {
   title: string;
   href: string;
 }
+export const DROPDOWN_SELECT_MODES = ['single', 'multi'] as const;
+export type DropdownSelectModes = typeof DROPDOWN_SELECT_MODES[number];
 
 export interface Time {
   hour: number;
