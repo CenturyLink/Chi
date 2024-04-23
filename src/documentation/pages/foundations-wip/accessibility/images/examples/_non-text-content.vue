@@ -38,15 +38,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#text-equiv',
+          url: 'https://www.w3.org/TR/WCAG22/#text-alternatives',
           text: '1.1 Text alternatives',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG21/#non-text-content',
+          url: 'https://www.w3.org/TR/WCAG22/#non-text-content',
           text: '1.1.1 Non-text Content',
         },
       ],
@@ -56,7 +56,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Perceivable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level A Success Criteria.',
           mainText: 'Level A',
         },
       ],
