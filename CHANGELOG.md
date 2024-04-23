@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 5.60.0 (April 24, 2024)
+
+### Components
+
+#### Added
+
+- Added: Link icon web component now supports <code>mutationObserver</code> functionality.
+
+#### Fixed
+
+- Fixed: Date picker in <code>mode="datetime"</code>prevented selecting the time when the <code>min</code> and <code>max</code> attributes were specified, and if the chosen date was outside this range.
+
+### Documentation
+
+#### Changed
+
+- Changed: Accessibility tables page to WCAG 2.2.
+- Changed: Accessibility images page to WCAG 2.2.
+- Changed: Accessibility color and sensory page to WCAG 2.2.
+
+#### Fixed
+
+- Fixed: Link page url in Sidenav.
+
 ## 5.59.0 (April 18, 2024)
 
 ### Components
