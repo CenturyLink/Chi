@@ -347,16 +347,19 @@
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
               position: relative;
-
-              &:hover {
-                background-color: $header-navbar-tab-hover-background-color;
-              }
             }
 
             &:not(.-active) {
-              > a {
+              & > a {
                 &:hover {
                   text-decoration: $header-navbar-tab-xs-link-hover-text-decoration;
+                }
+              }
+
+              & > a,
+              .chi-dropdown__trigger {
+                &:hover {
+                  background-color: $header-navbar-tab-hover-background-color;
                 }
               }
             }
@@ -433,6 +436,15 @@
           display: flex;
           font-size: $font-size-xs;
           line-height: $line-height-sm;
+          text-decoration: none;
+        }
+
+        & > li {
+          & > a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
 
@@ -441,8 +453,10 @@
 
         &,
         &.-inverse {
-          & > li.chi-sliding-border {
-            background-color: $header-navbar-tab-active-border-color;
+          & > li {
+            &.chi-sliding-border {
+              background-color: $header-navbar-tab-active-border-color;
+            }
           }
         }
 
@@ -575,18 +589,20 @@
               }
             }
           }
-        }
-      }
-    }
-  }
 
-  &.-xl {
-    .chi-header__navbar {
-      .chi-tabs {
-        &:not(.-vertical) {
-          &.-sm {
-            &:not(.-vertical):not(.-responsive) {
+          &:not(.-responsive) {
+            &.-sm {
               height: 2.5rem;
+            }
+
+            &,
+            &.-xs {
+              & > li {
+                & > a,
+                .chi-dropdown__trigger {
+                  font-size: $header-xl-navbar-tab-link-font-size;
+                }
+              }
             }
           }
         }
@@ -601,25 +617,6 @@
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
-        }
-      }
-    }
-  }
-
-  &.-lg,
-  &.-xl {
-    .chi-header__navbar {
-      .chi-dropdown__menu {
-        &::before {
-          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
-          border-style: solid;
-          border-width: 0.625rem 0.75rem 0 0.75rem;
-          content: '';
-          height: 1rem;
-          left: 1rem;
-          position: absolute;
-          top: 0;
-          width: 1rem;
         }
       }
     }
