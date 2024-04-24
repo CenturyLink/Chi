@@ -1089,6 +1089,7 @@ $header-brandbar-background: transparent;
 $header-navbar-background-image: none;
 $header-navbar-background-color: $color-teal-60;
 $header-navbar-border-color: $color-teal-60;
+$header-navbar-border-top: none;
 $header-navbar-text-color: $color-text-white;
 $header-navbar-link-color: $color-text-white;
 $header-navbar-font-size: $font-size-xs;
@@ -1100,10 +1101,11 @@ $header-navbar-dropdown-arrow-color: rgba($color-teal-70, 0.86);
 $header-end-text-color: $color-text-white;
 $header-navbar-tab-active-box-shadow: inherit;
 $header-navbar-tab-active-border-color: inherit;
+$header-navbar-tab-hover-background-color: transparent;
 $header-navbar-tab-xs-height: 2rem;
 $header-navbar-tab-xs-link-font-size: $font-size-base;
 $header-navbar-tab-xs-link-font-weight: $font-weight-semi-bold;
-$header-navbar-tab-xs-link-padding: 0.5rem 0;
+$header-navbar-tab-xs-link-padding: 0.5rem 1rem;
 $header-navbar-tab-xs-link-hover-text-decoration: underline;
 $header-height: 3.5rem;
 $header-lg-height: 4rem;
@@ -1113,7 +1115,6 @@ $header-xl-height: 6rem;
 $header-xl-content-padding: 0 2rem;
 $header-xl-navbar-tab-link-font-size: $font-size-lg;
 $header-xl-navbar-tab-link-line-height: $line-height;
-$header-xl-navbar-tab-hover-background-color: transparent;
 
 // Label
 $label-status-text-color: $color-text-muted;

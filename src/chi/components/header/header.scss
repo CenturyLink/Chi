@@ -267,10 +267,10 @@
   .chi-header__navbar {
     background-color: $header-navbar-background-color;
     background-image: $header-navbar-background-image;
-    border-top: 0.0625rem solid $header-navbar-border-color;
+    border-top: $header-navbar-border-top;
     color: $header-navbar-text-color;
     display: flex;
-    padding: 0 1.5rem;
+    padding: 0 0.5rem;
     width: 100%;
 
     a {
@@ -284,7 +284,7 @@
       line-height: $line-height;
       list-style: none;
       margin: 0.25rem 0;
-      padding: 0;
+      padding: 0 0.5rem;
 
       li {
         border-right: 0.0625rem solid $header-navbar-divider-color;
@@ -329,25 +329,28 @@
     .chi-tabs {
       align-items: center;
       display: flex;
+      gap: 0;
+      padding: 0;
 
-      &:not(.-vertical) {
+      &:not(.-vertical):not(.-responsive) {
+        &,
         &.-xs {
           height: 2rem;
 
-          > li {
-            margin-left: 0;
-            margin-right: 1.5rem;
+          & > li {
+            margin: 0;
 
-            @include respond-to(xl) {
-              margin-right: 2rem;
-            }
-
-            > a {
+            & > a,
+            .chi-dropdown__trigger {
               color: $header-navbar-link-color;
               font-size: $header-navbar-tab-xs-link-font-size;
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
               position: relative;
+
+              &:hover {
+                background-color: $header-navbar-tab-hover-background-color;
+              }
             }
 
             &:not(.-active) {
@@ -357,16 +360,13 @@
                 }
               }
             }
-          }
-        }
 
-        li {
-          .chi-dropdown {
-            .chi-dropdown__trigger {
-              align-items: center;
-              display: flex;
-              padding: 0.25rem 0;
-              text-decoration: none;
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                align-items: center;
+                display: flex;
+                text-decoration: none;
+              }
             }
           }
         }
@@ -504,32 +504,6 @@
         font-size: $header-lg-navbar-font-size;
         line-height: $line-height-sm;
       }
-
-      .chi-tabs {
-        &.-xs {
-          li {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
-
-          &:not(.-vertical):not(.-responsive) {
-            height: 2rem;
-          }
-        }
-
-        &:not(.-vertical) {
-          &.-sm {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
-        }
-      }
     }
   }
 
@@ -577,26 +551,16 @@
       }
 
       .chi-tabs {
+        gap: 1rem;
+
         &:not(.-vertical) {
-          li {
-            @include respond-to(xl) {
-              &:not(:first-child) {
-                margin-left: 1.25rem;
-              }
-            }
-
-            & > a,
-            .chi-dropdown__trigger {
-              color: $header-navbar-text-color;
-              font-size: $header-xl-navbar-tab-link-font-size;
-              font-weight: $font-weight-semi-bold;
-
-              &:hover {
-                background-color: $header-xl-navbar-tab-hover-background-color;
-              }
-            }
+          & > a,
+          .chi-dropdown__trigger {
+            font-size: $header-xl-navbar-tab-link-font-size;
+            font-weight: $font-weight-semi-bold;
           }
 
+          &,
           &.-sm {
             li {
               & > a {
