@@ -688,7 +688,7 @@ $sidenav-lg-width: 12.5rem;
   &.-float {
     .chi-sidenav__content {
       background-color: transparent;
-      border-right: none;
+      border-right: 0;
       padding-top: 3rem;
 
       & > nav {

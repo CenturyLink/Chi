@@ -465,9 +465,11 @@
             &:not(.-sliding) {
               &:not(.-inverse),
               &.-inverse {
-                li.-active {
-                  & > a {
-                    box-shadow: $header-navbar-tab-active-box-shadow;
+                li {
+                  &.-active {
+                    & > a {
+                      box-shadow: $header-navbar-tab-active-box-shadow;
+                    }
                   }
                 }
               }
