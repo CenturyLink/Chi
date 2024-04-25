@@ -32,15 +32,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#seizure',
+          url: 'https://www.w3.org/TR/WCAG22/#seizures-and-physical-reactions',
           text: '2.3 Seizures',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#seizure-does-not-violate',
+          url: 'https://www.w3.org/TR/WCAG22/#three-flashes-or-below-threshold',
           text: '2.3.1 Three Flashes or Below Threshold',
         },
       ],
@@ -50,7 +50,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Operable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level A Success Criteria.',
           mainText: 'Level A',
         },
       ],
