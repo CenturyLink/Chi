@@ -34,15 +34,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#media-equiv',
+          url: 'https://www.w3.org/TR/WCAG22/#time-based-media',
           text: '1.2 Time-based media',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG21/#captions-live',
+          url: 'https://www.w3.org/TR/WCAG22/#captions-live',
           text: '1.2.4 Captions (Live)',
         },
       ],
@@ -52,7 +52,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Perceivable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level AA Success Criteria.',
           mainText: 'Level AA',
         },
       ],
