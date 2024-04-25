@@ -13,9 +13,9 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 - const mode = 'datetime';
 - const timeFormat = '24hr';
 - const minutesStep = [1,5,10,15,20,30];
-- const formatHyphen1 = 'MM-DD-YYYY';
-- const formatHyphen2 = 'DD-MM-YYYY';
-- const formatHyphen3 = 'YYYY-MM-DD';
+- const formatHyphenMonth = 'MM-DD-YYYY';
+- const formatHyphenDay = 'DD-MM-YYYY';
+- const formatHyphenYear = 'YYYY-MM-DD';
 
 .test-active.-py--2(data-cy="test-active")
   span.-text--h2 Active
@@ -27,20 +27,20 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
   .-position--relative
     chi-date(value=date1, min=dateMin)
 
-.test-input.-py--2(data-cy="test-input-format-hyphen-1")
+.test-input.-py--2(data-cy="test-input-format-hyphen-month")
   span.-text--h2 Input Date Format with Hyphens (MM-DD-YYYY)
   .-position--relative(style="height: 18rem; width:14rem;")
-    chi-date-picker(data-cy="test-input-format-picker-hyphen-1" active format=formatHyphen1)
+    chi-date-picker(data-cy="test-input-format-picker-hyphen-month" active format=formatHyphenMonth)
 
-.test-input.-py--2(data-cy="test-input-format-hyphen-2")
+.test-input.-py--2(data-cy="test-input-format-hyphen-day")
   span.-text--h2 Input Date Format with Hyphens (DD-MM-YYYY)
   .-position--relative(style="height: 18rem; width:14rem;")
-    chi-date-picker(data-cy="test-input-format-picker-hyphen-2" active format=formatHyphen2)
+    chi-date-picker(data-cy="test-input-format-picker-hyphen-day" active format=formatHyphenDay)
 
-.test-input.-py--2(data-cy="test-input-format-hyphen-3")
+.test-input.-py--2(data-cy="test-input-format-hyphen-year")
   span.-text--h2 Input Date Format with Hyphens (YYYY-MM-DD)
   .-position--relative(style="height: 18rem; width:14rem;")
-    chi-date-picker(data-cy="test-input-format-picker-hyphen-3" active format=formatHyphen3)
+    chi-date-picker(data-cy="test-input-format-picker-hyphen-year" active format=formatHyphenYear)
 
 .test-input-error.-py--2(data-cy="test-input-error")
   span.-text--h2 Input Popover Error

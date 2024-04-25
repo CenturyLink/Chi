@@ -30,9 +30,9 @@ const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
 const placeholder = 'MM/DD/YYYY';
 const placeholderTime = 'MM/DD/YYYY, --:-- --';
-const dateTimeHyphens1 = '11-20-2023';
-const dateTimeHyphens2 = '20-11-2023';
-const dateTimeHyphens3 = '2023-11-20';
+const dateTimeHyphensMonth = '11-20-2023';
+const dateTimeHyphensDay = '20-11-2023';
+const dateTimeHyphensYear = '2023-11-20';
 
 import { DATE_PICKER_MINUTES_STEP_VALUES } from './common/date-picker-common.cy';
 
@@ -276,34 +276,34 @@ describe('Date picker', function() {
 
   describe('Should allow format Dates with Hyphens (-)', () => {
     beforeEach(() => {
-      cy.get('[data-cy="test-input-format-picker-hyphen-1"]').as('testFormat1');
-      cy.get('[data-cy="test-input-format-picker-hyphen-2"]').as('testFormat2');
-      cy.get('[data-cy="test-input-format-picker-hyphen-3"]').as('testFormat3');
+      cy.get('[data-cy="test-input-format-picker-hyphen-month"]').as('testFormatMonth');
+      cy.get('[data-cy="test-input-format-picker-hyphen-day"]').as('testFormatDay');
+      cy.get('[data-cy="test-input-format-picker-hyphen-year"]').as('testFormatYear');
     });
 
     it(`Should allow dates with hyphens (MM-DD-YYYY)`, () => {
       const spy = cy.spy();
 
-      cy.get('@testFormat1').then((el) => {
+      cy.get('@testFormatMonth').then((el) => {
         el.on(chiDateChange, spy);
       });
 
-      cy.get('@testFormat1')
+      cy.get('@testFormatMonth')
         .find('input')
         .clear()
-        .type(dateTimeHyphens1)
+        .type(dateTimeHyphensMonth)
         .trigger('change')
         .wait(300)
-        .get('@testFormat1')
-        .should('have.attr', 'value', dateTimeHyphens1);
+        .get('@testFormatMonth')
+        .should('have.attr', 'value', dateTimeHyphensMonth);
 
-      cy.get('@testFormat1')
+      cy.get('@testFormatMonth')
         .find('input')
         .clear()
-        .type(`${dateTimeHyphens1}{Enter}`)
+        .type(`${dateTimeHyphensMonth}{Enter}`)
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphens1);
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensMonth);
           expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
         });
     });
@@ -311,26 +311,26 @@ describe('Date picker', function() {
     it(`Should allow dates with hyphens (DD-MM-YYYY)`, () => {
       const spy = cy.spy();
 
-      cy.get('@testFormat2').then((el) => {
+      cy.get('@testFormatDay').then((el) => {
         el.on(chiDateChange, spy);
       });
 
-      cy.get('@testFormat2')
+      cy.get('@testFormatDay')
         .find('input')
         .clear()
-        .type(dateTimeHyphens2)
+        .type(dateTimeHyphensDay)
         .trigger('change')
         .wait(300)
-        .get('@testFormat2')
-        .should('have.attr', 'value', dateTimeHyphens2);
+        .get('@testFormatDay')
+        .should('have.attr', 'value', dateTimeHyphensDay);
 
-      cy.get('@testFormat2')
+      cy.get('@testFormatDay')
         .find('input')
         .clear()
-        .type(`${dateTimeHyphens2}{Enter}`)
+        .type(`${dateTimeHyphensDay}{Enter}`)
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphens2);
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensDay);
           expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
         });
     });
@@ -338,26 +338,26 @@ describe('Date picker', function() {
     it(`Should allow dates with hyphens (YYYY-MM-DD)`, () => {
       const spy = cy.spy();
 
-      cy.get('@testFormat3').then((el) => {
+      cy.get('@testFormatYear').then((el) => {
         el.on(chiDateChange, spy);
       });
 
-      cy.get('@testFormat3')
+      cy.get('@testFormatYear')
         .find('input')
         .clear()
-        .type(dateTimeHyphens3)
+        .type(dateTimeHyphensYear)
         .trigger('change')
         .wait(300)
-        .get('@testFormat3')
-        .should('have.attr', 'value', dateTimeHyphens3);
+        .get('@testFormatYear')
+        .should('have.attr', 'value', dateTimeHyphensYear);
 
-      cy.get('@testFormat3')
+      cy.get('@testFormatYear')
         .find('input')
         .clear()
-        .type(`${dateTimeHyphens3}{Enter}`)
+        .type(`${dateTimeHyphensYear}{Enter}`)
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphens3);
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensYear);
           expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
         });
     });
