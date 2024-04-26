@@ -680,6 +680,26 @@ describe('Date picker', function() {
       });
   });
 
+  it('Date-picker should reset input value to Min and time if the introduced date is before the min date and mode is datetime. ', function() {
+    cy.get('[data-cy="test-datetime-min-max"]')
+      .find('input')
+      .clear()
+      .type('01/01/2020, 02:00 am')
+      .trigger('change')
+      .get('[data-cy="test-datetime-min-max"] input')
+      .should('have.value', '11/01/2022, 02:00 am');
+  });
+
+  it('Date-picker should reset input value to Max and time if the introduced date is after the max date and mode is datetime. ', function() {
+    cy.get('[data-cy="test-datetime-min-max"]')
+      .find('input')
+      .clear()
+      .type('01/01/2025, 02:00 am')
+      .trigger('change')
+      .get('[data-cy="test-datetime-min-max"] input')
+      .should('have.value', '03/03/2024, 02:00 am');
+  });
+
   describe('Keyboard navigation', function() {
     beforeEach(() => {
       cy.get('[data-cy="test-keyboard-functionality"]').as('datePicker');

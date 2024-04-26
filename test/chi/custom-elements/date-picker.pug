@@ -116,3 +116,15 @@ each min in minutesStep
       max="03/03/2024"
       value="12/05/2023"
     )
+
+.test-datetime-min-max.-py--2(data-cy="test-datetime-min-max")
+  span.-text--h2 Date Picker with datetime and min/max values
+  .-d--flex
+    chi-date-picker(
+      data-cy="test-datetime-min-max-picker" 
+      value='11/22/2023, 02:00'
+      min="11/01/2022"
+      max="03/03/2024"
+      mode=mode
+      active
+    )
