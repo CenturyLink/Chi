@@ -1,7 +1,7 @@
 import { Component, Element, Prop, h, Watch } from '@stencil/core';
 import { addMutationObserver } from '../../utils/mutationObserver';
+import { LABEL_SIZES, type LabelSizes } from '../../constants/size';
 
-const VALID_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 @Component({
   tag: 'chi-label',
@@ -17,7 +17,7 @@ export class Label {
   /**
    * OPTIONAL. Size of the label. { xs, sm, md, lg, xl }.
    */
-  @Prop({ reflect: true }) size = 'md';
+  @Prop({ reflect: true }) size: LabelSizes = 'md';
   /**
    * To indicate which form field is required.
    */
@@ -28,8 +28,8 @@ export class Label {
   @Prop({ reflect: true }) optional = false;
 
   @Watch('size')
-  validateSizeAttribute(newValue: string) {
-    if (newValue && VALID_SIZES.indexOf(newValue) === -1) {
+  validateSizeAttribute(newValue: LabelSizes) {
+    if (newValue && LABEL_SIZES.indexOf(newValue) === -1) {
       throw new Error('Not valid size (' + newValue + '). Valid values are xs, sm, md, lg or xl. ');
     }
   }
