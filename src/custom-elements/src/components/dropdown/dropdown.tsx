@@ -125,6 +125,10 @@ export class Dropdown {
    */
   @Event({ eventName: 'chiDropdownItemSelected' }) eventItemSelected: EventEmitter;
   /**
+   * Triggered when an item is deselected in the dropdown menu
+   */
+  @Event({ eventName: 'chiDropdownItemDeselected' }) eventItemDeselected: EventEmitter;
+  /**
    * Triggered when selected items have changed in the dropdown menu. Payload is an array
    * of strings.
    */
@@ -398,8 +402,6 @@ export class Dropdown {
     if (this.retainSelection) {
       this.hide();
       this.setActiveClassOnMenuItem();
-    } else {
-      
     }
   };
 
@@ -421,6 +423,7 @@ export class Dropdown {
       this.eventItemSelected.emit(value);
     } else {
       this._value = this._value.filter((item) => item !== value);
+      this.eventItemDeselected.emit(value);
     }
 
     this.eventValueChanged.emit(this._value);
