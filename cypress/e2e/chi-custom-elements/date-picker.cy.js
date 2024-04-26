@@ -24,17 +24,17 @@ const dayToReturn =
   dateObject.getDate().toString().length === 2
     ? dateObject.getDate().toString()
     : '0' + dateObject.getDate().toString();
-const today =
-  monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+const today = monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 const chiDateChange = 'chiDateChange';
 const chiDateInvalid = 'chiDateInvalid';
 const helperMessage = 'Please enter a date.';
 const placeholder = 'MM/DD/YYYY';
 const placeholderTime = 'MM/DD/YYYY, --:-- --';
+const dateTimeHyphensMonth = '11-20-2023';
+const dateTimeHyphensDay = '20-11-2023';
+const dateTimeHyphensYear = '2023-11-20';
 
-import {
-  DATE_PICKER_MINUTES_STEP_VALUES
-} from './common/date-picker-common.cy';
+import { DATE_PICKER_MINUTES_STEP_VALUES } from './common/date-picker-common.cy';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -51,7 +51,7 @@ describe('Date picker', function() {
     it(`Clicking on a day emits the ${chiDateChange} event`, function() {
       const spy = cy.spy();
 
-      cy.get('[data-cy="test-active"]').then(el => {
+      cy.get('[data-cy="test-active"]').then((el) => {
         el.on(chiDateChange, spy);
       });
 
@@ -71,7 +71,7 @@ describe('Date picker', function() {
       const date = '12/02/2021';
       const spy = cy.spy();
 
-      cy.get('@picker').then(el => {
+      cy.get('@picker').then((el) => {
         el.on(chiDateChange, spy);
       });
 
@@ -82,9 +82,7 @@ describe('Date picker', function() {
         .then(() => {
           expect(spy).to.be.calledOnce;
           expect(spy.getCall(0).args[0].detail).to.equal(date);
-          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
-            chiDatePicker
-          );
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
         });
     });
 
@@ -92,7 +90,7 @@ describe('Date picker', function() {
       const date = '01/30/2019';
       const spy = cy.spy();
 
-      cy.get('@picker').then(el => {
+      cy.get('@picker').then((el) => {
         el.on(chiDateChange, spy);
       });
 
@@ -103,9 +101,7 @@ describe('Date picker', function() {
         .then(() => {
           expect(spy).to.be.calledOnce;
           expect(spy.getCall(0).args[0].detail).to.equal(date);
-          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
-            chiDatePicker
-          );
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
         });
     });
   });
@@ -119,7 +115,7 @@ describe('Date picker', function() {
       const date = '14/02/2021';
       const spy = cy.spy();
 
-      cy.get('@picker').then(el => {
+      cy.get('@picker').then((el) => {
         el.on(chiDateInvalid, spy);
       });
 
@@ -162,7 +158,7 @@ describe('Date picker', function() {
       .should('have.attr', 'active')
       .get('[data-cy="test-input-combined"]')
       .find('chi-popover[active]')
-      .then(popover => {
+      .then((popover) => {
         expect(popover[0].active).to.equal(true);
       });
   });
@@ -217,11 +213,8 @@ describe('Date picker', function() {
       ' multiple is present and more then one date is provided as value',
     function() {
       cy.get('[data-cy="test-multiple-selection"]')
-        .find(
-          '[data-date="11/28/2018"], [data-date="11/29/2018"],' +
-            '[data-date="11/30/2018"]'
-        )
-        .each($el => {
+        .find('[data-date="11/28/2018"], [data-date="11/29/2018"],' + '[data-date="11/30/2018"]')
+        .each(($el) => {
           const classList = Array.from($el[0].classList);
 
           expect(classList).to.include('-active');
@@ -249,8 +242,7 @@ describe('Date picker', function() {
   });
 
   it(
-    'Should render the calendar with the respective active dates ' +
-      'when the user types new input value',
+    'Should render the calendar with the respective active dates ' + 'when the user types new input value',
     function() {
       cy.get('[data-cy="test-multiple-picker"]')
         .find('input')
@@ -261,7 +253,7 @@ describe('Date picker', function() {
         .get('[data-cy="test-multiple-picker-calendar"]')
         .should('have.value', '03/29/2021,03/30/2021')
         .find('[data-date="03/29/2021"], [data-date="03/30/2021"]')
-        .each($el => {
+        .each(($el) => {
           const classList = Array.from($el[0].classList);
 
           expect(classList).to.include('-active');
@@ -280,6 +272,95 @@ describe('Date picker', function() {
       .should('have.value', '03/29/2021')
       .find('[data-date="03/29/2021"]')
       .should('have.class', '-active');
+  });
+
+  describe('Should allow format Dates with Hyphens (-)', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="test-input-format-picker-hyphen-month"]').as('testFormatMonth');
+      cy.get('[data-cy="test-input-format-picker-hyphen-day"]').as('testFormatDay');
+      cy.get('[data-cy="test-input-format-picker-hyphen-year"]').as('testFormatYear');
+    });
+
+    it(`Should allow dates with hyphens (MM-DD-YYYY)`, () => {
+      const spy = cy.spy();
+
+      cy.get('@testFormatMonth').then((el) => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@testFormatMonth')
+        .find('input')
+        .clear()
+        .type(dateTimeHyphensMonth)
+        .trigger('change')
+        .wait(300)
+        .get('@testFormatMonth')
+        .should('have.attr', 'value', dateTimeHyphensMonth);
+
+      cy.get('@testFormatMonth')
+        .find('input')
+        .clear()
+        .type(`${dateTimeHyphensMonth}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensMonth);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
+        });
+    });
+
+    it(`Should allow dates with hyphens (DD-MM-YYYY)`, () => {
+      const spy = cy.spy();
+
+      cy.get('@testFormatDay').then((el) => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@testFormatDay')
+        .find('input')
+        .clear()
+        .type(dateTimeHyphensDay)
+        .trigger('change')
+        .wait(300)
+        .get('@testFormatDay')
+        .should('have.attr', 'value', dateTimeHyphensDay);
+
+      cy.get('@testFormatDay')
+        .find('input')
+        .clear()
+        .type(`${dateTimeHyphensDay}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensDay);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
+        });
+    });
+
+    it(`Should allow dates with hyphens (YYYY-MM-DD)`, () => {
+      const spy = cy.spy();
+
+      cy.get('@testFormatYear').then((el) => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@testFormatYear')
+        .find('input')
+        .clear()
+        .type(dateTimeHyphensYear)
+        .trigger('change')
+        .wait(300)
+        .get('@testFormatYear')
+        .should('have.attr', 'value', dateTimeHyphensYear);
+
+      cy.get('@testFormatYear')
+        .find('input')
+        .clear()
+        .type(`${dateTimeHyphensYear}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(dateTimeHyphensYear);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
+        });
+    });
   });
 
   it(`Should have ${DANGER_CLASS} class when danger state is provided`, () => {
@@ -417,10 +498,7 @@ describe('Date picker', function() {
 
     cy.get('@testTimeFormat')
       .find('input')
-      .should(
-        'have.value',
-        `11/22/2018, ${hour}:${minute} ${period.toLowerCase()}`
-      );
+      .should('have.value', `11/22/2018, ${hour}:${minute} ${period.toLowerCase()}`);
   });
 
   it('Date-picker should show selected time after changing it several times.', function() {
@@ -489,7 +567,7 @@ describe('Date picker', function() {
       .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
   });
 
-  DATE_PICKER_MINUTES_STEP_VALUES.forEach( (item) => {
+  DATE_PICKER_MINUTES_STEP_VALUES.forEach((item) => {
     it(`Date-picker should show minutes by minutesStep = ${+item.minutes} `, function() {
       cy.get(item.el).as('testTimeMinutesStep');
       cy.get(item.picker).as('testTimeMinutesStepPicker');
@@ -498,8 +576,7 @@ describe('Date picker', function() {
         .find('chi-popover[active]')
         .should('have.attr', 'active');
 
-      cy.get('@testTimeMinutesStepPicker')
-        .should('have.attr', 'minutes-step', parseInt(item.minutes) );
+      cy.get('@testTimeMinutesStepPicker').should('have.attr', 'minutes-step', parseInt(item.minutes));
 
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
@@ -511,10 +588,10 @@ describe('Date picker', function() {
         .find(`.${TIME_PICKER_MINUTE}`)
         .each((item, index, list) => {})
         .then((list) => {
-          expect(list).to.have.length( 60 / parseInt(item.minutes) );
-        })
-        
-      // Select minutes  
+          expect(list).to.have.length(60 / parseInt(item.minutes));
+        });
+
+      // Select minutes
       cy.get('@testTimeMinutesStep')
         .find(`.${TIME_PICKER_MINUTE}`)
         .contains(item.minutes)
@@ -550,7 +627,7 @@ describe('Date picker', function() {
     const date = '12/02/2021';
     const spy = cy.spy();
 
-    cy.get('@testTimeNoValuePicker').then(el => {
+    cy.get('@testTimeNoValuePicker').then((el) => {
       el.on(chiDateChange, spy);
     });
 
@@ -561,9 +638,7 @@ describe('Date picker', function() {
       .then(() => {
         expect(spy).to.be.calledOnce;
         expect(spy.getCall(0).args[0].detail).to.equal(date);
-        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
-          chiDatePicker
-        );
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
       });
   });
 
@@ -590,10 +665,10 @@ describe('Date picker', function() {
     const dateTime = '12/02/2021, 02:05';
     const spy = cy.spy();
 
-    cy.get('@testTimeNoValueDateTime').then(el => {
+    cy.get('@testTimeNoValueDateTime').then((el) => {
       el.on(chiDateChange, spy);
     });
-  
+
     cy.get('@testTimeNoValueDateTime')
       .find('input')
       .clear()
@@ -601,9 +676,7 @@ describe('Date picker', function() {
       .then(() => {
         expect(spy).to.be.calledOnce;
         expect(spy.getCall(0).args[0].detail).to.equal(dateTime);
-        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
-          chiDatePicker
-        );
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(chiDatePicker);
       });
   });
 
@@ -690,20 +763,13 @@ describe('Date picker', function() {
         .tab()
         .should('have.class', DATE_PICKER_DAY);
 
-      cy.focused()
-        .type('{rightArrow}')
-      cy.focused()
-        .type('{downArrow}')
-      cy.focused()
-        .type('{downArrow}')
-      cy.focused()
-        .type('{downArrow}')
-      cy.focused()
-        .type('{downArrow}')
-      cy.focused()
-        .type('{downArrow}')
-      cy.focused()
-        .type('{downArrow}');
+      cy.focused().type('{rightArrow}');
+      cy.focused().type('{downArrow}');
+      cy.focused().type('{downArrow}');
+      cy.focused().type('{downArrow}');
+      cy.focused().type('{downArrow}');
+      cy.focused().type('{downArrow}');
+      cy.focused().type('{downArrow}');
 
       cy.focused().type('{enter}');
 

@@ -7,7 +7,7 @@ import {
   DateFormats,
   TimePickerFormats,
   TimePickerTimeSteps,
-  ESCAPE_KEYCODE
+  ESCAPE_KEYCODE,
 } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
