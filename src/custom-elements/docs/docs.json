@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-04-24T23:20:23",
+  "timestamp": "2024-04-26T14:20:37",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.17.1",
@@ -1441,10 +1441,10 @@
         },
         {
           "name": "format",
-          "type": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
+          "type": "\"DD-MM-YYYY\" | \"DD/MM/YYYY\" | \"MM-DD-YYYY\" | \"MM/DD/YYYY\" | \"YYYY-MM-DD\" | \"YYYY/MM/DD\"",
           "complexType": {
             "original": "DateFormats",
-            "resolved": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
+            "resolved": "\"DD-MM-YYYY\" | \"DD/MM/YYYY\" | \"MM-DD-YYYY\" | \"MM/DD/YYYY\" | \"YYYY-MM-DD\" | \"YYYY/MM/DD\"",
             "references": {
               "DateFormats": {
                 "location": "import",
@@ -1461,11 +1461,23 @@
           "default": "'MM/DD/YYYY'",
           "values": [
             {
+              "value": "DD-MM-YYYY",
+              "type": "string"
+            },
+            {
               "value": "DD/MM/YYYY",
               "type": "string"
             },
             {
+              "value": "MM-DD-YYYY",
+              "type": "string"
+            },
+            {
               "value": "MM/DD/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "YYYY-MM-DD",
               "type": "string"
             },
             {
@@ -1807,10 +1819,10 @@
         },
         {
           "name": "format",
-          "type": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
+          "type": "\"DD-MM-YYYY\" | \"DD/MM/YYYY\" | \"MM-DD-YYYY\" | \"MM/DD/YYYY\" | \"YYYY-MM-DD\" | \"YYYY/MM/DD\"",
           "complexType": {
             "original": "DateFormats",
-            "resolved": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
+            "resolved": "\"DD-MM-YYYY\" | \"DD/MM/YYYY\" | \"MM-DD-YYYY\" | \"MM/DD/YYYY\" | \"YYYY-MM-DD\" | \"YYYY/MM/DD\"",
             "references": {
               "DateFormats": {
                 "location": "import",
@@ -1827,11 +1839,23 @@
           "default": "'MM/DD/YYYY'",
           "values": [
             {
+              "value": "DD-MM-YYYY",
+              "type": "string"
+            },
+            {
               "value": "DD/MM/YYYY",
               "type": "string"
             },
             {
+              "value": "MM-DD-YYYY",
+              "type": "string"
+            },
+            {
               "value": "MM/DD/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "YYYY-MM-DD",
               "type": "string"
             },
             {
@@ -2782,7 +2806,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "fluid",
           "reflectToAttr": false,
           "docs": "To render Dropdowns that span the full width of the parent container",
@@ -3042,7 +3066,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "retain-selection",
           "reflectToAttr": false,
           "docs": "To retain the selection of the menu item and display it as the trigger",
@@ -3050,6 +3074,38 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "selectMode",
+          "type": "\"multi\" | \"single\"",
+          "complexType": {
+            "original": "DropdownSelectModes",
+            "resolved": "\"multi\" | \"single\"",
+            "references": {
+              "DropdownSelectModes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::DropdownSelectModes"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "select-mode",
+          "reflectToAttr": true,
+          "docs": "To apply select-like functionality and styles",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "multi",
+              "type": "string"
+            },
+            {
+              "value": "single",
+              "type": "string"
             }
           ],
           "optional": true,
@@ -3247,6 +3303,20 @@
           "docsTags": []
         },
         {
+          "event": "chiDropdownItemDeselected",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when an item is deselected in the dropdown menu",
+          "docsTags": []
+        },
+        {
           "event": "chiDropdownItemSelected",
           "detail": "any",
           "bubbles": true,
@@ -3286,6 +3356,20 @@
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when showing the Dropdown",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownValueChanged",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when selected items have changed in the dropdown menu. Payload is an array\nof strings.",
           "docsTags": []
         }
       ],
@@ -3850,11 +3934,17 @@
         },
         {
           "name": "size",
-          "type": "string",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
           "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
+            "original": "LabelSizes",
+            "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+            "references": {
+              "LabelSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::LabelSizes"
+              }
+            }
           },
           "mutable": false,
           "attr": "size",
@@ -3864,6 +3954,23 @@
           "default": "'md'",
           "values": [
             {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             }
           ],
@@ -9668,7 +9775,7 @@
       "path": "src/constants/constants.ts"
     },
     "src/constants/constants.ts::DateFormats": {
-      "declaration": "\"MM/DD/YYYY\" | \"DD/MM/YYYY\" | \"YYYY/MM/DD\"",
+      "declaration": "\"MM/DD/YYYY\" | \"DD/MM/YYYY\" | \"YYYY/MM/DD\" | \"MM-DD-YYYY\" | \"DD-MM-YYYY\" | \"YYYY-MM-DD\"",
       "docstring": "",
       "path": "src/constants/constants.ts"
     },
@@ -9691,6 +9798,16 @@
       "declaration": "\"normal\"",
       "docstring": "",
       "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::DropdownSelectModes": {
+      "declaration": "\"single\" | \"multi\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/size.ts::LabelSizes": {
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "docstring": "",
+      "path": "src/constants/size.ts"
     },
     "src/constants/size.ts::MarketingIconSizes": {
       "declaration": "string",

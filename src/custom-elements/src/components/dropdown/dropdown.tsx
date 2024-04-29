@@ -10,7 +10,7 @@ import {
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
-import { FontWeight } from '../../constants/types';
+import { DROPDOWN_SELECT_MODES, DropdownSelectModes, FontWeight } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
 declare const chi: any;
@@ -32,7 +32,7 @@ export class Dropdown {
   /**
    * To render Dropdowns that span the full width of the parent container
    */
-  @Prop() fluid: boolean;
+  @Prop({ mutable: true }) fluid: boolean;
   /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
@@ -102,7 +102,12 @@ export class Dropdown {
   /**
    * To retain the selection of the menu item and display it as the trigger
    */
-  @Prop() retainSelection?: boolean;
+  @Prop({ mutable: true }) retainSelection?: boolean;
+  /**
+   * To apply select-like functionality and styles
+   */
+  @Prop({ reflect: true, mutable: true }) selectMode?: DropdownSelectModes;
+
   /**
    * Triggered when hiding the Dropdown
    */
@@ -118,13 +123,21 @@ export class Dropdown {
   /**
    * Triggered when select an item in the dropdown menu
    */
-  @Event({ eventName: 'chiDropdownItemSelected' })
-  eventItemSelected: EventEmitter;
+  @Event({ eventName: 'chiDropdownItemSelected' }) eventItemSelected: EventEmitter;
+  /**
+   * Triggered when an item is deselected in the dropdown menu
+   */
+  @Event({ eventName: 'chiDropdownItemDeselected' }) eventItemDeselected: EventEmitter;
+  /**
+   * Triggered when selected items have changed in the dropdown menu. Payload is an array
+   * of strings.
+   */
+  @Event({ eventName: 'chiDropdownValueChanged' }) eventValueChanged: EventEmitter;
 
   @State() _menuHeader: boolean;
   @State() _menuFooter: boolean;
   @State() _forceRender: boolean;
-  @State() _value: string;
+  @State() _value: string[] = [];
 
   @Element() el: HTMLElement;
 
@@ -135,7 +148,9 @@ export class Dropdown {
   private _dropdownMenuItemsWrapper: any;
   private _customTrigger: boolean;
   private _tooltip: any;
+  private _fluidClass: string;
 
+  //# region Lifecycle hooks
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
 
@@ -165,13 +180,18 @@ export class Dropdown {
 
   componentWillLoad() {
     this._getDropdownMenuSlots();
+    this.validateSelectMode(this.selectMode);
+    this._setSelectModeProps();
+    this._updateFluidClass();
   }
 
   disconnectedCallback() {
     this._removeEventListeners();
     this._removeTooltip();
   }
+  //#endregion
 
+  //#region PropsWatchers and validations
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_EXTENDED_POSITIONS.includes(newValue)) {
@@ -194,6 +214,34 @@ export class Dropdown {
       }
     }
   }
+
+  /**
+   * Validates select mode values and sets default value as single if property is used without value.
+   * E.g. <chi-dropdown select-mode> <--> <chi-dropdown select-mode="single">
+   */
+  validateSelectMode(selectMode) {
+    if (selectMode === '') {
+      this.selectMode = 'single';
+    } else if (selectMode && !DROPDOWN_SELECT_MODES.includes(selectMode)) {
+      throw new Error(
+        `${selectMode} is not a valid select mode for Dropdown. Valid values are ${DROPDOWN_SELECT_MODES.join(', ')}.`
+      );
+    }
+  }
+
+  @Watch('selectMode')
+  _setSelectModeProps() {
+    if (this.selectMode) {
+      this.retainSelection = true;
+      this.fluid = true;
+    }
+  }
+
+  @Watch('fluid')
+  _updateFluidClass() {
+    this._fluidClass = this.fluid ? FLUID_CLASS : '';
+  }
+  //#endregion
 
   @Method()
   async updatePopper() {
@@ -309,7 +357,7 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     menuItems.forEach((item: HTMLElement) => {
-      const isActive = item.textContent === this._value;
+      const isActive = this._value.includes(item.textContent);
 
       item.classList.toggle(ACTIVE_CLASS, isActive);
     });
@@ -317,7 +365,7 @@ export class Dropdown {
 
   setFixedWidth() {
     if (this.retainSelection && this._referenceElement) {
-      const button = this._referenceElement.getElementsByTagName('button')[0];
+      const button = this._getButtonElement();
 
       button.style.width = `${this._referenceElement.offsetWidth}px`;
       button.classList.add(UTILITY_CLASSES.DISPLAY.FLEX, UTILITY_CLASSES.JUSTIFY.BETWEEN);
@@ -349,26 +397,36 @@ export class Dropdown {
   };
 
   handlerSelectedMenuItem = (ev) => {
-    this.eventItemSelected.emit(ev.target.text);
+    this._updateValue(ev.target.text);
 
     if (this.retainSelection) {
-      this._value = ev.target.textContent;
       this.hide();
-      this.truncateButtonText();
       this.setActiveClassOnMenuItem();
     }
   };
 
-  truncateButtonText() {
-    if (this.icon) return;
+  /**
+   * Either adds or removes a selected item from the value list.
+   * Multiple values are only allowed if selectMode is multi.
+   */
+  _updateValue(value: string) {
+    if (this.selectMode !== 'multi') {
+      this._value = [value];
+      this.eventItemSelected.emit(value);
+      return;
+    }
 
-    const button = this._referenceElement.getElementsByTagName('button')[0];
-    const span = document.createElement('span');
+    const valueIndex = this._value.indexOf(value);
 
-    button.textContent = '';
-    span.textContent = this._value;
-    span.classList.add(UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
-    button.appendChild(span);
+    if (valueIndex === -1) {
+      this._value = [...this._value, value];
+      this.eventItemSelected.emit(value);
+    } else {
+      this._value = this._value.filter((item) => item !== value);
+      this.eventItemDeselected.emit(value);
+    }
+
+    this.eventValueChanged.emit(this._value);
   }
 
   handlerClickTrigger = () => {
@@ -450,6 +508,10 @@ export class Dropdown {
     return Array.from(children).filter((item: HTMLElement) => item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM));
   }
 
+  _getButtonElement(): HTMLButtonElement {
+    return this._referenceElement.querySelector('button');
+  }
+
   _addEventListeners() {
     document.body.addEventListener('click', this.handlerClick.bind(this));
     document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
@@ -480,17 +542,25 @@ export class Dropdown {
     });
   }
 
-  _setButtonContent() {
-    const icon = <chi-icon icon={this.icon}></chi-icon>;
-    const button = (this.retainSelection && this._value) ?? this.button;
+  _getButtonContent() {
+    let buttonContent = this.button;
 
-    return this.icon ? icon : button;
+    if (this.icon) {
+      buttonContent = <chi-icon icon={this.icon}></chi-icon>;
+    } else if (this.retainSelection && this._value.length) {
+      buttonContent = <span class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{this._value.join(' ; ')}</span>;
+    }
+
+    return buttonContent;
   }
 
+  
+  /**
+   * Generates trigger button content, either default button text, selected value or icon
+   */
   renderTrigger() {
-    const buttonContent = this._setButtonContent();
+    const buttonContent = this._getButtonContent();
     const color = this.color ?? '';
-    const fluidClass = this.fluid ? FLUID_CLASS : '';
     const variant = this.variant ?? '';
     const size = this.size ?? '';
     const type = this.icon ? 'icon' : '';
@@ -502,7 +572,7 @@ export class Dropdown {
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
-        class={fluidClass}
+        fluid={this.fluid}
         extra-class={this.getExtraClassForTriggerButton()}
         color={color}
         variant={variant}
@@ -525,7 +595,6 @@ export class Dropdown {
       ${DROPDOWN_CLASSES.TRIGGER}
       ${this.fontWeight ? `-text--${this.fontWeight}` : ''}
       ${this.active ? ACTIVE_CLASS : ''}
-      ${this.fluid ? FLUID_CLASS : ''}
       ${this.animateChevron ? ANIMATE_CLASS : ''}
       ${this.icon ? DROPDOWN_CLASSES.ICON : ''}
     `;
@@ -568,7 +637,7 @@ export class Dropdown {
           ${DROPDOWN_CLASSES.MENU}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''}
+          ${this._fluidClass}
           ${this.description ? LIST_CLASS : ''}`}
         ref={(ref) => (this._dropdownMenuElement = ref)}
       >
@@ -585,7 +654,7 @@ export class Dropdown {
 
     return trigger ? (
       <div
-        class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this.fluid ? FLUID_CLASS : ''}`}
+        class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this._fluidClass}`}
         onMouseLeave={this.handlerMouseLeave}
       >
         {trigger}
