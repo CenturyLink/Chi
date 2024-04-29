@@ -7,12 +7,12 @@ h3 Alert
           chi-alert(color=type, icon=val, title=type)
             =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-base
+    ul.chi-tabs#example-alert-carousel
       li.-disabled
-        a(href=`#webcomponent-accordion-base`) Web Component
+        a(href=`#webcomponent-alert-carousel`) Web Component
       li.-active
-        a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-accordion-base
+        a(href=`#html-alert-carousel`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-alert-carousel
     :code(lang="html")
       <chi-carousel single>
         <div class="-p--1 chi-carousel__item" slot="items">
@@ -31,4 +31,4 @@ h3 Alert
           <chi-alert color="muted" icon="circle-info" title="muted">This is a muted alert</chi-alert>
         </div>
       </chi-carousel>
-  .chi-tabs-panel#html-accordion-base
+  .chi-tabs-panel#html-alert-carousel

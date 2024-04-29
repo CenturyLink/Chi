@@ -6,8 +6,8 @@
       | and wrap all content in <code>chi-footer__content</code>.
 
     chi-alert(v-if="['lumen', 'portal', 'brightspeed'].includes(selectedTheme)" color="info" icon="circle-info" title="Localization")
-      | The Footer's language drop down is not functional by default as language support varies by project.
-      | Please ensure the drop down is populated with the correct languages and URL paths relevant to your project prior to release.
+      | The Footer's location drop down is not functional by default.
+      | Please ensure the drop down is populated with the correct locations and URL paths relevant to your project prior to release.
 
     ExternalLumenPortal(v-if="['lumen', 'portal'].includes(selectedTheme)")
     InternalLumenPortal(v-if="['lumen', 'portal'].includes(selectedTheme)")

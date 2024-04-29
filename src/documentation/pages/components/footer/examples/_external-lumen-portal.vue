@@ -80,10 +80,9 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(ref="languageDropdownTrigger" data-position="top-start" aria-label="Select your preferred language")
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(ref="languageDropdownTrigger" data-position="top-start" aria-label="Select your preferred location")
                 .chi-button__content
-                  i.chi-icon.icon-globe-network-outline(aria-hidden="true")
-                  span English
+                  i.chi-flag-icon.icon-us(aria-hidden="true")
               .chi-dropdown__menu.-w--sm.-text--body
                 a.chi-dropdown__menu-item(v-for="(link, index) in languageItems" :key="index" :href="link.href" :class="index === 0 ? '-active' : ''")
                   | {{link.name}}
@@ -216,8 +215,7 @@ export default class ExternalLumenPortal extends Vue {
         <div class="chi-dropdown chi-footer__language">
           <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="example__footer_language_dropdown_button" data-position="top-start" aria-label="Select your preferred language">
             <div class="chi-button__content">
-              <i class="chi-icon icon-globe-network-outline" aria-hidden="true"></i>
-              <span>English</span>
+              <i class="chi-flag-icon icon-us" aria-hidden="true"></i>
             </div>
           </a>
           <div class="chi-dropdown__menu -w--sm -text--body">${languageItemLinks}

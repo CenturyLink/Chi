@@ -159,10 +159,13 @@ small {
 }
 
 .-text--brand,
-.-text--primary,
+.-text--primary {
+  color: $color-text-primary !important;
+}
+
 .-icon--brand,
 .-icon--primary {
-  color: $color-text-primary !important;
+  color: $color-icon-primary !important;
 }
 
 .-hover--text--primary {
