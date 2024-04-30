@@ -968,6 +968,37 @@ $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline:          $focus-color;
 
+$dropdown-select-disabled-opacity:                   $opacity-60;
+$dropdown-select-xs-height:                          1.5rem;
+$dropdown-select-xs-font-size:                       $font-size-xs;
+$dropdown-select-xs-line-height:                     $line-height-sm;
+$dropdown-select-xs-arrow-background-size:           0.75rem;
+$dropdown-select-xs-padding:                         0 .5rem 0 0.5rem;
+
+$dropdown-select-sm-height:                          2rem;
+$dropdown-select-sm-font-size:                       $font-size-base;
+$dropdown-select-sm-line-height:                     $line-height-sm;
+$dropdown-select-sm-arrow-background-size:           0.75rem;
+$dropdown-select-sm-padding:                         0 .75rem 0 0.75rem;
+
+$dropdown-select-md-height:                          2.5rem;
+$dropdown-select-md-font-size:                       $font-size-base;
+$dropdown-select-md-line-height:                     $line-height-md;
+$dropdown-select-md-arrow-background-size:           1rem;
+$dropdown-select-md-padding:                         0 1.25rem 0 0.75rem;
+
+$dropdown-select-lg-height:                          3rem;
+$dropdown-select-lg-font-size:                       $font-size-base;
+$dropdown-select-lg-line-height:                     $line-height-md;
+$dropdown-select-lg-arrow-background-size:           1rem;
+$dropdown-select-lg-padding:                         0 1.25rem 0 1rem;
+
+$dropdown-select-xl-height:                          3.5rem;
+$dropdown-select-xl-font-size:                       $font-size-lg;
+$dropdown-select-xl-line-height:                     $line-height-md;
+$dropdown-select-xl-arrow-background-size:           1rem;
+$dropdown-select-xl-padding:                         0 1.25rem 0 1rem;
+
 // Expansion panel
 $expansion-panel-border-color:              $color-border-base;
 $expansion-panel-active-title-text-color:   $color-text-primary;
