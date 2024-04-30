@@ -191,6 +191,39 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
       a.chi-dropdown__menu-item(slot='menu') Menu item 5
       a.chi-dropdown__menu-item(slot='menu') Menu item 6
 
+.test-dropdown-select-mode-sizes.-mt--5(style='width: 500px; height: 700px;')
+  span.-text--h2=`Select mode`
+  .chi-grid
+    each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+      .chi-col.-w--2=size 
+      .chi-col.-w--10 
+        .chi-form__item.-mb--3
+          chi-dropdown(select-mode button="- Select -" size=`${size === 'default' ? '' : size}`)
+            a.chi-dropdown__menu-item(slot='menu') Option 1
+            a.chi-dropdown__menu-item(slot='menu') Option 2
+            a.chi-dropdown__menu-item(slot='menu') Option 3
+    .chi-col.-w--2 disabled
+    .chi-col.-w--10 
+      .chi-form__item.-mb--3
+        chi-dropdown(select-mode button="- Select -" disabled)
+          a.chi-dropdown__menu-item(slot='menu') Option 1
+          a.chi-dropdown__menu-item(slot='menu') Option 2
+          a.chi-dropdown__menu-item(slot='menu') Option 3
+    .chi-col.-w--2 focus
+    .chi-col.-w--10 
+      .chi-form__item.-mb--3
+        chi-dropdown(select-mode button="- Select -"  id="dropdown-select-mode-focus")
+          a.chi-dropdown__menu-item(slot='menu') Option 1
+          a.chi-dropdown__menu-item(slot='menu') Option 2
+          a.chi-dropdown__menu-item(slot='menu') Option 3
+    .chi-col.-w--2 hover
+    .chi-col.-w--10 
+      .chi-form__item.-mb--3
+        chi-dropdown(select-mode button="- Select -" id="dropdown-select-mode-hover")
+          a.chi-dropdown__menu-item(slot='menu') Option 1
+          a.chi-dropdown__menu-item(slot='menu') Option 2
+          a.chi-dropdown__menu-item(slot='menu') Option 3
+
 script.
   const multiLevelDropdowns = [
     {trigger: '#test-nesting-level-2', dropdown: '#dropdown-level-3'},
@@ -228,3 +261,19 @@ script.
     newItem.classList.add('chi-dropdown__menu-item');
     document.querySelector('.test-dynamic-dropdown chi-dropdown').appendChild(newItem);
   });
+
+  const addDropdownClassesInterval = setInterval(() => {
+      const focusDropdown = document.querySelector(
+        '#dropdown-select-mode-focus .chi-dropdown__select-mode'
+      );
+      const hoverDropdown = document.querySelector(
+        '#dropdown-select-mode-hover .chi-dropdown__select-mode'
+      );
+
+      if (focusDropdown && hoverDropdown) {
+        focusDropdown.classList.add('-active');
+        hoverDropdown.classList.add('-hover');
+        clearInterval(addDropdownClassesInterval);
+      }
+  });
+
