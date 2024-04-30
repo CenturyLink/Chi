@@ -24,7 +24,7 @@ export default defineConfig({
     libInjectCss(),
     checker({
       vueTsc: {
-        tsconfigPath: './tsconfig.app.json',
+        tsconfigPath: './tsconfig.json',
       },
     }),
   ],
