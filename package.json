@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "5.58.0",
+  "version": "5.61.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "main": "bin/chi.js",
@@ -15,6 +15,7 @@
     "ci": "gulp ci",
     "docker": "scripts/docker.sh",
     "start": "gulp watch",
+    "serve": "gulp serve",
     "start:customElements": "gulp custom-elements:watch",
     "test": "gulp test",
     "test-ce": "gulp test:custom-elements",

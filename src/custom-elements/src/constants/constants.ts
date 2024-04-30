@@ -52,7 +52,7 @@ export type DatePickerModes = typeof DATE_PICKER_MODES[number];
 export const DATE_LOCALES = ['en', 'es', 'pt', 'fr', 'de', 'ja', 'zh'] as const;
 export type DataLocales = typeof DATE_LOCALES[number];
 
-export const DATE_FORMATS = ['MM/DD/YYYY', 'DD/MM/YYYY', 'YYYY/MM/DD'] as const;
+export const DATE_FORMATS = ['MM/DD/YYYY', 'DD/MM/YYYY', 'YYYY/MM/DD', 'MM-DD-YYYY', 'DD-MM-YYYY', 'YYYY-MM-DD'] as const;
 export type DateFormats = typeof DATE_FORMATS[number];
 
 export const CHI_TIME_AUTO_SCROLL_DELAY = 50;

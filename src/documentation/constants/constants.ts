@@ -185,6 +185,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue',
   },
   {
+    href: `components/link`,
+    label: 'Link',
+    source: 'pug',
+  },
+  {
     href: `components/marketing-icon`,
     label: 'Marketing icon',
     source: 'pug',
@@ -379,6 +384,9 @@ export const NAVIGATION_FOUNDATIONS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.61.0',
+  '5.60.0',
+  '5.59.0',
   '5.58.0',
   '5.57.0',
   '5.56.0',

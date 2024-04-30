@@ -34,15 +34,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast',
+          url: 'https://www.w3.org/TR/WCAG22/#distinguishable',
           text: '1.4 Distinguishable',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio',
+          url: 'https://www.w3.org/TR/WCAG22/#audio-control',
           text: '1.4.2 Audio Control',
         },
       ],
@@ -52,7 +52,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Perceivable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level A Success Criteria.',
           mainText: 'Level A',
         },
       ],

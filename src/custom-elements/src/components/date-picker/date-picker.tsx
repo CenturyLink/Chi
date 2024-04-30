@@ -7,7 +7,7 @@ import {
   DateFormats,
   TimePickerFormats,
   TimePickerTimeSteps,
-  ESCAPE_KEYCODE
+  ESCAPE_KEYCODE,
 } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
@@ -208,19 +208,19 @@ export class DatePicker {
 
   _checkSingleDate(minDate, maxDate) {
     const inputDate = dayjs(this._input.value, this.format);
+    const isDateTimeMode = this.mode === 'datetime';
 
-    const inputValue = this.mode === 'datetime'
-      ? this._input.value.split(', ')[0]
-      : this._input.value;
+    const timeValue = isDateTimeMode ? this._input.value.split(', ')[1] : '';
+    const inputValue = isDateTimeMode ? this._input.value.split(', ')[0] : this._input.value;
 
     if (dayjs(inputValue, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
       if (dayjs(inputDate).startOf('day').isBefore(dayjs(minDate).startOf('day'))) {
-        this.value = this.min;
-        this._input.value = this.min;
+        this.value = timeValue ? `${this.min}, ${timeValue}` : this.min;
+        this._input.value = this.value;
         this.eventChange.emit(this.value);
       } else if (dayjs(inputDate).startOf('day').isAfter(dayjs(maxDate).startOf('day'))) {
-        this.value = this.max;
-        this._input.value = this.max;
+        this.value = timeValue ? `${this.max}, ${timeValue}` : this.max;
+        this._input.value = this.value;
         this.eventChange.emit(this.value);
       } else {
         this.value = this._input.value;

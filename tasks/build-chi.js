@@ -5,6 +5,7 @@ gulp.task('build:chi', gulp.series(
   'build:ctl:styles',
   'build:portal:styles',
   'build:brightspeed:styles',
+  'build:rebrand24:styles',
   'build:colt:styles',
   'build:chi:assets',
   'build:chi:sprite',
