@@ -54,31 +54,34 @@ export class Label {
     this.helpPopoverId = `help-popover-${uuid4()}`;
   }
 
-  componentDidLoad(): void {
-    this.el
-      .querySelector(`#${this.helpButtonId}`)
-      .addEventListener('click', () => (document.querySelector(`#${this.helpPopoverId}`) as any).toggle());
+  toggleHelpPopover(): void {
+    (this.el.querySelector(`#${this.helpPopoverId}`) as any).toggle();
   }
 
-  render() {
-    const infoIcon = this.infoIcon ? (
+  _getInfoIcon() {
+    return this.infoIcon ? (
       <div class="chi-label__help">
-        <chi-button id={this.helpButtonId} type="icon" size="xs" variant="flat" alternative-text="Help">
+        <chi-button
+          id={this.helpButtonId}
+          onChiClick={() => this.toggleHelpPopover()}
+          type="icon"
+          size="xs"
+          variant="flat"
+          alternative-text="Help"
+        >
           <chi-icon icon="circle-info-outline"></chi-icon>
         </chi-button>
-        <chi-popover
-          id={this.helpPopoverId}
-          position="top"
-          variant="text"
-          arrow
-          reference={`#${this.helpButtonId}`}
-        >
+        <chi-popover id={this.helpPopoverId} position="top" variant="text" arrow reference={`#${this.helpButtonId}`}>
           {this.infoIconMessage}
         </chi-popover>
       </div>
     ) : (
       ''
     );
+  }
+
+  render() {
+    const infoIcon = this._getInfoIcon();
 
     const required = (
       <abbr class="chi-label__required" aria-label="Required field">

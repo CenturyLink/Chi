@@ -15,26 +15,26 @@
     Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
 </ComponentExample>
 </template>
-    
-    <script lang="ts">
-    import { Vue } from 'vue-facing-decorator';
-    
-    @NuxtComponent({
-      data: () => {
-        return {
-          exampleTabs: [
-            {
-              active: true,
-              id: 'webcomponent',
-              label: 'Web Component',
-            },
-            {
-              id: 'htmlblueprint',
-              label: 'HTML Blueprint',
-            },
-          ],
-          codeSnippets: {
-            webcomponent: `<!-- Info Icon -->
+
+<script lang="ts">
+import { Vue } from 'vue-facing-decorator';
+
+@NuxtComponent({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component',
+        },
+        {
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint',
+        },
+      ],
+      codeSnippets: {
+        webcomponent: `<!-- Info Icon -->
 <chi-label info-icon>Label</chi-label>
 
 <!-- Info Icon Message -->
@@ -50,10 +50,9 @@
     </chi-popover>
   </div>
 </label>`,
-          },
-        };
       },
-    })
-    export default class Help extends Vue {}
-    </script>
-    
+    };
+  },
+})
+export default class Help extends Vue {}
+</script>
