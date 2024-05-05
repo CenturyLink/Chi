@@ -91,7 +91,7 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <ColumnCustomization :columnsData="toolbar.columnsData" />
+            <TransferListButton />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -192,11 +192,11 @@
 import { ref } from 'vue';
 import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
+import TransferListButton from '../DataTableTemplates/example-transfer-list.vue';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
-import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleSaveViewConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 import SaveView from '../../../components/data-table-save-view/SaveView';
