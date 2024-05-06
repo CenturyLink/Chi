@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.62.0 (May 4, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Select accessibility page.
+
 ## 5.61.0 (April 26, 2024)
 
 ### Components

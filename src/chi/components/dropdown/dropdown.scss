@@ -1,6 +1,44 @@
 @import '_global-variables';
 @import '_global-mixins';
 
+$sizes: (
+  xs: (
+    select-height: $dropdown-select-xs-height,
+    select-font-size: $dropdown-select-xs-font-size,
+    select-line-height: $dropdown-select-xs-line-height,
+    select-chevron-size: $dropdown-select-xs-arrow-background-size,
+    select-padding: $dropdown-select-xs-padding,
+  ),
+  sm: (
+    select-height: $dropdown-select-sm-height,
+    select-font-size: $dropdown-select-sm-font-size,
+    select-line-height: $dropdown-select-sm-line-height,
+    select-chevron-size: $dropdown-select-sm-arrow-background-size,
+    select-padding: $dropdown-select-sm-padding,
+  ),
+  md: (
+    select-height: $dropdown-select-md-height,
+    select-font-size: $dropdown-select-md-font-size,
+    select-line-height: $dropdown-select-md-line-height,
+    select-chevron-size: $dropdown-select-md-arrow-background-size,
+    select-padding: $dropdown-select-md-padding,
+  ),
+  lg: (
+    select-height: $dropdown-select-lg-height,
+    select-font-size: $dropdown-select-lg-font-size,
+    select-line-height: $dropdown-select-lg-line-height,
+    select-chevron-size: $dropdown-select-lg-arrow-background-size,
+    select-padding: $dropdown-select-lg-padding,
+  ),
+  xl: (
+    select-height: $dropdown-select-xl-height,
+    select-font-size: $dropdown-select-xl-font-size,
+    select-line-height: $dropdown-select-xl-line-height,
+    select-chevron-size: $dropdown-select-xl-arrow-background-size,
+    select-padding: $dropdown-select-xl-padding,
+  )
+);
+
 .chi-dropdown {
   display: inline-block;
   position: relative;
@@ -298,7 +336,7 @@
       }
     }
 
-    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline):not(.-flat) {
+    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline):not(.-flat):not(.chi-dropdown__select-mode) {
       &.-xs {
         padding-top: $dropdown-trigger-base-xs-padding-y;
         padding-bottom: $dropdown-trigger-base-xs-padding-y;
@@ -377,7 +415,8 @@
         color: $dropdown-trigger-icon-color;
       }
 
-      &:not(.-flat) {
+      &:not(.-flat):not(.chi-dropdown__select-mode) {
+
         border: $dropdown-button-border-width solid $dropdown-button-border-color;
 
         &:hover {
@@ -393,7 +432,7 @@
           background-color: $dropdown-button-background-color;
           box-shadow: $dropdown-button-box-shadow;
 
-          &:hover {
+          &:hover:not(.chi-dropdown__select-mode) {
             background-color: $dropdown-button-hover-background-color;
           }
 
@@ -578,6 +617,61 @@ a {
     &.focus:not(.-disabled):not(.-active),
     &:focus-visible:not(.-disabled):not(.-active) {
       outline: 0.125rem solid $dropdown-menu-item-focus-outline;
+    }
+  }
+}
+
+
+chi-dropdown[select-mode],
+.chi-dropdown {
+  .chi-dropdown__trigger.chi-button.chi-dropdown__select-mode {
+    font-weight: $font-weight-normal;
+    line-height: map-get(map-get($sizes, md), select-line-height);
+    height: map-get(map-get($sizes, md), select-height);
+    font-size: map-get(map-get($sizes, md), select-font-size);
+    padding: map-get(map-get($sizes, md), select-padding);
+    border: $dropdown-button-border-width solid $dropdown-button-border-color;
+
+    &::after {
+      font-size: map-get(map-get($sizes, md), select-chevron-size);
+    }
+
+    @each $size in map-keys($sizes) {
+      &.-#{$size} {
+        padding: map-get(map-get($sizes, $size), select-padding);
+        line-height: map-get(map-get($sizes, $size), select-line-height);
+        height: map-get(map-get($sizes, $size), select-height);
+        font-size: map-get(map-get($sizes, $size), select-font-size);
+
+        &::after {
+          font-size: map-get(map-get($sizes, $size), select-chevron-size);
+        }
+      }
+    }
+
+    &:active,
+    &.-active,
+    &:focus,
+    &.-focus {
+      background-color: $dropdown-menu-background-color;
+      border: 0.125rem solid $button-solid-focus-outline;
+      outline: none;
+      border-radius: 0.25rem;
+    }
+
+    &:hover:not(.-disabled):not(.-active):not(.-focus),
+    &.-hover:not(.-disabled):not(.-active):not(.-focus) {
+      border-color: $select-hover-border-color;
+      background-color: $dropdown-menu-background-color;
+    }
+
+    &.-disabled {
+      background-color: $dropdown-menu-background-color;
+      opacity: $dropdown-select-disabled-opacity;
+
+      &::after {
+        color: $dropdown-trigger-icon-color;
+      }
     }
   }
 }
