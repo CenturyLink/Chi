@@ -1,16 +1,38 @@
 # CHANGELOG
 
+## 5.62.0 (May 4, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Select accessibility page.
+
+## 5.61.0 (April 26, 2024)
+
+### Components
+
+#### Added
+
+- Added: Date picker `format` property now supports hyphens also: `"DD-MM-YYYY" | "MM-DD-YYYY" | "YYYY-MM-DD"`.
+
+### Documentation
+
+#### Changed
+
+- Changed: Accessibility other page to WCAG 2.2.
+
 ## 5.60.0 (April 24, 2024)
 
 ### Components
 
 #### Added
 
-- Added: Link icon web component now supports <code>mutationObserver</code> functionality.
+- Added: Link icon web component now supports `mutationObserver` functionality.
 
 #### Fixed
 
-- Fixed: Date picker in <code>mode="datetime"</code>prevented selecting the time when the <code>min</code> and <code>max</code> attributes were specified, and if the chosen date was outside this range.
+- Fixed: Date picker in `mode="datetime"`prevented selecting the time when the `min` and `max` attributes were specified, and if the chosen date was outside this range.
 
 ### Documentation
 
