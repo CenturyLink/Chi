@@ -69,7 +69,7 @@ export class Label {
           variant="flat"
           alternative-text="Help"
         >
-          <chi-icon icon="circle-info-outline"></chi-icon>
+          <chi-icon icon="circle-info-outline" size="xs"></chi-icon>
         </chi-button>
         <chi-popover id={this.helpPopoverId} position="top" variant="text" arrow reference={`#${this.helpButtonId}`}>
           {this.infoIconMessage}

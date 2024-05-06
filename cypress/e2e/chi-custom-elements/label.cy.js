@@ -56,7 +56,7 @@ describe('Label', function() {
   });
 
   it(`Helper's popover should display changed message after clicking the icon, when attribute info-icon-message is provided`, function() {
-    cy.get('[data-cy="test-label-info-icon-message"]').as('label');
+    cy.get('[data-cy="test-label-info-icon-message-sm"]').as('label');
     cy.get('@label')
       .find('chi-button')
       .click();
