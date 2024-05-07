@@ -111,6 +111,7 @@ export const config: Config = {
 
         // @ts-ignore
         docs['components'].find((x) => x.tag === 'chi-popover')['props'].push(popoverTitleProp);
+        // @ts-ignore
         docs['components']
           .find((x) => x.tag === 'chi-popover')
           ['props'].sort((a, b) => {
@@ -121,6 +122,7 @@ export const config: Config = {
 
         // @ts-ignore
         docs['components'].find((x) => x.tag === 'chi-drawer')['props'].push(drawerTitleProp);
+        // @ts-ignore
         docs['components']
           .find((x) => x.tag === 'chi-drawer')
           ['props'].sort((a, b) => {
@@ -131,6 +133,7 @@ export const config: Config = {
 
         // @ts-ignore
         docs['components'].find((x) => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
+        // @ts-ignore
         docs['components']
           .find((x) => x.tag === 'chi-expansion-panel')
           ['props'].sort((a, b) => {
@@ -141,6 +144,7 @@ export const config: Config = {
 
         // @ts-ignore
         docs['components'].find((x) => x.tag === 'chi-main')['props'].push(appLayoutTitleProp);
+        // @ts-ignore
         docs['components']
           .find((x) => x.tag === 'chi-main')
           ['props'].sort((a, b) => {

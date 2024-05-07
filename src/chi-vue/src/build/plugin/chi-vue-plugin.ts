@@ -1,4 +1,4 @@
-import { ref, type Plugin } from 'vue';
+import { type Plugin } from 'vue';
 import { z } from 'zod';
 import { importCss, importJs, importWebComponents } from './utils';
 import { CHI_LIB_LUMEN, CHI_VERSION } from './constants';
