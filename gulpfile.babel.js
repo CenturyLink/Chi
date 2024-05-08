@@ -8,6 +8,7 @@ const requires = {
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
   'build-portal-styles': require('./tasks/build-portal-styles.js'),
+  'build-rebrand24-styles': require('./tasks/build-rebrand24-styles.js'),
   'build-brightspeed-styles': require('./tasks/build-brightspeed-styles.js'),
   'build-colt-styles': require('./tasks/build-colt-styles.js'),
   'build-chi-assets': require('./tasks/build-chi-assets.js'),

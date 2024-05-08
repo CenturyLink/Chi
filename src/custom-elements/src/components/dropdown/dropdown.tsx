@@ -364,7 +364,7 @@ export class Dropdown {
   }
 
   setFixedWidth() {
-    if (this.retainSelection && this._referenceElement) {
+    if (this.retainSelection && this._referenceElement && !this.fluid) {
       const button = this._getButtonElement();
 
       button.style.width = `${this._referenceElement.offsetWidth}px`;
@@ -597,6 +597,7 @@ export class Dropdown {
       ${this.active ? ACTIVE_CLASS : ''}
       ${this.animateChevron ? ANIMATE_CLASS : ''}
       ${this.icon ? DROPDOWN_CLASSES.ICON : ''}
+      ${this.selectMode ? DROPDOWN_CLASSES.SELECT_MODE : ''}
     `;
   }
 

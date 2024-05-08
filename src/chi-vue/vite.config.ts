@@ -23,17 +23,17 @@ export default defineConfig({
       ],
     }),
     dts({
-      tsconfigPath: './tsconfig.app.json',
+      tsconfigPath: './tsconfig.json',
       insertTypesEntry: true,
       staticImport: true,
     }),
     libInjectCss(),
     checker({
       typescript: {
-        tsconfigPath: './tsconfig.app.json',
+        tsconfigPath: './tsconfig.json',
       },
       vueTsc: {
-        tsconfigPath: './tsconfig.app.json',
+        tsconfigPath: './tsconfig.json',
       },
     }),
   ],

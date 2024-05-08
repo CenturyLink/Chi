@@ -9,6 +9,7 @@ declare module 'vue' {
     msg?: string;
     header?: boolean;
     textWrap?: boolean;
+    nIcons?: number;
 
     // DataTableBulkActions
     selectedRows?: number;
