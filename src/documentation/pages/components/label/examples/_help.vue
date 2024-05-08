@@ -4,8 +4,6 @@
     p.-text
       | Use attribute <code>infoIcon</code> and <code>infoIconMessage</code> to include a help icon that displays helpful information in a popover.
   template(#example)
-    chi-label(for="input-2", info-icon) Label
-    input#input-2-control.-sr--only
     chi-label(for="input-2", info-icon, info-icon-message="Changed helpful information") Label
     input#input-3-control.-sr--only
 
@@ -34,20 +32,28 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<!-- Info Icon -->
-<chi-label info-icon>Label</chi-label>
-
-<!-- Info Icon Message -->
-<chi-label info-icon, info-icon-message="Changed helpful information">Label</chi-label>`,
+        webcomponent: `<chi-label info-icon info-icon-message="Changed helpful information">Label</chi-label>`,
         htmlblueprint: `<label class="chi-label">
   Label
   <div class="chi-label__help">
-    <chi-button id="example__help-button" type="icon" size="xs" variant="flat" alternative-text="Help">
-      <chi-icon icon="circle-info-outline"></chi-icon>
-    </chi-button>
-    <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
-      Helpful information goes here.
-    </chi-popover>
+    <button
+      class="chi-button -icon -xs -flat"
+      id="example__help-button"
+      aria-label="Help"
+      data-target="#example__help-popover"
+      data-position="bottom"
+    >
+      <div class="chi-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <use class="sc-chi-icon" xlink:href="#icon-circle-info-outline"></use>
+        </svg>
+      </div>
+    </button>
+    <section class="chi-popover chi-popover--bottom" id="example__help-popover" aria-modal="true" role="dialog">
+      <div class="chi-popover__content">
+        <p class="chi-popover__text">Helpful information goes here.</p>
+      </div>
+    </section>
   </div>
 </label>`,
       },
