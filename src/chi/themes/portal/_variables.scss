@@ -776,7 +776,7 @@ $button-icon-lg-width:                      1.25rem;
 
 $button-xl-font-size:                       $font-size-lg;
 $button-xl-line-height:                     $line-height-md;
-$button-xl-padding:                         1rem 3rem;
+$button-xl-padding:                         1.0625rem 3rem;
 $button-xl-text-transform:                  uppercase;
 $button-icon-xl-font-size:                  1.25rem;
 $button-icon-xl-line-height:                1.25rem;
@@ -1173,7 +1173,7 @@ $marketing-icon-size-xs:                    4.5rem;
 $marketing-icon-size-sm:                    5rem;
 $marketing-icon-size-md:                    6rem;
 $marketing-icon-size-lg:                    8rem;
-$marketing-icon-outline-fill:                $marketing-icon-primary-color;
+$marketing-icon-outline-fill:               $marketing-icon-primary-color;
 
 // Mobile navigation
 $mobile-nav-background-color:               $color-background-white;
@@ -1617,13 +1617,13 @@ $spinner-size-xxl:                          8rem;
 
 // Stat
 $stat-background-color:                     $color-background-white;
-$stat-background-icon-color:                $color-grey-40;
-$stat-background-icon-opacity:              0.3;
+$stat-background-icon-color:                $color-blue-40;
+$stat-background-icon-opacity:              0.4;
 $stat-background-icon-left:                 0;
 $stat-background-icon-right:                auto;
 $stat-background-icon-icon-left:            -1rem;
 $stat-active-background-color:              $color-cyan-40;
-$stat-active-background-icon-opacity:       0.4;
+$stat-active-background-icon-opacity:       0.5;
 $stat-active-background-icon-color:         $color-icon-white;
 $stat-active-box-shadow:                    none;
 $stat-active-text-color:                    $color-text-base;
