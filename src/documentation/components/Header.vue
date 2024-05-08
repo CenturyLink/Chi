@@ -4,14 +4,10 @@
     ClientOnly
       component(is="style" type='text/css').
         .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
+        .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
         .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
           background-color: #e6f0ff;
           color: #0047bb;
-          font-weight: 600;
-        }
-        .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item {
-          background-color: #fef6f0;
-          color: #b35009;
           font-weight: 600;
         }
         .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {

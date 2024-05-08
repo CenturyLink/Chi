@@ -12,37 +12,28 @@ import { COLORS } from '~/constants/constants';
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
   {
-    href: 'https://www.lumen.com/en-us/about/accessibility.html',
+    href: 'https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html',
     title: 'Accessibility',
-  },
-  {
-    href: 'https://www.centurylinkbusinessreferral.com/#!/home',
-    title: 'Business Referral Program',
-  },
-  {
-    href: 'https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts.html',
-    title: 'Canadian Ombudsman',
-    target: '_blank',
   },
   { href: 'https://jobs.lumen.com', title: 'Careers', target: '_blank' },
   { href: 'https://www.lumen.com/en-us/contact-us.html', title: 'Contact Us' },
   { href: '#', class: 'optanon-toggle-display', title: 'Cookie Settings' },
   {
-    href: 'https://www.lumen.com/en-us/about/governance/documentation.html',
-    title: 'Governance',
-    target: '_blank',
-  },
-  {
-    href: 'https://www.lumen.com/en-us/about/legal.html',
+    href: 'https://www.centurylink.com/aboutus/legal.html',
     title: 'Legal',
     target: '_blank',
   },
   {
-    href: 'https://www.lumen.com/en-us/about/legal/privacy-center.html',
+    href: 'https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html',
+    title: 'Legal Notices',
+    target: '_blank',
+  },
+  {
+    href: 'https://www.lumen.com/en-us/about/legal/privacy-notice.html',
     title: 'Privacy',
   },
   {
-    href: 'https://www.lumen.com/en-us/about/public-policy.html',
+    href: 'https://www.centurylink.com/aboutus/company-information/public-policy.html',
     title: 'Public Policy',
     target: '_blank',
   },
@@ -50,6 +41,33 @@ export const FOOTER_LINKS: ILink[] = [
     href: 'https://www.lumen.com/help/en-us/home.html',
     title: 'Support',
     target: '_blank',
+  },
+  {
+    href: 'https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts',
+    title: 'Canadian Ombudsman',
+    target: '_blank',
+  },
+  {
+    href: 'https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3',
+    title: 'Gender Pay Gap 2020 (UK)',
+    target: '_blank',
+  },
+  {
+    href: 'https://www.lumen.com/es-ar/about/legal/latam-tariffs-regulatory.html',
+    title: 'Legal (Latin America)',
+  },
+  {
+    href: 'https://www.lumen.com/en-us/about/legal/de-legal-notices.html',
+    title: 'Legal Notices (Germany)',
+  },
+  {
+    href: 'https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80',
+    title: 'Modern Slavery Statement 2020 (UK)',
+    target: '_blank',
+  },
+  {
+    href: 'https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html',
+    title: 'UK Tax Strategy',
   },
 ];
 
@@ -92,12 +110,13 @@ export const CENTURY_FOOTER_LINKS: ILink[] = [
 ];
 
 export const FOOTER_LANGUAGE_DROPDOWN_ITEMS: ILanguage[] = [
-  { href: '#', name: 'United States' },
-  { href: '#', name: 'Australia' },
-  { href: '#', name: 'Hong Kong' },
-  { href: '#', name: 'India' },
-  { href: '#', name: 'Japan' },
-  { href: '#', name: 'Singapore' },
+  { href: '#', name: 'English' },
+  { href: '#', name: 'Español' },
+  { href: '#', name: 'Português' },
+  { href: '#', name: 'Français' },
+  { href: '#', name: 'Deutsch' },
+  { href: '#', name: '简体中文' },
+  { href: '#', name: '日本語' },
 ];
 
 export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
@@ -107,7 +126,7 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
       title: 'Contact Us',
     },
     {
-      href: 'https://www.lumen.com/login/',
+      href: 'https://www.centurylink.com/business/login/',
       target: '_blank',
       title: 'Sign in / Pay bill',
     },
@@ -137,32 +156,21 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
   ],
   aboutLinks: [
     { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
-    { href: 'https://jobs.lumen.com/', title: 'Careers' },
     { href: 'https://ir.lumen.com', target: '_blank', title: 'Investors' },
     { href: 'https://news.lumen.com', target: '_blank', title: 'Newsroom' },
     {
+      href: 'https://www.lumen.com/en-us/about/our-platform.html',
+      title: 'Our Platform',
+    },
+    {
       href: 'https://www.lumen.com/public-sector.html',
+      target: '_blank',
       title: 'Public Sector',
     },
     {
-      href: 'https://www.centurylink.com/',
+      href: 'https://www.centurylink.com/home/',
       target: '_blank',
-      title: 'CenturyLink',
-    },
-    {
-      href: 'http://www.quantumfiber.com/',
-      target: '_blank',
-      title: 'Quantum Fiber',
-    },
-    {
-      href: 'https://www.lumen.com/en-us/about/corporate-responsibility.html',
-      target: '_blank',
-      title: 'Sustainability',
-    },
-    {
-      href: 'https://www.lumen.com/en-us/about/legal/trust-center.html',
-      target: '_blank',
-      title: 'Trust Center',
+      title: 'Residential',
     },
     {
       href: 'https://www.lumen.com/wholesale.html',
@@ -173,7 +181,7 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
   solutionLinks: [
     {
       href: 'https://www.lumen.com/en-us/solutions/adaptive-networking.html',
-      title: 'Networking',
+      title: 'Adaptive Networking',
     },
     {
       href: 'https://www.lumen.com/en-us/solutions/collaboration.html',
@@ -181,15 +189,15 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
     },
     {
       href: 'https://www.lumen.com/en-us/solutions/connected-security.html',
-      title: 'Security',
+      title: 'Connected Security',
     },
     {
-      href: 'https://www.lumen.com/en-us/solutions/edge-cloud.html',
-      title: 'Edge Cloud',
+      href: 'https://www.lumen.com/en-us/solutions/edge-computing.html',
+      title: 'Edge Computing',
     },
     {
-      href: 'https://www.lumen.com/en-us/about/our-platform.html',
-      title: 'Lumen Platform',
+      href: 'https://www.lumen.com/en-us/solutions/hybrid-cloud.html',
+      title: 'Hybrid Cloud',
     },
   ],
   shopLinks: [
@@ -199,6 +207,10 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
     },
   ],
   resourceLinks: [
+    {
+      href: 'https://www.lumen.com/en-us/about/4th-industrial-revolution.html',
+      title: '4th Industrial Revolution',
+    },
     { href: 'https://blog.lumen.com', target: '_blank', title: 'Blog' },
     {
       href: 'https://www.lumen.com/help/en-us/portals.html',
@@ -206,24 +218,10 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
       title: 'Customer Portals',
     },
     {
-      href: 'https://www.lumen.com/en-us/resources/customer-success-stories.html',
-      target: '_blank',
-      title: 'Customer Success Stories',
-    },
-    {
-      href: 'https://www.lumen.com/en-us/digital-inclusion.html',
-      target: '_blank',
-      title: 'Digital Inclusion',
-    },
-    {
       href: 'https://www.lumen.com/en-us/resources/network-maps.html',
       title: 'Network Maps',
     },
     { href: 'https://www.lumen.com/en-us/partner.html', title: 'Partners' },
-    {
-      href: 'https://www.lumen.com/en-us/about/doing-business-with-lumen.html',
-      title: 'Suppliers',
-    },
     {
       href: 'https://www.lumen.com/help/en-us/home.html',
       target: '_blank',
