@@ -747,7 +747,7 @@ p.-text
     | Make an Alert clickable by placing it inside a link or button component.
   .example.-mb--3
     .-p--3
-      chi-link.-d--block.-mb--2(href='#' no-underline no-hover-underline)
+      chi-link.-d--block.-mb--2(href='#' no-hover-underline)
         chi-alert.-w--100(color='info' icon='file')
           span.-text--primary.-text--semi-bold.-flex--grow1
             | Complete platform setup
@@ -766,7 +766,7 @@ p.-text
     .chi-tabs-panel.-active#webcomponent-clickable
       :code(lang="html")
         <!-- Clickable alert using chi-link -->
-        <chi-link href="#" class="-d--block" no-underline no-hover-underline>
+        <chi-link href="#" class="-d--block" no-hover-underline>
           <chi-alert color="info" icon="file" class="-w--100">
             <span class="-text--primary -text--semi-bold -flex--grow1">Complete platform setup</span>
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
@@ -783,7 +783,7 @@ p.-text
     .chi-tabs-panel#html-clickable
       :code(lang="html")
         <!-- Clickable alert using chi-link -->
-        <a href="#" class="chi-link -no-underline -no-hover-underline">
+        <a href="#" class="chi-link -no-hover-underline">
           <div class="chi-alert -info" role="alert">
             <i class="chi-alert__icon chi-icon icon-file" aria-hidden="true"></i>
             <div class="chi-alert__content">
@@ -816,7 +816,7 @@ p.-text
     | Make an Alert clickable by placing it inside a link or button component.
   .example.-mb--3
     .-p--3
-      chi-link.-d--block.-mb--2(href='#' no-underline no-hover-underline)
+      chi-link.-d--block.-mb--2(href='#' no-hover-underline)
         chi-alert.-w--100(color='info' icon='file' title='Complete platform setup')
           chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
@@ -831,7 +831,7 @@ p.-text
     .chi-tabs-panel.-active#webcomponent-portal-clickable
       :code(lang="html")
         <!-- Clickable alert using chi-link -->
-        <chi-link href="#" class="-d--block" no-underline no-hover-underline>
+        <chi-link href="#" class="-d--block" no-hover-underline>
           <chi-alert color="info" icon="file" title="Complete platform setup" class="-w--100">
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
           </chi-alert>
@@ -846,7 +846,7 @@ p.-text
     .chi-tabs-panel#html-portal-clickable
       :code(lang="html")
         <!-- Clickable alert using chi-link -->
-        <a href="#" class="chi-link -no-underline -no-hover-underline">
+        <a href="#" class="chi-link -no-hover-underline">
           <div class="chi-alert -info" role="alert">
             <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
             <div class="chi-alert__content">
@@ -924,7 +924,7 @@ p.-text
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions" size="xs") Action
     .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-actionable
+      ul.chi-tabs#example-actionable
         li.-active
           a(href=`#webcomponent-portal-actionable`) Web Component
         li

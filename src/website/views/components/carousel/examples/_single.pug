@@ -9,12 +9,12 @@ p.-text
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
             =item
   .example-tabs.-pl--2
-    ul.chi-tabs#example-carousel-single-item
+    ul.chi-tabs#example-accordion-base
       li.-active
-        a(href=`#webcomponent-carousel-single-item`) Web Component
+        a(href=`#webcomponent-accordion-base`) Web Component
       li.-disabled
-        a(href=`#html-carousel-single-item`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-carousel-single-item
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-accordion-base
     :code(lang="html")
       <chi-carousel single>
         <div class="-d--flex" slot="items">
@@ -44,4 +44,4 @@ p.-text
           </div>
         </div>
       </chi-carousel>
-  .chi-tabs-panel#html-carousel-single-item
+  .chi-tabs-panel#html-accordion-base

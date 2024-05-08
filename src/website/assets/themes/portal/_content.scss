@@ -23,8 +23,7 @@
       width: 100%;
 
       .docs-titlebar {
-        background: $color-red-50;
-        background: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 41, 1) 100%);
+        background-color: $color-grey-15;
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -50,9 +49,8 @@
           }
 
           .docs-titlebar__title {
-            color: $color-white;
             font-size: $font-size-h2;
-            font-weight: $font-weight-extra-bold;
+            font-weight: $font-weight-bold;
             margin-bottom: 0.5rem;
             @include respond-to(lg) {
               font-size: 3rem;
@@ -61,48 +59,13 @@
           }
 
           .docs-titlebar__description {
-            color: $color-white;
+            color: $color-grey-70;
             font-size: $font-size-base;
-            font-weight: $font-weight-semi-bold;
             line-height: $line-height;
             @include respond-to(lg) {
               font-size: $font-size-lg;
               line-height: $line-height-lg;
               margin: 0 0 1rem;
-            }
-          }
-
-          .docs-tabs {
-            .chi-tabs {
-              & > li {
-                & > a {
-                  color: $color-text-base;
-
-                  &:hover {
-                    color: $color-text-white;
-                  }
-                }
-
-                &.-active {
-                  & > a {
-                    color: $color-text-white;
-                  }
-                }
-
-                &.chi-sliding-border {
-                  background-color: $color-background-white;
-                }
-              }
-
-              &:not(.-sliding) {
-                & > li {
-                  &.-active {
-                    & > a {
-                      box-shadow: inset 0 -0.125rem 0 $color-border-white;
-                    }
-                  }
-                }
-              }
             }
           }
         }
@@ -202,7 +165,7 @@
           border-top: 0.0625rem solid $color-grey-25;
         }
 
-        pre[class*='language-'] {
+        pre[class*="language-"] {
           border-top: 0.0625rem solid $color-grey-25;
           border-top-left-radius: 0;
           border-top-right-radius: 0;
@@ -217,16 +180,16 @@
             padding: 1rem 1rem 0 1rem;
           }
 
-          pre[class*='language-'] {
+          pre[class*="language-"] {
             border-top: 0;
           }
         }
 
-        & > .clipboard:first-child + pre[class*='language-'] {
+        & > .clipboard:first-child + pre[class*="language-"] {
           border-top: 0;
         }
 
-        .code-block > pre {
+        .code-block>pre {
           border-top: 0;
         }
       }
@@ -242,9 +205,9 @@
 
       .example-opacity {
         background: linear-gradient(45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
-          linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
-          linear-gradient(45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0),
-          linear-gradient(-45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0);
+        linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0),
+        linear-gradient(-45deg, transparent 75%, rgba(36, 37, 38, 0.1) 0);
         background-position: 0 0, 0 6px, 6px -6px, -6px 0;
         background-size: 12px 12px;
         overflow: hidden;
@@ -284,7 +247,7 @@
           background: $color-background-primary;
           height: 3rem;
           width: 3rem;
-        }
+        }      
       }
     }
 
@@ -395,7 +358,7 @@
         cursor: pointer;
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
-
+  
         &:hover,
         &:focus {
           opacity: 1;
@@ -408,9 +371,9 @@
   // Grid and Flexbox container example styles
 
   .-show--example {
-    [class*='chi-col']:before {
-      background-color: $color-teal-15;
-      box-shadow: inset 0 0 0 1px $color-teal-30;
+    [class*="chi-col"]:before {
+      background-color: $color-blue-20;
+      box-shadow: inset 0 0 0 1px $color-blue-30;
       content: attr(class);
       display: block;
       font-size: 0.875rem;
@@ -420,11 +383,11 @@
       text-overflow: ellipsis;
       white-space: pre;
     }
-
+  
     & > div:not(.chi-col),
     & > p {
-      background-color: $color-teal-15;
-      box-shadow: inset 0 0 0 1px $color-teal-30;
+      background-color: $color-blue-20;
+      box-shadow: inset 0 0 0 1px $color-blue-30;
     }
   }
 
