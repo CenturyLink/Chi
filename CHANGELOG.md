@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.63.0 (May 9, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Date picker accessibility page.
+
 ## 5.62.0 (May 4, 2024)
 
 ### Documentation
