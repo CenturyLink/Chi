@@ -270,7 +270,7 @@
     border-top: $header-navbar-border-top;
     color: $header-navbar-text-color;
     display: flex;
-    padding: 0 0.5rem;
+    padding: $header-navbar-padding;
     width: 100%;
 
     a {
@@ -284,7 +284,7 @@
       line-height: $line-height;
       list-style: none;
       margin: 0.25rem 0;
-      padding: 0 0.5rem;
+      padding: $header-navbar-menu-padding;
 
       li {
         border-right: 0.0625rem solid $header-navbar-divider-color;
@@ -338,11 +338,13 @@
           height: 2rem;
 
           & > li {
-            margin: 0;
+            margin: $header-navbar-tab-xs-li-margin;
+            @include respond-to(xl) {
+              margin-right: $header-navbar-tab-xs-li-margin-screen-xl;
+            }
 
             & > a,
             .chi-dropdown__trigger {
-              color: $header-navbar-link-color;
               font-size: $header-navbar-tab-xs-link-font-size;
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
@@ -467,6 +469,7 @@
               &.-inverse {
                 li {
                   &.-active {
+                    height: 100%;
                     & > a {
                       box-shadow: $header-navbar-tab-active-box-shadow;
                     }
@@ -587,14 +590,14 @@
 
             .chi-dropdown {
               .chi-dropdown__trigger {
-                padding: 0.625rem 1.5rem;
+                padding: $header-xl-navbar-tabs-dropdown-trigger-padding;
               }
             }
           }
 
           &:not(.-responsive) {
             &.-sm {
-              height: 2.5rem;
+              height: $header-xl-navbar-tabs-sm-height;
             }
 
             &,
@@ -619,6 +622,25 @@
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
+        }
+      }
+    }
+  }
+
+  &.-lg,
+  &.-xl {
+    .chi-header__navbar {
+      .chi-dropdown__menu {
+        &::before {
+          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
+          border-style: solid;
+          border-width: 0.625rem 0.75rem 0 0.75rem;
+          content: '';
+          height: 1rem;
+          left: 1rem;
+          position: absolute;
+          top: 0;
+          width: 1rem;
         }
       }
     }
