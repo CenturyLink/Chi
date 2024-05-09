@@ -37,7 +37,7 @@ $sizes: (
   &:not(.-vertical) {
     .chi-button {
       &:not(.-flat) {
-        border-radius: $border-radius-sharp !important;
+        border-radius: $border-radius-sharp;
         border-right-width: 0;
 
         &:not(:last-child) {
@@ -70,14 +70,14 @@ $sizes: (
         }
 
         &:first-child {
-          border-bottom-left-radius: $button-border-radius !important;
-          border-top-left-radius: $button-border-radius !important;
+          border-bottom-left-radius: $button-border-radius;
+          border-top-left-radius: $button-border-radius;
         }
 
         &:last-child {
-          border-bottom-right-radius: $button-border-radius !important;
+          border-bottom-right-radius: $button-border-radius;
           border-right-width: $button-group-border-width;
-          border-top-right-radius: $button-border-radius !important;
+          border-top-right-radius: $button-border-radius;
         }
       }
     }
