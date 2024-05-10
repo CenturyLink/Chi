@@ -37,7 +37,7 @@ $sizes: (
   &:not(.-vertical) {
     .chi-button {
       &:not(.-flat) {
-        border-radius: $border-radius-sharp;
+        border-radius: $border-radius-sharp !important;
         border-right-width: 0;
 
         &:not(:last-child) {

@@ -38,7 +38,7 @@ $sizes: (
     .chi-button {
       &:not(.-flat) {
         border-bottom-width: 0;
-        border-radius: $border-radius-sharp;
+        border-radius: $border-radius-sharp !important;
 
         &:not(:last-child) {
           padding-bottom: $button-group-vertical-md-padding;
