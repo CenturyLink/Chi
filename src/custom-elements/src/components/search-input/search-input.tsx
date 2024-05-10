@@ -205,10 +205,11 @@ export class SearchInput {
     ev.preventDefault();
 
     const dropdown = this._getAutocompleteDropdown();
-    const { title, href, id } = item ?? {};
+    const title = (ev.target as HTMLAnchorElement).innerText;
+    const { href, id } = item ?? {};
 
     this.selectedItem = cleanUndefinedProps({ title, href, id }) as DropdownMenuItem;
-    this.value = item.title;
+    this.value = title;
     dropdown.hide();
     this._clearFilterMenuItems();
     this.eventItemSelected.emit(this.selectedItem);

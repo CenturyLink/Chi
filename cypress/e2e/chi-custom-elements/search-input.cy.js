@@ -1,5 +1,5 @@
 const SEARCH_INPUT_CY = {
-  AUTOCOMPLETE: '[data-cy="autocomplete"]'
+  AUTOCOMPLETE: '[data-cy="autocomplete"]',
 };
 
 describe('Search input', () => {
@@ -25,11 +25,7 @@ describe('Search input', () => {
     });
 
     it('Should have mode="autocomplete" attribute to enable autocomplete functionality', () => {
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE).should(
-        'have.attr',
-        'mode',
-        'autocomplete'
-      );
+      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE).should('have.attr', 'mode', 'autocomplete');
     });
 
     it('Should open the dropdown', () => {
@@ -70,16 +66,13 @@ describe('Search input', () => {
     });
 
     it('Should be able navigate between the menu items with keyboard arrow up and down', () => {
-      cy.get('@searchInput')
-        .focus()
-        .then($el => {
-          cy.get($el)
-            .type('{downArrow}{downArrow}{upArrow}')
-            .then(() => {
-              cy.get('@dropdownMenuItem')
-                .first()
-                .should('have.focus');
-            });
+      cy.get('@searchInput').click();
+      cy.focused()
+        .type('{downArrow}{downArrow}{upArrow}')
+        .then(() => {
+          cy.get('@dropdownMenuItem')
+            .first()
+            .should('have.focus');
         });
     });
   });
