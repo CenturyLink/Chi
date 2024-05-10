@@ -160,8 +160,8 @@ export class Time {
     let time = new Date();
 
     if (this.value && this.validateTime(this.value)) {
-      const [hourMinSec, period] = this.value.trim().split(' ');
-      const [hours, minutes, seconds] = hourMinSec.split(':').map((i) => parseInt(i));
+      const [hourMinSec, period] = this.value?.trim().split(' ');
+      const [hours, minutes, seconds] = hourMinSec?.split(':').map((i) => parseInt(i));
 
       time.setHours(hours, minutes, seconds || 0);
       if (period) {
@@ -227,7 +227,7 @@ export class Time {
       this.emitTimeValueEvent();
     };
     const hourStatus = (hour: string) => {
-      const valueHour = parseInt(this.value.split(':')[0]);
+      const valueHour = parseInt(this.value?.split(':')[0]);
       let hourStatus = '';
 
       if (
@@ -357,7 +357,7 @@ export class Time {
   }
 
   periods() {
-    const hour = parseInt(this.value.split(':')[0]);
+    const hour = parseInt(this.value?.split(':')[0]);
     if (this.format === '12hr') {
       const periodClasses = (period: 'am' | 'pm') => {
         let periodStatus = TIME_CLASSES.PERIOD;
