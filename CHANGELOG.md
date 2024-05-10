@@ -1,5 +1,78 @@
 # CHANGELOG
 
+## 5.63.0 (May 9, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Date picker accessibility page.
+
+## 5.62.0 (May 4, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Select accessibility page.
+
+## 5.61.0 (April 26, 2024)
+
+### Components
+
+#### Added
+
+- Added: Date picker `format` property now supports hyphens also: `"DD-MM-YYYY" | "MM-DD-YYYY" | "YYYY-MM-DD"`.
+
+### Documentation
+
+#### Changed
+
+- Changed: Accessibility other page to WCAG 2.2.
+
+## 5.60.0 (April 24, 2024)
+
+### Components
+
+#### Added
+
+- Added: Link icon web component now supports `mutationObserver` functionality.
+
+#### Fixed
+
+- Fixed: Date picker in `mode="datetime"`prevented selecting the time when the `min` and `max` attributes were specified, and if the chosen date was outside this range.
+
+### Documentation
+
+#### Changed
+
+- Changed: Accessibility tables page to WCAG 2.2.
+- Changed: Accessibility images page to WCAG 2.2.
+- Changed: Accessibility color and sensory page to WCAG 2.2.
+
+#### Fixed
+
+- Fixed: Link page url in Sidenav.
+
+## 5.59.0 (April 18, 2024)
+
+### Components
+
+#### Changed
+
+- Changed: Helper message icon colors have been updated in Portal theme for consistency with Brand guidelines.
+
+### Documentation
+
+#### Added
+
+- Added: Toggle switch accessibility page.
+
+#### Changed
+
+- Changed: Accessibility using the keyboard page to WCAG 2.2.
+- Changed: Accessibility text page to WCAG 2.2.
+
 ## 5.58.0 (April 12, 2024)
 
 ### Components

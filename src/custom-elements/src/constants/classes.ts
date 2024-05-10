@@ -110,6 +110,7 @@ export const DROPDOWN_CLASSES = {
   MENU_ITEMS_WRAPPER: 'chi-dropdown__menu-items-wrapper',
   MENU_HEADER: 'chi-dropdown__menu-header',
   MENU_FOOTER: 'chi-dropdown__menu-footer',
+  SELECT_MODE: 'chi-dropdown__select-mode'
 };
 //#endregion
 

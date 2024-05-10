@@ -34,15 +34,15 @@ import { Vue } from 'vue-facing-decorator';
     return {
       breadcrumbs: [
         {
-          url: 'https://www.w3.org/TR/WCAG20',
-          text: 'WCAG 2.0 Guideline',
+          url: 'https://www.w3.org/TR/WCAG22/',
+          text: 'WCAG 2.2 Guideline',
         },
         {
-          url: 'https://www.w3.org/TR/WCAG20/#media-equiv',
+          url: 'https://www.w3.org/TR/WCAG22/#time-based-media',
           text: '1.2 Time-based media',
         },
         {
-          url: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#media-equiv-audio-desc',
+          url: 'https://www.w3.org/TR/WCAG22/#audio-description-or-media-alternative-prerecorded',
           text: '1.2.3 Audio Description or Media Alternative (Prerecorded)',
         },
       ],
@@ -52,7 +52,7 @@ import { Vue } from 'vue-facing-decorator';
           mainText: 'Perceivable',
         },
         {
-          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.',
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.2 Level A Success Criteria.',
           mainText: 'Level A',
         },
       ],
