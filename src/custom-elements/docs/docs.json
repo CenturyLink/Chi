@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-05-08T16:18:29",
+  "timestamp": "2024-05-10T08:18:14",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.0",
@@ -9830,7 +9830,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::DropdownMenuItem": {
-      "declaration": "export interface DropdownMenuItem {\n  title: string;\n  href: string;\n}",
+      "declaration": "export interface DropdownMenuItem {\n  id?: string;\n  title: string;\n  href?: string;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

@@ -200,15 +200,13 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: Event): void => {
+  _handleSelectItem = (ev: Event, item: DropdownMenuItem): void => {
     ev.preventDefault();
 
-    const title = (ev.target as HTMLAnchorElement).innerText;
-    const href = (ev.target as HTMLAnchorElement).getAttribute('href');
     const dropdown = this._getAutocompleteDropdown();
 
-    this.selectedItem = { title, href };
-    this.value = title;
+    this.selectedItem = item;
+    this.value = item.title;
     dropdown.hide();
     this._clearFilterMenuItems();
     this.eventItemSelected.emit(this.selectedItem);
@@ -259,7 +257,7 @@ export class SearchInput {
             href={item.href}
             slot="menu"
             innerHTML={item.title}
-            onClick={(ev) => this._handleSelectItem(ev)}
+            onClick={(ev) => this._handleSelectItem(ev, item)}
           ></a>
         ))}
       </chi-dropdown>
