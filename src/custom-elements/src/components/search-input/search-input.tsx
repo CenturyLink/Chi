@@ -2,6 +2,7 @@ import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h 
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
+import { uuid4 } from '../../utils/utils';
 
 @Component({
   tag: 'chi-search-input',
@@ -251,16 +252,20 @@ export class SearchInput {
     return (
       <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
-        {this.menuItemsFiltered?.map((item, idx) => (
-          <a
-            key={`menu-item-${idx}`}
-            class={DROPDOWN_CLASSES.MENU_ITEM}
-            href={item.href}
-            slot="menu"
-            innerHTML={item.title}
-            onClick={(ev) => this._handleSelectItem(ev, item)}
-          ></a>
-        ))}
+        {this.menuItemsFiltered?.map((item) => {
+          const uuid = uuid4();
+
+          return (
+            <a
+              key={`menu-item-${uuid}`}
+              class={DROPDOWN_CLASSES.MENU_ITEM}
+              href={item.href}
+              slot="menu"
+              innerHTML={item.title}
+              onClick={(ev) => this._handleSelectItem(ev, item)}
+            ></a>
+          );
+        })}
       </chi-dropdown>
     );
   }
