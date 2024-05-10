@@ -1156,7 +1156,7 @@ $header-navbar-tab-xs-li-margin-screen-xl:  0 2rem 0 0;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
 $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
 $header-navbar-tab-xs-link-padding:         0.5rem 0;
-$header-navbar-tab-xs-link-hover-text-decoration:  none;
+$header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-lg-navbar-height:                   2rem;
@@ -1378,8 +1378,6 @@ $pagination-jumper-text-color:              $color-text-muted-light;
 $pagination-page-size-text-color:           $color-text-muted-light;
 $pagination-compact-label-text-color:       $color-text-base;
 $pagination-label-page-font-weight:         $font-weight-semi-bold;
-
-$pagination-inverse-text-color:             $color-text-white;
 
 $pagination-active-border-color:            $color-text-primary;
 $pagination-active-text-color:              $color-text-primary;
