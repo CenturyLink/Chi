@@ -251,8 +251,9 @@ export class SearchInput {
     return (
       <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
-        {this.menuItemsFiltered?.map((item) => (
+        {this.menuItemsFiltered?.map((item, idx) => (
           <a
+            key={`menu-item-${idx}`}
             class={DROPDOWN_CLASSES.MENU_ITEM}
             href={item.href}
             slot="menu"
