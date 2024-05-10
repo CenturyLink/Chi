@@ -2,7 +2,7 @@ import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h 
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
-import { uuid4 } from '../../utils/utils';
+import { uuid4, cleanUndefinedProps } from '../../utils/utils';
 
 @Component({
   tag: 'chi-search-input',
@@ -205,8 +205,9 @@ export class SearchInput {
     ev.preventDefault();
 
     const dropdown = this._getAutocompleteDropdown();
+    const { title, href, id } = item ?? {};
 
-    this.selectedItem = item;
+    this.selectedItem = cleanUndefinedProps({ title, href, id }) as DropdownMenuItem;
     this.value = item.title;
     dropdown.hide();
     this._clearFilterMenuItems();
