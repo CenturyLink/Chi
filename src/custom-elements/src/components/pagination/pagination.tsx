@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
-import { uuid4 } from '../../utils/utils';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-pagination',

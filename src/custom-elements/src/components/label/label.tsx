@@ -1,7 +1,8 @@
 import { Component, Element, Prop, h, Watch } from '@stencil/core';
 import { addMutationObserver } from '../../utils/mutationObserver';
 import { LABEL_SIZES, type LabelSizes } from '../../constants/size';
-import { uuid4 } from '../../utils/utils';
+import { LABEL_CLASSES } from '../../constants/classes';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-label',
@@ -60,7 +61,7 @@ export class Label {
 
   _getInfoIcon() {
     return this.infoIcon ? (
-      <div class="chi-label__help">
+      <div class={LABEL_CLASSES.HELP}>
         <chi-button
           id={this.helpButtonId}
           onChiClick={() => this.toggleHelpPopover()}

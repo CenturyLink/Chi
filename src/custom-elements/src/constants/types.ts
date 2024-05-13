@@ -33,8 +33,9 @@ export interface TabTriggerPosition {
 }
 
 export interface DropdownMenuItem {
+  id?: string;
   title: string;
-  href: string;
+  href?: string;
 }
 export const DROPDOWN_SELECT_MODES = ['single', 'multi'] as const;
 export type DropdownSelectModes = typeof DROPDOWN_SELECT_MODES[number];
