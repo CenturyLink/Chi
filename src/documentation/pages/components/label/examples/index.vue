@@ -5,6 +5,7 @@ BaseExample
 <Required />
 <Sizes />
 <Associate />
+<Help />
 </template>
 
 <script lang="ts">
@@ -13,6 +14,7 @@ import Base from './_base.vue';
 import Required from './_required.vue';
 import Sizes from './_sizes.vue';
 import Associate from './_associate.vue';
+import Help from './_help.vue';
 
 @NuxtComponent({
   components: {
@@ -20,6 +22,7 @@ import Associate from './_associate.vue';
     Required,
     Sizes,
     Associate,
+    Help,
   },
 })
 export default class Examples extends Vue {}
