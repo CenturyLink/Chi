@@ -9924,7 +9924,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::DropdownMenuItem": {
-      "declaration": "export interface DropdownMenuItem {\n  title: string;\n  href: string;\n}",
+      "declaration": "export interface DropdownMenuItem {\n  id?: string;\n  title: string;\n  href?: string;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
