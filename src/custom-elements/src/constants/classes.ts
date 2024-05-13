@@ -484,3 +484,9 @@ export const DATEPICKER_CLASSES = {
   NEXT_MONTH: 'next',
 };
 //#endregion
+
+//#region Label
+export const LABEL_CLASSES = {
+  HELP: 'chi-label__help',
+};
+//#endregion
