@@ -1,7 +1,7 @@
 import { Component, Element, Prop, h, Watch } from '@stencil/core';
 import { addMutationObserver } from '../../utils/mutationObserver';
 import { LABEL_SIZES, type LabelSizes } from '../../constants/size';
-
+import { uuid4 } from '../../utils/utils';
 
 @Component({
   tag: 'chi-label',
@@ -26,6 +26,17 @@ export class Label {
    * To indicate which form field is optional.
    */
   @Prop({ reflect: true }) optional = false;
+  /**
+   * To indicate if info icon should be displayed.
+   */
+  @Prop({ reflect: true }) infoIcon = false;
+  /**
+   * To provide message for info icon popover.
+   */
+  @Prop({ reflect: true }) infoIconMessage = 'Helpful information goes here.';
+
+  private helpButtonId: string;
+  private helpPopoverId: string;
 
   @Watch('size')
   validateSizeAttribute(newValue: LabelSizes) {
@@ -38,7 +49,40 @@ export class Label {
     addMutationObserver.call(this);
   }
 
+  componentWillLoad() {
+    this.helpButtonId = `help-button-${uuid4()}`;
+    this.helpPopoverId = `help-popover-${uuid4()}`;
+  }
+
+  toggleHelpPopover(): void {
+    (this.el.querySelector(`#${this.helpPopoverId}`) as any).toggle();
+  }
+
+  _getInfoIcon() {
+    return this.infoIcon ? (
+      <div class="chi-label__help">
+        <chi-button
+          id={this.helpButtonId}
+          onChiClick={() => this.toggleHelpPopover()}
+          type="icon"
+          size="xs"
+          variant="flat"
+          alternative-text="Help"
+        >
+          <chi-icon icon="circle-info-outline" size="xs"></chi-icon>
+        </chi-button>
+        <chi-popover id={this.helpPopoverId} position="top" variant="text" arrow reference={`#${this.helpButtonId}`}>
+          {this.infoIconMessage}
+        </chi-popover>
+      </div>
+    ) : (
+      ''
+    );
+  }
+
   render() {
+    const infoIcon = this._getInfoIcon();
+
     const required = (
       <abbr class="chi-label__required" aria-label="Required field">
         *
@@ -69,6 +113,7 @@ export class Label {
       >
         <slot></slot>
         {message}
+        {infoIcon}
       </label>
     );
   }
