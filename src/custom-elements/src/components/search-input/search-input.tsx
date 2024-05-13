@@ -2,7 +2,8 @@ import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h 
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
-import { uuid4, cleanUndefinedProps } from '../../utils/utils';
+import { cleanUndefinedProps } from '../../utils/utils';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-search-input',
