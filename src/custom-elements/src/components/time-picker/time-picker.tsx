@@ -1,8 +1,9 @@
 import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/core';
-import { contains, uuid4 } from '../../utils/utils';
+import { contains } from '../../utils/utils';
 import { CHI_TIME_AUTO_SCROLL_DELAY, TimePickerFormats, TimePickerTimeSteps } from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
 import { ESCAPE_KEYCODE } from '../../constants/constants';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-time-picker',

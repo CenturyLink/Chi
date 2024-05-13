@@ -10,7 +10,7 @@ import {
 import country from 'all-country-data';
 import { EXTRA_COUNTRIES } from '../../constants/constants';
 import { ChiStates, CHI_STATES } from '../../constants/states';
-import { uuid4 } from '../../utils/utils';
+import { v4 as uuid4 } from 'uuid';
 import { TextInputSizes } from '../../constants/size';
 import { ACTIVE_CLASS, BUTTON_CLASSES, DROPDOWN_CLASSES, PHONE_INPUT_CLASSES } from '../../constants/classes';
 import { Country, ExtraCountry } from '../../constants/types';
