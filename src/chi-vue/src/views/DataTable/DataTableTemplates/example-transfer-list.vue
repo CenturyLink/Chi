@@ -18,7 +18,7 @@
       <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
         <header class="chi-modal__header">
           <h2 class="chi-modal__title">Customize columns</h2>
-          <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close" >
+          <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
             <div class="chi-button__content">
               <i class="chi-icon icon-x" aria-hidden="true"></i>
             </div>
@@ -48,8 +48,6 @@ const config = exampleConfig;
 
 declare const chi: any;
 
-const dropdownTrigger = ref(null);
-
 const showModal = () => {
   chi.modal(document.getElementById('modal-transfer-list')).show();
 };
@@ -61,7 +59,6 @@ const saveList = () => {
 const handleChange = (value) => {};
 
 onMounted(() => {
-  chi.dropdown(dropdownTrigger.value);
   chi.modal(document.getElementById('modal-transfer-list'));
 });
 </script>
