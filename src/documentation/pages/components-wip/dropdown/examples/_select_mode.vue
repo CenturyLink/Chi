@@ -30,7 +30,6 @@ import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
 export default class SelectMode extends Vue {
-  items = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
   exampleTabs = [
     {
       active: true,
