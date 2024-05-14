@@ -120,6 +120,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug',
   },
   {
+    to: `components/copy-text`,
+    label: 'Copy text',
+    source: 'vue',
+  },
+  {
     href: `components/forms/checkbox`,
     label: 'Checkbox',
     source: 'pug',
