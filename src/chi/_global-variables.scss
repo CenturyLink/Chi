@@ -5,15 +5,6 @@ $state-colors: (success: green, warning: yellow, danger: red);
 
 $font-family-icon: 'chi';
 
-// Font size - text
-$font-size-xl: 1.125rem; // 18px
-$font-size-lg: 1rem; // 16px
-$font-size-md: 0.875rem; // 14px
-$font-size-sm: 0.8125rem; // 13px
-$font-size-xs: 0.75rem; // 12px
-$font-size-2xs: 0.6875rem; // 11px
-$font-size-base: $font-size-md;
-
 // Font size - headings
 $font-size-h6: 0.875rem; // 14px
 $font-size-h5: 1rem; // 16px
@@ -43,13 +34,6 @@ $font-size-17: 4.5rem; // 72px
 $font-size-18: 5rem; // 80px
 $font-size-19: 6rem; // 96px
 $font-size-20: 7.5rem; // 120px
-
-// Line height
-$line-height: 1.25rem; // 20px
-$line-height-xl: 1.75rem; // 28px
-$line-height-lg: 1.5rem; // 24px
-$line-height-md: 1.25rem; // 20px
-$line-height-sm: 1rem; // 16px
 
 // Opacity
 $opacity-0: 0;

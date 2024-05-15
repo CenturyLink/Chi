@@ -102,7 +102,7 @@ $sizes: (
     &.-focus {
       & + label::before {
         border: $file-input-button-border-width solid $file-input-button-focus-border-color;
-        outline: 0.125rem solid $file-input-button-focus-outline-color;
+        outline: $file-input-button-focus;
         outline-offset: 0.0625rem;
         z-index: $zindex-prominent;
       }

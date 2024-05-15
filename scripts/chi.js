@@ -138,9 +138,9 @@ export function buildPortal({dest = 'dist' }) {
     .pipe(gulp.dest(dest));
 }
 
-export function buildRebrand24({dest = 'dist' }) {
+export function buildPortalRebrand24({dest = 'dist' }) {
   return gulp.src(
-    path.join(__dirname, '..', 'src', 'chi', 'themes', 'rebrand24', 'index.scss')
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'portal-rebrand24', 'index.scss')
   )
     .pipe(plumber())
     .pipe(sass({
@@ -167,7 +167,40 @@ export function buildRebrand24({dest = 'dist' }) {
       })
     ]))
     .pipe(header(`${copyright} \n`))
-    .pipe(concat('chi-rebrand24.css'))
+    .pipe(concat('chi-portal-rebrand24.css'))
+    .pipe(gulp.dest(dest));
+}
+
+export function buildLumenRebrand24({dest = 'dist' }) {
+  return gulp.src(
+    path.join(__dirname, '..', 'src', 'chi', 'themes', 'lumen-rebrand24', 'index.scss')
+  )
+    .pipe(plumber())
+    .pipe(sass({
+      includePaths: [
+        'node_modules',
+        path.join(__dirname, '..', 'src', 'chi')
+      ],
+      outputstyle: 'expanded'
+    }))
+    .pipe(postcss([
+      require('autoprefixer')({
+        browsers: ['last 2 versions', 'ie >= 10']
+      }),
+      require('postcss-svg')({
+        dirs: [iconsFolder]
+      }),
+      require('cssnano')({
+        preset: ['default', {
+          discardComments: {
+            removeAll: true
+          }
+        }],
+        zindex: false
+      })
+    ]))
+    .pipe(header(`${copyright} \n`))
+    .pipe(concat('chi-lumen-rebrand24.css'))
     .pipe(gulp.dest(dest));
 }
 

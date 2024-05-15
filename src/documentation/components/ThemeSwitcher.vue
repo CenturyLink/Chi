@@ -38,6 +38,16 @@
         @click="setTheme('portal')"
         ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
+      ><a
+        v-bind:class="[selectedTheme === 'lumen-rebrand24' ? '-active' : '', 'theme-trigger-lumen-rebrand24', 'chi-dropdown__menu-item']"
+        @click="setTheme('lumen-rebrand24')"
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
+        <div class="-theme-name">Lumen Rebrand24</div></a
+      ><a
+        v-bind:class="[selectedTheme === 'portal-rebrand24' ? '-active' : '', 'theme-trigger-portal-rebrand24', 'chi-dropdown__menu-item']"
+        @click="setTheme('portal-rebrand24')"
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
+        <div class="-theme-name">Portal Rebrand24</div></a
       >
     </div>
   </div>

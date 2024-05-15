@@ -2,6 +2,7 @@
 @import '../../../../chi/_global-mixins';
 
 .docs-container {
+
   // Mobile sidenav
   .chi-drawer {
     .-theme-switch {
@@ -61,7 +62,7 @@
   .-theme-switch {
     position: relative;
 
-    &:not([data-position^='left']) {
+    &:not([data-position^=left]) {
       &::after {
         position: absolute;
         right: 1rem;

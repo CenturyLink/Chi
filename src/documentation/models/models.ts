@@ -1,4 +1,4 @@
-export const THEMES = ['centurylink', 'lumen', 'portal'] as const;
+export const THEMES = ['centurylink', 'lumen', 'portal', 'lumen-rebrand24', 'portal-rebrand24'] as const;
 export type Themes = (typeof THEMES)[number];
 
 interface CodeSnippets {
@@ -43,6 +43,8 @@ export interface IThemes {
   portal: string;
   brightspeed: string;
   colt: string;
+  lumenRebrand24: string;
+  portalRebrand24: string;
 }
 
 interface TabComponentInterface {

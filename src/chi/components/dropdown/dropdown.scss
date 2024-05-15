@@ -443,6 +443,11 @@ $sizes: (
         }
       }
     }
+
+    &:hover,
+    &.-hover {
+      scale: 1;
+    }
   }
 
   &:not([data-position^='left']) {

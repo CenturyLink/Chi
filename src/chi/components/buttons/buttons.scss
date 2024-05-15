@@ -199,13 +199,14 @@ $sizes: (
   cursor: pointer;
   display: inline-flex;
   font-size: $button-md-font-size;
-  font-weight: $font-weight-semi-bold;
+  font-weight: $button-font-weight;
   line-height: $button-md-line-height;
   padding: $button-md-padding;
+  scale: 1;
   text-align: center;
   text-decoration: none;
   text-transform: $button-md-text-transform;
-  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in;
+  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in, scale 0.2s ease-in;
   vertical-align: middle;
   white-space: nowrap;
 
@@ -269,6 +270,7 @@ $sizes: (
     background-color: $button-solid-hover-background-color;
     border: $button-solid-border-width solid $button-solid-hover-border-color;
     color: $button-solid-hover-text-color;
+    scale: $button-solid-hover-scale;
     text-decoration: none;
 
     .chi-icon {
@@ -279,8 +281,8 @@ $sizes: (
   &:focus,
   &.-focus {
     border: $button-solid-border-width solid $button-solid-focus-border-color;
-    outline: 0.125rem solid $button-solid-focus-outline;
-    outline-offset: 0.0625rem;
+    outline: $button-solid-focus-outline;
+    outline-offset: $button-solid-focus-outline-offset;
     z-index: $zindex-prominent;
   }
 
@@ -314,8 +316,7 @@ $sizes: (
 
     &:active,
     &.-active {
-      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 2px 14px 1px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 14px 1px rgba(0, 0, 0, 0.12);
     }
 
     &[disabled],
@@ -531,6 +532,7 @@ $sizes: (
         background-color: transparent;
         border-color: transparent;
         box-shadow: none;
+        scale: 1;
       }
     }
   }

@@ -42,8 +42,10 @@ function buildWebsiteStyles() {
   const portal = buildStyles('src/website/assets/themes/portal', 'dist/assets/themes/portal');
   const brightspeed = buildStyles('src/website/assets/themes/brightspeed', 'dist/assets/themes/brightspeed');
   const colt = buildStyles('src/website/assets/themes/colt', 'dist/assets/themes/colt');
+  const lumenRebrand24 = buildStyles('src/website/assets/themes/lumen-rebrand24', 'dist/assets/themes/lumen-rebrand24');
+  const portalRebrand24 = buildStyles('src/website/assets/themes/portal-rebrand24', 'dist/assets/themes/portal-rebrand24');
 
-  return merge(centurylink, lumen, portal, brightspeed, colt);
+  return merge(centurylink, lumen, portal, brightspeed, colt, lumenRebrand24, portalRebrand24);
 }
 
 buildWebsiteStyles.description = 'Builds Chi CSS library. Returns a stream.';
