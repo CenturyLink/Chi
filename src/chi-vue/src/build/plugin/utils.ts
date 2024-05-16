@@ -1,7 +1,7 @@
 import { CHI_LIB_LUMEN } from './constants';
 import ChiJs from '../utils/chi.js?raw';
 
-export const importCss = (version: string, theme: 'lumen' | 'lumen-rebrand24' |'portal' | 'portal-rebrand24' | 'brightspeed' | 'centuryLink' | 'colt') => {
+export const importCss = (version: string, theme: 'lumen' | 'lumenrebrand24' |'portal' | 'portalrebrand24' | 'brightspeed' | 'centuryLink' | 'colt') => {
   const head = document.head || document.getElementsByTagName('head')[0];
   const themeToUse = theme !== 'lumen' ? `chi-${theme}.css` : 'chi.css';
 

@@ -7,7 +7,7 @@ const pluginOptionsSchema = z.object({
   chiOptions: z
     .object({
       forceVersion: z.string().optional(),
-      theme: z.enum(['lumen', 'lumen-rebrand24', 'portal', 'portal-rebrand24', 'brightspeed', 'centuryLink', 'colt']).optional(),
+      theme: z.enum(['lumen', 'lumenrebrand24', 'portal', 'portalrebrand24', 'brightspeed', 'centuryLink', 'colt']).optional(),
     })
     .optional(),
 });
@@ -24,7 +24,7 @@ export const ChiVue: Plugin<ChiVueOptions> = {
      * Method to change the theme of the application
      * @param theme
      */
-    const changeTheme = (theme: 'lumen' | 'lumen-rebrand24' | 'portal' | 'portal-rebrand24' | 'brightspeed' | 'centuryLink' | 'colt') => {
+    const changeTheme = (theme: 'lumen' | 'lumenrebrand24' | 'portal' | 'portalrebrand24' | 'brightspeed' | 'centuryLink' | 'colt') => {
       const themeElement = document.getElementById('chi-theme') as HTMLLinkElement;
 
       if (themeElement) {

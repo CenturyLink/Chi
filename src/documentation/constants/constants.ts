@@ -15,11 +15,11 @@ export const THEMES = {
     css: `chi.css`,
     docsCss: `assets/themes/lumen/docs.css`,
   },
-  lumenRebrand24: {
+  lumenrebrand24: {
     label: 'Lumen Rebrand24',
     favicon: '',
-    css: `chi-lumen-rebrand24.css`,
-    docsCss: `assets/themes/lumen-rebrand24/docs.css`,
+    css: `chi-lumenrebrand24.css`,
+    docsCss: `assets/themes/lumenrebrand24/docs.css`,
   },
   portal: {
     label: 'Lumen Enterprise Portal',
@@ -27,11 +27,11 @@ export const THEMES = {
     css: `chi-portal.css`,
     docsCss: `assets/themes/portal/docs.css`,
   },
-  portaRebrand24: {
+  portalrebrand24: {
     label: 'Portal Rebrand24',
     favicon: '',
-    css: `chi-portal-rebrand24.css`,
-    docsCss: `assets/themes/portal-rebrand24/docs.css`,
+    css: `chi-portalrebrand24.css`,
+    docsCss: `assets/themes/portalrebrand24/docs.css`,
   },
   brightspeed: {
     label: 'Brightspeed',
