@@ -1,5 +1,5 @@
 import { Component, Element, Listen, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
-import { contains, uuid4 } from '../../utils/utils';
+import { contains } from '../../utils/utils';
 import {
   CHI_TIME_AUTO_SCROLL_DELAY,
   DataLocales,
@@ -15,6 +15,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { ChiStates, CHI_STATES } from '../../constants/states';
 import { Time } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-date-picker',
