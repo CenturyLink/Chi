@@ -12,7 +12,7 @@ import { ANIMATION_DURATION, TABS_SEE_MORE_DEFAULT_MESSAGE } from '../../constan
 import { TabTrigger, TabTriggerSizes, TabTriggerPosition, TabTriggerDirections } from '../../constants/types';
 import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
-import { uuid4 } from '../../utils/utils';
+import { v4 as uuid4 } from 'uuid';
 
 const MARGIN_LEFT_BASE = 24;
 const MARGIN_LEFT_LG = 32;

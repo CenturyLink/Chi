@@ -2,6 +2,8 @@ import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h 
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
+import { cleanUndefinedProps } from '../../utils/utils';
+import { v4 as uuid4 } from 'uuid';
 
 @Component({
   tag: 'chi-search-input',
@@ -200,14 +202,14 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: Event): void => {
+  _handleSelectItem = (ev: Event, item: DropdownMenuItem): void => {
     ev.preventDefault();
 
-    const title = (ev.target as HTMLAnchorElement).innerText;
-    const href = (ev.target as HTMLAnchorElement).getAttribute('href');
     const dropdown = this._getAutocompleteDropdown();
+    const title = (ev.target as HTMLAnchorElement).innerText;
+    const { href, id } = item ?? {};
 
-    this.selectedItem = { title, href };
+    this.selectedItem = cleanUndefinedProps({ title, href, id }) as DropdownMenuItem;
     this.value = title;
     dropdown.hide();
     this._clearFilterMenuItems();
@@ -253,15 +255,20 @@ export class SearchInput {
     return (
       <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
-        {this.menuItemsFiltered?.map((item) => (
-          <a
-            class={DROPDOWN_CLASSES.MENU_ITEM}
-            href={item.href}
-            slot="menu"
-            innerHTML={item.title}
-            onClick={(ev) => this._handleSelectItem(ev)}
-          ></a>
-        ))}
+        {this.menuItemsFiltered?.map((item) => {
+          const uuid = uuid4();
+
+          return (
+            <a
+              key={`menu-item-${uuid}`}
+              class={DROPDOWN_CLASSES.MENU_ITEM}
+              href={item.href}
+              slot="menu"
+              innerHTML={item.title}
+              onClick={(ev) => this._handleSelectItem(ev, item)}
+            ></a>
+          );
+        })}
       </chi-dropdown>
     );
   }
