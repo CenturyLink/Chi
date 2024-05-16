@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-05-08T16:18:29",
+  "timestamp": "2024-05-14T05:05:16",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.18.0",
+    "version": "4.18.1",
     "typescriptVersion": "5.4.5"
   },
   "components": [
@@ -797,6 +797,7 @@
         "chi-carousel",
         "chi-copy-text",
         "chi-dropdown",
+        "chi-label",
         "chi-popover"
       ],
       "dependencies": [
@@ -816,6 +817,9 @@
           "chi-button"
         ],
         "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-label": [
           "chi-button"
         ],
         "chi-popover": [
@@ -3811,6 +3815,7 @@
         "chi-drawer",
         "chi-dropdown",
         "chi-helper-message",
+        "chi-label",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -3843,6 +3848,9 @@
           "chi-icon"
         ],
         "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-label": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -3880,6 +3888,50 @@
           "reflectToAttr": true,
           "docs": "To indicate ID of target form control web component.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "infoIcon",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon",
+          "reflectToAttr": true,
+          "docs": "To indicate if info icon should be displayed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "infoIconMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon-message",
+          "reflectToAttr": true,
+          "docs": "To provide message for info icon popover.",
+          "docsTags": [],
+          "default": "'Helpful information goes here.'",
           "values": [
             {
               "type": "string"
@@ -3985,8 +4037,24 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "chi-button",
+        "chi-icon",
+        "chi-popover"
+      ],
+      "dependencyGraph": {
+        "chi-label": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/link/link.tsx",
@@ -6941,6 +7009,7 @@
       "parts": [],
       "dependents": [
         "chi-date-picker",
+        "chi-label",
         "chi-time-picker"
       ],
       "dependencies": [
@@ -6954,6 +7023,9 @@
           "chi-icon"
         ],
         "chi-date-picker": [
+          "chi-popover"
+        ],
+        "chi-label": [
           "chi-popover"
         ],
         "chi-time-picker": [
@@ -9830,7 +9902,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::DropdownMenuItem": {
-      "declaration": "export interface DropdownMenuItem {\n  title: string;\n  href: string;\n}",
+      "declaration": "export interface DropdownMenuItem {\n  id?: string;\n  title: string;\n  href?: string;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

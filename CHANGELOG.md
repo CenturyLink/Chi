@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 5.64.0 (May 14, 2024)
+
+### Components
+
+#### Added
+
+- Added: Label now supports `info-icon` and `info-icon-message` properties.
+- Added: Search input `DropdownMenuItem` type now supports `id`.
+
+### Documentation
+
+#### Changed
+
+- Changed: Accessibility links and forms page to WCAG 2.2.
+
 ## 5.63.0 (May 9, 2024)
 
 ### Documentation
