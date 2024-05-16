@@ -14,7 +14,7 @@
     <Animated />
     <Positioning />
 
-    h2 Menu
+    h3 Menu
     <States />
     <Description />
     <Divider />
@@ -22,6 +22,9 @@
     <SearchBox />
     <VisibleItems />
     <RetainSelection />
+
+    ClientOnly
+      SelectMode
     <IconTrigger />
 
     h3 Checkboxes
@@ -62,6 +65,7 @@ import FlexibleHeight from './_flexible_height.vue';
 import VisibleItems from './_visible_items.vue';
 import RetainSelection from './_retain_selection.vue';
 import IconTrigger from './_icon_trigger.vue';
+import SelectMode from './_select_mode.vue';
 
 @NuxtComponent({
   components: {
@@ -86,8 +90,9 @@ import IconTrigger from './_icon_trigger.vue';
     TruncateLongMenuItems,
     VisibleItems,
     RetainSelection,
-    IconTrigger
+    IconTrigger,
+    SelectMode,
   },
 })
-export default class Examples extends Vue {}
+export default class Examples extends Vue { }
 </script>
