@@ -54,7 +54,7 @@ $sizes: (
         align-items: center;
         background-color: $file-input-button-background-color;
         border: $file-input-button-border-width solid $file-input-button-border-color;
-        border-radius: $border-radius;
+        border-radius: $file-input-button-border-radius;
         box-shadow: $file-input-button-box-shadow;
         color: $file-input-button-text-color;
         content: $file-input-button-text-label-single;

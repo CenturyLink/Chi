@@ -23,6 +23,7 @@ $button-colors: (
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
     text-color-outline-active: $button-primary-outline-active-text-color,
+    text-color-flat: $button-primary-flat-text-color,
   ),
   secondary: (
     background-color: $button-secondary-solid-background-color,
@@ -45,6 +46,7 @@ $button-colors: (
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
     text-color-outline-active: $button-secondary-outline-active-text-color,
+    text-color-flat: $button-secondary-flat-text-color,
   ),
   dark: (
     background-color: $button-dark-solid-background-color,
@@ -67,6 +69,7 @@ $button-colors: (
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
     text-color-outline-active: $button-dark-outline-active-text-color,
+    text-color-flat: $button-dark-flat-text-color,
   ),
   danger: (
     background-color: $button-danger-solid-background-color,
@@ -89,6 +92,7 @@ $button-colors: (
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
     text-color-outline-active: $button-danger-outline-active-text-color,
+    text-color-flat: $button-danger-flat-text-color,
   ),
   light: (
     background-color: $button-light-solid-background-color,
@@ -111,6 +115,7 @@ $button-colors: (
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
     text-color-outline-active: $button-light-outline-active-text-color,
+    text-color-flat: $button-light-flat-text-color,
   )
 );
 
@@ -398,6 +403,14 @@ $sizes: (
     box-shadow: none;
     color: $button-flat-text-color;
 
+    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+      &.-icon {
+        .chi-icon {
+          color: $button-flat-icon-color;
+        }
+      }
+    }
+
     @each $type in map-keys($sizes) {
       &.-#{$type} {
         font-size: map-get(map-get($sizes, $type), font-size);
@@ -431,7 +444,6 @@ $sizes: (
       .chi-button__content {
         & > .chi-icon,
         & > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
-          color: inherit;
           opacity: $button-flat-hover-icon-opacity;
         }
       }
@@ -465,10 +477,6 @@ $sizes: (
       background-color: $button-flat-active-background-color;
       border: $button-flat-border-width solid $button-flat-active-border-color;
       color: $button-flat-active-text-color;
-
-      .chi-icon {
-        color: inherit;
-      }
 
       &:not(.chi-dropdown__trigger) {
         &.-icon {
@@ -531,6 +539,11 @@ $sizes: (
     }
   }
 
+  &.-primary {
+    &:not(.-flat):not(.-outline):not(.-float):not(.-icon):not(.chi-dropdown__trigger) {
+      border-radius: $button-primary-solid-border-radius;
+    }
+  }
 
   @each $color in map-keys($button-colors) {
     &.-#{$color} {
@@ -608,7 +621,7 @@ $sizes: (
         background-color: $button-flat-background-color;
         border: $button-flat-border-width solid transparent;
         box-shadow: none;
-        color: map-get(map-get($button-colors, $color), text-color-outline);
+        color: map-get(map-get($button-colors, $color), text-color-flat);
 
         &:not(.-no-hover) {
           &:hover,

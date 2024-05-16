@@ -93,3 +93,11 @@ $border-colors: (
 .-rounded {
   border-radius: $border-radius !important;
 }
+
+.-raindrop {
+  border-radius: 0 2rem 2rem 2rem !important;
+}
+
+.-no-raindrop {
+  border-radius: $button-border-radius !important;
+}

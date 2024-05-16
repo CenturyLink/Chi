@@ -112,6 +112,7 @@
           &.chi-picker__input {
             & + label {
               border: solid 0.0625rem $picker-checked-border-color;
+              background-color: $picker-checked-background-color;
               color: $picker-checked-text-color;
               padding-right: $picker-group-md-padding-checked;
 

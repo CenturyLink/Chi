@@ -40,6 +40,11 @@ export class Link {
   @Prop({ reflect: true }) download: string;
 
   /**
+  *  to remove a link's underline.
+  */
+  @Prop({ reflect: true }) noUnderline = false;
+
+  /**
    *  to remove a link's underline on hover.
    */
   @Prop({ reflect: true }) noHoverUnderline = false;
@@ -87,6 +92,7 @@ export class Link {
           ${this.cta ? '-cta' : ''}
           ${this.disabled ? '-disabled' : ''}
           ${this.size ? `-${this.size}` : ''}
+          ${this.noUnderline ? `-no-underline` : ''}
           ${this.noHoverUnderline ? `-no-hover-underline` : ''}`}
         href={this.href}
         hreflang={this.hreflang}

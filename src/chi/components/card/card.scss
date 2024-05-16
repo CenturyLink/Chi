@@ -4,6 +4,7 @@
 .chi-card {
   background-color: $card-background-color;
   border: $card-border;
+  border-radius: $card-border-radius;
   display: flex;
   flex-direction: column;
   min-width: 0;

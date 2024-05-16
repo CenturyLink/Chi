@@ -94,6 +94,10 @@ a,
     }
   }
 
+  &.-no-underline {
+    text-decoration: none;
+  }
+
   &.-no-hover-underline {
     &:hover {
       text-decoration: none;

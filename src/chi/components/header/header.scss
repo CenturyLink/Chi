@@ -257,13 +257,20 @@
     }
   }
 
+  .chi-header__brandbar {
+    background: $header-brandbar-background;
+    display: flex;
+    height: $header-brandbar-height;
+    width: 100%;
+  }
+
   .chi-header__navbar {
     background-color: $header-navbar-background-color;
     background-image: $header-navbar-background-image;
-    border-top: 0.0625rem solid $header-navbar-border-color;
+    border-top: $header-navbar-border-top;
     color: $header-navbar-text-color;
     display: flex;
-    padding: 0 1.5rem;
+    padding: $header-navbar-padding;
     width: 100%;
 
     a {
@@ -277,7 +284,7 @@
       line-height: $line-height;
       list-style: none;
       margin: 0.25rem 0;
-      padding: 0;
+      padding: $header-navbar-menu-padding;
 
       li {
         border-right: 0.0625rem solid $header-navbar-divider-color;
@@ -322,17 +329,18 @@
     .chi-tabs {
       align-items: center;
       display: flex;
+      gap: $header-navbar-tabs-gap;
+      padding: $header-navbar-tabs-padding;
 
-      &:not(.-vertical) {
+      &:not(.-vertical):not(.-responsive) {
         &.-xs {
           height: 2rem;
 
-          > li {
-            margin-left: 0;
-            margin-right: 1.5rem;
+          & > li {
+            margin: $header-navbar-tab-xs-li-margin;
 
             @include respond-to(xl) {
-              margin-right: 2rem;
+              margin-right: $header-navbar-tab-xs-li-margin-screen-xl;
             }
 
             > a {
@@ -343,23 +351,28 @@
             }
 
             &:not(.-active) {
-              > a {
+              & > a {
                 &:hover {
                   text-decoration: $header-navbar-tab-xs-link-hover-text-decoration;
+                }
+              }
+
+              & > a,
+              .chi-dropdown__trigger {
+                &:hover {
+                  background-color: $header-navbar-tab-hover-background-color;
                 }
               }
             }
           }
         }
 
-        li {
-          .chi-dropdown {
-            .chi-dropdown__trigger {
-              align-items: center;
-              display: flex;
-              padding: 0.25rem 0;
-              text-decoration: none;
-            }
+        .chi-dropdown {
+          .chi-dropdown__trigger {
+            align-items: center;
+            display: flex;
+            padding: $header-navbar-tab-dropdown-trigger-padding;
+            text-decoration: none;
           }
         }
       }
@@ -425,11 +438,46 @@
           display: flex;
           font-size: $font-size-xs;
           line-height: $line-height-sm;
+          text-decoration: none;
         }
-      }
+
+        & > li {
+          & > a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
 
       .chi-tabs {
         align-self: center;
+      }
+
+      &,
+      &.-inverse {
+        & > li {
+          &.chi-sliding-border {
+            background-color: $header-navbar-tab-active-border-color;
+          }
+        }
+      }
+
+      &:not(.-vertical) {
+        &:not(.-responsive) {
+          &:not(.-sliding) {
+            &:not(.-inverse),
+            &.-inverse {
+              li {
+                &.-active {
+                  height: 100%;
+                  & > a {
+                    box-shadow: $header-navbar-tab-active-box-shadow;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -471,35 +519,35 @@
       min-height: $header-lg-navbar-height;
 
       a {
-        font-size: $font-size-base;
+        font-size: $header-lg-navbar-font-size;
         line-height: $line-height-sm;
       }
 
-      .chi-tabs {
-        &.-xs {
-          li {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
+      // .chi-tabs {
+      //   &.-xs {
+      //     li {
+      //       .chi-dropdown {
+      //         .chi-dropdown__trigger {
+      //           padding: 0.5rem 0;
+      //         }
+      //       }
+      //     }
 
-          &:not(.-vertical):not(.-responsive) {
-            height: 2rem;
-          }
-        }
+      //     &:not(.-vertical):not(.-responsive) {
+      //       height: 2rem;
+      //     }
+      //   }
 
-        &:not(.-vertical) {
-          &.-sm {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
-        }
-      }
+      //   &:not(.-vertical) {
+      //     &.-sm {
+      //       .chi-dropdown {
+      //         .chi-dropdown__trigger {
+      //           padding: 0.5rem 0;
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -547,24 +595,47 @@
       }
 
       .chi-tabs {
+        gap: $header-xl-navbar-menu-tabs-gap;
+
         &:not(.-vertical) {
           li {
             @include respond-to(xl) {
               &:not(:first-child) {
-                margin-left: 3.5rem;
+                margin-left: $header-xl-navbar-menu-tabs-xl-margin-left;
               }
             }
 
-            & > a {
+            & > a,
+            .chi-dropdown__trigger {
               font-size: $header-xl-navbar-tab-link-font-size;
               font-weight: $font-weight-semi-bold;
             }
           }
 
           &.-sm {
+            li {
+              & > a {
+                padding: $header-xl-navbar-tabs-link-padding;
+              }
+            }
+    
             .chi-dropdown {
               .chi-dropdown__trigger {
-                padding: 0.875rem 0;
+                padding: $header-xl-navbar-tabs-dropdown-trigger-padding;
+              }
+            }
+          }
+
+          :not(.-responsive) {
+            &.-sm {
+              height: $header-xl-navbar-tabs-sm-height;
+            }
+
+            &.-xs {
+              & > li {
+                & > a {
+                  font-size: $header-xl-navbar-tab-link-font-size;
+                }
               }
             }
           }
@@ -590,7 +661,7 @@
         padding-top: 1rem;
 
         .chi-dropdown__menu-item {
-          font-size: $font-size-lg;
+          font-size: $font-size-md;
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
@@ -617,6 +688,7 @@
       }
     }
   }
+}
 }
 
 /* IE11 CSS hack */

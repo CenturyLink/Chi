@@ -49,6 +49,7 @@ $states: (
 .chi-alert {
   background-color: $alert-background-color;
   border-color: $alert-border-color;
+  border-radius: $alert-border-radius;
   border-style: solid;
   border-width: 0.0625rem;
   box-shadow: map-get($shadow, 1);
@@ -64,6 +65,8 @@ $states: (
   &:not(.-banner) {
     &::before {
       background-color: $alert-accent-border-color;
+      border-top-left-radius: $alert-border-radius;
+      border-bottom-left-radius: $alert-border-radius;
       content: '';
       height: calc(100% + 0.125rem);
       left: -0.0625rem;

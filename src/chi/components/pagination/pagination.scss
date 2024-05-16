@@ -198,19 +198,19 @@ $icon-sizes: (
 
         &.-active {
           background-color: transparent;
-          border-color: $color-text-primary;
+          border-color: $pagination-active-border-color;
           box-shadow: none;
-          color: $color-text-primary;
+          color: $pagination-active-text-color;
         }
 
         &.-light {
           &:hover {
-            border-color: $color-border-base-dark;
+            border-color: $pagination-inverse-hover-border-color;
           }
 
           &.-active {
-            border-color: $color-border-secondary;
-            color: $color-text-secondary;
+            border-color: $pagination-inverse-active-border-color;
+            color: $pagination-inverse-active-text-color;
           }
         }
       }

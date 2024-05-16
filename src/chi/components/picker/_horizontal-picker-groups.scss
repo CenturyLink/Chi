@@ -157,6 +157,7 @@ $sizes: (
         &.chi-picker__input {
           & + label {
             border: solid 0.0625rem $picker-checked-border-color;
+            background-color: $picker-checked-background-color;
             box-shadow: inset 0 0 0 0.0625rem $picker-checked-border-color;
             color: $picker-checked-text-color;
             font-weight: $font-weight-semi-bold;

@@ -98,7 +98,7 @@ $border: 0.0625rem;
 
         &:not(.-light) {
           .chi-icon {
-            color: $label-help-icon-color;
+            color: $label-help-icon-color !important;
           }
 
           &:hover {
