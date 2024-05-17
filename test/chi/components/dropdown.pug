@@ -417,3 +417,35 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
         .chi-dropdown
           button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid.-hover
             | - Select -
+
+.test-dropdown-states-helper-message(style="width: 500px;")
+  span.-text--h2 States and helper message
+  .chi-grid
+    each state in ['default', 'success', 'warning', 'danger']
+      each helperMessage in ['', 'Long helper message']
+        .chi-col.-mb--2(class={
+                [`-w--4`]:!helperMessage, 
+                [`-w--8`]: !!helperMessage
+        })
+          .chi-dropdown
+            button.chi-button.chi-dropdown__trigger(
+              class={
+                [`-b--${state}`]: state !== 'default', 
+                [`-fluid`]: !!helperMessage
+              }
+            )=`State ${state}`
+            if !!helperMessage
+              .chi-label.-status(class=`-${state}`)
+                if state == 'success'
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-circle-check')
+                else if state == 'warning'
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-warning')
+                else if state == 'danger'
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-circle-warning')
+                | Optional long helper message
