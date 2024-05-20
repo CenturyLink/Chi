@@ -18,27 +18,23 @@
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
 
-@NuxtComponent({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'webcomponent',
-          label: 'Web Component',
-        },
-        {
-          disabled: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: `<chi-copy-text text="This is an example text"></chi-copy-text>`,
-        htmlblueprint: ``,
-      },
-    };
-  },
-})
-export default class Text extends Vue {}
+@NuxtComponent({})
+export default class Text extends Vue {
+  exampleTabs = [
+    {
+      active: true,
+      id: 'webcomponent',
+      label: 'Web Component',
+    },
+    {
+      disabled: true,
+      id: 'htmlblueprint',
+      label: 'HTML Blueprint',
+    },
+  ];
+  codeSnippets = {
+    webcomponent: `<chi-copy-text text="This is an example text"></chi-copy-text>`,
+    htmlblueprint: ``,
+  };
+}
 </script>
