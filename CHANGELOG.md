@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 5.65.0 (May 21, 2024)
+
+### Components
+
+#### Added
+
+- Added: Added: Dropdown web component now supports `select-mode` attribute with `multi` and `single` types.
+
+### Documentation
+
+#### Added
+
+- Added: Time picker accessibility page.
+
 ## 5.64.0 (May 14, 2024)
 
 ### Components
