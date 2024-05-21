@@ -7,7 +7,7 @@ p.-text To render a divider, apply the class <code>chi-divider</code> to an <cod
 <Inverse />
 <Label />
 
-<SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+<SizesLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
 </template>
 
 <script lang="ts">

@@ -33,9 +33,12 @@ include ./_floating
   include ./sizes/_md.pug
   include ./sizes/_lg.pug
 
-  h2 Recommended layout
-  p.-text
-    | Use this layout to ensure the sidenav renders correctly in your project.
+h2 Recommended layout
+p.-text
+  | Use this layout to ensure the sidenav renders correctly in your project.
+
+.-portal--hide
+  h3 Base
   .example.-mb--3
     :code(lang='html')
       <div class="-d--flex">
@@ -47,10 +50,7 @@ include ./_floating
         </div>
       </div>
 
-.-portal--show.-brightspeed--show
-h2 Recommended layout
-p.-text
-  | Use this layout to ensure the sidenav renders correctly in your project.
+h3 Floating
 .example.-mb--3
   :code(lang='html')
     <div class="-d--flex">

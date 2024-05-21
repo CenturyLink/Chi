@@ -5,10 +5,10 @@
     BaseExample
     <Inverse />
     h3 Contextual
-    <SpinnerButtonsPortal v-if="selectedTheme === 'portal'" />
+    <SpinnerButtonsPortal v-if="['portal', 'portalrebrand24'].includes(selectedTheme)" />
     <SpinnerButtonsLumenCenturyLink v-else />
     <SpinnerTexts />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
     <SizesPortal v-else />
     h3 Colors
     p.-text

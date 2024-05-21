@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Header" id="header" :tabs="exampleTabs">
+<ComponentExample title="Header" id="header_lumen_centurylink" :tabs="exampleTabs">
   template(#example-description)
     p.-text Apply the class <code>chi-card__header</code> to include a header section to the card.
   template(#example)
@@ -49,5 +49,5 @@ import { Vue } from 'vue-facing-decorator';
     };
   },
 })
-export default class Header extends Vue {}
+export default class HeaderLumenCenturyLink extends Vue {}
 </script>

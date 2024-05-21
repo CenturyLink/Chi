@@ -1,7 +1,7 @@
 <template lang="pug">
 h2 Examples
 ClientOnly
-  div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+  div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
     <Complex />
     BaseExample
     <Empty />
@@ -12,7 +12,7 @@ ClientOnly
     <Sorting />
     <Sizes />
 
-  div(v-if="['portal', 'brightspeed', 'colt'].includes(selectedTheme)")
+  div(v-if="['portal', 'brightspeed', 'colt', 'portalrebrand24'].includes(selectedTheme)")
     <ComplexPortal />
     <BasePortal />
     <SecondLineWrapping />
