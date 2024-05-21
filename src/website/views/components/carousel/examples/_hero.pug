@@ -5,13 +5,13 @@ h3 Hero
       each i in [0, 1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-b--1(style="height: 20rem; box-sizing: border-box;", slot="items")= `View ${i + 1}`
   .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-base
+    ul.chi-tabs#example-carousel-hero
       li.-disabled
-        a(href=`#webcomponent-accordion-base`) Web Component
+        a(href=`#webcomponent-carousel-hero`) Web Component
       li.-active
-        a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-accordion-base
-  .chi-tabs-panel.-active#html-accordion-base
+        a(href=`#html-carousel-hero`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-carousel-hero
+  .chi-tabs-panel.-active#html-carousel-hero
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
