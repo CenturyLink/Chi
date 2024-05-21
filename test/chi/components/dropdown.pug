@@ -9,6 +9,16 @@ title: Dropdown
 - var variants = ["", "outline", "flat"]
 - var sizes = [ "xs", "sm", "md", "lg", "xl" ]
 
+.test-dropdown-focused-with-outline.-mt--5(style="width: 300px; height: 400px;")
+  div.-text--h2 Focused
+  .-d--flex
+    .chi-dropdown(style="margin-bottom: 8em")
+      button(class=`chi-button chi-dropdown__trigger -active`) Long click me
+      div(class='chi-dropdown__menu -active')
+        a(class='chi-dropdown__menu-item -active -focus', href='#') Active element
+        a(class='chi-dropdown__menu-item', href='#') Element 2
+        a(class='chi-dropdown__menu-item -focus', href='#') Element 3
+
 each menuItemState in menuItemStates
   div(class=`test-basicDropdown${menuItemState.class} -w--100`)
     span.-text--h2=menuItemState.title
@@ -417,3 +427,4 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
         .chi-dropdown
           button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid.-hover
             | - Select -
+
