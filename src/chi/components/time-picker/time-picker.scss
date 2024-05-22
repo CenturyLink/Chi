@@ -36,7 +36,7 @@
       .chi-time-picker__minute,
       .chi-time-picker__second,
       .chi-time-picker__period {
-        border-radius: $border-radius-base;
+        border-radius: $time-picker-item-border-radius;
         cursor: pointer;
         margin: 0 0.25rem;
         padding: 0.125rem;

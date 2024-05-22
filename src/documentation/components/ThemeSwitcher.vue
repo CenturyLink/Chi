@@ -38,6 +38,16 @@
         @click="setTheme('portal')"
         ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
+      ><a
+        v-bind:class="[selectedTheme === 'lumenrebrand24' ? '-active' : '', 'theme-trigger-lumenrebrand24', 'chi-dropdown__menu-item']"
+        @click="setTheme('lumenrebrand24')"
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
+        <div class="-theme-name">Lumen Rebrand24</div></a
+      ><a
+        v-bind:class="[selectedTheme === 'portalrebrand24' ? '-active' : '', 'theme-trigger-portalrebrand24', 'chi-dropdown__menu-item']"
+        @click="setTheme('portalrebrand24')"
+        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
+        <div class="-theme-name">Portal Rebrand24</div></a
       >
     </div>
   </div>
@@ -62,7 +72,7 @@ export default class ThemeSwitcher extends Vue {
   selectedTheme = useSelectedTheme();
 
   getThemeSwitcherTriggerIcon() {
-    const excludedThemes = ['portal', 'colt', 'brightspeed'];
+    const excludedThemes = ['portal', 'lumenrebrand24', 'portalrebrand24', 'colt', 'brightspeed'];
 
     return excludedThemes.includes(this.selectedTheme) ? 'lumen' : this.selectedTheme;
   }
