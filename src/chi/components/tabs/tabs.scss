@@ -22,7 +22,7 @@
         color: $color-text-base;
         cursor: pointer;
         display: block;
-        font-size: $font-size-sm;
+        font-size: $tabs-vertical-md-subtabs-font-size;
         line-height: $line-height-sm;
         padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         text-decoration: none;
@@ -206,6 +206,7 @@
 
         &-text {
           font-weight: $font-weight-normal;
+          font-size: $tabs-vertical-md-subtabs-font-size;
         }
       }
     }

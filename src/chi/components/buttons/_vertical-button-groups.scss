@@ -2,33 +2,33 @@ $sizes: (
   xs: (
     padding: $button-group-vertical-xs-padding,
     icons: (
-      padding: $button-group-vertical-xs-icon-padding
-    )
+      padding: $button-group-vertical-xs-icon-padding,
+    ),
   ),
   sm: (
     padding: $button-group-vertical-sm-padding,
     icons: (
-      padding: $button-group-vertical-sm-icon-padding
-    )
+      padding: $button-group-vertical-sm-icon-padding,
+    ),
   ),
   md: (
     padding: $button-group-vertical-md-padding,
     icons: (
-      padding: $button-group-vertical-md-icon-padding
-    )
+      padding: $button-group-vertical-md-icon-padding,
+    ),
   ),
   lg: (
     padding: $button-group-vertical-lg-padding,
     icons: (
-      padding: $button-group-vertical-lg-icon-padding
-    )
+      padding: $button-group-vertical-lg-icon-padding,
+    ),
   ),
   xl: (
     padding: $button-group-vertical-xl-padding,
     icons: (
-      padding: $button-group-vertical-xl-icon-padding
-    )
-  )
+      padding: $button-group-vertical-xl-icon-padding,
+    ),
+  ),
 );
 
 .chi-button-group {
@@ -38,7 +38,7 @@ $sizes: (
     .chi-button {
       &:not(.-flat) {
         border-bottom-width: 0;
-        border-radius: $border-radius-sharp;
+        border-radius: $border-radius-sharp !important;
 
         &:not(:last-child) {
           padding-bottom: $button-group-vertical-md-padding;
@@ -66,13 +66,13 @@ $sizes: (
         }
 
         &:first-child {
-          border-top-left-radius: $border-radius;
-          border-top-right-radius: $border-radius;
+          border-top-left-radius: $border-radius !important;
+          border-top-right-radius: $border-radius !important;
         }
 
         &:last-child {
-          border-bottom-left-radius: $border-radius;
-          border-bottom-right-radius: $border-radius;
+          border-bottom-left-radius: $border-radius !important;
+          border-bottom-right-radius: $border-radius !important;
           border-bottom-width: $button-group-border-width;
         }
       }
