@@ -111,10 +111,10 @@
         &:checked {
           &.chi-picker__input {
             & + label {
+              background-color: $picker-checked-background-color;
               border: solid 0.0625rem $picker-checked-border-color;
               color: $picker-checked-text-color;
               padding-right: $picker-group-md-padding-checked;
-
 
               @include respond-to(md) {
                 padding-right: $picker-group-md-padding-hover;

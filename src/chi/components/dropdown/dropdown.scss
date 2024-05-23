@@ -148,10 +148,13 @@ $sizes: (
       }
 
       &.-active {
-        background-color: $dropdown-menu-item-active-background-color;
-        box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
-        color: $dropdown-menu-item-active-text-color;
-        font-weight: $dropdown-menu-item-active-font-weight;
+        &,
+        &:hover {
+          background-color: $dropdown-menu-item-active-background-color;
+          box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
+          color: $dropdown-menu-item-active-text-color;
+          font-weight: $dropdown-menu-item-active-font-weight;
+        }
       }
 
       &.-has-active {
@@ -439,6 +442,11 @@ $sizes: (
           }
         }
       }
+    }
+
+    &:hover,
+    &.-hover {
+      scale: 1;
     }
   }
 

@@ -38,10 +38,6 @@ $transition-duration: 0.2s;
 
     & > .chi-epanel__action {
       margin-left: auto;
-
-      .chi-button {
-        padding-top: 0;
-      }
     }
 
     @include respond-to-only(xs) {
