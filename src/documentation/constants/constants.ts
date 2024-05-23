@@ -346,6 +346,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     label: 'Tooltip',
     source: 'pug',
   },
+  {
+    to: `components/transfer-list`,
+    label: 'Transfer list',
+    source: 'vue',
+  },
 ];
 export const NAVIGATION_TEMPLATE_ITEMS = [
   {
