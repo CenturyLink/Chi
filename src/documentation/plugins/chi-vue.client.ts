@@ -18,6 +18,7 @@ const components = [
   'ChiColumnCustomization',
   'ChiSaveView',
   'ChiExpansionPanel',
+  'ChiTransferList',
 ];
 
 export default defineNuxtPlugin((nuxtApp) => {
