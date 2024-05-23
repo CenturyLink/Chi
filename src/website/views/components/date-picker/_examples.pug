@@ -10,7 +10,7 @@ h3 Base
 p.-text
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date')
         | Date
       chi-date-picker(id="date")
@@ -44,7 +44,7 @@ p.-text
 h3 Disabled
 .example.-mb--3(style="z-index: 1;")
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-2')
         | Date
       chi-date-picker(id="date-2", disabled)
@@ -78,7 +78,7 @@ h3 Disabled
 h3 Value, min and max options
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-3') Date
       chi-date-picker(id="date-3", value="01/24/2024", min="01/14/2024", max="02/07/2024")
   .example-tabs.-pl--2
@@ -123,7 +123,7 @@ h3 Excluded week days
 p.-text Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-excluded-weekdays') Date
       chi-date-picker(id="date-excluded-weekdays", excluded-weekdays="0, 6")
   .example-tabs.-pl--2
@@ -145,7 +145,7 @@ p.-text
   | Separate dates with a comma
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-excluded-dates') Date
       chi-date-picker(id="date-excluded-dates", value="01/05/2024", excluded-dates="01/24/2024, 03/25/2024, 07/03/2024, 09/12/2024, 12/12/2024")
   .example-tabs.-pl--2
@@ -167,7 +167,7 @@ p.-text
   | Disable days - <code>excluded-weekdays="0, 6"</code>
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-excluded-days-dates') Date
       chi-date-picker(id="date-excluded-days-dates", excluded-dates="02/23/2024, 05/24/2024, 07/03/2024, 09/12/2024, 12/12/2024", excluded-weekdays="0, 6")
   .example-tabs.-pl--2
@@ -187,7 +187,7 @@ p.-text
   | Use the <code>helper-message</code> attribute to provide users with additional information, validation feedback, and other helpful information.
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-message')
         | Date
       chi-date-picker(id="date-message" helper-message="Optional helper message")
@@ -228,7 +228,7 @@ p.-text
   | failure and/or how to correct it.
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-error')
         | Date
       chi-date-picker(id="date-error" state="danger" helper-message="Please enter a date")
@@ -268,7 +268,7 @@ h3 Date Time
 p.-text
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-time')
         | Date Time
       chi-date-picker(id="date-time" mode="datetime")
@@ -291,7 +291,7 @@ p.-text
   | minutes (defaults to 15 min) if no value is provided.
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-time-stepped')
         | Date Time
       chi-date-picker(id="date-time-stepped" mode="datetime" minutes-step="5")
@@ -311,7 +311,7 @@ h3 Multiple dates
 p.-text Use the attribute <code>multiple</code> to allow the user to select multiple dates.
 .example.-mb--3
   .-p--3
-    div(style="max-width: 14rem;")
+    div(style="max-width: 15rem;")
       chi-label(for='date-multiple')
         | Date
       chi-date-picker(id='date-multiple' multiple)

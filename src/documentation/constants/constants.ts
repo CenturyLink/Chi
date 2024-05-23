@@ -15,11 +15,23 @@ export const THEMES = {
     css: `chi.css`,
     docsCss: `assets/themes/lumen/docs.css`,
   },
+  lumenrebrand24: {
+    label: 'Lumen Rebrand24',
+    favicon: '',
+    css: `chi-lumenrebrand24.css`,
+    docsCss: `assets/themes/lumenrebrand24/docs.css`,
+  },
   portal: {
     label: 'Lumen Enterprise Portal',
     favicon: '',
     css: `chi-portal.css`,
     docsCss: `assets/themes/portal/docs.css`,
+  },
+  portalrebrand24: {
+    label: 'Portal Rebrand24',
+    favicon: '',
+    css: `chi-portalrebrand24.css`,
+    docsCss: `assets/themes/portalrebrand24/docs.css`,
   },
   brightspeed: {
     label: 'Brightspeed',
@@ -329,6 +341,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     label: 'Tooltip',
     source: 'pug',
   },
+  {
+    to: `components/transfer-list`,
+    label: 'Transfer list',
+    source: 'vue',
+  },
 ];
 export const NAVIGATION_TEMPLATE_ITEMS = [
   {
@@ -384,6 +401,7 @@ export const NAVIGATION_FOUNDATIONS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.65.0',
   '5.64.0',
   '5.63.0',
   '5.62.0',

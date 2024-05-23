@@ -53,6 +53,11 @@
           font-size: $font-size-xs;
           font-weight: $font-weight-normal;
           padding: 0.25rem 0.5rem;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
 
           @include respond-to(md) {
             flex-direction: row;
@@ -276,6 +281,10 @@
           margin-right: 0.25rem;
           transform: scale(0.875);
 
+          .chi-icon {
+            color: $footer-external-social-link-color;
+          }
+
           &:first-child {
             margin-right: 0.75rem;
           }
@@ -288,6 +297,10 @@
 
           &:hover {
             color: $footer-external-social-hover-link-color;
+
+            .chi-icon {
+              color: $footer-external-social-hover-link-color;
+            }
           }
         }
       }
