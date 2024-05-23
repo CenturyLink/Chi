@@ -1,5 +1,4 @@
 <template>
-  <h2>Transfer List</h2>
   <TransferList
     :transferListData="list"
     :config="config"
