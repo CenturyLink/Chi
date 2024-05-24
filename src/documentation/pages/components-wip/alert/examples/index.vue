@@ -9,7 +9,7 @@ div
 
   <BubbleDefault />
 
-  <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
+  <div v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)">
     <BubbleCenteredLumenCenturyLink />
     <BubbleTitled />
     <BubbleSpinner />
@@ -41,7 +41,7 @@ div
     <ToastSizesLumenCenturyLink />
   </div>
 
-  <div v-if='selectedTheme === "portal"'>
+  <div v-if="['portal', 'portalrebrand24'].includes(selectedTheme)">
     <BubbleTitled />
     <BubbleSpinner />
     <BubbleSizesPortal />

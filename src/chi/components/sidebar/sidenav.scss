@@ -719,7 +719,7 @@ $sidenav-lg-width: 12.5rem;
         box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.1);
         margin-top: 3rem;
         margin-bottom: 3rem;
-        margin-left: -0.0625rem;
+        margin-left: $sidenav-float-drawer-margin-left;
       }
     }
   }

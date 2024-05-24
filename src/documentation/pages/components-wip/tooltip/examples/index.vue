@@ -3,7 +3,7 @@
     h2 Examples
 
     BaseExample
-    <LightLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <LightLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
     <Disabled />
     <Positioning />
     <Long />
