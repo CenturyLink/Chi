@@ -1,12 +1,20 @@
 # CHANGELOG
 
+## 5.66.0 (May 24, 2024)
+
+### Components
+
+#### Added
+
+- Added: Transfer list Vue component to enable the user to move one or more list items between lists.
+
 ## 5.65.0 (May 21, 2024)
 
 ### Components
 
 #### Added
 
-- Added: Added: Dropdown web component now supports `select-mode` attribute with `multi` and `single` types.
+- Added: Dropdown web component now supports `select-mode` attribute with `multi` and `single` types.
 
 ### Documentation
 
