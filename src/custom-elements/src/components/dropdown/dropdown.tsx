@@ -12,6 +12,7 @@ import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 import { DROPDOWN_SELECT_MODES, DropdownSelectModes, FontWeight } from '../../constants/types';
 import { addMutationObserver } from '../../utils/mutationObserver';
+import { CHI_STATES, ChiStates } from '../../constants/states';
 
 declare const chi: any;
 
@@ -107,7 +108,14 @@ export class Dropdown {
    * To apply select-like functionality and styles
    */
   @Prop({ reflect: true, mutable: true }) selectMode?: DropdownSelectModes;
-
+  /**
+   * To define state color of Dropdown
+   */
+  @Prop() state: ChiStates;
+  /**
+   * To display an additional helper text message below the Dropdown
+   */
+  @Prop() helperMessage: string;
   /**
    * Triggered when hiding the Dropdown
    */
@@ -212,6 +220,15 @@ export class Dropdown {
       } else {
         this.setDisplay('none');
       }
+    }
+  }
+
+  @Watch('state')
+  stateValidation(newValue: ChiStates) {
+    const validValues = CHI_STATES.join(', ');
+
+    if (newValue && !CHI_STATES.includes(newValue)) {
+      throw new Error(`${newValue} is not a valid state for input. If provided, valid values are: ${validValues}. `);
     }
   }
 
@@ -554,6 +571,10 @@ export class Dropdown {
     return buttonContent;
   }
 
+  _getHelperMessage() {
+    return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+  }
+
   
   /**
    * Generates trigger button content, either default button text, selected value or icon
@@ -572,7 +593,7 @@ export class Dropdown {
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
-        fluid={this.fluid}
+        fluid={this.fluid || !!this.helperMessage}
         extra-class={this.getExtraClassForTriggerButton()}
         color={color}
         variant={variant}
@@ -591,14 +612,15 @@ export class Dropdown {
   }
 
   getExtraClassForTriggerButton() {
-    return `
-      ${DROPDOWN_CLASSES.TRIGGER}
-      ${this.fontWeight ? `-text--${this.fontWeight}` : ''}
-      ${this.active ? ACTIVE_CLASS : ''}
-      ${this.animateChevron ? ANIMATE_CLASS : ''}
-      ${this.icon ? DROPDOWN_CLASSES.ICON : ''}
-      ${this.selectMode ? DROPDOWN_CLASSES.SELECT_MODE : ''}
-    `;
+    return [
+      DROPDOWN_CLASSES.TRIGGER,
+      this.fontWeight && `-text--${this.fontWeight}`,
+      this.active && ACTIVE_CLASS,
+      this.animateChevron && ANIMATE_CLASS,
+      this.icon && DROPDOWN_CLASSES.ICON,
+      this.selectMode && DROPDOWN_CLASSES.SELECT_MODE,
+      this.state && `-b--${this.state}`,
+    ].filter(Boolean).join(' ');
   }
 
   renderDropdownMenuHeader() {
@@ -655,10 +677,15 @@ export class Dropdown {
 
     return trigger ? (
       <div
-        class={`${DROPDOWN_CLASSES.DROPDOWN} ${this.active ? ACTIVE_CLASS : ''} ${this._fluidClass}`}
+        class={`
+        ${DROPDOWN_CLASSES.DROPDOWN}
+        ${this.active ? ACTIVE_CLASS : ''}
+        ${this._fluidClass}`
+      }
         onMouseLeave={this.handlerMouseLeave}
       >
         {trigger}
+        {this.helperMessage && this._getHelperMessage()}
         {menu}
       </div>
     ) : (

@@ -9,6 +9,7 @@
 
     BaseExample
     <AdditionalStyles />
+    <HelperMessage />
     <DataTarget />
     <Hover />
     <Animated />
@@ -66,6 +67,7 @@ import VisibleItems from './_visible_items.vue';
 import RetainSelection from './_retain_selection.vue';
 import IconTrigger from './_icon_trigger.vue';
 import SelectMode from './_select_mode.vue';
+import HelperMessage from './_helper_message.vue';
 
 @NuxtComponent({
   components: {
@@ -92,6 +94,7 @@ import SelectMode from './_select_mode.vue';
     RetainSelection,
     IconTrigger,
     SelectMode,
+    HelperMessage,
   },
 })
 export default class Examples extends Vue { }
