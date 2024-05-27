@@ -192,13 +192,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-img",
-        ".test-icon",
-        ".test-icon-web-font",
-        ".test-letter",
-        ".test-double-letter"
-      ],
+      "selectors": [".test-img", ".test-icon", ".test-icon-web-font", ".test-letter", ".test-double-letter"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -216,12 +210,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-inverse",
-        ".test-white",
-        ".test-black"
-      ],
+      "selectors": [".test-base", ".test-inverse", ".test-white", ".test-black"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -793,8 +782,12 @@
         ".test-header-tab-navbar",
         ".test-header-mobile-secondary-menu",
         ".test-header-portal-header",
+        ".test-header-portal-header-title-dropdown",
         ".test-header-portal-header-bar",
+        ".test-header-lg-navbar",
+        ".test-header-lg-navbar-legacy",
         ".test-header-xl-navbar",
+        ".test-header-xl-navbar-legacy",
         ".test-header-portal-lg-navbar"
       ],
       "selectorExpansion": true,
@@ -814,13 +807,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-default",
-        ".test-sm",
-        ".test-md",
-        ".test-lg",
-        ".test-xl"
-      ],
+      "selectors": [".test-default", ".test-sm", ".test-md", ".test-lg", ".test-xl"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -867,12 +854,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-single",
-        ".test-sizes",
-        ".test-colors",
-        ".test-icons"
-      ],
+      "selectors": [".test-single", ".test-sizes", ".test-colors", ".test-icons"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -920,13 +902,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-default",
-        ".test-sm",
-        ".test-md",
-        ".test-lg",
-        ".test-xl"
-      ],
+      "selectors": [".test-default", ".test-sm", ".test-md", ".test-lg", ".test-xl"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -983,13 +959,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-default",
-        ".test-sm",
-        ".test-md",
-        ".test-lg",
-        ".test-xl"
-      ],
+      "selectors": [".test-default", ".test-sm", ".test-md", ".test-lg", ".test-xl"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1417,12 +1387,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-base-sm",
-        ".test-base-md",
-        ".test-base-lg"
-      ],
+      "selectors": [".test-base", ".test-base-sm", ".test-base-md", ".test-base-lg"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true

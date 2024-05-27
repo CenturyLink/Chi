@@ -10,7 +10,7 @@ $positions: (
   r: '-right',
   t: '-top',
   x: '-x',
-  y: '-y'
+  y: '-y',
 );
 
 $border-colors: (
@@ -29,7 +29,7 @@ $border-colors: (
   warning-light: $color-border-warning-light,
   black: $color-border-black,
   white: $color-border-white,
-  transparent: transparent
+  transparent: transparent,
 );
 
 @mixin create-border($position, $position-suffix, $breakpoint-infix, $thickness-index) {
@@ -92,4 +92,12 @@ $border-colors: (
 
 .-rounded {
   border-radius: $border-radius !important;
+}
+
+.-raindrop {
+  border-radius: 0 2rem 2rem 2rem !important;
+}
+
+.-no-raindrop {
+  border-radius: $button-border-radius !important;
 }

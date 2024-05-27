@@ -64,6 +64,18 @@
   &__end {
     align-items: center;
     display: flex;
+
+    .chi-button {
+      &.-flat {
+        &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+          &.-icon {
+            .chi-icon {
+              color: $color-icon-base;
+            }
+          }
+        }
+      }
+    }
   }
 
   &__results {

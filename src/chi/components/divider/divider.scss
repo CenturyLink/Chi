@@ -42,11 +42,11 @@
 
     &.-inverse {
       &::after {
-        border-top: 0.0625rem solid $divider-inverse-border-color
+        border-top: 0.0625rem solid $divider-inverse-border-color;
       }
-  
+
       &::before {
-        border-top: 0.0625rem solid $divider-inverse-border-color
+        border-top: 0.0625rem solid $divider-inverse-border-color;
       }
     }
   }

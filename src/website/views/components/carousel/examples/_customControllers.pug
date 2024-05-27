@@ -30,12 +30,12 @@ p.-text
       each i in [1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", slot="items")= i
   .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-base
+    ul.chi-tabs#example-carousel-custom
       li.-active
-        a(href=`#webcomponent-accordion-base`) Web Component
+        a(href=`#webcomponent-carousel-custom`) Web Component
       li.-disabled
-        a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-accordion-base
+        a(href=`#html-carousel-custom`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-carousel-custom
     :code(lang="html")
       <chi-carousel single>
         <button class="examplePreviousButton" slot="previous">
@@ -74,4 +74,4 @@ p.-text
           opacity: 1;
         }
       </style>
-  .chi-tabs-panel#html-accordion-base
+  .chi-tabs-panel#html-carousel-custom

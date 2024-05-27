@@ -5,12 +5,12 @@ h3 Single with one item
       .chi-carousel__item.-p--1(style="height: 10rem;" slot="items")
         .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
   .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-base
+    ul.chi-tabs#example-carousel-single-one-item
       li.-active
-        a(href=`#webcomponent-accordion-base`) Web Component
+        a(href=`#webcomponent-carousel-single-one-item`) Web Component
       li.-disabled
-        a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-accordion-base
+        a(href=`#html-carousel-single-one-item`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-carousel-single-one-item
     :code(lang="html")
       <chi-carousel single>
         <div class="-d--flex" slot="items">
@@ -19,4 +19,4 @@ h3 Single with one item
           </div>
         </div>
       </chi-carousel>
-  .chi-tabs-panel#html-accordion-base
+  .chi-tabs-panel#html-carousel-single-one-item

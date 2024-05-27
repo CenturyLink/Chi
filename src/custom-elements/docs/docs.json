@@ -2,7 +2,7 @@
   "timestamp": "2024-05-17T10:59:20",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.18.1",
+    "version": "4.18.2",
     "typescriptVersion": "5.4.5"
   },
   "components": [
@@ -4271,6 +4271,28 @@
           "attr": "no-hover-underline",
           "reflectToAttr": true,
           "docs": "to remove a link's underline on hover.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noUnderline",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-underline",
+          "reflectToAttr": true,
+          "docs": "to remove a link's underline.",
           "docsTags": [],
           "default": "false",
           "values": [

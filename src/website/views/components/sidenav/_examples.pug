@@ -13,7 +13,9 @@ h2 Examples
 
 .-portal--hide.-brightspeed--hide
   include ./_base
-include ./_open-on-hover
+  include ./_open-on-hover
+
+include ./_floating
 
 .-portal--hide.-brightspeed--hide
   h2 Active Usage
@@ -34,10 +36,25 @@ include ./_open-on-hover
 h2 Recommended layout
 p.-text
   | Use this layout to ensure the sidenav renders correctly in your project.
+
+.-portal--hide
+  h3 Base
+  .example.-mb--3
+    :code(lang='html')
+      <div class="-d--flex">
+        <aside class="chi-sidenav -flex--shrink0">
+          <!-- Sidenav content goes here -->
+        </aside>
+        <div class="-flex--grow1">
+          <!-- Page content goes here -->
+        </div>
+      </div>
+
+h3 Floating
 .example.-mb--3
   :code(lang='html')
     <div class="-d--flex">
-      <aside class="chi-sidenav -flex--shrink0">
+      <aside class="chi-sidenav -float -flex--shrink0">
         <!-- Sidenav content goes here -->
       </aside>
       <div class="-flex--grow1">
@@ -55,12 +72,18 @@ script.
         autoClose: true
       });
 
+      chi.sidenav(document.getElementById('example-floating'), {
+        openOnHover: true,
+        autoClose: true
+      });
+
       chi.sidenav(document.getElementById('example-sizes-sm'));
       chi.sidenav(document.getElementById('example-sizes-md'));
       chi.sidenav(document.getElementById('example-sizes-lg'));
 
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-open-on-hover-tabs'));
+      chi.tab(document.getElementById('examples-floating-tabs'));
       chi.tab(document.getElementById('examples-sizes-sm'));
       chi.tab(document.getElementById('examples-sizes-md'));
       chi.tab(document.getElementById('examples-sizes-lg'));

@@ -23,6 +23,7 @@ $button-colors: (
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
     text-color-outline-active: $button-primary-outline-active-text-color,
+    text-color-flat: $button-primary-flat-text-color,
   ),
   secondary: (
     background-color: $button-secondary-solid-background-color,
@@ -45,6 +46,7 @@ $button-colors: (
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
     text-color-outline-active: $button-secondary-outline-active-text-color,
+    text-color-flat: $button-secondary-flat-text-color,
   ),
   dark: (
     background-color: $button-dark-solid-background-color,
@@ -67,6 +69,7 @@ $button-colors: (
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
     text-color-outline-active: $button-dark-outline-active-text-color,
+    text-color-flat: $button-dark-flat-text-color,
   ),
   danger: (
     background-color: $button-danger-solid-background-color,
@@ -89,6 +92,7 @@ $button-colors: (
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
     text-color-outline-active: $button-danger-outline-active-text-color,
+    text-color-flat: $button-danger-flat-text-color,
   ),
   light: (
     background-color: $button-light-solid-background-color,
@@ -111,7 +115,8 @@ $button-colors: (
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
     text-color-outline-active: $button-light-outline-active-text-color,
-  )
+    text-color-flat: $button-light-flat-text-color,
+  ),
 );
 
 $border: 0.0625rem;
@@ -128,7 +133,7 @@ $sizes: (
       width: $button-icon-xs-width,
       line-height: $button-icon-xs-line-height,
       font-size: $button-icon-xs-font-size,
-    )
+    ),
   ),
   sm: (
     font-size: $button-sm-font-size,
@@ -141,7 +146,7 @@ $sizes: (
       width: $button-icon-sm-width,
       line-height: $button-icon-sm-line-height,
       font-size: $button-icon-sm-font-size,
-    )
+    ),
   ),
   md: (
     font-size: $button-md-font-size,
@@ -154,7 +159,7 @@ $sizes: (
       width: $button-icon-md-width,
       line-height: $button-icon-md-line-height,
       font-size: $button-icon-md-font-size,
-    )
+    ),
   ),
   lg: (
     font-size: $button-lg-font-size,
@@ -167,7 +172,7 @@ $sizes: (
       width: $button-icon-lg-width,
       line-height: $button-icon-lg-line-height,
       font-size: $button-icon-lg-font-size,
-    )
+    ),
   ),
   xl: (
     font-size: $button-xl-font-size,
@@ -180,8 +185,8 @@ $sizes: (
       width: $button-icon-xl-width,
       line-height: $button-icon-xl-line-height,
       font-size: $button-icon-xl-font-size,
-    )
-  )
+    ),
+  ),
 );
 
 .chi-button {
@@ -194,13 +199,14 @@ $sizes: (
   cursor: pointer;
   display: inline-flex;
   font-size: $button-md-font-size;
-  font-weight: $font-weight-semi-bold;
+  font-weight: $button-font-weight;
   line-height: $button-md-line-height;
   padding: $button-md-padding;
+  scale: 1;
   text-align: center;
   text-decoration: none;
   text-transform: $button-md-text-transform;
-  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in;
+  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in, scale 0.2s ease-in;
   vertical-align: middle;
   white-space: nowrap;
 
@@ -264,6 +270,7 @@ $sizes: (
     background-color: $button-solid-hover-background-color;
     border: $button-solid-border-width solid $button-solid-hover-border-color;
     color: $button-solid-hover-text-color;
+    scale: $button-solid-hover-scale;
     text-decoration: none;
 
     .chi-icon {
@@ -274,8 +281,8 @@ $sizes: (
   &:focus,
   &.-focus {
     border: $button-solid-border-width solid $button-solid-focus-border-color;
-    outline: 0.125rem solid $button-solid-focus-outline;
-    outline-offset: 0.0625rem;
+    outline: $button-solid-focus-outline;
+    outline-offset: $button-solid-focus-outline-offset;
     z-index: $zindex-prominent;
   }
 
@@ -298,9 +305,7 @@ $sizes: (
   &.-float {
     border-color: $button-float-border-color;
     border-radius: 50%;
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
-    0 6px 10px 0 rgba(0, 0, 0, 0.14),
-    0 1px 16px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 16px 0 rgba(0, 0, 0, 0.12);
     padding: $button-icon-md-padding;
     transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
 
@@ -311,9 +316,7 @@ $sizes: (
 
     &:active,
     &.-active {
-      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
-      0 8px 10px 1px rgba(0, 0, 0, 0.14),
-      0 2px 14px 1px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 2px 14px 1px rgba(0, 0, 0, 0.12);
     }
 
     &[disabled],
@@ -336,7 +339,6 @@ $sizes: (
   }
 
   &.-close {
-
     &,
     .chi-icon {
       color: $button-close-icon-color;
@@ -375,7 +377,6 @@ $sizes: (
       color: $button-outline-active-text-color;
     }
 
-
     &[disabled],
     &.-disabled {
       background-color: $button-outline-disabled-background-color;
@@ -397,6 +398,14 @@ $sizes: (
     border: $button-flat-border-width solid $button-flat-border-color;
     box-shadow: none;
     color: $button-flat-text-color;
+
+    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+      &.-icon {
+        .chi-icon {
+          color: $button-flat-icon-color;
+        }
+      }
+    }
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
@@ -430,8 +439,8 @@ $sizes: (
 
       .chi-button__content {
         & > .chi-icon,
-        & > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
-          color: inherit;
+        & > chi-icon .chi-icon {
+          // sass-lint:disable-line force-element-nesting
           opacity: $button-flat-hover-icon-opacity;
         }
       }
@@ -465,10 +474,6 @@ $sizes: (
       background-color: $button-flat-active-background-color;
       border: $button-flat-border-width solid $button-flat-active-border-color;
       color: $button-flat-active-text-color;
-
-      .chi-icon {
-        color: inherit;
-      }
 
       &:not(.chi-dropdown__trigger) {
         &.-icon {
@@ -527,10 +532,16 @@ $sizes: (
         background-color: transparent;
         border-color: transparent;
         box-shadow: none;
+        scale: 1;
       }
     }
   }
 
+  &.-primary {
+    &:not(.-flat):not(.-outline):not(.-float):not(.-icon):not(.chi-dropdown__trigger) {
+      border-radius: $button-primary-solid-border-radius;
+    }
+  }
 
   @each $color in map-keys($button-colors) {
     &.-#{$color} {
@@ -586,7 +597,9 @@ $sizes: (
         &.-hover {
           // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-hover);
-          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-hover);
+          border: $button-outline-border-width
+            solid
+            map-get(map-get($button-colors, $color), border-color-outline-hover);
           color: map-get(map-get($button-colors, $color), text-color-outline-hover);
         }
 
@@ -594,7 +607,9 @@ $sizes: (
         &.-active {
           // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-active);
-          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-active);
+          border: $button-outline-border-width
+            solid
+            map-get(map-get($button-colors, $color), border-color-outline-active);
           color: map-get(map-get($button-colors, $color), text-color-outline-active);
         }
 
@@ -608,7 +623,7 @@ $sizes: (
         background-color: $button-flat-background-color;
         border: $button-flat-border-width solid transparent;
         box-shadow: none;
-        color: map-get(map-get($button-colors, $color), text-color-outline);
+        color: map-get(map-get($button-colors, $color), text-color-flat);
 
         &:not(.-no-hover) {
           &:hover,
@@ -639,15 +654,13 @@ $sizes: (
       }
 
       &.-float {
-        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
-        0 6px 10px 0 rgba(0, 0, 0, 0.14),
-        0 1px 16px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24), 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+          0 1px 16px 0 rgba(0, 0, 0, 0.12);
 
         &:active,
         &.-active {
-          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
-          0 8px 10px 1px rgba(0, 0, 0, 0.14),
-          0 2px 14px 1px rgba(0, 0, 0, 0.12);
+          box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 2px 14px 1px rgba(0, 0, 0, 0.12);
         }
 
         &[disabled],

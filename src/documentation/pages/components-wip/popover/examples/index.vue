@@ -7,7 +7,7 @@ ClientOnly(fallback="Loading examples...")
   <Arrow />
   <ReferenceElement />
 
-  div(v-if="selectedTheme === 'portal'")
+  div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
     <InlineModalPortal />
     <DraggablePortal />
   div(v-else)
@@ -23,7 +23,7 @@ ClientOnly(fallback="Loading examples...")
   p.--text Popovers can be used to display any kind of custom content (even other components).
 
   <DestructiveActionConfirmation />
-  <TableFilteringPortal v-if="selectedTheme === 'portal'" />
+  <TableFilteringPortal v-if="['portal', 'portalrebrand24'].includes(selectedTheme)" />
 </template>
 
 <script lang="ts">
