@@ -5,7 +5,7 @@
 
     BaseExample
 
-    <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
+    <div v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)">
       <ActiveLumenCenturylink />
       <NoBorderLumenCenturylink />
       <Empty />
@@ -19,7 +19,7 @@
       <FooterCenterAlignedLumenCenturylink />
       <FooterNoBorderLumenCenturylink />
       <FooterSmallLumenCenturylink />
-      <Header />
+      <HeaderLumenCenturyLink />
       <HeaderCenterAlignedLumenCenturylink />
       <HeaderNoBorderLumenCenturylink />
       <HeaderSmallLumenCenturylink />
@@ -27,8 +27,8 @@
       <HeaderFooterSmallLumenCenturylink />
     </div>
 
-    <div v-if="selectedTheme === 'portal'">
-      <Header />
+    <div v-if="['portal', 'portalrebrand24'].includes(selectedTheme)">
+      <HeaderLumenCenturyLink />
       <HighlightPortal />
       <WithTabsPortal />
       <Empty />
@@ -51,7 +51,7 @@ import FooterRightAlignedLumenCenturylink from './_footer_right_aligned_lumen_ce
 import FooterCenterAlignedLumenCenturylink from './_footer_center_aligned_lumen_centurylink.vue';
 import FooterNoBorderLumenCenturylink from './_footer_no_border_lumen_centurylink.vue';
 import FooterSmallLumenCenturylink from './_footer_small_lumen_centurylink.vue';
-import Header from './_header.vue';
+import HeaderLumenCenturyLink from './_header_lumen_centurylink.vue';
 import HeaderCenterAlignedLumenCenturylink from './_header_center_aligned_lumen_centurylink.vue';
 import HeaderNoBorderLumenCenturylink from './_header_no_border_lumen_centurylink.vue';
 import HeaderSmallLumenCenturylink from './_header_small_lumen_centurylink.vue';
@@ -76,7 +76,7 @@ import WithTabsPortal from './_portal/_with_tabs.vue';
     FooterCenterAlignedLumenCenturylink,
     FooterNoBorderLumenCenturylink,
     FooterSmallLumenCenturylink,
-    Header,
+    HeaderLumenCenturyLink,
     HeaderCenterAlignedLumenCenturylink,
     HeaderNoBorderLumenCenturylink,
     HeaderSmallLumenCenturylink,

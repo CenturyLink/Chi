@@ -2,7 +2,7 @@
   div
     h2 Examples
 
-    div(v-if="selectedTheme === 'portal'")
+    div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
       <BasePortal />
       <BackgroundIconsPortal />
       <Compact key="isPortal" />

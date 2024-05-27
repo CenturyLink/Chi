@@ -2,7 +2,7 @@
   div
     h2 Examples
     <client-only placeholder="loading...">
-      div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+      div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
         <BaseLumenCenturyLink />
         <DisabledLumenCenturyLink />
         <TruncationLumenCenturyLink />

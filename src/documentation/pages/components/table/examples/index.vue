@@ -5,7 +5,7 @@
     <NoBorder />
     <Striped />
     <Hover />
-    <BasePortal v-if="selectedTheme === 'portal'" />
+    <BasePortal v-if="['portal', 'portalrebrand24'].includes(selectedTheme)" />
     h3 Row States
     p.-text Chi offers a wide variety of modifiers to express different row states.
     <Disabled />
@@ -30,7 +30,7 @@
     <SizeMd />
     <SizeLg />
     <SizeXl />
-    div(v-if="selectedTheme === 'portal'")
+    div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
       <SelectablePortal />
       <ScrollablePortal />
       <TwoTierHeaderPortal />

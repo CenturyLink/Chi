@@ -378,6 +378,18 @@ $sizes: (
       color: $color-icon-base;
     }
 
+    .chi-button {
+      &.-flat {
+        &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+          &.-icon {
+            .chi-icon {
+              color: $color-icon-base;
+            }
+          }
+        }
+      }
+    }
+
     @include respond-to(md) {
       align-items: center;
       flex-basis: 0%;
@@ -687,6 +699,12 @@ $sizes: (
                   &:hover {
                     background-color: transparent;
                     border: 0.0625rem solid transparent;
+                  }
+
+                  &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+                    .chi-icon {
+                      color: $color-icon-base;
+                    }
                   }
                 }
               }

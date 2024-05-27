@@ -16,7 +16,7 @@ $sizes: (
   ),
   xl: (
     background-position: right 1.25rem center,
-  )
+  ),
 );
 
 $icon-sizes: (
@@ -50,7 +50,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-icon) {
+              & + .chi-button:not(.-icon) {
                 min-width: 1.5rem;
                 padding-left: 0.4375rem;
                 padding-right: 0.4375rem;
@@ -59,7 +59,7 @@ $icon-sizes: (
 
             &:hover,
             &.-hover {
-              &+.chi-button:focus {
+              & + .chi-button:focus {
                 &:not(.-icon) {
                   border-left: 0;
                   padding-left: 0.4375rem;
@@ -78,7 +78,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-icon) {
+              & + .chi-button:not(.-icon) {
                 min-width: 2rem;
                 padding-left: 0.5625rem;
                 padding-right: 0.5625rem;
@@ -87,7 +87,7 @@ $icon-sizes: (
 
             &:hover,
             &.-hover {
-              &+.chi-button:focus {
+              & + .chi-button:focus {
                 &:not(.-icon) {
                   border-left: 0;
                   padding-left: 0.5625rem;
@@ -107,7 +107,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-icon) {
+              & + .chi-button:not(.-icon) {
                 min-width: 2.5rem;
                 padding-left: 0.75rem;
                 padding-right: 0.75rem;
@@ -116,7 +116,7 @@ $icon-sizes: (
 
             &:hover,
             &.-hover {
-              &+.chi-button:focus {
+              & + .chi-button:focus {
                 &:not(.-icon) {
                   border-left: 0;
                   padding-left: 0.75rem;
@@ -135,7 +135,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-icon) {
+              & + .chi-button:not(.-icon) {
                 min-width: 3rem;
                 padding-left: 0.9375rem;
                 padding-right: 0.9375rem;
@@ -144,7 +144,7 @@ $icon-sizes: (
 
             &:hover,
             &.-hover {
-              &+.chi-button:focus {
+              & + .chi-button:focus {
                 &:not(.-icon) {
                   border-left: 0;
                   padding-left: 0.9375rem;
@@ -163,7 +163,7 @@ $icon-sizes: (
             &:focus,
             &.-focus {
               &,
-              &+.chi-button:not(.-icon) {
+              & + .chi-button:not(.-icon) {
                 min-width: 3.5rem;
                 padding-left: 0.9375rem;
                 padding-right: 0.9375rem;
@@ -172,7 +172,7 @@ $icon-sizes: (
 
             &:hover,
             &.-hover {
-              &+.chi-button:focus {
+              & + .chi-button:focus {
                 &:not(.-icon) {
                   border-left: 0;
                   padding-left: 0.9375rem;
@@ -198,19 +198,19 @@ $icon-sizes: (
 
         &.-active {
           background-color: transparent;
-          border-color: $color-text-primary;
+          border-color: $pagination-active-border-color;
           box-shadow: none;
-          color: $color-text-primary;
+          color: $pagination-active-text-color;
         }
 
         &.-light {
           &:hover {
-            border-color: $color-border-base-dark;
+            border-color: $pagination-inverse-hover-border-color;
           }
 
           &.-active {
-            border-color: $color-border-secondary;
-            color: $color-text-secondary;
+            border-color: $pagination-inverse-active-border-color;
+            color: $pagination-inverse-active-text-color;
           }
         }
       }
@@ -219,7 +219,6 @@ $icon-sizes: (
     @each $type in map-keys($icon-sizes) {
       .chi-button {
         &.-#{$type} {
-
           &,
           &:hover,
           &:active,
