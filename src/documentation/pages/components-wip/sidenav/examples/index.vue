@@ -2,10 +2,10 @@
   div
     h2 Examples
 
-    <BaseLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <BaseLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
     <OpenOnHover />
 
-    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+    div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
       h2 Active Usage
       p.-text
         | The <code>-active</code> class can be applied to <code>ul.chi-sidenav__list &gt; li</code>

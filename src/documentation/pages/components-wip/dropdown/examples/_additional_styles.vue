@@ -2,7 +2,7 @@
 <ComponentExample title="Additional Styles" id="additional-styles" :tabs="exampleTabs">
   template(#example-description)
     p.-text The web component accepts the properties <code>color</code>, <code>variant</code>,
-    <code>size</code>, <code>uppercase</code> and <code>disabled</code> to modify the underlying chi-button element behavior and style.
+     | <code>size</code>, <code>uppercase</code> and <code>disabled</code> to modify the underlying chi-button element behavior and style.
   template(#example)
     .-d--flex
       <ClientOnly>

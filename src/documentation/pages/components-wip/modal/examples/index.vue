@@ -13,7 +13,7 @@
         | Enable scrolling if the height of the modal's content is larger than the modal's content container.
       <ScrollableRequirements />
       <ScrollableLongContent />
-      div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+      div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
         <ModalSubtitleLumenCenturyLink />
         <InverseLumenCenturyLink />
         <NoBorderLumenCenturyLink />

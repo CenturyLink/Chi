@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+    div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
       h2 Examples
       p.-text
         | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>

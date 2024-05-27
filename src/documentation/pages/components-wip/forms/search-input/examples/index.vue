@@ -5,7 +5,7 @@
     <client-only placeholder="loading...">
       BaseExample
       <Disabled />
-      <SizesPortal v-if="selectedTheme === 'portal'" />
+      <SizesPortal v-if="selectedTheme === 'portal' || selectedTheme === 'portalrebrand24'" />
       <SizesLumenCenturyLink v-else />
     </client-only>
 </template>
