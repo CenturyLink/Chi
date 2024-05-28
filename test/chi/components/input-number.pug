@@ -14,7 +14,7 @@ each size in sizes
             small='↓ State / style →'
           each style in styles
             th.-text--left.-pl--1= `${style}`
-        each state in ['initial', 'hover', 'focus', 'disabled']
+        each state in states
           tr
             td
               small= `${state}`
