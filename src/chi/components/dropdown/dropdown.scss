@@ -618,10 +618,19 @@ a {
       background-color: $dropdown-menu-item-hover-background-color;
     }
 
-    &:focus:not(.-disabled):not(.-active),
-    &.focus:not(.-disabled):not(.-active),
-    &:focus-visible:not(.-disabled):not(.-active) {
-      outline: 0.125rem solid $dropdown-menu-item-focus-outline;
+    &:not(.-disabled) {
+      &:focus,
+      &.focus,
+      &.-focus,
+      &:focus-visible {
+        &:not(.-active) {
+          outline: 0.125rem solid $dropdown-menu-item-focus-outline;
+        }
+        
+        &.-active {
+          outline: 0.125rem solid $dropdown-menu-item-active-border-color;
+        }
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
     h2 Examples
     p.-text To render accordion, use the class <code>chi-accordion</code>.
 
-    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
+    div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
       <BaseLumenCenturyLink />
       <NestedLumenCenturyLink />
       <MethodsLumenCenturyLink />
@@ -12,7 +12,7 @@
       <TruncatedLumenCenturyLink />
       <SizesLumenCenturyLink />
 
-    div(v-if="selectedTheme === 'portal'")
+    div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
       <BasePortal />
       <CardPortal />
       <NestedPortal />

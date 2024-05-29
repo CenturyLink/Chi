@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-05-21T16:48:50",
+  "timestamp": "2024-05-17T10:59:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.2",
@@ -2852,6 +2852,27 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": false,
+          "docs": "To display an additional helper text message below the Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "hover",
           "type": "boolean",
           "complexType": {
@@ -3137,6 +3158,42 @@
           "required": false
         },
         {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "ChiStates",
+            "resolved": "\"danger\" | \"success\" | \"warning\"",
+            "references": {
+              "ChiStates": {
+                "location": "import",
+                "path": "../../constants/states",
+                "id": "src/constants/states.ts::ChiStates"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": false,
+          "docs": "To define state color of Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "uppercase",
           "type": "boolean",
           "complexType": {
@@ -3387,12 +3444,17 @@
       ],
       "dependencies": [
         "chi-icon",
+        "chi-helper-message",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-dropdown": [
           "chi-icon",
+          "chi-helper-message",
           "chi-button"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
@@ -3623,6 +3685,7 @@
       "parts": [],
       "dependents": [
         "chi-date-picker",
+        "chi-dropdown",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea"
@@ -3635,6 +3698,9 @@
           "chi-icon"
         ],
         "chi-date-picker": [
+          "chi-helper-message"
+        ],
+        "chi-dropdown": [
           "chi-helper-message"
         ],
         "chi-number-input": [
@@ -6555,7 +6621,11 @@
         ],
         "chi-dropdown": [
           "chi-icon",
+          "chi-helper-message",
           "chi-button"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
@@ -6565,9 +6635,6 @@
           "chi-spinner",
           "chi-helper-message",
           "chi-copy-text"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
         ],
         "chi-copy-text": [
           "chi-button",
@@ -7570,7 +7637,11 @@
         ],
         "chi-dropdown": [
           "chi-icon",
+          "chi-helper-message",
           "chi-button"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
@@ -8113,7 +8184,11 @@
         ],
         "chi-dropdown": [
           "chi-icon",
+          "chi-helper-message",
           "chi-button"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
