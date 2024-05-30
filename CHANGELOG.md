@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 5.67.0 (May 30, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown web component now supports <code>helper-message</code> and <code>state</code> attributes.
+- Added: Dropdown <code>-active</code> menu items now supports focus state.
+
 ## 5.66.0 (May 24, 2024)
 
 ### Components
