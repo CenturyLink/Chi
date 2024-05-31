@@ -137,6 +137,11 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug',
   },
   {
+    to: `components/copy-text`,
+    label: 'Copy text',
+    source: 'vue',
+  },
+  {
     href: `components/data-table`,
     label: 'Data table',
     source: 'pug',
