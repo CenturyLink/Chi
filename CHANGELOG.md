@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.68.0 (June 3, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Copy text button dedicated component page.
+
 ## 5.67.0 (May 30, 2024)
 
 ### Components
