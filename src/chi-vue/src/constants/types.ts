@@ -141,6 +141,8 @@ export interface DataTableFilter {
       value: string;
       label: string;
       selected: true;
+      checked?: false;
+      id?: string;
     },
   ];
   value?: string;

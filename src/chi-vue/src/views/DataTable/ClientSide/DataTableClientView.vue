@@ -64,7 +64,12 @@
           <div class="chi-divider -vertical"></div>
           <DataTableViews :views="toolbar.viewsData" defaultView="view-2" />
           <div class="chi-divider -vertical"></div>
-          <DataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
+          <DataTableFilters
+            :portal="true"
+            :filtersData="toolbar.filtersData"
+            :customItems="toolbar.customItems"
+            @chiFiltersChange="(ev) => console.log(ev)"
+          >
             <template v-slot:customAdvanced>
               <div class="chi-form__item">
                 <chi-label for="input-1">City</chi-label>
@@ -91,7 +96,6 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <!-- <ColumnCustomization :columnsData="toolbar.columnsData" /> -->
             <TransferListButton />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
@@ -198,7 +202,6 @@ import DataTableToolbar from '../../../components/data-table-toolbar/DataTableTo
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
-import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleSaveViewConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 import SaveView from '../../../components/data-table-save-view/SaveView';

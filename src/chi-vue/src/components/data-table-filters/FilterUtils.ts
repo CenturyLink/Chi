@@ -29,23 +29,35 @@ export function getElementFilterData(
   return null;
 }
 
-export function updateFilterData(
-  originalFiltersData: DataTableFilter[],
-  newFilterData: { name: string; value?: string; checked?: boolean }
-) {
-  if (originalFiltersData && newFilterData) {
-    const originalFilter = originalFiltersData.find((filter: DataTableFilter) => filter.name === newFilterData.name);
+export function updateFilterData(filterData: DataTableFilter, store: any, overrideValue?: any) {
+  const isCheckbox = filterData.type === 'checkbox';
 
-    if (originalFilter) {
-      const valueData = originalFilter.type === 'checkbox' ? 'checked' : 'value';
+  if (isCheckbox && filterData.options?.length) {
+    updateOptionsFilterData(filterData, store, overrideValue);
+  } else {
+    const value = isCheckbox ? filterData.checked ?? overrideValue : filterData.value || '';
+    const payload = { id: getCleanFilterId(filterData.id), value };
 
-      if (originalFilter[valueData] !== newFilterData[valueData]) {
-        if (originalFilter.type === 'checkbox') {
-          originalFilter.checked = newFilterData.checked;
-        } else {
-          originalFilter.value = newFilterData.value;
-        }
-      }
-    }
+    store.updateFilterConfig(payload);
+    store.updateFilterConfigLive(payload);
   }
+}
+
+/**
+ * Updates the value of all options of a filter in the store
+ */
+function updateOptionsFilterData(filterData: DataTableFilter, store: any, overrideValue?: any) {
+  filterData.options?.forEach((option) => {
+    const payload = {
+      id: getCleanFilterId(option.id || filterData.id),
+      value: overrideValue ?? !!(option.checked || option.selected),
+    };
+
+    store.updateFilterConfig(payload);
+    store.updateFilterConfigLive(payload);
+  });
+}
+
+function getCleanFilterId(id: string) {
+  return id?.replace(/-desktop|-mobile/gi, '') || 'no-id';
 }
