@@ -257,6 +257,13 @@ const customItems = [
 export const exampleToolbar = {
   customItems: customItems,
   filtersData: exampleFilters,
+  transferListData: exampleColumns.map(({ name, label, locked, selected, wildcard }) => ({
+    value: name,
+    label,
+    locked: !!locked,
+    selected: !!selected,
+    wildcard: !!wildcard,
+  })),
   columnsData: {
     columns: exampleColumns,
   },

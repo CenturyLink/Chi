@@ -237,8 +237,9 @@ export interface SaveViewSave {
 
 //#region Transfer List
 export interface TransferList {
-  config: TransferListConfig;
+  config?: TransferListConfig;
   transferListData: TransferListItem[];
+  modal?: TransferListModalConfig | boolean;
 }
 
 export interface TransferListItem {
@@ -249,19 +250,26 @@ export interface TransferListItem {
   wildcard?: boolean;
 }
 
-interface TransferListConfig {
+export interface TransferListConfig {
   checkbox?: boolean;
   columns: {
     from: {
       title: string;
-      description: string;
+      description?: string;
     };
     to: {
       title: string;
-      description: string;
+      description?: string;
     };
   };
   searchInput?: boolean;
+}
+
+export interface TransferListModalConfig {
+  tooltipMsg?: string;
+  icon?: string;
+  title?: string;
+  ariaLabel?: string;
 }
 
 export interface TransferListColumnItemsActive {
@@ -272,9 +280,14 @@ export interface TransferListColumnItemsActive {
 export interface TransferListActions {
   selectedItems: Ref<TransferListColumnItemsActive>;
   transferList: Ref<TransferListItem[]>;
+  currentList: Ref<TransferListItem[]>;
+  originalTransferList: TransferListItem[];
   onClearSelection: () => void;
+  onResetTransferList: () => void;
+  onSaveTransferList: () => void;
+  onCancel: () => void;
   onSelectItem: (list: TransferListColumnItemsActive) => void;
-  onUpdateTransferList: (list: TransferListItem[]) => void;
+  onUpdateCurrentList: (list: TransferListItem[]) => void;
 }
 //#endregion
 
