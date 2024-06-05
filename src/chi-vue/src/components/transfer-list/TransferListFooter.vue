@@ -18,7 +18,7 @@
         <span :class="UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE">Reset</span>
       </div>
     </button>
-    <button :class="BUTTON_CLASSES.BUTTON" @click="handleCancel">Cancel</button>
+    <button :class="BUTTON_CLASSES.BUTTON" @click="onCancel">Cancel</button>
     <button :class="[BUTTON_CLASSES.BUTTON, BUTTON_CLASSES.PRIMARY]" @click="handleSave" :disabled="canSave()">
       Save
     </button>
@@ -27,37 +27,35 @@
 
 <script lang="ts" setup>
 import { inject } from 'vue';
-import { TransferListItem, TransferListActions } from '@/constants/types';
+import { TransferListActions } from '@/constants/types';
 import { Compare } from '@/utils/Compare';
 import { UTILITY_CLASSES, TRANSFER_LIST_CLASSES, BUTTON_CLASSES, ICON_CLASS } from '@/constants/classes';
 import { CHI_VUE_KEYS } from '@/constants/constants';
 import { TransferListEmits } from '@/constants/events';
 
 const TOOLTIP_MESSAGE = 'Reset to default columns and order';
-const props = defineProps<{
-  originalTransferListData: TransferListItem[];
-  savedTransferListData: TransferListItem[];
-}>();
 const emit = defineEmits<TransferListEmits>();
-const { transferList, onUpdateTransferList } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
+const {
+  transferList,
+  currentList,
+  originalTransferList,
+  onSaveTransferList,
+  onResetTransferList,
+  onClearSelection,
+  onCancel,
+} = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
-const canSave = () => {
-  return Compare.deepEqual(transferList.value, props.savedTransferListData);
-};
+const canSave = () => Compare.deepEqual(transferList.value, currentList.value);
 
-const canReset = () => {
-  return Compare.deepEqual(transferList.value, props.originalTransferListData);
-};
+const canReset = () => Compare.deepEqual(transferList.value, originalTransferList);
 
 const handleReset = () => {
-  emit('chiTransferListReset');
-};
-
-const handleCancel = () => {
-  onUpdateTransferList(props.savedTransferListData);
+  onResetTransferList();
+  onClearSelection();
 };
 
 const handleSave = () => {
-  emit('chiTransferListSave');
+  onSaveTransferList();
+  onClearSelection();
 };
 </script>

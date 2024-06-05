@@ -21,7 +21,7 @@ import { TRANSFER_LIST_CLASSES } from '@/constants/classes';
 import { CHI_VUE_KEYS } from '@/constants/constants';
 
 const props = defineProps<{ move: 'transfer' | 'sort' }>();
-const { transferList, selectedItems, onUpdateTransferList, onClearSelection } = inject(
+const { currentList, selectedItems, onUpdateCurrentList, onClearSelection } = inject(
   CHI_VUE_KEYS.TRANSFER_LIST
 ) as TransferListActions;
 
@@ -68,13 +68,13 @@ const getTransferListActions = () => {
 
 const handleTransferItems = (direction: 'from' | 'to') => {
   const items = selectedItems.value[direction];
-  const filteredList = transferList.value.filter(({ value }) => !items.includes(value));
+  const filteredList = currentList.value.filter(({ value }) => !items.includes(value));
   const itemsToMove = getCurrentList(direction)
     .filter(({ value }) => items.includes(value))
     .map((item) => ({ ...item, selected: !item.selected }));
   const newList = [...filteredList, ...itemsToMove];
 
-  onUpdateTransferList(newList);
+  onUpdateCurrentList(newList);
   onClearSelection();
 };
 
@@ -86,7 +86,7 @@ const handleTransferAll = (direction: 'from' | 'to') => {
   const mappedItems = unlockedItems.map((item) => ({ ...item, selected: !item.selected }));
   const newList = [...targetColumn, ...lockedItems, ...mappedItems];
 
-  onUpdateTransferList(newList);
+  onUpdateCurrentList(newList);
   onClearSelection();
 };
 
@@ -95,7 +95,7 @@ const onSortItems = (direction: 'up' | 'down') => {
   const sorted = sortTransferList({ direction, items: itemsToMove });
   const newList = [...getCurrentList('from'), ...sorted.flat()];
 
-  onUpdateTransferList(newList);
+  onUpdateCurrentList(newList);
 };
 
 const getItemStatus = (item: string, direction: 'up' | 'down') => {
@@ -130,6 +130,6 @@ const isSortButtonDisabled = (direction: 'up' | 'down') => {
 };
 
 const getCurrentList = (column: 'from' | 'to' = 'from') => {
-  return transferList.value.filter(({ selected }) => (column === 'to' ? selected : !selected));
+  return currentList.value.filter(({ selected }) => (column === 'to' ? selected : !selected));
 };
 </script>

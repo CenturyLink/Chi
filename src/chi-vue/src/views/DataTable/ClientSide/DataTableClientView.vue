@@ -91,8 +91,8 @@
         <template v-slot:end>
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
-            <!-- <ColumnCustomization :columnsData="toolbar.columnsData" /> -->
-            <TransferListButton />
+            <ColumnCustomization :columnsData="toolbar.columnsData" />
+            <TransferList modal :transferListData="transferListData" />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -193,9 +193,9 @@
 import { ref } from 'vue';
 import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
-import TransferListButton from '../DataTableTemplates/example-transfer-list.vue';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
+import TransferList from '@/components/transfer-list/TransferList.vue';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
@@ -211,6 +211,7 @@ const table = ref({
   body: exampleTableBody,
 });
 const toolbar = ref(exampleToolbar);
+const transferListData = exampleToolbar.transferListData;
 const saveViewConfig = ref(exampleSaveViewConfig);
 const isInfoPopoverActive = ref(false);
 const months = ref([

@@ -44,3 +44,13 @@ export const CHI_VUE_KEYS = {
   TRANSFER_LIST: Symbol('chi-transfer-List'),
 };
 //#endregion
+
+//#region Transfer List
+export const COLUMN_CUSTOMIZATION_TRIGGER = {
+  TOOLTIP_MSG: 'Customize columns',
+  ICON: 'table-column-settings',
+};
+export const COLUMN_CUSTOMIZATION_MODAL_TITLE = 'Customize columns';
+export const COLUMN_CUSTOMIZATION_AVAILABLE_COLUMNS = 'Available Columns';
+export const COLUMN_CUSTOMIZATION_SELECTED_COLUMNS = 'Selected Columns';
+//#endregion
