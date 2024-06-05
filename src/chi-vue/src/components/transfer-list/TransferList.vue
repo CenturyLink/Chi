@@ -3,19 +3,17 @@
     <TransferListComponent :config="transferListConfig" />
   </template>
   <template v-else>
-    <div class="fit-content">
-      <Tooltip :message="modalConfig.tooltipMsg">
-        <chi-button
-          ref="modalTrigger"
-          :data-target="`#modal-${uuid}`"
-          variant="flat"
-          type="icon"
-          @chiClick="() => modal.show()"
-        >
-          <chi-icon :icon="modalConfig.icon"></chi-icon>
-        </chi-button>
-      </Tooltip>
-    </div>
+    <Tooltip :message="modalConfig.tooltipMsg">
+      <chi-button
+        ref="modalTrigger"
+        :data-target="`#modal-${uuid}`"
+        variant="flat"
+        type="icon"
+        @chiClick="() => modal.show()"
+      >
+        <chi-icon :icon="modalConfig.icon"></chi-icon>
+      </chi-button>
+    </Tooltip>
     <div :class="[BACKDROP_CLASSES.BACKDROP, CLOSED_CLASS]">
       <div :class="BACKDROP_CLASSES.WRAPPER">
         <section
@@ -60,43 +58,17 @@ import TransferListComponent from './TransferListComponent.vue';
 import Tooltip from '..//tooltip/tooltip';
 import { uuid4 } from '../../utils/utils';
 import { BACKDROP_CLASSES, BUTTON_CLASSES, CLOSED_CLASS, CLOSE_CLASS, MODAL_CLASSES } from '@/constants/classes';
+import { DEFAULT_ITEMS_SELECTION, defaultConfig } from './default-config';
 
 declare const chi: any;
-
-import { DEFAULT_ITEMS_SELECTION, COLUMN_CUSTOMIZATION_CONFIG } from './default-config';
 
 const props = defineProps<TransferList>();
 const emit = defineEmits<TransferListEmits>();
 const uuid = uuid4();
-
 const modalTrigger = ref(null);
-
 let modalConfig = props.modal as TransferListModalConfig;
-let transferListConfig = props.config || COLUMN_CUSTOMIZATION_CONFIG.transferList;
+let transferListConfig = props.config || defaultConfig.transferList;
 let modal;
-
-onBeforeMount(() => {
-  if (props.modal === true) {
-    applyColumnCustomizationConfig();
-  }
-});
-/**
- * If prop modal is used as boolean, applies column customization configuration
- */
-onMounted(() => {
-  if (props.modal) {
-    modal = chi.modal(modalTrigger.value);
-  }
-});
-
-onUnmounted(() => {
-  modal?.dispose();
-});
-
-const applyColumnCustomizationConfig = () => {
-  modalConfig = COLUMN_CUSTOMIZATION_CONFIG.modal as TransferListModalConfig;
-  transferListConfig = COLUMN_CUSTOMIZATION_CONFIG.transferList;
-};
 
 /**
  * Saved state of the component
@@ -110,10 +82,15 @@ const currentList = ref<TransferListItem[]>(props.transferListData);
 
 const selectedItems = ref<TransferListColumnItemsActive>(DEFAULT_ITEMS_SELECTION);
 
+const applyColumnCustomizationConfig = () => {
+  modalConfig = defaultConfig.modal as TransferListModalConfig;
+  transferListConfig = defaultConfig.transferList;
+};
+
 const onSaveTransferList = () => {
   transferList.value = currentList.value;
-
   modal?.hide();
+
   emit('chiTransferListSave', currentList.value);
 };
 
@@ -127,28 +104,39 @@ const onResetTransferList = () => {
 /**
  * Updates current state of the component
  */
-const onUpdateCurrentList = (list: TransferListItem[]) => {
-  currentList.value = list;
-};
+const onUpdateCurrentList = (list: TransferListItem[]) => (currentList.value = list);
 
 const onCancel = () => {
   onUpdateCurrentList(transferList.value);
   onClearSelection();
   modal?.hide();
+
   emit('chiTransferListCancel');
 };
+const onSelectItem = (list: TransferListColumnItemsActive) => (selectedItems.value = list);
 
-const onSelectItem = (list: TransferListColumnItemsActive) => {
-  selectedItems.value = list;
-};
+const onClearSelection = () => (selectedItems.value = DEFAULT_ITEMS_SELECTION);
 
-const onClearSelection = () => {
-  selectedItems.value = DEFAULT_ITEMS_SELECTION;
-};
-
-watch(currentList, () => {
-  emit('chiTransferListChange', currentList.value);
+//#region LifeCycle
+/**
+ * If prop modal is used as boolean, applies column customization configuration
+ */
+onBeforeMount(() => {
+  if (props.modal === true) {
+    applyColumnCustomizationConfig();
+  }
 });
+
+onMounted(() => {
+  if (props.modal) {
+    modal = chi.modal(modalTrigger.value);
+  }
+});
+
+onUnmounted(() => modal?.dispose());
+//#endregioncómo
+
+watch(currentList, () => emit('chiTransferListChange', currentList.value));
 
 provide(CHI_VUE_KEYS.TRANSFER_LIST, {
   originalTransferList: readonly(props.transferListData),

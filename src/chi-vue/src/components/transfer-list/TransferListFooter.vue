@@ -45,13 +45,9 @@ const {
   onCancel,
 } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
-const canSave = () => {
-  return Compare.deepEqual(transferList.value, currentList.value);
-};
+const canSave = () => Compare.deepEqual(transferList.value, currentList.value);
 
-const canReset = () => {
-  return Compare.deepEqual(transferList.value, originalTransferList);
-};
+const canReset = () => Compare.deepEqual(transferList.value, originalTransferList);
 
 const handleReset = () => {
   onResetTransferList();

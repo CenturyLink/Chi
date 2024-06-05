@@ -3,7 +3,7 @@
     <div :class="TRANSFER_LIST_CLASSES.CONTENT">
       <TransferListColumn
         type="from"
-        :title="config?.columns?.from?.title || ''"
+        :title="config?.columns?.from?.title ?? ''"
         :description="config.columns.from.description"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"
@@ -11,7 +11,7 @@
       <TransferListActions move="transfer" />
       <TransferListColumn
         type="to"
-        :title="config.columns.to.title || ''"
+        :title="config.columns.to.title ?? ''"
         :description="config.columns.to.description"
         :checkbox="config.checkbox"
         :searchInput="config.searchInput"

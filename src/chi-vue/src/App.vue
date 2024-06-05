@@ -11,12 +11,7 @@
     <SearchInputView />
     <SaveViewView />
     <CheckboxView />
-    <TransferListView
-      @chiTransferListSave="(ev) => console.log('chiTransferListSave', ev)"
-      @chiTransferListReset="(ev) => console.log('chiTransferListReset', ev)"
-      @chiTransferListChange="(ev) => console.log('chiTransferListChange', ev)"
-      @chiTransferListCancel="(ev) => console.log('chiTransferListCancel', ev)"
-    />
+    <TransferListView />
   </div>
 </template>
 

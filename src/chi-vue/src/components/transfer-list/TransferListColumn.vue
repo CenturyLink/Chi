@@ -68,13 +68,9 @@ const isToColumn = props.type === 'to';
 const id = uuid4();
 const { currentList, selectedItems, onSelectItem } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
-const handleFilter = (value: string) => {
-  filter.value = value;
-};
+const handleFilter = (value: string) => (filter.value = value);
 
-const handleClearFilter = () => {
-  filter.value = '';
-};
+const handleClearFilter = () => (filter.value = '');
 
 const handleSelectItem = (event: Event) => {
   const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
