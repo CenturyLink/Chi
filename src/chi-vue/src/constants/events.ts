@@ -120,5 +120,6 @@ export type TransferListEmits = {
   (event: 'chiTransferListChange', payload?: TransferListItem[]): void;
   (event: 'chiTransferListReset', payload?: TransferListItem[]): void;
   (event: 'chiTransferListSave', payload?: TransferListItem[]): void;
+  (event: 'chiTransferListCancel'): void;
 };
 //#endregion
