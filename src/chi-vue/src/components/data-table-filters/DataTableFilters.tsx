@@ -5,7 +5,7 @@ import {
   DataTableFiltersData,
   DataTableFormElementFilters,
 } from '@/constants/types';
-import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
+import { copyArrayOfObjects, uuid4 } from '@/utils/utils';
 import {
   BUTTON_CLASSES,
   CHECKBOX_CLASSES,

@@ -65,7 +65,6 @@
           <DataTableViews :views="toolbar.viewsData" defaultView="view-2" />
           <div class="chi-divider -vertical"></div>
           <DataTableFilters
-            :portal="true"
             :filtersData="toolbar.filtersData"
             :customItems="toolbar.customItems"
             @chiFiltersChange="(ev) => console.log(ev)"
