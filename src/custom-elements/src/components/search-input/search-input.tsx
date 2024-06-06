@@ -1,5 +1,6 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Fragment, Method, Prop, State, Watch, h } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
+import { CHI_STATES, ChiStates } from '../../constants/states';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
 import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
 import { cleanUndefinedProps } from '../../utils/utils';
@@ -55,6 +56,14 @@ export class SearchInput {
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
   @Prop({ mutable: true, reflect: true }) menuItems: DropdownMenuItem[];
+  /**
+   * To define state color of Search input
+   */
+  @Prop({ reflect: true }) state: ChiStates;
+  /**
+   * To display an additional helper text message below the Text input
+   */
+  @Prop({ reflect: true }) helperMessage: string;
 
   @Element() el: HTMLElement;
 
@@ -109,6 +118,15 @@ export class SearchInput {
     }
   }
 
+  @Watch('state')
+  stateValidation(newValue: ChiStates) {
+    const validValues = CHI_STATES.join(', ');
+
+    if (newValue && !CHI_STATES.includes(newValue)) {
+      throw new Error(`${newValue} is not a valid state for input. If provided, valid values are: ${validValues}. `);
+    }
+  }
+
   /**
    * Show the autocomplete menu list
    */
@@ -138,6 +156,7 @@ export class SearchInput {
 
   componentWillLoad(): void {
     this.sizeValidation(this.size);
+    this.stateValidation(this.state);
   }
 
   //#endregion
@@ -253,7 +272,15 @@ export class SearchInput {
     const visibleItems = this.visibleItems ?? null;
 
     return (
-      <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
+      <chi-dropdown
+        id="dropdown-autocomplete"
+        position="bottom"
+        state={this.state}
+        helper-message={this.helperMessage}
+        preventItemSelected
+        fluid
+        visibleItems={visibleItems}
+      >
         {trigger}
         {this.menuItemsFiltered?.map((item) => {
           const uuid = uuid4();
@@ -279,6 +306,19 @@ export class SearchInput {
     }
   };
 
+  _getHelperMessage() {
+    return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
+  }
+
+  _addHelperMessage(input: HTMLElement) {
+    return (
+      <Fragment>
+        {input}
+        {this._getHelperMessage()}
+      </Fragment>
+    );
+  }
+
   render() {
     const isAutocomplete = this._isAutocomplete();
     const searchInputElement = (
@@ -287,6 +327,7 @@ export class SearchInput {
         class={`
           chi-input chi-search__input
           ${this.size ? `-${this.size}` : ''}
+          ${this.state ? `-${this.state}` : ''}
           ${this._status ? `-${this._status}` : ''}
         `}
         placeholder={this.placeholder || ''}
@@ -327,13 +368,19 @@ export class SearchInput {
       </button>
     );
 
-    const input = (
+
+    let input = (
       <div class="chi-input__wrapper -icon--right" slot="trigger">
         {searchInputElement}
         {searchXIcon}
         {searchIcon}
       </div>
     );
+
+    if (this.helperMessage && !isAutocomplete) {
+      input = this._addHelperMessage(input);
+    }
+
     const searchInput = isAutocomplete ? this._dropdownAutocomplete(input) : input;
 
     return searchInput;
