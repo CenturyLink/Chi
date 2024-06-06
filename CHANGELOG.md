@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.69.0 (June 6, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Phone input accessibility page.
+
 ## 5.68.0 (June 3, 2024)
 
 ### Documentation
