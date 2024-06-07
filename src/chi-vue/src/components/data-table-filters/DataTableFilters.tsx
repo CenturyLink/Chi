@@ -5,7 +5,7 @@ import {
   DataTableFiltersData,
   DataTableFormElementFilters,
 } from '@/constants/types';
-import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
+import { copyArrayOfObjects, uuid4 } from '@/utils/utils';
 import {
   BUTTON_CLASSES,
   CHECKBOX_CLASSES,
@@ -18,7 +18,7 @@ import {
   SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { getElementFilterData } from './FilterUtils';
+import { getElementFilterData, updateFilterData } from './FilterUtils';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
@@ -51,13 +51,7 @@ export default class DataTableFilters extends Vue {
   filtersDataChanged(newFilterData: DataTableFiltersData, oldFilterData: DataTableFiltersData) {
     if (!Compare.deepEqual(newFilterData, oldFilterData)) {
       newFilterData.filters?.forEach((currentValue: DataTableFilter) => {
-        const filterPayload = {
-          id: currentValue.id,
-          value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-        };
-
-        this.storeModule.updateFilterConfig(filterPayload);
-        this.storeModule.updateFilterConfigLive(filterPayload);
+        updateFilterData(currentValue, this.storeModule);
       });
 
       this._filtersData = newFilterData;
@@ -78,24 +72,25 @@ export default class DataTableFilters extends Vue {
       this.storeModule = useFilterStore();
     }
 
-    const advancedFilters = this.filtersData.filters?.filter((filter: DataTableFilter) => filter.advanced);
+    this._filtersData = {
+      filters: copyArrayOfObjects(this.filtersData.filters),
+    };
 
-    if (this._filtersData) {
-      this._filtersData = {
-        filters: copyArrayOfObjects(this.filtersData.filters),
-      };
-    }
+    // set id for each of the checkboxes
+    this._filtersData.filters.forEach((filter) => {
+      if (filter.type === 'checkbox' && filter.options?.length) {
+        filter.options.forEach((option, idx) => {
+          option.id = option.id ?? `${filter.id}-option-${idx}`;
+        });
+      }
+    });
 
-    this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
+    this._advancedFiltersData = copyArrayOfObjects(
+      this.filtersData.filters?.filter((filter: DataTableFilter) => filter.advanced)
+    );
 
     this.filtersData.filters?.forEach((currentValue: DataTableFilter) => {
-      const filterPayload = {
-        id: currentValue.id,
-        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-      };
-
-      this.storeModule.updateFilterConfig(filterPayload);
-      this.storeModule.updateFilterConfigLive(filterPayload);
+      updateFilterData(currentValue, this.storeModule);
     });
   }
 
@@ -242,10 +237,17 @@ export default class DataTableFilters extends Vue {
   }
 
   _getUpdatedFiltersObject() {
-    const filters = this.filterElementValue;
+    const filters = this.filterElementValueLive;
 
     return this._filtersData
       ? this._filtersData.filters.map((filter: DataTableFilter) => {
+          if (filter.type === 'checkbox' && filter.options?.length) {
+            return {
+              ...filter,
+              options: filter.options.map((option) => ({ ...option, checked: filters[option.id as string] })),
+            };
+          }
+
           if (filter.id) {
             const value = filters[filter.id];
 
