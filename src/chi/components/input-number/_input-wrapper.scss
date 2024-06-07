@@ -11,7 +11,7 @@ $sizes: (
     right: $number-input-xs-button-right,
     top: $number-input-xs-button-top,
     bottom: $number-input-xs-button-bottom,
-    background-size: $number-input-xs-button-icon-background-size
+    background-size: $number-input-xs-button-icon-background-size,
   ),
   sm: (
     height: $number-input-sm-height,
@@ -22,7 +22,7 @@ $sizes: (
     right: $number-input-sm-button-right,
     top: $number-input-sm-button-top,
     bottom: $number-input-sm-button-bottom,
-    background-size: $number-input-sm-button-icon-background-size
+    background-size: $number-input-sm-button-icon-background-size,
   ),
   md: (
     height: $number-input-md-height,
@@ -34,7 +34,7 @@ $sizes: (
     right: $number-input-md-button-right,
     top: $number-input-md-button-top,
     bottom: $number-input-md-button-bottom,
-    background-size: $number-input-md-button-icon-background-size
+    background-size: $number-input-md-button-icon-background-size,
   ),
   lg: (
     height: $number-input-lg-height,
@@ -46,7 +46,7 @@ $sizes: (
     right: $number-input-lg-button-right,
     top: $number-input-lg-button-top,
     bottom: $number-input-lg-button-bottom,
-    background-size: $number-input-lg-button-icon-background-size
+    background-size: $number-input-lg-button-icon-background-size,
   ),
   xl: (
     height: $number-input-xl-height,
@@ -58,8 +58,8 @@ $sizes: (
     right: $number-input-xl-button-right,
     top: $number-input-xl-button-top,
     bottom: $number-input-xl-button-bottom,
-    background-size: $number-input-xl-button-icon-background-size
-  )
+    background-size: $number-input-xl-button-icon-background-size,
+  ),
 );
 
 $expanded-sizes: (
@@ -72,7 +72,7 @@ $expanded-sizes: (
     icon-font-size: $number-input-expanded-xs-button-icon-size,
     icon-height: $number-input-expanded-xs-button-icon-size,
     icon-line-height: $number-input-expanded-xs-button-icon-size,
-    icon-width: $number-input-expanded-xs-button-icon-size
+    icon-width: $number-input-expanded-xs-button-icon-size,
   ),
   sm: (
     width: $number-input-expanded-sm-width,
@@ -83,7 +83,7 @@ $expanded-sizes: (
     icon-font-size: $number-input-expanded-sm-button-icon-size,
     icon-height: $number-input-expanded-sm-button-icon-size,
     icon-line-height: $number-input-expanded-sm-button-icon-size,
-    icon-width: $number-input-expanded-sm-button-icon-size
+    icon-width: $number-input-expanded-sm-button-icon-size,
   ),
   md: (
     width: $number-input-expanded-md-width,
@@ -94,7 +94,7 @@ $expanded-sizes: (
     icon-font-size: $number-input-expanded-md-button-icon-size,
     icon-height: $number-input-expanded-md-button-icon-size,
     icon-line-height: $number-input-expanded-md-button-icon-size,
-    icon-width: $number-input-expanded-md-button-icon-size
+    icon-width: $number-input-expanded-md-button-icon-size,
   ),
   lg: (
     width: $number-input-expanded-lg-width,
@@ -105,7 +105,7 @@ $expanded-sizes: (
     icon-font-size: $number-input-expanded-lg-button-icon-size,
     icon-height: $number-input-expanded-lg-button-icon-size,
     icon-line-height: $number-input-expanded-lg-button-icon-size,
-    icon-width: $number-input-expanded-lg-button-icon-size
+    icon-width: $number-input-expanded-lg-button-icon-size,
   ),
   xl: (
     width: $number-input-expanded-xl-width,
@@ -116,8 +116,8 @@ $expanded-sizes: (
     icon-font-size: $number-input-expanded-xl-button-icon-size,
     icon-height: $number-input-expanded-xl-button-icon-size,
     icon-line-height: $number-input-expanded-xl-button-icon-size,
-    icon-width: $number-input-expanded-xl-button-icon-size
-  )
+    icon-width: $number-input-expanded-xl-button-icon-size,
+  ),
 );
 
 .chi-number-input {
@@ -198,7 +198,6 @@ $expanded-sizes: (
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-
       input {
         &[type='number'] {
           &.chi-input {
@@ -277,6 +276,7 @@ $expanded-sizes: (
               }
 
               .chi-icon {
+                color: $number-input-arrow-icon-color;
                 height: $number-input-expanded-md-button-icon-size;
                 width: $number-input-expanded-md-button-icon-size;
               }
@@ -340,4 +340,3 @@ $expanded-sizes: (
     }
   }
 }
-

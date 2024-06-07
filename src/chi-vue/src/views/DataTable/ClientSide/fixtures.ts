@@ -212,6 +212,14 @@ const exampleFilters = {
       advanced: true,
     },
     {
+      name: 'checkboxListAdvanced',
+      id: 'checkboxes-list',
+      label: 'Advanced Checkbox List',
+      type: 'checkbox',
+      advanced: true,
+      options: [{ label: 'First checkbox', checked: true }, { label: 'Second checkbox' }, { label: 'Third checkbox' }],
+    },
+    {
       name: 'input',
       placeholder: 'Input filter',
       type: 'input',
@@ -249,6 +257,13 @@ const customItems = [
 export const exampleToolbar = {
   customItems: customItems,
   filtersData: exampleFilters,
+  transferListData: exampleColumns.map(({ name, label, locked, selected, wildcard }) => ({
+    value: name,
+    label,
+    locked: !!locked,
+    selected: !!selected,
+    wildcard: !!wildcard,
+  })),
   columnsData: {
     columns: exampleColumns,
   },

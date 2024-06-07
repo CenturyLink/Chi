@@ -257,13 +257,20 @@
     }
   }
 
+  .chi-header__brandbar {
+    background: $header-brandbar-background;
+    display: flex;
+    height: $header-brandbar-height;
+    width: 100%;
+  }
+
   .chi-header__navbar {
     background-color: $header-navbar-background-color;
     background-image: $header-navbar-background-image;
-    border-top: 0.0625rem solid $header-navbar-border-color;
+    border-top: $header-navbar-border-top;
     color: $header-navbar-text-color;
     display: flex;
-    padding: 0 1.5rem;
+    padding: 0 0.5rem;
     width: 100%;
 
     a {
@@ -277,7 +284,7 @@
       line-height: $line-height;
       list-style: none;
       margin: 0.25rem 0;
-      padding: 0;
+      padding: 0 0.5rem;
 
       li {
         border-right: 0.0625rem solid $header-navbar-divider-color;
@@ -322,20 +329,20 @@
     .chi-tabs {
       align-items: center;
       display: flex;
+      gap: 0;
+      padding: 0;
 
-      &:not(.-vertical) {
+      &:not(.-vertical):not(.-responsive) {
+        &,
         &.-xs {
           height: 2rem;
 
-          > li {
-            margin-left: 0;
-            margin-right: 1.5rem;
+          & > li {
+            margin: 0;
 
-            @include respond-to(xl) {
-              margin-right: 2rem;
-            }
-
-            > a {
+            & > a,
+            .chi-dropdown__trigger {
+              color: $header-navbar-link-color;
               font-size: $header-navbar-tab-xs-link-font-size;
               font-weight: $header-navbar-tab-xs-link-font-weight;
               padding: $header-navbar-tab-xs-link-padding;
@@ -343,22 +350,26 @@
             }
 
             &:not(.-active) {
-              > a {
+              & > a {
                 &:hover {
                   text-decoration: $header-navbar-tab-xs-link-hover-text-decoration;
                 }
               }
-            }
-          }
-        }
 
-        li {
-          .chi-dropdown {
-            .chi-dropdown__trigger {
-              align-items: center;
-              display: flex;
-              padding: 0.25rem 0;
-              text-decoration: none;
+              & > a,
+              .chi-dropdown__trigger {
+                &:hover {
+                  background-color: $header-navbar-tab-hover-background-color;
+                }
+              }
+            }
+
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                align-items: center;
+                display: flex;
+                text-decoration: none;
+              }
             }
           }
         }
@@ -425,11 +436,46 @@
           display: flex;
           font-size: $font-size-xs;
           line-height: $line-height-sm;
+          text-decoration: none;
+        }
+
+        & > li {
+          & > a {
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
 
       .chi-tabs {
         align-self: center;
+
+        &,
+        &.-inverse {
+          & > li {
+            &.chi-sliding-border {
+              background-color: $header-navbar-tab-active-border-color;
+            }
+          }
+        }
+
+        &:not(.-vertical) {
+          &:not(.-responsive) {
+            &:not(.-sliding) {
+              &:not(.-inverse),
+              &.-inverse {
+                li {
+                  &.-active {
+                    & > a {
+                      box-shadow: $header-navbar-tab-active-box-shadow;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -471,34 +517,8 @@
       min-height: $header-lg-navbar-height;
 
       a {
-        font-size: $font-size-base;
+        font-size: $header-lg-navbar-font-size;
         line-height: $line-height-sm;
-      }
-
-      .chi-tabs {
-        &.-xs {
-          li {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
-
-          &:not(.-vertical):not(.-responsive) {
-            height: 2rem;
-          }
-        }
-
-        &:not(.-vertical) {
-          &.-sm {
-            .chi-dropdown {
-              .chi-dropdown__trigger {
-                padding: 0.5rem 0;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -547,39 +567,44 @@
       }
 
       .chi-tabs {
+        gap: 1rem;
+
         &:not(.-vertical) {
-          li {
-            @include respond-to(xl) {
-              &:not(:first-child) {
-                margin-left: 3.5rem;
+          & > a,
+          .chi-dropdown__trigger {
+            font-size: $header-xl-navbar-tab-link-font-size;
+            font-weight: $font-weight-semi-bold;
+          }
+
+          &,
+          &.-sm {
+            li {
+              & > a {
+                line-height: 1.25rem;
+                padding: 0.625rem 1.5rem;
               }
             }
 
-            & > a {
-              font-size: $header-xl-navbar-tab-link-font-size;
-              font-weight: $font-weight-semi-bold;
-            }
-          }
-
-          &.-sm {
             .chi-dropdown {
               .chi-dropdown__trigger {
-                padding: 0.875rem 0;
+                padding: 0.625rem 1.5rem;
               }
             }
           }
-        }
-      }
-    }
-  }
 
-  &.-xl {
-    .chi-header__navbar {
-      .chi-tabs {
-        &:not(.-vertical) {
-          &.-sm {
-            &:not(.-vertical):not(.-responsive) {
-              height: 3rem;
+          &:not(.-responsive) {
+            &.-sm {
+              height: 2.5rem;
+            }
+
+            &,
+            &.-xs {
+              & > li {
+                & > a,
+                .chi-dropdown__trigger {
+                  font-size: $header-xl-navbar-tab-link-font-size;
+                }
+              }
             }
           }
         }
@@ -590,29 +615,10 @@
         padding-top: 1rem;
 
         .chi-dropdown__menu-item {
-          font-size: $font-size-lg;
+          font-size: $font-size-md;
           height: 2.5rem;
           padding-left: 2rem;
           padding-right: 2rem;
-        }
-      }
-    }
-  }
-
-  &.-lg,
-  &.-xl {
-    .chi-header__navbar {
-      .chi-dropdown__menu {
-        &::before {
-          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
-          border-style: solid;
-          border-width: 0.625rem 0.75rem 0 0.75rem;
-          content: '';
-          height: 1rem;
-          left: 1rem;
-          position: absolute;
-          top: 0;
-          width: 1rem;
         }
       }
     }

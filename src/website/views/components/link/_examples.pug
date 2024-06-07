@@ -36,6 +36,25 @@ p.-text
     :code(lang="html")
       <a class="chi-link -disabled" href="#">Link</a>
 
+h3 No Underline
+p.-text
+  | Use to remove a link's underline.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' no-underline) Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-no-underline
+      li.-active
+        a(href=`#webcomponent-no-underline`) Web Component
+      li
+        a(href=`#html-no-underline`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-no-underline
+    :code(lang="html")
+      <chi-link href="#" no-underline>Link</chi-link>
+  .chi-tabs-panel#html-no-underline
+    :code(lang="html")
+      <a class="chi-link -no-underline" href="#">Link</a>
+
 h3 No Underline on Hover
 p.-text
   | Use to remove a link's underline on hover.

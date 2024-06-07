@@ -7,6 +7,15 @@ $state-colors: (success: green, warning: yellow, danger: red);
 $font-family-base: 'Gotham', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
+// Font size - text
+$font-size-xl: 1.125rem; // 18px
+$font-size-lg: 1rem; // 16px
+$font-size-md: 0.875rem; // 14px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-xs: 0.75rem; // 12px
+$font-size-2xs: 0.6875rem; // 11px
+$font-size-base: $font-size-md;
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -15,6 +24,13 @@ $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
+
+// Line height
+$line-height: 1.25rem; // 20px
+$line-height-xl: 1.75rem; // 28px
+$line-height-lg: 1.5rem; // 24px
+$line-height-md: 1.25rem; // 20px
+$line-height-sm: 1rem; // 16px
 
 // System color
 // sass-lint:disable no-color-hex
@@ -324,6 +340,8 @@ $alert-background-color:                    $color-background-white;
 $alert-accent-border-color:                 $color-text-base;
 $alert-accent-border-width:                 0.25rem;
 $alert-border-color:                        $color-border-base-dark;
+$alert-center-accent-border-height:         0;
+$alert-border-radius:                       0;
 $alert-title-text-color:                    $color-text-base;
 $alert-banner-title-text-color:             $color-text-base;
 $alert-text-color:                          $color-text-base;
@@ -396,6 +414,7 @@ $app-layout-header-line-height:             $line-height-xl;
 $app-layout-sub-header-font-size:           $font-size-xl;
 $app-layout-sub-header-font-weight:         $font-weight-semi-bold;
 $app-layout-sub-header-border-color:        $color-grey-50;
+$app-layout-header-background-title-color:  $color-navy-100;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -545,6 +564,7 @@ $bulk-actions-button-icon-color:            $color-grey-80;
 
 // Button
 $button-border-radius:                      $border-radius-base;
+$button-font-weight:                        $font-weight-semi-bold;
 $button-solid-background-color:             $color-background-white;
 $button-solid-border-color:                 $color-border-primary;
 $button-solid-border-width:                 0.125rem;
@@ -555,10 +575,12 @@ $button-solid-hover-background-color:       $color-background-white;
 $button-solid-hover-border-color:           $color-navy-100;
 $button-solid-hover-text-color:             $color-navy-100;
 $button-solid-hover-icon-color:             $button-solid-icon-color;
+$button-solid-hover-scale:                  1;
 $button-solid-active-icon-color:            inherit;
 $button-solid-focus-background-color:       $color-background-white;
 $button-solid-focus-border-color:           $color-border-primary;
-$button-solid-focus-outline:                $focus-color;
+$button-solid-focus-outline:                0.125rem solid $focus-color;
+$button-solid-focus-outline-offset:         0.0625rem;
 $button-solid-active-background-color:      $color-background-white;
 $button-solid-active-border-color:          $color-navy-100;
 $button-solid-active-text-color:            $color-navy-100;
@@ -601,6 +623,7 @@ $button-flat-disabled-text-color:           $color-text-muted-light;
 $button-flat-disabled-icon-color:           $color-text-base;
 $button-flat-disabled-opacity:              $opacity-60;
 $button-flat-text-color:                    $color-text-base;
+$button-flat-icon-color:                    inherit;
 $button-float-border-color:                 $color-border-primary;
 $button-float-hover-border-color:           $color-navy-100;
 $button-close-background-color:             transparent;
@@ -610,11 +633,13 @@ $button-close-hover-icon-opacity:           $opacity-100;
 
 $button-primary-solid-background-color:     $color-background-primary;
 $button-primary-solid-border-color:         $color-border-primary;
+$button-primary-solid-border-radius:        $button-border-radius;
 $button-primary-solid-text-color:           $color-text-white;
 $button-primary-solid-hover-background-color: $color-navy-100;
 $button-primary-solid-hover-border-color:   $color-navy-100;
 $button-primary-solid-active-background-color: $color-navy-100;
 $button-primary-solid-active-border-color:  $color-navy-100;
+$button-primary-solid-focus-outline:        $button-solid-focus-outline;
 $button-primary-outline-background-color:   transparent;
 $button-primary-outline-text-color:         $color-text-primary;
 $button-primary-outline-hover-text-color:   $color-navy-100;
@@ -634,11 +659,13 @@ $button-primary-flat-active-background-color: transparent;
 
 $button-secondary-solid-background-color:     $color-background-secondary;
 $button-secondary-solid-border-color:         $color-border-secondary;
+$button-secondary-solid-border-radius:        $button-border-radius;
 $button-secondary-solid-text-color:           $color-text-black;
 $button-secondary-solid-hover-background-color: $color-background-secondary-dark;
 $button-secondary-solid-hover-border-color:   $color-background-secondary-dark;
 $button-secondary-solid-active-background-color: $color-background-secondary-darker;
 $button-secondary-solid-active-border-color:  $color-background-secondary-darker;
+$button-secondary-solid-focus-outline:        $button-solid-focus-outline;
 $button-secondary-outline-background-color:   transparent;
 $button-secondary-outline-text-color:         $color-text-secondary;
 $button-secondary-outline-hover-text-color:   $color-text-secondary-dark;
@@ -658,11 +685,13 @@ $button-secondary-flat-active-background-color: transparent;
 
 $button-dark-solid-background-color:        $color-background-dark;
 $button-dark-solid-border-color:            $color-border-dark;
+$button-dark-solid-border-radius:           $button-border-radius;
 $button-dark-solid-text-color:              $color-text-white;
 $button-dark-solid-hover-background-color:  $color-background-black;
 $button-dark-solid-hover-border-color:      $color-border-black;
 $button-dark-solid-active-background-color: $color-background-black;
 $button-dark-solid-active-border-color:     $color-border-black;
+$button-dark-solid-focus-outline:           $button-solid-focus-outline;
 $button-dark-outline-background-color:      transparent;
 $button-dark-outline-text-color:            $color-text-base;
 $button-dark-outline-hover-text-color:      $color-text-black;
@@ -682,11 +711,13 @@ $button-dark-flat-active-background-color: transparent;
 
 $button-danger-solid-background-color:      $color-background-danger;
 $button-danger-solid-border-color:          $color-border-danger;
+$button-danger-solid-border-radius:         $button-border-radius;
 $button-danger-solid-text-color:            $color-text-white;
 $button-danger-solid-hover-background-color: $color-background-danger-dark;
 $button-danger-solid-hover-border-color:    $color-border-danger-dark;
 $button-danger-solid-active-background-color: $color-background-danger-darker;
 $button-danger-solid-active-border-color:   $color-border-danger-darker;
+$button-danger-solid-focus-outline:         $button-solid-focus-outline;
 $button-danger-outline-background-color:    transparent;
 $button-danger-outline-text-color:          $color-text-danger;
 $button-danger-outline-hover-text-color:    $color-text-danger-dark;
@@ -706,11 +737,13 @@ $button-danger-flat-active-background-color: transparent;
 
 $button-light-solid-background-color:       $color-background-white;
 $button-light-solid-border-color:           $color-border-white;
+$button-light-solid-border-radius:          $button-border-radius;
 $button-light-solid-text-color:             $color-text-base;
 $button-light-solid-hover-background-color: $color-grey-20;
 $button-light-solid-hover-border-color:     $color-border-base-dark;
 $button-light-solid-active-background-color: $color-grey-30;
 $button-light-solid-active-border-color:    $color-grey-40;
+$button-light-solid-focus-outline:          $button-solid-focus-outline;
 $button-light-outline-background-color:     transparent;
 $button-light-outline-text-color:           $color-text-white;
 $button-light-outline-hover-text-color:     $color-grey-25;
@@ -805,6 +838,7 @@ $button-group-border-width:                 $button-solid-border-width;
 // Card
 $card-background-color:                     $color-background-white;
 $card-border:                               0.0625rem solid rgba($color-black, 0.12);
+$card-border-radius:                        0;
 $card-active-border-color:                  $color-border-primary;
 $card-active-title-text-color:              $color-text-primary;
 $card-active-icon-color:                    $color-text-primary;
@@ -858,6 +892,12 @@ $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
 $checkbox-label-disabled-text-color:        $color-text-muted;
 $checkbox-label-disabled-opacity:           $opacity-60;
+$checkbox-label-before-top:                 0.125rem;
+$checkbox-label-after-top:                  0.3125rem;
+$checkbox-label-indeterminate-after-top:    0.5625rem !important;
+
+// Code
+$code-font-size:                            $font-size-sm;
 
 // CSS Grid
 $css-grid-gap:                              1rem;
@@ -865,6 +905,8 @@ $css-grid-md-gap:                           1.5rem;
 
 // Date picker
 $date-picker-input-width:                   14rem;
+$date-picker-day-border-radius:             $border-radius;
+$date-picker-padding:                       0.5rem;
 $date-picker-day-active-background-color:   $color-background-primary;
 $date-picker-day-active-text-color:         $color-text-white;
 $date-picker-day-background-color:          $color-background-white;
@@ -904,6 +946,7 @@ $drawer-height:                             18.75rem;
 $drawer-background-color:                   $color-background-white;
 $drawer-header-background-color:            transparent;
 $drawer-header-background-image:            none;
+$drawer-header-text-color:                  inherit;
 $drawer-button-close-top:                   0.8125rem;
 $drawer-close-icon-color:                   inherit;
 $drawer-header-close-icon-color:            inherit;
@@ -973,13 +1016,13 @@ $dropdown-select-xs-height:                          1.5rem;
 $dropdown-select-xs-font-size:                       $font-size-xs;
 $dropdown-select-xs-line-height:                     $line-height-sm;
 $dropdown-select-xs-arrow-background-size:           0.75rem;
-$dropdown-select-xs-padding:                         0 .5rem 0 0.5rem;
+$dropdown-select-xs-padding:                         0 0.5rem 0 0.5rem;
 
 $dropdown-select-sm-height:                          2rem;
 $dropdown-select-sm-font-size:                       $font-size-base;
 $dropdown-select-sm-line-height:                     $line-height-sm;
 $dropdown-select-sm-arrow-background-size:           0.75rem;
-$dropdown-select-sm-padding:                         0 .75rem 0 0.75rem;
+$dropdown-select-sm-padding:                         0 0.75rem 0 0.75rem;
 
 $dropdown-select-md-height:                          2.5rem;
 $dropdown-select-md-font-size:                       $font-size-base;
@@ -1037,6 +1080,7 @@ $file-input-xl-line-height:                 $line-height-md;
 $file-input-button-background-color:        $button-solid-background-color;
 $file-input-button-border-color:            $button-solid-border-color;
 $file-input-button-border-width:            $button-solid-border-width;
+$file-input-button-border-radius:           $button-border-radius;
 $file-input-button-box-shadow:              $button-solid-box-shadow;
 $file-input-button-text-color:              $button-solid-text-color;
 $file-input-button-text-label-single:       'Choose File';
@@ -1049,7 +1093,7 @@ $file-input-button-active-background-color: $button-solid-active-background-colo
 $file-input-button-active-border-color:     $button-solid-active-border-color;
 $file-input-button-active-text-color:       $button-solid-active-text-color;
 $file-input-button-focus-border-color:      $button-solid-focus-border-color;
-$file-input-button-focus-outline-color:     $button-solid-focus-outline;
+$file-input-button-focus:                   $button-solid-focus-outline;
 
 // Footer
 $footer-internal-background-color:          $color-grey-80;
@@ -1093,9 +1137,12 @@ $header-impersonation-text-color:           $color-text-base;
 $header-impersonation-font-size:            $font-size-sm;
 $header-impersonation-line-height:          $line-height-lg;
 $header-impersonation-username-font-weight: $font-weight-semi-bold;
+$header-brandbar-height:                    0;
+$header-brandbar-background:                none;
 $header-navbar-background-image:            none;
 $header-navbar-background-color:            $color-blue-70;
 $header-navbar-border-color:                $color-blue-70;
+$header-navbar-border-top:                  none;
 $header-navbar-text-color:                  $color-text-white;
 $header-navbar-link-color:                  $color-text-white;
 $header-navbar-font-size:                   $font-size-xs;
@@ -1103,16 +1150,19 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-white, 0.5);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
-$header-navbar-dropdown-arrow-color:        rgba($color-blue-75, 0.92);
 $header-end-text-color:                     $color-text-white;
+$header-navbar-tab-active-box-shadow:       inset 0 -0.125rem 0 0 $color-background-white;
+$header-navbar-tab-active-border-color:     $color-background-white;
+$header-navbar-tab-hover-background-color:  transparent;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
 $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
-$header-navbar-tab-xs-link-padding:         0.5rem 0;
+$header-navbar-tab-xs-link-padding:         0.5rem 1rem;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-lg-navbar-height:                   2rem;
+$header-lg-navbar-font-size:                $font-size-base;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-lg;
@@ -1148,6 +1198,7 @@ $link-cta-position-right:                   0.375rem;
 $link-cta-hover-position-right:             0;
 $link-cta-padding-right:                    2rem;
 $link-cta-hover-color:                      $color-navy-100;
+$link-underline-hover-color:                $link-cta-hover-color;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;
@@ -1192,6 +1243,7 @@ $modal-max-width:                           600px;
 $modal-close-top:                           0.5rem;
 $modal-header-background-color:             transparent;
 $modal-header-background-image:             none;
+$modal-header-text-color:                   inherit;
 $modal-header-box-shadow:                   inset 0 -1px 0 0 rgba($color-black, 0.12);
 $modal-header-min-height:                   3.5rem;
 $modal-header-padding:                      1rem;
@@ -1328,6 +1380,12 @@ $pagination-page-size-text-color:           $color-text-muted-light;
 $pagination-compact-label-text-color:       $color-text-base;
 $pagination-label-page-font-weight:         $font-weight-semi-bold;
 
+$pagination-active-border-color:            $color-icon-primary;
+$pagination-active-text-color:              $color-text-primary;
+$pagination-inverse-hover-border-color:     $color-border-base-dark;
+$pagination-inverse-active-border-color:    $color-border-secondary;
+$pagination-inverse-active-text-color:      $color-text-secondary;
+
 $pagination-inverse-text-color:             $color-text-white;
 $pagination-inverse-results-text-color:     $color-grey-40;
 $pagination-inverse-page-size-divider:      rgba(255, 255, 255, 0.2);
@@ -1351,6 +1409,7 @@ $picker-radio-text-color:                   $color-grey-50;
 $picker-radio-icon-color:                   $color-grey-50;
 $picker-disabled-background-color:          $color-background-base-dark;
 $picker-disabled-text-color:                $color-text-muted-light;
+$picker-checked-background-color:           $color-background-white;
 $picker-checked-border-color:               $color-border-primary;
 $picker-checked-text-color:                 $color-text-primary;
 $picker-checked-checkbox-text-color:        $color-text-primary;
@@ -1432,6 +1491,7 @@ $popover-arrow-size:                        0.75rem;
 $popover-modal-background-color:            $modal-background-color;
 $popover-modal-header-background-color:     $modal-header-background-color;
 $popover-modal-header-background-image:     $modal-header-background-image;
+$popover-modal-header-text-color:           inherit;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
 $popover-drag-icon-color:                   $color-icon-body;
 
@@ -1439,6 +1499,7 @@ $popover-drag-icon-color:                   $color-icon-body;
 $progress-background-color:                 $color-grey-20;
 $progress-border-radius:                    $border-radius-base;
 $progress-value-background-color:           $color-background-primary;
+$progress-value-info-background-color:      $color-icon-info;
 $progress-value-danger-background-color:    $color-icon-danger;
 $progress-value-success-background-color:   $color-icon-success;
 $progress-value-warning-background-color:   $color-icon-warning;
@@ -1455,6 +1516,8 @@ $radio-disabled-text-color:                 $color-grey-70;
 $radio-disabled-opacity:                    $opacity-60;
 $radio-focus-border-color:                  $focus-color;
 $radio-danger-border-color:                 $color-border-danger;
+$radio-label-before-top:                    0.125rem;
+$radio-label-after-top:                     0.4375rem;
 
 // Range slider
 $range-slider-thumb-background-color:       $color-background-white;
@@ -1551,14 +1614,18 @@ $select-xl-padding:                         0 2.75rem 0 1rem;
 // Sidenav
 $sidenav-background-color:                  $color-grey-10;
 $sidenav-border-right:                      none;
+$sidenav-item-text-color:                   inherit;
 $sidenav-item-icon-color:                   inherit;
 $sidenav-item-icon-size:                    1.25rem;
 $sidenav-item-min-height:                   4.5rem;
 $sidenav-item-trigger-icon-color:           inherit;
 $sidenav-item-hover-border-color:           $color-border-secondary-dark;
 $sidenav-item-hover-background-color:       $color-grey-20;
+$sidenav-item-active-icon-color:            $color-icon-primary;
 $sidenav-item-active-border-color:          $color-border-primary;
 $sidenav-item-active-background-color:      $color-blue-20;
+$sidenav-item-active-box-shadow:            inset 0.125rem 0 0 $sidenav-item-active-border-color;
+$sidenav-item-hover-box-shadow:             inset 0.125rem 0 0 $sidenav-item-hover-border-color;
 $sidenav-drawer-header-background-color:    $color-background-base-dark;
 $sidenav-drawer-close-icon-color:           inherit;
 $sidenav-item-title-font-weight:            $font-weight-normal;
@@ -1568,6 +1635,7 @@ $sidenav-item-expanded-box-shadow:          none;
 $sidenav-item-active-expanded-background-color: $color-background-white;
 $sidenav-drawer-tab-active-background-color: $color-blue-20;
 $sidenav-drawer-tab-active-box-shadow:      inset 0.125rem 0 0 $color-border-primary;
+$sidenav-float-drawer-margin-left:          0;
 
 // Skeleton
 $skeleton-xs-size:                          1.5rem;
@@ -1598,6 +1666,8 @@ $stat-active-background-icon-opacity:       0.3;
 $stat-active-background-icon-color:         $color-icon-primary;
 $stat-active-box-shadow:                    0 0 0 0.0625rem $color-border-primary;
 $stat-active-text-color:                    $color-text-primary;
+$stat-active-info-icon-color:               inherit;
+$stat-info-icon-color:                      inherit;
 $stat-border:                               0.0625rem solid $color-border-base;
 $stat-hover-border:                         0.0625rem solid $color-border-base;
 $stat-active-border:                        0.0625rem solid $color-border-primary;
@@ -1747,6 +1817,7 @@ $tabs-horizontal-xs-solid-padding:          0.75rem;
 $tabs-horizontal-xs-trigger-icon-top:       0.8125rem;
 $tabs-horizontal-xs-trigger-padding-right:  1.25rem;
 
+$tabs-vertical-md-subtabs-font-size:        $font-size-sm;
 $tabs-vertical-lg-font-size:                $font-size-lg;
 $tabs-vertical-xl-font-size:                $font-size-lg;
 $tabs-vertical-lg-description-font-size:    $font-size-base;
@@ -1937,6 +2008,7 @@ $textarea-xl-padding:                       $text-input-xl-padding;
 // Time picker
 $time-picker-width:                         14rem;
 $time-picker-column-border-color:           $color-border-base;
+$time-picker-item-border-radius:            $border-radius;
 $time-picker-item-hover-background-color:   $color-background-base-darker;
 $time-picker-item-focus-border-color:       $focus-color;
 $time-picker-item-active-background-color:  $color-background-primary;

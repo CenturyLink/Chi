@@ -64,7 +64,11 @@
           <div class="chi-divider -vertical"></div>
           <DataTableViews :views="toolbar.viewsData" defaultView="view-2" />
           <div class="chi-divider -vertical"></div>
-          <DataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
+          <DataTableFilters
+            :filtersData="toolbar.filtersData"
+            :customItems="toolbar.customItems"
+            @chiFiltersChange="(ev) => console.log(ev)"
+          >
             <template v-slot:customAdvanced>
               <div class="chi-form__item">
                 <chi-label for="input-1">City</chi-label>
@@ -92,6 +96,7 @@
           <div class="chi-toolbar__actions-desktop">
             <DownloadButtonIcon />
             <ColumnCustomization :columnsData="toolbar.columnsData" />
+            <TransferList modal :transferListData="transferListData" />
           </div>
           <div :class="`chi-toolbar__actions-mobile`">
             <button
@@ -194,9 +199,9 @@ import DataTable from '../../../components/data-table/DataTable';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar.vue';
 import SearchInput from '../../../components/search-input/SearchInput';
+import TransferList from '@/components/transfer-list/TransferList.vue';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
-import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleSaveViewConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 import SaveView from '../../../components/data-table-save-view/SaveView';
@@ -209,6 +214,7 @@ const table = ref({
   body: exampleTableBody,
 });
 const toolbar = ref(exampleToolbar);
+const transferListData = exampleToolbar.transferListData;
 const saveViewConfig = ref(exampleSaveViewConfig);
 const isInfoPopoverActive = ref(false);
 const months = ref([

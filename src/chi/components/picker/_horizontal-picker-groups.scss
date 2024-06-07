@@ -7,7 +7,7 @@ $sizes: (
     min-height: $picker-group-xs-min-height,
     padding: $picker-group-xs-padding,
     padding_hover: $picker-group-xs-padding-hover,
-    padding_checked: $picker-group-xs-padding-checked
+    padding_checked: $picker-group-xs-padding-checked,
   ),
   sm: (
     font-size: $picker-group-sm-font-size,
@@ -15,7 +15,7 @@ $sizes: (
     min-height: $picker-group-sm-min-height,
     padding: $picker-group-sm-padding,
     padding_hover: $picker-group-sm-padding-hover,
-    padding_checked: $picker-group-sm-padding-checked
+    padding_checked: $picker-group-sm-padding-checked,
   ),
   md: (
     font-size: $picker-group-md-font-size,
@@ -23,7 +23,7 @@ $sizes: (
     min-height: $picker-group-md-min-height,
     padding: $picker-group-md-padding,
     padding_hover: $picker-group-md-padding-hover,
-    padding_checked: $picker-group-md-padding-checked
+    padding_checked: $picker-group-md-padding-checked,
   ),
   lg: (
     font-size: $picker-group-lg-font-size,
@@ -31,7 +31,7 @@ $sizes: (
     min-height: $picker-group-lg-min-height,
     padding: $picker-group-lg-padding,
     padding_hover: $picker-group-lg-padding-hover,
-    padding_checked: $picker-group-lg-padding-checked
+    padding_checked: $picker-group-lg-padding-checked,
   ),
   xl: (
     font-size: $picker-group-xl-font-size,
@@ -39,8 +39,8 @@ $sizes: (
     min-height: $picker-group-xl-min-height,
     padding: $picker-group-xl-padding,
     padding_hover: $picker-group-xl-padding-hover,
-    padding_checked: $picker-group-xl-padding-checked
-  )
+    padding_checked: $picker-group-xl-padding-checked,
+  ),
 );
 
 .chi-picker-group {
@@ -156,6 +156,7 @@ $sizes: (
       &:checked {
         &.chi-picker__input {
           & + label {
+            background-color: $picker-checked-background-color;
             border: solid 0.0625rem $picker-checked-border-color;
             box-shadow: inset 0 0 0 0.0625rem $picker-checked-border-color;
             color: $picker-checked-text-color;

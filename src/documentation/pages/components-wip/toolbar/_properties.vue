@@ -221,6 +221,8 @@
                         value: <code>string</code>;
                         label: <code>string</code>;
                         selected: <code>true</code>;
+                        checked?: <code>boolean</code>;
+                        id?: <code>string</code>;
                       }
                     ];
                     value?: <code>string</code>;

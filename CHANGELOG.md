@@ -1,5 +1,52 @@
 # CHANGELOG
 
+## 5.69.0 (June 6, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Phone input accessibility page.
+
+## 5.68.0 (June 3, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Copy text button dedicated component page.
+
+## 5.67.0 (May 30, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown web component now supports <code>helper-message</code> and <code>state</code> attributes.
+- Added: Dropdown <code>-active</code> menu items now supports focus state.
+
+## 5.66.0 (May 24, 2024)
+
+### Components
+
+#### Added
+
+- Added: Transfer list Vue component to enable the user to move one or more list items between lists.
+
+## 5.65.0 (May 21, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown web component now supports `select-mode` attribute with `multi` and `single` types.
+
+### Documentation
+
+#### Added
+
+- Added: Time picker accessibility page.
+
 ## 5.64.0 (May 14, 2024)
 
 ### Components

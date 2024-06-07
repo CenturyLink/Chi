@@ -1,30 +1,57 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
+    versioning-strategy: "increase-if-necessary"
     directory: "/src/documentation"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
+    reviewers:
+      - "josecarlosgonzalezv"
+      - "jllr"
+    pull-request-branch-name: "dependabot/DPEDE-1784-update-{dependency-name}-in-{directory}"
+    commit-message:
+      prefix: "[DPEDE-1784]"
+      include: scope-and-subject
+      prefix-development: true
   - package-ecosystem: "npm"
+    versioning-strategy: "increase-if-necessary"
     directory: "/src/chi-vue"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
+    reviewers:
+      - "josecarlosgonzalezv"
+      - "jllr"
+    pull-request-branch-name: "dependabot/update-{dependency-name}-in-{directory}"
+    commit-message:
+      prefix: "[DPEDE-1784]"
+      include: scope-and-subject
+      prefix-development: true
     ignore:
       # The latest version 2.0.14 is incompatible with the latest version of the vite-plugin-checker dependency.
       - dependency-name: "vue-tsc"
         versions: [">=1.8.27"]
   - package-ecosystem: "npm"
+    versioning-strategy: "increase-if-necessary"
     directory: "/src/custom-elements"
     schedule:
       interval: "weekly"
       day: "monday"
       time: "08:00"
       timezone: "Europe/Madrid"
+    reviewers:
+      - "josecarlosgonzalezv"
+      - "jllr"
+    pull-request-branch-name: "dependabot/update-{dependency-name}-in-{directory}"
+    commit-message:
+      prefix: "[DPEDE-1784]"
+      include: scope-and-subject
+      prefix-development: true
     ignore:
       # The version 1.0.4 introduces a buffer compression library (zlib) that is deprecated,
       # see https://github.com/kkaefer/DEPRECATED-node-zlib and causes runtime errors. 

@@ -148,10 +148,13 @@ $sizes: (
       }
 
       &.-active {
-        background-color: $dropdown-menu-item-active-background-color;
-        box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
-        color: $dropdown-menu-item-active-text-color;
-        font-weight: $dropdown-menu-item-active-font-weight;
+        &,
+        &:hover {
+          background-color: $dropdown-menu-item-active-background-color;
+          box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
+          color: $dropdown-menu-item-active-text-color;
+          font-weight: $dropdown-menu-item-active-font-weight;
+        }
       }
 
       &.-has-active {
@@ -440,6 +443,11 @@ $sizes: (
         }
       }
     }
+
+    &:hover,
+    &.-hover {
+      scale: 1;
+    }
   }
 
   &:not([data-position^='left']) {
@@ -610,10 +618,19 @@ a {
       background-color: $dropdown-menu-item-hover-background-color;
     }
 
-    &:focus:not(.-disabled):not(.-active),
-    &.focus:not(.-disabled):not(.-active),
-    &:focus-visible:not(.-disabled):not(.-active) {
-      outline: 0.125rem solid $dropdown-menu-item-focus-outline;
+    &:not(.-disabled) {
+      &:focus,
+      &.focus,
+      &.-focus,
+      &:focus-visible {
+        &:not(.-active) {
+          outline: 0.125rem solid $dropdown-menu-item-focus-outline;
+        }
+        
+        &.-active {
+          outline: 0.125rem solid $dropdown-menu-item-active-border-color;
+        }
+      }
     }
   }
 }

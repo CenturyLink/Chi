@@ -29,7 +29,7 @@
         <slot name="header-actions"></slot>
       </div>
     </div>
-    <div :class="TRANSFER_LIST_CLASSES.SEARCH">
+    <div :class="TRANSFER_LIST_CLASSES.SEARCH" v-if="searchInput">
       <SearchInput placeholder="Filter" @chiInput="handleFilter" @chiClean="handleClearFilter" />
     </div>
     <select multiple :class="[SELECT_CLASSES.SELECT, TRANSFER_LIST_CLASSES.MENU]" @change="handleSelectItem">
@@ -66,15 +66,11 @@ const filter = ref<string>('');
 const column = props.type;
 const isToColumn = props.type === 'to';
 const id = uuid4();
-const { transferList, selectedItems, onSelectItem } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
+const { currentList, selectedItems, onSelectItem } = inject(CHI_VUE_KEYS.TRANSFER_LIST) as TransferListActions;
 
-const handleFilter = (value: string) => {
-  filter.value = value;
-};
+const handleFilter = (value: string) => (filter.value = value);
 
-const handleClearFilter = () => {
-  filter.value = '';
-};
+const handleClearFilter = () => (filter.value = '');
 
 const handleSelectItem = (event: Event) => {
   const items = Array.from((event.target as HTMLSelectElement).selectedOptions, ({ value }) => value);
@@ -84,7 +80,7 @@ const handleSelectItem = (event: Event) => {
 
 const getFilteredList = () => {
   const value = filter.value.toLowerCase();
-  const items = transferList.value.filter(({ selected }) => (isToColumn ? selected : !selected));
+  const items = currentList.value.filter(({ selected }) => (isToColumn ? selected : !selected));
 
   return items?.filter(({ label }) => label.toLowerCase().includes(value));
 };
