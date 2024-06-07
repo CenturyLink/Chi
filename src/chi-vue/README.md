@@ -33,6 +33,15 @@ See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
 
+## 3.6.0 (June 7, 2024)
+
+### Components
+
+#### Added
+
+- Added: Advanced filters now has the capability of checkboxes list to support more than 1 checkbox
+- Added: Transfer list modal mode
+
 ## 3.4.0 (April 2, 2024)
 
 ### Components
