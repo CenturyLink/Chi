@@ -34,30 +34,6 @@
             tr
               td
                 div
-                  code state
-              td
-                div To set the state of Search input
-              td
-                div
-                  code 'success' | 'danger' | 'warning'
-              td
-                div
-                  code undefined
-            tr
-              td
-                div
-                  code helper-message
-              td
-                div To display helper message under Search input
-              td
-                div
-                  code string
-              td
-                div
-                  code undefined
-            tr
-              td
-                div
                   code name
               td
                 div To define name of Search input
