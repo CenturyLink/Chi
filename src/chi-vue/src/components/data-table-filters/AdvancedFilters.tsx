@@ -11,7 +11,7 @@ import {
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Emit, Prop } from 'vue-property-decorator';
-import { getElementFilterData } from './FilterUtils';
+import { getElementFilterData, updateFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import { useFilterStore } from '@/store/index';
@@ -192,35 +192,47 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
+  _getCheckbox(id: string, label: string, filterName: string) {
+    return (
+      <div
+        class={[
+          CHECKBOX_CLASSES.CHECKBOX,
+          this.mobile
+            ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
+            : UTILITY_CLASSES.ALIGN_SELF.LEFT,
+        ]}
+      >
+        <input
+          id={this.mobile ? `${id}-mobile` : `${id}-desktop`}
+          aria-label={`Filter by ${label || filterName}`}
+          data-filter={filterName}
+          type="checkbox"
+          class={`${CHECKBOX_CLASSES.INPUT} ${this.mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
+          checked={this.filterElementValueLive[id]}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
+        />
+        <label for={this.mobile ? `${id}-mobile` : `${id}-desktop`} class={CHECKBOX_CLASSES.LABEL}>
+          {label}
+        </label>
+      </div>
+    );
+  }
+
   _createCheckboxFilter(filter: DataTableFilter) {
+    const checkboxes = filter.options?.map((checkbox, index) =>
+      this._getCheckbox(`${filter.id}-option-${index}`, checkbox.label, filter.name)
+    );
+
+    const defaultCheckbox = this._getCheckbox(filter.id, filter.label, filter.name);
+
     return (
       <div
         class={`
               ${FORM_CLASSES.FORM_ITEM}
               ${UTILITY_CLASSES.DISPLAY.FLEX}
-              ${UTILITY_CLASSES.JUSTIFY.CENTER}`}
+              ${UTILITY_CLASSES.FLEX.ALIGN.START}`}
       >
-        <div
-          class={[
-            CHECKBOX_CLASSES.CHECKBOX,
-            this.mobile
-              ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
-              : UTILITY_CLASSES.ALIGN_SELF.CENTER,
-          ]}
-        >
-          <input
-            id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
-            aria-label={`Filter by ${filter.label || filter.name}`}
-            data-filter={filter.name}
-            type="checkbox"
-            class={`${CHECKBOX_CLASSES.INPUT} ${this.mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
-            checked={this.filterElementValueLive[filter.id]}
-            onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
-          />
-          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={CHECKBOX_CLASSES.LABEL}>
-            {filter.label}
-          </label>
-        </div>
+        {filter.options ? checkboxes : defaultCheckbox}
       </div>
     );
   }
@@ -375,13 +387,11 @@ export default class AdvancedFilters extends Vue {
     }
 
     this.advancedFiltersData?.forEach((currentValue: DataTableFilter) => {
-      const filterPayload = {
-        id: currentValue.id,
-        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-      };
-
-      this.storeModule.updateFilterConfig(filterPayload);
-      this.storeModule.updateFilterConfigLive(filterPayload);
+      updateFilterData(
+        currentValue,
+        this.storeModule,
+        currentValue.type === 'checkbox' ? false : currentValue.value || ''
+      );
     });
 
     this._emitAdvancedFiltersChange();
