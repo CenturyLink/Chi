@@ -115,6 +115,121 @@ p.-text
         </div>
       </div>
 
+
+h3 Message
+p.-text
+  | Use the <code>helper-message</code> attribute to provide users with additional information,
+  | validation feedback, and other helpful information.
+
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-search-input(id='example__message' helper-message='Optional helper message')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-helper-message(role="tablist")
+      li.-active
+        a(
+          href=`#webcomponent-helper-message`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-helper-message"
+        ) Web Component
+      li
+        a(href=`#vue-helper-message`) Vue
+      li
+        a(
+          href=`#html-helper-message`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-helper-message"
+        ) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-helper-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-search-input helper-message="Optional helper message"></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-helper-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput helper-message="Optional helper message" />
+      </div>
+  .chi-tabs-panel#html-helper-message
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input" type="search" aria-label="search input" />
+          <button class="chi-button -icon -flat -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search" aria-hidden="true"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x" aria-hidden="true"></i>
+            </div>
+          </button>
+        </div>
+        <div class="chi-label -status">Optional helper message</div>
+      </div>
+
+h3 Error
+p.-text
+  | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-search-input(
+            id="example-danger"
+            state="danger"
+            value="Unknown item"
+            helper-message="Item not found")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-error
+      li.-active
+        a(href=`#webcomponent-error`) Web Component
+      li
+        a(href=`#vue-error`) Vue
+      li
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-search-input id="example__danger" value="Unknown item" state="danger" helper-message="Item not found"></chi-text-input>
+      </div>
+  .chi-tabs-panel#vue-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput value="Unknown item" state="danger" helper-message="Optional helper message" />
+      </div>
+  .chi-tabs-panel#html-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -danger" type="search" value="Unknown item" aria-label="search input" />
+          <button class="chi-button -icon -flat -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search" aria-hidden="true"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x" aria-hidden="true"></i>
+            </div>
+          </button>
+        </div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Item not found
+        </div>
+      </div>
+
 h3 Autocomplete
 p.-text
   | Use the <code>mode="autocomplete"</code> attribute to enable autocomplete functionality.
