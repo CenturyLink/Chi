@@ -275,8 +275,6 @@ export class SearchInput {
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
-        state={this.state}
-        helper-message={this.helperMessage}
         preventItemSelected
         fluid
         visibleItems={visibleItems}
@@ -368,8 +366,7 @@ export class SearchInput {
       </button>
     );
 
-
-    let input = (
+    const input = (
       <div class="chi-input__wrapper -icon--right" slot="trigger">
         {searchInputElement}
         {searchXIcon}
@@ -377,11 +374,11 @@ export class SearchInput {
       </div>
     );
 
-    if (this.helperMessage && !isAutocomplete) {
-      input = this._addHelperMessage(input);
-    }
+    let searchInput = isAutocomplete ? this._dropdownAutocomplete(input) : input;
 
-    const searchInput = isAutocomplete ? this._dropdownAutocomplete(input) : input;
+    if (this.helperMessage) {
+      searchInput = this._addHelperMessage(searchInput);
+    }
 
     return searchInput;
   }
