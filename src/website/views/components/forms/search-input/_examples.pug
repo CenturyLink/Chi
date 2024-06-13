@@ -137,8 +137,6 @@ p.-text
           aria-controls="webcomponent-helper-message"
         ) Web Component
       li
-        a(href=`#vue-helper-message`) Vue
-      li
         a(
           href=`#html-helper-message`
           role="tab"
@@ -150,11 +148,6 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-search-input helper-message="Optional helper message"></chi-search-input>
-      </div>
-  .chi-tabs-panel#vue-helper-message
-    :code(lang="html")
-      <div class="chi-form__item">
-        <ChiSearchInput helper-message="Optional helper message" />
       </div>
   .chi-tabs-panel#html-helper-message
     :code(lang="html")
@@ -195,18 +188,11 @@ p.-text
       li.-active
         a(href=`#webcomponent-error`) Web Component
       li
-        a(href=`#vue-error`) Vue
-      li
         a(href=`#html-error`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-error
     :code(lang="html")
       <div class="chi-form__item">
         <chi-search-input id="example__danger" value="Unknown item" state="danger" helper-message="Item not found"></chi-text-input>
-      </div>
-  .chi-tabs-panel#vue-error
-    :code(lang="html")
-      <div class="chi-form__item">
-        <ChiSearchInput value="Unknown item" state="danger" helper-message="Optional helper message" />
       </div>
   .chi-tabs-panel#html-error
     :code(lang="html")

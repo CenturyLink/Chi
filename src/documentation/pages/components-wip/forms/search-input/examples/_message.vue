@@ -10,8 +10,6 @@
             chi-search-input(id='example__message' helper-message='Optional helper message')
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
-  template(#code-vue)
-    Copy(lang="html" :code="codeSnippets.vue" class="html")
   template(#code-htmlblueprint)
     Copy(lang="html" :code="codeSnippets.htmlblueprint" class="html")
 </ComponentExample>
@@ -30,10 +28,6 @@ import { Vue } from 'vue-facing-decorator';
           label: 'Web Component',
         },
         {
-          id: 'vue',
-          label: 'Vue',
-        },
-        {
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
         },
@@ -41,9 +35,6 @@ import { Vue } from 'vue-facing-decorator';
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
   <chi-search-input helper-message="Optional helper message"></chi-search-input>
-</div>`,
-        vue: `<div class="chi-form__item">
-  <ChiSearchInput helper-message="Optional helper message" />
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
   <div class="chi-input__wrapper -icon--right">
