@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.70.0 (June 13, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Number input accessibility page.
+
 ## 5.69.0 (June 6, 2024)
 
 ### Documentation
