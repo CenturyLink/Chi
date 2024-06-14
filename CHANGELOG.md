@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.71.0 (June 14, 2024)
+
+### Components
+
+#### Added
+
+- Added: Search input web component now supports `helper-message` and `state` attributes.
+
 ## 5.70.0 (June 13, 2024)
 
 ### Documentation

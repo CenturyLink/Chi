@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-06-13T07:27:24",
+  "timestamp": "2024-06-14T07:56:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.3",
@@ -3687,6 +3687,7 @@
         "chi-date-picker",
         "chi-dropdown",
         "chi-number-input",
+        "chi-search-input",
         "chi-text-input",
         "chi-textarea"
       ],
@@ -3704,6 +3705,9 @@
           "chi-helper-message"
         ],
         "chi-number-input": [
+          "chi-helper-message"
+        ],
+        "chi-search-input": [
           "chi-helper-message"
         ],
         "chi-text-input": [
@@ -6617,7 +6621,8 @@
           "chi-text-input"
         ],
         "chi-search-input": [
-          "chi-dropdown"
+          "chi-dropdown",
+          "chi-helper-message"
         ],
         "chi-dropdown": [
           "chi-icon",
@@ -7237,6 +7242,27 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "menuItems",
           "type": "DropdownMenuItem[]",
           "complexType": {
@@ -7419,6 +7445,42 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "ChiStates",
+            "resolved": "\"danger\" | \"success\" | \"warning\"",
+            "references": {
+              "ChiStates": {
+                "location": "import",
+                "path": "../../constants/states",
+                "id": "src/constants/states.ts::ChiStates"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of Search input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": false,
           "required": false
         },
         {
@@ -7629,11 +7691,13 @@
         "chi-phone-input"
       ],
       "dependencies": [
-        "chi-dropdown"
+        "chi-dropdown",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-search-input": [
-          "chi-dropdown"
+          "chi-dropdown",
+          "chi-helper-message"
         ],
         "chi-dropdown": [
           "chi-icon",
