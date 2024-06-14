@@ -1,5 +1,16 @@
-const SEARCH_INPUT_CY = {
+const SELECTORS = {
   AUTOCOMPLETE: '[data-cy="autocomplete"]',
+  CHI_TEXT_INPUT: 'chi-search-input',
+  CHI_ICON: 'chi-icon',
+  LABEL: '.chi-label',
+  CHI_HELPER_MESSAGE: 'chi-helper-message',
+  HELPER_MESSAGE_MD: '.test-helper-message-default',
+};
+
+const CLASSES = {
+  WARNING: '-warning',
+  DANGER: '-danger',
+  SUCCESS: '-success',
 };
 
 describe('Search input', () => {
@@ -9,13 +20,13 @@ describe('Search input', () => {
 
   describe('Autocomplete', () => {
     beforeEach(() => {
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE)
+      cy.get(SELECTORS.AUTOCOMPLETE)
         .find('input')
         .as('searchInput');
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE)
+      cy.get(SELECTORS.AUTOCOMPLETE)
         .find('chi-dropdown')
         .as('dropdown');
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE)
+      cy.get(SELECTORS.AUTOCOMPLETE)
         .find('.chi-dropdown__menu-item')
         .as('dropdownMenuItem');
     });
@@ -25,7 +36,7 @@ describe('Search input', () => {
     });
 
     it('Should have mode="autocomplete" attribute to enable autocomplete functionality', () => {
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE).should('have.attr', 'mode', 'autocomplete');
+      cy.get(SELECTORS.AUTOCOMPLETE).should('have.attr', 'mode', 'autocomplete');
     });
 
     it('Should open the dropdown', () => {
@@ -58,7 +69,7 @@ describe('Search input', () => {
         .focus()
         .type('2');
 
-      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE)
+      cy.get(SELECTORS.AUTOCOMPLETE)
         .find('.chi-icon.icon-x')
         .click();
 
@@ -73,6 +84,44 @@ describe('Search input', () => {
           cy.get('@dropdownMenuItem')
             .first()
             .should('have.focus');
+        });
+    });
+  });
+
+  describe('Helper Message', () => {
+    beforeEach(() => {
+      cy.get(SELECTORS.HELPER_MESSAGE_MD)
+        .find(SELECTORS.CHI_TEXT_INPUT)
+        .as('searchInput');
+      cy.get(SELECTORS.HELPER_MESSAGE_MD)
+        .find(SELECTORS.CHI_HELPER_MESSAGE)
+        .as('helperMessage');
+    });
+
+    it('Should initiate with helper-message attribute', () => {
+      cy.get('@searchInput')
+        .first()
+        .then((searchInput) => {
+          cy.get(searchInput).should('have.attr', 'helper-message', 'Helper message');
+          cy.get(searchInput)
+            .find(SELECTORS.CHI_HELPER_MESSAGE)
+            .should('exist');
+        });
+    });
+
+    it('Should have a danger state helper message', () => {
+      cy.get('@searchInput')
+        .eq(3)
+        .then((searchInput) => {
+          cy.get(searchInput).should('have.attr', 'state', 'danger');
+          cy.get(searchInput)
+            .find(SELECTORS.LABEL)
+            .should('have.class', CLASSES.DANGER);
+          cy.get(searchInput)
+            .find(SELECTORS.CHI_ICON)
+            .find('use')
+            .should('have.attr', 'href', '#icon-circle-warning')
+            .should('exist');
         });
     });
   });
