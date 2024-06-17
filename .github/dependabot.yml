@@ -17,6 +17,10 @@ updates:
       prefix: "[DPEDE-1784]"
       include: "scope"
       prefix-development: "[DPEDE-1784]"
+    ignore:
+      # Since the version 3.12.0 is not working as expected
+      - dependency-name: "nuxt"
+        versions: [">=3.11.2"]
   - package-ecosystem: "npm"
     directory: "/src/chi-vue"
     schedule:
