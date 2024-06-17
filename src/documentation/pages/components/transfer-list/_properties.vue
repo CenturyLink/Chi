@@ -24,18 +24,18 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td.-p--0
             pre.-mb--0.
               {
-                searchInput?: <code>boolean</code>;
                 checkbox?: <code>boolean</code>;
                 columns: {
                   from: {
                     title: <code>string</code>;
-                    description: <code>string</code>;
+                    description?: <code>string</code>;
                   };
                   to: {
                     title: <code>string</code>;
-                    description: <code>string</code>;
+                    description?: <code>string</code>;
                   };
                 };
+                searchInput?: <code>boolean</code>;
               }
           td
             div undefined
@@ -46,7 +46,17 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div To provide Transfer list with data
           td.-p--0
             pre.-mb--0.
-              <code>TransferListRow[]</code>
+              <code>TransferListItem[]</code>
+          td
+            div undefined
+        tr
+          td
+            div <code>modal</code>
+          td
+            div To define transfer list as modal or add modal configuration
+          td.-p--0
+            pre.-mb--0.
+              <code>TransferListModalConfig | boolean</code>
           td
             div undefined
 
@@ -63,15 +73,26 @@ section.chi-table.chi-table__options.-bordered.-my--3
         tbody
           tr
             td
-              div <code>TransferListRow</code>
+              div <code>TransferListItem</code>
             td.-p--0
               pre.-mb--0.
-                interface TransferListRow {
-                  value: <code>string</code>;
+                interface TransferListItem {
                   label: <code>string</code>;
+                  locked?: <code>boolean</code>;
                   selected: <code>boolean</code>;
-                  locked: <code>boolean</code>;
-                  wildcard: <code>boolean</code>;
+                  value: <code>string</code>;
+                  wildcard?: <code>boolean</code>;
+                }
+          tr
+            td
+              div <code>TransferListModalConfig</code>
+            td.-p--0
+              pre.-mb--0.
+                interface TransferListModalConfig {
+                  ariaLabel?: <code>boolean</code>;
+                  icon?: <code>string</code>;
+                  title?: <code>boolean</code>;
+                  tooltipMsg?: <code>string</code>;
                 }
 </template>
 
