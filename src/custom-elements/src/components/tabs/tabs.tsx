@@ -459,7 +459,7 @@ export class Tabs {
    * to the items hat do not fit.
    */
   setListOverflow() {
-    const copyTabsData = structuredClone(this.tabs);
+    const copyTabsData = this._stringifyTabs(this.tabs);
 
     let usedSpace = 0;
     this.isSeeMoreVisible = false;
@@ -478,7 +478,7 @@ export class Tabs {
       }
     }
 
-    if (this._stringifyTabs(this.tabs) !== this._stringifyTabs(copyTabsData)) {
+    if (this._stringifyTabs(this.tabs) !== copyTabsData) {
       this.dropdownKey += 1;
     }
   }
