@@ -128,12 +128,14 @@ export class Checkbox {
 
   render() {
     const infoIcon = this._getInfoIcon();
+    const stateClass = this.state ? `-${this.state}` : '';
+
     return (
       <div class={RADIO_CLASSES.RADIO}>
         <input
           class={`
             ${RADIO_CLASSES.INPUT}
-            ${this.state ? `-${this.state}` : ''}
+            ${stateClass}
           `}
           id={this.id}
           checked={this.checked}
@@ -149,7 +151,7 @@ export class Checkbox {
         />
         <label
           id={this.labelId}
-          class={`${RADIO_CLASSES.LABEL} ${this.state ? `-${this.state}` : ''}`}
+          class={`${RADIO_CLASSES.LABEL} ${stateClass}`}
           htmlFor={this.id}
         >
           {this.label}
