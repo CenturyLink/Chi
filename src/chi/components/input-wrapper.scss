@@ -96,7 +96,7 @@ $border: 0.0625rem;
           height: 0.75rem;
         }
 
-        &:not(.-light) {
+        &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
           .chi-icon {
             color: $label-help-icon-color;
           }

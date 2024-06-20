@@ -58,7 +58,8 @@ $sizes: (
   }
 
   input {
-    &[type='radio'] {
+    &[type='radio'],
+    &[type='checkbox'] {
       &.chi-picker__input {
         left: -9999px;
         position: absolute;
@@ -199,7 +200,8 @@ $sizes: (
 
   &.-fluid {
     input {
-      &[type='radio'] {
+      &[type='radio'],
+      &[type='checkbox'] {
         &:last-of-type {
           &:checked + label {
             padding-right: $picker-group-md-padding-checked;
