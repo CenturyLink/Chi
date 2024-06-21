@@ -46,7 +46,8 @@
     }
 
     input {
-      &[type='radio'] {
+      &[type='radio'],
+      &[type='checkbox'] {
         &.chi-picker__input {
           & + label {
             border-bottom-width: 0;
