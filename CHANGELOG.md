@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 5.72.0 (June 21, 2024)
+
+### Components
+
+#### Added
+
+- Added: Added: Picker group now supports multiple selection.
+- Added: Transfer list Vue component now supports `modal` mode.
+
 ## 5.71.0 (June 14, 2024)
 
 ### Components
