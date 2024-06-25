@@ -101,7 +101,10 @@ export class Checkbox {
   }
 
   toggleHelpPopover(): void {
-    (this.el.querySelector(`#${this.helpPopoverId}`) as any).toggle();
+    const helpPopoverElement = document.getElementById(this.helpPopoverId) as HTMLChiPopoverElement;
+    if (helpPopoverElement) {
+        helpPopoverElement.toggle();
+    }
   }
 
   _getInfoIcon() {
