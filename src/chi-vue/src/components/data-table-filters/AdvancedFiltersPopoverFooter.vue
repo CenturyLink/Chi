@@ -40,6 +40,6 @@ const props = defineProps<{
 }>();
 
 const clear = () => emit('chiFiltersClear');
-const cancel = () => emit('chiFiltersApply');
+const cancel = () => emit('chiCancel');
 const apply = () => emit('chiFiltersApply');
 </script>
