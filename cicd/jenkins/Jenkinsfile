@@ -200,9 +200,9 @@ pipeline {
               script{
                 dir ('src/chi-vue') {
                   jslNpmWrapper('ci')
+                  jslNpmWrapper('run lint:checker')
                   jslNpmWrapper('run prettier:checker')
                 }
-                echo "No full linting implemented in repo"
               }
             }
           }
