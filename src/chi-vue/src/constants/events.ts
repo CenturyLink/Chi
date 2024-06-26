@@ -95,13 +95,6 @@ export const TOOLTIP_EVENTS = {
 };
 //#endregion
 
-//#region Advanced Filters
-export const ADVANCED_FILTER_EVENTS = {
-  CLEAR: 'chiFiltersClear',
-  APPLY: 'chiFiltersApply',
-};
-//#endregion
-
 //#region Save View
 export const SAVE_VIEW_EVENTS = {
   SAVE: 'chiViewSave',
@@ -112,6 +105,14 @@ export const SAVE_VIEW_EVENTS = {
   SAVE_LINK: 'chiSaveLink',
   INPUT: 'chiSaveViewInput',
   DEFAULT: 'chiSaveViewDefault',
+};
+//#endregion
+
+//#region Advanced Filters
+export type AdvancedFilterEmits = {
+  (event: 'chiFiltersClear'): void;
+  (event: 'chiFiltersApply'): void;
+  (event: 'chiCancel'): void;
 };
 //#endregion
 

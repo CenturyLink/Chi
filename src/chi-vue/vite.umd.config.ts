@@ -2,7 +2,9 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import { checker } from 'vite-plugin-checker';
+// !IMPORTANT: Enable once new version of this package is released
+// !ISSUE: https://github.com/fi3ework/vite-plugin-checker/issues/306
+// import { checker } from 'vite-plugin-checker';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default defineConfig({
@@ -22,11 +24,11 @@ export default defineConfig({
       ],
     }),
     libInjectCss(),
-    checker({
-      vueTsc: {
-        tsconfigPath: './tsconfig.json',
-      },
-    }),
+    // checker({
+    //   vueTsc: {
+    //     tsconfigPath: './tsconfig.json',
+    //   },
+    // }),
   ],
   resolve: {
     alias: {
