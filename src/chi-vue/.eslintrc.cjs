@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   root: true,
   env: {
     node: true,
@@ -15,7 +15,7 @@ export default {
   },
   rules: {
     'no-console': 'off',
-    'no-debugger': import.meta.env.MODE === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'prettier/prettier': [
       'error',
       {
