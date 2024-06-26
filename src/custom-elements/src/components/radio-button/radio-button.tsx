@@ -8,7 +8,7 @@ import { v4 as uuid4 } from 'uuid';
   tag: 'chi-radio-button',
   scoped: true,
 })
-export class Checkbox {
+export class RadioButton {
   @Element() el: HTMLElement;
   /**
    * To provide radiobutton label as a string
@@ -49,7 +49,7 @@ export class Checkbox {
   private helpPopoverId: string;
 
   /**
-   * Triggered when the radio-button has lost focus
+   * Triggered when the radio-button has lost the focus
   */
  @Event() chiBlur: EventEmitter<string | boolean>;
  /**
@@ -103,7 +103,7 @@ export class Checkbox {
   toggleHelpPopover(): void {
     const helpPopoverElement = document.getElementById(this.helpPopoverId) as HTMLChiPopoverElement;
     if (helpPopoverElement) {
-        helpPopoverElement.toggle();
+      helpPopoverElement.toggle();
     }
   }
 
