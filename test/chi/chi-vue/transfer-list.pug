@@ -1,0 +1,165 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(src=`../../js/chi.js`)
+
+h2 Transfer list
+h3 Base
+.test-transfer-list.-p--3#base
+  chi-vue-transfer-list(
+    data-cy="transfer-list-base"
+    :transfer-list-data="list"
+    :config="config"
+    @chi-transfer-list-save="chiTransferListSave"
+    @chi-transfer-list-reset="chiTransferListReset"
+    @chi-transfer-list-change="chiTransferListChange"
+    @chi-transfer-list-cancel="chiTransferListCancel"
+  )
+
+h3 Modal
+.test-transfer-list.-p--3#modal
+  div(data-cy="transfer-list-modal")
+    chi-vue-transfer-list(
+      :transfer-list-data="list"
+      :config="config"
+      :modal="modal"
+    )
+
+h3 Modal with custom config
+.test-transfer-list.-p--3#modal-config
+  div(data-cy="transfer-list-modal-config")
+    chi-vue-transfer-list(
+      :transfer-list-data="list"
+      :config="config"
+      :modal="modal"
+    )
+
+script.
+  const config = {
+    searchInput: true,
+    checkbox: false,
+    columns: {
+      from: {
+        title: 'From',
+        description: 'Description from'
+      },
+      to: {
+        title: 'To',
+        description: 'Description to'
+      }
+    }
+  };
+  const list = [
+    {
+      value: 'first',
+      label: 'First',
+      selected: false,
+      locked: false,
+      wildcard: false
+    },
+    {
+      value: 'second',
+      label: 'Second',
+      selected: false,
+      locked: false,
+      wildcard: false
+    },
+    {
+      value: 'third',
+      label: 'Third',
+      selected: true,
+      locked: true,
+      wildcard: false
+    },
+    {
+      value: 'fourth',
+      label: 'Fourth',
+      selected: true,
+      locked: true,
+      wildcard: false
+    },
+    {
+      value: 'fifth',
+      label: 'Fifth',
+      selected: true,
+      locked: false,
+      wildcard: false
+    },
+    {
+      value: 'sixth',
+      label: 'Sixth',
+      selected: true,
+      locked: false,
+      wildcard: true
+    },
+    {
+      value: 'seventh',
+      label: 'Seventh',
+      selected: true,
+      locked: false,
+      wildcard: true
+    }
+  ];
+  const modal = {
+    tooltipMsg: 'Custom tooltip message',
+    icon: 'atom',
+    title: 'Custom Modal Title',
+    ariaLabel: 'custom aria label'
+  };
+
+  const baseApp = Vue.createApp({
+    data() {
+      return {
+        config: config,
+        list: list,
+        hasBeenCalled: {
+          chiTransferListSave: false,
+          chiTransferListReset: false,
+          chiTransferListChange: false,
+          chiTransferListCancel: false
+        }
+      }
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseTransferListExample = this;
+      }
+    },
+    methods: {
+      chiTransferListSave() {
+        this.hasBeenCalled.chiTransferListSave = true;
+      },
+      chiTransferListReset() {
+        this.hasBeenCalled.chiTransferListReset = true;
+      },
+      chiTransferListChange() {
+        this.hasBeenCalled.chiTransferListChange = true;
+      },
+      chiTransferListCancel() {
+        this.hasBeenCalled.chiTransferListCancel = true;
+      }
+    }
+  });
+
+  baseApp.component('chiVueTransferList', window["chi-vue"].library.components.ChiTransferList);
+  baseApp.mount('#base');
+
+  const ids = ['#modal', '#modal-config'];
+
+  ids.forEach(id => {
+    const app = Vue.createApp({
+      data() {
+        return {
+          config: config,
+          list: list,
+          modal: id === '#modal-config' ? modal : true
+        }
+      }
+    });
+
+    app.component('chiVueTransferList', window["chi-vue"].library.components.ChiTransferList);
+    app.mount(id);
+  });
+

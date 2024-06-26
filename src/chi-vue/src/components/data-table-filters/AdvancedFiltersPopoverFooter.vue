@@ -31,15 +31,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
+import { AdvancedFilterEmits } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 
-const emit = defineEmits();
+const emit = defineEmits<AdvancedFilterEmits>();
 const props = defineProps<{
   disabledButtons?: boolean;
 }>();
 
-const clear = () => emit(ADVANCED_FILTER_EVENTS.CLEAR);
-const cancel = () => emit(GENERIC_EVENTS.CANCEL);
-const apply = () => emit(ADVANCED_FILTER_EVENTS.APPLY);
+const clear = () => emit('chiFiltersClear');
+const cancel = () => emit('chiCancel');
+const apply = () => emit('chiFiltersApply');
 </script>
