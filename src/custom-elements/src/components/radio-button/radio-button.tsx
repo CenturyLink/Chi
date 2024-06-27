@@ -1,8 +1,9 @@
 import { Component, Element, Event, EventEmitter, Prop, h } from '@stencil/core';
-import { LABEL_CLASSES, RADIO_CLASSES } from '../../constants/classes';
+import { RADIO_CLASSES } from '../../constants/classes';
 import { ChiStates } from '../../constants/states';
 import { addMutationObserver } from '../../utils/mutationObserver';
 import { v4 as uuid4 } from 'uuid';
+import { getInfoIcon } from '../../utils/snippets';
 
 @Component({
   tag: 'chi-radio-button',
@@ -108,30 +109,8 @@ export class RadioButton {
     }
   }
 
-  _getInfoIcon() {
-    return this.infoIcon ? (
-      <div class={LABEL_CLASSES.HELP}>
-        <chi-button
-          id={this.helpButtonId}
-          onChiClick={() => this.toggleHelpPopover()}
-          type="icon"
-          size="xs"
-          variant="flat"
-          alternative-text="Help"
-        >
-          <chi-icon icon="circle-info-outline" size="xs"></chi-icon>
-        </chi-button>
-        <chi-popover id={this.helpPopoverId} position="top" variant="text" arrow reference={`#${this.helpButtonId}`}>
-          {this.infoIconMessage}
-        </chi-popover>
-      </div>
-    ) : (
-      ''
-    );
-  }
-
   render() {
-    const infoIcon = this._getInfoIcon();
+    const infoIcon = getInfoIcon.call(this);
     const stateClass = this.state ? `-${this.state}` : '';
 
     return (
