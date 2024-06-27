@@ -102,6 +102,7 @@ export class RadioButton {
 
   toggleHelpPopover(): void {
     const helpPopoverElement = document.getElementById(this.helpPopoverId) as HTMLChiPopoverElement;
+
     if (helpPopoverElement) {
       helpPopoverElement.toggle();
     }
@@ -144,13 +145,12 @@ export class RadioButton {
           checked={this.checked}
           disabled={this.disabled}
           name={this.name}
-          aria-checked={this.checked ? 'true' : 'false'}
+          aria-checked={this.checked}
           aria-labelledby={this.labelId}
           onBlur={() => this.blur()}
           onChange={(ev: Event) => this.change(ev)}
           onFocus={() => this.focus()}
           type="radio"
-          role="radio"
         />
         <label
           id={this.labelId}
