@@ -38,10 +38,6 @@ updates:
       prefix: "[DPEDE-1784]"
       include: "scope"
       prefix-development: "[DPEDE-1784]"
-    ignore:
-      # The latest version 2.0.21 is incompatible with the latest version of the vite-plugin-checker dependency.
-      - dependency-name: "vue-tsc"
-        versions: [">=1.8.27"]
   - package-ecosystem: "npm"
     directory: "/src/custom-elements"
     schedule:
