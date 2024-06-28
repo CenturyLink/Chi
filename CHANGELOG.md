@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.73.0 (June 27, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Picker group accessibility page.
+
 ## 5.72.0 (June 21, 2024)
 
 ### Components
