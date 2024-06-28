@@ -340,6 +340,7 @@ onLoad(() => {
     window.history.replaceState({}, document.title, getThemeUrl(window.location.href));
   }
 
+
   window.switchTheme = function(theme, anchorTarget) {
     var logoElement = document.getElementById('header-logo');
     var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
@@ -441,6 +442,7 @@ onLoad(() => {
       document.querySelector(themes[localStorageTheme].trigger)
     );
   } else {
+
     switchTheme('Lumen', document.querySelector(themes.Lumen.trigger));
   }
 
