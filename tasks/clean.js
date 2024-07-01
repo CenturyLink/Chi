@@ -7,9 +7,5 @@ gulp.task('clean', gulp.series(
     (done) => fs.mkdir('dist/js/ce', {recursive: true}, (err) => {
         if (err) throw err;
         done();
-      }),
-    (done) => fs.mkdir('dist/js/vue', {recursive: true}, (err) => {
-        if (err) throw err;
-        done();
       })
   ));

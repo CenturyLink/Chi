@@ -8,7 +8,8 @@
   "homepage": "https://lib.lumen.com/chi",
   "scripts": {
     "approve": "gulp backstop-approve",
-    "build": "gulp build",
+    "build": "gulp build && npm run copy:files",
+    "copy:files": "bash scripts/updateFiles.sh",
     "cicd:build:pre:sri": "gulp cicd:build:pre:sri",
     "cicd:build:post:sri": "gulp cicd:build:post:sri",
     "build:website": "gulp build:website",
