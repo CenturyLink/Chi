@@ -18,7 +18,6 @@ code.hljs {
 
 <script lang="ts">
 import { Vue, Prop } from 'vue-facing-decorator';
-import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
 @NuxtComponent({
   methods: {
@@ -35,7 +34,7 @@ import { SR_ONLY } from '../../chi-vue/src/constants/classes';
             const textArea = document.createElement('textarea');
 
             textArea.value = codeSnippet as string;
-            textArea.classList.add(SR_ONLY);
+            textArea.classList.add('-sr--only');
             tabElement.appendChild(textArea);
             textArea.focus();
             textArea.select();

@@ -99,7 +99,6 @@ pre code.hljs {
 import { Vue, Prop } from 'vue-facing-decorator';
 import { type ITabs, type IHeadTabs } from '../models/models';
 import { COMPONENT_EXAMPLE_EVENTS } from '../constants/constants';
-import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
 declare const chi: any;
 
@@ -133,7 +132,7 @@ export default class ComponentExample extends Vue {
           const textArea = document.createElement('textarea');
 
           textArea.value = codeSnippet as string;
-          textArea.classList.add(SR_ONLY);
+          textArea.classList.add('-sr--only');
           tabElement.appendChild(textArea);
           textArea.focus();
           textArea.select();
