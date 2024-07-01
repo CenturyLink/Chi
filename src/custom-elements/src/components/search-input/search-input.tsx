@@ -165,6 +165,10 @@ export class SearchInput {
     const newValue = (valueChange.target as HTMLInputElement).value;
     const isAutocomplete = this._isAutocomplete();
 
+    if (!newValue) {
+      this._resetSelection();
+    }
+
     if (!this.preventValueMutation) {
       this.value = newValue;
     }
@@ -266,6 +270,18 @@ export class SearchInput {
     (input as HTMLInputElement).focus();
     this._cleanButtonVisible = false;
     this.eventClean.emit();
+    this._resetSelection();
+  }
+
+  _resetSelection() {
+    if (!this._isAutocomplete()) {
+      return;
+    }
+
+    const dropdown = this._getAutocompleteDropdown();
+
+    this.selectedItem = undefined;
+    dropdown.resetSelection();
   }
 
   _dropdownAutocomplete(trigger: HTMLElement): HTMLChiDropdownElement {
