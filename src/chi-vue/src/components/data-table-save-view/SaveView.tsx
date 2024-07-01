@@ -12,7 +12,7 @@ import {
 import { SAVE_VIEW_EVENTS } from '@/constants/events';
 import { SaveViewConfig, SaveViewModes, SaveViewSave } from '@/constants/types';
 import Tooltip from '@/components/tooltip/tooltip';
-import { uuid4 } from '@/utils/utils';
+import { deepCopy, uuid4 } from '@/utils/utils';
 import './save-view.scss';
 import { defaultConfig } from './default-config';
 import { Component, Vue } from '@/build/vue-wrapper';
@@ -76,12 +76,12 @@ export default class SaveView extends Vue {
   resultsLabel = defaultConfig.label?.results;
   saveButtonDisabled = defaultConfig.saveButtonDisabled;
 
+  saveViewConfig = deepCopy(this.config);
+
   @Watch('config')
   dataConfigChange(newValue: SaveViewConfig, oldValue: SaveViewConfig) {
     if (!Compare.deepEqual(newValue, oldValue)) {
-      this.isSaveViewVisible = newValue.active;
-      this.saveButtonDisabled = newValue.saveButtonDisabled;
-      this.viewMode = newValue.mode || SaveViewModes.BASE;
+      this.saveViewConfig = newValue;
     }
   }
 
@@ -125,7 +125,7 @@ export default class SaveView extends Vue {
     this.viewTitle = '';
     this.isDefaultChecked = false;
     this.setMode(SaveViewModes.BASE);
-    this._emitDelete(this.uuid || this.config.id || '');
+    this._emitDelete(this.uuid || this.saveViewConfig.id || '');
   }
 
   handlerClose() {
@@ -154,23 +154,23 @@ export default class SaveView extends Vue {
 
     return (
       this.viewTitle?.length === 0 ||
-      (this.viewTitle === this.config.title && this.isDefaultChecked === !!this.config.default)
+      (this.viewTitle === this.saveViewConfig.title && this.isDefaultChecked === !!this.saveViewConfig.default)
     );
   }
 
   beforeMount(): void {
-    this.isRibbonShown = !!this.config.active;
-    this.isSaveViewVisible = !!this.config.active;
-    this.isDefaultChecked = !!this.config.default;
-    this.isReadOnly = !!this.config.readonly;
-    this.viewMode = this.config.mode || defaultConfig.mode || SaveViewModes.BASE;
-    this.viewTitle = this.config.title || defaultConfig.title;
-    this.uuid = this.config.id || uuid4();
-    this.deleteLabel = this.config.label?.delete || defaultConfig.label?.delete;
-    this.mainLabel = this.config.label?.main || defaultConfig.label?.main;
-    this.inputLabel = this.config.input?.label || defaultConfig.input?.label;
-    this.resultsLabel = this.config.label?.results || defaultConfig.label?.results;
-    this.saveButtonDisabled = this.config.saveButtonDisabled ?? defaultConfig.saveButtonDisabled;
+    this.isRibbonShown = !!this.saveViewConfig.active;
+    this.isSaveViewVisible = !!this.saveViewConfig.active;
+    this.isDefaultChecked = !!this.saveViewConfig.default;
+    this.isReadOnly = !!this.saveViewConfig.readonly;
+    this.viewMode = this.saveViewConfig.mode || defaultConfig.mode || SaveViewModes.BASE;
+    this.viewTitle = this.saveViewConfig.title || defaultConfig.title;
+    this.uuid = this.saveViewConfig.id || uuid4();
+    this.deleteLabel = this.saveViewConfig.label?.delete || defaultConfig.label?.delete;
+    this.mainLabel = this.saveViewConfig.label?.main || defaultConfig.label?.main;
+    this.inputLabel = this.saveViewConfig.input?.label || defaultConfig.input?.label;
+    this.resultsLabel = this.saveViewConfig.label?.results || defaultConfig.label?.results;
+    this.saveButtonDisabled = this.saveViewConfig.saveButtonDisabled ?? defaultConfig.saveButtonDisabled;
   }
 
   render() {
@@ -200,7 +200,7 @@ export default class SaveView extends Vue {
           {arrowDown}
           <div class={SAVE_VIEW_CLASSES.RESULTS}>
             <span class={SAVE_VIEW_CLASSES.LABEL}>{this.resultsLabel} </span>
-            <span>{this.config.results}</span>
+            <span>{this.saveViewConfig.results}</span>
           </div>
           {!this.isReadOnly && (
             <template class={SAVE_VIEW_CLASSES.NO_ACTIONS}>
@@ -238,7 +238,7 @@ export default class SaveView extends Vue {
           <input
             v-model={this.viewTitle}
             class={INPUT_CLASSES.INPUT}
-            placeholder={this.config.input?.placeholder}
+            placeholder={this.saveViewConfig.input?.placeholder}
             type="text"
             aria-label="Save view"
             onInput={() => this.handlerInput()}
