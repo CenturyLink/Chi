@@ -1594,12 +1594,8 @@ export default class DataTable extends Vue {
   dataConfigChange(newValue: DataTableConfig, oldValue: DataTableConfig) {
     this.activePage = this.config.pagination.activePage || 1;
 
-    const newSort = Object.values(newValue.defaultSort || {}).join('');
-    const oldSort = Object.values(oldValue.defaultSort || {}).join('');
-
-    if (newSort !== oldSort) {
+    if (!Compare.deepEqual(newValue.defaultSort, oldValue.defaultSort)) {
       this._sortConfig = this._getSortConfig();
-
       this.dataChange();
     }
   }
