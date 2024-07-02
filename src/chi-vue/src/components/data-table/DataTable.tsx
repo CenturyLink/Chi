@@ -1563,7 +1563,7 @@ export default class DataTable extends Vue {
       ? this.config.emptyActionable
       : defaultConfig.emptyActionable;
     this.actions = this.config?.actions || defaultConfig.actions || [];
-    this.fullServerSort = Boolean(this.config?.defaultSort?.fullServerSort);
+    this.fullServerSort = this.mode === DataTableModes.SERVER && this.config?.defaultSort?.fullServerSort;
 
     if (this.actions?.length) {
       this.dataTableData.head.actions = { label: 'Actions', align: 'right' };
@@ -1605,12 +1605,9 @@ export default class DataTable extends Vue {
   }
 
   _getSortConfig() {
-    const isServerSide = this.mode === DataTableModes.SERVER;
-    const isFullServerSort = isServerSide && this.fullServerSort;
-
     let sortConfig: undefined | DataTableSortConfig = undefined;
 
-    if (!isFullServerSort && this.config.defaultSort?.key && this.config.defaultSort?.direction) {
+    if (this.config.defaultSort?.key && this.config.defaultSort?.direction) {
       sortConfig = {
         key: this.config.defaultSort.key,
         direction: this.config.defaultSort.direction,
@@ -1635,7 +1632,7 @@ export default class DataTable extends Vue {
   }
 
   async _resolveRowsToRender() {
-    if (this._sortConfig && this.sortedData) {
+    if (this._sortConfig && this.sortedData && !this.fullServerSort) {
       await this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
 
       return this.sortedData;
