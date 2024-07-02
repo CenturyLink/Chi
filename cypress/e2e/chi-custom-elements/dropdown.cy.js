@@ -341,6 +341,7 @@ describe('Dropdown', () => {
           ).to.eq(true);
         });
       });
+
       it('Should emit event with only selected items', () => {
         const spyValueChanged = cy.spy().as('spyValueChanged');
         const spyItemSelected = cy.spy().as('spyItemSelected');
@@ -419,6 +420,47 @@ describe('Dropdown', () => {
           });
 
           cy.get('@dropdownTrigger').invoke('text').should('equal', '- Select -');
+      });
+
+      it('Should reset selection at resetSelection() invoke and emit chiDropdownSelectionReset event', () => {
+        const spy = cy.spy();
+    
+        cy.get('@dropdown').then((el) => {
+          el.on('chiDropdownSelectionReset', spy);
+        });
+    
+        // select all items
+        cy.get('@dropdownTrigger').click();
+        cy.get('@dropdownMenu')
+          .find(DROPDOWN_MENU_ITEM)
+          .each((item) => {
+            cy.wrap(item).click();
+            cy.get('@dropdownTrigger').click();
+          });
+    
+        // all items should have active class
+        cy.get('@dropdownMenu')
+          .find(DROPDOWN_MENU_ITEM)
+          .each((item) => {
+            cy.wrap(item).should('have.class', ACTIVE_CLASS);
+          });
+    
+        // Reset
+        cy.get('@dropdown')
+          .then(function(dropdown) {
+            dropdown[0].resetSelection();
+            return new Promise((resolve) => resolve(dropdown));
+          })
+          .then(() => {
+            // all items should not have active class
+            cy.get('@dropdownMenu')
+              .find(DROPDOWN_MENU_ITEM)
+              .each((item) => {
+                cy.wrap(item).should('have.not.class', ACTIVE_CLASS);
+              });
+    
+            expect(spy).to.be.called;
+          });
       });
     });
   });

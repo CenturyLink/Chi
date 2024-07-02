@@ -137,6 +137,10 @@ export class Dropdown {
    */
   @Event({ eventName: 'chiDropdownItemDeselected' }) eventItemDeselected: EventEmitter;
   /**
+   * Triggered when Dropdown's selection is reset
+   */
+  @Event({ eventName: 'chiDropdownSelectionReset' }) eventSelectionReset: EventEmitter;
+  /**
    * Triggered when selected items have changed in the dropdown menu. Payload is an array
    * of strings.
    */
@@ -414,7 +418,7 @@ export class Dropdown {
   };
 
   handlerSelectedMenuItem = (ev) => {
-    this._updateValue(ev.target.text);
+    this._updateValue(ev.target);
 
     if (this.retainSelection) {
       this.hide();
@@ -426,7 +430,10 @@ export class Dropdown {
    * Either adds or removes a selected item from the value list.
    * Multiple values are only allowed if selectMode is multi.
    */
-  _updateValue(value: string) {
+  _updateValue(target: HTMLElement) {
+    target = (target.closest(`.${DROPDOWN_CLASSES.MENU_ITEM}`) || target) as HTMLElement;
+    const value = target.innerText;
+
     if (this.selectMode !== 'multi') {
       this._value = [value];
       this.eventItemSelected.emit(value);
@@ -492,6 +499,22 @@ export class Dropdown {
   @Method()
   async toggle() {
     this.active ? this.hide() : this.show();
+  }
+
+  /**
+   * Resets selection
+   */
+  @Method()
+  async resetSelection() {
+    const menuItems = this._getDropdownMenuItems();
+
+    this._value = [];
+
+    menuItems.forEach((item: HTMLElement) => {
+      item.classList.remove(ACTIVE_CLASS);
+    });
+
+    this.eventSelectionReset.emit();
   }
 
   _focusMenuItem(keyCode: string) {
