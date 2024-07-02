@@ -3,9 +3,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
-// !IMPORTANT: Enable once new version of this package is released
-// !ISSUE: https://github.com/fi3ework/vite-plugin-checker/issues/306
-// import { checker } from 'vite-plugin-checker';
+import { checker } from 'vite-plugin-checker';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 export default defineConfig({
@@ -30,14 +28,14 @@ export default defineConfig({
       staticImport: true,
     }),
     libInjectCss(),
-    // checker({
-    //   typescript: {
-    //     tsconfigPath: './tsconfig.json',
-    //   },
-    //   vueTsc: {
-    //     tsconfigPath: './tsconfig.json',
-    //   },
-    // }),
+    checker({
+      typescript: {
+        tsconfigPath: './tsconfig.json',
+      },
+      vueTsc: {
+        tsconfigPath: './tsconfig.json',
+      },
+    }),
   ],
   resolve: {
     alias: {

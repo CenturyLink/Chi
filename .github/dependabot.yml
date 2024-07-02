@@ -17,6 +17,10 @@ updates:
       prefix: "[DPEDE-1784]"
       include: "scope"
       prefix-development: "[DPEDE-1784]"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     ignore:
       # Since the version 3.12.0 is not working as expected
       - dependency-name: "nuxt"
@@ -38,6 +42,10 @@ updates:
       prefix: "[DPEDE-1784]"
       include: "scope"
       prefix-development: "[DPEDE-1784]"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
   - package-ecosystem: "npm"
     directory: "/src/custom-elements"
     schedule:
@@ -55,6 +63,10 @@ updates:
       prefix: "[DPEDE-1784]"
       include: "scope"
       prefix-development: "[DPEDE-1784]"
+    groups:
+      all-dependencies:
+        patterns:
+          - "*"
     ignore:
       # The version 1.0.4 introduces a buffer compression library (zlib) that is deprecated,
       # see https://github.com/kkaefer/DEPRECATED-node-zlib and causes runtime errors. 

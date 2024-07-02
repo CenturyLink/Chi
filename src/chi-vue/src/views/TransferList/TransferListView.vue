@@ -50,9 +50,9 @@ const modal = {
   ariaLabel: 'custom aria label',
 };
 
-const logEvent = (event, payload) => console.log(event, payload);
+const logEvent = (event?, payload?) => console.log(event, payload);
 const chiTransferListSave = (payload) => logEvent('chiTransferListSave', payload);
 const chiTransferListReset = (payload) => logEvent('chiTransferListReset', payload);
 const chiTransferListChange = (payload) => logEvent('chiTransferListChange', payload);
-const chiTransferListCancel = (payload) => logEvent('chiTransferListCancel', payload);
+const chiTransferListCancel = () => logEvent('chiTransferListCancel');
 </script>
