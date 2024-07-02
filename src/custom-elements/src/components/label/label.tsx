@@ -1,8 +1,8 @@
 import { Component, Element, Prop, h, Watch } from '@stencil/core';
 import { addMutationObserver } from '../../utils/mutationObserver';
 import { LABEL_SIZES, type LabelSizes } from '../../constants/size';
-import { LABEL_CLASSES } from '../../constants/classes';
 import { v4 as uuid4 } from 'uuid';
+import { getInfoIcon } from '../../utils/snippets';
 
 @Component({
   tag: 'chi-label',
@@ -59,30 +59,8 @@ export class Label {
     (this.el.querySelector(`#${this.helpPopoverId}`) as any).toggle();
   }
 
-  _getInfoIcon() {
-    return this.infoIcon ? (
-      <div class={LABEL_CLASSES.HELP}>
-        <chi-button
-          id={this.helpButtonId}
-          onChiClick={() => this.toggleHelpPopover()}
-          type="icon"
-          size="xs"
-          variant="flat"
-          alternative-text="Help"
-        >
-          <chi-icon icon="circle-info-outline" size="xs"></chi-icon>
-        </chi-button>
-        <chi-popover id={this.helpPopoverId} position="top" variant="text" arrow reference={`#${this.helpButtonId}`}>
-          {this.infoIconMessage}
-        </chi-popover>
-      </div>
-    ) : (
-      ''
-    );
-  }
-
   render() {
-    const infoIcon = this._getInfoIcon();
+    const infoIcon = getInfoIcon.call(this);
 
     const required = (
       <abbr class="chi-label__required" aria-label="Required field">
