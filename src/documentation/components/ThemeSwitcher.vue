@@ -113,6 +113,7 @@ export default class ThemeSwitcher extends Vue {
     brandLogo.setAttribute('logo', theme === 'centurylink' ? 'centurylink' : 'lumen');
 
     this.selectedTheme = theme;
+    localStorage.setItem('chiTheme', this.getUrlTheme());
     this.setUrlTheme(theme);
   }
 
@@ -142,7 +143,9 @@ export default class ThemeSwitcher extends Vue {
   async setUrlTheme(newTheme: string) {
     const urlTheme = this.getUrlTheme();
     if (newTheme !== urlTheme) {
-      const queryTheme = newTheme === 'centurylink' ? 'CenturyLink' : capitalize(newTheme);
+      // TODO: remove rebrand replace when rebranding is complete
+      const queryTheme = newTheme === 'centurylink' ? 'CenturyLink' : capitalize(newTheme).replace('rebrand', 'Rebrand');
+
       await navigateTo({
         path: useRoute().path,
         query: {
@@ -157,5 +160,3 @@ export default class ThemeSwitcher extends Vue {
   }
 }
 </script>
-
-<style></style>

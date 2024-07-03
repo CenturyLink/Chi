@@ -320,6 +320,27 @@ onLoad(() => {
     }
   }
 
+  function getThemeUrl(url) {
+    const newUrl = new URL(url);
+
+    newUrl.searchParams.set('theme', window.theme)
+    return newUrl.href;
+  }
+
+  function updateSidenavHrefs() {
+    if (window.theme) {
+      [...document.querySelectorAll('nav.docs-sidenav .chi-tabs a')].forEach(link => 
+        link.href = getThemeUrl(link.href)
+      )
+    }
+  }
+
+
+  function updateWindowURLWithoutRefreshing() {
+    window.history.replaceState({}, document.title, getThemeUrl(window.location.href));
+  }
+
+
   window.switchTheme = function(theme, anchorTarget) {
     var logoElement = document.getElementById('header-logo');
     var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
@@ -404,6 +425,8 @@ onLoad(() => {
       }
     });
     updateAnchorHrefs();
+    updateSidenavHrefs();
+    updateWindowURLWithoutRefreshing();
   };
 
   if (urlThemeParam && themes.hasOwnProperty(urlThemeParam)) {
@@ -419,6 +442,7 @@ onLoad(() => {
       document.querySelector(themes[localStorageTheme].trigger)
     );
   } else {
+
     switchTheme('Lumen', document.querySelector(themes.Lumen.trigger));
   }
 
