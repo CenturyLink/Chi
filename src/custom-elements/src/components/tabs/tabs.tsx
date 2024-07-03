@@ -504,6 +504,10 @@ export class Tabs {
   }
 
   setSlidingBorderStyles() {
+    if (!this.activeTab) {
+      return;
+    }
+
     const element = this.isActiveTabOverflown(this.tabs) ? this.seeMoreTriggerElement : this.activeTabElement;
     const position = this.getPosition(element);
 
