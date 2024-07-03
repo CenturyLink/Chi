@@ -8,9 +8,14 @@ const SELECTORS = {
 };
 
 const CLASSES = {
+  ACTIVE: '-active',
   WARNING: '-warning',
   DANGER: '-danger',
   SUCCESS: '-success',
+};
+
+const DROPDOWN_EVENTS = {
+  CHI_DROPDOWN_RESET_SELECTION: 'chiDropdownSelectionReset',
 };
 
 describe('Search input', () => {
@@ -64,7 +69,7 @@ describe('Search input', () => {
       cy.get('@dropdown').should('not.have.attr', 'active');
     });
 
-    it('Should be able to clear search input and filtered dropdown menu items on click close button', () => {
+    it('Should be able to clear search input and filtered dropdown menu items on "X" click', () => {
       cy.get('@searchInput')
         .focus()
         .type('2');
@@ -74,6 +79,102 @@ describe('Search input', () => {
         .click();
 
       cy.get('@dropdown').should('have.attr', 'active');
+    });
+
+    it(`Should be able to reset selection on "X" click and emit ${DROPDOWN_EVENTS.CHI_DROPDOWN_RESET_SELECTION}`, () => {
+      const spy = cy.spy();
+
+      cy.get('@dropdown').then((el) => {
+        el.on(DROPDOWN_EVENTS.CHI_DROPDOWN_RESET_SELECTION, spy);
+      });
+
+      cy.get('@searchInput').focus();
+
+      cy.get('@dropdownMenuItem')
+        .eq(2)
+        .click();
+
+      cy.get(SELECTORS.AUTOCOMPLETE)
+        .find('.chi-icon.icon-x')
+        .click()
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+        });
+
+      cy.get('@dropdownMenuItem')
+        .filter(`.${CLASSES.ACTIVE}`)
+        .should('have.length', 0);
+    });
+
+    it('Should be able to persist selection at type', () => {
+      // Select
+      cy.get('@searchInput')
+        .type('Item 2');
+
+      cy.get('@dropdownMenuItem')
+        .click();
+
+      cy.get('@dropdownMenuItem')
+        .filter(`.${CLASSES.ACTIVE}`)
+        .should('have.length', 1)
+        .should('have.text', 'Item 2');
+
+      // Type {backspace}
+      cy.get('@searchInput')
+        .type('{backspace}');
+
+      cy.get('@dropdownMenuItem')
+        .find('strong')
+        .contains('1')
+        .parent()
+        .should('have.not.class', CLASSES.ACTIVE);
+
+      cy.get('@dropdownMenuItem')
+        .find('strong')
+        .contains('2')
+        .parent()
+        .should('have.class', CLASSES.ACTIVE);
+
+      // Type {backspace}
+      cy.get('@searchInput')
+        .type('{backspace}')
+        .type('{backspace}');
+
+      cy.get('@dropdownMenuItem')
+        .find('strong')
+        .contains('m 2')
+        .parent()
+        .should('have.class', CLASSES.ACTIVE);
+    });
+
+    it(`Should be able to reset selection at type with empty search and emit ${DROPDOWN_EVENTS.CHI_DROPDOWN_RESET_SELECTION}`, () => {
+      const spy = cy.spy();
+
+      cy.get('@dropdown').then((el) => {
+        el.on(DROPDOWN_EVENTS.CHI_DROPDOWN_RESET_SELECTION, spy);
+      });
+
+      // Select
+      cy.get('@searchInput')
+        .type('Item 2');
+
+      cy.get('@dropdownMenuItem')
+        .click();
+
+      // Type {backspace} until empty, reset selection
+      cy.get('@searchInput')
+        .type('{backspace}')
+        .type('{backspace}')
+        .type('{backspace}')
+        .type('{backspace}')
+        .type('{backspace}')
+        .type('{backspace}')
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+
+          cy.get('@dropdownMenuItem')
+            .should('have.not.class', CLASSES.ACTIVE);
+        });
     });
 
     it('Should be able navigate between the menu items with keyboard arrow up and down', () => {
