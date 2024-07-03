@@ -74,9 +74,8 @@ export default class SaveView extends Vue {
   mainLabel = defaultConfig.label?.main;
   inputLabel = defaultConfig.input?.label;
   resultsLabel = defaultConfig.label?.results;
-  saveButtonDisabled = defaultConfig.saveButtonDisabled;
 
-  saveViewConfig = deepCopy(this.config);
+  saveViewConfig = defaultConfig;
 
   @Watch('config')
   dataConfigChange(newValue: SaveViewConfig, oldValue: SaveViewConfig) {
@@ -86,10 +85,10 @@ export default class SaveView extends Vue {
   }
 
   handlerClickCancel() {
-    if (this.viewMode === SaveViewModes.CREATE) {
-      this.viewMode = SaveViewModes.BASE;
-    } else if (this.viewMode === SaveViewModes.EDIT || this.viewMode === SaveViewModes.DELETE) {
-      this.viewMode = SaveViewModes.SAVED;
+    if (this.saveViewConfig.mode === SaveViewModes.CREATE) {
+      this.saveViewConfig.mode = SaveViewModes.BASE;
+    } else if (this.saveViewConfig.mode === SaveViewModes.EDIT || this.saveViewConfig.mode === SaveViewModes.DELETE) {
+      this.saveViewConfig.mode = SaveViewModes.SAVED;
     }
   }
 
@@ -117,7 +116,7 @@ export default class SaveView extends Vue {
 
   setMode(mode: SaveViewModes) {
     if (Object.values(SaveViewModes).includes(mode)) {
-      this.viewMode = mode;
+      this.saveViewConfig.mode = mode;
     }
   }
 
@@ -129,7 +128,6 @@ export default class SaveView extends Vue {
   }
 
   handlerClose() {
-    this.isSaveViewVisible = false;
     this._emitHide();
   }
 
@@ -148,8 +146,8 @@ export default class SaveView extends Vue {
   }
 
   disableSaveButton() {
-    if (this.saveButtonDisabled !== undefined) {
-      return this.saveButtonDisabled;
+    if (this.saveViewConfig.saveButtonDisabled !== undefined) {
+      return this.saveViewConfig.saveButtonDisabled;
     }
 
     return (
@@ -159,18 +157,16 @@ export default class SaveView extends Vue {
   }
 
   beforeMount(): void {
+    this.saveViewConfig = deepCopy(this.config) || defaultConfig;
     this.isRibbonShown = !!this.saveViewConfig.active;
-    this.isSaveViewVisible = !!this.saveViewConfig.active;
     this.isDefaultChecked = !!this.saveViewConfig.default;
     this.isReadOnly = !!this.saveViewConfig.readonly;
-    this.viewMode = this.saveViewConfig.mode || defaultConfig.mode || SaveViewModes.BASE;
     this.viewTitle = this.saveViewConfig.title || defaultConfig.title;
     this.uuid = this.saveViewConfig.id || uuid4();
     this.deleteLabel = this.saveViewConfig.label?.delete || defaultConfig.label?.delete;
     this.mainLabel = this.saveViewConfig.label?.main || defaultConfig.label?.main;
     this.inputLabel = this.saveViewConfig.input?.label || defaultConfig.input?.label;
     this.resultsLabel = this.saveViewConfig.label?.results || defaultConfig.label?.results;
-    this.saveButtonDisabled = this.saveViewConfig.saveButtonDisabled ?? defaultConfig.saveButtonDisabled;
   }
 
   render() {
@@ -180,7 +176,7 @@ export default class SaveView extends Vue {
     const arrowDown = <i class={`${ICON_CLASS} icon-arrow-down ${GENERIC_SIZE_CLASSES.XS}`} aria-hidden="true" />;
     const ribbonLabel = (
       <span class={SAVE_VIEW_CLASSES.LABEL}>
-        {this.viewMode === SaveViewModes.CREATE ? 'New' : 'Edit'} {this.mainLabel}
+        {this.saveViewConfig.mode === SaveViewModes.CREATE ? 'New' : 'Edit'} {this.mainLabel}
       </span>
     );
     const closeButton = (
@@ -282,7 +278,7 @@ export default class SaveView extends Vue {
       <button
         aria-label="Edit"
         class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${GENERIC_SIZE_CLASSES.SM}`}
-        disabled={this.viewMode === SaveViewModes.DELETE}
+        disabled={this.saveViewConfig.mode === SaveViewModes.DELETE}
         onClick={() => this.setMode(SaveViewModes.EDIT)}
       >
         <div class={BUTTON_CLASSES.CONTENT}>
@@ -295,7 +291,7 @@ export default class SaveView extends Vue {
       <button
         aria-label="Delete"
         class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${GENERIC_SIZE_CLASSES.SM}`}
-        disabled={this.viewMode === SaveViewModes.DELETE}
+        disabled={this.saveViewConfig.mode === SaveViewModes.DELETE}
         onClick={() => this.setMode(SaveViewModes.DELETE)}
       >
         <div class={BUTTON_CLASSES.CONTENT}>
@@ -363,8 +359,8 @@ export default class SaveView extends Vue {
       edit: editMode,
       saved: savedMode,
     };
-    const ribbon = this.isSaveViewVisible ? (
-      <div class={SAVE_VIEW_CLASSES.SAVE_VIEW}>{modes[this.viewMode]}</div>
+    const ribbon = this.saveViewConfig.active ? (
+      <div class={SAVE_VIEW_CLASSES.SAVE_VIEW}>{modes[this.saveViewConfig.mode || SaveViewModes.BASE]}</div>
     ) : null;
 
     return (
