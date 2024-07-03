@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-06-27T14:27:41",
+  "timestamp": "2024-07-03T10:36:34",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.19.0",
+    "version": "4.19.2",
     "typescriptVersion": "5.4.5"
   },
   "components": [
@@ -2945,7 +2945,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -3282,6 +3282,32 @@
           "docsTags": []
         },
         {
+          "name": "resetSelection",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "resetSelection() => Promise<void>",
+          "parameters": [],
+          "docs": "Resets selection",
+          "docsTags": []
+        },
+        {
           "name": "show",
           "returns": {
             "type": "Promise<void>",
@@ -3403,6 +3429,20 @@
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when press key to up/down the Dropdown menu items",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownSelectionReset",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Dropdown's selection is reset",
           "docsTags": []
         },
         {
@@ -5334,7 +5374,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": ""
+                "id": "node_modules::CountryCode"
               }
             }
           },
@@ -6815,7 +6855,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -9978,7 +10018,7 @@
   ],
   "typeLibrary": {
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -9998,7 +10038,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10038,7 +10078,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10048,12 +10088,12 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
-      "declaration": "\"filled\" | \"outline\"",
+      "declaration": "\"outline\" | \"filled\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10073,7 +10113,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
