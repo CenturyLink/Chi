@@ -3,7 +3,6 @@ import { RADIO_CLASSES } from '../../constants/classes';
 import { ChiStates } from '../../constants/states';
 import { addMutationObserver } from '../../utils/mutationObserver';
 import { v4 as uuid4 } from 'uuid';
-import { getInfoIcon } from '../../utils/snippets';
 
 @Component({
   tag: 'chi-radio-button',
@@ -31,32 +30,19 @@ export class RadioButton {
    * To indicate the state
    */
   @Prop() state?: ChiStates;
-  /**
-   * To indicate if the element has the focus
-   */
-  @Prop() hasFocus?: boolean;
-  /**
-   * To indicate if info icon should be displayed.
-   */
-  @Prop({ reflect: true }) infoIcon = false;
-  /**
-   * To provide message for info icon popover.
-   */
-  @Prop({ reflect: true }) infoIconMessage = 'Helpful information goes here.';
 
   private id: string;
   private labelId: string;
-  private helpButtonId: string;
-  private helpPopoverId: string;
+  private hasFocus: boolean;
 
   /**
    * Triggered when the radio-button has lost the focus
-  */
- @Event() chiBlur: EventEmitter<string | boolean>;
- /**
-  * Triggered when the user selects or deselects the radio-button
-  */
- @Event() chiChange: EventEmitter<string | boolean>;
+   */
+  @Event() chiBlur: EventEmitter<string | boolean>;
+  /**
+   * Triggered when the user selects or deselects the radio-button
+   */
+  @Event() chiChange: EventEmitter<string | boolean>;
   /**
    * Triggered when the radio-button has the focus
    */
@@ -68,9 +54,7 @@ export class RadioButton {
   }
 
   componentWillLoad() {
-    this.helpButtonId = `help-button-${uuid4()}`;
-    this.helpPopoverId = `help-popover-${uuid4()}`;
-    this.id = `${uuid4()}-control`;
+    this.id = `${uuid4()}`;
     this.labelId = `radio-label-${this.id}`;
   }
 
@@ -101,16 +85,7 @@ export class RadioButton {
     this.chiFocus.emit(hasFocus);
   }
 
-  toggleHelpPopover(): void {
-    const helpPopoverElement = document.getElementById(this.helpPopoverId) as HTMLChiPopoverElement;
-
-    if (helpPopoverElement) {
-      helpPopoverElement.toggle();
-    }
-  }
-
   render() {
-    const infoIcon = getInfoIcon.call(this);
     const stateClass = this.state ? `-${this.state}` : '';
 
     return (
@@ -131,13 +106,8 @@ export class RadioButton {
           onFocus={() => this.focus()}
           type="radio"
         />
-        <label
-          id={this.labelId}
-          class={`${RADIO_CLASSES.LABEL} ${stateClass}`}
-          htmlFor={this.id}
-        >
+        <label id={this.labelId} class={`${RADIO_CLASSES.LABEL} ${stateClass}`} htmlFor={this.id}>
           {this.label}
-          {infoIcon}
         </label>
       </div>
     );
