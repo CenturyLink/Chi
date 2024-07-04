@@ -1563,7 +1563,7 @@ export default class DataTable extends Vue {
       ? this.config.emptyActionable
       : defaultConfig.emptyActionable;
     this.actions = this.config?.actions || defaultConfig.actions || [];
-    this.fullServerSort = Boolean(this.config?.defaultSort?.fullServerSort);
+    this.fullServerSort = this.mode === DataTableModes.SERVER && this.config?.defaultSort?.fullServerSort;
 
     if (this.actions?.length) {
       this.dataTableData.head.actions = { label: 'Actions', align: 'right' };
@@ -1591,37 +1591,44 @@ export default class DataTable extends Vue {
   }
 
   @Watch('config')
-  dataConfigChange() {
+  dataConfigChange(newValue: DataTableConfig, oldValue: DataTableConfig) {
     this.activePage = this.config.pagination.activePage || 1;
+
+    if (!Compare.deepEqual(newValue.defaultSort, oldValue.defaultSort)) {
+      this._sortConfig = this._getSortConfig();
+      this.dataChange();
+    }
   }
 
-  created() {
-    const isServerSide = this.mode === DataTableModes.SERVER;
-    const isFullServerSort = isServerSide && this.fullServerSort;
+  _getSortConfig() {
+    let sortConfig: undefined | DataTableSortConfig = undefined;
 
-    dataTableNumber += 1;
-    this._dataTableNumber = dataTableNumber;
-    this._dataTableId = `dt-${this._dataTableNumber}`;
-
-    if (!isFullServerSort && this.config.defaultSort?.key && this.config.defaultSort?.direction) {
-      this._sortConfig = {
+    if (this.config.defaultSort?.key && this.config.defaultSort?.direction) {
+      sortConfig = {
         key: this.config.defaultSort.key,
         direction: this.config.defaultSort.direction,
         sortBy: this.config.defaultSort.sortBy || undefined,
       };
-    } else {
-      this._sortConfig = undefined;
     }
 
+    return sortConfig;
+  }
+
+  created() {
+    dataTableNumber += 1;
+    this._dataTableNumber = dataTableNumber;
+    this._dataTableId = `dt-${this._dataTableNumber}`;
+    this._sortConfig = this._getSortConfig();
     this.mapRows = {};
     this.serializeData();
+
     if (this._sortConfig && this.mode === DataTableModes.CLIENT) {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
   }
 
   async _resolveRowsToRender() {
-    if (this._sortConfig && this.sortedData) {
+    if (this._sortConfig && this.sortedData && !this.fullServerSort) {
       await this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
 
       return this.sortedData;
