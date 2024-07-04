@@ -33,6 +33,22 @@ See [Configuration Reference](https://vitejs.dev/config/).
 
 # CHANGELOG
 
+## 3.7.0 (July 4, 2024)
+
+### Components
+
+#### Added
+
+- Added: Save view now supports dynamically change of properties.
+
+#### Changed
+
+- Changed: Data table watch config to re-sort data if `defaultSort` has changed.
+
+#### Fixed
+
+- Fixed: Data table `fullServerSort` configuration renders correct icon on first render in `serverside` mode.
+
 ## 3.6.0 (June 7, 2024)
 
 ### Components
