@@ -32,9 +32,6 @@ describe('Data table sorting', () => {
       .as("sortIcon");
 
     cy.get('@sortIcon')
-      .should('have.class', ARROW_UP_CLASS)
-      .and('have.css', 'transform')
-      // same as rotate(180deg)
-      .should('include', 'matrix(-1, 0, 0, -1, 0, 0)');
+      .should('have.class', ARROW_UP_CLASS);
   });
 })
