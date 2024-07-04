@@ -282,7 +282,7 @@ $icon-size-xl: 6rem;
 $icon-size-xxl: 8rem;
 
 // Link color
-$link-color: $color-teal-80;
+$link-color: $color-teal-70;
 
 // Focus color
 $focus-color: $color-teal-70;
@@ -560,7 +560,7 @@ $badge-flat-accent-5-text-color: $color-purple-70;
 $badge-flat-accent-5-icon-color: $color-purple-60;
 
 // Bulk actions
-$bulk-actions-background-color: $color-blue-30;
+$bulk-actions-background-color: $color-background-secondary;
 $bulk-actions-link-color: $color-text-base;
 $bulk-actions-link-font-weight: $font-weight-semi-bold;
 $bulk-actions-results-font-size: $font-size-md;
@@ -1192,7 +1192,7 @@ $label-help-hover-icon-color: $color-teal-100;
 // Link
 $link-text-decoration: underline;
 $link-hover-text-decoration: none;
-$link-hover-color: $link-color;
+$link-hover-color: $color-teal-100;
 
 $link-cta-icon: '\e904';
 $link-cta-icon-color: $color-orange-60;
