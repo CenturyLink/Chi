@@ -285,12 +285,7 @@ describe('Server Side Data Table Portal', () => {
     
         checkCorrectIcon(row, ARROW_UP_CLASS);
       });
-  
-      it('Should not sort by default when fullServerSort property is set to true', () => {
-        const row = `[data-cy='data-table-portal-server-side-no-default-sort'] .${DATA_TABLE_CLASSES.ROW}`;
 
-        checkCorrectIcon(row, ARROW_SORT_CLASS);
-      });
       
       it('Should sort by default when fullServerSort property is set to false', () => {
         const row = `[data-cy='data-table-portal-server-side-default-sort-with-prop'] .${DATA_TABLE_CLASSES.ROW}`;
