@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 5.74.0 (July 4, 2024)
+
+### Components
+
+#### Added
+
+- Added: Save view now supports dynamically change of properties.
+
+#### Changed
+
+- Changed: Data table watch config to re-sort data if `defaultSort` has changed.
+
+#### Fixed
+
+- Fixed: Tabs console error when `active` is not set.
+- Fixed: Data table `fullServerSort` configuration renders correct icon on first render in `serverside` mode.
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Mobile navigation drawer menu not displaying correctly on smaller screens.
+
 ## 5.73.0 (June 27, 2024)
 
 ### Documentation

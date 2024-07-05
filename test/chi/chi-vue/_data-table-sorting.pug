@@ -1,0 +1,156 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
+script(src="../../chi-vue/umd/index.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(src=`../../js/chi.js`)
+
+h2 Data Table Sorting
+h3 Client Side
+.test-data-table.-p--3.-w--100
+  #client-change-sort-config
+    chi-vue-data-table(data-cy='data-table-sorting-client-side', :config="config", :data-table-data="table")
+    button#changeSort(@click="changeSort") Change Sort Config
+
+h3 Server side with full server sort
+.test-data-table.-p--3.-w--100
+  #server-full-server-sort-default-sort
+    chi-vue-data-table(
+      data-cy='data-table-sorting-server-side-full-server-sort', 
+      :config="config", 
+      :data-table-data="table"
+    )
+
+script.
+  const clientSideChangeSortConfig = Vue.createApp({
+    data() {
+      return {
+        config: {
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          defaultSort: {
+            key: "id",
+            sortBy: "string",
+            direction: "ascending",
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name", sortable: true, sortDataType: "string" },
+            id: {
+              label: "ID",
+              sortable: true,
+              sortDataType: "string",
+            },
+            date: {
+              label: "Last Login",
+              sortable: true,
+              sortDataType: "string"
+            },
+          },
+          body: [
+            {
+              id: "name-1",
+              data: [
+                "Name 1",
+                "id-1",
+                "01/06/2018"
+              ],
+            },
+            { id: "name-2", data: ["Name 2", 'id-2', "02/06/2018"]},
+            { id: "name-3", data: ["Name 3", 'id-3', "03/06/2018"]},
+            { id: "name-4", data: ["Name 4", 'id-4', "04/06/2018"]}
+          ],
+        },
+      }
+    },
+    methods: {
+      changeSort() {
+        this.config = {
+          ...this.config,
+          defaultSort: {
+            ...this.config.defaultSort,
+            direction: this.config.defaultSort.direction === 'ascending' ? 'descending' : 'ascending'
+          }
+        }
+      }
+    }
+  });
+
+  clientSideChangeSortConfig.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  clientSideChangeSortConfig.mount('#client-change-sort-config');
+
+  const serverSideFullServerSort = Vue.createApp({
+    data() {
+      return {
+        config: {
+          mode: "serverside",
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: "md",
+            striped: false,
+          },
+          defaultSort: {
+            key: "id",
+            sortBy: "string",
+            direction: "descending",
+            fullServerSort: true
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: "Name", sortable: true, sortDataType: "string" },
+            id: {
+              label: "ID",
+              sortable: true,
+              sortDataType: "string",
+            },
+            date: {
+              label: "Last Login",
+              sortable: true,
+              sortDataType: "string"
+            },
+          },
+          body: [
+            {
+              id: "name-1",
+              data: [
+                "Name 1",
+                "id-1",
+                "01/06/2018"
+              ],
+            },
+            { id: "name-2", data: ["Name 2", 'id-2', "02/06/2018"]},
+            { id: "name-3", data: ["Name 3", 'id-3', "03/06/2018"]},
+            { id: "name-4", data: ["Name 4", 'id-4', "04/06/2018"]}
+          ],
+        },
+      }
+    },
+  });
+
+  serverSideFullServerSort.component('chiVueDataTable', window["chi-vue"].library.components.ChiDataTable);
+  serverSideFullServerSort.mount('#server-full-server-sort-default-sort');
