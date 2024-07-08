@@ -746,6 +746,20 @@ $sizes: (
                 z-index: 1;
               }
             }
+
+            .chi-button {
+              &.-flat {
+                &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+                  &.-icon {
+                    .chi-icon {
+                      &.icon-circle-info-outline {
+                        color: $data-table-head-icon-button-color;
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
 
           &:last-child {
