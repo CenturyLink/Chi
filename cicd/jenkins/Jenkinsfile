@@ -316,6 +316,158 @@ pipeline {
           }
         }
       }
+      stage ('Tests') {
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }
+        parallel {
+          stage ('BackstopJS Responsive Test') {
+            agent {
+              dockerfile {
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/responsive
+                """
+                ghYarnWrap('install')
+                unstash name: "DIST-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/responsive
+                  cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Responsive tests"
+                jslNpmWrapper('run test:backstop:responsive')
+                stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
+                stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"
+                archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
+              }
+            }
+          }
+          stage ('BackstopJS Non-Responsive Test') {
+            agent {
+              dockerfile {
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive
+                """
+                ghYarnWrap('install')
+                unstash name: "DIST-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Non-Responsive tests"
+                jslNpmWrapper('run test:backstop:non-responsive')
+                stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
+                stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
+              }
+            }
+          }
+          stage ('BackstopJS Custom Elements Test') {
+            agent {
+              dockerfile {
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive_ce
+                """
+                ghYarnWrap('install')
+                unstash name: "DIST-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive_ce
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Custom Elements tests"
+                jslNpmWrapper('run test:backstop:non-responsive:ce')
+                stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
+                stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
+              }
+            }
+          }
+          stage ('Cypress local Testing') {
+            agent {
+              docker {
+                image getNodeAgentBlock(null, 'image')
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+              }
+            }
+            steps {
+              script {
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                """
+                ghYarnWrap('install')
+                ghYarnWrap('cache clean')
+                unstash name: "DIST-CHI"
+                dir ('src/custom-elements') {
+                  sh """
+                    rm -rf dist
+                    rm -rf node_modules
+                  """
+                  unstash name: "DIST-CHI-CE"
+                }
+                dir ('src/chi-vue') {
+                  sh """
+                    rm -rf dist
+                    rm -rf node_modules
+                  """
+                  unstash name: "DIST-CHI-VUE"
+                }
+                def retries = 3
+                while (retries != 0) {
+                  try {
+                    jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
+                    break
+                  } catch (Exception e) {
+                    retries -= 1
+                    echo "failure starting local server // remaining attempts: ${retries}"
+                  }
+                }
+                sh script: """
+                  ./node_modules/.bin/cypress run
+                """, label: "Running NPX before adding JSL file, TEST."
+                jslNpxWrapper('gulp serve:stop')
+              }
+            }
+          }
+        }
       }
       stage('Sonarqube Static Analysis') {
         agent {
