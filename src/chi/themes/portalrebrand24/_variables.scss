@@ -937,6 +937,7 @@ $divider-vertical-inverse-border-color: rgba($color-white, 0.2);
 // Data Table
 $data-table-footer-background-color: $color-grey-10;
 $data-table-head-background-color: $color-background-muted-lighter;
+$data-table-head-icon-button-color: $color-teal-80;
 $data-table-row-striped-background-color: $color-grey-10;
 $data-table-row-active-background-color: $color-orange-05;
 $data-table-row-active-marker-color: $color-border-primary;
@@ -1552,10 +1553,10 @@ $save-view-label-font-size: $font-size-md;
 $save-view-label-font-weight: $font-weight-semi-bold;
 $save-view-edit-border-color: $color-border-info;
 $save-view-edit-border-style: dashed;
-$save-view-ribbon-background-color: $color-blue-70;
+$save-view-ribbon-background-color: $color-teal-70;
 $save-view-ribbon-label-color: $color-text-white;
 $save-view-ribbon-label-font-style: italic;
-$save-view-ribbon-arrow-border-color: $color-blue-70;
+$save-view-ribbon-arrow-border-color: $color-teal-70;
 $save-view-ribbon-arrow-border-style: solid;
 
 // Search input
