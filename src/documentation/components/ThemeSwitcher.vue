@@ -142,7 +142,7 @@ export default class ThemeSwitcher extends Vue {
 
   async setUrlTheme(newTheme: string) {
     const urlTheme = this.getUrlTheme();
-    if (newTheme !== urlTheme) {
+    if (newTheme.toLowerCase() !== urlTheme.toLowerCase()) {
       // TODO: remove rebrand replace when rebranding is complete
       const queryTheme = newTheme === 'centurylink' ? 'CenturyLink' : capitalize(newTheme).replace('rebrand', 'Rebrand');
 
