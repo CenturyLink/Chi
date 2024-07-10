@@ -1,0 +1,12 @@
+import{V as d,N as u}from"./uJTUijt2.js";import{_}from"./D8GK0F__.js";import{_ as b}from"./DKu8Jd2y.js";import{o as f,f as x,w as c,b as m,a as e,d as l}from"./B5CYXVwa.js";import{_ as z}from"./DlAUqK2U.js";import"./C-hgEc7b.js";import"./drvuhYu1.js";import"./2EwpEKcw.js";var g=Object.defineProperty,v=Object.getOwnPropertyDescriptor,w=(t,p,s,n)=>{for(var o=n>1?void 0:n?v(p,s):p,a=t.length-1,i;a>=0;a--)(i=t[a])&&(o=(n?i(p,s,o):i(o))||o);return n&&o&&g(p,s,o),o};let h=class extends d{};h=w([u({data:()=>({exampleTabs:[{active:!0,id:"webcomponent",label:"Web Component"},{disabled:!0,id:"htmlblueprint",label:"HTML Blueprint"}],codeSnippets:{webcomponent:`<!-- xs -->
+<chi-label for="phone-input-xs">xs</chi-label>
+<chi-phone-input id="phone-input-xs" size="xs"></chi-phone-input>
+<!-- sm -->
+<chi-label for="phone-input-sm">sm</chi-label>
+<chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>
+<!-- md -->
+<chi-label for="phone-input-md">md</chi-label>
+<chi-phone-input id="phone-input-md" size="md"></chi-phone-input>
+<!-- lg -->
+<chi-label for="phone-input-lg">lg</chi-label>
+<chi-phone-input id="phone-input-lg" size="lg"></chi-phone-input>`,htmlblueprint:""}})})],h);const P=e("p",{class:"-text"},[l("Phone input supports the following sizes: "),e("code",null,"xs"),l(", "),e("code",null,"sm"),l(", "),e("code",null,"md"),l(" (default), and "),e("code",null,"lg"),l(".")],-1),S=e("div",{style:{"max-width":"18rem"}},[e("div",{class:"-mb--2 chi-form__item"},[e("chi-label",{for:"phone-input-portal-xs"},"xs"),e("chi-phone-input",{id:"phone-input-portal-xs",size:"xs"})]),e("div",{class:"-mb--2 chi-form__item"},[e("chi-label",{for:"phone-input-portal-sm"},"sm"),e("chi-phone-input",{id:"phone-input-portal-sm",size:"sm"})]),e("div",{class:"-mb--2 chi-form__item"},[e("chi-label",{for:"phone-input-portal-md"},"md"),e("chi-phone-input",{id:"phone-input-portal-md",size:"md"})]),e("div",{class:"-mb--2 chi-form__item"},[e("chi-label",{for:"phone-input-portal-lg"},"lg"),e("chi-phone-input",{id:"phone-input-portal-lg",size:"lg"})])],-1);function C(t,p,s,n,o,a){const i=_,r=b;return f(),x(r,{title:"Sizes",id:"sizes_portal",tabs:t.exampleTabs},{"example-description":c(()=>[P]),example:c(()=>[S]),"code-webcomponent":c(()=>[m(i,{class:"html",lang:"html",code:t.codeSnippets.webcomponent},null,8,["code"])]),"code-htmlblueprint":c(()=>[m(i,{class:"html",lang:"html",code:t.codeSnippets.htmlblueprint},null,8,["code"])]),_:1},8,["tabs"])}const E=z(h,[["render",C]]);export{E as default};

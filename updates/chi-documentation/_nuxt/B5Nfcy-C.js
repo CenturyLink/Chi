@@ -1,0 +1,5 @@
+import{V as _,N as d}from"./uJTUijt2.js";import{_ as u}from"./drvuhYu1.js";import{_ as h}from"./D8GK0F__.js";import{o as S,c as f,b as i,a as l,d as p}from"./B5CYXVwa.js";import{_ as b}from"./DlAUqK2U.js";import"./C-hgEc7b.js";var x=Object.defineProperty,v=Object.getOwnPropertyDescriptor,w=(t,o,n,s)=>{for(var e=s>1?void 0:s?v(o,n):o,r=t.length-1,a;r>=0;r--)(a=t[r])&&(e=(s?a(o,n,e):a(e))||e);return s&&e&&x(o,n,e),e};let c=class extends _{};c=w([d({data:()=>({exampleTabs:[{active:!0,id:"htmlblueprint",label:"HTML Blueprint"}],codeSnippets:{webcomponent:"",htmlblueprint:`@import '@centurylink/chi/src/chi/_global-variables';
+
+.example {
+  box-shadow: map-get($shadow, 1);
+}`}})})],c);const $={class:"-mb--4"},A=l("p",{class:"-text"},[p("Chi defines shadows with Saas maps. The following example will render a shadow equivalent to "),l("code",null,"-s--1"),p(" / "),l("code",null,"1px"),p(".")],-1);function N(t,o,n,s,e,r){const a=u,m=h;return S(),f("div",$,[i(a,{title:"SASS",id:"sass",titleSize:"h2"}),A,i(m,{lang:"html",code:t.codeSnippets.htmlblueprint},null,8,["code"])])}const j=b(c,[["render",N]]);export{j as default};

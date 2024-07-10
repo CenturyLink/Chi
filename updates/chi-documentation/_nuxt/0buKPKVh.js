@@ -1,0 +1,11 @@
+import{V as _,N as m}from"./uJTUijt2.js";import{_ as b}from"./D8GK0F__.js";import{_ as u}from"./DKu8Jd2y.js";import{o as w,f,w as r,b as h,a as t,d as s}from"./B5CYXVwa.js";import{_ as x}from"./DlAUqK2U.js";import"./C-hgEc7b.js";import"./drvuhYu1.js";import"./2EwpEKcw.js";var v=Object.defineProperty,g=Object.getOwnPropertyDescriptor,y=(o,l,a,c)=>{for(var e=c>1?void 0:c?g(l,a):l,n=o.length-1,i;n>=0;n--)(i=o[n])&&(e=(c?i(l,a,e):i(e))||e);return c&&e&&v(l,a,e),e};let p=class extends _{};p=y([m({data:()=>({exampleTabs:[{active:!0,id:"webcomponent",label:"Web Component"},{id:"htmlblueprint",label:"HTML Blueprint"}],codeSnippets:{webcomponent:`<div class="chi-form__item">
+  <chi-switch id="portal-toggle8" size="xs" label="Label" hide-label></chi-switch>
+</div>`,htmlblueprint:`<div class="chi-form__item">
+  <label class="chi-switch -xs -label--hide" for="portal-toggle8">
+    <input type="checkbox" class="chi-switch__input" id="portal-toggle8">
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>`}})})],p);const S=t("div",{class:"chi-form__item"},[t("chi-switch",{id:"portal-toggle8",size:"xs",label:"Label","hide-label":""})],-1),P=t("div",{class:"p--text chi-tab__description"},[s("Apply the "),t("code",null,"hide-label"),s(" attribute to "),t("code",null,"chi-switch"),s(" to render a switch without a label. Use this method for rendering switches in close proximity to other text that clearly describes its purpose.")],-1),C=t("div",{class:"p--text chi-tab__description"},[s("Apply the class "),t("code",null,"-label--hide"),s(" to "),t("code",null,"chi-switch"),s(" to render a switch without a label. Use this method for rendering switches in close proximity to other text that clearly describes its purpose.")],-1);function H(o,l,a,c,e,n){const i=b,d=u;return w(),f(d,{titleSize:"h4",title:"Switch with Hidden Label",id:"switch-hidden-label-portal",tabs:o.exampleTabs},{example:r(()=>[S]),"code-webcomponent":r(()=>[P,h(i,{lang:"html",code:o.codeSnippets.webcomponent},null,8,["code"])]),"code-htmlblueprint":r(()=>[C,h(i,{lang:"html",code:o.codeSnippets.htmlblueprint},null,8,["code"])]),_:1},8,["tabs"])}const A=x(p,[["render",H]]);export{A as default};

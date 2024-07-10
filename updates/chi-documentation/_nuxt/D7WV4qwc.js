@@ -1,0 +1,1 @@
+import{m as n,X as o,a4 as r,J as _}from"./B5CYXVwa.js";import{S as i}from"./2EwpEKcw.js";const u=n({__name:"index",async setup(p){let t,e;const{path:a,query:s}=o();return a==="/"&&([t,e]=r(()=>_({path:`/${i.gettingStarted}`,query:s})),await t,e()),()=>{}}});export{u as default};

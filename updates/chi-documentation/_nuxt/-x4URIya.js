@@ -1,0 +1,1 @@
+import{_ as o}from"./Be4hAolY.js";import{o as e,f as r}from"./B5CYXVwa.js";import{_ as n}from"./DlAUqK2U.js";import"./uJTUijt2.js";import"./C9_DePFx.js";function c(a,s){const t=o;return e(),r(t,{title:"What's new"})}const _={},u=n(_,[["render",c]]);export{u as default};

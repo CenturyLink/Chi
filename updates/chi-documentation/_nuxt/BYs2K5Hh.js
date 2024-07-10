@@ -1,0 +1,8 @@
+import{V as m,N as h}from"./uJTUijt2.js";import{_}from"./D8GK0F__.js";import{_ as u}from"./DKu8Jd2y.js";import{o as v,f,w as n,b as d,a as l}from"./B5CYXVwa.js";import{_ as b}from"./DlAUqK2U.js";import"./C-hgEc7b.js";import"./drvuhYu1.js";import"./2EwpEKcw.js";var g=Object.defineProperty,x=Object.getOwnPropertyDescriptor,w=(t,i,c,s)=>{for(var e=s>1?void 0:s?x(i,c):i,o=t.length-1,a;o>=0;o--)(a=t[o])&&(e=(s?a(i,c,e):a(e))||e);return s&&e&&g(i,c,e),e};let r=class extends m{};r=w([h({data:()=>({exampleTabs:[{disabled:!0,id:"webcomponent",label:"Web Component"},{active:!0,id:"htmlblueprint",label:"HTML Blueprint"}],codeSnippets:{webcomponent:"",htmlblueprint:`<div class="chi-card -highlight">
+  <div class="chi-card__header">
+    <div class="chi-card__title">Title</div>
+  </div>
+  <div class="chi-card__content">
+    <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+  </div>
+</div>`}})})],r);const P=l("div",{class:"chi-card -highlight",style:{"max-width":"20rem"}},[l("div",{class:"chi-card__header"},[l("div",{class:"chi-card__title"},"Title")]),l("div",{class:"chi-card__content"},[l("div",{class:"chi-card__caption"},"Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.")])],-1);function C(t,i,c,s,e,o){const a=_,p=u;return v(),f(p,{title:"Highlight",id:"highlight_portal",tabs:t.exampleTabs},{example:n(()=>[P]),"code-webcomponent":n(()=>[d(a,{class:"html",lang:"html",code:t.codeSnippets.webcomponent},null,8,["code"])]),"code-htmlblueprint":n(()=>[d(a,{class:"html",lang:"html",code:t.codeSnippets.htmlblueprint},null,8,["code"])]),_:1},8,["tabs"])}const y=b(r,[["render",C]]);export{y as default};

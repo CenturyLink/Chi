@@ -1,0 +1,14 @@
+import{V as p,N as m}from"./uJTUijt2.js";import{_ as h}from"./B2eUzt0t.js";import{_}from"./D8GK0F__.js";import{o as v,c as b,b as i,a as e,d as n}from"./B5CYXVwa.js";import{_ as f}from"./DlAUqK2U.js";import"./C-hgEc7b.js";var y=Object.defineProperty,g=Object.getOwnPropertyDescriptor,x=(o,l,a,r)=>{for(var t=r>1?void 0:r?g(l,a):l,u=o.length-1,s;u>=0;u--)(s=o[u])&&(t=(r?s(l,a,t):s(t))||t);return r&&t&&y(l,a,t),t};let c=class extends p{};c=x([m({data:()=>({codeMemory1:`
+var elem = document.getElementById('input-number-1');
+var inputNumberComponent = chi.numberInput(elem);
+// do stuff
+inputNumberComponent.dispose();
+      `,codeMemory2:`
+var elem = document.getElementById('input-number-1');
+var inputNumberComponent = chi.numberInput(elem);
+var elem2 = document.getElementById('input-number-1');
+var inputNumberComponent2 = chi.numberInput(elem2);
+inputNumberComponent === inputNumberComponent2; // returns true
+
+inputNumberComponent.dispose(); // Only have to do it once.
+      `})})],c);const N=e("h2",null,"Web Component",-1),C=e("div",{class:"chi-divider -my--5"},null,-1),I=e("h2",null,"JavaScript",-1),P=e("p",{class:"-text"},"This component accepts options to configure its behavior.",-1),w=e("section",{class:"chi-table chi-table__options -bordered -my--3"},[e("div",null,[e("table",{class:"-text",cellpadding:"0",cellspacing:"0"},[e("thead",null,[e("tr",null,[e("th",{style:{width:"10em"}},[e("div",null,"Option")]),e("th",{style:{width:"10em"}},[e("div",null,"Default")]),e("th",null,[e("div",null,"Description")])])]),e("tbody",null,[e("tr",null,[e("td",null,[e("div",null,[e("code",null,"autofix")])]),e("td",null,[e("div",null,[e("code",null,"false")])]),e("td",null,[e("div",null,[n("Fixes automatically values that are out of range of defined by "),e("code",null,"max"),n(" and "),e("code",null,"min"),n(" attributes, and any value that doesn't fit the granularity defined by "),e("code",null,"step"),n(" and the "),e("code",null,"initial"),n(" value")])])])])])])],-1),B=e("h3",null,"Preventing memory leaks",-1),O=e("p",{class:"-text"},"Input number components have a dispose function to free all resources attached to the element, such as event listeners and object data. You should call this method when you want to remove the component.",-1),$=e("p",{class:"-text"},[e("span",{class:"chi-badge -dark -sm -mr--1"},[e("span",null,"Tip")]),n("It is safe to call the "),e("code",null,"numberInput"),n(" method more than once, as it will return any previously created number input component associated to the input.")],-1);function j(o,l,a,r,t,u){const s=h,d=_;return v(),b("div",null,[N,i(s,{tag:"chi-number-input"}),C,I,P,w,B,O,i(d,{lang:"javascript",code:o.codeMemory1},null,8,["code"]),$,i(d,{lang:"javascript",code:o.codeMemory2},null,8,["code"])])}const J=f(c,[["render",j]]);export{J as default};

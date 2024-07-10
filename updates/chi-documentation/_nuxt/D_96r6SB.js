@@ -1,0 +1,11 @@
+import{V as _,N as h}from"./uJTUijt2.js";import{_ as u}from"./D8GK0F__.js";import{_ as b}from"./DKu8Jd2y.js";import{o as f,f as x,w as s,b as p,a,d as m}from"./B5CYXVwa.js";import{_ as g}from"./DlAUqK2U.js";import"./C-hgEc7b.js";import"./drvuhYu1.js";import"./2EwpEKcw.js";var v=Object.defineProperty,w=Object.getOwnPropertyDescriptor,P=(t,o,n,l)=>{for(var e=l>1?void 0:l?w(o,n):o,i=t.length-1,r;i>=0;i--)(r=t[i])&&(e=(l?r(o,n,e):r(e))||e);return l&&e&&v(o,n,e),e};let c=class extends _{};c=P([h({data:()=>({exampleTabs:[{active:!0,id:"webcomponent",label:"Web Component"},{id:"htmlblueprint",label:"HTML Blueprint"}],codeSnippets:{webcomponent:`<div class="chi-form__item">
+  <chi-label for="example__danger">Name</chi-label>
+  <chi-text-input id="example__danger" state="danger" helper-message="Please enter a name"></chi-text-input>
+</div>`,htmlblueprint:`<div class="chi-form__item">
+  <label class="chi-label" for="example__portal-danger">Name</label>
+  <input type="text" class="chi-input -danger" id="example__portal-danger">
+  <div class="chi-label -status -danger">
+    <i class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true"></i>
+    Please enter a name
+  </div>
+</div>`}})})],c);const N=a("p",{class:"-text"},[m("Use the "),a("code",null,"danger"),m(" state to provide feedback to users when input data fails to validate. To meet accessibility requirements, danger inputs must include an error message explaining the failure and/or how to correct it.")],-1),C=a("div",{class:"chi-grid"},[a("div",{class:"chi-col -w--12 -w-sm--8 -w-md--6 -w-lg--5"},[a("div",{class:"chi-form__item"},[a("chi-label",{for:"example__portal-danger"},"Name"),a("chi-text-input",{id:"example__portal-danger",state:"danger","helper-message":"Please enter a name"})])])],-1);function E(t,o,n,l,e,i){const r=u,d=b;return f(),x(d,{title:"Error",id:"error-portal",tabs:t.exampleTabs},{"example-description":s(()=>[N]),example:s(()=>[C]),"code-webcomponent":s(()=>[p(r,{class:"html",lang:"html",code:t.codeSnippets.webcomponent},null,8,["code"])]),"code-htmlblueprint":s(()=>[p(r,{class:"html",lang:"html",code:t.codeSnippets.htmlblueprint},null,8,["code"])]),_:1},8,["tabs"])}const q=g(c,[["render",E]]);export{q as default};
