@@ -10,8 +10,8 @@
       | specified below for rendering a red asterisk within the label.
   template(#example)
     .chi-form__item
-      chi-label(for="unique-id-re1" required) Label
-      chi-number-input#unique-id-re1(required)
+      chi-label(for="example__required" required) Label
+      chi-number-input#example__required(required)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -38,21 +38,21 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="unique-id-re1" required>Label</chi-label>
-<chi-number-input id="unique-id-re1" required></chi-number-input>`,
+        webcomponent: `<chi-label for="example__required" required>Label</chi-label>
+<chi-number-input id="example__required" required></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="unique-id-re1">
+  <label class="chi-label" for="example__required">
     Label
     <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <div class="chi-number-input">
-    <input id="unique-id-re1" type="number" class="chi-input" value="0" aria-label="Input Label" required>
+    <input id="example__required" type="number" class="chi-input" value="0" aria-label="Input Label" required>
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
 </div>
 
-<script>chi.numberInput(document.getElementById('unique-id-re1'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__required'));<\/script>`,
       },
     };
   },

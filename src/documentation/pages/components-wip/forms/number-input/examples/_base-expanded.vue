@@ -2,8 +2,8 @@
 <ComponentExample title="Base" id="base-expanded" :tabs="exampleTabs">
   template(#example)
     .chi-form__item
-      chi-label(for="example-4") Label
-      chi-number-input(expanded=true)#example-4
+      chi-label(for="example__base-expanded") Label
+      chi-number-input(expanded=true)#example__base-expanded
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -30,12 +30,12 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="example-4">Label</chi-label>
-<chi-number-input expanded id="example-4"></chi-number-input>`,
+        webcomponent: `<chi-label for="example__base-expanded">Label</chi-label>
+<chi-number-input expanded id="example__base-expanded"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded">Label</label>
+  <label class="chi-label" for="example__base-expanded">Label</label>
   <div class="chi-number-input -expanded">
-    <input id="input-example-expanded" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__base-expanded" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content">
         <i class="chi-icon icon-minus" aria-hidden="true"></i>
@@ -49,7 +49,7 @@ import { Vue } from 'vue-facing-decorator';
   </div>
 </div>
 
-<script>chi.numberInput(document.getElementById('input-example-expanded'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__base-expanded'));<\/script>`,
       },
     };
   },

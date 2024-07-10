@@ -10,8 +10,8 @@
       | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
   template(#example)
     .chi-form__item
-      chi-label(for="unique-id-emm1") Label
-      chi-number-input(expanded=true, min="0", max="6", step="2", value="1")#unique-id-emm1
+      chi-label(for="example__expanded-mms") Label
+      chi-number-input(expanded=true, min="0", max="6", step="2", value="1")#example__expanded-mms
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -38,12 +38,12 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="unique-id-emm1">Label</chi-label>
-<chi-number-input expanded id="unique-id-emm1" min="0" max="6" "step="2" value="1"></chi-number-input>`,
+        webcomponent: `<chi-label for="example__expanded-mms">Label</chi-label>
+<chi-number-input expanded id="example__expanded-mms" min="0" max="6" "step="2" value="1"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="unique-id-emm1">Label</label>
+  <label class="chi-label" for="example__expanded-mms">Label</label>
   <div class="chi-number-input -expanded">
-    <input id="unique-id-emm1" class="chi-input" type="number" min="0" max="6" "step="2" value="1" aria-label="Input Label">
+    <input id="example__expanded-mms" class="chi-input" type="number" min="0" max="6" "step="2" value="1" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content">
         <i class="chi-icon icon-minus" aria-hidden="true"></i>
@@ -59,7 +59,7 @@ import { Vue } from 'vue-facing-decorator';
 
 <script>
   chi.numberInput(
-    document.getElementById('unique-id-emm1'),
+    document.getElementById('example__expanded-mms'),
     {autofix: true}
   );
 <\/script>`,

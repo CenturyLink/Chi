@@ -7,8 +7,8 @@
       | failure and/or how to correct it.
   template(#example)
     .chi-form__item
-      chi-label(for="unique-id-er1") Quantity
-      chi-number-input#unique-id-er1(inputstyle="danger" helper-message="Please enter a quantity")
+      chi-label(for="example__error") Quantity
+      chi-number-input#example__error(inputstyle="danger" helper-message="Please enter a quantity")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -35,12 +35,12 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="unique-id-er1">Quantity</chi-label>
-<chi-number-input id="unique-id-er1" inputstyle="danger" helper-message="Please enter a quantity"></chi-number-input>`,
+        webcomponent: `<chi-label for="example__error">Quantity</chi-label>
+<chi-number-input id="example__error" inputstyle="danger" helper-message="Please enter a quantity"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="unique-id-er1">Quantity</label>
+  <label class="chi-label" for="example__error">Quantity</label>
   <div class="chi-number-input">
-    <input id="unique-id-er1" type="number" class="chi-input -danger" value="0" aria-label="Quantity">
+    <input id="example__error" type="number" class="chi-input -danger" value="0" aria-label="Quantity">
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
@@ -50,7 +50,7 @@ import { Vue } from 'vue-facing-decorator';
   </div>
 </div>
 
-<script>chi.numberInput(document.getElementById('unique-id-er1'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__error'));<\/script>`,
       },
     };
   },
