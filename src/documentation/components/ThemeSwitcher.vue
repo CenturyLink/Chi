@@ -101,28 +101,28 @@ export default class ThemeSwitcher extends Vue {
     ];
 
     assetsToReplace.forEach((asset) => {
-    const currentAsset = document.getElementById(asset.id);
-    const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
+      const currentAsset = document.getElementById(asset.id);
+      const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
 
-    if (currentAsset) {
-      let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
+      if (currentAsset) {
+        let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
 
-      if (!replacementAsset) {
-        replacementAsset = document.createElement('link');
-        replacementAsset.setAttribute('rel', 'stylesheet');
-        replacementAsset.setAttribute('href', replacementHref);
+        if (!replacementAsset) {
+          replacementAsset = document.createElement('link');
+          replacementAsset.setAttribute('rel', 'stylesheet');
+          replacementAsset.setAttribute('href', replacementHref);
 
-        if (currentAsset.parentNode) {
-            currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
+          if (currentAsset.parentNode) {
+              currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
+          }
         }
-      }
 
-      replacementAsset.addEventListener('load', () => {
-          replacementAsset.setAttribute('id', asset.id);
-          currentAsset.remove();
-      });
-    }
-});
+        replacementAsset.addEventListener('load', () => {
+            replacementAsset.setAttribute('id', asset.id);
+            currentAsset.remove();
+        });
+      }
+    });
 
     brandLogo.setAttribute('logo', theme === 'centurylink' ? 'centurylink' : 'lumen');
 
