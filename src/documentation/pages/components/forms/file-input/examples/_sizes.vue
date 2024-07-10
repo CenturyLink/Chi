@@ -54,11 +54,13 @@ export default class SizesLumenCenturyLink extends Vue {
     portal: SIZES_PORTAL,
     centurylink: SIZES_LUMEN_CENTURYLINK,
     lumen: SIZES_LUMEN_CENTURYLINK,
+    portalrebrand24: SIZES_PORTAL,
+    lumenrebrand24: SIZES_LUMEN_CENTURYLINK
   };
   theme = useSelectedTheme();
 
   getHtmlBlueprintByTheme() {
-    const sizes = this.sizes[this.theme];
+    const sizes = this.sizes[this.theme.toLowerCase()];
 
     return sizes
       .map((size: string) => {
@@ -72,7 +74,7 @@ export default class SizesLumenCenturyLink extends Vue {
   }
 
   getSizesByTheme() {
-    const sizes = this.sizes[this.theme];
+    const sizes = this.sizes[this.theme.toLowerCase()];
 
     return sizes
       .map((size: string) => {

@@ -1,9 +1,7 @@
 import { CHI_VERSION } from './configs';
 
 export const redirectionScript = `
-const pageURL = window.location.href;
-
-if (pageURL.includes('latest')) {
+if (window.location.href.includes('latest')) {
     const redirectionURL = pageURL.split('latest').join('${CHI_VERSION}');
 
     window.location.href = redirectionURL;
