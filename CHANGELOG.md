@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 5.75.0 (July 10, 2024)
+
+### Components
+
+#### Changed
+
+- Changed: Icons `icon-logo-facebook`, `icon-logo-linkedin`, and `icon-logo-x`, and `icon-logo-youtube`.
+
+### Documentation
+
+#### Changed
+
+- Changed: Footer social media icons.
+
 ## 5.74.0 (July 4, 2024)
 
 ### Components

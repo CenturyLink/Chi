@@ -285,14 +285,8 @@
             color: $footer-external-social-link-color;
           }
 
-          &:first-child {
-            margin-right: 0.75rem;
-          }
-
           &:last-child {
-            margin-left: 0.25rem;
             margin-right: 0;
-            padding-top: 0.25rem;
           }
 
           &:hover {
