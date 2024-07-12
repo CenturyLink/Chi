@@ -618,6 +618,7 @@ export class Dropdown {
         onChiMouseEnter={this.handlerMouseEnter}
         fluid={this.fluid || !!this.helperMessage}
         extra-class={this.getExtraClassForTriggerButton()}
+        alternativeText={this.icon}
         color={color}
         variant={variant}
         size={size}
