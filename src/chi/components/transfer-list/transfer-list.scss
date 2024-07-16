@@ -93,3 +93,13 @@
     }
   }
 }
+
+.chi-column-customization {
+  &__reset-button:not(:disabled) {
+    .chi-button__content {
+      span {
+        color: $transfer-list-reset-button-color;
+      }
+    }
+  }
+}
