@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 5.76.0 (July 17, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown icon web component `alternative-text` to improve accessibility fro screen readers.
+
 ## 5.75.0 (July 10, 2024)
 
 ### Components
