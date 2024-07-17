@@ -710,9 +710,9 @@ $button-dark-outline-hover-border-color: $color-teal-90;
 $button-dark-outline-active-border-color: $color-teal-100;
 $button-dark-outline-hover-background-color: $color-background-white;
 $button-dark-outline-active-background-color: $color-background-white;
-$button-dark-flat-text-color: $color-teal-100;
-$button-dark-flat-hover-text-color: $color-teal-100;
-$button-dark-flat-active-text-color: $color-teal-100;
+$button-dark-flat-text-color: $color-teal-80;
+$button-dark-flat-hover-text-color: $color-teal-80;
+$button-dark-flat-active-text-color: $color-teal-80;
 $button-dark-flat-hover-border-color: transparent;
 $button-dark-flat-active-border-color: transparent;
 $button-dark-flat-hover-background-color: transparent;
@@ -2073,4 +2073,4 @@ $tooltip-max-width: 20rem;
 // Transfer list
 $transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
-$transfer-list-reset-button-color: $color-blue-75;
+$transfer-list-reset-button-color: $color-text-primary;

@@ -35,7 +35,7 @@ export function updateFilterData(filterData: DataTableFilter, store: any, overri
   if (isCheckbox && filterData.options?.length) {
     updateOptionsFilterData(filterData, store, overrideValue);
   } else {
-    const value = isCheckbox ? filterData.checked ?? overrideValue : filterData.value || '';
+    const value = isCheckbox ? (filterData.checked ?? overrideValue) : filterData.value || '';
     const payload = { id: getCleanFilterId(filterData.id), value };
 
     store.updateFilterConfig(payload);
