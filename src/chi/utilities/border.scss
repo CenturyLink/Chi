@@ -102,3 +102,7 @@ $border-colors: (
 .-no-raindrop {
   border-radius: $button-border-radius !important;
 }
+
+.-border--circle {
+  border-radius: 50% !important;
+}
