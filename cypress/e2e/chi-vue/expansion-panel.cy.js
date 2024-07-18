@@ -79,7 +79,7 @@ describe('Expansion Panel', () => {
       hasClassAssertion(`@secondExpansionPanel`, PENDING_CLASS);
     });
 
-    it('Should check if clicking the Change button enables the expansion panel of the current one and closes the opened panel', () => {
+    it('Should check if clicking the Edit button enables the expansion panel of the current one and closes the opened panel', () => {
       cy.get(`@firstExpansionPanel`)
         .find(EXPANSION_PANEL_BUTTONS.NEXT_BUTTON)
         .click();
@@ -187,7 +187,7 @@ describe('Expansion Panel', () => {
       { el: `@slotActiveExpansionPanel`, slot: 'footer', class: SLOT_CLASS_FOOTER },
     ];
     const buttonsSelectors = [
-      { slot: 'change', button: 'Change' },
+      { slot: 'change', button: 'Edit' },
       { slot: 'footer start', button: 'Previous' },
       { slot: 'footer end', button: 'Continue' },
     ];

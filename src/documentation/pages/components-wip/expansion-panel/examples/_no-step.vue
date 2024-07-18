@@ -17,8 +17,8 @@
             | Previous
           chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'Finish' : 'Continue' }}
         div(slot="change")
-        chi-button(@click="active = index" color="primary" variant="flat")
-          | Change
+          chi-button(@click="active = index" color="primary" variant="flat")
+            | Edit
   template(#code-webcomponent)
     .chi-tab__description
       | Step numbering can be omitted by removing the <code>step</code> property.
@@ -130,7 +130,7 @@ import { Vue } from 'vue-facing-decorator';
     Continue
   </button>
   <div slot="change">
-    <button class="chi-button -primary -flat" data-chi-epanel-action="active" @click="active = index">Change</button>
+    <button class="chi-button -primary -flat" data-chi-epanel-action="active" @click="active = index">Edit</button>
   </div>
 </chi-vue-expansion-panel>
 
@@ -175,7 +175,7 @@ data: {
       </div>
     </div>
     <div class="chi-epanel__action -done--only">
-      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Edit</button>
     </div>
   </div>
   <div class="chi-epanel__collapse">
@@ -206,7 +206,7 @@ data: {
       </div>
     </div>
     <div class="chi-epanel__action -done--only">
-      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Edit</button>
     </div>
   </div>
   <div class="chi-epanel__collapse">
@@ -238,7 +238,7 @@ data: {
       </div>
     </div>
     <div class="chi-epanel__action -done--only">
-      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Edit</button>
     </div>
   </div>
   <div class="chi-epanel__collapse">
@@ -270,7 +270,7 @@ data: {
       </div>
     </div>
     <div class="chi-epanel__action -done--only">
-      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Edit</button>
     </div>
   </div>
   <div class="chi-epanel__collapse">

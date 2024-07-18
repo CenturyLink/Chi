@@ -27,7 +27,7 @@
       <button class="chi-button -primary" @click="active += 1">Continue</button>
     </template>
     <template v-slot:change>
-      <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+      <button class="chi-button -primary -flat" data-chi-epanel-action="active" @click="active = index">Edit</button>
     </template>
   </ExpansionPanel>
 </template>

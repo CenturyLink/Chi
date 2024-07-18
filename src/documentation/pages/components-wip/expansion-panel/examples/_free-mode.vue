@@ -10,7 +10,7 @@
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') {{ panel.title }}
           .chi-epanel__action.-done--only
-            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Edit
         .chi-epanel__collapse
           .-active--only
             .chi-epanel__body
