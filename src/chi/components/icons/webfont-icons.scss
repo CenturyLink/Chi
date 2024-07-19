@@ -36,6 +36,18 @@ i {
   }
 }
 
+.icon-comments-sparkle::before {
+  content: '\ea1e';
+}
+
+.icon-sparkle::before {
+  content: '\ea1f';
+}
+
+.icon-brain-nodes::before {
+  content: '\ea20';
+}
+
 .icon-api-outline::before {
   content: '\ea19';
 }
