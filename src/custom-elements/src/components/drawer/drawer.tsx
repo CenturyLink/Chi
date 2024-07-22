@@ -65,7 +65,6 @@ export class Drawer {
 
   private animation: ThreeStepsAnimation;
 
-
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_POSITIONS.includes(newValue)) {

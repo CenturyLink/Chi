@@ -189,6 +189,41 @@
         <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
       </chi-expansion-panel>
     </div>
+   
+    <div class="-p--3">
+      <h3>Chi form wrapper</h3>
+
+      <h4>Checkboxes</h4>
+
+      <h5>Stacked</h5>
+
+      <h6>With label</h6>
+      <chi-form-wrapper type="checkbox" label="Stacked checkboxes"></chi-form-wrapper>
+      <h6>Without label</h6>
+      <chi-form-wrapper type="checkbox"></chi-form-wrapper>
+
+      <h5>Inline</h5>
+
+      <h6>With label</h6>
+      <chi-form-wrapper type="checkbox" layout="inline" label="Inline checkboxes"></chi-form-wrapper>
+      <h6>Without label</h6>
+      <chi-form-wrapper type="checkbox" layout="inline"></chi-form-wrapper>
+
+      <h4>Radios</h4>
+
+      <h5>Stacked</h5>
+
+      <h6>With label</h6>
+      <chi-form-wrapper type="radio" label="Stacked radio buttons"></chi-form-wrapper>
+      <h6>Without label</h6>
+      <chi-form-wrapper type="radio"></chi-form-wrapper>
+      
+      <h5>Inline</h5>
+      <h6>With label</h6>
+      <chi-form-wrapper type="radio" layout="inline" label="Inline radio buttons"></chi-form-wrapper>
+      <h6>Without label</h6>
+      <chi-form-wrapper type="radio" layout="inline"></chi-form-wrapper>
+    </div>
     <div class="-p--3">
       <h3>Helper message</h3>
       <chi-helper-message state="success">This is a helper message</chi-helper-message>
@@ -312,4 +347,27 @@
       copyIcon.setAttribute('text', ev.detail);
     });
   });
+
+  const checkboxes = [
+    {label: 'Checkbox 1', name: 'ck-1'},
+    {label: 'Checkbox 2', name: 'ck-2', checked: true},
+    {label: 'Checkbox 3', name: 'ck-3', disabled: true},
+    {label: 'Checkbox 4', name: 'ck-4', checked: 'indeterminate'},
+  ];
+  const radios = [
+    {label: 'Radio 1', name: 'radio'},
+    {label: 'Radio 2', name: 'radio', checked: true},
+    {label: 'Radio 3', name: 'radio', disabled: true},
+    {label: 'Radio 4', name: 'radio'},
+  ];
+
+  [...document.querySelectorAll('chi-form-wrapper[type="checkbox"]')].forEach(el => {
+    el.options = checkboxes.map(i => ({...i}));
+    el.addEventListener('chiChange', ev => console.log('Form Wrapper @ chiChange', ev.detail))
+  });
+
+  [...document.querySelectorAll('chi-form-wrapper[type="radio"]')].forEach((el, index) => {
+    el.options = radios.map(i => ({...i, name: `${i.name}-${index}`}));
+    el.addEventListener('chiChange', ev => console.log('Form Wrapper @ chiChange', ev.detail))
+  })
 </script>

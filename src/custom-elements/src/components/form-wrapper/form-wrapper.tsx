@@ -1,0 +1,146 @@
+import { Component, Element, Prop, Watch, EventEmitter, Event, h } from '@stencil/core';
+import {
+  APP_LAYOUT_FORMATS,
+  FORM_WRAPPER_LAYOUTS,
+  FormWrapperLayouts,
+  FormWrapperTypes,
+} from '../../constants/constants';
+import { FormWrapperCheckbox, FormWrapperRadio } from '../../constants/types';
+import { v4 as uuid4 } from 'uuid';
+import { FORM_CLASSES, UTILITY_CLASSES } from '../../constants/classes';
+
+@Component({
+  tag: 'chi-form-wrapper',
+  styleUrl: 'form-wrapper.scss',
+  scoped: true,
+})
+export class Alert {
+  @Element() el;
+
+  /**
+   *  to set form element type { checkbox, radio }.
+   */
+  @Prop({ reflect: true }) type!: FormWrapperTypes;
+
+  /**
+   *  to set layout { stacked, inline }.
+   */
+  @Prop() layout?: FormWrapperLayouts = 'stacked';
+
+  /**
+   * to set options
+   */
+  @Prop({ mutable: true }) options!: FormWrapperCheckbox[] | FormWrapperRadio[];
+
+  /**
+   * to set a lagend for all fields
+   */
+  @Prop() label?: string;
+
+  @Event() chiChange: EventEmitter<FormWrapperCheckbox[] | FormWrapperRadio[]>;
+
+  id: string = uuid4();
+
+  @Watch('layout')
+  layoutValidation(newValue: string) {
+    if (!FORM_WRAPPER_LAYOUTS.includes(newValue)) {
+      throw new Error(
+        `${newValue} is not a valid type for form wrapper layout. Valid values are: ${APP_LAYOUT_FORMATS.join(' ,')}.`
+      );
+    }
+  }
+
+  @Watch('type')
+  typeValidation(newValue: string) {
+    if (!FORM_WRAPPER_LAYOUTS.includes(newValue)) {
+      throw new Error(
+        `${newValue} is not a valid type for form wrapper type. Valid values are: ${APP_LAYOUT_FORMATS.join(' ,')}.`
+      );
+    }
+  }
+
+  componentWillLoad() {
+    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${item.name}` }));
+  }
+
+  _getLabel() {
+    if (this.label) {
+      return <chi-label>{this.label}</chi-label>;
+    }
+  }
+
+  _getItems() {
+    const itemGetter = {
+      checkbox: this._getCheckbox,
+      radio: this._getRadioButton,
+    }[this.type].bind(this);
+
+    return this.options?.map((item, index) => this._getFormItem(itemGetter(item), index === this.options.length - 1));
+  }
+
+  _getCheckbox(item: FormWrapperCheckbox) {
+    const checked = item.checked && item.checked !== 'indeterminate';
+    const indeterminate = item.checked === 'indeterminate';
+
+    return (
+      <chi-checkbox
+        id={item.id}
+        label={item.label}
+        checked={checked}
+        disabled={item.disabled}
+        name={item.name}
+        indeterminate={indeterminate}
+        onChiChange={(ev: CustomEvent) => this._onChange(ev)}
+      ></chi-checkbox>
+    );
+  }
+
+  _getRadioButton(item: FormWrapperRadio) {
+    return (
+      <chi-radio-button
+        id={item.id}
+        label={item.label}
+        checked={item.checked}
+        disabled={item.disabled}
+        name={item.name}
+        onChiChange={(ev: CustomEvent) => this._onChange(ev)}
+      ></chi-radio-button>
+    );
+  }
+
+  _getItemWrapperClasses(isLast) {
+    return [
+      FORM_CLASSES.FORM_ITEM,
+      this.layout !== 'inline' && !isLast && UTILITY_CLASSES.MARGIN.BOTTOM[1],
+      this.layout === 'inline' && `-${this.layout}`,
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  /**
+   * @returns a given element in a form item wrapper with specified layout
+   */
+  _getFormItem(element: HTMLElement, isLast = false) {
+    const classes = this._getItemWrapperClasses(isLast);
+
+    return <div class={classes}>{element}</div>;
+  }
+
+  _onChange(ev: CustomEvent) {
+    const target = ev.target as HTMLInputElement;
+    ev.stopPropagation();
+
+    this.options.find((item) => item.id === target.id).checked = target.checked;
+    this.chiChange.emit(this.options);
+  }
+
+  render() {
+    return (
+      <fieldset>
+        {this._getLabel()}
+        {this._getItems()}
+      </fieldset>
+    );
+  }
+}

@@ -69,6 +69,14 @@ export type MouseCursorPosition = { x: number; y: number };
 export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];
 export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];
 
+// #region FormWrapper
+export const FORM_WRAPPER_LAYOUTS = ['stacked', 'inline'];
+export type FormWrapperLayouts = typeof FORM_WRAPPER_LAYOUTS[number];
+
+export const FORM_WRAPPER_TYPES = ['checkbox', 'radio'];
+export type FormWrapperTypes = typeof FORM_WRAPPER_TYPES[number];
+// #endregion
+
 export const TABS_SEE_MORE_DEFAULT_MESSAGE = 'More';
 
 export const EXTRA_COUNTRIES = [

@@ -21,7 +21,7 @@ export class RadioButton {
   /**
    * To render the radiobutton in checked state
    */
-  @Prop() checked?: boolean;
+  @Prop({ mutable: true }) checked?: boolean;
   /**
    * To disable the radiobutton
    */

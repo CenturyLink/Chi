@@ -335,7 +335,7 @@ export class Popover {
   }
 
   connectedCallback() {
-    addMutationObserver.call(this, undefined, { childList: true, subtree: true } );
+    addMutationObserver.call(this, undefined, { childList: true, subtree: true });
   }
 
   componentWillLoad(): void {
