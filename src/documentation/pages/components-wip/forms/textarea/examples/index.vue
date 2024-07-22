@@ -18,13 +18,13 @@ h3 Layout Variations
 <InlineLabelGrid />
 <InlineTextareas />
 
-div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
   h3 Icons
   <LeftAligned />
   <RightAligned />
   <LeftRightAligned />
 
-<SizesLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)"/>
+<SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)"/>
 <SizesPortal v-else />
 </template>
 

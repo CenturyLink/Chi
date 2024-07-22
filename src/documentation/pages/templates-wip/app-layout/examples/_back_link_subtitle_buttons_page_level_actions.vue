@@ -7,7 +7,7 @@
         button.chi-button.-primary.-outline.-bg--white Cancel
         button.chi-button.-primary.-ml--1 Submit
       div(slot="footer")
-        div(v-html="footers.lumen" v-if="['lumen', 'portal', 'lumenrebrand24', 'portalrebrand24'].includes(selectedTheme)")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
         div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
         div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
   template(#code-webcomponent)

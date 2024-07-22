@@ -262,13 +262,6 @@ onLoad(() => {
       faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
       trigger: '.theme-trigger-lumen'
     },
-    LumenRebrand24: {
-      chiCss: rootUrl + 'chi-lumenrebrand24.css',
-      docsCss: rootUrl + 'assets/themes/lumenrebrand24/docs.css',
-      faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
-      faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
-      trigger: '.theme-trigger-lumenrebrand24'
-    },
     CenturyLink: {
       chiCss: rootUrl + 'chi-centurylink.css',
       docsCss: rootUrl + 'assets/themes/centurylink/docs.css',
@@ -282,13 +275,6 @@ onLoad(() => {
       faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
       faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
       trigger: '.theme-trigger-portal'
-    },
-    PortalRebrand24: {
-      chiCss: rootUrl + 'chi-portalrebrand24.css',
-      docsCss: rootUrl + 'assets/themes/portalrebrand24/docs.css',
-      faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
-      faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
-      trigger: '.theme-trigger-portalrebrand24'
     },
     Brightspeed: {
       chiCss: rootUrl + 'chi-brightspeed.css',

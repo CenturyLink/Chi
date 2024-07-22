@@ -325,8 +325,8 @@ export default class DataTable extends Vue {
       const columnIndex = String(Array.isArray(this.dataTableData.head) ? cellIndex : column);
       const columnName = Array.isArray(this.dataTableData.head) ? (column as DataTableColumn).name : column;
       const icon = this.dataTableData.head[columnIndex].icon;
-      const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
-        buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
+      const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}-${columnIndex}`,
+        buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference-${columnIndex}`,
         label = this.dataTableData.head[columnIndex].label || this.dataTableData.head[columnIndex],
         infoIcon = this.dataTableData.head[columnIndex].description ? (
           <chi-button

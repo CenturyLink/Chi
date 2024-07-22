@@ -3,23 +3,24 @@ header.chi-header.docs-header.-z--20
   #version-check.-w--100
   ClientOnly
     component(is="style" type='text/css').
-      .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
-      .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item,
-      .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item {
+      .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
         background-color: #e6f0ff;
         color: #0047bb;
         font-weight: 600;
       }
-      .theme-lumenrebrand24 a.theme-trigger-lumenrebrand24.chi-dropdown__menu-item {
+
+      .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item {
         background-color: #fef6f0;
         color: #007981;
         font-weight: 600;
       }
-      .theme-portalrebrand24 a.theme-trigger-portalrebrand24.chi-dropdown__menu-item {
+
+      .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item {
         background-color: #fef6f0;
         color: #b35009;
         font-weight: 600;
       }
+
       .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
         background-color: #fff1bf;
         color: #000;

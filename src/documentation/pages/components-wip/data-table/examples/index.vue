@@ -1,7 +1,7 @@
 <template lang="pug">
 h2 Examples
 ClientOnly
-  div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+  div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
     <Complex />
     BaseExample
     <Empty />
@@ -12,7 +12,7 @@ ClientOnly
     <Sorting />
     <Sizes />
 
-  div(v-if="['portal', 'brightspeed', 'colt', 'portalrebrand24'].includes(selectedTheme)")
+  div(v-if="['portal', 'brightspeed', 'colt'].includes(selectedTheme)")
     <ComplexPortal />
     <BasePortal />
     <SecondLineWrapping />
@@ -44,7 +44,6 @@ import SecondLineWrapping from './portal/_second-line-wrapping.vue';
 import State from './portal/_state.vue';
 import TwoTierHeader from './portal/_two-tier.vue';
 import ComplexPortal from './portal/_complex.vue';
-
 
 @NuxtComponent({
   components: {

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="['lumen', 'lumenrebrand24', 'portal', 'portalrebrand24'].includes(selectedTheme)")
+    div(v-if="['lumen', 'portal'].includes(selectedTheme)")
       BaseExample
 
     div(v-if="selectedTheme === 'centurylink'")

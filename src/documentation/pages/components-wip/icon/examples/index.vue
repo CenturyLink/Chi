@@ -19,7 +19,7 @@
       | Easily change an icon's color using the examples below.
     <Brand />
     <Semantic />
-    <BrandComplimentaryLumenPortal v-if="['lumen', 'portal', 'lumenrebrand24', 'portalrebrand24'].includes(selectedTheme)" />
+    <BrandComplimentaryLumenPortal v-if="['lumen', 'portal'].includes(selectedTheme)" />
     <Icons />
 </template>
 
