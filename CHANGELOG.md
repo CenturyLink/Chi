@@ -1,12 +1,24 @@
 # CHANGELOG
 
+## 5.77.0 (July 21, 2024)
+
+### Components
+
+#### Added
+
+- Added: Icons `icon-brain-nodes`, `icon-comments-sparkle`, and `icon-sparkle`.
+
+#### Changed
+
+- Changed: Expansion panel `Change` button in `done state` has changed to `Edit`.
+
 ## 5.76.0 (July 17, 2024)
 
 ### Components
 
 #### Added
 
-- Added: Dropdown icon web component `alternative-text` to improve accessibility fro screen readers.
+- Added: Dropdown icon web component `alternative-text` to improve accessibility for screen readers.
 
 ## 5.75.0 (July 10, 2024)
 
@@ -14,7 +26,7 @@
 
 #### Changed
 
-- Changed: Icons `icon-logo-facebook`, `icon-logo-linkedin`, and `icon-logo-x`, and `icon-logo-youtube`.
+- Changed: Icons `icon-logo-facebook`, `icon-logo-linkedin`, `icon-logo-x`, and `icon-logo-youtube`.
 
 ### Documentation
 
