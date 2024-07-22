@@ -38,7 +38,7 @@ describe('Picker', function() {
 
             cy.get($first)
               .find('label')
-              .should('have.css', 'color', 'rgb(2, 98, 185)');
+              .should('have.css', 'color', 'rgb(0, 0, 0)');
           });
       });
     });

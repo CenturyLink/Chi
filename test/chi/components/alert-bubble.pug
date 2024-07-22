@@ -66,7 +66,7 @@ h4 Clickable Link Alert / default
 div(class=`test-bubble-clickable-link-default -w--100`)
   each val, type in {base:'icon-flag', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
     .-m--2
-      a.chi-link.-no-hover-underline(href='#')
+      a.chi-link.-no-hover-underline.-no-underline(href='#')
         .chi-alert(class=`-${type}`)
           div(class=`chi-alert__icon chi-icon -icon--${type}`)
             svg
@@ -75,7 +75,10 @@ div(class=`test-bubble-clickable-link-default -w--100`)
             p(class=`chi-alert__title`)
               =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
           .chi-alert__clickable-icon
-            i.chi-icon.icon-chevron-right
+            i.chi-icon
+              svg
+                use(xlink:href=`#icon-chevron-right`)
+              
 h4 Clickable Button Alert / default
 div(class=`test-bubble-clickable-button-default -w--100`)
   each val, type in {base:'icon-flag', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
@@ -90,4 +93,6 @@ div(class=`test-bubble-clickable-button-default -w--100`)
               p(class=`chi-alert__title`)
                 =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
             .chi-alert__clickable-icon
-              i.chi-icon.icon-chevron-right
+              i.chi-icon
+                svg
+                  use(xlink:href=`#icon-chevron-right`)

@@ -263,6 +263,9 @@ describe('Data Table', () => {
   });
 
   describe('Truncation', () => {
+    beforeEach(() => {
+      cy.viewport(1280, 720);
+    })
     it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
       cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`).should(
         'not.have.class',

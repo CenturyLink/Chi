@@ -36,8 +36,8 @@ code {
 
 // Prismjs custom theme for example code snippets
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   background: none;
   color: $color-text-base;
   hyphens: none;
@@ -50,8 +50,8 @@ pre[class*="language-"] {
   word-wrap: normal;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
   background: $color-background-base-dark;
 }
 
@@ -102,7 +102,7 @@ pre[class*="language-"] {
 }
 
 .token.attr-value {
-  color: $color-text-primary;
+  color: $color-red-70;
 }
 
 .token.atrule,
@@ -129,47 +129,47 @@ pre[class*="language-"] {
 }
 
 @media screen and (-ms-high-contrast: active) {
-	code[class*="language-"],
-	pre[class*="language-"] {
+  code[class*='language-'],
+  pre[class*='language-'] {
     background: window;
     color: windowText;
-	}
+  }
 
-	:not(pre) > code[class*="language-"],
-	pre[class*="language-"] {
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
     background: window;
-	}
+  }
 
-	.token.important {
-		background: highlight;
-		color: window;
-		font-weight: $font-weight-normal;
-	}
-
-	.token.atrule,
-	.token.attr-value,
-	.token.function,
-	.token.keyword,
-	.token.operator,
-	.token.selector {
-    font-weight: $font-weight-bold;
-	}
-
-	.token.attr-value,
-	.token.comment,
-	.token.doctype,
-	.token.function,
-	.token.keyword,
-	.token.operator,
-	.token.property,
-	.token.string {
-    color: highlight;
-	}
-
-	.token.attr-value,
-	.token.url {
+  .token.important {
+    background: highlight;
+    color: window;
     font-weight: $font-weight-normal;
-	}
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.function,
+  .token.keyword,
+  .token.operator,
+  .token.selector {
+    font-weight: $font-weight-bold;
+  }
+
+  .token.attr-value,
+  .token.comment,
+  .token.doctype,
+  .token.function,
+  .token.keyword,
+  .token.operator,
+  .token.property,
+  .token.string {
+    color: highlight;
+  }
+
+  .token.attr-value,
+  .token.url {
+    font-weight: $font-weight-normal;
+  }
 }
 
 table {

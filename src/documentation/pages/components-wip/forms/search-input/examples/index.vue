@@ -7,7 +7,7 @@
       <Disabled />
       <Message />
       <Error />
-      <SizesPortal v-if="selectedTheme === 'portal' || selectedTheme === 'portalrebrand24'" />
+      <SizesPortal v-if="selectedTheme === 'portal'" />
       <SizesLumenCenturyLink v-else />
     </client-only>
 </template>

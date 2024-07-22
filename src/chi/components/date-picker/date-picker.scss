@@ -113,6 +113,7 @@ $monday-starting-week: (
       .next {
         text-align: center;
         width: calc(100% / 7);
+        line-height: 0.5rem !important;
 
         &.-disabled {
           color: $date-picker-arrow-disabled-icon-color;

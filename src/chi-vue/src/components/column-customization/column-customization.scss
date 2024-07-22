@@ -46,7 +46,7 @@ select {
 .chi-column-customization__reset-button {
   .chi-button__content {
     span {
-      color: #0262b9;
+      color: #e66400;
     }
   }
 
@@ -54,25 +54,6 @@ select {
     .chi-button__content {
       span {
         color: #65686c;
-      }
-    }
-  }
-}
-
-// TODO: Change on Chi 6.0.0 release
-.chi.theme-portalrebrand24 {
-  .chi-column-customization__reset-button {
-    .chi-button__content {
-      span {
-        color: #e66400;
-      }
-    }
-  
-    &[disabled] {
-      .chi-button__content {
-        span {
-          color: #65686c;
-        }
       }
     }
   }

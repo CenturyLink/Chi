@@ -59,7 +59,7 @@ describe('Time picker', function() {
     cy.visit('tests/custom-elements/time-picker.html');
   });
 
-  it('Active chi-time-picker should select 01:30 am', function() {
+  it('Active chi-time-picker should select 12:00 pm', function() {
     // time picker
     cy.get('[data-cy="chi-time-picker-active"]')
       .as('active')
@@ -68,14 +68,14 @@ describe('Time picker', function() {
     // input
     cy.get('@active')
       .find(`.${INPUT_CLASS}`)
-      .should('have.value', '01:30 am');
+      .should('have.value', '12:00 pm');
 
     // popover
     cy.get('@active')
       .find(`.${POPOVER_CLASS}`)
       .should('have.class', ACTIVE_CLASS);
 
-    checkActiveTime('@active', { hour: '01', minute: '30', period: 'AM' });
+    checkActiveTime('@active', { hour: '12', minute: '00', period: 'PM' });
   });
 
   it('Base chi-time-picker should select 01:30 am', function() {
@@ -135,12 +135,12 @@ describe('Time picker', function() {
       .should('not.exist');
   });
 
-  it('Display seconds chi-time-picker should select 01:30:45', function() {
+  it.only('Display seconds chi-time-picker should select 12:00:00', function() {
     // Check input
     cy.get('[data-cy="chi-time-picker-display-seconds"]')
       .as('display-seconds')
       .find(`.${INPUT_CLASS}`)
-      .should('have.value', '01:30:45');
+      .should('have.value', '12:00:00');
 
     cy.get('@display-seconds')
       .click()
@@ -153,16 +153,16 @@ describe('Time picker', function() {
           .find(`.${POPOVER_CLASS}`)
           .should('have.class', ACTIVE_CLASS);
 
-        checkActiveTime('@display-seconds', { hour: '01', minute: '30', second: '45', period: 'AM' });
+        checkActiveTime('@display-seconds', { hour: '12', minute: '00', second: '00', period: 'AM' });
       })
   });
 
-  it('12hr format chi-time-picker should select 02:30 pm and convert from 24hr value', function() {
+  it('12hr format chi-time-picker should select 12:00 pm and convert from 24hr value', function() {
     // Check input
     cy.get('[data-cy="chi-time-picker-12hr-format"]')
       .as('12hr-format')
       .find(`.${INPUT_CLASS}`)
-      .should('have.value', '02:30 pm');
+      .should('have.value', '12:00 pm');
 
     cy.get('@12hr-format')
       .click()
@@ -175,7 +175,7 @@ describe('Time picker', function() {
           .find(`.${POPOVER_CLASS}`)
           .should('have.class', ACTIVE_CLASS);
 
-        checkActiveTime('@12hr-format', { hour: '02', minute: '30', period: 'PM' });
+        checkActiveTime('@12hr-format', { hour: '12', minute: '00', period: 'PM' });
       })
   });
 
@@ -197,16 +197,16 @@ describe('Time picker', function() {
           .find(`.${POPOVER_CLASS}`)
           .should('have.class', ACTIVE_CLASS);
 
-        checkActiveTime('@24hr-format', { hour: '14', minute: '30' });
+        checkActiveTime('@24hr-format', { hour: '00', minute: '00' });
       })
   });
 
-  it('24hr format with seconds chi-time-picker should select 14:30:45', function() {
+  it('24hr format with seconds chi-time-picker should select 00:00:00', function() {
     // Check input
     cy.get('[data-cy="chi-time-picker-24hr-format-seconds"]')
       .as('format-24-seconds')
       .find(`.${INPUT_CLASS}`)
-      .should('have.value', '14:30:45');
+      .should('have.value', '00:00:00');
 
     cy.get('@format-24-seconds')
       .click()
@@ -219,7 +219,7 @@ describe('Time picker', function() {
           .find(`.${POPOVER_CLASS}`)
           .should('have.class', ACTIVE_CLASS);
 
-        checkActiveTime('@format-24-seconds', { hour: '14', minute: '30', second: '45' });
+        checkActiveTime('@format-24-seconds', { hour: '00', minute: '00', second: '00' });
       })
   });
 

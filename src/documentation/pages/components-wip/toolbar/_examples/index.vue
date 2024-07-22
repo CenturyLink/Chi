@@ -4,7 +4,7 @@
     client-only(placeholder="loading...")
       BaseExample
       <BaseWithSaveView />
-      template(v-if="['portal', 'brightspeed', 'portalrebrand24'].includes(selectedTheme)")
+      template(v-if="['portal', 'brightspeed'].includes(selectedTheme)")
       <BaseWithSaveViewAndBulkActionsPortalBrightSpeed />
 </template>
 
