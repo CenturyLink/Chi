@@ -8,6 +8,8 @@ gulp.task('sri:chi:assets', function () {
     'dist/chi-portal.css',
     'dist/chi-brightspeed.css',
     'dist/chi-colt.css',
+    'dist/chi-lumenrebrand24.css',
+    'dist/chi-portalrebrand24.css',
     'dist/js/chi.js',
     'dist/assets/themes/lumen/images/favicon.svg',
     'dist/assets/themes/lumen/images/favicon.ico',

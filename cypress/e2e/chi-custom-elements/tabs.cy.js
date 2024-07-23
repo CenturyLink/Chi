@@ -34,14 +34,14 @@ describe('Tabs', () => {
     it('Should show overflow items if there is not enough space', function() {
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 12);
+        .should('have.length', 11);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 6);
+        .should('have.length', 7);
     });
 
     it('Should resize correctly', function() {
@@ -49,14 +49,14 @@ describe('Tabs', () => {
 
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 8);
+        .should('have.length', 7);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 10);
+        .should('have.length', 11);
     });
 
     it('Should make dropdown scrollable', function() {

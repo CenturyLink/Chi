@@ -4,6 +4,8 @@ gulp.task('build:chi', gulp.series(
   'build:chi:styles',
   'build:ctl:styles',
   'build:portal:styles',
+  'build:portalrebrand24:styles',
+  'build:lumenrebrand24:styles',
   'build:brightspeed:styles',
   'build:colt:styles',
   'build:chi:assets',

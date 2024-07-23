@@ -1,19 +1,19 @@
 const positions = [
   {
     placement: 'top',
-    transform: 'translate3d(-21px, -80px, 0px)',
+    transform: 'translate3d(-25px, -80px, 0px)',
   },
   {
     placement: 'right',
-    transform: 'translate3d(86px, -20px, 0px)',
+    transform: 'translate3d(90px, -20px, 0px)',
   },
   {
     placement: 'bottom',
-    transform: 'translate3d(-7px, 40px, 0px)',
+    transform: 'translate3d(-9px, 40px, 0px)',
   },
   {
     placement: 'left',
-    transform: 'translate3d(-118px, -20px, 0px)',
+    transform: 'translate3d(-130px, -20px, 0px)',
   },
   {
     placement: 'top-start',
@@ -21,15 +21,15 @@ const positions = [
   },
   {
     placement: 'top-end',
-    transform: 'translate3d(-9px, -80px, 0px)',
+    transform: 'translate3d(-12px, -80px, 0px)',
   },
   {
     placement: 'right-start',
-    transform: 'translate3d(124px, 0px, 0px)',
+    transform: 'translate3d(135px, 0px, 0px)',
   },
   {
     placement: 'right-end',
-    transform: 'translate3d(118px, -40px, 0px)',
+    transform: 'translate3d(128px, -40px, 0px)',
   },
   {
     placement: 'bottom-start',
@@ -41,11 +41,11 @@ const positions = [
   },
   {
     placement: 'left-start',
-    transform: 'translate3d(-117px, 0px, 0px)',
+    transform: 'translate3d(-129px, 0px, 0px)',
   },
   {
     placement: 'left-end',
-    transform: 'translate3d(-117px, -40px, 0px)',
+    transform: 'translate3d(-129px, -40px, 0px)',
   },
 ];
 const DROPDOWN_DATA_CY = {
