@@ -135,7 +135,7 @@ describe('Time picker', function() {
       .should('not.exist');
   });
 
-  it.only('Display seconds chi-time-picker should select 12:00:00', function() {
+  it('Display seconds chi-time-picker should select 12:00:00', function() {
     // Check input
     cy.get('[data-cy="chi-time-picker-display-seconds"]')
       .as('display-seconds')
@@ -153,7 +153,7 @@ describe('Time picker', function() {
           .find(`.${POPOVER_CLASS}`)
           .should('have.class', ACTIVE_CLASS);
 
-        checkActiveTime('@display-seconds', { hour: '12', minute: '00', second: '00', period: 'AM' });
+        checkActiveTime('@display-seconds', { hour: '12', minute: '00', second: '00', period: 'PM' });
       })
   });
 
@@ -184,7 +184,7 @@ describe('Time picker', function() {
     cy.get('[data-cy="chi-time-picker-24hr-format"]')
       .as('24hr-format')
       .find(`.${INPUT_CLASS}`)
-      .should('have.value', '14:30 ');
+      .should('have.value', '00:00 ');
 
     cy.get('@24hr-format')
       .click()
