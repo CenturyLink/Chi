@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 5.78.0 (July 24, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Picker accessibility page.
+- Added: `Text input`, `Textarea`, `Select` and `Number input` help examples now include label `info-icon` and `info-icon-message` properties.
+
 ## 5.77.0 (July 21, 2024)
 
 ### Components
