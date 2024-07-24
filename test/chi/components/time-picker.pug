@@ -57,7 +57,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-active(
       data-target="#popover-active"
     )
-      input#active-control.chi-input.-focus(type="text" value="01:30 am")
+      input#active-control.chi-input.-focus(type="text" value="12:00 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -67,19 +67,19 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 00
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -123,7 +123,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-display-seconds(
       data-target="#popover-display-seconds"
     )
-      input#display-seconds-control.chi-input.-focus(type="text" value="01:30:45")
+      input#display-seconds-control.chi-input.-focus(type="text" value="12:00:00")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -133,25 +133,25 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__seconds.-position--relative
               while second < 60
-                if second === 45
+                if second === 0
                   .chi-time-picker__second.-active=padZero(second++)
                 else
                   .chi-time-picker__second=padZero(second++)
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -167,7 +167,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-12hr-format(
       data-target="#popover-12hr-format"
     )
-      input#12hr-format-control.chi-input.-focus(type="text" value="02:30 pm")
+      input#12hr-format-control.chi-input.-focus(type="text" value="00:00 am")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -177,19 +177,19 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 2
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__periods
               each period in periods
-                if period === 'PM'
+                if period === 'AM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -205,7 +205,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-24hr-format(
       data-target="#popover-24hr-format"
     )
-      input#24hr-format-control.chi-input.-focus(type="text" value="14:30")
+      input#24hr-format-control.chi-input.-focus(type="text" value="00:00")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -215,13 +215,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours24
-                if hour === 14
+                if hour === 0
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -237,7 +237,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-24hr-format-seconds(
       data-target="#popover-24hr-format-seconds"
     )
-      input#24hr-format-seconds-control.chi-input.-focus(type="text" value="14:30:45")
+      input#24hr-format-seconds-control.chi-input.-focus(type="text" value="00:00:00")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -247,19 +247,19 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours24
-                if hour === 14
+                if hour === 0
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__seconds.-position--relative
               while second < 60
-                if second === 45
+                if second === 0
                   .chi-time-picker__second.-active=padZero(second++)
                 else
                   .chi-time-picker__second=padZero(second++)
@@ -275,7 +275,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-default(
       data-target="#popover-minutes-step-default"
     )
-      input#minutes-step-default-control.chi-input.-focus(type="text" value="01:30 am")
+      input#minutes-step-default-control.chi-input.-focus(type="text" value="00:30 am")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -285,7 +285,7 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
@@ -315,7 +315,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-5-seconds(
       data-target="#popover-minutes-step-5-seconds"
     )
-      input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="01:10:00 am")
+      input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="12:00:00")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -325,13 +325,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 10
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute)
                   - minute+=5
                 else
@@ -339,13 +339,13 @@ script(type='module' src='../../js/chi.js')
                   - minute+=5
             .chi-time-picker__seconds.-position--relative
               while second < 60
-                if second === 00
+                if second === 0
                   .chi-time-picker__second.-active=padZero(second++)
                 else
                   .chi-time-picker__second=padZero(second++)
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -361,7 +361,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-10(
       data-target="#popover-minutes-step-10"
     )
-      input#minutes-step-10-control.chi-input.-focus(type="text" value="01:30 am")
+      input#minutes-step-10-control.chi-input.-focus(type="text" value="12:30 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -371,7 +371,7 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
@@ -385,7 +385,7 @@ script(type='module' src='../../js/chi.js')
                   - minute+=10
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -401,7 +401,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-15(
       data-target="#popover-minutes-step-15"
     )
-      input#minutes-step-15-control.chi-input.-focus(type="text" value="01:30 am")
+      input#minutes-step-15-control.chi-input.-focus(type="text" value="12:30 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -411,7 +411,7 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
@@ -425,7 +425,7 @@ script(type='module' src='../../js/chi.js')
                   - minute+=15
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -441,7 +441,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-step-20(
       data-target="#popover-minutes-step-20"
     )
-      input#minutes-step-20-control.chi-input.-focus(type="text" value="01:40 am")
+      input#minutes-step-20-control.chi-input.-focus(type="text" value="12:40 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -451,7 +451,7 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
@@ -465,7 +465,7 @@ script(type='module' src='../../js/chi.js')
                   - minute+=20
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -521,7 +521,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-default(
       data-target="#popover-seconds-step-default"
     )
-      input#seconds-step-default-control.chi-input.-focus(type="text" value="01:30:20 am")
+      input#seconds-step-default-control.chi-input.-focus(type="text" value="12:00:20 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -531,13 +531,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -551,7 +551,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=10
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -567,7 +567,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-5(
       data-target="#popover-seconds-step-5"
     )
-      input#seconds-step-5-control.chi-input.-focus(type="text" value="01:30:10 am")
+      input#seconds-step-5-control.chi-input.-focus(type="text" value="12:00:00 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -577,19 +577,19 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__seconds.-position--relative
               while second < 60
-                if second === 10
+                if second === 0
                   .chi-time-picker__second.-active=padZero(second)
                   - second+=5
                 else
@@ -597,7 +597,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=5
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -613,7 +613,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-10(
       data-target="#popover-seconds-step-10"
     )
-      input#seconds-step-10-control.chi-input.-focus(type="text" value="01:30:30 am")
+      input#seconds-step-10-control.chi-input.-focus(type="text" value="12:00:30 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -623,13 +623,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 00
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -643,7 +643,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=10
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -659,7 +659,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-15(
       data-target="#popover-seconds-step-15"
     )
-      input#seconds-step-15-control.chi-input.-focus(type="text" value="01:30:30 am")
+      input#seconds-step-15-control.chi-input.-focus(type="text" value="12:00:30 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -669,13 +669,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 00
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -689,7 +689,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=15
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -705,7 +705,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-20(
       data-target="#popover-seconds-step-20"
     )
-      input#seconds-step-20-control.chi-input.-focus(type="text" value="01:30:40 am")
+      input#seconds-step-20-control.chi-input.-focus(type="text" value="12:00:40 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -715,13 +715,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -735,7 +735,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=20
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -751,7 +751,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-seconds-step-30(
       data-target="#popover-seconds-step-30"
     )
-      input#seconds-step-30-control.chi-input.-focus(type="text" value="01:30:30 am")
+      input#seconds-step-30-control.chi-input.-focus(type="text" value="12:00:30 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -761,13 +761,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute++)
                 else
                   .chi-time-picker__minute=padZero(minute++)
@@ -781,7 +781,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=30
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
@@ -797,7 +797,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-minutes-seconds-step-default(
       data-target="#popover-minutes-seconds-step-default"
     )
-      input#minutes-seconds-step-default-control.chi-input.-focus(type="text" value="01:30:50 am")
+      input#minutes-seconds-step-default-control.chi-input.-focus(type="text" value="12:00:50 pm")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -807,13 +807,13 @@ script(type='module' src='../../js/chi.js')
           .chi-time-picker__content
             .chi-time-picker__hours.-position--relative
               each hour in hours
-                if hour === 1
+                if hour === 12
                   .chi-time-picker__hour.-active=padZero(hour)
                 else
                   .chi-time-picker__hour=padZero(hour)
             .chi-time-picker__minutes.-position--relative
               while minute < 60
-                if minute === 30
+                if minute === 0
                   .chi-time-picker__minute.-active=padZero(minute)
                   - minute+=15
                 else
@@ -829,7 +829,7 @@ script(type='module' src='../../js/chi.js')
                   - second+=10
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
