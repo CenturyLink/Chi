@@ -2,19 +2,11 @@
 <ComponentExample title="Help" id="help" :tabs="exampleTabs">
   template(#example-description)
     p.-text
-      | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
-      | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+      | Use <code>chi-label</code>'s attributes <code>infoIcon</code> and <code>infoIconMessage</code> to include a help icon that displays helpful information in a popover.
   template(#example)
     .chi-form__item(style="max-width:20rem")
-      .chi-label__wrapper
-        label(class="chi-label" for="example-he1") Label
-        .chi-label__help
-          button(class="chi-button -icon -xs -flat" ref="helpButton" aria-label="Help" data-target="#example__help-popover")
-            i(class="chi-icon icon-circle-info-outline" aria-hidden="true")
-          section(class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top")
-            .chi-popover__content
-              p(class="chi-popover__text") Helpful information goes here.
-      select(class="chi-select" id="example-he1")
+      chi-label(for="example__help" info-icon info-icon-message="Helpful information goes here.") Label
+      select(class="chi-select" id="example__help")
         option(value="") - Select -
         option Option 1
         option Option 2
@@ -36,21 +28,28 @@ declare const chi: any;
 export default class Help extends Vue {
   exampleTabs = [
     {
-      disabled: true,
+      active: true,
       id: 'webcomponent',
       label: 'Web Component',
     },
     {
-      active: true,
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
   ];
   codeSnippets = {
-    webcomponent: ``,
+    webcomponent: `<div class="chi-form__item">
+  <chi-label for="example__help" info-icon info-icon-message="Helpful information goes here.">Label</chi-label>
+  <select class="chi-select" id="example__help">
+    <option value="">- Select -</option>
+    <option>Option 1</option>
+    <option>Option 2</option>
+    <option>Option 3</option>
+  </select>
+</div>`,
     htmlblueprint: `<div class="chi-form__item">
   <div class="chi-label__wrapper">
-    <label class="chi-label" for="example-he1">Label</label>
+    <label class="chi-label" for="example__help">Label</label>
     <div class="chi-label__help">
       <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
         <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
@@ -62,7 +61,7 @@ export default class Help extends Vue {
       </section>
     </div>
   </div>
-  <select class="chi-select" id="example-he1">
+  <select class="chi-select" id="example__help">
     <option value="">- Select -</option>
     <option>Option 1</option>
     <option>Option 2</option>

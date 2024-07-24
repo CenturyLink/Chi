@@ -9,8 +9,8 @@
       each size in ['xs', 'sm', 'md', 'lg']
         .-py--2
           .chi-form__item
-            chi-label(for=`example-portal-expanded-sizes-${size}`) Label
-            chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-portal-expanded-sizes-${size}`)
+            chi-label(for=`example__portal-expanded-size-${size}`) Label
+            chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example__portal-expanded-size-${size}`)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -38,25 +38,25 @@ import { Vue } from 'vue-facing-decorator';
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
-<chi-label for="example-6-xs">Label</chi-label>
-<chi-number-input expanded size="xs" id="example-6-xs"></chi-number-input>
+<chi-label for="example__expanded-size-xs">Label</chi-label>
+<chi-number-input expanded size="xs" id="example__expanded-size-xs"></chi-number-input>
 
 <!-- sm -->
-<chi-label for="example-6-sm">Label</chi-label>
-<chi-number-input expanded size="sm" id="example-6-sm"></chi-number-input>
+<chi-label for="example__expanded-size-sm">Label</chi-label>
+<chi-number-input expanded size="sm" id="example__expanded-size-sm"></chi-number-input>
 
 <!-- md -->
-<chi-label for="example-6-md">Label</chi-label>
-<chi-number-input expanded size="md" id="example-6-md"></chi-number-input>
+<chi-label for="example__expanded-size-md">Label</chi-label>
+<chi-number-input expanded size="md" id="example__expanded-size-md"></chi-number-input>
 
 <!-- lg -->
-<chi-label for="example-6-lg">Label</chi-label>
-<chi-number-input expanded size="lg" id="example-6-lg"></chi-number-input>`,
+<chi-label for="example__expanded-size-lg">Label</chi-label>
+<chi-number-input expanded size="lg" id="example__expanded-size-lg"></chi-number-input>`,
         htmlblueprint: `<!-- xs -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded-xs">Label</label>
+  <label class="chi-label" for="example__expanded-size-xs">Label</label>
   <div class="chi-number-input -expanded -xs">
-    <input id="input-example-expanded-xs" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__expanded-size-xs" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content"><i class="chi-icon icon-minus" aria-hidden="true"></i></div>
     </button>
@@ -66,13 +66,13 @@ import { Vue } from 'vue-facing-decorator';
     </button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-expanded-xs'));<\/script>
+<script>chi.numberInput(document.getElementById('example__expanded-size-xs'));<\/script>
 
 <!-- sm -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded-sm">Label</label>
+  <label class="chi-label" for="example__expanded-size-sm">Label</label>
   <div class="chi-number-input -expanded -sm">
-    <input id="input-example-expanded-sm" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__expanded-size-sm" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content"><i class="chi-icon icon-minus" aria-hidden="true"></i></div>
     </button>
@@ -82,13 +82,13 @@ import { Vue } from 'vue-facing-decorator';
     </button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-expanded-sm'));<\/script>
+<script>chi.numberInput(document.getElementById('example__expanded-size-sm'));<\/script>
 
 <!-- md -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded-md">Label</label>
+  <label class="chi-label" for="example__expanded-size-md">Label</label>
   <div class="chi-number-input -expanded -md">
-    <input id="input-example-expanded-md" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__expanded-size-md" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content"><i class="chi-icon icon-minus" aria-hidden="true"></i></div>
     </button>
@@ -97,13 +97,13 @@ import { Vue } from 'vue-facing-decorator';
     </button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-expanded-md'));<\/script>
+<script>chi.numberInput(document.getElementById('example__expanded-size-md'));<\/script>
 
 <!-- lg -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded-lg">Label</label>
+  <label class="chi-label" for="example__expanded-size-lg">Label</label>
   <div class="chi-number-input -expanded -lg">
-    <input id="input-example-expanded-lg" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__expanded-size-lg" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content"><i class="chi-icon icon-minus" aria-hidden="true"></i></div>
     </button>
@@ -112,7 +112,7 @@ import { Vue } from 'vue-facing-decorator';
     </button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-expanded-lg'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__expanded-size-lg'));<\/script>`,
       },
     };
   },
