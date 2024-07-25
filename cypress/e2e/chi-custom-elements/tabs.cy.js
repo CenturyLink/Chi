@@ -34,7 +34,7 @@ describe('Tabs', () => {
     it('Should show overflow items if there is not enough space', function() {
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 11);
+        .should('have.length', 10);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();

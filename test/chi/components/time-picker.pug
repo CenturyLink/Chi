@@ -167,7 +167,7 @@ script(type='module' src='../../js/chi.js')
     .chi-input__wrapper.-icon--right#input-12hr-format(
       data-target="#popover-12hr-format"
     )
-      input#12hr-format-control.chi-input.-focus(type="text" value="00:00 am")
+      input#12hr-format-control.chi-input.-focus(type="text" value="12:00 am")
       .chi-icon
         svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
           use(href="#icon-circle-clock-outline")
@@ -189,7 +189,7 @@ script(type='module' src='../../js/chi.js')
                   .chi-time-picker__minute=padZero(minute++)
             .chi-time-picker__periods
               each period in periods
-                if period === 'AM'
+                if period === 'PM'
                   .chi-time-picker__period.-active=period
                 else
                   .chi-time-picker__period=period
