@@ -41,7 +41,7 @@ describe('Tabs', () => {
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 7);
+        .should('have.length', 8);
     });
 
     it('Should resize correctly', function() {
