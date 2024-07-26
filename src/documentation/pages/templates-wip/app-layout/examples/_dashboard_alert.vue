@@ -91,7 +91,7 @@
       div(slot='header-actions')
         chi-button(color='primary' size='sm') Button
       div(slot="footer")
-        template(v-if="['lumen', 'portal', 'lumenrebrand24', 'portalrebrand24'].includes(selectedTheme)")
+        template(v-if="['lumen', 'portal'].includes(selectedTheme)")
           div(v-html="footers.lumen")
         template(v-if="selectedTheme === 'centurylink'")
           div(v-html="footers.centurylink")

@@ -4,7 +4,7 @@
     chi-main(backlink='Back link' title='Page title')
       .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
       div(slot="footer")
-        template(v-if="['lumen', 'portal', 'lumenrebrand24', 'portalrebrand24'].includes(selectedTheme)")
+        template(v-if="['lumen', 'portal'].includes(selectedTheme)")
           div(v-html="footers.lumen")
         template(v-if="selectedTheme === 'centurylink'")
           div(v-html="footers.centurylink")

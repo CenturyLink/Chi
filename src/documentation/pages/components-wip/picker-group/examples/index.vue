@@ -16,14 +16,14 @@
       | On smaller viewports, fluid pickers stack.
 
     <Fluid />
-    <AlignmentLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
+    <AlignmentLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <DisableFluidity />
 
     h2 Content Variations
 
     <TextAndIcons />
     <Icons />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
     <SizesPortal v-else />
 </template>
 

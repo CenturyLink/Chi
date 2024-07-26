@@ -10,7 +10,7 @@ template(#example)
         | Popover content.
     .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
     div(slot="footer")
-      div(v-html="footers.lumen" v-if="['lumen', 'portal', 'lumenrebrand24', 'portalrebrand24'].includes(selectedTheme)")
+      div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes(selectedTheme)")
       div(v-html="footers.centurylink" v-if="selectedTheme === 'centurylink'")
       div(v-html="footers.brightspeed" v-if="selectedTheme === 'brightspeed'")
 

@@ -5,7 +5,7 @@
 
     BaseExample
 
-    <div v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)">
+    <div v-if="['lumen', 'centurylink'].includes(selectedTheme)">
       <ActiveLumenCenturylink />
       <NoBorderLumenCenturylink />
       <Empty />
@@ -27,7 +27,7 @@
       <HeaderFooterSmallLumenCenturylink />
     </div>
 
-    <div v-if="['portal', 'portalrebrand24'].includes(selectedTheme)">
+    <div v-if="['portal'].includes(selectedTheme)">
       <HeaderLumenCenturyLink />
       <HighlightPortal />
       <WithTabsPortal />

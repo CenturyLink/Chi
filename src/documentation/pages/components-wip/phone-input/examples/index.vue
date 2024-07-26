@@ -9,7 +9,7 @@
     <Disabled />
     <Error />
     <InputMask />
-    div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
+    div(v-if="['portal'].includes(selectedTheme)")
       <SizesPortal />
     div(v-else)
       <SizesLumenCenturyLink />
