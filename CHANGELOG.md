@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 6.0.0 (July 29, 2024)
+
+### Components
+
+#### Added
+
+- Added: Sidenav floating.
+
+#### Changed
+
+- Changed: All colors have been updated to comply with new brand guidelines.
+- Changed: Alerts now render with 4px border radius.
+- Changed: Primary Buttons now render with a raindrop style.
+- Changed: Button hover and active state text, border, and background colors.
+- Changed: Buttons now render child icons one shade lighter than text.
+- Changed: Button and button groups now render with a pill shape.
+- Changed: Badges now render with a pill shape.
+- Changed: Badges now render child icons one shade lighter than text.
+- Changed: Form field states border colors have been darkened.
+- Changed: Data table background-colors, active state, and semantic states.
+
 ## 5.78.0 (July 24, 2024)
 
 ### Documentation
