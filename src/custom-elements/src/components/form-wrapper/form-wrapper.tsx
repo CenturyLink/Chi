@@ -1,6 +1,5 @@
 import { Component, Element, Prop, Watch, EventEmitter, Event, h } from '@stencil/core';
 import {
-  APP_LAYOUT_FORMATS,
   FORM_WRAPPER_LAYOUTS,
   FORM_WRAPPER_TYPES,
   FormWrapperLayouts,
@@ -46,7 +45,7 @@ export class FormWrapper {
   layoutValidation(newValue: string) {
     if (!FORM_WRAPPER_LAYOUTS.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid type for form wrapper layout. Valid values are: ${APP_LAYOUT_FORMATS.join(' ,')}.`
+        `${newValue} is not a valid type for form wrapper layout. Valid values are: ${FORM_WRAPPER_LAYOUTS.join(' ,')}.`
       );
     }
   }
@@ -55,13 +54,13 @@ export class FormWrapper {
   typeValidation(newValue: string) {
     if (!FORM_WRAPPER_TYPES.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid type for form wrapper type. Valid values are: ${APP_LAYOUT_FORMATS.join(' ,')}.`
+        `${newValue} is not a valid type for form wrapper type. Valid values are: ${FORM_WRAPPER_TYPES.join(' ,')}.`
       );
     }
   }
 
   componentWillLoad() {
-    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${item.name}` }));
+    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${item.name}` }));
   }
 
   _getLabel() {
