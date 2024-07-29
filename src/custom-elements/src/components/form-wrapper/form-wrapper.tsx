@@ -2,6 +2,7 @@ import { Component, Element, Prop, Watch, EventEmitter, Event, h } from '@stenci
 import {
   APP_LAYOUT_FORMATS,
   FORM_WRAPPER_LAYOUTS,
+  FORM_WRAPPER_TYPES,
   FormWrapperLayouts,
   FormWrapperTypes,
 } from '../../constants/constants';
@@ -14,8 +15,8 @@ import { FORM_CLASSES, UTILITY_CLASSES } from '../../constants/classes';
   styleUrl: 'form-wrapper.scss',
   scoped: true,
 })
-export class Alert {
-  @Element() el;
+export class FormWrapper {
+  @Element() e: HTMLElement;
 
   /**
    *  to set form element type { checkbox, radio }.
@@ -52,7 +53,7 @@ export class Alert {
 
   @Watch('type')
   typeValidation(newValue: string) {
-    if (!FORM_WRAPPER_LAYOUTS.includes(newValue)) {
+    if (!FORM_WRAPPER_TYPES.includes(newValue)) {
       throw new Error(
         `${newValue} is not a valid type for form wrapper type. Valid values are: ${APP_LAYOUT_FORMATS.join(' ,')}.`
       );
