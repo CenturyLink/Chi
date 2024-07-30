@@ -1002,8 +1002,6 @@ def buildDocumentation() {
 }
 
 def buildChi() {
-  def updateFilesBash = '../../scripts/updateFiles.sh'
-
   dir ('src/custom-elements') {
     unstash name: "DIST-CHI-CE"
   }
@@ -1011,7 +1009,6 @@ def buildChi() {
   jslNpmWrapper('run cicd:build:pre:sri')
   jslNpmWrapper('run sri')
   jslNpmWrapper('run cicd:build:post:sri')
-  jslNpmWrapper('run copy:files')
   stash name: "DIST-CHI", includes: "dist/**"
   echo "/dist & /dist/components"
   sh """
