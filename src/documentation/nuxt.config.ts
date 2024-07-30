@@ -106,34 +106,42 @@ export default defineNuxtConfig({
         },
       },
     },
+    build: {
+      target: 'esnext',
+      rollupOptions: {
+        output: {
+          assetFileNames: 'assets/[name][extname]',
+          chunkFileNames: 'chunks/[name].[hash].js',
+        },
+      },
+      chunkSizeWarningLimit: 1000,
+    },
     // Watch files to hot reload.
     server: {
       watch: {
-        ignored: ['!./pages/**/*.vue', '!./**/*.ts']
-      }
+        ignored: ['!./pages/**/*.vue', '!./**/*.ts'],
+      },
+    },
+    define: {
+      'import.meta.env.MODE': '"production"',
     },
   },
   nitro: {
     // https://nitro.unjs.io/config#prerender
     prerender: {
-      // uses regex or begins with to match routes
       ignore: [
         ...IGNORED_ROUTES,
         // should be removed once getting-started has been migrated
         '/getting-started',
-        `${BASE_URL}installation`
+        `${BASE_URL}installation`,
       ],
     },
     esbuild: {
       options: {
-        // keep console.logs in pr instances
-        // https://github.com/nuxt/nuxt/issues/19702
         ...(IS_PR ? { drop: [] } : {}),
       },
     },
   },
-  // error with chivue
-  // imports css https://github.com/nuxt/nuxt/issues/12215
   build: {
     transpile: ['@centurylink/chi-vue'],
   },
