@@ -43,6 +43,7 @@ const requires = {
   'test-e2e': require('./tasks/test-e2e'),
   'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
   'cicd-build-post-sri': require('./tasks/cicd-build-post-sri'),
+  'update-files': require('./tasks/update-files'),
 };
 
 gulp.task('default', function(){});
