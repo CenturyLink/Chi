@@ -1,4 +1,9 @@
 import gulp from 'gulp';
 import shell from 'gulp-shell';
 
-gulp.task('update-dist-files', shell.task(['bash scripts/updateFiles.sh']));
+function updateFiles(done) {
+  shell.task(['bash scripts/updateFiles.sh'])
+  done();
+}
+
+gulp.task('update-dist-files', updateFiles);
