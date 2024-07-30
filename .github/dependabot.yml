@@ -26,27 +26,6 @@ updates:
       - dependency-name: "nuxt"
         versions: [">=3.11.2"]
   - package-ecosystem: "npm"
-    directory: "/src/chi-vue"
-    schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "08:00"
-      timezone: "Europe/Madrid"
-    versioning-strategy: "increase-if-necessary"
-    reviewers:
-      - "josecarlosgonzalezv"
-      - "jllr"
-    pull-request-branch-name: 
-      separator: "-"
-    commit-message:
-      prefix: "[DPEDE-1784]"
-      include: "scope"
-      prefix-development: "[DPEDE-1784]"
-    groups:
-      all-dependencies:
-        patterns:
-          - "*"
-  - package-ecosystem: "npm"
     directory: "/src/custom-elements"
     schedule:
       interval: "weekly"
