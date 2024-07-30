@@ -60,7 +60,7 @@ export class FormWrapper {
   }
 
   componentWillLoad() {
-    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${item.name}` }));
+    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${uuid4()}` }));
   }
 
   _getLabel() {
@@ -127,12 +127,30 @@ export class FormWrapper {
     return <div class={classes}>{element}</div>;
   }
 
+  /**
+   * Default change event handler
+   */
   _onChange(ev: CustomEvent) {
-    const target = ev.target as HTMLInputElement;
+    const target = ev.target as HTMLChiRadioButtonElement | HTMLChiCheckboxElement;
+    const customHandler = {
+      radio: () => this._onRadioButtonChange(target),
+    }[this.type];
+
     ev.stopPropagation();
 
-    this.options.find((item) => item.id === target.id).checked = target.checked;
+    if (customHandler) {
+      customHandler();
+    } else {
+      this.options.find((item) => item.id === target.id).checked = target.checked;
+    }
+
     this.chiChange.emit(this.options);
+  }
+
+  _onRadioButtonChange(target: HTMLChiRadioButtonElement) {
+    this.options.forEach((item) => {
+      item.checked = item.id === target.id;
+    });
   }
 
   render() {
