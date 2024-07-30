@@ -4,6 +4,7 @@ const requires = {
   'clean': require('./tasks/clean.js'),
   'serve': require('./tasks/serve.js'),
   'update-boilerplate-assets': require('./tasks/update-boilerplate-assets.js'),
+  'update-dist-files': require('./tasks/update-dist-files.js'),
   'build-boilerplates': require('./tasks/build-boilerplates.js'),
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
@@ -42,8 +43,7 @@ const requires = {
   'test-custom-elements': require('./tasks/test-custom-elements'),
   'test-e2e': require('./tasks/test-e2e'),
   'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
-  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri'),
-  'update-dist-files': require('./tasks/update-dist-files.js'),
+  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri')
 };
 
 gulp.task('default', function(){});
