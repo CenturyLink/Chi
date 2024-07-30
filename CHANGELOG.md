@@ -1,5 +1,92 @@
 # CHANGELOG
 
+## 6.0.0 (July 29, 2024)
+
+### Components
+
+#### Added
+
+- Added: Sidenav floating.
+
+#### Changed
+
+- Changed: All colors have been updated to comply with new brand guidelines.
+- Changed: Alerts now render with 4px border radius.
+- Changed: Primary Buttons now render with a raindrop style.
+- Changed: Button hover and active state text, border, and background colors.
+- Changed: Buttons now render child icons one shade lighter than text.
+- Changed: Button and button groups now render with a pill shape.
+- Changed: Badges now render with a pill shape.
+- Changed: Badges now render child icons one shade lighter than text.
+- Changed: Form field states border colors have been darkened.
+- Changed: Data table background-colors, active state, and semantic states.
+
+## 5.78.0 (July 24, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Picker accessibility page.
+- Added: `Text input`, `Textarea`, `Select` and `Number input` help examples now include label `info-icon` and `info-icon-message` properties.
+
+## 5.77.0 (July 21, 2024)
+
+### Components
+
+#### Added
+
+- Added: Icons `icon-brain-nodes`, `icon-comments-sparkle`, and `icon-sparkle`.
+
+#### Changed
+
+- Changed: Expansion panel `Change` button in `done state` has changed to `Edit`.
+
+## 5.76.0 (July 17, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown icon web component `alternative-text` to improve accessibility for screen readers.
+
+## 5.75.0 (July 10, 2024)
+
+### Components
+
+#### Changed
+
+- Changed: Icons `icon-logo-facebook`, `icon-logo-linkedin`, `icon-logo-x`, and `icon-logo-youtube`.
+
+### Documentation
+
+#### Changed
+
+- Changed: Footer social media icons.
+
+## 5.74.0 (July 4, 2024)
+
+### Components
+
+#### Added
+
+- Added: Save view now supports dynamically change of properties.
+
+#### Changed
+
+- Changed: Data table watch config to re-sort data if `defaultSort` has changed.
+
+#### Fixed
+
+- Fixed: Tabs console error when `active` is not set.
+- Fixed: Data table `fullServerSort` configuration renders correct icon on first render in `serverside` mode.
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Mobile navigation drawer menu not displaying correctly on smaller screens.
+
 ## 5.73.0 (June 27, 2024)
 
 ### Documentation

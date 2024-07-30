@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h3 Examples
-    div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <BaseLumenCenturyLink />
       <CheckedLumenCenturyLink />
       <DisabledLumenCenturyLink />

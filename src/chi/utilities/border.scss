@@ -19,6 +19,7 @@ $border-colors: (
   base-dark: $color-border-base-dark,
   primary: $color-border-primary,
   secondary: $color-border-secondary,
+  secondary-dark: $color-border-secondary-darker,
   success: $color-border-success,
   success-light: $color-border-success-light,
   info: $color-border-info,
@@ -100,4 +101,8 @@ $border-colors: (
 
 .-no-raindrop {
   border-radius: $button-border-radius !important;
+}
+
+.-border--circle {
+  border-radius: 50% !important;
 }

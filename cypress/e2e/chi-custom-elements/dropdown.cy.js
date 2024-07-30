@@ -1,19 +1,19 @@
 const positions = [
   {
     placement: 'top',
-    transform: 'translate3d(-21px, -80px, 0px)',
+    transform: 'translate3d(-25px, -80px, 0px)',
   },
   {
     placement: 'right',
-    transform: 'translate3d(86px, -20px, 0px)',
+    transform: 'translate3d(90px, -20px, 0px)',
   },
   {
     placement: 'bottom',
-    transform: 'translate3d(-7px, 40px, 0px)',
+    transform: 'translate3d(-9px, 40px, 0px)',
   },
   {
     placement: 'left',
-    transform: 'translate3d(-118px, -20px, 0px)',
+    transform: 'translate3d(-130px, -20px, 0px)',
   },
   {
     placement: 'top-start',
@@ -21,15 +21,15 @@ const positions = [
   },
   {
     placement: 'top-end',
-    transform: 'translate3d(-9px, -80px, 0px)',
+    transform: 'translate3d(-12px, -80px, 0px)',
   },
   {
     placement: 'right-start',
-    transform: 'translate3d(124px, 0px, 0px)',
+    transform: 'translate3d(135px, 0px, 0px)',
   },
   {
     placement: 'right-end',
-    transform: 'translate3d(118px, -40px, 0px)',
+    transform: 'translate3d(128px, -40px, 0px)',
   },
   {
     placement: 'bottom-start',
@@ -41,11 +41,11 @@ const positions = [
   },
   {
     placement: 'left-start',
-    transform: 'translate3d(-117px, 0px, 0px)',
+    transform: 'translate3d(-129px, 0px, 0px)',
   },
   {
     placement: 'left-end',
-    transform: 'translate3d(-117px, -40px, 0px)',
+    transform: 'translate3d(-129px, -40px, 0px)',
   },
 ];
 const DROPDOWN_DATA_CY = {
@@ -341,6 +341,7 @@ describe('Dropdown', () => {
           ).to.eq(true);
         });
       });
+
       it('Should emit event with only selected items', () => {
         const spyValueChanged = cy.spy().as('spyValueChanged');
         const spyItemSelected = cy.spy().as('spyItemSelected');
@@ -419,6 +420,47 @@ describe('Dropdown', () => {
           });
 
           cy.get('@dropdownTrigger').invoke('text').should('equal', '- Select -');
+      });
+
+      it('Should reset selection at resetSelection() invoke and emit chiDropdownSelectionReset event', () => {
+        const spy = cy.spy();
+    
+        cy.get('@dropdown').then((el) => {
+          el.on('chiDropdownSelectionReset', spy);
+        });
+    
+        // select all items
+        cy.get('@dropdownTrigger').click();
+        cy.get('@dropdownMenu')
+          .find(DROPDOWN_MENU_ITEM)
+          .each((item) => {
+            cy.wrap(item).click();
+            cy.get('@dropdownTrigger').click();
+          });
+    
+        // all items should have active class
+        cy.get('@dropdownMenu')
+          .find(DROPDOWN_MENU_ITEM)
+          .each((item) => {
+            cy.wrap(item).should('have.class', ACTIVE_CLASS);
+          });
+    
+        // Reset
+        cy.get('@dropdown')
+          .then(function(dropdown) {
+            dropdown[0].resetSelection();
+            return new Promise((resolve) => resolve(dropdown));
+          })
+          .then(() => {
+            // all items should not have active class
+            cy.get('@dropdownMenu')
+              .find(DROPDOWN_MENU_ITEM)
+              .each((item) => {
+                cy.wrap(item).should('have.not.class', ACTIVE_CLASS);
+              });
+    
+            expect(spy).to.be.called;
+          });
       });
     });
   });

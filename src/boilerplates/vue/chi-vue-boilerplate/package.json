@@ -11,13 +11,13 @@
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue),*.js,tests/**/*(*.js)}' --check"
   },
   "dependencies": {
-    "@centurylink/chi-vue": "3.0.1",
-    "vue": "3.3.4"
+    "@centurylink/chi-vue": "3.7.0",
+    "vue": "3.4.33"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.0",
+    "@vitejs/plugin-vue": "^5.0.5",
     "eslint": "^8.54.0",
-    "prettier": "^3.1.0",
-    "vite": "^5.0.0"
+    "prettier": "^3.3.3",
+    "vite": "^5.3.4"
   }
 }

@@ -10,7 +10,7 @@
     <Help />
     <Message />
 
-    div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+    div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
       <ErrorLumenCenturyLink />
       <SizesLumenCenturyLink />
       <FloatingLabelsLumenCenturyLink />

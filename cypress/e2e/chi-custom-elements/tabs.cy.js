@@ -7,12 +7,16 @@ const TAB_SELECTORS = {
   dropdownItems: 'chi-dropdown[active] .chi-dropdown__menu-item',
 };
 const VISIBLE_ITEMS_ATTR = 'visible-items';
+const CLASSES = {
+  ACTIVE: '-active'
+};
 
 describe('Tabs', () => {
   describe('Overflow items', () => {
     beforeEach(() => {
       cy.visit('tests/custom-elements/tabs.html');
       cy.get('[data-cy="base"]').as('base');
+      cy.get('[data-cy="no-active-tab-base"]').as('noActiveTab');
     });
 
     it('Should not show overflow items if there is enough space', function() {
@@ -30,14 +34,14 @@ describe('Tabs', () => {
     it('Should show overflow items if there is not enough space', function() {
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 12);
+        .should('have.length', 10);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 6);
+        .should('have.length', 8);
     });
 
     it('Should resize correctly', function() {
@@ -45,14 +49,14 @@ describe('Tabs', () => {
 
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 8);
+        .should('have.length', 7);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 10);
+        .should('have.length', 11);
     });
 
     it('Should make dropdown scrollable', function() {
@@ -85,6 +89,12 @@ describe('Tabs', () => {
       cy.get(`@${secondLevelExample}`)
         .find(TAB_SELECTORS.dropdownMenu)
         .should('not.have.css', 'height', '0px');
+    });
+
+    it('Should be able to have no active tabs', function() {
+      cy.get('@noActiveTab')
+        .find(TAB_SELECTORS.triggers)
+        .should('have.not.class', CLASSES.ACTIVE);
     });
   });
 });

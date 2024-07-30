@@ -7,8 +7,8 @@
       | failure and/or how to correct it.
   template(#example)
     .chi-form__item
-      chi-label(for="unique-id-eer1") Quantity
-      chi-number-input#unique-id-eer1(inputstyle="danger", expanded, helper-message="Please enter a quantity")
+      chi-label(for="example__expanded-error") Quantity
+      chi-number-input#example__expanded-error(inputstyle="danger", expanded, helper-message="Please enter a quantity")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -35,12 +35,12 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="unique-id-eer1">Quantity</chi-label>
-<chi-number-input expanded id="unique-id-eer1" inputstyle="danger" helper-message="Please enter a quantity"></chi-number-input>`,
+        webcomponent: `<chi-label for="example__expanded-error">Quantity</chi-label>
+<chi-number-input expanded id="example__expanded-error" inputstyle="danger" helper-message="Please enter a quantity"></chi-number-input>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="input-example-expanded">Label</label>
+  <label class="chi-label" for="example__expanded-error">Label</label>
   <div class="chi-number-input -expanded">
-    <input id="input-example-expanded" class="chi-input" type="number" value="0" aria-label="Input Label">
+    <input id="example__expanded-error" class="chi-input" type="number" value="0" aria-label="Input Label">
     <button class="chi-button -icon" aria-label="Decrease">
       <div class="chi-button__content">
         <i class="chi-icon icon-minus" aria-hidden="true"></i>
@@ -58,7 +58,7 @@ import { Vue } from 'vue-facing-decorator';
   </div>
 </div>
 
-<script>chi.numberInput(document.getElementById('input-example-expanded'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__expanded-error'));<\/script>`,
       },
     };
   },

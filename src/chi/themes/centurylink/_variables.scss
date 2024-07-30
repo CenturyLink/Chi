@@ -229,6 +229,7 @@ $color-border-primary-dark:           $color-blue-80;
 $color-border-primary-darker:         $color-blue-90;
 $color-border-secondary:              $color-mint-40;
 $color-border-secondary-dark:         $color-mint-50;
+$color-border-secondary-darker:       $color-mint-70;
 $color-border-success-light:          $color-green-30;
 $color-border-success:                $color-green-50;
 $color-border-warning-light:          $color-yellow-30;
@@ -939,6 +940,7 @@ $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
 // Data Table
 $data-table-footer-background-color:        $color-grey-10;
 $data-table-head-background-color:          $color-background-muted-lighter;
+$data-table-head-icon-button-color:         $color-icon-base;
 $data-table-row-striped-background-color:   $color-navy-10;
 $data-table-row-active-background-color:    $color-navy-20;
 $data-table-row-active-marker-color:        $color-border-primary;

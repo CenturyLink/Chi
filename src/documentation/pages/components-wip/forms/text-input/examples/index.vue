@@ -12,7 +12,7 @@ ClientOnly
   <Help />
   <Message />
   <CopyTextButton />
-  <ErrorLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
+  <ErrorLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
   <ErrorPortal v-else />
 
   h2 Layout Variations
@@ -26,7 +26,7 @@ ClientOnly
   <LeftAligned />
   <RightAligned />
 
-  div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+  div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
     <LeftRightAlignedCenturyLink />
     <SizesLumenCenturyLink  />
   div(v-else)

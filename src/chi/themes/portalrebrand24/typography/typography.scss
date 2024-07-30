@@ -236,7 +236,7 @@ small {
 }
 
 .-icon--grey {
-  color: $color-icon-muted !important;
+  color: $color-icon-muted-dark !important;
 }
 
 .-text--navy,
@@ -247,4 +247,8 @@ small {
 .-text--orange,
 .-icon--orange {
   color: $color-orange-50 !important;
+}
+
+.-icon--teal {
+  color: $color-teal-80 !important;
 }

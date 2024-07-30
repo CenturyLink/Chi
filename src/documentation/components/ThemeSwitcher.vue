@@ -38,16 +38,6 @@
         @click="setTheme('portal')"
         ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
-      ><a
-        v-bind:class="[selectedTheme === 'lumenrebrand24' ? '-active' : '', 'theme-trigger-lumenrebrand24', 'chi-dropdown__menu-item']"
-        @click="setTheme('lumenrebrand24')"
-        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
-        <div class="-theme-name">Lumen Rebrand24</div></a
-      ><a
-        v-bind:class="[selectedTheme === 'portalrebrand24' ? '-active' : '', 'theme-trigger-portalrebrand24', 'chi-dropdown__menu-item']"
-        @click="setTheme('portalrebrand24')"
-        ><nuxt-img class="-mr--1" width="16" height="16" :src="`/themes/lumen/images/favicon.svg`" />
-        <div class="-theme-name">Portal Rebrand24</div></a
       >
     </div>
   </div>
@@ -72,7 +62,7 @@ export default class ThemeSwitcher extends Vue {
   selectedTheme = useSelectedTheme();
 
   getThemeSwitcherTriggerIcon() {
-    const excludedThemes = ['portal', 'lumenrebrand24', 'portalrebrand24', 'colt', 'brightspeed'];
+    const excludedThemes = ['portal', 'colt', 'brightspeed'];
 
     return excludedThemes.includes(this.selectedTheme) ? 'lumen' : this.selectedTheme;
   }
@@ -92,20 +82,26 @@ export default class ThemeSwitcher extends Vue {
       { type: 'docsCss', id: 'chi-docs-css' },
     ];
 
-    assetsToReplace.forEach((asset: AssetToReplace) => {
+    assetsToReplace.forEach((asset) => {
       const currentAsset = document.getElementById(asset.id);
-      const replacementAsset = document.createElement('LINK');
       const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
 
-      if (currentAsset && replacementAsset) {
-        replacementAsset.setAttribute('rel', 'stylesheet');
-        replacementAsset.setAttribute('href', replacementHref);
-        if (currentAsset.parentNode) {
-          currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
+      if (currentAsset) {
+        let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
+
+        if (!replacementAsset) {
+          replacementAsset = document.createElement('link');
+          replacementAsset.setAttribute('rel', 'stylesheet');
+          replacementAsset.setAttribute('href', replacementHref);
+
+          if (currentAsset.parentNode) {
+              currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
+          }
         }
+
         replacementAsset.addEventListener('load', () => {
-          replacementAsset.setAttribute('id', asset.id);
-          currentAsset.remove();
+            replacementAsset.setAttribute('id', asset.id);
+            currentAsset.remove();
         });
       }
     });
@@ -113,6 +109,7 @@ export default class ThemeSwitcher extends Vue {
     brandLogo.setAttribute('logo', theme === 'centurylink' ? 'centurylink' : 'lumen');
 
     this.selectedTheme = theme;
+    localStorage.setItem('chiTheme', this.getUrlTheme());
     this.setUrlTheme(theme);
   }
 
@@ -141,8 +138,9 @@ export default class ThemeSwitcher extends Vue {
 
   async setUrlTheme(newTheme: string) {
     const urlTheme = this.getUrlTheme();
-    if (newTheme !== urlTheme) {
+    if (newTheme.toLowerCase() !== urlTheme.toLowerCase()) {
       const queryTheme = newTheme === 'centurylink' ? 'CenturyLink' : capitalize(newTheme);
+
       await navigateTo({
         path: useRoute().path,
         query: {
@@ -157,5 +155,3 @@ export default class ThemeSwitcher extends Vue {
   }
 }
 </script>
-
-<style></style>

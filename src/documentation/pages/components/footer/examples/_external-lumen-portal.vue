@@ -57,7 +57,7 @@
                   li(v-for="(contactLink, index) in externalContents.contactLinks" :key="index")
                     a(:href="contactLink.href" :target="contactLink.target" :class="contactLink.class") {{contactLink.title}}
                 .chi-footer__social
-                  a(v-for="(socialLink, index) in externalContents.socialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
+                  a.-bg--white.-border--circle(v-for="(socialLink, index) in externalContents.socialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
                     i(:class="`chi-icon icon-logo-${socialLink.iconName} -md`" aria-hidden="true")
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold

@@ -9,8 +9,8 @@
       each size in ['xs', 'sm', 'md', 'lg']
         .-py--2
           .chi-form__item
-            chi-label(for=`example-portal-sizes-${size}`) Label
-            chi-number-input(size=`${size}`, id=`example-portal-sizes-${size}`)
+            chi-label(for=`example__portal-size-${size}`) Label
+            chi-number-input(size=`${size}`, id=`example__portal-size-${size}`)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -38,63 +38,63 @@ import { Vue } from 'vue-facing-decorator';
       ],
       codeSnippets: {
         webcomponent: `<!-- xs -->
-<chi-label for="example-3-xs">Label</chi-label>
-<chi-number-input size="xs" id="example-3-xs"></chi-number-input>
+<chi-label for="example__size-xs">Label</chi-label>
+<chi-number-input size="xs" id="example__size-xs"></chi-number-input>
 
 <!-- sm -->
-<chi-label for="example-3-sm">Label</chi-label>
-<chi-number-input size="sm" id="example-3-sm"></chi-number-input>
+<chi-label for="example__size-sm">Label</chi-label>
+<chi-number-input size="sm" id="example__size-sm"></chi-number-input>
 
 <!-- md -->
-<chi-label for="example-3-md">Label</chi-label>
-<chi-number-input size="md" id="example-3-md"></chi-number-input>
+<chi-label for="example__size-md">Label</chi-label>
+<chi-number-input size="md" id="example__size-md"></chi-number-input>
 
 <!-- lg -->
-<chi-label for="example-3-lg">Label</chi-label>
-<chi-number-input size="lg" id="example-3-lg"></chi-number-input>`,
+<chi-label for="example__size-lg">Label</chi-label>
+<chi-number-input size="lg" id="example__size-lg"></chi-number-input>`,
         htmlblueprint: `<!-- xs -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-xs">Label</label>
+  <label class="chi-label" for="example__size-xs">Label</label>
   <div class="chi-number-input -xs">
-    <input id="input-example-xs" type="number" class="chi-input" value="0" aria-label="Input Label">
+    <input id="example__size-xs" type="number" class="chi-input" value="0" aria-label="Input Label">
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-xs'));<\/script>
+<script>chi.numberInput(document.getElementById('example__size-xs'));<\/script>
 
 <!-- sm -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-sm">Label</label>
+  <label class="chi-label" for="example__size-sm">Label</label>
   <div class="chi-number-input -sm">
-    <input id="input-example-sm" type="number" class="chi-input" value="0" aria-label="Input Label">
+    <input id="example__size-sm" type="number" class="chi-input" value="0" aria-label="Input Label">
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-sm'));<\/script>
+<script>chi.numberInput(document.getElementById('example__size-sm'));<\/script>
 
 <!-- md -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-md">Label</label>
+  <label class="chi-label" for="example__size-md">Label</label>
   <div class="chi-number-input -md">
-    <input id="input-example-md" type="number" class="chi-input" value="0" aria-label="Input Label">
+    <input id="example__size-md" type="number" class="chi-input" value="0" aria-label="Input Label">
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-md'));<\/script>
+<script>chi.numberInput(document.getElementById('example__size-md'));<\/script>
 
 <!-- lg -->
 <div class="chi-form__item">
-  <label class="chi-label" for="input-example-lg">Label</label>
+  <label class="chi-label" for="example__size-lg">Label</label>
   <div class="chi-number-input -lg">
-    <input id="input-example-lg" type="number" class="chi-input" value="0" aria-label="Input Label">
+    <input id="example__size-lg" type="number" class="chi-input" value="0" aria-label="Input Label">
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
 </div>
-<script>chi.numberInput(document.getElementById('input-example-lg'));<\/script>`,
+<script>chi.numberInput(document.getElementById('example__size-lg'));<\/script>`,
       },
     };
   },

@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-06-27T14:27:41",
+  "timestamp": "2024-07-28T10:07:49",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.19.0",
+    "version": "4.19.2",
     "typescriptVersion": "5.4.5"
   },
   "components": [
@@ -2945,7 +2945,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -3282,6 +3282,32 @@
           "docsTags": []
         },
         {
+          "name": "resetSelection",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              },
+              "HTMLElement": {
+                "location": "global",
+                "id": "global::HTMLElement"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "resetSelection() => Promise<void>",
+          "parameters": [],
+          "docs": "Resets selection",
+          "docsTags": []
+        },
+        {
           "name": "show",
           "returns": {
             "type": "Promise<void>",
@@ -3403,6 +3429,20 @@
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when press key to up/down the Dropdown menu items",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownSelectionReset",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Dropdown's selection is reset",
           "docsTags": []
         },
         {
@@ -5334,7 +5374,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": ""
+                "id": "node_modules::CountryCode"
               }
             }
           },
@@ -6815,7 +6855,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -7203,6 +7243,188 @@
       ],
       "methods": [],
       "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/radio-button/radio-button.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-radio-button",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "checked",
+          "reflectToAttr": false,
+          "docs": "To render the radiobutton in checked state",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "To disable the radiobutton",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "To provide radiobutton label as a string",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "To render the radiobutton input with a respective name attribute",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "ChiStates",
+            "resolved": "\"danger\" | \"success\" | \"warning\"",
+            "references": {
+              "ChiStates": {
+                "location": "import",
+                "path": "../../constants/states",
+                "id": "src/constants/states.ts::ChiStates"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": false,
+          "docs": "To indicate the state",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiBlur",
+          "detail": "boolean | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string | boolean",
+            "resolved": "boolean | string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the radio-button has lost the focus",
+          "docsTags": []
+        },
+        {
+          "event": "chiChange",
+          "detail": "boolean | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string | boolean",
+            "resolved": "boolean | string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selects or deselects the radio-button",
+          "docsTags": []
+        },
+        {
+          "event": "chiFocus",
+          "detail": "boolean | string",
+          "bubbles": true,
+          "complexType": {
+            "original": "string | boolean",
+            "resolved": "boolean | string",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the radio-button has the focus",
+          "docsTags": []
+        }
+      ],
       "listeners": [],
       "styles": [],
       "slots": [],

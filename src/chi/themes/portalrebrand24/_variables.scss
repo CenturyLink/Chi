@@ -218,6 +218,8 @@ $color-border-primary-dark: $color-orange-70;
 $color-border-primary-darker: $color-orange-90;
 $color-border-secondary: $color-teal-40;
 $color-border-secondary-dark: $color-teal-50;
+$color-border-secondary-darker: $color-teal-70;
+$color-border-secondary-dark: $color-teal-50;
 $color-border-success-light: $color-green-30;
 $color-border-success: $color-green-60;
 $color-border-warning-light: $color-yellow-30;
@@ -282,7 +284,7 @@ $icon-size-xl: 6rem;
 $icon-size-xxl: 8rem;
 
 // Link color
-$link-color: $color-teal-80;
+$link-color: $color-teal-70;
 
 // Focus color
 $focus-color: $color-teal-70;
@@ -560,7 +562,7 @@ $badge-flat-accent-5-text-color: $color-purple-70;
 $badge-flat-accent-5-icon-color: $color-purple-60;
 
 // Bulk actions
-$bulk-actions-background-color: $color-blue-30;
+$bulk-actions-background-color: $color-background-secondary;
 $bulk-actions-link-color: $color-text-base;
 $bulk-actions-link-font-weight: $font-weight-semi-bold;
 $bulk-actions-results-font-size: $font-size-md;
@@ -708,9 +710,9 @@ $button-dark-outline-hover-border-color: $color-teal-90;
 $button-dark-outline-active-border-color: $color-teal-100;
 $button-dark-outline-hover-background-color: $color-background-white;
 $button-dark-outline-active-background-color: $color-background-white;
-$button-dark-flat-text-color: $color-teal-100;
-$button-dark-flat-hover-text-color: $color-teal-100;
-$button-dark-flat-active-text-color: $color-teal-100;
+$button-dark-flat-text-color: $color-teal-80;
+$button-dark-flat-hover-text-color: $color-teal-80;
+$button-dark-flat-active-text-color: $color-teal-80;
 $button-dark-flat-hover-border-color: transparent;
 $button-dark-flat-active-border-color: transparent;
 $button-dark-flat-hover-background-color: transparent;
@@ -935,6 +937,7 @@ $divider-vertical-inverse-border-color: rgba($color-white, 0.2);
 // Data Table
 $data-table-footer-background-color: $color-grey-10;
 $data-table-head-background-color: $color-background-muted-lighter;
+$data-table-head-icon-button-color: $color-teal-80;
 $data-table-row-striped-background-color: $color-grey-10;
 $data-table-row-active-background-color: $color-orange-05;
 $data-table-row-active-marker-color: $color-border-primary;
@@ -1109,7 +1112,7 @@ $footer-internal-text-color: $color-text-white;
 $footer-internal-select-text-color: $color-text-white;
 $footer-copyright-font-size: $font-size-xs;
 $footer-copyright-line-height: 1rem;
-$footer-dropdown-arrow-icon-color: $color-icon-white;
+$footer-dropdown-arrow-icon-color: $color-cyan-40;
 $footer-internal-link-color: $color-text-white;
 $footer-external-background-color: $color-grey-15;
 $footer-external-text-color: $color-text-base;
@@ -1191,8 +1194,8 @@ $label-help-hover-icon-color: $color-teal-100;
 
 // Link
 $link-text-decoration: underline;
-$link-hover-text-decoration: none;
-$link-hover-color: $link-color;
+$link-hover-text-decoration: underline;
+$link-hover-color: $color-teal-100;
 
 $link-cta-icon: '\e904';
 $link-cta-icon-color: $color-orange-60;
@@ -1419,7 +1422,7 @@ $picker-disabled-background-color: $color-background-base-dark;
 $picker-disabled-text-color: $color-text-muted-light;
 $picker-checked-background-color: $color-teal-10;
 $picker-checked-border-color: $color-teal-80;
-$picker-checked-text-color: $color-text-base;
+$picker-checked-text-color: $color-teal-80;
 $picker-checked-checkbox-text-color: $color-teal-80;
 $picker-checked-checkbox-background-color: $color-teal-80;
 $picker-checked-checkbox-border-color: $color-teal-80;
@@ -1550,10 +1553,10 @@ $save-view-label-font-size: $font-size-md;
 $save-view-label-font-weight: $font-weight-semi-bold;
 $save-view-edit-border-color: $color-border-info;
 $save-view-edit-border-style: dashed;
-$save-view-ribbon-background-color: $color-blue-70;
+$save-view-ribbon-background-color: $color-teal-70;
 $save-view-ribbon-label-color: $color-text-white;
 $save-view-ribbon-label-font-style: italic;
-$save-view-ribbon-arrow-border-color: $color-blue-70;
+$save-view-ribbon-arrow-border-color: $color-teal-70;
 $save-view-ribbon-arrow-border-style: solid;
 
 // Search input
@@ -1576,7 +1579,7 @@ $search-input-xl-close-top: 1rem;
 // Select
 $select-text-color: $color-text-base;
 $select-background-color: $color-background-white;
-$select-background-image: url('icon-chevron-thin-down-portalrebrand24.svg');
+$select-background-image: url('icon-chevron-thin-down.svg');
 $select-border-color: $color-border-base;
 $select-hover-border-color: $color-grey-40;
 $select-focus-border-color: $focus-color;
@@ -2070,4 +2073,4 @@ $tooltip-max-width: 20rem;
 // Transfer list
 $transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
-$transfer-list-reset-button-color: $color-blue-75;
+$transfer-list-reset-button-color: $color-text-primary;

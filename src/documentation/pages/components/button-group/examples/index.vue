@@ -7,7 +7,7 @@ p.-text
   | Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
 <FluidHorizontal />
 <FluidVertical />
-div(v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)")
+div(v-if="['lumen', 'centurylink'].includes(selectedTheme)")
   h3 Sizes
   p.-text
     | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,

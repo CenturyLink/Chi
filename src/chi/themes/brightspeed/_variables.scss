@@ -213,6 +213,7 @@ $color-border-primary-dark:           $color-yellow-50;
 $color-border-primary-darker:         $color-yellow-50;
 $color-border-secondary:              $color-yellow-40;
 $color-border-secondary-dark:         $color-yellow-50;
+$color-border-secondary-darker:       $color-yellow-70;
 $color-border-success-light:          $color-green-30;
 $color-border-success:                $color-green-60;
 $color-border-warning-light:          $color-yellow-30;
@@ -932,6 +933,7 @@ $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 // Data Table
 $data-table-footer-background-color:        $color-grey-10;
 $data-table-head-background-color:          $color-background-muted-lighter;
+$data-table-head-icon-button-color:         $color-icon-base;
 $data-table-row-striped-background-color:   $color-grey-05;
 $data-table-row-active-background-color:    $color-yellow-20;
 $data-table-row-active-marker-color:        $color-border-primary;

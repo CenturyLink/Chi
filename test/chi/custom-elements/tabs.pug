@@ -5,7 +5,7 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 h2 Base
 .-w--100
-  chi-tabs(active-tab='tab-a' id='base' sliding-border data-cy="base")
+  chi-tabs(active-tab='tab-a' id='base' sliding-border data-cy='base')
 
 //- h2 Border
 //- .-w--100
@@ -23,17 +23,15 @@ h4 Inverse
 
 h3 Solid 
 .-w--100 
-  chi-tabs(id='horizontal-flat-solid' solid size="lg" border)
+  chi-tabs(id='horizontal-flat-solid' solid size='lg' border)
 
 h2 Vertical 
 h3 Flat
-
 h4 Base
 .-w--100
   chi-tabs(id='vertical-flat-base' vertical)
 
 h4 Inverse
-
 .-w--100.-bg--black
   chi-tabs(id='vertical-flat-inverse' vertical inverse)
 
@@ -52,11 +50,19 @@ h3 Base
   chi-tabs(id='bordered-base' border)
 
 h3 Inverse
-
 .-w--100.-bg--black
   chi-tabs(id='bordered-inverse' inverse border)
 
-h2 Additional sizes 
+h2 No Active Tab
+h3 Base
+.-w--100
+  chi-tabs(id='no-active-tab-base' data-cy='no-active-tab-base')
+
+h3 Inverse
+.-w--100.-bg--black
+  chi-tabs(id='no-active-tab-inverse' inverse)
+
+h2 Additional sizes
 h3 Horizontal
 h4 XS
 .-w--100 
@@ -331,6 +337,8 @@ script.
 
     const chiTabElements = [
       'horizontal-flat-base',
+      'no-active-tab-base',
+      'no-active-tab-inverse',
       'horizontal-flat-inverse',
       'horizontal-flat-solid',
       'vertical-flat-base',
@@ -359,8 +367,13 @@ script.
     for (const [tabId, tabs] of Object.entries(chiTabElements)) {
       const element = document.getElementById(tabId);
       element.tabs = tabs;
-      element.activeTab = tabs[0].id
 
-      element.addEventListener('chiTabChange', console.log)
+      const activeTabId = tabs[0].id;
+
+      if (!activeTabId.includes('no-active-tab')) {
+        element.activeTab = activeTabId;
+      }
+
+      element.addEventListener('chiTabChange', console.log);
     }
   });

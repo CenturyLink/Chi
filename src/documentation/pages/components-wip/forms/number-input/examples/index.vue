@@ -9,8 +9,8 @@
     <Help />
     <Message />
     <Error />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
-    <SizesPortal v-if="['portal', 'portalrebrand24'].includes(selectedTheme)" />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <SizesPortal v-if="['portal'].includes(selectedTheme)" />
 
     h2 Expanded version
 
@@ -18,8 +18,8 @@
     <DisabledExpanded />
     <MinMaxStepExpanded />
     <ErrorExpanded />
-    <SizesExpandedLumenCenturyLink v-if="['lumen', 'centurylink', 'lumenrebrand24'].includes(selectedTheme)" />
-    <SizesExpandedPortal v-if="['portal', 'portalrebrand24'].includes(selectedTheme)" />
+    <SizesExpandedLumenCenturyLink v-if="['lumen', 'centurylink'].includes(selectedTheme)" />
+    <SizesExpandedPortal v-if="['portal'].includes(selectedTheme)" />
 </template>
 
 <script lang="ts">

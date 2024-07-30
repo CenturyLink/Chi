@@ -11,7 +11,7 @@
       | By default, all content stored in headers will render in drawer
       | components when the viewport is too small to accommodate.
 
-    div(v-if="['lumen', 'lumenrebrand24', 'portal', 'portalrebrand24'].includes(selectedTheme)")
+    div(v-if="['lumen', 'portal'].includes(selectedTheme)")
       BaseExample
       <HeaderTitle />
       <HeaderTitleButtons />
@@ -22,7 +22,7 @@
       <SizesLarge />
       <SizesXLarge />
 
-    div(v-if="['portal', 'portalrebrand24'].includes(selectedTheme)")
+    div(v-if="['portal'].includes(selectedTheme)")
       <BasePortal />
       <HeaderImpersonationPortal />
       <HeaderDropdownMenuPortal />
