@@ -60,7 +60,7 @@ export class FormWrapper {
   }
 
   componentWillLoad() {
-    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${uuid4()}` }));
+    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${uuid4()}`, checked: item.checked || false }));
   }
 
   _getLabel() {
@@ -141,7 +141,7 @@ export class FormWrapper {
     if (customHandler) {
       customHandler();
     } else {
-      this.options.find((item) => item.id === target.id).checked = target.checked;
+      this.options.find((item) => item.id === target.id).checked = !!target.checked;
     }
 
     this.chiChange.emit(this.options);
