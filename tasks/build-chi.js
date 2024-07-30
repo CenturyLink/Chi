@@ -14,5 +14,4 @@ gulp.task('build:chi', gulp.series(
   'build:chi:scriptsES6',
   'build:chi:scriptsAMD',
   'build:test:fixtures',
-  'update-dist-files'
 ));
