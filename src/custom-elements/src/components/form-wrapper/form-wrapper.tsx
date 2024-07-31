@@ -7,7 +7,7 @@ import {
 } from '../../constants/constants';
 import { FormWrapperCheckbox, FormWrapperRadio } from '../../constants/types';
 import { v4 as uuid4 } from 'uuid';
-import { FORM_CLASSES, UTILITY_CLASSES } from '../../constants/classes';
+import { FORM_CLASSES, FORM_WRAPPER_CLASSES, UTILITY_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-form-wrapper',
@@ -45,7 +45,7 @@ export class FormWrapper {
   layoutValidation(newValue: string) {
     if (!FORM_WRAPPER_LAYOUTS.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid type for form wrapper layout. Valid values are: ${FORM_WRAPPER_LAYOUTS.join(' ,')}.`
+        `${newValue} is not a valid type for form wrapper layout. Valid values are: ${FORM_WRAPPER_LAYOUTS.join(', ')}.`
       );
     }
   }
@@ -54,7 +54,7 @@ export class FormWrapper {
   typeValidation(newValue: string) {
     if (!FORM_WRAPPER_TYPES.includes(newValue)) {
       throw new Error(
-        `${newValue} is not a valid type for form wrapper type. Valid values are: ${FORM_WRAPPER_TYPES.join(' ,')}.`
+        `${newValue} is not a valid type for form wrapper type. Valid values are: ${FORM_WRAPPER_TYPES.join(', ')}.`
       );
     }
   }
@@ -112,7 +112,7 @@ export class FormWrapper {
     return [
       FORM_CLASSES.FORM_ITEM,
       this.layout !== 'inline' && !isLast && UTILITY_CLASSES.MARGIN.BOTTOM[1],
-      this.layout === 'inline' && `-${this.layout}`,
+      this.layout === 'inline' && FORM_WRAPPER_CLASSES.LAYOUTS.INLINE,
     ]
       .filter(Boolean)
       .join(' ');
