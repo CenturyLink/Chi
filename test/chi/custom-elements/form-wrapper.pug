@@ -5,17 +5,15 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 - var layouts = ['inline', 'stacked']
 - var labels = ['', 'Some useful label']
-- var checkboxes = [ {label: 'Checkbox 1', name: 'ck-1'}, {label: 'Checkbox 2', name: 'ck-2', checked: true}, {label: 'Checkbox 3', name: 'ck-3', disabled: true}, {label: 'Checkbox 4', name: 'ck-4', checked: 'indeterminate'}]
-- var radios = [{label: 'Radio 1', name: 'radio'},{label: 'Radio 2', name: 'radio', checked: true},{label: 'Radio 3', name: 'radio', disabled: true},{label: 'Radio 4', name: 'radio'}]
 
-.test-form-wrapper-heckboxes.-mt--5(style='width: 700px; height: 650px;')
+.test-form-wrapper-checkboxes.-mt--5(style='width: 700px; height: 650px;')
   each layout in layouts
     each label in labels
       div.-text--h3=`Checkboxes ${layout} layout ${label ? 'whith' : 'without'} label`
       chi-form-wrapper.p--3(type="checkbox" label=`${label}` layout=`${layout}` data-cy=`checkboxes-${layout}${label ? '-with-label' : ''}`)
 
 
-.test-form-wrapper-adio-buttons.-mt--5(style='width: 700px; height: 650px;')
+.test-form-wrapper-radio-buttons.-mt--5(style='width: 700px; height: 650px;')
   each layout in layouts
     each label in labels
       div.-text--h3=`Radios ${layout} layout ${label ? 'whith' : 'without'} label`
