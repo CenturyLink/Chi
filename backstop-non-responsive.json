@@ -763,6 +763,26 @@
       "requireSameDimensions": true
     },
     {
+      "label": "form-wrapper",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/form-wrapper.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-form-wrapper-checkboxes",
+        ".test-form-wrapper-radio-buttons"
+      ],
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "header",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/header.html",
