@@ -2,7 +2,7 @@
   "timestamp": "2024-07-28T10:07:49",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.19.2",
+    "version": "4.18.1",
     "typescriptVersion": "5.4.5"
   },
   "components": [
@@ -1016,7 +1016,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
           "docs": "To render the checkbox in checked state",
@@ -1058,7 +1058,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "indeterminate",
           "reflectToAttr": false,
           "docs": "To add indeterminate state to checkbox",
@@ -1193,9 +1193,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-form-wrapper"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-form-wrapper": [
+          "chi-checkbox"
+        ]
+      }
     },
     {
       "filePath": "src/components/copy-text/copy-text.tsx",
@@ -2945,7 +2951,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": "node_modules::Placement"
+                "id": ""
               }
             }
           },
@@ -3673,6 +3679,182 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/form-wrapper/form-wrapper.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-form-wrapper",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "to set a lagend for all fields",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "layout",
+          "type": "string",
+          "complexType": {
+            "original": "FormWrapperLayouts",
+            "resolved": "string",
+            "references": {
+              "FormWrapperLayouts": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::FormWrapperLayouts"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "layout",
+          "reflectToAttr": false,
+          "docs": "to set layout { stacked, inline }.",
+          "docsTags": [],
+          "default": "'stacked'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "options",
+          "type": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+          "complexType": {
+            "original": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+            "resolved": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+            "references": {
+              "FormWrapperCheckbox": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::FormWrapperCheckbox"
+              },
+              "FormWrapperRadio": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::FormWrapperRadio"
+              }
+            }
+          },
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "to set options",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "FormWrapperCheckbox[]"
+            },
+            {
+              "type": "FormWrapperRadio[]"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "FormWrapperTypes",
+            "resolved": "string",
+            "references": {
+              "FormWrapperTypes": {
+                "location": "import",
+                "path": "../../constants/constants",
+                "id": "src/constants/constants.ts::FormWrapperTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set form element type { checkbox, radio }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+            "resolved": "FormWrapperCheckbox[] | FormWrapperRadio[]",
+            "references": {
+              "FormWrapperCheckbox": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::FormWrapperCheckbox"
+              },
+              "FormWrapperRadio": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::FormWrapperRadio"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-label",
+        "chi-checkbox",
+        "chi-radio-button"
+      ],
+      "dependencyGraph": {
+        "chi-form-wrapper": [
+          "chi-label",
+          "chi-checkbox",
+          "chi-radio-button"
+        ],
+        "chi-label": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/helper-message/helper-message.tsx",
       "encapsulation": "scoped",
       "tag": "chi-helper-message",
@@ -4146,7 +4328,9 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-form-wrapper"
+      ],
       "dependencies": [
         "chi-button",
         "chi-icon",
@@ -4163,6 +4347,9 @@
         ],
         "chi-popover": [
           "chi-button"
+        ],
+        "chi-form-wrapper": [
+          "chi-label"
         ]
       }
     },
@@ -5374,7 +5561,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": "node_modules::CountryCode"
+                "id": ""
               }
             }
           },
@@ -6855,7 +7042,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": "node_modules::Placement"
+                "id": ""
               }
             }
           },
@@ -7267,7 +7454,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "checked",
           "reflectToAttr": false,
           "docs": "To render the radiobutton in checked state",
@@ -7429,9 +7616,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-form-wrapper"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-form-wrapper": [
+          "chi-radio-button"
+        ]
+      }
     },
     {
       "filePath": "src/components/search-input/search-input.tsx",
@@ -10256,6 +10449,26 @@
     },
     "src/constants/types.ts::DropdownSelectModes": {
       "declaration": "\"single\" | \"multi\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/constants.ts::FormWrapperTypes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/constants.ts"
+    },
+    "src/constants/constants.ts::FormWrapperLayouts": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/constants.ts"
+    },
+    "src/constants/types.ts::FormWrapperCheckbox": {
+      "declaration": "export interface FormWrapperCheckbox extends FormWrapperOption {\n  checked: boolean | 'indeterminate',\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::FormWrapperRadio": {
+      "declaration": "export interface FormWrapperRadio extends FormWrapperOption {\n  checked?: boolean,\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

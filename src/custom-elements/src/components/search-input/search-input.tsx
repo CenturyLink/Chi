@@ -288,13 +288,7 @@ export class SearchInput {
     const visibleItems = this.visibleItems ?? null;
 
     return (
-      <chi-dropdown
-        id="dropdown-autocomplete"
-        position="bottom"
-        preventItemSelected
-        fluid
-        visibleItems={visibleItems}
-      >
+      <chi-dropdown id="dropdown-autocomplete" position="bottom" preventItemSelected fluid visibleItems={visibleItems}>
         {trigger}
         {this.menuItemsFiltered?.map((item) => {
           const uuid = uuid4();
