@@ -107,13 +107,6 @@ export default defineNuxtConfig({
       },
     },
     build: {
-      target: 'esnext',
-      rollupOptions: {
-        output: {
-          assetFileNames: 'assets/[name][extname]',
-          chunkFileNames: 'chunks/[name].[hash].js',
-        },
-      },
       chunkSizeWarningLimit: 1000,
     },
     // Watch files to hot reload.
@@ -121,9 +114,6 @@ export default defineNuxtConfig({
       watch: {
         ignored: ['!./pages/**/*.vue', '!./**/*.ts'],
       },
-    },
-    define: {
-      'import.meta.env.MODE': '"production"',
     },
   },
   nitro: {
