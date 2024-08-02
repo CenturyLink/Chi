@@ -257,7 +257,9 @@ export class TextInput {
       this.iconLeft && '-icon--left',
       this.iconRight && '-icon--right',
       this.copyText && '-flex--grow1',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     input = (
       <div class={inputClasses}>

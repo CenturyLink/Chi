@@ -192,6 +192,15 @@ export const FORM_CLASSES = {
 };
 //#endregion
 
+//#region FormWrapper
+export const FORM_WRAPPER_CLASSES = {
+  LAYOUTS: {
+    INLINE: '-inline',
+    STACKED: '-stacked'
+  }
+};
+//#endregion
+
 //#region Form
 export const MODAL_CLASSES = {
   FOOTER: 'chi-modal__footer',
@@ -201,6 +210,7 @@ export const MODAL_CLASSES = {
   TITLE: 'chi-modal__title',
 };
 //#endregion
+
 
 //#region Generic
 export const GENERIC_SIZE_CLASSES = {

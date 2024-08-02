@@ -20,11 +20,11 @@ export class Checkbox {
   /**
    * To render the checkbox in checked state
    */
-  @Prop() checked?: boolean;
+  @Prop({ mutable: true }) checked?: boolean;
   /**
    * To add indeterminate state to checkbox
    */
-  @Prop() indeterminate?: boolean;
+  @Prop({ mutable: true }) indeterminate?: boolean;
   /**
    * To disable the checkbox
    */

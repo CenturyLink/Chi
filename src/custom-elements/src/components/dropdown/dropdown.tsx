@@ -598,7 +598,6 @@ export class Dropdown {
     return this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
   }
 
-  
   /**
    * Generates trigger button content, either default button text, selected value or icon
    */
@@ -644,7 +643,9 @@ export class Dropdown {
       this.icon && DROPDOWN_CLASSES.ICON,
       this.selectMode && DROPDOWN_CLASSES.SELECT_MODE,
       this.state && `-b--${this.state}`,
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
   }
 
   renderDropdownMenuHeader() {
@@ -704,8 +705,7 @@ export class Dropdown {
         class={`
         ${DROPDOWN_CLASSES.DROPDOWN}
         ${this.active ? ACTIVE_CLASS : ''}
-        ${this._fluidClass}`
-      }
+        ${this._fluidClass}`}
         onMouseLeave={this.handlerMouseLeave}
       >
         {trigger}

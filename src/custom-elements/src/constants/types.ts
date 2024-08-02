@@ -58,3 +58,21 @@ export enum TabTriggerDirections {
 }
 
 export type FontWeight = 'normal';
+
+// #region FormWrapper
+export interface FormWrapperOption {
+  label: string,
+  name: string,
+  disabled?: boolean,
+  id: string
+  // state: ChiStates
+}
+
+export interface FormWrapperCheckbox extends FormWrapperOption {
+  checked: boolean | 'indeterminate',
+}
+
+export interface FormWrapperRadio extends FormWrapperOption {
+  checked?: boolean,
+}
+// #endregion
