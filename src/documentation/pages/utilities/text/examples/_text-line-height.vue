@@ -16,7 +16,7 @@
 import { Vue } from 'vue-facing-decorator';
 
 @NuxtComponent({})
-export default class LineHeight extends Vue {
+export default class TextLineHeight extends Vue {
   exampleTabs = [
     {
       active: true,

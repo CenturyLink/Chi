@@ -13,15 +13,6 @@ RED='\E[0;31m'
 GREEN='\E[0;32m'
 BLUE='\033[0;34m'
 NC='\E[0m' # No Color
-PREFIX_VUE="$(tput setaf 4)[VUE]$(tput sgr0) "
-
-# if [ ! -h /chi/src/chi-vue/dist ]; then
-#     if [ -d /chi/src/chi-vue/dist ]; then
-#         echo -e "${RED}src/chi-vue/dist is a directory. Please, remove it${NC}";
-#         exit 1;
-#     fi
-#     ln -s /chi/dist/js/vue /chi/src/chi-vue/dist || ( echo "Cannot create symbolic link from src/chi-vue/dist to dist/js/vue"; exit 1 )
-# fi
 
 # if [ ! -h /chi/src/custom-elements/dist ]; then
 #     if [ -d /chi/src/custom-elements/dist ]; then
@@ -44,12 +35,6 @@ addheader_custom_elements() {
     done
 }
 
-addheader_vue() {
-    while IFS= read -r line; do
-        echo -e "${BLUE}[VUE]${NC} $line"
-    done
-}
-
 addheader_docs() {
     while IFS= read -r line; do
         echo -e "${GREEN}[DOCS]${NC} $line"
@@ -63,11 +48,6 @@ start() {
     # cd /chi/src/documentation
     # echo -e "Documentation"
     # unbuffer npm run dev 2>&1 | addheader_docs &
-    
-    # cd /chi/src/chi-vue
-    # while [ ! -d /chi/dist/js/vue ]; do sleep 1; done
-    # unbuffer npm run serve 2>&1 | addheader_vue &
-    # unbuffer npm run build:umd
 
     # cd /chi/src/custom-elements
     # while [ ! -d /chi/dist/js/ce ]; do sleep 1; done
@@ -80,10 +60,6 @@ build() {
 
     # cd /chi/src/custom-elements
     # unbuffer npm run build 2>&1 | addheader_custom_elements
-
-    # cd /chi/src/chi-vue
-    # unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
-    # unbuffer npm run build:umd 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
 
     cd /chi
     unbuffer npm run sri 2>&1 | addheader_chi

@@ -13,5 +13,5 @@ gulp.task('build:chi', gulp.series(
   'build:chi:scripts',
   'build:chi:scriptsES6',
   'build:chi:scriptsAMD',
-  'build:test:fixtures'
+  'build:test:fixtures',
 ));

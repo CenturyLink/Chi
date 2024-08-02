@@ -2,7 +2,7 @@
   .chi-grid__container.-pt--3
     <Size />
     <Headings />
-    <LineHeight />
+    <TextLineHeight />
     <Alignment />
     <Decoration />
     <Transform />
@@ -27,7 +27,7 @@
 import { Vue } from 'vue-facing-decorator';
 import Size from './_size.vue';
 import Headings from './_headings.vue';
-import LineHeight from './_line-height.vue';
+import TextLineHeight from './_text-line-height.vue';
 import Alignment from './_alignment.vue';
 import Decoration from './_decoration.vue';
 import Transform from './_transform.vue';

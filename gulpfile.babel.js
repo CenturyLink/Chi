@@ -28,7 +28,6 @@ const requires = {
   'build-website': require('./tasks/build-website.js'),
   'copy-chi-ce-docs-scripts': require('./tasks/copy-chi-ce-docs-scripts'),
   'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
-  'copy-chi-vue-scripts': require('./tasks/copy-chi-vue-scripts'),
   'sri-chi-assets' : require('./tasks/sri-chi-assets'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),
@@ -38,14 +37,12 @@ const requires = {
   'test': require('./tasks/test.js'),
   'watch': require('./tasks/watch.js'),
   'stencil-start': require('./tasks/start-stencil.js'),
-  'vue-start': require('./tasks/start-vue.js'),
   'custom-elements-watch': require('./tasks/watch-custom-elements.js'),
-  'vue-watch': require('./tasks/watch-vue.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
   'test-custom-elements': require('./tasks/test-custom-elements'),
   'test-e2e': require('./tasks/test-e2e'),
   'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
-  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri'),
+  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri')
 };
 
 gulp.task('default', function(){});
