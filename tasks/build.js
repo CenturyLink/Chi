@@ -1,13 +1,19 @@
 import gulp from 'gulp';
+import shell from 'gulp-shell';
 
-gulp.task('build', gulp.series(
-  'clean',
-  'build:chi',
-  'build:test',
-  'build:website',
-  'update:boilerplate:assets',
-  'build:boilerplates',
-  'copy:chi:ce-docs-scripts',
-  'copy:chi:ce-scripts',
-  'copy:chi-vue:scripts'
-));
+gulp.task('update-dist-files', shell.task(['bash scripts/updateFiles.sh']));
+
+gulp.task(
+  'build',
+  gulp.series(
+    'clean',
+    'build:chi',
+    'build:test',
+    'build:website',
+    'update:boilerplate:assets',
+    'build:boilerplates',
+    'copy:chi:ce-docs-scripts',
+    'copy:chi:ce-scripts',
+    'update-dist-files'
+  )
+);

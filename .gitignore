@@ -5,7 +5,6 @@ bin/
 dist/
 node_modules/
 src/custom-elements/node_modules
-src/chi-vue/node_modules
 src/documentation/node_modules
 reports/
 test/bitmaps_test/
@@ -13,6 +12,3 @@ cypress/videos
 cypress/screenshots
 src/custom-elements/dist
 src/boilerplates/es6/chi-vue-es6-boilerplate/src/es6
-
-# Typescript cache
-src/chi-vue/tsconfig.tsbuildinfo

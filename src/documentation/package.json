@@ -15,19 +15,19 @@
   "devDependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
     "@nuxt/image": "^1.7.0",
-    "@types/node": "^20.14.11",
+    "@types/node": "^22.0.0",
     "nuxt": "3.11.2",
     "nuxt3-class-component": "^1.2.0",
     "pug": "^3.0.3",
-    "typescript": "^5.5.3",
-    "vue": "^3.4.33",
+    "typescript": "^5.5.4",
+    "vue": "^3.4.34",
     "vue-facing-decorator": "^3.0.4",
     "vue-router": "^4.4.0",
-    "vue-tsc": "^2.0.28"
+    "vue-tsc": "^2.0.20"
   },
   "dependencies": {
     "@centurylink/chi-vue": "^3.7.0",
-    "@pinia/nuxt": "^0.5.1",
-    "pinia": "^2.1.7"
+    "@pinia/nuxt": "^0.5.2",
+    "pinia": "^2.2.0"
   }
 }

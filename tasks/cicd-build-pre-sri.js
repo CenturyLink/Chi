@@ -1,4 +1,7 @@
 import gulp from 'gulp';
+import shell from 'gulp-shell';
+
+gulp.task('update-dist-files', shell.task(['bash scripts/updateFiles.sh']));
 
 gulp.task('cicd:build:pre:sri', gulp.series(
   'clean',
@@ -6,6 +9,6 @@ gulp.task('cicd:build:pre:sri', gulp.series(
   'build:test',
   'copy:chi:ce-docs-scripts',
   'copy:chi:ce-scripts',
-  'copy:chi-vue:scripts',
+  'update-dist-files',
   'build:website:images'
 ));
