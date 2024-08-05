@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.1.0 (August 4, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: File input accessibility page.
+
 ## 6.0.0 (July 29, 2024)
 
 ### Components
