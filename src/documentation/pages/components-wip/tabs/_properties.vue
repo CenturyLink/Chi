@@ -3,6 +3,33 @@
     h2 Web Component
     <PropertiesGenerator tag="chi-tabs" />
 
+    h3 Interfaces and types
+    section.chi-table.chi-table__options.-bordered.-my--3
+      div(style='overflow-x:auto;')
+        table.-types.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Name
+              th
+                div Interface
+          tbody
+            tr
+              td
+                div <code>TabTrigger</code>
+              td.-p--0
+                pre.-mb--0.
+                  interface TabTrigger {
+                    children: <code>TabTrigger[]</code>;
+                    parent?: <code>TabTrigger</code>;
+                    id: <code>string</code>;
+                    label?: <code>string</code>;
+                    overflow: <code>boolean</code>;
+                    target?: <code>string</code>;
+                    href?: <code>string</code>;
+                    visibleItems?: <code>number</code>;
+                  }
+
     h3 JavaScript
 
     h4 Options
