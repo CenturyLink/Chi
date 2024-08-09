@@ -1,5 +1,4 @@
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
-import { CallbackQueue } from '../../utils/CallbackQueue';
 import { CHI_STATES, ChiStates } from '../../constants/states';
 import { addMutationObserver } from '../../utils/mutationObserver';
 
@@ -9,11 +8,6 @@ import { addMutationObserver } from '../../utils/mutationObserver';
   scoped: true,
 })
 export class NumberInput {
-  /**
-   * used to enqueue the value changes events
-   */
-  @State() _didUpdateCallBackOnceQueue: (() => void)[] = [];
-
   /**
    * used to store the initial value of the number input
    */
@@ -129,20 +123,9 @@ export class NumberInput {
     this.initialValue = this.value;
   }
 
-  componentDidUpdate() {
-    CallbackQueue.queueProcess(this._didUpdateCallBackOnceQueue);
-  }
-
   handleChange(ev: Event) {
     ev.stopPropagation();
-
-    if (!this.preventValueMutation) {
-      this._didUpdateCallBackOnceQueue.push(() => {
-        this.chiChange.emit(this.value);
-      });
-    } else {
-      this.chiChange.emit(this.value);
-    }
+    this.chiChange.emit(this.value);
   }
 
   handleInput(ev: Event) {
@@ -157,34 +140,23 @@ export class NumberInput {
   }
 
   emitEventsOnClick(ev: Event) {
-    this.chiFocus.emit();
-    this.chiChange.emit(this.value);
     this.chiInput.emit(this.value);
+    this.chiChange.emit(this.value);
     this.chiClick.emit(ev);
   }
 
   private increment(clickEv: Event) {
+    this.el.querySelector('input').focus();
     this._numberInput.stepUp();
     this.value = this._numberInput.value;
-
-    if (this._numberInput.valueAsNumber <= this.max) {
-      this._didUpdateCallBackOnceQueue.push(() => {
-        this.chiChange.emit(this.value);
-      });
-    }
 
     this.emitEventsOnClick(clickEv);
   }
 
   private decrement(clickEv: Event) {
+    this.el.querySelector('input').focus();
     this._numberInput.stepDown();
     this.value = this._numberInput.value;
-
-    if (this._numberInput.valueAsNumber >= this.min) {
-      this._didUpdateCallBackOnceQueue.push(() => {
-        this.chiChange.emit(this.value);
-      });
-    }
 
     this.emitEventsOnClick(clickEv);
   }
@@ -204,6 +176,7 @@ export class NumberInput {
         max={this.max}
         min={this.min}
         value={this.value}
+        onClick={(ev) => this.chiClick.emit(ev)}
         onChange={(ev) => this.handleChange(ev)}
         onInput={(ev) => this.handleInput(ev)}
         onFocus={() => this.chiFocus.emit()}
