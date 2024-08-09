@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.2.0 (August 9, 2024)
+
+### Components
+
+#### Fixed
+
+- Fixed: Number input web component does not emit duplicated `chiChange` event.
+
+### Documentation
+
+#### Added
+
+- Added: `TabTrigger` interface in Tabs properties.
+
 ## 6.1.0 (August 4, 2024)
 
 ### Documentation

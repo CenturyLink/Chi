@@ -11,7 +11,7 @@
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue),*.js,tests/**/*(*.js)}' --check"
   },
   "dependencies": {
-    "@centurylink/chi-vue": "3.7.0",
+    "@centurylink/chi-vue": "3.8.0",
     "vue": "3.4.33"
   },
   "devDependencies": {
