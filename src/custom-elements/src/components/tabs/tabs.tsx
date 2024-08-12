@@ -13,6 +13,7 @@ import { TabTrigger, TabTriggerSizes, TabTriggerPosition, TabTriggerDirections }
 import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { v4 as uuid4 } from 'uuid';
+import { Compare } from '../../utils/Compare';
 
 const MARGIN_LEFT_BASE = 24;
 const MARGIN_LEFT_LG = 32;
@@ -65,6 +66,7 @@ export class Tabs {
   @State() isSeeMoreActive = false;
   @State() isSeeMoreVisible = false;
   @State() isSeeMoreTriggerMeasured = false;
+  @State() currentTabs: TabTrigger[] = [];
 
   /**
    * Triggered when the user activates a tab
@@ -77,6 +79,13 @@ export class Tabs {
 
     if (newValue && !TABS_SIZES.includes(newValue)) {
       throw new Error(`${newValue} is not a valid size for tabs. Valid values are: ${validValues}. `);
+    }
+  }
+
+  @Watch('tabs')
+  setTabs(newValue: TabTrigger[], oldValue: TabTrigger[]) {
+    if (!Compare.deepEqual(newValue, oldValue)) {
+      this.currentTabs = newValue;
     }
   }
 
@@ -103,6 +112,10 @@ export class Tabs {
   }
 
   //#region Lifecycle hooks
+  connectedCallback() {
+    this.currentTabs = this.tabs;
+  }
+
   componentDidLoad() {
     if (!this.vertical) {
       this.setAvailableSpace();
@@ -114,6 +127,11 @@ export class Tabs {
       this.setSlidingBorderStyles();
       window.addEventListener('resize', this.handlerResize);
     }
+  }
+
+  componentDidUpdate() {
+    this.setAvailableSpace();
+    this.setLiSizes();
   }
 
   disconnectedCallback() {
@@ -129,16 +147,6 @@ export class Tabs {
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
     return element ? element.getBoundingClientRect()[size] : 0;
-  }
-
-  calculateLisWidthSum() {
-    let sum = 0;
-
-    for (let i = 0; i < this.lisArrayLength; i++) {
-      sum += this.liSizes[i];
-    }
-
-    return sum;
   }
 
   setParentTabActive(tab: TabTrigger) {
@@ -444,13 +452,15 @@ export class Tabs {
   }
 
   async setLiSizes() {
-    const liElements = this.ulElement.querySelectorAll(`li.${TABS_CLASSES.TRIGGER}`);
+    const liElements = this.ulElement?.querySelectorAll(`li.${TABS_CLASSES.TRIGGER}`);
 
-    this.lisArrayLength = liElements.length;
+    this.lisArrayLength = this.currentTabs.length;
+
     await liElements.forEach((li: HTMLElement, index) => {
       this.liSizes[li.dataset.index] =
         this.calculateSize(li, TabTriggerSizes.Width) + (index === 0 || this.solid ? 0 : this.liMarginLeft);
     });
+
     this.setListOverflow();
   }
 
@@ -459,7 +469,7 @@ export class Tabs {
    * to the items hat do not fit.
    */
   setListOverflow() {
-    const copyTabsData = this._stringifyTabs(this.tabs);
+    const copyTabsData = this._stringifyTabs(this.currentTabs);
 
     let usedSpace = 0;
     this.isSeeMoreVisible = false;
@@ -471,14 +481,14 @@ export class Tabs {
 
       if (!this.isSeeMoreVisible && elementFits) {
         usedSpace += this.liSizes[i];
-        this.tabs[i].overflow = false;
+        this.currentTabs[i].overflow = false;
       } else {
-        this.tabs[i].overflow = true;
+        this.currentTabs[i].overflow = true;
         this.isSeeMoreVisible = true;
       }
     }
 
-    if (this._stringifyTabs(this.tabs) !== copyTabsData) {
+    if (this._stringifyTabs(this.currentTabs) !== copyTabsData) {
       this.dropdownKey += 1;
     }
   }
@@ -508,7 +518,7 @@ export class Tabs {
       return;
     }
 
-    const element = this.isActiveTabOverflown(this.tabs) ? this.seeMoreTriggerElement : this.activeTabElement;
+    const element = this.isActiveTabOverflown(this.currentTabs) ? this.seeMoreTriggerElement : this.activeTabElement;
     const position = this.getPosition(element);
 
     this.slidingBorderLeft = `${position.left}px`;
@@ -544,7 +554,7 @@ export class Tabs {
   getTabElements() {
     const tabs = [];
 
-    this.tabs?.forEach((tab: TabTrigger, index: number) => {
+    this.currentTabs?.forEach((tab: TabTrigger, index: number) => {
       if (tab.overflow) return;
 
       tabs.push(
@@ -586,7 +596,7 @@ export class Tabs {
   }
 
   getSeeMoreTrigger() {
-    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : '';
+    const activeTabOverflownClass = this.isActiveTabOverflown(this.currentTabs) ? ACTIVE_CLASS : '';
 
     return (
       !this.vertical &&
@@ -610,7 +620,7 @@ export class Tabs {
   }
 
   getOverflowItems() {
-    return this.tabs
+    return this.currentTabs
       .filter((li) => li.overflow)
       .map((tab) =>
         this.getDropdownMenuItem(tab, (e) => {
@@ -637,7 +647,7 @@ export class Tabs {
               {this.getOverflowItems()}
             </chi-dropdown>
           ),
-          ...this.createDropdowns(this.tabs, 0),
+          ...this.createDropdowns(this.currentTabs, 0),
         ];
   }
 
@@ -646,7 +656,6 @@ export class Tabs {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
-
     const dropdowns = this.getDropdowns();
 
     return (
