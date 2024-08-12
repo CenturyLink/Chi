@@ -14,8 +14,10 @@
           section(class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top")
             .chi-popover__content
               p(class="chi-popover__text") Helpful information goes here.
-      chi-radio-button(id="example__help1" label="Option 1" name="radios")
-      chi-radio-button(id="example__help2" label="Option 2" name="radios")
+      div.chi-form__item
+        chi-radio-button(id="example__help_opt_1" label="Option 1" name="radios")
+      div.chi-form__item
+        chi-radio-button(id="example__help_opt_2" label="Option 2" name="radios")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -58,8 +60,12 @@ export default class Help extends Vue {
       </section>
     </div>
   </div>
-  <chi-radio-button id="example__help1" label="Option 1" name="radios"></chi-radio-button>
-  <chi-radio-button id="example__help2" label="Option 2" name="radios"></chi-radio-button>
+  <div class="chi-form__item>
+    <chi-radio-button id="example__help_opt_1" label="Option 1" name="radios"></chi-radio-button>
+  </div>
+  <div class="chi-form__item>
+    <chi-radio-button id="example__help_opt_2" label="Option 2" name="radios"></chi-radio-button>
+  </div>
 </fieldset>`,
     htmlblueprint: `<fieldset>
   <div class="chi-label__wrapper">
@@ -77,14 +83,14 @@ export default class Help extends Vue {
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="example__help1">
-      <label class="chi-radio__label" for="example__help1">Option 1</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__help_opt_1">
+      <label class="chi-radio__label" for="example__help_opt_1">Option 1</label>
     </div>
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="example__help2">
-      <label class="chi-radio__label" for="example__help2">Option 2</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__help_opt_2">
+      <label class="chi-radio__label" for="example__help_opt_2">Option 2</label>
     </div>
   </div>
 </fieldset>

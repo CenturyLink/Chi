@@ -6,8 +6,10 @@
   template(#example)
     fieldset.-d--flex
       legend(class="chi-label") Select an option
-      chi-radio-button(id="example__inline1" label="Option 1" name="radios")
-      chi-radio-button(id="example__inline2" label="Option 2" name="radios" class="-ml--2")
+      div.chi-form__item
+        chi-radio-button(id="example__inline_opt_1" label="Option 1" name="radios")
+      div.chi-form__item
+        chi-radio-button(id="example__inline_opt_2" label="Option 2" name="radios" class="-ml--2")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -36,21 +38,25 @@ import { Vue } from 'vue-facing-decorator';
       codeSnippets: {
         webcomponent: `<fieldset class="-d--flex">
   <legend class="chi-label">Select an option</legend>
-  <chi-radio-button id="example__inline1" label="Option 1" name="radios"></chi-radio-button>
-  <chi-radio-button id="example__inline2" label="Option 2" name="radios" class="-ml--2"></chi-radio-button>
+  <div class="chi-form__item>
+    <chi-radio-button id="example__inline_opt_1" label="Option 1" name="radios"></chi-radio-button>
+  </div>
+  <div class="chi-form__item>
+    <chi-radio-button id="example__inline_opt_2" label="Option 2" name="radios" class="-ml--2"></chi-radio-button>
+  </div>
 </fieldset>`,
         htmlblueprint: `<fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-form__item -inline">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="example__inline1">
-      <label class="chi-radio__label" for="example__inline1">Option 1</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__inline_opt_1">
+      <label class="chi-radio__label" for="example__inline_opt_1">Option 1</label>
     </div>
   </div>
   <div class="chi-form__item -inline">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="example__inline2" disabled>
-      <label class="chi-radio__label" for="example__inline2">Option 2</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__inline_opt_2" disabled>
+      <label class="chi-radio__label" for="example__inline_opt_2">Option 2</label>
     </div>
   </div>
 </fieldset>`,
