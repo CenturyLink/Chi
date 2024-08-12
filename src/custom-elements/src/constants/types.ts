@@ -25,6 +25,7 @@ export interface TabTrigger {
   target?: string;
   href?: string;
   visibleItems?: number;
+  panelId?: string;
 }
 
 export interface TabTriggerPosition {

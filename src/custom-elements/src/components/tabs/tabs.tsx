@@ -114,6 +114,8 @@ export class Tabs {
       this.setSlidingBorderStyles();
       window.addEventListener('resize', this.handlerResize);
     }
+
+    this.activatePanel();
   }
 
   disconnectedCallback() {
@@ -124,7 +126,16 @@ export class Tabs {
   activateTab(tab: TabTrigger, element: HTMLElement) {
     this.activeTab = tab.id;
     this.activeTabElement = element;
-    this.chiTabChange.emit(tab);
+  }
+
+  activatePanel(panelId?: string) {
+    const targetPanelId = panelId || this.tabs?.find(tab => tab.id === this.activeTab)?.panelId;
+
+    if (!targetPanelId) return;
+
+    document.querySelectorAll(`.${TABS_CLASSES.PANEL}`).forEach((panel: HTMLDivElement) => {
+      panel.classList.toggle(ACTIVE_CLASS, panel.id === targetPanelId);
+    });
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
@@ -324,6 +335,9 @@ export class Tabs {
 
     this.removeActiveItems();
     this.activateTab(tabData, element);
+    tabData.panelId && this.activatePanel(tabData.panelId);
+
+    this.chiTabChange.emit(tabData);
   }
 
   setAnimation(element: HTMLElement) {
@@ -646,8 +660,8 @@ export class Tabs {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
-
     const dropdowns = this.getDropdowns();
+    const items = <slot name="items" />;
 
     return (
       <Host>
@@ -672,6 +686,7 @@ export class Tabs {
           {seeMoreTrigger}
           {slidingBorder}
         </ul>
+        {items}
         {dropdowns}
       </Host>
     );
