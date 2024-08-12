@@ -65,6 +65,7 @@ export class Tabs {
   @State() isSeeMoreActive = false;
   @State() isSeeMoreVisible = false;
   @State() isSeeMoreTriggerMeasured = false;
+  @State() activePanel = '';
 
   /**
    * Triggered when the user activates a tab
@@ -115,7 +116,8 @@ export class Tabs {
       window.addEventListener('resize', this.handlerResize);
     }
 
-    this.activatePanel();
+    this.setActivePanelId(this.tabs);
+    this.activatePanel(this.activePanel);
   }
 
   disconnectedCallback() {
@@ -128,13 +130,19 @@ export class Tabs {
     this.activeTabElement = element;
   }
 
+  setActivePanelId(tabs: TabTrigger[]) {
+    tabs.forEach((tab: TabTrigger) => {
+      if (tab.id === this?.activeTab) {
+        this.activePanel = tab.panelId;
+      } else if (tab.children) {
+        this.setActivePanelId(tab.children);
+      }
+    });
+  }
+
   activatePanel(panelId?: string) {
-    const targetPanelId = panelId || this.tabs?.find(tab => tab.id === this.activeTab)?.panelId;
-
-    if (!targetPanelId) return;
-
     document.querySelectorAll(`.${TABS_CLASSES.PANEL}`).forEach((panel: HTMLDivElement) => {
-      panel.classList.toggle(ACTIVE_CLASS, panel.id === targetPanelId);
+      panel.classList.toggle(ACTIVE_CLASS, panel.id === panelId);
     });
   }
 
