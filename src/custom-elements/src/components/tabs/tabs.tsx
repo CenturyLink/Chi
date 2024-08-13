@@ -133,17 +133,23 @@ export class Tabs {
   setActivePanelId(tabs: TabTrigger[]) {
     tabs.forEach((tab: TabTrigger) => {
       if (tab.id === this?.activeTab) {
-        this.activePanel = tab.panelId;
+        this.activePanel = tab.id;
       } else if (tab.children) {
         this.setActivePanelId(tab.children);
       }
     });
   }
 
-  activatePanel(panelId?: string) {
-    document.querySelectorAll(`.${TABS_CLASSES.PANEL}`).forEach((panel: HTMLDivElement) => {
+  activatePanel(panelId?: string): void {
+    const panelItems = this._getPanelItems();
+
+    panelItems.forEach((panel: HTMLElement) => {
       panel.classList.toggle(ACTIVE_CLASS, panel.id === panelId);
     });
+  }
+
+  _getPanelItems(): NodeListOf<HTMLElement> {
+    return this.el.querySelectorAll(`.${TABS_CLASSES.PANEL}`);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
@@ -343,7 +349,7 @@ export class Tabs {
 
     this.removeActiveItems();
     this.activateTab(tabData, element);
-    tabData.panelId && this.activatePanel(tabData.panelId);
+    this.activatePanel(tabData.id);
 
     this.chiTabChange.emit(tabData);
   }
@@ -580,7 +586,7 @@ export class Tabs {
           }}
         >
           <a
-            href={`#${tab.id}`}
+            href={this.getTabHref(tab)}
             class={tab.children ? '-has-child' : ''}
             role="tab"
             aria-selected={this._isActiveTab(tab)}
@@ -663,13 +669,17 @@ export class Tabs {
         ];
   }
 
+  getPanels() {
+    return <slot name="panels" />;
+  }
+
   // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
   render() {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
     const dropdowns = this.getDropdowns();
-    const items = <slot name="items" />;
+    const panels = this.getPanels();
 
     return (
       <Host>
@@ -694,7 +704,7 @@ export class Tabs {
           {seeMoreTrigger}
           {slidingBorder}
         </ul>
-        {items}
+        {panels}
         {dropdowns}
       </Host>
     );
