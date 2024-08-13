@@ -60,10 +60,10 @@ export default class Help extends Vue {
       </section>
     </div>
   </div>
-  <div class="chi-form__item>
+  <div class="chi-form__item">
     <chi-radio-button id="example__help_opt_1" label="Option 1" name="radios"></chi-radio-button>
   </div>
-  <div class="chi-form__item>
+  <div class="chi-form__item">
     <chi-radio-button id="example__help_opt_2" label="Option 2" name="radios"></chi-radio-button>
   </div>
 </fieldset>`,
