@@ -5,6 +5,7 @@ const TAB_SELECTORS = {
   showMore: '.chi-tabs__show-more',
   dropdownMenu: '.chi-dropdown__menu',
   dropdownItems: 'chi-dropdown[active] .chi-dropdown__menu-item',
+  panel: '.chi-tabs-panel',
 };
 const VISIBLE_ITEMS_ATTR = 'visible-items';
 const CLASSES = {
@@ -17,6 +18,7 @@ describe('Tabs', () => {
       cy.visit('tests/custom-elements/tabs.html');
       cy.get('[data-cy="base"]').as('base');
       cy.get('[data-cy="no-active-tab-base"]').as('noActiveTab');
+      cy.get('[data-cy="panel-items-base"]').as('panelItems');
     });
 
     it('Should not show overflow items if there is enough space', function() {
@@ -95,6 +97,60 @@ describe('Tabs', () => {
       cy.get('@noActiveTab')
         .find(TAB_SELECTORS.triggers)
         .should('have.not.class', CLASSES.ACTIVE);
+    });
+
+    it('Should be able to have panels items', () => {
+      cy.get('@panelItems')
+        .find(TAB_SELECTORS.panel)
+        .to.have.length(5);
+    });
+
+    it('Should have initial tab active', () => {
+      cy.get('@panelItems')
+        .find(`${TAB_SELECTORS.panel}.${CLASSES.ACTIVE}`)
+        .should('have.id', 'panel-items-example-2');
+    });
+
+    it('Should be able to change active panel and emit `chiTabChange` event', () => {
+      const spy = cy.spy();
+
+      cy.get('body').then(el => {
+        el.on('chiTabChange', spy);
+      });
+
+      cy.get('@panelItems')
+        .find(TAB_SELECTORS.panel)
+        .first()
+        .click()
+        .then(() => {
+          expect(spy).to.be.called;
+
+          cy.get('@panelItems')
+            .find(TAB_SELECTORS.panel)
+            .first()
+            .should('have.class', CLASSES.ACTIVE);
+        });
+    });
+
+    it('Should be able to use href link in tabs', () => {
+      const spy = cy.spy();
+
+      cy.get('body').then(el => {
+        el.on('chiTabChange', spy);
+      });
+
+      cy.get('@panelItems')
+        .find(TAB_SELECTORS.panel)
+        .last()
+        .click()
+        .then(() => {
+          expect(spy).to.not.be.called;
+
+          cy.get('@panelItems')
+            .find(TAB_SELECTORS.panel)
+            .last()
+            .should('not.have.class', CLASSES.ACTIVE);
+        });
     });
   });
 });
