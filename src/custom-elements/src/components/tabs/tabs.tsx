@@ -304,7 +304,7 @@ export class Tabs {
   getTabHrefTarget(tab: TabTrigger): string {
     let target = tab.target || '';
 
-    if (!this.isTabAnchorLink(tab) && !target) {
+    if (!this.isTabInternalLink(tab) && !target) {
       target = '_blank';
     }
 
@@ -314,7 +314,7 @@ export class Tabs {
   /**
    * Checks wether the tab is an anchor link (internal link)
    */
-  isTabAnchorLink(tabData: TabTrigger): boolean {
+  isTabInternalLink(tabData: TabTrigger): boolean {
     return !tabData.href || tabData.href.startsWith('#');
   }
 
@@ -342,9 +342,10 @@ export class Tabs {
   };
 
   handlerClickTab(e: Event, tabData: TabTrigger, slidingBorderNewPosition?: HTMLElement) {
-    if (this.isTabAnchorLink(tabData)) {
-      e.preventDefault();
-    }
+    if (!this.isTabInternalLink(tabData)) return;
+
+    e.preventDefault();
+
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
     }
@@ -597,6 +598,7 @@ export class Tabs {
         >
           <a
             href={this.getTabHref(tab)}
+            target={this.getTabHrefTarget(tab)}
             class={tab.children ? '-has-child' : ''}
             role="tab"
             aria-selected={this._isActiveTab(tab)}
