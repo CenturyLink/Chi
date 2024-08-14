@@ -6,19 +6,18 @@
       | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
   template(#example)
     fieldset
-      legend(class="chi-label") Select an option
-      div.chi-form__item
-        ul(class="chi-form__item -list")
-          li(class="chi-form__item")
-            chi-radio-button(id="example__list_opt_1" label="Option 1" name="radiobuttonList" required)
-          li(class="chi-form__item")
-            chi-radio-button(id="example__list_opt_2" label="Option 2" name="radiobuttonList" required)
-          li(class="chi-form__item")
-            chi-radio-button(id="example__list_opt_3" label="Option 3" name="radiobuttonList" required)
-          li(class="chi-form__item")
-            chi-radio-button(id="example__list_opt_4" label="Option 4" name="radiobuttonList" required)
-          li(class="chi-form__item")
-            chi-radio-button(id="example__list_opt_5" label="Option 5" name="radiobuttonList" required)
+      legend.chi-label Select an option
+      ul.chi-form__item.-list(style="max-width:20rem")
+        li.chi-form__item
+          chi-radio-button(id="example__list_opt_1" label="Option 1" name="radio-button-list")
+        li.chi-form__item
+          chi-radio-button(id="example__list_opt_2" label="Option 2" name="radio-button-list")
+        li.chi-form__item
+          chi-radio-button(id="example__list_opt_3" label="Option 3" name="radio-button-list")
+        li.chi-form__item
+          chi-radio-button(id="example__list_opt_4" label="Option 4" name="radio-button-list")
+        li.chi-form__item
+          chi-radio-button(id="example__list_opt_5" label="Option 5" name="radio-button-list")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -45,23 +44,23 @@ import { Vue } from 'vue-facing-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<fieldset>
+      webcomponent: `<fieldset>
   <legend class="chi-label">Select an option</legend>
   <ul class="chi-form__item -list">
     <li class="chi-form__item">
-      <chi-radio-button id="example__list_opt_1" label="Option 1" name="radiobuttonList" required></chi-radio-button>
+      <chi-radio-button id="example__list_opt_1" label="Option 1" name="radio-button-list"></chi-radio-button>
     </li>
     <li class="chi-form__item">
-      <chi-radio-button id="example__list_opt_2" label="Option 2" name="radiobuttonList" required></chi-radio-button>
+      <chi-radio-button id="example__list_opt_2" label="Option 2" name="radio-button-list"></chi-radio-button>
     </li>
     <li class="chi-form__item">
-      <chi-radio-button id="example__list_opt_3" label="Option 3" name="radiobuttonList" required></chi-radio-button>
+      <chi-radio-button id="example__list_opt_3" label="Option 3" name="radio-button-list"></chi-radio-button>
     </li>
     <li class="chi-form__item">
-      <chi-radio-button id="example__list_opt_4" label="Option 4" name="radiobuttonList" required></chi-radio-button>
+      <chi-radio-button id="example__list_opt_4" label="Option 4" name="radio-button-list"></chi-radio-button>
     </li>
     <li class="chi-form__item">
-      <chi-radio-button id="example__list_opt_5" label="Option 5" name="radiobuttonList" required></chi-radio-button>
+      <chi-radio-button id="example__list_opt_5" label="Option 5" name="radio-button-list"></chi-radio-button>
     </li>
   </ul>
 </fieldset>`,
@@ -70,31 +69,31 @@ import { Vue } from 'vue-facing-decorator';
   <ul class="chi-form__item -list">
     <li class="chi-form__item">
       <div class="chi-radio">
-        <input type="radio" class="chi-radio__input" name="radiobuttonList" id="example__list_opt_1">
+        <input type="radio" class="chi-radio__input" name="radio-button-list" id="example__list_opt_1">
         <label class="chi-radio__label" for="example__list_opt_1">Option 1</label>
       </div>
     </li>
     <li class="chi-form__item">
       <div class="chi-radio">
-        <input type="radio" class="chi-radio__input" name="radiobuttonList" id="example__list_opt_2">
+        <input type="radio" class="chi-radio__input" name="radio-button-list" id="example__list_opt_2">
         <label class="chi-radio__label" for="example__list_opt_2">Option 2</label>
       </div>
     </li>
     <li class="chi-form__item">
       <div class="chi-radio">
-        <input type="radio" class="chi-radio__input" name="radiobuttonList" id="example__list_opt_3">
+        <input type="radio" class="chi-radio__input" name="radio-button-list" id="example__list_opt_3">
         <label class="chi-radio__label" for="example__list_opt_3">Option 3</label>
       </div>
     </li>
     <li class="chi-form__item">
       <div class="chi-radio">
-        <input type="radio" class="chi-radio__input" name="radiobuttonList" id="example__list_opt_4">
+        <input type="radio" class="chi-radio__input" name="radio-button-list" id="example__list_opt_4">
         <label class="chi-radio__label" for="example__list_opt_4">Option 4</label>
       </div>
     </li>
     <li class="chi-form__item">
       <div class="chi-radio">
-        <input type="radio" class="chi-radio__input" name="radiobuttonList" id="example__list_opt_5">
+        <input type="radio" class="chi-radio__input" name="radio-button-list" id="example__list_opt_5">
         <label class="chi-radio__label" for="example__list_opt_5">Option 5</label>
       </div>
     </li>

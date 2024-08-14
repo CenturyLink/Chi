@@ -5,11 +5,11 @@
       | Use the <code>checked</code> boolean attribute to set the default value of a radio button input to true.
   template(#example)
     fieldset
-      legend(class="chi-label") Select an option
-      div.chi-form__item
-        chi-radio-button(id="example__checked_opt_1" label="Option 1" name="radios" checked)
-      div.chi-form__item
-        chi-radio-button(id="example__checked_opt_2" label="Option 2" name="radios")
+      legend.chi-label Select an option
+      .chi-form__item.-mb--1
+        chi-radio-button(id="example__checked_opt_1" label="Option 1" name="example__checked-radios" checked)
+      .chi-form__item
+        chi-radio-button(id="example__checked_opt_2" label="Option 2" name="example__checked-radios")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -38,7 +38,7 @@ import { Vue } from 'vue-facing-decorator';
       codeSnippets: {
         webcomponent: `<fieldset>
   <legend class="chi-label">Select an option</legend>
-  <div class="chi-form__item">
+  <div class="chi-form__item -mb--1">
     <chi-radio-button id="example__checked_opt_1" label="Option 1" name="radios" checked></chi-radio-button>
   </div>
   <div class="chi-form__item">
@@ -47,7 +47,7 @@ import { Vue } from 'vue-facing-decorator';
 </fieldset>`,
         htmlblueprint: `<fieldset>
   <legend class="chi-label">Select an option</legend>
-  <div class="chi-form__item">
+  <div class="chi-form__item -mb--1">
     <div class="chi-radio">
       <input class="chi-radio__input" type="radio" name="radios" id="example__checked_opt_1" checked>
       <label class="chi-radio__label" for="example__checked_opt_1">Option 1</label>
