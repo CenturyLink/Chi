@@ -7,18 +7,12 @@
   template(#example)
     fieldset
       legend(class="chi-label") Select an option
-      .chi-form__item
-        .chi-radio
-          input(class="chi-radio__input" type="radio" name="radios" id="radio-di1" disabled)
-          label(class="chi-radio__label" for="radio-di1") Option 1
-      .chi-form__item
-        .chi-radio
-          input(class="chi-radio__input" type="radio" name="radios" id="radio-di2")
-          label(class="chi-radio__label" for="radio-di2") Option 2
-      .chi-form__item
-        .chi-radio
-          input(class="chi-radio__input" type="radio" name="radios" id="radio-di3")
-          label(class="chi-radio__label" for="radio-di3") Option 3
+      div.chi-form__item
+        chi-radio-button(id="example__disabled_opt_1" label="Option 1" name="radios"  disabled)
+      div.chi-form__item
+        chi-radio-button(id="example__disabled_opt_2" label="Option 2" name="radios")
+      div.chi-form__item
+        chi-radio-button(id="example__disabled_opt_3" label="Option 3" name="radios")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -34,36 +28,47 @@ import { Vue } from 'vue-facing-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web Component',
         },
         {
-          active: true,
+          disabled: false,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-form__item">
+    <chi-radio-button id="example__disabled_opt_1" label="Option 1" name="radios" disabled></chi-radio-button>
+  </div>
+  <div class="chi-form__item">
+    <chi-radio-button id="example__disabled_opt_2" label="Option 2" name="radios"></chi-radio-button>
+  </div>
+  <div class="chi-form__item">
+    <chi-radio-button id="example__disabled_opt_3" label="Option 3" name="radios"></chi-radio-button>
+  </div>
+</fieldset>`,
         htmlblueprint: `<fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="radio-di1" disabled>
-      <label class="chi-radio__label" for="radio-di1">Option 1</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__disabled_opt_1" disabled>
+      <label class="chi-radio__label" for="example__disabled_opt_1">Option 1</label>
     </div>
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="radio-di2">
-      <label class="chi-radio__label" for="radio-di2">Option 2</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__disabled_opt_2">
+      <label class="chi-radio__label" for="example__disabled_opt_2">Option 2</label>
     </div>
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="radio-di3">
-      <label class="chi-radio__label" for="radio-di3">Option 3</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__disabled_opt_3">
+      <label class="chi-radio__label" for="example__disabled_opt_3">Option 3</label>
     </div>
   </div>
 </fieldset>`,

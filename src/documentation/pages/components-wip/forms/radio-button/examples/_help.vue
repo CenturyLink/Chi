@@ -14,14 +14,10 @@
           section(class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top")
             .chi-popover__content
               p(class="chi-popover__text") Helpful information goes here.
-      .chi-form__item
-        .chi-radio
-          input(class="chi-radio__input" type="radio" name="radios" id="radio-he1")
-          label(class="chi-radio__label" for="radio-he1") Option 1
-      .chi-form__item
-        .chi-radio
-          input(class="chi-radio__input" type="radio" name="radios" id="radio-he2")
-          label(class="chi-radio__label" for="radio-he2") Option 2
+      div.chi-form__item
+        chi-radio-button(id="example__help_opt_1" label="Option 1" name="radios")
+      div.chi-form__item
+        chi-radio-button(id="example__help_opt_2" label="Option 2" name="radios")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -39,18 +35,38 @@ declare const chi: any;
 export default class Help extends Vue {
   exampleTabs = [
     {
-      disabled: true,
+      active: true,
       id: 'webcomponent',
       label: 'Web Component',
     },
     {
-      active: true,
+      disabled: false,
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
     },
   ];
   codeSnippets = {
-    webcomponent: ``,
+    webcomponent: `<fieldset>
+  <div class="chi-label__wrapper">
+    <legend class="chi-label">Select an option</legend>
+    <div class="chi-label__help">
+      <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+        <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+      </button>
+      <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Helpful information goes here.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="chi-form__item">
+    <chi-radio-button id="example__help_opt_1" label="Option 1" name="radios"></chi-radio-button>
+  </div>
+  <div class="chi-form__item">
+    <chi-radio-button id="example__help_opt_2" label="Option 2" name="radios"></chi-radio-button>
+  </div>
+</fieldset>`,
     htmlblueprint: `<fieldset>
   <div class="chi-label__wrapper">
     <legend class="chi-label">Select an option</legend>
@@ -67,14 +83,14 @@ export default class Help extends Vue {
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="radio-he1">
-      <label class="chi-radio__label" for="radio-he1">Option 1</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__help_opt_1">
+      <label class="chi-radio__label" for="example__help_opt_1">Option 1</label>
     </div>
   </div>
   <div class="chi-form__item">
     <div class="chi-radio">
-      <input class="chi-radio__input" type="radio" name="radios" id="radio-he2">
-      <label class="chi-radio__label" for="radio-he2">Option 2</label>
+      <input class="chi-radio__input" type="radio" name="radios" id="example__help_opt_2">
+      <label class="chi-radio__label" for="example__help_opt_2">Option 2</label>
     </div>
   </div>
 </fieldset>

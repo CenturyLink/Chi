@@ -106,7 +106,7 @@ export class RadioButton {
           onFocus={() => this.focus()}
           type="radio"
         />
-        <label id={this.labelId} class={`${RADIO_CLASSES.LABEL} ${stateClass}`} htmlFor={this.id}>
+        <label id={this.labelId} class={RADIO_CLASSES.LABEL} htmlFor={this.id}>
           {this.label}
         </label>
       </div>
