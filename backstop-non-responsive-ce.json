@@ -442,6 +442,15 @@
       "requireSameDimensions": true
     },
     {
+      "label": "form-wrapper",
+      "url": "http://localhost:8000/tests/custom-elements/form-wrapper.html",
+      "delay": 2000,
+      "selectors": [
+        ".test-form-wrapper-checkboxes",
+        ".test-form-wrapper-radio-buttons"
+      ]
+    },
+    {
       "label": "popover",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/popover.html",
