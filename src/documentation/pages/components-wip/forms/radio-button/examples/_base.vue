@@ -2,11 +2,11 @@
 <ComponentExample title="Base" id="base" :tabs="exampleTabs">
   template(#example)
     fieldset
-      legend(class="chi-label") Select an option
-      div.chi-form__item
-        chi-radio-button(id="example__base_opt_1" label="Option 1" name="radios")
-      div.chi-form__item
-        chi-radio-button(id="example__base_opt_2" label="Option 2" name="radios")
+      legend.chi-label Select an option
+      .chi-form__item.-mb--1
+        chi-radio-button(id="example__base_opt_1" label="Option 1" name="example__base-radios")
+      .chi-form__item
+        chi-radio-button(id="example__base_opt_2" label="Option 2" name="example__base-radios")
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -35,7 +35,7 @@ import { Vue } from 'vue-facing-decorator';
       codeSnippets: {
         webcomponent: `<fieldset>
   <legend class="chi-label">Select an option</legend>
-  <div class="chi-form__item">
+  <div class="chi-form__item -mb--1">
     <chi-radio-button id="example__base_opt_1" label="Option 1" name="radios"></chi-radio-button>
   </div>
   <div class="chi-form__item">
@@ -44,7 +44,7 @@ import { Vue } from 'vue-facing-decorator';
 </fieldset>`,
         htmlblueprint: `<fieldset>
   <legend class="chi-label">Select an option</legend>
-  <div class="chi-form__item">
+  <div class="chi-form__item -mb--1">
     <div class="chi-radio">
       <input class="chi-radio__input" type="radio" name="radios" id="example__base_opt_1">
       <label class="chi-radio__label" for="example__base_opt_1">Option 1</label>

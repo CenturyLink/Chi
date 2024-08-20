@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.3.0 (August 16, 2024)
+
+### Components
+
+#### Added
+
+- Added: Radio button web component.
+
+#### Fixed
+
+- Fixed: Tabs web component can now dynamically add and delete tabs.
+
 ## 6.2.0 (August 9, 2024)
 
 ### Components
