@@ -105,7 +105,7 @@ h4 SM_2
 h2 Panel items
 h3 Horizontal
 .-w--100
-  chi-tabs(id='panel-items' active-tab='panel-items-example-2' data-cy='panel-items-base')
+  chi-tabs(id='panel-items-base' active-tab='panel-items-example-2' data-cy='panel-items-base')
     div(slot="panels")
       .chi-tabs-panel#panel-items-example-1 Panel 1
       .chi-tabs-panel#panel-items-example-2 Panel 2
@@ -389,10 +389,10 @@ script.
     }
 
     // panel items
-    const tabPanelItemsElement = document.querySelector('#panel-items');
+    const tabPanelItemsElement = document.querySelector('#panel-items-base');
 
-    if (tabElement) {
-      tabElement.tabs = [
+    if (tabPanelItemsElement) {
+      tabPanelItemsElement.tabs = [
         {
           label: 'Tab 1',
           id: 'panel-items-example-1',

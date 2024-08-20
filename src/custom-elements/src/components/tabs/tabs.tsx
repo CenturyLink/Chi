@@ -716,8 +716,8 @@ export class Tabs {
           {seeMoreTrigger}
           {slidingBorder}
         </ul>
-        {panels}
         {dropdowns}
+        {panels}
       </Host>
     );
   }

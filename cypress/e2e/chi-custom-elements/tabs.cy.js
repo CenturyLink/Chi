@@ -36,14 +36,14 @@ describe('Tabs', () => {
     it('Should show overflow items if there is not enough space', function() {
       cy.get('@base')
         .find(TAB_SELECTORS.triggers, { timeout: 2000 })
-        .should('have.length', 10);
+        .should('have.length', 11);
       cy.get('@base')
         .find(TAB_SELECTORS.showMore)
         .click();
 
       cy.get('@base')
         .find(TAB_SELECTORS.dropdownItems)
-        .should('have.length', 8);
+        .should('have.length', 7);
     });
 
     it('Should resize correctly', function() {
@@ -102,7 +102,7 @@ describe('Tabs', () => {
     it('Should be able to have panels items', () => {
       cy.get('@panelItems')
         .find(TAB_SELECTORS.panel)
-        .to.have.length(5);
+        .should('have.length', 5);
     });
 
     it('Should have initial tab active', () => {
@@ -119,11 +119,16 @@ describe('Tabs', () => {
       });
 
       cy.get('@panelItems')
-        .find(TAB_SELECTORS.panel)
+        .find(TAB_SELECTORS.triggers)
         .first()
         .click()
         .then(() => {
           expect(spy).to.be.called;
+
+          cy.get('@panelItems')
+            .find(TAB_SELECTORS.triggers)
+            .first()
+            .should('have.class', CLASSES.ACTIVE);
 
           cy.get('@panelItems')
             .find(TAB_SELECTORS.panel)
@@ -140,11 +145,16 @@ describe('Tabs', () => {
       });
 
       cy.get('@panelItems')
-        .find(TAB_SELECTORS.panel)
+        .find(TAB_SELECTORS.triggers)
         .last()
         .click()
         .then(() => {
           expect(spy).to.not.be.called;
+
+          cy.get('@panelItems')
+            .find(TAB_SELECTORS.triggers)
+            .last()
+            .should('not.have.class', CLASSES.ACTIVE);
 
           cy.get('@panelItems')
             .find(TAB_SELECTORS.panel)
