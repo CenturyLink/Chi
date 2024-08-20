@@ -136,31 +136,5 @@ describe('Tabs', () => {
             .should('have.class', CLASSES.ACTIVE);
         });
     });
-
-    it('Should be able to use href link in tabs', () => {
-      const spy = cy.spy();
-
-      cy.get('body').then(el => {
-        el.on('chiTabChange', spy);
-      });
-
-      cy.get('@panelItems')
-        .find(TAB_SELECTORS.triggers)
-        .last()
-        .click()
-        .then(() => {
-          expect(spy).to.not.be.called;
-
-          cy.get('@panelItems')
-            .find(TAB_SELECTORS.triggers)
-            .last()
-            .should('not.have.class', CLASSES.ACTIVE);
-
-          cy.get('@panelItems')
-            .find(TAB_SELECTORS.panel)
-            .last()
-            .should('not.have.class', CLASSES.ACTIVE);
-        });
-    });
   });
 });

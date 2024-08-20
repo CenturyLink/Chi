@@ -159,8 +159,10 @@ export class Tabs {
   }
 
   activatePanel(panelId?: string): void {
+    if (!panelId) return;
+
     this.el.querySelector(`.${TABS_CLASSES.PANEL}.${ACTIVE_CLASS}`)?.classList.remove(ACTIVE_CLASS);
-    this.el.querySelector(`.${TABS_CLASSES.PANEL}#${panelId}`).classList.add(ACTIVE_CLASS);
+    this.el.querySelector(`.${TABS_CLASSES.PANEL}#${panelId}`)?.classList.add(ACTIVE_CLASS);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
