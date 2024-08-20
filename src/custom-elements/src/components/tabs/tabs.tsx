@@ -335,9 +335,9 @@ export class Tabs {
   };
 
   handlerClickTab(e: Event, tabData: TabTrigger, slidingBorderNewPosition?: HTMLElement) {
-    if (!this.isTabInternalLink(tabData)) return;
-
-    e.preventDefault();
+    if (this.isTabInternalLink(tabData)) {
+      e.preventDefault();
+    }
 
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
