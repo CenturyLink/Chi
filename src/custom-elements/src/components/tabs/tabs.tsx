@@ -159,15 +159,8 @@ export class Tabs {
   }
 
   activatePanel(panelId?: string): void {
-    const panelItems = this._getPanelItems();
-
-    panelItems.forEach((panel: HTMLElement) => {
-      panel.classList.toggle(ACTIVE_CLASS, panel.id === panelId);
-    });
-  }
-
-  _getPanelItems(): NodeListOf<HTMLElement> {
-    return this.el.querySelectorAll(`.${TABS_CLASSES.PANEL}`);
+    this.el.querySelector(`.${TABS_CLASSES.PANEL}.${ACTIVE_CLASS}`)?.classList.remove(ACTIVE_CLASS);
+    this.el.querySelector(`.${TABS_CLASSES.PANEL}#${panelId}`).classList.add(ACTIVE_CLASS);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
