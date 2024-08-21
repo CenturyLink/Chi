@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-08-14T13:05:29",
+  "timestamp": "2024-08-21T13:10:45",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.18.1",
@@ -1018,7 +1018,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To render the checkbox in checked state",
           "docsTags": [],
           "values": [
@@ -7456,7 +7456,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To render the radiobutton in checked state",
           "docsTags": [],
           "values": [
@@ -9982,7 +9982,7 @@
           "reflectToAttr": true,
           "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
           "docsTags": [],
-          "default": "15",
+          "default": "10",
           "values": [
             {
               "value": "1",
@@ -10244,7 +10244,7 @@
           "reflectToAttr": true,
           "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
           "docsTags": [],
-          "default": "15",
+          "default": "10",
           "values": [
             {
               "value": "1",
