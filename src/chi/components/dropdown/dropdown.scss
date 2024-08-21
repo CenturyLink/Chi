@@ -670,7 +670,7 @@ chi-dropdown[select-mode],
       background-color: $dropdown-menu-background-color;
       border: 0.125rem solid $button-solid-focus-outline;
       outline: none;
-      border-radius: 0.25rem;
+      border-radius: 2rem;
     }
 
     &:hover:not(.-disabled):not(.-active):not(.-focus),
