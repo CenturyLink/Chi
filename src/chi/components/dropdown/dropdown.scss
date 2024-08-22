@@ -668,9 +668,9 @@ chi-dropdown[select-mode],
     &:focus,
     &.-focus {
       background-color: $dropdown-menu-background-color;
-      border: 0.125rem solid $button-solid-focus-outline;
+      border: 0.125rem solid $focus-color;
       outline: none;
-      border-radius: 2rem;
+      border-radius: $button-border-radius;
     }
 
     &:hover:not(.-disabled):not(.-active):not(.-focus),
