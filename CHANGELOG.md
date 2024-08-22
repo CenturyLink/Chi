@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.4.0 (August 23, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Radio button web component examples and properties tab.
+
 ## 6.3.0 (August 16, 2024)
 
 ### Components
