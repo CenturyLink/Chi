@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-08-14T13:05:29",
+  "timestamp": "2024-08-22T17:56:31",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.18.1",
-    "typescriptVersion": "5.4.5"
+    "version": "4.20.0",
+    "typescriptVersion": "5.5.3"
   },
   "components": [
     {
@@ -1018,7 +1018,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To render the checkbox in checked state",
           "docsTags": [],
           "values": [
@@ -2951,7 +2951,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -5561,7 +5561,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": ""
+                "id": "node_modules::CountryCode"
               }
             }
           },
@@ -7042,7 +7042,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -7456,7 +7456,7 @@
           },
           "mutable": true,
           "attr": "checked",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To render the radiobutton in checked state",
           "docsTags": [],
           "values": [
