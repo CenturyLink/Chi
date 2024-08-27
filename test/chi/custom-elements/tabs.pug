@@ -102,6 +102,17 @@ h4 SM_2
 .-w--100 
   chi-tabs(id='size-SM_2-vertical' vertical size='sm')
 
+h2 Panel items
+h3 Horizontal
+.-w--100
+  chi-tabs(id='panel-items-base' active-tab='panel-items-example-2' data-cy='panel-items-base')
+    div(slot="panels")
+      .chi-tabs-panel#panel-items-example-1 Panel 1
+      .chi-tabs-panel#panel-items-example-2 Panel 2
+      .chi-tabs-panel#panel-items-example-2-1 Panel 2-1
+      .chi-tabs-panel#panel-items-example-2-1-1 Panel 2-1-1
+      .chi-tabs-panel#panel-items-example-3 Panel 3
+
 //- h2 Solid
 //- .-w--100
 //-   chi-tabs(active-tab='tab-a' id='solid' solid sliding-border)
@@ -332,7 +343,7 @@ script.
         {label: 'Tab Link', id: `${id}-example-2`},
         {label: 'Tab Link', id: `${id}-example-3`},
       ]
-    })
+    });
 
 
     const chiTabElements = [
@@ -375,5 +386,39 @@ script.
       }
 
       element.addEventListener('chiTabChange', console.log);
+    }
+
+    // panel items
+    const tabPanelItemsElement = document.querySelector('#panel-items-base');
+
+    if (tabPanelItemsElement) {
+      tabPanelItemsElement.tabs = [
+        {
+          label: 'Tab 1',
+          id: 'panel-items-example-1',
+        },
+        {
+          label: 'Tab 2',
+          id: 'panel-items-example-2',
+          children: [
+            {
+              label: 'Tab 2-1',
+              id: 'panel-items-example-2-1',
+              children: [
+                {
+                  label: 'Tab 2-1-1',
+                  id: "panel-items-example-2-1-1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          label: 'Tab 3',
+          id: 'panel-items-example-3',
+          href: 'https://lib.lumen.com/chi',
+          target: '_blank'
+        },
+      ];
     }
   });

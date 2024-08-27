@@ -67,6 +67,7 @@ export class Tabs {
   @State() isSeeMoreVisible = false;
   @State() isSeeMoreTriggerMeasured = false;
   @State() currentTabs: TabTrigger[] = [];
+  @State() activePanel = '';
 
   /**
    * Triggered when the user activates a tab
@@ -127,6 +128,9 @@ export class Tabs {
       this.setSlidingBorderStyles();
       window.addEventListener('resize', this.handlerResize);
     }
+
+    this.setActivePanelId(this.currentTabs);
+    this.activatePanel(this.activePanel);
   }
 
   componentDidUpdate() {
@@ -142,7 +146,23 @@ export class Tabs {
   activateTab(tab: TabTrigger, element: HTMLElement) {
     this.activeTab = tab.id;
     this.activeTabElement = element;
-    this.chiTabChange.emit(tab);
+  }
+
+  setActivePanelId(tabs: TabTrigger[]) {
+    tabs.forEach((tab: TabTrigger) => {
+      if (tab.id === this?.activeTab) {
+        this.activePanel = tab.id;
+      } else if (tab.children) {
+        this.setActivePanelId(tab.children);
+      }
+    });
+  }
+
+  activatePanel(panelId?: string): void {
+    if (!panelId) return;
+
+    this.el.querySelector(`.${TABS_CLASSES.PANEL}.${ACTIVE_CLASS}`)?.classList.remove(ACTIVE_CLASS);
+    this.el.querySelector(`.${TABS_CLASSES.PANEL}#${panelId}`)?.classList.add(ACTIVE_CLASS);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
@@ -279,7 +299,7 @@ export class Tabs {
   getTabHrefTarget(tab: TabTrigger): string {
     let target = tab.target || '';
 
-    if (!this.isTabAnchorLink(tab) && !target) {
+    if (!this.isTabInternalLink(tab) && !target) {
       target = '_blank';
     }
 
@@ -289,7 +309,7 @@ export class Tabs {
   /**
    * Checks wether the tab is an anchor link (internal link)
    */
-  isTabAnchorLink(tabData: TabTrigger): boolean {
+  isTabInternalLink(tabData: TabTrigger): boolean {
     return !tabData.href || tabData.href.startsWith('#');
   }
 
@@ -317,9 +337,10 @@ export class Tabs {
   };
 
   handlerClickTab(e: Event, tabData: TabTrigger, slidingBorderNewPosition?: HTMLElement) {
-    if (this.isTabAnchorLink(tabData)) {
+    if (this.isTabInternalLink(tabData)) {
       e.preventDefault();
     }
+
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
     }
@@ -332,6 +353,9 @@ export class Tabs {
 
     this.removeActiveItems();
     this.activateTab(tabData, element);
+    this.activatePanel(tabData.id);
+
+    this.chiTabChange.emit(tabData);
   }
 
   setAnimation(element: HTMLElement) {
@@ -568,7 +592,8 @@ export class Tabs {
           }}
         >
           <a
-            href={`#${tab.id}`}
+            href={this.getTabHref(tab)}
+            target={this.getTabHrefTarget(tab)}
             class={tab.children ? '-has-child' : ''}
             role="tab"
             aria-selected={this._isActiveTab(tab)}
@@ -651,12 +676,17 @@ export class Tabs {
         ];
   }
 
+  getPanels() {
+    return <slot name="panels" />;
+  }
+
   // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
   render() {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
     const dropdowns = this.getDropdowns();
+    const panels = this.getPanels();
 
     return (
       <Host>
@@ -682,6 +712,7 @@ export class Tabs {
           {slidingBorder}
         </ul>
         {dropdowns}
+        {panels}
       </Host>
     );
   }
