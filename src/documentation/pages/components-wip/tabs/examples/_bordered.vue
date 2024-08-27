@@ -50,7 +50,7 @@ export default class Bordered extends Vue {
       webcomponent: `<chi-tabs active-tab="tab-a" id="example__bordered" border sliding-border></chi-tabs>
 
 <script>
-  const tabsElement = document.querySelector('example__bordered');
+  const tabsElement = document.querySelector('#example__bordered');
 
   if (tabsElement) {
     tabsElement.tabs = [

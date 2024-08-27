@@ -69,33 +69,37 @@ export default class HorizontalFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-flat" sliding-border></chi-tabs>
-
-${this.generateTabsContentHtml(true)}
+      webcomponent: `<chi-tabs active-tab="chi-tabs-example-tab-1" id="example__horizontal-flat" sliding-border>
+  <div slot="panels">
+    <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+    <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+    <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+  </div>
+</chi-tabs>
 
 <script>
-  const tabsElement = document.querySelector('example__horizontal-flat');
+  const tabsElement = document.querySelector('#example__horizontal-flat');
 
   if (tabsElement) {
     tabsElement.tabs = [
       {
         label: 'Active Tab',
-        id: 'tab-a'
+        id: 'chi-tabs-example-tab-1'
       },
       {
         label: 'Tab Link',
-        id: 'tab-b'
+        id: 'chi-tabs-example-tab-2'
       },
       {
         label: 'Tab Link',
-        id: 'tab-c'
+        id: 'chi-tabs-example-tab-3'
       }
     ];
   }
 <\/script>`,
       htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>
 
-${this.generateTabsContentHtml(false)}
+${this.generateTabsContentHtml()}
 
 <script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
     };
@@ -120,13 +124,13 @@ ${this.generateTabsContentHtml(false)}
       .join('\n');
   }
 
-  generateTabsContentHtml(isWebComponent: boolean) {
+  generateTabsContentHtml() {
     return this.tabsContent
       .map(({ text, id }, index) => {
         const isFirstItem = index === 0;
-        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${
-          isWebComponent ? `${id}_content` : id
-        }" role="tabpanel">${text}</div>`;
+        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${id}" role="tabpanel">
+  <p class="-text">${text}</p>
+</div>`;
       })
       .join('\n');
   }

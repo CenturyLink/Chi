@@ -75,7 +75,13 @@ h2 Examples
               ) HTML Blueprint
       .chi-tabs-panel.-active#webcomponent-base(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" sliding-border></chi-tabs>
+          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" sliding-border>
+            <div slot="panels">
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+            </div>
+          </chi-tabs>
           
           <script>
             const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -179,7 +185,13 @@ h2 Examples
 
       .chi-tabs-panel.-active#webcomponent-base-inverse(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="chi-tabs-example"  active-tab="chi-tabs-example-tab-1" sliding-border inverse></chi-tabs>
+          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" sliding-border inverse>
+            <div slot="panels">
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+            </div>
+          </chi-tabs>
           
           <script>
             const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -295,7 +307,13 @@ h2 Examples
             ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-solid-bordered(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="lg" border></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="lg" border>
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -416,7 +434,13 @@ h2 Examples
               aria-controls="html-vertical") HTML Blueprint
       .chi-tabs-panel.-active#webcomponent-vertical-base(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="chi-tabs-example"  active-tab="chi-tabs-example-tab-1" sliding-border vertical></chi-tabs>
+          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" sliding-border vertical>
+            <div slot="panels">
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+            </div>
+          </chi-tabs>
           
           <script>
             const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -528,7 +552,13 @@ h2 Examples
               aria-controls="html-vertical-inverse") HTML Blueprint
       .chi-tabs-panel.-active#webcomponent-vertical-inverse(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical inverse></chi-tabs>
+          <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical inverse>
+            <div slot="panels">
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+              <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+            </div>
+          </chi-tabs>
           
           <script>
             const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -641,7 +671,13 @@ h2 Examples
             aria-controls="html-vertical-solid") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-vertical-solid(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical solid size="xl"></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical solid size="xl">
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -762,7 +798,13 @@ h2 Examples
             ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-bordered(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" border></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" border>
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -872,7 +914,13 @@ h2 Examples
             ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-solid-bordered(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="lg" border></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="lg" border>
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -978,7 +1026,13 @@ h2 Examples
             aria-controls="html-portal-vertical-flat") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-vertical-flat(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" vertical>
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
@@ -1091,7 +1145,13 @@ h2 Examples
             aria-controls="html-portal-vertical") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-vertical(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="xl"></chi-tabs>
+        <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1" solid size="xl">
+          <div slot="panels">
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-1" role="tabpanel">Tab 1 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-2" role="tabpanel">Tab 2 content</div>
+            <div class="chi-tabs-panel" id="chi-tabs-example-tab-3" role="tabpanel">Tab 3 content</div>
+          </div>
+        </chi-tabs>
 
         <script>
           const tabsElement = document.getElementById("chi-tabs-example").tabs = [
