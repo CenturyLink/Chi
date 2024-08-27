@@ -113,6 +113,11 @@ export class Time {
     this.excludedSecondsArray = getValues(this._excludedSeconds);
   }
 
+  /**
+   * Sets default values to minutesStep and secondStep if used as a boolean prop.
+   * WARNING: the documentation of this prop is modified in stencil.config.ts file,
+   * if default values are modified, MUST be changed in that file as well.
+   */
   updateTimeSteps() {
     if (this.stepped || Number.isNaN(this.minutesStep)) {
       this.minutesStep = 15;
