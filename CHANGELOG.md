@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.5.0 (August 29, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tabs web component now supports `panels` slot to include content.
+
+#### Fixed
+
+- Fixed: Dropdown web component `select-mode` focus state.
+
 ## 6.4.0 (August 23, 2024)
 
 ### Documentation
