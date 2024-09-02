@@ -25,5 +25,8 @@ import { standardComponentPageTabs } from '~/constants/constants';
     Properties,
   },
 })
-export default class Tabs extends Vue {}
+
+export default class Tabs extends Vue {
+  pageTabs = standardComponentPageTabs;
+}
 </script>
