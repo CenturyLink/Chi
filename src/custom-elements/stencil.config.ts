@@ -162,8 +162,10 @@ export const config: Config = {
           .filter(({ tag }) => ['chi-time', 'chi-date-picker', 'chi-time-picker'].includes(tag))
           .forEach((component) =>
             component.props.forEach((prop) => {
-              if (['minutesStep', 'secondsStep'].includes(prop.name)) {
+              if (prop.name === 'minutesStep') {
                 prop.default = '15';
+              } else if (prop.name === 'secondsStep') {
+                prop.default = '10';
               }
             })
           );

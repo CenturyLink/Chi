@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-08-22T17:56:31",
+  "timestamp": "2024-08-28T14:21:22",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.20.0",
+    "version": "4.21.0",
     "typescriptVersion": "5.5.3"
   },
   "components": [
@@ -9982,7 +9982,7 @@
           "reflectToAttr": true,
           "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
           "docsTags": [],
-          "default": "15",
+          "default": "10",
           "values": [
             {
               "value": "1",
@@ -10244,7 +10244,7 @@
           "reflectToAttr": true,
           "docs": "Renders seconds in stepped format. Defaults to 10 seconds if\nno value is provided (see examples in docs).",
           "docsTags": [],
-          "default": "15",
+          "default": "10",
           "values": [
             {
               "value": "1",

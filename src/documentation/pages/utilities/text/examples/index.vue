@@ -44,7 +44,6 @@ import AlignmentResponsiveness from './_alignment-responsiveness.vue';
   components: {
     Size,
     Headings,
-    LineHeight,
     Alignment,
     Decoration,
     Transform,
@@ -55,6 +54,7 @@ import AlignmentResponsiveness from './_alignment-responsiveness.vue';
     Complimentary,
     Sizes,
     LineHeights,
+    TextLineHeight,
     AlignmentResponsiveness,
   },
 })
