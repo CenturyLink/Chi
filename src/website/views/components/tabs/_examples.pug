@@ -1275,14 +1275,14 @@ h2 Examples
     | To preserve it, specify a target property on the link.
   .example.-mb--3
     .-p--3.-pb--4
-      chi-tabs#example__default-link-behavior(active-tab="example__default-link-behavior-1" border sliding-border)
+      chi-tabs#example__default-link-behavior(active-tab="example__default-link-behavior-a" sliding-border)
         div(slot="panels")
-          .chi-tabs-panel#example__default-link-behavior-1(role="tabpanel")
-            p.-text Tab 1 content
-          .chi-tabs-panel#example__default-link-behavior-2(role="tabpanel")
-            p.-text Tab 2 content
-          .chi-tabs-panel#example__default-link-behavior-3(role="tabpanel")
-            p.-text Tab 3 content
+          .chi-tabs-panel#example__default-link-behavior-a(role="tabpanel")
+            p.-text Content for tab a
+          .chi-tabs-panel#example__default-link-behavior-b(role="tabpanel")
+            p.-text Content for tab b
+          .chi-tabs-panel#example__default-link-behavior-c(role="tabpanel")
+            p.-text Content for tab c
 
     .example-tabs.-pl--2
       ul.chi-tabs#example-target-link(role="tablist" aria-label="Tabs")
@@ -1301,16 +1301,16 @@ h2 Examples
             aria-controls="html-target-link") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-target-link(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="example__default-link-behavior" active-tab="example__default-link-behavior-1" border sliding-border>
+        <chi-tabs id="example__default-link-behavior" active-tab="example__default-link-behavior-a" sliding-border>
           <div slot="panels">
-            <div class="chi-tabs-panel" id="example__default-link-behavior-1" role="tabpanel">
-              <p class="-text">Tab 1 content</p>
+            <div class="chi-tabs-panel" id="example__default-link-behavior-a" role="tabpanel">
+              <p class="-text">Content for tab a</p>
             </div>
-            <div class="chi-tabs-panel" id="example__default-link-behavior-2" role="tabpanel">
-              <p class="-text">Tab 2 content</p>
+            <div class="chi-tabs-panel" id="example__default-link-behavior-b" role="tabpanel">
+              <p class="-text">Content for tab b</p>
             </div>
-            <div class="chi-tabs-panel" id="example__default-link-behavior-3" role="tabpanel">
-              <p class="-text">Tab 3 content</p>
+            <div class="chi-tabs-panel" id="example__default-link-behavior-c" role="tabpanel">
+              <p class="-text">Content for tab c</p>
             </div>
           </div>
         </chi-tabs>
@@ -1319,15 +1319,15 @@ h2 Examples
           document.getElementById("example__default-link-behavior").tabs = [
             {
               label: 'Active Tab',
-              id: 'example__default-link-behavior-1'
+              id: 'example__default-link-behavior-a'
             },
             {
               label: 'Tab Link',
-              id: 'example__default-link-behavior-2'
+              id: 'example__default-link-behavior-b'
             },
             {
               label: 'Tab Link',
-              id: 'example__default-link-behavior-3'
+              id: 'example__default-link-behavior-c'
             },
             {
               label: 'External Link',
@@ -1347,38 +1347,38 @@ h2 Examples
         <ul class="chi-tabs" id="example__default-link-behavior" role="tablist" aria-label="Tabs">
           <li class="-active">
             <a
-              href="#example__default-link-behavior-1"
+              href="#example__default-link-behavior-a"
               role="tab"
               aria-selected="true"
-              aria-controls="example__default-link-behavior-1">Active Tab</a>
+              aria-controls="example__default-link-behavior-a">Active Tab</a>
           </li>
           <li>
             <a
-              href="#example__default-link-behavior-2"
+              href="#example__default-link-behavior-b"
               role="tab"
               aria-selected="false"
               tabindex="-1"
-              aria-controls="example__default-link-behavior-2">Tab Link</a>
+              aria-controls="example__default-link-behavior-b">Tab Link</a>
           </li>
           <li>
             <a
-              href="#example__default-link-behavior-3"
+              href="#example__default-link-behavior-c"
               role="tab"
               aria-selected="false"
               tabindex="-1"
-              aria-controls="example__default-link-behavior-3">Tab Link</a>
+              aria-controls="example__default-link-behavior-c">Tab Link</a>
           </li>
           <li><a href="https://lib.lumen.com/chi/" target="_self">External Link</a></li>
         </ul>
 
-        <div class="chi-tabs-panel -active" id="example__default-link-behavior-1" role="tabpanel">
-          <p class="-text">Tab 1 content</p>
+        <div class="chi-tabs-panel -active" id="example__default-link-behavior-a" role="tabpanel">
+          <p class="-text">Content for tab a</p>
         </div>
-        <div class="chi-tabs-panel" id="example__default-link-behavior-2" role="tabpanel">
-          <p class="-text">Tab 2 content</p>
+        <div class="chi-tabs-panel" id="example__default-link-behavior-b" role="tabpanel">
+          <p class="-text">Content for tab b</p>
         </div>
-        <div class="chi-tabs-panel" id="example__default-link-behavior-3" role="tabpanel">
-          <p class="-text">Tab 3 content</p>
+        <div class="chi-tabs-panel" id="example__default-link-behavior-c" role="tabpanel">
+          <p class="-text">Content for tab c</p>
         </div>
 
         <script>chi.tab(document.getElementById('example__default-link-behavior'));</script>
@@ -3033,16 +3033,16 @@ script.
       if (tabDefaultLinkBehavior) {
         tabDefaultLinkBehavior.tabs = [
           {
-            label: 'Active Tab',
-            id: 'example__default-link-behavior-1'
+            label: 'Tab a',
+            id: 'example__default-link-behavior-a'
           },
           {
-            label: 'Tab Link',
-            id: 'example__default-link-behavior-2'
+            label: 'Tab b',
+            id: 'example__default-link-behavior-b'
           },
           {
-            label: 'Tab Link',
-            id: 'example__default-link-behavior-3'
+            label: 'Tab c',
+            id: 'example__default-link-behavior-c'
           },
           {
             label: 'External Link',

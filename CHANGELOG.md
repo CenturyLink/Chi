@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 6.6.0 (September 6, 2024)
+
+### Components
+
+#### Fixed
+
+- Fixed: Data table sorting icon now change when body is empty.
+- Fixed: Text color in the Column Customization and Transfer List options, is now correct in all browsers when selected.
+- Fixed: Tooltip position now depends on content width.
+
+### Documentation
+
+### Added
+
+- Added: Tabs examples now show `panels` in the code snippet
+
+### Changed
+
+- Changed: Tabs examples are now built with web components
+
 ## 6.5.0 (August 29, 2024)
 
 ### Components
