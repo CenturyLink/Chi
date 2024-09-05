@@ -3,16 +3,16 @@
   template(#example)
     p.-text--bold X-small
     .chi-divider.-mb--2
-    chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-xs' size='xs' sliding-border)
+    chi-tabs(id="example__additional-sizes-horizontal-xs" active-tab="example__additional-sizes-horizontal-1" size="xs" sliding-border)
     p.-text--bold.-mt--6 Small
     .chi-divider.-mb--2
-    chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-sm' size='sm' sliding-border)
+    chi-tabs(id="example__additional-sizes-horizontal-sm" active-tab="example__additional-sizes-horizontal-1" size="sm" sliding-border)
     p.-text--bold.-mt--6 Medium (Base)
     .chi-divider.-mb--2
-    chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-md' sliding-border)
+    chi-tabs(id="example__additional-sizes-horizontal-md" active-tab="example__additional-sizes-horizontal-1" sliding-border)
     p.-text--bold.-mt--6 Large
     .chi-divider.-mb--2
-    chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-lg' size='lg' sliding-border)
+    chi-tabs(id="example__additional-sizes-horizontal-lg" active-tab="example__additional-sizes-horizontal-1" size="lg" sliding-border)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webComponent" class="html")
   template(#code-htmlblueprint)
@@ -38,18 +38,18 @@ export default class AdditionalSizesHorizontal extends Vue {
     },
   ];
 
-  tabLinks = [
+  tabs = [
     {
       label: 'Active Tab',
-      id: 'tab-a',
+      id: 'example__additional-sizes-horizontal-1',
     },
     {
       label: 'Tab Link',
-      id: 'tab-b',
+      id: 'example__additional-sizes-horizontal-2',
     },
     {
       label: 'Tab Link',
-      id: 'tab-c',
+      id: 'example__additional-sizes-horizontal-3',
     },
   ];
 
@@ -80,7 +80,7 @@ export default class AdditionalSizesHorizontal extends Vue {
   }
 
   get tabsHtml() {
-    return this.tabLinks
+    return this.tabs
       .map((_, index) => {
         const isFirstItem = index === 0;
         return `  <li${isFirstItem ? ' class="-active"' : ''}>
@@ -94,22 +94,43 @@ export default class AdditionalSizesHorizontal extends Vue {
     return this.sizes
       .map(({ name, value }) => {
         return `<!-- ${name} -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-${value}"${
-          value === 'md' ? '' : ` size="${value}`
+<chi-tabs id="example__additional-sizes-horizontal-${value}" active-tab="example__additional-sizes-horizontal-${value}-1"${
+          value === 'md' ? '' : ` size="${value}"`
         } sliding-border></chi-tabs>`;
       })
-      .join('\n\n');
+      .join('\n\n')
+      .concat(`\n\n<script>
+  document.querySelector('#example__additional-sizes-horizontal-xs').tabs = [
+    {
+      id: 'example__additional-sizes-horizontal-xs-1',
+      label: 'Active Tab'
+    },
+    {
+      id: 'example__additional-sizes-horizontal-xs-2',
+      label: 'Tab Link'
+    },
+    {
+      id: 'example__additional-sizes-horizontal-xs-3',
+      label: 'Tab Link'
+    }
+  ];
+<\/script>
+`);
   }
 
   get blueprintHtml() {
     return this.sizes
       .map(({ name, value }) => {
         return `<!-- ${name} -->
-<ul class="chi-tabs${value === 'md' ? '' : ` -${value}`}">
+<ul class="chi-tabs${value === 'md' ? '' : ` -${value}`}" id="example__additional-sizes-horizontal-${value}">
 ${this.tabsHtml}
 </ul>`;
       })
-      .join('\n\n');
+      .join('\n\n')
+      .concat(`\n\n<script>
+  chi.tab(document.querySelector('#example__additional-sizes-horizontal-xs'));
+<\/script>
+`);
   }
 
   mounted() {
@@ -118,10 +139,10 @@ ${this.tabsHtml}
     const elementMd = document.querySelector('#example__additional-sizes-horizontal-md') as TabsListInterface;
     const elementLg = document.querySelector('#example__additional-sizes-horizontal-lg') as TabsListInterface;
 
-    if (elementXs) elementXs.tabs = this.tabLinks;
-    if (elementSm) elementSm.tabs = this.tabLinks;
-    if (elementMd) elementMd.tabs = this.tabLinks;
-    if (elementLg) elementLg.tabs = this.tabLinks;
+    if (elementXs) elementXs.tabs = this.tabs;
+    if (elementSm) elementSm.tabs = this.tabs;
+    if (elementMd) elementMd.tabs = this.tabs;
+    if (elementLg) elementLg.tabs = this.tabs;
   }
 }
 </script>

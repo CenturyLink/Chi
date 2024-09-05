@@ -1,7 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Solid" id="tabbed-navigation-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-pb--4">
   template(#example)
-    chi-tabs(active-tab='tab-tns-a' id='example__tabbed_navigation_solid' size='lg' solid sliding-border)
+    chi-tabs(id="example__tabbed-navigation-solid" active-tab="tab-tns-a" size="lg" solid sliding-border)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -27,7 +27,8 @@ export default class TabbedNavigationFlat extends Vue {
       label: 'HTML Blueprint',
     },
   ];
-  tabLinks = [
+
+  tabs = [
     {
       label: 'Active Tab',
       id: 'tab-tns-a',
@@ -151,12 +152,10 @@ export default class TabbedNavigationFlat extends Vue {
   ];
 
   codeSnippets = {
-    webcomponent: `<chi-tabs active-tab="tab-a" id="example__tabbed_navigation_solid" size="lg" solid sliding-border></chi-tabs>
+    webcomponent: `<chi-tabs id="example__tabbed-navigation-solid" active-tab="tab-a" size="lg" solid sliding-border></chi-tabs>
 
 <script>
-  const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_solid');
-
-  tabbedNavigationFlatElement.tabs = [
+  document.querySelector('#example__tabbed-navigation-solid').tabs = [
     {
       label: 'Active Tab',
       id: 'tab-a',
@@ -279,7 +278,7 @@ export default class TabbedNavigationFlat extends Vue {
     }
   ];
 <\/script>`,
-    htmlblueprint: `<ul id="navigationExample-1" class="chi-tabs -solid -border -lg">
+    htmlblueprint: `<ul class="chi-tabs -solid -border -lg" id="example__tabbed-navigation-solid">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger" href="#">Active tab</a>
     <div class="chi-dropdown__menu">
@@ -303,8 +302,7 @@ ${this.generateTabsNestedLinksHtml([1, 2, 3])}
 </ul>
 
 <script>
-  const navigationElem = document.getElementById('#navigationExample-1');
-  chi.navigation(navigationElem);
+  chi.navigation(document.getElementById('example__tabbed-navigation-solid'));
 <\/script>`,
   };
 
@@ -335,10 +333,11 @@ ${this.generateTabsNestedLinksHtml([1, 2, 3])}
   }
 
   mounted() {
-    const element = document.querySelector('#example__tabbed_navigation_solid') as TabsListInterface;
+    const element = document.querySelector('#example__tabbed-navigation-solid') as TabsListInterface;
 
     if (element) {
-      element.tabs = this.tabLinks;
+
+      element.tabs = this.tabs;
     }
   }
 }

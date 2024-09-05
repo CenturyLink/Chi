@@ -2,7 +2,7 @@
 <ComponentExample title="Bordered" id="bordered" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
   template(#example)
     .-p--3.-bg--white
-      chi-tabs(:active-tab='activeTab' id='example__bordered' border @chiTabChange='chiTabChange' sliding-border)
+      chi-tabs(id="example__bordered" active-tab="example__bordered-1" border sliding-border)
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -28,63 +28,59 @@ export default class Bordered extends Vue {
     },
   ];
 
-  activeTab = 'tab-a';
-
-  tabLinks = [
+  tabs = [
     {
       label: 'Active Tab',
-      id: 'tab-a',
+      id: 'example__bordered-1',
     },
     {
       label: 'Tab Link',
-      id: 'tab-b',
+      id: 'example__bordered-2',
     },
     {
       label: 'Tab Link',
-      id: 'tab-c',
+      id: 'example__bordered-3',
     },
   ];
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__bordered" border sliding-border></chi-tabs>
+      webcomponent: `<chi-tabs id="example__bordered" active-tab="example__bordered-1" border sliding-border></chi-tabs>
 
 <script>
-  const tabsElement = document.querySelector('example__bordered');
-
-  if (tabsElement) {
-    tabsElement.tabs = [
-      {
-        label: 'Active Tab',
-        id: 'tab-a'
-      },
-      {
-        label: 'Tab Link',
-        id: 'tab-b'
-      },
-      {
-        label: 'Tab Link',
-        id: 'tab-c'
-      }
-    ];
-  }
+  document.querySelector('#example__bordered').tabs = [
+    {
+      label: 'Active Tab',
+      id: 'example__bordered-1'
+    },
+    {
+      label: 'Tab Link',
+      id: 'example__bordered-2'
+    },
+    {
+      label: 'Tab Link',
+      id: 'example__bordered-3'
+    }
+  ];
 <\/script>`,
-      htmlblueprint: `<ul class="chi-tabs -border">
+      htmlblueprint: `<ul class="chi-tabs -border" id="example__bordered">
 ${this.generateTabsHtml()}
-</ul>`,
+</ul>
+
+<script>chi.tab(document.querySelector('#example__bordered'));<\/script>`,
     };
   }
 
-  chiTabChange(tab: any) {
-    this.activeTab = tab.detail.id;
-  }
-
   generateTabsHtml() {
-    return this.tabLinks
+    return this.tabs
       .map(({ label, id }, index) => {
         const isFirstItem = index === 0;
         return `  <li${isFirstItem ? ' class="-active"' : ''}>
-    <a href="#">${isFirstItem ? 'Active tab' : 'Tab link'}</a>
+    <a
+      href="#${id}"
+      role="tab"${!isFirstItem ? '\n      tabindex="-1"' : ''}
+      aria-selected="${isFirstItem ? 'true' : 'false'}"
+      aria-controls="${id}">${label}</a>
   </li>`;
       })
       .join('\n');
@@ -94,7 +90,7 @@ ${this.generateTabsHtml()}
     const element = document.querySelector('#example__bordered') as TabsListInterface;
 
     if (element) {
-      element.tabs = this.tabLinks;
+      element.tabs = this.tabs;
     }
   }
 }

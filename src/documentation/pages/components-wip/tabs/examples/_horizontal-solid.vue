@@ -1,11 +1,11 @@
 <template lang="pug">
 <ComponentExample title="Solid" id="horizontal-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
   template(#example)
-    .-px--3.-pt--2.-bg--white
-      chi-tabs(:active-tab='activeTab' id='example__horizontal-solid' size='lg' sliding-border solid @chiTabChange='chiTabChange')
-      .-py--3
-        div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
-          .-text {{tabContent.text}}
+    .-px--3.-py--2.-bg--white
+      chi-tabs(id="example__horizontal-solid" active-tab="example__horizontal-solid-1" size="lg" solid border)
+        div(slot="panels")
+          div(v-for="panel in panels" class="chi-tabs-panel" :id="panel.id" role="tabpanel")
+            p.-text {{ panel.text }}
 
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
@@ -32,78 +32,79 @@ export default class HorizontalSolid extends Vue {
       label: 'HTML Blueprint',
     },
   ];
-  activeTab = 'tab-a';
 
-  tabLinks = [
+  tabs = [
     {
+      id: 'example__horizontal-solid-1',
       label: 'Active Tab',
-      id: 'tab-a',
     },
     {
+      id: 'example__horizontal-solid-2',
       label: 'Tab Link',
-      id: 'tab-b',
     },
     {
+      id: 'example__horizontal-solid-3',
       label: 'Tab Link',
-      id: 'tab-c',
     },
   ];
 
-  tabsContent = [
+  panels = [
     {
-      id: 'tab-a',
+      id: 'example__horizontal-solid-1',
       text: 'Tab 1 content',
     },
     {
-      id: 'tab-b',
+      id: 'example__horizontal-solid-2',
       text: 'Tab 2 content',
     },
     {
-      id: 'tab-c',
+      id: 'example__horizontal-solid-3',
       text: 'Tab 3 content',
     },
   ];
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-solid" size="lg" solid sliding-border></chi-tabs>
-
-${this.generateTabsContentHtml(true)}
+      webcomponent: `<chi-tabs id="example__horizontal-solid" active-tab="example__horizontal-solid-1" size="lg" solid border>
+  <div slot="panels">
+    <div class="chi-tabs-panel" id="example__horizontal-solid-1" role="tabpanel">
+      <p class="-text">Tab 1 content</p>
+    </div>
+    <div class="chi-tabs-panel" id="example__horizontal-solid-2" role="tabpanel">
+      <p class="-text">Tab 2 content</p>
+    </div>
+    <div class="chi-tabs-panel" id="example__horizontal-solid-3" role="tabpanel">
+      <p class="-text">Tab 3 content</p>
+    </div>
+  </div>
+</chi-tabs>
 
 <script>
-  const tabsElement = document.querySelector('#example__solid');
-
-  if (tabsElement) {
-    tabsElement.tabs = [
-      {
-        label: 'Active Tab',
-        id: 'tab-a'
-      },
-      {
-        label: 'Tab Link',
-        id: 'tab-b'
-      },
-      {
-        label: 'Tab Link',
-        id: 'tab-c'
-      }
-    ];
-  }
+  document.querySelector('#example__horizontal-solid').tabs = [
+    {
+      id: 'example__horizontal-solid-1',
+      label: 'Active Tab'
+    },
+    {
+      id: 'example__horizontal-solid-2',
+      label: 'Tab Link'
+    },
+    {
+      id: 'example__horizontal-solid-3',
+      label: 'Tab Link'
+    }
+  ];
 <\/script>`,
-      htmlblueprint: `<ul class="chi-tabs -solid -lg -border" id="example-horizontal-solid-bordered" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>
+      htmlblueprint: `<ul class="chi-tabs -solid -border -lg" id="example__horizontal-solid" role="tablist" aria-label="Tabs">\n${this.generateTabsHtml()}\n</ul>
 
-${this.generateTabsContentHtml(false)}
+${this.generatePanelsHtml()}
 
-<script>chi.tab(document.getElementById('example-horizontal-solid-bordered'));<\/script>`,
+<script>chi.tab(document.getElementById('example__horizontal-solid'));<\/script>`,
     };
   }
 
-  chiTabChange(tab: any) {
-    this.activeTab = tab.detail.id;
-  }
-
   generateTabsHtml() {
-    return this.tabLinks
+    return this.tabs
       .map(({ label, id }, index) => {
         const isFirstItem = index === 0;
         return `  <li${isFirstItem ? ' class="-active"' : ''}>
@@ -117,13 +118,13 @@ ${this.generateTabsContentHtml(false)}
       .join('\n');
   }
 
-  generateTabsContentHtml(isWebComponent: boolean) {
-    return this.tabsContent
+  generatePanelsHtml() {
+    return this.panels
       .map(({ text, id }, index) => {
         const isFirstItem = index === 0;
-        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${
-          isWebComponent ? `${id}_content` : id
-        }" role="tabpanel">${text}</div>`;
+        return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${id}" role="tabpanel">
+  <p class="-text">${text}</p>
+</div>`;
       })
       .join('\n');
   }
@@ -132,7 +133,7 @@ ${this.generateTabsContentHtml(false)}
     const element = document.querySelector('#example__horizontal-solid') as TabsListInterface;
 
     if (element) {
-      element.tabs = this.tabLinks;
+      element.tabs = this.tabs;
     }
   }
 }
