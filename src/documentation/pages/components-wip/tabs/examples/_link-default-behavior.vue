@@ -5,19 +5,11 @@
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
   template(#example)
-    ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior")
-      li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-        a(
-          :href="`#${link.id}`"
-          role="tab"
-          aria-selected="true"
-          :aria-controls="link.id"
-        ) {{link.label}}
-      li
-        a(href='https://lib.lumen.com/chi/' target='_self') External Link
-    .-py--2
-      .chi-tabs-panel(v-for="tabContent in tabsContent" :class="[tabContent.active ? '-active' : '']" :id="tabContent.id" role="tabpanel")
-        .-text {{tabContent.text}}
+    chi-tabs#example__default-link-behavior(active-tab="example__default-link-behavior-1" border sliding-border)
+      div(slot="panels")
+        div(v-for="panel in panels" class="chi-tabs-panel" :id="panel.id" role="tabpanel")
+          p.-text {{ panel.text }}
+
   template(#code-webcomponent)
     Copy(lang="html" :code="codeSnippets.webcomponent" class="html")
   template(#code-htmlblueprint)
@@ -28,8 +20,7 @@
 
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
-
-declare const chi: any;
+import { type TabsListInterface } from '~/models/models';
 
 @NuxtComponent({})
 export default class TabbedNavigationFlat extends Vue {
@@ -37,63 +28,102 @@ export default class TabbedNavigationFlat extends Vue {
     {
       id: 'webcomponent',
       label: 'Web Component',
-      disabled: true,
+      active: true,
     },
     {
       id: 'htmlblueprint',
       label: 'HTML Blueprint',
-      active: true,
-    },
-  ];
-  tabLinks = [
-    {
-      id: 'a2',
-      label: 'Tab a',
-      active: true,
-    },
-    {
-      id: 'b2',
-      label: 'Tab b',
-    },
-    {
-      id: 'c2',
-      label: 'Tab c',
     },
   ];
 
-  tabsContent = [
+  tabs = [
     {
-      id: 'a2',
-      text: 'Content for tab a',
-      active: true,
+      label: 'Active Tab',
+      id: 'example__default-link-behavior-1',
     },
     {
-      id: 'b2',
-      text: 'Content for tab b',
+      label: 'Tab Link',
+      id: 'example__default-link-behavior-2',
     },
     {
-      id: 'c2',
-      text: 'Content for tab c',
+      label: 'Tab Link',
+      id: 'example__default-link-behavior-3',
+    },
+    {
+      label: 'External Link',
+      id: 'example__default-link-behavior-4',
+      href: 'https://lib.lumen.com/chi/',
+      target: '_self',
+    },
+  ];
+
+  panels = [
+    {
+      id: 'example__default-link-behavior-1',
+      text: 'Tab 1 content',
+    },
+    {
+      id: 'example__default-link-behavior-2',
+      text: 'Tab 2 content',
+    },
+    {
+      id: 'example__default-link-behavior-3',
+      text: 'Tab 3 content',
     },
   ];
 
   get codeSnippets() {
     return {
-      webComponent: '',
-      htmlblueprint: `<ul class="chi-tabs" id="example-tabs-2" role="tablist" aria-label="example-default-link-behavior">\n${this.generateTabsHtml()}
+      webcomponent: `<chi-tabs id="example__default-link-behavior" active-tab="example__default-link-behavior-1" border sliding-border>
+  <div slot="panels">
+    <div class="chi-tabs-panel" id="example__default-link-behavior-1" role="tabpanel">
+      <p class="-text">Tab 1 content</p>
+    </div>
+    <div class="chi-tabs-panel" id="example__default-link-behavior-2" role="tabpanel">
+      <p class="-text">Tab 2 content</p>
+    </div>
+    <div class="chi-tabs-panel" id="example__default-link-behavior-3" role="tabpanel">
+      <p class="-text">Tab 3 content</p>
+    </div>
+  </div>
+</chi-tabs>
+
+<script>
+  document.getElementById("example__default-link-behavior").tabs = [
+    {
+      label: 'Active Tab',
+      id: 'example__default-link-behavior-1'
+    },
+    {
+      label: 'Tab Link',
+      id: 'example__default-link-behavior-2'
+    },
+    {
+      label: 'Tab Link',
+      id: 'example__default-link-behavior-3'
+    },
+    {
+      label: 'External Link',
+      id: 'example__default-link-behavior-4',
+      href: 'https://lib.lumen.com/chi/',
+      target: '_self'
+    }
+  ];
+<\/script>`,
+      htmlblueprint: `<ul class="chi-tabs" id="example__default-link-behavior" role="tablist" aria-label="Tabs">\n${this.generateTabsHtml()}
   <li><a href="https://lib.lumen.com/chi/" target="_self">External Link</a></li>
 </ul>
 
 ${this.generateTabsContentHtml()}
 </div>
 
-<script>chi.tab(document.getElementById('example-tabs-2'));<\/script>`,
+<script>chi.tab(document.getElementById('example__default-link-behavior'));<\/script>`,
     };
   }
 
   generateTabsHtml() {
-    return this.tabLinks
-      .map(({ label, id }, index) => {
+    return this.tabs
+      .filter(tab => !tab.href).map(({ label, id }, index) => {
         const isFirstItem = index === 0;
         return `  <li${isFirstItem ? ' class="-active"' : ''}>
     <a
@@ -107,7 +137,7 @@ ${this.generateTabsContentHtml()}
   }
 
   generateTabsContentHtml() {
-    return this.tabsContent
+    return this.panels
       .map(({ text, id }, index) => {
         const isFirstItem = index === 0;
         return `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${id}" role="tabpanel">
@@ -118,7 +148,11 @@ ${this.generateTabsContentHtml()}
   }
 
   mounted() {
-    chi.tab(document.getElementById('example-default-link-behavior'));
+    const tabDefaultLinkBehavior = document.querySelector('#example__default-link-behavior') as TabsListInterface;
+
+    if (tabDefaultLinkBehavior) {
+      tabDefaultLinkBehavior.tabs = this.tabs;
+    }
   }
 }
 </script>
