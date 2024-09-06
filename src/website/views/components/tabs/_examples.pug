@@ -23,9 +23,9 @@ h2 Examples
   .example.-mb--3
     #chi-tabs-panel--horizontal-base.chi-tabs-panel.-active
       .-bg--grey-20.-p--3
-        .-bg--white.-p--3
+        .-bg--white.-px--3
           chi-tabs#example__horizontal-flat(active-tab="example__horizontal-flat-1" sliding-border)
-            div(slot="panels")
+            .-py--1(slot="panels")
               .chi-tabs-panel#example__horizontal-flat-1(role="tabpanel")
                 p.-text Tab 1 content
               .chi-tabs-panel#example__horizontal-flat-2(role="tabpanel")
@@ -53,7 +53,7 @@ h2 Examples
       .chi-tabs-panel.-active#webcomponent-base(role="tabpanel")
         :code(lang='html')
           <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border>
-            <div slot="panels">
+            <div class="-py--1" slot="panels">
               <div class="chi-tabs-panel" id="example__horizontal-flat-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -89,7 +89,7 @@ h2 Examples
             | You may use your own solution, or use Chi's vanilla JavaScript solution,
             | <a href="../../getting-started/installation">Chi.js</a>.
         :code(lang='html')
-          <ul class="chi-tabs" id="example__horizontal-flat" role="tablist" aria-label="Tabs">
+          <ul class="chi-tabs -animated" id="example__horizontal-flat" role="tablist" aria-label="Tabs">
             <li class="-active">
               <a
                 href="#example__horizontal-flat-1"
@@ -129,9 +129,9 @@ h2 Examples
 
     #chi-tabs-panel--horizontal-inverse.chi-tabs-panel(role="tabpanel")
       .-bg--grey-20.-p--3
-        .-bg--black.-p--3
+        .-bg--black
           chi-tabs#example__horizontal-flat-inverse(active-tab="example__horizontal-flat-inverse-1" sliding-border inverse)
-            .-bg--white(slot="panels")
+            .-bg--white.-py--1.-px--3(slot="panels")
               .chi-tabs-panel#example__horizontal-flat-inverse-1(role="tabpanel")
                 p.-text Tab 1 content
               .chi-tabs-panel#example__horizontal-flat-inverse-2(role="tabpanel")
@@ -156,7 +156,7 @@ h2 Examples
       .chi-tabs-panel.-active#webcomponent-base-inverse(role="tabpanel")
         :code(lang='html')
           <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border inverse>
-            <div slot="panels">
+            <div class="-py--1 -px--3" slot="panels">
               <div class="chi-tabs-panel" id="example__horizontal-flat-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -192,7 +192,7 @@ h2 Examples
             | You may use your own solution, or use Chi's vanilla JavaScript solution,
             | <a href="../../getting-started/installation">Chi.js</a>.
         :code(lang='html')
-          <ul class="chi-tabs -inverse" id="example__horizontal-flat" role="tablist" aria-label="Tabs">
+          <ul class="chi-tabs -animated -inverse" id="example__horizontal-flat" role="tablist" aria-label="Tabs">
             <li class="-active">
               <a
                 href="#example__horizontal-flat-1"
