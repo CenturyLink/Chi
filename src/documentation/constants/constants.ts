@@ -368,7 +368,7 @@ export const NAVIGATION_UTILITIES_ITEMS = [
   { to: `utilities/zindex`, label: 'Z-index' },
 ];
 export const NAVIGATION_GETTING_STARTED_ITEMS = [
-  { href: `${SECTION_URLS.gettingStarted}/introduction`, label: 'Introduction', source: 'pug' },
+  { href: `${SECTION_URLS.gettingStarted}`, label: 'Introduction', source: 'pug' },
   { href: `${SECTION_URLS.gettingStarted}/installation`, label: 'Installation', source: 'pug' },
   { href: `${SECTION_URLS.gettingStarted}/development-workflow`, label: 'Development workflow', source: 'pug' },
   { href: `${SECTION_URLS.gettingStarted}/browsers-devices`, label: 'Browser support', source: 'pug' },
