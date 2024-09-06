@@ -123,6 +123,14 @@ export const CHECKBOX_CLASSES = {
 };
 //#endregion
 
+//#region Grid
+export const GRID_CLASSES = {
+  GRID: 'chi-grid',
+  COL: 'chi-col',
+  NO_GUTTER: '-no-gutter'
+}
+//#endregion
+
 //#region Divider
 export const DIVIDER_CLASSES = {
   DIVIDER: 'chi-divider',
