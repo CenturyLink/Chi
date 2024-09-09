@@ -729,7 +729,7 @@ export class Tabs {
   getChiGridLayout(tabs, dropdowns, panels) {
     return (
       <Host>
-        <div class={`${GRID_CLASSES.GRID}`}>
+        <div class={`${GRID_CLASSES.GRID} ${GRID_CLASSES.NO_GUTTER}`}>
           <div class={GRID_CLASSES.COL}>
             {tabs}
             {dropdowns}
