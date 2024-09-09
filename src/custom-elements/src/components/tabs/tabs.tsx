@@ -709,7 +709,7 @@ export class Tabs {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
-  
+
     return (
       <ul
         class={this.getListClasses()}

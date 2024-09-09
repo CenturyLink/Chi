@@ -60,7 +60,11 @@ export class FormWrapper {
   }
 
   componentWillLoad() {
-    this.options = this.options.map((item) => ({ ...item, id: item.id || `${this.id}-${uuid4()}`, checked: item.checked || false }));
+    this.options = this.options.map((item) => ({
+      ...item,
+      id: item.id || `${this.id}-${uuid4()}`,
+      checked: item.checked || false,
+    }));
   }
 
   _getLabel() {
