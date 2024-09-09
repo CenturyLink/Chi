@@ -5,7 +5,7 @@
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
   template(#example)
-    chi-tabs#example__default-link-behavior(active-tab="example__default-link-behavior-1" border sliding-border)
+    chi-tabs#example__default-link-behavior(active-tab="example__default-link-behavior-a" sliding-border)
       div(slot="panels")
         div(v-for="panel in panels" class="chi-tabs-panel" :id="panel.id" role="tabpanel")
           p.-text {{ panel.text }}
@@ -38,16 +38,16 @@ export default class TabbedNavigationFlat extends Vue {
 
   tabs = [
     {
-      label: 'Active Tab',
-      id: 'example__default-link-behavior-1',
+      label: 'Tab a',
+      id: 'example__default-link-behavior-a',
     },
     {
-      label: 'Tab Link',
-      id: 'example__default-link-behavior-2',
+      label: 'Tab b',
+      id: 'example__default-link-behavior-b',
     },
     {
-      label: 'Tab Link',
-      id: 'example__default-link-behavior-3',
+      label: 'Tab c',
+      id: 'example__default-link-behavior-c',
     },
     {
       label: 'External Link',
@@ -59,31 +59,31 @@ export default class TabbedNavigationFlat extends Vue {
 
   panels = [
     {
-      id: 'example__default-link-behavior-1',
-      text: 'Tab 1 content',
+      id: 'example__default-link-behavior-a',
+      text: 'Content for tab a',
     },
     {
-      id: 'example__default-link-behavior-2',
-      text: 'Tab 2 content',
+      id: 'example__default-link-behavior-b',
+      text: 'Content for tab b',
     },
     {
-      id: 'example__default-link-behavior-3',
-      text: 'Tab 3 content',
+      id: 'example__default-link-behavior-c',
+      text: 'Content for tab c',
     },
   ];
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs id="example__default-link-behavior" active-tab="example__default-link-behavior-1" border sliding-border>
+      webcomponent: `<chi-tabs id="example__default-link-behavior" active-tab="example__default-link-behavior-a" sliding-border>
   <div slot="panels">
-    <div class="chi-tabs-panel" id="example__default-link-behavior-1" role="tabpanel">
-      <p class="-text">Tab 1 content</p>
+    <div class="chi-tabs-panel" id="example__default-link-behavior-a" role="tabpanel">
+      <p class="-text">Content for tab a</p>
     </div>
-    <div class="chi-tabs-panel" id="example__default-link-behavior-2" role="tabpanel">
-      <p class="-text">Tab 2 content</p>
+    <div class="chi-tabs-panel" id="example__default-link-behavior-b" role="tabpanel">
+      <p class="-text">Content for tab b</p>
     </div>
-    <div class="chi-tabs-panel" id="example__default-link-behavior-3" role="tabpanel">
-      <p class="-text">Tab 3 content</p>
+    <div class="chi-tabs-panel" id="example__default-link-behavior-c" role="tabpanel">
+      <p class="-text">Content for tab c</p>
     </div>
   </div>
 </chi-tabs>
@@ -91,16 +91,16 @@ export default class TabbedNavigationFlat extends Vue {
 <script>
   document.getElementById("example__default-link-behavior").tabs = [
     {
-      label: 'Active Tab',
-      id: 'example__default-link-behavior-1'
+      label: 'Tab a',
+      id: 'example__default-link-behavior-a'
     },
     {
-      label: 'Tab Link',
-      id: 'example__default-link-behavior-2'
+      label: 'Tab b',
+      id: 'example__default-link-behavior-b'
     },
     {
-      label: 'Tab Link',
-      id: 'example__default-link-behavior-3'
+      label: 'Tab c',
+      id: 'example__default-link-behavior-c'
     },
     {
       label: 'External Link',
