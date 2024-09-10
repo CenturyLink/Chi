@@ -125,6 +125,71 @@ h3 Horizontal
 //- .-w--100
 //-   chi-tabs(active-tab='tab-a' id='no-animation-solid' solid)
 
+//- VISUAL TESTS
+h2 Horizontal
+h3 Flat
+.test-horizontal-flat
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${size} ${style}`
+      chi-tabs(active-tab='test-horizontal-flat-tab-a' size=size border=style == 'border' ? true : false)
+
+h3 Solid
+.test-horizontal-solid
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${size} ${style}`
+      chi-tabs(active-tab='test-horizontal-solid-tab-a' solid size=size border=style == 'border' ? true : false)
+
+h2 Vertical
+h3 Flat
+.test-vertical-flat
+  each style in ['base', 'border']
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      chi-tabs(active-tab='test-vertical-flat-tab-a' vertical size=size border=style == 'border' ? true : false)
+
+h3 Solid
+.test-vertical-solid
+  each style in ['base', 'border']
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      chi-tabs(active-tab='test-vertical-solid-tab-a' vertical solid size=size border=style == 'border' ? true : false)
+
+h2 Horizontal Inverse
+h3 Flat
+.test-horizontal-flat-inverse
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${style} ${size} inverse`
+      .-bg--black.-px--3
+        chi-tabs(active-tab='test-horizontal-flat-inverse-tab-a' inverse size=size border=style == 'border' ? true : false)
+
+h3 Solid
+.test-horizontal-solid-inverse
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${style} ${size} inverse`
+      .-bg--black.-px--3.-py--1
+        chi-tabs(active-tab='test-horizontal-solid-inverse-tab-a' solid inverse size=size border=style == 'border' ? true : false)
+
+h2 Vertical Inverse
+h3 Flat
+.test-vertical-inverse-flat
+  each style in ['base', 'border']
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      .-bg--black.-p--3
+        chi-tabs(active-tab='test-vertical-inverse-flat-tab-a' vertical inverse size=size border=style == 'border' ? true : false)
+
+h3 Solid
+.test-vertical-inverse-solid
+  each style in ['base', 'border']
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      .-bg--black.-p--3
+        chi-tabs(active-tab='test-vertical-inverse-solid-tab-a' vertical solid inverse size=size border=style == 'border' ? true : false)
+
 script.
   document.addEventListener('DOMContentLoaded', () => {
     //- const tabElements = document.querySelectorAll('#base, #border, #vertical, #solid, #no-animation, #no-animation-solid');
@@ -421,4 +486,39 @@ script.
         },
       ];
     }
+  
+    // visual tests
+    function getVisualTabs(id) {
+      let visualTabs = [
+        {
+          label: 'Active tab',
+          id: `${id}-tab-a`
+        },
+        {
+          label: 'Tab link',
+          id: `${id}-tab-b`
+        },
+        {
+          label: 'Tab link',
+          id: `${id}-tab-c`
+        },
+      ];
+
+      return id.includes('vertical') 
+          ? [...visualTabs, { label: 'Tab link', id: `${id}-tab-d`, overflow: false }] 
+          : visualTabs;
+    }
+
+    ['test-horizontal-flat',
+     'test-horizontal-solid',
+     'test-vertical-flat',
+     'test-vertical-solid',
+     'test-vertical-inverse-solid',
+     'test-vertical-inverse-flat',
+     'test-horizontal-solid-inverse',
+     'test-horizontal-flat-inverse'
+    ].forEach((id) => {
+      const visualTabsElements = document.querySelectorAll(`.${id} chi-tabs`);
+      visualTabsElements.forEach((el) => el.tabs = getVisualTabs(id));
+    });
   });
