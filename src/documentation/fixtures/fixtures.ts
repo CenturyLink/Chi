@@ -172,7 +172,7 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
   ],
   solutionLinks: [
     {
-      href: 'https://www.lumen.com/en-us/solutions/adaptive-networking.html',
+      href: 'https://www.lumen.com/en-us/solutions/networking.html',
       title: 'Networking',
     },
     {
@@ -186,10 +186,6 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
     {
       href: 'https://www.lumen.com/en-us/solutions/edge-cloud.html',
       title: 'Edge Cloud',
-    },
-    {
-      href: 'https://www.lumen.com/en-us/about/our-platform.html',
-      title: 'Lumen Platform',
     },
   ],
   shopLinks: [
@@ -219,7 +215,9 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
       href: 'https://www.lumen.com/en-us/resources/network-maps.html',
       title: 'Network Maps',
     },
-    { href: 'https://www.lumen.com/en-us/partner.html', title: 'Partners' },
+    { href: 'https://www.lumen.com/en-us/channel-partner-program.html', 
+      title: 'Partners' 
+    },
     {
       href: 'https://www.lumen.com/en-us/about/doing-business-with-lumen.html',
       title: 'Suppliers',
