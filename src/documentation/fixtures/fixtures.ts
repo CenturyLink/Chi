@@ -215,8 +215,9 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
       href: 'https://www.lumen.com/en-us/resources/network-maps.html',
       title: 'Network Maps',
     },
-    { href: 'https://www.lumen.com/en-us/channel-partner-program.html', 
-      title: 'Partners' 
+    { 
+      href: 'https://www.lumen.com/en-us/channel-partner-program.html', 
+      title: 'Partners',
     },
     {
       href: 'https://www.lumen.com/en-us/about/doing-business-with-lumen.html',
