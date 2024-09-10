@@ -13,7 +13,6 @@ gulp.task(
     'update:boilerplate:assets',
     'build:boilerplates',
     'copy:chi:ce-docs-scripts',
-    'copy:chi:ce-scripts',
     'update-dist-files'
   )
 );

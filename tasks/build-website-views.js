@@ -8,7 +8,7 @@ import { Folders, Paths } from './constants';
 import metalsmithPug from "metalsmith-pug";
 import path from 'path';
 import pug from 'pug';
-const stencilDoc = require('../src/custom-elements/docs/docs.json');
+const stencilDoc = require('../lib/custom-elements/docs.json');
 const sriDoc = require('../sri.json');
 
 const metalsmithPlugins = {

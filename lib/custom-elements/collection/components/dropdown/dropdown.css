@@ -1,0 +1,10 @@
+:host(chi-dropdown) {
+  display: flex;
+}
+:host(chi-dropdown) *,
+:host(chi-dropdown) ::after,
+:host(chi-dropdown) ::before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}

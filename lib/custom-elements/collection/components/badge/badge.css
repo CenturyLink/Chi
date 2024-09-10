@@ -1,0 +1,15 @@
+:host(chi-badge) {
+  display: inline-flex;
+  vertical-align: middle;
+}
+:host(chi-badge) *,
+:host(chi-badge) ::after,
+:host(chi-badge) ::before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+::slotted(*) > :not(:last-child) {
+  margin-right: 0.5rem;
+}

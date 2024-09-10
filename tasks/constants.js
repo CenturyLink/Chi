@@ -12,7 +12,6 @@ const STYLES = 'styles';
 const DOCS = 'website';
 const PAGES = 'views';
 const LAYOUTS = 'layouts';
-const CUSTOM_ELEMENTS = 'custom-elements';
 
 export const Paths = {
   SRC,
@@ -31,7 +30,6 @@ export const Paths = {
     DOCS: path.join(SRC, DOCS),
     PAGES: path.join(SRC, DOCS, PAGES),
     LAYOUTS: path.join(SRC, DOCS, LAYOUTS),
-    CUSTOM_ELEMENTS: path.join(SRC, CUSTOM_ELEMENTS),
   }
 };
 
@@ -48,7 +46,6 @@ export const Folders = {
     IMAGES: path.join(DIST_FOLDER, ASSETS, IMAGES),
     SCRIPTS: path.join(DIST_FOLDER, ASSETS, SCRIPTS),
     STYLES: path.join(DIST_FOLDER, ASSETS, STYLES),
-    CUSTOM_ELEMENTS: path.join(DIST_FOLDER, CUSTOM_ELEMENTS),
   },
   src : {
     ASSETS: path.join(SRC_FOLDER, ASSETS),
@@ -58,6 +55,5 @@ export const Folders = {
     DOCS: path.join(SRC_FOLDER, DOCS),
     PAGES: path.join(SRC_FOLDER, DOCS, PAGES),
     LAYOUTS: path.join(SRC_FOLDER, DOCS, LAYOUTS),
-    CUSTOM_ELEMENTS: path.join(SRC_FOLDER, CUSTOM_ELEMENTS),
   }
 };

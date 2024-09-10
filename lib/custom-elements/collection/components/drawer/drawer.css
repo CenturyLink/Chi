@@ -1,0 +1,10 @@
+:host(chi-drawer) {
+  display: block;
+}
+:host(chi-drawer) *,
+:host(chi-drawer) ::after,
+:host(chi-drawer) ::before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}

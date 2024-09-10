@@ -1,0 +1,10 @@
+:host(chi-app-layout) {
+  display: block;
+}
+:host(chi-app-layout) *,
+:host(chi-app-layout) ::after,
+:host(chi-app-layout) ::before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}

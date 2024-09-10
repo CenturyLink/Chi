@@ -1,7 +1,0 @@
-*, // sass-lint:disable-line no-universal-selectors
-::after,
-::before {
-  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
-  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-  box-sizing: border-box;
-}
