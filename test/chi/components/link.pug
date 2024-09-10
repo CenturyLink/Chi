@@ -21,3 +21,24 @@ h3 CTA
   each size in sizes
     p.-text--bold=size
     a(class=`chi-link -cta -${size}` href='#') Link
+
+h3 No underline
+.test-link-no-underline.-w--100.-text
+.test-link-no-underline
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -no-underline -${size}` href='#') Link
+
+h3 Hover
+.test-link-hover.-w--100.-text
+.test-link-hover
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -hover -${size}` href='#') Link
+
+h3 No hover underline :hover
+.test-link-no-hover-underline.-w--100.-text
+.test-link-no-hover-underline
+  each size in sizes
+    p.-text--bold=size
+    a(class=`chi-link -hover -no-hover-underline -${size}` href='#') Link

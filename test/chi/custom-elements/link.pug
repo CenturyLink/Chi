@@ -22,3 +22,21 @@ h3 CTA
   each size in sizes
     p.-text--bold=size
     chi-link(size=`${size === 'default' ? '' : size}`, cta, data-cy=`link-cta-${size}`) Link
+
+h3 No underline
+.test-link-no-underline.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, no-underline, data-cy=`link-cta-${size}`) Link
+
+h3 Hover
+.test-link-hover.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, _hover, data-cy=`link-cta-${size}`) Link
+
+h3 No hover underline :hover
+.test-link-no-hover-underline.-w--100.-text
+  each size in sizes
+    p.-text--bold=size
+    chi-link(size=`${size === 'default' ? '' : size}`, no-hover-underline, _hover, data-cy=`link-cta-${size}`) Link
