@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.6.1 (September 12, 2024)
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Introduction page in new Vue documentation.
+
 ## 6.6.0 (September 6, 2024)
 
 ### Components
