@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-09-05T16:33:05",
+  "timestamp": "2024-09-11T13:38:59",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.21.0",
-    "typescriptVersion": "5.5.3"
+    "version": "4.18.1",
+    "typescriptVersion": "5.4.5"
   },
   "components": [
     {
@@ -2951,7 +2951,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": "node_modules::Placement"
+                "id": ""
               }
             }
           },
@@ -5561,7 +5561,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": "node_modules::CountryCode"
+                "id": ""
               }
             }
           },
@@ -7042,7 +7042,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": "node_modules::Placement"
+                "id": ""
               }
             }
           },
@@ -8402,7 +8402,7 @@
             "resolved": "string",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "active-tab",
           "reflectToAttr": false,
           "docs": "To provide ID of the active tab",
@@ -8433,6 +8433,28 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "extraClass",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": false,
+          "docs": "To add extra classes to ul",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -10393,7 +10415,7 @@
   ],
   "typeLibrary": {
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10413,7 +10435,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10473,7 +10495,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10483,12 +10505,12 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
-      "declaration": "\"filled\" | \"outline\"",
+      "declaration": "\"outline\" | \"filled\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10508,7 +10530,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },

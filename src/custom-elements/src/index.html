@@ -6,11 +6,11 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="https://lib.lumen.com/chi/6.6.0/assets/themes/lumen/images/favicon.svg"
+      href="https://lib.lumen.com/chi/6.6.1/assets/themes/lumen/images/favicon.svg"
     />
-    <link rel="alternate icon" href="https://lib.lumen.com/chi/6.6.0/assets/themes/lumen/images/favicon.ico" />
-    <link rel="stylesheet" href="https://lib.lumen.com/chi/6.6.0/chi-portal.css" />
-    <script src="https://lib.lumen.com/chi/6.6.0/js/chi.js"></script>
+    <link rel="alternate icon" href="https://lib.lumen.com/chi/6.6.1/assets/themes/lumen/images/favicon.ico" />
+    <link rel="stylesheet" href="https://lib.lumen.com/chi/6.6.1/chi-portal.css" />
+    <script src="https://lib.lumen.com/chi/6.6.1/js/chi.js"></script>
     <link rel="icon" href="assets/favicon.ico" />
     <title>Chi - Custom elements</title>
     <script type="module" src="/build/ux-chi-ce.esm.js"></script>
@@ -281,6 +281,22 @@
       <chi-tabs id="chi-tabs-example" active-tab="chi-tabs-example-tab-1"></chi-tabs>
     </div>
     <div class="-p--3">
+      <h3>Tabs with panels</h3>
+      <chi-tabs id="chi-tabs-panel-example" active-tab="chi-tabs-panel-example-tab-1" sliding-border>
+        <div slot="panels">
+          <div class="chi-tabs-panel" id="chi-tabs-panel-example-tab-1" role="tabpanel">
+            <p class="-text">Tab 1 content</p>
+          </div>
+          <div class="chi-tabs-panel" id="chi-tabs-panel-example-tab-2" role="tabpanel">
+            <p class="-text">Tab 2 content</p>
+          </div>
+          <div class="chi-tabs-panel" id="chi-tabs-panel-example-tab-3" role="tabpanel">
+            <p class="-text">Tab 3 content</p>
+          </div>
+        </div>
+      </chi-tabs>
+    </div>
+    <div class="-p--3">
       <h3>Text input</h3>
       <chi-text-input copy-text></chi-text-input>
     </div>
@@ -325,6 +341,20 @@
     {
       label: 'Tab Link',
       id: 'chi-tabs-example-tab-2',
+    },
+  ];
+  document.getElementById('chi-tabs-panel-example').tabs = [
+    {
+      label: 'Active tab',
+      id: 'chi-tabs-panel-example-tab-1',
+    },
+    {
+      label: 'Tab 2',
+      id: 'chi-tabs-panel-example-tab-2',
+    },
+    {
+      label: 'Tab 3',
+      id: 'chi-tabs-panel-example-tab-3',
     },
   ];
 

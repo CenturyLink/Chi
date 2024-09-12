@@ -31,8 +31,8 @@ h3 Solid
 
 h2 Vertical
 h3 Flat
-each style in ['base', 'border']
-  div(class=`test-vertical-flat`)
+.test-vertical-flat
+  each style in ['base', 'border']
     each size in ['sm', 'md', 'lg']
       h4= `Tabs vertical ${size} ${style}`
       ul.chi-tabs.-vertical(class=`-${style} -${size}`)
@@ -46,8 +46,8 @@ each style in ['base', 'border']
           a(href='#') Tab link
 
 h3 Solid
-each style in ['base', 'border']
-  div(class=`test-vertical-solid`)
+.test-vertical-solid
+  each style in ['base', 'border']
     each size in ['sm', 'md', 'lg']
       h4= `Tabs vertical ${size} ${style}`
       ul.chi-tabs.-vertical.-solid(class=`-${style} -${size}`)
@@ -190,8 +190,8 @@ h3 Solid
 
 h2 Vertical Inverse
 h3 Flat
-each style in ['base', 'border']
-  .test-vertical-inverse-flat
+.test-vertical-inverse-flat
+  each style in ['base', 'border']
     each size in ['sm', 'md', 'lg']
       h4= `Tabs vertical ${size} ${style}`
       .-bg--black.-p--3
@@ -206,8 +206,8 @@ each style in ['base', 'border']
             a(href='#') Tab link
 
 h3 Solid
-each style in ['base', 'border']
-  .test-vertical-inverse-solid
+.test-vertical-inverse-solid
+  each style in ['base', 'border']
     each size in ['sm', 'md', 'lg']
       h4= `Tabs vertical ${size} ${style}`
       .-bg--black.-p--3

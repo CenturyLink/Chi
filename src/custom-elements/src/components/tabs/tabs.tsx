@@ -7,6 +7,7 @@ import {
   TABS_CLASSES,
   UTILITY_CLASSES,
   INVERSE_CLASS,
+  GRID_CLASSES,
 } from '../../constants/classes';
 import { ANIMATION_DURATION, TABS_SEE_MORE_DEFAULT_MESSAGE } from '../../constants/constants';
 import { TabTrigger, TabTriggerSizes, TabTriggerPosition, TabTriggerDirections } from '../../constants/types';
@@ -32,7 +33,7 @@ export class Tabs {
   /**
    *  To provide ID of the active tab
    */
-  @Prop() activeTab = '';
+  @Prop({ mutable: true }) activeTab = '';
   /**
    *  To enable animation of the border
    */
@@ -61,6 +62,10 @@ export class Tabs {
    * To set inverse style
    */
   @Prop() inverse = false;
+  /**
+   * To add extra classes to ul
+   */
+  @Prop() extraClass: string = '';
 
   @State() sliding = false;
   @State() isSeeMoreActive = false;
@@ -493,6 +498,10 @@ export class Tabs {
    * to the items hat do not fit.
    */
   setListOverflow() {
+    if (this.vertical) {
+      return;
+    }
+
     const copyTabsData = this._stringifyTabs(this.currentTabs);
 
     let usedSpace = 0;
@@ -680,37 +689,68 @@ export class Tabs {
     return <slot name="panels" />;
   }
 
-  // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
-  render() {
+  getListClasses() {
+    return [
+      TABS_CLASSES.TABS,
+      this.slidingBorder && TABS_CLASSES.ANIMATE,
+      this.border && TABS_CLASSES.BORDER,
+      this.vertical && TABS_CLASSES.VERTICAL,
+      this.solid && TABS_CLASSES.SOLID,
+      this.sliding && TABS_CLASSES.SLIDING,
+      this.size && `-${this.size}`,
+      this.inverse && INVERSE_CLASS,
+      this.extraClass,
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }
+
+  getTabs() {
     const tabElements = this.getTabElements();
     const slidingBorder = this.getSlidingBorder();
     const seeMoreTrigger = this.getSeeMoreTrigger();
-    const dropdowns = this.getDropdowns();
-    const panels = this.getPanels();
 
     return (
+      <ul
+        class={this.getListClasses()}
+        ref={(el) => {
+          this.ulElement = el;
+        }}
+        onMouseLeave={(e) => this.handlerMouseLeave(e, true)}
+        role="tablist"
+      >
+        {tabElements}
+        {seeMoreTrigger}
+        {slidingBorder}
+      </ul>
+    );
+  }
+
+  getChiGridLayout(tabs, dropdowns, panels) {
+    return (
       <Host>
-        <ul
-          class={`
-            ${TABS_CLASSES.TABS}
-            ${this.slidingBorder && TABS_CLASSES.ANIMATE}
-            ${this.border && TABS_CLASSES.BORDER}
-            ${this.vertical && TABS_CLASSES.VERTICAL}
-            ${this.solid && TABS_CLASSES.SOLID}
-            ${this.sliding && TABS_CLASSES.SLIDING}
-            ${this.size ? `-${this.size}` : ''}
-            ${this.inverse && INVERSE_CLASS}
-          `}
-          ref={(el) => {
-            this.ulElement = el;
-          }}
-          onMouseLeave={(e) => this.handlerMouseLeave(e, true)}
-          role="tablist"
-        >
-          {tabElements}
-          {seeMoreTrigger}
-          {slidingBorder}
-        </ul>
+        <div class={`${GRID_CLASSES.GRID} ${GRID_CLASSES.NO_GUTTER}`}>
+          <div class={GRID_CLASSES.COL}>
+            {tabs}
+            {dropdowns}
+          </div>
+          {panels}
+        </div>
+      </Host>
+    );
+  }
+
+  // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
+  render() {
+    const dropdowns = this.getDropdowns();
+    const panels = this.getPanels();
+    const tabs = this.getTabs();
+
+    return this.vertical && this.el.querySelector('[slot="panels"] .chi-tabs-panel') ? (
+      this.getChiGridLayout(tabs, dropdowns, panels)
+    ) : (
+      <Host>
+        {tabs}
         {dropdowns}
         {panels}
       </Host>
