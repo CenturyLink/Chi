@@ -64,6 +64,11 @@ export class Link {
    */
   @Prop({ reflect: true }) target: string;
 
+  /**
+   * To set hover state
+   */
+  @Prop() _hover: boolean = false;
+
   @Watch('size')
   sizeValidation(newValue: string) {
     if (!!newValue && !['xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
@@ -92,6 +97,7 @@ export class Link {
           ${this.cta ? '-cta' : ''}
           ${this.disabled ? '-disabled' : ''}
           ${this.size ? `-${this.size}` : ''}
+          ${this._hover ? `-hover` : ''}
           ${this.noUnderline ? `-no-underline` : ''}
           ${this.noHoverUnderline ? `-no-hover-underline` : ''}`}
         href={this.href}

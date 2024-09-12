@@ -31,7 +31,8 @@ a,
   cursor: pointer;
   text-decoration: $link-text-decoration;
 
-  &:hover {
+  &:hover,
+  &.-hover {
     color: $link-hover-color;
     text-decoration: $link-hover-text-decoration;
   }
@@ -67,7 +68,8 @@ a,
       width: 1.5rem;
     }
 
-    &:hover {
+    &:hover,
+    &.-hover {
       color: $link-cta-hover-color;
 
       &::after {
@@ -99,7 +101,8 @@ a,
   }
 
   &.-no-hover-underline {
-    &:hover {
+    &:hover,
+    &.-hover {
       text-decoration: none;
     }
   }
