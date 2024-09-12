@@ -155,8 +155,8 @@ h2 Examples
               aria-controls="html-base-inverse") HTML Blueprint
       .chi-tabs-panel.-active#webcomponent-base-inverse(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border inverse>
-            <div class="-py--1 -px--3" slot="panels">
+          <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border inverse extra-class="-px--3">
+            <div class="-py--1 -px--3 -bg--white" slot="panels">
               <div class="chi-tabs-panel" id="example__horizontal-flat-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -420,7 +420,7 @@ h2 Examples
             | You may use your own solution, or use Chi's vanilla JavaScript solution,
             | <a href="../../getting-started/installation">Chi.js</a>.
         :code(lang='html')
-          <ul class="chi-tabs -vertical" id="example__vertical-flat" role="tablist" aria-label="Tabs">
+          <ul class="chi-tabs -vertical -animated" id="example__vertical-flat" role="tablist" aria-label="Tabs">
             <li class="-active">
               <a
                 href="#example__vertical-flat-1"
@@ -628,7 +628,7 @@ h2 Examples
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs -vertical -solid -xl" id="example__vertical-solid" role="tablist" aria-label="Tabs">
+        <ul class="chi-tabs -vertical -solid -xl -animated" id="example__vertical-solid" role="tablist" aria-label="Tabs">
           <li class="-active">
             <a
               href="#example__vertical-solid-1"
@@ -914,7 +914,7 @@ h2 Examples
             aria-controls="html-portal-vertical-flat") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-vertical-flat(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="example__portal-vertical-flat" active-tab="example__portal-vertical-flat-1" vertical>
+        <chi-tabs id="example__portal-vertical-flat" active-tab="example__portal-vertical-flat-1" vertical sliding-border>
           <div slot="panels">
             <div class="chi-tabs-panel" id="example__portal-vertical-flat-1" role="tabpanel">
               <p class="-text">Tab 1 content<p>
@@ -953,7 +953,7 @@ h2 Examples
       :code(lang='html')
         <div class="chi-grid">
           <div class="chi-col">
-            <ul class="chi-tabs -vertical" id="example__portal-vertical-flat" role="tablist" aria-label="Tabs">
+            <ul class="chi-tabs -vertical -animated" id="example__portal-vertical-flat" role="tablist" aria-label="Tabs">
               <li class="-active">
                 <a
                   href="#example__portal-vertical-flat-1"
@@ -1457,7 +1457,7 @@ h3 Flat
 h3 Solid
 .example.-mb--3
   .-p--3.-pb--4
-    chi-tabs(active-tab='tab-aa' id='example__tabbed-navigation-solid' size='lg' solid sliding-border)
+    chi-tabs(active-tab='tab-aa' id='example__tabbed-navigation-solid' size='lg' solid)
   .example-tabs.-pl--2
     ul.chi-tabs#example-tabs-solid-tabbed-navigation
       li.-active
@@ -1466,7 +1466,7 @@ h3 Solid
         a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-solid-tabbed-navigation(role="tabpanel")
     :code(lang='html')
-      <chi-tabs id="example__tabbed-navigation-solid" active-tab="tab-a" size="lg" solid sliding-border></chi-tabs>
+      <chi-tabs id="example__tabbed-navigation-solid" active-tab="tab-a" size="lg" solid></chi-tabs>
 
       <script>
         document.querySelector('#example__tabbed-navigation-solid').tabs = [
