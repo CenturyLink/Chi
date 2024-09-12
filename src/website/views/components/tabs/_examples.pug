@@ -356,14 +356,15 @@ h2 Examples
   .example.-mb--3
     #chi-tabs-panel--vertical-base.chi-tabs-panel.-active(role="tabpanel")
       .-bg--grey-20.-p--3
-        chi-tabs#example__vertical-flat(active-tab="example__vertical-flat-1" sliding-border vertical)
-          div(slot="panels" class="chi-col -w--6 -w-sm--8 -bg--white -p--3")
-            .chi-tabs-panel#example__vertical-flat-1(role="tabpanel")
-              p.-text Tab 1 content
-            .chi-tabs-panel#example__vertical-flat-2(role="tabpanel")
-              p.-text Tab 2 content
-            .chi-tabs-panel#example__vertical-flat-3(role="tabpanel")
-              p.-text Tab 3 content
+        .-bg--white.-p--3
+          chi-tabs#example__vertical-flat(active-tab="example__vertical-flat-1" sliding-border vertical)
+            div(slot="panels" class="chi-col -w--6 -w-sm--8 -bg--white -p--3")
+              .chi-tabs-panel#example__vertical-flat-1(role="tabpanel")
+                p.-text Tab 1 content
+              .chi-tabs-panel#example__vertical-flat-2(role="tabpanel")
+                p.-text Tab 2 content
+              .chi-tabs-panel#example__vertical-flat-3(role="tabpanel")
+                p.-text Tab 3 content
 
       .example-tabs.-pl--2
         ul.chi-tabs#example-vertical-base-code(role="tablist" aria-label="Tabs")
@@ -459,7 +460,7 @@ h2 Examples
 
     #chi-tabs-panel--vertical-inverse.chi-tabs-panel(role="tabpanel")
       .-bg--grey-20.-p--3
-        .-bg--black
+        .-bg--black.-p--3
           chi-tabs#example__vertical-flat-inverse(active-tab="example__vertical-flat-inverse-1" sliding-border vertical inverse)
             .-bg--white(slot="panels" class="chi-col -w--6 -w-sm--8 -p--3")
               .chi-tabs-panel#example__vertical-flat-inverse-1(role="tabpanel")
