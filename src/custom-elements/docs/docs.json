@@ -10415,7 +10415,7 @@
   ],
   "typeLibrary": {
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10435,7 +10435,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"muted\" | \"info\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10495,7 +10495,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10505,12 +10505,12 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
-      "declaration": "\"filled\" | \"outline\"",
+      "declaration": "\"outline\" | \"filled\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10530,7 +10530,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
