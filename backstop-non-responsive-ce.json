@@ -783,6 +783,33 @@
       "requireSameDimensions": true
     },
     {
+      "label": "tabs",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/tabs.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-horizontal-flat",
+        ".test-horizontal-solid",
+        ".test-vertical-flat",
+        ".test-vertical-solid",
+        ".test-vertical-inverse-solid",
+        ".test-vertical-inverse-flat",
+        ".test-horizontal-solid-inverse",
+        ".test-horizontal-flat-inverse"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "textarea",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/textarea.html",

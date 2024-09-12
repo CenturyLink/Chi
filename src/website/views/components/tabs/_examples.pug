@@ -566,7 +566,7 @@ h2 Examples
   .example.-mb--3
     .-bg--grey-20.-p--3
       .-bg--white.-p--3
-        chi-tabs#example__vertical-solid(active-tab="example__vertical-solid-1" size="xl" vertical solid sliding-border)
+        chi-tabs#example__vertical-solid(active-tab="example__vertical-solid-1" size="xl" vertical solid)
           div(slot="panels" class="chi-col -w--6 -w-sm--8 -p--3 -bg--white")
             .chi-tabs-panel#example__vertical-solid-1(role="tabpanel")
               p.-text Tab 1 content
@@ -592,7 +592,7 @@ h2 Examples
             aria-controls="html-vertical-solid") HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-vertical-solid(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="example__vertical-solid" active-tab="example__vertical-solid-1" size="xl" vertical solid sliding-border>
+        <chi-tabs id="example__vertical-solid" active-tab="example__vertical-solid-1" size="xl" vertical solid>
           <div slot="panels" class="chi-col -w--6 -w-sm--8 -p--3 -bg--white">
             <div class="chi-tabs-panel" id="example__vertical-solid-1" role="tabpanel">
               <p class="-text">Tab 1 content</p>
@@ -1458,7 +1458,7 @@ h3 Flat
 h3 Solid
 .example.-mb--3
   .-p--3.-pb--4
-    chi-tabs(active-tab='tab-aa' id='example__tabbed-navigation-solid' size='lg' solid sliding-border)
+    chi-tabs(active-tab='tab-aa' id='example__tabbed-navigation-solid' size='lg' solid)
   .example-tabs.-pl--2
     ul.chi-tabs#example-tabs-solid-tabbed-navigation
       li.-active
@@ -1467,7 +1467,7 @@ h3 Solid
         a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-solid-tabbed-navigation(role="tabpanel")
     :code(lang='html')
-      <chi-tabs id="example__tabbed-navigation-solid" active-tab="tab-a" size="lg" solid sliding-border></chi-tabs>
+      <chi-tabs id="example__tabbed-navigation-solid" active-tab="tab-a" size="lg" solid></chi-tabs>
 
       <script>
         document.querySelector('#example__tabbed-navigation-solid').tabs = [
