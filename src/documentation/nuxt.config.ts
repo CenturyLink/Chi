@@ -104,7 +104,7 @@ export default defineNuxtConfig({
         compilerOptions: {
           experimentalDecorators: true,
         },
-      },
+      }
     },
     build: {
       chunkSizeWarningLimit: 1000,
@@ -114,6 +114,9 @@ export default defineNuxtConfig({
       watch: {
         ignored: ['!./pages/**/*.vue', '!./**/*.ts'],
       },
+      hmr: {
+        clientPort: 3000
+      }
     },
   },
   nitro: {

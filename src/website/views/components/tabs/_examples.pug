@@ -130,7 +130,7 @@ h2 Examples
     #chi-tabs-panel--horizontal-inverse.chi-tabs-panel(role="tabpanel")
       .-bg--grey-20.-p--3
         .-bg--black
-          chi-tabs#example__horizontal-flat-inverse(active-tab="example__horizontal-flat-inverse-1" sliding-border inverse)
+          chi-tabs#example__horizontal-flat-inverse(active-tab="example__horizontal-flat-inverse-1" sliding-border inverse extra-class="-px--3")
             .-bg--white.-py--1.-px--3(slot="panels")
               .chi-tabs-panel#example__horizontal-flat-inverse-1(role="tabpanel")
                 p.-text Tab 1 content
@@ -155,8 +155,8 @@ h2 Examples
               aria-controls="html-base-inverse") HTML Blueprint
       .chi-tabs-panel.-active#webcomponent-base-inverse(role="tabpanel")
         :code(lang='html')
-          <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border inverse>
-            <div class="-py--1 -px--3" slot="panels">
+          <chi-tabs id="example__horizontal-flat" active-tab="example__horizontal-flat-1" sliding-border inverse extra-class="-px--3">
+            <div class="-py--1 -px--3 -bg--white" slot="panels">
               <div class="chi-tabs-panel" id="example__horizontal-flat-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -356,67 +356,35 @@ h2 Examples
   .example.-mb--3
     #chi-tabs-panel--vertical-base.chi-tabs-panel.-active(role="tabpanel")
       .-bg--grey-20.-p--3
-        //- TODO: Use web component when vertical tab issue is fixed
-        //- chi-tabs#example__vertical-flat(active-tab="example__vertical-flat-1" sliding-border vertical)
-          div(slot="panels")
-            .chi-tabs-panel#example__vertical-flat-1(role="tabpanel")
-              p.-text Tab 1 content
-            .chi-tabs-panel#example__vertical-flat-2(role="tabpanel")
-              p.-text Tab 2 content
-            .chi-tabs-panel#example__vertical-flat-3(role="tabpanel")
-              p.-text Tab 3 content
-
-        .chi-grid.-no-gutter.-bg--white
-          //- Tabs
-          .chi-col.-w--6.-w-sm--4.-p--3
-            ul#example__vertical-flat.chi-tabs.-vertical(role="tablist" aria-label="Tabs")
-              li.-active
-                a(
-                  href="#example__vertical-flat-1"
-                  role="tab"
-                  tabindex="-1"
-                  aria-selected="true"
-                  aria-controls="example__vertical-flat-1") Active tab
-              li
-                a(
-                  href="#example__vertical-flat-2"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__vertical-flat-2") Tab Link
-              li
-                a(
-                  href="#example__vertical-flat-3"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__vertical-flat-3") Tab Link
-          //- Panels
-          .chi-col.-p--3
-            div#example__vertical-flat-1.chi-tabs-panel.-active(role="tabpanel")
-              p.-text Tab 1 content
-            div#example__vertical-flat-2.chi-tabs-panel(role="tabpanel")
-              p.-text Tab 2 content
-            div#example__vertical-flat-3.chi-tabs-panel(role="tabpanel")
+        .-bg--white.-p--3
+          chi-tabs#example__vertical-flat(active-tab="example__vertical-flat-1" sliding-border vertical)
+            div(slot="panels" class="chi-col -w--6 -w-sm--8 -bg--white -p--3")
+              .chi-tabs-panel#example__vertical-flat-1(role="tabpanel")
+                p.-text Tab 1 content
+              .chi-tabs-panel#example__vertical-flat-2(role="tabpanel")
+                p.-text Tab 2 content
+              .chi-tabs-panel#example__vertical-flat-3(role="tabpanel")
                 p.-text Tab 3 content
 
       .example-tabs.-pl--2
         ul.chi-tabs#example-vertical-base-code(role="tablist" aria-label="Tabs")
-          li.-disabled
+          li.-active
             a(
               href=`#webcomponent-vertical-base`
               role="tab"
               aria-selected="true"
               tabindex="-1"
               aria-controls="webcomponent-vertical") Web Component
-          li.-active
+          li
             a(
               href=`#html-vertical-flat`
               role="tab"
               aria-selected="false"
               aria-controls="html-vertical") HTML Blueprint
-      .chi-tabs-panel#webcomponent-vertical-base(role="tabpanel")
+      .chi-tabs-panel.-active#webcomponent-vertical-base(role="tabpanel")
         :code(lang='html')
           <chi-tabs id="example__vertical-flat" active-tab="example__vertical-flat-1" sliding-border vertical>
-            <div slot="panels">
+            <div slot="panels" class="chi-col -w--6 -w-sm--8 -bg--white -p--3">
               <div class="chi-tabs-panel" id="example__vertical-flat-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -445,14 +413,14 @@ h2 Examples
               }
             ];
           </script>
-      .chi-tabs-panel.-active#html-vertical-flat(role="tabpanel")
+      .chi-tabs-panel#html-vertical-flat(role="tabpanel")
         .chi-tab__description
           span.-text--grey
             | This HTML Blueprint requires JavaScript.
             | You may use your own solution, or use Chi's vanilla JavaScript solution,
             | <a href="../../getting-started/installation">Chi.js</a>.
         :code(lang='html')
-          <ul class="chi-tabs -vertical" id="example__vertical-flat" role="tablist" aria-label="Tabs">
+          <ul class="chi-tabs -vertical -animated" id="example__vertical-flat" role="tablist" aria-label="Tabs">
             <li class="-active">
               <a
                 href="#example__vertical-flat-1"
@@ -492,68 +460,35 @@ h2 Examples
 
     #chi-tabs-panel--vertical-inverse.chi-tabs-panel(role="tabpanel")
       .-bg--grey-20.-p--3
-        .-bg--black
-          //- TODO: Use web component when vertical tab issue is fixed
-          //- chi-tabs#example__vertical-flat-inverse(active-tab="example__vertical-flat-inverse-1" sliding-border vertical inverse)
-              .-bg--white(slot="panels")
-                .chi-tabs-panel#example__vertical-flat-inverse-1(role="tabpanel")
-                  p.-text Tab 1 content
-                .chi-tabs-panel#example__vertical-flat-inverse-2(role="tabpanel")
-                  p.-text Tab 2 content
-                .chi-tabs-panel#example__vertical-flat-inverse-3(role="tabpanel")
-                  p.-text Tab 3 content
-
-          .chi-grid.-no-gutter.-bg--black
-            //- Tabs
-            .chi-col.-w--6.-w-sm--4.-p--3
-              ul#example__vertical-flat-inverse.chi-tabs.-vertical.-inverse(role="tablist" aria-label="Tabs")
-                li.-active
-                  a(
-                    href="#example__vertical-flat-inverse-1"
-                    role="tab"
-                    tabindex="-1"
-                    aria-selected="true"
-                    aria-controls="example__vertical-flat-inverse-1") Active tab
-                li
-                  a(
-                    href="#example__vertical-flat-inverse-2"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="example__vertical-flat-inverse-2") Tab Link
-                li
-                  a(
-                    href="#example__vertical-flat-inverse-3"
-                    role="tab"
-                    aria-selected="false"
-                    aria-controls="example__vertical-flat-inverse-3") Tab Link
-            //- Panels
-            .chi-col.-bg--white.-p--3
-              div#example__vertical-flat-inverse-1.chi-tabs-panel.-active(role="tabpanel")
+        .-bg--black.-p--3
+          chi-tabs#example__vertical-flat-inverse(active-tab="example__vertical-flat-inverse-1" sliding-border vertical inverse)
+            .-bg--white(slot="panels" class="chi-col -w--6 -w-sm--8 -p--3")
+              .chi-tabs-panel#example__vertical-flat-inverse-1(role="tabpanel")
                 p.-text Tab 1 content
-              div#example__vertical-flat-inverse-2.chi-tabs-panel(role="tabpanel")
+              .chi-tabs-panel#example__vertical-flat-inverse-2(role="tabpanel")
                 p.-text Tab 2 content
-              div#example__vertical-flat-inverse-3.chi-tabs-panel(role="tabpanel")
+              .chi-tabs-panel#example__vertical-flat-inverse-3(role="tabpanel")
                 p.-text Tab 3 content
 
       .example-tabs.-pl--2
         ul.chi-tabs#example-vertical-inverse-tabs(role="tablist" aria-label="Tabs")
-          li.-disabled
+          li.-active
             a(
               href=`#webcomponent-vertical-inverse`
               role="tab"
               tabindex="-1"
               aria-selected="true"
               aria-controls="webcomponent-vertical-inverse") Web Component
-          li.-active
+          li
             a(
               href=`#html-vertical-inverse`
               role="tab"
               aria-selected="false"
               aria-controls="html-vertical-inverse") HTML Blueprint
-      .chi-tabs-panel#webcomponent-vertical-inverse(role="tabpanel")
+      .chi-tabs-panel.-active#webcomponent-vertical-inverse(role="tabpanel")
         :code(lang='html')
           <chi-tabs id="example__vertical-flat-inverse" active-tab="example__vertical-flat-inverse-1" sliding-border vertical inverse>
-            <div slot="panels">
+            <div slot="panels" class="chi-col -w--6 -w-sm--8 -p--3">
               <div class="chi-tabs-panel" id="example__vertical-flat-inverse-1" role="tabpanel">
                 <p class="-text">Tab 1 content</p>
               </div>
@@ -582,7 +517,7 @@ h2 Examples
               }
             ];
           </script>
-      .chi-tabs-panel.-active#html-vertical-inverse(role="tabpanel")
+      .chi-tabs-panel#html-vertical-inverse(role="tabpanel")
         .chi-tab__description
           span.-text--grey
             | This HTML Blueprint requires JavaScript.
@@ -630,67 +565,35 @@ h2 Examples
   h4 Solid
   .example.-mb--3
     .-bg--grey-20.-p--3
-      //- TODO: Use web component when vertical tab issue is fixed
-      //- chi-tabs#example__vertical-solid(active-tab="example__vertical-solid-1" size="xl" vertical solid)
-        div(slot="panels")
-          .chi-tabs-panel#example__vertical-solid-1(role="tabpanel")
-            p.-text Tab 1 content
-          .chi-tabs-panel#example__vertical-solid-2(role="tabpanel")
-            p.-text Tab 2 content
-          .chi-tabs-panel#example__vertical-solid-3(role="tabpanel")
-            p.-text Tab 3 content
-
-      .chi-grid.-no-gutter.-bg--white
-        //- Tabs
-        .chi-col.-w--6.-w-sm--4.-p--3
-          ul.chi-tabs.-vertical.-solid.-xl#example-vertical-solid(role="tablist" aria-label="Tabs")
-            li.-active
-              a(
-                href="#example__vertical-solid-1"
-                role="tab"
-                tabindex="-1"
-                aria-selected="true"
-                aria-controls="example__vertical-solid-1") Active tab
-            li
-              a(
-                href="#example__vertical-solid-2"
-                role="tab"
-                aria-selected="false"
-                aria-controls="example__vertical-solid-2") Tab Link
-            li
-              a(
-                href="#example__vertical-solid-3"
-                role="tab"
-                aria-selected="false"
-                aria-controls="example__vertical-solid-3") Tab Link
-        //- Panels
-        .chi-col.-p--3
-          div#example__vertical-solid-1.chi-tabs-panel.-active(role="tabpanel")
-            p.-text Tab 1 content
-          div#example__vertical-solid-2.chi-tabs-panel(role="tabpanel")
-            p.-text Tab 2 content
-          div#example__vertical-solid-3.chi-tabs-panel(role="tabpanel")
-            p.-text Tab 3 content
+      .-bg--white.-p--3
+        chi-tabs#example__vertical-solid(active-tab="example__vertical-solid-1" size="xl" vertical solid sliding-border)
+          div(slot="panels" class="chi-col -w--6 -w-sm--8 -p--3 -bg--white")
+            .chi-tabs-panel#example__vertical-solid-1(role="tabpanel")
+              p.-text Tab 1 content
+            .chi-tabs-panel#example__vertical-solid-2(role="tabpanel")
+              p.-text Tab 2 content
+            .chi-tabs-panel#example__vertical-solid-3(role="tabpanel")
+              p.-text Tab 3 content
 
     .example-tabs.-pl--2
       ul.chi-tabs#example-vertical-solid-code(role="tablist" aria-label="Tabs")
-        li
+        li.-active
           a(
             href=`#webcomponent-vertical-solid`
             role="tab"
             aria-selected="true"
             tabindex="-1"
             aria-controls="webcomponent-vertical") Web Component
-        li.-active
+        li
           a(
             href=`#html-vertical-solid`
             role="tab"
             aria-selected="false"
             aria-controls="html-vertical-solid") HTML Blueprint
-    .chi-tabs-panel#webcomponent-vertical-solid(role="tabpanel")
+    .chi-tabs-panel.-active#webcomponent-vertical-solid(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="example__vertical-solid" active-tab="example__vertical-solid-1" size="xl" vertical solid>
-          <div slot="panels">
+        <chi-tabs id="example__vertical-solid" active-tab="example__vertical-solid-1" size="xl" vertical solid sliding-border>
+          <div slot="panels" class="chi-col -w--6 -w-sm--8 -p--3 -bg--white">
             <div class="chi-tabs-panel" id="example__vertical-solid-1" role="tabpanel">
               <p class="-text">Tab 1 content</p>
             </div>
@@ -719,14 +622,14 @@ h2 Examples
             }
           ];
         </script>
-    .chi-tabs-panel.-active#html-vertical-solid(role="tabpanel")
+    .chi-tabs-panel#html-vertical-solid(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <ul class="chi-tabs -vertical -solid -xl" id="example__vertical-solid" role="tablist" aria-label="Tabs">
+        <ul class="chi-tabs -vertical -solid -xl -animated" id="example__vertical-solid" role="tablist" aria-label="Tabs">
           <li class="-active">
             <a
               href="#example__vertical-solid-1"
@@ -986,9 +889,8 @@ h2 Examples
   .example.-mb--3
     .-bg--grey-20.-p--3
       .-bg--white.-p--3
-        //- TODO: Use web component when vertical tab issue is fixed
-        //- chi-tabs#example__portal-vertical-flat(active-tab="example__portal-vertical-flat-1" vertical)
-          div(slot="panels")
+        chi-tabs#example__portal-vertical-flat(active-tab="example__portal-vertical-flat-1" vertical sliding-border)
+          div(slot="panels" class="chi-col -w--6 -w-sm--8")
             .chi-tabs-panel#example__portal-vertical-flat-1(role="tabpanel")
               p.-text Tab 1 content
             .chi-tabs-panel#example__portal-vertical-flat-2(role="tabpanel")
@@ -996,56 +898,24 @@ h2 Examples
             .chi-tabs-panel#example__portal-vertical-flat-3(role="tabpanel")
               p.-text Tab 3 content
 
-        .chi-grid.-no-gutter.-bg--white
-          //- Tabs
-          .chi-col.-w--6.-w-sm--4
-            ul#example__portal-vertical-flat.chi-tabs.-vertical(role="tablist" aria-label="Tabs")
-              li.-active
-                a(
-                  href="#example__portal-vertical-flat-1"
-                  role="tab"
-                  tabindex="-1"
-                  aria-selected="true"
-                  aria-controls="example__portal-vertical-flat-1") Active tab
-              li
-                a(
-                  href="#example__portal-vertical-flat-2"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__portal-vertical-flat-2") Tab Link
-              li
-                a(
-                  href="#example__portal-vertical-flat-3"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__portal-vertical-flat-3") Tab Link
-          //- Panels
-          .chi-col
-            div#example__portal-vertical-flat-1.chi-tabs-panel.-active(role="tabpanel")
-              p.-text Tab 1 content
-            div#example__portal-vertical-flat-2.chi-tabs-panel(role="tabpanel")
-              p.-text Tab 2 content
-            div#example__portal-vertical-flat-3.chi-tabs-panel(role="tabpanel")
-              p.-text Tab 3 content
-
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-vertical-flat-code(role="tablist" aria-label="Tabs")
-        li.-disabled
+        li.-active
           a(
             href=`#webcomponent-portal-vertical-flat`
             role="tab"
             aria-selected="true"
             tabindex="-1"
             aria-controls="webcomponent-portal-vertical-flat") Web Component
-        li.-active
+        li
           a(
             href=`#html-portal-vertical-flat`
             role="tab"
             aria-selected="false"
             aria-controls="html-portal-vertical-flat") HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-vertical-flat(role="tabpanel")
+    .chi-tabs-panel.-active#webcomponent-portal-vertical-flat(role="tabpanel")
       :code(lang='html')
-        <chi-tabs id="example__portal-vertical-flat" active-tab="example__portal-vertical-flat-1" vertical>
+        <chi-tabs id="example__portal-vertical-flat" active-tab="example__portal-vertical-flat-1" vertical sliding-border>
           <div slot="panels">
             <div class="chi-tabs-panel" id="example__portal-vertical-flat-1" role="tabpanel">
               <p class="-text">Tab 1 content<p>
@@ -1075,7 +945,7 @@ h2 Examples
             }
           ];
         </script>
-    .chi-tabs-panel.-active#html-portal-vertical-flat(role="tabpanel")
+    .chi-tabs-panel#html-portal-vertical-flat(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -1084,7 +954,7 @@ h2 Examples
       :code(lang='html')
         <div class="chi-grid">
           <div class="chi-col">
-            <ul class="chi-tabs -vertical" id="example__portal-vertical-flat" role="tablist" aria-label="Tabs">
+            <ul class="chi-tabs -vertical -animated" id="example__portal-vertical-flat" role="tablist" aria-label="Tabs">
               <li class="-active">
                 <a
                   href="#example__portal-vertical-flat-1"
@@ -1129,9 +999,8 @@ h2 Examples
   .example.-mb--3
     .-bg--grey-20.-p--3
       .-bg--white.-p--3
-        //- TODO: Use web component when vertical tab issue is fixed
-        //- chi-tabs#example__portal-vertical-solid(active-tab="example__portal-vertical-solid-1" size="xl" vertical)
-          div(slot="panels")
+        chi-tabs#example__portal-vertical-solid(active-tab="example__portal-vertical-solid-1" size="xl" vertical solid)
+          div(slot="panels" class="chi-col -w--6 -w-sm--8")
             .chi-tabs-panel#example__portal-vertical-solid-1(role="tabpanel")
               p.-text Tab 1 content
             .chi-tabs-panel#example__portal-vertical-solid-2(role="tabpanel")
@@ -1139,54 +1008,22 @@ h2 Examples
             .chi-tabs-panel#example__portal-vertical-solid-3(role="tabpanel")
               p.-text Tab 3 content
 
-        .chi-grid.-no-gutter.-bg--white
-          //- Tabs
-          .chi-col.-w--6.-w-sm--4
-            ul#example__portal-vertical-solid.chi-tabs.-vertical.-solid.-xl(role="tablist" aria-label="Tabs")
-              li.-active
-                a(
-                  href="#example__portal-vertical-solid-1"
-                  role="tab"
-                  tabindex="-1"
-                  aria-selected="true"
-                  aria-controls="example__portal-vertical-solid-1") Active tab
-              li
-                a(
-                  href="#example__portal-vertical-solid-2"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__portal-vertical-solid-2") Tab Link
-              li
-                a(
-                  href="#example__portal-vertical-solid-3"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="example__portal-vertical-solid-3") Tab Link
-          //- Panels
-          .chi-col.-px--3
-            div#example__portal-vertical-solid-1.chi-tabs-panel.-active(role="tabpanel")
-              p.-text Tab 1 content
-            div#example__portal-vertical-solid-2.chi-tabs-panel(role="tabpanel")
-              p.-text Tab 2 content
-            div#example__portal-vertical-solid-3.chi-tabs-panel(role="tabpanel")
-              p.-text Tab 3 content
-
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-vertical(role="tablist" aria-label="Tabs")
-        li.-disabled
+        li.-active
           a(
             href=`#webcomponent-portal-vertical`
             role="tab"
             aria-selected="false"
             tabindex="-1"
             aria-controls="webcomponent-portal-vertical") Web Component
-        li.-active
+        li
           a(
             href=`#html-portal-vertical`
             role="tab"
             aria-selected="true"
             aria-controls="html-portal-vertical") HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-vertical(role="tabpanel")
+    .chi-tabs-panel.-active#webcomponent-portal-vertical(role="tabpanel")
       :code(lang='html')
         <chi-tabs id="example__portal-vertical-solid" active-tab="example__portal-vertical-solid" size="xl" vertical solid>
           <div slot="panels">
@@ -1218,7 +1055,7 @@ h2 Examples
             }
           ];
         </script>
-    .chi-tabs-panel.-active#html-portal-vertical(role="tabpanel")
+    .chi-tabs-panel#html-portal-vertical(role="tabpanel")
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -2997,7 +2834,6 @@ script.
       chi.tab(document.getElementById('example-tabs-tabbed-navigation'));
       chi.tab(document.getElementById('example-tabs-solid-tabbed-navigation'));
       chi.tab(document.getElementById('example-nav-contained'));
-      chi.tab(document.getElementById('example-vertical-solid'));
       chi.tab(document.getElementById('example-vertical-solid-code'));
       chi.tab(document.getElementById('example-vertical-inverse-tabs'));
       chi.tab(document.getElementById('example-nav4-enabled'));
@@ -3015,10 +2851,7 @@ script.
       chi.tab(document.getElementById('example-vertical-subtabs-inverse'));
       chi.tab(document.getElementById('example-solid-bordered'));
       chi.tab(document.getElementById('example-vertical-base-code'));
-      chi.tab(document.getElementById('example__vertical-flat'));
       chi.tab(document.getElementById('example__vertical-flat-inverse'));
-      chi.tab(document.getElementById('example__portal-vertical-flat'));
-      chi.tab(document.getElementById('example__portal-vertical-solid'));
       chi.tab(document.getElementById('example-portal-vertical-flat-code'));
       chi.tab(document.getElementById('example-portal-bordered'));
       chi.tab(document.getElementById('example-portal-solid-bordered'));
@@ -3339,63 +3172,80 @@ script.
         ];
       }
 
-      //- TODO: Use web component when vertical tab issue is fixed
-      //- const tabVerticalFlat = document.querySelector('#example__vertical-flat');
+      const tabVerticalFlat = document.querySelector('#example__vertical-flat');
 
-      //- if (tabVerticalFlat) {
-      //-   tabVerticalFlat.tabs = [
-      //-     {
-      //-       label: 'Active Tab',
-      //-       id: 'example__vertical-flat-1',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-flat-2',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-flat-3',
-      //-     }
-      //-   ];
-      //- }
+      if (tabVerticalFlat) {
+        tabVerticalFlat.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'example__vertical-flat-1',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-flat-2',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-flat-3',
+          }
+        ];
+      }
 
-      //- const tabVerticalFlatInverse = document.querySelector('#example__vertical-flat-inverse');
+      const tabVerticalFlatInverse = document.querySelector('#example__vertical-flat-inverse');
 
-      //- if (tabVerticalFlatInverse) {
-      //-   tabVerticalFlatInverse.tabs = [
-      //-     {
-      //-       label: 'Active Tab',
-      //-       id: 'example__vertical-flat-inverse-1',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-flat-inverse-2',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-flat-inverse-3',
-      //-     }
-      //-   ];
-      //- }
+      if (tabVerticalFlatInverse) {
+        tabVerticalFlatInverse.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'example__vertical-flat-inverse-1',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-flat-inverse-2',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-flat-inverse-3',
+          }
+        ];
+      }
 
-      //- const tabVerticalSolid = document.querySelector('#example__vertical-solid');
+      const tabVerticalSolid = document.querySelector('#example__vertical-solid');
 
-      //- if (tabVerticalSolid) {
-      //-   tabVerticalSolid.tabs = [
-      //-     {
-      //-       label: 'Active Tab',
-      //-       id: 'example__vertical-solid-1',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-solid-2',
-      //-     },
-      //-     {
-      //-       label: 'Tab Link',
-      //-       id: 'example__vertical-solid-3',
-      //-     }
-      //-   ];
-      //- }
+      if (tabVerticalSolid) {
+        tabVerticalSolid.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'example__vertical-solid-1',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-solid-2',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__vertical-solid-3',
+          }
+        ];
+      }
+
+      const tabVerticalSolidPortal = document.getElementById('example__portal-vertical-solid');
+      if (tabVerticalSolidPortal) {
+        tabVerticalSolidPortal.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'example__portal-vertical-solid-1',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__portal-vertical-solid-2',
+          },
+          {
+            label: 'Tab Link',
+            id: 'example__portal-vertical-solid-3',
+          }
+        ];
+      }
 
       const tabBordered = document.querySelector('#example__bordered');
 
