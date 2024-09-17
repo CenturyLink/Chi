@@ -1,19 +1,19 @@
 # CHANGELOG
 
-## 6.6.2 (September 17, 2024)
+## 6.6.2 (September 18, 2024)
 
 ### Components
 
 #### Changed
 
-- Changed: Link hover styles on Lumen theme
+- Changed: Link `hover` styles on Lumen theme.
 
 ### Documentation
 
 #### Changed
 
-- Footer Partners and Networking links has been updated
-- Footer Lumen Platform link has been removed
+- Changed: Footer `Partners` and `Networking` links has been updated.
+- Changed: Footer `Lumen Platform `link has been removed.
 
 ## 6.6.1 (September 12, 2024)
 
