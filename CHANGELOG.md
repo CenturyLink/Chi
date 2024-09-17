@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.6.2 (September 17, 2024)
+
+### Documentation
+
+#### Changed
+
+- Changed: Update footer links.
+
+### Components
+
+#### Fix
+
+- Fix: Link styles on Lumen theme
+
 ## 6.6.1 (September 12, 2024)
 
 ### Documentation

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-09-11T13:38:59",
+  "timestamp": "2024-09-17T08:28:26",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.18.1",
-    "typescriptVersion": "5.4.5"
+    "version": "4.21.0",
+    "typescriptVersion": "5.5.3"
   },
   "components": [
     {
@@ -2951,7 +2951,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -5561,7 +5561,7 @@
               "CountryCode": {
                 "location": "import",
                 "path": "libphonenumber-js",
-                "id": ""
+                "id": "node_modules::CountryCode"
               }
             }
           },
@@ -7042,7 +7042,7 @@
               "Placement": {
                 "location": "import",
                 "path": "popper.js",
-                "id": ""
+                "id": "node_modules::Placement"
               }
             }
           },
@@ -10415,7 +10415,7 @@
   ],
   "typeLibrary": {
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"muted\" | \"info\" | \"success\" | \"warning\" | \"danger\"",
+      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10435,7 +10435,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"muted\" | \"info\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10495,7 +10495,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10505,12 +10505,12 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
-      "declaration": "\"outline\" | \"filled\"",
+      "declaration": "\"filled\" | \"outline\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -10530,7 +10530,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"md\" | \"sm\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },

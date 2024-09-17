@@ -394,6 +394,7 @@ export const NAVIGATION_FOUNDATIONS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '6.6.2',
   '6.6.1',
   '6.6.0',
   '6.5.0',
