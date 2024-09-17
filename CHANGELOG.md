@@ -13,7 +13,7 @@
 #### Changed
 
 - Changed: Footer `Partners` and `Networking` links has been updated.
-- Changed: Footer `Lumen Platform `link has been removed.
+- Changed: Footer `Lumen Platform` link has been removed.
 
 ## 6.6.1 (September 12, 2024)
 
