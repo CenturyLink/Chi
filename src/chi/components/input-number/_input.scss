@@ -8,7 +8,7 @@ input {
       -moz-appearance: textfield;
       border: 0.0625rem solid $number-input-border-color;
       color: $number-input-text-color;
-      display: block;
+      display: inline-block;
       font-size: $font-size-base;
       height: $number-input-md-height;
       line-height: $line-height-sm;

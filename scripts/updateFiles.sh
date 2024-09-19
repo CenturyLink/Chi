@@ -1,7 +1,7 @@
 #!/bin/bash
 
 chiVue='lib/chi-vue'
-ce='lib/custom-elements'
+ce='lib/chi-custom-elements'
 docs='lib/documentation'
 
 dist='dist'

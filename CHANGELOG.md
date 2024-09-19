@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 6.6.2 (September 18, 2024)
+
+### Components
+
+#### Changed
+
+- Changed: Link `hover` styles on Lumen theme.
+
+### Documentation
+
+#### Changed
+
+- Changed: Footer `Partners` and `Networking` links has been updated.
+- Changed: Footer `Lumen Platform` link has been removed.
+
+## 6.6.1 (September 12, 2024)
+
+### Documentation
+
+#### Fixed
+
+- Fixed: Introduction page in new Vue documentation.
+
 ## 6.6.0 (September 6, 2024)
 
 ### Components
