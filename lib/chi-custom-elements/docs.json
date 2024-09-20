@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-09-10T09:31:10",
+  "timestamp": "2024-09-20T08:51:39",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.21.0",
@@ -10485,12 +10485,12 @@
       "path": "src/constants/constants.ts"
     },
     "src/constants/types.ts::FormWrapperCheckbox": {
-      "declaration": "export interface FormWrapperCheckbox extends FormWrapperOption {\n  checked: boolean | 'indeterminate',\n}",
+      "declaration": "export interface FormWrapperCheckbox extends FormWrapperOption {\n  checked: boolean | 'indeterminate';\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::FormWrapperRadio": {
-      "declaration": "export interface FormWrapperRadio extends FormWrapperOption {\n  checked?: boolean,\n}",
+      "declaration": "export interface FormWrapperRadio extends FormWrapperOption {\n  checked?: boolean;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
