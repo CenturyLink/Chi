@@ -16,9 +16,7 @@
     "docker": "scripts/docker.sh",
     "start": "gulp watch",
     "serve": "gulp serve",
-    "start:customElements": "gulp custom-elements:watch",
     "test": "gulp test",
-    "test-ce": "gulp test:custom-elements",
     "test:e2e": "gulp test:e2e",
     "test:e2e:interactive": "gulp test:e2e:interactive",
     "echo": "gulp --version",
@@ -28,8 +26,7 @@
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
     "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test",
-    "cy:open": "cypress open",
-    "cy:run:ce": "cypress run --spec 'cypress/e2e/chi-custom-elements/*'"
+    "cy:open": "cypress open"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",

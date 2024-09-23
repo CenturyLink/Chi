@@ -27,7 +27,6 @@ const requires = {
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
   'copy-chi-ce-docs-scripts': require('./tasks/copy-chi-ce-docs-scripts'),
-  'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
   'sri-chi-assets' : require('./tasks/sri-chi-assets'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),
@@ -37,9 +36,7 @@ const requires = {
   'test': require('./tasks/test.js'),
   'watch': require('./tasks/watch.js'),
   'stencil-start': require('./tasks/start-stencil.js'),
-  'custom-elements-watch': require('./tasks/watch-custom-elements.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
-  'test-custom-elements': require('./tasks/test-custom-elements'),
   'test-e2e': require('./tasks/test-e2e'),
   'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
   'cicd-build-post-sri': require('./tasks/cicd-build-post-sri')

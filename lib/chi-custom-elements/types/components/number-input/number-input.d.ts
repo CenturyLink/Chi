@@ -83,6 +83,7 @@ export declare class NumberInput {
     connectedCallback(): void;
     handleChange(ev: Event): void;
     handleInput(ev: Event): void;
+    handleBlur(ev: FocusEvent): void;
     emitEventsOnClick(ev: Event): void;
     private increment;
     private decrement;

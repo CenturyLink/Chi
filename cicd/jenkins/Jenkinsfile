@@ -206,7 +206,15 @@ pipeline {
           }
         }
       }
-      stage('CE & Documentation Build') {
+      stage('Building Vue documentation system') {
+        agent {
+          dockerfile {
+            filename getNodeAgentBlock('vue-documentation')
+            dir 'cicd/docker/agent_images'
+            label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
+          }
+        }
         when {
             beforeAgent true
             allOf {
@@ -214,39 +222,10 @@ pipeline {
               not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
             }
         }
-        parallel {
-          stage ('Building Custom elements') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock('custom-elements')
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                dir('src/custom-elements') {
-                  customElementsBuild()
-                }
-              }
-            }
-          }
-          stage ('Building Vue documentation system') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock('vue-documentation')
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                dir('src/documentation') {
-                  buildDocumentation()
-                }
-              }
+        steps {
+          script {
+            dir('src/documentation') {
+              buildDocumentation()
             }
           }
         }
@@ -392,13 +371,7 @@ pipeline {
                 ghYarnWrap('install')
                 ghYarnWrap('cache clean')
                 unstash name: "DIST-CHI"
-                dir ('src/custom-elements') {
-                  sh """
-                    rm -rf dist
-                    rm -rf node_modules
-                  """
-                  unstash name: "DIST-CHI-CE"
-                }
+
                 def retries = 3
                 while (retries != 0) {
                   try {
@@ -985,12 +958,6 @@ def packageVersionCheck() {
   echo "${env.VERSION_BUMP_SCOPE}"
 }
 
-def customElementsBuild() {
-    jslNpmWrapper('ci')
-    jslNpmWrapper('run build')
-    stash name: "DIST-CHI-CE", includes: "dist/**"
-}
-
 def buildDocumentation() {
   jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
   if (isVersionBump() || env.BRANCH_NAME==env.PROD_BRANCH) {
@@ -1002,9 +969,6 @@ def buildDocumentation() {
 }
 
 def buildChi() {
-  dir ('src/custom-elements') {
-    unstash name: "DIST-CHI-CE"
-  }
   ghYarnWrap('install')
   jslNpmWrapper('run cicd:build:pre:sri')
   jslNpmWrapper('run sri')
