@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.7.0 (September 26, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tabs web component now supports `vertical` property.
+
+#### Fixed
+
+- Fixed: Number input web component does not emit the `chiBlur` event when the user clicks one of the buttons.
+
 ## 6.6.2 (September 18, 2024)
 
 ### Components
