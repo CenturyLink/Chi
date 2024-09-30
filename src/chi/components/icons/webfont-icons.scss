@@ -36,6 +36,18 @@ i {
   }
 }
 
+.icon-paper-plane::before {
+  content: '\ea21';
+}
+
+.icon-thumbs-up::before {
+  content: '\ea22';
+}
+
+.icon-thumbs-down::before {
+  content: '\ea23';
+}
+
 .icon-comments-sparkle::before {
   content: '\ea1e';
 }
