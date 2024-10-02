@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.8.0 (October 2, 2024)
+
+### Components
+
+#### Added
+
+- Added: Icons `icon-paper-plane`, `icon-thumbs-down` and `icon-thumbs-up`.
+
 ## 6.7.0 (September 26, 2024)
 
 ### Components
