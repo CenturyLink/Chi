@@ -6,6 +6,23 @@ title: Form Wrapper
 - var labels = ['', 'Some useful label']
 - var checkboxes = [ {label: 'Checkbox 1', name: 'ck-1'}, {label: 'Checkbox 2', name: 'ck-2', checked: true}, {label: 'Checkbox 3', name: 'ck-3', disabled: true}, {label: 'Checkbox 4', name: 'ck-4', checked: 'indeterminate'}]
 - var radios = [{label: 'Radio 1', name: 'radio'},{label: 'Radio 2', name: 'radio', checked: true},{label: 'Radio 3', name: 'radio', disabled: true},{label: 'Radio 4', name: 'radio'}]
+- var states = ['', 'success', 'warning', 'danger']
+
+mixin helperMessage(state)
+  .chi-label.-status(class=`-${state}`)
+    if state == 'success'
+      .chi-icon
+        svg
+          use(xlink:href='#icon-circle-check')
+    else if state == 'warning'
+      .chi-icon
+        svg
+          use(xlink:href='#icon-warning')
+    else if state == 'danger'
+      .chi-icon
+        svg
+          use(xlink:href='#icon-circle-warning')
+    | Help me please
 
 .test-form-wrapper-checkboxes.-mt--5(style='width: 700px; height: 650px;')
   each layout in layouts
@@ -25,7 +42,6 @@ title: Form Wrapper
                 class=`${cb.checked === 'indeterminate' ? '-indeterminate' : ''}`
               )
               label.chi-checkbox__label=cb.label 
-
 
 .test-form-wrapper-radio-buttons.-mt--5(style='width: 700px; height: 650px;')
   each layout in layouts
@@ -47,3 +63,53 @@ title: Form Wrapper
               label.chi-radio__label(
                 for=`${layout}-${label}-${radio.name}-${index}`
               )=radio.label 
+
+.test-form-wrapper-states.-mt--5
+  .-text--h2 Form wrapper states
+  each layout in layouts
+    each label in labels
+      .chi-grid
+        each state in states
+          .chi-col.-w--3
+            .-text-h5.-text--center=`checkbox ${layout} layout ${label ? 'whith' : 'without'} label: state ${state || 'default'}`
+            .-b--1.-b--primary.-p--3
+              fieldset
+                if label
+                  label.chi-label.-md=label
+                each cb, index in checkboxes
+                  .chi-form__item(class=`-${layout} ${layout === 'stacked' && (index < checkboxes.length - 1) ? '-mb--1' : ''}`)
+                    .chi-checkbox
+                      input.chi-checkbox__input(
+                        name=`${cb.name}` 
+                        type='checkbox' 
+                        checked=cb.checked 
+                        disabled=cb.disabled
+                        class=`${cb.checked === 'indeterminate' ? '-indeterminate' : ''}`
+                      )
+                      label.chi-checkbox__label(class=`-${state}`)=cb.label 
+              +helperMessage(state)
+  each layout in layouts
+    each label in labels
+      .chi-grid
+        each state in states
+          .chi-col.-w--3
+            .-text-h5.-text--center=`radio ${layout} layout ${label ? 'whith' : 'without'} label: state ${state || 'default'}`
+            .-b--1.-b--primary.-p--3
+              fieldset
+                if label
+                  label.chi-label.-md=label
+                each radio, index in radios
+                  .chi-form__item(class=`-${layout} ${layout === 'stacked' && (index < radios.length - 1) ? '-mb--1' : ''}`)
+                    .chi-radio
+                      input.chi-radio__input(
+                        name=`${layout}-${label}-${state}-${radio.name}`
+                        id=`${layout}-${label}-${radio.name}-${state}-${index}`
+                        type='radio' 
+                        checked=radio.checked 
+                        disabled=radio.disabled
+                        class=`-${state}`
+                      )
+                      label.chi-radio__label(
+                        for=`${layout}-${label}-${radio.name}-${state}-${index}`
+                      )=radio.label
+              +helperMessage(state)
