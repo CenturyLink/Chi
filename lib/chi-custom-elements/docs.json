@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-09-26T17:10:53",
+  "timestamp": "2024-10-04T06:27:40",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.21.0",
@@ -3687,6 +3687,27 @@
       "usage": {},
       "props": [
         {
+          "name": "helperMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": false,
+          "docs": "To set helper message",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "label",
           "type": "string",
           "complexType": {
@@ -3770,6 +3791,42 @@
           "required": true
         },
         {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "ChiStates",
+            "resolved": "\"danger\" | \"success\" | \"warning\"",
+            "references": {
+              "ChiStates": {
+                "location": "import",
+                "path": "../../constants/states",
+                "id": "src/constants/states.ts::ChiStates"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": false,
+          "docs": "To set state success, warning or danger",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "type",
           "type": "string",
           "complexType": {
@@ -3833,13 +3890,15 @@
       "dependencies": [
         "chi-label",
         "chi-checkbox",
-        "chi-radio-button"
+        "chi-radio-button",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-form-wrapper": [
           "chi-label",
           "chi-checkbox",
-          "chi-radio-button"
+          "chi-radio-button",
+          "chi-helper-message"
         ],
         "chi-label": [
           "chi-button",
@@ -3851,6 +3910,9 @@
         ],
         "chi-popover": [
           "chi-button"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ]
       }
     },
@@ -3908,6 +3970,7 @@
       "dependents": [
         "chi-date-picker",
         "chi-dropdown",
+        "chi-form-wrapper",
         "chi-number-input",
         "chi-search-input",
         "chi-text-input",
@@ -3924,6 +3987,9 @@
           "chi-helper-message"
         ],
         "chi-dropdown": [
+          "chi-helper-message"
+        ],
+        "chi-form-wrapper": [
           "chi-helper-message"
         ],
         "chi-number-input": [
@@ -4223,7 +4289,7 @@
           "reflectToAttr": true,
           "docs": "To provide message for info icon popover.",
           "docsTags": [],
-          "default": "'Helpful information goes here.'",
+          "default": "''",
           "values": [
             {
               "type": "string"

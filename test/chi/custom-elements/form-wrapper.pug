@@ -5,6 +5,8 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 - var layouts = ['inline', 'stacked']
 - var labels = ['', 'Some useful label']
+- var types = ['checkbox', 'radio']
+- var states = ['', 'success', 'warning', 'danger']
 
 .test-form-wrapper-checkboxes.-mt--5(style='width: 700px; height: 650px;')
   each layout in layouts
@@ -19,6 +21,17 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
       div.-text--h3=`Radios ${layout} layout ${label ? 'whith' : 'without'} label`
       chi-form-wrapper.p--3(type="radio" label=`${label}` layout=`${layout}` data-cy=`radios-${layout}${label ? '-with-label' : ''}`)
 
+.test-form-wrapper-states.-mt--5
+  .-text--h2 Form wrapper states
+  each type in types 
+    each layout in layouts
+      each label in labels
+        .chi-grid
+          each state in states
+            .chi-col.-w--3
+              .-text-h5.-text--center=`${type} ${layout} layout ${label ? 'whith' : 'without'} label: state ${state || 'default'}`
+              .-b--1.-b--primary
+                chi-form-wrapper.-p--3(type=`${type}` label=`${label}` layout=`${layout}` state=`${state}` helper-message="Help me please")
 
 script. 
   const checkboxes = [
