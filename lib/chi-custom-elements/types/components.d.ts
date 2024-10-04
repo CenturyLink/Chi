@@ -5,19 +5,19 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AlertColors, IconColors } from "./constants/color";
+import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
-import { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, SearchInputModes, TabTrigger } from "./constants/types";
+import { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
 import { CountryCode } from "libphonenumber-js";
-export { AlertColors, IconColors } from "./constants/color";
+export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 export { Placement } from "popper.js";
-export { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, SearchInputModes, TabTrigger } from "./constants/types";
+export { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
 export { CountryCode } from "libphonenumber-js";
 export namespace Components {
     interface ChiAlert {
@@ -1273,6 +1273,32 @@ export namespace Components {
          */
         "value": string;
     }
+    interface ChiTooltip {
+        /**
+          * to set the background color of the tooltip { base, light }.
+         */
+        "color"?: TooltipColors;
+        /**
+          * Hides the tooltip
+         */
+        "hide": () => Promise<void>;
+        /**
+          * to set the tooltip message to display { string }.
+         */
+        "message": string;
+        /**
+          * to set position of the tooltip { top, right, bottom, left }.
+         */
+        "position"?: GeneralPositions;
+        /**
+          * Shows the tooltip
+         */
+        "show": () => Promise<void>;
+        /**
+          * to set the class chi-tooltip__wrapper
+         */
+        "wrapper"?: boolean;
+    }
 }
 export interface ChiAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1361,6 +1387,10 @@ export interface ChiTextareaCustomEvent<T> extends CustomEvent<T> {
 export interface ChiTimeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiTimeElement;
+}
+export interface ChiTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiTooltipElement;
 }
 declare global {
     interface HTMLChiAlertElementEventMap {
@@ -1840,6 +1870,24 @@ declare global {
         prototype: HTMLChiTimePickerElement;
         new (): HTMLChiTimePickerElement;
     };
+    interface HTMLChiTooltipElementEventMap {
+        "chiTooltipShow": void;
+        "chiTooltipHide": void;
+    }
+    interface HTMLChiTooltipElement extends Components.ChiTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiTooltipElementEventMap>(type: K, listener: (this: HTMLChiTooltipElement, ev: ChiTooltipCustomEvent<HTMLChiTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiTooltipElementEventMap>(type: K, listener: (this: HTMLChiTooltipElement, ev: ChiTooltipCustomEvent<HTMLChiTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiTooltipElement: {
+        prototype: HTMLChiTooltipElement;
+        new (): HTMLChiTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "chi-alert": HTMLChiAlertElement;
         "chi-badge": HTMLChiBadgeElement;
@@ -1874,6 +1922,7 @@ declare global {
         "chi-textarea": HTMLChiTextareaElement;
         "chi-time": HTMLChiTimeElement;
         "chi-time-picker": HTMLChiTimePickerElement;
+        "chi-tooltip": HTMLChiTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -3286,6 +3335,32 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface ChiTooltip {
+        /**
+          * to set the background color of the tooltip { base, light }.
+         */
+        "color"?: TooltipColors;
+        /**
+          * to set the tooltip message to display { string }.
+         */
+        "message": string;
+        /**
+          * triggered when the Tooltip hide method has been executed.
+         */
+        "onChiTooltipHide"?: (event: ChiTooltipCustomEvent<void>) => void;
+        /**
+          * triggered when the Tooltip show method has been executed.
+         */
+        "onChiTooltipShow"?: (event: ChiTooltipCustomEvent<void>) => void;
+        /**
+          * to set position of the tooltip { top, right, bottom, left }.
+         */
+        "position"?: GeneralPositions;
+        /**
+          * to set the class chi-tooltip__wrapper
+         */
+        "wrapper"?: boolean;
+    }
     interface IntrinsicElements {
         "chi-alert": ChiAlert;
         "chi-badge": ChiBadge;
@@ -3320,6 +3395,7 @@ declare namespace LocalJSX {
         "chi-textarea": ChiTextarea;
         "chi-time": ChiTime;
         "chi-time-picker": ChiTimePicker;
+        "chi-tooltip": ChiTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -3359,6 +3435,7 @@ declare module "@stencil/core" {
             "chi-textarea": LocalJSX.ChiTextarea & JSXBase.HTMLAttributes<HTMLChiTextareaElement>;
             "chi-time": LocalJSX.ChiTime & JSXBase.HTMLAttributes<HTMLChiTimeElement>;
             "chi-time-picker": LocalJSX.ChiTimePicker & JSXBase.HTMLAttributes<HTMLChiTimePickerElement>;
+            "chi-tooltip": LocalJSX.ChiTooltip & JSXBase.HTMLAttributes<HTMLChiTooltipElement>;
         }
     }
 }
