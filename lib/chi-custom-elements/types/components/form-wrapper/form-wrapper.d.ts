@@ -1,8 +1,9 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { FormWrapperLayouts, FormWrapperTypes } from '../../constants/constants';
 import { FormWrapperCheckbox, FormWrapperRadio } from '../../constants/types';
+import { ChiStates } from '../../constants/states';
 export declare class FormWrapper {
-    e: HTMLElement;
+    el: HTMLElement;
     /**
      *  to set form element type { checkbox, radio }.
      */
@@ -19,10 +20,19 @@ export declare class FormWrapper {
      * to set a lagend for all fields
      */
     label?: string;
+    /**
+     * To set state success, warning or danger
+     */
+    state?: ChiStates;
+    /**
+     * To set helper message
+     */
+    helperMessage?: string;
     chiChange: EventEmitter<FormWrapperCheckbox[] | FormWrapperRadio[]>;
     id: string;
     layoutValidation(newValue: string): void;
     typeValidation(newValue: string): void;
+    stateValidation(newValue: ChiStates): void;
     componentWillLoad(): void;
     _getLabel(): any;
     _getItems(): any[];
@@ -38,5 +48,6 @@ export declare class FormWrapper {
      */
     _onChange(ev: CustomEvent): void;
     _onRadioButtonChange(target: HTMLChiRadioButtonElement): void;
+    _getFieldset(): any;
     render(): any;
 }
