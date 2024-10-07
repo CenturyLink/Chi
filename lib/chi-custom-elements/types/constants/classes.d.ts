@@ -201,6 +201,7 @@ export declare const SELECT_CLASSES: {
 };
 export declare const TOOLTIP_CLASSES: {
     TOOLTIP_ELEMENT: string;
+    TOOLTIP_WRAPPER: string;
 };
 export declare const TIME_CLASSES: {
     TIME: string;
