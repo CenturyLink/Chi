@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.9.0 (October 10, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tooltip web component.
+
+#### Changed
+
+- Changed: Changed: Label web component `info-icon-message` default property value has changed to `''` (empty).
+
 ## 6.8.0 (October 2, 2024)
 
 ### Components
