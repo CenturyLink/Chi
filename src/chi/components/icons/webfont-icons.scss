@@ -36,6 +36,10 @@ i {
   }
 }
 
+.icon-circle-partial::before {
+  content: '\ea24';
+}
+
 .icon-paper-plane::before {
   content: '\ea21';
 }
