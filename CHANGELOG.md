@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.10.0 (October 22, 2024)
+
+### Components
+
+#### Added
+
+- Added: Icon `icon-circle-partial`.
+
 ## 6.9.0 (October 10, 2024)
 
 ### Components
