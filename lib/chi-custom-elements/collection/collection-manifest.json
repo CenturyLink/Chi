@@ -1,5 +1,6 @@
 {
   "entries": [
+    "components/accordion/accordion.js",
     "components/alert/alert.js",
     "components/app-layout/app-layout.js",
     "components/badge/badge.js",
@@ -37,8 +38,8 @@
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.0",
-    "typescriptVersion": "5.5.4"
+    "version": "4.21.0",
+    "typescriptVersion": "5.5.3"
   },
   "collections": [],
   "bundles": []
