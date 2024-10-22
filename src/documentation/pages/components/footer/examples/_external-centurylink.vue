@@ -47,6 +47,10 @@
                 ul
                   li(v-for="(resourceLink, index) in externalContents.resourceLinks" :key="index")
                     a(:href="resourceLink.href" :target="resourceLink.target" :class="resourceLink.class") {{resourceLink.title}}
+              .chi-col.-w--12.-text--center.-text--bold.-mt--5
+                | Not all products and services are available in all regions and countries; please
+                |
+                a(href="https://www.lumen.com/en-us/contact-us.html") contact a representative near you for details.
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-footer__links
@@ -106,9 +110,8 @@ export default class ExternalCenturylink extends Vue {
 
     this.footerLinks.forEach((link: ILink) => {
       footerItemLinks += `
-            <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
-              link.class ? ' class="' + link.class + '"' : ''
-            }>${link.title}</a></li>`;
+            <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''
+        }>${link.title}</a></li>`;
     });
 
     this.codeSnippets.htmlblueprint = `<footer class="chi-footer">
@@ -159,6 +162,12 @@ export default class ExternalCenturylink extends Vue {
             <ul>${this.generateLinkCodeSnippet('resourceLinks')}
             </ul>
           </div>
+          <div class="chi-col -w--12 -text--center -text--bold -mt--5">
+            Not all products and services are available in all regions and countries; please
+            <a href="https://www.lumen.com/en-us/contact-us.html"">
+              contact a representative near you for details.
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -179,9 +188,8 @@ export default class ExternalCenturylink extends Vue {
     let linkCodeSnippet = '';
     this.externalContents[keyName].forEach((link: ILink) => {
       linkCodeSnippet += `
-              <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${
-                link.class ? ' class="' + link.class + '"' : ''
-              }>${link.title}</a></li>`;
+              <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''
+        }>${link.title}</a></li>`;
     });
     return linkCodeSnippet;
   }

@@ -77,6 +77,10 @@
                 ul
                   li(v-for="(resourceLink, index) in externalContents.resourceLinks" :key="index")
                     a(:href="resourceLink.href" :target="resourceLink.target" :class="resourceLink.class") {{resourceLink.title}}
+              .chi-col.-w--12.-text--center.-text--bold.-mt--5
+                | Not all products and services are available in all regions and countries; please
+                |
+                a(href="https://www.lumen.com/en-us/contact-us.html") contact a representative near you for details.
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
@@ -206,6 +210,12 @@ export default class ExternalLumenPortal extends Vue {
             <div class="chi-footer__links-title">Resources</div>
             <ul>${this.generateLinkCodeSnippet('resourceLinks')}
             </ul>
+          </div>
+          <div class="chi-col -w--12 -text--center -text--bold -mt--5">
+            Not all products and services are available in all regions and countries; please
+            <a href="https://www.lumen.com/en-us/contact-us.html">
+              contact a representative near you for details.
+            </a>
           </div>
         </div>
       </div>
