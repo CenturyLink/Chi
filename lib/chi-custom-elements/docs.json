@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-10-04T06:27:40",
+  "timestamp": "2024-10-21T18:45:23",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.21.0",
-    "typescriptVersion": "5.5.3"
+    "version": "4.22.0",
+    "typescriptVersion": "5.5.4"
   },
   "components": [
     {
@@ -10477,11 +10477,208 @@
           "chi-icon"
         ]
       }
+    },
+    {
+      "filePath": "src/components/tooltip/tooltip.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-tooltip",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "color",
+          "type": "\"base\" | \"light\"",
+          "complexType": {
+            "original": "TooltipColors",
+            "resolved": "\"base\" | \"light\"",
+            "references": {
+              "TooltipColors": {
+                "location": "import",
+                "path": "../../constants/color",
+                "id": "src/constants/color.ts::TooltipColors"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "color",
+          "reflectToAttr": false,
+          "docs": "to set the background color of the tooltip { base, light }.",
+          "docsTags": [],
+          "default": "'base'",
+          "values": [
+            {
+              "value": "base",
+              "type": "string"
+            },
+            {
+              "value": "light",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "message",
+          "reflectToAttr": true,
+          "docs": "to set the tooltip message to display { string }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "complexType": {
+            "original": "GeneralPositions",
+            "resolved": "string",
+            "references": {
+              "GeneralPositions": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::GeneralPositions"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "to set position of the tooltip { top, right, bottom, left }.",
+          "docsTags": [],
+          "default": "'top'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "wrapper",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "wrapper",
+          "reflectToAttr": false,
+          "docs": "to set the class chi-tooltip__wrapper",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "hide",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "hide() => Promise<void>",
+          "parameters": [],
+          "docs": "Hides the tooltip",
+          "docsTags": []
+        },
+        {
+          "name": "show",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "show() => Promise<void>",
+          "parameters": [],
+          "docs": "Shows the tooltip",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "chiTooltipHide",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "triggered when the Tooltip hide method has been executed.",
+          "docsTags": []
+        },
+        {
+          "event": "chiTooltipShow",
+          "detail": "void",
+          "bubbles": true,
+          "complexType": {
+            "original": "void",
+            "resolved": "void",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "triggered when the Tooltip show method has been executed.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     }
   ],
   "typeLibrary": {
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
+      "declaration": "\"info\" | \"muted\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10501,7 +10698,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"info\" | \"muted\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -10604,6 +10801,16 @@
       "declaration": "\"number\" | \"time\" | \"text\" | \"datetime\" | \"date\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"url\" | \"week\"",
       "docstring": "",
       "path": "src/constants/constants.ts"
+    },
+    "src/constants/color.ts::TooltipColors": {
+      "declaration": "\"base\" | \"light\"",
+      "docstring": "",
+      "path": "src/constants/color.ts"
+    },
+    "src/constants/types.ts::GeneralPositions": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/types.ts"
     }
   }
 }

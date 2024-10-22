@@ -102,6 +102,7 @@ import { Vue } from 'vue-facing-decorator';
         'circle-minus-outline',
         'circle-minus',
         'circle-outline',
+        'circle-partial',
         'circle-pie',
         'circle-play-outline',
         'circle-play',
