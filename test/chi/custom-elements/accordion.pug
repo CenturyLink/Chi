@@ -19,14 +19,14 @@ h3 Sizes
 
 h3 Portal layout 
 .test-accordion-portal-layout.-w--100
-  chi-accordion(portal)#portal-layout
+  chi-accordion(portal size="xl")#portal-layout
     div(slot="item-4")
       chi-icon.-mr--2(icon="arrow-right") 
       | Some custom content here
 
 h3 Portal layout card
 .test-accordion-portal-layout-card.-w--100
-  chi-accordion(portal card)#portal-layout-card
+  chi-accordion(portal card size="xl")#portal-layout-card
     div(slot="item-4")
       chi-icon.-mr--2(icon="arrow-right") 
       | Some custom content here
@@ -42,7 +42,7 @@ script.
       {title: 'Accordion 2', text: 'Item content 2', expanded: true},
       {title: 'Accordion 3', text: 'Item content 3', disabled: true},
       {title: 'Accordion 4', template: 'item-4', expanded: true},
-      {title: 'Accordion 5 with very large title to test truncated class is properly applied.Accordion 5 with very large title to test truncated class is properly applied.Accordion 5 with very large title to test truncated class is properly applied.Accordion 5 with very large title to test truncated class is properly applied.Accordion 5 with very large title to test truncated class is properly applied', text: 'Item content 5'},
+      {title: 'Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied', text: 'Item content 5'},
     ];
 
     ['sm', 'md', 'lg', 'xl'].forEach(size => {
