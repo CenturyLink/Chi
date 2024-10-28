@@ -63,3 +63,10 @@ export interface FormWrapperCheckbox extends FormWrapperOption {
 export interface FormWrapperRadio extends FormWrapperOption {
     checked?: boolean;
 }
+export interface AccordionItem {
+    title: string;
+    text?: string;
+    template?: string;
+    expanded?: boolean;
+    disabled?: boolean;
+}
