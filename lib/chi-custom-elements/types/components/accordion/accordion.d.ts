@@ -12,7 +12,7 @@ export declare class Accordion {
      */
     card: boolean;
     /**
-     *  to set portal layout
+     *  to set portal layout (temporary)
      */
     portal: boolean;
     /**

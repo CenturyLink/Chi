@@ -1,9 +1,9 @@
 {
-  "timestamp": "2024-10-23T10:48:55",
+  "timestamp": "2024-10-28T09:19:49",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.21.0",
-    "typescriptVersion": "5.5.3"
+    "version": "4.22.0",
+    "typescriptVersion": "5.5.4"
   },
   "components": [
     {
@@ -74,7 +74,7 @@
           "mutable": false,
           "attr": "portal",
           "reflectToAttr": false,
-          "docs": "to set portal layout",
+          "docs": "to set portal layout (temporary)",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -11005,7 +11005,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/color.ts::AlertColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"warning\" | \"danger\"",
+      "declaration": "\"info\" | \"muted\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },
@@ -11025,7 +11025,7 @@
       "path": "src/constants/size.ts"
     },
     "src/constants/color.ts::IconColors": {
-      "declaration": "\"info\" | \"success\" | \"muted\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
+      "declaration": "\"info\" | \"muted\" | \"success\" | \"primary\" | \"warning\" | \"danger\" | \"navy\" | \"orange\" | \"light\" | \"dark\" | \"grey\" | \"secondary\"",
       "docstring": "",
       "path": "src/constants/color.ts"
     },

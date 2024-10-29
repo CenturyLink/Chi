@@ -34,7 +34,7 @@ export namespace Components {
          */
         "hide": (accordions?: number | number[]) => Promise<void>;
         /**
-          * to set portal layout
+          * to set portal layout (temporary)
          */
         "portal": boolean;
         /**
@@ -2006,7 +2006,7 @@ declare namespace LocalJSX {
          */
         "onChiAccordionsChanged"?: (event: ChiAccordionCustomEvent<AccordionItem[]>) => void;
         /**
-          * to set portal layout
+          * to set portal layout (temporary)
          */
         "portal"?: boolean;
         /**
