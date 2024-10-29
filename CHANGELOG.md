@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.11.0 (October 29, 2024)
+
+### Documentation
+
+#### Added
+
+- Added: Footer `Contact a representative` link and text has been added. 
+
+### Changed
+
+- Changed: Chevron color in Footer language dropdown has been changed to `white`.
+
 ## 6.10.0 (October 22, 2024)
 
 ### Components
