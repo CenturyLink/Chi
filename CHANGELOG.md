@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.12.0 (November 5, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tabs web component now support dynamically content change in `panels` dynamically depending on the `activeTab`.
+
 ## 6.11.0 (October 29, 2024)
 
 ### Documentation
