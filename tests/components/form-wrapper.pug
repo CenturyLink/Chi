@@ -1,0 +1,50 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Form Wrapper'
+  - var layouts = ['inline', 'stacked']
+  - var labels = ['', 'Some useful label']
+  - var checkboxes = [ {label: 'Checkbox 1', name: 'ck-1'}, {label: 'Checkbox 2', name: 'ck-2', checked: true}, {label: 'Checkbox 3', name: 'ck-3', disabled: true}, {label: 'Checkbox 4', name: 'ck-4', checked: 'indeterminate'}]
+  - var radios = [{label: 'Radio 1', name: 'radio'},{label: 'Radio 2', name: 'radio', checked: true},{label: 'Radio 3', name: 'radio', disabled: true},{label: 'Radio 4', name: 'radio'}]
+
+block content
+  .test-form-wrapper-checkboxes.-mt--5(style='width: 700px; height: 650px;')
+    each layout in layouts
+      each label in labels
+        div.-text--h3=`Checkboxes ${layout} layout ${label ? 'whith' : 'without'} label`
+        fieldset
+          if label
+            label.chi-label.-md=label
+          each cb, index in checkboxes
+            .chi-form__item(class=`-${layout} ${layout === 'stacked' && (index < checkboxes.length - 1) ? '-mb--1' : ''}`)
+              .chi-checkbox
+                input.chi-checkbox__input(
+                  name=`${cb.name}` 
+                  type='checkbox' 
+                  checked=cb.checked 
+                  disabled=cb.disabled
+                  class=`${cb.checked === 'indeterminate' ? '-indeterminate' : ''}`
+                )
+                label.chi-checkbox__label=cb.label 
+
+
+  .test-form-wrapper-radio-buttons.-mt--5(style='width: 700px; height: 650px;')
+    each layout in layouts
+      each label in labels
+        div.-text--h3=`Radios ${layout} layout ${label ? 'whith' : 'without'} label`
+        fieldset
+          if label
+            label.chi-label.-md=label
+          each radio, index in radios
+            .chi-form__item(class=`-${layout} ${layout === 'stacked' && (index < radios.length - 1) ? '-mb--1' : ''}`)
+              .chi-radio
+                input.chi-radio__input(
+                  name=`${layout}-${label}-${radio.name}`
+                  id=`${layout}-${label}-${radio.name}-${index}`
+                  type='radio' 
+                  checked=radio.checked 
+                  disabled=radio.disabled
+                )
+                label.chi-radio__label(
+                  for=`${layout}-${label}-${radio.name}-${index}`
+                )=radio.label 

@@ -20,7 +20,7 @@ import { Tooltip, factory as tooltip } from "./components/tooltip";
 export {
   chi as core,
   Util,
-
+  
   accordion,
   datePicker,
   drawer,
@@ -55,3 +55,41 @@ export {
 
   EXPANSION_PANEL_STATES
 };
+
+if (typeof window !== 'undefined') {
+  window.chi = {
+    core: chi,
+    Util,
+    accordion,
+    datePicker,
+    drawer,
+    dropdown,
+    expansionPanel,
+    floatingLabel,
+    mobilenav,
+    modal,
+    navigation,
+    numberInput,
+    popover,
+    rangeSlider,
+    sidenav,
+    tab,
+    tooltip,
+    Accordion,
+    DatePicker,
+    Drawer,
+    Dropdown,
+    ExpansionPanel,
+    FloatingLabel,
+    MobileNav,
+    Modal,
+    Navigation,
+    NumberInput,
+    Popover,
+    RangeSlider,
+    Sidenav,
+    Tab,
+    Tooltip,
+    EXPANSION_PANEL_STATES
+  };
+}

@@ -17,15 +17,12 @@ export declare const COLLAPSED_CLASS = "-collapsed";
 export declare const ONE_LINK_TX = "OneLinkTx";
 export declare const LIST_CLASS = "-list";
 export declare const STATUS_CLASS = "-status";
-export declare const TRUNCATED_CLASS = "-truncated";
-export declare const CARD_CLASS = "-card";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
     CONTENT: string;
     ITEM: string;
     TRIGGER: string;
     TITLE: string;
-    TEXT: string;
 };
 export declare const BULK_ACTIONS_CLASSES: {
     BULK_ACTIONS: string;
@@ -110,6 +107,34 @@ export declare const RADIO_CLASSES: {
     INPUT: string;
     LABEL: string;
 };
+export declare const DATA_TABLE_CLASSES: {
+    DATA_TABLE: string;
+    TOOLBAR: string;
+    VIEWS: string;
+    FILTERS: string;
+    ACTIONS: string;
+    COLUMNS: string;
+    SEARCH: string;
+    HEAD: string;
+    BODY: string;
+    ROW: string;
+    ROW_CHILD: string;
+    ROW_GRAND_CHILD: string;
+    EMPTY: string;
+    CELL: string;
+    FOOTER: string;
+    EXPANDABLE: string;
+    SELECTABLE: string;
+    PORTAL: string;
+    BORDERED: string;
+    NO_BORDER: string;
+    HOVER: string;
+    STRIPED: string;
+    SORTING: string;
+    COMPACT: string;
+    TRUNCATED: string;
+    PRINT_FOOTER: string;
+};
 export declare const TABLE_CLASSES: {
     TABLE: string;
 };
@@ -176,7 +201,6 @@ export declare const SELECT_CLASSES: {
 };
 export declare const TOOLTIP_CLASSES: {
     TOOLTIP_ELEMENT: string;
-    TOOLTIP_WRAPPER: string;
 };
 export declare const TIME_CLASSES: {
     TIME: string;
@@ -380,8 +404,5 @@ export declare const DATEPICKER_CLASSES: {
     NEXT_MONTH: string;
 };
 export declare const LABEL_CLASSES: {
-    LABEL: string;
     HELP: string;
-    REQUIRED: string;
-    OPTIONAL: string;
 };

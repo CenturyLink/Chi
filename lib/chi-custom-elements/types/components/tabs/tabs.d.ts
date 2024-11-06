@@ -55,7 +55,6 @@ export declare class Tabs {
     chiTabChange: EventEmitter<TabTrigger>;
     sizeValidation(newValue: TabsSizes): void;
     setTabs(newValue: TabTrigger[], oldValue: TabTrigger[]): void;
-    activeTabChanged(newValue: string): void;
     private activeTabElement;
     private animation;
     private availableSpace;
@@ -84,7 +83,6 @@ export declare class Tabs {
     activatePanel(panelId?: string): void;
     calculateSize(element: HTMLElement, size: TabTriggerSizes): number;
     setParentTabActive(tab: TabTrigger): void;
-    findParentTab(tabs: TabTrigger[], id: string): TabTrigger;
     removeActiveItems(): void;
     createDropdowns(tabs: TabTrigger[], level: number, firstLevel?: string): any[];
     getDropdown(tab: TabTrigger, isFirstLevel: boolean, firstLevelId: string): any;
@@ -116,7 +114,6 @@ export declare class Tabs {
     getPosition(el: HTMLElement): TabTriggerPosition;
     handlerClickSeeMore: (e: Event) => void;
     handlerClickTab(e: Event, tabData: TabTrigger, slidingBorderNewPosition?: HTMLElement): void;
-    changeTab(tabData: TabTrigger, element: HTMLElement): void;
     setAnimation(element: HTMLElement): void;
     getSlidingBorderAnimationStyle(): {
         dimension: TabTriggerSizes;
