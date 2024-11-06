@@ -155,7 +155,7 @@ pipeline {
       steps {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          sh 'bash -c "npm run build"'
+          jslNpmWrapper('run build', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           sendBuildInfo()
 
@@ -181,8 +181,7 @@ pipeline {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           sh "npx playwright install"
-          
-          sh 'bash -c "npm run tests:visual"'
+          jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           stashAndArchiveCiReports()
         }
@@ -205,7 +204,7 @@ pipeline {
       steps {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          sh 'bash -c "npm run tests:e2e"'
+          jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
         }
       }
     }
