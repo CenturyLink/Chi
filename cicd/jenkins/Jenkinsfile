@@ -90,6 +90,7 @@ pipeline {
   
     // Tests variables
     REPORTS_NON_RESPONSIVE_CI = "reports/ci_report/non_responsive/xunit.xml"
+    CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
     // Scripts
     VERSION_CHECK_SCRIPT = './cicd/scripts/versionCheck.sh'
