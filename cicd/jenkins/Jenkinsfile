@@ -299,24 +299,26 @@ pipeline {
         }
       }
       steps {
-        def chiManifest = 'chiManifest.yml'
-        def chiManifestFile = "./${chiManifest}"
+        script {
+          def chiManifest = 'chiManifest.yml'
+          def chiManifestFile = "./${chiManifest}"
 
-        sh "rm -rf ./dist"
-        unstash name: 'chi_build'
+          sh "rm -rf ./dist"
+          unstash name: 'chi_build'
 
-        jslBuildAndPushToNexus(NGINX_DOCKERFILE)
+          jslBuildAndPushToNexus(NGINX_DOCKERFILE)
 
-        sh "rm -rf ${chiManifestFile}"
+          sh "rm -rf ${chiManifestFile}"
 
-        jslGenerateManifestForSimpleNginx(chiManifestFile)
-        jslDeployK8s(chiManifestFile)
-        
-        archiveArtifacts artifacts: chiManifest, fingerprint: true
+          jslGenerateManifestForSimpleNginx(chiManifestFile)
+          jslDeployK8s(chiManifestFile)
+          
+          archiveArtifacts artifacts: chiManifest, fingerprint: true
 
-        if (env.CHANGE_ID != null) {
-          jslDeploymentContractValidationWrite("development")
-          jslJiraSendDeploymentInfo('development', true)
+          if (env.CHANGE_ID != null) {
+            jslDeploymentContractValidationWrite("development")
+            jslJiraSendDeploymentInfo('development', true)
+          }
         }
       }
     }
