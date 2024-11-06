@@ -1,0 +1,466 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Dropdown'
+  - var dropdownStates = ["", "-active", "-fluid"];
+  - var textCombinations = [{"t_text": "Click me", "d_text": "Element"}, {"t_text": "Long trigger text, click me", "d_text": "Element"}, {"t_text": "Click me", "d_text": "Long text dropdown element"}];
+  - var menuItemStates = [{"title":"Normal", "class": ""}, {"title":"Active", "class": "-active"}, {"title":"Disabled", "class": "-disabled"}, {"title":"Hover", "class": "-hover"}];
+  - var colors = ["primary", "secondary", "danger", "dark", "light"]
+  - var _colors = ['default', 'primary', 'dark', 'danger', 'secondary', 'light']
+  - var variants = ["", "outline", "flat"]
+  - var _variants = ['solid', 'outline', 'flat', 'fluid', 'uppercase']
+  - var sizes = ["xs", "sm", "md", "lg", "xl"]
+  - var _sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+  - var states = ['initial', 'hover', 'active', 'focus', 'disabled']
+  - var _states = ['default', 'success', 'warning', 'danger']
+  - var inputStates = ["", "disabled", "checked"]
+ 
+block content
+  .test-dropdown-focused-with-outline.-mt--5(style="width: 300px; height: 400px;")
+    div.-text--h2 Focused
+    .-d--flex
+      .chi-dropdown(style="margin-bottom: 8em")
+        button(class=`chi-button chi-dropdown__trigger -active`) Long click me
+        div(class='chi-dropdown__menu -active')
+          a(class='chi-dropdown__menu-item -active -focus', href='#') Active element
+          a(class='chi-dropdown__menu-item', href='#') Element 2
+          a(class='chi-dropdown__menu-item -focus', href='#') Element 3
+
+  each menuItemState in menuItemStates
+    div(class=`test-basicDropdown${menuItemState.class} -w--100`)
+      span.-text--h2=menuItemState.title
+      .-d--flex
+        each textCombination in textCombinations
+          each dropdownState in dropdownStates
+            .chi-dropdown(style="margin-bottom: 8em")
+              button(class=`chi-button chi-dropdown__trigger ${dropdownState}`)=textCombination.t_text
+              div(class=`chi-dropdown__menu ${dropdownState}`)
+                each i in [1, 2, 3]
+                  a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
+
+  div(class=`test-dropdown-list -w--100`)
+    span.-text--h2 List
+    .-d--flex
+      div(class=`chi-dropdown__menu -list -active`)
+        a.chi-dropdown__menu-item(href='#')
+          p.chi-dropdown__menu-item_title Normal element
+          p.chi-dropdown__menu-item_text Normal element
+        a.chi-dropdown__menu-item.-active(href='#')
+          p.chi-dropdown__menu-item_title Normal element
+          p.chi-dropdown__menu-item_text Active element
+        a.chi-dropdown__menu-item.-disabled(href='#')
+          p.chi-dropdown__menu-item_title Normal element
+          p.chi-dropdown__menu-item_text Disabled element
+        a.chi-dropdown__menu-item.-hover(href='#')
+          p.chi-dropdown__menu-item_title Normal element
+          p.chi-dropdown__menu-item_text Hovered item
+
+  div(class=`test-dropdown-divider -w--100`)
+    span.-text--h2 Divider
+    .-d--flex
+      div(class=`chi-dropdown__menu -active`)
+        each i in [1, 2]
+          a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
+        .chi-divider
+        each i in [3, 4]
+          a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
+
+  div(class=`test-dropdown-icons -w--100`)
+    span.-text--h2 Icons
+    .-d--flex
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-file-outline')
+          = "New"
+        a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-arrow-to-bottom')
+          = "Save"
+        .chi-divider
+        a.chi-dropdown__menu-item(href='#')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-mail')
+          = "Send"
+        a.chi-dropdown__menu-item.-active(href='#')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-cart')
+          = "Buy"
+        a.chi-dropdown__menu-item.-hover(href='#')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-users')
+          = "Share"
+        .chi-divider
+        a.chi-dropdown__menu-item(href='#')
+          .chi-icon
+            svg
+              use(xlink:href='#icon-logout')
+          = "Logout"
+
+  div(class=`test-dropdown-searchBox -w--100`)
+    span.-text--h2 Search box
+    .-d--flex
+      .chi-dropdown__menu.-active
+        .chi-input__wrapper.-icon--left.chi-dropdown__menu-item
+          input(type="text", class="chi-input", placeholder="Search")
+          .chi-icon
+            svg
+              use(xlink:href='#icon-search')
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+
+  div(class=`test-dropdown-checkbox -w--100`)
+    span.-text--h2 checkbox
+    .-d--flex
+      .chi-dropdown__menu.-active
+        each inputState in inputStates
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+              label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
+
+  div(class=`test-dropdown-checkbox-icon -w--100`)
+    span.-text--h2 checkbox with icons
+    .-d--flex
+      .chi-dropdown__menu.-active
+        each inputState in inputStates
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+              label.chi-checkbox__label(for=`checkbox${inputState}`)
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-logo-centurylink')
+                ="Element checkbox " + inputState
+
+  div(class=`test-dropdown-radio -w--100`)
+    span.-text--h2 radio
+    .-d--flex
+      .chi-dropdown__menu.-active
+        each inputState in inputStates
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+              label.chi-radio__label(for=`radio${inputState}`)="Element radio " + inputState
+
+  div(class=`test-dropdown-radio-icon -w--100`)
+    span.-text--h2 radio with icons
+    .-d--flex
+      .chi-dropdown__menu.-active
+        each inputState in inputStates
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+              label.chi-radio__label(for=`radio${inputState}`)
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-logo-centurylink')
+                ="Element radio " + inputState
+
+  div(class=`test-dropdown-text -w--100`)
+    span.-text--h2 Plain text
+    .-d--flex
+      .chi-dropdown__menu.-active
+        span.chi-dropdown__menu-item Text 1
+        span.chi-dropdown__menu-item Text 2
+        span.chi-dropdown__menu-item Text 3
+        span.chi-dropdown__menu-item Text 4
+
+  div(class=`test-dropdown-range -w--100`)
+    span.-text--h2 Range
+    .-d--flex
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
+          label.-text.-mr--2 200GB
+          input.chi-input(type="range")
+          label.-text.-ml--2 5TB
+        .chi-divider
+        span.chi-dropdown__menu-item Select range
+        .chi-dropdown__menu-item
+          input.chi-input(type="range")
+
+  div(class=`test-dropdown-toggle -w--100`)
+    span.-text--h2 Toggle input
+    .-d--flex
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item.-h--auto
+          .chi-form__item
+            label.chi-switch(for="toggle1")
+              input(type="checkbox", class="chi-switch__input", id="toggle1")
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label Label
+        .chi-dropdown__menu-item.-h--auto
+          .chi-form__item
+            label.chi-switch(for="toggle2")
+              input(type="checkbox", class="chi-switch__input", id="toggle2", checked)
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label Label
+        .chi-dropdown__menu-item.-h--auto
+          .chi-form__item
+            label.chi-switch(for="toggle3")
+              input(type="checkbox", class="chi-switch__input", id="toggle3", disabled)
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label Label
+
+
+  div(class=`test-dropdown-ellipsis-helper -w--100`)
+    span.-text--h2 Ellipsis helper
+    .-d--flex
+      .chi-dropdown__menu.-active(style="width:10rem")
+        a.chi-dropdown__menu-item(href='#') Element 1
+        a.chi-dropdown__menu-item(href='#') Element 2
+        a.chi-dropdown__menu-item(href='#')
+          .-flex--ellipsis Longer text element 3
+        a.chi-dropdown__menu-item(href='#') Element 4
+
+  div(class=`test-dropdown-higher-helper -w--100`)
+    span.-text--h2 Higher menu items helper
+    .-d--flex
+      .chi-dropdown__menu.-active(style="width:10rem")
+        a.chi-dropdown__menu-item(href="#") Link 1
+        .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        a.chi-dropdown__menu-item(href="#") Link 2
+
+  div(class=`test-dropdown-visible-items -w--100 -mb--2`)
+    span.-text--h2 Visible items
+    .-d--flex
+      div(class=`chi-dropdown__menu -active` style="overflow-y: auto; max-height: 7rem")
+        each i in [1, 2, 3, 4, 5]
+          a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
+
+  each size in sizes
+    each type in _variants
+      div(class={
+        [`test-dropdown-trigger-${type}`]: size === 'default',
+        [`test-dropdown-trigger-${type}-${size}`]: size !== 'default'
+      })
+        span.-text--h2= `Dropdown trigger / ${type} / ${size}`
+        table(cellpadding="0", cellspacing="0")
+          each state in states
+            tr
+              td
+                small= `${state}`
+              each style in _colors
+                if (style === 'secondary' || style === 'light')
+                  td.-bg--black
+                    .-mr--2
+                      button.chi-button.chi-dropdown__trigger.-m--1.-mx--2(
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      )= "Button"
+                      a.chi-button.chi-dropdown__trigger.-icon.-m--1(
+                      href="#"
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      aria-label='Button action'
+                      )
+                        .chi-button__content
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-atom')
+                      button.chi-button.chi-dropdown__trigger.-m--1(
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      )
+                        .chi-button__content
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-atom')
+                          span Button
+                else
+                  td
+                    .-mr--2
+                      button.chi-button.chi-dropdown__trigger.-m--1.-mx--2(
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      )= "Button"
+                      a.chi-button.chi-dropdown__trigger.-icon.-m--1(
+                      href="#"
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      aria-label='Button action'
+                      )
+                        .chi-button__content
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-atom')
+                      button.chi-button.chi-dropdown__trigger.-m--1(
+                      class={
+                        [`-${type}`]: type !== 'solid',
+                        [`-${style}`]: style !== 'default',
+                        [`-${state}`]: state !== 'initial',
+                        [`-${size}`]: size !== 'default'
+                      }
+                      disabled=state === 'disabled' ? 'disabled' : false
+                      )
+                        .chi-button__content
+                            .chi-icon
+                              svg
+                                use(xlink:href='#icon-atom')
+                            span Button
+
+  .test-dropdown-variants-color.-mt--5(style='width: 1000px; height: 400px;')
+    span.-text--h2 Variant and color
+    each variant in variants
+      .-d--flex.-flex--row.-justify-content--around.-mt--5.-text--center=`Variant ${variant}`
+        each color in colors
+          .chi-dropdown
+            button.chi-button.chi-dropdown__trigger(
+              class={
+                [`-${color}`]: !!color, 
+                [`-${variant}`]: !!variant
+              }
+            )=`${color}${variant ? '-' + variant : ''}`
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-button-sizes.-mt--5(style='width: 1000px;')
+    span.-text--h2 Button sizes
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--around
+      each size in sizes
+        .chi-dropdown
+          button.chi-button.chi-dropdown__trigger(class=`-${size}`)=`Size-${size}`
+        .chi-dropdown__menu 
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+          a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-button-disabled.-mt--5(style='width: 200px; height: 200px;')
+    span.-text--h2=`Disabled`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      .chi-dropdown
+        button.chi-button.chi-dropdown__trigger(disabled) Disabled
+      .chi-dropdown__menu 
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-button-uppercase.-mt--5(style='width: 500px; height: 200px;')
+    span.-text--h2=`Uppercase text`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      .chi-dropdown
+        button.chi-button.chi-dropdown__trigger.-uppercase() This text is uppercased
+      .chi-dropdown__menu 
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-button-font-weight.-mt--5(style='width: 500px; height: 200px;')
+    span.-text--h2=`Font weight`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      .chi-dropdown
+        button.chi-button.chi-dropdown__trigger.-text--normal() This text has normal font weight
+      .chi-dropdown__menu 
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-icon-trigger.-mt--5(style='width: 500px; height: 200px;')
+    span.-text--h2=`Icon dropdown`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      .chi-dropdown
+        button.chi-button.-flat.chi-dropdown__trigger.chi-dropdown__icon
+          .chi-button__content
+            i.chi-icon.icon-more-vert(aria-hidden="true")
+      .chi-dropdown__menu 
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+  .test-dropdown-select-mode-sizes.-mt--5(style='width: 500px; height: 700px')
+    span.-text--h2=`Select mode`
+    .chi-grid 
+      each size in _sizes
+        .chi-col.-w--2=size 
+        .chi-col.-w--10 
+          .chi-form__item.-mb--3
+            .chi-dropdown
+              button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid(class={
+                [`-${size}`]: type !== 'default',
+              })
+                | - Select -
+      .chi-col.-w--2 disabled
+      .chi-col.-w--10 
+        .chi-form__item.-mb--3
+          .chi-dropdown
+            button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid.-disabled
+              | - Select -
+      .chi-col.-w--2 focus
+      .chi-col.-w--10 
+        .chi-form__item.-mb--3
+          .chi-dropdown
+            button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid.-focus
+              | - Select -
+      .chi-col.-w--2 hover
+      .chi-col.-w--10 
+        .chi-form__item.-mb--3
+          .chi-dropdown
+            button.chi-button.chi-dropdown__trigger.chi-dropdown__select-mode.-fluid.-hover
+              | - Select -
+
+  .test-dropdown-states-helper-message(style="width: 500px;")
+    span.-text--h2 States and helper message
+    .chi-grid
+      each state in _states
+        each helperMessage in ['', 'Long helper message']
+          .chi-col.-mb--2(class={
+                  [`-w--4`]:!helperMessage, 
+                  [`-w--8`]: !!helperMessage
+          })
+            .chi-dropdown
+              button.chi-button.chi-dropdown__trigger(
+                class={
+                  [`-b--${state}`]: state !== 'default', 
+                  [`-fluid`]: !!helperMessage
+                }
+              )=`State ${state}`
+              if !!helperMessage
+                .chi-label.-status(class=`-${state}`)
+                  if state == 'success'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-check')
+                  else if state == 'warning'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-warning')
+                  else if state == 'danger'
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-circle-warning')
+                  | Optional long helper message
