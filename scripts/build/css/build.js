@@ -43,7 +43,7 @@ const buildTheme = async (theme) => {
     deleteCssFile(theme);
     runBashScript(scripts.restore, theme);
     runBashScript(scripts.replace, theme);
-    execSync(`cross-env THEME=${theme} vite build --c vite-css.config.ts`, { stdio: 'ignore' });
+    execSync(`${isWindows ? 'cross-env' : ''} THEME=${theme} vite build --c vite-css.config.ts`, { stdio: 'ignore' });
     spinner.succeed(`[CHI]: Build for ${theme} theme completed successfully`);
   } catch (error) {
     spinner.fail(`[CHI]: Error during build for ${theme} theme: ${error.message}`);

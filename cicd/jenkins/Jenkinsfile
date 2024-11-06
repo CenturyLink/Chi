@@ -179,6 +179,9 @@ pipeline {
       }
       steps {
         script {
+          // Install playwright
+          sh "npx playwright install"
+
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
