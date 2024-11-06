@@ -1,8 +1,0 @@
-{
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  "include": ["./**/*.vue"],
-  "compilerOptions": {
-    "experimentalDecorators": true
-  }
-}

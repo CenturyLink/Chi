@@ -1,0 +1,43 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Radio'
+  - var states = ['default', 'hover', 'focus', 'checked', 'disabled']
+  - var _states = ['default', 'hover', 'focus', 'disabled']
+
+block content
+  .test-states
+    each state, index in states
+      h5= `Radio / ${state}`
+      .chi-form__item.-row.-mb--1
+        .chi-radio
+          input.chi-radio__input(
+            type="radio"
+            id=`radio-${index}`
+            class={
+              [`-${state}`]: state == 'focus'
+            }
+            checked=state=='checked' ? 'checked' : false
+            disabled=state=='disabled' ? 'disabled' : false
+          )
+          label.chi-radio__label(for=`radio-${index}`) Radio
+
+  h2 Radio Button List
+  .test-states
+    each state, index in _states
+      h5= `Radio / ${state}`
+      ul.chi-form__item.-list(style="max-width:20rem")
+        each element in [1, 2, 3, 4, 5]
+          li.chi-form__item.-row
+            .chi-radio
+              input.chi-radio__input(
+                type="radio"
+                id=`radio--${element}`
+                name=`radio`
+                class={
+                  [`-${state}`]: state == 'focus'
+                }
+                checked=state=='checked' ? 'checked' : false
+                disabled=state=='disabled' ? 'disabled' : false
+              )
+              label.chi-radio__label(for=`radio--${element}`)= `Radio-${element}`

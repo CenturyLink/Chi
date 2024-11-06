@@ -1,0 +1,23 @@
+block variables
+
+doctype html
+html.chi
+  head
+    title Chi tests
+    meta(charset="utf-8")
+    meta(http-equiv="x-ua-compatible" content="edge")
+    meta(name="description" content="Chi Tests")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+
+    link(rel="stylesheet" href="../../chi.css" type="text/css")
+    link(rel="stylesheet" href="../tests.css" type="text/css")
+    
+    script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+    script(src='../../js/chi.js')
+    script(src='../../chi-icons.js')
+    script(src='../../chi-marketing-icons.js')
+  body(style= bodyStyle)
+    .chi-grid__container
+      h1= title 
+      .tests#tests
+        block content
