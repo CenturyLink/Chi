@@ -1,0 +1,101 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Search input'
+  - var styles = ['default', 'success', 'warning', 'danger']
+  - var states =  ['initial', 'hover', 'focus', 'disabled']
+  - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+
+block content
+  mixin input(style, state, size, disabled)
+    input.chi-input.chi-search__input(
+      type="text"
+      class={
+        [`-${style}`]:style != 'default',
+        [`-${state}`]:state != 'initial',
+        [`-${size}`]:size != 'default'
+      }
+      value="Value"
+      disabled=state=='disabled'?'disabled':false
+    )
+
+  each size in sizes
+    div(class=`test-${size}`)
+      span.-text--h2= `Search Input / ${size}`
+      table(cellpadding='0', cellspacing='0', width='800px')
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in styles
+              td
+                .-m--1
+                  .chi-form__item.-row
+                    .chi-input__wrapper.-icon--right
+                      input.chi-input.chi-search__input(
+                        type='search' 
+                        class={
+                          [`-${state}`]: state != 'initial' ,
+                          [`-${size}`]:size != 'default',
+                          [`-${style}`]:style != 'default' && state != 'disabled',
+                        }
+                        value='Value'
+                      )
+                      button.chi-button.-icon.-flat.-bg--none(
+                        class=`-${size}`
+                        aria-label='Search'
+                      )
+                        .chi-button__content
+                          i.chi-icon.icon-search(aria-hidden="true")
+                      if state != 'disabled'
+                        button.chi-button.-xs.-icon.-close(aria-label='Close')
+                          .chi-button__content
+                            i.chi-icon.icon-x(aria-hidden="true")
+
+  each size in sizes
+    div(class=`test-helper-message-${size}`)
+      span.-text--h2= `Search Input + Helper Message / ${size}`
+      table(cellpadding='0', cellspacing='0', width='800px')
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in styles
+              td
+                .-m--1
+                  .chi-form__item.-row
+                    .chi-input__wrapper.-icon--right
+                      input.chi-input.chi-search__input(
+                        type='search' 
+                        class={
+                          [`-${state}`]: state != 'initial',
+                          [`-${size}`]:size != 'default',
+                          [`-${style}`]:style != 'default' && state != 'disabled',
+                        }
+                        value='Value'
+                      )
+                      button.chi-button.-icon.-flat.-bg--none(
+                        class=`-${size}`
+                        aria-label='Search'
+                      )
+                        .chi-button__content
+                          i.chi-icon.icon-search(aria-hidden="true")
+                      if state != 'disabled'
+                        button.chi-button.-xs.-icon.-close(aria-label='Close')
+                          .chi-button__content
+                            i.chi-icon.icon-x(aria-hidden="true")
+                      .-d--flex
+                      .chi-label.-status(class=`-${style}`)
+                        if style == 'success'
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-circle-check')
+                        else if style == 'warning'
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-warning')
+                        else if style == 'danger'
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-circle-warning')
+                        | Helper message

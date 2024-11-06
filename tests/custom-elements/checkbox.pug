@@ -1,0 +1,27 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Checkbox'
+  - var states = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled', 'required', 'danger'];
+  - var statesList = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled'];
+
+block content
+  .test-states
+    each state in states
+      h5= `Checkbox / ${state}`
+      if state !== 'danger'
+        chi-checkbox(class="-mb--1" label="Checkbox" _status=state checked=state === 'checked' required=state === 'required')
+      else
+        chi-checkbox(class="-mb--1" state='danger' label='Checkbox' required)
+        .chi-label.-status.-danger
+          i.chi-icon.icon-circle-warning(aria-hidden="true")
+          | Please accept the terms of service.
+
+  h2 Checkbox List
+  .test-states
+    each state in statesList
+      h5= `Checkbox / ${state}`
+      ul.chi-form__item.-list(style="max-width:20rem")
+          each element in [1, 2, 3, 4, 5]
+            li.chi-form__item
+              chi-checkbox(label=`Checkbox-${element}` _status=state checked=state === 'checked' required=state === 'required')
