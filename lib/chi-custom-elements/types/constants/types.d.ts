@@ -1,4 +1,4 @@
-import { CARDINAL_EXTENDED_POSITIONS } from './positions';
+import { CARDINAL_EXTENDED_POSITIONS, CARDINAL_POSITIONS } from './positions';
 import { CountryCallingCode, CountryCode } from 'libphonenumber-js';
 export interface Country {
     name: string;
@@ -13,6 +13,7 @@ export interface ExtraCountry {
 export declare const MARKETING_ICON_MODES: readonly ["filled", "outline"];
 export type ChiMarketingIconModes = (typeof MARKETING_ICON_MODES)[number];
 export type GeneralPositionsExtended = (typeof CARDINAL_EXTENDED_POSITIONS)[number];
+export type GeneralPositions = (typeof CARDINAL_POSITIONS)[number];
 export type SearchInputModes = 'autocomplete';
 export interface TabTrigger {
     children: TabTrigger[];
@@ -61,4 +62,11 @@ export interface FormWrapperCheckbox extends FormWrapperOption {
 }
 export interface FormWrapperRadio extends FormWrapperOption {
     checked?: boolean;
+}
+export interface AccordionItem {
+    title: string;
+    text?: string;
+    template?: string;
+    expanded?: boolean;
+    disabled?: boolean;
 }

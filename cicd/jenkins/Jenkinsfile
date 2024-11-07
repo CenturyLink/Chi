@@ -118,27 +118,28 @@ pipeline {
         }
       }
     }
-    // stage('Linting') {
-    //   when {
-    //     beforeAgent true
-    //     allOf {
-    //       not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-    //       not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-    //       not { branch PROD_BRANCH }
-    //     }
-    //   }
-    //   agent {
-    //     docker {
-    //       image DOCKER_NODE20
-    //     }
-    //   }
-    //   steps {
-    //     script {
-    //       jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-    //       jslNpmWrapper('run lint:scss', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-    //     }
-    //   }
-    // }
+    stage('Linting') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { branch PROD_BRANCH }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          // TODO: Fix linting
+          // jslNpmWrapper('run lint:scss', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+        }
+      }
+    }
     stage ('Build Chi') {
       when {
         beforeAgent true

@@ -1,5 +1,6 @@
 {
   "entries": [
+    "components/accordion/accordion.js",
     "components/alert/alert.js",
     "components/app-layout/app-layout.js",
     "components/badge/badge.js",
@@ -32,12 +33,13 @@
     "components/textarea/textarea.js",
     "components/time/time.js",
     "components/time-picker/time-picker.js",
-    "components/toggle-switch/toggle-switch.js"
+    "components/toggle-switch/toggle-switch.js",
+    "components/tooltip/tooltip.js"
   ],
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.21.0",
-    "typescriptVersion": "5.5.3"
+    "version": "4.22.0",
+    "typescriptVersion": "5.5.4"
   },
   "collections": [],
   "bundles": []

@@ -5,21 +5,55 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AlertColors, IconColors } from "./constants/color";
+import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
-import { IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
-import { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, SearchInputModes, TabTrigger } from "./constants/types";
 import { CountryCode } from "libphonenumber-js";
-export { AlertColors, IconColors } from "./constants/color";
+export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
-export { IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 export { Placement } from "popper.js";
-export { ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, SearchInputModes, TabTrigger } from "./constants/types";
 export { CountryCode } from "libphonenumber-js";
 export namespace Components {
+    interface ChiAccordion {
+        /**
+          * To provide data for accordions
+         */
+        "accordions": AccordionItem[];
+        /**
+          * to set card layout
+         */
+        "card": boolean;
+        /**
+          * To hide one accordion (index), more than one (array of indexes) or all (no argument)
+         */
+        "hide": (accordions?: number | number[]) => Promise<void>;
+        /**
+          * to set portal layout (temporary)
+         */
+        "portal": boolean;
+        /**
+          * To show one accordion (index), more than one (array of indexes) or all (no argument)
+         */
+        "show": (accordions?: number | number[]) => Promise<void>;
+        /**
+          * to set accordion size { sm, md, lg, xl }. Size sm is not supported in Card
+         */
+        "size": AccordionSizes;
+        /**
+          * To toggle one accordion (index), more than one (array of indexes) or all (no argument)
+         */
+        "toggle": (accordions?: number | number[]) => Promise<void>;
+        /**
+          * to truncate long accordion titles
+         */
+        "truncated": boolean;
+    }
     interface ChiAlert {
         /**
           * To define alert title
@@ -520,6 +554,10 @@ export namespace Components {
     }
     interface ChiFormWrapper {
         /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
           * to set a lagend for all fields
          */
         "label"?: string;
@@ -531,6 +569,10 @@ export namespace Components {
           * to set options
          */
         "options": FormWrapperCheckbox[] | FormWrapperRadio[];
+        /**
+          * To set state success, warning or danger
+         */
+        "state"?: ChiStates;
         /**
           * to set form element type { checkbox, radio }.
          */
@@ -1265,6 +1307,36 @@ export namespace Components {
          */
         "value": string;
     }
+    interface ChiTooltip {
+        /**
+          * to set the background color of the tooltip { base, light }.
+         */
+        "color"?: TooltipColors;
+        /**
+          * Hides the tooltip
+         */
+        "hide": () => Promise<void>;
+        /**
+          * to set the tooltip message to display { string }.
+         */
+        "message": string;
+        /**
+          * to set position of the tooltip { top, right, bottom, left }.
+         */
+        "position"?: GeneralPositions;
+        /**
+          * Shows the tooltip
+         */
+        "show": () => Promise<void>;
+        /**
+          * to set the class chi-tooltip__wrapper
+         */
+        "wrapper"?: boolean;
+    }
+}
+export interface ChiAccordionCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiAccordionElement;
 }
 export interface ChiAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1354,7 +1426,30 @@ export interface ChiTimeCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiTimeElement;
 }
+export interface ChiTooltipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiTooltipElement;
+}
 declare global {
+    interface HTMLChiAccordionElementEventMap {
+        "chiAccordionShow": AccordionItem;
+        "chiAccordionHide": AccordionItem;
+        "chiAccordionsChanged": AccordionItem[];
+    }
+    interface HTMLChiAccordionElement extends Components.ChiAccordion, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiAccordionElementEventMap>(type: K, listener: (this: HTMLChiAccordionElement, ev: ChiAccordionCustomEvent<HTMLChiAccordionElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiAccordionElementEventMap>(type: K, listener: (this: HTMLChiAccordionElement, ev: ChiAccordionCustomEvent<HTMLChiAccordionElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiAccordionElement: {
+        prototype: HTMLChiAccordionElement;
+        new (): HTMLChiAccordionElement;
+    };
     interface HTMLChiAlertElementEventMap {
         "dismissAlert": void;
     }
@@ -1832,7 +1927,26 @@ declare global {
         prototype: HTMLChiTimePickerElement;
         new (): HTMLChiTimePickerElement;
     };
+    interface HTMLChiTooltipElementEventMap {
+        "chiTooltipShow": void;
+        "chiTooltipHide": void;
+    }
+    interface HTMLChiTooltipElement extends Components.ChiTooltip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiTooltipElementEventMap>(type: K, listener: (this: HTMLChiTooltipElement, ev: ChiTooltipCustomEvent<HTMLChiTooltipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiTooltipElementEventMap>(type: K, listener: (this: HTMLChiTooltipElement, ev: ChiTooltipCustomEvent<HTMLChiTooltipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiTooltipElement: {
+        prototype: HTMLChiTooltipElement;
+        new (): HTMLChiTooltipElement;
+    };
     interface HTMLElementTagNameMap {
+        "chi-accordion": HTMLChiAccordionElement;
         "chi-alert": HTMLChiAlertElement;
         "chi-badge": HTMLChiBadgeElement;
         "chi-brand": HTMLChiBrandElement;
@@ -1866,9 +1980,44 @@ declare global {
         "chi-textarea": HTMLChiTextareaElement;
         "chi-time": HTMLChiTimeElement;
         "chi-time-picker": HTMLChiTimePickerElement;
+        "chi-tooltip": HTMLChiTooltipElement;
     }
 }
 declare namespace LocalJSX {
+    interface ChiAccordion {
+        /**
+          * To provide data for accordions
+         */
+        "accordions"?: AccordionItem[];
+        /**
+          * to set card layout
+         */
+        "card"?: boolean;
+        /**
+          * Custom event when accordion is hidden from accordion trigger
+         */
+        "onChiAccordionHide"?: (event: ChiAccordionCustomEvent<AccordionItem>) => void;
+        /**
+          * Custom event when accordion is shown from accordion trigger
+         */
+        "onChiAccordionShow"?: (event: ChiAccordionCustomEvent<AccordionItem>) => void;
+        /**
+          * Custom event when accordions change. Emits all accordions in accordion.
+         */
+        "onChiAccordionsChanged"?: (event: ChiAccordionCustomEvent<AccordionItem[]>) => void;
+        /**
+          * to set portal layout (temporary)
+         */
+        "portal"?: boolean;
+        /**
+          * to set accordion size { sm, md, lg, xl }. Size sm is not supported in Card
+         */
+        "size"?: AccordionSizes;
+        /**
+          * to truncate long accordion titles
+         */
+        "truncated"?: boolean;
+    }
     interface ChiAlert {
         /**
           * To define alert title
@@ -2404,6 +2553,10 @@ declare namespace LocalJSX {
     }
     interface ChiFormWrapper {
         /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
           * to set a lagend for all fields
          */
         "label"?: string;
@@ -2416,6 +2569,10 @@ declare namespace LocalJSX {
           * to set options
          */
         "options": FormWrapperCheckbox[] | FormWrapperRadio[];
+        /**
+          * To set state success, warning or danger
+         */
+        "state"?: ChiStates;
         /**
           * to set form element type { checkbox, radio }.
          */
@@ -3270,7 +3427,34 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface ChiTooltip {
+        /**
+          * to set the background color of the tooltip { base, light }.
+         */
+        "color"?: TooltipColors;
+        /**
+          * to set the tooltip message to display { string }.
+         */
+        "message": string;
+        /**
+          * triggered when the Tooltip hide method has been executed.
+         */
+        "onChiTooltipHide"?: (event: ChiTooltipCustomEvent<void>) => void;
+        /**
+          * triggered when the Tooltip show method has been executed.
+         */
+        "onChiTooltipShow"?: (event: ChiTooltipCustomEvent<void>) => void;
+        /**
+          * to set position of the tooltip { top, right, bottom, left }.
+         */
+        "position"?: GeneralPositions;
+        /**
+          * to set the class chi-tooltip__wrapper
+         */
+        "wrapper"?: boolean;
+    }
     interface IntrinsicElements {
+        "chi-accordion": ChiAccordion;
         "chi-alert": ChiAlert;
         "chi-badge": ChiBadge;
         "chi-brand": ChiBrand;
@@ -3304,12 +3488,14 @@ declare namespace LocalJSX {
         "chi-textarea": ChiTextarea;
         "chi-time": ChiTime;
         "chi-time-picker": ChiTimePicker;
+        "chi-tooltip": ChiTooltip;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "chi-accordion": LocalJSX.ChiAccordion & JSXBase.HTMLAttributes<HTMLChiAccordionElement>;
             "chi-alert": LocalJSX.ChiAlert & JSXBase.HTMLAttributes<HTMLChiAlertElement>;
             "chi-badge": LocalJSX.ChiBadge & JSXBase.HTMLAttributes<HTMLChiBadgeElement>;
             "chi-brand": LocalJSX.ChiBrand & JSXBase.HTMLAttributes<HTMLChiBrandElement>;
@@ -3343,6 +3529,7 @@ declare module "@stencil/core" {
             "chi-textarea": LocalJSX.ChiTextarea & JSXBase.HTMLAttributes<HTMLChiTextareaElement>;
             "chi-time": LocalJSX.ChiTime & JSXBase.HTMLAttributes<HTMLChiTimeElement>;
             "chi-time-picker": LocalJSX.ChiTimePicker & JSXBase.HTMLAttributes<HTMLChiTimePickerElement>;
+            "chi-tooltip": LocalJSX.ChiTooltip & JSXBase.HTMLAttributes<HTMLChiTooltipElement>;
         }
     }
 }

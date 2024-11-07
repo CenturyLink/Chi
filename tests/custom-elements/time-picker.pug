@@ -265,8 +265,16 @@ block content
 
   script.
     document.addEventListener('DOMContentLoaded', () => {
-      const clickCheckInterval = setInterval(function() {
-        console.log("backstop_ready");
-        clearInterval(clickCheckInterval);
-      }, 3000);
+      function checkAllTimePickersRendered() {
+        const timePickers = document.querySelectorAll('chi-time-picker');
+
+        return Array.from(timePickers).every(x => x.classList.contains('hydrated'));
+      }
+
+      const renderCheckInterval = setInterval(function() {
+        if (checkAllTimePickersRendered()) {
+          console.log("backstop_ready");
+          clearInterval(renderCheckInterval);
+        }
+      }, 5000);
     });
