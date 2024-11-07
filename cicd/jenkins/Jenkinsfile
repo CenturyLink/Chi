@@ -176,6 +176,7 @@ pipeline {
       agent {
         docker {
           image DOCKER_NODE20
+          args '-u root'
         }
       }
       steps {
