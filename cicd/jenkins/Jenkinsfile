@@ -181,7 +181,11 @@ pipeline {
       steps {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+
+          // Prepare playwright
           sh "npx playwright install"
+          sh "npx playwright install-deps"
+          
           jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           stashAndArchiveCiReports()
