@@ -164,36 +164,7 @@ pipeline {
         }
       }
     }
-    // stage ('Backstop tests') {
-    //   when {
-    //     beforeAgent true
-    //     allOf {
-    //       not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-    //       not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
-    //       not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-    //     }
-    //   }
-    //   agent {
-    //     docker {
-    //       image DOCKER_NODE20
-    //       args '-u root'
-    //     }
-    //   }
-    //   steps {
-    //     script {
-    //       jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-
-    //       // Prepare playwright
-    //       sh "npx playwright install"
-    //       sh "npx playwright install-deps"
-          
-    //       jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-
-    //       stashAndArchiveCiReports()
-    //     }
-    //   }
-    // }
-    stage ('E2E tests') {
+    stage ('Backstop tests') {
       when {
         beforeAgent true
         allOf {
@@ -210,10 +181,33 @@ pipeline {
       steps {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+
+          stashAndArchiveCiReports()
         }
       }
     }
+    // stage ('E2E tests') {
+    //   when {
+    //     beforeAgent true
+    //     allOf {
+    //       not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+    //       not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+    //       not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+    //     }
+    //   }
+    //   agent {
+    //     docker {
+    //       image DOCKER_NODE20
+    //     }
+    //   }
+    //   steps {
+    //     script {
+    //       jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+    //       jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+    //     }
+    //   }
+    // }
     stage('Sonarqube') {
       when {
         beforeAgent true
