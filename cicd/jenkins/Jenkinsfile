@@ -326,10 +326,10 @@ pipeline {
     }
     // TEST: RELEASE
     stage('Release - RC') {
-      when {
-        beforeAgent true
-        // tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
-      }
+      // when {
+      //   beforeAgent true
+      //   tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
+      // }
       steps {
         script {
           promoteDeployTagGCR()
