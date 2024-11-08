@@ -15,3 +15,10 @@ echo "[CHI]: E2E tests finished in ${minutes} minutes and ${seconds} seconds"
 
 kill $SERVER_PID
 killall node
+
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+  echo "[CHI]: E2E tests failed"
+  exit $TEST_EXIT_CODE
+else
+  echo "[CHI]: E2E tests passed"
+fi
