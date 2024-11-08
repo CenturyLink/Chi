@@ -316,14 +316,14 @@ block content
 
   script.
     function checkAllTextareasRendered() {
-    const textareas = document.querySelectorAll('chi-textarea');
+      const textareas = document.querySelectorAll('chi-textarea');
 
-    return Array.from(textareas).every(x => x.classList.contains('hydrated'));
+      return Array.from(textareas).every(x => x.classList.contains('hydrated'));
     }
 
     const renderCheckInterval = setInterval(function() {
-    if (checkAllTextareasRendered()) {
-    console.log("backstop_ready");
-    clearInterval(renderCheckInterval);
-    }
+      if (checkAllTextareasRendered()) {
+        console.log("backstop_ready");
+        clearInterval(renderCheckInterval);
+      }
     }, 3000);

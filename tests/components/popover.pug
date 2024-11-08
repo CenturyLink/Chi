@@ -91,14 +91,8 @@ block content
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
   script.
-    document.addEventListener(
-      'DOMContentLoaded',
-      function () {
-        var popovers = chi.popover(
-          document.querySelectorAll('.autostart')
-        );
-        Array.prototype.forEach.call(popovers, function(popover){
-          popover.show();
-        });
-      }
-    );
+    document.addEventListener('DOMContentLoaded', () => {
+      const popovers = chi.popover(document.querySelectorAll('.autostart'));
+
+      Array.prototype.forEach.call(popovers, (popover) => popover.show());
+    });

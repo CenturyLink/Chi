@@ -286,16 +286,16 @@ block content
     });
 
     const addDropdownClassesInterval = setInterval(() => {
-        const focusDropdown = document.querySelector(
-          '#dropdown-select-mode-focus .chi-dropdown__select-mode'
-        );
-        const hoverDropdown = document.querySelector(
-          '#dropdown-select-mode-hover .chi-dropdown__select-mode'
-        );
+      const focusDropdown = document.querySelector(
+        '#dropdown-select-mode-focus .chi-dropdown__select-mode'
+      );
+      const hoverDropdown = document.querySelector(
+        '#dropdown-select-mode-hover .chi-dropdown__select-mode'
+      );
 
-        if (focusDropdown && hoverDropdown) {
-          focusDropdown.classList.add('-active');
-          hoverDropdown.classList.add('-hover');
-          clearInterval(addDropdownClassesInterval);
-        }
+      if (focusDropdown && hoverDropdown) {
+        focusDropdown.classList.add('-active');
+        hoverDropdown.classList.add('-hover');
+        clearInterval(addDropdownClassesInterval);
+      }
     });
