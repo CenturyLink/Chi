@@ -324,12 +324,11 @@ pipeline {
         }
       }
     }
-    // TEST: RELEASE
     stage('Release - RC') {
-      // when {
-      //   beforeAgent true
-      //   tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
-      // }
+      when {
+        beforeAgent true
+        tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
+      }
       steps {
         script {
           promoteDeployTagGCR()
@@ -588,7 +587,6 @@ def gcrPostFailure() {
         
   if (gcrInProgress) {
     echo "DEVOPS GCR of ${gcrInProgress} will be updated as cancelled / backed out. Please review your backout plan."
-    
     env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
     jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
   }
@@ -597,12 +595,13 @@ def gcrPostFailure() {
 // This function is called to promote the RC tag to the DEPLOYMENT tag
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  
   def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   def currentJob = env.JOB_NAME.toString()
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
 
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
 }
 
@@ -635,9 +634,11 @@ def isVersionBump() {
   echo "Publish condition: currentResult is _${currentBuild?.currentResult?.toLowerCase()}_"
   echo "Publish condition: versionBump is _${versionBump}_"
 
+  // TEST RELEASE
+  // ADDED -> env.BRANCH_NAME
   isVersionBumpResult = versionBump == "yes" &&
                         currentBuild?.currentResult?.toLowerCase() == "success" &&
-                        (['origin/master', 'origin/main', 'master', 'main', env.PROD_BRANCH].contains(env.GIT_BRANCH?.trim()?.toLowerCase()) || 
+                        (['origin/master', 'origin/main', 'master', 'main', env.PROD_BRANCH, env.BRANCH_NAME].contains(env.GIT_BRANCH?.trim()?.toLowerCase()) || 
                         (env.TAG_NAME?.toString()?.indexOf("##DEPLOYMENT##") != -1))
 
 
