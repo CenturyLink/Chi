@@ -1,0 +1,42 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Link'
+  - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+block content
+  h3 Base
+  .test-link-base.-w--100.-text(data-cy="test-link-base")
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, data-cy=`link-base-${size}`) Link
+
+  h3 Disabled
+  .test-link-disabled.-w--100.-text(data-cy="test-link-disabled")
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, disabled, data-cy=`link-disabled-${size}`) Link
+
+  h3 CTA
+  .test-link-cta.-w--100.-text(data-cy="test-link-cta")
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, cta, data-cy=`link-cta-${size}`) Link
+
+  h3 No underline
+  .test-link-no-underline.-w--100.-text
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, no-underline) Link
+
+  h3 Hover
+  .test-link-hover.-w--100.-text
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, _hover) Link
+
+  h3 No hover underline :hover
+  .test-link-no-hover-underline.-w--100.-text
+    each size in sizes
+      p.-text--bold=size
+      chi-link(size=`${size === 'default' ? '' : size}`, no-hover-underline, _hover) Link
