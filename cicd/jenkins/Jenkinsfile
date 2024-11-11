@@ -326,6 +326,20 @@ pipeline {
         }
       }
     }
+    stage('Release - Check version') {
+       when {
+        beforeAgent true
+        anyOf {
+          branch PROD_BRANCH
+          tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+        }
+      }
+      steps {
+        script {
+          packageVersionCheck()
+        }
+      }
+    }
     stage('Release - RC') {
       when {
         beforeAgent true
@@ -354,13 +368,6 @@ pipeline {
             }
           }
         }
-        stage('Check version') {
-          steps {
-            script {
-              packageVersionCheck()
-            }
-          }
-        }
         stage('Github release') {
           agent {
             docker {
@@ -369,7 +376,7 @@ pipeline {
           }
           steps {
             script {
-              if (isVersionBump(env.VERSION_BUMP_SCOPE)) {
+              if (isVersionBump()) {
                 gitHubRelease()
               }
             }
@@ -616,8 +623,6 @@ def packageVersionCheck() {
   """, label: "Check package.json version")
   
   stash name: "chi_version_bump", includes: "chi_version_bump"
-  
-  isVersionBump()
 }
 
 // This function is called to check if the version bump exists
