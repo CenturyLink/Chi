@@ -95,10 +95,10 @@ pipeline {
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
     // Scripts
-    VERSION_CHECK_SCRIPT = './cicd/scripts/versionCheck.sh'
-    GENERATE_CHANGELOG_SCRIPT = './cicd/scripts/generateChangelog.sh'
-    CLEAN_SCRIPT = './cicd/scripts/assetsServer/clean.sh'
-    CHECK_FOLDER_SCRIPT = './cicd/scripts/assetsServer/checkFolder.sh'
+    VERSION_CHECK_SCRIPT = './cicd/jenkins/scripts/versionCheck.sh'
+    GENERATE_CHANGELOG_SCRIPT = './cicd/jenkins/scripts/generateChangelog.sh'
+    CLEAN_SCRIPT = './cicd/jenkins/scripts/assetsServer/clean.sh'
+    CHECK_FOLDER_SCRIPT = './cicd/jenkins/scripts/assetsServer/checkFolder.sh'
 
     // Empty variables
     GCP_CREDENTIALS = ''
