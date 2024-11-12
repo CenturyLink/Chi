@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.13.0 (November 12, 2024)
+
+### Components
+
+#### Added
+
+- Added: Accordion web component.
+
 ## 6.12.0 (November 5, 2024)
 
 ### Components
