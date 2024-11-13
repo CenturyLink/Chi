@@ -96,7 +96,6 @@ pipeline {
 
     // Scripts
     VERSION_CHECK_SCRIPT = './cicd/jenkins/scripts/versionCheck.sh'
-    GENERATE_CHANGELOG_SCRIPT = './cicd/jenkins/scripts/generateChangelog.sh'
     CLEAN_SCRIPT = './cicd/jenkins/scripts/assetsServer/clean.sh'
     CHECK_FOLDER_SCRIPT = './cicd/jenkins/scripts/assetsServer/checkFolder.sh'
 
@@ -658,20 +657,43 @@ def isVersionBump() {
 // This function is called to create a GitHub release
 def gitHubRelease() {
   def rootPath = ''
-  def repoOwner = jslGitGetRepoOwner()
-  def repoName = jslGitGetRepoName()
-  
-  def publishVersion = sh(script: """
-    chmod +x ${GENERATE_CHANGELOG_SCRIPT}
-    ${GENERATE_CHANGELOG_SCRIPT} ${rootPath}
-  """, returnStdout: true).trim()
+  def latestRelease = 'true'
+ 
+  def packageJsonPath = "${rootPath}package.json"
+  def packageFile = readJSON file: packageJsonPath
+  def packageVersion = packageFile['version']
+  def plainVersion = packageVersion.tokenize('-')[0]
 
+  def versionMajor = plainVersion.tokenize('.')[0]
+  def versionMinor = plainVersion.tokenize('.')[1] ? plainVersion.tokenize('.')[1] : '0'
+  def versionPatch = plainVersion.tokenize('.')[2] ? plainVersion.tokenize('.')[2] : '0'
+
+  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : versionMinor.toInteger() == 0 ? (versionMajor.toInteger() - 1).toString() : versionMajor
+  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : versionPatch.toInteger() == 0 ? (versionMinor.toInteger() - 1).toString() : versionMinor
+  def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
+  
+  def classifier = ''
+  def publishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
+
+  sh script: """#!/bin/bash
+    echo "READING CHANGELOG FOR VERSION: ${publishVersion}"
+    echo "${publishVersion}" > ${rootPath}shortCHANGELOG.md
+    echo "" >> ${rootPath}shortCHANGELOG.md
+    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
+  """
+  
   def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
   
   env.VERSION = publishVersion
   env.GITHUB_USER='lumen-jenkins-prod'
 
-  jslGitHubReleaseCreate(env.VERSION, env.GIT_COMMIT, env.GITHUB_TOKEN_CREDENTIALS, releaseNotes, false, false, false, repoOwner, repoName, 'true')
+  def repoOwner = jslGitGetRepoOwner()
+  def repoName = jslGitGetRepoName()
+  def releaseId = jslGitHubReleaseCreate(publishVersion, env.GIT_COMMIT, env.GITHUB_TOKEN_CREDENTIALS, releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
+
+  if (releaseId == null) {
+    error("There was an error publishing the release")
+  }
 }
 
 // This function is called to create and open a pull request
