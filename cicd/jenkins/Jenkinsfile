@@ -739,23 +739,23 @@ def createAndOpenPullRequest(def version) {
       mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
       
       cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-      mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
+      mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
 
       cd ${WORKSPACE}/ux-chi-AssetsServer
 
-      git checkout -b "CHI_${packageJson.version}"
+      git checkout -b "CHI_${version}"
 
-      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
+      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
       git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
 
       git config user.email "scmauto@lumen.com"
       git config user.name "SCMAUTO"
       
-      git commit -m "CHI_${packageJson.version}"
-      git push --set-upstream origin "CHI_${packageJson.version}"
+      git commit -m "CHI_${version}"
+      git push --set-upstream origin "CHI_${version}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, 'CHI_${packageJson.version}', env.PROD_BRANCH, GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
+  jslGitHubPRCreate(commitMessage, description, 'CHI_${version}', env.PROD_BRANCH, GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
 // This function is called to check/create the smoke tests
