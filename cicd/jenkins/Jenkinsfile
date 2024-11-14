@@ -755,7 +755,7 @@ def createAndOpenPullRequest(def version) {
       git push --set-upstream origin "CHI_${version}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, 'CHI_${version}', env.PROD_BRANCH, GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
+  jslGitHubPRCreate(commitMessage, description, 'CHI_${version}', 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
 // This function is called to check/create the smoke tests
