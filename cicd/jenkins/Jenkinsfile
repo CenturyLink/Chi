@@ -732,9 +732,9 @@ def gitHubRelease() {
 // This function is called to create and open a pull request
 def createAndOpenPullRequest(def version) {
   def org = jslGitGetRepoOwner()
-  def commitMessage = '[FSTEAM-4189] This PR is for CHI ${version}'
-  def description = 'You can check staging in https://assets-dev.ctl.io/chi/staging';
-  def branchName = 'CHI_${version}';
+  def commitMessage = "[FSTEAM-4189] This PR is for CHI ${version}"
+  def description = "You can check staging in https://assets-dev.ctl.io/chi/staging"
+  def branchName = "CHI_${version}"
 
   sh(script: """
       mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
