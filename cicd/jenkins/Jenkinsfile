@@ -43,9 +43,7 @@ pipeline {
     DOCKER_REPO = 'chi'
 
     // Branch variables
-    // TEST RELEASE
-    // PROD_BRANCH = 'master-test'
-    PROD_BRANCH = 'master-test-release'
+    PROD_BRANCH = 'master'
     BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
     COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
     PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -325,45 +323,6 @@ pipeline {
         }
       }
     }
-    // TEST ASSETS SERVER
-    stage('Publish AssetServer') {
-      agent {
-        docker {
-          image DOCKER_NODE20
-        }
-      }
-      steps {
-        script {
-          def packageJson = readJSON file: 'package.json'
-
-          sh "rm -rf dist node_modules"
-
-          unstash name: "chi_build"
-
-          sh(script: """
-              chmod +x ${CLEAN_SCRIPT}
-              ${CLEAN_SCRIPT}
-          """, label: "Cleaning before pushing to AssetsServer")
-
-          jslGitHubCloneRepo('ux-chi-AssetsServer')
-
-          env.CHECK = sh(script: """
-              chmod +x ${CHECK_FOLDER_SCRIPT}
-              ${CHECK_FOLDER_SCRIPT} ${packageJson.version}
-          """, returnStdout: true).trim()
-
-          createAndOpenPullRequest(packageJson.version)
-
-          // def deploymentInfo = isDeploymentTag ? 
-          //   [environment: "production", previousCommit: jslGCRTagCommit("DEPLOYMENT", 2)] : 
-          //   [environment: "staging", previousCommit: jslGCRTagCommit()]
-          // def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, deploymentInfo.previousCommit)
-
-          // jslDeploymentContractValidationWrite(deploymentInfo.environment)
-          // jslJiraSendDeploymentInfo(deploymentInfo.environment, true, env.BRANCH_NAME, changeLog)
-        }
-      }
-    }
     stage('Release - Check version') {
        when {
         beforeAgent true
@@ -420,48 +379,48 @@ pipeline {
             }
           }
         }
-        // stage('Publish AssetServer') {
-        //   agent {
-        //     docker {
-        //       image DOCKER_NODE20
-        //     }
-        //   }
-        //   steps {
-        //     script {
-        //       def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().contains("##DEPLOYMENT##")
+        stage('Publish AssetServer') {
+          agent {
+            docker {
+              image DOCKER_NODE20
+            }
+          }
+          steps {
+            script {
+              def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().contains("##DEPLOYMENT##")
+              
+              if (isDeploymentTag) {
+                def packageJson = readJSON file: 'package.json'
 
-        //       if (isDeploymentTag) {
-        //         def packageJson = readJSON file: 'package.json'
+                sh "rm -rf dist node_modules"
 
-        //         sh "rm -rf dist node_modules"
+                unstash name: "chi_build"
 
-        //         unstash name: "chi_build"
+                sh(script: """
+                    chmod +x ${CLEAN_SCRIPT}
+                    ${CLEAN_SCRIPT}
+                """, label: "Cleaning before pushing to AssetsServer")
 
-        //         sh(script: """
-        //             chmod +x ${CLEAN_SCRIPT}
-        //             ${CLEAN_SCRIPT}
-        //         """, label: "Cleaning before pushing to AssetsServer")
+                jslGitHubCloneRepo('ux-chi-AssetsServer')
 
-        //         jslGitHubCloneRepo('ux-chi-AssetsServer')
+                env.CHECK = sh(script: """
+                    chmod +x ${CHECK_FOLDER_SCRIPT}
+                    ${CHECK_FOLDER_SCRIPT} ${packageJson.version}
+                """, returnStdout: true).trim()
 
-        //         env.CHECK = sh(script: """
-        //             chmod +x ${CHECK_FOLDER_SCRIPT}
-        //             ${CHECK_FOLDER_SCRIPT} ${packageJson.version}
-        //         """, returnStdout: true).trim()
+                createAndOpenPullRequest(packageJson.version)
+              }
 
-        //         createAndOpenPullRequest(packageJson.version)
-        //       }
+              def deploymentInfo = isDeploymentTag ? 
+                [environment: "production", previousCommit: jslGCRTagCommit("DEPLOYMENT", 2)] : 
+                [environment: "staging", previousCommit: jslGCRTagCommit()]
+              def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, deploymentInfo.previousCommit)
 
-        //       def deploymentInfo = isDeploymentTag ? 
-        //         [environment: "production", previousCommit: jslGCRTagCommit("DEPLOYMENT", 2)] : 
-        //         [environment: "staging", previousCommit: jslGCRTagCommit()]
-        //       def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, deploymentInfo.previousCommit)
-
-        //       jslDeploymentContractValidationWrite(deploymentInfo.environment)
-        //       jslJiraSendDeploymentInfo(deploymentInfo.environment, true, env.BRANCH_NAME, changeLog)
-        //     }
-        //   }
-        // }
+              jslDeploymentContractValidationWrite(deploymentInfo.environment)
+              jslJiraSendDeploymentInfo(deploymentInfo.environment, true, env.BRANCH_NAME, changeLog)
+            }
+          }
+        }
         stage('Prod smoke tests') {
           agent {
             docker {
