@@ -734,6 +734,7 @@ def createAndOpenPullRequest(def version) {
   def org = jslGitGetRepoOwner()
   def commitMessage = '[FSTEAM-4189] This PR is for CHI ${version}'
   def description = 'You can check staging in https://assets-dev.ctl.io/chi/staging';
+  def branchName = 'CHI_${version}';
 
   sh(script: """
       mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
@@ -743,7 +744,7 @@ def createAndOpenPullRequest(def version) {
 
       cd ${WORKSPACE}/ux-chi-AssetsServer
 
-      git checkout -b "CHI_${version}"
+      git checkout -b "${branchName}"
 
       git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
       git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
@@ -751,11 +752,11 @@ def createAndOpenPullRequest(def version) {
       git config user.email "scmauto@lumen.com"
       git config user.name "SCMAUTO"
       
-      git commit -m "CHI_${version}"
-      git push --set-upstream origin "CHI_${version}"
+      git commit -m "${branchName}"
+      git push --set-upstream origin "${branchName}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, 'CHI_${version}', 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
 // This function is called to check/create the smoke tests
