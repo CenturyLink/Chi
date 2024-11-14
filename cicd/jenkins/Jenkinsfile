@@ -43,9 +43,7 @@ pipeline {
     DOCKER_REPO = 'chi'
 
     // Branch variables
-    // TEST RELEASE
-    // PROD_BRANCH = 'master-test'
-    PROD_BRANCH = 'master-test-release'
+    PROD_BRANCH = 'master'
     BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
     COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
     PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -382,12 +380,6 @@ pipeline {
           }
         }
         stage('Publish AssetServer') {
-          when {
-            beforeAgent true
-            anyOf {
-              branch PROD_BRANCH
-            }
-          }
           agent {
             docker {
               image DOCKER_NODE20
@@ -396,7 +388,7 @@ pipeline {
           steps {
             script {
               def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().contains("##DEPLOYMENT##")
-
+              
               if (isDeploymentTag) {
                 def packageJson = readJSON file: 'package.json'
 
@@ -699,30 +691,31 @@ def gitHubRelease() {
 // This function is called to create and open a pull request
 def createAndOpenPullRequest(def version) {
   def org = jslGitGetRepoOwner()
-  def commitMessage = '[FSTEAM-4189] This PR is for CHI ${version}'
-  def description = 'You can check staging in https://assets-dev.ctl.io/chi/staging';
+  def commitMessage = "[FSTEAM-4189] This PR is for CHI ${version}"
+  def description = "You can check staging in https://assets-dev.ctl.io/chi/staging"
+  def branchName = "CHI_${version}"
 
   sh(script: """
       mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
       
       cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-      mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
+      mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
 
       cd ${WORKSPACE}/ux-chi-AssetsServer
 
-      git checkout -b "CHI_${packageJson.version}"
+      git checkout -b "${branchName}"
 
-      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
+      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
       git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
 
       git config user.email "scmauto@lumen.com"
       git config user.name "SCMAUTO"
       
-      git commit -m "CHI_${packageJson.version}"
-      git push --set-upstream origin "CHI_${packageJson.version}"
+      git commit -m "${branchName}"
+      git push --set-upstream origin "${branchName}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, 'CHI_${packageJson.version}', env.PROD_BRANCH, GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
 // This function is called to check/create the smoke tests
