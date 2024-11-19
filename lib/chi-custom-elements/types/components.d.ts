@@ -6,14 +6,14 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -1741,6 +1741,7 @@ declare global {
         "chiChange": string;
         "chiInput": string;
         "chiNumberInvalid": void;
+        "chiCountrySelected": Country;
     }
     interface HTMLChiPhoneInputElement extends Components.ChiPhoneInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLChiPhoneInputElementEventMap>(type: K, listener: (this: HTMLChiPhoneInputElement, ev: ChiPhoneInputCustomEvent<HTMLChiPhoneInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2875,6 +2876,10 @@ declare namespace LocalJSX {
           * Triggered when an alteration to the element's value is committed by the user
          */
         "onChiChange"?: (event: ChiPhoneInputCustomEvent<string>) => void;
+        /**
+          * Triggered when the user selected a country in the dropdown
+         */
+        "onChiCountrySelected"?: (event: ChiPhoneInputCustomEvent<Country>) => void;
         /**
           * Triggered when the user changed the element's value but did not commit the change yet
          */

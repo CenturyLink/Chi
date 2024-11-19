@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-10-28T09:19:49",
+  "timestamp": "2024-11-18T14:32:28",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.0",
+    "version": "4.22.2",
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -1696,11 +1696,13 @@
         "chi-textarea"
       ],
       "dependencies": [
+        "chi-tooltip",
         "chi-button",
         "chi-icon"
       ],
       "dependencyGraph": {
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -4327,7 +4329,6 @@
       "filePath": "src/components/icon/icon.tsx",
       "encapsulation": "scoped",
       "tag": "chi-icon",
-      "readme": "# chi-icon\n\n\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -7188,6 +7189,26 @@
           "docsTags": []
         },
         {
+          "event": "chiCountrySelected",
+          "detail": "Country",
+          "bubbles": true,
+          "complexType": {
+            "original": "Country",
+            "resolved": "Country",
+            "references": {
+              "Country": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Country"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selected a country in the dropdown",
+          "docsTags": []
+        },
+        {
           "event": "chiInput",
           "detail": "string",
           "bubbles": true,
@@ -7252,6 +7273,7 @@
           "chi-copy-text"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ]
@@ -9731,6 +9753,7 @@
           "chi-icon"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -10248,6 +10271,7 @@
           "chi-icon"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -10988,9 +11012,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-copy-text"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-copy-text": [
+          "chi-tooltip"
+        ]
+      }
     }
   ],
   "typeLibrary": {
@@ -11103,6 +11133,11 @@
       "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::Country": {
+      "declaration": "export interface Country {\n  name: string;\n  countryAbbr: CountryCode;\n  dialCode: CountryCallingCode;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::SearchInputModes": {
       "declaration": "\"autocomplete\"",

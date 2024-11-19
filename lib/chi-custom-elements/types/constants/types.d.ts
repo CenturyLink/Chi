@@ -70,3 +70,7 @@ export interface AccordionItem {
     expanded?: boolean;
     disabled?: boolean;
 }
+export interface IconType {
+    fillRule?: 'evenodd' | 'nonzero';
+    path: string;
+}

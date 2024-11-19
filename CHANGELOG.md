@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.14.0 (November 19, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown web component now remains open while selecting different items when the `selectMode` property is set to `multi`.
+
 ## 6.13.0 (November 12, 2024)
 
 ### Components

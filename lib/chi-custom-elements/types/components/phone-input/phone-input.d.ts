@@ -56,6 +56,10 @@ export declare class ChiPhoneInput {
      * Triggered when the element's value committed by the user is an invalid phone number for the selected prefix
      */
     chiNumberInvalid: EventEmitter<void>;
+    /**
+     * Triggered when the user selected a country in the dropdown
+     */
+    chiCountrySelected: EventEmitter<Country>;
     el: HTMLElement;
     _clickedOnComponent: boolean;
     _countries: Country[];
@@ -83,6 +87,7 @@ export declare class ChiPhoneInput {
     _checkCountry(prefix: string): void;
     _initCountry(): void;
     _suffixInputChangeHandler: (event: Event) => void;
+    _changeValueHandler: () => void;
     _inputHandler: (event: Event) => void;
     _pasteHandler: (event: ClipboardEvent) => void;
     _keyPressHandler: (event: KeyboardEvent) => void;
