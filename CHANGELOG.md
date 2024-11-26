@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 6.15.0 (November 26, 2024)
+
+### Components
+
+#### Added
+
+- Added: Phone input web component distinguishes between the events emitted by the country code dropdown with search and those triggered by the phone input itself.
+- Added: Phone input event `chiCountrySelected`.
+
 ## 6.14.0 (November 19, 2024)
 
 ### Components
