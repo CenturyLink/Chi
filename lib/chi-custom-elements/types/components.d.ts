@@ -5,20 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
-export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { ChiStates as ChiStates1 } from "./components";
+export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 export { Placement } from "popper.js";
 export { CountryCode } from "libphonenumber-js";
+export { ChiStates as ChiStates1 } from "./components";
 export namespace Components {
     interface ChiAccordion {
         /**
@@ -218,6 +220,14 @@ export namespace Components {
           * To add indeterminate state to checkbox
          */
         "indeterminate"?: boolean;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon": boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage": string;
         /**
           * To provide checkbox label as a string
          */
@@ -852,6 +862,56 @@ export namespace Components {
          */
         "value": string;
     }
+    interface ChiPicker {
+        /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon": boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage": string;
+        /**
+          * to set a legend for all fields
+         */
+        "label": string;
+        /**
+          * To indicate the form field is optional.
+         */
+        "optional": boolean;
+        /**
+          * to set options
+         */
+        "options": PickerOption[];
+        /**
+          * To set pill layout of options
+         */
+        "pill": boolean;
+        /**
+          * To indicate the form field is required.
+         */
+        "required": boolean;
+        /**
+          * To show checkbox or radio
+         */
+        "showInput"?: boolean;
+        /**
+          * Picker size { md, lg }.
+         */
+        "size": PickerSizes | PickerPillSizes;
+        /**
+          * To set state of helper message
+         */
+        "state"?: ChiStates1;
+        /**
+          * To define input type, radio (single selection) or checkbox (multiple selection)
+         */
+        "type": PickerInputTypes;
+    }
     interface ChiPopover {
         /**
           * to open or close the popover
@@ -1394,6 +1454,10 @@ export interface ChiPhoneInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiPhoneInputElement;
 }
+export interface ChiPickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiPickerElement;
+}
 export interface ChiPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiPopoverElement;
@@ -1757,6 +1821,23 @@ declare global {
         prototype: HTMLChiPhoneInputElement;
         new (): HTMLChiPhoneInputElement;
     };
+    interface HTMLChiPickerElementEventMap {
+        "chiChange": PickerOption[];
+    }
+    interface HTMLChiPickerElement extends Components.ChiPicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiPickerElementEventMap>(type: K, listener: (this: HTMLChiPickerElement, ev: ChiPickerCustomEvent<HTMLChiPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiPickerElementEventMap>(type: K, listener: (this: HTMLChiPickerElement, ev: ChiPickerCustomEvent<HTMLChiPickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiPickerElement: {
+        prototype: HTMLChiPickerElement;
+        new (): HTMLChiPickerElement;
+    };
     interface HTMLChiPopoverElementEventMap {
         "chiPopoverShow": any;
         "chiPopoverHide": any;
@@ -1970,6 +2051,7 @@ declare global {
         "chi-number-input": HTMLChiNumberInputElement;
         "chi-pagination": HTMLChiPaginationElement;
         "chi-phone-input": HTMLChiPhoneInputElement;
+        "chi-picker": HTMLChiPickerElement;
         "chi-popover": HTMLChiPopoverElement;
         "chi-progress": HTMLChiProgressElement;
         "chi-radio-button": HTMLChiRadioButtonElement;
@@ -2203,6 +2285,14 @@ declare namespace LocalJSX {
           * To add indeterminate state to checkbox
          */
         "indeterminate"?: boolean;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon"?: boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage"?: string;
         /**
           * To provide checkbox label as a string
          */
@@ -2905,6 +2995,60 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface ChiPicker {
+        /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon"?: boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage"?: string;
+        /**
+          * to set a legend for all fields
+         */
+        "label": string;
+        /**
+          * Emitted when any option is selected or unselected
+         */
+        "onChiChange"?: (event: ChiPickerCustomEvent<PickerOption[]>) => void;
+        /**
+          * To indicate the form field is optional.
+         */
+        "optional"?: boolean;
+        /**
+          * to set options
+         */
+        "options": PickerOption[];
+        /**
+          * To set pill layout of options
+         */
+        "pill"?: boolean;
+        /**
+          * To indicate the form field is required.
+         */
+        "required"?: boolean;
+        /**
+          * To show checkbox or radio
+         */
+        "showInput"?: boolean;
+        /**
+          * Picker size { md, lg }.
+         */
+        "size"?: PickerSizes | PickerPillSizes;
+        /**
+          * To set state of helper message
+         */
+        "state"?: ChiStates1;
+        /**
+          * To define input type, radio (single selection) or checkbox (multiple selection)
+         */
+        "type"?: PickerInputTypes;
+    }
     interface ChiPopover {
         /**
           * to open or close the popover
@@ -3482,6 +3626,7 @@ declare namespace LocalJSX {
         "chi-number-input": ChiNumberInput;
         "chi-pagination": ChiPagination;
         "chi-phone-input": ChiPhoneInput;
+        "chi-picker": ChiPicker;
         "chi-popover": ChiPopover;
         "chi-progress": ChiProgress;
         "chi-radio-button": ChiRadioButton;
@@ -3523,6 +3668,7 @@ declare module "@stencil/core" {
             "chi-number-input": LocalJSX.ChiNumberInput & JSXBase.HTMLAttributes<HTMLChiNumberInputElement>;
             "chi-pagination": LocalJSX.ChiPagination & JSXBase.HTMLAttributes<HTMLChiPaginationElement>;
             "chi-phone-input": LocalJSX.ChiPhoneInput & JSXBase.HTMLAttributes<HTMLChiPhoneInputElement>;
+            "chi-picker": LocalJSX.ChiPicker & JSXBase.HTMLAttributes<HTMLChiPickerElement>;
             "chi-popover": LocalJSX.ChiPopover & JSXBase.HTMLAttributes<HTMLChiPopoverElement>;
             "chi-progress": LocalJSX.ChiProgress & JSXBase.HTMLAttributes<HTMLChiProgressElement>;
             "chi-radio-button": LocalJSX.ChiRadioButton & JSXBase.HTMLAttributes<HTMLChiRadioButtonElement>;
