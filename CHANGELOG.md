@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.16.0 (December 3, 2024)
+
+### Components
+
+#### Added
+
+- Added: Data table now supports `noResultsIcon` and `noFiltersIcon` to change the icon on empty messages.
+
 ## 6.15.0 (November 26, 2024)
 
 ### Components
