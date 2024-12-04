@@ -24,6 +24,7 @@ export interface TabTrigger {
     target?: string;
     href?: string;
     visibleItems?: number;
+    disabled?: boolean;
 }
 export interface TabTriggerPosition {
     left: number;
@@ -63,6 +64,16 @@ export interface FormWrapperCheckbox extends FormWrapperOption {
 export interface FormWrapperRadio extends FormWrapperOption {
     checked?: boolean;
 }
+export interface PickerOption {
+    label: string;
+    id?: string;
+    description?: string;
+    checked?: boolean;
+    disabled?: boolean;
+    endLabel?: string;
+}
+export declare const PICKER_INPUT_TYPES: string[];
+export type PickerInputTypes = (typeof PICKER_INPUT_TYPES)[number];
 export interface AccordionItem {
     title: string;
     text?: string;
