@@ -34,10 +34,8 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 defaultSort?: <code>DataTableSortConfig</code>;
                 unsorted?: <code>boolean</code>;
                 mode?: <code>'clientside' | 'serverside'</code>;
-                noResultsMessage?: <code>string</code>;
-                noResultsIcon?: <code>string</code>;
-                noFiltersMessage?: <code>string</code>;
-                noFiltersIcon?: <code>string</code>;
+                noResults?: <code>DataTableNoResults</code>;
+                noFilters?: <code>DataTableNoResults</code>;
                 pagination: {
                   activePage?: <code>number</code>;
                   compact?: <code>boolean</code>;
@@ -195,6 +193,21 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 icon: <code>string</code>;
                 onClick: <code>(props: DataTableRow | undefined) => void</code>;
                 hide?: <code>'desktop' | 'tablet' | 'mobile'</code>;
+              }
+        tr 
+          td 
+            div <code>DataTableNoResults</code>
+          td.-p--0 
+            pre.-mb--0.
+              interface DataTableNoResults: {
+                action?: {
+                  href?: <code>string</code>;
+                  target?: <code>string</code>;
+                  message?: <code>string</code>;
+                  order?: <code>1 | 2</code>;
+                };
+                icon?: <code>string</code>;
+                message?: <code>string</code>;
               }
 
 h3 Methods
@@ -380,5 +393,12 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div <code>chiEmptyActionableLink</code>
           td
             div The user clicks the empty actionable link
+          td
+            <code>undefined</code>
+        tr
+          td
+            div <code>chiEmptyActionLink</code>
+          td
+            div The user clicks the empty link
           td
             <code>undefined</code>

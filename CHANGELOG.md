@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 6.17.0 (December 11, 2024)
+
+### Components
+
+#### Added
+
+- Added: Builder component.
+- Added: Tabs web component now supports `disabled` property on each Tab.
+
+### Documentation
+
+#### Added
+
+- Added: Builder has been integrated into the Button documentation page.
+
 ## 6.16.0 (December 3, 2024)
 
 ### Components

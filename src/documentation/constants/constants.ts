@@ -100,9 +100,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue',
   },
   {
-    href: `components/button`,
+    to: `components/button`,
     label: 'Button',
-    source: 'pug',
+    source: 'vue',
   },
   {
     to: `components/button-group`,
@@ -394,6 +394,7 @@ export const NAVIGATION_FOUNDATIONS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '6.17.0',
   '6.16.0',
   '6.15.0',
   '6.14.0',

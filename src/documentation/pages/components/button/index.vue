@@ -4,6 +4,8 @@
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
+      .chi-tabs-panel#builder
+        <Builder />
       .chi-tabs-panel#properties
         <Properties />
       .chi-tabs-panel#accessibility
@@ -13,19 +15,30 @@
 <script lang="ts">
 import { Vue } from 'vue-facing-decorator';
 import Examples from './examples/index.vue';
-
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
+import Builder from './_builder.vue';
 import { standardComponentPageTabs } from '@/constants/constants';
+
+definePageMeta({
+  layout: 'wide',
+});
 
 @NuxtComponent({
   components: {
     Examples,
     Accessibility,
     Properties,
+    Builder,
   },
 })
 export default class Button extends Vue {
-  pageTabs = standardComponentPageTabs;
+  pageTabs = [
+    ...standardComponentPageTabs,
+    {
+      id: 'builder',
+      label: 'Builder',
+    },
+  ];
 }
 </script>
