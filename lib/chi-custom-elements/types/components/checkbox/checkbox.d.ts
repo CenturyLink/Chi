@@ -34,17 +34,32 @@ export declare class Checkbox {
      * To define -hover, -focus statuses
      */
     _status: string;
+    /**
+     * To indicate if info icon should be displayed.
+     */
+    infoIcon: boolean;
+    /**
+     * To provide message for info icon popover.
+     */
+    infoIconMessage: string;
     private input?;
+    private helpButtonId;
+    private helpPopoverId;
     id: string;
     /**
      * Triggered when the user selects or deselects the checkbox
      */
     chiChange: EventEmitter<string | boolean>;
     connectedCallback(): void;
+    componentWillLoad(): void;
+    componentDidLoad(): void;
     toggle(ev: Event): void;
     _emitChange(checked: boolean): void;
     _updateIndeterminate(): void;
     updateIndeterminate(newValue: boolean, oldValue: boolean): void;
-    componentDidLoad(): void;
+    toggleHelpPopover(): void;
+    _getInfoIcon(): any;
+    _getInput(): any;
+    _getLabel(): any;
     render(): any;
 }
