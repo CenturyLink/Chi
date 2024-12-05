@@ -4,14 +4,6 @@
     <ChiBuilder />
 </template>
 
-<script lang="ts">
-import { Vue } from 'vue-facing-decorator';
+<script lang="ts" setup>
 import { ChiBuilder } from '@centurylink/chi-builder';
-
-@NuxtComponent({
-  components: {
-    ChiBuilder,
-  },
-})
-export default class Builder extends Vue {}
 </script>
