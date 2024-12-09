@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-11-26T12:59:36",
+  "timestamp": "2024-11-18T14:32:28",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.22.2",
@@ -87,10 +87,10 @@
         },
         {
           "name": "size",
-          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
           "complexType": {
             "original": "AccordionSizes",
-            "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+            "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
             "references": {
               "AccordionSizes": {
                 "location": "import",
@@ -120,10 +120,6 @@
             },
             {
               "value": "xl",
-              "type": "string"
-            },
-            {
-              "value": "xs",
               "type": "string"
             }
           ],
@@ -1116,7 +1112,6 @@
       "dependents": [
         "chi-alert",
         "chi-carousel",
-        "chi-checkbox",
         "chi-copy-text",
         "chi-dropdown",
         "chi-label",
@@ -1133,9 +1128,6 @@
           "chi-button"
         ],
         "chi-carousel": [
-          "chi-button"
-        ],
-        "chi-checkbox": [
           "chi-button"
         ],
         "chi-copy-text": [
@@ -1397,50 +1389,6 @@
           "required": false
         },
         {
-          "name": "infoIcon",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "info-icon",
-          "reflectToAttr": true,
-          "docs": "To indicate if info icon should be displayed.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "infoIconMessage",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "info-icon-message",
-          "reflectToAttr": true,
-          "docs": "To provide message for info icon popover.",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "label",
           "type": "string",
           "complexType": {
@@ -1565,23 +1513,8 @@
       "dependents": [
         "chi-form-wrapper"
       ],
-      "dependencies": [
-        "chi-button",
-        "chi-icon",
-        "chi-popover"
-      ],
+      "dependencies": [],
       "dependencyGraph": {
-        "chi-checkbox": [
-          "chi-button",
-          "chi-icon",
-          "chi-popover"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-popover": [
-          "chi-button"
-        ],
         "chi-form-wrapper": [
           "chi-checkbox"
         ]
@@ -3141,7 +3074,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": false,
-          "docs": "To set the color of the button. The value is directly passed to\r\nchi-button element if present  { primary, secondary, danger, dark, light }.",
+          "docs": "To set the color of the button. The value is directly passed to\nchi-button element if present  { primary, secondary, danger, dark, light }.",
           "docsTags": [],
           "values": [
             {
@@ -3618,7 +3551,7 @@
           "mutable": false,
           "attr": "variant",
           "reflectToAttr": false,
-          "docs": "To set the variant of the button. The value is directly passed to\r\nchi-button element if present { outline, flat }",
+          "docs": "To set the variant of the button. The value is directly passed to\nchi-button element if present { outline, flat }",
           "docsTags": [],
           "values": [
             {
@@ -3862,7 +3795,7 @@
           },
           "cancelable": true,
           "composed": true,
-          "docs": "Triggered when selected items have changed in the dropdown menu. Payload is an array\r\nof strings.",
+          "docs": "Triggered when selected items have changed in the dropdown menu. Payload is an array\nof strings.",
           "docsTags": []
         }
       ],
@@ -4297,11 +4230,6 @@
         "chi-popover": [
           "chi-button"
         ],
-        "chi-checkbox": [
-          "chi-button",
-          "chi-icon",
-          "chi-popover"
-        ],
         "chi-helper-message": [
           "chi-icon"
         ]
@@ -4363,7 +4291,6 @@
         "chi-dropdown",
         "chi-form-wrapper",
         "chi-number-input",
-        "chi-picker",
         "chi-search-input",
         "chi-text-input",
         "chi-textarea"
@@ -4385,9 +4312,6 @@
           "chi-helper-message"
         ],
         "chi-number-input": [
-          "chi-helper-message"
-        ],
-        "chi-picker": [
           "chi-helper-message"
         ],
         "chi-search-input": [
@@ -4561,7 +4485,6 @@
         "chi-alert",
         "chi-button",
         "chi-carousel",
-        "chi-checkbox",
         "chi-copy-text",
         "chi-date",
         "chi-date-picker",
@@ -4583,9 +4506,6 @@
           "chi-icon"
         ],
         "chi-carousel": [
-          "chi-icon"
-        ],
-        "chi-checkbox": [
           "chi-icon"
         ],
         "chi-copy-text": [
@@ -4793,8 +4713,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "chi-form-wrapper",
-        "chi-picker"
+        "chi-form-wrapper"
       ],
       "dependencies": [
         "chi-button",
@@ -4814,9 +4733,6 @@
           "chi-button"
         ],
         "chi-form-wrapper": [
-          "chi-label"
-        ],
-        "chi-picker": [
           "chi-label"
         ]
       }
@@ -7364,364 +7280,6 @@
       }
     },
     {
-      "filePath": "src/components/picker/picker.tsx",
-      "encapsulation": "scoped",
-      "tag": "chi-picker",
-      "docs": "",
-      "docsTags": [],
-      "usage": {},
-      "props": [
-        {
-          "name": "helperMessage",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "helper-message",
-          "reflectToAttr": false,
-          "docs": "To set helper message",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "infoIcon",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "info-icon",
-          "reflectToAttr": true,
-          "docs": "To indicate if info icon should be displayed.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "infoIconMessage",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "info-icon-message",
-          "reflectToAttr": true,
-          "docs": "To provide message for info icon popover.",
-          "docsTags": [],
-          "default": "''",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "label",
-          "type": "string",
-          "complexType": {
-            "original": "string",
-            "resolved": "string",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "label",
-          "reflectToAttr": false,
-          "docs": "to set a legend for all fields",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "optional",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "optional",
-          "reflectToAttr": false,
-          "docs": "To indicate the form field is optional.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "options",
-          "type": "PickerOption[]",
-          "complexType": {
-            "original": "PickerOption[]",
-            "resolved": "PickerOption[]",
-            "references": {
-              "PickerOption": {
-                "location": "import",
-                "path": "../../constants/types",
-                "id": "src/constants/types.ts::PickerOption"
-              }
-            }
-          },
-          "mutable": true,
-          "reflectToAttr": false,
-          "docs": "to set options",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "PickerOption[]"
-            }
-          ],
-          "optional": false,
-          "required": true
-        },
-        {
-          "name": "pill",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "pill",
-          "reflectToAttr": false,
-          "docs": "To set pill layout of options",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "required",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "required",
-          "reflectToAttr": false,
-          "docs": "To indicate the form field is required.",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "showInput",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "show-input",
-          "reflectToAttr": false,
-          "docs": "To show checkbox or radio",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "size",
-          "type": "string",
-          "complexType": {
-            "original": "PickerSizes | PickerPillSizes",
-            "resolved": "string",
-            "references": {
-              "PickerSizes": {
-                "location": "import",
-                "path": "../../constants/size",
-                "id": "src/constants/size.ts::PickerSizes"
-              },
-              "PickerPillSizes": {
-                "location": "import",
-                "path": "../../constants/size",
-                "id": "src/constants/size.ts::PickerPillSizes"
-              }
-            }
-          },
-          "mutable": true,
-          "attr": "size",
-          "reflectToAttr": false,
-          "docs": "Picker size { md, lg }.",
-          "docsTags": [],
-          "default": "'md'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "state",
-          "type": "\"danger\" | \"success\" | \"warning\"",
-          "complexType": {
-            "original": "ChiStates",
-            "resolved": "\"danger\" | \"success\" | \"warning\"",
-            "references": {
-              "ChiStates": {
-                "location": "import",
-                "path": "../../components",
-                "id": "src/components.d.ts::ChiStates"
-              }
-            }
-          },
-          "mutable": false,
-          "attr": "state",
-          "reflectToAttr": false,
-          "docs": "To set state of helper message",
-          "docsTags": [],
-          "values": [
-            {
-              "value": "danger",
-              "type": "string"
-            },
-            {
-              "value": "success",
-              "type": "string"
-            },
-            {
-              "value": "warning",
-              "type": "string"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "complexType": {
-            "original": "PickerInputTypes",
-            "resolved": "string",
-            "references": {
-              "PickerInputTypes": {
-                "location": "import",
-                "path": "../../constants/types",
-                "id": "src/constants/types.ts::PickerInputTypes"
-              }
-            }
-          },
-          "mutable": true,
-          "attr": "type",
-          "reflectToAttr": false,
-          "docs": "To define input type, radio (single selection) or checkbox (multiple selection)",
-          "docsTags": [],
-          "default": "'checkbox'",
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        }
-      ],
-      "methods": [],
-      "events": [
-        {
-          "event": "chiChange",
-          "detail": "PickerOption[]",
-          "bubbles": true,
-          "complexType": {
-            "original": "PickerOption[]",
-            "resolved": "PickerOption[]",
-            "references": {
-              "PickerOption": {
-                "location": "import",
-                "path": "../../constants/types",
-                "id": "src/constants/types.ts::PickerOption"
-              }
-            }
-          },
-          "cancelable": true,
-          "composed": true,
-          "docs": "Emitted when any option is selected or unselected",
-          "docsTags": []
-        }
-      ],
-      "listeners": [],
-      "styles": [],
-      "slots": [],
-      "parts": [],
-      "dependents": [],
-      "dependencies": [
-        "chi-label",
-        "chi-helper-message"
-      ],
-      "dependencyGraph": {
-        "chi-picker": [
-          "chi-label",
-          "chi-helper-message"
-        ],
-        "chi-label": [
-          "chi-button",
-          "chi-icon",
-          "chi-popover"
-        ],
-        "chi-button": [
-          "chi-icon"
-        ],
-        "chi-popover": [
-          "chi-button"
-        ],
-        "chi-helper-message": [
-          "chi-icon"
-        ]
-      }
-    },
-    {
       "filePath": "src/components/popover/popover.tsx",
       "encapsulation": "scoped",
       "tag": "chi-popover",
@@ -8176,7 +7734,6 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "chi-checkbox",
         "chi-date-picker",
         "chi-label",
         "chi-time-picker"
@@ -8190,9 +7747,6 @@
         ],
         "chi-button": [
           "chi-icon"
-        ],
-        "chi-checkbox": [
-          "chi-popover"
         ],
         "chi-date-picker": [
           "chi-popover"
@@ -11471,7 +11025,7 @@
   ],
   "typeLibrary": {
     "src/constants/size.ts::AccordionSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -11561,7 +11115,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -11576,7 +11130,7 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -11584,31 +11138,6 @@
       "declaration": "export interface Country {\n  name: string;\n  countryAbbr: CountryCode;\n  dialCode: CountryCallingCode;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
-    },
-    "src/constants/types.ts::PickerOption": {
-      "declaration": "export interface PickerOption {\n  label: string;\n  id?: string;\n  description?: string;\n  checked?: boolean;\n  disabled?: boolean;\n  // add html??\n  endLabel?: string;\n}",
-      "docstring": "",
-      "path": "src/constants/types.ts"
-    },
-    "src/constants/size.ts::PickerSizes": {
-      "declaration": "string",
-      "docstring": "",
-      "path": "src/constants/size.ts"
-    },
-    "src/constants/size.ts::PickerPillSizes": {
-      "declaration": "string",
-      "docstring": "",
-      "path": "src/constants/size.ts"
-    },
-    "src/constants/types.ts::PickerInputTypes": {
-      "declaration": "string",
-      "docstring": "",
-      "path": "src/constants/types.ts"
-    },
-    "src/components.d.ts::ChiStates": {
-      "declaration": "any",
-      "docstring": "",
-      "path": "src/components.d.ts"
     },
     "src/constants/types.ts::SearchInputModes": {
       "declaration": "\"autocomplete\"",
@@ -11621,12 +11150,12 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/types.ts::TabTrigger": {
-      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n  visibleItems?: number;\n  disabled?: boolean;\n}",
+      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n  visibleItems?: number;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },

@@ -876,7 +876,7 @@ export namespace Components {
          */
         "infoIconMessage": string;
         /**
-          * to set a legend for all fields
+          * To set a legend for all fields
          */
         "label": string;
         /**
@@ -884,7 +884,7 @@ export namespace Components {
          */
         "optional": boolean;
         /**
-          * to set options
+          * To set options
          */
         "options": PickerOption[];
         /**
@@ -3009,7 +3009,7 @@ declare namespace LocalJSX {
          */
         "infoIconMessage"?: string;
         /**
-          * to set a legend for all fields
+          * To set a legend for all fields
          */
         "label": string;
         /**
@@ -3021,7 +3021,7 @@ declare namespace LocalJSX {
          */
         "optional"?: boolean;
         /**
-          * to set options
+          * To set options
          */
         "options": PickerOption[];
         /**

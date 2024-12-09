@@ -177,8 +177,9 @@ export declare const SELECT_CLASSES: {
     SELECT: string;
 };
 export declare const TOOLTIP_CLASSES: {
-    TOOLTIP_ELEMENT: string;
-    TOOLTIP_WRAPPER: string;
+    ELEMENT: string;
+    WRAPPER: string;
+    MESSAGE: string;
 };
 export declare const TIME_CLASSES: {
     TIME: string;

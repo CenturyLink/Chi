@@ -5,7 +5,7 @@ import { ChiStates } from '../../components';
 export declare class Picker {
     el: HTMLElement;
     /**
-     * to set options
+     * To set options
      */
     options: PickerOption[];
     /**
@@ -25,7 +25,7 @@ export declare class Picker {
      */
     type: PickerInputTypes;
     /**
-     * to set a legend for all fields
+     * To set a legend for all fields
      */
     label: string;
     /**
@@ -58,8 +58,8 @@ export declare class Picker {
     chiChange: EventEmitter<PickerOption[]>;
     id: string;
     typeValidation(newValue: PickerInputTypes): void;
-    pillValidation(newValue: PickerInputTypes): void;
-    sizeValidation(newValue: PickerInputTypes): void;
+    pillValidation(newValue: boolean): void;
+    sizeValidation(newValue: PickerSizes | PickerPillSizes): void;
     componentWillLoad(): void;
     connectedCallback(): void;
     _isRadio(): boolean;
@@ -74,6 +74,7 @@ export declare class Picker {
      * Default change event handler
      */
     _onClick(item: PickerOption, ev: Event): void;
+    _getOptions(): any;
     _getFieldset(): any;
     render(): any;
 }
