@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 6.17.0 (December 11, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tabs web component now supports `disabled` property on each Tab.
+- Added: Data table now supports `noResults` and `noFilters` to change the empty configuration.
+- Added: Data table now includes support for custom links in the empty message.
+
+### Documentation
+
+#### Added
+
+- Added: Data table interface `DataTableNoResults`.
+- Added: Data table event `chiEmptyActionLink`.
+
 ## 6.16.0 (December 3, 2024)
 
 ### Components
