@@ -168,7 +168,7 @@ title: Picker
                   legend.chi-label Legend
                   each type in ['Radio1','Radio2']
                     div(class=`chi-picker -${size}`)
-                      input(type="radio", class="chi-picker__input", name='type-radio-checked', id=`ei-checked-${type}`, checked=(type === 'Radio1'))
+                      input(type="radio", class="chi-picker__input", name=`type-radio-checked-${size}`, id=`ei-checked-${type}`, checked=(type === 'Radio1'))
                       label(for=`ei-checked-${type}`)
                         = type
       .chi-col.-w--12.-w-lg--6
@@ -199,7 +199,7 @@ title: Picker
                   legend.chi-label Legend
                   each type in ['Radio1','Radio2']
                     div(class=`chi-picker -${size}`)
-                      input(type="radio", class="chi-picker__input", name='with-radio-checked', id=`ri-checked-${type}`, checked=(type === 'Radio1'))
+                      input(type="radio", class="chi-picker__input", name=`with-radio-checked-${size}`, id=`ri-checked-${type}`, checked=(type === 'Radio1'))
                       label(for=`ri-checked-${type}`)
                         .chi-form__item.-row
                           span.chi-picker__radio
@@ -270,7 +270,7 @@ title: Picker
                               | $0.00
                               span.-text--normal /mo
       .chi-col.-w--12.-w-lg--6
-        h3 With price
+        h3 With price checked
         .example
           .-p--3
             each size in sizes
@@ -308,3 +308,42 @@ title: Picker
                   input(type="radio", class="chi-picker__input", name=`type-pill-${size}`, id=`pill-ei-${size}-${type}`)
                   label(for=`pill-ei-${size}-${type}`)
                     = type
+
+.chi-col.-w--12
+  h2 With error message
+  .-w--100
+    .example
+      .test-with-error-message
+        fieldset
+          legend.chi-label
+            | Select options
+            abbr.chi-label__required *
+          .chi-picker
+            input.chi-picker__input(name="unique-name-mer" type="checkbox" id="unique-id-mer1" required)
+            label(for="unique-id-mer1") Option 1
+          .chi-picker
+            input.chi-picker__input(name="unique-name-mer" type="checkbox" id="unique-id-mer2")
+            label(for="unique-id-mer2") Option 2
+          .chi-label.-status.-danger
+            i.chi-icon.icon-circle-warning
+            | Please select an option
+
+.chi-col.-w--12.-w-lg--6
+  h3 With description and no input
+  .example
+    .-p--3
+      each size in sizes
+        h4= `${size}`
+        div(class=`test-with-description-no-input-${size}`)
+          fieldset
+            legend.chi-label Select options
+            each type in ['Checkbox1','Checkbox2']
+              div(class=`chi-picker -${size}`)
+                input(type="checkbox", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Checkbox1'))
+                label(for=`id-checked-${type}`)
+                  .chi-picker__content--start
+                    .chi-form__item.-row
+                        span.chi-picker__label.-ml--0
+                          =type
+                    div.chi-picker__description.-ml--0
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
