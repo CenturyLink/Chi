@@ -87,7 +87,7 @@ export default class ThemeSwitcher extends Vue {
       const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
 
       if (currentAsset) {
-        let replacementAsset = document.querySelector(`link[href="${currentAsset.href}"]`);
+        let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
 
         if (!replacementAsset) {
           replacementAsset = document.createElement('link');
@@ -95,10 +95,8 @@ export default class ThemeSwitcher extends Vue {
           replacementAsset.setAttribute('href', replacementHref);
 
           if (currentAsset.parentNode) {
-            currentAsset.parentNode.insertBefore(replacementHref, currentAsset.nextSibling);
+            currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
           }
-        } else {
-          replacementAsset.setAttribute('href', replacementHref);
         }
 
         replacementAsset.addEventListener('load', () => {
