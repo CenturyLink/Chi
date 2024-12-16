@@ -66,6 +66,10 @@ export declare class DatePicker {
      */
     minutesStep?: TimePickerTimeSteps;
     /**
+     * Displaying seconds column
+     */
+    displaySeconds?: boolean;
+    /**
      * Date change value event
      */
     eventChange: EventEmitter;
@@ -113,5 +117,6 @@ export declare class DatePicker {
     componentDidLoad(): void;
     disconnectedCallback(): void;
     _getChiDateValue(): string;
+    _getPlaceholder(): string;
     render(): any[];
 }

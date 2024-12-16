@@ -36,8 +36,6 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 mode?: <code>'clientside' | 'serverside'</code>;
                 noResults?: <code>DataTableNoResults</code>;
                 noFilters?: <code>DataTableNoResults</code>;
-                noFiltersMessage?: <code>string</code>;
-                noFiltersIcon?: <code>string</code>;
                 pagination: {
                   activePage?: <code>number</code>;
                   compact?: <code>boolean</code>;
@@ -305,26 +303,10 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td
             <code>DataTableRow</code>
         tr
-          td.-d--flex.-align-items--center
-            div <code>chiSelectAll</code>
-            chi-badge(class='-ml--1', size="xs")= 'Deprecated'
-          td
-            div The user selected all the rows on the page
-          td
-            <code>DataTableRow[]</code>
-        tr
           td
             div <code>chiSelectThisPage</code>
           td
             div The user selected all the rows on the page
-          td
-            <code>DataTableRow[]</code>
-        tr
-          td.-d--flex.-align-items--center
-            div <code>chiDeselectAll</code>
-            chi-badge(class='-m--1', size="xs")= 'Deprecated'
-          td
-            div The user deselected all the rows on the page
           td
             <code>DataTableRow[]</code>
         tr

@@ -305,9 +305,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug',
   },
   {
-    href: `components/forms/text-input`,
+    to: `components/forms/text-input`,
     label: 'Text input',
-    source: 'pug',
+    source: 'vue',
   },
   {
     href: `components/forms/textarea`,
@@ -394,6 +394,7 @@ export const NAVIGATION_FOUNDATIONS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '6.18.0',
   '6.17.0',
   '6.16.0',
   '6.15.0',

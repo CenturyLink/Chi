@@ -3,7 +3,7 @@
  */
 import * as ChiVueLibrary from '@centurylink/chi-vue';
 
-import { ChiVue } from '@centurylink/chi-vue';
+// import { ChiVue } from '@centurylink/chi-vue';
 
 const components = [
   'ChiPagination',
