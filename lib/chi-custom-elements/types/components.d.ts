@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -14,7 +14,7 @@ import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -315,6 +315,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
+        /**
           * To specify which dates to disable
          */
         "excludedDates": string;
@@ -478,6 +482,10 @@ export namespace Components {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * To set position of the Dropdown
          */
@@ -2384,6 +2392,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
+        /**
           * To specify which dates to disable
          */
         "excludedDates"?: string;
@@ -2543,6 +2555,10 @@ declare namespace LocalJSX {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * Triggered when hiding the Dropdown
          */

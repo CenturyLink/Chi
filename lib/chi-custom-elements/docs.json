@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-12-04T17:23:28",
+  "timestamp": "2024-12-13T11:57:38",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.3",
+    "version": "4.22.0",
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -1563,6 +1563,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "chi-dropdown",
         "chi-form-wrapper"
       ],
       "dependencies": [
@@ -1581,6 +1582,9 @@
         ],
         "chi-popover": [
           "chi-button"
+        ],
+        "chi-dropdown": [
+          "chi-checkbox"
         ],
         "chi-form-wrapper": [
           "chi-checkbox"
@@ -2169,6 +2173,28 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "displaySeconds",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "display-seconds",
+          "reflectToAttr": true,
+          "docs": "Displaying seconds column",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
@@ -3328,6 +3354,32 @@
           "required": false
         },
         {
+          "name": "items",
+          "type": "DropdownMenuMultiItem[]",
+          "complexType": {
+            "original": "DropdownMenuMultiItem[]",
+            "resolved": "DropdownMenuMultiItem[]",
+            "references": {
+              "DropdownMenuMultiItem": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::DropdownMenuMultiItem"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Dropdown menu items",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "DropdownMenuMultiItem[]"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "complexType": {
@@ -3419,7 +3471,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "prevent-auto-hide",
           "reflectToAttr": true,
           "docs": "To prevent hiding of the Dropdown when clicking outside its bounds",
@@ -3440,7 +3492,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "prevent-item-selected",
           "reflectToAttr": false,
           "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
@@ -3875,21 +3927,33 @@
         "chi-tabs"
       ],
       "dependencies": [
+        "chi-tooltip",
         "chi-icon",
         "chi-helper-message",
-        "chi-button"
+        "chi-button",
+        "chi-checkbox"
       ],
       "dependencyGraph": {
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ],
         "chi-search-input": [
           "chi-dropdown"
@@ -7340,15 +7404,25 @@
           "chi-helper-message"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ],
         "chi-text-input": [
           "chi-icon",
@@ -8966,15 +9040,25 @@
           "chi-helper-message"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ],
         "chi-phone-input": [
           "chi-search-input"
@@ -9535,15 +9619,25 @@
           "chi-dropdown"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ]
       }
     },
@@ -11459,11 +11553,15 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "chi-copy-text"
+        "chi-copy-text",
+        "chi-dropdown"
       ],
       "dependencies": [],
       "dependencyGraph": {
         "chi-copy-text": [
+          "chi-tooltip"
+        ],
+        "chi-dropdown": [
           "chi-tooltip"
         ]
       }
@@ -11537,6 +11635,11 @@
     },
     "src/constants/types.ts::DropdownSelectModes": {
       "declaration": "\"single\" | \"multi\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::DropdownMenuMultiItem": {
+      "declaration": "export interface DropdownMenuMultiItem {\n  label: string;\n  checked?: boolean;\n  id?: string;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

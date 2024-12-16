@@ -1,0 +1,26 @@
+---
+title: Copy Text
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+
+- const sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+
+h3 Base
+.test-copy-text-base
+  .chi-grid
+    span This is an example text
+    chi-copy-text(text="This is an example text")
+
+h3 Disabled
+.test-copy-text-disabled
+  .chi-grid
+    span This is an example text
+    chi-copy-text(text="This is an example text" disabled)
+
+h3 Sizes
+.test-copy-text-sizes
+  .chi-grid.-align-items--end
+    each size in sizes
+      .-m--1
+        chi-copy-text(text="text", size=size)
+        p.-text.-text--center #{size}

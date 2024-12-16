@@ -330,6 +330,28 @@
       "requireSameDimensions": true
     },
     {
+      "label": "copy-text",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/copy-text.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-copy-text-base",
+        ".test-copy-text-disabled",
+        ".test-copy-text-sizes"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "date-picker",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/date-picker.html",

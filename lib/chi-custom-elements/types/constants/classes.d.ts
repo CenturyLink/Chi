@@ -242,6 +242,7 @@ export declare const UTILITY_CLASSES: {
         SCREEN_ONLY: string;
         PRINT_ONLY: string;
         BLOCK: string;
+        INLINE_BLOCK: string;
     };
     FLEX: {
         FLEX_GROW1: string;
