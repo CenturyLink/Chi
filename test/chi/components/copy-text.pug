@@ -1,7 +1,6 @@
 ---
 title: Copy Text
 ---
-script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 - const sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
 
@@ -11,7 +10,9 @@ h3 Base
     span This is an example text
     button(class="chi-button -icon -flat -primary" aria-label="Edit")
       .chi-button__content
-        i(class="chi-icon icon-copy" aria-hidden="true")
+        .chi-icon
+          svg(aria-hidden='true')
+            use(xlink:href='#icon-copy')
 
 h3 Disabled
 .test-copy-text-disabled
@@ -19,7 +20,9 @@ h3 Disabled
     span This is an example text
     button(class="chi-button -icon -flat -primary" aria-label="Edit" disabled)
       .chi-button__content
-        i(class="chi-icon icon-copy" aria-hidden="true")
+        .chi-icon
+          svg(aria-hidden='true')
+            use(xlink:href='#icon-copy')
 
 h3 Sizes
 .test-copy-text-sizes
@@ -28,5 +31,7 @@ h3 Sizes
       .-m--1
         button(class="chi-button -icon -flat -primary" aria-label="Edit")
           .chi-button__content
-            i(class=`chi-icon icon-copy -${size}` aria-hidden="true")
+            .chi-icon(class=`-${size}`)
+              svg(aria-hidden='true')
+                use(xlink:href='#icon-copy')
         p.-text.-text--center #{size}
