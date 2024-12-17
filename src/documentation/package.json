@@ -26,8 +26,8 @@
     "vue-tsc": "^2.1.6"
   },
   "dependencies": {
+    "@centurylink/chi-builder": "file:centurylink-chi-builder-1.1.0.tgz",
     "@centurylink/chi-vue": "^3.10.0",
-    "@centurylink/chi-builder": "^1.1.0",
     "@pinia/nuxt": "^0.5.4",
     "pinia": "^2.2.2"
   }
