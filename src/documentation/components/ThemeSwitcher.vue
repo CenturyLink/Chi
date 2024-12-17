@@ -84,7 +84,7 @@ export default class ThemeSwitcher extends Vue {
 
     assetsToReplace.forEach((asset) => {
       const currentAsset = document.getElementById(asset.id);
-      const replacementHref = `${this.baseUrl}/${THEMES[theme][asset.type]}`;
+      const replacementHref = `${this.baseUrl}${THEMES[theme][asset.type]}`;
 
       if (currentAsset) {
         let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
