@@ -8,7 +8,7 @@ h3 Base
 .test-copy-text-base
   .-p--2
     span This is an example text
-    button(class="chi-button -icon -flat -primary" aria-label="Edit")
+    button(class="chi-button -icon -flat" aria-label="Edit")
       .chi-button__content
         .chi-icon
           svg(aria-hidden='true')
@@ -18,7 +18,7 @@ h3 Disabled
 .test-copy-text-disabled
   .-p--2
     span This is an example text
-    button(class="chi-button -icon -flat -primary" aria-label="Edit" disabled)
+    button(class="chi-button -icon -flat" aria-label="Edit" disabled)
       .chi-button__content
         .chi-icon
           svg(aria-hidden='true')
@@ -29,7 +29,7 @@ h3 Sizes
   .-d--flex.-align-items--end
     each size in sizes
       .-m--1
-        button(class="chi-button -icon -flat -primary" aria-label="Edit")
+        button(class="chi-button -icon -flat" aria-label="Edit")
           .chi-button__content
             .chi-icon(class=`-${size}`)
               svg(aria-hidden='true')
