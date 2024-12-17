@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 6.18.0 (December 18, 2024)
+
+### Components
+
+#### Added
+
+- Added: Picker web component.
+- Added: Tooltip web component now supports long tooltips.
+- Added: Date picker web component now supports `display-seconds` property.
+- Added: Checkbox web component now supports `info-icon` and `info-icon-message` property.
+
 ## 6.17.0 (December 11, 2024)
 
 ### Components
