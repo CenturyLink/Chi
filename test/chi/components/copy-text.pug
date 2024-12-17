@@ -7,20 +7,26 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 h3 Base
 .test-copy-text-base
-  .chi-grid
+  .-p--2
     span This is an example text
-    chi-copy-text(text="This is an example text")
+    button(class="chi-button -icon -flat -primary" aria-label="Edit")
+      .chi-button__content
+        i(class="chi-icon icon-copy" aria-hidden="true")
 
 h3 Disabled
 .test-copy-text-disabled
-  .chi-grid
+  .-p--2
     span This is an example text
-    chi-copy-text(text="This is an example text" disabled)
+    button(class="chi-button -icon -flat -primary" aria-label="Edit" disabled)
+      .chi-button__content
+        i(class="chi-icon icon-copy" aria-hidden="true")
 
 h3 Sizes
 .test-copy-text-sizes
-  .chi-grid.-align-items--end
+  .-d--flex.-align-items--end
     each size in sizes
       .-m--1
-        chi-copy-text(text="text", size=size)
+        button(class="chi-button -icon -flat -primary" aria-label="Edit")
+          .chi-button__content
+            i(class=`chi-icon icon-copy -${size}` aria-hidden="true")
         p.-text.-text--center #{size}
