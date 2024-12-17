@@ -83,27 +83,24 @@ export default class ThemeSwitcher extends Vue {
     ];
 
     assetsToReplace.forEach((asset) => {
-      const currentAsset = document.getElementById(asset.id);
-      const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
+      const replacementAsset = document.createElement('link');
 
-      if (currentAsset) {
-        let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
+      replacementAsset.setAttribute('rel', 'stylesheet');
+      replacementAsset.setAttribute('href', `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`);
+      replacementAsset.setAttribute('id', asset.id);
 
-        if (!replacementAsset) {
-          replacementAsset = document.createElement('link');
-          replacementAsset.setAttribute('rel', 'stylesheet');
-          replacementAsset.setAttribute('href', replacementHref);
+      for (let themeName in THEMES) {
+        const href = THEMES[themeName as Themes][asset.type];
 
-          if (currentAsset.parentNode) {
-            currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
-          }
+        const oldLink = document.querySelector(`link[href*="${href}"]`);
+
+        if (oldLink) {
+
+          oldLink.remove();
         }
-
-        replacementAsset.addEventListener('load', () => {
-          replacementAsset.setAttribute('id', asset.id);
-          currentAsset.remove();
-        });
       }
+
+      document.head.appendChild(replacementAsset);
     });
 
     brandLogo.setAttribute('logo', theme === 'centurylink' ? 'centurylink' : 'lumen');
