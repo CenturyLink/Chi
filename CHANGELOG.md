@@ -11,12 +11,6 @@
 - Added: Date picker web component now supports `display-seconds` property.
 - Added: Checkbox web component now supports `info-icon` and `info-icon-message` property.
 
-### Documentation
-
-#### Added
-
-- Added: Builder has been integrated into the Text input documentation page.
-
 ## 6.17.0 (December 11, 2024)
 
 ### Components
