@@ -47,7 +47,6 @@
 import { type Themes } from '@/models/models';
 import { THEMES } from '@/constants/constants';
 import { Vue } from 'vue-facing-decorator';
-import { TEMP_DEVELOPMENT_FALLBACK_URL } from '@/constants/constants';
 import { capitalize } from '@/utilities/utilities';
 
 declare const chi: any;
@@ -60,6 +59,7 @@ interface AssetToReplace {
 export default class ThemeSwitcher extends Vue {
   themeSwitcherDropdown: any;
   selectedTheme = useSelectedTheme();
+  baseUrl = useRuntimeConfig().public.baseUrl;
 
   getThemeSwitcherTriggerIcon() {
     const excludedThemes = ['portal', 'colt', 'brightspeed'];
@@ -84,7 +84,7 @@ export default class ThemeSwitcher extends Vue {
 
     assetsToReplace.forEach((asset) => {
       const currentAsset = document.getElementById(asset.id);
-      const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
+      const replacementHref = `${this.baseUrl}${THEMES[theme][asset.type]}`;
 
       if (currentAsset) {
         let replacementAsset = document.querySelector(`link[href="${replacementHref}"]`);
@@ -95,13 +95,13 @@ export default class ThemeSwitcher extends Vue {
           replacementAsset.setAttribute('href', replacementHref);
 
           if (currentAsset.parentNode) {
-              currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
+            currentAsset.parentNode.insertBefore(replacementAsset, currentAsset.nextSibling);
           }
         }
 
         replacementAsset.addEventListener('load', () => {
-            replacementAsset.setAttribute('id', asset.id);
-            currentAsset.remove();
+          replacementAsset.setAttribute('id', asset.id);
+          currentAsset.remove();
         });
       }
     });

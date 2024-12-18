@@ -305,9 +305,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug',
   },
   {
-    href: `components/forms/text-input`,
+    to: `components/forms/text-input`,
     label: 'Text input',
-    source: 'pug',
+    source: 'vue',
   },
   {
     href: `components/forms/textarea`,
