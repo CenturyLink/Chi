@@ -1440,6 +1440,24 @@
       "requireSameDimensions": true
     },
     {
+      "label": "skeleton",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/skeleton.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [".test-skeleton"],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "spinner",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/spinner.html",
