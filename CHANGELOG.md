@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.19.0 (December 19, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tooltip Vue component now supports `wrapper`property.
+
 ## 6.18.0 (December 18, 2024)
 
 ### Components

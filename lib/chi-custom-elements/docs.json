@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-12-16T11:07:21",
+  "timestamp": "2024-12-19T09:41:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.22.3",
@@ -729,9 +729,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-tags"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-tags": [
+          "chi-badge"
+        ]
+      }
     },
     {
       "filePath": "src/components/brand/brand.tsx",
@@ -1116,7 +1122,8 @@
         "chi-copy-text",
         "chi-dropdown",
         "chi-label",
-        "chi-popover"
+        "chi-popover",
+        "chi-tags"
       ],
       "dependencies": [
         "chi-icon"
@@ -1144,6 +1151,9 @@
           "chi-button"
         ],
         "chi-popover": [
+          "chi-button"
+        ],
+        "chi-tags": [
           "chi-button"
         ]
       }
@@ -9755,6 +9765,106 @@
       }
     },
     {
+      "filePath": "src/components/tags/tags.tsx",
+      "encapsulation": "none",
+      "tag": "chi-tags",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "To define placeholder of Text input",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tags",
+          "type": "Tag[]",
+          "complexType": {
+            "original": "Tag[]",
+            "resolved": "Tag[]",
+            "references": {
+              "Tag": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Tag"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "To add tags",
+          "docsTags": [],
+          "default": "[]",
+          "values": [
+            {
+              "type": "Tag[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "Tag[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "Tag[]",
+            "resolved": "Tag[]",
+            "references": {
+              "Tag": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Tag"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selects or deselects an option",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-badge",
+        "chi-button"
+      ],
+      "dependencyGraph": {
+        "chi-tags": [
+          "chi-badge",
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/text-input/text-input.tsx",
       "encapsulation": "scoped",
       "tag": "chi-text-input",
@@ -11855,6 +11965,11 @@
       "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::Tag": {
+      "declaration": "export interface Tag {\n  name: string;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
     },
     "src/constants/constants.ts::TextInputTypes": {
       "declaration": "\"number\" | \"time\" | \"text\" | \"datetime\" | \"date\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"url\" | \"week\"",
