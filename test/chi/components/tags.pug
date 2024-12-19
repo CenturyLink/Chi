@@ -1,0 +1,60 @@
+---
+title: Tags
+---
+
+- var tags = ['Some tag', 'Another tag']
+
+.test-base.-w--50.-mb--2.-pb--1
+  span.-text--h2 Base
+  ul.chi-tags
+    li.-flex--grow1 
+      input.chi-tags__input(type="text" placeholder="Add tag")
+
+.test-with-tags.-w--50.-mb--2.-pb--1
+  span.-text--h2 With tags
+  ul.chi-tags
+    each tag in tags
+      li
+        .chi-tag
+          .chi-badge
+            span=tag
+              button(class=`chi-button -icon -close -xs`, aria-label='Close')
+                .chi-button__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-x')
+    li.-flex--grow1 
+      input.chi-tags__input(type="text" placeholder="Add tag")
+
+.test-with-tags-focused.-w--50.-mb--2.-pb--1
+  span.-text--h2 With tags focused
+  ul.chi-tags.-focus
+    each tag in tags
+      li
+        .chi-tag
+          .chi-badge
+            span=tag
+              button(class=`chi-button -icon -close -xs`, aria-label='Close')
+                .chi-button__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-x')
+    li.-flex--grow1 
+      input.chi-tags__input(type="text" placeholder="Add tag")
+
+.test-with-tags-hover.-w--50.-mb--2.-pb--1
+  span.-text--h2 With tags hover
+  ul.chi-tags.-hover
+    each tag in tags
+      li
+        .chi-tag
+          .chi-badge
+            span=tag
+              button(class=`chi-button -icon -close -xs`, aria-label='Close')
+                .chi-button__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-x')
+    li.-flex--grow1 
+      input.chi-tags__input(type="text" placeholder="Add tag")
+

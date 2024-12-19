@@ -21,6 +21,10 @@ export declare const TRUNCATED_CLASS = "-truncated";
 export declare const CARD_CLASS = "-card";
 export declare const ROW_CLASS = "-row";
 export declare const PILL_CLASS = "-pill";
+export declare const SQUARE_CLASS = "-square";
+export declare const CIRCLE_CLASS = "-circle";
+export declare const ROUNDED_CLASS = "-rounded";
+export declare const FOCUS_CLASS = "-focus";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
     CONTENT: string;
@@ -210,6 +214,9 @@ export declare const POPOVER_CLASSES: {
     POPOVER: string;
     TEXT: string;
     TITLE: string;
+};
+export declare const SKELETON_CLASSES: {
+    SKELETON: string;
 };
 export declare const TABS_CLASSES: {
     TABS: string;
@@ -401,4 +408,9 @@ export declare const PICKER_CLASSES: {
     CONTENT_START: string;
     CONTENT_END: string;
     RADIO: string;
+};
+export declare const TAGS_CLASSES: {
+    TAGS: string;
+    TAG: string;
+    INPUT: string;
 };

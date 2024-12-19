@@ -5,16 +5,16 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
+import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
-export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, TabTrigger } from "./constants/types";
+export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -315,6 +315,10 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
+        /**
           * To specify which dates to disable
          */
         "excludedDates": string;
@@ -478,6 +482,10 @@ export namespace Components {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * To set position of the Dropdown
          */
@@ -1068,6 +1076,16 @@ export namespace Components {
          */
         "visibleItems"?: number;
     }
+    interface ChiSkeleton {
+        /**
+          * Size of the skeleton: { xs, sm, md, lg, xl }.
+         */
+        "size": SkeletonSizes;
+        /**
+          * Applies type classes to the skeleton.
+         */
+        "type": SkeletonTypes;
+    }
     interface ChiSpinner {
         /**
           * to render spinners on dark or light backgrounds.
@@ -1146,6 +1164,20 @@ export namespace Components {
           * To enable vertical variant of Tabs
          */
         "vertical": boolean;
+    }
+    interface ChiTags {
+        /**
+          * To define -hover, -focus statuses
+         */
+        "_status": string;
+        /**
+          * To define placeholder of Text input
+         */
+        "placeholder": string;
+        /**
+          * To add tags
+         */
+        "tags": Tag[];
     }
     interface ChiTextInput {
         /**
@@ -1477,6 +1509,10 @@ export interface ChiSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface ChiTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiTabsElement;
+}
+export interface ChiTagsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiTagsElement;
 }
 export interface ChiTextInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1906,6 +1942,12 @@ declare global {
         prototype: HTMLChiSearchInputElement;
         new (): HTMLChiSearchInputElement;
     };
+    interface HTMLChiSkeletonElement extends Components.ChiSkeleton, HTMLStencilElement {
+    }
+    var HTMLChiSkeletonElement: {
+        prototype: HTMLChiSkeletonElement;
+        new (): HTMLChiSkeletonElement;
+    };
     interface HTMLChiSpinnerElement extends Components.ChiSpinner, HTMLStencilElement {
     }
     var HTMLChiSpinnerElement: {
@@ -1945,6 +1987,23 @@ declare global {
     var HTMLChiTabsElement: {
         prototype: HTMLChiTabsElement;
         new (): HTMLChiTabsElement;
+    };
+    interface HTMLChiTagsElementEventMap {
+        "chiChange": Tag[];
+    }
+    interface HTMLChiTagsElement extends Components.ChiTags, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiTagsElementEventMap>(type: K, listener: (this: HTMLChiTagsElement, ev: ChiTagsCustomEvent<HTMLChiTagsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiTagsElementEventMap>(type: K, listener: (this: HTMLChiTagsElement, ev: ChiTagsCustomEvent<HTMLChiTagsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiTagsElement: {
+        prototype: HTMLChiTagsElement;
+        new (): HTMLChiTagsElement;
     };
     interface HTMLChiTextInputElementEventMap {
         "chiChange": string;
@@ -2056,9 +2115,11 @@ declare global {
         "chi-progress": HTMLChiProgressElement;
         "chi-radio-button": HTMLChiRadioButtonElement;
         "chi-search-input": HTMLChiSearchInputElement;
+        "chi-skeleton": HTMLChiSkeletonElement;
         "chi-spinner": HTMLChiSpinnerElement;
         "chi-switch": HTMLChiSwitchElement;
         "chi-tabs": HTMLChiTabsElement;
+        "chi-tags": HTMLChiTagsElement;
         "chi-text-input": HTMLChiTextInputElement;
         "chi-textarea": HTMLChiTextareaElement;
         "chi-time": HTMLChiTimeElement;
@@ -2384,6 +2445,10 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
+        /**
           * To specify which dates to disable
          */
         "excludedDates"?: string;
@@ -2543,6 +2608,10 @@ declare namespace LocalJSX {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * Triggered when hiding the Dropdown
          */
@@ -3241,6 +3310,16 @@ declare namespace LocalJSX {
          */
         "visibleItems"?: number;
     }
+    interface ChiSkeleton {
+        /**
+          * Size of the skeleton: { xs, sm, md, lg, xl }.
+         */
+        "size"?: SkeletonSizes;
+        /**
+          * Applies type classes to the skeleton.
+         */
+        "type"?: SkeletonTypes;
+    }
     interface ChiSpinner {
         /**
           * to render spinners on dark or light backgrounds.
@@ -3327,6 +3406,24 @@ declare namespace LocalJSX {
           * To enable vertical variant of Tabs
          */
         "vertical"?: boolean;
+    }
+    interface ChiTags {
+        /**
+          * To define -hover, -focus statuses
+         */
+        "_status"?: string;
+        /**
+          * Triggered when the user selects or deselects an option
+         */
+        "onChiChange"?: (event: ChiTagsCustomEvent<Tag[]>) => void;
+        /**
+          * To define placeholder of Text input
+         */
+        "placeholder"?: string;
+        /**
+          * To add tags
+         */
+        "tags"?: Tag[];
     }
     interface ChiTextInput {
         /**
@@ -3631,9 +3728,11 @@ declare namespace LocalJSX {
         "chi-progress": ChiProgress;
         "chi-radio-button": ChiRadioButton;
         "chi-search-input": ChiSearchInput;
+        "chi-skeleton": ChiSkeleton;
         "chi-spinner": ChiSpinner;
         "chi-switch": ChiSwitch;
         "chi-tabs": ChiTabs;
+        "chi-tags": ChiTags;
         "chi-text-input": ChiTextInput;
         "chi-textarea": ChiTextarea;
         "chi-time": ChiTime;
@@ -3673,9 +3772,11 @@ declare module "@stencil/core" {
             "chi-progress": LocalJSX.ChiProgress & JSXBase.HTMLAttributes<HTMLChiProgressElement>;
             "chi-radio-button": LocalJSX.ChiRadioButton & JSXBase.HTMLAttributes<HTMLChiRadioButtonElement>;
             "chi-search-input": LocalJSX.ChiSearchInput & JSXBase.HTMLAttributes<HTMLChiSearchInputElement>;
+            "chi-skeleton": LocalJSX.ChiSkeleton & JSXBase.HTMLAttributes<HTMLChiSkeletonElement>;
             "chi-spinner": LocalJSX.ChiSpinner & JSXBase.HTMLAttributes<HTMLChiSpinnerElement>;
             "chi-switch": LocalJSX.ChiSwitch & JSXBase.HTMLAttributes<HTMLChiSwitchElement>;
             "chi-tabs": LocalJSX.ChiTabs & JSXBase.HTMLAttributes<HTMLChiTabsElement>;
+            "chi-tags": LocalJSX.ChiTags & JSXBase.HTMLAttributes<HTMLChiTagsElement>;
             "chi-text-input": LocalJSX.ChiTextInput & JSXBase.HTMLAttributes<HTMLChiTextInputElement>;
             "chi-textarea": LocalJSX.ChiTextarea & JSXBase.HTMLAttributes<HTMLChiTextareaElement>;
             "chi-time": LocalJSX.ChiTime & JSXBase.HTMLAttributes<HTMLChiTimeElement>;
