@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
 import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
@@ -13,7 +13,7 @@ import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrappe
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
-export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
 export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
@@ -886,7 +886,7 @@ export namespace Components {
         /**
           * To set a legend for all fields
          */
-        "label": string;
+        "label"?: string;
         /**
           * To indicate the form field is optional.
          */
@@ -977,6 +977,20 @@ export namespace Components {
           * To define popover variant { text, custom }
          */
         "variant": string;
+    }
+    interface ChiPrice {
+        /**
+          * To set the value of the Currency
+         */
+        "currency"?: string;
+        /**
+          * Price size { 'sm', 'md', 'lg' }
+         */
+        "size"?: PriceSizes;
+        /**
+          * To set the value of the Price
+         */
+        "value": string | number;
     }
     interface ChiProgress {
         /**
@@ -1894,6 +1908,12 @@ declare global {
         prototype: HTMLChiPopoverElement;
         new (): HTMLChiPopoverElement;
     };
+    interface HTMLChiPriceElement extends Components.ChiPrice, HTMLStencilElement {
+    }
+    var HTMLChiPriceElement: {
+        prototype: HTMLChiPriceElement;
+        new (): HTMLChiPriceElement;
+    };
     interface HTMLChiProgressElement extends Components.ChiProgress, HTMLStencilElement {
     }
     var HTMLChiProgressElement: {
@@ -2112,6 +2132,7 @@ declare global {
         "chi-phone-input": HTMLChiPhoneInputElement;
         "chi-picker": HTMLChiPickerElement;
         "chi-popover": HTMLChiPopoverElement;
+        "chi-price": HTMLChiPriceElement;
         "chi-progress": HTMLChiProgressElement;
         "chi-radio-button": HTMLChiRadioButtonElement;
         "chi-search-input": HTMLChiSearchInputElement;
@@ -3080,7 +3101,7 @@ declare namespace LocalJSX {
         /**
           * To set a legend for all fields
          */
-        "label": string;
+        "label"?: string;
         /**
           * Emitted when any option is selected or unselected
          */
@@ -3179,6 +3200,20 @@ declare namespace LocalJSX {
           * To define popover variant { text, custom }
          */
         "variant"?: string;
+    }
+    interface ChiPrice {
+        /**
+          * To set the value of the Currency
+         */
+        "currency"?: string;
+        /**
+          * Price size { 'sm', 'md', 'lg' }
+         */
+        "size"?: PriceSizes;
+        /**
+          * To set the value of the Price
+         */
+        "value": string | number;
     }
     interface ChiProgress {
         /**
@@ -3725,6 +3760,7 @@ declare namespace LocalJSX {
         "chi-phone-input": ChiPhoneInput;
         "chi-picker": ChiPicker;
         "chi-popover": ChiPopover;
+        "chi-price": ChiPrice;
         "chi-progress": ChiProgress;
         "chi-radio-button": ChiRadioButton;
         "chi-search-input": ChiSearchInput;
@@ -3769,6 +3805,7 @@ declare module "@stencil/core" {
             "chi-phone-input": LocalJSX.ChiPhoneInput & JSXBase.HTMLAttributes<HTMLChiPhoneInputElement>;
             "chi-picker": LocalJSX.ChiPicker & JSXBase.HTMLAttributes<HTMLChiPickerElement>;
             "chi-popover": LocalJSX.ChiPopover & JSXBase.HTMLAttributes<HTMLChiPopoverElement>;
+            "chi-price": LocalJSX.ChiPrice & JSXBase.HTMLAttributes<HTMLChiPriceElement>;
             "chi-progress": LocalJSX.ChiProgress & JSXBase.HTMLAttributes<HTMLChiProgressElement>;
             "chi-radio-button": LocalJSX.ChiRadioButton & JSXBase.HTMLAttributes<HTMLChiRadioButtonElement>;
             "chi-search-input": LocalJSX.ChiSearchInput & JSXBase.HTMLAttributes<HTMLChiSearchInputElement>;
