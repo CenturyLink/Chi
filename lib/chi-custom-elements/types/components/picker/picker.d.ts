@@ -27,7 +27,7 @@ export declare class Picker {
     /**
      * To set a legend for all fields
      */
-    label: string;
+    label?: string;
     /**
      * To indicate the form field is required.
      */
@@ -69,7 +69,6 @@ export declare class Picker {
     _getComplexItemLabelContent(item: PickerOption, endSlot: any): any;
     _getContentStart(item: PickerOption, hasEndContent?: boolean): any;
     _getLabelContent(item: PickerOption): any;
-    _getLabelContentStartClasses(hasEndContent: boolean): string;
     /**
      * Default change event handler
      */

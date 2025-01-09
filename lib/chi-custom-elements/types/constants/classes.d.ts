@@ -215,6 +215,9 @@ export declare const POPOVER_CLASSES: {
     TEXT: string;
     TITLE: string;
 };
+export declare const PRICE_CLASSES: {
+    PRICE: string;
+};
 export declare const SKELETON_CLASSES: {
     SKELETON: string;
 };
@@ -249,6 +252,7 @@ export declare const UTILITY_CLASSES: {
         SCREEN_ONLY: string;
         PRINT_ONLY: string;
         BLOCK: string;
+        INLINE_BLOCK: string;
     };
     FLEX: {
         FLEX_GROW1: string;

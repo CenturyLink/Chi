@@ -1,5 +1,5 @@
 {
-  "timestamp": "2024-12-19T09:41:53",
+  "timestamp": "2025-01-09T09:09:48",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.22.3",
@@ -7547,8 +7547,8 @@
               "type": "string"
             }
           ],
-          "optional": false,
-          "required": true
+          "optional": true,
+          "required": false
         },
         {
           "name": "optional",
@@ -8297,6 +8297,99 @@
           "chi-popover"
         ]
       }
+    },
+    {
+      "filePath": "src/components/price/price.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-price",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "currency",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "currency",
+          "reflectToAttr": true,
+          "docs": "To set the value of the Currency",
+          "docsTags": [],
+          "default": "'$'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "PriceSizes",
+            "resolved": "string",
+            "references": {
+              "PriceSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::PriceSizes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Price size { 'sm', 'md', 'lg' }",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "string | number",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "To set the value of the Price",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/progress/progress.tsx",
@@ -11935,6 +12028,11 @@
       "declaration": "any",
       "docstring": "",
       "path": "src/components.d.ts"
+    },
+    "src/constants/size.ts::PriceSizes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/size.ts"
     },
     "src/constants/types.ts::SearchInputModes": {
       "declaration": "\"autocomplete\"",
