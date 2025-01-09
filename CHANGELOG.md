@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 6.20.0 (January 9, 2025)
+
+### Components
+
+### Components
+
+#### Added
+
+- Added: Copy Text Button web component now uses the tooltip web component.
+
+#### Fixed
+
+- Fixed: Sidenav open on hover would close when hovering over an element due to the border style.
+
 ## 6.19.0 (December 19, 2024)
 
 ### Components
