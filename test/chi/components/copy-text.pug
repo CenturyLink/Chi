@@ -1,0 +1,37 @@
+---
+title: Copy Text
+---
+
+- const sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+
+h3 Base
+.test-copy-text-base
+  .-p--2
+    span This is an example text
+    button(class="chi-button -icon -flat" aria-label="Edit")
+      .chi-button__content
+        .chi-icon
+          svg(aria-hidden='true')
+            use(xlink:href='#icon-copy')
+
+h3 Disabled
+.test-copy-text-disabled
+  .-p--2
+    span This is an example text
+    button(class="chi-button -icon -flat" aria-label="Edit" disabled)
+      .chi-button__content
+        .chi-icon
+          svg(aria-hidden='true')
+            use(xlink:href='#icon-copy')
+
+h3 Sizes
+.test-copy-text-sizes
+  .-d--flex.-align-items--end
+    each size in sizes
+      .-m--1
+        button(class="chi-button -icon -flat" aria-label="Edit")
+          .chi-button__content
+            .chi-icon(class=`-${size}`)
+              svg(aria-hidden='true')
+                use(xlink:href='#icon-copy')
+        p.-text.-text--center #{size}
