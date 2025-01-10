@@ -1,0 +1,45 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Drawer'
+  - var sides = ['top', 'right', 'bottom', 'left'];
+  - var versions = [{"title": "no-backdrop", "backdrop": false, "testClass": "test-"}, {"title": "backdrop", "backdrop": true, "testClass": "test-backdrop-"}, {"title": "inverse backdrop", "backdrop": "inverse", "testClass": "test-backdrop-inverse-"} ];
+
+block content
+  .docs-container
+    each side in sides
+      each version in versions
+        div(class=`${version.testClass}${side} -mb--3 example`)
+          div(style='width: 320px;')
+            .-text--h2= `Drawer / ${version.title} / ${side}`
+            div.-position--relative.-z--0(style='height: 20rem;')
+              chi-drawer(position=side backdrop=version.backdrop active no-header data-cy=`${version.testClass}${side}` prevent-auto-hide)
+                .-px--2.-text Drawer content here
+        
+        div(class=`${version.testClass}${side}-headed -mb--3 example`)
+          div(style='width: 320px;')
+            .-text--h2= `Drawer / with head / ${version.title} / ${side}`
+            div.-position--relative.-z--0(style='height: 20rem;')
+              chi-drawer(position=side backdrop=version.backdrop active data-cy=`${version.testClass}${side}-headed` prevent-auto-hide)
+                .-px--2.-text Drawer content here
+
+        div(class=`${version.testClass}${side}-with-title -mb--3 example`)
+          div(style='width: 320px;')
+            .-text--h2= `Drawer / with title / ${version.title} / ${side}`
+            div.-position--relative.-z--0(style='height: 20rem;')
+              chi-drawer(position=side title="Drawer title here" backdrop=version.backdrop active collapsible data-cy=`${version.testClass}${side}-with-title` prevent-auto-hide)
+                .-px--2.-text Drawer content here
+
+    div(class=`test-non-closable -mb--3 example`)
+      div(style='width: 320px;')
+        .-text--h2= `Drawer / Non closable`
+        div.-position--relative.-z--0(style='height: 20rem;')
+          chi-drawer(position='left' data-cy=`test-non-closable` no-header non-closable active prevent-auto-hide)
+            .-px--2.-text Drawer content here
+
+    div(class=`test-close-on-outside-click -mb--3 example`)
+      div(style='width: 320px;')
+        .-text--h2= `Drawer / Close on outside click`
+        div.-position--relative.-z--0(style='height: 20rem;')
+          chi-drawer(position="left" data-cy=`test-click-outside` no-header non-closable active)
+            .-px--2.-text Drawer content here

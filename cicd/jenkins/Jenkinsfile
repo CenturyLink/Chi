@@ -1,844 +1,540 @@
-/*
- Library declaration.
-  Notes:
-  identifier includes the version of the library (git tag / branch)
-  remote includes the repository git url
-  credentialsId needs to be of the type SSH key in Jenkins
-  _ at the end of the declaration loads the whole library
-
-  This section always runs in the master jenkins.
-*/
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@stable',
-        retriever: modernSCM(
-          [
-            $class: 'GitSCMSource',
-            remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
-            extensions: [[$class: 'WipeWorkspace']]
-          ]
-        )
-      ) _
+    identifier: 'jsl-jenkins-shared-library-local@stable',
+    retriever: modernSCM(
+      [
+        $class: 'GitSCMSource',
+        remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
+        extensions: [
+          [$class: 'WipeWorkspace']
+        ]
+      ]
+    )
+  ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@stable',
-        retriever: modernSCM(
-          [
-            $class: 'GitSCMSource',
-            remote: "https://github.com/CenturyLink/jsl-jenkins-shared-library.git",
-            credentialsId: 'SCMAUTO_GITHUB',
-            extensions: [[$class: 'WipeWorkspace']]
-          ]
-        )
-      ) _
+    identifier: 'jsl-jenkins-shared-library@stable',
+    retriever: modernSCM(
+      [
+        $class: 'GitSCMSource',
+        remote: "https://github.com/CenturyLink/jsl-jenkins-shared-library.git",
+        credentialsId: 'GITHUB_APP_CREDENTIALS',
+        extensions: [[$class: 'WipeWorkspace']]
+      ]
+    )
+  ) _
 }
-
 
 pipeline {
+  agent {
+    label 'Docker-enabled'
+  }
+  options {
+    timestamps()
+    timeout(time: 1, unit: 'HOURS')
+    buildDiscarder(logRotator(numToKeepStr:'100', daysToKeepStr: '30'))
+    preserveStashes(buildCount: 10)
+    disableConcurrentBuilds()
+  }
+  environment {
+    // Project variables
+    PROJECT_NAME = 'ux-chi'
+    PROJECT_MAL = 'CHI'
+    DOCKER_REPO = 'chi'
 
-    environment {
+    // Branch variables
+    PROD_BRANCH = 'master'
+    BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
+    COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
+    PULL_REQUEST="pr-${env.CHANGE_ID}"
 
+    // Github variables
+    GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
+    GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
+    GITHUB_ALTER_CREDENTIALS = 'JCTOKEN'
+    GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
+    
+    // Docker variables
+    DOCKER_CREDENTIALS = 'nexus-secrets'
+    DOCKER_NODE20 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node20_agent:latest"
+    DOCKER_JIRA = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest"
 
-      //  Credentials:
-      //  GITHUB_TOKEN_CREDENTIALS github token, jenkins user password credential. SCMAUTO_GITHUB contains the GitHub token from SCMAuto user, which need to have access to the repository.
-      //  GITHUB_SSH_CREDENTIALS github ssh private key, jenkins private key credential. SCMAUTO_SSH_DEVOPS_PIPELINE contains the SSH key from SCMAuto user, which need to have access to the repository.
-      //  DOCKER_CREDENTIALS Docker access info, jenkins secret file credential with environment variables to export.
-      //  KUBE_CREDENTIALS Kubernetes access info, jenkins secret file credential with environment variables to export. For PRs.
-      //  KUBE_CREDENTIALS_TEST Kubernetes access info, jenkins secret file credential with environment variables to export. For branches.
-      //  AMAZON_CREDENTIALS AWS access info, jenkins secret file credential with environment variables to export
-      //  SONARQUBE_CREDENTIALS Sonarqube access info, jenkins secret text
-      //  GCP_CREDENTIALS GCP access info, jenkins secret file credential with environment variables to export
-      //  JIRA_CREDENTIALS Jira access info, jenkins secret file credential with environment variables to export
-      //  MORPHEUS_CREDENTIALS Morpheus access info, jenkins secret text
-      //  MSTEAMS_CREDENTIALS MS Teams access info, jenkins secret text
-      //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
-      //  PROJECT_MAL The MAL of the project
+    // K8s variables
+    KUBE_CREDENTIALS = 'kube-secret'
+    KUBE_CREDENTIALS_TEST = 'kube-secret-test'
+    IMAGE_NAME = "${env.PROJECT_NAME}"
+    IMAGE_TAG = "${env.PULL_REQUEST}"
+    KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
+    KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
+    NGINX_DOCKERFILE = './cicd/nginx/Dockerfile'
+    
+    // Sonarqube variables
+    SONARQUBE_CREDENTIALS = 'sonarcicdent'
+    QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
+    SONARQUBE_PROPERTIES = "./cicd/sonarqube/sonar-project.properties"
 
-      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
-      GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
-      GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
-      GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
-      DOCKER_CREDENTIALS = 'nexus-secrets'
-      KUBE_CREDENTIALS = 'kube-secret'
-      KUBE_CREDENTIALS_TEST = 'kube-secret-test'
-      AMAZON_CREDENTIALS = 'awsCredentialsPR'
-      AMAZON_CREDENTIALS_PR = 'awsCredentials'
-      SONARQUBE_CREDENTIALS = 'sonarcicdent'
-      GCP_CREDENTIALS = ''
-      JIRA_CREDENTIALS = 'jira-credentials'
-      MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
-      QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
-      //Deployment control credentialsId
-      AUTHORIZED_USERS = ''
-      DEPLOY_AUTH_TOKEN = ''
-      NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
+    // ServiceNow variables
+    SERVICE_NOW_CREDENTIALS = 'snow-credentials'
+    SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
+    DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC96088", "u_testers": "AB62977"}'
 
-      // Custom project variables
-      // Add
-      PROJECT_NAME = 'ux-chi'
-      PROJECT_MAL = "chi"
-      DOCKER_REPO = 'chi'
+    // Release tags variables
+    RC_TAG_PATTERN =  /(.*##RC##.*)/
+    PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
+    DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
 
-      PROD_BRANCH = 'master'
-      BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
-      COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
-      PULL_REQUEST="pr-${env.CHANGE_ID}"
-      IMAGE_NAME = "${env.PROJECT_NAME}"
-      IMAGE_TAG = "${env.PULL_REQUEST}"
-      KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
-      KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
+    // Other variables
+    JIRA_CREDENTIALS = 'jira-credentials'
+    MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
+    NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
+  
+    // Tests variables
+    REPORTS_NON_RESPONSIVE_CI = "reports/ci_report/non_responsive/xunit.xml"
+    CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
-      // ServiceNow Variables
-      SERVICE_NOW_CREDENTIALS = 'snow-credentials'
-      SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
-      DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC96088", "u_testers": "AB62977"}'
+    // Scripts
+    VERSION_CHECK_SCRIPT = './cicd/jenkins/scripts/versionCheck.sh'
+    CLEAN_SCRIPT = './cicd/jenkins/scripts/assetsServer/clean.sh'
+    CHECK_FOLDER_SCRIPT = './cicd/jenkins/scripts/assetsServer/checkFolder.sh'
 
-      RC_TAG_PATTERN =  /(.*##RC##.*)/
-      PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
-      DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
-      NODE_OPTIONS = "--max-old-space-size=8192"
-      GENERATE_SOURCEMAP = "false"
-
-      SONAR_PROPERTIES_FILE = "./cicd/docker/SonarQube/sonar-project.properties"
-      SONAR_QG_THRESHOLD_FILE = "cicd/qgatethresholds/qgate1-sonar.json"
-      DOCKER_BUILDKIT=1
+    // Empty variables
+    GCP_CREDENTIALS = ''
+    AUTHORIZED_USERS = ''
+    DEPLOY_AUTH_TOKEN = ''
+  }
+  stages {
+    stage('Summary') {
+      steps {
+        script {
+          printSummary()
+        }
+      }
     }
-
-    agent {
-        label 'Docker-enabled'
+    stage('GitHub Security') {
+      steps {
+        script {
+          jslGitHubSecurityAlert()
+        }
+      }
     }
-
-    options {
-
-      // https://www.jenkins.io/doc/book/pipeline/syntax/#options
-
-      timestamps ()
-      timeout(time: 1, unit: 'HOURS')
-      buildDiscarder(logRotator(numToKeepStr:'10', daysToKeepStr: '30'))
-      preserveStashes(buildCount: 10)
-      disableConcurrentBuilds()
+    stage('Linting') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { branch PROD_BRANCH }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          // TODO: Fix linting
+          // jslNpmWrapper('run lint:scss', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+        }
+      }
     }
+    stage ('Build Chi') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run build', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
-    // https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
+          sendBuildInfo()
 
-    stages {
-      stage('Summary') {
-        steps {
-          script {
-            printSummary()
-          }
+          stash name: "chi_build", includes: "dist/**"
         }
       }
-      stage('Promote and Deployment tagging') {
-        when {
-          beforeAgent true
-          tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
-        }
-        steps {
-          script {
-            promoteDeployTagGCR()
-          }
-        }
-      }
-      stage('Authorize - Prod only') {
-        when {
-          beforeAgent true
-          anyOf {
-            tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-          }
-        }
-        steps {
-          script {
-            echo "Gotta get the credentials for this"
-            // jslDeploymentControlKnob()
-          }
+    }
+    stage ('Backstop tests') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
         }
       }
-      stage('Static Code Analysis') {
-        when {
-          beforeAgent true
-          allOf {
-            not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-          }
-        }
-        parallel {
-          stage('Linting Standard CHI') {
-            agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            when {
-              beforeAgent true
-              not {branch PROD_BRANCH}
-            }
-            steps {
-              script{
-                ghYarnWrap('install')
-                jslNpmWrapper('run lint:css')
-              }
-            }
-          }
-          stage('DevSecOps') {
-            steps {
-              script {
-                jslGitHubSecurityAlert()
-              }
-            }
-          }
+      agent {
+        docker {
+          image DOCKER_NODE20
         }
       }
-      stage('Package Version') {
-        when {
-          beforeAgent true
-          anyOf {
-            branch PROD_BRANCH
-            tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-          }
-        }
-        steps {
-          script {
-            packageVersionCheck()
-            echo "${env.VERSION_BUMP_SCOPE}"
-          }
-        }
-      }
-      stage('Building Vue documentation system') {
-        agent {
-          dockerfile {
-            filename getNodeAgentBlock('vue-documentation')
-            dir 'cicd/docker/agent_images'
-            label 'Docker-enabled'
-            args '-m 2G --shm-size=2gb'
-          }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            dir('src/documentation') {
-              buildDocumentation()
-            }
-          }
-        }
-      }
-      stage ('Building Chi') {
-        agent {
-          docker {
-            image getNodeAgentBlock(null, 'image')
-            label 'Docker-enabled'
-            args '-m 2G --shm-size=2gb'
-          }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            buildChi()
-          }
-        }
-      }
-      stage ('Tests') {
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        parallel {
-          stage ('BackstopJS Responsive Test') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                sh """
-                  rm -rf dist
-                  rm -rf node_modules
-                  rm -rf reports/html_report/responsive
-                """
-                ghYarnWrap('install')
-                unstash name: "DIST-CHI"
-                sh script: """
-                  mkdir -p reports/html_report/responsive
-                  cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
-                """, label: "Copying for executing BackstopJS Responsive tests"
-                jslNpmWrapper('run test:backstop:responsive')
-                stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
-                stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"
-                archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
-                sh "test ${currentBuild.currentResult} != UNSTABLE"
-              }
-            }
-          }
-          stage ('BackstopJS Non-Responsive Test') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                sh """
-                  rm -rf dist
-                  rm -rf node_modules
-                  rm -rf reports/html_report/non_responsive
-                """
-                ghYarnWrap('install')
-                unstash name: "DIST-CHI"
-                sh script: """
-                  mkdir -p reports/html_report/non_responsive
-                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
-                """, label: "Copying for executing BackstopJS Non-Responsive tests"
-                jslNpmWrapper('run test:backstop:non-responsive')
-                stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
-                stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
-                archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
-                sh "test ${currentBuild.currentResult} != UNSTABLE"
-              }
-            }
-          }
-          stage ('BackstopJS Custom Elements Test') {
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                sh """
-                  rm -rf dist
-                  rm -rf node_modules
-                  rm -rf reports/html_report/non_responsive_ce
-                """
-                ghYarnWrap('install')
-                unstash name: "DIST-CHI"
-                sh script: """
-                  mkdir -p reports/html_report/non_responsive_ce
-                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
-                """, label: "Copying for executing BackstopJS Custom Elements tests"
-                jslNpmWrapper('run test:backstop:non-responsive:ce')
-                stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
-                stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
-                archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
-                jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
-                sh "test ${currentBuild.currentResult} != UNSTABLE"
-              }
-            }
-          }
-          stage ('Cypress local Testing') {
-            agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                sh """
-                  rm -rf dist
-                  rm -rf node_modules
-                """
-                ghYarnWrap('install')
-                ghYarnWrap('cache clean')
-                unstash name: "DIST-CHI"
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run tests:visual', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
-                def retries = 3
-                while (retries != 0) {
-                  try {
-                    jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
-                    break
-                  } catch (Exception e) {
-                    retries -= 1
-                    echo "failure starting local server // remaining attempts: ${retries}"
-                  }
-                }
-                sh script: """
-                  ./node_modules/.bin/cypress run
-                """, label: "Running NPX before adding JSL file, TEST."
-                jslNpxWrapper('gulp serve:stop')
-              }
+          stashAndArchiveCiReports()
+        }
+      }
+    }
+    stage ('E2E tests') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+        }
+      }
+    }
+    stage('Sonarqube') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      parallel {
+        stage('Coverage') {
+          agent {
+            docker {
+              image DOCKER_NODE20
             }
+          }
+          steps {
+            // TODO: Improve to have nyc, coverage (folder) & lcov.info
+            jslQualityGateCodeCoverage(SONARQUBE_PROPERTIES)
+          }
+        }
+        stage('Static Analysis') {
+          agent {
+            docker {
+              image DOCKER_NODE20
+            }
+          }
+          steps {
+            jslSonarQubeStaticAnalysis(SONARQUBE_PROPERTIES, SONARQUBE_CREDENTIALS)
           }
         }
       }
-      stage('Sonarqube Static Analysis') {
-        agent {
-          docker {
-            image getNodeAgentBlock(null, 'image')
-            label 'Docker-enabled'
-            args '-m 2G --shm-size=2gb'
+    }
+    stage('QualityGate') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslQualityGate()
+        }
+      }
+    }
+    stage('QualityGate1') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_JIRA
+        }
+      }
+      steps {
+        script {
+          def isTestAvailable = true
+          
+          try {
+            unstash name: "non_responsive_ci"
+          } catch (Exception e) {
+            isTestAvailable = false
           }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            unstash name: "BACKSTOP-CE-CI"
-            unstash name: "BACKSTOP-NON-RES-CI"
-            unstash name: "BACKSTOP-RES-CI"
-            // For performance optimization the coverage has been moved here, however, if in the future the project enable coverage check using lcov or similar tools
-            // according to Sonar specification, then it need to have all needed parts of the coverage in the same stage or separated one, example can be seen below:
-            // ghYarnWrap('install')
-            // sh "rm -rf .nyc_output*"
-            // sh "rm -rf coverage/"
-            // unstash name: "NYC_OUTPUT_UNIT"
-            // unstash name: "NYC_OUTPUT_E2E"
-            // jslNpmWrapper('run cover:merge')
-            // archiveArtifacts artifacts: '.nyc_output/**'
-            // jslNpmWrapper('run cover:report:jenkins || echo Error when evaluating coverage report!')
-            // stash name: "COVERAGE", includes: "coverage/**"
-            // archiveArtifacts artifacts: 'coverage/**'
-            jslQualityGateCodeCoverage(env.SONAR_PROPERTIES_FILE)
-            jslSonarQubeStaticAnalysis(env.SONAR_PROPERTIES_FILE, env.SONARQUBE_CREDENTIALS)
-            jslQualityGate()
+            
+          if (isTestAvailable) {
+            jslCheckQualityGates(REPORTS_NON_RESPONSIVE_CI, 'QualityGate1-Unit')
           }
         }
       }
-      stage('QualityGate1') {
-        agent {
-          docker {
-              image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
-              label 'Docker-enabled'
-          }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            def isTestAvailable = true
-            try {
-              unstash name: "BACKSTOP-NON-RES-CI"
-            } catch (Exception e) {
-              echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
-              isTestAvailable = false
-            }
-            if (isTestAvailable) {
-              echo "QualityGate1-Unit"
-              jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
-            }
-          }
+    }
+    stage('Deploy to K8s') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
         }
       }
-      stage('Version check & Publish') {
-        when {
-          beforeAgent true
-          allOf {
-            anyOf {
-              tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-            }
-            expression {
-              return isVersionBump(env.VERSION_BUMP_SCOPE)
-            }
-          }
-        }
-        stages {
-          stage('GitHub Release') {
-            agent {
-              docker {
-                image getNodeAgentBlock(null, 'image')
-                label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
-              }
-            }
-            steps {
-              script {
-                echo "${env.VERSION_BUMP_SCOPE}"
-                def bumpScope = ['chi']
-                if (env.VERSION_BUMP_SCOPE == 'all') {
-                  bumpScope = ['chi']
-                }
-                bumpScope.each { scope ->
-                  gitHubReleaser() 
-                }
-              }
-            }
-          }
-        }
-      }
-      stage ('Publish DEV to S3/Prod to AssetsServer') {
-        parallel {
-          stage ('Publish Dev build') {
-            when {
-              beforeAgent true
-              allOf {
-                not {branch PROD_BRANCH}
-                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-              }
-            }
-            steps {
-              script {
-                sh "rm -rf dist"
-                unstash name: "DIST-CHI-DOCUMENTATION"
-                unstash name: "DIST-CHI"
-                def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
-                sh script:"""
-                  cat << 'PolicyDocument' > policy.json
-{
-   "Statement": [
-      {
-         "Effect": "Allow",
-         "Principal": "*",
-         "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::${s3Uri}/*"
-      }
-   ]
-}
-PolicyDocument
-                """, label: "Policy.json"
+      steps {
+        script {
+          def chiManifest = 'chiManifest.yml'
+          def chiManifestFile = "./${chiManifest}"
 
-                jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
-                jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
-                jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
-                jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
-                jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
+          sh "rm -rf ./dist"
+          unstash name: 'chi_build'
 
+          jslBuildAndPushToNexus(NGINX_DOCKERFILE)
 
-                // sh "sleep 10m"
-                // jslAwsCliWrapper("s3 rb ${s3Uri} --force", 'us-east-1', true)
-                echo "This will publish dev build to S3"
-              }
-            }
-          }
-          stage ('Publish Dev build to k8s') {
-            when {
-              beforeAgent true
-              allOf {
-                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-              }
-            }
-            steps {
-              script {
-                sh "rm -rf dist"
-                unstash name: "DIST-CHI-DOCUMENTATION"
-                unstash name: "DIST-CHI"
-                jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
-                def chiManifest = 'chiManifest.yml'
-                def chiManifestFile = "./${chiManifest}"
-                sh "rm -rf ${chiManifestFile}"
-                jslGenerateManifestForSimpleNginx(chiManifestFile)
-                jslDeployK8s(chiManifestFile)
-                archiveArtifacts artifacts: chiManifest, fingerprint: true
-                echo "This will publish dev build to K8s"
-                if (env.CHANGE_ID != null) {
-                  echo "Sending Jira Deployment for DEV"
-                  jslDeploymentContractValidationWrite("development")
-                  jslJiraSendDeploymentInfo('development', true)
-                }
-              }
-            }
-          }
-          stage ('Publish AssetServer Build') {
-            when {
-              beforeAgent true
-              anyOf {
-                branch PROD_BRANCH
-                tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-              }
-            }
-            agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
-                label 'Docker-enabled'
-              }
-            }
-            steps {
-              script {
-                if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-                  sh "rm -rf dist node_modules"
-                  unstash name: "DIST-CHI-DOCUMENTATION"
-                  unstash name: "DIST-CHI"
-                  sh script:"""
-                    sed -i 's#/getting-started#getting-started#g' dist/index.html
+          sh "rm -rf ${chiManifestFile}"
 
-                    cat ${WORKSPACE}/CHANGELOG.md
+          jslGenerateManifestForSimpleNginx(chiManifestFile)
+          jslDeployK8s(chiManifestFile)
+          
+          archiveArtifacts artifacts: chiManifest, fingerprint: true
 
-                    if [ -e "${WORKSPACE}/ux-chi-AssetsServer" ];
-                    then
-                      rm -rf ${WORKSPACE}/ux-chi-AssetsServer
-                    fi
-                  """, label: "Cleaning before pushing to AssetsServer"
-                  jslGitHubCloneRepo('ux-chi-AssetsServer')
-                  
-                  def packageJson = readJSON file: 'package.json'
-                  
-                  env.CHECK = sh (
-                    script: """#!/bin/bash
-                      if [[ -d ux-chi-AssetsServer/chi/${packageJson.version} ]]
-                      then
-                          check="EXISTS"
-                      else
-                          check="NO"
-                      fi
-                      echo "\$check"
-                    """,
-                    returnStdout: true
-                  ).trim()
-                  sh script:"""
-                    ls -lah
-                    cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
-This PR is for CHI ${packageJson.version}
-You can check staging in https://assets-dev.ctl.io/chi/staging
-PRDesc
-                    mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-                    cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-                    mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
-                    cd ${WORKSPACE}/ux-chi-AssetsServer
-                    git checkout -b "CHI_${packageJson.version}"
-                    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
-                    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-                    git config user.email "scmauto@lumen.com"
-                    git config user.name "SCMAUTO"
-                    git commit -m "CHI_${packageJson.version}"
-                    git push --set-upstream origin "CHI_${packageJson.version}"
-                  """, label: "Pushing branch to AssetsServer"
-                  if ( env.CHECK == "NO" ) {
-                    dir ('ux-chi-AssetsServer') {
-                      jslHubWrapper('pull-request -F prepared-message.md')
-                    }
-                  } else {
-                    echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
-                  }
-                } else {
-                    echo "PlaceHolder for STAGING ASSET Server Push of CHI version"
-                }
-                if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-                  def previousDeploymentCommit = jslGCRTagCommit("DEPLOYMENT", 2)
-                  def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, previousDeploymentCommit)
-                  echo "Sending Jira Deployment changeLog for PROD: ${changeLog}"
-                  jslDeploymentContractValidationWrite("production")
-                  jslJiraSendDeploymentInfo('production', true, env.BRANCH_NAME, changeLog)
-                } else {
-                  def lastDeploymentCommit = jslGCRTagCommit()
-                  def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, lastDeploymentCommit)
-                  echo "Sending Jira Deployment changeLog for STAGING: ${changeLog}"
-                  jslDeploymentContractValidationWrite("staging")
-                  jslJiraSendDeploymentInfo('staging', true, env.BRANCH_NAME, changeLog)
-                }
-              }
-            }
+          if (env.CHANGE_ID != null) {
+            jslDeploymentContractValidationWrite("development")
+            jslJiraSendDeploymentInfo('development', true)
           }
         }
       }
-      stage('Prod Smoke Tests') {
-        agent {
-          docker {
-            image getNodeAgentBlock(null, 'image')
-            label 'Docker-enabled'
-            args '-m 2G --shm-size=2gb'
-          }
-        }
-        when {
-          beforeAgent true
+    }
+    stage('Release - Check version') {
+       when {
+        beforeAgent true
+        anyOf {
+          branch PROD_BRANCH
           tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
         }
-        stages {
-          stage("Smoke Test") {
-            steps {
-              script {
-                sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
-                def bumpScope = ['chi']
-                if (env.VERSION_BUMP_SCOPE == 'all') {
-                  bumpScope = ['chi']
-                } else {
-                  bumpScope = ['none']
-                }
-                bumpScope.each { scope ->
-                  smokeTestChecker(scope) 
-                }
-                stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
-                jslPublishTestResults('cypress/reports/smokeTests/**')
-              }
-            }
-          }
-          stage("Quality Gate 7") {
-            when {
-              beforeAgent true
-              expression { return env.SMOKE_TEST_FAILURE != null && env.VERSION != null }
-            }
-            steps {
-              script {
-                unstash 'smokeTests'
-                jslPostQualityGate7Validation("'cypress/reports/smokeTests/*.xml'")
-              }
-            }
-          }
+      }
+      steps {
+        script {
+          packageVersionCheck()
         }
       }
-      stage('Adoption Stats') {
-        agent {
-          docker {
-              image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
-              label 'Docker-enabled'
+    }
+    stage('Release - RC') {
+      when {
+        beforeAgent true
+        tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
+      }
+      steps {
+        script {
+          promoteDeployTagGCR()
+        }
+      }
+    }
+    stage('Release - Deployment') {
+      when {
+        beforeAgent true
+        anyOf {
+          tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+        }
+      }
+      stages {
+        stage('Authorize') {
+          steps {
+            script {
+              // TODO: Get credentials for this
+              echo "Gotta get the credentials for this"
+              // jslDeploymentControlKnob()
+            }
           }
         }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+        stage('Github release') {
+          agent {
+            docker {
+              image DOCKER_NODE20
             }
+          }
+          steps {
+            script {
+              if (isVersionBump()) {
+                gitHubRelease()
+              }
+            }
+          }
         }
-        steps {
-          script {
-            if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-              env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
-              echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
-              jslAdoptionMain('cypress/reports/smokeTests/*.xml')
-            } else {
-              try {
-                sh """
-                  rm -rf reports/ci_report/*
-                """
-                unstash name: "BACKSTOP-CE-CI"
-                unstash name: "BACKSTOP-NON-RES-CI"
-                unstash name: "BACKSTOP-RES-CI"
-                sh """
-                  cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
-                  cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
-                  cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
-                """
-                echo "No E2E results found, reporting only unit"
-              } catch (Exception exc) {
-                echo "No regression tests present and no AdoptionMain Stats neither DevOps GCR"
-                sh """
-                  mkdir -p reports/ci_report
-                  touch reports/ci_report/xunitfinal.xml
-                """
+        stage('Publish AssetServer') {
+          agent {
+            docker {
+              image DOCKER_NODE20
+            }
+          }
+          steps {
+            script {
+              def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().contains("##DEPLOYMENT##")
+              
+              if (isDeploymentTag) {
+                def packageJson = readJSON file: 'package.json'
+
+                sh "rm -rf dist node_modules"
+
+                unstash name: "chi_build"
+
+                sh(script: """
+                    chmod +x ${CLEAN_SCRIPT}
+                    ${CLEAN_SCRIPT}
+                """, label: "Cleaning before pushing to AssetsServer")
+
+                jslGitHubCloneRepo('ux-chi-AssetsServer')
+
+                env.CHECK = sh(script: """
+                    chmod +x ${CHECK_FOLDER_SCRIPT}
+                    ${CHECK_FOLDER_SCRIPT} ${packageJson.version}
+                """, returnStdout: true).trim()
+
+                createAndOpenPullRequest(packageJson.version)
               }
-              if (isVersionBump(env.VERSION_BUMP_SCOPE)) {
-                //Set variable to trigger DevOps GCR Creation
-                env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+
+              def deploymentInfo = isDeploymentTag ? 
+                [environment: "production", previousCommit: jslGCRTagCommit("DEPLOYMENT", 2)] : 
+                [environment: "staging", previousCommit: jslGCRTagCommit()]
+              def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, deploymentInfo.previousCommit)
+
+              jslDeploymentContractValidationWrite(deploymentInfo.environment)
+              jslJiraSendDeploymentInfo(deploymentInfo.environment, true, env.BRANCH_NAME, changeLog)
+            }
+          }
+        }
+        stage('Prod smoke tests') {
+          agent {
+            docker {
+              image DOCKER_NODE20
+            }
+          }
+          stages {
+            stage('Smoke Test') {
+              steps {
+                script {
+                  sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
+                  
+                  smokeTestChecker()
+
+                  stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
+                  
+                  jslPublishTestResults('cypress/reports/smokeTests/**')
+                }
               }
-              jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+            }
+            stage('Quality Gate 7') {
+              when {
+                expression { return env.SMOKE_TEST_FAILURE != null && env.VERSION != null }
+              }
+              steps {
+                script {
+                  unstash 'smokeTests'
+
+                  jslPostQualityGate7Validation("'cypress/reports/smokeTests/*.xml'")
+                }
+              }
             }
           }
         }
       }
     }
-    post {
-      /*
-      https://www.jenkins.io/doc/book/pipeline/syntax/#post
-
-      Always post somewhere the watermark:
-    - md5sum of Jenkinsfile
-    - Output of the Jenkinsfile checker output
-      */
-      success {
-        jslNotification('success')
-        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
-      }
-      failure {
-        script {
-          def gcrInProgress = env.TAG_NAME==null?env.GCR_NUMBER:env.TAG_NAME
-          if (gcrInProgress) {
-            echo "DEVOPS GCR of ${gcrInProgress} will be updated as cancelled / backed out. Please review your backout plan!!!"
-            env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
-            jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
-          }
-          jslNotification('failure')
+    stage('Adoption Stats') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
         }
       }
-      unstable {
+      agent {
+        docker {
+          image DOCKER_JIRA
+        }
+      }
+      steps {
+        script {
+          def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1;
+
+          if (isDeploymentTag) {
+            env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+            jslAdoptionMain('cypress/reports/smokeTests/*.xml')
+          } else {
+            try {
+              sh "rm -rf reports/ci_report/*"
+              
+              unstash name: "non_responsive_ce_ci"
+              unstash name: "non_responsive_ci"
+              unstash name: "responsive_ci"
+              
+              sh """
+                cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
+                cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
+                cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
+              """
+            } catch (Exception exc) {
+              sh "mkdir -p reports/ci_report"
+              sh "touch reports/ci_report/xunitfinal.xml"
+            }
+          }
+
+          if (isVersionBump()) {
+            env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+          }
+          
+          jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+        }
+      }
+    }
+  }
+  post {
+    success {
+      script {
+        def endpointBranch = BRANCH_NAME == env.PROD_BRANCH ? BRANCH_NAME : PULL_REQUEST
+        def endpointMessage = "You can check this PRs instance in https://nginx-${endpointBranch}-ux-chi.kubeodc-test.corp.intranet/ (internal)"
+        
+        jslNotification('success')
+        jslGitHubMessage(endpointMessage, env.CHANGE_ID)
+      }
+    }
+    unstable {
+      script {
         jslNotification('unstable')
       }
-  }
-}
-
-def isVersionBump(def type = 'chi') {
-
-  def checkScopes = ['chi']
-  if (type == 'all') {
-    checkScopes = ['chi']
-  } else if (type == 'chi') {
-    echo "Continue with CHI version bump"
-  } else {
-    echo "No correct scope provided"
-    return false
-  }
-  def isVersionBumpResult = false
-
-  checkScopes.each { scope ->
-    scope = scope.replace('-', '_')
-    if (isVersionBumpResult == true) {
-      return
     }
-    stashName = "${scope.toUpperCase()}_VERSION_BUMP"
-    bumpFile = "${scope}_version_bump"
-    try {
-      unstash name: stashName
-    } catch (Exception e) {
-      echo "No VERSION_BUMP done"
-      isVersionBumpResult = false
-      return
+    failure {
+      script {
+        gcrPostFailure()
+        jslNotification('failure')
+      }
     }
-    def versionBump = readFile file:bumpFile
-    echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
-    echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
-    echo "Publish condition: versionBump is _${versionBump.trim()}_"
-    
-    isVersionBumpResult = versionBump.trim() == "yes"
-    isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
-    isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', env.PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
-    if (!isVersionBumpResult) {
-      return
-    } else if (scope == 'chi') {
-      if (env.VERSION_BUMP_SCOPE == 'all') {
-        env.VERSION_BUMP_SCOPE = 'all'
-      } else {
-        env.VERSION_BUMP_SCOPE = 'chi'
+    aborted {
+      script {
+        jslNotification('aborted')
       }
     }
   }
-  return isVersionBumpResult
 }
 
+// This function is called to print the summary of the pipeline
 def printSummary() {
   env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
 
@@ -855,20 +551,111 @@ def printSummary() {
 
   GITHUB_ORGANIZATION: ${env.GITHUB_ORGANIZATION}
   """
-  if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME != "pr-*" ) {
-    currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com' target='_blank'> WEB </a> : ${BRANCH_NAME}";
-  } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
-    currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com' target='_blank'> WEB </a> : ${PULL_REQUEST}";
+}
+
+// This function is called to send the build info to JIRA
+def sendBuildInfo() {
+  echo "/dist & /dist/components"
+  
+  sh """
+  ls -la ${pwd()}/dist
+  ls -la ${pwd()}/dist/components
+  """
+
+  jslJiraSendBuildInfo()
+}
+
+// This function is called to stash and archive the CI reports
+def stashAndArchiveCiReports() {
+  def tests = ["non_responsive", "responsive", "non_responsive_ce"]
+  def reportBasePath = "reports/ci_report/"
+  def htmlBasePath = "reports/html_report/"
+
+  tests.each { test ->
+    stash name: "${test}_ci", includes: "${reportBasePath}${test}/**"
+
+    archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
+    jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
   }
 }
 
-def gitHubReleaser() {
+// This function is called when the pipeline fails
+// - It will update the GCR as cancelled / backed out
+// - It will update the DEVOPS_GCR_PREPROD_BRANCH with the PROD_BRANCH
+def gcrPostFailure() {
+  def gcrInProgress = env.TAG_NAME == null ? env.GCR_NUMBER : env.TAG_NAME
+        
+  if (gcrInProgress) {
+    echo "DEVOPS GCR of ${gcrInProgress} will be updated as cancelled / backed out. Please review your backout plan."
+    env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+    jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
+  }
+}
+
+// This function is called to promote the RC tag to the DEPLOYMENT tag
+def promoteDeployTagGCR() {
+  def tagAttributes = jslGCRGetTagAttributes()
+  
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  
+  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  def currentJob = env.JOB_NAME.toString()
+  def currentBaseName = env.JOB_BASE_NAME.toString()
+  def pathJob = currentJob - currentBaseName
+
+  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
+}
+
+// This function is called to check the package.json version
+def packageVersionCheck() {
+  sh(script: """
+    chmod +x ${VERSION_CHECK_SCRIPT}
+    ${VERSION_CHECK_SCRIPT} 
+  """, label: "Check package.json version")
+  
+  stash name: "chi_version_bump", includes: "chi_version_bump"
+}
+
+// This function is called to check if the version bump exists
+def isVersionBump() {
+  def isVersionBumpResult = false
+
+  try {
+    unstash name: 'chi_version_bump'
+  } catch (Exception e) {
+    echo "chi_version_bump file does not exist"
+    return false
+  }
+
+  def versionBump = readFile(file: 'chi_version_bump').trim()
+
+  echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH?.trim()?.toLowerCase()}_"
+  echo "Publish condition: currentResult is _${currentBuild?.currentResult?.toLowerCase()}_"
+  echo "Publish condition: versionBump is _${versionBump}_"
+
+  isVersionBumpResult = versionBump == "yes" &&
+                        currentBuild?.currentResult?.toLowerCase() == "success" &&
+                        (['origin/master', 'origin/main', 'master', 'main', env.PROD_BRANCH].contains(env.GIT_BRANCH?.trim()?.toLowerCase()) || 
+                        (env.TAG_NAME?.toString()?.indexOf("##DEPLOYMENT##") != -1))
+
+
+  if (isVersionBumpResult) {
+    env.VERSION_BUMP_SCOPE = 'chi'
+  }
+
+  return isVersionBumpResult
+}
+
+// This function is called to create a GitHub release
+def gitHubRelease() {
   def rootPath = ''
   def latestRelease = 'true'
+ 
   def packageJsonPath = "${rootPath}package.json"
   def packageFile = readJSON file: packageJsonPath
   def packageVersion = packageFile['version']
   def plainVersion = packageVersion.tokenize('-')[0]
+
   def versionMajor = plainVersion.tokenize('.')[0]
   def versionMinor = plainVersion.tokenize('.')[1] ? plainVersion.tokenize('.')[1] : '0'
   def versionPatch = plainVersion.tokenize('.')[2] ? plainVersion.tokenize('.')[2] : '0'
@@ -878,7 +665,6 @@ def gitHubReleaser() {
   def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
   
   def classifier = ''
-
   def publishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
 
   sh script: """#!/bin/bash
@@ -887,103 +673,53 @@ def gitHubReleaser() {
     echo "" >> ${rootPath}shortCHANGELOG.md
     sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
   """
+  
   def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
+  
   env.VERSION = publishVersion
-
-
   env.GITHUB_USER='lumen-jenkins-prod'
-  def repoOwner=jslGitGetRepoOwner()
-  def repoName=jslGitGetRepoName()
-                // jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${publishVersion}")
-  // def releaseId = jslGitHubReleaseCreate(publishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
-  def releaseId = jslGitHubReleaseCreate(publishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
+
+  def repoOwner = jslGitGetRepoOwner()
+  def repoName = jslGitGetRepoName()
+  def releaseId = jslGitHubReleaseCreate(publishVersion, env.GIT_COMMIT, env.GITHUB_TOKEN_CREDENTIALS, releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
 
   if (releaseId == null) {
     error("There was an error publishing the release")
   }
 }
 
-def getNodeAgentBlock(def scope = null, def type = null) {
+// This function is called to create and open a pull request
+def createAndOpenPullRequest(def version) {
+  def org = jslGitGetRepoOwner()
+  def commitMessage = "[FSTEAM-4189] This PR is for CHI ${version}"
+  def description = "You can check staging in https://assets-dev.ctl.io/chi/staging"
+  def branchName = "CHI_${version}"
 
-	def nodeVersion = '14'
-
-  if (scope == 'custom-elements' || scope == 'vue-documentation') {
-    nodeVersion = '20'
-  }
-
-  def fileName = "Dockerfile_node${nodeVersion}"
-  if (type == 'image') {
-    fileName = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node${nodeVersion}_agent:latest"
-  }
-	
-	return fileName
-
-}
-
-def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredentials,
-      usernameVariable: 'USERNAME', passwordVariable: 'GH_TOKEN']]) {
-        jslYarnWrapper(args)
-      }
-}
-
-def promoteDeployTagGCR() {
-  def tagAttributes = jslGCRGetTagAttributes()
-  echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
-  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
-  def currentJob = env.JOB_NAME.toString()
-  def currentBaseName = env.JOB_BASE_NAME.toString()
-  def pathJob = currentJob - currentBaseName
-  echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
-  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
-}
-
-def packageVersionCheck() {
   sh(script: """
-    set +x
-    git whatchanged -1 --format=oneline
-    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-    rm -rf chi_version_bump
-    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-      echo -n "yes" > chi_version_bump
-    else
-      echo -n "no" > chi_version_bump
-    fi
-    cat chi_version_bump
-    echo "All good."
-  """, label: "Package version validation")
-  stash name: "CHI_VERSION_BUMP", includes: "chi_version_bump"
-  isVersionBump()
-  echo "${env.VERSION_BUMP_SCOPE}"
+      mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+      
+      cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
+      mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
+
+      cd ${WORKSPACE}/ux-chi-AssetsServer
+
+      git checkout -b "${branchName}"
+
+      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${version}
+      git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+
+      git config user.email "scmauto@lumen.com"
+      git config user.name "SCMAUTO"
+      
+      git commit -m "${branchName}"
+      git push --set-upstream origin "${branchName}"
+      """)
+
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
-def buildDocumentation() {
-  jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-  if (isVersionBump() || env.BRANCH_NAME==env.PROD_BRANCH) {
-    jslNpmWrapper('run generate-production')
-  } else {
-    jslNpmWrapper('run generate-pr')
-  }
-  stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
-}
-
-def buildChi() {
-  ghYarnWrap('install')
-  jslNpmWrapper('run cicd:build:pre:sri')
-  jslNpmWrapper('run sri')
-  jslNpmWrapper('run cicd:build:post:sri')
-  stash name: "DIST-CHI", includes: "dist/**"
-  echo "/dist & /dist/components"
-  sh """
-  ls -la ${pwd()}/dist
-  ls -la ${pwd()}/dist/components
-  """
-
-  jslJiraSendBuildInfo()
-}
-
-def smokeTestChecker(def scope) {
+// This function is called to check/create the smoke tests
+def smokeTestChecker() {
   def version = env.VERSION
 
   if (version != null) {
@@ -992,30 +728,32 @@ def smokeTestChecker(def scope) {
     def latestRelease = ""
 
     try {
-        latestRelease = jslGitHubReleaseGet().data.name.trim()
+      latestRelease = jslGitHubReleaseGet().data.name.trim()
     } catch (Exception e) {
-      echo "Error checking chi releases: ${e.getMessage()}"
+      echo "Error checking Chi latest release: ${e.getMessage()}"
     }
 
     try {
-        def repoOwner=jslGitGetRepoOwner()
-        def repoName=jslGitGetRepoName()
-        def allReleases = jslGitHubRequestsHandler("https://api.github.com/repos/${repoOwner}/${repoName}/releases", "Get GitHub release for ${version}", ["Accept: application/vnd.github+json"], 'GET', null, env.GITHUB_TOKEN_CREDENTIALS, true)
+      def repoOwner = jslGitGetRepoOwner()
+      def repoName = jslGitGetRepoName()
+      def allReleases = jslGitHubRequestsHandler("https://api.github.com/repos/${repoOwner}/${repoName}/releases", "Get GitHub release for ${version}", ["Accept: application/vnd.github+json"], 'GET', null, env.GITHUB_TOKEN_CREDENTIALS, true)
     } catch (Exception e) {
       echo "Error checking releases: ${e.getMessage()}"
     }
 
-    jslGenerateManualTestReport("Version Release", "Check Version - ${scope}", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
+    jslGenerateManualTestReport("Version Release", "Check Version - chi", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
 
     if (env.SMOKE_TEST_FAILURE == null) {
       env.SMOKE_TEST_FAILURE = (latestRelease != version)
     } else if (!env.SMOKE_TEST_FAILURE) {
       env.SMOKE_TEST_FAILURE = (latestRelease != version)
     }
+    
     echo """
     Smoke Test Failure for ${scope}? ${latestRelease != version}
     Current Overall Smoke Test Failure Status: ${env.SMOKE_TEST_FAILURE}
     """
+
   } else {
     echo "Smoke Test hook without release"
     jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")

@@ -1,0 +1,136 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Buttons'
+  - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+  - var variants = ['solid', 'outline', 'flat', 'fluid', 'uppercase']
+  - var states = ['initial', 'hover', 'active', 'focus', 'disabled']
+  - var colors = ['', 'primary', 'dark', 'danger', 'secondary', 'light']
+
+block content
+  each size in sizes
+    each type in variants
+      div(class={
+        [`test-${type}`]: size === 'default',
+        [`test-${type}-${size}`]: size !== 'default'
+      })
+        span.-text--h2= `Button / ${type} / ${size}`
+        table(cellpadding="0", cellspacing="0")
+          each state in states
+            tr
+              td
+                small= `${state}`
+              each style in colors
+                if (style === 'secondary' || style === 'light')
+                  td.-bg--black
+                    .-mr--2
+                      chi-button.-m--1.-mx--2(
+                        color=style
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        size= size !== 'default' ? size : ''
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                      )= 'Button'
+                      chi-button.-m--1(
+                        type='icon'
+                        color=style
+                        size= size !== 'default' ? size : ''
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                        alternative-text="Button action"
+                      )
+                        chi-icon(icon='atom')
+                      chi-button.-m--1(
+                        color=style
+                        size= size !== 'default' ? size : ''
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                      )
+                        chi-icon(icon='atom')
+                        span Button
+                else
+                  td
+                    .-mr--2
+                      chi-button.-m--1.-mx--2(
+                        data-cy=`button-${style}-${size}`
+                        color=style
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        size= size !== 'default' ? size : ''
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                      )= 'Button'
+                      chi-button.-m--1(
+                        type='icon'
+                        color=style
+                        size= size !== 'default' ? size : ''
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                        alternative-text="Button action"
+                      )
+                        chi-icon(icon='atom')
+                      chi-button.-m--1(
+                        color=style
+                        size= size !== 'default' ? size : ''
+                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        fluid= type === 'fluid'
+                        uppercase= type === 'uppercase'
+                        disabled= state === 'disabled'
+                        extra-class= `-${state}`
+                      )
+                        chi-icon(icon='atom')
+                        span Button
+    if size === 'default'
+      .test-float
+        h2 Button / floating
+        table(cellpadding="0", cellspacing="0")
+          each state in states
+            tr
+              td
+                small= `${state}`
+              each style in colors
+                if (style === 'secondary' || style === 'light')
+                  td.-bg--black
+                    chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, alternative-text="Button action")
+                      chi-icon(icon='atom')
+                else
+                  td
+                    chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, alternative-text="Button action")
+                      chi-icon(icon='atom')
+
+  each size in sizes
+    div(class={
+      [`test-${type}`]: size === 'default',
+      [`test-${type}-${size}`]: size !== 'default'
+    })
+      span.-text--h2= `Button Close Icon / ${size}`
+      table(cellpadding="0", cellspacing="0")
+        tr
+          td
+            chi-button(type='close', size= size !== 'default' ? size : '')
+
+  script.
+    function checkAllButtonsRendered() {
+      const buttons = document.querySelectorAll('chi-button');
+
+      return Array.from(buttons).every(x => x.classList.contains('hydrated'));
+    }
+
+    const renderCheckInterval = setInterval(function() {
+      if (checkAllButtonsRendered()) {
+        console.log("backstop_ready");
+        clearInterval(renderCheckInterval);
+      }
+    }, 3000);

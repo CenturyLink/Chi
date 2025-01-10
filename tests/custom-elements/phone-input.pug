@@ -1,0 +1,62 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Phone Input'
+  - var sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+  - var states = ['danger', 'success', 'warning']
+  - var _states = ['', 'danger', 'success', 'warning']
+
+block content
+  .test-base.-py--2
+    chi-label(for=`phone-input-base`) Phone Number
+    chi-phone-input(id="phone-input-base" data-cy='phone-input-base' placeholder="Phone Number")
+
+  .test-default-country.-py--2
+    chi-label(for=`phone-input-default-country`) Phone Number 
+    chi-phone-input(id="phone-input-default-country" default-country='CA' data-cy='phone-input-default-country')
+
+  .test-value.-py--2
+    chi-label(for=`phone-input-value`) Phone Number 
+    chi-phone-input(id="phone-input-value" default-country='CA' value="+1-6045551212" data-cy='phone-input-value')
+
+  .test-disabled.-py--2 
+    chi-label(for=`phone-input-disabled`) Phone Number
+    chi-phone-input(id="phone-input-disabled" disabled="true" data-cy='phone-input-disabled' )
+
+  .test-sizes
+    each size in sizes
+      .-py--1
+        chi-label(for=`phone-input-${size}`) Phone Number
+        chi-phone-input(id=`phone-input-${size}` size=`${size}` data-cy=`phone-input-${size}`)
+
+  .test-state 
+    each state in states
+      .-py--1 
+        chi-label(for=`phone-input-${state}-state`) Phone Number
+        chi-phone-input(id=`phone-input-${state}-state` data-cy=`phone-input-${state}-state` placeholder="Phone Number" state=`${state}`)
+
+  .test-dynamic-value 
+    .-py--1
+      chi-label(for='phone-input-dynamic-value') Phone Number
+      chi-phone-input(id='phone-input-dynamic-value' value="+34-999999999" data-cy='phone-input-dynamic-value' dynamic-value)
+
+  .test-exclude-countries
+    .-py--1
+      chi-label(for='phone-input-exclude-countries') Phone Number
+      chi-phone-input(id='phone-input-exclude-countries' data-cy='phone-input-exclude-countries' excluded-countries='AF')
+
+  .test-masking.-py--2
+    chi-label(for=`phone-input-mask`) Phone Number
+    chi-phone-input(id="phone-input-mask" data-cy='phone-input-mask' placeholder="Phone Number" input-mask)
+
+  .test-optional-message.-py--2
+    each state in _states
+      chi-label(for=`phone-input-${state}-helper-message`)=`Phone Number with optional ${state} message`
+      chi-phone-input(
+        id=`phone-input-${state}-helper-message`
+        data-cy=`phone-input-${state}-helper-message`
+        placeholder="Phone Number"
+        state=`${state}`
+        input-mask 
+        helper-message="Optional message"
+      )

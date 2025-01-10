@@ -1,0 +1,20 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Skeleton'
+  - var sizes = ['xs', 'sm', 'md', 'lg', 'xl'].reverse()
+  - var types = ['', 'rounded', 'circle', 'square', 'rounded-square']
+
+block content
+  h3 Skeleton types / sizes
+  .test-skeleton(style='width: 650px;')
+    each type in types
+      div.-mb--2.-d--flex
+        div.-align-self--center.-mr--1(style='width: 100px;')
+          | #{type === '' ? 'default' : type}
+        each size in sizes
+          chi-skeleton.-mr--2(
+            size=size
+            type=(type !== '' ? type : null)
+            style=(['rounded', ''].includes(type) ? 'width: 100px;' : null)
+          )

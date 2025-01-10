@@ -4,8 +4,6 @@
 
 ### Components
 
-### Components
-
 #### Added
 
 - Added: Copy Text Button web component now uses the tooltip web component.
