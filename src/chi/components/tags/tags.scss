@@ -1,0 +1,50 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-tags {
+  border: 0.0625rem solid $tags-border-color;
+  border-radius: $tags-border-radius;
+  color: $tags-text-color;
+  display: flex;
+  height: $tags-md-height;
+  font-size: $tags-md-font-size;
+  line-height: $tags-md-line-height;
+  padding: $tags-md-padding;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+  width: 100%;
+  align-items: center;
+  margin: 0;
+  background-color: white;
+
+  &:focus-within,
+  &.-focus {
+    border-color: $tags-focus-border-color;
+    box-shadow: 0 0 0 1px $tags-focus-border-color;
+  }
+
+  &:hover,
+  &.-hover {
+    border-color: $tags-hover-border-color;
+  }
+
+  li {
+    list-style-type: none;
+    height: fit-content;
+  }
+
+  .chi-tags__input {
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: 100%;
+
+    &::placeholder {
+      color: $tags-input-placeholder-text-color;
+    }
+  }
+
+  .chi-tag {
+    margin-right: 0.5rem;
+  }
+}

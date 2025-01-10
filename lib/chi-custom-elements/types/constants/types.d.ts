@@ -24,18 +24,12 @@ export interface TabTrigger {
     target?: string;
     href?: string;
     visibleItems?: number;
+    disabled?: boolean;
 }
 export interface TabTriggerPosition {
     left: number;
     top: number;
 }
-export interface DropdownMenuItem {
-    id?: string;
-    title: string;
-    href?: string;
-}
-export declare const DROPDOWN_SELECT_MODES: readonly ["single", "multi"];
-export type DropdownSelectModes = (typeof DROPDOWN_SELECT_MODES)[number];
 export interface Time {
     hour: number;
     minute: number;
@@ -63,10 +57,41 @@ export interface FormWrapperCheckbox extends FormWrapperOption {
 export interface FormWrapperRadio extends FormWrapperOption {
     checked?: boolean;
 }
+export interface PickerOption {
+    label: string;
+    id?: string;
+    description?: string;
+    checked?: boolean;
+    disabled?: boolean;
+    endLabel?: string;
+}
+export declare const PICKER_INPUT_TYPES: string[];
+export type PickerInputTypes = (typeof PICKER_INPUT_TYPES)[number];
 export interface AccordionItem {
     title: string;
     text?: string;
     template?: string;
     expanded?: boolean;
     disabled?: boolean;
+}
+export interface IconType {
+    fillRule?: 'evenodd' | 'nonzero';
+    path: string;
+}
+export interface DropdownMenuItem {
+    id?: string;
+    title: string;
+    href?: string;
+}
+export interface DropdownMenuMultiItem {
+    label: string;
+    checked?: boolean;
+    id?: string;
+}
+export declare const DROPDOWN_SELECT_MODES: readonly ["single", "multi"];
+export type DropdownSelectModes = (typeof DROPDOWN_SELECT_MODES)[number];
+export declare const SKELETON_TYPES: readonly ["square", "rounded", "circle", "rounded-square"];
+export type SkeletonTypes = (typeof SKELETON_TYPES)[number];
+export interface Tag {
+    name: string;
 }

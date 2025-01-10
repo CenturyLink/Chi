@@ -20,18 +20,14 @@ export declare class CopyText {
      */
     disabled?: boolean;
     /**
+     * The message showed in the tooltip
+     */
+    tooltipMessage: string;
+    /**
      * Triggered when the user clicks on copy
      */
     chiCopy: EventEmitter<string>;
-    private tooltip;
-    componentDidLoad(): void;
-    disconnectedCallback(): void;
-    createTooltip(): void;
-    removeTooltip(): void;
     handlerClick(): void;
-    /**
-     * Sets message to show in the tooltip
-     */
     setTooltipMsg(message: string): void;
     render(): any;
 }

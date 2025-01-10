@@ -79,12 +79,14 @@ export declare class Tabs {
     componentDidLoad(): void;
     componentDidUpdate(): void;
     disconnectedCallback(): void;
+    activeTabValidation(): void;
     activateTab(tab: TabTrigger, element: HTMLElement): void;
     setActivePanelId(tabs: TabTrigger[]): void;
     activatePanel(panelId?: string): void;
     calculateSize(element: HTMLElement, size: TabTriggerSizes): number;
     setParentTabActive(tab: TabTrigger): void;
     findParentTab(tabs: TabTrigger[], id: string): TabTrigger;
+    findTab(tabs: TabTrigger[], id: string): any;
     removeActiveItems(): void;
     createDropdowns(tabs: TabTrigger[], level: number, firstLevel?: string): any[];
     getDropdown(tab: TabTrigger, isFirstLevel: boolean, firstLevelId: string): any;

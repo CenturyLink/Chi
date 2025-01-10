@@ -1,5 +1,78 @@
 # CHANGELOG
 
+## 6.20.0 (January 9, 2025)
+
+### Components
+
+#### Added
+
+- Added: Copy Text Button web component now uses the tooltip web component.
+
+#### Fixed
+
+- Fixed: Sidenav open on hover would close when hovering over an element due to the border style.
+
+## 6.19.0 (December 19, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tooltip Vue component now supports `wrapper`property.
+
+## 6.18.0 (December 18, 2024)
+
+### Components
+
+#### Added
+
+- Added: Picker web component.
+- Added: Tooltip web component now supports long tooltips.
+- Added: Date picker web component now supports `display-seconds` property.
+- Added: Checkbox web component now supports `info-icon` and `info-icon-message` property.
+
+## 6.17.0 (December 11, 2024)
+
+### Components
+
+#### Added
+
+- Added: Tabs web component now supports `disabled` property on each Tab.
+- Added: Data table now supports `noResults` and `noFilters` to change the empty configuration.
+- Added: Data table now includes support for custom links in the empty message.
+
+### Documentation
+
+#### Added
+
+- Added: Data table interface `DataTableNoResults`.
+- Added: Data table event `chiEmptyActionLink`.
+
+## 6.16.0 (December 3, 2024)
+
+### Components
+
+#### Added
+
+- Added: Data table now supports `noResultsIcon` and `noFiltersIcon` to change the icon on empty messages.
+
+## 6.15.0 (November 26, 2024)
+
+### Components
+
+#### Added
+
+- Added: Phone input web component distinguishes between the events emitted by the country code dropdown with search and those triggered by the phone input itself.
+- Added: Phone input event `chiCountrySelected`.
+
+## 6.14.0 (November 19, 2024)
+
+### Components
+
+#### Added
+
+- Added: Dropdown web component now remains open while selecting different items when the `selectMode` property is set to `multi`.
+
 ## 6.13.0 (November 12, 2024)
 
 ### Components

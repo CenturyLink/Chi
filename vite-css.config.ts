@@ -24,6 +24,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        api: 'legacy',
         includePaths: [resolve(__dirname, 'src/chi')],
       },
     },
