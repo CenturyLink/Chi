@@ -43,7 +43,7 @@ pipeline {
     DOCKER_REPO = 'chi'
 
     // Branch variables
-    PROD_BRANCH = 'master'
+    PROD_BRANCH = 'master-test-release'
     BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
     COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
     PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -96,7 +96,6 @@ pipeline {
     VERSION_CHECK_SCRIPT = './cicd/jenkins/scripts/versionCheck.sh'
     CLEAN_SCRIPT = './cicd/jenkins/scripts/assetsServer/clean.sh'
     CHECK_FOLDER_SCRIPT = './cicd/jenkins/scripts/assetsServer/checkFolder.sh'
-    COPY_DIST_SCRIPT = './cicd/jenkins/scripts/copyDist.sh'
 
     // Empty variables
     GCP_CREDENTIALS = ''
@@ -305,12 +304,10 @@ pipeline {
           def packageJson = readJSON file: 'package.json'
           def chiManifest = 'chiManifest.yml'
           def chiManifestFile = "./${chiManifest}"
-          def chiFolder = "chi/${packageJson.version}"
 
           sh "rm -rf ./dist"
           unstash name: 'chi_build'
 
-          createChiFolder(chiFolder)
           jslBuildAndPushToNexus(NGINX_DOCKERFILE)
 
           sh "rm -rf ${chiManifestFile}"
@@ -762,12 +759,4 @@ def smokeTestChecker() {
     echo "Smoke Test hook without release"
     jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
   }
-}
-
-// This function is called to copy the dist folder to the chi folder
-def createChiFolder(def chiFolder) {
-  sh(script: """
-    chmod +x ${COPY_DIST_SCRIPT}
-    ${COPY_DIST_SCRIPT} dist ${chiFolder}
-  """, label: "Creating Chi folder")
 }
