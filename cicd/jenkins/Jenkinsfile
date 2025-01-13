@@ -43,7 +43,7 @@ pipeline {
     DOCKER_REPO = 'chi'
 
     // Branch variables
-    PROD_BRANCH = 'master'
+    PROD_BRANCH = 'master-test-release'
     BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
     COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
     PULL_REQUEST="pr-${env.CHANGE_ID}"
