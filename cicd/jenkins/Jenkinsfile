@@ -96,6 +96,7 @@ pipeline {
     VERSION_CHECK_SCRIPT = './cicd/jenkins/scripts/versionCheck.sh'
     CLEAN_SCRIPT = './cicd/jenkins/scripts/assetsServer/clean.sh'
     CHECK_FOLDER_SCRIPT = './cicd/jenkins/scripts/assetsServer/checkFolder.sh'
+    COPY_DIST_SCRIPT = './cicd/jenkins/scripts/copyDist.sh'
 
     // Empty variables
     GCP_CREDENTIALS = ''
@@ -301,12 +302,15 @@ pipeline {
       }
       steps {
         script {
+          def packageJson = readJSON file: 'package.json'
           def chiManifest = 'chiManifest.yml'
           def chiManifestFile = "./${chiManifest}"
+          def chiFolder = "chi/${packageJson.version}"
 
           sh "rm -rf ./dist"
           unstash name: 'chi_build'
 
+          createChiFolder(chiFolder)
           jslBuildAndPushToNexus(NGINX_DOCKERFILE)
 
           sh "rm -rf ${chiManifestFile}"
@@ -758,4 +762,12 @@ def smokeTestChecker() {
     echo "Smoke Test hook without release"
     jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
   }
+}
+
+// This function is called to copy the dist folder to the chi folder
+def createChiFolder(def chiFolder) {
+  sh(script: """
+    chmod +x ${COPY_DIST_SCRIPT}
+    ${COPY_DIST_SCRIPT} dist ${chiFolder}
+  """, label: "Creating Chi folder")
 }
