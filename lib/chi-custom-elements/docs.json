@@ -1,8 +1,8 @@
 {
-  "timestamp": "2024-11-07T10:08:08",
+  "timestamp": "2025-01-09T09:09:48",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.0",
+    "version": "4.22.3",
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -729,9 +729,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-tags"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-tags": [
+          "chi-badge"
+        ]
+      }
     },
     {
       "filePath": "src/components/brand/brand.tsx",
@@ -1112,10 +1118,12 @@
       "dependents": [
         "chi-alert",
         "chi-carousel",
+        "chi-checkbox",
         "chi-copy-text",
         "chi-dropdown",
         "chi-label",
-        "chi-popover"
+        "chi-popover",
+        "chi-tags"
       ],
       "dependencies": [
         "chi-icon"
@@ -1130,6 +1138,9 @@
         "chi-carousel": [
           "chi-button"
         ],
+        "chi-checkbox": [
+          "chi-button"
+        ],
         "chi-copy-text": [
           "chi-button"
         ],
@@ -1140,6 +1151,9 @@
           "chi-button"
         ],
         "chi-popover": [
+          "chi-button"
+        ],
+        "chi-tags": [
           "chi-button"
         ]
       }
@@ -1389,6 +1403,50 @@
           "required": false
         },
         {
+          "name": "infoIcon",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon",
+          "reflectToAttr": true,
+          "docs": "To indicate if info icon should be displayed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "infoIconMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon-message",
+          "reflectToAttr": true,
+          "docs": "To provide message for info icon popover.",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "label",
           "type": "string",
           "complexType": {
@@ -1511,10 +1569,29 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "chi-dropdown",
         "chi-form-wrapper"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "chi-button",
+        "chi-icon",
+        "chi-popover"
+      ],
       "dependencyGraph": {
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-dropdown": [
+          "chi-checkbox"
+        ],
         "chi-form-wrapper": [
           "chi-checkbox"
         ]
@@ -1696,11 +1773,13 @@
         "chi-textarea"
       ],
       "dependencies": [
+        "chi-tooltip",
         "chi-button",
         "chi-icon"
       ],
       "dependencyGraph": {
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -2100,6 +2179,28 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "displaySeconds",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "display-seconds",
+          "reflectToAttr": true,
+          "docs": "Displaying seconds column",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
@@ -3259,6 +3360,32 @@
           "required": false
         },
         {
+          "name": "items",
+          "type": "DropdownMenuMultiItem[]",
+          "complexType": {
+            "original": "DropdownMenuMultiItem[]",
+            "resolved": "DropdownMenuMultiItem[]",
+            "references": {
+              "DropdownMenuMultiItem": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::DropdownMenuMultiItem"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "Dropdown menu items",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "DropdownMenuMultiItem[]"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "complexType": {
@@ -3350,7 +3477,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "prevent-auto-hide",
           "reflectToAttr": true,
           "docs": "To prevent hiding of the Dropdown when clicking outside its bounds",
@@ -3371,7 +3498,7 @@
             "resolved": "boolean",
             "references": {}
           },
-          "mutable": false,
+          "mutable": true,
           "attr": "prevent-item-selected",
           "reflectToAttr": false,
           "docs": "To prevent emitting the event chiDropdownItemSelected when an item is clicked",
@@ -3806,21 +3933,33 @@
         "chi-tabs"
       ],
       "dependencies": [
+        "chi-tooltip",
         "chi-icon",
         "chi-helper-message",
-        "chi-button"
+        "chi-button",
+        "chi-checkbox"
       ],
       "dependencyGraph": {
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ],
         "chi-search-input": [
           "chi-dropdown"
@@ -4228,6 +4367,11 @@
         "chi-popover": [
           "chi-button"
         ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
         "chi-helper-message": [
           "chi-icon"
         ]
@@ -4289,6 +4433,7 @@
         "chi-dropdown",
         "chi-form-wrapper",
         "chi-number-input",
+        "chi-picker",
         "chi-search-input",
         "chi-text-input",
         "chi-textarea"
@@ -4312,6 +4457,9 @@
         "chi-number-input": [
           "chi-helper-message"
         ],
+        "chi-picker": [
+          "chi-helper-message"
+        ],
         "chi-search-input": [
           "chi-helper-message"
         ],
@@ -4327,7 +4475,6 @@
       "filePath": "src/components/icon/icon.tsx",
       "encapsulation": "scoped",
       "tag": "chi-icon",
-      "readme": "# chi-icon\n\n\n",
       "docs": "",
       "docsTags": [],
       "usage": {},
@@ -4484,6 +4631,7 @@
         "chi-alert",
         "chi-button",
         "chi-carousel",
+        "chi-checkbox",
         "chi-copy-text",
         "chi-date",
         "chi-date-picker",
@@ -4505,6 +4653,9 @@
           "chi-icon"
         ],
         "chi-carousel": [
+          "chi-icon"
+        ],
+        "chi-checkbox": [
           "chi-icon"
         ],
         "chi-copy-text": [
@@ -4712,7 +4863,8 @@
       "slots": [],
       "parts": [],
       "dependents": [
-        "chi-form-wrapper"
+        "chi-form-wrapper",
+        "chi-picker"
       ],
       "dependencies": [
         "chi-button",
@@ -4732,6 +4884,9 @@
           "chi-button"
         ],
         "chi-form-wrapper": [
+          "chi-label"
+        ],
+        "chi-picker": [
           "chi-label"
         ]
       }
@@ -5207,10 +5362,10 @@
         },
         {
           "name": "size",
-          "type": "string",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xs\"",
           "complexType": {
             "original": "MarketingIconSizes",
-            "resolved": "string",
+            "resolved": "\"lg\" | \"md\" | \"sm\" | \"xs\"",
             "references": {
               "MarketingIconSizes": {
                 "location": "import",
@@ -5226,6 +5381,19 @@
           "docsTags": [],
           "values": [
             {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             }
           ],
@@ -7188,6 +7356,26 @@
           "docsTags": []
         },
         {
+          "event": "chiCountrySelected",
+          "detail": "Country",
+          "bubbles": true,
+          "complexType": {
+            "original": "Country",
+            "resolved": "Country",
+            "references": {
+              "Country": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Country"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selected a country in the dropdown",
+          "docsTags": []
+        },
+        {
           "event": "chiInput",
           "detail": "string",
           "bubbles": true,
@@ -7235,15 +7423,25 @@
           "chi-helper-message"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
         ],
         "chi-text-input": [
           "chi-icon",
@@ -7252,7 +7450,366 @@
           "chi-copy-text"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
+          "chi-icon"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/picker/picker.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-picker",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "helperMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": false,
+          "docs": "To set helper message",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "infoIcon",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon",
+          "reflectToAttr": true,
+          "docs": "To indicate if info icon should be displayed.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "infoIconMessage",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "info-icon-message",
+          "reflectToAttr": true,
+          "docs": "To provide message for info icon popover.",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "To set a legend for all fields",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "optional",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "optional",
+          "reflectToAttr": false,
+          "docs": "To indicate the form field is optional.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "options",
+          "type": "PickerOption[]",
+          "complexType": {
+            "original": "PickerOption[]",
+            "resolved": "PickerOption[]",
+            "references": {
+              "PickerOption": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::PickerOption"
+              }
+            }
+          },
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To set options",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "PickerOption[]"
+            }
+          ],
+          "optional": false,
+          "required": true
+        },
+        {
+          "name": "pill",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "pill",
+          "reflectToAttr": false,
+          "docs": "To set pill layout of options",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": false,
+          "docs": "To indicate the form field is required.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "showInput",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "show-input",
+          "reflectToAttr": false,
+          "docs": "To show checkbox or radio",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "PickerSizes | PickerPillSizes",
+            "resolved": "string",
+            "references": {
+              "PickerSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::PickerSizes"
+              },
+              "PickerPillSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::PickerPillSizes"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "size",
+          "reflectToAttr": false,
+          "docs": "Picker size { md, lg }.",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "complexType": {
+            "original": "ChiStates",
+            "resolved": "\"danger\" | \"success\" | \"warning\"",
+            "references": {
+              "ChiStates": {
+                "location": "import",
+                "path": "../../components",
+                "id": "src/components.d.ts::ChiStates"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": false,
+          "docs": "To set state of helper message",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "PickerInputTypes",
+            "resolved": "string",
+            "references": {
+              "PickerInputTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::PickerInputTypes"
+              }
+            }
+          },
+          "mutable": true,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "To define input type, radio (single selection) or checkbox (multiple selection)",
+          "docsTags": [],
+          "default": "'checkbox'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "PickerOption[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "PickerOption[]",
+            "resolved": "PickerOption[]",
+            "references": {
+              "PickerOption": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::PickerOption"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Emitted when any option is selected or unselected",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-label",
+        "chi-helper-message"
+      ],
+      "dependencyGraph": {
+        "chi-picker": [
+          "chi-label",
+          "chi-helper-message"
+        ],
+        "chi-label": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }
@@ -7712,6 +8269,7 @@
       "slots": [],
       "parts": [],
       "dependents": [
+        "chi-checkbox",
         "chi-date-picker",
         "chi-label",
         "chi-time-picker"
@@ -7726,6 +8284,9 @@
         "chi-button": [
           "chi-icon"
         ],
+        "chi-checkbox": [
+          "chi-popover"
+        ],
         "chi-date-picker": [
           "chi-popover"
         ],
@@ -7736,6 +8297,99 @@
           "chi-popover"
         ]
       }
+    },
+    {
+      "filePath": "src/components/price/price.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-price",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "currency",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "currency",
+          "reflectToAttr": true,
+          "docs": "To set the value of the Currency",
+          "docsTags": [],
+          "default": "'$'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "complexType": {
+            "original": "PriceSizes",
+            "resolved": "string",
+            "references": {
+              "PriceSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::PriceSizes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Price size { 'sm', 'md', 'lg' }",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "number | string",
+          "complexType": {
+            "original": "string | number",
+            "resolved": "number | string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "To set the value of the Price",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": true
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/progress/progress.tsx",
@@ -8498,9 +9152,11 @@
           "chi-helper-message"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
@@ -8508,10 +9164,122 @@
         "chi-button": [
           "chi-icon"
         ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ],
         "chi-phone-input": [
           "chi-search-input"
         ]
       }
+    },
+    {
+      "filePath": "src/components/skeleton/skeleton.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-skeleton",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "size",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+          "complexType": {
+            "original": "SkeletonSizes",
+            "resolved": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+            "references": {
+              "SkeletonSizes": {
+                "location": "import",
+                "path": "../../constants/size",
+                "id": "src/constants/size.ts::SkeletonSizes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "Size of the skeleton: { xs, sm, md, lg, xl }.",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "\"circle\" | \"rounded\" | \"rounded-square\" | \"square\"",
+          "complexType": {
+            "original": "SkeletonTypes",
+            "resolved": "\"circle\" | \"rounded\" | \"rounded-square\" | \"square\"",
+            "references": {
+              "SkeletonTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::SkeletonTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "Applies type classes to the skeleton.",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "circle",
+              "type": "string"
+            },
+            {
+              "value": "rounded",
+              "type": "string"
+            },
+            {
+              "value": "rounded-square",
+              "type": "string"
+            },
+            {
+              "value": "square",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/spinner/spinner.tsx",
@@ -9067,12 +9835,122 @@
           "chi-dropdown"
         ],
         "chi-dropdown": [
+          "chi-tooltip",
           "chi-icon",
           "chi-helper-message",
-          "chi-button"
+          "chi-button",
+          "chi-checkbox"
         ],
         "chi-helper-message": [
           "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
+        "chi-checkbox": [
+          "chi-button",
+          "chi-icon",
+          "chi-popover"
+        ],
+        "chi-popover": [
+          "chi-button"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/tags/tags.tsx",
+      "encapsulation": "none",
+      "tag": "chi-tags",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "placeholder",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": false,
+          "docs": "To define placeholder of Text input",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tags",
+          "type": "Tag[]",
+          "complexType": {
+            "original": "Tag[]",
+            "resolved": "Tag[]",
+            "references": {
+              "Tag": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Tag"
+              }
+            }
+          },
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "To add tags",
+          "docsTags": [],
+          "default": "[]",
+          "values": [
+            {
+              "type": "Tag[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "Tag[]",
+          "bubbles": true,
+          "complexType": {
+            "original": "Tag[]",
+            "resolved": "Tag[]",
+            "references": {
+              "Tag": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::Tag"
+              }
+            }
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selects or deselects an option",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-badge",
+        "chi-button"
+      ],
+      "dependencyGraph": {
+        "chi-tags": [
+          "chi-badge",
+          "chi-button"
         ],
         "chi-button": [
           "chi-icon"
@@ -9731,6 +10609,7 @@
           "chi-icon"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -10248,6 +11127,7 @@
           "chi-icon"
         ],
         "chi-copy-text": [
+          "chi-tooltip",
           "chi-button",
           "chi-icon"
         ],
@@ -10988,9 +11868,19 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-copy-text",
+        "chi-dropdown"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-copy-text": [
+          "chi-tooltip"
+        ],
+        "chi-dropdown": [
+          "chi-tooltip"
+        ]
+      }
     }
   ],
   "typeLibrary": {
@@ -11064,6 +11954,11 @@
       "docstring": "",
       "path": "src/constants/types.ts"
     },
+    "src/constants/types.ts::DropdownMenuMultiItem": {
+      "declaration": "export interface DropdownMenuMultiItem {\n  label: string;\n  checked?: boolean;\n  id?: string;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
     "src/constants/constants.ts::FormWrapperTypes": {
       "declaration": "string",
       "docstring": "",
@@ -11085,12 +11980,12 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::LabelSizes": {
-      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
     "src/constants/size.ts::MarketingIconSizes": {
-      "declaration": "string",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\"",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -11100,7 +11995,42 @@
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TextInputSizes": {
-      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::Country": {
+      "declaration": "export interface Country {\n  name: string;\n  countryAbbr: CountryCode;\n  dialCode: CountryCallingCode;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::PickerOption": {
+      "declaration": "export interface PickerOption {\n  label: string;\n  id?: string;\n  description?: string;\n  checked?: boolean;\n  disabled?: boolean;\n  // add html??\n  endLabel?: string;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/size.ts::PickerSizes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/size.ts::PickerPillSizes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::PickerInputTypes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/components.d.ts::ChiStates": {
+      "declaration": "any",
+      "docstring": "",
+      "path": "src/components.d.ts"
+    },
+    "src/constants/size.ts::PriceSizes": {
+      "declaration": "string",
       "docstring": "",
       "path": "src/constants/size.ts"
     },
@@ -11114,15 +12044,30 @@
       "docstring": "",
       "path": "src/constants/types.ts"
     },
+    "src/constants/size.ts::SkeletonSizes": {
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
+      "docstring": "",
+      "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::SkeletonTypes": {
+      "declaration": "\"circle\" | \"square\" | \"rounded\" | \"rounded-square\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
     "src/constants/types.ts::TabTrigger": {
-      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n  visibleItems?: number;\n}",
+      "declaration": "export interface TabTrigger {\n  children: TabTrigger[];\n  parent?: TabTrigger;\n  id: string;\n  label?: string;\n  overflow: boolean;\n  target?: string;\n  href?: string;\n  visibleItems?: number;\n  disabled?: boolean;\n}",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
     "src/constants/size.ts::TabsSizes": {
-      "declaration": "\"sm\" | \"md\" | \"lg\" | \"xs\" | \"xl\"",
+      "declaration": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"xl\"",
       "docstring": "",
       "path": "src/constants/size.ts"
+    },
+    "src/constants/types.ts::Tag": {
+      "declaration": "export interface Tag {\n  name: string;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
     },
     "src/constants/constants.ts::TextInputTypes": {
       "declaration": "\"number\" | \"time\" | \"text\" | \"datetime\" | \"date\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"url\" | \"week\"",

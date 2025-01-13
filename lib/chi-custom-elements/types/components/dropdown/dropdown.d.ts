@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { Placement } from 'popper.js';
-import { DropdownSelectModes, FontWeight } from '../../constants/types';
+import { DropdownMenuMultiItem, DropdownSelectModes, FontWeight } from '../../constants/types';
 import { ChiStates } from '../../constants/states';
 export declare class Dropdown {
     /**
@@ -98,6 +98,10 @@ export declare class Dropdown {
      */
     helperMessage: string;
     /**
+     * Dropdown menu items
+     */
+    items?: DropdownMenuMultiItem[];
+    /**
      * Triggered when hiding the Dropdown
      */
     eventHide: EventEmitter;
@@ -130,6 +134,8 @@ export declare class Dropdown {
     _menuFooter: boolean;
     _forceRender: boolean;
     _value: string[];
+    _selectAllState: boolean | string;
+    _currentItems: DropdownMenuMultiItem[];
     el: HTMLElement;
     private _componentLoaded;
     private _popper;
@@ -137,8 +143,9 @@ export declare class Dropdown {
     private _dropdownMenuElement;
     private _dropdownMenuItemsWrapper;
     private _customTrigger;
-    private _tooltip;
     private _fluidClass;
+    private id;
+    private _currentDirtyItems;
     connectedCallback(): void;
     componentDidLoad(): void;
     componentWillLoad(): void;
@@ -153,12 +160,12 @@ export declare class Dropdown {
     validateSelectMode(selectMode: any): void;
     _setSelectModeProps(): void;
     _updateFluidClass(): void;
+    _updateMultiItems(): void;
     updatePopper(): Promise<void>;
     handleKeyDown(event: KeyboardEvent): void;
     private _configureDropdownPopper;
+    private _triggerElement;
     _initializePopper(): void;
-    _createTooltip(): void;
-    _removeTooltip(): void;
     _getDropdownMenuSlots(): void;
     getPadding(direction: 'top' | 'bottom'): number;
     getTotalElementHeight(element: HTMLElement): number;
@@ -196,6 +203,7 @@ export declare class Dropdown {
      */
     resetSelection(): Promise<void>;
     _focusMenuItem(keyCode: string): void;
+    _isSelectMulti(): boolean;
     _getDropdownMenuItems(): HTMLElement[];
     _getButtonElement(): HTMLButtonElement;
     _addEventListeners(): void;
@@ -208,9 +216,20 @@ export declare class Dropdown {
      */
     renderTrigger(): any;
     getExtraClassForTriggerButton(): string;
-    renderDropdownMenuHeader(): any;
-    renderDropdownMenuFooter(): any;
-    renderDropdownMenuItems(): any;
+    renderDropdownMenuHeader(isMultiItems: boolean): any;
+    renderDropdownMenuFooter(isMultiItems: boolean): any;
+    renderDropdownMenuItems(isMultiItems: boolean): any;
     renderMenu(): any;
+    renderSelectMultiHeaderContent(): any;
+    renderSelectMultiFooterContent(): any[];
+    renderSelectMultiItems(): any[];
+    onSelectMultiApply(): void;
+    onSelectMultiClear(): void;
+    onMultiItemsChanged(): void;
+    _clearMultiItemsSelection(): void;
+    _selectAllMultiItems(): void;
+    _selectMultiItemClicked(ev: CustomEvent, item: DropdownMenuMultiItem): void;
+    _onMultiSelectAllChanged(): void;
+    _updateSelectAllCheckbox(): void;
     render(): any;
 }

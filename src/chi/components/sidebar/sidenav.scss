@@ -11,7 +11,7 @@ $sidenav-lg-width: 12.5rem;
 
   &__content {
     background-color: $sidenav-background-color;
-    border-right: $sidenav-border-right;
+    box-shadow: $sidenav-box-shadow;
     height: 100%;
     position: relative;
     z-index: $zindex-fixed + 2;
@@ -688,7 +688,7 @@ $sidenav-lg-width: 12.5rem;
   &.-float {
     .chi-sidenav__content {
       background-color: transparent;
-      border-right: 0;
+      box-shadow: none;
       padding-top: 3rem;
 
       & > nav {

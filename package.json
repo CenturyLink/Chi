@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "6.13.0",
+  "version": "6.20.1",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -26,33 +26,33 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.0",
-    "@playwright/browser-chromium": "^1.48.2",
-    "@playwright/test": "^1.48.2",
-    "@types/node": "^22.9.0",
+    "@playwright/browser-chromium": "^1.49.1",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.5",
     "autoprefixer": "^10.4.20",
     "backstopjs": "^6.3.25",
-    "chokidar": "^4.0.1",
+    "chokidar": "^4.0.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "cssnano": "^7.0.6",
-    "cypress": "^13.15.2",
+    "cypress": "^13.17.0",
     "dayjs": "^1.11.13",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "normalize.css": "^8.0.1",
     "ora": "^8.1.1",
     "popper.js": "^1.16.1",
     "postcss-svg": "^3.0.0",
     "pug": "^3.0.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.80.6",
+    "sass": "^1.83.1",
     "sass-lint": "^1.13.1",
     "ssri": "^12.0.0",
     "svg-sprite": "^2.0.4",
-    "vite": "^5.4.10",
+    "vite": "^6.0.7",
     "vite-plugin-banner": "^0.8.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.24.4"
+    "@rollup/rollup-linux-x64-gnu": "^4.30.1"
   },
   "bin": {
     "chi": "./scripts/chi.cjs"

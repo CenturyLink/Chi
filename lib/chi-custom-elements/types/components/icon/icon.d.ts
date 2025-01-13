@@ -22,6 +22,6 @@ export declare class Icon {
     componentWillLoad(): void;
     disconnectedCallback(): void;
     private getClass;
-    private static _loadSprite;
+    private _loadSprite;
     render(): any;
 }

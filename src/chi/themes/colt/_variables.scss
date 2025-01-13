@@ -1626,6 +1626,7 @@ $select-xl-padding:                         0 2.75rem 0 1rem;
 // Sidenav
 $sidenav-background-color:                  $color-grey-10;
 $sidenav-border-right:                      none;
+$sidenav-box-shadow:                        none;
 $sidenav-item-icon-color:                   inherit;
 $sidenav-item-text-color:                   inherit;
 $sidenav-item-icon-size:                    1.25rem;
@@ -2072,3 +2073,15 @@ $tooltip-max-width:                         20rem;
 $transfer-list-title-color:                 $color-text-base;
 $transfer-list-checkbox-icon-color:         $color-icon-primary;
 $transfer-list-reset-button-color:          $color-blue-75;
+
+// Tags
+$tags-border-color: $color-border-base;
+$tags-border-radius: $border-radius-base;
+$tags-text-color: $color-text-base;
+$tags-input-placeholder-text-color: $color-grey-50;
+$tags-hover-border-color: $color-grey-40;
+$tags-focus-border-color: $focus-color;
+$tags-md-height: 2.5rem;
+$tags-md-font-size: $font-size-md;
+$tags-md-line-height: $line-height-md;
+$tags-md-padding: 0.5625rem 0.75rem;

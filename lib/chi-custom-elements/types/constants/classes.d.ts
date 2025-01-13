@@ -19,6 +19,12 @@ export declare const LIST_CLASS = "-list";
 export declare const STATUS_CLASS = "-status";
 export declare const TRUNCATED_CLASS = "-truncated";
 export declare const CARD_CLASS = "-card";
+export declare const ROW_CLASS = "-row";
+export declare const PILL_CLASS = "-pill";
+export declare const SQUARE_CLASS = "-square";
+export declare const CIRCLE_CLASS = "-circle";
+export declare const ROUNDED_CLASS = "-rounded";
+export declare const FOCUS_CLASS = "-focus";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
     CONTENT: string;
@@ -175,8 +181,9 @@ export declare const SELECT_CLASSES: {
     SELECT: string;
 };
 export declare const TOOLTIP_CLASSES: {
-    TOOLTIP_ELEMENT: string;
-    TOOLTIP_WRAPPER: string;
+    ELEMENT: string;
+    WRAPPER: string;
+    MESSAGE: string;
 };
 export declare const TIME_CLASSES: {
     TIME: string;
@@ -208,6 +215,12 @@ export declare const POPOVER_CLASSES: {
     TEXT: string;
     TITLE: string;
 };
+export declare const PRICE_CLASSES: {
+    PRICE: string;
+};
+export declare const SKELETON_CLASSES: {
+    SKELETON: string;
+};
 export declare const TABS_CLASSES: {
     TABS: string;
     ANIMATE: string;
@@ -238,6 +251,8 @@ export declare const UTILITY_CLASSES: {
         FLEX: string;
         SCREEN_ONLY: string;
         PRINT_ONLY: string;
+        BLOCK: string;
+        INLINE_BLOCK: string;
     };
     FLEX: {
         FLEX_GROW1: string;
@@ -262,6 +277,7 @@ export declare const UTILITY_CLASSES: {
     };
     SIZING: {
         W100: string;
+        WSM65: string;
     };
     PADDING: {
         1: string;
@@ -326,6 +342,7 @@ export declare const UTILITY_CLASSES: {
             4: string;
         };
         LEFT: {
+            0: string;
             1: string;
             2: string;
             3: string;
@@ -384,4 +401,20 @@ export declare const LABEL_CLASSES: {
     HELP: string;
     REQUIRED: string;
     OPTIONAL: string;
+};
+export declare const PICKER_CLASSES: {
+    PICKER: string;
+    INPUT: string;
+    CHECKBOX: string;
+    LABEL: string;
+    DESCRIPTION: string;
+    CONTENT: string;
+    CONTENT_START: string;
+    CONTENT_END: string;
+    RADIO: string;
+};
+export declare const TAGS_CLASSES: {
+    TAGS: string;
+    TAG: string;
+    INPUT: string;
 };

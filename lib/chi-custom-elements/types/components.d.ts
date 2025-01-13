@@ -5,20 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
-export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, DropdownMenuItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, SearchInputModes, TabTrigger } from "./constants/types";
+import { ChiStates as ChiStates1 } from "./components";
+export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
 export { Placement } from "popper.js";
 export { CountryCode } from "libphonenumber-js";
+export { ChiStates as ChiStates1 } from "./components";
 export namespace Components {
     interface ChiAccordion {
         /**
@@ -219,6 +221,14 @@ export namespace Components {
          */
         "indeterminate"?: boolean;
         /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon": boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage": string;
+        /**
           * To provide checkbox label as a string
          */
         "label": string;
@@ -304,6 +314,10 @@ export namespace Components {
           * to disable chi-date-picker.
          */
         "disabled": boolean;
+        /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
         /**
           * To specify which dates to disable
          */
@@ -468,6 +482,10 @@ export namespace Components {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * To set position of the Dropdown
          */
@@ -852,6 +870,56 @@ export namespace Components {
          */
         "value": string;
     }
+    interface ChiPicker {
+        /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon": boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage": string;
+        /**
+          * To set a legend for all fields
+         */
+        "label"?: string;
+        /**
+          * To indicate the form field is optional.
+         */
+        "optional": boolean;
+        /**
+          * To set options
+         */
+        "options": PickerOption[];
+        /**
+          * To set pill layout of options
+         */
+        "pill": boolean;
+        /**
+          * To indicate the form field is required.
+         */
+        "required": boolean;
+        /**
+          * To show checkbox or radio
+         */
+        "showInput"?: boolean;
+        /**
+          * Picker size { md, lg }.
+         */
+        "size": PickerSizes | PickerPillSizes;
+        /**
+          * To set state of helper message
+         */
+        "state"?: ChiStates1;
+        /**
+          * To define input type, radio (single selection) or checkbox (multiple selection)
+         */
+        "type": PickerInputTypes;
+    }
     interface ChiPopover {
         /**
           * to open or close the popover
@@ -909,6 +977,20 @@ export namespace Components {
           * To define popover variant { text, custom }
          */
         "variant": string;
+    }
+    interface ChiPrice {
+        /**
+          * To set the value of the Currency
+         */
+        "currency"?: string;
+        /**
+          * Price size { 'sm', 'md', 'lg' }
+         */
+        "size"?: PriceSizes;
+        /**
+          * To set the value of the Price
+         */
+        "value": string | number;
     }
     interface ChiProgress {
         /**
@@ -1008,6 +1090,16 @@ export namespace Components {
          */
         "visibleItems"?: number;
     }
+    interface ChiSkeleton {
+        /**
+          * Size of the skeleton: { xs, sm, md, lg, xl }.
+         */
+        "size": SkeletonSizes;
+        /**
+          * Applies type classes to the skeleton.
+         */
+        "type": SkeletonTypes;
+    }
     interface ChiSpinner {
         /**
           * to render spinners on dark or light backgrounds.
@@ -1086,6 +1178,20 @@ export namespace Components {
           * To enable vertical variant of Tabs
          */
         "vertical": boolean;
+    }
+    interface ChiTags {
+        /**
+          * To define -hover, -focus statuses
+         */
+        "_status": string;
+        /**
+          * To define placeholder of Text input
+         */
+        "placeholder": string;
+        /**
+          * To add tags
+         */
+        "tags": Tag[];
     }
     interface ChiTextInput {
         /**
@@ -1394,6 +1500,10 @@ export interface ChiPhoneInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiPhoneInputElement;
 }
+export interface ChiPickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiPickerElement;
+}
 export interface ChiPopoverCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiPopoverElement;
@@ -1413,6 +1523,10 @@ export interface ChiSwitchCustomEvent<T> extends CustomEvent<T> {
 export interface ChiTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiTabsElement;
+}
+export interface ChiTagsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiTagsElement;
 }
 export interface ChiTextInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1741,6 +1855,7 @@ declare global {
         "chiChange": string;
         "chiInput": string;
         "chiNumberInvalid": void;
+        "chiCountrySelected": Country;
     }
     interface HTMLChiPhoneInputElement extends Components.ChiPhoneInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLChiPhoneInputElementEventMap>(type: K, listener: (this: HTMLChiPhoneInputElement, ev: ChiPhoneInputCustomEvent<HTMLChiPhoneInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1755,6 +1870,23 @@ declare global {
     var HTMLChiPhoneInputElement: {
         prototype: HTMLChiPhoneInputElement;
         new (): HTMLChiPhoneInputElement;
+    };
+    interface HTMLChiPickerElementEventMap {
+        "chiChange": PickerOption[];
+    }
+    interface HTMLChiPickerElement extends Components.ChiPicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiPickerElementEventMap>(type: K, listener: (this: HTMLChiPickerElement, ev: ChiPickerCustomEvent<HTMLChiPickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiPickerElementEventMap>(type: K, listener: (this: HTMLChiPickerElement, ev: ChiPickerCustomEvent<HTMLChiPickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiPickerElement: {
+        prototype: HTMLChiPickerElement;
+        new (): HTMLChiPickerElement;
     };
     interface HTMLChiPopoverElementEventMap {
         "chiPopoverShow": any;
@@ -1775,6 +1907,12 @@ declare global {
     var HTMLChiPopoverElement: {
         prototype: HTMLChiPopoverElement;
         new (): HTMLChiPopoverElement;
+    };
+    interface HTMLChiPriceElement extends Components.ChiPrice, HTMLStencilElement {
+    }
+    var HTMLChiPriceElement: {
+        prototype: HTMLChiPriceElement;
+        new (): HTMLChiPriceElement;
     };
     interface HTMLChiProgressElement extends Components.ChiProgress, HTMLStencilElement {
     }
@@ -1824,6 +1962,12 @@ declare global {
         prototype: HTMLChiSearchInputElement;
         new (): HTMLChiSearchInputElement;
     };
+    interface HTMLChiSkeletonElement extends Components.ChiSkeleton, HTMLStencilElement {
+    }
+    var HTMLChiSkeletonElement: {
+        prototype: HTMLChiSkeletonElement;
+        new (): HTMLChiSkeletonElement;
+    };
     interface HTMLChiSpinnerElement extends Components.ChiSpinner, HTMLStencilElement {
     }
     var HTMLChiSpinnerElement: {
@@ -1863,6 +2007,23 @@ declare global {
     var HTMLChiTabsElement: {
         prototype: HTMLChiTabsElement;
         new (): HTMLChiTabsElement;
+    };
+    interface HTMLChiTagsElementEventMap {
+        "chiChange": Tag[];
+    }
+    interface HTMLChiTagsElement extends Components.ChiTags, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiTagsElementEventMap>(type: K, listener: (this: HTMLChiTagsElement, ev: ChiTagsCustomEvent<HTMLChiTagsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiTagsElementEventMap>(type: K, listener: (this: HTMLChiTagsElement, ev: ChiTagsCustomEvent<HTMLChiTagsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiTagsElement: {
+        prototype: HTMLChiTagsElement;
+        new (): HTMLChiTagsElement;
     };
     interface HTMLChiTextInputElementEventMap {
         "chiChange": string;
@@ -1969,13 +2130,17 @@ declare global {
         "chi-number-input": HTMLChiNumberInputElement;
         "chi-pagination": HTMLChiPaginationElement;
         "chi-phone-input": HTMLChiPhoneInputElement;
+        "chi-picker": HTMLChiPickerElement;
         "chi-popover": HTMLChiPopoverElement;
+        "chi-price": HTMLChiPriceElement;
         "chi-progress": HTMLChiProgressElement;
         "chi-radio-button": HTMLChiRadioButtonElement;
         "chi-search-input": HTMLChiSearchInputElement;
+        "chi-skeleton": HTMLChiSkeletonElement;
         "chi-spinner": HTMLChiSpinnerElement;
         "chi-switch": HTMLChiSwitchElement;
         "chi-tabs": HTMLChiTabsElement;
+        "chi-tags": HTMLChiTagsElement;
         "chi-text-input": HTMLChiTextInputElement;
         "chi-textarea": HTMLChiTextareaElement;
         "chi-time": HTMLChiTimeElement;
@@ -2203,6 +2368,14 @@ declare namespace LocalJSX {
          */
         "indeterminate"?: boolean;
         /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon"?: boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage"?: string;
+        /**
           * To provide checkbox label as a string
          */
         "label"?: string;
@@ -2292,6 +2465,10 @@ declare namespace LocalJSX {
           * to disable chi-date-picker.
          */
         "disabled"?: boolean;
+        /**
+          * Displaying seconds column
+         */
+        "displaySeconds"?: boolean;
         /**
           * To specify which dates to disable
          */
@@ -2452,6 +2629,10 @@ declare namespace LocalJSX {
           * To provide icon tooltip message
          */
         "iconTooltipMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
         /**
           * Triggered when hiding the Dropdown
          */
@@ -2876,6 +3057,10 @@ declare namespace LocalJSX {
          */
         "onChiChange"?: (event: ChiPhoneInputCustomEvent<string>) => void;
         /**
+          * Triggered when the user selected a country in the dropdown
+         */
+        "onChiCountrySelected"?: (event: ChiPhoneInputCustomEvent<Country>) => void;
+        /**
           * Triggered when the user changed the element's value but did not commit the change yet
          */
         "onChiInput"?: (event: ChiPhoneInputCustomEvent<string>) => void;
@@ -2899,6 +3084,60 @@ declare namespace LocalJSX {
           * To define value of Phone input
          */
         "value"?: string;
+    }
+    interface ChiPicker {
+        /**
+          * To set helper message
+         */
+        "helperMessage"?: string;
+        /**
+          * To indicate if info icon should be displayed.
+         */
+        "infoIcon"?: boolean;
+        /**
+          * To provide message for info icon popover.
+         */
+        "infoIconMessage"?: string;
+        /**
+          * To set a legend for all fields
+         */
+        "label"?: string;
+        /**
+          * Emitted when any option is selected or unselected
+         */
+        "onChiChange"?: (event: ChiPickerCustomEvent<PickerOption[]>) => void;
+        /**
+          * To indicate the form field is optional.
+         */
+        "optional"?: boolean;
+        /**
+          * To set options
+         */
+        "options": PickerOption[];
+        /**
+          * To set pill layout of options
+         */
+        "pill"?: boolean;
+        /**
+          * To indicate the form field is required.
+         */
+        "required"?: boolean;
+        /**
+          * To show checkbox or radio
+         */
+        "showInput"?: boolean;
+        /**
+          * Picker size { md, lg }.
+         */
+        "size"?: PickerSizes | PickerPillSizes;
+        /**
+          * To set state of helper message
+         */
+        "state"?: ChiStates1;
+        /**
+          * To define input type, radio (single selection) or checkbox (multiple selection)
+         */
+        "type"?: PickerInputTypes;
     }
     interface ChiPopover {
         /**
@@ -2961,6 +3200,20 @@ declare namespace LocalJSX {
           * To define popover variant { text, custom }
          */
         "variant"?: string;
+    }
+    interface ChiPrice {
+        /**
+          * To set the value of the Currency
+         */
+        "currency"?: string;
+        /**
+          * Price size { 'sm', 'md', 'lg' }
+         */
+        "size"?: PriceSizes;
+        /**
+          * To set the value of the Price
+         */
+        "value": string | number;
     }
     interface ChiProgress {
         /**
@@ -3092,6 +3345,16 @@ declare namespace LocalJSX {
          */
         "visibleItems"?: number;
     }
+    interface ChiSkeleton {
+        /**
+          * Size of the skeleton: { xs, sm, md, lg, xl }.
+         */
+        "size"?: SkeletonSizes;
+        /**
+          * Applies type classes to the skeleton.
+         */
+        "type"?: SkeletonTypes;
+    }
     interface ChiSpinner {
         /**
           * to render spinners on dark or light backgrounds.
@@ -3178,6 +3441,24 @@ declare namespace LocalJSX {
           * To enable vertical variant of Tabs
          */
         "vertical"?: boolean;
+    }
+    interface ChiTags {
+        /**
+          * To define -hover, -focus statuses
+         */
+        "_status"?: string;
+        /**
+          * Triggered when the user selects or deselects an option
+         */
+        "onChiChange"?: (event: ChiTagsCustomEvent<Tag[]>) => void;
+        /**
+          * To define placeholder of Text input
+         */
+        "placeholder"?: string;
+        /**
+          * To add tags
+         */
+        "tags"?: Tag[];
     }
     interface ChiTextInput {
         /**
@@ -3477,13 +3758,17 @@ declare namespace LocalJSX {
         "chi-number-input": ChiNumberInput;
         "chi-pagination": ChiPagination;
         "chi-phone-input": ChiPhoneInput;
+        "chi-picker": ChiPicker;
         "chi-popover": ChiPopover;
+        "chi-price": ChiPrice;
         "chi-progress": ChiProgress;
         "chi-radio-button": ChiRadioButton;
         "chi-search-input": ChiSearchInput;
+        "chi-skeleton": ChiSkeleton;
         "chi-spinner": ChiSpinner;
         "chi-switch": ChiSwitch;
         "chi-tabs": ChiTabs;
+        "chi-tags": ChiTags;
         "chi-text-input": ChiTextInput;
         "chi-textarea": ChiTextarea;
         "chi-time": ChiTime;
@@ -3518,13 +3803,17 @@ declare module "@stencil/core" {
             "chi-number-input": LocalJSX.ChiNumberInput & JSXBase.HTMLAttributes<HTMLChiNumberInputElement>;
             "chi-pagination": LocalJSX.ChiPagination & JSXBase.HTMLAttributes<HTMLChiPaginationElement>;
             "chi-phone-input": LocalJSX.ChiPhoneInput & JSXBase.HTMLAttributes<HTMLChiPhoneInputElement>;
+            "chi-picker": LocalJSX.ChiPicker & JSXBase.HTMLAttributes<HTMLChiPickerElement>;
             "chi-popover": LocalJSX.ChiPopover & JSXBase.HTMLAttributes<HTMLChiPopoverElement>;
+            "chi-price": LocalJSX.ChiPrice & JSXBase.HTMLAttributes<HTMLChiPriceElement>;
             "chi-progress": LocalJSX.ChiProgress & JSXBase.HTMLAttributes<HTMLChiProgressElement>;
             "chi-radio-button": LocalJSX.ChiRadioButton & JSXBase.HTMLAttributes<HTMLChiRadioButtonElement>;
             "chi-search-input": LocalJSX.ChiSearchInput & JSXBase.HTMLAttributes<HTMLChiSearchInputElement>;
+            "chi-skeleton": LocalJSX.ChiSkeleton & JSXBase.HTMLAttributes<HTMLChiSkeletonElement>;
             "chi-spinner": LocalJSX.ChiSpinner & JSXBase.HTMLAttributes<HTMLChiSpinnerElement>;
             "chi-switch": LocalJSX.ChiSwitch & JSXBase.HTMLAttributes<HTMLChiSwitchElement>;
             "chi-tabs": LocalJSX.ChiTabs & JSXBase.HTMLAttributes<HTMLChiTabsElement>;
+            "chi-tags": LocalJSX.ChiTags & JSXBase.HTMLAttributes<HTMLChiTagsElement>;
             "chi-text-input": LocalJSX.ChiTextInput & JSXBase.HTMLAttributes<HTMLChiTextInputElement>;
             "chi-textarea": LocalJSX.ChiTextarea & JSXBase.HTMLAttributes<HTMLChiTextareaElement>;
             "chi-time": LocalJSX.ChiTime & JSXBase.HTMLAttributes<HTMLChiTimeElement>;
