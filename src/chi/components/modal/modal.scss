@@ -87,6 +87,16 @@
         top: 0;
       }
     }
+
+    .-close {
+      position: absolute;
+      right: 0.75rem;
+      top: $modal-close-top;
+  
+      .chi-icon {
+        color: $modal-close-icon-color;
+      }
+    }
   }
 
   &__content {
@@ -115,16 +125,6 @@
       & + chi-button {
         margin-left: 1rem;
       }
-    }
-  }
-
-  .-close {
-    position: absolute;
-    right: 0.75rem;
-    top: $modal-close-top;
-
-    .chi-icon {
-      color: $modal-close-icon-color;
     }
   }
 
