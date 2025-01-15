@@ -1,8 +1,15 @@
 # CHANGELOG
 
-## 6.20.0 (January 9, 2025)
+## 6.21.0 (January 16, 2025)
 
 ### Components
+
+#### Added
+
+- Added: Skeleton web component.
+- Added: Tooltip vue component now supports long tooltips.
+
+## 6.20.0 (January 9, 2025)
 
 ### Components
 
