@@ -645,6 +645,7 @@ chi-dropdown[select-mode],
     font-size: map-get(map-get($sizes, md), select-font-size);
     padding: map-get(map-get($sizes, md), select-padding);
     border: $dropdown-button-border-width solid $dropdown-button-border-color;
+    border-radius: $dropdown-select-border-radius;
 
     &::after {
       font-size: map-get(map-get($sizes, md), select-chevron-size);
@@ -670,7 +671,6 @@ chi-dropdown[select-mode],
       background-color: $dropdown-menu-background-color;
       border: 0.125rem solid $focus-color;
       outline: none;
-      border-radius: $button-border-radius;
     }
 
     &:hover:not(.-disabled):not(.-active):not(.-focus),
