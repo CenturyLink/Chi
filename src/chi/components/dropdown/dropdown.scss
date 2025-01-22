@@ -649,6 +649,7 @@ chi-dropdown[select-mode],
 
     &::after {
       font-size: map-get(map-get($sizes, md), select-chevron-size);
+      width: 1rem;
     }
 
     @each $size in map-keys($sizes) {
@@ -660,6 +661,7 @@ chi-dropdown[select-mode],
 
         &::after {
           font-size: map-get(map-get($sizes, $size), select-chevron-size);
+          width: 1rem;
         }
       }
     }
