@@ -645,9 +645,11 @@ chi-dropdown[select-mode],
     font-size: map-get(map-get($sizes, md), select-font-size);
     padding: map-get(map-get($sizes, md), select-padding);
     border: $dropdown-button-border-width solid $dropdown-button-border-color;
+    border-radius: $dropdown-select-border-radius;
 
     &::after {
       font-size: map-get(map-get($sizes, md), select-chevron-size);
+      width: 1rem;
     }
 
     @each $size in map-keys($sizes) {
@@ -659,6 +661,7 @@ chi-dropdown[select-mode],
 
         &::after {
           font-size: map-get(map-get($sizes, $size), select-chevron-size);
+          width: 1rem;
         }
       }
     }
@@ -668,9 +671,9 @@ chi-dropdown[select-mode],
     &:focus,
     &.-focus {
       background-color: $dropdown-menu-background-color;
-      border: 0.125rem solid $focus-color;
+      border: $dropdown-button-border-width solid $focus-color;
+      box-shadow: 0px 0 0 1px $focus-color;
       outline: none;
-      border-radius: $button-border-radius;
     }
 
     &:hover:not(.-disabled):not(.-active):not(.-focus),
