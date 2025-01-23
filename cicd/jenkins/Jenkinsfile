@@ -372,6 +372,7 @@ pipeline {
                   rm -rf node_modules
                 """
                 jslNpmWrapper('install')
+                jslNpmWrapper('cache clean --force')
                 unstash name: "DIST-CHI"
 
                 def retries = 3
