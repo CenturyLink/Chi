@@ -59,8 +59,15 @@ pipeline {
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
       DOCKER_CREDENTIALS = 'nexus-secrets'
-      KUBE_CREDENTIALS = 'kube-secret'
-      KUBE_CREDENTIALS_TEST = 'kube-secret-test'
+
+      KUBE_CREDENTIALS = 'rancher-chi-dev'
+      KUBE_CREDENTIALS_TEST = 'rancher-chi-test'
+      KUBE_DOCKER_SECRET_NAME = "chi-dev-${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME_TEST = "chi-test-${env.BRANCH_NAME}"
+
+      IMAGE_NAME = "${BRANCH_NAME == 'master' ? 'chi-dev' : 'chi-test'}"
+      IMAGE_TAG = "${env.PULL_REQUEST}"
+
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
       SONARQUBE_CREDENTIALS = 'sonarcicdent'
@@ -83,10 +90,6 @@ pipeline {
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
-      IMAGE_NAME = "${env.PROJECT_NAME}"
-      IMAGE_TAG = "${env.PULL_REQUEST}"
-      KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
-      KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
 
       // ServiceNow Variables
       SERVICE_NOW_CREDENTIALS = 'snow-credentials'
@@ -772,7 +775,7 @@ PRDesc
       */
       success {
         jslNotification('success')
-        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
+        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-chi-${BRANCH_NAME == 'master' ? 'test' : 'dev'}.rke-odc-test.corp.intranet/ (internal)", env.CHANGE_ID)
       }
       failure {
         script {
