@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.22.0 (January 23, 2025)
+
+### Components
+
+#### Added
+
+- Added: Price web component.
+
+#### Changed
+
+- Changed: Dropdown with `select-mode` property has been improved to match the styles of the form fields.
+
 ## 6.21.0 (January 16, 2025)
 
 ### Components
