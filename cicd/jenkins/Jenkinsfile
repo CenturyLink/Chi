@@ -177,7 +177,7 @@ pipeline {
             }
             steps {
               script{
-                ghYarnWrap('install')
+                jslNpmWrapper('install')
                 jslNpmWrapper('run lint:css')
               }
             }
@@ -277,7 +277,7 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/responsive
                 """
-                ghYarnWrap('install')
+                jslNpmWrapper('install')
                 unstash name: "DIST-CHI"
                 sh script: """
                   mkdir -p reports/html_report/responsive
@@ -308,7 +308,7 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/non_responsive
                 """
-                ghYarnWrap('install')
+                jslNpmWrapper('install')
                 unstash name: "DIST-CHI"
                 sh script: """
                   mkdir -p reports/html_report/non_responsive
@@ -339,7 +339,7 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/non_responsive_ce
                 """
-                ghYarnWrap('install')
+                jslNpmWrapper('install')
                 unstash name: "DIST-CHI"
                 sh script: """
                   mkdir -p reports/html_report/non_responsive_ce
@@ -368,8 +368,8 @@ pipeline {
                   rm -rf dist
                   rm -rf node_modules
                 """
-                ghYarnWrap('install')
-                ghYarnWrap('cache clean')
+                jslNpmWrapper('install')
+                jslNpmWrapper('cache clean --force')
                 unstash name: "DIST-CHI"
 
                 def retries = 3
@@ -414,7 +414,7 @@ pipeline {
             unstash name: "BACKSTOP-RES-CI"
             // For performance optimization the coverage has been moved here, however, if in the future the project enable coverage check using lcov or similar tools
             // according to Sonar specification, then it need to have all needed parts of the coverage in the same stage or separated one, example can be seen below:
-            // ghYarnWrap('install')
+            // jslNpmWrapper('install')
             // sh "rm -rf .nyc_output*"
             // sh "rm -rf coverage/"
             // unstash name: "NYC_OUTPUT_UNIT"
@@ -920,13 +920,6 @@ def getNodeAgentBlock(def scope = null, def type = null) {
 
 }
 
-def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredentials,
-      usernameVariable: 'USERNAME', passwordVariable: 'GH_TOKEN']]) {
-        jslYarnWrapper(args)
-      }
-}
-
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
@@ -969,7 +962,7 @@ def buildDocumentation() {
 }
 
 def buildChi() {
-  ghYarnWrap('install')
+  jslNpmWrapper('install')
   jslNpmWrapper('run cicd:build:pre:sri')
   jslNpmWrapper('run sri')
   jslNpmWrapper('run cicd:build:post:sri')

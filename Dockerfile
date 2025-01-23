@@ -23,8 +23,8 @@ RUN mkdir /tmp/{chi,documentation}
 COPY package_chi.json /tmp/chi/package.json
 COPY package_documentation.json /tmp/documentation/package.json
 
-RUN  cd /tmp/chi && yarn install \
- && yarn cache clean
+RUN  cd /tmp/chi && npm install \
+ && npm cache clean --force
 
 # START
 COPY entrypoint.sh /
