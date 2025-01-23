@@ -62,12 +62,12 @@ pipeline {
 
       KUBE_CREDENTIALS = 'rancher-chi-dev'
       KUBE_CREDENTIALS_TEST = 'rancher-chi-test'
-      KUBE_DOCKER_SECRET_NAME = "chi-dev-${env.PULL_REQUEST}"
-      KUBE_DOCKER_SECRET_NAME_TEST = "chi-test-${env.BRANCH_NAME}"
+      KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
 
-      IMAGE_NAME = "${BRANCH_NAME == 'master' ? 'chi-dev' : 'chi-test'}"
+      IMAGE_NAME = "${env.PROJECT_NAME}"
       IMAGE_TAG = "${env.PULL_REQUEST}"
-
+      
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
       SONARQUBE_CREDENTIALS = 'sonarcicdent'
