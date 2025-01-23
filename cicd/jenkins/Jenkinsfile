@@ -774,7 +774,7 @@ PRDesc
       */
       success {
         jslNotification('success')
-        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-chi-${BRANCH_NAME == 'master' ? 'test' : 'dev'}.rke-odc-test.corp.intranet/ (internal)", env.CHANGE_ID)
+        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.rke-odc-test.corp.intranet/ (internal)", env.CHANGE_ID)
       }
       failure {
         script {
