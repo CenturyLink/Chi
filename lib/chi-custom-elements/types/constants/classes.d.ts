@@ -1,5 +1,7 @@
 export declare const ACTIVE_CLASS = "-active";
 export declare const INACTIVE_CLASS = "-inactive";
+export declare const CENTER_CLASS = "-center";
+export declare const CENTERED_CLASS = "-centered";
 export declare const CLOSE_CLASS = "-close";
 export declare const CLOSED_CLASS = "-closed";
 export declare const LIGHT_CLASS = "-light";
@@ -25,6 +27,7 @@ export declare const SQUARE_CLASS = "-square";
 export declare const CIRCLE_CLASS = "-circle";
 export declare const ROUNDED_CLASS = "-rounded";
 export declare const FOCUS_CLASS = "-focus";
+export declare const NO_BORDER_CLASS = "-no-border";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
     CONTENT: string;
@@ -142,6 +145,9 @@ export declare const MODAL_CLASSES: {
     HEADER: string;
     CONTENT: string;
     TITLE: string;
+    SUBTITLE: string;
+    TRIGGER: string;
+    BACK: string;
 };
 export declare const GENERIC_SIZE_CLASSES: {
     XS: string;
@@ -150,10 +156,12 @@ export declare const GENERIC_SIZE_CLASSES: {
     LG: string;
     XL: string;
     SM_2: string;
+    SM_3: string;
 };
 export declare const ICON_CLASS = "chi-icon";
 export declare const ICONS: {
     SUCCESS: string;
+    DANGER: string;
 };
 export declare const INPUT_CLASSES: {
     INPUT: string;
@@ -267,9 +275,13 @@ export declare const UTILITY_CLASSES: {
         MD_END: string;
     };
     TYPOGRAPHY: {
+        TEXT: string;
         TEXT_TRUNCATE: string;
+        TEXT_CENTER: string;
         TEXT_NORMAL: string;
         TEXT_BOLD: string;
+        TEXT_BOLDER: string;
+        TEXT_H3: string;
     };
     POSITION: {
         RELATIVE: string;
@@ -278,12 +290,16 @@ export declare const UTILITY_CLASSES: {
     SIZING: {
         W100: string;
         WSM65: string;
+        MAX_H400: string;
+        MAX_H480: string;
     };
     PADDING: {
         1: string;
         2: string;
         3: string;
         4: string;
+        5: string;
+        6: string;
         X: {
             0: string;
             1: string;
@@ -325,6 +341,7 @@ export declare const UTILITY_CLASSES: {
         };
     };
     MARGIN: {
+        0: string;
         1: string;
         2: string;
         3: string;

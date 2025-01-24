@@ -92,6 +92,8 @@ export declare const DROPDOWN_SELECT_MODES: readonly ["single", "multi"];
 export type DropdownSelectModes = (typeof DROPDOWN_SELECT_MODES)[number];
 export declare const SKELETON_TYPES: readonly ["square", "rounded", "circle", "rounded-square"];
 export type SkeletonTypes = (typeof SKELETON_TYPES)[number];
+export declare const MODAL_SCROLLABLE_TYPES: readonly ["400", "480", "long-content"];
+export type ModalScrollableTypes = (typeof MODAL_SCROLLABLE_TYPES)[number];
 export interface Tag {
     name: string;
 }
