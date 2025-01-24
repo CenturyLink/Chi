@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-01-09T09:09:48",
+  "timestamp": "2025-01-24T09:09:59",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.22.3",
@@ -1122,6 +1122,7 @@
         "chi-copy-text",
         "chi-dropdown",
         "chi-label",
+        "chi-modal",
         "chi-popover",
         "chi-tags"
       ],
@@ -1148,6 +1149,9 @@
           "chi-button"
         ],
         "chi-label": [
+          "chi-button"
+        ],
+        "chi-modal": [
           "chi-button"
         ],
         "chi-popover": [
@@ -4639,6 +4643,7 @@
         "chi-dropdown",
         "chi-helper-message",
         "chi-label",
+        "chi-modal",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -4677,6 +4682,9 @@
           "chi-icon"
         ],
         "chi-label": [
+          "chi-icon"
+        ],
+        "chi-modal": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -5443,6 +5451,479 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/modal/modal.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-modal",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "alert",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "alert",
+          "reflectToAttr": false,
+          "docs": "To set alert layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "animated",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "animated",
+          "reflectToAttr": false,
+          "docs": "To set animated layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "button",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "button",
+          "reflectToAttr": false,
+          "docs": "To set trigger button text",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "center",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "center",
+          "reflectToAttr": false,
+          "docs": "To set cenetered layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To set inverse layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "modalTitle",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "modal-title",
+          "reflectToAttr": false,
+          "docs": "To set Modal title",
+          "docsTags": [],
+          "default": "'Modal title'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "multiStep",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "multi-step",
+          "reflectToAttr": false,
+          "docs": "To add back button in header",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noBorder",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-border",
+          "reflectToAttr": false,
+          "docs": "To set no-bordered layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "scrollable",
+          "type": "\"400\" | \"480\" | \"long-content\"",
+          "complexType": {
+            "original": "ModalScrollableTypes",
+            "resolved": "\"400\" | \"480\" | \"long-content\"",
+            "references": {
+              "ModalScrollableTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::ModalScrollableTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "scrollable",
+          "reflectToAttr": false,
+          "docs": "To set scrollable layout",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "400",
+              "type": "string"
+            },
+            {
+              "value": "480",
+              "type": "string"
+            },
+            {
+              "value": "long-content",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "simple",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "simple",
+          "reflectToAttr": false,
+          "docs": "To set simple layout",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "subtitle",
+          "reflectToAttr": false,
+          "docs": "To set Modal subtitle",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "target",
+          "type": "any",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "target",
+          "reflectToAttr": false,
+          "docs": "To set target to serve as Modal trigger",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "hide",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "hide() => Promise<void>",
+          "parameters": [],
+          "docs": "Hides Modal",
+          "docsTags": []
+        },
+        {
+          "name": "show",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "show() => Promise<void>",
+          "parameters": [],
+          "docs": "Shows Modal",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "complexType": {
+            "signature": "() => Promise<void>",
+            "parameters": [],
+            "references": {
+              "Promise": {
+                "location": "global",
+                "id": "global::Promise"
+              }
+            },
+            "return": "Promise<void>"
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "Toggles Modal",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "chiModalAccept",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when user exists the Modal using Save or Action buttons.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalBack",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when user click Back button on multi-step mode.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalCancel",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when user exits the modal using Cancel or Close buttons.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalHidden",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Modal has been hidden to the user. The animation has completed.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalHide",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Modal hide method has been executed, but the closing animation has not started yet.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalShow",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Modal show method has been executed, but the showing animation has not started yet.",
+          "docsTags": []
+        },
+        {
+          "event": "chiModalShown",
+          "detail": "any",
+          "bubbles": true,
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when Modal has been shown to the user and is fully visible. The animation has completed.",
+          "docsTags": []
+        }
+      ],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button",
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-modal": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/number-input/number-input.tsx",
@@ -11991,6 +12472,11 @@
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
       "declaration": "\"filled\" | \"outline\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::ModalScrollableTypes": {
+      "declaration": "\"400\" | \"480\" | \"long-content\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

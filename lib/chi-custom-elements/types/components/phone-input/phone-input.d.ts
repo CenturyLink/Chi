@@ -76,6 +76,7 @@ export declare class ChiPhoneInput {
     stateValidation(state: ChiStates): void;
     valueChanged(newValue: string, oldValue: string): void;
     excludedCountriesChanged(newValue: string, oldValue: string): void;
+    _handleDynamicValue(): void;
     _basicNumberFormatting(value: string): string;
     _isSpecialNumber(): boolean;
     _formatPhoneNumber(): void;

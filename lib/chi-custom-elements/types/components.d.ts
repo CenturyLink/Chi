@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -14,7 +14,7 @@ import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -735,6 +735,68 @@ export namespace Components {
           * To render Marketing icon as filled or outline
          */
         "variant"?: ChiMarketingIconModes;
+    }
+    interface ChiModal {
+        /**
+          * To set alert layout
+         */
+        "alert": boolean;
+        /**
+          * To set animated layout
+         */
+        "animated": boolean;
+        /**
+          * To set trigger button text
+         */
+        "button": string;
+        /**
+          * To set cenetered layout
+         */
+        "center": boolean;
+        /**
+          * Hides Modal
+         */
+        "hide": () => Promise<void>;
+        /**
+          * To set inverse layout
+         */
+        "inverse": boolean;
+        /**
+          * To set Modal title
+         */
+        "modalTitle": string;
+        /**
+          * To add back button in header
+         */
+        "multiStep": boolean;
+        /**
+          * To set no-bordered layout
+         */
+        "noBorder": boolean;
+        /**
+          * To set scrollable layout
+         */
+        "scrollable": ModalScrollableTypes;
+        /**
+          * Shows Modal
+         */
+        "show": () => Promise<void>;
+        /**
+          * To set simple layout
+         */
+        "simple": boolean;
+        /**
+          * To set Modal subtitle
+         */
+        "subtitle": string;
+        /**
+          * To set target to serve as Modal trigger
+         */
+        "target": any;
+        /**
+          * Toggles Modal
+         */
+        "toggle": () => Promise<void>;
     }
     interface ChiNumberInput {
         /**
@@ -1488,6 +1550,10 @@ export interface ChiMainCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiMainElement;
 }
+export interface ChiModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiModalElement;
+}
 export interface ChiNumberInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiNumberInputElement;
@@ -1811,6 +1877,29 @@ declare global {
         prototype: HTMLChiMarketingIconElement;
         new (): HTMLChiMarketingIconElement;
     };
+    interface HTMLChiModalElementEventMap {
+        "chiModalShow": any;
+        "chiModalShown": any;
+        "chiModalHide": any;
+        "chiModalHidden": any;
+        "chiModalBack": any;
+        "chiModalAccept": any;
+        "chiModalCancel": any;
+    }
+    interface HTMLChiModalElement extends Components.ChiModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiModalElementEventMap>(type: K, listener: (this: HTMLChiModalElement, ev: ChiModalCustomEvent<HTMLChiModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiModalElementEventMap>(type: K, listener: (this: HTMLChiModalElement, ev: ChiModalCustomEvent<HTMLChiModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiModalElement: {
+        prototype: HTMLChiModalElement;
+        new (): HTMLChiModalElement;
+    };
     interface HTMLChiNumberInputElementEventMap {
         "chiChange": string;
         "chiInput": string;
@@ -2127,6 +2216,7 @@ declare global {
         "chi-link": HTMLChiLinkElement;
         "chi-main": HTMLChiMainElement;
         "chi-marketing-icon": HTMLChiMarketingIconElement;
+        "chi-modal": HTMLChiModalElement;
         "chi-number-input": HTMLChiNumberInputElement;
         "chi-pagination": HTMLChiPaginationElement;
         "chi-phone-input": HTMLChiPhoneInputElement;
@@ -2902,6 +2992,84 @@ declare namespace LocalJSX {
           * To render Marketing icon as filled or outline
          */
         "variant"?: ChiMarketingIconModes;
+    }
+    interface ChiModal {
+        /**
+          * To set alert layout
+         */
+        "alert"?: boolean;
+        /**
+          * To set animated layout
+         */
+        "animated"?: boolean;
+        /**
+          * To set trigger button text
+         */
+        "button"?: string;
+        /**
+          * To set cenetered layout
+         */
+        "center"?: boolean;
+        /**
+          * To set inverse layout
+         */
+        "inverse"?: boolean;
+        /**
+          * To set Modal title
+         */
+        "modalTitle"?: string;
+        /**
+          * To add back button in header
+         */
+        "multiStep"?: boolean;
+        /**
+          * To set no-bordered layout
+         */
+        "noBorder"?: boolean;
+        /**
+          * Triggered when user exists the Modal using Save or Action buttons.
+         */
+        "onChiModalAccept"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when user click Back button on multi-step mode.
+         */
+        "onChiModalBack"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when user exits the modal using Cancel or Close buttons.
+         */
+        "onChiModalCancel"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when Modal has been hidden to the user. The animation has completed.
+         */
+        "onChiModalHidden"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when Modal hide method has been executed, but the closing animation has not started yet.
+         */
+        "onChiModalHide"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when Modal show method has been executed, but the showing animation has not started yet.
+         */
+        "onChiModalShow"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * Triggered when Modal has been shown to the user and is fully visible. The animation has completed.
+         */
+        "onChiModalShown"?: (event: ChiModalCustomEvent<any>) => void;
+        /**
+          * To set scrollable layout
+         */
+        "scrollable"?: ModalScrollableTypes;
+        /**
+          * To set simple layout
+         */
+        "simple"?: boolean;
+        /**
+          * To set Modal subtitle
+         */
+        "subtitle"?: string;
+        /**
+          * To set target to serve as Modal trigger
+         */
+        "target"?: any;
     }
     interface ChiNumberInput {
         /**
@@ -3755,6 +3923,7 @@ declare namespace LocalJSX {
         "chi-link": ChiLink;
         "chi-main": ChiMain;
         "chi-marketing-icon": ChiMarketingIcon;
+        "chi-modal": ChiModal;
         "chi-number-input": ChiNumberInput;
         "chi-pagination": ChiPagination;
         "chi-phone-input": ChiPhoneInput;
@@ -3800,6 +3969,7 @@ declare module "@stencil/core" {
             "chi-link": LocalJSX.ChiLink & JSXBase.HTMLAttributes<HTMLChiLinkElement>;
             "chi-main": LocalJSX.ChiMain & JSXBase.HTMLAttributes<HTMLChiMainElement>;
             "chi-marketing-icon": LocalJSX.ChiMarketingIcon & JSXBase.HTMLAttributes<HTMLChiMarketingIconElement>;
+            "chi-modal": LocalJSX.ChiModal & JSXBase.HTMLAttributes<HTMLChiModalElement>;
             "chi-number-input": LocalJSX.ChiNumberInput & JSXBase.HTMLAttributes<HTMLChiNumberInputElement>;
             "chi-pagination": LocalJSX.ChiPagination & JSXBase.HTMLAttributes<HTMLChiPaginationElement>;
             "chi-phone-input": LocalJSX.ChiPhoneInput & JSXBase.HTMLAttributes<HTMLChiPhoneInputElement>;

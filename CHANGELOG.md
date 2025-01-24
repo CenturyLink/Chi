@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.23.0 (January 24, 2025)
+
+### Components
+
+#### Added
+
+- Added: Phone input web component now emits `chiChange` event when `dynamic-value` property is set to true.
+
 ## 6.22.0 (January 23, 2025)
 
 ### Components
