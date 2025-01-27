@@ -560,7 +560,10 @@ PolicyDocument
                 sh "rm -rf dist"
                 unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
-                jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
+                def dockerfile_path = './NginxDockerfile'
+                jslGenerateNginxDockerFile(dockerfile_path, "./dist/")
+                jslBuildAndPushToNexus(dockerfile_path)
+                jslCleanPath(dockerfile_path)
                 def chiManifest = 'chiManifest.yml'
                 def chiManifestFile = "./${chiManifest}"
                 sh "rm -rf ${chiManifestFile}"
