@@ -767,6 +767,31 @@
       "requireSameDimensions": true
     },
     {
+      "label": "modal",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/modal.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 1000,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".modal-default-test .chi-backdrop",
+        ".modal-subtitle-test .chi-backdrop",
+        ".modal-center-test .chi-backdrop",
+        ".modal-inverse-test .chi-backdrop",
+        ".modal-simple-test .chi-backdrop",
+        ".modal-multi-step-test .chi-backdrop"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "pagination",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/pagination.html",

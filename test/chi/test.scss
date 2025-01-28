@@ -75,4 +75,11 @@ body {
       position: absolute;
     }
   }
+
+  chi-modal {
+    .chi-backdrop {
+      position: relative;
+      height: 400px;
+    }
+  }
 }

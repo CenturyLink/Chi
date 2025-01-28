@@ -1,0 +1,32 @@
+---
+title: Modal
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+
+.example.-w--50
+  .-p--2
+    chi-modal.modal-default-test(button="Default")
+.example.-w--50
+  .-p--2
+    chi-modal.modal-subtitle-test(button="Subtitle" modal-title="Custom modal Title" subtitle="Subtitle")
+.example.-w--50
+  .-p--2
+    chi-modal.modal-center-test(button="Center" center)
+.example.-w--50
+  .-p--2
+    chi-modal.modal-inverse-test(button="Inverse" inverse)
+.example.-w--50
+  .-p--2
+    chi-modal.modal-simple-test(button="Simple" simple)
+.example.-w--50
+  .-p--2
+    chi-modal.modal-multi-step-test(button="Multi-step" multi-step)
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalTriggers = document.querySelectorAll('chi-modal');
+
+    modalTriggers.forEach(modal => {
+        modal.show();
+    });
+  });
