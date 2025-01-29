@@ -1,0 +1,62 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+@keyframes bar {
+  0% {
+    background-position: -150% 0, -150% 0;
+  }
+
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.chi-cache-loader {
+  position: relative;
+
+  &,
+  &.-pulse {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  &.-bar {
+    animation: none;
+
+    &::before {
+      animation: bar 4s infinite;
+      background: linear-gradient(rgba(0, 0, 0, 0.075) 0 0),
+      linear-gradient(rgba(0, 0, 0, 0.075) 0 0), rgba(0, 0, 0, 0.05);
+      background-repeat: no-repeat;
+      background-size: 60% 100%;
+      border-radius: 0.5rem;
+      content: '';
+      height: 0.25rem;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &.-no-interaction {
+    filter: grayscale(1);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+}
