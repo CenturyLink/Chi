@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-01-24T09:09:59",
+  "timestamp": "2025-01-30T10:57:23",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.3",
+    "version": "4.22.2",
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -143,6 +143,34 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "AccordionTypes",
+            "resolved": "string",
+            "references": {
+              "AccordionTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::AccordionTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "to set accordion type",
+          "docsTags": [],
+          "default": "'base'",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -320,8 +348,14 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "chi-link"
+      ],
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/alert/alert.tsx",
@@ -5150,9 +5184,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-accordion"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/app-layout/app-layout.tsx",
@@ -12372,6 +12412,11 @@
     },
     "src/constants/types.ts::AccordionItem": {
       "declaration": "export interface AccordionItem {\n  title: string;\n  text?: string;\n  template?: string;\n  expanded?: boolean;\n  disabled?: boolean;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::AccordionTypes": {
+      "declaration": "string",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
