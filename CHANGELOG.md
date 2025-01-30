@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.24.0 (January 31, 2025)
+
+### Components
+
+#### Added
+
+- Added: Modal web component.
+
 ## 6.23.0 (January 24, 2025)
 
 ### Components
