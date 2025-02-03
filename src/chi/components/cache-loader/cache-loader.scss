@@ -54,9 +54,12 @@
     }
   }
 
-  &.-no-interaction {
+  &.-muted {
     filter: grayscale(1);
     opacity: 0.7;
+  }
+
+  &.-no-interaction {
     pointer-events: none;
   }
 }
