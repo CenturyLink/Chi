@@ -1,8 +1,8 @@
 {
-  "timestamp": "2025-01-24T09:09:59",
+  "timestamp": "2025-02-04T12:49:32",
   "compiler": {
     "name": "@stencil/core",
-    "version": "4.22.3",
+    "version": "4.25.1",
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -39,7 +39,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "card",
@@ -61,7 +63,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "portal",
@@ -83,7 +87,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -124,7 +130,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "truncated",
@@ -146,7 +154,39 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "AccordionTypes",
+            "resolved": "string",
+            "references": {
+              "AccordionTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::AccordionTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "to set accordion type",
+          "docsTags": [],
+          "default": "'base'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -320,8 +360,14 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "chi-link"
+      ],
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/alert/alert.tsx",
@@ -351,7 +397,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "closable",
@@ -373,7 +421,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "color",
@@ -417,7 +467,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "expirationTime",
@@ -438,7 +490,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -459,7 +513,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "mutable",
@@ -481,7 +537,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -503,7 +561,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "spinner",
@@ -525,7 +585,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "title",
@@ -546,7 +608,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -568,7 +632,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -636,7 +702,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -657,7 +725,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "textTransform",
@@ -678,7 +748,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "textWeight",
@@ -699,7 +771,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -720,7 +794,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -766,7 +842,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "logo",
@@ -788,7 +866,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -809,7 +889,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -830,7 +912,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -870,7 +954,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "center",
@@ -892,7 +978,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "color",
@@ -913,7 +1001,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -935,7 +1025,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "extraClass",
@@ -956,7 +1048,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fluid",
@@ -978,7 +1072,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -999,7 +1095,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -1020,7 +1118,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "uppercase",
@@ -1042,7 +1142,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -1063,7 +1165,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1163,6 +1267,97 @@
       }
     },
     {
+      "filePath": "src/components/cache-loader/cache-loader.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-cache-loader",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "muted",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "muted",
+          "reflectToAttr": true,
+          "docs": "to visually de-emphasize by muting colors.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "noInteraction",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-interaction",
+          "reflectToAttr": true,
+          "docs": "to disable user interaction.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set type of cache loader { pulse, bar }.",
+          "docsTags": [],
+          "default": "'pulse'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false,
+          "getter": false,
+          "setter": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/carousel/carousel.tsx",
       "encapsulation": "scoped",
       "tag": "chi-carousel",
@@ -1189,7 +1384,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "dots",
@@ -1210,7 +1407,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "interval",
@@ -1232,7 +1431,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noButtonControllers",
@@ -1254,7 +1455,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pagination",
@@ -1275,7 +1478,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "single",
@@ -1296,7 +1501,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1362,7 +1569,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -1383,7 +1592,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "indeterminate",
@@ -1404,7 +1615,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIcon",
@@ -1426,7 +1639,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIconMessage",
@@ -1448,7 +1663,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -1469,7 +1686,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -1490,7 +1709,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "required",
@@ -1512,7 +1733,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -1548,7 +1771,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1679,7 +1904,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -1700,7 +1927,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -1727,7 +1956,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "text",
@@ -1748,7 +1979,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -1826,7 +2059,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "excludedWeekdays",
@@ -1847,7 +2082,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -1896,7 +2133,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "locale",
@@ -1949,7 +2188,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "max",
@@ -1971,7 +2212,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "min",
@@ -1993,7 +2236,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "multiple",
@@ -2015,7 +2260,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -2036,7 +2283,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -2161,7 +2410,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -2183,7 +2434,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "displaySeconds",
@@ -2205,7 +2458,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "excludedDates",
@@ -2226,7 +2481,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "excludedWeekdays",
@@ -2247,7 +2504,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -2296,7 +2555,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -2317,7 +2578,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "locale",
@@ -2370,7 +2633,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "max",
@@ -2392,7 +2657,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "min",
@@ -2414,7 +2681,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "minutesStep",
@@ -2463,7 +2732,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "mode",
@@ -2491,7 +2762,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "multiple",
@@ -2513,7 +2786,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -2549,7 +2824,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "timeFormat",
@@ -2582,7 +2859,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -2603,7 +2882,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -2784,7 +3065,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "backdrop",
@@ -2805,7 +3088,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "drawerTitle",
@@ -2826,7 +3111,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noHeader",
@@ -2847,7 +3134,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "nonClosable",
@@ -2869,7 +3158,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "portal",
@@ -2891,7 +3182,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "position",
@@ -2912,7 +3205,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventAutoHide",
@@ -2934,7 +3229,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "title",
@@ -3122,7 +3419,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "animateChevron",
@@ -3143,7 +3442,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "button",
@@ -3164,7 +3465,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "color",
@@ -3185,7 +3488,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "description",
@@ -3206,7 +3511,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -3228,7 +3535,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fluid",
@@ -3249,7 +3558,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "fontWeight",
@@ -3277,7 +3588,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -3298,7 +3611,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hover",
@@ -3319,7 +3634,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -3340,7 +3657,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconTooltipMessage",
@@ -3361,7 +3680,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "items",
@@ -3387,7 +3708,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "position",
@@ -3471,7 +3794,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventAutoHide",
@@ -3492,7 +3817,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventItemSelected",
@@ -3514,7 +3841,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "reference",
@@ -3535,7 +3864,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "retainSelection",
@@ -3556,7 +3887,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "selectMode",
@@ -3588,7 +3921,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -3609,7 +3944,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -3645,7 +3982,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "uppercase",
@@ -3667,7 +4006,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -3688,7 +4029,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "visibleItems",
@@ -3709,7 +4052,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -4000,7 +4345,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "epanelTitle",
@@ -4021,7 +4368,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -4043,7 +4392,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stateIcon",
@@ -4065,7 +4416,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "stateIconTooltip",
@@ -4087,7 +4440,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "step",
@@ -4108,7 +4463,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "title",
@@ -4165,7 +4522,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -4178,7 +4537,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "to set a lagend for all fields",
+          "docs": "to set a legend for all fields",
           "docsTags": [],
           "values": [
             {
@@ -4186,7 +4545,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "layout",
@@ -4214,7 +4575,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "options",
@@ -4248,7 +4611,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -4284,7 +4649,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -4311,7 +4678,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -4423,7 +4792,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -4553,7 +4924,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "extraClass",
@@ -4574,7 +4947,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -4595,7 +4970,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -4622,7 +4999,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -4643,7 +5022,6 @@
         "chi-dropdown",
         "chi-helper-message",
         "chi-label",
-        "chi-modal",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -4682,9 +5060,6 @@
           "chi-icon"
         ],
         "chi-label": [
-          "chi-icon"
-        ],
-        "chi-modal": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -4728,7 +5103,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIcon",
@@ -4750,7 +5127,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIconMessage",
@@ -4772,7 +5151,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "optional",
@@ -4794,7 +5175,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "required",
@@ -4816,7 +5199,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -4861,7 +5246,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -4926,7 +5313,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "cta",
@@ -4948,7 +5337,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -4970,7 +5361,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "download",
@@ -4991,7 +5384,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "href",
@@ -5013,7 +5408,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hreflang",
@@ -5034,7 +5431,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noHoverUnderline",
@@ -5056,7 +5455,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noUnderline",
@@ -5078,7 +5479,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "rel",
@@ -5099,7 +5502,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -5120,7 +5525,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "target",
@@ -5141,7 +5548,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5150,9 +5559,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-accordion"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/app-layout/app-layout.tsx",
@@ -5181,7 +5596,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "backlinkHref",
@@ -5202,7 +5619,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -5230,7 +5649,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "headerBackground",
@@ -5251,7 +5672,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "subtitle",
@@ -5272,7 +5695,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "title",
@@ -5345,7 +5770,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "icon",
@@ -5366,7 +5793,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -5406,7 +5835,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "variant",
@@ -5439,7 +5870,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -5461,28 +5894,6 @@
       "usage": {},
       "props": [
         {
-          "name": "alert",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "alert",
-          "reflectToAttr": false,
-          "docs": "To set alert layout",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "animated",
           "type": "boolean",
           "complexType": {
@@ -5502,7 +5913,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "button",
@@ -5524,7 +5937,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "center",
@@ -5546,7 +5961,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inverse",
@@ -5568,7 +5985,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "modalTitle",
@@ -5590,7 +6009,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "multiStep",
@@ -5612,7 +6033,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "noBorder",
@@ -5634,7 +6057,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "scrollable",
@@ -5670,7 +6095,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "simple",
@@ -5683,7 +6110,7 @@
           "mutable": false,
           "attr": "simple",
           "reflectToAttr": false,
-          "docs": "To set simple layout",
+          "docs": "To delete header and footer from the Modal",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -5692,7 +6119,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "subtitle",
@@ -5714,7 +6143,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "target",
@@ -5735,7 +6166,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -5912,13 +6345,11 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
-        "chi-button",
-        "chi-icon"
+        "chi-button"
       ],
       "dependencyGraph": {
         "chi-modal": [
-          "chi-button",
-          "chi-icon"
+          "chi-button"
         ],
         "chi-button": [
           "chi-icon"
@@ -5952,7 +6383,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "expanded",
@@ -5973,7 +6406,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -5994,7 +6429,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inputstyle",
@@ -6030,7 +6467,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "max",
@@ -6051,7 +6490,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "min",
@@ -6072,7 +6513,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventValueMutation",
@@ -6093,7 +6536,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "required",
@@ -6114,7 +6559,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -6135,7 +6582,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -6156,7 +6605,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "step",
@@ -6178,7 +6629,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -6199,7 +6652,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -6336,7 +6791,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "compact",
@@ -6358,7 +6815,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "currentPage",
@@ -6380,7 +6839,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "firstLast",
@@ -6402,7 +6863,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inverse",
@@ -6424,7 +6887,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pageJumper",
@@ -6446,7 +6911,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pageSize",
@@ -6468,7 +6935,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pages",
@@ -6489,7 +6958,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "results",
@@ -6511,7 +6982,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -6533,7 +7006,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -7586,7 +8061,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -7608,7 +8085,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "dynamicValue",
@@ -7630,7 +8109,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "excludedCountries",
@@ -7651,7 +8132,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -7672,7 +8155,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inputMask",
@@ -7694,7 +8179,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placeholder",
@@ -7715,7 +8202,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -7760,7 +8249,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -7796,7 +8287,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -7817,7 +8310,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -7964,7 +8459,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIcon",
@@ -7986,7 +8483,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "infoIconMessage",
@@ -8008,7 +8507,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -8029,7 +8530,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "optional",
@@ -8051,7 +8554,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "options",
@@ -8077,7 +8582,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "pill",
@@ -8099,7 +8606,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "required",
@@ -8121,7 +8630,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "showInput",
@@ -8142,7 +8653,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -8175,7 +8688,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -8211,7 +8726,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -8239,7 +8756,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8323,7 +8842,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "arrow",
@@ -8344,7 +8865,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "closable",
@@ -8366,7 +8889,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "drag",
@@ -8388,7 +8913,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "modal",
@@ -8409,7 +8936,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "popoverTitle",
@@ -8430,7 +8959,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "portal",
@@ -8451,7 +8982,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "position",
@@ -8536,7 +9069,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventAutoHide",
@@ -8557,7 +9092,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "reference",
@@ -8578,7 +9115,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "title",
@@ -8616,7 +9155,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -8807,7 +9348,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -8835,7 +9378,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -8859,7 +9404,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8900,7 +9447,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -8922,7 +9471,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -8943,7 +9494,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -8983,7 +9536,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -9004,7 +9559,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -9025,7 +9582,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -9046,7 +9605,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -9082,7 +9643,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9172,7 +9735,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -9193,7 +9758,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "menuItems",
@@ -9219,7 +9786,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "mode",
@@ -9247,7 +9816,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -9268,7 +9839,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placeholder",
@@ -9289,7 +9862,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventValueMutation",
@@ -9311,7 +9886,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -9333,7 +9910,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -9378,7 +9957,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -9414,7 +9995,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -9436,7 +10019,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "visibleItems",
@@ -9457,7 +10042,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -9709,7 +10296,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -9749,7 +10338,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9789,7 +10380,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "color",
@@ -9810,7 +10403,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -9832,7 +10427,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -9883,7 +10480,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -9905,7 +10504,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "extraClass",
@@ -9926,7 +10527,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "hideLabel",
@@ -9948,7 +10551,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "label",
@@ -9969,7 +10574,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -9990,7 +10597,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -10046,7 +10655,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "border",
@@ -10068,7 +10679,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "extraClass",
@@ -10090,7 +10703,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "inverse",
@@ -10112,7 +10727,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "seeMoreMessage",
@@ -10134,7 +10751,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -10179,7 +10798,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "slidingBorder",
@@ -10201,7 +10822,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "solid",
@@ -10223,7 +10846,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "tabs",
@@ -10249,7 +10874,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "vertical",
@@ -10271,7 +10898,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -10366,7 +10995,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "tags",
@@ -10393,7 +11024,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -10466,7 +11099,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -10488,7 +11123,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "extraClass",
@@ -10509,7 +11146,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -10530,7 +11169,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconLeft",
@@ -10551,7 +11192,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconLeftColor",
@@ -10623,7 +11266,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconRight",
@@ -10644,7 +11289,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconRightColor",
@@ -10716,7 +11363,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -10737,7 +11386,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placeholder",
@@ -10758,7 +11409,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "preventValueMutation",
@@ -10780,7 +11433,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -10802,7 +11457,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -10847,7 +11504,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "spinner",
@@ -10869,7 +11528,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -10905,7 +11566,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "type",
@@ -10982,7 +11645,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -11004,7 +11669,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -11130,7 +11797,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -11152,7 +11821,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "helperMessage",
@@ -11173,7 +11844,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconLeft",
@@ -11194,7 +11867,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconLeftColor",
@@ -11266,7 +11941,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconRight",
@@ -11287,7 +11964,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "iconRightColor",
@@ -11359,7 +12038,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "name",
@@ -11380,7 +12061,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "placeholder",
@@ -11401,7 +12084,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "readonly",
@@ -11423,7 +12108,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "size",
@@ -11468,7 +12155,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "state",
@@ -11504,7 +12193,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -11526,7 +12217,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -11645,7 +12338,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -11678,7 +12373,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "minutesStep",
@@ -11727,7 +12424,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "secondsStep",
@@ -11776,7 +12475,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -11797,7 +12498,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [],
@@ -11863,7 +12566,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "disabled",
@@ -11885,7 +12590,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "displaySeconds",
@@ -11907,7 +12614,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "format",
@@ -11940,7 +12649,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "minutesStep",
@@ -11989,7 +12700,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "secondsStep",
@@ -12038,7 +12751,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "value",
@@ -12059,7 +12774,9 @@
             }
           ],
           "optional": false,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -12195,7 +12912,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "message",
@@ -12216,7 +12935,9 @@
             }
           ],
           "optional": false,
-          "required": true
+          "required": true,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "position",
@@ -12244,7 +12965,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         },
         {
           "name": "wrapper",
@@ -12266,7 +12989,9 @@
             }
           ],
           "optional": true,
-          "required": false
+          "required": false,
+          "getter": false,
+          "setter": false
         }
       ],
       "methods": [
@@ -12372,6 +13097,11 @@
     },
     "src/constants/types.ts::AccordionItem": {
       "declaration": "export interface AccordionItem {\n  title: string;\n  text?: string;\n  template?: string;\n  expanded?: boolean;\n  disabled?: boolean;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::AccordionTypes": {
+      "declaration": "string",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
