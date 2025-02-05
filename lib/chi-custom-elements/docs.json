@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-01-24T09:09:59",
+  "timestamp": "2025-02-05T13:55:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "4.22.3",
@@ -143,6 +143,34 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "AccordionTypes",
+            "resolved": "string",
+            "references": {
+              "AccordionTypes": {
+                "location": "import",
+                "path": "../../constants/types",
+                "id": "src/constants/types.ts::AccordionTypes"
+              }
+            }
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": false,
+          "docs": "to set accordion type",
+          "docsTags": [],
+          "default": "'base'",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,
@@ -320,8 +348,14 @@
       "slots": [],
       "parts": [],
       "dependents": [],
-      "dependencies": [],
-      "dependencyGraph": {}
+      "dependencies": [
+        "chi-link"
+      ],
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/alert/alert.tsx",
@@ -1161,6 +1195,91 @@
           "chi-button"
         ]
       }
+    },
+    {
+      "filePath": "src/components/cache-loader/cache-loader.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-cache-loader",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "muted",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "muted",
+          "reflectToAttr": true,
+          "docs": "to visually de-emphasize by muting colors.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noInteraction",
+          "type": "boolean",
+          "complexType": {
+            "original": "boolean",
+            "resolved": "boolean",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "no-interaction",
+          "reflectToAttr": true,
+          "docs": "to disable user interaction.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "type",
+          "type": "string",
+          "complexType": {
+            "original": "string",
+            "resolved": "string",
+            "references": {}
+          },
+          "mutable": false,
+          "attr": "type",
+          "reflectToAttr": true,
+          "docs": "to set type of cache loader { pulse, bar }.",
+          "docsTags": [],
+          "default": "'pulse'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "listeners": [],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
     },
     {
       "filePath": "src/components/carousel/carousel.tsx",
@@ -4178,7 +4297,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "to set a lagend for all fields",
+          "docs": "to set a legend for all fields",
           "docsTags": [],
           "values": [
             {
@@ -4643,7 +4762,6 @@
         "chi-dropdown",
         "chi-helper-message",
         "chi-label",
-        "chi-modal",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -4682,9 +4800,6 @@
           "chi-icon"
         ],
         "chi-label": [
-          "chi-icon"
-        ],
-        "chi-modal": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -5150,9 +5265,15 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "dependents": [],
+      "dependents": [
+        "chi-accordion"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-accordion": [
+          "chi-link"
+        ]
+      }
     },
     {
       "filePath": "src/components/app-layout/app-layout.tsx",
@@ -5461,28 +5582,6 @@
       "usage": {},
       "props": [
         {
-          "name": "alert",
-          "type": "boolean",
-          "complexType": {
-            "original": "boolean",
-            "resolved": "boolean",
-            "references": {}
-          },
-          "mutable": false,
-          "attr": "alert",
-          "reflectToAttr": false,
-          "docs": "To set alert layout",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "animated",
           "type": "boolean",
           "complexType": {
@@ -5683,7 +5782,7 @@
           "mutable": false,
           "attr": "simple",
           "reflectToAttr": false,
-          "docs": "To set simple layout",
+          "docs": "To delete header and footer from the Modal",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -5912,13 +6011,11 @@
       "parts": [],
       "dependents": [],
       "dependencies": [
-        "chi-button",
-        "chi-icon"
+        "chi-button"
       ],
       "dependencyGraph": {
         "chi-modal": [
-          "chi-button",
-          "chi-icon"
+          "chi-button"
         ],
         "chi-button": [
           "chi-icon"
@@ -12372,6 +12469,11 @@
     },
     "src/constants/types.ts::AccordionItem": {
       "declaration": "export interface AccordionItem {\n  title: string;\n  text?: string;\n  template?: string;\n  expanded?: boolean;\n  disabled?: boolean;\n}",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::AccordionTypes": {
+      "declaration": "string",
       "docstring": "",
       "path": "src/constants/types.ts"
     },
