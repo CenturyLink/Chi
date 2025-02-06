@@ -1,0 +1,17 @@
+:host(chi-alert) {
+  display: block;
+
+  &[center] {
+    .-center {
+      justify-content: center;
+    }
+  }
+
+  chi-button {
+    align-self: flex-start;
+  }
+}
+
+::slotted(chi-icon) {
+  align-self: flex-start;
+}

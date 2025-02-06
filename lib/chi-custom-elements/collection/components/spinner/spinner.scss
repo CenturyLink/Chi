@@ -1,0 +1,9 @@
+:host(chi-spinner) {
+  display: inline-block;
+
+  &[backdrop] {
+    .chi-backdrop {
+      position: absolute;
+    }
+  }
+}
