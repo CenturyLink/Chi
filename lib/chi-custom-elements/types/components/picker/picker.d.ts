@@ -66,6 +66,7 @@ export declare class Picker {
     _getLabel(): any;
     _getItem(item: PickerOption): any;
     _getItemLabel(item: PickerOption): any;
+    _getItemContentSlot(item: PickerOption): any;
     _getComplexItemLabelContent(item: PickerOption, endSlot: any): any;
     _getContentStart(item: PickerOption, hasEndContent?: boolean): any;
     _getLabelContent(item: PickerOption): any;
