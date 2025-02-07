@@ -58,4 +58,3 @@ export declare const EXTRA_COUNTRIES: {
 export declare const EPANEL_TOOLTIP_CONTENT = "Done";
 export declare const COPY_MESSAGE = "Copy to clipboard";
 export declare const COPIED_MESSAGE = "Copied to clipboard";
-export declare const MODAL_CONTENT_DEFAULT_MESSAGE = "Modal Content";

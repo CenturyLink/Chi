@@ -1,6 +1,14 @@
 # CHANGELOG
 
-## 6.24.0 (January 31, 2025)
+## 6.25.0 (February 6, 2025)
+
+### Components
+
+#### Added
+
+- Added: Picker web component now supports the `content-end` slot to include content at the end of the element.
+
+## 6.24.0 (January 31, 2025)
 
 ### Components
 
