@@ -1,6 +1,6 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { AccordionSizes } from '../../constants/size';
-import { AccordionItem } from '../../constants/types';
+import { AccordionItem, AccordionTypes } from '../../constants/types';
 export declare class Accordion {
     el: HTMLElement;
     /**
@@ -23,6 +23,10 @@ export declare class Accordion {
      * To provide data for accordions
      */
     accordions: AccordionItem[];
+    /**
+     * to set accordion type
+     */
+    type: AccordionTypes;
     /**
      * Custom event when accordion is shown from accordion trigger
      */
@@ -50,6 +54,7 @@ export declare class Accordion {
     toggle(accordions?: number | number[]): Promise<void>;
     sizeValidation(newValue: AccordionSizes): void;
     updateItems(accordions: number | number[], show?: boolean, toggle?: boolean): void;
+    _isLink(): boolean;
     /**
      * Toggles an accordion and emits event
      */
@@ -58,8 +63,10 @@ export declare class Accordion {
     /**
      * TODO: chi-icon cannot be used because styles apply only to .chi-icon.icon-chevron-down
      */
-    getItemTrigger(accordion: AccordionItem, index: any): any;
-    getAccordionContent(accordion: AccordionItem): any;
+    getChevronIcon(): any;
+    getBaseTrigger(accordion: AccordionItem, index: number): any;
+    getLinkTrigger(accordion: AccordionItem, index: number): any;
+    getAccordionContent(accordion: AccordionItem): HTMLElement;
     getAccordionItem(accordion: AccordionItem, index: number): any;
     render(): any;
 }

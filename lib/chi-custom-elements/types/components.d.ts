@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+import { AccordionItem, AccordionTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -14,7 +14,7 @@ import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+export { AccordionItem, AccordionTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -55,6 +55,10 @@ export namespace Components {
           * to truncate long accordion titles
          */
         "truncated": boolean;
+        /**
+          * to set accordion type
+         */
+        "type": AccordionTypes;
     }
     interface ChiAlert {
         /**
@@ -176,6 +180,20 @@ export namespace Components {
           * to set variant of a button { outline, flat }.
          */
         "variant": string;
+    }
+    interface ChiCacheLoader {
+        /**
+          * to visually de-emphasize by muting colors.
+         */
+        "muted": boolean;
+        /**
+          * to disable user interaction.
+         */
+        "noInteraction": boolean;
+        /**
+          * to set type of cache loader { pulse, bar }.
+         */
+        "type": string;
     }
     interface ChiCarousel {
         /**
@@ -576,7 +594,7 @@ export namespace Components {
          */
         "helperMessage"?: string;
         /**
-          * to set a lagend for all fields
+          * to set a legend for all fields
          */
         "label"?: string;
         /**
@@ -738,10 +756,6 @@ export namespace Components {
     }
     interface ChiModal {
         /**
-          * To set alert layout
-         */
-        "alert": boolean;
-        /**
           * To set animated layout
          */
         "animated": boolean;
@@ -782,7 +796,7 @@ export namespace Components {
          */
         "show": () => Promise<void>;
         /**
-          * To set simple layout
+          * To delete header and footer from the Modal
          */
         "simple": boolean;
         /**
@@ -1678,6 +1692,12 @@ declare global {
         prototype: HTMLChiButtonElement;
         new (): HTMLChiButtonElement;
     };
+    interface HTMLChiCacheLoaderElement extends Components.ChiCacheLoader, HTMLStencilElement {
+    }
+    var HTMLChiCacheLoaderElement: {
+        prototype: HTMLChiCacheLoaderElement;
+        new (): HTMLChiCacheLoaderElement;
+    };
     interface HTMLChiCarouselElementEventMap {
         "chiViewChange": number;
     }
@@ -2201,6 +2221,7 @@ declare global {
         "chi-badge": HTMLChiBadgeElement;
         "chi-brand": HTMLChiBrandElement;
         "chi-button": HTMLChiButtonElement;
+        "chi-cache-loader": HTMLChiCacheLoaderElement;
         "chi-carousel": HTMLChiCarouselElement;
         "chi-checkbox": HTMLChiCheckboxElement;
         "chi-copy-text": HTMLChiCopyTextElement;
@@ -2272,6 +2293,10 @@ declare namespace LocalJSX {
           * to truncate long accordion titles
          */
         "truncated"?: boolean;
+        /**
+          * to set accordion type
+         */
+        "type"?: AccordionTypes;
     }
     interface ChiAlert {
         /**
@@ -2409,6 +2434,20 @@ declare namespace LocalJSX {
           * to set variant of a button { outline, flat }.
          */
         "variant"?: string;
+    }
+    interface ChiCacheLoader {
+        /**
+          * to visually de-emphasize by muting colors.
+         */
+        "muted"?: boolean;
+        /**
+          * to disable user interaction.
+         */
+        "noInteraction"?: boolean;
+        /**
+          * to set type of cache loader { pulse, bar }.
+         */
+        "type"?: string;
     }
     interface ChiCarousel {
         /**
@@ -2828,7 +2867,7 @@ declare namespace LocalJSX {
          */
         "helperMessage"?: string;
         /**
-          * to set a lagend for all fields
+          * to set a legend for all fields
          */
         "label"?: string;
         /**
@@ -2995,10 +3034,6 @@ declare namespace LocalJSX {
     }
     interface ChiModal {
         /**
-          * To set alert layout
-         */
-        "alert"?: boolean;
-        /**
           * To set animated layout
          */
         "animated"?: boolean;
@@ -3059,7 +3094,7 @@ declare namespace LocalJSX {
          */
         "scrollable"?: ModalScrollableTypes;
         /**
-          * To set simple layout
+          * To delete header and footer from the Modal
          */
         "simple"?: boolean;
         /**
@@ -3908,6 +3943,7 @@ declare namespace LocalJSX {
         "chi-badge": ChiBadge;
         "chi-brand": ChiBrand;
         "chi-button": ChiButton;
+        "chi-cache-loader": ChiCacheLoader;
         "chi-carousel": ChiCarousel;
         "chi-checkbox": ChiCheckbox;
         "chi-copy-text": ChiCopyText;
@@ -3954,6 +3990,7 @@ declare module "@stencil/core" {
             "chi-badge": LocalJSX.ChiBadge & JSXBase.HTMLAttributes<HTMLChiBadgeElement>;
             "chi-brand": LocalJSX.ChiBrand & JSXBase.HTMLAttributes<HTMLChiBrandElement>;
             "chi-button": LocalJSX.ChiButton & JSXBase.HTMLAttributes<HTMLChiButtonElement>;
+            "chi-cache-loader": LocalJSX.ChiCacheLoader & JSXBase.HTMLAttributes<HTMLChiCacheLoaderElement>;
             "chi-carousel": LocalJSX.ChiCarousel & JSXBase.HTMLAttributes<HTMLChiCarouselElement>;
             "chi-checkbox": LocalJSX.ChiCheckbox & JSXBase.HTMLAttributes<HTMLChiCheckboxElement>;
             "chi-copy-text": LocalJSX.ChiCopyText & JSXBase.HTMLAttributes<HTMLChiCopyTextElement>;

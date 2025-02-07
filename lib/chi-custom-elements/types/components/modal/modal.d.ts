@@ -39,17 +39,13 @@ export declare class Modal {
      */
     noBorder: boolean;
     /**
-     *  To set simple layout
+     *  To delete header and footer from the Modal
      */
     simple: boolean;
     /**
      *  To set target to serve as Modal trigger
      */
     target: any;
-    /**
-     *  To set alert layout
-     */
-    alert: boolean;
     /**
      * Triggered when Modal show method has been executed, but the showing animation has not started yet.
      */
@@ -109,9 +105,6 @@ export declare class Modal {
     getCloseButton: () => HTMLElement;
     cancel: () => void;
     accept: () => void;
-    getAlertContent: () => HTMLElement;
-    getSimpleContent: () => HTMLElement;
-    getDefaultContent: () => HTMLElement;
     getContent(): HTMLElement;
     getHeader(): HTMLElement;
     getFooter: () => HTMLElement;

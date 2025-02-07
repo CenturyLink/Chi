@@ -216,20 +216,16 @@ export declare class Dropdown {
      */
     renderTrigger(): any;
     getExtraClassForTriggerButton(): string;
-    renderDropdownMenuHeader(isMultiItems: boolean): any;
+    renderDropdownMenuHeader(): any;
     renderDropdownMenuFooter(isMultiItems: boolean): any;
     renderDropdownMenuItems(isMultiItems: boolean): any;
     renderMenu(): any;
-    renderSelectMultiHeaderContent(): any;
     renderSelectMultiFooterContent(): any[];
     renderSelectMultiItems(): any[];
     onSelectMultiApply(): void;
     onSelectMultiClear(): void;
     onMultiItemsChanged(): void;
     _clearMultiItemsSelection(): void;
-    _selectAllMultiItems(): void;
     _selectMultiItemClicked(ev: CustomEvent, item: DropdownMenuMultiItem): void;
-    _onMultiSelectAllChanged(): void;
-    _updateSelectAllCheckbox(): void;
     render(): any;
 }
