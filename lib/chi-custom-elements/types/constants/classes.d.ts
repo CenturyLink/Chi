@@ -428,6 +428,7 @@ export declare const PICKER_CLASSES: {
     CONTENT: string;
     CONTENT_START: string;
     CONTENT_END: string;
+    CONTENT_CUSTOM: string;
     RADIO: string;
 };
 export declare const TAGS_CLASSES: {

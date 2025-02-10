@@ -17,7 +17,7 @@ export declare class FormWrapper {
      */
     options: FormWrapperCheckbox[] | FormWrapperRadio[];
     /**
-     * to set a lagend for all fields
+     * to set a legend for all fields
      */
     label?: string;
     /**
@@ -33,6 +33,7 @@ export declare class FormWrapper {
     layoutValidation(newValue: string): void;
     typeValidation(newValue: string): void;
     stateValidation(newValue: ChiStates): void;
+    optionsValidation(newValue: FormWrapperCheckbox[] | FormWrapperRadio[]): void;
     componentWillLoad(): void;
     _getLabel(): any;
     _getItems(): any[];
