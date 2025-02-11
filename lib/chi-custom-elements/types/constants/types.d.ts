@@ -78,7 +78,7 @@ export declare const ACCORDION_TYPES: string[];
 export type AccordionTypes = (typeof ACCORDION_TYPES)[number];
 export interface IconType {
     fillRule?: 'evenodd' | 'nonzero';
-    path: string;
+    path: string | string[];
 }
 export interface DropdownMenuItem {
     id?: string;
