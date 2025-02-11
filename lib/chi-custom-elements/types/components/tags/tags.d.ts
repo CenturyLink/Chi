@@ -19,7 +19,8 @@ export declare class Tags {
      */
     chiChange: EventEmitter<Tag[]>;
     _tags: Tag[];
-    componentDidLoad(): void;
+    componentWillLoad(): void;
+    updateTags(newValue: Tag[]): void;
     _focusInput(): void;
     _onKeyDown(ev: KeyboardEvent): void;
     _onDeleteTag(deleteTag: Tag): void;

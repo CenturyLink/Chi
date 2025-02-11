@@ -20,8 +20,10 @@ export declare class Icon {
     validateColorAttribute(newValue: IconColors): void;
     validateSizeAttribute(newValue: IconSizes): void;
     componentWillLoad(): void;
-    disconnectedCallback(): void;
     private getClass;
+    private generatePath;
+    private generateSVG;
+    private loadIcon;
     private _loadSprite;
     render(): any;
 }

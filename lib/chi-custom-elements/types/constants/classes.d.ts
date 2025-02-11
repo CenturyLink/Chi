@@ -30,9 +30,11 @@ export declare const FOCUS_CLASS = "-focus";
 export declare const NO_BORDER_CLASS = "-no-border";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
+    LINK: string;
     CONTENT: string;
     ITEM: string;
     TRIGGER: string;
+    TRIGGER_LINK: string;
     TITLE: string;
     TEXT: string;
 };
