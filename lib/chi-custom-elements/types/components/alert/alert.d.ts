@@ -50,10 +50,12 @@ export declare class Alert {
     typeValidation(newValue: string): void;
     colorValidation(newValue: AlertColors): void;
     sizeValidation(newValue: string): void;
+    expirationTimeChanged(newValue: number): void;
     componentWillLoad(): void;
     connectedCallback(): void;
     _hasAlertActions(): boolean;
     _hasClickableIcon(): boolean;
     _dismissAlert(): void;
+    _autoCloseAlert(expirationTime: number): void;
     render(): any;
 }
