@@ -19,6 +19,7 @@ function serve(done) {
       function (req, res, next) {
         res.setHeader('cache-control', 'public, max-age=0');
         res.setHeader('chi-custom-header', 'ok');
+        res.setHeader('Access-Control-Allow-Headers', '*');
         next();
       }
     ]
