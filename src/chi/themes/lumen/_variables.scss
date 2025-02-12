@@ -42,10 +42,12 @@ $color-grey-100: #262425;
 $color-grey-90: #343333;
 $color-grey-80: #434142; // Lumen Iron (Warmer Version)
 $color-grey-70: #585657;
+$color-grey-65: #53565A; // new muted for disabled
 $color-grey-60: #6a6869;
 $color-grey-50: #949293; // Lumen Nickel (Warmer Version)
 $color-grey-40: #b1b0b0;
 $color-grey-30: #d6d3d4; // Lumen Silver (Warmer Version)
+$color-grey-27: #dadee2; // input disabled
 $color-grey-25: #dfddde;
 $color-grey-20: #f2f0f1; // Lumen Platinum
 $color-grey-15: #f6f4f5;
@@ -900,11 +902,12 @@ $checkbox-checked-background-color: $color-teal-80;
 $checkbox-checked-border-color: $color-teal-80;
 $checkbox-checked-icon-color: $color-background-white;
 $checkbox-label-danger-text-color: $color-text-base;
-$checkbox-label-disabled-text-color: $color-text-muted;
-$checkbox-label-disabled-opacity: $opacity-60;
+$checkbox-label-disabled-text-color: $color-grey-65;
+$checkbox-label-disabled-opacity: $opacity-81;
 $checkbox-label-before-top: 0.25rem;
 $checkbox-label-after-top: 0.4375rem;
 $checkbox-label-indeterminate-after-top: 0.6875rem !important;
+$checkbox-label-disabled-before-bg-color: $color-grey-27;
 
 // Code
 $code-font-size: 0.9375rem;
@@ -1531,8 +1534,9 @@ $radio-checked-background-color: $color-teal-80;
 $radio-checked-border-color: $color-teal-80;
 $radio-checked-icon-color: $color-background-white;
 
-$radio-disabled-text-color: $color-grey-70;
-$radio-disabled-opacity: $opacity-60;
+$radio-disabled-text-color: $color-grey-65;
+$radio-disabled-opacity: $opacity-81;
+$radio-disabled-before-background-color: $color-grey-27;
 $radio-focus-border-color: $focus-color;
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.25rem;

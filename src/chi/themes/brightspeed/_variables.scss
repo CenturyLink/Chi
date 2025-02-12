@@ -38,10 +38,12 @@ $color-grey-100:    #000000;
 $color-grey-90:     #191919;
 $color-grey-80:     #333333;
 $color-grey-70:     #4c4c4c;
+$color-grey-65:     #53565A; // new muted for disabled input text
 $color-grey-60:     #666666;
 $color-grey-50:     #7f7f7f;
 $color-grey-40:     #999999;
 $color-grey-30:     #b2b2b2;
+$color-grey-27:     #DADEE2; // new muted for disabled input bg
 $color-grey-25:     #dddedf;
 $color-grey-20:     #e6e7e8;
 $color-grey-15:     #f0f1f1;
@@ -895,11 +897,12 @@ $checkbox-checked-background-color:         $color-background-black;
 $checkbox-checked-border-color:             $color-background-black;
 $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
-$checkbox-label-disabled-text-color:        $color-text-muted;
-$checkbox-label-disabled-opacity:           $opacity-60;
+$checkbox-label-disabled-text-color:        $color-grey-65;
+$checkbox-label-disabled-opacity:           $opacity-81;
 $checkbox-label-before-top:                 0.125rem;
 $checkbox-label-after-top:                  0.3125rem;
 $checkbox-label-indeterminate-after-top:    0.5625rem !important;
+$checkbox-label-disabled-before-bg-color:   $color-grey-27;
 
 // Code
 $code-font-size:                            $font-size-sm;
@@ -1521,8 +1524,9 @@ $radio-checked-background-color:            $color-background-black;
 $radio-checked-border-color:                $color-border-black;
 $radio-checked-icon-color:                  $color-background-white;
 
-$radio-disabled-text-color:                 $color-grey-70;
-$radio-disabled-opacity:                    $opacity-60;
+$radio-disabled-text-color:                 $color-grey-65;
+$radio-disabled-opacity:                    $opacity-81;
+$radio-disabled-before-background-color:    $color-grey-27;
 $radio-focus-border-color:                  $focus-color;
 $radio-danger-border-color:                 $color-border-danger;
 $radio-label-before-top:                    0.125rem;

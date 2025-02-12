@@ -36,6 +36,10 @@
         color: $radio-disabled-text-color;
         opacity: $radio-disabled-opacity;
         pointer-events: none;
+
+        &::before {
+          background-color: $radio-disabled-before-background-color;
+        }
       }
     }
 

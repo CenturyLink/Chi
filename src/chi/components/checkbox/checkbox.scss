@@ -96,6 +96,10 @@
         color: $checkbox-label-disabled-text-color;
         opacity: $checkbox-label-disabled-opacity;
         pointer-events: none;
+
+        &::before {
+          background-color: $checkbox-label-disabled-before-bg-color;
+        }
       }
     }
 

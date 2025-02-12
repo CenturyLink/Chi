@@ -42,10 +42,12 @@ $color-grey-100: #262425;
 $color-grey-90: #343333;
 $color-grey-80: #434142; // Lumen Iron (Warmer Version)
 $color-grey-70: #585657;
+$color-grey-65: #53565A; // new muted for disabled
 $color-grey-60: #6a6869;
 $color-grey-50: #949293; // Lumen Nickel (Warmer Version)
 $color-grey-40: #b1b0b0;
 $color-grey-30: #d6d3d4; // Lumen Silver (Warmer Version)
+$color-grey-27: #dadee2; // input disabled
 $color-grey-25: #dfddde;
 $color-grey-20: #f2f0f1; // Lumen Platinum
 $color-grey-15: #f6f4f5;
@@ -900,11 +902,12 @@ $checkbox-checked-background-color: $color-teal-80;
 $checkbox-checked-border-color: $color-teal-80;
 $checkbox-checked-icon-color: $color-background-white;
 $checkbox-label-danger-text-color: $color-text-base;
-$checkbox-label-disabled-text-color: $color-text-muted;
-$checkbox-label-disabled-opacity: $opacity-60;
+$checkbox-label-disabled-text-color: $color-grey-65;
+$checkbox-label-disabled-opacity: $opacity-81;
 $checkbox-label-before-top: 0.25rem;
 $checkbox-label-after-top: 0.4375rem;
 $checkbox-label-indeterminate-after-top: 0.6875rem !important;
+$checkbox-label-disabled-before-bg-color: $color-grey-27;
 
 // Code
 $code-font-size: 0.9375rem;
@@ -1025,35 +1028,37 @@ $dropdown-menu-item-focus-outline: $focus-color;
 $dropdown-select-disabled-opacity: $opacity-60;
 $dropdown-select-border-radius: $border-radius-base;
 
+
 $dropdown-select-xs-height: 1.5rem;
 $dropdown-select-xs-font-size: $font-size-xs;
-$dropdown-select-xs-line-height: $line-height-sm;
+$dropdown-select-xs-line-height: 0.75rem;
 $dropdown-select-xs-arrow-background-size: 0.75rem;
 $dropdown-select-xs-padding: 0.3125rem 0.5rem;
 
 $dropdown-select-sm-height: 2rem;
-$dropdown-select-sm-font-size: $font-size-base;
+$dropdown-select-sm-font-size: $font-size-sm;
 $dropdown-select-sm-line-height: $line-height-sm;
 $dropdown-select-sm-arrow-background-size: 0.75rem;
-$dropdown-select-sm-padding: 0.4375rem 0.75rem;
+$dropdown-select-sm-padding: .4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
-$dropdown-select-md-font-size: $font-size-base;
-$dropdown-select-md-line-height: $line-height-md;
-$dropdown-select-md-arrow-background-size: 1rem;
-$dropdown-select-md-padding: 0.5625rem 0.75rem;
+$dropdown-select-md-font-size: 1rem;
+$dropdown-select-md-line-height: 1.25rem;
+$dropdown-select-md-arrow-background-size: 1.25rem;
+$dropdown-select-md-padding: 0.5625rem 1rem 0.5625rem 0.75rem;
 
 $dropdown-select-lg-height: 3rem;
-$dropdown-select-lg-font-size: $font-size-base;
-$dropdown-select-lg-line-height: $line-height-md;
-$dropdown-select-lg-arrow-background-size: 1rem;
-$dropdown-select-lg-padding: 0.6875rem 0.75rem;
+$dropdown-select-lg-font-size: 1rem;
+$dropdown-select-lg-line-height: 1.25rem;
+$dropdown-select-lg-arrow-background-size: 1.25rem;
+$dropdown-select-lg-padding: 0.6875rem 1rem 0.6875rem 0.75rem;
 
 $dropdown-select-xl-height: 3.5rem;
-$dropdown-select-xl-font-size: $font-size-lg;
-$dropdown-select-xl-line-height: $line-height-md;
-$dropdown-select-xl-arrow-background-size: 1rem;
-$dropdown-select-xl-padding: 0.6875rem 1rem;
+$dropdown-select-xl-font-size: 1rem;
+$dropdown-select-xl-line-height: 1.25rem;
+$dropdown-select-xl-arrow-background-size: 1.25rem;
+$dropdown-select-xl-padding: 0.6875rem 1rem 0.6875rem 1rem;
+
 
 // Expansion panel
 $expansion-panel-border-color: $color-border-base;
@@ -1197,8 +1202,8 @@ $label-help-hover-icon-color: $color-icon-primary;
 
 // Link
 $link-text-decoration: underline;
-$link-hover-text-decoration: none;
-$link-hover-color: $link-color;
+$link-hover-text-decoration: underline;
+$link-hover-color: $color-teal-100;
 
 $link-cta-icon: '\e9dd';
 $link-cta-icon-color: $color-orange-50;
@@ -1529,8 +1534,9 @@ $radio-checked-background-color: $color-teal-80;
 $radio-checked-border-color: $color-teal-80;
 $radio-checked-icon-color: $color-background-white;
 
-$radio-disabled-text-color: $color-grey-70;
-$radio-disabled-opacity: $opacity-60;
+$radio-disabled-text-color: $color-grey-65;
+$radio-disabled-opacity: $opacity-81;
+$radio-disabled-before-background-color: $color-grey-27;
 $radio-focus-border-color: $focus-color;
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.25rem;
@@ -2079,3 +2085,14 @@ $tooltip-max-width: 20rem;
 $transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
 $transfer-list-reset-button-color: $color-blue-75;
+
+// Tags
+$tags-border-color: $color-border-base;
+$tags-border-radius: $border-radius-base;
+$tags-text-color: $color-text-base;
+$tags-input-placeholder-text-color: $color-grey-60;
+$tags-hover-border-color: $color-grey-40;
+$tags-focus-border-color: $focus-color;
+$tags-md-font-size: $font-size-md;
+$tags-md-line-height: 1.25rem;
+$tags-md-padding: 0.0625rem 0.75rem;

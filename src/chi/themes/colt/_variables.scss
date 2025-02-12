@@ -39,10 +39,12 @@ $color-grey-90:     #333432;
 $color-grey-80:     #40413f;
 $color-grey-75:     #484a47; // Colt Charcoal
 $color-grey-70:     #545454;
+$color-grey-65:     #53565A; // new muted for disabled
 $color-grey-60:     #666666;
 $color-grey-50:     #939393;
 $color-grey-40:     #b1b1b1;
 $color-grey-30:     #d4d4d4;
+$color-grey-27:     #dadee2;
 $color-grey-25:     #dedede;
 $color-grey-20:     #f0f0f0;
 $color-grey-15:     #f5f5f5; // Colt Ash
@@ -899,11 +901,12 @@ $checkbox-checked-background-color:         $color-background-primary;
 $checkbox-checked-border-color:             $color-border-primary;
 $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
-$checkbox-label-disabled-text-color:        $color-text-muted;
-$checkbox-label-disabled-opacity:           $opacity-60;
+$checkbox-label-disabled-text-color:        $color-grey-65;
+$checkbox-label-disabled-opacity:           $opacity-81;
 $checkbox-label-before-top:                 0.125rem;
 $checkbox-label-after-top:                  0.3125rem;
 $checkbox-label-indeterminate-after-top:    0.5625rem !important;
+$checkbox-label-disabled-before-bg-color:   $color-grey-27;
 
 // Code
 $code-font-size:                            $font-size-sm;
@@ -1525,8 +1528,9 @@ $radio-checked-background-color:            $color-background-primary;
 $radio-checked-border-color:                $color-border-primary;
 $radio-checked-icon-color:                  $color-background-white;
 
-$radio-disabled-text-color:                 $color-grey-70;
-$radio-disabled-opacity:                    $opacity-60;
+$radio-disabled-text-color:                 $color-grey-65;
+$radio-disabled-opacity:                    $opacity-81;
+$radio-disabled-before-background-color:    $color-grey-27;
 $radio-focus-border-color:                  $focus-color;
 $radio-danger-border-color:                 $color-border-danger;
 $radio-label-before-top:                    0.125rem;
