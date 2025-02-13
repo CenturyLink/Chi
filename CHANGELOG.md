@@ -6,7 +6,7 @@
 
 #### Changed
 
-- Changed: Data table `cellWrap` property has been changed to `false` by default.
+- Changed: Data table `cellWrap` property has been changed to `true` by default.
 
 ## 6.25.0 (February 6, 2025)
 
