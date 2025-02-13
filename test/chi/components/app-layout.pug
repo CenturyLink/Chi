@@ -75,7 +75,9 @@ title: App Layout
       .chi-main
         .chi-main__alert
           .chi-alert.-info(role='alert')
-            i.chi-alert__icon.chi-icon.icon-circle-info(aria-hidden='true')
+            i.chi-alert__icon.chi-icon(aria-hidden='true')
+              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                use(xlink:href='#icon-circle-info')
             .chi-alert__content
               p.chi-alert__text This is a page level info alert
         .chi-main__header
