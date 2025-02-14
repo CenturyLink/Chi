@@ -30,13 +30,12 @@ export declare const FOCUS_CLASS = "-focus";
 export declare const NO_BORDER_CLASS = "-no-border";
 export declare const ACCORDION_CLASSES: {
     ACCORDION: string;
-    LINK: string;
     CONTENT: string;
     ITEM: string;
     TRIGGER: string;
-    TRIGGER_LINK: string;
     TITLE: string;
     TEXT: string;
+    LINK: string;
 };
 export declare const BULK_ACTIONS_CLASSES: {
     BULK_ACTIONS: string;
@@ -84,6 +83,11 @@ export declare const CAROUSEL_CLASSES: {
     PAGINATION_ADDITION: string;
     DOT: string;
     PAGINATION: string;
+};
+export declare const LINK_CLASSES: {
+    LINK: string;
+    CONTENT: string;
+    NO_UNDERLINE: string;
 };
 export declare const STAT_CLASSES: {
     STAT: string;

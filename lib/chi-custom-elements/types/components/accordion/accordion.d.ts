@@ -64,8 +64,8 @@ export declare class Accordion {
      * TODO: chi-icon cannot be used because styles apply only to .chi-icon.icon-chevron-down
      */
     getChevronIcon(): any;
-    getBaseTrigger(accordion: AccordionItem, index: number): any;
-    getLinkTrigger(accordion: AccordionItem, index: number): any;
+    getAccordionTrigger(accordion: AccordionItem, index: number): any;
+    getAccordionTriggerContent(accordion: AccordionItem): any[];
     getAccordionContent(accordion: AccordionItem): HTMLElement;
     getAccordionItem(accordion: AccordionItem, index: number): any;
     render(): any;
