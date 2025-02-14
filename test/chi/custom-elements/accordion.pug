@@ -32,6 +32,13 @@ h3 Portal layout card
       | Some custom content here
 
 
+h3 Accordion type link
+.test-accordion-link.-w--100 
+  chi-accordion(type="link")#accordion-link
+    div(slot="item-4")
+      chi-icon.-mr--2(icon="arrow-right") 
+      | Some custom content here
+
 
 script.
   document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +58,7 @@ script.
       ]
     });
 
-    ['portal-layout', 'portal-layout-card'].forEach(id => {
+    ['portal-layout', 'portal-layout-card', 'accordion-link'].forEach(id => {
       document.getElementById(id).accordions = [
         {title: 'Accordion 1', text: 'Item content 1'},
         {title: 'Accordion 2', text: 'Item content 2', expanded: true},
