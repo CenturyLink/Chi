@@ -5,7 +5,7 @@ import backstop from 'backstopjs';
     const configFiles = ['backstop-responsive.json', 'backstop-non-responsive.json', 'backstop-non-responsive-ce.json'];
     
     for (const configFile of configFiles) {
-      await backstop('test', { docker: true, config: configFile });
+      await backstop('test', { docker: !process.env.JENKINS_HOME, config: configFile });
     }
   } catch (error) {
     console.error('[CHI]: Error executing tests: ', error);
