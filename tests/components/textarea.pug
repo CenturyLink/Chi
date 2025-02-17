@@ -1,0 +1,382 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Textarea'
+  - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+  - var _sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+  - var states = ['initial', 'hover', 'focus', 'disabled']
+  - var colors = ['default', 'success', 'warning', 'danger']
+
+block content
+  mixin icon(name, size)
+    .chi-icon(class={
+      [`-${size}`]: size
+    })
+      svg
+        if name == 'success'
+          use(xlink:href='#icon-check')
+        else if name == 'warning'
+          use(xlink:href='#icon-warning')
+        else if name == 'danger'
+          use(xlink:href='#icon-circle-warning')
+        else if name == 'default'
+          use(xlink:href='#icon-circle-info-outline')
+        else
+          use(xlink:href=`#icon-${name}`)
+
+  each size in sizes
+    div(class=`test-${size}`)
+      span.-text--h2= `Textarea / ${size}`
+      table(cellpadding="0", cellspacing="0", width="1200px")
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in colors
+              td(style='vertical-align: bottom')
+                .-m--1
+                  if state == 'disabled'
+                    textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                  else
+                    textarea(class=`chi-input -${style} -${state} -${size}`) Value
+              td(style='vertical-align: bottom')
+                .-m--1
+                  if state == 'disabled'
+                    .chi-form__item
+                      label.chi-label(class=`-${size}` for='example') Label
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                  else
+                    .chi-form__item
+                      label.chi-label(class=`-${size}` for='example') Label
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+
+    div(class=`test-${size}-icon-left`)
+      span.-text--h2= `Textarea / ${size} / icon left`
+      table(cellpadding="0", cellspacing="0", width="1200px")
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in colors
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-input__wrapper.-icon--left
+                    if state == 'disabled'
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-form__item
+                    label.chi-label(class=`-${size}` for='example') Label
+                    .chi-input__wrapper.-icon--left
+                      if state == 'disabled'
+                        textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                      else
+                        textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+
+    div(class=`test-${size}-icon-right`)
+      span.-text--h2= `Textarea / ${size} / icon right`
+      table(cellpadding="0", cellspacing="0", width="1200px")
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in colors
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-input__wrapper.-icon--right
+                    if state == 'disabled'
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                    if style == 'success'
+                      .chi-icon.-icon--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .chi-icon.-icon--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .chi-icon.-icon--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-form__item
+                    label.chi-label(class=`-${size}` for='example') Label
+                    .chi-input__wrapper.-icon--right
+                      if state == 'disabled'
+                        textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                      else
+                        textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                      if style == 'success'
+                        .chi-icon.-icon--success
+                          svg
+                            use(xlink:href='#icon-check')
+                      else if style == 'warning'
+                        .chi-icon.-icon--warning
+                          svg
+                            use(xlink:href='#icon-warning')
+                      else if style == 'danger'
+                        .chi-icon.-icon--danger
+                          svg
+                            use(xlink:href='#icon-circle-warning')
+                      else
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-info-outline')
+
+    div(class=`test-${size}-icon-left-right`)
+      span.-text--h2= `Textarea / ${size} / icon left / icon right`
+      table(cellpadding="0", cellspacing="0", width="1200px")
+        each state in states
+          tr
+            td
+              small= `${state}`
+            each style in colors
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-input__wrapper.-icon--left.-icon--right
+                    if state == 'disabled'
+                      textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                    else
+                      textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                    .chi-icon
+                      svg
+                        use(xlink:href='#icon-atom')
+                    if style == 'success'
+                      .chi-icon.-icon--success
+                        svg
+                          use(xlink:href='#icon-check')
+                    else if style == 'warning'
+                      .chi-icon.-icon--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .chi-icon.-icon--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    else
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-circle-info-outline')
+              td(style='vertical-align: bottom')
+                .-m--1
+                  .chi-form__item
+                    label.chi-label(class=`-${size}` for='example') Label
+                    .chi-input__wrapper.-icon--left.-icon--right
+                      if state == 'disabled'
+                        textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                      else
+                        textarea(class=`chi-input -${style} -${state} -${size}`) Value
+                      .chi-icon
+                        svg
+                          use(xlink:href='#icon-atom')
+                      if style == 'success'
+                        .chi-icon.-icon--success
+                          svg
+                            use(xlink:href='#icon-check')
+                      else if style == 'warning'
+                        .chi-icon.-icon--warning
+                          svg
+                            use(xlink:href='#icon-warning')
+                      else if style == 'danger'
+                        .chi-icon.-icon--danger
+                          svg
+                            use(xlink:href='#icon-circle-warning')
+                      else
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-info-outline')
+  
+    div(class=`test-${size}-helper-message`)
+      span.-text--h2= `Textarea / Helper Message / ${size}`
+      table(cellpadding="0", cellspacing="0", width="480px")
+        tr
+          td
+            small= `default`
+          td(style='vertical-align: bottom')
+            .-m--1
+              .chi-form__item
+                textarea(class=`chi-input -default -${size}`) Value
+                div.chi-label(class=`-default -text--italic -text--normal -status`) Optional helper message
+        tr
+          td
+            small= `success`
+          td(style='vertical-align: bottom')
+            .-m--1
+              .chi-form__item
+                textarea(class=`chi-input -success -${size}`) Value
+                div.chi-label(class=`-success -text--normal -status`) 
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-circle-check') 
+                  div Optional helper message
+        tr
+          td
+            small= `warning`
+          td(style='vertical-align: bottom')
+            .-m--1
+              .chi-form__item
+                textarea(class=`chi-input -warning -${size}`) Value
+                div.chi-label(class=`-warning -text--normal -status`) 
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-warning')
+                  div Optional helper message
+        tr
+          td
+            small= `danger`
+          td(style='vertical-align: bottom')
+            .-m--1
+              .chi-form__item
+                textarea(class=`chi-input -danger -${size}`) Value
+                div.chi-label(class=`-danger -text--normal -status`) 
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-circle-warning')
+                  div Optional helper message
+
+  each size in _sizes
+    div(class=`test-copy-text-button-${size}`)
+      span.-text--h2=`Textarea / Copy text button / ${size}`
+      table(cellpadding="0" cellspacing="0" width="2500px")
+        each style in colors
+          tr
+            td
+              small= `${style}`
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}`)
+                  .chi-input__wrapper.-flex--grow1
+                    textarea.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                  button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-with-right-icon`)
+                  .chi-input__wrapper.-flex--grow1.-icon--right
+                    textarea.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                    +icon('search')
+                  button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-with-left-icon`)
+                  .chi-input__wrapper.-flex--grow1.-icon--left
+                    textarea.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                    +icon('atom')
+                  button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-disabled`)
+                  .chi-input__wrapper.-flex--grow1
+                    textarea.chi-input(disabled type='text' class=`-${size} -${style}` value="Some text")
+                  button.chi-button.-icon.-flat(disabled aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-with-help-message`)
+                  .chi-input__wrapper.-flex--grow1
+                    textarea.chi-input(type='text' class=`-${size} -${style}` value="Some text")
+                    .chi-label.-status(class=`-${style}`)
+                      if style == 'success'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-check')
+                      else if style == 'warning'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-warning')
+                      else if style == 'danger'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-warning')
+                      | Optional helper message
+                  button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
+            td
+              .-m--3
+                .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-with-left-right-icons-help-message`)
+                  .chi-input__wrapper.-flex--grow1.-icon--right.-icon--left
+                    textarea.chi-input(readonly type='text' class=`-${size} -${style}` value="Some text")
+                    +icon('atom')
+                    +icon('search')
+                    //- it is important that helper-message is a span when there are two icons.
+                    span.chi-label.-status(class=`-${style}`)
+                      if style == 'success'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-check')
+                      else if style == 'warning'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-warning')
+                      else if style == 'danger'
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-circle-warning')
+                      | Optional helper message
+                  button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
+                    .chi-button__content
+                      if size == 'xs' || size == 'sm'
+                        +icon("copy", 'xs')
+                      else if size == 'md'
+                        +icon("copy", 'sm')
+                      else if size == 'lg'
+                        +icon("copy", 'sm--2')
+                      else if size == 'xl'
+                        +icon("copy", 'sm--3')
