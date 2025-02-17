@@ -1,5 +1,6 @@
 import backstop from 'backstopjs';
 import fs from 'fs';
+
 const modifyBackstopConfig = (configFile) => {
   const baseUrl = process.env.JENKINS_HOME ? 'http://localhost' : 'http://host.docker.internal';
   const config = JSON.parse(fs.readFileSync(configFile, 'utf-8'));
