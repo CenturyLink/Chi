@@ -1,0 +1,60 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Checkbox'
+  - var states = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled', 'required', 'danger']
+  - var listStates = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled']
+
+block content
+  .test-states
+    each state, index in states
+      h5= `Checkbox / ${state}`
+      .chi-form__item.-row.-mb--1
+        .chi-checkbox
+          input.chi-checkbox__input(
+            type="checkbox"
+            id=`checkbox-${index}`
+            class={
+              [`-${state}`]: state == 'focus' || state == 'indeterminate'
+            }
+            checked=state=='checked' ? 'checked' : false
+            disabled=state=='disabled' ? 'disabled' : false
+          )
+          label.chi-checkbox__label(for=`checkbox-${index}` class={[`-${state}`]: state == 'danger'}) Checkbox
+            if state === 'required' || state === 'danger'
+              abbr.chi-label__required(aria-label="Required field") *
+      if state === 'danger' 
+        .chi-label.-status.-danger
+          i.chi-icon.icon-circle-warning(aria-hidden="true")
+          | Please accept the terms of service.
+
+  h2 Checkbox List
+  .test-states
+    each state, index in listStates
+      h5= `Checkbox / ${state}`
+      ul.chi-form__item.-list(style="max-width:20rem")
+        each element in [1, 2, 3, 4, 5]
+          li.chi-form__item
+            .chi-checkbox
+              input.chi-checkbox__input(
+              type="checkbox"
+              id=`checkbox--${element}--${state}`
+              class={
+                [`-${state}`]: state == 'focus' || state == 'indeterminate'
+              }
+              checked=state == 'checked' ? 'checked' : false
+              disabled=state == 'disabled' ? 'disabled' : false
+              )
+              label.chi-checkbox__label(for=`checkbox--${element}`)= `Checkbox-${element}`
+
+  script.
+    document.addEventListener(
+      'DOMContentLoaded',
+      function() {
+        var checkboxList = ["checkbox-4", "checkbox--1--indeterminate", "checkbox--2--indeterminate", "checkbox--3--indeterminate", "checkbox--4--indeterminate", "checkbox--5--indeterminate"];
+
+        checkboxList.forEach((el) => {
+          document.getElementById(el).indeterminate = true;
+        });
+      }
+    );

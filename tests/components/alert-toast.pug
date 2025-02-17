@@ -1,0 +1,38 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Alert Toasts' 
+  - var sizes = ['default', 'sm', 'lg']
+  - var icons = { base: 'icon-flag', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info' }
+
+block content
+  each size in sizes
+    h4 Default / #{size}
+    div(class=`test-toast-${size}`)
+      each val, type in icons
+        .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .chi-alert__content
+              p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+          button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              .chi-icon
+                svg
+                  use(xlink:href='#icon-x')
+    h4 Titled / #{size}
+    div(class=`test-toast-titled-${size}`)
+      each val, type in icons
+        .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .chi-alert__content
+              p.chi-alert__title= type
+              p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
+          button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              .chi-icon
+                svg
+                  use(xlink:href='#icon-x')

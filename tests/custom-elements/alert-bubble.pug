@@ -1,0 +1,82 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Alert Bubbles'
+  - var sizes = ['default', 'sm', 'lg']
+  - var types = { base: 'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info' }
+
+block content
+  each size in sizes
+    h4 Default / #{size}
+    div(class=`test-bubble-${size} -w--100`)
+      each val, type in types
+        if (type === 'base')
+          chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+            =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        else
+          chi-alert.-m--2(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+            =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+    h4 Centered / #{size}
+    div(class=`test-bubble-center-${size} -w--100`)
+      each val, type in types
+        if (type === 'base')
+          chi-alert.-m--2(class=type, icon=val, center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-center-${type}-${size}`)
+            =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+        else
+          chi-alert.-m--2(color=type, icon=val, center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-center-${type}-${size}`)
+            =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
+    h4 Dismissible / #{size}
+    div(class=`test-bubble-dismissible-${size} -w--100`)
+      each val, type in types
+        if (type === 'base')
+          chi-alert.-m--2(class=type, icon=val, closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-dismissible-${type}-${size}`)
+            =`This is a dismissible ${type} alert`
+        else
+          chi-alert.-m--2(color=type, icon=val, closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-dismissible-${type}-${size}`)
+            =`This is a dismissible ${type} alert`
+    h4 Titled / #{size}
+    div(class=`test-bubble-titled-${size} -w--100`)
+      each val, type in types
+        if (type === 'base')
+          chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-titled-${type}-${size}`, title=type)
+            =`This is a titled ${type} alert`
+        else
+          chi-alert.-m--2(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-titled-${type}-${size}`, title=type)
+            =`This is a titled ${type} alert`
+    h4 Actionable / #{size}
+    div(class=`test-bubble-actionable-${size} -w--100`)
+      each val, type in types
+        if (type === 'base')
+          chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-titled-${type}-${size}`, title=type)
+            =`This is a ${size} ${type} actionable alert`
+            button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Action
+        else
+          chi-alert.-m--2(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-actionable-${type}-${size}`, title=type)
+            =`This is a ${size} ${type} actionable alert`
+            button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Action
+  h4 Clickable Link Alert / default
+  div(class=`test-bubble-clickable-link-default -w--100`)
+    each val, type in types
+      if (type === 'base')
+        .-m--2
+          chi-link.-d--block(href='#' no-hover-underline no-underline)
+            chi-alert.-w--100(class=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`, data-cy=`alert-bubble-clickable-link-${type}-default`)
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
+      else
+        .-m--2
+          chi-link.-d--block(href='#' no-hover-underline no-underline)
+            chi-alert.-w--100(color=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`, data-cy=`alert-bubble-clickable-link-${type}-default`)
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
+  h4 Clickable Button Alert / default
+  div(class=`test-bubble-clickable-button-default -w--100`)
+    each val, type in types
+      if (type === 'base')
+        .-m--2
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+            chi-alert.-w--100(class=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default}`)
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
+      else
+        .-m--2
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+            chi-alert.-w--100(color=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default`)
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')

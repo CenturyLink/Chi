@@ -1,0 +1,98 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Toogle switch'
+
+block content
+  .test-states
+    .-mb--1
+      h5 Base
+      .chi-form__item
+        label.chi-switch(for="toggle1")
+          input(type="checkbox", class="chi-switch__input", id="toggle1")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Hover
+      .chi-form__item
+        label.chi-switch(for="toggle2")
+          input(type="checkbox", class="chi-switch__input", id="toggle2")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Focus
+      .chi-form__item
+        label.chi-switch(for="toggle3")
+          input(type="checkbox", class="chi-switch__input -focus", id="toggle3")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Disabled
+      .chi-form__item
+        label.chi-switch(for="toggle4")
+          input(type="checkbox", class="chi-switch__input", id="toggle4", disabled)
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+  .test-hide-label-states
+    .-mb--1
+      h5 Base
+      .chi-form__item
+        label.chi-switch.-label--hide(for="toggle5")
+          input(type="checkbox", class="chi-switch__input", id="toggle5")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Hover
+      .chi-form__item
+        label.chi-switch.-label--hide(for="toggle6")
+          input(type="checkbox", class="chi-switch__input", id="toggle6")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Focus
+      .chi-form__item
+        label.chi-switch.-label--hide(for="toggle7")
+          input(type="checkbox", class="chi-switch__input -focus", id="toggle7")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 Disabled
+      .chi-form__item
+        label.chi-switch.-label--hide(for="toggle8")
+          input(type="checkbox", class="chi-switch__input", id="toggle8", disabled)
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+          
+  .test-sizes
+    .-mb--1
+      h5 -xs
+      .chi-form__item
+        label.chi-switch.-xs(for="toggle9")
+          input(type="checkbox", class="chi-switch__input", id="toggle9")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label
+
+    .-mb--1
+      h5 -sm
+      .chi-form__item
+        label.chi-switch.-sm(for="toggle10")
+          input(type="checkbox", class="chi-switch__input", id="toggle10")
+          span(class="chi-switch__content")
+            span.chi-switch__thumb
+          span.chi-switch__label Label

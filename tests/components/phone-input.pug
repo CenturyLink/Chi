@@ -1,0 +1,11 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Phone input'
+
+block content
+  //- Create the example with HTML Blueprint, don't use the Custom Element
+  h3 Base
+  .test-phone-input-base.-w--100.-py--2
+    chi-label(for="phone-input") Phone Number
+    chi-phone-input(id="phone-input")
