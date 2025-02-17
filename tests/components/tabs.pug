@@ -1,0 +1,384 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Tabs'
+  - var sizes = ['xs', 'sm', 'md', 'lg']
+  - var _sizes = ['sm', 'md', 'lg']
+  - var styles = ['base', 'border']
+
+block content
+  h2 Horizontal
+  h3 Flat
+  .test-horizontal-flat
+    each style in styles
+      each size in sizes
+        h4= `Tabs ${size} ${style}`
+        ul.chi-tabs(class=`-${style} -${size}`)
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+
+  h3 Solid
+  .test-horizontal-solid
+    each style in styles
+      each size in sizes
+        h4= `Tabs ${size} ${style}`
+        ul.chi-tabs.-solid(class=`-${style} -${size}`)
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+
+  h2 Vertical
+  h3 Flat
+  .test-vertical-flat
+    each style in styles
+      each size in _sizes
+        h4= `Tabs vertical ${size} ${style}`
+        ul.chi-tabs.-vertical(class=`-${style} -${size}`)
+          li(class=`-active`)
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+
+  h3 Solid
+  .test-vertical-solid
+    each style in styles
+      each size in _sizes
+        h4= `Tabs vertical ${size} ${style}`
+        ul.chi-tabs.-vertical.-solid(class=`-${style} -${size}`)
+          li(class=`-active`)
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+
+  h2 Vertical with subtabs
+  each active in ['', 'active-alt']
+    each style in ['', 'border']
+      div(class=`test-vertical-${active}-${style}`)
+        each size in _sizes
+          h4= `Tabs vertical ${size} ${style} ${active}`
+          ul.chi-tabs.-vertical(class=`-${style} -${size}`)
+            li(class=`-active -${active}`)
+              a(href='#') Active tab
+              ul.chi-tabs__subtabs
+                li.-active
+                  a(href='#') Buttons
+                li
+                  a(href='#') Button Groups
+                li
+                  a(href='#') Cards
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+
+  each active in ['', 'active-alt']
+    each style in ['', 'border']
+      div(class=`test-vertical-icons-${active}-${style}`)
+        each size in _sizes
+          h4= `Tabs vertical icons ${size} ${style} ${active}`
+          ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
+            li(class=`-active -${active}`)
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Active tab
+              ul.chi-tabs__subtabs
+                li.-active
+                  a(href='#') Buttons
+                li
+                  a(href='#') Button Groups
+                li
+                  a(href='#') Cards
+            li
+              a(href='#')
+                div(class=`chi-icon -sm`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+            li
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+            li
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+
+  each active in ['', 'active']
+    each style in ['', 'border']
+      div(class=`test-multi-level-${active}-${style}`)
+        each size in _sizes
+          h4= `Tabs vertical multi-level ${size} ${style} ${active}`
+          ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
+            li
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+            li(class=`-active-alt -${active}`)
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Active tab
+              ul.chi-tabs__subtabs
+                li.-active
+                  a(href='#') Buttons
+                li
+                  a(href='#') Button Groups
+                li
+                  a(href='#') Cards
+
+            li
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+            li
+              a(href='#')
+                div(class=`chi-icon`)
+                  svg
+                    use(xlink:href='#icon-atom')
+                span Tab link
+
+  h2 Horizontal Inverse
+  h3 Flat
+  .test-horizontal-flat-inverse
+    each style in styles
+      each size in sizes
+        h4= `Tabs ${style} ${size} inverse`
+        .-bg--black.-px--3
+          ul.chi-tabs.-inverse(class=`-${size} -${style}`)
+            li.-active
+              a(href='#') Active tab
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+  
+  h3 Solid
+  .test-horizontal-solid-inverse
+    each style in styles
+      each size in sizes
+        h4= `Tabs ${style} ${size} inverse`
+        .-bg--black.-px--3.-py--1
+          ul.chi-tabs.-inverse.-solid(class=`-${size} -${style}`)
+            li.-active
+              a(href='#') Active tab
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+
+  h2 Vertical Inverse
+  h3 Flat
+  .test-vertical-inverse-flat
+    each style in styles
+      each size in _sizes
+        h4= `Tabs vertical ${size} ${style}`
+        .-bg--black.-p--3
+          ul.chi-tabs.-vertical.-inverse(class=`-${style} -${size}`)
+            li(class=`-active`)
+              a(href='#') Active tab
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+
+  h3 Solid
+  .test-vertical-inverse-solid
+    each style in styles
+      each size in _sizes
+        h4= `Tabs vertical ${size} ${style}`
+        .-bg--black.-p--3
+          ul.chi-tabs.-vertical.-solid.-inverse(class=`-${style} -${size}`)
+            li(class=`-active`)
+              a(href='#') Active tab
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+            li
+              a(href='#') Tab link
+
+  h2 Vertical Inverse with subtabs
+  .test-vertical-inverse
+    each size in _sizes
+      h4= `Tabs vertical inverse ${size}`
+      .-bg--black.-p--3
+        ul.chi-tabs.-inverse.-vertical(class=`-${size}`)
+          li.-active
+            a(href='#') Active tab
+            ul.chi-tabs__subtabs
+              li.-active
+                a(href='#') Buttons
+              li
+                a(href='#') Button Groups
+              li
+                a(href='#') Cards
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+
+  .test-vertical-icons-inverse
+    each size in _sizes
+      h4= `Tabs vertical icons ${size} inverse`
+      .-bg--black.-p--3
+        ul.chi-tabs.-vertical.-icons.-inverse(class=`-${size}`)
+          li.-active
+            a(href='#')
+              div(class=`chi-icon`)
+                svg
+                  use(xlink:href='#icon-atom')
+              span Active tab
+            ul.chi-tabs__subtabs
+              li.-active
+                a(href='#') Buttons
+              li
+                a(href='#') Button Groups
+              li
+                a(href='#') Cards
+          li
+            a(href='#')
+              div(class=`chi-icon -sm`)
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab link
+          li
+            a(href='#')
+              div(class=`chi-icon`)
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab link
+          li
+            a(href='#')
+              div(class=`chi-icon`)
+                svg
+                  use(xlink:href='#icon-atom')
+              span Tab link
+
+  .test-vertical-icons-description
+    h4= `Tabs vertical icons w/ description`
+    ul.chi-tabs.-vertical.-icons.-list
+      li.-active
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Active Tab
+          span.chi-tabs_item-text Tab description
+        ul.chi-tabs__subtabs
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+
+  .test-vertical-tree-tabs
+    h4= `Vertical Tree Tabs`
+    ul.chi-tabs.-vertical.-icons.-list.-tree.-sm
+      li.-active
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+          button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+            .chi-button__content
+              i.chi-icon.icon-more-vert(aria-hidden="true")
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Active Tab
+          span.chi-tabs_item-text Tab description
+          button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+            .chi-button__content
+              i.chi-icon.icon-more-vert(aria-hidden="true")
+        ul.chi-tabs__subtabs
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+              button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                .chi-button__content
+                  i.chi-icon.icon-more-vert(aria-hidden="true")
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+              button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                .chi-button__content
+                  i.chi-icon.icon-more-vert(aria-hidden="true")
+            ul.chi-tabs__subtabs
+              li
+                a.chi-tabs_item(href='#')
+                  span.chi-tabs_item-title Subtab Link
+                  span.chi-tabs_item-text Subtab description
+                  button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                    .chi-button__content
+                      i.chi-icon.icon-more-vert(aria-hidden="true")
+              li
+                a.chi-tabs_item(href='#')
+                  span.chi-tabs_item-title Subtab Link
+                  span.chi-tabs_item-text Subtab description
+                  button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                    .chi-button__content
+                      i.chi-icon.icon-more-vert(aria-hidden="true")
+          li
+            a.chi-tabs_item(href='#')
+              span.chi-tabs_item-title Subtab Link
+              span.chi-tabs_item-text Subtab description
+              button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                .chi-button__content
+                  i.chi-icon.icon-more-vert(aria-hidden="true")
+      li
+        a.chi-tabs_item(href='#')
+          i.chi-icon.icon-atom(aria-hidden="true")
+          span.chi-tabs_item-title Tab Link
+          span.chi-tabs_item-text Tab description
+          button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+            .chi-button__content
+              i.chi-icon.icon-more-vert(aria-hidden="true")

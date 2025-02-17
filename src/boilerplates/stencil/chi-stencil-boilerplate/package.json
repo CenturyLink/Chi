@@ -1,8 +1,7 @@
 {
   "name": "chi-stencil-boilerplate",
   "private": true,
-  "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "version": "1.0.0",
   "scripts": {
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
@@ -11,7 +10,7 @@
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^4.9.0"
+    "@stencil/core": "^4.21.0"
   },
   "license": "MIT"
 }

@@ -1,0 +1,48 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Tags'
+
+block content
+  .test-base.-w--50.-mb--2.-pb--1
+    span.-text--h2 Base
+    chi-tags(placeholder="Add tag")
+
+  .test-with-tags.-w--50.-mb--2.-pb--1
+    span.-text--h2 With tags
+    chi-tags#with-tags(placeholder="Add tag")
+
+  .test-with-overflow-tags.-w--30.-mb--2.-pb--1
+    span.-text--h2 With overflow tags
+    chi-tags#with-overflow-tags(placeholder="Add tag")
+
+  .test-with-tags-focused.-w--50.-mb--2.-pb--1
+    span.-text--h2 With tags focused
+    chi-tags#with-tags-focused(placeholder="Add tag" _status="focus")
+
+  .test-with-tags-hover.-w--50.-mb--2.-pb--1
+    span.-text--h2 With tags hover
+    chi-tags#with-tags-hover(placeholder="Add tag" _status="hover")
+
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const tags = ['#with-tags', '#with-tags-focused', '#with-tags-hover',];
+      
+      tags.forEach(id => {
+        const element = document.querySelector(id);
+        const newTags = [{ name: 'Some tag'}, { name: 'Another tag'}];
+
+        element.tags = newTags;
+      });
+
+      document.getElementById('with-overflow-tags').tags = [
+        { name: 'Some tag' },
+        { name: 'Another tag' },
+        { name: 'Wonder tag' },
+        { name: 'Some more tag' },
+        { name: 'Lumen' },
+        { name: 'Centurylink' },
+        { name: '512Gb' },
+        { name: 'Xeon' },
+      ]
+    });

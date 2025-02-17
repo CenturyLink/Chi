@@ -1,0 +1,51 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Badges'
+  - var variants = ['solid', 'outline', 'flat']
+  - var colors = ['base', 'primary', 'secondary', 'success', 'warning', 'danger', 'dark', 'muted', 'light', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5']
+  - var sizes = ['xs', 'sm', 'default']
+  - var transforms = { BADGE: 'uppercase', badge: 'lowercase', Badge: 'capitalized' }
+  - var weights = ['normal', 'semi-bold', 'bold']
+
+block content
+  each type in variants
+    div(class=`test-${type}`)
+      span.-text--h2= `Badge / ${type}`
+      div.-d--flex.-flex--wrap(style="gap: 1rem;")
+        each style in colors
+          chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
+          chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
+            chi-icon(icon='atom')
+            span= style
+
+  h2 Badge Icons
+  .test-badge-icons
+    .example.-mb--1
+      each size in sizes
+        .p.-text--bold= size
+          chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1', id=`badge-${size}`)
+            chi-icon(icon='atom')
+            span Badge
+          chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+            span Badge
+            chi-icon(icon='atom')
+          chi-badge(size=`${size === 'default' ? '' : size}`, class='-m--1')
+            chi-icon(icon='atom')
+            span Badge
+            chi-icon(icon='atom')
+
+  h2 Text Transform
+  .test-text-transform
+    .example.-mb--1
+      each transform, text in transforms
+        .p.-text--bold= transform
+          chi-badge(text-transform= transform, class='-m--1', id=`badge-${transform}`)= text
+
+  h2 Text Weight
+  .test-text-weight
+    .example.-mb--1
+      each weight in weights
+        .p.-text--bold= weight
+          chi-badge(text-weight= weight, class='-m--1', id=`badge-${weight}`) Badge
+  

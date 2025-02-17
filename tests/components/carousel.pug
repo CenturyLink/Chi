@@ -1,0 +1,142 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Carousel'
+  - var items = [1, 2, 3, 4, 5, 6, 7, 8]
+
+block content
+  .test-base(style="max-width: 55rem;")
+    h2 Base
+    .chi-carousel
+      .chi-carousel__content
+        .chi-carousel__wrapper(style='transform: translateX(0px);')
+          .-d--flex(slot='items')
+            each item in items
+              .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
+                .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+      .chi-carousel__control.-previous
+        button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+      .chi-carousel__control.-next
+        button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-right')
+
+  .test-single(style="max-width: 55rem;")
+    h2 Single
+    .chi-carousel
+      .chi-carousel__content
+        .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
+          each item in items
+            .chi-carousel__item.-p--1(style='height: 10rem; width: 864px;', slot='items')
+              .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+      .chi-carousel__control.-previous
+        button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+      .chi-carousel__control.-next
+        button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-right')
+
+  .test-single-one-item(style="max-width: 55rem;")
+    h2 Single - One item
+    .chi-carousel
+      .chi-carousel__content
+        .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
+          .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot="items")
+            .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+
+  .test-dots(style="max-width: 55rem;")
+    h2 Dots
+    .chi-carousel.-dots
+      .chi-carousel__content
+        .chi-carousel__wrapper(style='transform: translateX(0px);')
+          .-d--flex(slot='items')
+            each item in items
+              .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
+                .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+      .chi-carousel__control.-previous
+        button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+      .chi-carousel__control.-next
+        button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-right')
+      .chi-carousel__dots
+        span.chi-carousel__dot.-active
+        span.chi-carousel__dot
+        span.chi-carousel__dot
+
+  .test-pagination(style="max-width: 55rem;")
+    h2 Pagination
+    .chi-carousel.-pagination
+      .chi-carousel__content
+        .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
+          .-d--flex(slot='items')
+            each item in items
+              .chi-carousel__item.-p--1(style='width: 864px; height: 7rem;')
+                .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+      .chi-carousel__control.-previous
+        button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+      .chi-carousel__control.-next
+        button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-right')
+      .chi-carousel__pagination 1 of 8
+
+  .test-no-button-controllers(style="max-width: 55rem;")
+    h2 No Button Controllers
+    .chi-carousel
+      .chi-carousel__content
+        .chi-carousel__wrapper(style='transform: translateX(0px);')
+          .-d--flex(slot='items')
+            each item in items
+              .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
+                .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+      .chi-carousel__dots
+        span.chi-carousel__dot.-active
+        span.chi-carousel__dot
+        span.chi-carousel__dot
+
+  .test-autoplay(style="max-width: 55rem;")
+    h2 Autoplay
+    .chi-carousel
+      .chi-carousel__content
+        .chi-carousel__wrapper(style='transform: translateX(0px);')
+          .-d--flex(slot='items')
+            each item in items
+              .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
+                .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+      .chi-carousel__control.-previous
+        button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+      .chi-carousel__control.-next
+        button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
+          .chi-button__content
+            .chi-icon
+              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
+                use(xlink:href='#icon-chevron-right')
