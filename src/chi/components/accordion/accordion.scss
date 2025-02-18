@@ -293,9 +293,16 @@ $sizes: (
       .chi-accordion__trigger {
         padding: 0;
 
+
         .chi-icon {
           color: $link-color;
           margin-left: 1rem;
+        }
+        
+        &:hover {
+          .chi-icon::before {
+            color: $link-hover-color;
+          }
         }
       }
 
