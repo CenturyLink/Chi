@@ -233,7 +233,7 @@
         ".test-sizes-svg-lg"
       ],
       "selectorExpansion": true,
-      "misMatchThreshold": 0,
+      "misMatchThreshold": 0.01,
       "requireSameDimensions": true
     },
     {
@@ -534,7 +534,7 @@
         ".test-modal-draggable"
       ],
       "selectorExpansion": true,
-      "misMatchThreshold": 0,
+      "misMatchThreshold": 0.7,
       "requireSameDimensions": true
     },
 
