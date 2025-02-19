@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 6.26.0 (February 14, 2025)
+
+### Components
+
+#### Changed
+
+- Changed: Data table `cellWrap` property has been changed to `true` by default.
+
 ## 6.25.0 (February 6, 2025)
 
 ### Components
