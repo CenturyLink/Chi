@@ -22,6 +22,9 @@ const webpackConfig = {
     filename: 'chi.js',
     libraryTarget: 'window'
   },
+  optimization: {
+    minimize: true,
+  },
   module: {
     rules: [
       {
@@ -38,32 +41,9 @@ const webpackConfig = {
   }
 };
 
-if (process.env.PRODUCTION) {
-  webpackConfig.plugins = [new webpack.optimize.UglifyJsPlugin({
-    comments: false,
-    sourceMap: false,
-    compress: {
-      warnings: false,
-      drop_console: false
-    },
-    exclude: [
-      /node_modules\//
-    ]
-  }),
-  new webpack.BannerPlugin(copyright)];
-} else {
-//  webpackConfig.devtool = 'eval';
-  webpackConfig.plugins = [new webpack.SourceMapDevToolPlugin({
-    filename: '[file].map',
-    append: null,
-    module: true,
-    columns: true,
-    lineToLine: false,
-    noSources: false,
-    namespace: ''
-  }),
-  new webpack.BannerPlugin(copyright)];
-}
+webpackConfig.plugins = [
+  new webpack.BannerPlugin(copyright)
+];
 
 function buildChiScripts () {
   return gulp.src(sources)
