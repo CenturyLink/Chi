@@ -284,4 +284,32 @@ $sizes: (
       }
     }
   }
+
+  &.-link {
+    .chi-accordion__item {
+      background-color: transparent;
+      border-bottom: none;
+      
+      .chi-accordion__trigger {
+        padding: 0;
+
+
+        .chi-icon {
+          color: $accordion-link-color;
+          margin-left: 1rem;
+        }
+        
+        &:hover {
+          .chi-icon::before {
+            color: $accordion-link-hover-color;
+          }
+        }
+      }
+
+      .chi-accordion__content {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
 }

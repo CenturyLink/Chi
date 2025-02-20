@@ -52,5 +52,6 @@ export declare class Link {
     connectedCallback(): void;
     componentWillLoad(): void;
     _hasIcon(): boolean;
+    _getExtraClassesForTriggerButton(): string;
     render(): any;
 }
