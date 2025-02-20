@@ -295,13 +295,13 @@ $sizes: (
 
 
         .chi-icon {
-          color: $link-color;
+          color: $accordion-link-color;
           margin-left: 1rem;
         }
         
         &:hover {
           .chi-icon::before {
-            color: $link-hover-color;
+            color: $accordion-link-hover-color;
           }
         }
       }
