@@ -10,7 +10,7 @@
 
 #### Fixed
 
-- Fixed: Border being added in interactable elements
+- Fixed: Removed extra border applied to clickable elements.
 
 ## 6.26.0 (February 14, 2025)
 
