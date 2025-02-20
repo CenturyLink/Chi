@@ -6,7 +6,7 @@
 
 #### Added
 
-- Added: Accordion web component now supports the property `type=link` to show the trigger with link styles.
+- Added: Accordion web component now supports the type `link`, attribute which applies link styles.
 
 #### Fixed
 
