@@ -6,7 +6,7 @@
 
 #### Added
 
-- Added: Accordion web component now supports the type `link`, attribute which applies link styles.
+- Added: Accordion web component now supports the type `link` attribute which applies link styles.
 
 #### Fixed
 
