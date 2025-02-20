@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/chi-custom-elements/docs.json
   "timestamp": "2025-02-19T16:06:18",
   "compiler": {
@@ -10,6 +11,12 @@
     "name": "@stencil/core",
     "version": "4.22.2",
 >>>>>>> d43be5501 ([DPEDE-3381] Migrate previous Chi to new Chi repo):lib/chi-documentation/docs.json
+=======
+  "timestamp": "2025-02-20T14:15:08",
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "4.25.3",
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
     "typescriptVersion": "5.5.4"
   },
   "components": [
@@ -161,7 +168,10 @@
             }
           ],
           "optional": false,
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/chi-custom-elements/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
           "required": false,
           "getter": false,
           "setter": false
@@ -195,9 +205,12 @@
           "required": false,
           "getter": false,
           "setter": false
+<<<<<<< HEAD
 =======
           "required": false
 >>>>>>> d43be5501 ([DPEDE-3381] Migrate previous Chi to new Chi repo):lib/chi-documentation/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
         }
       ],
       "methods": [
@@ -1231,6 +1244,7 @@
         "chi-copy-text",
         "chi-dropdown",
         "chi-label",
+        "chi-modal",
         "chi-popover",
         "chi-tags"
       ],
@@ -1259,6 +1273,9 @@
         "chi-label": [
           "chi-button"
         ],
+        "chi-modal": [
+          "chi-button"
+        ],
         "chi-popover": [
           "chi-button"
         ],
@@ -1268,7 +1285,10 @@
       }
     },
     {
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/chi-custom-elements/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
       "filePath": "src/components/cache-loader/cache-loader.tsx",
       "encapsulation": "scoped",
       "tag": "chi-cache-loader",
@@ -1360,8 +1380,11 @@
       "dependencyGraph": {}
     },
     {
+<<<<<<< HEAD
 =======
 >>>>>>> d43be5501 ([DPEDE-3381] Migrate previous Chi to new Chi repo):lib/chi-documentation/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
       "filePath": "src/components/carousel/carousel.tsx",
       "encapsulation": "scoped",
       "tag": "chi-carousel",
@@ -4541,7 +4564,7 @@
           "mutable": false,
           "attr": "label",
           "reflectToAttr": false,
-          "docs": "to set a lagend for all fields",
+          "docs": "to set a legend for all fields",
           "docsTags": [],
           "values": [
             {
@@ -5884,7 +5907,10 @@
       "dependencyGraph": {}
     },
     {
+<<<<<<< HEAD
 <<<<<<< HEAD:lib/chi-custom-elements/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
       "filePath": "src/components/modal/modal.tsx",
       "encapsulation": "scoped",
       "tag": "chi-modal",
@@ -6356,8 +6382,11 @@
       }
     },
     {
+<<<<<<< HEAD
 =======
 >>>>>>> d43be5501 ([DPEDE-3381] Migrate previous Chi to new Chi repo):lib/chi-documentation/docs.json
+=======
+>>>>>>> 4ec546f71 ([DPEDE-3381] Add latest updates)
       "filePath": "src/components/number-input/number-input.tsx",
       "encapsulation": "scoped",
       "tag": "chi-number-input",
@@ -13101,6 +13130,11 @@
       "docstring": "",
       "path": "src/constants/types.ts"
     },
+    "src/constants/types.ts::AccordionTypes": {
+      "declaration": "string",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
     "src/constants/color.ts::AlertColors": {
       "declaration": "\"info\" | \"muted\" | \"success\" | \"warning\" | \"danger\"",
       "docstring": "",
@@ -13198,6 +13232,11 @@
     },
     "src/constants/types.ts::ChiMarketingIconModes": {
       "declaration": "\"filled\" | \"outline\"",
+      "docstring": "",
+      "path": "src/constants/types.ts"
+    },
+    "src/constants/types.ts::ModalScrollableTypes": {
+      "declaration": "\"400\" | \"480\" | \"long-content\"",
       "docstring": "",
       "path": "src/constants/types.ts"
     },

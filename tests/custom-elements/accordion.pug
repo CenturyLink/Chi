@@ -29,12 +29,19 @@ block content
       div(slot="item-4")
         chi-icon.-mr--2(icon="arrow-right") 
         | Some custom content here
+  
+  h3 Accordion type link
+  .test-accordion-link.-w--100 
+    chi-accordion(type="link")#accordion-link
+      div(slot="item-4")
+        chi-icon.-mr--2(icon="arrow-right") 
+        | Some custom content here
 
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const accordionBase = document.querySelector('#base');
       const sizes = ['sm', 'md', 'lg', 'xl'];
-      const layouts = ['portal-layout', 'portal-layout-card'];
+      const layouts = ['portal-layout', 'portal-layout-card', 'accordion-link'];
 
       accordionBase.accordions = [
         { title: 'Accordion 1', text: 'Item content 1' },

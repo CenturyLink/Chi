@@ -129,3 +129,41 @@ block content
             | Accordion 5 with very large title to test not truncated. Accordion 5 with very 
             | large title to test not truncated. Accordion 5 with very large title to test not truncated.
             | Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated.
+
+  h3 Accordion type link
+  .test-accordion-link.-w--100 
+    .chi-accordion.-md.-link
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          a.chi-link.-no-underline
+            span Accordion 1
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-link.-no-underline
+            span Accordion 2
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          p.chi-accordion__text Item content 2
+      .chi-accordion__item
+        button.chi-accordion__trigger.-disabled
+          .chi-link.-no-underline
+            span Accordion 3
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-link.-no-underline
+            span Accordion 4
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          .chi-icon.-mr--2
+            svg
+              use(xlink:href='#icon-arrow-right')
+          | Some custom content here
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          .chi-link.-no-underline
+            | Accordion 5 with very large title to test not truncated. Accordion 5 with very 
+            | large title to test not truncated. Accordion 5 with very large title to test not truncated.
+            | Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated.
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
