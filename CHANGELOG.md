@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 6.27.0 (February 20, 2025)
+
+### Components
+
+#### Added
+
+- Added: Accordion web component now supports the property `type=link` to show the trigger with link styles.
+
+#### Fixed
+
+- Fixed: Border being added in interactable elements
+
 ## 6.26.0 (February 14, 2025)
 
 ### Components
