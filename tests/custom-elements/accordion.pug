@@ -1,0 +1,82 @@
+extends ../layout.pug
+
+block variables
+  - var sizes = ['sm', 'md', 'lg', 'xl']
+
+block content
+  h3 Base
+  .test-accordion-base.-w--100
+    chi-accordion#base(truncated)
+      div(slot="item-4")
+        chi-icon.-mr--2(icon="arrow-right") 
+        | Some custom content here
+
+  h3 Sizes 
+  .test-accordion-sizes.-w--100 
+    each size in sizes
+      chi-accordion.-mb--1(id=`accordion-size-${size}` size=size)
+
+  h3 Portal layout 
+  .test-accordion-portal-layout.-w--100
+    chi-accordion(portal size="xl")#portal-layout
+      div(slot="item-4")
+        chi-icon.-mr--2(icon="arrow-right") 
+        | Some custom content here
+
+  h3 Portal layout card
+  .test-accordion-portal-layout-card.-w--100
+    chi-accordion(portal card size="xl")#portal-layout-card
+      div(slot="item-4")
+        chi-icon.-mr--2(icon="arrow-right") 
+        | Some custom content here
+  
+  h3 Accordion type link
+  .test-accordion-link.-w--100 
+    chi-accordion(type="link")#accordion-link
+      div(slot="item-4")
+        chi-icon.-mr--2(icon="arrow-right") 
+        | Some custom content here
+
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const accordionBase = document.querySelector('#base');
+      const sizes = ['sm', 'md', 'lg', 'xl'];
+      const layouts = ['portal-layout', 'portal-layout-card', 'accordion-link'];
+
+      accordionBase.accordions = [
+        { title: 'Accordion 1', text: 'Item content 1' },
+        { title: 'Accordion 2', text: 'Item content 2', expanded: true },
+        { title: 'Accordion 3', text: 'Item content 3', disabled: true },
+        { title: 'Accordion 4', template: 'item-4', expanded: true },
+        { title: 'Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied. Accordion 5 with very large title to test truncated class is properly applied', text: 'Item content 5' },
+      ];
+
+      sizes.forEach(size => {
+        document.querySelector(`#accordion-size-${size}`).accordions = [
+          { title: `Accordion ${size}`, text: 'Content here', expanded: true },
+        ]
+      });
+
+      layouts.forEach(id => {
+        document.getElementById(id).accordions = [
+          { title: 'Accordion 1', text: 'Item content 1' },
+          { title: 'Accordion 2', text: 'Item content 2', expanded: true },
+          { title: 'Accordion 3', text: 'Item content 3', disabled: true },
+          { title: 'Accordion 4', template: 'item-4', expanded: true },
+          { title: 'Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated.', text: 'Item content 5' },
+        ];
+      })
+    });
+
+    function checkAllAccordionsRendered() {
+      const accordions = document.querySelectorAll('chi-accordion');
+
+      return Array.from(accordions).every(x => x.classList.contains('hydrated'));
+    }
+
+    const renderCheckInterval = setInterval(function() {
+      if (checkAllAccordionsRendered()) {
+        console.log("backstop_ready");
+        clearInterval(renderCheckInterval);
+      }
+    }, 3000);

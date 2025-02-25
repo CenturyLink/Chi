@@ -1,0 +1,34 @@
+extends ../layout.pug
+
+block variables
+  - var title = 'Label'
+  - var sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+
+block content
+  h3 Base
+  .test-label-base.-w--100(data-cy="test-label-base")
+    each size in sizes
+      div(class=`test-label-base-${size} -w--100` data-cy=`test-label-base-${size}`)
+        chi-label(size=size) Label
+
+  h3 Required
+  .test-label-required.-w--100(data-cy="test-label-required")
+    each size in sizes
+      div(class=`test-label-required-${size} -w--100` data-cy=`test-label-required-${size}`)
+        chi-label(required size=size) Label
+
+  h3 Optional
+  .test-label-optional.-w--100(data-cy="test-label-optional")
+    each size in sizes
+      div(class=`test-label-optional-${size} -w--100` data-cy=`test-label-optional-${size}`)
+        chi-label(optional size=size) Label
+
+  h3 Info Icon
+  .test-label-info-icon.-w--100(data-cy="test-label-info-icon")
+    chi-label(info-icon) Label
+
+  h3 Info Icon Message
+  .test-label-info-icon-message.-w--100(data-cy="test-label-info-icon-message")
+    each size in sizes
+      div(class=`test-label-info-icon-message-${size} -w--100` data-cy=`test-label-info-icon-message-${size}`)
+        chi-label(info-icon info-icon-message="Changed message" size=size) Label

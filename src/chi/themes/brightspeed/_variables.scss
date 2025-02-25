@@ -279,6 +279,7 @@ $icon-size-xxl:                             8rem;
 
 // Link color
 $link-color: $color-grey-70;
+$link-hover-color: $color-text-primary;
 
 // Focus color
 $focus-color: $color-border-black;
@@ -318,8 +319,8 @@ $accordion-item-level-2-background-color:   $color-background-white;
 $accordion-item-level-3-background-color:   $color-grey-10;
 $accordion-item-level-4-background-color:   $color-background-white;
 $accordion-item-level-5-background-color:   $color-grey-10;
-$accordion-link-color:                      $color-grey-70;
-$accordion-link-hover-color:                $color-text-primary;
+$accordion-link-color:                      $link-color;
+$accordion-link-hover-color:                $link-hover-color;
 $accordion-sm-item-font-size:               $font-size-md;
 $accordion-sm-item-line-height:             1.25rem;
 $accordion-sm-item-padding:                 0.625rem 1rem;
@@ -1195,7 +1196,6 @@ $label-status-icon-margin:                  0.125rem 0.375rem 0.125rem 0;
 // Link
 $link-text-decoration:                      none;
 $link-hover-text-decoration:                underline;
-$link-hover-color:                          $color-text-primary;
 
 $link-cta-icon:                             '\e904';
 $link-cta-icon-color:                       $color-red-50;

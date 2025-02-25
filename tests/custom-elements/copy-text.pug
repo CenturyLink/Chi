@@ -1,0 +1,25 @@
+extends ../layout.pug
+
+block variables
+  - var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
+
+block content
+  h3 Base
+  .test-copy-text-base
+    .-p--2
+      span This is an example text
+      chi-copy-text(text="This is an example text")
+
+  h3 Disabled
+  .test-copy-text-disabled
+    .-p--2
+      span This is an example text
+      chi-copy-text(text="This is an example text" disabled)
+
+  h3 Sizes
+  .test-copy-text-sizes
+    .-d--flex.-align-items--end
+      each size in sizes
+        .-m--1
+          chi-copy-text(text="text", size=size)
+          p.-text.-text--center #{size}

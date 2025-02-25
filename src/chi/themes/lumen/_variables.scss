@@ -285,6 +285,7 @@ $icon-size-xxl: 8rem;
 
 // Link color
 $link-color: $color-text-primary;
+$link-hover-color: $color-teal-100;
 
 // Focus color
 $focus-color: $color-teal-70;
@@ -324,8 +325,8 @@ $accordion-item-level-2-background-color: $color-background-base;
 $accordion-item-level-3-background-color: $color-background-base;
 $accordion-item-level-4-background-color: $color-background-base;
 $accordion-item-level-5-background-color: $color-background-base;
-$accordion-link-color: $color-text-primary;
-$accordion-link-hover-color: $color-teal-100;
+$accordion-link-color: $link-color;
+$accordion-link-hover-color: $link-hover-color;
 $accordion-sm-item-font-size: $font-size-sm;
 $accordion-sm-item-line-height: 1rem;
 $accordion-sm-item-padding: 0.5rem 1rem;
@@ -1202,7 +1203,6 @@ $label-help-hover-icon-color: $color-icon-primary;
 // Link
 $link-text-decoration: underline;
 $link-hover-text-decoration: underline;
-$link-hover-color: $color-teal-100;
 
 $link-cta-icon: '\e9dd';
 $link-cta-icon-color: $color-orange-50;

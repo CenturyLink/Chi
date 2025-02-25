@@ -30,7 +30,7 @@
 
 ## 6.24.0 (January 31, 2025)
 
-### Components
+### Components
 
 #### Added
 
