@@ -49,6 +49,7 @@ const rebuildCss = async () => {
   
   await execPromise(`node ${buildCssRoute}`, '[CHI]: Rebuilding CSS');
   startServer();
+  watchFiles();
 };
 
 const watchFiles = () => {

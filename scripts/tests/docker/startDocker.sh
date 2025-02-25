@@ -2,6 +2,9 @@
 
 REPO_PATH=$(cd $(pwd); pwd)
 
+# Create the backstopjs image
+docker build -t backstopjs -f backstop_data/docker/Dockerfile .
+
 # Run backstopjs container
 docker run --rm -it --name backstopjs \
   --privileged \
