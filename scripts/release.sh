@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$1" ]
+  then
+    echo "[CHI]: Release command requires new version to apply"
+    exit 1
+fi
+
 CURRENT_VERSION=$(grep '"version"' package.json | awk -F'"' '{print $4}')
 NEW_VERSION=$1
 
