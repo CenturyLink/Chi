@@ -1,4 +1,4 @@
-extends ../layout.pug
+extends ../layout-custom-elements.pug
 
 block variables
   - var title = 'Picker'
@@ -17,7 +17,7 @@ block content
               each size in sizes
                 h4= `${size}`
                 div(class=`test-base-${size}`)
-                  chi-picker(label="Select options" size=size)
+                  chi-picker(label="Select options" size=size show-input="false")
         .chi-col.-w--12.-w-lg--6
           h3 Base checked
           .example
@@ -25,7 +25,7 @@ block content
               each size in sizes
                 h4= `${size}`
                 div(class=`test-base-checked-${size}`)
-                  chi-picker(label="Select options" size=size)
+                  chi-picker(label="Select options" size=size show-input="false")
         .chi-col.-w--12.-w-lg--6
           h3 Disabled
           .example
@@ -33,7 +33,7 @@ block content
               each size in sizes
                 h4= `${size}`
                 div(class=`test-disabled-${size}`)
-                  chi-picker(label="Select options" size=size)
+                  chi-picker(label="Select options" size=size show-input="false")
 
         .chi-col.-w--12.-w-lg--6
 
@@ -84,7 +84,7 @@ block content
               each size in sizes
                 h4= `${size}`
                 div(class=`test-type-radio-${size}`)
-                  chi-picker(label="Legend" size=size type="radio")
+                  chi-picker(label="Legend" size=size type="radio" show-input="false")
 
         .chi-col.-w--12.-w-lg--6
           h3 Base checked
@@ -93,7 +93,7 @@ block content
               each size in sizes
                 h4= `${size}`
                 div(class=`test-type-radio-checked-${size}`)
-                  chi-picker(label="Legend" size=size type="radio")
+                  chi-picker(label="Legend" size=size type="radio" show-input="false")
 
         .chi-col.-w--12.-w-lg--6
           h3 With radio
@@ -164,14 +164,14 @@ block content
         each size in pickerSizes
           h4= `${size}`
           div(class=`test-type-pill-${size}`)
-            chi-picker(label="Legend" size=size pill)
+            chi-picker(label="Legend" size=size pill show-input="false")
 
   .chi-col.-w--12
     h2 With error message
     .-w--100
       .example
         .test-with-error-message
-          chi-picker(label="Select options" required state="danger" helper-message="Please select an option")
+          chi-picker(label="Select options" required state="danger" helper-message="Please select an option" show-input="false")
 
   .chi-col.-w--12.-w-lg--6
     h3 With description and no input
@@ -180,7 +180,7 @@ block content
         each size in sizes
           h4= `${size}`
           div(class=`test-with-description-no-input-${size}`)
-            chi-picker(label="Select options" size=size)
+            chi-picker(label="Select options" size=size show-input="false")
 
   script.
     const description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.';
