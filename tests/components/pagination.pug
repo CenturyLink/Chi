@@ -1,5 +1,10 @@
 extends ../layout.pug
 
+block scripts
+  script(src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
 block variables
   - var title = 'Pagination'
   - var steps = ['0', '1', '2', '3', '4', '5', '6'];
