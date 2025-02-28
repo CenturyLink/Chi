@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, AccordionTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+import { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -14,7 +14,7 @@ import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, AccordionTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+export { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -194,6 +194,60 @@ export namespace Components {
           * to set type of cache loader { pulse, bar }.
          */
         "type": string;
+    }
+    interface ChiCard {
+        /**
+          * Render an active state card.
+         */
+        "active": boolean;
+        /**
+          * Alt text for the hero image.
+         */
+        "alt"?: string;
+        /**
+          * Animate card on hover.
+         */
+        "animated": boolean;
+        /**
+          * To define card title.
+         */
+        "cardTitle"?: string;
+        /**
+          * Center-align the card content.
+         */
+        "center": boolean;
+        /**
+          * Render an empty card.
+         */
+        "empty": boolean;
+        /**
+          * Align the footer items.
+         */
+        "footerAlign"?: CardFooterAlignTypes;
+        /**
+          * Render a highlighted card.
+         */
+        "highlight": boolean;
+        /**
+          * Source URL for the hero image. Display a hero image at the top of the card.
+         */
+        "imgSrc"?: string;
+        /**
+          * Remove border from the card, header, and/or footer.
+         */
+        "noBorders"?: CardNoBorderTypes[];
+        /**
+          * To set header and footer size to -sm
+         */
+        "size"?: 'sm';
+        /**
+          * Center-align the title in card header.
+         */
+        "titleCenter": boolean;
+        /**
+          * Render a widget card.
+         */
+        "widget": boolean;
     }
     interface ChiCarousel {
         /**
@@ -1698,6 +1752,12 @@ declare global {
         prototype: HTMLChiCacheLoaderElement;
         new (): HTMLChiCacheLoaderElement;
     };
+    interface HTMLChiCardElement extends Components.ChiCard, HTMLStencilElement {
+    }
+    var HTMLChiCardElement: {
+        prototype: HTMLChiCardElement;
+        new (): HTMLChiCardElement;
+    };
     interface HTMLChiCarouselElementEventMap {
         "chiViewChange": number;
     }
@@ -2222,6 +2282,7 @@ declare global {
         "chi-brand": HTMLChiBrandElement;
         "chi-button": HTMLChiButtonElement;
         "chi-cache-loader": HTMLChiCacheLoaderElement;
+        "chi-card": HTMLChiCardElement;
         "chi-carousel": HTMLChiCarouselElement;
         "chi-checkbox": HTMLChiCheckboxElement;
         "chi-copy-text": HTMLChiCopyTextElement;
@@ -2448,6 +2509,60 @@ declare namespace LocalJSX {
           * to set type of cache loader { pulse, bar }.
          */
         "type"?: string;
+    }
+    interface ChiCard {
+        /**
+          * Render an active state card.
+         */
+        "active"?: boolean;
+        /**
+          * Alt text for the hero image.
+         */
+        "alt"?: string;
+        /**
+          * Animate card on hover.
+         */
+        "animated"?: boolean;
+        /**
+          * To define card title.
+         */
+        "cardTitle"?: string;
+        /**
+          * Center-align the card content.
+         */
+        "center"?: boolean;
+        /**
+          * Render an empty card.
+         */
+        "empty"?: boolean;
+        /**
+          * Align the footer items.
+         */
+        "footerAlign"?: CardFooterAlignTypes;
+        /**
+          * Render a highlighted card.
+         */
+        "highlight"?: boolean;
+        /**
+          * Source URL for the hero image. Display a hero image at the top of the card.
+         */
+        "imgSrc"?: string;
+        /**
+          * Remove border from the card, header, and/or footer.
+         */
+        "noBorders"?: CardNoBorderTypes[];
+        /**
+          * To set header and footer size to -sm
+         */
+        "size"?: 'sm';
+        /**
+          * Center-align the title in card header.
+         */
+        "titleCenter"?: boolean;
+        /**
+          * Render a widget card.
+         */
+        "widget"?: boolean;
     }
     interface ChiCarousel {
         /**
@@ -3944,6 +4059,7 @@ declare namespace LocalJSX {
         "chi-brand": ChiBrand;
         "chi-button": ChiButton;
         "chi-cache-loader": ChiCacheLoader;
+        "chi-card": ChiCard;
         "chi-carousel": ChiCarousel;
         "chi-checkbox": ChiCheckbox;
         "chi-copy-text": ChiCopyText;
@@ -3991,6 +4107,7 @@ declare module "@stencil/core" {
             "chi-brand": LocalJSX.ChiBrand & JSXBase.HTMLAttributes<HTMLChiBrandElement>;
             "chi-button": LocalJSX.ChiButton & JSXBase.HTMLAttributes<HTMLChiButtonElement>;
             "chi-cache-loader": LocalJSX.ChiCacheLoader & JSXBase.HTMLAttributes<HTMLChiCacheLoaderElement>;
+            "chi-card": LocalJSX.ChiCard & JSXBase.HTMLAttributes<HTMLChiCardElement>;
             "chi-carousel": LocalJSX.ChiCarousel & JSXBase.HTMLAttributes<HTMLChiCarouselElement>;
             "chi-checkbox": LocalJSX.ChiCheckbox & JSXBase.HTMLAttributes<HTMLChiCheckboxElement>;
             "chi-copy-text": LocalJSX.ChiCopyText & JSXBase.HTMLAttributes<HTMLChiCopyTextElement>;

@@ -10,10 +10,12 @@ export declare const CLOSED_CLASS = "-closed";
 export declare const COLLAPSED_CLASS = "-collapsed";
 export declare const DISABLED_CLASS = "-disabled";
 export declare const DISABLED_SCROLL = "-disable-scroll";
+export declare const EMPTY_CLASS = "-empty";
 export declare const EXPAND_CLASS = "-expand";
 export declare const EXPANDED_CLASS = "-expanded";
 export declare const FLUID_CLASS = "-fluid";
 export declare const FOCUS_CLASS = "-focus";
+export declare const HIGHLIGHT_CLASS = "-highlight";
 export declare const HOVER_CLASS = "-hover";
 export declare const INACTIVE_CLASS = "-inactive";
 export declare const INVERSE_CLASS = "-inverse";
@@ -158,6 +160,17 @@ export declare const MODAL_CLASSES: {
     TRIGGER: string;
     BACK: string;
 };
+export declare const CARD_CLASSES: {
+    CARD: string;
+    CONTENT: string;
+    CAPTION: string;
+    HEADER: string;
+    FOOTER: string;
+    TITLE: string;
+    ACTIONS: string;
+    HERO: string;
+    WIDGET: string;
+};
 export declare const GENERIC_SIZE_CLASSES: {
     XS: string;
     SM: string;
@@ -256,6 +269,10 @@ export declare const UTILITY_CLASSES: {
         Z_30: string;
         Z_40: string;
     };
+    ALIGN: {
+        CENTER: string;
+        RIGHT: string;
+    };
     ALIGN_ITEMS: {
         CENTER: string;
         START: string;
@@ -291,6 +308,9 @@ export declare const UTILITY_CLASSES: {
         TEXT_BOLD: string;
         TEXT_BOLDER: string;
         TEXT_H3: string;
+    };
+    HOVER: {
+        ANIMATE: string;
     };
     POSITION: {
         RELATIVE: string;

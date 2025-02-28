@@ -99,3 +99,7 @@ export type ModalScrollableTypes = (typeof MODAL_SCROLLABLE_TYPES)[number];
 export interface Tag {
     name: string;
 }
+export declare const CARD_FOOTER_ALIGN_TYPES: string[];
+export type CardFooterAlignTypes = (typeof CARD_FOOTER_ALIGN_TYPES)[number];
+export declare const CARD_NO_BORDER_TYPES: readonly ["card", "header", "footer"];
+export type CardNoBorderTypes = (typeof CARD_NO_BORDER_TYPES)[number];
