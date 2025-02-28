@@ -1,5 +1,9 @@
 extends ../layout.pug
 
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
 block variables
   - var title = 'Checkbox'
   - var states = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled', 'required', 'danger']
