@@ -1,0 +1,281 @@
+extends ../layout.pug
+
+block scripts
+  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../js/chi.js')
+  script
+    | document.addEventListener('DOMContentLoaded', function() {
+    |   document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
+    |   document.querySelector('.test-card-header-no-border chi-card').noBorders = ['header'];
+    |   document.querySelector('.test-card-no-border chi-card').noBorders = ['card'];
+    |   document.querySelector('.test-card-widget-footer-no-border chi-card').noBorders = ['footer'];
+    |   document.querySelector('.test-card-widget-header-no-border chi-card').noBorders = ['header'];
+    |   document.querySelector('.test-card-widget-no-border chi-card').noBorders = ['card'];
+    | });
+block variables
+  - var title = 'Card'
+
+block content
+  .chi-grid.-w--100
+    .chi-col.-w--12.-w-md--6.-w-xl--4
+      h3 Base
+      .test-card
+        h4 Base
+        chi-card
+          | This is a card
+      .test-card-titled
+        h4 Titled
+        chi-card
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption This is a card
+      .test-card-content
+        h4 Titled with content
+        chi-card
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec.
+            .chi-card__actions
+              button.chi-button.-primary Link
+      .test-card-align-center
+        h4 Center Aligned
+        chi-card
+          div.-d--flex.-flex--column.-align-items--center(slot="content")
+            .chi-card__title Title
+            .chi-card__caption
+              | This is a center aligned card
+            .chi-card__actions
+              button.chi-button.-primary Link
+      .test-card-content-with-icon
+        h4 Titled with content and icon
+        chi-card
+          div.-d--flex.-flex--column.-align-items--center(slot="content")
+            .chi-card__title Title
+            i.chi-card__icon.chi-icon.-sm--3(class="icon-atom")
+            .chi-card__caption.-text--center
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+      .test-card-hero
+        h4 Hero
+        chi-card
+          div(slot="content")
+           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
+            p.-text.-p--6.-text--center Hero Image
+           .chi-card__caption(style="margin-top: 150px;")
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+            | Donec sit amet consectetur elit.
+      .test-card-footer
+        h4 Footer
+        chi-card
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+            button.chi-button Link
+      .test-card-footer-right
+        h4 Footer Right Aligned
+        chi-card(footer-align="right")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button Link
+            button.chi-button.-primary Link
+      .test-card-footer-center
+        h4 Footer Center Aligned
+        chi-card(footer-align="center")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-footer-no-border
+        h4 Footer No Border
+        chi-card(no-borders='["footer"]')
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-footer-small
+        h4 Footer Small
+        chi-card(size="sm")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            a(href="#") Link
+      .test-card-header
+        h4 Header
+        chi-card(title="Title")
+          | This is a card with a header
+      .test-card-header-center
+        h4 Header Center Aligned
+        chi-card(title="Title" title-center)
+          | This is a card with a header
+      .test-card-header-no-border
+        h4 Header No Border
+        chi-card(title="Title" no-borders='["header"]')
+          | This is a card with a header
+      .test-card-header-small
+        h4 Header Small
+        chi-card(title="Title" size="sm")
+          | This is a card with a header
+      .test-card-header-footer
+        h4 Header + Footer
+        chi-card(title="Title")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-header-footer-small
+        h4 Header Small + Footer Small
+        chi-card(title="Title" size="sm")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            a(href="#") Link
+      .test-card-empty
+        h4 Empty
+        chi-card(empty style="width:20rem;")
+          | This is an empty card
+      .test-card-active
+        h4 Active
+        chi-card(active style="width:20rem;")
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption This is an active card
+      .test-card-no-border
+        h4 No Border
+        chi-card(no-borders='["card"]' style="width:20rem;")
+          | This is a card with no border
+    .chi-col.-w--12.-w-md--6.-w-xl--4
+      h3 Widget
+      .test-card-widget-base
+        h4 Base
+        chi-card(widget)
+          | This is a card
+      .test-card-widget-titled
+        h4 Titled
+        chi-card(widget)
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption This is a card
+      .test-card-widget-content
+        h4 Titled with content
+        chi-card(widget)
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec.
+            .chi-card__actions
+              button.chi-button.-primary Link
+      .test-card-widget-align-center
+        h4 Center Aligned
+        chi-card(widget )
+          div.-d--flex.-flex--column.-align-items--center(slot="content")
+            .chi-card__title Title
+            .chi-card__caption
+              | This is a center aligned card
+            .chi-card__actions
+              button.chi-button.-primary Link
+      .test-card-widget-content-with-icon
+        h4 Titled with content and icon
+        chi-card(widget)
+          div.-d--flex.-flex--column.-align-items--center(slot="content")
+            .chi-card__title Title
+            i.chi-card__icon.chi-icon.-sm--3(class="icon-atom")
+            .chi-card__caption.-text--center
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+      .test-card-widget-hero
+        h4 Hero
+        chi-card(widget)
+          div(slot="content")
+           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
+            p.-text.-p--6.-text--center Hero Image
+           .chi-card__caption(style="margin-top: 150px;")
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+            | Donec sit amet consectetur elit.
+      .test-card-widget-footer
+        h4 Footer
+        chi-card(widget)
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+            button.chi-button Link
+      .test-card-widget-footer-right
+        h4 Footer Right Aligned
+        chi-card(widget footer-align="right")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button Link
+            button.chi-button.-primary Link
+      .test-card-widget-footer-center
+        h4 Footer Center Aligned
+        chi-card(widget footer-align="center")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-widget-footer-no-border
+        h4 Footer No Border
+        chi-card(widget no-borders='["footer"]')
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-widget-footer-small
+        h4 Footer Small
+        chi-card(widget size="sm")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            a(href="#") Link
+      .test-card-widget-header
+        h4 Header
+        chi-card(widget title="Title")
+          | This is a card with a header
+      .test-card-widget-header-center
+        h4 Header Center Aligned
+        chi-card(widget title="Title" title-center)
+          | This is a card with a header
+      .test-card-widget-header-no-border
+        h4 Header No Border
+        chi-card(widget title="Title" no-borders='["header"]')
+          | This is a card with a header
+      .test-card-widget-header-small
+        h4 Header Small
+        chi-card(widget title="Title" size="sm")
+          | This is a card with a header
+      .test-card-widget-header-footer
+        h4 Header + Footer
+        chi-card(widget title="Title")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            button.chi-button.-primary Link
+      .test-card-widget-header-footer-small
+        h4 Header Small + Footer Small
+        chi-card(widget title="Title" size="sm")
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+          div(slot="footer")
+            a(href="#") Link
+      .test-card-widget-empty
+        h4 Empty
+        chi-card(widget empty)
+          | This is an empty card
+      .test-card-widget-active
+        h4 Active
+        chi-card(widget active)
+          div(slot="content")
+            .chi-card__title Title
+            .chi-card__caption This is an active card
+      .test-card-widget-no-border
+        h4 No Border
+        chi-card(widget no-borders='["card"]')
+          | This is a card with no border
