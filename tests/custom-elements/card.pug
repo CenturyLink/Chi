@@ -3,15 +3,7 @@ extends ../layout.pug
 block scripts
   script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
   script(src='../../js/chi.js')
-  script
-    | document.addEventListener('DOMContentLoaded', function() {
-    |   document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
-    |   document.querySelector('.test-card-header-no-border chi-card').noBorders = ['header'];
-    |   document.querySelector('.test-card-no-border chi-card').noBorders = ['card'];
-    |   document.querySelector('.test-card-widget-footer-no-border chi-card').noBorders = ['footer'];
-    |   document.querySelector('.test-card-widget-header-no-border chi-card').noBorders = ['header'];
-    |   document.querySelector('.test-card-widget-no-border chi-card').noBorders = ['card'];
-    | });
+
 block variables
   - var title = 'Card'
 
@@ -279,3 +271,13 @@ block content
         h4 No Border
         chi-card(widget no-borders='["card"]')
           | This is a card with no border
+
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
+      document.querySelector('.test-card-header-no-border chi-card').noBorders = ['header'];
+      document.querySelector('.test-card-no-border chi-card').noBorders = ['card'];
+      document.querySelector('.test-card-widget-footer-no-border chi-card').noBorders = ['footer'];
+      document.querySelector('.test-card-widget-header-no-border chi-card').noBorders = ['header'];
+      document.querySelector('.test-card-widget-no-border chi-card').noBorders = ['card'];
+    });
