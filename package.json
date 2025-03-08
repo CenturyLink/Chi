@@ -25,6 +25,10 @@
     "tests:e2e": "bash ./scripts/tests/e2eTests.sh",
     "lint:scss": "sass-lint -v -q"
   },
+  "dependencies": {
+    "@centurylink/chi-documentation": "1.1.0",
+    "@centurylink/chi-vue": "3.13.0"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",
     "@playwright/browser-chromium": "^1.50.1",

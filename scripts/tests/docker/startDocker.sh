@@ -3,7 +3,7 @@
 REPO_PATH=$(cd $(pwd); pwd)
 
 # Create the backstopjs image
-docker build -t backstopjs -f backstop_data/docker/Dockerfile .
+docker build --build-arg GH_TOKEN=$(echo $GH_TOKEN) -t backstopjs -f backstop_data/docker/Dockerfile .
 
 # Run backstopjs container
 docker run --rm -it --name backstopjs \

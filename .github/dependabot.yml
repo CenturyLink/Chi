@@ -18,3 +18,7 @@ updates:
       all-dependencies:
         patterns:
           - "*"
+    ignore:
+      - dependency-name: "*"
+        paths:
+          - "src/boilerplates/**"
