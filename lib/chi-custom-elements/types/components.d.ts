@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
 import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-import { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+import { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
 import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -14,7 +14,7 @@ import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
 export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
-export { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, ModalScrollableTypes, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
+export { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
 export { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrapperLayouts, FormWrapperTypes, TextInputTypes, TimePickerFormats, TimePickerTimeSteps } from "./constants/constants";
@@ -810,17 +810,33 @@ export namespace Components {
     }
     interface ChiModal {
         /**
+          * To set trigger active state
+         */
+        "active": boolean;
+        /**
           * To set animated layout
          */
         "animated": boolean;
+        /**
+          * To set scrollable modal
+         */
+        "backdropHeight": number;
         /**
           * To set trigger button text
          */
         "button": string;
         /**
-          * To set cenetered layout
+          * To set centered layout
          */
         "center": boolean;
+        /**
+          * To add close button
+         */
+        "closable": boolean;
+        /**
+          * To set scrollable content
+         */
+        "contentHeight": number;
         /**
           * Hides Modal
          */
@@ -830,21 +846,17 @@ export namespace Components {
          */
         "inverse": boolean;
         /**
-          * To set Modal title
+          * To define alert title
          */
-        "modalTitle": string;
-        /**
-          * To add back button in header
-         */
-        "multiStep": boolean;
+        "modalTitle"?: string;
         /**
           * To set no-bordered layout
          */
         "noBorder": boolean;
         /**
-          * To set scrollable layout
+          * To provide id of an external reference element
          */
-        "scrollable": ModalScrollableTypes;
+        "reference": any;
         /**
           * Shows Modal
          */
@@ -857,10 +869,6 @@ export namespace Components {
           * To set Modal subtitle
          */
         "subtitle": string;
-        /**
-          * To set target to serve as Modal trigger
-         */
-        "target": any;
         /**
           * Toggles Modal
          */
@@ -1962,7 +1970,6 @@ declare global {
         "chiModalShown": any;
         "chiModalHide": any;
         "chiModalHidden": any;
-        "chiModalBack": any;
         "chiModalAccept": any;
         "chiModalCancel": any;
     }
@@ -3149,29 +3156,41 @@ declare namespace LocalJSX {
     }
     interface ChiModal {
         /**
+          * To set trigger active state
+         */
+        "active"?: boolean;
+        /**
           * To set animated layout
          */
         "animated"?: boolean;
+        /**
+          * To set scrollable modal
+         */
+        "backdropHeight"?: number;
         /**
           * To set trigger button text
          */
         "button"?: string;
         /**
-          * To set cenetered layout
+          * To set centered layout
          */
         "center"?: boolean;
+        /**
+          * To add close button
+         */
+        "closable"?: boolean;
+        /**
+          * To set scrollable content
+         */
+        "contentHeight"?: number;
         /**
           * To set inverse layout
          */
         "inverse"?: boolean;
         /**
-          * To set Modal title
+          * To define alert title
          */
         "modalTitle"?: string;
-        /**
-          * To add back button in header
-         */
-        "multiStep"?: boolean;
         /**
           * To set no-bordered layout
          */
@@ -3180,10 +3199,6 @@ declare namespace LocalJSX {
           * Triggered when user exists the Modal using Save or Action buttons.
          */
         "onChiModalAccept"?: (event: ChiModalCustomEvent<any>) => void;
-        /**
-          * Triggered when user click Back button on multi-step mode.
-         */
-        "onChiModalBack"?: (event: ChiModalCustomEvent<any>) => void;
         /**
           * Triggered when user exits the modal using Cancel or Close buttons.
          */
@@ -3205,9 +3220,9 @@ declare namespace LocalJSX {
          */
         "onChiModalShown"?: (event: ChiModalCustomEvent<any>) => void;
         /**
-          * To set scrollable layout
+          * To provide id of an external reference element
          */
-        "scrollable"?: ModalScrollableTypes;
+        "reference"?: any;
         /**
           * To delete header and footer from the Modal
          */
@@ -3216,10 +3231,6 @@ declare namespace LocalJSX {
           * To set Modal subtitle
          */
         "subtitle"?: string;
-        /**
-          * To set target to serve as Modal trigger
-         */
-        "target"?: any;
     }
     interface ChiNumberInput {
         /**
