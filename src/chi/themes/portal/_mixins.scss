@@ -9,15 +9,15 @@
 }
 
 @mixin button-disabled {
-  background-color: $color-background-base-dark;
-  border-color: $color-border-base-dark;
+  background-color: $button-disabled-background-color;
+  border-color: $button-disabled-border-color;
   box-shadow: none;
-  color: $color-text-muted-light;
+  color: $button-disabled-text-color;
   opacity: $opacity-100;
   pointer-events: none;
 
   & .chi-icon {
-    color: $color-icon-muted;
+    color: $button-disabled-icon-color;
     opacity: $opacity-100;
   }
 }
