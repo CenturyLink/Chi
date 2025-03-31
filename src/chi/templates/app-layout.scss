@@ -201,6 +201,6 @@
   }
 }
 
-.chi-main__wrapper div {
+.chi-main__wrapper div:has(chi-main) {
   height: 100%;
 }
