@@ -32,6 +32,7 @@ bash ./scripts/build/utils/copyFile.sh ./lib/chi-vue/index.umd.js dist/chi-vue/u
 
 # Build SRI
 node ./scripts/build/utils/buildSri.js
+bash ./scripts/build/utils/copyFile.sh sri.json dist/sri.json
 
 # Build boilerplates
 bash ./scripts/build/utils/buildBoilerplates.sh
