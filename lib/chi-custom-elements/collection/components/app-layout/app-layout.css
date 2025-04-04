@@ -1,7 +1,7 @@
-:host(chi-main) .chi-main {
+:host(chi-main) .chi-main:not(.-fixed-width) {
   display: flex;
   flex-direction: column;
 }
-:host(chi-main) .chi-main .chi-main__content {
+:host(chi-main) .chi-main:not(.-fixed-width) .chi-main__content {
   flex-grow: 1;
 }
