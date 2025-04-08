@@ -1,35 +1,42 @@
 import { EventEmitter } from '../../stencil-public-runtime';
-import { ModalScrollableTypes } from '../../constants/types';
 export declare class Modal {
     el: HTMLElement;
     /**
-     *  To set Modal title
+     *  To define alert title
      */
-    modalTitle: string;
+    modalTitle?: string;
     /**
      *  To set Modal subtitle
      */
     subtitle: string;
     /**
+     *  To set trigger active state
+     */
+    active: boolean;
+    /**
      *  To set trigger button text
      */
     button: string;
     /**
-     *  To set cenetered layout
+     *  To set centered layout
      */
     center: boolean;
     /**
-     *  To set scrollable layout
+     *  To add close button
      */
-    scrollable: ModalScrollableTypes;
+    closable: boolean;
+    /**
+     *  To set scrollable content
+     */
+    contentHeight: number;
+    /**
+     *  To set scrollable modal
+     */
+    backdropHeight: number;
     /**
      *  To set inverse layout
      */
     inverse: boolean;
-    /**
-     *  To add back button in header
-     */
-    multiStep: boolean;
     /**
      *  To set animated layout
      */
@@ -43,9 +50,9 @@ export declare class Modal {
      */
     simple: boolean;
     /**
-     *  To set target to serve as Modal trigger
+     *  To provide id of an external reference element
      */
-    target: any;
+    reference: any;
     /**
      * Triggered when Modal show method has been executed, but the showing animation has not started yet.
      */
@@ -63,10 +70,6 @@ export declare class Modal {
      */
     chiModalHidden: EventEmitter;
     /**
-     * Triggered when user click Back button on multi-step mode.
-     */
-    chiModalBack: EventEmitter;
-    /**
      * Triggered when user exists the Modal using Save or Action buttons.
      */
     chiModalAccept: EventEmitter;
@@ -78,10 +81,14 @@ export declare class Modal {
     backdropAnimationClasses: string;
     private isActive;
     private _uuid4;
+    private _referenceElement;
     private _animation;
     sectionAnimationClassesChanged(): void;
-    scrollableValidation(newValue: ModalScrollableTypes): void;
-    triggerValidation(): void;
+    contentHeightValidation(newValue: number): void;
+    backdropHeightValidation(newValue: number): void;
+    private triggerValidation;
+    private validateScrollValue;
+    connectedCallback(): void;
     componentDidLoad(): void;
     componentWillLoad(): void;
     /**
@@ -111,5 +118,6 @@ export declare class Modal {
     getTrigger(): HTMLElement;
     getBackdropClasses(): string;
     getSectionClasses(): string;
+    getModal(): HTMLElement;
     render(): any;
 }

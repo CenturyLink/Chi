@@ -36,6 +36,7 @@ bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
 # Build SRI
 node ./scripts/build/utils/buildSri.js
+bash ./scripts/build/utils/copyFile.sh sri.json dist/sri.json
 
 # Build boilerplates
 bash ./scripts/build/utils/buildBoilerplates.sh
