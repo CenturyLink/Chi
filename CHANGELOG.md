@@ -1,5 +1,125 @@
 # CHANGELOG
 
+## 6.34.0 (April 4, 2025)
+
+### Components
+
+#### Added
+
+- Added: Search input vue component now processes `chiClean` and `chiChange` events when the user clears the input field, ensuring that the `chiClean` event is emitted prior to the `chiChange` event.
+
+### Documentation
+
+#### Added
+
+- Added: Icon accessibility page.
+
+#### Changed
+
+- Changed: Footer language selection dropdown has been removed from the internal footer example and the copyright year has been updated to 2025 across all footer sections.
+
+## 6.33.0 (March 28, 2025)
+
+### Components
+
+#### Added
+
+- Added: Search input web component now processes `chiClean` and `chiChange` events when the user clears the input field, ensuring that the `chiClean` event is emitted prior to the `chiChange` event.
+
+### Documentation
+
+#### Added
+
+- Added: Divider accessibility page.
+
+## 6.32.0 (March 21, 2025)
+
+### Components
+
+#### Changed
+
+- Changed: Column customization column names now display across multiple lines without breaking words, with added margins for improved readability and easier column identification.
+ 
+### Documentation
+
+#### Added
+
+- Added: Spinner accessibility page.
+
+#### Changed
+
+- Changed: Reorganized Sidebar navigation with Components section now at the bottom and all non-Component sections made expandable for better organization.
+- Changed: Grouped Components section into logical categories (Forms and Inputs, Icons, Loaders, Tables) with remaining components listed separately for improved findability and navigation.
+
+## 6.31.0 (March 13, 2025)
+
+### Components
+
+#### Added
+
+- Added: Dropdown component now supports `select-mode` with `single` and `multi` item selection along with `items` property. Additionally, it includes `Clear` and `Apply` footer actions, checkboxes for `multi` item selection and styling aligned to the Select component for a consistent user experience.
+
+### Documentation
+
+#### Added
+
+- Added: Alert accessibility page.
+
+#### Fixed
+
+- Fixed: Modal web component examples header styles.
+- Fixed: Favicon in documentation is properly rendered.
+
+## 6.30.0 (March 7, 2025)
+ 
+### Components
+
+#### Added
+
+- Added: Cache loader web component.
+ 
+### Documentation
+ 
+#### Added
+
+- Added: Label accessibility page.
+
+## 6.29.0 (February 28, 2025)
+
+### Components
+
+#### Added
+
+- Added: Icons load performance has been improved.
+
+#### Fixed
+
+- Fixed: Icons `icon-calendar-circle-check`, `icon-calendar-circle-clock`, `icon-circle-clock`, `icon-circle-play-outline`, `icon-circle-partial`, `icon-circle-plus-outline`, `icon-circle-plus`, `icon-circle`, `icon-list-alt`, `icon-logo-x`, `icon-mail-incoming-outline`, `icon-map-marker-alt`, `icon-minus`, `icon-pause`, `icon-reload`, `icon-squares-minus-outline`, `icon-squares-plus-outline` and `icon-warning` SVG paths are now rendering correctly.
+
+### Documentation
+
+#### Added
+
+- Added: Avatar accessibility page.
+
+## 6.28.0 (February 27, 2025)
+
+### Components
+
+#### Changed
+
+- Changed: Picker web component now shows checkbox and radio inputs by default.
+
+#### Fixed
+
+- Fixed: Icon `icon-fact-check-outline` SVG path is now rendering correctly.
+
+### Documentation
+
+#### Added
+
+- Added: Badge accessibility page.
+
 ## 6.27.0 (February 20, 2025)
 
 ### Components
