@@ -1,3 +1,7 @@
-:host(chi-app-layout) {
-  display: block;
+:host(chi-main) .chi-main:not(.-fixed-width) {
+  display: flex;
+  flex-direction: column;
+}
+:host(chi-main) .chi-main:not(.-fixed-width) .chi-main__content {
+  flex-grow: 1;
 }
