@@ -399,7 +399,7 @@ $sizes: (
     box-shadow: none;
     color: $button-flat-text-color;
 
-    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary):not([disabled]) {
       &.-icon {
         .chi-icon {
           color: $button-flat-icon-color;
@@ -650,7 +650,8 @@ $sizes: (
 
         &[disabled],
         &.-disabled {
-          background-color: transparent;
+          background-color: $button-primary-flat-disabled-background-color;
+          color: $button-primary-flat-disabled-text-color;
           border-color: transparent;
           opacity: $button-flat-disabled-opacity;
           
