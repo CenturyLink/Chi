@@ -200,3 +200,7 @@
     background-color: $app-layout-header-background-color;
   }
 }
+
+.chi-main__wrapper div:has(chi-main) {
+  height: 100%;
+}
