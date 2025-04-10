@@ -17,11 +17,6 @@ if [ -f "sri.json" ]; then
     rm -f "sri.json"
 fi
 
-# TODO: 1) Adjust chi-documentation pipeline to generate just necessary files
-# TODO: 2) Adjust JS script to don't remove chi.js and index.umd.js from chi-vue (revert changes)
-# TODO: 3) Remove this line and uncomment copy documentation at the end
-bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
-
 # Build CSS
 node ./scripts/build/css/build.js
 
@@ -46,7 +41,7 @@ node ./scripts/build/utils/buildTests.js
 bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 
 # Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
-# bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
+bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
 bash ./scripts/build/utils/copyFile.sh $CHI_VUE_UMD dist/chi-vue/umd
 bash ./scripts/build/utils/copyFiles.sh ./lib/chi-custom-elements dist/js/ce
 
