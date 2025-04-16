@@ -627,7 +627,7 @@ $button-flat-focus-border-color:            transparent;
 $button-flat-focus-outline:                 $focus-color;
 $button-flat-disabled-background-color:     transparent;
 $button-flat-disabled-border-color:         transparent;
-$button-flat-disabled-text-color:           $color-text-muted-light;
+$button-flat-disabled-text-color:           null;
 $button-flat-disabled-icon-color:           $color-icon-muted;
 $button-flat-disabled-opacity:              $opacity-60;
 $button-flat-text-color:                    inherit;
@@ -664,6 +664,10 @@ $button-primary-flat-hover-border-color:    transparent;
 $button-primary-flat-active-border-color:   transparent;
 $button-primary-flat-hover-background-color: transparent;
 $button-primary-flat-active-background-color: transparent;
+$button-primary-flat-disabled-background-color: transparent;
+$button-primary-flat-disabled-text-color: null;
+$button-primary-disabled-background-color: null;
+$button-primary-disabled-text-color: null;
 
 $button-secondary-solid-background-color:     $color-background-secondary;
 $button-secondary-solid-border-color:         $color-border-secondary;
@@ -742,6 +746,7 @@ $button-danger-flat-hover-border-color:     transparent;
 $button-danger-flat-active-border-color:    transparent;
 $button-danger-flat-hover-background-color: transparent;
 $button-danger-flat-active-background-color: transparent;
+$button-danger-focus-outline-color:              $button-solid-focus-outline;
 
 $button-light-solid-background-color:       $color-background-white;
 $button-light-solid-border-color:           $color-border-white;
