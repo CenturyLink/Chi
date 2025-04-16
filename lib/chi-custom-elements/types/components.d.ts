@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "./stencil-public-runtime";
-import { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+import { AccordionSizes, ButtonSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
 import { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 import { AlertColors, IconColors, TooltipColors } from "./constants/color";
 import { ChiStates } from "./constants/states";
@@ -13,7 +13,7 @@ import { AppLayoutFormats, DataLocales, DateFormats, DatePickerModes, FormWrappe
 import { Placement } from "popper.js";
 import { CountryCode } from "libphonenumber-js";
 import { ChiStates as ChiStates1 } from "./components";
-export { AccordionSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
+export { AccordionSizes, ButtonSizes, IconSizes, LabelSizes, MarketingIconSizes, PickerPillSizes, PickerSizes, PriceSizes, SkeletonSizes, TabsSizes, TextInputSizes } from "./constants/size";
 export { AccordionItem, AccordionTypes, CardFooterAlignTypes, CardNoBorderTypes, ChiMarketingIconModes, Country, DropdownMenuItem, DropdownMenuMultiItem, DropdownSelectModes, FontWeight, FormWrapperCheckbox, FormWrapperRadio, GeneralPositions, PickerInputTypes, PickerOption, SearchInputModes, SkeletonTypes, TabTrigger, Tag } from "./constants/types";
 export { AlertColors, IconColors, TooltipColors } from "./constants/color";
 export { ChiStates } from "./constants/states";
@@ -613,6 +613,52 @@ export namespace Components {
         "variant": string;
         /**
           * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+         */
+        "visibleItems"?: number;
+    }
+    interface ChiDropdownSelect {
+        /**
+          * To set the active state of Dropdown-select
+         */
+        "active": boolean;
+        /**
+          * To provide the value of base-style button as trigger of the Dropdown-select
+         */
+        "button": string;
+        /**
+          * To disable Dropdown-select
+         */
+        "disabled": boolean;
+        /**
+          * To display an additional helper text message below the Dropdown-select
+         */
+        "helperMessage": string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
+        /**
+          * To apply multi select mode
+         */
+        "multiple": boolean;
+        /**
+          * To render a search-input in menu-header
+         */
+        "search": boolean;
+        /**
+          * To render show-selected checkbox in menu-header
+         */
+        "showSelected": boolean;
+        /**
+          * To set button size { xs, sm, md, lg, xl }.
+         */
+        "size": ButtonSizes;
+        /**
+          * To define state color of Dropdown-select
+         */
+        "state": ChiStates;
+        /**
+          * To provide number of items in the Dropdown-select to be displayed, and apply scroll if needed
          */
         "visibleItems"?: number;
     }
@@ -1618,6 +1664,10 @@ export interface ChiDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiDropdownElement;
 }
+export interface ChiDropdownSelectCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLChiDropdownSelectElement;
+}
 export interface ChiFormWrapperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLChiFormWrapperElement;
@@ -1894,6 +1944,23 @@ declare global {
     var HTMLChiDropdownElement: {
         prototype: HTMLChiDropdownElement;
         new (): HTMLChiDropdownElement;
+    };
+    interface HTMLChiDropdownSelectElementEventMap {
+        "chiDropdownValueChanged": any;
+    }
+    interface HTMLChiDropdownSelectElement extends Components.ChiDropdownSelect, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLChiDropdownSelectElementEventMap>(type: K, listener: (this: HTMLChiDropdownSelectElement, ev: ChiDropdownSelectCustomEvent<HTMLChiDropdownSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLChiDropdownSelectElementEventMap>(type: K, listener: (this: HTMLChiDropdownSelectElement, ev: ChiDropdownSelectCustomEvent<HTMLChiDropdownSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLChiDropdownSelectElement: {
+        prototype: HTMLChiDropdownSelectElement;
+        new (): HTMLChiDropdownSelectElement;
     };
     interface HTMLChiExpansionPanelElement extends Components.ChiExpansionPanel, HTMLStencilElement {
     }
@@ -2297,6 +2364,7 @@ declare global {
         "chi-date-picker": HTMLChiDatePickerElement;
         "chi-drawer": HTMLChiDrawerElement;
         "chi-dropdown": HTMLChiDropdownElement;
+        "chi-dropdown-select": HTMLChiDropdownSelectElement;
         "chi-expansion-panel": HTMLChiExpansionPanelElement;
         "chi-form-wrapper": HTMLChiFormWrapperElement;
         "chi-helper-message": HTMLChiHelperMessageElement;
@@ -2954,6 +3022,56 @@ declare namespace LocalJSX {
         "variant"?: string;
         /**
           * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+         */
+        "visibleItems"?: number;
+    }
+    interface ChiDropdownSelect {
+        /**
+          * To set the active state of Dropdown-select
+         */
+        "active"?: boolean;
+        /**
+          * To provide the value of base-style button as trigger of the Dropdown-select
+         */
+        "button"?: string;
+        /**
+          * To disable Dropdown-select
+         */
+        "disabled"?: boolean;
+        /**
+          * To display an additional helper text message below the Dropdown-select
+         */
+        "helperMessage"?: string;
+        /**
+          * Dropdown menu items
+         */
+        "items"?: DropdownMenuMultiItem[];
+        /**
+          * To apply multi select mode
+         */
+        "multiple"?: boolean;
+        /**
+          * Triggered when selected items have changed in the dropdown menu. Payload is an array of strings.
+         */
+        "onChiDropdownValueChanged"?: (event: ChiDropdownSelectCustomEvent<any>) => void;
+        /**
+          * To render a search-input in menu-header
+         */
+        "search"?: boolean;
+        /**
+          * To render show-selected checkbox in menu-header
+         */
+        "showSelected"?: boolean;
+        /**
+          * To set button size { xs, sm, md, lg, xl }.
+         */
+        "size"?: ButtonSizes;
+        /**
+          * To define state color of Dropdown-select
+         */
+        "state"?: ChiStates;
+        /**
+          * To provide number of items in the Dropdown-select to be displayed, and apply scroll if needed
          */
         "visibleItems"?: number;
     }
@@ -4078,6 +4196,7 @@ declare namespace LocalJSX {
         "chi-date-picker": ChiDatePicker;
         "chi-drawer": ChiDrawer;
         "chi-dropdown": ChiDropdown;
+        "chi-dropdown-select": ChiDropdownSelect;
         "chi-expansion-panel": ChiExpansionPanel;
         "chi-form-wrapper": ChiFormWrapper;
         "chi-helper-message": ChiHelperMessage;
@@ -4126,6 +4245,7 @@ declare module "@stencil/core" {
             "chi-date-picker": LocalJSX.ChiDatePicker & JSXBase.HTMLAttributes<HTMLChiDatePickerElement>;
             "chi-drawer": LocalJSX.ChiDrawer & JSXBase.HTMLAttributes<HTMLChiDrawerElement>;
             "chi-dropdown": LocalJSX.ChiDropdown & JSXBase.HTMLAttributes<HTMLChiDropdownElement>;
+            "chi-dropdown-select": LocalJSX.ChiDropdownSelect & JSXBase.HTMLAttributes<HTMLChiDropdownSelectElement>;
             "chi-expansion-panel": LocalJSX.ChiExpansionPanel & JSXBase.HTMLAttributes<HTMLChiExpansionPanelElement>;
             "chi-form-wrapper": LocalJSX.ChiFormWrapper & JSXBase.HTMLAttributes<HTMLChiFormWrapperElement>;
             "chi-helper-message": LocalJSX.ChiHelperMessage & JSXBase.HTMLAttributes<HTMLChiHelperMessageElement>;

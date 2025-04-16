@@ -305,6 +305,7 @@ export declare const UTILITY_CLASSES: {
         TEXT_TRUNCATE: string;
         TEXT_CENTER: string;
         TEXT_NORMAL: string;
+        TEXT_ITALIC: string;
         TEXT_BOLD: string;
         TEXT_BOLDER: string;
         TEXT_H3: string;
