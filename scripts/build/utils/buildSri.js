@@ -8,6 +8,7 @@ const filesToHash = [
   'dist/chi.css',
   'dist/chi-centurylink.css',
   'dist/chi-portal.css',
+  'dist/chi-portal-2025.css',
   'dist/chi-brightspeed.css',
   'dist/chi-colt.css',
   'dist/js/chi.js',

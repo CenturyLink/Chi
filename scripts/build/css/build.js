@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
 
-const themes = ['lumen', 'portal', 'centurylink', 'colt', 'brightspeed'];
+const themes = ['lumen', 'portal', 'centurylink', 'colt', 'brightspeed', 'portal-2025'];
 const scripts = {
   replace: './scripts/build/css/replace-scss.sh',
   restore: './scripts/build/css/restore-scss.sh',
