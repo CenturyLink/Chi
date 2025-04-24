@@ -4,7 +4,7 @@ vue_src_dir="src/boilerplates/vue/chi-vue-boilerplate"
 stencil_src_dir="src/boilerplates/stencil/chi-stencil-boilerplate"
 react_src_dir="src/boilerplates/react/chi-react-boilerplate"
 es6_src_dir="src/boilerplates/es6/chi-vue-es6-boilerplate"
-angular_src_dir="src/boilerplates/es6/chi-angular-boilerplate"
+angular_src_dir="src/boilerplates/angular/chi-angular-boilerplate"
 
 dist_dir="dist/boilerplates"
 

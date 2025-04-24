@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "6.35.0",
+  "version": "6.36.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -26,8 +26,8 @@
     "lint:scss": "sass-lint -v -q"
   },
   "dependencies": {
-    "@centurylink/chi-documentation": "1.6.0",
-    "@centurylink/chi-vue": "3.15.0"
+    "@centurylink/chi-documentation": "1.7.0",
+    "@centurylink/chi-vue": "3.16.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.26.9",
@@ -42,7 +42,7 @@
     "cssnano": "^7.0.6",
     "cypress": "^14.2.1",
     "dayjs": "^1.11.13",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "normalize.css": "^8.0.1",
     "ora": "^8.2.0",
     "popper.js": "^1.16.1",

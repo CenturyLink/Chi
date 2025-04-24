@@ -29,10 +29,6 @@ node ./scripts/build/utils/buildIcons.js
 node ./scripts/build/utils/buildSprites.js
 bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
-# Build SRI
-node ./scripts/build/utils/buildSri.js
-bash ./scripts/build/utils/copyFile.sh sri.json dist
-
 # Build boilerplates
 bash ./scripts/build/utils/buildBoilerplates.sh
 
@@ -44,6 +40,10 @@ bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
 bash ./scripts/build/utils/copyFile.sh $CHI_VUE_UMD dist/chi-vue/umd
 bash ./scripts/build/utils/copyFiles.sh ./lib/chi-custom-elements dist/js/ce
+
+# Build SRI
+node ./scripts/build/utils/buildSri.js
+bash ./scripts/build/utils/copyFile.sh sri.json dist
 
 minutes=$((SECONDS / 60))
 seconds=$((SECONDS % 60))
