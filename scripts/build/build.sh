@@ -36,8 +36,8 @@ if [ -z "${SKIP_BOILERPLATES}" ]; then
 fi
 
 # Build tests
-node ./scripts/build/utils/buildTests.js;
-bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests;
+node ./scripts/build/utils/buildTests.js
+bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 
 # Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
 bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
