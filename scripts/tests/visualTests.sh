@@ -7,9 +7,11 @@ if [ -d "reports" ]; then
     rm -rf "reports"
 fi
 
-bash ./scripts/tests/createReports.sh
+bash ./scripts/tests/createReports.sh;
 
-npm ci
+echo "[CHI]: Installing dependencies..."
+npm ci;
+
 npm run build
 npm run start:dist &
 SERVER_PID=$!

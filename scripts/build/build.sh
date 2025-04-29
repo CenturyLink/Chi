@@ -30,11 +30,14 @@ node ./scripts/build/utils/buildSprites.js
 bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
 # Build boilerplates
-bash ./scripts/build/utils/buildBoilerplates.sh
+if [ -z "${SKIP_BOILERPLATES}" ]; then
+  echo "[CHI]: Building boilerplates..."
+  bash ./scripts/build/utils/buildBoilerplates.sh
+fi
 
 # Build tests
-node ./scripts/build/utils/buildTests.js
-bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
+node ./scripts/build/utils/buildTests.js;
+bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests;
 
 # Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
 bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
@@ -42,8 +45,10 @@ bash ./scripts/build/utils/copyFile.sh $CHI_VUE_UMD dist/chi-vue/umd
 bash ./scripts/build/utils/copyFiles.sh $CHI_CE dist/js/ce
 
 # Build SRI
-node ./scripts/build/utils/buildSri.js
-bash ./scripts/build/utils/copyFile.sh sri.json dist
+if [ -z "${SKIP_SRI}" ]; then
+  node ./scripts/build/utils/buildSri.js;
+  bash ./scripts/build/utils/copyFile.sh sri.json dist;
+fi
 
 minutes=$((SECONDS / 60))
 seconds=$((SECONDS % 60))

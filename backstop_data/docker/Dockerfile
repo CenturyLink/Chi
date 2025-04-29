@@ -2,9 +2,7 @@ FROM backstopjs/backstopjs:latest
 
 WORKDIR /backstopjs
 
-ARG GH_TOKEN
-ENV GH_TOKEN=${GH_TOKEN}
-
-COPY . .
+RUN apt-get update -y && apt-get install -y zip
+RUN npx playwright install  
 
 ENTRYPOINT ["npm", "run", "tests:visual:run"]
