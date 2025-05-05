@@ -9,8 +9,12 @@ fi
 
 bash ./scripts/tests/createReports.sh
 
+echo "[CHI]: Installing dependencies..."
+
 npm ci
+
 npm run build
+
 npm run start:dist &
 SERVER_PID=$!
 
