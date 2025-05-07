@@ -453,7 +453,7 @@ i {
 }
 
 .icon-table::before {
-  content: '\e9c9';
+  content: '\e800';
 }
 
 .icon-handshake::before {
@@ -542,6 +542,10 @@ i {
 
 .icon-logo-linkedin::before {
   content: '\e964';
+}
+
+.icon-logo-twitter::before {
+  content: '\e969';
 }
 
 .icon-logo-youtube::before {
