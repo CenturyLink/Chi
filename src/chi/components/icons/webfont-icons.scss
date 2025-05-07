@@ -452,6 +452,10 @@ i {
   content: '\e9c8';
 }
 
+.icon-table-column::before {
+  content: '\e800';
+}
+
 .icon-table::before {
   content: '\e9c9';
 }
