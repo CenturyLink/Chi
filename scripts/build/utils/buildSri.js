@@ -13,6 +13,8 @@ const filesToHash = [
   'dist/js/chi.js',
   'dist/assets/themes/lumen/images/favicon.svg',
   'dist/assets/themes/lumen/images/favicon.ico',
+  'dist/assets/themes/portal/images/favicon.svg',
+  'dist/assets/themes/portal/images/favicon.ico',
   'dist/assets/themes/centurylink/images/favicon.svg',
   'dist/assets/themes/centurylink/images/favicon.ico',
   'dist/assets/themes/brightspeed/images/favicon.svg',
