@@ -92,7 +92,7 @@
       position: absolute;
       right: 0.75rem;
       top: $modal-close-top;
-  
+
       .chi-icon {
         color: $modal-close-icon-color;
       }
@@ -149,5 +149,39 @@
 
   .-closed {
     display: none;
+  }
+
+  &.-gradient {
+    border-radius: 1.5rem;
+
+    .chi-modal__header {
+      background: linear-gradient(90deg, #f95e4a 0%, #fb8429 100%);
+      padding: 1.125rem 1.5rem 0.8125rem 1.5rem;
+      display: block;
+      overflow: hidden;
+      position: relative;
+
+      &.-graphics::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 2.5rem;
+        background: url('./shapes.svg') no-repeat center center; // Add SVG url from assets and adjust position
+        width: 144px;
+        height: 100%;
+      }
+    }
+
+    .chi-modal__title {
+      font-size: 1.375rem;
+      line-height: 1.6875rem;
+      margin-bottom: 0.3125rem;
+    }
+
+    .chi-modal__subtitle {
+      font-size: 1.125rem;
+      line-height: 1.375rem;
+      font-weight: 700;
+    }
   }
 }
