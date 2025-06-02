@@ -1267,6 +1267,24 @@ $modal-footer-min-height: 4rem;
 $modal-footer-padding: 1rem;
 $modal-back-link-color: $color-text-white;
 $modal-close-icon-color: $color-text-white;
+$modal-gradient-border-radius: 1.5rem;
+$modal-gradient-header-background: linear-gradient(90deg, #f95e4a 0%, #fb8429 100%);
+$modal-gradient-header-padding: 1.125rem 1.5rem 0.8125rem 1.5rem;
+$modal-gradient-header-display: block;
+$modal-gradient-header-overflow: hidden;
+$modal-gradient-header-position: relative;
+$modal-gradient-graphics-position: absolute;
+$modal-gradient-graphics-top: absolute;
+$modal-gradient-graphics-right: 2.5rem;
+$modal-gradient-graphics-background: url('./shapes.svg') no-repeat center center; // Add SVG url from assets and adjust position
+$modal-gradient-graphics-width: 144px;
+$modal-gradient-graphics-height: 100%;
+$modal-gradient-title-font-size: $font-size-8;
+$modal-gradient-title-line-height: 1.6875rem;
+$modal-gradient-title-margin-bottom: 0.3125rem;
+$modal-gradient-subtitle-font-size: $font-size-xl;
+$modal-gradient-subtitle-line-height: 1.375rem;
+$modal-gradient-subtitle-font-weight: 700;
 
 // Number input
 $number-input-arrow-icon-color: $color-icon-primary;

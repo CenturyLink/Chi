@@ -152,36 +152,36 @@
   }
 
   &.-gradient {
-    border-radius: 1.5rem;
+    border-radius: $modal-gradient-border-radius;
 
     .chi-modal__header {
-      background: linear-gradient(90deg, #f95e4a 0%, #fb8429 100%);
-      padding: 1.125rem 1.5rem 0.8125rem 1.5rem;
-      display: block;
-      overflow: hidden;
-      position: relative;
+      background: $modal-gradient-header-background;
+      padding: $modal-gradient-header-padding;
+      display: $modal-gradient-header-display;
+      overflow: $modal-gradient-header-overflow;
+      position: $modal-gradient-header-position;
 
       &.-graphics::before {
         content: '';
-        position: absolute;
-        top: 0;
-        right: 2.5rem;
-        background: url('./shapes.svg') no-repeat center center; // Add SVG url from assets and adjust position
-        width: 144px;
-        height: 100%;
+        position: $modal-gradient-graphics-position;
+        top: $modal-gradient-graphics-top;
+        right: $modal-gradient-graphics-right;
+        background: $modal-gradient-graphics-background;
+        width: $modal-gradient-graphics-width;
+        height: $modal-gradient-graphics-height;
       }
     }
 
     .chi-modal__title {
-      font-size: 1.375rem;
-      line-height: 1.6875rem;
-      margin-bottom: 0.3125rem;
+      font-size: $modal-gradient-title-font-size;
+      line-height: $modal-gradient-title-line-height;
+      margin-bottom: $modal-gradient-title-margin-bottom;
     }
 
     .chi-modal__subtitle {
-      font-size: 1.125rem;
-      line-height: 1.375rem;
-      font-weight: 700;
+      font-size: $modal-gradient-subtitle-font-size;
+      line-height: $modal-gradient-subtitle-line-height;
+      font-weight: $modal-gradient-subtitle-font-weight;
     }
   }
 }
