@@ -97,6 +97,15 @@
         color: $modal-close-icon-color;
       }
     }
+
+    .-graphics {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: $modal-gradient-graphics-background;
+    }
   }
 
   &__content {
@@ -160,16 +169,6 @@
       display: $modal-gradient-header-display;
       overflow: $modal-gradient-header-overflow;
       position: $modal-gradient-header-position;
-
-      &.-graphics::before {
-        content: '';
-        position: $modal-gradient-graphics-position;
-        top: $modal-gradient-graphics-top;
-        right: $modal-gradient-graphics-right;
-        background: $modal-gradient-graphics-background;
-        width: $modal-gradient-graphics-width;
-        height: $modal-gradient-graphics-height;
-      }
     }
 
     .chi-modal__title {

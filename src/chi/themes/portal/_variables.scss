@@ -1273,12 +1273,7 @@ $modal-gradient-header-padding: 1.125rem 1.5rem 0.8125rem 1.5rem;
 $modal-gradient-header-display: block;
 $modal-gradient-header-overflow: hidden;
 $modal-gradient-header-position: relative;
-$modal-gradient-graphics-position: absolute;
-$modal-gradient-graphics-top: absolute;
-$modal-gradient-graphics-right: 2.5rem;
-$modal-gradient-graphics-background: url('./shapes.svg') no-repeat center center; // Add SVG url from assets and adjust position
-$modal-gradient-graphics-width: 144px;
-$modal-gradient-graphics-height: 100%;
+$modal-gradient-graphics-background: url('./assets/shapes.svg') no-repeat right; // Add SVG url from assets and adjust position
 $modal-gradient-title-font-size: $font-size-8;
 $modal-gradient-title-line-height: 1.6875rem;
 $modal-gradient-title-margin-bottom: 0.3125rem;
