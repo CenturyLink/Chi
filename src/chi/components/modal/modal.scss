@@ -26,10 +26,6 @@
     padding: $modal-header-padding;
     position: relative;
 
-    &.-graphics {
-      background: $modal-header-graphics-background-img no-repeat right;
-    }
-
     &.-no-border {
       box-shadow: none;
     }
@@ -155,6 +151,12 @@
     display: none;
   }
 
+  &.-header-image {
+    .chi-modal__header {
+      background: $modal-header-graphics-background-img no-repeat right;
+    }
+  }
+
   &.-gradient {
     border-radius: $modal-gradient-border-radius;
 
@@ -164,8 +166,10 @@
       display: $modal-gradient-header-display;
       overflow: $modal-gradient-header-overflow;
       position: $modal-gradient-header-position;
+    }
 
-      &.-graphics {
+    &.-header-image {
+      .chi-modal__header {
         background: $modal-header-graphics-background-img no-repeat right, $modal-gradient-header-background;
       }
     }
