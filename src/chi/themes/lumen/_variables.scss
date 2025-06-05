@@ -275,27 +275,26 @@ $color-background-black: $color-black;
 $color-background-gradient-accent-1: linear-gradient(
   90deg,
   $color-red-50 0%,
-  $color-red-50 6%,
-  $color-pink-50 35%,
-  $color-orange-60 94%,
+  $color-orange-50 35%,
+  $color-orange-50 94%,
   $color-orange-50 100%,
 );
 $color-background-gradient-accent-2: linear-gradient(
   90deg, 
-  $color-pink-50 0%, 
-  $color-orange-40 7%, 
-  $color-orange-50 25%, 
-  $color-orange-60 43%, 
-  $color-orange-60 61%, 
-  $color-orange-60 80%, 
-  $color-orange-60 100%
+  $color-pink-50 0%,     
+  $color-orange-50 7%,   
+  $color-orange-50 25%,
+  $color-orange-50 43%,
+  $color-orange-50 61%,
+  $color-orange-50 80%,
+  $color-orange-50 100%
 );
 $color-background-gradient-accent-3: linear-gradient(
   90deg,
-  $color-yellow-30 0%,
-  $color-yellow-30 19%,
+  $color-yellow-40 0%,
+  $color-yellow-40 19%,
   $color-yellow-40 45%,
-  $color-orange-50 75%
+  $color-orange-40 75%,
   $color-orange-50 100%
 );
 $color-background-gradient-accent-4: linear-gradient(
@@ -304,8 +303,8 @@ $color-background-gradient-accent-4: linear-gradient(
   $color-teal-40 24%,
   $color-teal-40 43%,
   $color-teal-50 59%,
-  $color-teal-50 75%,
-  $color-teal-60 90%,
+  $color-teal-60 75%,
+  $color-teal-70 90%,
   $color-teal-70 100%
 );
 
