@@ -32,6 +32,13 @@ $colors: (
   none: none
 );
 
+$gradients: (
+  accent-1: $color-background-gradient-accent-1,
+  accent-2: $color-background-gradient-accent-2,
+  accent-3: $color-background-gradient-accent-3,
+  accent-4: $color-background-gradient-accent-4,
+);
+
 @each $color-key, $color-value in $colors  {
 
   @if $color-key == 'none' {
@@ -59,5 +66,11 @@ $colors: (
         }
       }
     }
+  }
+}
+
+@each $accent, $color-gradient in $gradients {
+  .-bg--gradient-#{$accent} {
+    background: transparent $color-gradient 0% 0% no-repeat padding-box;
   }
 }
