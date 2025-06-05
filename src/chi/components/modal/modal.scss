@@ -153,7 +153,7 @@
 
   &.-header-image {
     .chi-modal__header {
-      background: $modal-header-graphics-background-img no-repeat right;
+      background: $modal-header-graphics-background-img no-repeat right, $modal-header-background-color;
     }
   }
 
