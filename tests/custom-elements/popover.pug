@@ -61,9 +61,9 @@ block content
     span.-text--h2=`Gradient type`
 
     each side in moreSides
-      div(class=`test-more-${side} -position--relative`, data-cy=`test-more-${side}`)
+      div(class=`test-gradient-${side} -position--relative`, data-cy=`test-gradient-${side}`)
         span.-text--h3=`Side ${side}`
         .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-          button(id=side).chi-button Popover
-        chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#${side}`, active, type="gradient", closable)
+          button(id=`gradient-${side}`).chi-button Popover
+        chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#gradient-${side}`, active, type="gradient", closable)
           | Popover content.
