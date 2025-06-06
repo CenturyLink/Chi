@@ -346,12 +346,12 @@
     // Position offsets for left/right start/end placements only
     &[x-placement='right-start'],
     &[x-placement='left-start'] {
-      top: -$popover-gradient-arrow-offset !important;
+      top: -$popover-gradient-arrow-offset;
     }
 
     &[x-placement='right-end'],
     &[x-placement='left-end'] {
-      top: $popover-gradient-arrow-offset !important;
+      top: $popover-gradient-arrow-offset;
     }
 
     /*
