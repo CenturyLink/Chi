@@ -23,7 +23,8 @@
     "tests:visual:run": "bash ./scripts/tests/visualTests.sh",
     "tests:visual:approve": "node ./scripts/tests/approve.js",
     "tests:e2e": "bash ./scripts/tests/e2eTests.sh",
-    "lint:scss": "sass-lint -v -q"
+    "lint:scss": "sass-lint -v -q",
+    "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh"
   },
   "dependencies": {
     "@centurylink/chi-custom-elements": "1.23.0",
