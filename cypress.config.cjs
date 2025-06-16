@@ -12,6 +12,9 @@ module.exports = defineConfig({
   },
   video: true,
   videoCompression: false,
+  env: {
+    coverage: true,
+  },
   e2e: {
     specPattern: 'cypress/e2e/**/*',
     supportFile: 'cypress/support/e2e.cjs',

@@ -1,0 +1,8 @@
+{
+  "include": ["src/chi/**/*.js"],
+  "extension": [".js"],
+  "reporter": ["lcov", "text-summary"],
+
+  "all": true,
+  "cache": false
+}

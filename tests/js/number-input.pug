@@ -1,0 +1,19 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
+
+block variables
+  - var title = 'Number Input'
+
+block content
+  .chi-form__item
+    .chi-number-input#example-base
+      input#example-base-input.chi-input(type="number" value="0" min="-3" max="8" aria-label="Input Label")
+      button(aria-label="Decrease")
+      button(aria-label="Increase")
+            
+  script.
+    window.numberInputBaseInstance = chi.numberInput(document.getElementById('example-base-input'));

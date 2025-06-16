@@ -1,0 +1,191 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
+block variables
+  - var title = 'Expansion Panel'
+ 
+block content
+  .chi-grid.-no-gutter.-w--100
+    .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+      .test-expansion-panel-bordered-state-icon.-w--100.-bg--none
+        .chi-epanel#expansion-panel-1.-done.-state-icon.-bordered(data-chi-epanel-group='example')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 1.
+            .chi-epanel__title Panel 1
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 1
+                  p.chi-epanel__text Panel 1 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+        .chi-epanel#expansion-panel-2.-active.-state-icon.-bordered(data-chi-epanel-group='example')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 2.
+            .chi-epanel__title Panel 2
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 2
+                  p.chi-epanel__text Panel 2 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+        .chi-epanel#expansion-panel-3.-state-icon.-bordered.-pending(data-chi-epanel-group='example')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 3.
+            .chi-epanel__title Panel 3
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 3
+                  p.chi-epanel__text Panel 3 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+        .chi-epanel#expansion-panel-4.-disabled.-state-icon.-bordered(data-chi-epanel-group='example')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 4.
+            .chi-epanel__title Panel 4
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 4
+                  p.chi-epanel__text Panel 4 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+
+    .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+      .test-expansion-panel-bordered-state-icon.-w--100.-bg--none
+        .chi-epanel#expansion-panel-accordion-1.-done.-state-icon.-bordered(data-chi-epanel-group='example-accordion')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 1.
+            .chi-epanel__title Panel 1
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 1
+                  p.chi-epanel__text Panel 1 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+        .chi-epanel#expansion-panel-accordion-2.-active.-state-icon.-bordered(data-chi-epanel-group='example-accordion')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 2.
+            .chi-epanel__title Panel 2
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 2
+                  p.chi-epanel__text Panel 2 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+
+    .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+      .test-expansion-panel-bordered-state-icon.-w--100.-bg--none
+        .chi-epanel#expansion-panel-custom-1.-done.-state-icon.-bordered(data-chi-epanel-group='example-custom')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 1.
+            .chi-epanel__title Panel 1
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 1
+                  p.chi-epanel__text Panel 1 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+        .chi-epanel#expansion-panel-custom-2.-active.-state-icon.-bordered(data-chi-epanel-group='example-custom')
+          .chi-epanel__header
+            i.chi-icon.-icon--success.icon-circle-check.-sm--2.-state
+            .chi-epanel__number 2.
+            .chi-epanel__title Panel 2
+            .chi-epanel__content
+              .chi-epanel__collapse
+                .-done--only
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat Edit
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Panel 2
+                  p.chi-epanel__text Panel 2 content in expansion panel.
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button.-primary.-flat Cancel
+                  button.chi-button(data-chi-epanel-action='previous') Previous
+                  button.chi-button(data-chi-epanel-action='next').-primary Continue
+  script.
+    window.expansionPanelExample = chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example"]'));
+    window.expansionPanelAccordion =chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-accordion"]'), { mode: 'accordion'});
+    window.expansionPanelCustom = chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-custom"]'), { mode: 'custom', changeHandler: (e) => console.log('Custom mode change handler:', e)});
