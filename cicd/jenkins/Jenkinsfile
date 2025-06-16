@@ -540,10 +540,10 @@ pipeline {
             //     cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
             //     cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
             //   """
-            // } catch (Exception exc) {
-            //   sh "mkdir -p reports/ci_report"
-            //   sh "touch reports/ci_report/xunitfinal.xml"
-            // }
+            } catch (Exception exc) {
+              // sh "mkdir -p reports/ci_report"
+              // sh "touch reports/ci_report/xunitfinal.xml"
+            }
 
             unstash name: "e2e_tests_cypress"
           }
