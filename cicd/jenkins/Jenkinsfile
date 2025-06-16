@@ -163,6 +163,28 @@ pipeline {
         }
       }
     }
+    stage('Build Chi - Testing') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE20
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run build:testing', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+
+          stash name: 'build_testing_stash', includes: 'dist/**'
+        }
+      }
+    }
     stage ('Backstop tests') {
       when {
         beforeAgent true
@@ -201,8 +223,34 @@ pipeline {
       }
       steps {
         script {
+          def REPORTS_AVAILABLE = -1
+          def COVERAGE_AVAILABLE = -1
+          def NYC_AVAILABLE = -1
+
+          unstash name: 'build_testing_stash'
+
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+
+          REPORTS_AVAILABLE = sh(script: "ls cypress/reports/*xml", returnStatus: true)
+          COVERAGE_AVAILABLE = sh(script: "ls coverage/**", returnStatus: true)
+          NYC_AVAILABLE = sh(script: "ls .nyc_output/**", returnStatus: true)
+
+          if (REPORTS_AVAILABLE == 0) {
+            jslPublishTestResults('cypress/reports/*xml')
+            
+            stash name: 'e2e_tests_cypress', includes: "cypress/reports/**"
+          }
+
+          if (COVERAGE_AVAILABLE == 0) {
+            stash name: "e2e_tests_coverage", includes: "coverage/**"
+            archiveArtifacts artifacts: 'coverage/**'
+          }
+          
+          if (NYC_AVAILABLE == 0) {
+            stash name: "e2e_tests_nyc", includes: ".nyc_output/**"
+            archiveArtifacts artifacts: '.nyc_output/**'
+          }
         }
       }
     }
@@ -223,7 +271,6 @@ pipeline {
             }
           }
           steps {
-            // TODO: Improve to have nyc, coverage (folder) & lcov.info
             jslQualityGateCodeCoverage(SONARQUBE_PROPERTIES)
           }
         }
@@ -234,6 +281,8 @@ pipeline {
             }
           }
           steps {
+            unstash name: 'e2e_tests_coverage'
+            
             jslSonarQubeStaticAnalysis(SONARQUBE_PROPERTIES, SONARQUBE_CREDENTIALS)
           }
         }
@@ -479,28 +528,32 @@ pipeline {
             jslAdoptionMain('cypress/reports/smokeTests/*.xml')
           } else {
             try {
-              sh "rm -rf reports/ci_report/*"
+            // TODO: Merge backstop tests with E2E tests
+            //   sh "rm -rf reports/ci_report/*"
               
-              unstash name: "non_responsive_ce_ci"
-              unstash name: "non_responsive_ci"
-              unstash name: "responsive_ci"
+            //   unstash name: "non_responsive_ce_ci"
+            //   unstash name: "non_responsive_ci"
+            //   unstash name: "responsive_ci"
               
-              sh """
-                cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
-                cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
-                cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
-              """
-            } catch (Exception exc) {
-              sh "mkdir -p reports/ci_report"
-              sh "touch reports/ci_report/xunitfinal.xml"
-            }
+            //   sh """
+            //     cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
+            //     cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
+            //     cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
+            //   """
+            // } catch (Exception exc) {
+            //   sh "mkdir -p reports/ci_report"
+            //   sh "touch reports/ci_report/xunitfinal.xml"
+            // }
+
+            unstash name: "e2e_tests_cypress"
           }
 
           if (isVersionBump()) {
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
           }
           
-          jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+          // jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+          jslAdoptionMain('cypress/reports/*xml')
         }
       }
     }

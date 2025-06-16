@@ -2,7 +2,7 @@
 
 SECONDS=0
 
-npm run build
+npm run build:testing
 npm run start:dist &
 SERVER_PID=$!
 
