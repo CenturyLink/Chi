@@ -23,7 +23,7 @@
 const fetch = require('node-fetch');
 const https = require('https');
 const agent = new https.Agent({
-  rejectUnauthorized: false
+  rejectUnauthorized: process.env.NODE_ENV !== 'production' // Enable certificate validation in production
 });
 
 module.exports = async function (page, scenario) {
