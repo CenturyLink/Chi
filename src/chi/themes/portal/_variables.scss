@@ -271,6 +271,43 @@ $color-background-dark: $color-grey-100;
 $color-background-white: $color-white;
 $color-background-black: $color-black;
 
+// Gradients
+$color-background-gradient-accent-1: linear-gradient(
+  90deg,
+  $color-red-50 0%,
+  $color-orange-50 35%,
+  $color-orange-50 94%,
+  $color-orange-50 100%,
+);
+$color-background-gradient-accent-2: linear-gradient(
+  90deg, 
+  $color-pink-50 0%,     
+  $color-orange-50 7%,   
+  $color-orange-50 25%,
+  $color-orange-50 43%,
+  $color-orange-50 61%,
+  $color-orange-50 80%,
+  $color-orange-50 100%
+);
+$color-background-gradient-accent-3: linear-gradient(
+  90deg,
+  $color-yellow-40 0%,
+  $color-yellow-40 19%,
+  $color-yellow-40 45%,
+  $color-orange-40 75%,
+  $color-orange-50 100%
+);
+$color-background-gradient-accent-4: linear-gradient(
+  90deg,
+  $color-teal-40 0%,
+  $color-teal-40 24%,
+  $color-teal-40 43%,
+  $color-teal-50 59%,
+  $color-teal-60 75%,
+  $color-teal-70 90%,
+  $color-teal-70 100%
+);
+
 // Icons
 $icon-color: $color-icon-base;
 $icon-size-base: 1rem;
