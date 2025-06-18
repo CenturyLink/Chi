@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 const chokidar = require('chokidar');
 const fs = require('fs');
 const path = require('path');
@@ -6,21 +6,26 @@ const path = require('path');
 const packageJsonRoute = path.resolve(__dirname, '../../package.json');
 let serverProcess = null;
 
-const execPromise = async (command, spinnerMessage) => {
+const execPromise = async (command, args, spinnerMessage) => {
   const ora = (await import('ora')).default;
   const spinner = ora(spinnerMessage).start();
-  
+
   console.time(spinnerMessage);
 
   return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      const status = error ? `[CHI]: ${error.message}` : `[CHI]: Build completed successfully`;
-      
-      if (error) {
-        spinner.fail(status);
-        reject(error);
+    const child = spawn(command, args, { stdio: 'inherit', shell: false });
+
+    child.on('error', (error) => {
+      spinner.fail(`[CHI]: ${error.message}`);
+      reject(error);
+    });
+
+    child.on('close', (code) => {
+      if (code !== 0) {
+        spinner.fail(`[CHI]: Process exited with code ${code}`);
+        reject(new Error(`Process exited with code ${code}`));
       } else {
-        spinner.succeed(status);
+        spinner.succeed('[CHI]: Build completed successfully');
         console.timeEnd(spinnerMessage);
         resolve();
       }
@@ -29,10 +34,10 @@ const execPromise = async (command, spinnerMessage) => {
 };
 
 const startServer = () => {
-  serverProcess = exec('npm run start', (error) => {
-    if (error) {
-      console.error(`[CHI]: ${error.message}`);
-    }
+  serverProcess = spawn('npm', ['run', 'start'], { stdio: 'inherit', shell: false });
+
+  serverProcess.on('error', (error) => {
+    console.error(`[CHI]: ${error.message}`);
   });
 };
 
@@ -42,12 +47,12 @@ const stopServer = () => {
   }
 };
 
-const buildProject = () => execPromise('npm run build', '[CHI]: Building project');
+const buildProject = () => execPromise('npm', ['run', 'build'], '[CHI]: Building project');
 
 const rebuildCss = async () => {
   const buildCssRoute = path.resolve(__dirname, '../build/css/build.js');
-  
-  await execPromise(`node ${buildCssRoute}`, '[CHI]: Rebuilding CSS');
+
+  await execPromise('node', [buildCssRoute], '[CHI]: Rebuilding CSS');
   startServer();
   watchFiles();
 };
@@ -73,7 +78,7 @@ const watchFiles = () => {
 
   try {
     const { version } = JSON.parse(fs.readFileSync(packageJsonRoute, 'utf-8'));
-    
+
     console.log('[CHI]: Playground started at http://localhost:5173/');
     console.log(`[CHI]: Tests started at http://localhost:8000/chi/${version}/tests`);
     console.log(`[CHI]: Dist folder started at http://localhost:8000/chi/${version}`);
