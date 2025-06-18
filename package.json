@@ -26,22 +26,22 @@
     "lint:scss": "sass-lint -v -q"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "1.22.0",
+    "@centurylink/chi-custom-elements": "1.23.0",
     "@centurylink/chi-documentation": "1.17.0",
     "@centurylink/chi-vue": "3.19.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.26.9",
-    "@playwright/browser-chromium": "^1.50.1",
-    "@playwright/test": "^1.51.1",
-    "@types/node": "^22.14.0",
+    "@babel/preset-env": "^7.27.2",
+    "@playwright/browser-chromium": "^1.53.0",
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^24.0.3",
     "autoprefixer": "^10.4.21",
     "backstopjs": "^6.3.25",
     "chokidar": "^4.0.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "cssnano": "^7.0.6",
-    "cypress": "^14.2.1",
+    "cssnano": "^7.0.7",
+    "cypress": "^14.5.0",
     "dayjs": "^1.11.13",
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.0",
@@ -51,15 +51,25 @@
     "postcss-svg": "^3.0.0",
     "pug": "^3.0.3",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.86.3",
+    "sass": "^1.89.2",
     "sass-lint": "^1.13.1",
     "ssri": "^12.0.0",
     "svg-sprite": "^2.0.4",
-    "vite": "^6.2.5",
-    "vite-plugin-banner": "^0.8.0"
+    "vite": "^6.3.5",
+    "vite-plugin-banner": "^0.8.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.39.0"
+    "@rollup/rollup-linux-x64-gnu": "^4.43.0"
+  },
+  "overrides": {
+    "merge": "^2.1.1",
+    "postcss-svg": {
+      "postcss": "^8.5.6"
+    },
+    "gonzales-pe-sl": {
+      "minimist": "^1.2.8"
+    },
+    "shelljs": "^0.10.0"
   },
   "bin": {
     "chi": "./scripts/chi.cjs"
