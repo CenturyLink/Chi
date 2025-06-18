@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
@@ -16,7 +16,7 @@ const runBashScript = (scriptPath, theme, message) => {
   const spinner = message ? ora(message).start() : null;
 
   try {
-    execSync(`bash ${scriptPath} ${theme}`, { stdio: 'ignore' });
+    execFileSync('bash', [scriptPath, theme], { stdio: 'ignore' });
     spinner?.succeed(`[CHI]: ${message} completed successfully`);
   } catch (error) {
     spinner?.fail(`[CHI]: Error executing ${scriptPath} for ${theme}: ${error.message}`);
@@ -30,7 +30,11 @@ const deleteCssFile = (theme) => {
 
   if (existsSync(filePath)) {
     try {
-      execSync(isWindows ? `del /f ${filePath}` : `rm -f ${filePath}`);
+      if (isWindows) {
+        execFileSync('cmd', ['/c', 'del', '/f', filePath]);
+      } else {
+        execFileSync('rm', ['-f', filePath]);
+      }
     } catch (error) {
       console.error(`[CHI]: Error deleting ${fileName}: ${error.message}`);
     }
@@ -44,7 +48,7 @@ const buildTheme = async (theme) => {
     deleteCssFile(theme);
     runBashScript(scripts.restore, theme);
     runBashScript(scripts.replace, theme);
-    execSync(`cross-env THEME=${theme} vite build --c vite-css.config.ts`, { stdio: 'ignore' });
+    execFileSync('cross-env', [`THEME=${theme}`, 'vite', 'build', '--c', 'vite-css.config.ts'], { stdio: 'ignore' });
     spinner.succeed(`[CHI]: Build for ${theme} theme completed successfully`);
   } catch (error) {
     spinner.fail(`[CHI]: Error during build for ${theme} theme: ${error.message}`);
