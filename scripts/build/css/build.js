@@ -3,7 +3,10 @@ import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
 
-const themes = (process.env.THEMES_TO_BUILD || 'lumen,portal,centurylink,colt,brightspeed').split(',');
+const allowedThemes = ['lumen', 'portal', 'centurylink', 'colt', 'brightspeed'];
+const themes = (process.env.THEMES_TO_BUILD || 'lumen,portal,centurylink,colt,brightspeed')
+  .split(',')
+  .filter(theme => allowedThemes.includes(theme));
 
 const scripts = {
   replace: './scripts/build/css/replace-scss.sh',
@@ -25,13 +28,17 @@ const runBashScript = (scriptPath, theme, message) => {
 };
 
 const deleteCssFile = (theme) => {
+  if (!allowedThemes.includes(theme)) {
+    throw new Error(`[CHI]: Invalid theme: ${theme}`);
+  }
+
   const fileName = theme === 'lumen' ? 'chi.css' : `chi-${theme}.css`;
   const filePath = path.resolve(__dirname, 'dist', fileName);
 
   if (existsSync(filePath)) {
     try {
       if (isWindows) {
-        execFileSync('cmd', ['/c', 'del', '/f', filePath]);
+        execFileSync('cmd', ['/c', 'del', '/f', `"${filePath}"`], { shell: true });
       } else {
         execFileSync('rm', ['-f', filePath]);
       }
