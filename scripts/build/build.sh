@@ -31,7 +31,6 @@ bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
 # Build boilerplates
 if [ -z "${SKIP_BOILERPLATES}" ]; then
-  echo "[CHI]: Building boilerplates..."
   bash ./scripts/build/utils/buildBoilerplates.sh
 fi
 
