@@ -326,9 +326,9 @@
       padding-bottom: $popover-gradient-header-padding-bottom;
 
       & .chi-popover__title {
-        font-size: $font-size-xl;
-        font-weight: $font-weight-semi-bold;
-        line-height: $line-height-xl;
+        font-size: $popover-gradient-header-title-font-size;
+        font-weight: $popover-gradient-header-title-font-weight;
+        line-height: $popover-gradient-header-title-line-height;
       }
     }
 
@@ -361,14 +361,14 @@
     // Right side arrow styling
     &[x-placement='right'] {
       .chi-popover__arrow::after {
-        border-color: $color-red-50;
+        border-color: $popover-gradient-right-arrow-color;
       }
     }
 
     &[x-placement='right-start'] {
       .chi-popover__arrow::after {
         top: $popover-gradient-arrow-offset;
-        border-color: $color-red-50;
+        border-color: $popover-gradient-right-arrow-color;
       }
     }
 
@@ -382,14 +382,14 @@
     // Left side arrow styling
     &[x-placement='left'] {
       .chi-popover__arrow::after {
-        border-color: $color-orange-50;
+        border-color: $popover-gradient-left-arrow-color;
       }
     }
 
     &[x-placement='left-start'] {
       .chi-popover__arrow::after {
         top: $popover-gradient-arrow-offset;
-        border-color: $color-orange-50;
+        border-color: $popover-gradient-left-arrow-color;
       }
     }
 
