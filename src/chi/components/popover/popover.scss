@@ -314,6 +314,98 @@
       }
     }
   }
+
+  &.-gradient {
+    border-radius: $popover-gradient-border-radius;
+
+    .chi-popover__header {
+      border-top-left-radius: $popover-gradient-border-radius;
+      border-top-right-radius: $popover-gradient-border-radius;
+      background: $popover-gradient-header-background;
+      color: $popover-gradient-header-color;
+      padding-bottom: $popover-gradient-header-padding-bottom;
+
+      & .chi-popover__title {
+        font-size: $popover-gradient-header-title-font-size;
+        line-height: $popover-gradient-header-title-line-height;
+      }
+    }
+
+    .chi-button {
+      &.-close {
+        top: $popover-gradient-close-button-top;
+
+        &,
+        .chi-icon {
+          color: $popover-gradient-close-button-icon-color;
+        }
+      }
+    }
+
+    // Position offsets for left/right start/end placements only
+    &[x-placement='right-start'],
+    &[x-placement='left-start'] {
+      top: -$popover-gradient-arrow-offset !important;
+    }
+
+    &[x-placement='right-end'],
+    &[x-placement='left-end'] {
+      top: $popover-gradient-arrow-offset !important;
+    }
+
+    /*
+    Arrow styles
+    */
+
+    // Right side arrow styling
+    &[x-placement='right'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-right-arrow-color;
+      }
+    }
+
+    &[x-placement='right-start'] {
+      .chi-popover__arrow::after {
+        top: $popover-gradient-arrow-offset;
+        border-color: $popover-gradient-right-arrow-color;
+      }
+    }
+
+    &[x-placement='right-end'] {
+      .chi-popover__arrow::after {
+        top: auto;
+        bottom: $popover-gradient-arrow-offset;
+      }
+    }
+
+    // Left side arrow styling
+    &[x-placement='left'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-left-arrow-color;
+      }
+    }
+
+    &[x-placement='left-start'] {
+      .chi-popover__arrow::after {
+        top: $popover-gradient-arrow-offset;
+        border-color: $popover-gradient-left-arrow-color;
+      }
+    }
+
+    &[x-placement='left-end'] {
+      .chi-popover__arrow::after {
+        top: auto;
+        bottom: $popover-gradient-arrow-offset;
+      }
+    }
+
+    // Bottom side arrow style with mixed color
+    &[x-placement^='bottom'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-arrow-mixed-color;
+      }
+    }
+  }
 }
 
 /* IE10+ CSS hack */
