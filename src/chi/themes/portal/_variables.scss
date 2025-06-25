@@ -1548,6 +1548,19 @@ $popover-modal-header-text-color: $color-text-white;
 $popover-modal-close-icon-color: $modal-close-icon-color;
 $popover-modal-header-text-color: $color-white;
 $popover-drag-icon-color: $color-icon-white;
+$popover-gradient-header-background: linear-gradient(90deg, $color-red-50 0%, $color-orange-50 100%);
+$popover-gradient-header-color: $color-white;
+$popover-gradient-header-title-font-size: $font-size-xl;
+$popover-gradient-header-title-line-height: $line-height-xl;
+$popover-gradient-header-padding-bottom: 1rem;
+$popover-gradient-text-color: $color-white;
+$popover-gradient-border-radius: 1.5rem;
+$popover-gradient-close-button-top: 0.75rem !important;
+$popover-gradient-close-button-icon-color: $color-white;
+$popover-gradient-left-arrow-color: $color-orange-50;
+$popover-gradient-right-arrow-color: $color-red-50;
+$popover-gradient-arrow-mixed-color: mix($popover-gradient-left-arrow-color, $popover-gradient-right-arrow-color, 50%);
+$popover-gradient-arrow-offset: 0.75rem;
 
 // Progress
 $progress-background-color: $color-grey-20;
