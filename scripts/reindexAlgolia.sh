@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Needs env variables USER_ID, API_KEY, CRAWLER_ID to be set
+# Needs env variables ALGOLIA_USER_ID, ALGOLIA_API_KEY, ALGOLIA_CRAWLER_ID to be set
 source .env
 
 SITEMAP="dist/sitemap.xml"
 
 # Base64 encode your credentials
-CREDENTIALS=$(echo -n "${USER_ID}:${API_KEY}" | base64)
+CREDENTIALS=$(echo -n "${ALGOLIA_USER_ID}:${ALGOLIA_API_KEY}" | base64)
 
 check_task_status() {
-  local task_id="$1"
-  
-  TASK_STATUS=$(curl -s -X GET "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/tasks/${TASK_ID}" \
+  local TASK_ID="$1"
+
+  TASK_STATUS=$(curl -s -X GET "https://crawler.algolia.com/api/1/crawlers/${ALGOLIA_CRAWLER_ID}/tasks/${TASK_ID}" \
   -H "Authorization: Basic ${CREDENTIALS}" \
   -H "Content-Type: application/json" | jq -r '.pending')
 
   if [ "$TASK_STATUS" == "true" ]; then
     echo "🔄 Task is still pending. Retrying in 1 second..."
     sleep 1
-    check_task_status "$task_id"
+    check_task_status "$TASK_ID"
   fi
 }
 
@@ -26,7 +26,7 @@ check_task_status() {
 # CRAWL ALL PAGES
 # 
 crawl_all_site() {
-  RESPONSE=$(curl -s -X POST "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/reindex" \
+  RESPONSE=$(curl -s -X POST "https://crawler.algolia.com/api/1/crawlers/${ALGOLIA_CRAWLER_ID}/reindex" \
     -H "Authorization: Basic ${CREDENTIALS}" \
     -H "Content-Type: application/json")
 
@@ -53,7 +53,7 @@ crawl_url() {
     exit 1
   fi
 
-  RESPONSE=$(curl -s -X POST "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/urls/crawl" \
+  RESPONSE=$(curl -s -X POST "https://crawler.algolia.com/api/1/crawlers/${ALGOLIA_CRAWLER_ID}/urls/crawl" \
     -H "Authorization: Basic ${CREDENTIALS}" \
     -H "Content-Type: application/json" \
     -d "{\"urls\": [\"$url\"], \"save\": true}")
@@ -103,7 +103,7 @@ crawl_from_latest_version() {
   echo START_URL: $BASE_URL
 
   # UPDATE CRAWLER CONFIGURATION 
-  RESPONSE=$(curl -s -X PATCH "https://crawler.algolia.com/api/1/crawlers/${CRAWLER_ID}/config" \
+  RESPONSE=$(curl -s -X PATCH "https://crawler.algolia.com/api/1/crawlers/${ALGOLIA_CRAWLER_ID}/config" \
     -H "Authorization: Basic ${CREDENTIALS}" \
     -H "Content-Type: application/json" \
     -d "{\"startUrls\": [\"$BASE_URL/getting-started\"], \"sitemaps\": [\"$BASE_URL/sitemap.xml\"]}")
