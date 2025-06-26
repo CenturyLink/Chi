@@ -145,14 +145,6 @@ $sizes: (
         }
       }
     }
-
-    // div.chi-accordion__content:has(div[slot]) {
-    //   overflow: visible;
-    // }
-
-    // button.chi-accordion__trigger:has(div[slot]) .chi-accordion__title {
-    //   flex-grow: 0;
-    // }
   }
 
   .chi-accordion__item {
@@ -328,6 +320,4 @@ $sizes: (
       }
     }
   }
-
-
 }
