@@ -59,7 +59,7 @@
     "vite-plugin-banner": "^0.8.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.44.0"
+    "@rollup/rollup-linux-x64-gnu": "^4.44.1"
   },
   "overrides": {
     "merge": "^2.1.1",
@@ -69,7 +69,10 @@
     "gonzales-pe-sl": {
       "minimist": "^1.2.8"
     },
-    "shelljs": "^0.10.0"
+    "shelljs": "^0.10.0",
+    "table": {
+      "ajv": "^8.17.1"
+    }
   },
   "bin": {
     "chi": "./scripts/chi.cjs"
