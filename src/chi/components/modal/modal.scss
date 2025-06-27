@@ -92,7 +92,7 @@
       position: absolute;
       right: 0.75rem;
       top: $modal-close-top;
-  
+
       .chi-icon {
         color: $modal-close-icon-color;
       }
@@ -149,5 +149,38 @@
 
   .-closed {
     display: none;
+  }
+
+  &.-header-image {
+    .chi-modal__header {
+      background: $modal-header-graphics-background-img no-repeat right, $modal-header-background-color;
+    }
+  }
+
+  &.-gradient {
+    border-radius: $modal-gradient-border-radius;
+
+    .chi-modal__header {
+      background: $modal-gradient-header-background;
+      padding: $modal-gradient-header-padding;
+    }
+
+    &.-header-image {
+      .chi-modal__header {
+        background: $modal-header-graphics-background-img no-repeat right, $modal-gradient-header-background;
+      }
+    }
+
+    .chi-modal__title {
+      font-size: $modal-gradient-title-font-size;
+      line-height: $modal-gradient-title-line-height;
+      margin-bottom: $modal-gradient-title-margin-bottom;
+    }
+
+    .chi-modal__subtitle {
+      font-size: $modal-gradient-subtitle-font-size;
+      line-height: $modal-gradient-subtitle-line-height;
+      font-weight: $modal-gradient-subtitle-font-weight;
+    }
   }
 }

@@ -12,6 +12,7 @@ bash ./scripts/tests/createReports.sh
 echo "[CHI]: Installing dependencies..."
 
 npm ci
+npx playwright install
 
 npm run build
 

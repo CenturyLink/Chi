@@ -23,6 +23,7 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
+      // Not available in Vite 7.0.0
       scss: {
         api: 'legacy',
         includePaths: [resolve(__dirname, 'src/chi')],

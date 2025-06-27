@@ -18,3 +18,10 @@ updates:
       all-dependencies:
         patterns:
           - "*"
+    ignore:
+      - dependency-name: "@playwright/browser-chromium"
+        versions: [">=1.51.1"]
+      - dependency-name: "@playwright/test"
+        versions: [">=1.51.1"]
+      - dependency-name: "vite"
+        versions: [">=6.3.5"]

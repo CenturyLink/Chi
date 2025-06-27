@@ -477,6 +477,17 @@ pipeline {
           if (isDeploymentTag) {
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
             jslAdoptionMain('cypress/reports/smokeTests/*.xml')
+
+            zip zipFile: 'smoke_tests.zip', dir: 'cypress/reports/smokeTests'
+            echo "Updating DevOpsGCR"
+
+            if (env.SMOKE_TEST_FAILURE == "false") {
+              echo "Deployment success"
+              jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+            } else {
+              echo "Failures detected in deployment"
+              jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed AFTER deployment")
+            }
           } else {
             try {
               sh "rm -rf reports/ci_report/*"
