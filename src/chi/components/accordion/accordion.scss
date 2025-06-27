@@ -91,9 +91,11 @@ $sizes: (
         transition-duration: $animation-duration;
       }
 
-      &:has(div[slot]) .chi-accordion__title {
-        flex-grow: 0;
-      }
+      &:has(div[slot]) {
+        .chi-accordion__title {
+          flex-grow: 0;
+        }
+      } 
     }
 
     .chi-accordion__content {
