@@ -322,4 +322,14 @@ $sizes: (
       }
     }
   }
+
+  &.-compact-title {
+    .chi-accordion__title {
+      flex-grow: 0;
+
+      .chi-icon {
+        color: inherit;
+      }
+    }
+  }
 }
