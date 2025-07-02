@@ -22,7 +22,7 @@ window.chiReady = new Promise(async (resolve, reject) => {
 
   const theme = getQueryParam('theme') || 'chi';
 
-  document.getElementById('theme-css').href = `http://localhost:8000/chi/${version}/${theme}.css`; // Cargar chi.js
+  document.getElementById('theme-css').href = `http://localhost:8000/chi/${version}/${theme}.css`; // Load chi.js
 
   const chiScript = document.createElement('script');
   
