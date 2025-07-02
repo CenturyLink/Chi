@@ -41,6 +41,19 @@ block content
         chi-icon.-mr--2(icon="arrow-right") 
         | Some custom content here
 
+  h3 Accordion type compact title
+  .test-accordion-compact-title.-w--100 
+    chi-accordion(type="compact-title")#accordion-compact-title
+      div(slot="compact")
+        | Item custom content
+      div(slot="compact-header")
+        .-d--flex.-justify-content--between.-align-items--center
+          chi-checkbox(label="Checkbox")
+          chi-checkbox(label="Checkbox")
+      div(slot="compact-disabled-header")
+        .-d--flex.-justify-content--between.-align-items--center
+          chi-checkbox(label="Checkbox" disabled)
+          chi-checkbox(label="Checkbox" disabled)
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const accordionBase = document.querySelector('#base');
@@ -69,7 +82,12 @@ block content
           { title: 'Accordion 4', template: 'item-4', expanded: true },
           { title: 'Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated.', text: 'Item content 5' },
         ];
-      })
+      });
+
+      document.getElementById('accordion-compact-title').accordions = [
+        { title: 'Accordion type compact title', template: 'compact', expanded: true },
+        { title: 'Accordion type compact title disabled', template: 'compact-disabled', expanded: false, disabled: true },
+      ];
     });
 
     function checkAllAccordionsRendered() {
