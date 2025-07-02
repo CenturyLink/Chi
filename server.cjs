@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
+const cors = require('cors');
+
 
 const app = express();
 const port = 8000;
@@ -12,6 +14,7 @@ const limiter = rateLimit({
   max: 100
 });
 
+app.use(cors());
 app.use(basePath, express.static(path.join(__dirname, 'dist')));
 app.use(limiter);
 
