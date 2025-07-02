@@ -96,6 +96,12 @@ $sizes: (
       .icon-chevron-right {
         transition-duration: $animation-duration;
       }
+
+      &:has(div[slot]) {
+        .chi-accordion__title {
+          flex-grow: 0;
+        }
+      } 
     }
 
     .chi-accordion__content {
@@ -117,6 +123,10 @@ $sizes: (
 
       &.-transitioning {
         display: block;
+      }
+
+      &:has(div[slot]) {
+        overflow: visible;
       }
     }
 
