@@ -94,33 +94,36 @@ block content
           p.chi-popover__text
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-  each side in moreSides
-    div(class=`test-gradient-${side}`)
-      span.-text--h2=`Gradient popper side ${side}`
-      .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-        button.-gradient-popover.chi-button.autostart(
-          id="test-gradient-" + side,
-          data-position=side,
-          data-popover-content=`
-            <button class="chi-button -xs -icon -close" aria-label="Close">
-              <div class="chi-button__content">
-                <div class="chi-alert__icon chi-icon">
-                  <svg>
-                    <use xlink:href="#icon-x"></use>
-                  </svg>
+  div(class=`test-gradient`)
+    span.-text--h2=`Gradient type`
+
+    each side in moreSides
+      div(class=`test-gradient-${side}`, style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        .-d--flex.-justify-content--center.-alignclea-items--center(style="margin: 120px 220px;")
+          button.-gradient-popover.chi-button.autostart(
+            id="test-gradient-" + side,
+            data-position=side,
+            data-popover-content=`
+              <button class="chi-button -xs -icon -close" aria-label="Close" style="top: 1.25rem !important;">
+                <div class="chi-button__content">
+                  <div class="chi-alert__icon chi-icon">
+                    <svg>
+                      <use xlink:href="#icon-x"></use>
+                    </svg>
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
 
-            <header class="chi-popover__header">
-              <h2 class="chi-popover__title">Popover Title</h2>
-            </header>
+              <header class="chi-popover__header">
+                <h2 class="chi-popover__title">Popover Title</h2>
+              </header>
 
-            <div class="chi-popover__content">
-              <p class="chi-popover__text">Popover content.</p>
-            </div>`
-        )
-          | Popover
+              <div class="chi-popover__content">
+                <p class="chi-popover__text">Popover content.</p>
+              </div>`
+          )
+            | Popover
 
   script.
     document.addEventListener('DOMContentLoaded', () => {
