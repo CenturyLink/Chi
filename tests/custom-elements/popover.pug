@@ -57,11 +57,11 @@ block content
       chi-popover(title='Popover title', variant='text', modal, closable, drag, active)
         | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-  div(class=`test-gradient -position--relative`, style='width: 450px; height: 320px;')
+  div(class=`test-gradient`)
     span.-text--h2=`Gradient type`
 
     each side in moreSides
-      div(class=`test-gradient-${side} -position--relative`, data-cy=`test-gradient-${side}`)
+      div(class=`test-gradient-${side}`, style='width: 600px')
         span.-text--h3=`Side ${side}`
         .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
           button(id=`gradient-${side}`).chi-button Popover
