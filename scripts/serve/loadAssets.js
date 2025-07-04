@@ -4,36 +4,56 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
-window.chiReady = new Promise(async (resolve, reject) => {
-  let version = window.version;
+function isValidTheme(theme) {
+  const allowedThemes = ['chi', 'chi-portal', 'chi-centurylink', 'chi-colt', 'chi-brightspeed', 'chi-test'];
 
-  if (!version) {
-    try {
+  return allowedThemes.includes(theme);
+}
+
+function getBaseUrl(version) {
+  const isLocalhost = window.location.hostname === 'localhost';
+
+  return isLocalhost ? `http://localhost:8000/chi/${version}` : `/chi/${version}`;
+}
+
+async function loadChiAssets() {
+  try {
+    let version = window.version;
+
+    if (!version) {
       const response = await fetch('/package.json');
       const packageJson = await response.json();
-      
+
       version = packageJson.version;
-    } catch (error) {
-      console.error('Error loading package.json: ', error);
-      reject(error);
-      return;
     }
+
+    const themeParam = getQueryParam('theme');
+    const theme = isValidTheme(themeParam) ? themeParam : 'chi';
+    const baseUrl = getBaseUrl(version);
+    const themeCss = document.getElementById('theme-css');
+
+    if (themeCss) {
+      themeCss.href = `${baseUrl}/${theme}.css`;
+    }
+
+    await loadScript(`${baseUrl}/js/chi.js`);
+
+    loadScript(`${baseUrl}/js/ce/ux-chi-ce/ux-chi-ce.js`);
+  } catch (error) {
+    console.error('Error loading Chi assets:', error);
+    throw error;
   }
+}
 
-  const theme = getQueryParam('theme') || 'chi';
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
 
-  document.getElementById('theme-css').href = `http://localhost:8000/chi/${version}/${theme}.css`; // Load chi.js
+    script.src = src;
+    script.onload = resolve;
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
 
-  const chiScript = document.createElement('script');
-  
-  chiScript.src = `http://localhost:8000/chi/${version}/js/chi.js`;
-  chiScript.onload = () => resolve();
-  chiScript.onerror = (e) => reject(e);
-
-  document.head.appendChild(chiScript);
-
-  const uxScript = document.createElement('script');
-
-  uxScript.src = `http://localhost:8000/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.js`;
-  document.head.appendChild(uxScript);
-});
+window.chiReady = loadChiAssets();

@@ -10,21 +10,305 @@
     <script src="./scripts/serve/loadAssets.js"></script>
     <title>Chi CSS & JS</title>
   </head>
-  <body>
+  <body style="height: 100vh">
     <div class="-p--2">
       <h2>Chi Playground</h2>
 
       <p>In order to change the theme, you can use the following routes:</p>
       <ul>
         <li><b>Chi (default)</b>: <a href="http://localhost:5173">http://localhost:5173</a></li>
-        <li><b>Portal</b>: <a href="http://localhost:5173/?theme=chi-portal">http://localhost:5173/?theme=chi-portal</a></li>
-        <li><b>Centurylink</b>: <a href="http://localhost:5173/?theme=chi-centurylink">http://localhost:5173/?theme=chi-centurylink</a></li>
+        <li>
+          <b>Portal</b>: <a href="http://localhost:5173/?theme=chi-portal">http://localhost:5173/?theme=chi-portal</a>
+        </li>
+        <li>
+          <b>Centurylink</b>:
+          <a href="http://localhost:5173/?theme=chi-centurylink">http://localhost:5173/?theme=chi-centurylink</a>
+        </li>
         <li><b>Colt</b>: <a href="http://localhost:5173/?theme=chi-colt">http://localhost:5173/?theme=chi-colt</a></li>
-        <li><b>Brightspeed</b>: <a href="http://localhost:5173/?theme=chi-brightspeed">http://localhost:5173/?theme=chi-brightspeed</a></li>
+        <li>
+          <b>Brightspeed</b>:
+          <a href="http://localhost:5173/?theme=chi-brightspeed">http://localhost:5173/?theme=chi-brightspeed</a>
+        </li>
+        <li>
+          <b>Test</b>:
+          <a href="http://localhost:5173/?theme=chi-test">http://localhost:5173/?theme=chi-test</a>
+        </li>
       </ul>
 
       <h3>Examples</h3>
-      <chi-button>Chi button example</chi-button>
+      <chi-button id="toggle-nav" variant="flat" type="icon">
+        <chi-icon icon="menu"></chi-icon>
+      </chi-button>
+      <aside id="global-nav" class="chi-sidenav -global">
+        <div class="chi-sidenav__content">
+          <nav>
+            <ul class="chi-sidenav__list">
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="dashboard"></chi-icon>
+                    <span>Dashboard</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="bell"></chi-icon>
+                    <chi-badge color="danger" size="xs" text-weight="bold">21</chi-badge>
+                    <span>Alerts & Notificatios</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="services" type="link">
+                    <div slot="services-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Manage Services</chi-link>
+                        <chi-link>Add Services</chi-link>
+                        <chi-link>Order Status</chi-link>
+                        <chi-accordion id="services-tools" type="link">
+                          <div slot="services-tools-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>ELS & LI Managements</chi-link>
+                              <chi-link>Network Storage</chi-link>
+                              <chi-link class="-active">Edge Bare Metal</chi-link>
+                              <chi-link>SASE Management</chi-link>
+                              <chi-link>Voice Complete Features</chi-link>
+                              <chi-link>+1 Switched Toll Free</chi-link>
+                              <chi-link>Cross Connect</chi-link>
+                              <chi-link>Enhanced Routing</chi-link>
+                              <chi-link>Manage Voicemail</chi-link>
+                              <chi-link>Security Certificate Management</chi-link>
+                              <chi-link>Toll Free Management</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-requests" type="link">
+                          <div slot="services-requests-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Requests Page 1</chi-link>
+                              <chi-link>Requests Page 2</chi-link>
+                              <chi-link>Requests Page 3</chi-link>
+                            </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-quotes" type="link">
+                          <div slot="services-quotes-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Quotes Page 1</chi-link>
+                              <chi-link>Quotes Page 2</chi-link>
+                              <chi-link>Quotes Page 3</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-portals" type="link">
+                          <div slot="services-portals-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Portals Page 1</chi-link>
+                              <chi-link>Portals Page 2</chi-link>
+                              <chi-link>Portals Page 3</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="apis" type="link">
+                    <div slot="apis-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>APIs page 1</chi-link>
+                        <chi-link>APIs page 2</chi-link>
+                        <chi-link>APIs page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="monitoring-and-reports" type="link">
+                    <div slot="monitoring-and-reports-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Monitoring & Reports page 1</chi-link>
+                        <chi-link>Monitoring & Reports page 2</chi-link>
+                        <chi-link>Monitoring & Reports page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="billing" type="link">
+                    <div slot="billing-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Billing page 1</chi-link>
+                        <chi-link>Billing page 2</chi-link>
+                        <chi-link>Billing page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="admin" type="link">
+                    <div slot="admin-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Admin page 1</chi-link>
+                        <chi-link>Admin page 2</chi-link>
+                        <chi-link>Admin page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="support" type="link">
+                    <div slot="support-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Support page 1</chi-link>
+                        <chi-link>Support page 2</chi-link>
+                        <chi-link>Support page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <div class="chi-divider"></div>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="circle-question"></chi-icon>
+                    <span>[Portal Name] Help</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="compose"></chi-icon>
+                    <span>Contact Lumen</span>
+                  </chi-link>
+                </div>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </aside>
     </div>
   </body>
+  <script>
+    window.chiReady
+      ?.then(() => {
+        // Use Chi logic here
+
+        //#region Accordions
+        const servicesAccordion = document.getElementById('services');
+        const servicesToolsAccordion = document.getElementById('services-tools');
+        const servicesRequestsAccordion = document.getElementById('services-requests');
+        const servicesQuotesAccordion = document.getElementById('services-quotes');
+        const servicesPortalsAccordion = document.getElementById('services-portals');
+
+        servicesAccordion.accordions = [
+          {
+            title: 'Services',
+            icon: 'list-alt',
+            template: 'services-template',
+          },
+        ];
+        servicesToolsAccordion.accordions = [
+          {
+            title: 'Service Tools',
+            template: 'services-tools-template',
+          },
+        ];
+        servicesRequestsAccordion.accordions = [
+          {
+            title: 'Service Requests',
+            template: 'services-requests-template',
+          },
+        ];
+        servicesQuotesAccordion.accordions = [
+          {
+            title: 'Quotes',
+            template: 'services-quotes-template',
+          },
+        ];
+        servicesPortalsAccordion.accordions = [
+          {
+            title: 'Service Portals',
+            template: 'services-portals-template',
+          },
+        ];
+
+        const apisAccordion = document.getElementById('apis');
+
+        apisAccordion.accordions = [
+          {
+            title: 'APIs',
+            icon: 'api',
+            template: 'apis-template',
+          },
+        ];
+
+        const monitoringAndReportsAccordion = document.getElementById('monitoring-and-reports');
+
+        monitoringAndReportsAccordion.accordions = [
+          {
+            title: 'Monitoring & Reports',
+            icon: 'chart-bar',
+            template: 'monitoring-and-reports-template',
+          },
+        ];
+
+        const billingAccordion = document.getElementById('billing');
+
+        billingAccordion.accordions = [
+          {
+            title: 'Billing',
+            icon: 'cost',
+            template: 'billing-template',
+          },
+        ];
+
+        const adminAccordion = document.getElementById('admin');
+
+        adminAccordion.accordions = [
+          {
+            title: 'Admin',
+            icon: 'users',
+            template: 'admin-template',
+          },
+        ];
+
+        const supportAccordion = document.getElementById('support');
+
+        supportAccordion.accordions = [
+          {
+            title: 'Support',
+            icon: 'life-ring',
+            template: 'support-template',
+          },
+        ];
+        //#endregion
+
+        //#region Sidenav
+        const sidenavElement = document.getElementById('global-nav');
+        const globalNav = chi.globalNav(sidenavElement);
+        const toggleNavButton = document.getElementById('toggle-nav');
+
+        toggleNavButton.addEventListener('click', () => (globalNav.expanded = !globalNav.expanded));
+        //#endregion
+      })
+      .catch((err) => {
+        console.error('Can not initialize Chi:', err);
+      });
+  </script>
 </html>
