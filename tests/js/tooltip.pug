@@ -1,0 +1,41 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
+
+block variables
+  - var title = 'Tooltip'
+
+block content
+  .-m--auto.-w--25
+    button#tooltip-example.chi-button.-m--2(
+      data-tooltip="Your tooltip text on a button"
+    ) 
+      | Hover me to see tooltip
+
+    button#tooltip-example-right.chi-button.-m--2(
+      data-tooltip="Your tooltip"
+      data-position="right"
+    ) 
+      | Hover me to see tooltip
+
+    button#tooltip-example-left.chi-button.-m--2(
+      data-tooltip="Your tooltip text on a button"
+      data-position="left"
+    ) 
+      | Hover me to see tooltip
+
+    button#tooltip-example-bottom.chi-button.-m--2(
+      data-tooltip="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, maximus faucibus suscipit enim."
+      data-position="bottom"
+      data-tooltip-color="light"
+    ) 
+      | Hover me to see tooltip
+
+  script.
+    window.tooltipBase = chi.tooltip(document.getElementById('tooltip-example'));
+    chi.tooltip(document.getElementById('tooltip-example-right'));
+    chi.tooltip(document.getElementById('tooltip-example-left'));
+    chi.tooltip(document.getElementById('tooltip-example-bottom'));
