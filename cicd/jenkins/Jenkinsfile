@@ -526,6 +526,17 @@ pipeline {
           if (isDeploymentTag) {
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
             jslAdoptionMain('cypress/reports/smokeTests/*.xml')
+
+            zip zipFile: 'smoke_tests.zip', dir: 'cypress/reports/smokeTests'
+            echo "Updating DevOpsGCR"
+
+            if (env.SMOKE_TEST_FAILURE == "false") {
+              echo "Deployment success"
+              jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+            } else {
+              echo "Failures detected in deployment"
+              jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed AFTER deployment")
+            }
           } else {
             try {
             unstash name: "e2e_tests_cypress"
@@ -780,7 +791,7 @@ def smokeTestChecker() {
       echo "Error checking releases: ${e.getMessage()}"
     }
 
-    jslGenerateManualTestReport("Version Release", "Check Version - chi", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
+    jslGenerateManualTestReport("Version Release", "Check Version - chi", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
 
     if (env.SMOKE_TEST_FAILURE == null) {
       env.SMOKE_TEST_FAILURE = (latestRelease != version)
@@ -795,6 +806,6 @@ def smokeTestChecker() {
 
   } else {
     echo "Smoke Test hook without release"
-    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
+    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
   }
 }

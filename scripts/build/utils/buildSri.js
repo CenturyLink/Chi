@@ -10,6 +10,7 @@ const filesToHash = [
   'dist/chi-portal.css',
   'dist/chi-brightspeed.css',
   'dist/chi-colt.css',
+  'dist/chi-test.css',
   'dist/js/chi.js',
   'dist/assets/themes/lumen/images/favicon.svg',
   'dist/assets/themes/lumen/images/favicon.ico',

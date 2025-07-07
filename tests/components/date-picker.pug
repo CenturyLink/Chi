@@ -178,26 +178,30 @@ block content
 
   .test-input-combined.-py--2
     span.-text--h2 Input Popover Combined
-    .-position--relative(style="height: 18rem; width:14rem;")
-      input#datepicker-1.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
+    button#toggle-datepicker.chi-button Toggle
+    button#setDate-datepicker.chi-button Set date
+    button#dispose-datepicker.chi-button Dispose date picker
+
+    .-position--relative#datepicker-1.-mt--3(style="height: 18rem; width:14rem;")
+      input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
 
   .test-input-combined-icon.-py--2
     span.-text--h2 Input Popover Combined w/ icon
-    .-position--relative(style="height: 18rem; width:14rem;")
+    .-position--relative#datepicker-2(style="height: 18rem; width:14rem;")
       .chi-input__wrapper.-icon--right
-        input#datepicker-2.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
+        input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
         .chi-icon
           svg
             use(xlink:href="#icon-date")
 
   .test-input-error.-py--2
     span.-text--h2 Input Popover Error
-    .-position--relative(style="height: 18rem; width:14rem;")
-      input#datepicker-3.chi-input.-danger.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
+    .-position--relative#datepicker-3(style="height: 18rem; width:14rem;")
+      input.chi-input.-danger.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
 
   .test-disabled.-py--2
     span.-text--h2 Disabled date picker
-    .-position--relative(style="width:14rem;")
+    .-position--relative#datepicker-4(style="width:14rem;")
       .chi-input__wrapper.-icon--right.-disabled
         input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY", disabled)
         .chi-icon
@@ -335,23 +339,37 @@ block content
 
   script.
     document.addEventListener('DOMContentLoaded', () => {
-        const datePickerElements = [
-          document.getElementById('datepicker-1'),
-          document.getElementById('datepicker-2'),
-          document.getElementById('datepicker-3')
-        ];
-        const datePickerConfig = {
-          date: '01/24/2019',
-          min: '01/24/2019'
-        };
+      const datePickerElements = [
+        document.querySelector('#datepicker-1 input'),
+        document.querySelector('#datepicker-2 input'),
+        document.querySelector('#datepicker-3 input')
+      ];
 
-        datePickerElements.forEach(datePicker => {
-          chi.datePicker(datePicker, datePickerConfig);
+      const datePicker = chi.datePicker(datePickerElements[0], {
+        date: '01/24/2019',
+        min: '01/24/2019',
+        max: '01/28/2019'
+      });
 
-          datePicker.focus();
-        });
+      chi.datePicker(datePickerElements[1], {
+        date: '01/24/2019',
+      });
 
-        datePickerElements[2].blur();
-        datePickerElements[1].blur();
-      }
-    );
+      chi.datePicker(datePickerElements[2]);
+
+      const toggleDatePicker = document.getElementById("toggle-datepicker");
+      const setDateButton = document.getElementById("setDate-datepicker");
+      const disposeButton = document.getElementById("dispose-datepicker");
+
+      toggleDatePicker.addEventListener("click", () => {
+        datePicker.toggle();
+      });
+
+      setDateButton.addEventListener("click", () => {
+        datePicker.setDate('01/25/2019');
+      });
+
+      disposeButton.addEventListener("click", () => {
+        datePicker.dispose();
+      });
+    });

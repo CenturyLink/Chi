@@ -1270,6 +1270,17 @@ $modal-footer-padding:                      1rem;
 $modal-back-link-color:                     $color-icon-body;
 $modal-close-icon-color:                    $color-icon-body;
 
+$modal-gradient-border-radius:              0;
+$modal-gradient-header-background:          initial;
+$modal-gradient-header-padding:             initial;
+$modal-header-graphics-background-img:      initial;
+$modal-gradient-title-font-size:            initial;
+$modal-gradient-title-line-height:          initial;
+$modal-gradient-title-margin-bottom:        initial;
+$modal-gradient-subtitle-font-size:         initial;
+$modal-gradient-subtitle-line-height:       initial;
+$modal-gradient-subtitle-font-weight:       initial;
+
 // Number input
 $number-input-arrow-icon-color:             $color-icon-primary;
 $number-input-disabled-arrow-icon-color:    $color-icon-body;
@@ -1511,6 +1522,19 @@ $popover-modal-header-background-image:     none;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
 $popover-modal-header-text-color:           inherit;
 $popover-drag-icon-color:                   $color-icon-body;
+$popover-gradient-header-background:        initial;
+$popover-gradient-header-color:             initial;
+$popover-gradient-header-title-font-size:   initial;
+$popover-gradient-header-title-line-height: initial;
+$popover-gradient-header-padding-bottom:    initial;
+$popover-gradient-text-color:               initial;
+$popover-gradient-border-radius:            0;
+$popover-gradient-close-button-top:         initial;
+$popover-gradient-close-button-icon-color:  initial;
+$popover-gradient-left-arrow-color:         initial;
+$popover-gradient-right-arrow-color:        initial;
+$popover-gradient-arrow-mixed-color:        initial;
+$popover-gradient-arrow-offset:             initial;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
