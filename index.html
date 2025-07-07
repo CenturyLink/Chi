@@ -36,7 +36,10 @@
       </ul>
 
       <h3>Examples</h3>
-      <aside id="narnia-nav" class="chi-sidenav -narnia -expanded">
+      <chi-button id="toggle-nav" variant="flat" type="icon">
+        <chi-icon icon="menu"></chi-icon>
+      </chi-button>
+      <aside id="global-nav" class="chi-sidenav -global">
         <div class="chi-sidenav__content">
           <nav>
             <ul class="chi-sidenav__list">
@@ -279,9 +282,11 @@
         //#endregion
 
         //#region Sidenav
-        const sidenav = document.getElementById('narnia-nav');
+        const sidenavElement = document.getElementById('global-nav');
+        const globalNav = chi.globalNav(sidenavElement);
+        const toggleNavButton = document.getElementById('toggle-nav');
 
-        // chi.sidenav(sidenav)
+        toggleNavButton.addEventListener('click', () => (globalNav.expanded = !globalNav.expanded));
         //#endregion
       })
       .catch((err) => {

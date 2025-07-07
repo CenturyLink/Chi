@@ -724,7 +724,7 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  &.-narnia {
+  &.-global {
     height: 100%;
 
     &.-expanded {
@@ -765,10 +765,6 @@ $sidenav-lg-width: 12.5rem;
         }
       }
       .chi-sidenav__item-wrapper {
-        // &::before {
-        //   display: none;
-        // }
-
         chi-link {
           span {
             opacity: 0;
@@ -848,11 +844,11 @@ $sidenav-lg-width: 12.5rem;
                 border-radius: 0.3125rem;
 
                 &.-active {
-                  background-color: #fde7d8;
-
                   .chi-icon,
                   .chi-icon::before,
                   .chi-link {
+                    background-color: #fde7d8;
+                    border-radius: 0.3125rem;
                     color: #914008;
                     font-weight: $font-weight-semi-bold;
                   }
