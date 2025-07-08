@@ -752,7 +752,7 @@ def smokeTestChecker() {
       echo "Error checking releases: ${e.getMessage()}"
     }
 
-    jslGenerateManualTestReport("Version Release", "Check Version - chi", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
+    jslGenerateManualTestReport("Version Release", "Check Version - chi", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
 
     if (env.SMOKE_TEST_FAILURE == null) {
       env.SMOKE_TEST_FAILURE = (latestRelease != version)
@@ -767,6 +767,6 @@ def smokeTestChecker() {
 
   } else {
     echo "Smoke Test hook without release"
-    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result_${scope}.xml")
+    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
   }
 }
