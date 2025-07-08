@@ -119,3 +119,14 @@
     border-top: 0.0625rem solid $save-view-border-color;
   }
 }
+
+chi-toolbar {
+  .chi-accordion {
+    .chi-accordion__item {
+      border-radius: $toolbar-expandable-border-radius;
+      background-color: $color-grey-10;
+      border: $toolbar-expandable-border;
+      border-bottom: $toolbar-expandable-border;
+    }
+  }
+}
