@@ -329,11 +329,13 @@ $sizes: (
   }
 
   &.-compact-title {
-    .chi-accordion__title {
-      flex-grow: 0;
-
-      .chi-icon {
-        color: inherit;
+    .chi-accordion__trigger {
+      .chi-accordion__title {
+        flex-grow: 0;
+  
+        + .chi-icon {
+          color: inherit;
+        }
       }
     }
   }
