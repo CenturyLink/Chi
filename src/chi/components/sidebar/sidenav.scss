@@ -904,6 +904,16 @@ $sidenav-lg-width: 12.5rem;
                         background-color: #f2f0f1;
                       }
                     }
+
+                    > .chi-accordion__content {
+                      > div {
+                        > .chi-sidenav__item-guide {
+                          &::before {
+                            border-left: 2px solid #914008;
+                          }
+                        }
+                      }
+                    }
                   }
 
                   .chi-accordion__trigger {
@@ -934,11 +944,11 @@ $sidenav-lg-width: 12.5rem;
                     padding-bottom: 0;
                     padding-top: 0.25rem;
 
-                    .chi-sidenav__item-wrapper {
+                    .chi-sidenav__item-guide {
                       position: relative;
 
                       &::before {
-                        border-left: 2px solid #914008;
+                        border-left: 2px solid $color-grey-90;
                         content: '';
                         display: block;
                         height: 100%;
@@ -946,6 +956,14 @@ $sidenav-lg-width: 12.5rem;
                         position: absolute;
                         top: 0;
                         width: 1px;
+                      }
+
+                      .chi-sidenav__item-guide {
+                        padding-left: 0.625rem;
+
+                        &::before {
+                          left: 0;
+                        }
                       }
                     }
 
@@ -969,6 +987,10 @@ $sidenav-lg-width: 12.5rem;
                           .chi-accordion__content {
                             padding-left: 1.25rem;
 
+                            .chi-accordion {
+                              padding-left: 0.75rem;
+                            }
+
                             chi-link {
                               width: 100%;
                               padding-left: 0;
@@ -991,10 +1013,20 @@ $sidenav-lg-width: 12.5rem;
 
             .chi-sidenav__item-wrapper:not(:has(chi-accordion)) {
               chi-link {
+                width: 100%;
+              }
+
+              .chi-link {
                 border-radius: 0.3125rem;
                 padding: 0.615rem;
                 padding-left: 1rem;
                 width: 100%;
+
+                .chi-link__content {
+                  span {
+                    margin-left: 0.6875rem;
+                  }
+                }
 
                 &.-active {
                   background-color: #fde7d8;
@@ -1006,18 +1038,8 @@ $sidenav-lg-width: 12.5rem;
                     font-weight: $font-weight-bold;
                   }
 
-                  .chi-link {
-                    &:hover {
-                      background-color: #fde7d8;
-                    }
-                  }
-                }
-
-                .chi-link {
-                  .chi-link__content {
-                    span {
-                      margin-left: 0.6875rem;
-                    }
+                  &:hover {
+                    background-color: #fde7d8;
                   }
                 }
 
