@@ -63,7 +63,6 @@ block content
     each side in moreSides
       div(class=`test-gradient-${side}`, style='width: 600px')
         span.-text--h3=`Side ${side}`
-        .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-          button(id=`gradient-${side}`).chi-button Popover
+        button.chi-button.-justify-content--center(id=`gradient-${side}` style="margin: 120px 220px;") Popover
         chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#gradient-${side}`, active, type="gradient", closable)
           | Popover content.
