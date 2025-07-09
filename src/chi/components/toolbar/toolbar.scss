@@ -120,13 +120,21 @@
   }
 }
 
-chi-toolbar {
-  .chi-accordion {
+chi-toolbar,
+.chi-toolbar {
+  .chi-accordion.-compact-title {
     .chi-accordion__item {
       border-radius: $toolbar-expandable-border-radius;
       background-color: $color-grey-10;
       border: $toolbar-expandable-border;
       border-bottom: $toolbar-expandable-border;
+
+      .chi-accordion__trigger {
+        .chi-accordion__title {
+          font-weight: $font-weight-bold;
+        }
+      }
+
     }
   }
 }
