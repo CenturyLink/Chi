@@ -1,0 +1,64 @@
+extends ../layout.pug
+
+block scripts
+  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../js/chi.js')
+
+block variables
+  - var sizes = ['sm', 'md', 'lg', 'xl']
+
+block content
+  h3 Expandable toolbar
+  .test-toolbar-expandable.-w--100 
+    chi-toolbar(expanded title="Search and filter")#accordion-compact-title
+      div(slot="start")
+        .-d--flex.-justify-content--between.-align-items--center
+          chi-checkbox(label="Checkbox")
+          chi-checkbox(label="Checkbox")
+      div(slot="end")
+        | Item custom content
+
+  h3 Non expandable toolbar
+  .test-toolbar-base.-w--100 
+    chi-toolbar(type="base" title="Search and filter")
+      div(slot="start").-d--flex
+        .-d--flex
+          .chi-form__item
+            chi-search-input(id="example__base")
+          .chi-form__item.-pl--1
+            select(class="chi-select", id="example-views")
+              option(value="") View
+              option View 1
+              option View 2
+          .chi-form__item.-pl--1
+            select(class="chi-select", id="example-ba1")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+          .chi-form__item.-pl--1
+            select(class="chi-select", id="example-ba2")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+          button.chi-button.-icon.-flat(aria-label='Button action')
+            .chi-button__content
+              i.chi-icon.icon-filter(aria-hidden="true")
+      div(slot="end")
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh(aria-hidden="true")
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings(aria-hidden="true")
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert(aria-hidden="true")
+
