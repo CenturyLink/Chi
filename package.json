@@ -27,8 +27,8 @@
     "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "1.24.0",
-    "@centurylink/chi-documentation": "1.20.0",
+    "@centurylink/chi-custom-elements": "1.25.0",
+    "@centurylink/chi-documentation": "1.21.0",
     "@centurylink/chi-vue": "3.20.0"
   },
   "devDependencies": {
