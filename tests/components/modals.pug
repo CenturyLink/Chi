@@ -6,7 +6,6 @@ block scripts
   script(src='../../chi-marketing-icons.js')
 block variables
   - var title = 'Modals'
-  - var bodyStyle = 'background-color: #969696;'
 
 block content
   h3 Backdrops
@@ -215,3 +214,44 @@ block content
     })
       .chi-modal__footer
         button.chi-button.-primary.-lg Save
+
+
+
+  .chi-col.-w--12.-w-md--6.-w-xl--4.-mt--3
+    .test-gradient-type
+      h2 Gradient type
+      .-position--relative.-w--100(style='height: 18rem')
+        .chi-backdrop.-position--absolute
+          .chi-backdrop__wrapper
+            section.chi-modal.-gradient(role="dialog" aria-label="Modal description" aria-modal="true")
+              header.chi-modal__header
+                h2.chi-modal__title Modal Title
+                h3.chi-modal__subtitle This is the modal subtitle
+                button.-sm.chi-button.-icon.-close(data-dismiss="modal" aria-label="Close")
+                  .chi-button__content
+                    i.chi-icon.icon-x(aria-hidden="true")
+              .chi-modal__content
+                p.-text.-m--0 Modal content
+              footer.chi-modal__footer
+                button.chi-button(data-dismiss="modal") Cancel
+                button.chi-button.-primary Save
+
+    .test-gradient-type-with-header-image
+      h2 Gradient type with header image
+      .-position--relative.-w--100(style='height: 18rem')
+        .chi-backdrop.-position--absolute
+          .chi-backdrop__wrapper
+            section.chi-modal.-gradient.-header-image(role="dialog" aria-label="Modal description" aria-modal="true")
+              header.chi-modal__header
+                h2.chi-modal__title Modal Title
+                h3.chi-modal__subtitle This is the modal subtitle
+                button.chi-button.-icon.-close.-xs(data-dismiss="modal" aria-label="Close")
+                  .chi-button__content
+                    .chi-icon
+                      svg(aria-hidden='true')
+                        use(xlink:href='#icon-x')
+              .chi-modal__content
+                p.-text.-m--0 Modal content
+              footer.chi-modal__footer
+                button.chi-button(data-dismiss="modal") Cancel
+                button.chi-button.-primary Save
