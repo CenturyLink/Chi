@@ -733,10 +733,12 @@ $sidenav-lg-width: 12.5rem;
 
       .chi-sidenav__item-wrapper {
         chi-link {
-          span {
-            opacity: 1;
-            pointer-events: auto;
-            visibility: visible;
+          .chi-link__content {
+            > span {
+              opacity: 1;
+              pointer-events: auto;
+              visibility: visible;
+            }
           }
         }
 
@@ -767,10 +769,12 @@ $sidenav-lg-width: 12.5rem;
       }
       .chi-sidenav__item-wrapper {
         chi-link {
-          span {
-            opacity: 0;
-            visibility: hidden;
-            white-space: nowrap;
+          .chi-link__content {
+            > span {
+              opacity: 0;
+              visibility: hidden;
+              white-space: nowrap;
+            }
           }
         }
 
@@ -791,11 +795,13 @@ $sidenav-lg-width: 12.5rem;
     }
 
     chi-link {
-      span {
-        transition: opacity 0.1s ease, visibility 0.1s ease;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
+      .chi-link__content {
+        > span {
+          transition: opacity 0.1s ease, visibility 0.1s ease;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
       }
     }
 
@@ -1023,31 +1029,40 @@ $sidenav-lg-width: 12.5rem;
             .chi-sidenav__item-wrapper {
               chi-link {
                 width: 100%;
+
+                &.-active {
+                  .chi-link {
+                    background-color: $sidenav-global-item-active-background-color;
+                    box-shadow: none;
+                    color: $sidenav-global-item-active-text-color;
+                    font-weight: $sidenav-global-item-active-font-weight;
+                    width: 100%;
+    
+                    .chi-icon,
+                    .chi-icon::before {
+                      color: $sidenav-global-item-active-icon-color;
+                    }
+    
+                    .chi-link {
+                      color: $sidenav-global-item-active-text-color;
+                      font-weight: $sidenav-global-item-active-font-weight;
+                    }
+
+                    &:hover {
+                      background-color: $sidenav-global-item-active-background-color;
+                    }
+                  }
+                }
               }
 
               .chi-link {
                 border-radius: $sidenav-global-item-border-radius;
+                position: relative;
 
-                &.-active {
-                  background-color: $sidenav-global-item-active-background-color;
-                  box-shadow: none;
-                  color: $sidenav-global-item-active-text-color;
-                  font-weight: $sidenav-global-item-active-font-weight;
-                  width: 100%;
-  
-                  .chi-icon,
-                  .chi-icon::before {
-                    color: $sidenav-global-item-active-icon-color;
-                  }
-  
-                  .chi-link {
-                    color: $sidenav-global-item-active-text-color;
-                    font-weight: $sidenav-global-item-active-font-weight;
-                  }
-
-                  &:hover {
-                    background-color: $sidenav-global-item-active-background-color;
-                  }
+                chi-badge {
+                  position: absolute;
+                  left: 1.5rem;
+                  top: 0.75rem;
                 }
               }
 
@@ -1058,15 +1073,19 @@ $sidenav-lg-width: 12.5rem;
                   width: 100%;
   
                   .chi-link__content {
-                    span {
+                    > span {
                       margin-left: 0.6875rem;
                     }
                   }
+                }
 
+                chi-link {
                   &:not(.-active) {
-                    &:hover {
-                      background-color: $sidenav-global-item-hover-background-color;
-                      cursor: pointer;
+                    .chi-link {
+                      &:hover {
+                        background-color: $sidenav-global-item-hover-background-color;
+                        cursor: pointer;
+                      }
                     }
                   }
                 }
