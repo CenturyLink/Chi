@@ -172,3 +172,44 @@ block content
             | large title to test not truncated. Accordion 5 with very large title to test not truncated.
             | Accordion 5 with very large title to test not truncated. Accordion 5 with very large title to test not truncated.
           i.chi-icon.icon-chevron-down(aria-hidden="true")
+
+  h3 Accordion type compact title
+  .test-accordion-compact-title.-w--100
+    .chi-accordion.-compact-title.-md
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title Accordion type compact title
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .-mx--1.-flex--grow1
+            .-d--flex.-justify-content--between.-align-items--center
+              .chi-checkbox
+                input.chi-checkbox__input(
+                  type="checkbox"
+                  id=`checkbox-accordion-compact-title`
+                )
+                label.chi-checkbox__label(for=`checkbox-accordion-compact-title`) Checkbox
+              .chi-checkbox
+                input.chi-checkbox__input(
+                  type="checkbox"
+                  id=`checkbox2-accordion-compact-title`
+                )
+                label.chi-checkbox__label(for=`checkbox2-accordion-compact-title`) Checkbox
+        .chi-accordion__content Item custom content
+      .chi-accordion__item
+        button.chi-accordion__trigger.-disabled
+          .chi-accordion__title Accordion type compact title disabled
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .-mx--1.-flex--grow1
+            .-d--flex.-justify-content--between.-align-items--center
+              .chi-checkbox
+                input.chi-checkbox__input(
+                  type="checkbox"
+                  id=`checkbox3-accordion-compact-title`
+                )
+                label.chi-checkbox__label(for=`checkbox3-accordion-compact-title`) Checkbox
+              .chi-checkbox
+                input.chi-checkbox__input(
+                  type="checkbox"
+                  id=`checkbox4-accordion-compact-title`
+                )
+                label.chi-checkbox__label(for=`checkbox4-accordion-compact-title`) Checkbox
