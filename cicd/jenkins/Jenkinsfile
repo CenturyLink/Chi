@@ -761,7 +761,7 @@ def smokeTestChecker() {
     }
     
     echo """
-    Smoke Test Failure for ${scope}? ${latestRelease != version}
+    Smoke Test Failure for Chi ${latestRelease != version}
     Current Overall Smoke Test Failure Status: ${env.SMOKE_TEST_FAILURE}
     """
 
