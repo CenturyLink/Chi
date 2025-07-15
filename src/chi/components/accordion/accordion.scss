@@ -311,7 +311,7 @@ $sizes: (
 
         .chi-icon {
           color: $accordion-link-color;
-          margin-left: 1rem;
+          margin-left: $accordion-link-margin-left;
         }
 
         &:hover {
