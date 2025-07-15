@@ -579,6 +579,109 @@
       }
     }
   }
+
+  &.-global {
+    .chi-mobile-nav__header,
+    .chi-mobile-nav__list {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0.815rem;
+    }
+
+    .chi-mobile-nav__header {
+      chi-dropdown-select {
+        width: 100%;
+      }
+    }
+
+    .chi-mobile-nav__list {
+      > .chi-mobile-nav__item {
+        list-style: none;
+        margin-bottom: 0.315rem;
+
+        chi-link {
+          width: 100%;
+
+          &.-active {
+            background-color: #fde7d8;
+            border-radius: 0.315rem;
+            font-weight: 700;
+
+            .chi-icon,
+            .chi-link {
+              color: #914008;
+            }
+
+            .chi-link {
+              &:hover {
+                background-color: #fde7d8;
+              }
+            }
+          }
+        }
+
+        chi-icon {
+          &[icon='chevron-right'] {
+            margin-left: auto;
+          }
+        }
+
+        .chi-icon {
+          color: black;
+        }
+
+        .chi-link {
+          border-radius: 0.315rem;
+          cursor: pointer;
+          color: black;
+          padding: 0.75rem;
+          text-decoration: none;
+          width: 100%;
+
+          &:hover {
+            background: #f2f0f1;
+          }
+        }
+
+        .chi-mobile-nav__email {
+          font-size: 0.875rem;
+          font-weight: 700;
+        }
+      }
+
+      .chi-mobile-nav__item:has(.chi-mobile-nav__email) {
+        padding: 1rem;
+      }
+    }
+
+    .chi-mobile-nav__back {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.315rem;
+
+      .chi-mobile-nav__back-wrapper {
+        align-items: center;
+        display: flex;
+
+        .chi-icon {
+          // TODO: Improve this color
+          color: #00555c !important;
+          width: 1rem;
+          height: 1rem;
+        }
+
+        .chi-link {
+          font-size: 0.875rem;
+        }
+      }
+
+      .chi-mobile-nav__back-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-left: 1rem;
+      }
+    }
+  }
 }
 
 /* IE11 CSS hack */
