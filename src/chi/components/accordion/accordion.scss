@@ -311,7 +311,7 @@ $sizes: (
 
         .chi-icon {
           color: $accordion-link-color;
-          margin-left: 1rem;
+          margin-left: $accordion-link-margin-left;
         }
 
         &:hover {
@@ -324,6 +324,18 @@ $sizes: (
       .chi-accordion__content {
         padding-left: 0;
         padding-right: 0;
+      }
+    }
+  }
+
+  &.-compact-title {
+    .chi-accordion__trigger {
+      .chi-accordion__title {
+        flex-grow: 0;
+  
+        + .chi-icon {
+          color: inherit;
+        }
       }
     }
   }
