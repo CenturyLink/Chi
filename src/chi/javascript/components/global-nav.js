@@ -1,4 +1,3 @@
-
 import { Component } from '../core/component';
 import { Util } from '../core/util';
 import { chi } from '../core/chi';
@@ -38,7 +37,7 @@ class GlobalNav extends Component {
     if (this._list && this._openOnHover) {
       this._list.addEventListener('mouseenter', () => {
         this._wasExpandedBeforeHover = this._expanded;
-        
+
         if (!this._expanded) {
           this.expanded = true;
         }
@@ -110,7 +109,9 @@ class GlobalNav extends Component {
   }
 
   dispose() {
-    this._links.forEach((link) => link.removeEventListener('click', this._setActiveLink));
+    this._links.forEach((link) => {
+      link.removeEventListener('click', this._setActiveLink);
+    });
     this._list.removeEventListener('mouseenter', this._expandOnHover);
     this._list.removeEventListener('mouseleave', this._collapseOnLeave);
     this._elem = null;

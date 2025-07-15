@@ -37,8 +37,7 @@ async function loadChiAssets() {
     }
 
     await loadScript(`${baseUrl}/js/chi.js`);
-
-    loadScript(`${baseUrl}/js/ce/ux-chi-ce/ux-chi-ce.js`);
+    await loadScript(`${baseUrl}/js/ce/ux-chi-ce/ux-chi-ce.js`);
   } catch (error) {
     console.error('Error loading Chi assets:', error);
     throw error;
