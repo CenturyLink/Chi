@@ -826,7 +826,7 @@ $sidenav-lg-width: 12.5rem;
       box-shadow: none;
 
       > nav {
-        border: $sidenav-border-right;
+        border-right: $sidenav-border-right;
         height: 100%;
 
         > .chi-sidenav__list {
