@@ -14,6 +14,7 @@ import { NumberInput, factory as numberInput } from './components/number-input';
 import { Popover, factory as popover } from "./components/popover";
 import { RangeSlider, factory as rangeSlider } from "./components/range-slider";
 import { Sidenav, factory as sidenav } from "./components/sidenav";
+import { GlobalNav, factory as globalNav } from "./components/global-nav";
 import { Tab, factory as tab } from './components/tab';
 import { Tooltip, factory as tooltip } from "./components/tooltip";
 
@@ -34,6 +35,7 @@ export {
   popover,
   rangeSlider,
   sidenav,
+  globalNav,
   tab,
   tooltip,
 
@@ -50,6 +52,7 @@ export {
   Popover,
   RangeSlider,
   Sidenav,
+  GlobalNav,
   Tab,
   Tooltip,
 
@@ -73,6 +76,7 @@ if (typeof window !== 'undefined') {
     popover,
     rangeSlider,
     sidenav,
+    globalNav,
     tab,
     tooltip,
     Accordion,
@@ -88,6 +92,7 @@ if (typeof window !== 'undefined') {
     Popover,
     RangeSlider,
     Sidenav,
+    GlobalNav,
     Tab,
     Tooltip,
     EXPANSION_PANEL_STATES
