@@ -3,7 +3,7 @@
 # https://www.algolia.com/doc/rest-api/crawler/#section/Availability-and-authentication
 
 # Needs env variables ALGOLIA_USER_ID, ALGOLIA_API_KEY, ALGOLIA_CRAWLER_ID to be set
-source .env
+source ./.env
 
 SITEMAP="dist/sitemap.xml"
 
@@ -37,6 +37,7 @@ crawl_all_site() {
   # Step 3: Check if the TASK_ID was successfully captured
   if [ -z "$TASK_ID" ] || [ "$TASK_ID" == "null" ]; then
     echo "❌ Error: Failed to retrieve a valid taskId. Please check the response: $RESPONSE"
+    return 1
   fi
 
   echo "✅ Success! Task started with taskId: ${TASK_ID}"
@@ -64,7 +65,6 @@ crawl_url() {
 
   if [ -z "$TASK_ID" ] || [ "$TASK_ID" == "null" ]; then
     echo "❌ Error: Failed to retrieve a valid taskId for URL $url. Please check the response: $RESPONSE"
-    exit 1
   fi
 
   # wait for task to be completed 
@@ -111,6 +111,12 @@ crawl_from_latest_version() {
     -d "{\"startUrls\": [\"$BASE_URL/getting-started\"], \"sitemaps\": [\"$BASE_URL/sitemap.xml\"]}")
 
   TASK_ID=$(echo "$RESPONSE" | jq -r '.taskId')
+
+  # Check if TASK_ID is empty
+  if [ -z "$TASK_ID" ]; then
+    echo "Error: No task_id extracted. Response: $RESPONSE"
+    exit 1  # Exit the function with an error status
+  fi
 
   check_task_status "$TASK_ID"
 
