@@ -1731,6 +1731,21 @@ $sidenav-drawer-tab-active-background-color: $color-orange-10;
 $sidenav-drawer-tab-active-box-shadow: inset 0.125rem 0 0 $color-border-primary;
 $sidenav-float-drawer-margin-left: -0.0625rem;
 
+$sidenav-global-background-color: $color-white;
+$sidenav-global-item-text-color: $color-grey-100;
+$sidenav-global-item-font-size: 0.875rem;
+$sidenav-global-item-icon-color: $color-grey-90;
+$sidenav-global-item-icon-size: 1.25rem;
+$sidenav-global-item-border-radius: 0.3125rem;
+$sidenav-global-item-background-color: $color-white;
+$sidenav-global-item-active-background-color: $color-orange-20;
+$sidenav-global-item-active-text-color: $color-orange-80;
+$sidenav-global-item-active-icon-color: $color-orange-80;
+$sidenav-global-item-active-font-weight: $font-weight-bold;
+$sidenav-global-item-hover-background-color: $color-grey-20;
+$sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
+
 // Skeleton
 $skeleton-xs-size: 1.5rem;
 $skeleton-sm-size: 2rem;
