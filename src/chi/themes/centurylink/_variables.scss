@@ -972,17 +972,27 @@ $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 // Drawer
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
+$drawer-content-padding:                    0;
 $drawer-background-color:                   $color-background-white;
 $drawer-header-background-color:            transparent;
 $drawer-header-background-image:            none;
 $drawer-header-text-color:                  inherit;
 $drawer-button-close-top:                   0.8125rem;
+$drawer-button-close-right:                 0.75rem;
+$drawer-close-icon-size:                    1.25rem;
 $drawer-close-icon-color:                   inherit;
 $drawer-header-close-icon-color:            inherit;
-$drawer-header-min-height:                  3.5rem;
+$drawer-header-link-icon-color:             inherit;
 $drawer-header-padding:                     1rem;
 $drawer-header-title-font-size:             1rem;
 $drawer-header-title-font-weight:           $font-weight-semi-bold;
+$drawer-title-line-height:                  1.5rem;
+$drawer-footer-padding:                     1.25rem 2rem;
+$drawer-footer-border:                      1px solid $color-grey-30;
+$drawer-box-shadow-top:                     0 0 25px 10px rgba($color-black, 0.15);
+$drawer-box-shadow-bottom:                  0 0 25px 10px rgba($color-black, 0.15);
+$drawer-box-shadow-right:                   0 0 25px 10px rgba($color-black, 0.15);
+$drawer-box-shadow-left:                    0 0 25px 10px rgba($color-black, 0.15);
 
 // Dropdown
 $dropdown-button-text-color:                $color-text-base;
