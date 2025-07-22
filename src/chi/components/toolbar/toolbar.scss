@@ -1,6 +1,7 @@
 @import '_global-variables';
 @import '_global-mixins';
 
+chi-toolbar,
 .chi-toolbar {
   &__header,
   &__ribbon {
@@ -118,23 +119,21 @@
   + .chi-save-view {
     border-top: 0.0625rem solid $save-view-border-color;
   }
-}
 
-chi-toolbar,
-.chi-toolbar {
-  .chi-accordion.-compact-title {
-    .chi-accordion__item {
-      border-radius: $toolbar-expandable-border-radius;
-      background-color: $color-grey-10;
-      border: $toolbar-expandable-border;
-      border-bottom: $toolbar-expandable-border;
-
-      .chi-accordion__trigger {
-        .chi-accordion__title {
-          font-weight: $font-weight-bold;
+  .chi-accordion {
+    &.-compact-title {
+      .chi-accordion__item {
+        background-color: $toolbar-expandable-background-color;
+        border: $toolbar-expandable-border;
+        border-radius: $toolbar-expandable-border-radius;
+        
+        .chi-accordion__trigger {
+          .chi-accordion__title {
+            font-weight: $font-weight-bold;
+          }
         }
+        
       }
-
     }
   }
 }
