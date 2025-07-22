@@ -179,7 +179,7 @@ $animation-duration: 0.5s;
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
-    min-height: 3.5rem;
+    min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
     flex: 0 0 auto;
