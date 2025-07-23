@@ -37,7 +37,7 @@ crawl_all_site() {
   # Step 3: Check if the TASK_ID was successfully captured
   if [ -z "$TASK_ID" ] || [ "$TASK_ID" == "null" ]; then
     echo "❌ Error: Failed to retrieve a valid taskId. Please check the response: $RESPONSE"
-    return 1
+    exit 1
   fi
 
   echo "✅ Success! Task started with taskId: ${TASK_ID}"

@@ -4,6 +4,7 @@
 $button-colors: (
   primary: (
     background-color: $button-primary-solid-background-color,
+    background-color-disabled: $button-primary-disabled-background-color,
     background-color-hover: $button-primary-solid-hover-background-color,
     background-color-active: $button-primary-solid-active-background-color,
     background-color-outline: $button-primary-outline-background-color,
@@ -12,6 +13,7 @@ $button-colors: (
     background-color-flat-hover: $button-primary-flat-hover-background-color,
     background-color-flat-active: $button-primary-flat-active-background-color,
     border-color: $button-primary-solid-border-color,
+    border-color-disabled: $button-primary-disabled-border-color,
     border-color-hover: $button-primary-solid-hover-border-color,
     border-color-active: $button-primary-solid-active-border-color,
     border-color-outline: $button-primary-outline-border-color,
@@ -20,13 +22,16 @@ $button-colors: (
     border-color-flat-hover: $button-primary-flat-hover-border-color,
     border-color-flat-active: $button-primary-flat-active-border-color,
     text-color: $button-primary-solid-text-color,
+    text-color-disabled: $button-primary-disabled-text-color,
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
     text-color-outline-active: $button-primary-outline-active-text-color,
     text-color-flat: $button-primary-flat-text-color,
+    icon-color-disabled: $button-primary-disabled-icon-color,
   ),
   secondary: (
     background-color: $button-secondary-solid-background-color,
+    background-color-disabled: $button-secondary-disabled-background-color,
     background-color-hover: $button-secondary-solid-hover-background-color,
     background-color-active: $button-secondary-solid-active-background-color,
     background-color-outline: $button-secondary-outline-background-color,
@@ -35,6 +40,7 @@ $button-colors: (
     background-color-flat-hover: $button-secondary-flat-hover-background-color,
     background-color-flat-active: $button-secondary-flat-active-background-color,
     border-color: $button-secondary-solid-border-color,
+    border-color-disabled: $button-secondary-disabled-border-color,
     border-color-hover: $button-secondary-solid-hover-border-color,
     border-color-active: $button-secondary-solid-active-border-color,
     border-color-outline: $button-secondary-solid-border-color,
@@ -42,7 +48,9 @@ $button-colors: (
     border-color-outline-active: $button-secondary-outline-active-border-color,
     border-color-flat-hover: $button-secondary-flat-hover-border-color,
     border-color-flat-active: $button-secondary-flat-active-border-color,
+    icon-color-disabled: $button-secondary-disabled-icon-color,
     text-color: $button-secondary-solid-text-color,
+    text-color-disabled: $button-secondary-disabled-text-color,
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
     text-color-outline-active: $button-secondary-outline-active-text-color,
@@ -83,7 +91,7 @@ $button-colors: (
     border-color: $button-danger-solid-border-color,
     border-color-hover: $button-danger-solid-hover-border-color,
     border-color-active: $button-danger-solid-active-border-color,
-    border-color-outline: $button-danger-solid-border-color,
+    border-color-outline: $button-danger-outline-border-color,
     border-color-outline-hover: $button-danger-outline-hover-border-color,
     border-color-outline-active: $button-danger-outline-active-border-color,
     border-color-flat-hover: $button-danger-flat-hover-border-color,
@@ -351,26 +359,24 @@ $sizes: (
   }
 
   &.-close {
+    border-color: transparent;
+
     &,
     .chi-icon {
       color: $button-close-icon-color;
     }
 
     &:not(.-disabled):not([disabled]) {
-      &,
       &:hover,
       &.-hover {
         background-color: $button-close-hover-background-color;
-        border-color: $button-close-hover-border-color;
         box-shadow: none;
         opacity: $button-close-hover-icon-opacity;
       }
       
-      &,
       &:active,
       &.-active {
         background-color: $button-close-active-background-color;
-        border-color: $button-close-active-border-color;
         box-shadow: none;
       }
     }
@@ -421,7 +427,7 @@ $sizes: (
     box-shadow: none;
     color: $button-flat-text-color;
 
-    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+    &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary):not(.-disabled) {
       &.-icon {
         .chi-icon {
           color: $button-flat-icon-color;
@@ -539,6 +545,7 @@ $sizes: (
       background-color: $button-flat-disabled-background-color;
       border-color: $button-flat-disabled-border-color;
       opacity: $button-flat-disabled-opacity;
+      color: $button-flat-disabled-text-color;
 
       & .chi-icon {
         color: $button-flat-disabled-icon-color;
@@ -601,6 +608,15 @@ $sizes: (
       &[disabled],
       &.-disabled {
         @include button-disabled;
+
+        background-color: map-get(map-get($button-colors, $color), background-color-disabled);
+        border-color: map-get(map-get($button-colors, $color), border-color-disabled);
+        color: map-get(map-get($button-colors, $color), text-color-disabled);
+
+        & .chi-icon {
+          color: map-get(map-get($button-colors, $color), icon-color-disabled);
+          opacity: $opacity-100;
+        }
       }
 
       &.-outline {
@@ -667,6 +683,7 @@ $sizes: (
           background-color: transparent;
           border-color: transparent;
           opacity: $opacity-60;
+          color: map-get(map-get($button-colors, $color), text-color-flat-disabled);
 
           & .chi-icon {
             color: inherit;
