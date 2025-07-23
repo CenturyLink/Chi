@@ -147,7 +147,11 @@
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;
     line-height: $card-title-line-height;
-    margin: 0;
+    margin: $card-title-margin;
+  }
+
+  &__header .chi-card__title {
+    margin: 0
   }
 
   &__footer {
