@@ -36,6 +36,78 @@
       </ul>
 
       <h3>Examples</h3>
+      <chi-toolbar title="Search & filter" type="expandable">
+        <div slot="start">
+          <div class="-d--flex -justify-content--between -align-items--center">
+            <chi-checkbox label="chckbox"></chi-checkbox>
+            <chi-dropdown position="bottom" button="No Saved Views." id="dropdown-header-accordion">
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+            </chi-dropdown>
+          </div>
+        </div>
+        <div slot="end">
+          <div class="chi-grid">
+            <div class="chi-col -w--5">
+              <chi-search-input placeholder="Search"></chi-search-input>
+            </div>
+            <div class="chi-col -w--4 -d--flex -align-items--center">
+              <chi-checkbox checked label="Search hidden columns" class=""></chi-checkbox>
+            </div>
+            <div class="chi-col -w--3"></div>
+            
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-1"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-2"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-3"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-4"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
+                <chi-icon icon="plus" class="-mr--1"></chi-icon> Add Filters
+              </chi-button>
+            </div>
+
+            <div class="chi-col -w--12 -mt--2">
+              <chi-button color="primary">Save View</chi-button>
+              <chi-button>Reset</chi-button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </chi-toolbar>
       <chi-button id="toggle-nav" variant="flat" type="icon">
         <chi-icon icon="menu"></chi-icon>
       </chi-button>

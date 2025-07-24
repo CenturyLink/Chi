@@ -2114,6 +2114,9 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
+$toolbar-expandable-border-radius:          0.5rem;
+$toolbar-expandable-background-color:       $color-grey-20;
+$toolbar-expandable-border:                 0.0625rem solid $color-grey-30;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);
