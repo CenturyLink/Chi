@@ -686,6 +686,10 @@ $button-close-icon-color: $color-grey-70;
 $button-close-hover-icon-opacity: $opacity-100;
 $button-close-disabled-border-color: transparent;
 
+$button-primary-disabled-background-color: $color-grey-50;
+$button-primary-disabled-border-color: $color-grey-50;
+$button-primary-disabled-text-color: $color-text-white;
+$button-primary-disabled-icon-color: $color-icon-white;
 $button-primary-solid-background-color: $color-teal-70;
 $button-primary-solid-border-color: $color-teal-70;
 $button-primary-solid-border-radius: 2rem;
@@ -713,17 +717,10 @@ $button-primary-flat-hover-background-color: rgba($color-teal-70, 0.2);
 $button-primary-flat-active-background-color: rgba($color-teal-70, 0.4);
 $button-primary-flat-disabled-background-color: $color-grey-10;
 
-$button-primary-disabled-background-color: $color-grey-50;
-$button-primary-disabled-border-color: $color-grey-50;
-$button-primary-disabled-text-color: $color-text-white;
-$button-primary-disabled-icon-color: $color-icon-white;
-
-
 $button-secondary-disabled-background-color: $color-grey-10;
 $button-secondary-disabled-border-color: $color-grey-60;
 $button-secondary-disabled-icon-color: $color-icon-muted;
 $button-secondary-disabled-text-color: $color-text-muted-light;
-
 $button-secondary-solid-background-color: $color-teal-25;
 $button-secondary-solid-border-color: $color-teal-25;
 $button-secondary-solid-border-radius: $button-border-radius;
