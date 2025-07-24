@@ -926,6 +926,29 @@ $card-title-font-size: $font-size-7;
 $card-title-font-weight: $font-weight-extra-bold;
 $card-title-line-height: $line-height-lg;
 
+$card-kpi-background-color: $color-background-white;
+$card-kpi-hover-background-color: $color-teal-10;
+$card-kpi-active-background-color: $color-teal-15;
+$card-kpi-disabled-background-color: $color-background-white;
+$card-kpi-border: 0.0625rem solid rgba($color-black, 0.17);
+$card-kpi-hover-border: 0.0625rem solid $color-teal-70;
+$card-kpi-active-border: 0.0625rem solid $color-teal-70;
+$card-kpi-disabled-border: $card-kpi-border;
+$card-kpi-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-hover-box-shadow: inset 0 0 0 0.0625rem $color-teal-70, 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-active-box-shadow: inset 0 0 0 0.0625rem $color-teal-70, 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-disabled-box-shadow: none;
+$card-kpi-title-color: $color-teal-70;
+$card-kpi-hover-title-color: $color-teal-80;
+$card-kpi-active-title-color: $color-teal-80;
+$card-kpi-disabled-title-color: $color-text-muted;
+$card-kpi-icon-arrow-color: $color-teal-80;
+$card-kpi-caption-color: $color-text-muted;
+$card-kpi-metric-color: $color-teal-70;
+$card-kpi-hover-metric-color: $color-teal-80;
+$card-kpi-active-metric-color: $color-teal-80;
+$card-kpi-disabled-metric-color: $color-text-muted;
+
 // Carousel
 $carousel-dot-background-color: transparent;
 $carousel-dot-border-color: $color-border-primary;
