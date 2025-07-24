@@ -20,10 +20,10 @@
       box-shadow: none;
       flex-wrap: nowrap;
       justify-content: space-between;
-      padding: 1rem;
+      padding: $card-widget-header-padding;
 
       & + .chi-card__content {
-        padding-top: 0;
+        padding-top: $card-widget-header-content-padding-top;
       }
 
       &.-align--left {
@@ -65,10 +65,7 @@
     padding: $card-content-padding;
 
     .chi-card__title {
-      font-size: $font-size-lg;
-      font-weight: $font-weight-semi-bold;
-      line-height: $line-height-lg;
-      margin: 0 0 0.5rem 0;
+      margin: $card-title-margin;
     }
 
     .chi-card__icon {
@@ -141,13 +138,20 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
+
+    .chi-card__title {
+      margin: $card-header-title-margin;
+    }
+
+    & + .chi-card__content {
+      padding-top: $card-header-content-padding-top;
+    }
   }
 
-  .chi-card__title {
+  &__title {
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;
     line-height: $card-title-line-height;
-    margin: 0;
   }
 
   &__footer {
@@ -282,6 +286,111 @@
     &.-widget {
       .chi-card__header {
         background-color: $card-highlight-background-color;
+      }
+    }
+  }
+
+  &.-kpi {
+    background-color: $card-kpi-background-color;
+    border: $card-kpi-border;
+    box-shadow: $card-kpi-box-shadow;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.12s, border 0.12s, box-shadow 0.12s, color 0.12s;
+
+    &.-fixed-width {
+      width: 14.25rem;
+    }
+
+    .chi-card__content {
+      padding: 1rem 1.25rem;
+
+      .chi-card__title {
+        color: $card-kpi-title-color;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-base;
+        line-height: $line-height-sm;
+        margin-bottom: 0.3125rem;
+        padding-right: 25%;
+        position: relative;
+
+        &::after {
+          color: $card-kpi-icon-arrow-color;
+          content: '\e904';
+          font-family: chi;
+          font-size: 1rem;
+          font-weight: 400;
+          height: 1rem;
+          line-height: 1rem;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 1rem;
+        }
+      }
+
+      .chi-card__caption {
+        color: $card-kpi-caption-color;
+        font-size: $font-size-2xs;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-metric-color;
+        font-size: 1.75rem;
+        font-weight: $font-weight-bold;
+        margin-top: 0.75rem;
+      }
+    }
+
+    &:hover {
+      background: $card-kpi-hover-background-color;
+      border: $card-kpi-hover-border;
+      box-shadow: $card-kpi-hover-box-shadow;
+
+      .chi-card__title {
+        color: $card-kpi-hover-title-color;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-hover-metric-color;
+      }
+    }
+
+    &:active {
+      background: $card-kpi-active-background-color;
+      border: $card-kpi-active-border;
+      box-shadow: $card-kpi-active-box-shadow;
+
+      .chi-card__title {
+        color: $card-kpi-active-title-color;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-active-metric-color;
+      }
+    }
+
+    &.-disabled {
+      pointer-events: none;
+
+      &,
+      &:hover,
+      &:active {
+        background: $card-kpi-disabled-background-color;
+        border: $card-kpi-disabled-border;
+        box-shadow: $card-kpi-disabled-box-shadow;
+
+        .chi-card__title {
+          color: $card-kpi-disabled-title-color;
+
+          &::after {
+            visibility: hidden;
+          }
+        }
+
+        .chi-card__metric {
+          color: $card-kpi-disabled-metric-color;
+        }
       }
     }
   }
