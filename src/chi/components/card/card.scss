@@ -20,10 +20,10 @@
       box-shadow: none;
       flex-wrap: nowrap;
       justify-content: space-between;
-      padding: 1rem;
+      padding: $card-widget-header-padding;
 
       & + .chi-card__content {
-        padding-top: 0;
+        padding-top: $card-widget-header-content-padding-top;
       }
 
       &.-align--left {
@@ -65,10 +65,7 @@
     padding: $card-content-padding;
 
     .chi-card__title {
-      font-size: $font-size-lg;
-      font-weight: $font-weight-semi-bold;
-      line-height: $line-height-lg;
-      margin: 0 0 0.5rem 0;
+      margin: $card-title-margin;
     }
 
     .chi-card__icon {
@@ -141,17 +138,20 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
+
+    .chi-card__title {
+      margin: $card-header-title-margin;
+    }
+
+    & + .chi-card__content {
+      padding-top: $card-header-content-padding-top;
+    }
   }
 
-  .chi-card__title {
+  &__title {
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;
     line-height: $card-title-line-height;
-    margin: $card-title-margin;
-  }
-
-  &__header .chi-card__title {
-    margin: 0
   }
 
   &__footer {
