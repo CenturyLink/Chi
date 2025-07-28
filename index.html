@@ -10,7 +10,8 @@
     <script src="./scripts/serve/loadAssets.js"></script>
     <title>Chi CSS & JS</title>
   </head>
-  <body class="-p--4">
+  <body style="height: 100vh">
+    <div class="-p--2">
       <h2>Chi Playground</h2>
 
       <p>In order to change the theme, you can use the following routes:</p>
@@ -24,513 +25,257 @@
           <a href="http://localhost:5173/?theme=chi-centurylink">http://localhost:5173/?theme=chi-centurylink</a>
         </li>
         <li><b>Colt</b>: <a href="http://localhost:5173/?theme=chi-colt">http://localhost:5173/?theme=chi-colt</a></li>
-        <li><b>Brightspeed</b>: <a href="http://localhost:5173/?theme=chi-brightspeed">http://localhost:5173/?theme=chi-brightspeed</a></li>
-        <li><b>Test</b>: <a href="http://localhost:5173/?theme=chi-test">http://localhost:5173/?theme=chi-test</a></li>
+        <li>
+          <b>Brightspeed</b>:
+          <a href="http://localhost:5173/?theme=chi-brightspeed">http://localhost:5173/?theme=chi-brightspeed</a>
+        </li>
+        <li>
+          <b>Test</b>:
+          <a href="http://localhost:5173/?theme=chi-test">http://localhost:5173/?theme=chi-test</a>
+        </li>
       </ul>
 
-      <h1>Primary button</h1>
-      <div>
-        <chi-button color="primary">Primary button</chi-button>
-        
-        <h2>Sizes</h2> 
-        <chi-button color="primary" size="lg">Large Primary</chi-button>
-        <chi-button color="primary" size="md">Medium Primary</chi-button>
-        <chi-button color="primary" size="sm">Small Primary</chi-button>
-
-        
-        <h2>States</h2> 
-
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button color="primary" extra-class="">Primary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button color="primary" extra-class="-focus">Primary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button color="primary" extra-class="-hover">Primary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button color="primary" extra-class="-active">Primary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button color="primary" disabled>Primary button</chi-button>
+      <h3>Examples</h3>
+      <chi-toolbar title="Search & filter" type="expandable">
+        <div slot="start">
+          <div class="-d--flex -justify-content--between -align-items--center">
+            <chi-checkbox label="chckbox"></chi-checkbox>
+            <chi-dropdown position="bottom" button="No Saved Views." id="dropdown-header-accordion">
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+              <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+            </chi-dropdown>
           </div>
         </div>
+        <div slot="end">
+          <div class="chi-grid">
+            <div class="chi-col -w--5">
+              <chi-search-input placeholder="Search"></chi-search-input>
+            </div>
+            <div class="chi-col -w--4 -d--flex -align-items--center">
+              <chi-checkbox checked label="Search hidden columns" class=""></chi-checkbox>
+            </div>
+            <div class="chi-col -w--3"></div>
+            
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-1"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-2"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-3"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-dropdown-select
+                id="dropdown-select-4"
+                button="Default filter"
+                visible-items="5"
+                search
+                multiple
+              ></chi-dropdown-select>
+            </div>
+            <div class="chi-col -w--2 -mt--2">
+              <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
+                <chi-icon icon="plus" class="-mr--1"></chi-icon> Add Filters
+              </chi-button>
+            </div>
 
-
-        <h2>Labeled icon buttons</h2>
-        <div class="chi-grid">
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="primary" class="-mb--2">
-                <chi-icon icon="atom"></chi-icon>
-                <span>Large primary</span>
-              </chi-button>
-              <chi-button color="primary">
-                <span>Large primary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="primary" size="md" class="-mb--2">
-                <chi-icon icon="atom"></chi-icon>
-                <span>Medium primary</span>
-              </chi-button>
-              <chi-button color="primary" size="md">
-                <span>Medium primary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="primary" size="sm" class="-mb--2">
-                <chi-icon icon="atom"></chi-icon>
-                <span>Large primary</span>
-              </chi-button>
-              <chi-button color="primary" size="sm">
-                <span>Large primary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2"></div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="primary" disabled class="-mb--2">
-                <chi-icon icon="atom"></chi-icon>
-                <span>Large primary</span>
-              </chi-button>
-              <chi-button color="primary" disabled>
-                <span>Large primary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
+            <div class="chi-col -w--12 -mt--2">
+              <chi-button color="primary">Save View</chi-button>
+              <chi-button>Reset</chi-button>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-      <h1>Secondary button</h1>
-      <div>
-        <chi-button>Secondary button</chi-button>
-        
-        <h2>Sizes</h2> 
-        <chi-button size="lg">Large Secondary</chi-button>
-        <chi-button size="md">Medium Secondary</chi-button>
-        <chi-button size="sm">Small Secondary</chi-button>
-
-        
-        <h2>States</h2> 
-
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button extra-class="">Secondary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button extra-class="-focus">Secondary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button extra-class="-hover">Secondary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button extra-class="-active">Secondary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button disabled color="secondary">Secondary button</chi-button>
-          </div>
         </div>
-
-
-        <h2>Labeled icon buttons</h2>
-        <div class="chi-grid">
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large secondary</span>
-              </chi-button>
-              <chi-button>
-                <span>Large secondary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button size="md" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Medium secondary</span>
-              </chi-button>
-              <chi-button size="md">
-                <span>Medium secondary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button size="sm" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large secondary</span>
-              </chi-button>
-              <chi-button size="sm">
-                <span>Large secondary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2"></div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button disabled class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large secondary</span>
-              </chi-button>
-              <chi-button disabled>
-                <span>Large secondary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
+      </chi-toolbar>
+      <chi-button id="toggle-nav" variant="flat" type="icon">
+        <chi-icon icon="menu"></chi-icon>
+      </chi-button>
+      <aside id="global-nav" class="chi-sidenav -global">
+        <div class="chi-sidenav__content">
+          <nav>
+            <ul class="chi-sidenav__list">
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="dashboard"></chi-icon>
+                    <span>Dashboard</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="bell"></chi-icon>
+                    <chi-badge color="danger" size="xs" text-weight="bold">21</chi-badge>
+                    <span>Alerts & Notifications</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="services" type="link">
+                    <div slot="services-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Manage Services</chi-link>
+                        <chi-link>Add Services</chi-link>
+                        <chi-link>Order Status</chi-link>
+                        <chi-accordion id="services-tools" type="link">
+                          <div slot="services-tools-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>ELS & LI Managements</chi-link>
+                              <chi-link>Network Storage</chi-link>
+                              <chi-link class="-active">Edge Bare Metal</chi-link>
+                              <chi-link>SASE Management</chi-link>
+                              <chi-link>Voice Complete Features</chi-link>
+                              <chi-link>+1 Switched Toll Free</chi-link>
+                              <chi-link>Cross Connect</chi-link>
+                              <chi-link>Enhanced Routing</chi-link>
+                              <chi-link>Manage Voicemail</chi-link>
+                              <chi-link>Security Certificate Management</chi-link>
+                              <chi-link>Toll Free Management</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-requests" type="link">
+                          <div slot="services-requests-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Requests Page 1</chi-link>
+                              <chi-link>Requests Page 2</chi-link>
+                              <chi-link>Requests Page 3</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-quotes" type="link">
+                          <div slot="services-quotes-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Quotes Page 1</chi-link>
+                              <chi-link>Quotes Page 2</chi-link>
+                              <chi-link>Quotes Page 3</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                        <chi-accordion id="services-portals" type="link">
+                          <div slot="services-portals-template">
+                            <div class="chi-sidenav__item-guide">
+                              <chi-link>Portals Page 1</chi-link>
+                              <chi-link>Portals Page 2</chi-link>
+                              <chi-link>Portals Page 3</chi-link>
+                            </div>
+                          </div>
+                        </chi-accordion>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="apis" type="link">
+                    <div slot="apis-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>APIs page 1</chi-link>
+                        <chi-link>APIs page 2</chi-link>
+                        <chi-link>APIs page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="monitoring-and-reports" type="link">
+                    <div slot="monitoring-and-reports-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Monitoring & Reports page 1</chi-link>
+                        <chi-link>Monitoring & Reports page 2</chi-link>
+                        <chi-link>Monitoring & Reports page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="billing" type="link">
+                    <div slot="billing-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Billing page 1</chi-link>
+                        <chi-link>Billing page 2</chi-link>
+                        <chi-link>Billing page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="admin" type="link">
+                    <div slot="admin-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Admin page 1</chi-link>
+                        <chi-link>Admin page 2</chi-link>
+                        <chi-link>Admin page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-accordion id="support" type="link">
+                    <div slot="support-template">
+                      <div class="chi-sidenav__item-guide">
+                        <chi-link>Support page 1</chi-link>
+                        <chi-link>Support page 2</chi-link>
+                        <chi-link>Support page 3</chi-link>
+                      </div>
+                    </div>
+                  </chi-accordion>
+                </div>
+              </li>
+              <div class="chi-divider"></div>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="circle-question"></chi-icon>
+                    <span>[Portal Name] Help</span>
+                  </chi-link>
+                </div>
+              </li>
+              <li class="chi-sidenav__item">
+                <div class="chi-sidenav__item-wrapper">
+                  <chi-link>
+                    <chi-icon icon="compose"></chi-icon>
+                    <span>Contact Lumen</span>
+                  </chi-link>
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </div>
-
-      
-      <h1>Tertiary button</h1>
-      <div>
-        <chi-button variant="flat">Tertiary button</chi-button>
-        
-        <h2>Sizes</h2> 
-        <chi-button variant="flat" size="lg">Large Tertiary</chi-button>
-        <chi-button variant="flat" size="md">Medium Tertiary</chi-button>
-        <chi-button variant="flat" size="sm">Small Tertiary</chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button variant="flat" extra-class="">Tertiary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button variant="flat" extra-class="-focus">Tertiary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button variant="flat" extra-class="-hover">Tertiary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button variant="flat" extra-class="-active">Tertiary button</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button variant="flat" disabled>Tertiary button</chi-button>
-          </div>
-        </div>
-        
-        
-        <h2>Labeled icon buttons</h2>
-        <div class="chi-grid">
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button variant="flat" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large tertiary</span>
-              </chi-button>
-              <chi-button variant="flat">
-                <span>Large tertiary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button variant="flat" size="md" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Medium tertiary</span>
-              </chi-button>
-              <chi-button variant="flat" size="md">
-                <span>Medium tertiary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button variant="flat" size="sm" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Small tertiary</span>
-              </chi-button>
-              <chi-button variant="flat" size="sm">
-                <span>Small tertiary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2"></div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button variant="flat" disabled class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large tertiary</span>
-              </chi-button>
-              <chi-button variant="flat" disabled>
-                <span>Large tertiary</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-        </div>
-      </div>
-        
-        
-      <h1>Danger button</h1>
-      <div>
-        <chi-button color="danger">Danger button</chi-button>
-        
-        <h2>Sizes</h2> 
-        <chi-button color="danger" size="lg">Large danger</chi-button>
-        <chi-button color="danger" size="md">Medium danger</chi-button>
-        <chi-button color="danger" size="sm">Small danger</chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button color="danger" size="lg" extra-class="">Large danger</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button color="danger" size="lg" extra-class="-focus">Large danger</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button color="danger" size="lg" extra-class="-hover">Large danger</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button color="danger" size="lg" extra-class="-active">Large danger</chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button color="danger" size="lg" disabled>Large danger</chi-button>
-          </div>
-        </div>
-        
-        
-        <h2>Labeled icon buttons</h2>
-        <div class="chi-grid">
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="danger" size="lg" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large danger</span>
-              </chi-button>
-              <chi-button color="danger" size="lg">
-                <span>Large danger</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="danger" size="md" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Medium danger</span>
-              </chi-button>
-              <chi-button color="danger" size="md">
-                <span>Medium danger</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="danger" size="sm" class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large danger</span>
-              </chi-button>
-              <chi-button color="danger" size="sm">
-                <span>Large danger</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-          <div class="chi-col -w--2"></div>
-          <div class="chi-col -w--2">
-            <div class="-d--flex -flex--column">
-              <chi-button color="danger" disabled class="-mb--2">
-                <chi-icon icon="edit"></chi-icon>
-                <span>Large danger</span>
-              </chi-button>
-              <chi-button color="danger" disabled>
-                <span>Large danger</span>
-                <chi-icon icon="chevron-down"></chi-icon>
-              </chi-button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <h1>Icon button</h1>
-      <div>        
-        <h2>Sizes</h2> 
-        <chi-button variant="flat" type="icon" size="lg"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button variant="flat" type="icon" size="md"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button variant="flat" type="icon" size="sm"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button variant="flat" type="icon" size="xs"><chi-icon icon="edit"></chi-icon></chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button type="icon" variant="flat" extra-class=""><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button type="icon" variant="flat" extra-class="-focus"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button type="icon" variant="flat" extra-class="-hover"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button type="icon" variant="flat" extra-class="-active"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button type="icon" variant="flat" disabled><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-        </div>
-      </div>
-
-      <h1>Grayscale icon button</h1>
-      <div>        
-        <h2>Sizes</h2> 
-        <chi-button color="dark" variant="flat" type="icon" size="lg"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button color="dark" variant="flat" type="icon" size="md"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button color="dark" variant="flat" type="icon" size="sm"><chi-icon icon="edit"></chi-icon></chi-button>
-        <chi-button color="dark" variant="flat" type="icon" size="xs"><chi-icon icon="edit"></chi-icon></chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button type="icon" color="dark" variant="flat" extra-class=""><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button type="icon" color="dark" variant="flat" extra-class="-focus"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button type="icon" color="dark" variant="flat" extra-class="-hover"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button type="icon" color="dark" variant="flat" extra-class="-active"><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button type="icon" color="dark" variant="flat" disabled><chi-icon icon="edit"></chi-icon></chi-button>
-          </div>
-        </div>
-      </div>
-
-      <h1>Close icon button</h1>
-      <div>        
-        <h2>Sizes</h2> 
-        <chi-button type="close" size="lg"></chi-button>
-        <chi-button type="close" size="md"></chi-button>
-        <chi-button type="close" size="sm"></chi-button>
-        <chi-button type="close" size="xs"></chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button type="close" extra-class=""></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button type="close" extra-class="-focus"></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button type="close" extra-class="-hover"></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button type="close" extra-class="-active"></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button type="close" disabled></chi-button>
-          </div>
-        </div>
-      </div>
-
-      <h1>Floating icon button</h1>
-      <div>        
-        <h2>Sizes</h2> 
-        <chi-button type="float" color="primary" size="lg"><chi-icon icon="chat"></chi-icon></chi-button>
-        <chi-button type="float" color="primary" size="md"><chi-icon icon="chat"></chi-icon></chi-button>
-        <chi-button type="float" color="primary" size="sm"><chi-icon icon="chat"></chi-icon></chi-button>
-        <chi-button type="float" color="primary" size="xs"><chi-icon icon="chat"></chi-icon></chi-button>
-        
-        
-        <h2>States</h2> 
-        
-        <div class="chi-grid">
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">Default</h6>
-            <chi-button type="float" color="primary" extra-class=""><chi-icon icon="chat"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">focus</h6>
-            <chi-button type="float" color="primary" extra-class="-focus"><chi-icon icon="chat"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">hover</h6>
-            <chi-button type="float" color="primary" extra-class="-hover"><chi-icon icon="chat"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">active</h6>
-            <chi-button type="float" color="primary" extra-class="-active"><chi-icon icon="chat"></chi-icon></chi-button>
-          </div>
-          <div class="chi-col -w--2 -d--flex -flex--column">
-            <h6 class="-mb--1">disabled</h6>
-            <chi-button type="float" color="primary" disabled><chi-icon icon="chat"></chi-icon></chi-button>
-          </div>
-        </div>
-      </div>
+      </aside>
+    </div>
   </body>
   <script>
     window.chiReady
