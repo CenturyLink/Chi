@@ -956,6 +956,28 @@ $data-table-state-danger-box-shadow:        $color-red-60;
 $data-table-state-success-box-shadow:       $color-green-60;
 $data-table-state-info-box-shadow:          $color-blue-60;
 
+$data-table-cell-span-highlight-display: inline;
+
+$data-table-cell-highlight-background: $color-yellow-30;
+$data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-cell-highlight-border-radius: 0.125rem;
+$data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-cell-highlight-color: $color-black;
+
+$data-table-cell-highlight-hidden-column-flex-grow: 0;
+$data-table-cell-highlight-hidden-column-flex-basis: 2rem;
+$data-table-cell-highlight-hidden-column-position: absolute;
+$data-table-cell-highlight-hidden-column-right: 3rem;
+$data-table-cell-highlight-hidden-column-z-index: 1;
+
+$data-table-highlight-hidden-column-highlight-background: $color-yellow-30;
+$data-table-highlight-hidden-column-highlight-border-radius: 0.125rem;
+$data-table-highlight-hidden-column-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-highlight-hidden-column-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-highlight-hidden-column-highlight-color: $color-black;
+
+$data-table-row-child-cell-hidden-column-position: absolute !important;
+
 // Drawer
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
