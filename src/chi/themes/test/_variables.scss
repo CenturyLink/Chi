@@ -23,6 +23,7 @@ $font-size-base: $font-size-md;
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
@@ -329,6 +330,7 @@ $focus-color: $color-teal-70;
 
 // Border radius
 $border-radius-base: 0.25rem; // 4px
+$border-radius-medium: 0.5rem;
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
@@ -505,7 +507,7 @@ $avatar-orange-border-color: $color-orange-60;
 $avatar-orange-text-color: $color-orange-70;
 
 // Backdrop
-$backdrop-background-color: rgba($color-black, 0.65);
+$backdrop-background-color: rgba($color-teal-80, 0.2);
 $backdrop-inverse-background-color: rgba($color-white, 0.8);
 
 // Badge
@@ -1288,23 +1290,27 @@ $mobile-nav-list-item-active-box-shadow: inset 0.125rem 0 0 $color-border-primar
 
 // Modal
 $modal-animated-transition-duration: 0.5s;
-$modal-background-color: $color-grey-10;
-$modal-border-radius: $border-radius-base;
-$modal-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12),
-  0 11px 15px -7px rgba(0, 0, 0, 0.2);
-$modal-close-top: 0.5rem;
-$modal-max-width: 600px;
-$modal-header-background-color: $color-teal-70;
+$modal-background-color: $color-white;
+$modal-border-radius: $border-radius-medium;
+$modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+$modal-close-top: 1.5rem;
+$modal-close-right: 2rem;
+$modal-max-width: 37.5rem;
+$modal-header-background-color: $color-white;
 $modal-header-background-image: none;
-$modal-header-text-color: $color-text-white;
+$modal-header-text-color: $color-text-black;
 $modal-header-box-shadow: none;
 $modal-header-min-height: 3.5rem;
-$modal-header-padding: 1rem;
+$modal-header-padding: 2rem;
+$modal-title-font-size: 1.5rem;
+$modal-title-font-weight: $font-weight-medium;
+$modal-content-padding: 0 2rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
-$modal-footer-padding: 1rem;
-$modal-back-link-color: $color-text-white;
-$modal-close-icon-color: $color-text-white;
+$modal-footer-padding: 2rem;
+$modal-footer-justify-content: start;
+$modal-back-link-color: $color-teal-80;
+$modal-close-icon-color: $color-teal-80;
 $modal-gradient-border-radius: 1.5rem;
 $modal-gradient-header-background: linear-gradient(90deg, $color-red-50 0%, $color-orange-50 100%);
 $modal-gradient-header-padding: 1.125rem 1.5rem 0.875rem 1.5rem;
@@ -1316,7 +1322,7 @@ $modal-gradient-title-margin-bottom: 0.25rem;
 $modal-gradient-subtitle-color: $color-text-white;
 $modal-gradient-subtitle-font-size: $font-size-xl;
 $modal-gradient-subtitle-line-height: 1.375rem;
-$modal-gradient-subtitle-font-weight: 700;
+$modal-gradient-subtitle-font-weight: $font-weight-bold;
 $modal-header-graphics-background-img: url('https://lib.lumen.com/images/shapes.svg');
 
 // Number input
