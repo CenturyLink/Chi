@@ -12,17 +12,24 @@
   word-wrap: break-word;
 
   &.-widget {
+    border-radius: $card-widget-border-radius;
     background-color: $card-widget-background-color;
     border: $card-widget-border;
 
     .chi-card__header {
       background: none;
+      border: $card-widget-header-border;
+      border-bottom: $card-widget-header-border-bottom;
+      border-radius: $card-widget-header-border-radius;
       box-shadow: none;
       flex-wrap: nowrap;
       justify-content: space-between;
       padding: $card-widget-header-padding;
 
       & + .chi-card__content {
+        border-top: $card-widget-content-border;
+        border-top-left-radius: $card-widget-content-border;
+        border-top-right-radius: $card-widget-content-border;
         padding-top: $card-widget-header-content-padding-top;
       }
 
@@ -54,18 +61,27 @@
   }
 
   &__hero {
-    width: 100%;
+    border-radius: $card-hero-border-radius;
+    width: $card-hero-width;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
+    border: $card-content-border;
+    border-radius: $card-content-border-radius;
     font-size: $font-size-base;
     line-height: $line-height;
     padding: $card-content-padding;
 
+    &:has(+ .chi-card__footer){
+      border-bottom: $card-content-footer-border-bottom;
+      border-bottom-left-radius: $card-content-footer-border-bottom;
+      border-bottom-right-radius: $card-content-footer-border-bottom;
+    }
+
     .chi-card__title {
-      margin: $card-title-margin;
+      padding-bottom: $card-content-title-padding-bottom;
     }
 
     .chi-card__icon {
@@ -138,14 +154,6 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
-
-    .chi-card__title {
-      margin: $card-header-title-margin;
-    }
-
-    & + .chi-card__content {
-      padding-top: $card-header-content-padding-top;
-    }
   }
 
   &__title {
@@ -163,6 +171,10 @@
     min-height: $card-footer-min-height;
     padding: $card-footer-padding;
     position: relative;
+    border: $card-footer-border;
+    border-top: $card-footer-border-top;
+    border-bottom-left-radius: $card-footer-border-bottom-radius;
+    border-bottom-right-radius: $card-footer-border-bottom-radius;
 
     .chi-button {
       + .chi-button {
