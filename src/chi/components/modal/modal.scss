@@ -189,4 +189,25 @@
       font-weight: $modal-gradient-subtitle-font-weight;
     }
   }
+
+  &.-full-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+
+    &.-animated.-transitioning {
+      display: flex;
+    }
+
+    .chi-modal__header,
+    .chi-modal__footer {
+      flex-shrink: 0;
+    }
+
+    .chi-modal__content {
+      flex-grow: 1;
+    }
+  }
 }
