@@ -278,12 +278,12 @@ $color-background-gradient-accent-1: linear-gradient(
   $color-red-50 0%,
   $color-orange-50 35%,
   $color-orange-50 94%,
-  $color-orange-50 100%,
+  $color-orange-50 100%
 );
 $color-background-gradient-accent-2: linear-gradient(
-  90deg, 
-  $color-pink-50 0%,     
-  $color-orange-50 7%,   
+  90deg,
+  $color-pink-50 0%,
+  $color-orange-50 7%,
   $color-orange-50 25%,
   $color-orange-50 43%,
   $color-orange-50 61%,
@@ -509,6 +509,11 @@ $avatar-orange-text-color: $color-orange-70;
 // Backdrop
 $backdrop-background-color: rgba($color-teal-80, 0.2);
 $backdrop-inverse-background-color: rgba($color-white, 0.8);
+$backdrop-full-page-height: 100%;
+$backdrop-full-page-margin: 0;
+$backdrop-full-page-max-width: none;
+$backdrop-full-page-padding: 2rem 1.5rem;
+$backdrop-full-page-width: 100%;
 
 // Badge
 $badge-background-color: $color-background-white;
@@ -949,7 +954,7 @@ $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
 // Code
-$code-font-size:                            $font-size-sm;
+$code-font-size: $font-size-sm;
 
 // CSS Grid
 $css-grid-gap: 1rem;
@@ -1077,7 +1082,7 @@ $dropdown-select-sm-height: 2rem;
 $dropdown-select-sm-font-size: $font-size-base;
 $dropdown-select-sm-line-height: $line-height-sm;
 $dropdown-select-sm-arrow-background-size: 0.75rem;
-$dropdown-select-sm-padding: .4375rem 0.75rem;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
 $dropdown-select-md-font-size: $font-size-base;
@@ -1311,6 +1316,14 @@ $modal-footer-padding: 2rem;
 $modal-footer-justify-content: start;
 $modal-back-link-color: $color-teal-80;
 $modal-close-icon-color: $color-teal-80;
+$modal-full-page-display: flex;
+$modal-full-page-flex-direction: column;
+$modal-full-page-height: 100%;
+$modal-full-page-max-width: none;
+$modal-full-page-width: 100%;
+$modal-full-page-animated-display: flex;
+$modal-full-page-flex-shrink: 0;
+$modal-full-page-flex-grow: 1;
 $modal-gradient-border-radius: 1.5rem;
 $modal-gradient-header-background: linear-gradient(90deg, $color-red-50 0%, $color-orange-50 100%);
 $modal-gradient-header-padding: 1.125rem 1.5rem 0.875rem 1.5rem;

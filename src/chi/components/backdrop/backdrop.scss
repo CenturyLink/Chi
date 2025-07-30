@@ -23,11 +23,11 @@
     min-height: calc(100% - 2rem);
 
     &.-full-page {
-      height: 100%;
-      margin: 0;
-      max-width: none;
-      padding: 2rem 1.5rem;
-      width: 100%;
+      height: $backdrop-full-page-height;
+      margin: $backdrop-full-page-margin;
+      max-width: $backdrop-full-page-max-width;
+      padding: $backdrop-full-page-padding;
+      width: $backdrop-full-page-width;
     }
   }
 

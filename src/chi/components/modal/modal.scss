@@ -191,23 +191,23 @@
   }
 
   &.-full-page {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: none;
-    width: 100%;
+    display: $modal-full-page-display;
+    flex-direction: $modal-full-page-flex-direction;
+    height: $modal-full-page-height;
+    max-width: $modal-full-page-max-width;
+    width: $modal-full-page-width;
 
     &.-animated.-transitioning {
-      display: flex;
+      display: $modal-full-page-animated-display;
     }
 
     .chi-modal__header,
     .chi-modal__footer {
-      flex-shrink: 0;
+      flex-shrink: $modal-full-page-flex-shrink;
     }
 
     .chi-modal__content {
-      flex-grow: 1;
+      flex-grow: $modal-full-page-flex-grow;
     }
   }
 }

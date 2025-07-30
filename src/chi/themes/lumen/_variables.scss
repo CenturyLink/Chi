@@ -508,6 +508,11 @@ $avatar-orange-text-color: $color-orange-70;
 // Backdrop
 $backdrop-background-color: rgba($color-black, 0.65);
 $backdrop-inverse-background-color: rgba($color-white, 0.8);
+$backdrop-full-page-height: 100%;
+$backdrop-full-page-margin: 0;
+$backdrop-full-page-max-width: none;
+$backdrop-full-page-padding: 2rem 1.5rem;
+$backdrop-full-page-width: 100%;
 
 // Badge
 $badge-background-color: $color-background-white;
@@ -1314,6 +1319,14 @@ $modal-footer-padding: 1rem;
 $modal-footer-justify-content: flex-end;
 $modal-back-link-color: $color-icon-body;
 $modal-close-icon-color: $color-icon-body;
+$modal-full-page-display: flex;
+$modal-full-page-flex-direction: column;
+$modal-full-page-height: 100%;
+$modal-full-page-max-width: none;
+$modal-full-page-width: 100%;
+$modal-full-page-animated-display: flex;
+$modal-full-page-flex-shrink: 0;
+$modal-full-page-flex-grow: 1;
 $modal-gradient-border-radius: 1.5rem;
 $modal-gradient-header-background: linear-gradient(90deg, $color-red-50 0%, $color-orange-50 100%);
 $modal-gradient-header-padding: 1.125rem 1.5rem 0.875rem 1.5rem;
