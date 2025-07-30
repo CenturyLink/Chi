@@ -193,8 +193,10 @@ $animation-duration: 0.5s;
       }
     }
 
-    .chi-link .chi-icon {
-      color: $drawer-header-link-icon-color;
+    .chi-link {
+      .chi-icon {
+        color: $drawer-header-link-icon-color;
+      }
     }
   }
 
@@ -212,8 +214,8 @@ $animation-duration: 0.5s;
   }
 
   &__footer {
-    padding: $drawer-footer-padding;
     border-top: $drawer-footer-border;
+    padding: $drawer-footer-padding;
   }
 }
 

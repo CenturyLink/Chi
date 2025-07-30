@@ -1012,11 +1012,11 @@ $drawer-header-title-font-size: 1.5rem;
 $drawer-header-title-font-weight: $font-weight-medium;
 $drawer-title-line-height: 2rem;
 $drawer-footer-padding: 1.25rem 2rem;
-$drawer-footer-border: 1px solid $color-grey-30;
-$drawer-box-shadow-top: 0px 8px 16px rgba($color-black, 0.2);
-$drawer-box-shadow-bottom: 0px -8px 16px rgba($color-black, 0.2);
-$drawer-box-shadow-right: -8px 0px 16px rgba($color-black, 0.2);
-$drawer-box-shadow-left: 8px 0px 16px rgba($color-black, 0.2);
+$drawer-footer-border: 0.0625rem solid $color-grey-30;
+$drawer-box-shadow-top: 0 0.5rem 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-bottom: 0 -0.5rem 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-right: -0.5rem 0 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-left: 0.5rem 0 1rem rgba($color-black, 0.2);
 
 // Dropdown
 $dropdown-button-text-color: $color-text-base;
