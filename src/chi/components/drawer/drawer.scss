@@ -97,8 +97,8 @@ $animation-duration: 0.5s;
   }
 
   &.-bottom {
-    box-shadow: $drawer-box-shadow-bottom;
     bottom: 0;
+    box-shadow: $drawer-box-shadow-bottom;
     height: $drawer-height;
     left: 0;
     right: 0;
@@ -131,8 +131,8 @@ $animation-duration: 0.5s;
   }
 
   &.-left {
-    box-shadow: $drawer-box-shadow-left;
     bottom: 0;
+    box-shadow: $drawer-box-shadow-left;
     left: 0;
     top: 0;
     width: $drawer-width;
