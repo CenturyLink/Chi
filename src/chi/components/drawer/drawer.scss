@@ -63,8 +63,8 @@ $animation-duration: 0.5s;
   }
 
   &.-right {
-    box-shadow: $drawer-box-shadow-right;
     bottom: 0;
+    box-shadow: $drawer-box-shadow-right;
     right: 0;
     top: 0;
     width: $drawer-width;
@@ -179,11 +179,11 @@ $animation-duration: 0.5s;
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
+    display: $drawer-header-display;
+    flex-shrink: $drawer-header-flex-shrink;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
-    flex-shrink: $drawer-header-flex-shrink;
-    display: $drawer-header-display;
 
     .-close {
       .chi-icon {
