@@ -63,6 +63,11 @@
   &__hero {
     border-radius: $card-hero-border-radius;
     width: $card-hero-width;
+
+    & + .chi-card__content {
+      border-top-left-radius: $card-content-footer-border-bottom;
+      border-top-right-radius: $card-content-footer-border-bottom;
+    }
   }
 
   &__content {
@@ -322,7 +327,6 @@
         font-size: $font-size-lg;
         font-weight: $font-weight-base;
         line-height: $line-height-sm;
-        margin-bottom: 0.3125rem;
         padding-right: 25%;
         position: relative;
 
@@ -343,14 +347,14 @@
 
       .chi-card__caption {
         color: $card-kpi-caption-color;
-        font-size: $font-size-2xs;
+        font-size: $font-size-md;
       }
 
       .chi-card__metric {
         color: $card-kpi-metric-color;
         font-size: 1.75rem;
         font-weight: $font-weight-bold;
-        margin-top: 0.75rem;
+        margin-top: 1.25rem;
       }
     }
 
