@@ -1000,6 +1000,8 @@ $drawer-background-color: $color-background-white;
 $drawer-header-background-color: $color-background-white;
 $drawer-header-background-image: none;
 $drawer-header-text-color: $color-text-black;
+$drawer-header-flex-shrink: 0;
+$drawer-header-display: flex;
 $drawer-button-close-top: 2rem;
 $drawer-button-close-right: 2rem;
 $drawer-close-icon-size: 1rem;

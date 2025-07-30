@@ -182,8 +182,8 @@ $animation-duration: 0.5s;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
-    flex: 0 0 auto;
-    display: flex;
+    flex-shrink: $drawer-header-flex-shrink;
+    display: $drawer-header-display;
 
     .-close {
       .chi-icon {
