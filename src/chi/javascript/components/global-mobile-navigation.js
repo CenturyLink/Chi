@@ -14,13 +14,11 @@ class GlobalMobileNav extends Component {
     this._trigger = trigger;
     this._enterpriseDropdown = dropdown;
     this._linkHandlers = [];
-    this._backButtonHandlers = [];
     this._viewLevel = 0;
 
     this._initDrawer();
     this._initViews();
     this._initLinks();
-    this._initBackButtons();
     this._initTrigger();
     this._initDropdown();
   }
@@ -33,7 +31,7 @@ class GlobalMobileNav extends Component {
     this._drawer.setAttribute('position', 'left');
     this._drawer.setAttribute('backdrop', '');
     this._drawer.setAttribute('non-closable', '');
-    this._drawer.setAttribute('no-header', '');
+    this._drawer.addEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
   }
 
   _initViews() {
@@ -48,7 +46,7 @@ class GlobalMobileNav extends Component {
     const allLinks = [];
 
     if (this._drawer) {
-      const links = this._drawer.querySelectorAll('chi-link:not([data-drawer-back])');
+      const links = this._drawer.querySelectorAll('chi-link');
 
       links.forEach((link) => {
         allLinks.push(link);
@@ -60,23 +58,6 @@ class GlobalMobileNav extends Component {
 
       link.addEventListener('click', handler);
       this._linkHandlers.push({ link, handler });
-    });
-  }
-
-  _initBackButtons() {
-    const allBackButtons = [];
-
-    if (this._drawer) {
-      const buttons = this._drawer.querySelectorAll('[data-drawer-back]');
-
-      buttons.forEach((button) => allBackButtons.push(button));
-    }
-
-    allBackButtons.forEach((button) => {
-      const handler = (e) => this._handleBack(e);
-
-      button.addEventListener('click', handler);
-      this._backButtonHandlers.push({ button, handler });
     });
   }
 
@@ -101,11 +82,14 @@ class GlobalMobileNav extends Component {
       return;
     }
 
+    const header = this._drawer.querySelector('.chi-drawer__header');
+
     this._initViews();
 
     this._viewLevel = 0;
     this._viewItems = this._viewItems.filter((item) => item.state !== 'pending');
     this._views[0].classList.remove(chi.classes.DISPLAY.NONE);
+    header.classList.add(chi.classes.DISPLAY.NONE);
     this._drawer.active = true;
 
     if (this._viewItems.length) return;
@@ -146,13 +130,27 @@ class GlobalMobileNav extends Component {
     const viewItem = { view: currentView, state: '', link: link, level: this._viewLevel };
 
     this._addToViewItems(viewItem, nextView !== currentView);
+    this._setBacklink(viewItem.level, link.innerText, nextView !== currentView);
 
     if (nextView !== currentView) {
       currentView.classList.add(chi.classes.DISPLAY.NONE);
       nextView.classList.remove(chi.classes.DISPLAY.NONE);
 
       this._viewLevel++;
+    } else {
+      this._drawer.active = false;
     }
+  }
+
+  _setBacklink(level, title, isNextView) {
+    if (!isNextView) return;
+
+    const header = this._drawer.querySelector('.chi-drawer__header');
+    const backlink = level === 0 ? 'All' : this._viewItems[this._viewLevel].link.innerText;
+
+    this._drawer.setAttribute('backlink', backlink);
+    this._drawer.setAttribute('title', title);
+    header.classList.remove(chi.classes.DISPLAY.NONE);
   }
 
   _handleBack(event) {
@@ -174,6 +172,17 @@ class GlobalMobileNav extends Component {
 
     const previousView = this._views[this._viewLevel];
     previousView.classList.remove(chi.classes.DISPLAY.NONE);
+
+    if (this._viewLevel === 0) {
+      const header = this._drawer.querySelector('.chi-drawer__header');
+      
+      this._drawer.removeAttribute('backlink');
+      header.classList.add(chi.classes.DISPLAY.NONE);
+    } else {
+      const viewItem = this._viewItems.find((item) => item.level === this._viewLevel - 1);
+      
+      this._setBacklink(viewItem.level, viewItem.link.innerText, true);
+    }
   }
 
   _addToViewItems(viewItem, isNextView) {
@@ -236,14 +245,21 @@ class GlobalMobileNav extends Component {
     }
   }
 
+  _handleChiBacklinkClick(event) {
+    this._drawer.setAttribute('prevent-auto-hide', '');
+      this._handleBack(event);
+      
+      setTimeout(() => {
+        this._drawer.removeAttribute('prevent-auto-hide');
+      }, 100);
+  }
+
   dispose() {
     this._linkHandlers.forEach(({ link, handler }) => {
       link.removeEventListener('click', handler);
     });
-    this._backButtonHandlers.forEach(({ button, handler }) => {
-      button.removeEventListener('click', handler);
-    });
     this._trigger.removeEventListener('click', this._handlerTriggerClick.bind(this));
+    this._drawer.removeEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
 
     this._elem = null;
     this._drawer = null;
@@ -252,7 +268,6 @@ class GlobalMobileNav extends Component {
     this._views = [];
     this._viewItems = [];
     this._linkHandlers = [];
-    this._backButtonHandlers = [];
     this._viewLevel = 0;
   }
 }
