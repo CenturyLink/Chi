@@ -597,24 +597,32 @@
     .chi-mobile-nav__list {
       > .chi-mobile-nav__item {
         list-style: none;
-        margin-bottom: 0.315rem;
+        margin-bottom: 0.5rem;
 
         chi-link {
           width: 100%;
 
           &.-active {
-            background-color: #fde7d8;
+            background-color: $mobile-nav-list-item-active-background-color;
             border-radius: 0.315rem;
             font-weight: 700;
 
             .chi-icon,
             .chi-link {
-              color: #914008;
+              color: $mobile-nav-list-item-active-text-color;
             }
 
             .chi-link {
               &:hover {
-                background-color: #fde7d8;
+                background-color: $mobile-nav-list-item-active-background-color;
+              }
+            }
+          }
+
+          .chi-link__content {
+            & > chi-icon {
+              &:first-child {
+                margin-right: 1.25rem;
               }
             }
           }
@@ -627,25 +635,28 @@
         }
 
         .chi-icon {
-          color: black;
+          color: $mobile-nav-list-item-icon-color;
+          height: $mobile-nav-list-item-icon-size;
+          width: $mobile-nav-list-item-icon-size;
         }
 
         .chi-link {
           border-radius: 0.315rem;
           cursor: pointer;
-          color: black;
-          padding: 0.75rem;
+          color: $mobile-nav-list-item-text-color;
+          font-size: $font-size-md;
+          padding: 0.875rem;
           text-decoration: none;
           width: 100%;
 
           &:hover {
-            background: #f2f0f1;
+            background: $mobile-nav-list-item-hover-background-color;
           }
         }
 
         .chi-mobile-nav__email {
-          font-size: 0.875rem;
-          font-weight: 700;
+          font-size: $font-size-md;
+          font-weight: $font-weight-bold;
         }
       }
 
