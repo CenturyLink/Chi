@@ -182,7 +182,8 @@
   }
 
   .chi-impersonation-bar {
-    box-shadow: inset 0 4px 0 0 $header-impersonation-background-color;
+    // box-shadow: $header-impersonation-box-shadow
+    box-shadow: inset 0 6px 0 0 $header-impersonation-background-color;
     color: $header-impersonation-text-color;
     display: flex;
     font-size: $header-impersonation-font-size;
