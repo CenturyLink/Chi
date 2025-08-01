@@ -277,12 +277,12 @@ $color-background-gradient-accent-1: linear-gradient(
   $color-red-50 0%,
   $color-orange-50 35%,
   $color-orange-50 94%,
-  $color-orange-50 100%,
+  $color-orange-50 100%
 );
 $color-background-gradient-accent-2: linear-gradient(
-  90deg, 
-  $color-pink-50 0%,     
-  $color-orange-50 7%,   
+  90deg,
+  $color-pink-50 0%,
+  $color-orange-50 7%,
   $color-orange-50 25%,
   $color-orange-50 43%,
   $color-orange-50 61%,
@@ -969,7 +969,7 @@ $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
 // Code
-$code-font-size:                            $font-size-sm;
+$code-font-size: $font-size-sm;
 
 // CSS Grid
 $css-grid-gap: 1rem;
@@ -1097,7 +1097,7 @@ $dropdown-select-sm-height: 2rem;
 $dropdown-select-sm-font-size: $font-size-base;
 $dropdown-select-sm-line-height: $line-height-sm;
 $dropdown-select-sm-arrow-background-size: 0.75rem;
-$dropdown-select-sm-padding: .4375rem 0.75rem;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
 $dropdown-select-md-font-size: $font-size-base;
@@ -1194,21 +1194,21 @@ $form-item-list-item-border-color: $color-border-base-light;
 
 // Header
 $header-background-color: $color-background-white;
-$header-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+$header-shadow: 0rem 0.3125rem 0.1875rem rgba($color-black, 0.1);
 $header-content-padding-xs: 0 0.5rem;
 $header-content-padding-sm: 0 1rem;
 $header-content-padding-lg: 0 1.5rem;
-$header-content-title-text-color: $color-text-base;
-$header-content-title-font-weight: $font-weight-normal;
-$header-content-title-line-height: $line-height;
-$header-content-title-font-size: $font-size-lg;
+$header-content-title-text-color: $color-orange-80;
+$header-content-title-font-weight: $font-weight-bold;
+$header-content-title-line-height: $line-height-lg;
+$header-content-title-font-size: $font-size-md;
 $header-content-title-lg-font-size: $font-size-xl;
 $header-alert-badge-background-color: $color-teal-100;
 $header-search-background-color: $color-background-white;
 $header-search-hover-border-color: $color-grey-40;
 $header-search-focus-color: $focus-color;
-$header-impersonation-background-color: $color-grey-25;
-$header-impersonation-text-color: $color-text-base;
+$header-impersonation-background-color: $color-teal-70;
+$header-impersonation-text-color: $color-text-white;
 $header-impersonation-font-size: $font-size-sm;
 $header-impersonation-line-height: $line-height-lg;
 $header-impersonation-username-font-weight: $font-weight-semi-bold;
