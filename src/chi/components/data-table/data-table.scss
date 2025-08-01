@@ -530,14 +530,14 @@ $sizes: (
       border-radius: $data-table-cell-highlight-border-radius;
       box-shadow: $data-table-cell-highlight-box-shadow;
       color: $data-table-cell-highlight-color;
-      display: $data-table-cell-highlight-display;
+      display: inline;
     }
 
     &.-hidden-column {
-      flex-basis: $data-table-cell-highlight-hidden-column-flex-basis;
-      flex-grow: $data-table-cell-highlight-hidden-column-flex-grow;
-      right: $data-table-cell-highlight-hidden-column-right;
-      z-index: $data-table-cell-highlight-hidden-column-z-index;
+      flex-basis: 2rem;
+      flex-grow: 0;
+      right: 3rem;
+      z-index: 1;
     }
   }
 
@@ -701,7 +701,7 @@ $sizes: (
 
       .chi-data-table__cell {
         &.-hidden-column {
-          position: $data-table-portal-body-cell-hidden-column-position;
+          position: absolute;
         }
       }
     }
