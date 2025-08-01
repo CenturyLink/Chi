@@ -277,12 +277,12 @@ $color-background-gradient-accent-1: linear-gradient(
   $color-red-50 0%,
   $color-orange-50 35%,
   $color-orange-50 94%,
-  $color-orange-50 100%,
+  $color-orange-50 100%
 );
 $color-background-gradient-accent-2: linear-gradient(
-  90deg, 
-  $color-pink-50 0%,     
-  $color-orange-50 7%,   
+  90deg,
+  $color-pink-50 0%,
+  $color-orange-50 7%,
   $color-orange-50 25%,
   $color-orange-50 43%,
   $color-orange-50 61%,
@@ -965,7 +965,7 @@ $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
 // Code
-$code-font-size:                            $font-size-sm;
+$code-font-size: $font-size-sm;
 
 // CSS Grid
 $css-grid-gap: 1rem;
@@ -1012,17 +1012,29 @@ $data-table-state-info-box-shadow: $color-blue-60;
 // Drawer
 $drawer-width: 18.75rem;
 $drawer-height: 18.75rem;
+$drawer-content-padding: 0;
 $drawer-background-color: $color-background-white;
 $drawer-header-background-color: $color-teal-70;
 $drawer-header-background-image: none;
 $drawer-header-text-color: $color-text-white;
+$drawer-header-flex-shrink: 0;
+$drawer-header-display: flex;
 $drawer-button-close-top: 0.5rem;
+$drawer-button-close-right: 0.75rem;
 $drawer-close-icon-color: $color-orange-60;
 $drawer-header-close-icon-color: $color-icon-white;
+$drawer-header-link-icon-color: inherit;
 $drawer-header-min-height: 3.5rem;
 $drawer-header-padding: 1rem;
 $drawer-header-title-font-size: 1rem;
 $drawer-header-title-font-weight: $font-weight-semi-bold;
+$drawer-title-line-height: 1.5rem;
+$drawer-footer-padding: 1.25rem 2rem;
+$drawer-footer-border: 0.0625rem solid $color-grey-30;
+$drawer-box-shadow-top: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-bottom: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-right: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-left: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 
 // Dropdown
 $dropdown-button-text-color: $color-text-base;
@@ -1093,7 +1105,7 @@ $dropdown-select-sm-height: 2rem;
 $dropdown-select-sm-font-size: $font-size-base;
 $dropdown-select-sm-line-height: $line-height-sm;
 $dropdown-select-sm-arrow-background-size: 0.75rem;
-$dropdown-select-sm-padding: .4375rem 0.75rem;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
 $dropdown-select-md-font-size: $font-size-base;
