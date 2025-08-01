@@ -33,8 +33,22 @@
     height: fit-content;
     list-style-type: none;
 
-    .chi_tag {
+    .chi-tag {
       max-width: 100%;
+
+      .chi-badge {
+        border-radius: 0.25rem;
+        padding-bottom: 0.1875rem;
+        padding-top: 0.1875rem;
+
+        .chi-button {
+          &.-icon {
+            &.-close {
+              margin-left: 1rem;
+            } 
+          }
+        }
+      }
     }
   }
 
@@ -57,8 +71,8 @@
   }
 
   .chi-tag, .chi-tags__input {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.125rem;
     margin-right: 0.5rem;
-    margin-top: 0.25rem;
+    margin-top: 0.125rem;
   }
 }
