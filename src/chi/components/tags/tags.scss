@@ -37,22 +37,22 @@
       max-width: 100%;
 
       .chi-badge {
-        border-radius: 0.25rem;
-        padding-bottom: 0.1875rem;
-        padding-top: 0.1875rem;
+        border-radius: $tag-badge-border-radius;
+        padding-bottom: $tag-badge-padding-top;
+        padding-top: $tag-badge-padding-bottom;
 
         .chi-button {
           &.-icon {
             &.-close {
-              margin-left: 1rem;
-            } 
+              margin-left: $tag-button-close-icon-margin-left;
+            }
           }
         }
       }
     }
   }
 
-  .chi-tags__input  {
+  .chi-tags__input {
     align-items: center;
     display: flex;
     flex: 1 0 auto;
@@ -63,16 +63,17 @@
       height: 100%;
       outline: none;
       width: 100%;
-      
+
       &::placeholder {
         color: $tags-input-placeholder-text-color;
       }
     }
   }
 
-  .chi-tag, .chi-tags__input {
-    margin-bottom: 0.125rem;
-    margin-right: 0.5rem;
-    margin-top: 0.125rem;
+  .chi-tag,
+  .chi-tags__input {
+    margin-bottom: $tag-margin-bottom;
+    margin-right: $tag-margin-right;
+    margin-top: $tag-margin-top;
   }
 }
