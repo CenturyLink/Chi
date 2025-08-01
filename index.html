@@ -111,6 +111,11 @@
       <chi-button id="toggle-nav" variant="flat" type="icon">
         <chi-icon icon="menu"></chi-icon>
       </chi-button>
+
+      <chi-button id="mobile-nav-trigger" variant="flat" type="icon">
+        <chi-icon icon="menu"></chi-icon>
+      </chi-button>
+
       <aside id="global-nav" class="chi-sidenav -global">
         <div class="chi-sidenav__content">
           <nav>
@@ -275,6 +280,153 @@
           </nav>
         </div>
       </aside>
+
+      <div class="chi-mobile-nav -global" id="mobile-nav">
+        <chi-drawer id="mobile-nav-drawer">
+          <div id="main-content_0">
+            <div class="chi-mobile-nav__header">
+              <chi-dropdown-select id="enterprise-dropdown" button="Enterprise"></chi-dropdown-select>
+            </div>
+            <div class="chi-divider -my--0"></div>
+            <ul class="chi-mobile-nav__list">
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="dashboard"></chi-icon>
+                  <span>Dashboard</span>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="bell"></chi-icon>
+                  <span>Alerts & Notifications</span>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link class="-active" href="#services-content_1">
+                  <chi-icon icon="list-alt"></chi-icon>
+                  <span>Services</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="api"></chi-icon>
+                  <span>APIs</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="chart-bar"></chi-icon>
+                  <span>Monitoring & Reports</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="mail-open-dollar"></chi-icon>
+                  <span>Billing</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="users"></chi-icon>
+                  <span>Admin</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="life-ring"></chi-icon>
+                  <span>Support</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+            </ul>
+            <div class="chi-divider -my--0"></div>
+            <ul class="chi-mobile-nav__list">
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="circle-question"></chi-icon>
+                  <span>[Portal Name] Help</span>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="compose"></chi-icon>
+                  <span>Contact Lumen</span>
+                </chi-link>
+              </li>
+            </ul>
+            <div class="chi-divider -my--0"></div>
+            <ul class="chi-mobile-nav__list">
+              <li class="chi-mobile-nav__item">
+                <span class="chi-mobile-nav__email">jamie.johnson@company.com</span>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="user"></chi-icon>
+                  <span>My Profile</span>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <chi-icon icon="logout"></chi-icon>
+                  <span>Sign out</span>
+                </chi-link>
+              </li>
+            </ul>
+          </div>
+          <div id="services-content_1">
+            <ul class="chi-mobile-nav__list">
+              <li class="chi-mobile-nav__item">
+                <chi-link href="https://lib.lumen.com/"> Manage Services </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link> Add Services </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link> Order Status </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <span>Service Tools</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <span>Service Requests</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link class="-active" href="#quotes-content_2">
+                  <span>Quotes</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>
+                  <span>Service Portals</span>
+                  <chi-icon icon="chevron-right"></chi-icon>
+                </chi-link>
+              </li>
+            </ul>
+          </div>
+          <div id="quotes-content_2">
+            <ul class="chi-mobile-nav__list">
+              <li class="chi-mobile-nav__item">
+                <chi-link class="-active">View Quotes</chi-link>
+              </li>
+              <li class="chi-mobile-nav__item">
+                <chi-link>Create Quotes</chi-link>
+              </li>
+            </ul>
+          </div>
+        </chi-drawer>
+      </div>
     </div>
   </body>
   <script>
@@ -346,7 +498,7 @@
         billingAccordion.accordions = [
           {
             title: 'Billing',
-            icon: 'cost',
+            icon: 'mail-open-dollar',
             template: 'billing-template',
           },
         ];
@@ -378,6 +530,23 @@
         const toggleNavButton = document.getElementById('toggle-nav');
 
         toggleNavButton.addEventListener('click', () => (globalNav.expanded = !globalNav.expanded));
+        //#endregion
+
+        //#region Mobile Navigation
+        const enterpriseDropdown = document.getElementById('enterprise-dropdown');
+        const enterpriseDropdownItems = [
+          { label: 'Enterprise 1' },
+          { label: 'Enterprise 2' },
+          { label: 'Enterprise 3' },
+        ];
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavTrigger = document.getElementById('mobile-nav-trigger');
+        const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+
+        chi.globalMobileNav(mobileNav, mobileNavTrigger, mobileNavDrawer, {
+          dropdown: enterpriseDropdown,
+          items: enterpriseDropdownItems,
+        });
         //#endregion
       })
       .catch((err) => {
