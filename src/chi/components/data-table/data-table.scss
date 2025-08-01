@@ -523,6 +523,22 @@ $sizes: (
         }
       }
     }
+
+    .-highlight {
+      background: $data-table-cell-highlight-background;
+      border: $data-table-cell-highlight-border;
+      border-radius: $data-table-cell-highlight-border-radius;
+      box-shadow: $data-table-cell-highlight-box-shadow;
+      color: $data-table-cell-highlight-color;
+      display: inline;
+    }
+
+    &.-hidden-column {
+      flex-basis: 2rem;
+      flex-grow: 0;
+      right: 3rem;
+      z-index: 1;
+    }
   }
 
   .chi-data-table__row,
@@ -680,6 +696,12 @@ $sizes: (
           @include respond-to(md) {
             border-bottom: 0;
           }
+        }
+      }
+
+      .chi-data-table__cell {
+        &.-hidden-column {
+          position: absolute;
         }
       }
     }
