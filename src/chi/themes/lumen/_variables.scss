@@ -789,7 +789,7 @@ $button-danger-outline-background-color: transparent;
 $button-danger-outline-text-color: $color-text-danger;
 $button-danger-outline-hover-text-color: $color-text-danger-dark;
 $button-danger-outline-active-text-color: $color-text-danger-darker;
-$button-danger-outline-border-color: $color-border-danger;;
+$button-danger-outline-border-color: $color-border-danger;
 $button-danger-outline-hover-border-color: $color-border-danger-dark;
 $button-danger-outline-active-border-color: $color-border-danger-darker;
 $button-danger-outline-hover-background-color: transparent;
@@ -2243,3 +2243,12 @@ $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: 1.25rem;
 $tags-md-padding: 0.0625rem 0.75rem;
+
+$tag-badge-border-radius: 2em;
+$tag-badge-padding-top: 0;
+$tag-badge-padding-bottom: 0;
+$tag-margin-bottom: 0.25rem;
+$tag-margin-right: 0.5rem;
+$tag-margin-top: 0.25rem;
+
+$tag-button-close-icon-margin-left: 0;
