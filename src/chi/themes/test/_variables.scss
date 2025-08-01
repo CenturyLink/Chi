@@ -23,6 +23,7 @@ $font-size-base: $font-size-md;
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
@@ -277,12 +278,12 @@ $color-background-gradient-accent-1: linear-gradient(
   $color-red-50 0%,
   $color-orange-50 35%,
   $color-orange-50 94%,
-  $color-orange-50 100%,
+  $color-orange-50 100%
 );
 $color-background-gradient-accent-2: linear-gradient(
-  90deg, 
-  $color-pink-50 0%,     
-  $color-orange-50 7%,   
+  90deg,
+  $color-pink-50 0%,
+  $color-orange-50 7%,
   $color-orange-50 25%,
   $color-orange-50 43%,
   $color-orange-50 61%,
@@ -505,7 +506,7 @@ $avatar-orange-border-color: $color-orange-60;
 $avatar-orange-text-color: $color-orange-70;
 
 // Backdrop
-$backdrop-background-color: rgba($color-black, 0.65);
+$backdrop-background-color: rgba($color-teal-80, 0.2);
 $backdrop-inverse-background-color: rgba($color-white, 0.8);
 
 // Badge
@@ -969,7 +970,7 @@ $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
 // Code
-$code-font-size:                            $font-size-sm;
+$code-font-size: $font-size-sm;
 
 // CSS Grid
 $css-grid-gap: 1rem;
@@ -1036,19 +1037,31 @@ $data-table-highlight-hidden-column-highlight-color: $color-black;
 $data-table-row-child-cell-hidden-column-position: absolute !important;
 
 // Drawer
-$drawer-width: 18.75rem;
-$drawer-height: 18.75rem;
+$drawer-width: 31rem;
+$drawer-height: 24.375rem;
+$drawer-content-padding: 0 2rem 2rem 2rem;
 $drawer-background-color: $color-background-white;
-$drawer-header-background-color: $color-teal-70;
+$drawer-header-background-color: $color-background-white;
 $drawer-header-background-image: none;
-$drawer-header-text-color: $color-text-white;
-$drawer-button-close-top: 0.5rem;
-$drawer-close-icon-color: $color-orange-60;
-$drawer-header-close-icon-color: $color-icon-white;
+$drawer-header-text-color: $color-text-black;
+$drawer-header-flex-shrink: 0;
+$drawer-header-display: flex;
+$drawer-button-close-top: 2rem;
+$drawer-button-close-right: 2rem;
+$drawer-close-icon-color: $color-grey-100;
+$drawer-header-close-icon-color: $color-grey-100;
+$drawer-header-link-icon-color: $color-teal-70;
 $drawer-header-min-height: 3.5rem;
-$drawer-header-padding: 1rem;
-$drawer-header-title-font-size: 1rem;
-$drawer-header-title-font-weight: $font-weight-semi-bold;
+$drawer-header-padding: 2rem;
+$drawer-header-title-font-size: 1.5rem;
+$drawer-header-title-font-weight: $font-weight-medium;
+$drawer-title-line-height: 2rem;
+$drawer-footer-padding: 1.25rem 2rem;
+$drawer-footer-border: 0.0625rem solid $color-grey-30;
+$drawer-box-shadow-top: 0 0.5rem 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-bottom: 0 -0.5rem 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-right: -0.5rem 0 1rem rgba($color-black, 0.2);
+$drawer-box-shadow-left: 0.5rem 0 1rem rgba($color-black, 0.2);
 
 // Dropdown
 $dropdown-button-text-color: $color-text-base;
@@ -1119,7 +1132,7 @@ $dropdown-select-sm-height: 2rem;
 $dropdown-select-sm-font-size: $font-size-base;
 $dropdown-select-sm-line-height: $line-height-sm;
 $dropdown-select-sm-arrow-background-size: 0.75rem;
-$dropdown-select-sm-padding: .4375rem 0.75rem;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
 $dropdown-select-md-font-size: $font-size-base;
