@@ -21,6 +21,14 @@
     margin: 1rem auto;
     max-width: 45rem;
     min-height: calc(100% - 2rem);
+
+    &.-full-page {
+      height: $backdrop-full-page-height;
+      margin: $backdrop-full-page-margin;
+      max-width: $backdrop-full-page-max-width;
+      padding: $backdrop-full-page-padding;
+      width: $backdrop-full-page-width;
+    }
   }
 
   &.-center {

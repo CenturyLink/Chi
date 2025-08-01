@@ -31,8 +31,8 @@
     }
 
     .chi-modal__title {
-      font-size: $font-size-lg;
-      font-weight: bold;
+      font-size: $modal-title-font-size;
+      font-weight: $modal-title-font-weight;
       line-height: $line-height-lg;
       margin: 0;
 
@@ -90,7 +90,7 @@
 
     .-close {
       position: absolute;
-      right: 0.75rem;
+      right: $modal-close-right;
       top: $modal-close-top;
 
       .chi-icon {
@@ -103,14 +103,14 @@
     font-size: $font-size-base;
     line-height: $line-height;
     overflow-y: auto;
-    padding: 1.5rem;
+    padding: $modal-content-padding;
   }
 
   &__footer {
     box-shadow: $modal-footer-box-shadow;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: $modal-footer-justify-content;
     min-height: $modal-footer-min-height;
     padding: $modal-footer-padding;
     position: relative;
@@ -187,6 +187,27 @@
       font-size: $modal-gradient-subtitle-font-size;
       line-height: $modal-gradient-subtitle-line-height;
       font-weight: $modal-gradient-subtitle-font-weight;
+    }
+  }
+
+  &.-full-page {
+    display: $modal-full-page-display;
+    flex-direction: $modal-full-page-flex-direction;
+    height: $modal-full-page-height;
+    max-width: $modal-full-page-max-width;
+    width: $modal-full-page-width;
+
+    &.-animated.-transitioning {
+      display: $modal-full-page-animated-display;
+    }
+
+    .chi-modal__header,
+    .chi-modal__footer {
+      flex-shrink: $modal-full-page-flex-shrink;
+    }
+
+    .chi-modal__content {
+      flex-grow: $modal-full-page-flex-grow;
     }
   }
 }
