@@ -581,6 +581,23 @@
   }
 
   &.-global {
+    .chi-drawer__header {
+      background-color: $mobile-nav-header-background-color;
+      border-bottom: $mobile-nav-header-bottom-border;
+      padding: 1.25rem 1.5rem;
+
+      .chi-drawer__title {
+        color: $mobile-nav-header-title-text-color;
+        font-size: $mobile-nav-header-title-font-size;
+        font-weight: $mobile-nav-header-title-font-weight;
+        line-height: $mobile-nav-header-title-line-height;
+      }
+    }
+
+    .chi-drawer__content {
+      padding: 0 0 2rem 0;
+    }
+
     .chi-mobile-nav__header,
     .chi-mobile-nav__list {
       margin-bottom: 0;
