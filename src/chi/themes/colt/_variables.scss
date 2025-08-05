@@ -1042,6 +1042,12 @@ $drawer-box-shadow-bottom:                  0 0 1.5625rem 0.625rem rgba($color-b
 $drawer-box-shadow-right:                   0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 $drawer-box-shadow-left:                    0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 
+$data-table-cell-highlight-background: $color-yellow-30;
+$data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-cell-highlight-border-radius: 0.125rem;
+$data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-cell-highlight-color: $color-black;
+
 // Dropdown
 $dropdown-button-text-color:                $color-text-base;
 $dropdown-button-background-color:          $color-background-white;
@@ -1305,6 +1311,11 @@ $mobile-nav-background-color:               $color-background-white;
 $mobile-nav-width:                          23rem;
 $mobile-nav-header-background-color:        $color-background-base;
 $mobile-nav-header-button-top:              0.75rem;
+$mobile-nav-header-bottom-border:           0.0625rem solid $color-border-base;
+$mobile-nav-header-title-font-size:         $font-size-xl;
+$mobile-nav-header-title-font-weight:       $font-weight-bold;
+$mobile-nav-header-title-line-height:       $line-height-lg;
+$mobile-nav-header-title-text-color:        $color-text-base;
 $mobile-nav-user-background-color:          $color-background-base;
 $mobile-nav-user-border-color:              $color-border-base;
 $mobile-nav-drawer-close-icon-color:        $color-icon-base;
@@ -1318,6 +1329,7 @@ $mobile-nav-list-item-hover-text-color:     $color-text-base;
 $mobile-nav-list-item-active-background-color: $color-teal-15;
 $mobile-nav-list-item-active-border-color:  $color-border-primary;
 $mobile-nav-list-item-icon-size:            1.25rem;
+$mobile-nav-list-item-icon-color:           $color-grey-90;
 $mobile-nav-list-item-trigger-icon-color:   $color-icon-base;
 $mobile-nav-list-item-active-trigger-icon-color:  $color-icon-primary;
 $mobile-nav-list-item-title-font-weight:    $font-weight-normal;
@@ -2211,3 +2223,12 @@ $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
 $tags-md-padding: 0.0625rem 0.75rem;
+
+$tag-badge-border-radius: 2em;
+$tag-badge-padding-top: 0.0625rem;
+$tag-badge-padding-bottom: 0.0625rem;
+$tag-margin-bottom: 0.25rem;
+$tag-margin-right: 0.5rem;
+$tag-margin-top: 0.25rem;
+
+$tag-button-close-icon-margin-left: 0;
