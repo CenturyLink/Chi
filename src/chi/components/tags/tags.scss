@@ -38,8 +38,8 @@
 
       .chi-badge {
         border-radius: $tag-badge-border-radius;
-        padding-bottom: $tag-badge-padding-top;
-        padding-top: $tag-badge-padding-bottom;
+        padding-bottom: $tag-badge-padding-bottom;
+        padding-top: $tag-badge-padding-top;
 
         .chi-button {
           &.-icon {
