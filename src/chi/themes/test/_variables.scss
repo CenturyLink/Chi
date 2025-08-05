@@ -942,16 +942,16 @@ $card-highlight-background-color: $color-cyan-10;
 $card-highlight-border-color: $color-cyan-20;
 $card-highlight-header-background-color: $color-background-white;
 
-$card-widget-background-color: $color-white;
+$card-widget-background-color: $card-background-color;
 $card-widget-border: $card-border;
 $card-widget-border-radius: $card-border-radius;
-$card-widget-header-border: 0.0625rem solid rgba($color-black, 0.17);
+$card-widget-header-border: 0.0625rem solid rgba($color-black, 0.12);
 $card-widget-header-border-bottom: 0;
 $card-widget-header-border-radius: $card-border-radius $card-border-radius 0 0;
 $card-widget-header-content-padding-top: 0;
 $card-widget-header-padding: 1.25rem 1.25rem 0.5rem;
 $card-widget-header-sm-padding: $card-widget-header-padding;
-$card-widget-title-font-size: $font-size-6;
+$card-widget-title-font-size: $font-size-xl;
 $card-widget-title-font-weight: $font-weight-bold;
 $card-widget-content-border: 0;
 $card-widget-content-padding: 1.25rem;
@@ -959,6 +959,13 @@ $card-widget-content-padding: 1.25rem;
 $card-title-font-size: $font-size-xl;
 $card-title-font-weight: $font-weight-bold;
 $card-title-line-height: $line-height-lg;
+
+$card-accordion-border: $card-content-border;
+$card-accordion-border-radius: $card-content-border-radius;
+$card-accordion-item-background-color: transparent;
+$card-accordion-item-trigger-icon-color: $color-teal-80;
+$card-accordion-item-trigger-padding: 1.25rem;
+$card-accordion-item-expanded-trigger-padding-bottom: 0.5rem;
 
 $card-kpi-background-color: $card-background-color;
 $card-kpi-hover-background-color: $color-teal-10;
