@@ -7,6 +7,7 @@ import { Drawer, factory as drawer } from './components/drawer';
 import { Dropdown, factory as dropdown } from './components/dropdown';
 import { ExpansionPanel, factory as expansionPanel, EXPANSION_PANEL_STATES } from "./components/expansion-panel";
 import { FloatingLabel, factory as floatingLabel } from "./components/floating-label";
+import { GlobalMobileNav, factory as globalMobileNav } from "./components/global-mobile-navigation";
 import { MobileNav, factory as mobilenav } from "./components/mobile-navigation";
 import { Modal, factory as modal } from './components/modal';
 import { Navigation, factory as navigation } from "./components/navigation";
@@ -28,6 +29,7 @@ export {
   dropdown,
   expansionPanel,
   floatingLabel,
+  globalMobileNav,
   mobilenav,
   modal,
   navigation,
@@ -45,6 +47,7 @@ export {
   Dropdown,
   ExpansionPanel,
   FloatingLabel,
+  GlobalMobileNav,
   MobileNav,
   Modal,
   Navigation,
@@ -69,6 +72,7 @@ if (typeof window !== 'undefined') {
     dropdown,
     expansionPanel,
     floatingLabel,
+    globalMobileNav,
     mobilenav,
     modal,
     navigation,
@@ -85,6 +89,7 @@ if (typeof window !== 'undefined') {
     Dropdown,
     ExpansionPanel,
     FloatingLabel,
+    GlobalMobileNav,
     MobileNav,
     Modal,
     Navigation,
