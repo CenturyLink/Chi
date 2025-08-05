@@ -1048,6 +1048,12 @@ $data-table-state-danger-box-shadow: $color-red-60;
 $data-table-state-success-box-shadow: $color-green-60;
 $data-table-state-info-box-shadow: $color-blue-60;
 
+$data-table-cell-highlight-background: $color-yellow-30;
+$data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-cell-highlight-border-radius: 0.125rem;
+$data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-cell-highlight-color: $color-black;
+
 // Drawer
 $drawer-width: 18.75rem;
 $drawer-height: 18.75rem;
