@@ -17,7 +17,7 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: $header-content-justify;
     padding: $header-content-padding-xs;
     position: relative;
     width: 100%;
@@ -45,11 +45,12 @@
   &__brand {
     align-items: center;
     display: inline-flex;
-    justify-content: center;
-    order: 2;
+    justify-content: $header-brand-justify-content;
+    order: $header-brand-order;
 
     @include respond-to(lg) {
-      order: 1;
+      order: $header-lg-brand-order;
+      flex-grow: $header-lg-brand-flex-grow;
     }
 
     .chi-brand {
@@ -78,8 +79,8 @@
     flex-wrap: nowrap;
 
     @include respond-to(lg) {
-      flex-grow: 1;
-      order: 2;
+      flex-grow: $header-lg-start-flex-grow;
+      order: $header-lg-start-order;
     }
   }
 
@@ -117,6 +118,13 @@
       &.-vertical {
         align-self: center;
         height: 2rem;
+      }
+    }
+
+    .chi-dropdown {
+      .chi-button::after,
+      .chi-icon {
+        color: $color-grey-100;
       }
     }
   }
@@ -182,8 +190,7 @@
   }
 
   .chi-impersonation-bar {
-    // box-shadow: $header-impersonation-box-shadow
-    box-shadow: inset 0 6px 0 0 $header-impersonation-background-color;
+    box-shadow: $header-impersonation-box-shadow;
     color: $header-impersonation-text-color;
     display: flex;
     font-size: $header-impersonation-font-size;
@@ -414,7 +421,8 @@
         width: 8.75rem;
 
         @include respond-to(md) {
-          margin: 0 1.5rem 0 0;
+          margin: 0 1.5rem;
+          // margin: 0 1.5rem 0 0; to be adjusted
           width: 8.1875rem;
         }
 
