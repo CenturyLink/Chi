@@ -49,8 +49,8 @@
     order: $header-brand-order;
 
     @include respond-to(lg) {
-      order: $header-lg-brand-order;
       flex-grow: $header-lg-brand-flex-grow;
+      order: $header-lg-brand-order;
     }
 
     .chi-brand {
@@ -124,7 +124,7 @@
     .chi-dropdown {
       .chi-button::after,
       .chi-icon {
-        color: $color-grey-100;
+        color: $color-icon-body;
       }
     }
   }
@@ -406,44 +406,44 @@
   .enterprise-id-switcher {
     .chi-dropdown__menu {
       border: 0.0625rem solid $color-grey-30;
-      box-shadow: 0 0.1875rem 0.3125rem rgba($color-black, 0.2);
       border-radius: 0.3125rem;
+      box-shadow: 0 0.1875rem 0.3125rem rgba($color-black, 0.2);
       padding: 0;
       width: 25rem;
-    }
 
-    .chi-dropdown__menu-header {
-      display: flex;
-      font-weight: $font-weight-semi-bold;
-      margin-bottom: 0 !important;
-      padding: 0.8125rem 1.25rem;
-
-      & > div:first-child {
-        width: 41.67%;
-      }
-    }
-
-    .chi-dropdown__menu-footer {
-      border-top: 0.0625rem solid $color-grey-30;
-      display: flex;
-      padding: 0.625rem 1.25rem;
-      margin-top: 1.375rem !important;
-    }
-
-    .chi-dropdown__menu-item {
-      border-radius: 0.3125rem;
-      padding: 0 0.625rem;
-      margin: 0 0.625rem;
-
-      &.-active-item {
-        background-color: $color-orange-20;
-        box-shadow: none;
-        color: $color-orange-80;
+      &-header {
+        display: flex;
         font-weight: $font-weight-semi-bold;
+        margin-bottom: 0 !important;
+        padding: 0.8125rem 1.25rem;
+
+        & > div:first-child {
+          width: 41.67%;
+        }
       }
 
-      & > div:first-child {
-        width: 41.67%;
+      &-footer {
+        border-top: 0.0625rem solid $color-grey-30;
+        display: flex;
+        padding: 0.625rem 1.25rem;
+        margin-top: 1.375rem !important;
+      }
+
+      &-item {
+        border-radius: 0.3125rem;
+        padding: 0 0.625rem;
+        margin: 0.125rem 0.625rem;
+
+        &.-active-item {
+          background-color: $color-orange-20;
+          box-shadow: none;
+          color: $color-orange-80;
+          font-weight: $font-weight-semi-bold;
+        }
+
+        & > div:first-child {
+          width: 41.67%;
+        }
       }
     }
   }
