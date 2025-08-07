@@ -164,8 +164,16 @@
       background: $modal-gradient-header-background;
       padding: $modal-gradient-header-padding;
 
-      .-close .chi-icon {
+      .-close {
+        &,
+        &:hover,
+        &:active {
+          background-color: transparent;
+        }
+
+        .chi-icon {
         color: $modal-gradient-close-icon-color;
+        }
       }
     }
 
