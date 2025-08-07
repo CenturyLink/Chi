@@ -433,6 +433,10 @@
         }
       }
 
+      .chi-accordion__content {
+        padding: $card-accordion-item-content-padding;
+      }
+
       &.-expanded {
         .chi-accordion__trigger {
           padding-bottom: $card-accordion-item-expanded-trigger-padding-bottom;
