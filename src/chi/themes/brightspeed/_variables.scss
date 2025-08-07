@@ -918,6 +918,13 @@ $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
 $card-title-line-height:                    $line-height-lg;
 
+$card-accordion-border:                     $card-content-border;
+$card-accordion-border-radius:              $card-content-border-radius;
+$card-accordion-item-background-color:      transparent;
+$card-accordion-item-trigger-icon-color:    $color-icon-base;
+$card-accordion-item-trigger-padding:       1.25rem;
+$card-accordion-item-expanded-trigger-padding-bottom: 0.5rem;
+
 $card-kpi-background-color:                 $color-background-white;
 $card-kpi-hover-background-color:           $color-background-primary-lighter;
 $card-kpi-active-background-color:          $color-background-primary-light;
