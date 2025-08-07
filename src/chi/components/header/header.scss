@@ -68,8 +68,7 @@
 
       @include respond-to(lg) {
         font-size: $header-content-title-lg-font-size;
-        margin-left: 1.5rem;
-        margin-right: 1rem;
+        margin: $header-content-title-lg-margin;
       }
     }
   }
@@ -118,6 +117,7 @@
       &.-vertical {
         align-self: center;
         height: 2rem;
+        margin: $header-end-divider-margin;
       }
     }
 
@@ -403,6 +403,51 @@
     }
   }
 
+  .enterprise-id-switcher {
+    .chi-dropdown__menu {
+      border: 0.0625rem solid $color-grey-30;
+      box-shadow: 0 0.1875rem 0.3125rem rgba($color-black, 0.2);
+      border-radius: 0.3125rem;
+      padding: 0;
+      width: 25rem;
+    }
+
+    .chi-dropdown__menu-header {
+      display: flex;
+      font-weight: $font-weight-semi-bold;
+      margin-bottom: 0 !important;
+      padding: 0.8125rem 1.25rem;
+
+      & > div:first-child {
+        width: 41.67%;
+      }
+    }
+
+    .chi-dropdown__menu-footer {
+      border-top: 0.0625rem solid $color-grey-30;
+      display: flex;
+      padding: 0.625rem 1.25rem;
+      margin-top: 1.375rem !important;
+    }
+
+    .chi-dropdown__menu-item {
+      border-radius: 0.3125rem;
+      padding: 0 0.625rem;
+      margin: 0 0.625rem;
+
+      &.-active-item {
+        background-color: $color-orange-20;
+        box-shadow: none;
+        color: $color-orange-80;
+        font-weight: $font-weight-semi-bold;
+      }
+
+      & > div:first-child {
+        width: 41.67%;
+      }
+    }
+  }
+
   &,
   &.-md {
     min-height: $header-height;
@@ -421,8 +466,7 @@
         width: 8.75rem;
 
         @include respond-to(md) {
-          margin: 0 1.5rem;
-          // margin: 0 1.5rem 0 0; to be adjusted
+          margin: 0 1.5rem 0 0;
           width: 8.1875rem;
         }
 
@@ -498,15 +542,15 @@
 
     .chi-brand {
       @include respond-to(lg) {
-        margin: 0 3rem 0 0;
+        margin: $header-lg-brand-margin;
       }
 
       &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
-        margin: 0 0.5rem;
+        margin: $header-lg-brand-margin-portal;
         width: 9.0625rem;
 
         @include respond-to(md) {
-          margin: 0 3rem 0 0;
+          margin: $header-lg-brand-margin;
           width: 9.0625rem;
         }
 
