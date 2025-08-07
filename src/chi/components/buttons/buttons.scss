@@ -575,7 +575,7 @@ $sizes: (
   @each $color in map-keys($button-colors) {
     &.-#{$color} {
       background-color: map-get(map-get($button-colors, $color), background-color);
-      border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color);;
+      border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color);
       box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
       color: map-get(map-get($button-colors, $color), text-color);
 
@@ -592,7 +592,7 @@ $sizes: (
       &:hover,
       &.-hover {
         background-color: map-get(map-get($button-colors, $color), background-color-hover);
-        border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color-hover);;
+        border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color-hover);
         box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
         color: map-get(map-get($button-colors, $color), text-color);
       }
