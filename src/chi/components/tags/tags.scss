@@ -33,12 +33,26 @@
     height: fit-content;
     list-style-type: none;
 
-    .chi_tag {
+    .chi-tag {
       max-width: 100%;
+
+      .chi-badge {
+        border-radius: $tag-badge-border-radius;
+        padding-bottom: $tag-badge-padding-bottom;
+        padding-top: $tag-badge-padding-top;
+
+        .chi-button {
+          &.-icon {
+            &.-close {
+              margin-left: $tag-button-close-icon-margin-left;
+            }
+          }
+        }
+      }
     }
   }
 
-  .chi-tags__input  {
+  .chi-tags__input {
     align-items: center;
     display: flex;
     flex: 1 0 auto;
@@ -49,16 +63,17 @@
       height: 100%;
       outline: none;
       width: 100%;
-      
+
       &::placeholder {
         color: $tags-input-placeholder-text-color;
       }
     }
   }
 
-  .chi-tag, .chi-tags__input {
-    margin-bottom: 0.25rem;
-    margin-right: 0.5rem;
-    margin-top: 0.25rem;
+  .chi-tag,
+  .chi-tags__input {
+    margin-bottom: $tag-margin-bottom;
+    margin-right: $tag-margin-right;
+    margin-top: $tag-margin-top;
   }
 }
