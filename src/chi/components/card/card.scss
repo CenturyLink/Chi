@@ -423,10 +423,10 @@
 
   .chi-accordion {
     .chi-accordion__item {
-      background-color: $card-accordion-item-background-color;
+      background-color: transparent;
 
       .chi-accordion__trigger {
-        padding: $card-accordion-item-trigger-padding;
+        padding: 1.25rem;
 
         .chi-icon {
           color: $card-accordion-item-trigger-icon-color;
@@ -434,12 +434,12 @@
       }
 
       .chi-accordion__content {
-        padding: $card-accordion-item-content-padding;
+        padding: 0 1.25rem 1.25rem;
       }
 
       &.-expanded {
         .chi-accordion__trigger {
-          padding-bottom: $card-accordion-item-expanded-trigger-padding-bottom;
+          padding-bottom: 0.5rem;
         }
       }
     }
