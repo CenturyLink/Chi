@@ -1184,24 +1184,13 @@ $dropdown-select-xl-arrow-background-size: 1rem;
 $dropdown-select-xl-padding: 0.6875rem 1rem 0.6875rem 1rem;
 
 // Expansion panel
-$expansion-panel-active-title-text-color: $color-text-base;
-$expansion-panel-body-border-radius: 0.625rem;
-$expansion-panel-body-margin: 1.25rem 0 0 2rem;
 $expansion-panel-border-color: $color-border-base;
+$expansion-panel-active-title-text-color: $color-text-base;
+$expansion-panel-disabled-title-text-color: $color-text-muted;
+$expansion-panel-disabled-title-opacity: $opacity-60;
+$expansion-panel-footer-border-color: rgba($color-black, 0.12);
 $expansion-panel-bordered-background-color: $color-background-white;
 $expansion-panel-bordered-border-color: $color-border-base;
-$expansion-panel-content-margin-right: 1.5rem;
-$expansion-panel-disabled-title-opacity: $opacity-60;
-$expansion-panel-disabled-title-text-color: $color-text-muted;
-$expansion-panel-footer-border-color: rgba($color-black, 0.12);
-$expansion-panel-footer-justify-content: start;
-$expansion-panel-footer-padding: 1.25rem;
-$expansion-panel-number-margin-right: 1rem;
-$expansion-panel-number-width: 1rem;
-$expansion-panel-padding: 1.5rem 0;
-$expansion-panel-title-font-weight: $font-weight-medium;
-$expansion-panel-title-margin-right: 1.5rem;
-$expansion-panel-title-width: 36%;
 
 // File input
 $file-input-xs-height: 1.5rem;

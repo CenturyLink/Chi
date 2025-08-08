@@ -18,8 +18,7 @@ $transition-duration: 0.2s;
     margin-right: -0.25rem;
     min-height: 0;
 
-    & > * {
-      // sass-lint:disable-line no-universal-selectors
+    & > * { // sass-lint:disable-line no-universal-selectors
       display: block;
       padding-left: 0.25rem;
       padding-right: 0.25rem;
@@ -35,7 +34,6 @@ $transition-duration: 0.2s;
     & > .chi-epanel__content {
       flex: 1;
       word-break: break-word;
-      margin-right: $expansion-panel-content-margin-right;
     }
 
     & > .chi-epanel__action {
@@ -50,11 +48,11 @@ $transition-duration: 0.2s;
 
     @include respond-to(sm) {
       & > .chi-epanel__number {
-        width: $expansion-panel-number-width;
+        width: 5%;
 
         & ~ .chi-epanel__title,
         & ~ .chi-epanel__name {
-          width: $expansion-panel-title-width;
+          width: 27%;
         }
       }
     }
@@ -62,21 +60,13 @@ $transition-duration: 0.2s;
     & > .chi-epanel__title,
     & > .chi-epanel__number {
       font-size: $font-size-xl;
-      font-weight: $expansion-panel-title-font-weight;
+      font-weight: $font-weight-semi-bold;
       margin: 0;
       transition: color $transition-duration;
 
       &.-centered {
         text-align: center;
       }
-    }
-
-    & > .chi-epanel__number {
-      margin-right: $expansion-panel-number-margin-right;
-    }
-
-    & > .chi-epanel__title {
-      margin-right: $expansion-panel-title-margin-right;
     }
   }
 
@@ -134,9 +124,8 @@ $transition-duration: 0.2s;
     display: flex;
     flex-direction: column;
     min-height: 4rem;
-    padding: $expansion-panel-footer-padding;
+    padding: 1rem;
     position: relative;
-    justify-content: $expansion-panel-footer-justify-content;
     @include respond-to(sm) {
       flex-direction: row;
     }
@@ -232,7 +221,8 @@ $transition-duration: 0.2s;
   }
 
   &:not(.-bordered) {
-    padding:  $expansion-panel-padding;
+    padding-bottom: 1.625rem;
+    padding-top: 1.625rem;
 
     &:not(:last-child) {
       border-bottom: 0.0625rem solid $expansion-panel-border-color;
@@ -241,9 +231,9 @@ $transition-duration: 0.2s;
     .chi-epanel__body {
       background-color: white;
       border: 0.0625rem solid $expansion-panel-border-color;
-      border-radius: $expansion-panel-body-border-radius;
       box-shadow: map-get($shadow, 1);
-      margin: $expansion-panel-body-margin;
+      margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
 
       .chi-epanel__content {
         padding: 1.5rem;
@@ -382,13 +372,6 @@ $transition-duration: 0.2s;
         }
       }
     }
-  }
-
-  &__wrapper {
-    padding: 1.5rem;
-    border: 0.0625rem solid $color-grey-30;
-    border-radius: 0.625rem;
-    background-color: $color-background-base-darker !important;
   }
 }
 
