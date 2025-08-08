@@ -176,3 +176,24 @@ block content
             chi-button(color='primary') Continue
         chi-expansion-panel(title='Pending state', state-icon, bordered)
         chi-expansion-panel(title='Disabled state', state='disabled', state-icon, bordered)
+
+    .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+      h2 Base Narnia
+      .chi-epanel__wrapper.-w--100
+        chi-expansion-panel(title='Done state', step='1', state='done')
+          div(slot='done')
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            | Pellentesque ac tellus sed tellus tempus consectetur.
+            | Quisque mattis sapien sem, vitae luctus leo gravida in.
+          div(slot='change')
+            chi-button(color='primary', variant='flat') Edit
+        chi-expansion-panel(title='Active state', step='2', state='active')
+          div(slot='active')
+            .chi-epanel__subtitle Active
+            p.chi-epanel__text.-mb--0 Active content in expansion panel.
+          div(slot='footer')
+            chi-button(color='primary') Continue
+            chi-button Previous
+            chi-button(color='primary', variant='flat') Cancel
+        chi-expansion-panel(title='Pending state', step='3')
+        chi-expansion-panel(title='Disabled state', step='4', state='disabled')
