@@ -11,6 +11,8 @@ $transition-duration: 0.2s;
   & > .chi-epanel__header {
     display: flex;
     flex-direction: column;
+    line-height: $expansion-panel-line-height;
+
     @include respond-to(sm) {
       flex-direction: row;
     }
@@ -167,7 +169,7 @@ $transition-duration: 0.2s;
   .-done--only,
   .-active--only {
     font-size: $font-size-base;
-    line-height: $line-height;
+    line-height: $expansion-panel-line-height;
     opacity: 1;
     transition: opacity $transition-duration;
   }
@@ -388,7 +390,7 @@ $transition-duration: 0.2s;
     background-color: $color-background-base-darker;
     border: 0.0625rem solid $color-grey-30;
     border-radius: 0.625rem;
-    padding: 1.5rem;
+    padding: 0 1.5rem;
   }
 }
 
