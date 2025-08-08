@@ -1,0 +1,87 @@
+@import '_global-mixins';
+@import '_global-variables';
+
+.chi-drag {
+  .chi-drag__item {
+    border: 0.0625rem solid #dfddde;
+    border-radius: 0.315rem;
+    margin-bottom: 1rem;
+
+    .chi-drag__wrapper {
+      padding: 1rem;
+      width: 100%;
+
+      &:hover {
+        cursor: move;
+      }
+    }
+
+    .chi-drag__title {
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+      margin-bottom: 0.315rem;
+    }
+
+    .chi-drag__content {
+      display: flex;
+      align-items: center;
+
+      &:not(:has(> chi-icon)) {
+        margin-left: 1.5625rem;
+      }
+
+      .chi-drag__description {
+        font-size: 0.8125rem;
+        line-height: 1.25rem;
+      }
+    }
+
+    .chi-drag__closable {
+      display: flex;
+
+      .chi-button {
+        padding: 0.625rem;
+      }
+    }
+
+    &:has(.chi-drag__wrapper:active) {
+      box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2);
+    }
+
+    &.-locked {
+      .chi-drag__wrapper {
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+
+      .chi-drag__closable {
+        .chi-button {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+
+    &.drag-over {
+      position: relative;
+      margin-top: 1.25rem;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -0.625rem;
+        left: 0;
+        width: 100%;
+        height: 0.25rem;
+        background-color: teal;
+        margin-top: 0.3125rem;
+        margin-bottom: 0.3125rem;
+      }
+    }
+  }
+}
