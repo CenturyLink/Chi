@@ -169,10 +169,6 @@ $animation-duration: 0.5s;
     right: $drawer-button-close-right;
     top: $drawer-button-close-top;
     z-index: 50;
-
-    .chi-icon {
-      color: $drawer-close-icon-color;
-    }
   }
 
   &__header {
@@ -180,6 +176,7 @@ $animation-duration: 0.5s;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
     display: $drawer-header-display;
+    flex-direction: column;
     flex-shrink: $drawer-header-flex-shrink;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
@@ -188,12 +185,6 @@ $animation-duration: 0.5s;
     .-close {
       .chi-icon {
         color: $drawer-header-close-icon-color;
-      }
-    }
-
-    .chi-link {
-      .chi-icon {
-        color: $drawer-header-link-icon-color;
       }
     }
   }
