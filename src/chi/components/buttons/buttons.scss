@@ -359,6 +359,7 @@ $sizes: (
   }
 
   &.-close {
+    background-color: $button-close-background-color;
     border-color: transparent;
 
     &,
