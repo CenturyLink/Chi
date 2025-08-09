@@ -153,7 +153,8 @@
 
   &.-header-image {
     .chi-modal__header {
-      background: $modal-header-graphics-background-img no-repeat right, $modal-header-background-color;
+      background: $modal-header-graphics-background-img no-repeat $modal-header-graphics-background-placement,
+        $modal-header-background-color;
     }
   }
 
@@ -165,6 +166,9 @@
       padding: $modal-gradient-header-padding;
 
       .-close {
+        right: $modal-gradient-close-right;
+        top: $modal-gradient-close-top;
+
         &,
         &:hover,
         &:active {
@@ -179,7 +183,8 @@
 
     &.-header-image {
       .chi-modal__header {
-        background: $modal-header-graphics-background-img no-repeat right, $modal-gradient-header-background;
+        background: $modal-header-graphics-background-img no-repeat $modal-header-graphics-background-placement,
+          $modal-gradient-header-background;
       }
     }
 

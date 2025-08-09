@@ -1355,19 +1355,22 @@ $modal-footer-justify-content:              flex-end;
 $modal-back-link-color:                     $color-icon-body;
 $modal-close-icon-color:                    $color-icon-body;
 
-$modal-gradient-border-radius:              0;
-$modal-gradient-header-background:          initial;
-$modal-gradient-header-padding:             initial;
-$modal-header-graphics-background-img:      initial;
-$modal-gradient-close-icon-color:           initial;
-$modal-gradient-title-color:                initial;
-$modal-gradient-title-font-size:            initial;
-$modal-gradient-title-line-height:          initial;
-$modal-gradient-title-margin-bottom:        initial;
-$modal-gradient-subtitle-color:             initial;
-$modal-gradient-subtitle-font-size:         initial;
-$modal-gradient-subtitle-line-height:       initial;
-$modal-gradient-subtitle-font-weight:       initial;
+$modal-gradient-border-radius:              $modal-border-radius;
+$modal-gradient-header-background:          none;
+$modal-gradient-header-padding:             1rem 1.5rem;
+$modal-gradient-close-icon-color:           inherit;
+$modal-gradient-close-right:                1rem;
+$modal-gradient-close-top:                  1rem;
+$modal-gradient-title-color:                inherit;
+$modal-gradient-title-font-size:            $font-size-h3;
+$modal-gradient-title-line-height:          2rem;
+$modal-gradient-title-margin-bottom:        0;
+$modal-gradient-subtitle-color:             inherit;
+$modal-gradient-subtitle-font-size:         $font-size-xl;
+$modal-gradient-subtitle-line-height:       1.5rem;
+$modal-gradient-subtitle-font-weight:       $font-weight-normal;
+$modal-header-graphics-background-img:      none;
+$modal-header-graphics-background-placement: 0 0;
 
 // Number input
 $number-input-arrow-icon-color:             $color-icon-primary;
