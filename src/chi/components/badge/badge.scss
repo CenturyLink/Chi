@@ -160,17 +160,18 @@ $colors: (
 
 .chi-badge {
   // sass-lint:disable-block property-units
-  align-items: flex-start;
+  align-items: $badge-align-items;
   background-color: $badge-background-color;
   border: 0.0625rem solid $badge-border-color;
   border-radius: $badge-border-radius;
+  box-shadow: $badge-box-shadow;
   display: inline-flex;
   font-size: $font-size-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-sm;
+  font-weight: $badge-font-weight;
+  line-height: $badge-line-height;
   min-width: 1.5rem;
-  padding: 0.1875rem 0.375rem;
-  text-align: left;
+  padding: $badge-padding;
+  text-align: $badge-text-align;
   vertical-align: middle;
 
   .chi-icon {
@@ -196,9 +197,9 @@ $colors: (
   &.-sm {
     font-size: $font-size-xs;
     height: 1.25rem;
-    line-height: $line-height-sm;
+    line-height: $badge-sm-line-height;
     min-width: 1.25rem;
-    padding: 0.0625rem 0.375rem;
+    padding: $badge-sm-padding;
 
     .chi-icon {
       height: 0.75rem;
@@ -216,14 +217,14 @@ $colors: (
     }
 
     span {
-      line-height: $line-height-sm;
+      line-height: $badge-sm-line-height;
     }
   }
 
   &.-xs {
     font-size: $font-size-2xs;
     height: 1rem;
-    line-height: 0.875rem;
+    line-height: $badge-xs-line-height;
     min-width: 1rem;
     padding: 0 0.25rem;
 
@@ -243,13 +244,14 @@ $colors: (
     }
 
     span {
-      line-height: 0.875rem;
+      line-height: $badge-xs-line-height;
     }
   }
 
   &.-outline,
   &.-flat {
     background-color: transparent;
+    box-shadow: none;
   }
 
   &.-flat {
