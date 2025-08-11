@@ -207,14 +207,14 @@
       background-color: $header-impersonation-background-color;
       display: flex;
       justify-content: center;
-      padding: 0 0.5rem;
+      padding: $header-impersonation-content-padding;
       position: relative;
 
       &::before {
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: 1.5rem;
+        height: $header-impersonation-edge-element-height;
         left: -1rem;
         position: absolute;
         top: 0;
@@ -227,7 +227,7 @@
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: 1.5rem;
+        height: $header-impersonation-edge-element-height;
         position: absolute;
         right: -1rem;
         top: 0;

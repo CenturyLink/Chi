@@ -584,8 +584,8 @@ block content
               path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           span.chi-header__title.-d--none.-d-sm--flex [Portal Name]
         .chi-header__start
-          chi-button#toggle-nav(variant="flat", size="lg" type="icon")
-            chi-icon(icon="menu")
+          chi-button#toggle-nav(variant="flat", size="lg", type="icon", color="dark")
+            chi-icon(icon="menu" size="sm--3")
         .chi-header__end
           div.-align-items--center.-d--none.-d-lg--flex
             <chi-dropdown class="enterprise-id-switcher" button="Enterprise ID: 1234567" size="sm" select-mode> <!-- or select-mode="single" -->
@@ -622,8 +622,8 @@ block content
               path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           span.chi-header__title.-d--none.-d-sm--flex [Portal Name]
         .chi-header__start
-          chi-button#toggle-nav(variant="flat", size="lg" type="icon")
-            chi-icon(icon="menu")
+          chi-button#toggle-nav(variant="flat", size="lg", type="icon", color="dark")
+            chi-icon(icon="menu" size="sm--3")
         .chi-header__end
           div.-align-items--center.-d--none.-d-lg--flex
             <chi-dropdown class="enterprise-id-switcher" button="Enterprise ID: 1234567" size="sm" select-mode> <!-- or select-mode="single" -->
@@ -653,10 +653,10 @@ block content
     header.chi-header.-portal.-impersonation.-lg
       .chi-impersonation-bar
         .chi-impersonation-bar__content
-          span.chi-impersonation-bar__label Logged in as:
+          span.chi-impersonation-bar__label Signed in as:
           strong.chi-impersonation-bar__username User
           div.chi-impersonation-bar__divider.chi-divider.-inverse.-vertical.-h--75
-          button.chi-button.-flat.-light.-xs.-icon.-no-hover(id="button-logout", aria-label="Log out", data-tooltip="Log out", data-position="bottom")
+          button.chi-button.-flat.-light.-xs.-icon.-no-hover.-b--0(id="button-logout", aria-label="Log out", data-tooltip="Log out", data-position="bottom")
             .chi-button__content
               i.chi-icon.icon-logout(aria-hidden="true")
       nav.chi-header__content
@@ -667,8 +667,8 @@ block content
               path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           span.chi-header__title.-d--none.-d-sm--flex [Portal Name]
         .chi-header__start
-          chi-button#toggle-nav(variant="flat", size="lg" type="icon")
-            chi-icon(icon="menu")
+          chi-button#toggle-nav(variant="flat", size="lg", type="icon", color="dark")
+            chi-icon(icon="menu" size="sm--3")
         .chi-header__end
           div.-align-items--center.-d--none.-d-lg--flex
             <chi-dropdown id="switcher" class="enterprise-id-switcher" button="Enterprise ID: 1234567" size="sm" select-mode retain-selection="false">
