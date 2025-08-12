@@ -293,4 +293,16 @@ $colors: (
       }
     }
   }
+
+  &.-notification {
+    background-color: $badge-notification-background-color;
+    border: 0.0625rem solid $badge-notification-border-color;
+    border-radius: $badge-notification-border-radius;
+    color: $badge-notification-text-color;
+    font-weight: $font-weight-bold;
+
+    .chi-icon {
+      color: $badge-notification-icon-color;
+    }
+  }
 }
