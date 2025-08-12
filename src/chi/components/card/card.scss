@@ -79,7 +79,7 @@
     line-height: $line-height;
     padding: $card-content-padding;
 
-    &:has(+ .chi-card__footer){
+    &:has(+ .chi-card__footer) {
       border-bottom: $card-content-footer-border-bottom;
       border-bottom-left-radius: $card-content-footer-border-bottom;
       border-bottom-right-radius: $card-content-footer-border-bottom;
@@ -406,6 +406,36 @@
 
         .chi-card__metric {
           color: $card-kpi-disabled-metric-color;
+        }
+      }
+    }
+  }
+
+  &:has(.chi-accordion) {
+    border: $card-accordion-border;
+    border-radius: $card-accordion-border-radius;
+
+    .chi-card__content {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  .chi-accordion {
+    .chi-accordion__item {
+      background-color: transparent;
+
+      .chi-accordion__trigger {
+        padding: 1.25rem;
+      }
+
+      .chi-accordion__content {
+        padding: 0 1.25rem 1.25rem;
+      }
+
+      &.-expanded {
+        .chi-accordion__trigger {
+          padding-bottom: 0.5rem;
         }
       }
     }
