@@ -117,14 +117,20 @@
       &.-vertical {
         align-self: center;
         height: 2rem;
-        margin: $header-end-divider-margin;
       }
     }
 
+    chi-dropdown,
     .chi-dropdown {
       .chi-button::after,
       .chi-icon {
         color: $header-dropdown-icon-color;
+      }
+
+      + .chi-divider {
+        &.-vertical {
+          margin: $header-end-divider-margin;
+        }
       }
     }
   }
