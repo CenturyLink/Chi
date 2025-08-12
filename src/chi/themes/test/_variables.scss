@@ -1396,7 +1396,7 @@ $modal-content-padding: 2rem 2rem 0 2rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 2rem;
-$modal-footer-justify-content: start;
+$modal-footer-justify-content: flex-start;
 $modal-back-link-color: $color-grey-80;
 $modal-close-icon-color: $color-grey-80;
 
@@ -1413,7 +1413,7 @@ $modal-gradient-title-margin-bottom: 0;
 $modal-gradient-subtitle-color: $color-text-white;
 $modal-gradient-subtitle-font-size: $font-size-xl;
 $modal-gradient-subtitle-line-height: 1.5rem;
-$modal-gradient-subtitle-font-weight: $font-weight-normal;
+$modal-gradient-subtitle-font-weight: $font-weight-medium;
 $modal-header-graphics-background-img: url('https://lib.lumen.com/images/shapes.svg');
 $modal-header-graphics-background-placement: 85% / auto 165%;
 
