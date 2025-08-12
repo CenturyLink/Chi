@@ -437,8 +437,10 @@
 
       &-item {
         border-radius: 0.3125rem;
+        height: unset;
         padding: 0 0.625rem;
         margin: 0.125rem 0.625rem;
+        min-height: 2rem;
 
         &.-active-item {
           background-color: $color-orange-20;
@@ -448,7 +450,12 @@
         }
 
         & > div:first-child {
+          flex-shrink: 0;
           width: 41.67%;
+        }
+
+        & > div:last-child {
+          white-space: normal;
         }
       }
     }
