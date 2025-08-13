@@ -286,6 +286,10 @@ $transition-duration: 0.2s;
         display: none;
       }
     }
+
+    .chi-epanel__body {
+      margin-left: 0;
+    }
   }
 
   &.-state-icon {
