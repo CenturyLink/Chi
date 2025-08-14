@@ -560,6 +560,65 @@
           </nav>
         </header>
       </div>
+
+      <div class="-p--4">
+        <h3>Expansion Panel Narnia</h3>
+        <div class="chi-epanel__wrapper -w--50">
+          <chi-expansion-panel title="Done state" step="1" state="done">
+            <div slot="done">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+              Pellentesque ac tellus sed tellus tempus consectetur.<br>
+              Quisque mattis sapien sem, vitae luctus leo gravida in.
+            </div>
+            <div slot="change">
+              <chi-button color="primary" variant="flat">Edit</chi-button>
+            </div>
+          </chi-expansion-panel>
+  
+          <chi-expansion-panel title="Active state" step="2" state="active">
+            <div slot="active">
+              <div class="chi-epanel__subtitle">Active</div>
+              <p class="chi-epanel__text -mb--0">Active content in expansion panel.</p>
+            </div>
+            <div slot="footer">
+              <chi-button color="primary">Continue</chi-button>
+              <chi-button>Previous</chi-button>
+              <chi-button color="primary" variant="flat">Cancel</chi-button>
+            </div>
+          </chi-expansion-panel>
+  
+          <chi-expansion-panel title="Pending state" step="3"></chi-expansion-panel>
+          <chi-expansion-panel title="Disabled state" step="4" state="disabled"></chi-expansion-panel>
+        </div>
+
+        <h3>Expansion Panel No Step Narnia</h3>
+        <div class="chi-epanel__wrapper -w--50">
+          <chi-expansion-panel title="Done state" state="done">
+            <div slot="done">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+              Pellentesque ac tellus sed tellus tempus consectetur.<br>
+              Quisque mattis sapien sem, vitae luctus leo gravida in.
+            </div>
+            <div slot="change">
+              <chi-button color="primary" variant="flat">Edit</chi-button>
+            </div>
+          </chi-expansion-panel>
+          <chi-expansion-panel title="Active state" state="active">
+            <div slot="active">
+              <div class="chi-epanel__subtitle">Active</div>
+              <p class="chi-epanel__text -mb--0">Active content in expansion panel.</p>
+            </div>
+            <div slot="footer">
+              <chi-button color="primary">Continue</chi-button>
+              <chi-button>Previous</chi-button>
+              <chi-button color="primary" variant="flat">Cancel</chi-button>
+            </div>
+          </chi-expansion-panel>
+  
+          <chi-expansion-panel title="Pending state"></chi-expansion-panel>
+          <chi-expansion-panel title="Disabled state" state="disabled"></chi-expansion-panel>
+        </div>
+      </div>
     </div>
   </body>
   <script>
