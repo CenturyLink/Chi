@@ -1055,6 +1055,22 @@ $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
 
+// Drag and Drop
+$drag-item-background-color: $color-background-white;
+$drag-item-border-color: $color-grey-30;
+$drag-item-border-radius: $border-radius-base;
+$drag-item-focus-color: $focus-color;
+$drag-item-padding: 1.25rem;
+$drag-item-title-font-size: $font-size-md;
+$drag-item-title-font-weight: $font-weight-semi-bold;
+$drag-item-title-line-height: $line-height-lg;
+$drag-item-description-font-size: $font-size-sm;
+$drag-item-description-line-height: $line-height-md;
+$drag-item-dragging-close-background-color: $color-background-white;
+$drag-item-close-hover-background-color: $color-grey-20;
+$drag-item-close-active-background-color: $color-grey-25;
+$drag-item-drop-indicator-background-color: $focus-color;
+
 // Drawer
 $drawer-width: 18.75rem;
 $drawer-height: 18.75rem;

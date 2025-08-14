@@ -3,12 +3,18 @@
 
 .chi-drag {
   .chi-drag__item {
-    border: 0.0625rem solid #dfddde;
-    border-radius: 0.315rem;
+    background-color: $drag-item-background-color;
+    border: 0.0625rem solid $drag-item-border-color;
+    border-radius: $drag-item-border-radius;
     margin-bottom: 1rem;
 
+    &:focus {
+      border: 0.0625rem solid $drag-item-focus-color;
+      outline: 0.0625rem solid $drag-item-focus-color;
+    }
+
     .chi-drag__wrapper {
-      padding: 1rem;
+      padding: $drag-item-padding;
       width: 100%;
 
       &:hover {
@@ -19,9 +25,9 @@
     .chi-drag__title {
       display: flex;
       align-items: center;
-      font-size: 0.875rem;
-      font-weight: 500;
-      line-height: 1.5rem;
+      font-size: $drag-item-title-font-size;
+      font-weight: $drag-item-title-font-weight;
+      line-height: $drag-item-title-line-height;
       margin-bottom: 0.315rem;
     }
 
@@ -30,20 +36,39 @@
       align-items: center;
 
       &:not(:has(> chi-icon)) {
-        margin-left: 1.5625rem;
+        margin-left: 2rem;
       }
 
       .chi-drag__description {
-        font-size: 0.8125rem;
-        line-height: 1.25rem;
+        font-size: $drag-item-description-font-size;
+        line-height: $drag-item-description-line-height;
       }
     }
 
+    .chi-drag__title,
+    .chi-drag__content {
+      & > chi-icon {
+        margin-right: 1rem !important; // important needed until inline utility class is removed
+      }
+    }
+
+
     .chi-drag__closable {
+      border-left: 0.0625rem solid $drag-item-border-color;
       display: flex;
 
       .chi-button {
-        padding: 0.625rem;
+        border-radius: $border-radius-sharp;
+        padding: 1rem;
+
+        &:hover {
+          background-color: $drag-item-close-hover-background-color;
+          scale: none;
+        }
+
+        &:active {
+          background-color: $drag-item-close-active-background-color;
+        }
       }
     }
 
@@ -67,6 +92,14 @@
       }
     }
 
+    &.-dragging {
+      .chi-drag__closable {
+        .chi-button {
+          background-color: $drag-item-dragging-close-background-color;
+        }
+      }
+    }
+
     &.drag-over {
       position: relative;
       margin-top: 1.25rem;
@@ -78,7 +111,7 @@
         left: 0;
         width: 100%;
         height: 0.25rem;
-        background-color: teal;
+        background-color: $drag-item-drop-indicator-background-color;
         margin-top: 0.3125rem;
         margin-bottom: 0.3125rem;
       }
