@@ -111,20 +111,14 @@ small {
   line-height: $line-height;
 }
 
-// text colors
-.-text--inherit,
-.-icon--inherit {
+// Text colors
+.-text--inherit {
   color: inherit !important;
 }
 
 .-text--body,
 .-text--dark {
   color: $color-text-base !important;
-}
-
-.-icon--body,
-.-icon--dark {
-  color: $color-icon-body !important;
 }
 
 .-hover--text--body {
@@ -136,15 +130,9 @@ small {
   }
 }
 
-.-text--inverse,
-.-icon--inverse {
-  color: $color-text-white !important;
-}
-
 .-text--white,
 .-text--light,
-.-icon--white,
-.-icon--light {
+.-text--inverse {
   color: $color-text-white !important;
 }
 
@@ -163,11 +151,6 @@ small {
   color: $color-text-primary !important;
 }
 
-.-icon--brand,
-.-icon--primary {
-  color: $color-icon-primary !important;
-}
-
 .-hover--text--primary {
   &:hover,
   &:focus,
@@ -177,8 +160,7 @@ small {
   }
 }
 
-.-text--secondary,
-.-icon--secondary {
+.-text--secondary {
   color: $color-text-secondary !important;
 }
 
@@ -195,60 +177,106 @@ small {
   color: $color-text-success !important;
 }
 
-.-icon--success {
-  color: $color-icon-success !important;
+.-text--warning {
+  color: $color-text-warning !important;
 }
 
 .-text--danger {
   color: $color-text-danger !important;
 }
 
-.-icon--danger {
-  color: $color-icon-danger !important;
-}
-
 .-text--info {
   color: $color-text-info !important;
 }
 
-.-icon--info {
-  color: $color-icon-info !important;
+.-text--muted,
+.-text--grey {
+  color: $color-text-muted !important;
 }
 
-.-text--warning {
-  color: $color-text-warning !important;
+.-text--navy {
+  color: $color-teal-80 !important;
+}
+
+.-text--orange {
+  color: $color-orange-60 !important;
+}
+
+// Icon colors
+
+.-icon--inherit {
+  color: inherit !important;
+}
+
+.-icon--body {
+  color: $color-icon-body !important;
+}
+
+.-icon--primary,
+.-icon--brand,
+.-icon--teal {
+  color: $color-icon-primary !important;
+}
+
+.-icon--primary-dark,
+.-icon--teal-dark {
+  color: $color-icon-primary-dark !important;
+}
+
+.-icon--secondary {
+  color: $color-icon-secondary !important;
+}
+
+.-icon--success {
+  color: $color-icon-success !important;
 }
 
 .-icon--warning {
   color: $color-icon-warning !important;
 }
 
-.-text--muted {
-  color: $color-text-muted !important;
+.-icon--danger {
+  color: $color-icon-danger !important;
+}
+
+.-icon--danger-dark {
+  color: $color-icon-danger-dark !important;
+}
+
+.-icon--info {
+  color: $color-icon-info !important;
 }
 
 .-icon--muted {
   color: $color-icon-muted !important;
 }
 
-.-text--grey {
-  color: $color-text-muted !important;
-}
-
+.-icon--muted-dark,
 .-icon--grey {
   color: $color-icon-muted-dark !important;
 }
 
-.-text--navy,
-.-icon--navy {
-  color: $color-teal-100 !important;
-}
-
-.-text--orange,
 .-icon--orange {
-  color: $color-orange-50 !important;
+  color: $color-icon-orange !important;
 }
 
-.-icon--teal {
+.-icon--orange-dark {
+  color: $color-icon-orange-dark !important;
+}
+
+.-icon--dark {
+  color: $color-icon-dark !important;
+}
+
+.-icon--light {
+  color: $color-icon-light !important;
+}
+
+.-icon--white {
+  color: $color-icon-white !important;
+}
+
+// Depracated - for backwards compatibility
+.-icon--navy {
   color: $color-teal-80 !important;
 }
