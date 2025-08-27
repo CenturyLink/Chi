@@ -193,19 +193,24 @@ $color-text-black: $color-black;
 $color-text-code: $color-teal-70;
 
 // Icon color
-$color-icon-base: $color-orange-60;
+$color-icon-base: $color-teal-70;
 $color-icon-body: $color-grey-80;
-$color-icon-primary: $color-orange-60;
-$color-icon-primary-dark: $color-orange-70;
+$color-icon-primary: $color-teal-70;
+$color-icon-primary-dark: $color-teal-80;
 $color-icon-secondary: $color-teal-40;
 $color-icon-secondary-dark: $color-teal-50;
 $color-icon-success: $color-green-60;
 $color-icon-warning: $color-yellow-60;
-$color-icon-danger: $color-red-60;
-$color-icon-info: $color-blue-60;
+$color-icon-danger: $color-red-70;
+$color-icon-danger-dark: $color-red-80;
+$color-icon-info: $color-cyan-50;
 $color-icon-muted-light: $color-grey-50;
-$color-icon-muted: $color-grey-60;
-$color-icon-muted-dark: $color-grey-70;
+$color-icon-muted: $color-grey-50;
+$color-icon-muted-dark: $color-grey-60;
+$color-icon-dark: $color-grey-90;
+$color-icon-light: $color-white;
+$color-icon-orange: $color-orange-60;
+$color-icon-orange-dark: $color-orange-80;
 $color-icon-white: $color-white;
 $color-icon-black: $color-black;
 
@@ -561,7 +566,7 @@ $badge-outline-dark-border-color: $color-border-dark;
 $badge-outline-dark-text-color: $color-text-base;
 $badge-outline-dark-icon-color: $color-text-base;
 $badge-flat-dark-text-color: $color-text-base;
-$badge-flat-dark-icon-color: $color-icon-body;
+$badge-flat-dark-icon-color: $color-icon-dark;
 $badge-success-background-color: $color-background-success-lighter;
 $badge-success-border-color: $color-border-success-light;
 $badge-success-text-color: $color-text-base;
@@ -1159,7 +1164,7 @@ $dropdown-button-hover-border-color: $color-border-base-dark;
 $dropdown-button-active-background-color: $color-grey-25;
 $dropdown-button-active-border-color: rgba($color-grey-70, 0.2);
 
-$dropdown-trigger-icon-color: $color-icon-primary;
+$dropdown-trigger-icon-color: $color-icon-body;
 $dropdown-trigger-icon-margin-left: 0.5rem;
 $dropdown-trigger-text-transform: none;
 
@@ -1444,7 +1449,7 @@ $mobile-nav-header-title-line-height: $line-height-lg;
 $mobile-nav-header-title-text-color: $color-text-base;
 $mobile-nav-user-background-color: $color-background-base;
 $mobile-nav-user-border-color: $color-border-base;
-$mobile-nav-drawer-close-icon-color: $color-icon-primary;
+$mobile-nav-drawer-close-icon-color: $color-icon-body;
 $mobile-nav-logout-text-color: $color-text-primary;
 $mobile-nav-list-item-text-color: $color-text-base;
 $mobile-nav-list-item-active-text-color: $color-text-primary;
@@ -1456,8 +1461,8 @@ $mobile-nav-list-item-active-background-color: $color-orange-20;
 $mobile-nav-list-item-active-border-color: $color-border-primary;
 $mobile-nav-list-item-icon-size: 1.25rem;
 $mobile-nav-list-item-icon-color: $color-grey-90;
-$mobile-nav-list-item-trigger-icon-color: $color-icon-primary;
-$mobile-nav-list-item-active-trigger-icon-color: $color-icon-primary;
+$mobile-nav-list-item-trigger-icon-color: $color-icon-body;
+$mobile-nav-list-item-active-trigger-icon-color: $color-icon-body;
 $mobile-nav-list-item-title-font-weight: $font-weight-semi-bold;
 $mobile-nav-list-item-active-box-shadow: inset 0.125rem 0 0 $color-border-primary;
 
@@ -1503,7 +1508,7 @@ $modal-header-graphics-background-img: url('https://lib.lumen.com/images/shapes.
 $modal-header-graphics-background-placement: 85% / auto 165%;
 
 // Number input
-$number-input-arrow-icon-color: $color-icon-primary;
+$number-input-arrow-icon-color: $color-icon-body;
 $number-input-disabled-arrow-icon-color: $color-icon-body;
 $number-input-border-color: $color-border-base;
 $number-input-hover-border-color: $color-grey-40;
@@ -1883,16 +1888,16 @@ $sidenav-item-text-color: $color-grey-90;
 $sidenav-item-icon-color: $color-grey-70;
 $sidenav-item-icon-size: 1.25rem;
 $sidenav-item-min-height: 4.5rem;
-$sidenav-item-trigger-icon-color: $color-icon-primary;
+$sidenav-item-trigger-icon-color: $color-icon-body;
 $sidenav-item-hover-border-color: transparent;
 $sidenav-item-hover-background-color: $color-grey-20;
-$sidenav-item-active-icon-color: $color-icon-primary;
+$sidenav-item-active-icon-color: $color-icon-orange;
 $sidenav-item-active-border-color: $color-border-primary;
 $sidenav-item-active-background-color: $color-orange-10;
 $sidenav-item-active-box-shadow: inset 0.125rem 0 0 $sidenav-item-active-border-color;
 $sidenav-item-hover-box-shadow: inset 0.125rem 0 0 $sidenav-item-hover-border-color;
 $sidenav-drawer-header-background-color: $color-grey-10;
-$sidenav-drawer-close-icon-color: $color-icon-primary;
+$sidenav-drawer-close-icon-color: $color-icon-body;
 $sidenav-item-title-font-weight: $font-weight-normal;
 $sidenav-item-title-line-height: 1.25rem;
 $sidenav-item-expanded-background-color: $color-background-white;
