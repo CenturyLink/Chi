@@ -1086,16 +1086,16 @@ $css-grid-md-gap: 1.5rem;
 
 // Date picker
 $date-picker-input-width: 15rem;
-$date-picker-day-border-radius: 2rem;
+$date-picker-day-border-radius: 0.1875rem;
 $date-picker-padding: 0.5rem;
-$date-picker-day-active-background-color: $color-background-primary;
+$date-picker-day-active-background-color: $color-teal-70;
 $date-picker-day-active-text-color: $color-text-white;
 $date-picker-day-background-color: $color-background-white;
-$date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color: $color-teal-70;
 
 $date-picker-day-inactive-text-color: rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
-$date-picker-day-hover-background-color: $color-grey-20;
+$date-picker-day-hover-background-color: rgba($color-teal-70, 0.2);
 
 $date-picker-arrow-icon-color: $color-text-primary;
 $date-picker-arrow-disabled-icon-color: rgba($color-text-base, 0.2);
@@ -2293,10 +2293,10 @@ $textarea-xl-padding: $text-input-xl-padding;
 // Time picker
 $time-picker-width: 14rem;
 $time-picker-column-border-color: $color-border-base;
-$time-picker-item-border-radius: $button-border-radius;
-$time-picker-item-hover-background-color: $color-background-base-darker;
+$time-picker-item-border-radius: 0.1875rem;
+$time-picker-item-hover-background-color: rgba($color-teal-70, 0.2);
 $time-picker-item-focus-border-color: $focus-color;
-$time-picker-item-active-background-color: $color-background-primary;
+$time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
