@@ -904,7 +904,7 @@ $button-xs-padding: 0.1875rem 1rem;
 $button-xs-text-transform: none;
 $button-icon-xs-font-size: 0.75rem;
 $button-icon-xs-line-height: 0.75rem;
-$button-icon-xs-padding: 0.25rem;
+$button-icon-xs-padding: 0.3125rem;
 $button-icon-xs-height: 0.75rem;
 $button-icon-xs-width: 0.75rem;
 
@@ -914,7 +914,7 @@ $button-sm-padding: 0.4375rem 1.5rem;
 $button-sm-text-transform: none;
 $button-icon-sm-font-size: 1rem;
 $button-icon-sm-line-height: 1rem;
-$button-icon-sm-padding: 0.375rem;
+$button-icon-sm-padding: 0.4375rem;
 $button-icon-sm-height: 1rem;
 $button-icon-sm-width: 1rem;
 
@@ -923,10 +923,10 @@ $button-md-line-height: $line-height-lg;
 $button-md-padding: 0.4375rem 1.75rem;
 $button-md-text-transform: none;
 $button-icon-md-font-size: 1.25rem;
-$button-icon-md-line-height: 1rem;
-$button-icon-md-padding: 0.5rem;
-$button-icon-md-height: 1rem;
-$button-icon-md-width: 1rem;
+$button-icon-md-line-height: 1.25rem;
+$button-icon-md-padding: 0.5625rem;
+$button-icon-md-height: 1.25rem;
+$button-icon-md-width: 1.25rem;
 
 $button-lg-font-size: $font-size-xl;
 $button-lg-line-height: $line-height-lg;
@@ -934,17 +934,17 @@ $button-lg-padding: 0.6875rem 2rem;
 $button-lg-text-transform: none;
 $button-icon-lg-font-size: 1.25rem;
 $button-icon-lg-line-height: 1.25rem;
-$button-icon-lg-padding: 0.75rem;
+$button-icon-lg-padding: 0.8125rem;
 $button-icon-lg-height: 1.25rem;
 $button-icon-lg-width: 1.25rem;
 
-$button-xl-font-size: $font-size-lg;
-$button-xl-line-height: $line-height-md;
+$button-xl-font-size: $font-size-xl;
+$button-xl-line-height: $line-height-lg;
 $button-xl-padding: 0.9375rem 3rem;
 $button-xl-text-transform: none;
 $button-icon-xl-font-size: 1.25rem;
 $button-icon-xl-line-height: 1.25rem;
-$button-icon-xl-padding: 1rem;
+$button-icon-xl-padding: 1.0625rem;
 $button-icon-xl-height: 1.25rem;
 $button-icon-xl-width: 1.25rem;
 
@@ -1086,16 +1086,16 @@ $css-grid-md-gap: 1.5rem;
 
 // Date picker
 $date-picker-input-width: 15rem;
-$date-picker-day-border-radius: 2rem;
+$date-picker-day-border-radius: 0.1875rem;
 $date-picker-padding: 0.5rem;
-$date-picker-day-active-background-color: $color-background-primary;
+$date-picker-day-active-background-color: $color-teal-70;
 $date-picker-day-active-text-color: $color-text-white;
 $date-picker-day-background-color: $color-background-white;
-$date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color: $color-teal-70;
 
 $date-picker-day-inactive-text-color: rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
-$date-picker-day-hover-background-color: $color-grey-20;
+$date-picker-day-hover-background-color: rgba($color-teal-70, 0.2);
 
 $date-picker-arrow-icon-color: $color-text-primary;
 $date-picker-arrow-disabled-icon-color: rgba($color-text-base, 0.2);
@@ -2293,10 +2293,10 @@ $textarea-xl-padding: $text-input-xl-padding;
 // Time picker
 $time-picker-width: 14rem;
 $time-picker-column-border-color: $color-border-base;
-$time-picker-item-border-radius: $button-border-radius;
-$time-picker-item-hover-background-color: $color-background-base-darker;
+$time-picker-item-border-radius: 0.1875rem;
+$time-picker-item-hover-background-color: rgba($color-teal-70, 0.2);
 $time-picker-item-focus-border-color: $focus-color;
-$time-picker-item-active-background-color: $color-background-primary;
+$time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
@@ -2355,15 +2355,16 @@ $tags-border-color: $color-border-base;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-60;
+$tags-input-min-height: 1.25rem;
 $tags-hover-border-color: $color-grey-40;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
-$tags-md-padding: 0.0625rem 0.5rem;
+$tags-md-padding: 0.4375rem 0.75rem;
 
 $tag-badge-border-radius: 0.25rem;
-$tag-badge-padding-top: 0.1875rem;
-$tag-badge-padding-bottom: 0.1875rem;
+$tag-badge-padding-top: 0.25rem;
+$tag-badge-padding-bottom: 0.25rem;
 $tag-margin-bottom: 0.125rem;
 $tag-margin-right: 0.5rem;
 $tag-margin-top: 0.125rem;

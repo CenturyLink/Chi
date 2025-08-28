@@ -41,6 +41,11 @@
         padding-bottom: $tag-badge-padding-bottom;
         padding-top: $tag-badge-padding-top;
 
+        & > span {
+          display: flex;
+          align-items: center;
+        }
+
         .chi-button {
           &.-icon {
             &.-close {
@@ -56,12 +61,13 @@
     align-items: center;
     display: flex;
     flex: 1 0 auto;
-    min-height: $line-height-xl;
+    min-height: $tags-input-min-height;
 
     input {
       border: 0;
       height: 100%;
       outline: none;
+      padding: 0;
       width: 100%;
 
       &::placeholder {
