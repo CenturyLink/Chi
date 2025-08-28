@@ -359,9 +359,11 @@
     }
 
     &:hover {
-      background: $card-kpi-hover-background-color;
-      border: $card-kpi-hover-border;
-      box-shadow: $card-kpi-hover-box-shadow;
+      .chi-card__content {
+        background: $card-kpi-hover-background-color;
+        border: $card-kpi-hover-border;
+        box-shadow: $card-kpi-hover-box-shadow;
+      }
 
       .chi-card__title {
         color: $card-kpi-hover-title-color;
