@@ -2309,11 +2309,12 @@ $tags-border-color: $color-border-base;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-50;
+$tags-input-min-height: 1.25rem;
 $tags-hover-border-color: $color-grey-40;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
-$tags-md-padding: 0.0625rem 0.75rem;
+$tags-md-padding: 0.3125rem 0.75rem;
 
 $tag-badge-border-radius: 2em;
 $tag-badge-padding-top: 0.0625rem;
