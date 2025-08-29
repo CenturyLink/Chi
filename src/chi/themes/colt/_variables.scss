@@ -1429,6 +1429,7 @@ $modal-background-color:                    $color-background-white;
 $modal-border-radius:                       $border-radius-base;
 $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-max-width:                           600px;
+$modal-max-width-sm:                        26rem;
 $modal-close-top:                           0.5rem;
 $modal-close-right:                         0.75rem;
 $modal-header-background-color:             transparent;
@@ -1443,6 +1444,7 @@ $modal-content-padding:                     1.5rem;
 $modal-footer-box-shadow:                   none;
 $modal-footer-min-height:                   4rem;
 $modal-footer-padding:                      1rem;
+$modal-footer-padding-top-lg:               2.375rem;
 $modal-footer-justify-content:              flex-end;
 $modal-back-link-color:                     $color-icon-body;
 $modal-close-icon-color:                    $color-icon-body;
@@ -1769,6 +1771,8 @@ $save-view-ribbon-label-color:              $color-text-white;
 $save-view-ribbon-label-font-style:         italic;
 $save-view-ribbon-arrow-border-color:       $color-grey-75;
 $save-view-ribbon-arrow-border-style:       solid;
+$save-view-modal-max-width:                 $modal-max-width-sm;
+$save-view-modal-footer-padding-top:        $modal-footer-padding-top-lg;
 
 // Search input
 $search-input-xs-icon-top:                  0;

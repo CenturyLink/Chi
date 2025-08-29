@@ -154,14 +154,11 @@
   }
 
   // Vue component
-  .chi-modal{
-    max-width: 26rem;
-    /* 416px */
-  }
+  .chi-modal {
+    max-width: $save-view-modal-max-width;
 
-  .chi-modal__footer {
-    padding: $save-view-modal-footer-padding;
-    justify-content: $save-view-modal-justify-content;
-    margin-top: $save-view-modal-margin-top;
+    .chi-modal__footer {
+      padding-top: $save-view-modal-footer-padding-top;
+    }
   }
 }

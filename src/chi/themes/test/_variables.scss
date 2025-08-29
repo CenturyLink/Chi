@@ -1474,6 +1474,7 @@ $modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 $modal-close-top: 1.5rem;
 $modal-close-right: 2rem;
 $modal-max-width: 37.5rem;
+$modal-max-width-sm: 26rem;
 $modal-header-background-color: $color-background-white;
 $modal-header-background-image: none;
 $modal-header-text-color: $color-text-black;
@@ -1486,6 +1487,7 @@ $modal-content-padding: 2rem 2rem 0 2rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 2rem;
+$modal-footer-padding-top-lg: 2.375rem;
 $modal-footer-justify-content: flex-start;
 $modal-back-link-color: $color-grey-80;
 $modal-close-icon-color: $color-grey-80;
@@ -1814,10 +1816,8 @@ $save-view-ribbon-label-color: $color-text-white;
 $save-view-ribbon-label-font-style: italic;
 $save-view-ribbon-arrow-border-color: $color-teal-70;
 $save-view-ribbon-arrow-border-style: solid;
-$save-view-modal-max-width: 26rem;
-$save-view-modal-footer-padding: 1rem 1.5rem;
-$save-view-modal-justify-content: flex-start;
-$save-view-modal-margin-top: 1.375rem;
+$save-view-modal-max-width: $modal-max-width-sm;
+$save-view-modal-footer-padding-top: $modal-footer-padding-top-lg;
 
 // Search input
 $search-input-xs-icon-top: 0;
