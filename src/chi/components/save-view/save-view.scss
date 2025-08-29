@@ -152,4 +152,13 @@
     //   }
     // }
   }
+
+  // Vue component
+  .chi-modal {
+    max-width: $save-view-modal-max-width;
+
+    .chi-modal__footer {
+      padding-top: $save-view-modal-footer-padding-top;
+    }
+  }
 }

@@ -1427,6 +1427,8 @@ $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14),
 $modal-close-top:                           0.5rem;
 $modal-close-right:                         0.75rem;
 $modal-max-width:                           600px;
+$modal-max-width-sm:                        26rem;
+$modal-footer-padding-top-lg:               2.375rem;
 $modal-header-background-color:             $color-yellow-40;
 $modal-header-background-image:             none;
 $modal-header-text-color:                   inherit;
@@ -1765,6 +1767,8 @@ $save-view-ribbon-label-color:              $color-text-white;
 $save-view-ribbon-label-font-style:         italic;
 $save-view-ribbon-arrow-border-color:       $color-black;
 $save-view-ribbon-arrow-border-style:       solid;
+$save-view-modal-max-width:                 $modal-max-width-sm;
+$save-view-modal-footer-padding-top:        $modal-footer-padding-top-lg;
 
 // Search input
 $search-input-xs-icon-top:                  0;
