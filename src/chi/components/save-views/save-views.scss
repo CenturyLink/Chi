@@ -1,0 +1,12 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-save-views {
+  .chi-modal {
+    .chi-modal__content {
+      .chi-form__item:has(chi-text-input) {
+        margin-bottom: $save-views-modal-form-item-margin-bottom;
+      }
+    }
+  }
+}
