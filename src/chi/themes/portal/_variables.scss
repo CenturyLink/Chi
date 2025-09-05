@@ -466,6 +466,9 @@ $app-layout-sub-header-font-size: $font-size-xl;
 $app-layout-sub-header-font-weight: $font-weight-semi-bold;
 $app-layout-sub-header-border-color: $color-grey-30;
 $app-layout-header-background-title-color: inherit;
+$app-layout-header-background-height: 12rem;
+$app-layout-header-title-font-size: $font-size-h3;
+$app-layout-header-title-font-weight: $font-weight-black;
 
 // Avatar
 $avatar-background-color: $color-grey-20;
@@ -1757,6 +1760,7 @@ $popover-gradient-arrow-offset: 0.75rem;
 // Progress
 $progress-background-color: $color-grey-20;
 $progress-border-radius: $border-radius-base;
+$progress-height: 0.5rem;
 $progress-value-background-color: $color-background-primary;
 $progress-value-info-background-color: $color-icon-info;
 $progress-value-danger-background-color: $color-icon-danger;

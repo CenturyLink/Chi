@@ -57,8 +57,8 @@
 
     &-heading {
       color: $app-layout-header-title-color;
-      font-size: $font-size-h3;
-      font-weight: $font-weight-black;
+      font-size: $app-layout-header-title-font-size;
+      font-weight: $app-layout-header-title-font-weight;
       line-height: $app-layout-header-line-height;
       margin: 0;
       padding-right: 1rem;
@@ -183,7 +183,7 @@
 
   &__background {
     position: absolute;
-    height: 12rem;
+    height: $app-layout-header-background-height;
     overflow: hidden;
     width: 100%;
     top: 0;
@@ -197,7 +197,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $app-layout-header-background-color;
+    background: $app-layout-header-background-color;
   }
 }
 
