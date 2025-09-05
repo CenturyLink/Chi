@@ -2,11 +2,13 @@
 @import '_global-variables';
 
 $attributes: (
+  gap: g,
   margin: m,
   padding: p
 );
 
 $values: (
+  gap: 0 1 2 3 4 5 6 7 8 9 10,
   margin: 0 1 2 3 4 5 6 7 8 9 10 auto,
   padding: 0 1 2 3 4 5 6 7 8 9 10
 );
@@ -26,29 +28,64 @@ $screen-sizes-prefixes: (
   sm: '-sm',
   md: '-md',
   lg: '-lg',
-  xl: '-xl'
+  xl: '-xl',
+  xxl: '-xxl'
 );
 
+@function space($i) {
+  @return if($i == 'auto', $i, ($i / 2) + rem);
+}
+
+@mixin decl($prop, $index) {
+  @if $index == 'auto' {
+    #{$prop}: space($index);
+  } @else {
+    #{$prop}: space($index) !important;
+  }
+}
+
+@function is-valid-position($attribute, $position) {
+  @if $attribute == gap {
+    @return index(a x y, $position) != null;
+  }
+  @return true;
+}
+
 @mixin create-spacing($attribute, $attr-prefix, $screen-size, $size-infix) {
-  @each $index in map-get($values, $attribute) {
+  $value-list: map-get($values, $attribute);
+
+  @each $index in $value-list {
     @each $position, $pos-suffix in $positions {
-      @if ($position == a) {
-        .-#{$attr-prefix}#{$size-infix}--#{$index} {
-          #{$attribute}: if($index == 'auto', $index, ($index / 2) + rem !important);
-        }
-      } @else if ($position == x) {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-left: if($index == 'auto', $index, ($index / 2) + rem !important);
-          #{$attribute}-right: if($index == 'auto', $index, ($index / 2) + rem !important);
-        }
-      } @else if ($position == y) {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}-bottom: if($index == 'auto', $index, ($index / 2) + rem !important);
-          #{$attribute}-top: if($index == 'auto', $index, ($index / 2) + rem !important);
-        }
-      } @else {
-        .-#{$attr-prefix}#{$position}#{$size-infix}--#{$index} {
-          #{$attribute}#{$pos-suffix}: if($index == 'auto', $index, ($index / 2) + rem !important);
+
+      @if is-valid-position($attribute, $position) {
+        $pos-infix: if($position == a, '', $position);
+        .-#{$attr-prefix}#{$pos-infix}#{$size-infix}--#{$index} {
+
+          @if $attribute == gap {
+            @if $position == a {
+              gap: space($index) !important;
+            } @else if $position == x {
+              column-gap: space($index) !important;
+            } @else if $position == y {
+              row-gap: space($index) !important;
+            }
+
+          } @else {
+            @if $position == a {
+              @include decl(#{$attribute}, $index);
+
+            } @else if $position == x {
+              @include decl(#{$attribute}-left, $index);
+              @include decl(#{$attribute}-right, $index);
+
+            } @else if $position == y {
+              @include decl(#{$attribute}-bottom, $index);
+              @include decl(#{$attribute}-top, $index);
+
+            } @else {
+              @include decl(#{$attribute}#{$pos-suffix}, $index);
+            }
+          }
         }
       }
     }
