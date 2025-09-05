@@ -650,7 +650,7 @@
               <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
             </div>
             <div class="chi-header__start">
-              <chi-button id="toggle-nav" variant="flat" size="lg" type="icon" color="dark">
+              <chi-button id="toggle-nav-2" variant="flat" size="lg" type="icon" color="dark">
                 <chi-icon icon="menu" size="sm--3"></chi-icon>
               </chi-button>
             </div>
@@ -691,7 +691,7 @@
           </nav>
         </header>
         <div class="app-layout-wrapper -d--flex">
-          <aside id="global-nav" class="chi-sidenav -global">
+          <aside id="global-nav-2" class="chi-sidenav -global">
             <div class="chi-sidenav__content">
               <nav>
                 <ul class="chi-sidenav__list">
@@ -714,14 +714,14 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="services" type="link">
-                        <div slot="services-template">
+                      <chi-accordion id="services-2" type="link">
+                        <div slot="services-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>Manage Services</chi-link>
                             <chi-link>Add Services</chi-link>
                             <chi-link>Order Status</chi-link>
-                            <chi-accordion id="services-tools" type="link">
-                              <div slot="services-tools-template">
+                            <chi-accordion id="services-tools-2" type="link">
+                              <div slot="services-tools-template-2">
                                 <div class="chi-sidenav__item-guide">
                                   <chi-link>ELS & LI Managements</chi-link>
                                   <chi-link>Network Storage</chi-link>
@@ -737,8 +737,8 @@
                                 </div>
                               </div>
                             </chi-accordion>
-                            <chi-accordion id="services-requests" type="link">
-                              <div slot="services-requests-template">
+                            <chi-accordion id="services-requests-2" type="link">
+                              <div slot="services-requests-template-2">
                                 <div class="chi-sidenav__item-guide">
                                   <chi-link>Requests Page 1</chi-link>
                                   <chi-link>Requests Page 2</chi-link>
@@ -746,8 +746,8 @@
                                 </div>
                               </div>
                             </chi-accordion>
-                            <chi-accordion id="services-quotes" type="link">
-                              <div slot="services-quotes-template">
+                            <chi-accordion id="services-quotes-2" type="link">
+                              <div slot="services-quotes-template-2">
                                 <div class="chi-sidenav__item-guide">
                                   <chi-link>Quotes Page 1</chi-link>
                                   <chi-link>Quotes Page 2</chi-link>
@@ -755,8 +755,8 @@
                                 </div>
                               </div>
                             </chi-accordion>
-                            <chi-accordion id="services-portals" type="link">
-                              <div slot="services-portals-template">
+                            <chi-accordion id="services-portals-2" type="link">
+                              <div slot="services-portals-template-2">
                                 <div class="chi-sidenav__item-guide">
                                   <chi-link>Portals Page 1</chi-link>
                                   <chi-link>Portals Page 2</chi-link>
@@ -771,8 +771,8 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="apis" type="link">
-                        <div slot="apis-template">
+                      <chi-accordion id="apis-2" type="link">
+                        <div slot="apis-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>APIs page 1</chi-link>
                             <chi-link>APIs page 2</chi-link>
@@ -784,8 +784,8 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="monitoring-and-reports" type="link">
-                        <div slot="monitoring-and-reports-template">
+                      <chi-accordion id="monitoring-and-reports-2" type="link">
+                        <div slot="monitoring-and-reports-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>Monitoring & Reports page 1</chi-link>
                             <chi-link>Monitoring & Reports page 2</chi-link>
@@ -797,8 +797,8 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="billing" type="link">
-                        <div slot="billing-template">
+                      <chi-accordion id="billing-2" type="link">
+                        <div slot="billing-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>Billing page 1</chi-link>
                             <chi-link>Billing page 2</chi-link>
@@ -810,8 +810,8 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="admin" type="link">
-                        <div slot="admin-template">
+                      <chi-accordion id="admin-2" type="link">
+                        <div slot="admin-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>Admin page 1</chi-link>
                             <chi-link>Admin page 2</chi-link>
@@ -823,8 +823,8 @@
                   </li>
                   <li class="chi-sidenav__item">
                     <div class="chi-sidenav__item-wrapper">
-                      <chi-accordion id="support" type="link">
-                        <div slot="support-template">
+                      <chi-accordion id="support-2" type="link">
+                        <div slot="support-template-2">
                           <div class="chi-sidenav__item-guide">
                             <chi-link>Support page 1</chi-link>
                             <chi-link>Support page 2</chi-link>
@@ -1697,6 +1697,95 @@
             template: 'support-template',
           },
         ];
+
+        const servicesAccordion2 = document.getElementById('services-2');
+        const servicesToolsAccordion2 = document.getElementById('services-tools-2');
+        const servicesRequestsAccordion2 = document.getElementById('services-requests-2');
+        const servicesQuotesAccordion2 = document.getElementById('services-quotes-2');
+        const servicesPortalsAccordion2 = document.getElementById('services-portals-2');
+
+        servicesAccordion2.accordions = [
+          {
+            title: 'Services',
+            icon: 'list-alt',
+            template: 'services-template-2',
+          },
+        ];
+        servicesToolsAccordion2.accordions = [
+          {
+            title: 'Service Tools',
+            template: 'services-tools-template-2',
+          },
+        ];
+        servicesRequestsAccordion2.accordions = [
+          {
+            title: 'Service Requests',
+            template: 'services-requests-template-2',
+          },
+        ];
+        servicesQuotesAccordion2.accordions = [
+          {
+            title: 'Quotes',
+            template: 'services-quotes-template-2',
+          },
+        ];
+        servicesPortalsAccordion2.accordions = [
+          {
+            title: 'Service Portals',
+            template: 'services-portals-template-2',
+          },
+        ];
+
+        const apisAccordion2 = document.getElementById('apis-2');
+
+        apisAccordion2.accordions = [
+          {
+            title: 'APIs',
+            icon: 'api',
+            template: 'apis-template-2',
+          },
+        ];
+
+        const monitoringAndReportsAccordion2 = document.getElementById('monitoring-and-reports-2');
+
+        monitoringAndReportsAccordion2.accordions = [
+          {
+            title: 'Monitoring & Reports',
+            icon: 'chart-bar',
+            template: 'monitoring-and-reports-template-2',
+          },
+        ];
+
+        const billingAccordion2 = document.getElementById('billing-2');
+
+        billingAccordion2.accordions = [
+          {
+            title: 'Billing',
+            icon: 'mail-open-dollar',
+            template: 'billing-template-2',
+          },
+        ];
+
+        const adminAccordion2 = document.getElementById('admin-2');
+
+        adminAccordion2.accordions = [
+          {
+            title: 'Admin',
+            icon: 'users',
+            template: 'admin-template-2',
+          },
+        ];
+
+        const supportAccordion2 = document.getElementById('support-2');
+
+        supportAccordion2.accordions = [
+          {
+            title: 'Support',
+            icon: 'life-ring',
+            template: 'support-template-2',
+          },
+        ];
+
         //#endregion
 
         //#region Sidenav
@@ -1705,6 +1794,14 @@
         const toggleNavButton = document.getElementById('toggle-nav');
 
         toggleNavButton.addEventListener('click', () => (globalNav.expanded = !globalNav.expanded));
+
+        const sidenavElement2 = document.getElementById('global-nav-2');
+        const globalNav2 = chi.globalNav(sidenavElement2);
+        const toggleNavButton2 = document.getElementById('toggle-nav-2');
+
+        if (toggleNavButton2) {
+          toggleNavButton2.addEventListener('click', () => (globalNav2.expanded = !globalNav2.expanded));
+        }
         //#endregion
 
         //#region Mobile Navigation
