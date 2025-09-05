@@ -407,13 +407,14 @@
                           <div>
                             Scheduled Maintenance
                           </div>
-                          <div class="-d--flex -flex--grow1 -justify-content--end">
+                          <div class="-d--flex -flex--grow1 -flex--shrink0 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View All</a>
                           </div>
                         </div>
                       </div>
                       <div class="chi-card__content">
-                        <div class="-bg--muted-lighter -w--100 -p--9 -d--flex -justify-content--center">
+                        <div class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center" style="height: 400px;">
+                          <!-- Remove classes and inline height style on maintenance-calendar once content is inserted -->
                           Calendar goes here
                         </div>
                       </div>
@@ -482,16 +483,18 @@
                 <div class="chi-col -w-xl--8 -w--12 -n--1 -n-xl--2">
                   <div class="widget-network-visibility -mb--3">
                     <div class="chi-card -widget -mt--2">
-                      <div class="chi-card__header">
+                      <div class="chi-card__header -flex--column">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
                           <div>
-                            <div>Network Visibility</div>
-                            <div class="-text--md -text--normal">222 Services Monitored</div>
+                            Network Visibility
                           </div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Run Diagnostics</a>
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
+                        </div>
+                        <div class="chi-card__subtitle -d--flex -align-items--center -w--100">
+                           <div class="-text--md -text--normal">222 Services Monitored</div>
                         </div>
                       </div>
                       <div class="chi-card__content -pt--3">
@@ -626,6 +629,25 @@
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget-product-offers -mb--3">
+                    <div class="chi-card -widget">
+                      <div class="chi-card__header">
+                        <div class="chi-card__title -d--flex -align-items--center -w--100">
+                          <div>
+                            Product Offers
+                          </div>
+                          <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
+                            <a class="chi-link -md -text--normal -ml--2" href="#">Add Services</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="chi-card__content -pt--3">
+                        <div class="-bg--muted-lighter -w--100 -p--9 -d--flex -justify-content--center">
+                          Content goes here
                         </div>
                       </div>
                     </div>
@@ -1002,13 +1024,14 @@
                           <div>
                             Scheduled Maintenance
                           </div>
-                          <div class="-d--flex -flex--grow1 -justify-content--end">
+                          <div class="-d--flex -flex--grow1 -flex--shrink0 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View All</a>
                           </div>
                         </div>
                       </div>
                       <div class="chi-card__content">
-                        <div class="-bg--muted-lighter -w--100 -p--9 -d--flex -justify-content--center">
+                        <div class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center" style="height: 400px;">
+                          <!-- Remove classes and inline height style on maintenance-calendar once content is inserted -->
                           Calendar goes here
                         </div>
                       </div>
@@ -1016,7 +1039,7 @@
                   </div>
                 </div>
                 <div class="chi-css-col -col-xl--4 -row-start-xl--4">
-                  <div class="widget-lumen-contacts -mb--3">
+                  <div class="widget-lumen-contacts">
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
@@ -1077,18 +1100,20 @@
                   </div>
                 </div>
                 <div class="chi-css-col -col-xl--8 -row-start--4 -row-start-xl--3 -row-end-xl--5">
-                  <div class="widget-network-visibility">
+                  <div class="widget-network-visibility -mb--3">
                     <div class="chi-card -widget">
-                      <div class="chi-card__header">
+                      <div class="chi-card__header -flex--column">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
                           <div>
-                            <div>Network Visibility</div>
-                            <div class="-text--md -text--normal">222 Services Monitored</div>
+                            Network Visibility
                           </div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Run Diagnostics</a>
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
+                        </div>
+                        <div class="chi-card__subtitle -d--flex -align-items--center -w--100">
+                           <div class="-text--md -text--normal">222 Services Monitored</div>
                         </div>
                       </div>
                       <div class="chi-card__content -pt--3">
@@ -1223,6 +1248,25 @@
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="widget-product-offers">
+                    <div class="chi-card -widget">
+                      <div class="chi-card__header">
+                        <div class="chi-card__title -d--flex -align-items--center -w--100">
+                          <div>
+                            Product Offers
+                          </div>
+                          <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
+                            <a class="chi-link -md -text--normal -ml--2" href="#">Add Services</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="chi-card__content -pt--3">
+                        <div class="-bg--muted-lighter -w--100 -p--9 -d--flex -justify-content--center">
+                          Content goes here
                         </div>
                       </div>
                     </div>
