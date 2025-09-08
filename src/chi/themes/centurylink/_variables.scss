@@ -1796,6 +1796,9 @@ $save-view-ribbon-label-font-style:         italic;
 $save-view-ribbon-arrow-border-color:       $color-blue-70;
 $save-view-ribbon-arrow-border-style:       solid;
 
+// Save views
+$save-views-modal-form-item-margin-bottom:  1.5rem;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -2336,11 +2339,12 @@ $tags-border-color: $color-border-base-dark;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-50;
+$tags-input-min-height: 1.25rem;
 $tags-hover-border-color: $color-grey-40;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
-$tags-md-padding: 0.0625rem 0.75rem;
+$tags-md-padding: 0.3125rem 0.75rem;
 
 $tag-badge-border-radius: 2em;
 $tag-badge-padding-top: 0.0625rem;
