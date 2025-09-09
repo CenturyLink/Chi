@@ -7,10 +7,12 @@
     border: 0.0625rem solid $drag-item-border-color;
     border-radius: $drag-item-border-radius;
     margin-bottom: 1rem;
+    padding: 0;
+    width: 100%;
 
     &:focus {
-      border: 0.0625rem solid $drag-item-focus-color;
-      outline: 0.0625rem solid $drag-item-focus-color;
+      border: 0.0625rem solid rgba($drag-item-focus-color, 0.7);
+      outline: 0.0625rem solid rgba($drag-item-focus-color, 0.7);
     }
 
     .chi-drag__wrapper {
@@ -31,12 +33,16 @@
       margin-bottom: 0.315rem;
     }
 
+    .chi-drag__title-icon {
+      margin-right: 1.5rem;
+    }
+
     .chi-drag__content {
       display: flex;
       align-items: center;
 
-      &:not(:has(> chi-icon)) {
-        margin-left: 2rem;
+      &:not(:has(> .chi-drag__title-icon)) {
+        margin-left: 2.5rem;
       }
 
       .chi-drag__description {
@@ -45,20 +51,12 @@
       }
     }
 
-    .chi-drag__title,
-    .chi-drag__content {
-      & > chi-icon {
-        margin-right: 1rem !important; // important needed until inline utility class is removed
-      }
-    }
-
-
     .chi-drag__closable {
       border-left: 0.0625rem solid $drag-item-border-color;
       display: flex;
 
       .chi-button {
-        border-radius: $border-radius-sharp;
+        border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
         padding: 1rem;
 
         &:hover {
@@ -68,6 +66,16 @@
 
         &:active {
           background-color: $drag-item-close-active-background-color;
+        }
+
+        &:focus {
+          outline: none;
+
+          .chi-icon {
+            border-radius: 2rem;
+            outline: 0.125rem solid rgba($drag-item-focus-color, 0.7);
+            outline-offset: 0.5rem;
+          }
         }
       }
     }
@@ -92,12 +100,9 @@
       }
     }
 
-    &.-dragging {
-      .chi-drag__closable {
-        .chi-button {
-          background-color: $drag-item-dragging-close-background-color;
-        }
-      }
+    &.dragging {
+      border: 0.0625rem solid $drag-item-border-color;
+      outline: none;
     }
 
     &.drag-over {
@@ -114,6 +119,28 @@
         background-color: $drag-item-drop-indicator-background-color;
         margin-top: 0.3125rem;
         margin-bottom: 0.3125rem;
+      }
+    }
+  }
+}
+
+.-mouse-control {
+  .chi-drag {
+    .chi-drag__item {
+      &:focus {
+        border: 0.0625rem solid $drag-item-border-color;
+        outline: none;
+      }
+      .chi-drag__closable {
+        .chi-button {
+          &:focus {
+            outline: none;
+
+            .chi-icon {
+              outline: none;
+            }
+          }
+        }
       }
     }
   }
