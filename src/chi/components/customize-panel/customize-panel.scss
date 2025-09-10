@@ -1,72 +1,66 @@
 .chi-customize-panel {
   .chi-drawer {
     .chi-drawer__content {
-      border-top: 0.0625rem solid $color-grey-30;
-      border-bottom: 0.0625rem solid $color-grey-30;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-
+      border-top: $customize-panel-border;
+      padding-top: $customize-panel-content-padding;
+      padding-bottom: $customize-panel-content-padding;
       flex-grow: 0;
+
+      .chi-search__input {
+        margin-bottom: $customize-panel-search-margin-bottom;
+      }
     }
 
     .chi-customize-panel__items-header {
-      line-height: 1.5rem;
-
       display: flex;
       justify-content: space-between;
-
-      padding-right: 1.5rem;
-      padding-bottom: 0.5rem;
 
       > span {
         font-weight: $font-weight-semi-bold;
       }
 
       &.chi-customize-panel__header-sort {
-        .chi-link::after {
-          content: '';
-        }
-
-        .chi-icon {
-          margin-right: 1rem;
-        }
+        align-items: center;
+        padding-bottom: $customize-panel-items-header-sort-padding-bottom;
       }
 
       &.chi-customize-panel__header-add {
         display: flex;
         flex-direction: column;
-        padding-bottom: 1.25rem;
-        border-bottom: 0.0625rem solid $color-grey-30;
-        margin-bottom: 1rem;
+        padding-bottom: $customize-panel-content-padding;
+        border-bottom: $customize-panel-border;
+        margin-bottom: $customize-panel-items-header-add-margin-bottom;
 
         .chi-link {
-          margin-bottom: 0.375rem;
+          margin-bottom: $customize-panel-items-header-add-link-margin-bottom;
         }
       }
 
     }
 
     .chi-customize-panel__items {
-      chi-form-wrapper {
-        .chi-form__item {
-          padding: 1.25rem 1rem;
-          border: 0.0625rem solid $color-grey-30;
+      .chi-customize-panel__no-results {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: italic;
 
+        .chi-icon {
+          margin-right: $customize-panel-no-results-icon-margin-right;
         }
-      } 
+      }
 
     }
 
     .chi-customize-panel__footer {
       .chi-button {
-        margin-right: 1rem;
+        margin-right: $customize-panel-footer-button-margin-right;
       }
     }
 
     .chi-drag {
       .chi-drag__item {
         padding: 0;
-        width: 100%;
 
         &:last-of-type {
           margin-bottom: 0;
