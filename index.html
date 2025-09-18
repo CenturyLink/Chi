@@ -1280,8 +1280,11 @@
 
 
 
-
       <h3>More Examples</h3>
+      <h4>Drag and Drop</h4>
+      <chi-drag id="drag-example"></chi-drag>
+      
+      <h4>Toolbar</h4>
       <chi-toolbar title="Search & filter" type="expandable">
         <div slot="start">
           <div class="-d--flex -justify-content--between -align-items--center">
@@ -1302,8 +1305,6 @@
             <div class="chi-col -w--4 -d--flex -align-items--center">
               <chi-checkbox checked label="Search hidden columns" class=""></chi-checkbox>
             </div>
-            <div class="chi-col -w--3"></div>
-            
             <div class="chi-col -w--2 -mt--2">
               <chi-dropdown-select
                 id="dropdown-select-1"
@@ -1342,22 +1343,19 @@
             </div>
             <div class="chi-col -w--2 -mt--2">
               <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
-                <chi-icon icon="plus" class="-mr--1"></chi-icon> Add Filters
+                <chi-icon icon="plus" class="-mr--1"></chi-icon>
+                <span>Add Filters</span>
               </chi-button>
             </div>
-
             <div class="chi-col -w--12 -mt--2">
               <chi-button color="primary">Save View</chi-button>
               <chi-button>Reset</chi-button>
             </div>
           </div>
         </div>
-        </div>
       </chi-toolbar>
-      <chi-button id="toggle-nav" variant="flat" type="icon">
-        <chi-icon icon="menu"></chi-icon>
-      </chi-button>
 
+      <h4>Mobile Navigation</h4>
       <chi-button id="mobile-nav-trigger" variant="flat" type="icon">
         <chi-icon icon="menu"></chi-icon>
       </chi-button>
@@ -1507,6 +1505,60 @@
             </ul>
           </div>
         </chi-drawer>
+      </div>
+
+      <h3>Test Portal Header</h3>
+      <div class="header-portal-header-narnia -w--100">
+        <header class="chi-header -lg">
+          <div class="chi-header__brandbar"></div>
+          <nav class="chi-header__content">
+            <div class="chi-header__brand">
+              <chi-link href="/" alternative-text="Lumen">
+                <chi-brand logo="lumen"/>
+              </chi-link>
+              <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
+            </div>
+            <div class="chi-header__start">
+              <chi-button id="toggle-nav" variant="flat" size="lg" type="icon" color="dark">
+                <chi-icon icon="menu" size="sm--3"></chi-icon>
+              </chi-button>
+            </div>
+            <div class="chi-header__end -d--none -d-lg--flex">
+              <chi-dropdown class="enterprise-id-switcher" position="bottom-end" button="Enterprise ID: 1234567" size="sm" select-mode>
+                <div slot="menu-header">Enterprise ID</div>
+                <div slot="menu-header">Enterprise Name</div>
+                <a class="chi-dropdown__menu-item -active-item" slot="menu">
+                  <div>1234567</div>
+                  <div>Acme Incorporated</div>
+                </a>
+                <a class="chi-dropdown__menu-item" slot="menu">
+                  <div>1234568</div>
+                  <div>Acme Incorporated</div>
+                </a>
+                <a class="chi-dropdown__menu-item" slot="menu">
+                  <div>1234569</div>
+                  <div>Acme Incorporated</div>
+                </a>
+                <a class="chi-dropdown__menu-item" slot="menu">
+                  <div>1234560</div>
+                  <div>Acme Incorporated</div>
+                </a>
+                <chi-link slot="menu-footer">Manage My Enterprises</chi-link>
+              </chi-dropdown>
+              <div class="chi-divider -vertical"></div>
+              <chi-dropdown position="bottom" size="sm" button="Menu" variant="flat">
+                <a class="chi-dropdown__menu-item" href="#" slot="menu">
+                  <chi-icon icon="user"></chi-icon>
+                  Item 1
+                </a>
+                <a class="chi-dropdown__menu-item" href="#" slot="menu">
+                  <chi-icon icon="login"></chi-icon>
+                  Item 2
+                </a>
+              </chi-dropdown>
+            </div>
+          </nav>
+        </header>
       </div>
 
       <h3>Test Portal Header with Impersonation Bar</h3>
@@ -1863,6 +1915,18 @@
           dropdown: enterpriseDropdown,
           items: enterpriseDropdownItems,
         });
+        //#endregion
+
+        //#region Drag and Drop
+        const drag = document.getElementById('drag-example');
+
+        drag.items = [
+          { title: 'Title item 1', description: 'Item description 1', closable: false, locked: true },
+          { description: 'Item description 2' },
+          { title: 'Title item 3', icon: 'atom' },
+          { title: 'Title item 4', description: 'Item description 4' },
+          { title: 'Title item 5', description: 'Item description 5' },
+        ];
         //#endregion
       })
       .catch((err) => {
