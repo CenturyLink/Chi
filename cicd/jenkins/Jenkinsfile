@@ -660,6 +660,7 @@ def isVersionBump() {
 // This function is called to create a GitHub release
 def gitHubRelease() {
   def rootPath = ''
+  def documentationPath = 'node_modules/@centurylink/chi-documentation/'
   def latestRelease = 'true'
  
   def packageJsonPath = "${rootPath}package.json"
@@ -682,7 +683,7 @@ def gitHubRelease() {
     echo "READING CHANGELOG FOR VERSION: ${publishVersion}"
     echo "${publishVersion}" > ${rootPath}shortCHANGELOG.md
     echo "" >> ${rootPath}shortCHANGELOG.md
-    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
+    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${documentationPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
   """
   
   def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
