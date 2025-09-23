@@ -1,0 +1,49 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
+
+block variables
+  - var title = 'Floating label'
+
+block content
+  .-d--flex.-flex--row
+    button#dispose-select-button.chi-button
+      | Dispose SELECT navigation
+
+    button#dispose-input-button.chi-button.-ml--3
+      | Dispose INPUT navigation
+
+  #floating-label-select.chi-input__wrapper.-floating-label.-mt--3(style="width: 200px")
+    select.chi-select.-md
+      option
+      option Option 1
+      option Option 2
+      option Option 3
+    label(for="floating-label-portal-select-md") Placeholder text
+
+  #floating-label-input.chi-input__wrapper.-floating-label.-mt--3(style="width: 200px")
+    input.chi-input.-md(type="text", id="floating-label-md")
+    label(for="floating-label-md") Placeholder text
+
+  script.
+    const disposeSelectBtn = document.getElementById('dispose-select-button');
+    const disposeInputButton = document.getElementById('dispose-input-button');
+
+    const floatingLabel = chi.floatingLabel(document.getElementById('floating-label-select'));
+    const floatingLabelInput = chi.floatingLabel(document.getElementById('floating-label-input'));
+
+    disposeSelectBtn.addEventListener('click', () => {
+      console.log('Disposed')
+      floatingLabel.dispose();
+    })
+
+    disposeInputButton.addEventListener('click', () => {
+      console.log('Disposed')
+      floatingLabelInput.dispose();
+    })
+
+
+
