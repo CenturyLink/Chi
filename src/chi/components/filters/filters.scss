@@ -36,4 +36,17 @@
   &__trigger-button {
     margin-left: $filters-drawer-trigger-button-margin-left;
   }
+
+  &__badge {
+    height: $filters-badge-height;
+
+    .chi-badge {
+      align-items: center;
+      padding: $filters-badge-padding;
+    }
+
+    &-filter-name {
+      font-weight: $font-weight-extra-bold;
+    }
+  }
 }
