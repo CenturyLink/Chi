@@ -2,9 +2,9 @@
   .chi-drawer {
     .chi-drawer__content {
       border-top: $customize-panel-border;
-      padding-top: $customize-panel-content-padding;
-      padding-bottom: $customize-panel-content-padding;
       flex-grow: 0;
+      padding-bottom: $customize-panel-content-padding;
+      padding-top: $customize-panel-content-padding;
 
       .chi-search__input {
         margin-bottom: $customize-panel-search-margin-bottom;
@@ -27,7 +27,7 @@
       &.chi-customize-panel__header-add {
         flex-direction: column;
         padding-bottom: $customize-panel-content-padding;
-        border-bottom: $customize-panel-border;
+        border-bottom: $customize-panel-border-bottom;
         margin-bottom: $customize-panel-items-header-add-margin-bottom;
 
         .chi-link {
@@ -52,7 +52,7 @@
 
     .chi-customize-panel__footer {
       display: flex;
-      gap: $customize-panel-footer-button-margin-right;
+      gap: $customize-panel-footer-button-gap;
     }
 
     .chi-drag {
