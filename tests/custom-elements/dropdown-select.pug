@@ -1,0 +1,22 @@
+extends ../layout.pug
+
+block scripts
+  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../js/chi.js')
+
+block variables
+  - var title = 'Dropdown Select'
+
+block content
+  span.-text--h2 With button icons
+  .test-dropdown-select-button-icon(style='width: 500px; height: 200px;')
+    chi-dropdown-select(data-cy="with-button-icon" active button="- Select -")
+
+  script.
+    const items = [
+      { label: 'Item 1', buttonIcon: 'delete', checked: true },
+      { label: 'Item 2', buttonIcon: 'delete' },
+      { label: 'Item 3', buttonIcon: 'delete' },
+    ]
+
+    document.querySelector('[data-cy="with-button-icon"]').items = items;

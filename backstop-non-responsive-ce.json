@@ -520,6 +520,26 @@
       "requireSameDimensions": true
     },
     {
+      "label": "dropdown-select",
+      "cookiePath": "",
+      "url": "http://localhost:8000/chi/6.61.0/tests/custom-elements/dropdown-select.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-dropdown-select-button-icon"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "expansion-panel",
       "cookiePath": "",
       "url": "http://localhost:8000/chi/6.61.0/tests/custom-elements/expansion-panel.html",
