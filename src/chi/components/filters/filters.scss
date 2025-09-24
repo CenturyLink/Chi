@@ -24,8 +24,12 @@
       }
     }
 
-    .chi-drawer__footer chi-button:not(:last-child) .chi-button {
-      margin-right: $filters-footer-button-margin-right;
+    .chi-drawer__footer {
+      chi-button:not(:last-child) {
+        .chi-button {
+          margin-right: $filters-footer-button-margin-right;
+        }
+      }
     }
   }
 
