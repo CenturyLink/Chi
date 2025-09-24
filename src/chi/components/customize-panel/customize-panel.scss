@@ -25,7 +25,6 @@
       }
 
       &.chi-customize-panel__header-add {
-        display: flex;
         flex-direction: column;
         padding-bottom: $customize-panel-content-padding;
         border-bottom: $customize-panel-border;
@@ -43,7 +42,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: italic;
+        font-style: italic;
 
         .chi-icon {
           margin-right: $customize-panel-no-results-icon-margin-right;
@@ -53,38 +52,16 @@
     }
 
     .chi-customize-panel__footer {
-      .chi-button {
-        margin-right: $customize-panel-footer-button-margin-right;
-      }
+      display: flex;
+      gap: $customize-panel-footer-button-margin-right;
+
+
     }
 
     .chi-drag {
       .chi-drag__item {
-        padding: 0;
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-
-        .chi-drag__title {
-          .chi-drag__title-icon {
-            display: flex;
-            margin-right: 0.625rem;
-          }
-        }
-
-        .chi-drag__content {
-          margin-left: 1.625rem;
-          text-align: left;
-        }
-
         .chi-drag__closable {
-          border-left: none;
           display: block;
-
-          .-close {
-            position: static;
-          }
         }
       }
     }

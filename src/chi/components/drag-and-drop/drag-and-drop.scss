@@ -6,9 +6,12 @@
     background-color: $drag-item-background-color;
     border: 0.0625rem solid $drag-item-border-color;
     border-radius: $drag-item-border-radius;
-    margin-bottom: 1rem;
     padding: 0;
     width: 100%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
 
     &:focus {
       border: 0.0625rem solid rgba($drag-item-focus-color, 0.7);
@@ -34,7 +37,8 @@
     }
 
     .chi-drag__title-icon {
-      margin-right: 1.5rem;
+      display: flex;
+      margin-right: 0.875rem;
     }
 
     .chi-drag__content {
@@ -52,7 +56,6 @@
     }
 
     .chi-drag__closable {
-      border-left: 0.0625rem solid $drag-item-border-color;
       display: flex;
 
       .chi-button {

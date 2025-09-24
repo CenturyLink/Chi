@@ -164,12 +164,7 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
-  .-close {
-    position: fixed;
-    right: $drawer-button-close-right;
-    top: $drawer-button-close-top;
-    z-index: 50;
-  }
+
 
   &__header {
     background-color: $drawer-header-background-color;
@@ -183,6 +178,11 @@ $animation-duration: 0.5s;
     position: relative;
 
     .-close {
+      position: fixed;
+      right: $drawer-button-close-right;
+      top: $drawer-button-close-top;
+      z-index: 50;
+
       .chi-icon {
         color: $drawer-header-close-icon-color;
       }
