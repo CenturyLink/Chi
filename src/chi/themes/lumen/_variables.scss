@@ -458,7 +458,7 @@ $alert-sm-text-line-height: $line-height-sm;
 
 // App layout
 $app-layout-background-color: $color-background-base;
-$app-layout-header-background-color: $color-teal-100;
+$app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-header-title-color: $color-text-primary-darker;
 $app-layout-sub-header-title-color: $color-text-muted;
 $app-layout-sub-header-title-color: $color-grey-80;
@@ -468,9 +468,8 @@ $app-layout-sub-header-font-weight: $font-weight-semi-bold;
 $app-layout-sub-header-border-color: $color-grey-50;
 $app-layout-header-background-title-color: $color-text-white;
 $app-layout-header-background-subtitle-color: $color-text-white;
-$app-layout-header-background-height: 12rem;
-$app-layout-header-title-font-size: $font-size-h3;
-$app-layout-header-title-font-weight: $font-weight-black;
+$app-layout-header-title-font-size: 2.25rem;
+$app-layout-header-title-font-weight: $font-weight-semi-bold;
 
 // Avatar
 $avatar-background-color: $color-grey-20;
