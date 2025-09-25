@@ -4,7 +4,7 @@ import path from 'path';
 import ora from 'ora';
 
 const allowedThemes = ['lumen', 'portal', 'centurylink', 'colt', 'brightspeed', 'test'];
-const themes = process.env.THEMES_TO_BUILD?.split(' ') || allowedThemes;
+const themes = process.env.THEMES_TO_BUILD?.split(',') || allowedThemes;
 
 const scripts = {
   replace: './scripts/build/css/replace-scss.sh',
