@@ -25,24 +25,23 @@
       }
 
       &.chi-customize-panel__header-add {
-        flex-direction: column;
-        padding-bottom: $customize-panel-content-padding;
         border-bottom: $customize-panel-border-bottom;
+        flex-direction: column;
         margin-bottom: $customize-panel-items-header-add-margin-bottom;
+        padding-bottom: $customize-panel-content-padding;
 
         .chi-link {
           margin-bottom: $customize-panel-items-header-add-link-margin-bottom;
         }
       }
-
     }
 
     .chi-customize-panel__items {
       .chi-customize-panel__no-results {
-        display: flex;
-        justify-content: center;
         align-items: center;
+        display: flex;
         font-style: italic;
+        justify-content: center;
 
         .chi-icon {
           margin-right: $customize-panel-no-results-icon-margin-right;
