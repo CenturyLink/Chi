@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "6.61.0",
+  "version": "6.62.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -27,8 +27,8 @@
     "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "1.34.0",
-    "@centurylink/chi-documentation": "1.33.0",
+    "@centurylink/chi-custom-elements": "1.35.0",
+    "@centurylink/chi-documentation": "1.34.1",
     "@centurylink/chi-vue": "3.22.0"
   },
   "devDependencies": {
