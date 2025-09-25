@@ -1,5 +1,5 @@
 #!/bin/bash
-source "$(dirname "$0")/backstopConfig.sh"
+source "$(dirname "$0")/../tests/backstopConfig.sh"
 set -e
 
 SECONDS=0
