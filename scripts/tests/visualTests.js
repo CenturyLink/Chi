@@ -1,9 +1,13 @@
 import backstop from 'backstopjs';
 
-(async () => {
+(async (theme) => {
+  const configFiles = [
+    `backstop-responsive_${theme}.json`, 
+    `backstop-non-responsive_${theme}.json`, 
+    `backstop-non-responsive-ce_${theme}.json`
+  ];
+  
   try {
-    const configFiles = ['backstop-responsive.json', 'backstop-non-responsive.json', 'backstop-non-responsive-ce.json'];
-    
     for (const configFile of configFiles) {
       await backstop('test', { config: configFile });
     }
@@ -11,4 +15,4 @@ import backstop from 'backstopjs';
     console.error('[CHI]: Error executing tests: ', error);
     process.exit(1);
   }
-})();
+})(process.argv[2]);
