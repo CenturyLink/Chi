@@ -53,13 +53,5 @@
       display: flex;
       gap: $customize-panel-footer-button-gap;
     }
-
-    .chi-drag {
-      .chi-drag__item {
-        .chi-drag__closable {
-          display: block;
-        }
-      }
-    }
   }
 }

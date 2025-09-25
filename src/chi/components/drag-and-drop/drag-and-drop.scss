@@ -46,7 +46,7 @@
       align-items: center;
 
       &:not(:has(> .chi-drag__title-icon)) {
-        margin-left: 2.5rem;
+        margin-left: 1.875rem;
       }
 
       .chi-drag__description {
@@ -57,6 +57,7 @@
 
     .chi-drag__closable {
       display: flex;
+      border-left: 0.0625rem solid $drag-item-border-color;
 
       .chi-button {
         border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
