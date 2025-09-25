@@ -22,6 +22,13 @@
     grid-template-rows: minmax(176px, auto);
   }
 
+  &.-grid-template-rows--none {
+    grid-template-rows: none;  
+  }
+
+  &.-grid-auto-rows--auto {
+    grid-auto-rows: minmax(0, auto);  
+  }
 
   .chi-css-col {
     grid-column: auto / span 12;
@@ -55,18 +62,53 @@
       }
     }
 
+
     // Row Sizing by Viewport
 
     @each $size in sm md lg xl {
       @include respond-to($size) {
         @for $i from 1 through 3 {
-          &.-col-#{$size}--#{$i} {
+          &.-row-#{$size}--#{$i} {
             grid-row: auto / span $i;
           }
         }
       }
     }
+
+  // Row Utilities
+
+  @for $i from 1 through 5 {
+    &.-row-start--#{$i} {
+      grid-row-start: $i;
+    }
   }
+
+  @each $size in sm, md, lg, xl {
+    @include respond-to($size) {
+      @for $i from 1 through 5 {
+        &.-row-start-#{$size}--#{$i} {
+          grid-row-start: $i;
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through 5 {
+    &.-row-end--#{$i} {
+      grid-row-end: $i;
+    }
+  }
+
+  @each $size in sm, md, lg, xl {
+    @include respond-to($size) {
+      @for $i from 1 through 5 {
+        &.-row-end-#{$size}--#{$i} {
+          grid-row-end: $i;
+        }
+      }
+    }
+  }
+}
 
   // Gap Sizing
 

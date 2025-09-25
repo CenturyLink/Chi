@@ -40,7 +40,17 @@
       }
     }
   } @else if $media == xl {
-    @media only screen and (min-width: $xl-breakpoint) {
+    @if $only {
+      @media only screen and (min-width: $xl-breakpoint) and (max-width: $xxl-breakpoint - 1) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $xl-breakpoint) {
+        @content;
+      }
+    }
+  } @else if $media == xxl {
+    @media only screen and (min-width: $xxl-breakpoint) {
       @content;
     }
   }
