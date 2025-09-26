@@ -31,7 +31,7 @@ set_backstop_config
 
 message=''
 
-for theme in $THEMES_TO_TEST;
+for theme in ${THEMES_TO_TEST//,/ };
 do
   test_theme $theme
   TEST_EXIT_CODE=$?

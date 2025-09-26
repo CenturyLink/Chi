@@ -7,7 +7,7 @@ const __dirname = resolve();
 const inputDir = path.join(__dirname, 'tests');
 const componentsJsonPath = path.join(inputDir, 'tests.json');
 
-const THEMES_TO_TEST = process.argv[2] ? process.argv[2].split(' ') : ['lumen'];
+const THEMES_TO_TEST = process.argv[2] ? process.argv[2].split(',') : ['lumen'];
 
 let components, customElements, foundations, js;
 
