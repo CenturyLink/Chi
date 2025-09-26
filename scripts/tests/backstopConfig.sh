@@ -7,7 +7,7 @@ set_backstop_config () {
   find . -maxdepth 1 -name 'backstop*.json' -not -name '*_*' | while read -r file
   do
     if [ -f "$file" ]; then
-      for THEME in $THEMES_TO_TEST; 
+      for THEME in ${THEMES_TO_TEST//,/ }; 
       do
         new_file="${file%\.json}_$THEME.json"
 

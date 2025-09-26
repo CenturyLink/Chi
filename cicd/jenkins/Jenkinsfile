@@ -589,7 +589,7 @@ def stashAndArchiveCiReports() {
       stash name: "${theme}_${test}_ci", includes: "${reportBasePath}${test}/**"
 
       archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
-      jslPu≤blishTestResults("${reportBasePath}${test}/xunit.xml")
+      jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
     }
   }
 }
