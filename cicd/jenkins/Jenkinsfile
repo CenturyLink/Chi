@@ -579,14 +579,18 @@ def sendBuildInfo() {
 // This function is called to stash and archive the CI reports
 def stashAndArchiveCiReports() {
   def tests = ["non_responsive", "responsive", "non_responsive_ce"]
-  def reportBasePath = "reports/ci_report/"
-  def htmlBasePath = "reports/html_report/"
+  def themes = ["lumen"]
 
   tests.each { test ->
-    stash name: "${test}_ci", includes: "${reportBasePath}${test}/**"
+    themes.each { theme ->
+      def reportBasePath = "reports/${theme}/ci_report/"
+      def htmlBasePath = "reports/${theme}/html_report/"
+  
+      stash name: "${theme}_${test}_ci", includes: "${reportBasePath}${test}/**"
 
-    archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
-    jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
+      archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
+      jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
+    }
   }
 }
 

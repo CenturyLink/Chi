@@ -1,4 +1,5 @@
 #!/bin/bash
+source "$(dirname "$0")/../tests/backstopConfig.sh"
 set -e
 
 SECONDS=0
@@ -35,7 +36,7 @@ if [ -z "${SKIP_BOILERPLATES}" ]; then
 fi
 
 # Build tests
-node ./scripts/build/utils/buildTests.js
+node ./scripts/build/utils/buildTests.js $THEMES_TO_TEST
 bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 
 # Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
