@@ -50,5 +50,8 @@ echo "[CHI]: Visual tests finished in ${minutes} minutes and ${seconds} seconds"
 echo "$message"
 
 kill $SERVER_PID
-killall node
+
+if [ -x "$(command -v killall)" ]; then
+  killall node
+fi
 
