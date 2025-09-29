@@ -1285,6 +1285,15 @@ $file-input-button-active-text-color:       $button-solid-active-text-color;
 $file-input-button-focus-border-color:      $button-solid-focus-border-color;
 $file-input-button-focus:                   $button-solid-focus-outline;
 
+//Filters
+$filters-content-item-margin-bottom:        1.5rem;
+$filters-content-link-margin-top:           0.5rem;
+$filters-drawer-header-border:              0.0625rem solid $color-grey-30;
+$filters-drawer-header-margin-bottom:       1.875rem;
+$filters-drawer-trigger-button-margin-left: 1rem;
+$filters-drawer-width:                      34rem;
+$filters-footer-button-margin-right:        1rem;
+
 // Footer
 $footer-internal-background-color:          $color-background-black;
 $footer-internal-border-top-color:          transparent;
