@@ -90,7 +90,6 @@ pipeline {
   
     // Tests variables
     TEST_THEMES="lumen"
-    REPORTS_NON_RESPONSIVE_CI = "reports/ci_report/non_responsive/xunit.xml"
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
     // Scripts
@@ -286,7 +285,7 @@ pipeline {
             }
               
             if (isTestAvailable) {
-              jslCheckQualityGates(REPORTS_NON_RESPONSIVE_CI, 'QualityGate1-Unit')
+              jslCheckQualityGates("reports/${theme}/ci_report/non_responsive/xunit.xml", 'QualityGate1-Unit')
             }
           }
         }
