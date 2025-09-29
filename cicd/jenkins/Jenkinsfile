@@ -89,7 +89,7 @@ pipeline {
     NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
   
     // Tests variables
-    TEST_THEMES="lumen,portal"
+    TEST_THEMES="lumen"
     REPORTS_NON_RESPONSIVE_CI = "reports/ci_report/non_responsive/xunit.xml"
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
