@@ -1,10 +1,8 @@
 .chi-customize-panel {
   .chi-drawer {
     .chi-drawer__content {
-      border-top: $customize-panel-border;
       flex-grow: 0;
-      padding-bottom: $customize-panel-content-padding;
-      padding-top: $customize-panel-content-padding;
+      padding-bottom: $customize-panel-content-padding-bottom;
 
       .chi-search__input {
         margin-bottom: $customize-panel-search-margin-bottom;
@@ -14,6 +12,7 @@
     .chi-customize-panel__items-header {
       display: flex;
       justify-content: space-between;
+      padding-bottom: $customize-panel-items-header-padding-bottom;
 
       > span {
         font-weight: $font-weight-semi-bold;
@@ -21,18 +20,10 @@
 
       &.chi-customize-panel__header-sort {
         align-items: center;
-        padding-bottom: $customize-panel-items-header-sort-padding-bottom;
       }
 
       &.chi-customize-panel__header-add {
-        border-bottom: $customize-panel-border-bottom;
         flex-direction: column;
-        margin-bottom: $customize-panel-items-header-add-margin-bottom;
-        padding-bottom: $customize-panel-content-padding;
-
-        .chi-link {
-          margin-bottom: $customize-panel-items-header-add-link-margin-bottom;
-        }
       }
     }
 
