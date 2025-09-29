@@ -1069,6 +1069,16 @@ $checkbox-label-before-top: 0.125rem;
 $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
+// Customize panel
+$customize-panel-border: 0.0625rem solid $color-grey-30;
+$customize-panel-border-bottom: 0.0625rem solid $color-grey-30;
+$customize-panel-content-padding-bottom: 1.5rem;
+$customize-panel-footer-button-gap: 1rem;
+$customize-panel-items-header-add-margin-bottom: 1.5rem;
+$customize-panel-items-header-padding-bottom: 0.5rem;
+$customize-panel-no-results-icon-margin-right: 0.5rem;
+$customize-panel-search-margin-bottom: 1.25rem;
+
 // Code
 $code-font-size: $font-size-sm;
 
@@ -1314,6 +1324,15 @@ $file-input-button-active-border-color: $button-solid-active-border-color;
 $file-input-button-active-text-color: $button-solid-active-text-color;
 $file-input-button-focus-border-color: $button-solid-focus-border-color;
 $file-input-button-focus: $button-solid-focus-outline;
+
+//Filters
+$filters-content-item-margin-bottom: 1.5rem;
+$filters-content-link-margin-top: 0.5rem;
+$filters-drawer-header-border: 0.0625rem solid $color-grey-30;
+$filters-drawer-header-margin-bottom: 1.875rem;
+$filters-drawer-trigger-button-margin-left: 1rem;
+$filters-drawer-width: 34rem;
+$filters-footer-button-margin-right: 1rem;
 
 // Footer
 $footer-internal-background-color: $color-grey-80;
