@@ -89,6 +89,7 @@ pipeline {
     NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
   
     // Tests variables
+    TEST_THEMES="lumen,portal"
     REPORTS_NON_RESPONSIVE_CI = "reports/ci_report/non_responsive/xunit.xml"
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
@@ -275,16 +276,18 @@ pipeline {
       }
       steps {
         script {
-          def isTestAvailable = true
-          
-          try {
-            unstash name: "non_responsive_ci"
-          } catch (Exception e) {
-            isTestAvailable = false
-          }
-            
-          if (isTestAvailable) {
-            jslCheckQualityGates(REPORTS_NON_RESPONSIVE_CI, 'QualityGate1-Unit')
+          TEST_THEMES.split(',').each { theme ->
+            def isTestAvailable = true
+
+            try {
+              unstash name: "${theme}_non_responsive_ci"
+            } catch (Exception e) {
+              isTestAvailable = false
+            }
+              
+            if (isTestAvailable) {
+              jslCheckQualityGates(REPORTS_NON_RESPONSIVE_CI, 'QualityGate1-Unit')
+            }
           }
         }
       }
@@ -489,21 +492,25 @@ pipeline {
               jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed AFTER deployment")
             }
           } else {
-            try {
-              sh "rm -rf reports/ci_report/*"
-              
-              unstash name: "non_responsive_ce_ci"
-              unstash name: "non_responsive_ci"
-              unstash name: "responsive_ci"
-              
-              sh """
-                cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
-                cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
-                cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
-              """
-            } catch (Exception exc) {
-              sh "mkdir -p reports/ci_report"
-              sh "touch reports/ci_report/xunitfinal.xml"
+            TEST_THEMES.split(',').each { theme ->
+              try {
+                sh "rm -rf reports/${theme}/ci_report/*"
+                
+                unstash name: "${theme}_non_responsive_ce_ci"
+                unstash name: "${theme}_non_responsive_ci"
+                unstash name: "${theme}_responsive_ci"
+                
+                sh """
+                  cat reports/${theme}/ci_report/responsive/xunit.xml > reports/${theme}/ci_report/xunitfinal.xml
+                  cat reports/${theme}/ci_report/non_responsive/xunit.xml >> reports/${theme}/ci_report/xunitfinal.xml
+                  cat reports/${theme}/ci_report/non_responsive_ce/xunit.xml >> reports/${theme}/ci_report/xunitfinal.xml
+                """
+              } catch (Exception exc) {
+                sh "mkdir -p reports/${theme}/ci_report"
+                sh "touch reports/${theme}/ci_report/xunitfinal.xml"
+              }
+
+              jslAdoptionMain("reports/${theme}/ci_report/xunitfinal.xml")
             }
           }
 
@@ -511,7 +518,6 @@ pipeline {
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
           }
           
-          jslAdoptionMain('reports/ci_report/xunitfinal.xml')
         }
       }
     }
@@ -579,10 +585,9 @@ def sendBuildInfo() {
 // This function is called to stash and archive the CI reports
 def stashAndArchiveCiReports() {
   def tests = ["non_responsive", "responsive", "non_responsive_ce"]
-  def themes = ["lumen"]
 
   tests.each { test ->
-    themes.each { theme ->
+    TEST_THEMES.split(',').each { theme ->
       def reportBasePath = "reports/${theme}/ci_report/"
       def htmlBasePath = "reports/${theme}/html_report/"
   
