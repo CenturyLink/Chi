@@ -164,7 +164,7 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
-  .-close {
+  .-close:not(.chi-drawer__content *) {
     position: fixed;
     right: $drawer-button-close-right;
     top: $drawer-button-close-top;
