@@ -13,10 +13,6 @@
     display: flex;
     flex-direction: column;
 
-    @include respond-to(md) {
-       align-items: center;
-    }
-
     &-start {
       display: flex;
       flex-direction: column;
@@ -26,7 +22,6 @@
     &-end {
       display: flex;
       flex-direction: row;
-      flex-wrap: wrap;
       gap: 0.5rem;
       margin-top: 1.5rem;
 
@@ -35,12 +30,12 @@
         justify-content: flex-end;
       }
 
-      @include respond-to(md) {
+      @include respond-to(lg) {
         margin-top: 0;
       }
     }
 
-    @include respond-to(md) {
+    @include respond-to(lg) {
       align-items: center;
       flex-direction: row;
       justify-content: space-between;
@@ -86,6 +81,17 @@
       color: $app-layout-sub-header-title-color;
       font-size: $app-layout-sub-header-font-size;
       font-weight: $app-layout-sub-header-font-weight;
+    }
+
+    &-description {
+      color: $app-layout-sub-header-title-color;
+      font-size: $app-layout-sub-header-font-size;
+      font-weight: normal;
+      padding-top: 0.5rem;
+
+      @include respond-to(xxl) {
+        max-width: 65%;
+      }
     }
   }
 
@@ -190,8 +196,41 @@
       color: $app-layout-header-background-title-color;
     }
 
-    .chi-main__title-subheading {
+    .chi-main__title-subheading,
+    .chi-main__title-description,
+    .chi-main__title-link,
+    .chi-main__title-link .chi-link,
+    .chi-main__title-link .chi-link .chi-icon {
       color: $app-layout-header-background-subtitle-color;
+    }
+  }
+
+  &.-card-header {
+    .chi-main__header {
+      background: $app-layout-header-card-background-color;
+      border: $app-layout-header-card-border;
+      border-radius: $app-layout-header-card-border-radius;
+      margin: 1.5rem 1rem;
+      padding: 1.25rem;
+
+      @include respond-to(sm) {
+        margin: 1.5rem 1.5rem;
+        padding: 1.25rem;
+      }
+
+      @include respond-to(md) {
+        margin: 1.5rem 2rem;
+        padding: 1.25rem;
+      }
+
+      @include respond-to(lg) {
+        margin: 1.5rem 4rem;
+        padding: 1.25rem;
+      }
+
+      .chi-main__title {
+        padding: 1rem 0;
+      }
     }
   }
 }

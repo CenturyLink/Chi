@@ -476,6 +476,9 @@ $app-layout-header-background-title-color: $color-text-white;
 $app-layout-header-background-subtitle-color: $color-text-white;
 $app-layout-header-title-font-size: 2.25rem;
 $app-layout-header-title-font-weight: $font-weight-medium;
+$app-layout-header-card-background-color: $color-background-white;
+$app-layout-header-card-border: 0.0625rem solid rgba($color-black, 0.17);
+$app-layout-header-card-border-radius: 0.5rem;
 
 // Avatar
 $avatar-background-color: $color-grey-20;
