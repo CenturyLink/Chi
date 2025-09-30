@@ -23,10 +23,14 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      // Not available in Vite 7.0.0
       scss: {
-        api: 'legacy',
-        includePaths: [resolve(__dirname, 'src/chi')],
+        loadPaths: [
+          resolve(__dirname, 'src/chi'),
+          resolve(__dirname, `src/chi/themes/${process.env.THEME || 'lumen'}`),
+          resolve(__dirname, 'src/chi/components'),
+          resolve(__dirname, 'src/chi/foundations'),
+          resolve(__dirname, 'src/chi/utilities')
+        ],
       },
     },
     postcss: {

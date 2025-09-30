@@ -2,6 +2,7 @@ import { chi } from './core/chi.js';
 import { Util } from './core/util.js';
 
 import { Accordion, factory as accordion } from './components/accordion';
+import { AppLayout, factory as appLayout } from './components/app-layout';
 import { DatePicker, factory as datePicker } from "./components/date-picker";
 import { Drawer, factory as drawer } from './components/drawer';
 import { Dropdown, factory as dropdown } from './components/dropdown';
@@ -24,6 +25,7 @@ export {
   Util,
   
   accordion,
+  appLayout,
   datePicker,
   drawer,
   dropdown,
@@ -42,6 +44,7 @@ export {
   tooltip,
 
   Accordion,
+  AppLayout,
   DatePicker,
   Drawer,
   Dropdown,
@@ -67,6 +70,7 @@ if (typeof window !== 'undefined') {
     core: chi,
     Util,
     accordion,
+    appLayout,
     datePicker,
     drawer,
     dropdown,
@@ -84,6 +88,7 @@ if (typeof window !== 'undefined') {
     tab,
     tooltip,
     Accordion,
+    AppLayout,
     DatePicker,
     Drawer,
     Dropdown,

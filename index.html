@@ -50,7 +50,7 @@
           <nav class="chi-header__content">
             <div class="chi-header__brand">
               <chi-link href="/" alternative-text="Lumen">
-                <chi-brand logo="lumen"/>
+                <chi-brand logo="lumen" />
               </chi-link>
               <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
             </div>
@@ -60,7 +60,13 @@
               </chi-button>
             </div>
             <div class="chi-header__end -d--none -d-lg--flex">
-              <chi-dropdown class="enterprise-id-switcher" position="bottom-end" button="Enterprise ID: 1234567" size="sm" select-mode>
+              <chi-dropdown
+                class="enterprise-id-switcher"
+                position="bottom-end"
+                button="Enterprise ID: 1234567"
+                size="sm"
+                select-mode
+              >
                 <div slot="menu-header">Enterprise ID</div>
                 <div slot="menu-header">Enterprise Name</div>
                 <a class="chi-dropdown__menu-item -active-item" slot="menu">
@@ -260,7 +266,7 @@
               </nav>
             </div>
           </aside>
-          <div class="chi-main -header-background">
+          <div id="app-layout" class="chi-main -header-background">
             <div class="chi-main__header">
               <div class="chi-main__header-start">
                 <a class="chi-link -d--none" href="#">
@@ -270,27 +276,22 @@
                   </div>
                 </a>
                 <div class="chi-main__title">
-                  <div class="chi-main__title-heading">
-                    Dashboard
-                  </div>
+                  <div class="chi-main__title-heading">Dashboard</div>
                   <div class="chi-main__title-link -d--none">
                     <chi-link href="#" size="md">
                       <chi-icon icon="api-outline"></chi-icon>
                       <span>View APIs</span>
                     </chi-link>
                   </div>
-                  <div class="chi-main__title-subheading">
-                    Welcome back, User • Last updated, 5/9/25 at 9:33 am ET
-                  </div>
+                  <div class="chi-main__title-subheading">Welcome back, User • Last updated, 5/9/25 at 9:33 am ET</div>
                   <div class="chi-main__title-description -d--none">
-                    Expand your capabilities. Add new services to support your goals, streamline operations, and stay ahead of your business needs.
+                    Expand your capabilities. Add new services to support your goals, streamline operations, and stay
+                    ahead of your business needs.
                   </div>
                 </div>
               </div>
               <div class="chi-main__header-end">
-                <button class="chi-button -primary">
-                  Take a Tour
-                </button>
+                <button class="chi-button -primary">Take a Tour</button>
                 <button class="chi-button -bg--white">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-circle-question-outline -sm"></i>
@@ -304,24 +305,22 @@
                 <div class="chi-col -w-xl--4 -w--12">
                   <div class="widget-alerts -mb--3 -d--none -d-xl--block">
                     <div class="chi-card -widget -s--2">
-                        <div class="chi-card__header">
-                          <div class="chi-card__title -d--flex -align-items--center">
-                            Alerts
-                            <div class="chi-badge -notification -sm -ml--1">
-                              <span>21</span>
-                            </div>
+                      <div class="chi-card__header">
+                        <div class="chi-card__title -d--flex -align-items--center">
+                          Alerts
+                          <div class="chi-badge -notification -sm -ml--1">
+                            <span>21</span>
                           </div>
                         </div>
-                        <div class="chi-card__content -pb--2"></div>
+                      </div>
+                      <div class="chi-card__content -pb--2"></div>
                     </div>
                   </div>
                   <div class="widget-managed-services -mb--2 -mt-xl--3 -mt--2 -mt-xl--0">
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Manage Services
-                          </div>
+                          <div>Manage Services</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
@@ -330,10 +329,15 @@
                       <div class="chi-card__content">
                         <div class="chi-form__item -pt--3">
                           <chi-label for="service-search">Find by Service ID</chi-label>
-                          <chi-search-input id="service-search" placeholder="Service ID, Nickname, or Location"></chi-search-input>
+                          <chi-search-input
+                            id="service-search"
+                            placeholder="Service ID, Nickname, or Location"
+                          ></chi-search-input>
                         </div>
                         <div class="chi-form__item -pt--4">
-                          <chi-label info-icon info-icon-message="Info message here">Find by Product or Service Tool</chi-label>
+                          <chi-label info-icon info-icon-message="Info message here"
+                            >Find by Product or Service Tool</chi-label
+                          >
                           <select class="chi-select">
                             <option value="">Select a product or service tool</option>
                             <option>Option 1</option>
@@ -348,15 +352,15 @@
                 <div class="chi-col -w-xl--8 -w--12">
                   <div class="widget-alerts -mb--3 -d--block -d-xl--none">
                     <div class="chi-card -widget -s--2">
-                        <div class="chi-card__header">
-                          <div class="chi-card__title -d--flex -align-items--center">
-                            Alerts
-                            <div class="chi-badge -notification -sm -ml--1">
-                              <span>21</span>
-                            </div>
+                      <div class="chi-card__header">
+                        <div class="chi-card__title -d--flex -align-items--center">
+                          Alerts
+                          <div class="chi-badge -notification -sm -ml--1">
+                            <span>21</span>
                           </div>
                         </div>
-                        <div class="chi-card__content -pb--2"></div>
+                      </div>
+                      <div class="chi-card__content -pb--2"></div>
                     </div>
                   </div>
                   <div class="widget-snapshots">
@@ -434,16 +438,17 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Scheduled Maintenance
-                          </div>
+                          <div>Scheduled Maintenance</div>
                           <div class="-d--flex -flex--grow1 -flex--shrink0 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View All</a>
                           </div>
                         </div>
                       </div>
                       <div class="chi-card__content">
-                        <div class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center" style="height: 400px;">
+                        <div
+                          class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center"
+                          style="height: 400px"
+                        >
                           <!-- Remove classes and inline height style on maintenance-calendar once content is inserted -->
                           Calendar goes here
                         </div>
@@ -454,9 +459,7 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Lumen Contacts
-                          </div>
+                          <div>Lumen Contacts</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end"></div>
                         </div>
                       </div>
@@ -472,25 +475,37 @@
                         <div class="contact-items -mxh--300 -overflow--auto">
                           <div class="contact-item chi-card -mb--2">
                             <div class="contact-item__content chi-card__content -flex--row">
-                              <div class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3">NA</div>
+                              <div
+                                class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3"
+                              >
+                                NA
+                              </div>
                               <div class="contact-item__info">
                                 <div class="contact-item__name -text--xl -text--normal">Nancy Anderson-Jones</div>
                                 <div class="contact-item__role -text--sm -text--bold">Account Director</div>
-                                <div class="contact-item__email"><a class="-text--md -text--normal" href="#">nancy.anderson@lumen.com</a></div>
+                                <div class="contact-item__email">
+                                  <a class="-text--md -text--normal" href="#">nancy.anderson@lumen.com</a>
+                                </div>
                                 <div class="contact-item__phone -text--md -text--normal">(404) 555-0210</div>
                               </div>
                             </div>
                           </div>
                           <div class="contact-item chi-card">
                             <div class="contact-item__content chi-card__content -flex--row">
-                              <div class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3">
+                              <div
+                                class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3"
+                              >
                                 <i class="chi-icon icon-comment-dots-outline -icon--body" aria-hidden="true"></i>
                               </div>
                               <div class="contact-item__info-group">
                                 <div class="contact-item__info">
-                                  <div class="contact-item__name -text--xl -text--normal">General Contact Information</div>
+                                  <div class="contact-item__name -text--xl -text--normal">
+                                    General Contact Information
+                                  </div>
                                   <div class="contact-item__role -text--md -text--bold -mt--1">Enterprise/Retail</div>
-                                  <div class="contact-item__email"><a class="-text--md -text--normal" href="#">email@lumen.com</a></div>
+                                  <div class="contact-item__email">
+                                    <a class="-text--md -text--normal" href="#">email@lumen.com</a>
+                                  </div>
                                   <div class="contact-item__phone -text--md -text--normal">(800) 555-5555</div>
                                 </div>
                                 <div class="contact-item__info">
@@ -499,7 +514,9 @@
                                 </div>
                                 <div class="contact-item__info">
                                   <div class="contact-item__role -text--md -text--bold -mt--1">Edge Customers</div>
-                                  <div class="contact-item__email"><a class="-text--md -text--normal" href="#">email@lumen.com</a></div>
+                                  <div class="contact-item__email">
+                                    <a class="-text--md -text--normal" href="#">email@lumen.com</a>
+                                  </div>
                                   <div class="contact-item__phone -text--md -text--normal">(800) 555-3333</div>
                                 </div>
                               </div>
@@ -515,16 +532,14 @@
                     <div class="chi-card -widget -mt--2">
                       <div class="chi-card__header -flex--column">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Network Visibility
-                          </div>
+                          <div>Network Visibility</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Run Diagnostics</a>
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
                         </div>
                         <div class="chi-card__subtitle -d--flex -align-items--center -w--100">
-                           <div class="-text--md -text--normal">222 Services Monitored</div>
+                          <div class="-text--md -text--normal">222 Services Monitored</div>
                         </div>
                       </div>
                       <div class="chi-card__content -pt--3">
@@ -532,7 +547,9 @@
                           <div class="chi-col -w-lg--6 -w--12">
                             <div class="visibility-metric-group -pb--6">
                               <div class="visibility-metric-title -text--lg -text--bold">Utilization</div>
-                              <div class="visibility-metric-subtitle -text--sm">Utilization is considered to be elevated above 65% or high above 85%.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Utilization is considered to be elevated above 65% or high above 85%.
+                              </div>
                               <div class="visibility-metric-item -metric--utilization-high -mt--3">
                                 <div class="chi-label" id="utilization-high">
                                   <div class="visibility-metric-item__title">High</div>
@@ -566,9 +583,12 @@
                             </div>
                           </div>
                           <div class="chi-col -w-lg--6 -w--12">
-                           <div class="visibility-metric-group -pb--6">
+                            <div class="visibility-metric-group -pb--6">
                               <div class="visibility-metric-title -text--lg -text--bold">Performance</div>
-                              <div class="visibility-metric-subtitle -text--sm">Performance is considered impacted when packet delivery is below 99% or critical when below 95%.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Performance is considered impacted when packet delivery is below 99% or critical when
+                                below 95%.
+                              </div>
                               <div class="visibility-metric-item -metric--performance-critical -mt--3">
                                 <div class="chi-label" id="performance-critical">
                                   <div class="visibility-metric-item__title">Critical</div>
@@ -604,7 +624,9 @@
                           <div class="chi-col -w-lg--6 -w--12">
                             <div class="visibility-metric-group -pb--2">
                               <div class="visibility-metric-title -text--lg -text--bold">Status</div>
-                              <div class="visibility-metric-subtitle -text--sm">Review the status of your monitored locations and services.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Review the status of your monitored locations and services.
+                              </div>
                               <div class="visibility-metric-item -metric--status-down -mt--3">
                                 <div class="chi-label" id="status-down">
                                   <div class="visibility-metric-item__title">Down</div>
@@ -613,7 +635,13 @@
                                     <a class="chi-link -text--normal" href="#">91 Services</a>
                                   </div>
                                 </div>
-                                <progress class="-danger" aria-labelledby="status-down" value="41" max="100" state="danger"></progress>
+                                <progress
+                                  class="-danger"
+                                  aria-labelledby="status-down"
+                                  value="41"
+                                  max="100"
+                                  state="danger"
+                                ></progress>
                               </div>
                               <div class="visibility-metric-item -metric--status-up -mt--3">
                                 <div class="chi-label" id="status-up">
@@ -628,9 +656,12 @@
                             </div>
                           </div>
                           <div class="chi-col -w-lg--6 -w--12">
-                           <div class="visibility-metric-group -pb--2">
+                            <div class="visibility-metric-group -pb--2">
                               <div class="visibility-metric-title -text--lg -text--bold">Threshold Alerts</div>
-                              <div class="visibility-metric-subtitle -text--sm">Review monitored locations and services where previously configured threshold alerts have fired.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Review monitored locations and services where previously configured threshold alerts
+                                have fired.
+                              </div>
                               <div class="visibility-metric-item -metric--alerts-warning -mt--3">
                                 <div class="chi-label" id="alerts-warning">
                                   <div class="visibility-metric-item__title">Warning</div>
@@ -667,9 +698,7 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Product Offers
-                          </div>
+                          <div>Product Offers</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Add Services</a>
                           </div>
@@ -697,7 +726,7 @@
           <nav class="chi-header__content">
             <div class="chi-header__brand">
               <chi-link href="/" alternative-text="Lumen">
-                <chi-brand logo="lumen"/>
+                <chi-brand logo="lumen" />
               </chi-link>
               <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
             </div>
@@ -707,7 +736,13 @@
               </chi-button>
             </div>
             <div class="chi-header__end -d--none -d-lg--flex">
-              <chi-dropdown class="enterprise-id-switcher" position="bottom-end" button="Enterprise ID: 1234567" size="sm" select-mode>
+              <chi-dropdown
+                class="enterprise-id-switcher"
+                position="bottom-end"
+                button="Enterprise ID: 1234567"
+                size="sm"
+                select-mode
+              >
                 <div slot="menu-header">Enterprise ID</div>
                 <div slot="menu-header">Enterprise Name</div>
                 <a class="chi-dropdown__menu-item -active-item" slot="menu">
@@ -917,27 +952,22 @@
                   </div>
                 </a>
                 <div class="chi-main__title">
-                  <div class="chi-main__title-heading">
-                    Dashboard
-                  </div>
+                  <div class="chi-main__title-heading">Dashboard</div>
                   <div class="chi-main__title-link -d--none">
                     <chi-link href="#" size="md">
                       <chi-icon icon="api-outline"></chi-icon>
                       <span>View APIs</span>
                     </chi-link>
                   </div>
-                  <div class="chi-main__title-subheading">
-                    Welcome back, User • Last updated, 5/9/25 at 9:33 am ET
-                  </div>
+                  <div class="chi-main__title-subheading">Welcome back, User • Last updated, 5/9/25 at 9:33 am ET</div>
                   <div class="chi-main__title-description -d--none">
-                    Expand your capabilities. Add new services to support your goals, streamline operations, and stay ahead of your business needs.
+                    Expand your capabilities. Add new services to support your goals, streamline operations, and stay
+                    ahead of your business needs.
                   </div>
                 </div>
               </div>
               <div class="chi-main__header-end">
-                <button class="chi-button -primary">
-                  Take a Tour
-                </button>
+                <button class="chi-button -primary">Take a Tour</button>
                 <button class="chi-button -bg--white">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-circle-question-outline -sm"></i>
@@ -951,15 +981,15 @@
                 <div class="chi-css-col -col-xl--4 -row-xl--1">
                   <div class="widget-alerts">
                     <div class="chi-card -widget -s--2">
-                        <div class="chi-card__header">
-                          <div class="chi-card__title -d--flex -align-items--center">
-                            Alerts
-                            <div class="chi-badge -notification -sm -ml--1">
-                              <span>21</span>
-                            </div>
+                      <div class="chi-card__header">
+                        <div class="chi-card__title -d--flex -align-items--center">
+                          Alerts
+                          <div class="chi-badge -notification -sm -ml--1">
+                            <span>21</span>
                           </div>
                         </div>
-                        <div class="chi-card__content -pb--2"></div>
+                      </div>
+                      <div class="chi-card__content -pb--2"></div>
                     </div>
                   </div>
                 </div>
@@ -1037,9 +1067,7 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Manage Services
-                          </div>
+                          <div>Manage Services</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
@@ -1048,10 +1076,15 @@
                       <div class="chi-card__content">
                         <div class="chi-form__item -pt--3">
                           <chi-label for="service-search">Find by Service ID</chi-label>
-                          <chi-search-input id="service-search" placeholder="Service ID, Nickname, or Location"></chi-search-input>
+                          <chi-search-input
+                            id="service-search"
+                            placeholder="Service ID, Nickname, or Location"
+                          ></chi-search-input>
                         </div>
                         <div class="chi-form__item -pt--4">
-                          <chi-label info-icon info-icon-message="Info message here">Find by Product or Service Tool</chi-label>
+                          <chi-label info-icon info-icon-message="Info message here"
+                            >Find by Product or Service Tool</chi-label
+                          >
                           <select class="chi-select">
                             <option value="">Select a product or service tool</option>
                             <option>Option 1</option>
@@ -1068,16 +1101,17 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Scheduled Maintenance
-                          </div>
+                          <div>Scheduled Maintenance</div>
                           <div class="-d--flex -flex--grow1 -flex--shrink0 -justify-content--end">
                             <a class="chi-link -md -text--normal -ml--2" href="#">View All</a>
                           </div>
                         </div>
                       </div>
                       <div class="chi-card__content">
-                        <div class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center" style="height: 400px;">
+                        <div
+                          class="maintenance-calendar -bg--muted-lighter -w--100 -d--flex -justify-content--center -align-items--center"
+                          style="height: 400px"
+                        >
                           <!-- Remove classes and inline height style on maintenance-calendar once content is inserted -->
                           Calendar goes here
                         </div>
@@ -1090,9 +1124,7 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Lumen Contacts
-                          </div>
+                          <div>Lumen Contacts</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end"></div>
                         </div>
                       </div>
@@ -1108,25 +1140,37 @@
                         <div class="contact-items -mxh--300 -overflow--auto">
                           <div class="contact-item chi-card -mb--2">
                             <div class="contact-item__content chi-card__content -flex--row">
-                              <div class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3">NA</div>
+                              <div
+                                class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3"
+                              >
+                                NA
+                              </div>
                               <div class="contact-item__info">
                                 <div class="contact-item__name -text--xl -text--normal">Nancy Anderson-Jones</div>
                                 <div class="contact-item__role -text--sm -text--bold">Account Director</div>
-                                <div class="contact-item__email"><a class="-text--md -text--normal" href="#">nancy.anderson@lumen.com</a></div>
+                                <div class="contact-item__email">
+                                  <a class="-text--md -text--normal" href="#">nancy.anderson@lumen.com</a>
+                                </div>
                                 <div class="contact-item__phone -text--md -text--normal">(404) 555-0210</div>
                               </div>
                             </div>
                           </div>
                           <div class="contact-item chi-card">
                             <div class="contact-item__content chi-card__content -flex--row">
-                              <div class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3">
+                              <div
+                                class="contact-item__avatar chi-avatar -lg -text--xl -d--flex -align-items--center -justify-content--center -flex--shrink0 -mr--3"
+                              >
                                 <i class="chi-icon icon-comment-dots-outline -icon--body" aria-hidden="true"></i>
                               </div>
                               <div class="contact-item__info-group">
                                 <div class="contact-item__info">
-                                  <div class="contact-item__name -text--xl -text--normal">General Contact Information</div>
+                                  <div class="contact-item__name -text--xl -text--normal">
+                                    General Contact Information
+                                  </div>
                                   <div class="contact-item__role -text--md -text--bold -mt--1">Enterprise/Retail</div>
-                                  <div class="contact-item__email"><a class="-text--md -text--normal" href="#">email@lumen.com</a></div>
+                                  <div class="contact-item__email">
+                                    <a class="-text--md -text--normal" href="#">email@lumen.com</a>
+                                  </div>
                                   <div class="contact-item__phone -text--md -text--normal">(800) 555-5555</div>
                                 </div>
                                 <div class="contact-item__info">
@@ -1135,7 +1179,9 @@
                                 </div>
                                 <div class="contact-item__info">
                                   <div class="contact-item__role -text--md -text--bold -mt--1">Edge Customers</div>
-                                  <div class="contact-item__email"><a class="-text--md -text--normal" href="#">email@lumen.com</a></div>
+                                  <div class="contact-item__email">
+                                    <a class="-text--md -text--normal" href="#">email@lumen.com</a>
+                                  </div>
                                   <div class="contact-item__phone -text--md -text--normal">(800) 555-3333</div>
                                 </div>
                               </div>
@@ -1151,16 +1197,14 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header -flex--column">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Network Visibility
-                          </div>
+                          <div>Network Visibility</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Run Diagnostics</a>
                             <a class="chi-link -md -text--normal -ml--2" href="#">View</a>
                           </div>
                         </div>
                         <div class="chi-card__subtitle -d--flex -align-items--center -w--100">
-                           <div class="-text--md -text--normal">222 Services Monitored</div>
+                          <div class="-text--md -text--normal">222 Services Monitored</div>
                         </div>
                       </div>
                       <div class="chi-card__content -pt--3">
@@ -1168,7 +1212,9 @@
                           <div class="chi-col -w-lg--6 -w--12">
                             <div class="visibility-metric-group -pb--6">
                               <div class="visibility-metric-title -text--lg -text--bold">Utilization</div>
-                              <div class="visibility-metric-subtitle -text--sm">Utilization is considered to be elevated above 65% or high above 85%.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Utilization is considered to be elevated above 65% or high above 85%.
+                              </div>
                               <div class="visibility-metric-item -metric--utilization-high -mt--3">
                                 <div class="chi-label" id="utilization-high">
                                   <div class="visibility-metric-item__title">High</div>
@@ -1202,9 +1248,12 @@
                             </div>
                           </div>
                           <div class="chi-col -w-lg--6 -w--12">
-                           <div class="visibility-metric-group -pb--6">
+                            <div class="visibility-metric-group -pb--6">
                               <div class="visibility-metric-title -text--lg -text--bold">Performance</div>
-                              <div class="visibility-metric-subtitle -text--sm">Performance is considered impacted when packet delivery is below 99% or critical when below 95%.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Performance is considered impacted when packet delivery is below 99% or critical when
+                                below 95%.
+                              </div>
                               <div class="visibility-metric-item -metric--performance-critical -mt--3">
                                 <div class="chi-label" id="performance-critical">
                                   <div class="visibility-metric-item__title">Critical</div>
@@ -1240,7 +1289,9 @@
                           <div class="chi-col -w-lg--6 -w--12">
                             <div class="visibility-metric-group -pb--2">
                               <div class="visibility-metric-title -text--lg -text--bold">Status</div>
-                              <div class="visibility-metric-subtitle -text--sm">Review the status of your monitored locations and services.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Review the status of your monitored locations and services.
+                              </div>
                               <div class="visibility-metric-item -metric--status-down -mt--3">
                                 <div class="chi-label" id="status-down">
                                   <div class="visibility-metric-item__title">Down</div>
@@ -1249,7 +1300,13 @@
                                     <a class="chi-link -text--normal" href="#">91 Services</a>
                                   </div>
                                 </div>
-                                <progress class="-danger" aria-labelledby="status-down" value="41" max="100" state="danger"></progress>
+                                <progress
+                                  class="-danger"
+                                  aria-labelledby="status-down"
+                                  value="41"
+                                  max="100"
+                                  state="danger"
+                                ></progress>
                               </div>
                               <div class="visibility-metric-item -metric--status-up -mt--3">
                                 <div class="chi-label" id="status-up">
@@ -1264,9 +1321,12 @@
                             </div>
                           </div>
                           <div class="chi-col -w-lg--6 -w--12">
-                           <div class="visibility-metric-group -pb--2">
+                            <div class="visibility-metric-group -pb--2">
                               <div class="visibility-metric-title -text--lg -text--bold">Threshold Alerts</div>
-                              <div class="visibility-metric-subtitle -text--sm">Review monitored locations and services where previously configured threshold alerts have fired.</div>
+                              <div class="visibility-metric-subtitle -text--sm">
+                                Review monitored locations and services where previously configured threshold alerts
+                                have fired.
+                              </div>
                               <div class="visibility-metric-item -metric--alerts-warning -mt--3">
                                 <div class="chi-label" id="alerts-warning">
                                   <div class="visibility-metric-item__title">Warning</div>
@@ -1303,9 +1363,7 @@
                     <div class="chi-card -widget">
                       <div class="chi-card__header">
                         <div class="chi-card__title -d--flex -align-items--center -w--100">
-                          <div>
-                            Product Offers
-                          </div>
+                          <div>Product Offers</div>
                           <div class="-d--flex -flex--grow1 -justify-content--end -align-self--start">
                             <a class="chi-link -md -text--normal -ml--2" href="#">Add Services</a>
                           </div>
@@ -1325,12 +1383,10 @@
         </div>
       </div>
 
-
-
       <h3>More Examples</h3>
       <h4>Drag and Drop</h4>
       <chi-drag id="drag-example"></chi-drag>
-      
+
       <h4>Toolbar</h4>
       <chi-toolbar title="Search & filter" type="expandable">
         <div slot="start">
@@ -1561,7 +1617,7 @@
           <nav class="chi-header__content">
             <div class="chi-header__brand">
               <chi-link href="/" alternative-text="Lumen">
-                <chi-brand logo="lumen"/>
+                <chi-brand logo="lumen" />
               </chi-link>
               <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
             </div>
@@ -1571,7 +1627,13 @@
               </chi-button>
             </div>
             <div class="chi-header__end -d--none -d-lg--flex">
-              <chi-dropdown class="enterprise-id-switcher" position="bottom-end" button="Enterprise ID: 1234567" size="sm" select-mode>
+              <chi-dropdown
+                class="enterprise-id-switcher"
+                position="bottom-end"
+                button="Enterprise ID: 1234567"
+                size="sm"
+                select-mode
+              >
                 <div slot="menu-header">Enterprise ID</div>
                 <div slot="menu-header">Enterprise Name</div>
                 <a class="chi-dropdown__menu-item -active-item" slot="menu">
@@ -1632,7 +1694,7 @@
           <nav class="chi-header__content">
             <div class="chi-header__brand">
               <chi-link href="#" alternative-text="Lumen">
-                <chi-brand logo="lumen"/>
+                <chi-brand logo="lumen" />
               </chi-link>
               <span class="chi-header__title -d--none -d-sm--flex">[Portal Name]</span>
             </div>
@@ -1692,15 +1754,15 @@
         <div class="chi-epanel__wrapper -w--50">
           <chi-expansion-panel title="Done state" step="1" state="done">
             <div slot="done">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-              Pellentesque ac tellus sed tellus tempus consectetur.<br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+              Pellentesque ac tellus sed tellus tempus consectetur.<br />
               Quisque mattis sapien sem, vitae luctus leo gravida in.
             </div>
             <div slot="change">
               <chi-button color="primary" variant="flat">Edit</chi-button>
             </div>
           </chi-expansion-panel>
-  
+
           <chi-expansion-panel title="Active state" step="2" state="active">
             <div slot="active">
               <div class="chi-epanel__subtitle">Active</div>
@@ -1712,7 +1774,7 @@
               <chi-button color="primary" variant="flat">Cancel</chi-button>
             </div>
           </chi-expansion-panel>
-  
+
           <chi-expansion-panel title="Pending state" step="3"></chi-expansion-panel>
           <chi-expansion-panel title="Disabled state" step="4" state="disabled"></chi-expansion-panel>
         </div>
@@ -1721,8 +1783,8 @@
         <div class="chi-epanel__wrapper -w--50">
           <chi-expansion-panel title="Done state" state="done">
             <div slot="done">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-              Pellentesque ac tellus sed tellus tempus consectetur.<br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+              Pellentesque ac tellus sed tellus tempus consectetur.<br />
               Quisque mattis sapien sem, vitae luctus leo gravida in.
             </div>
             <div slot="change">
@@ -1740,7 +1802,7 @@
               <chi-button color="primary" variant="flat">Cancel</chi-button>
             </div>
           </chi-expansion-panel>
-  
+
           <chi-expansion-panel title="Pending state"></chi-expansion-panel>
           <chi-expansion-panel title="Disabled state" state="disabled"></chi-expansion-panel>
         </div>
@@ -1975,23 +2037,34 @@
           { title: 'Title item 5', description: 'Item description 5' },
         ];
         //#endregion
+
+        //#region Enterprise ID Switcher
+        const switchers = document.querySelectorAll('.enterprise-id-switcher');
+
+        switchers.forEach((switcher) => {
+          switcher.addEventListener('chiDropdownItemSelected', (e) => {
+            const enterpriseId = e.detail.split('\n')[0] ?? '';
+
+            setTimeout(() => {
+              const dropdownValue = switcher.querySelector('.chi-button span');
+
+              dropdownValue && (dropdownValue.innerHTML = 'Enterprise ID: ' + enterpriseId);
+            }, 0);
+            const items = switcher.querySelectorAll('.chi-dropdown__menu-item');
+
+            items.forEach((item) => item.classList.toggle('-active-item', item.textContent.includes(enterpriseId)));
+          });
+        });
+        //#endregion
+
+        //#region App Layout
+        const appLayout = document.getElementById('app-layout');
+
+        chi.appLayout(appLayout);
+        //#endregion
       })
       .catch((err) => {
         console.error('Can not initialize Chi:', err);
-      });
-
-      //ENTERPRISE ID SWITCHER
-      const switchers = document.querySelectorAll('.enterprise-id-switcher');
-      switchers.forEach((switcher) => {
-        switcher.addEventListener('chiDropdownItemSelected', (e) => {
-          const enterpriseId = e.detail.split('\n')[0] ?? '';
-          setTimeout(() => {
-            const dropdownValue = switcher.querySelector('.chi-button span');
-            dropdownValue && (dropdownValue.innerHTML = 'Enterprise ID: ' + enterpriseId);
-          }, 0);
-          const items = switcher.querySelectorAll('.chi-dropdown__menu-item');
-          items.forEach((item) => item.classList.toggle('-active-item', item.textContent.includes(enterpriseId)));
-        });
       });
   </script>
 </html>

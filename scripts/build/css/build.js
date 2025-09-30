@@ -8,24 +8,8 @@ const themes = (process.env.THEMES_TO_BUILD || 'lumen,portal,centurylink,colt,br
   .split(',')
   .filter(theme => allowedThemes.includes(theme));
 
-const scripts = {
-  replace: './scripts/build/css/replace-scss.sh',
-  restore: './scripts/build/css/restore-scss.sh',
-};
 const __dirname = path.resolve();
 const isWindows = process.platform === 'win32';
-
-const runBashScript = (scriptPath, theme, message) => {
-  const spinner = message ? ora(message).start() : null;
-
-  try {
-    execFileSync('bash', [scriptPath, theme], { stdio: 'ignore' });
-    spinner?.succeed(`[CHI]: ${message} completed successfully`);
-  } catch (error) {
-    spinner?.fail(`[CHI]: Error executing ${scriptPath} for ${theme}: ${error.message}`);
-    process.exit(1);
-  }
-};
 
 const deleteCssFile = (theme) => {
   if (!allowedThemes.includes(theme)) {
@@ -53,14 +37,14 @@ const buildTheme = async (theme) => {
 
   try {
     deleteCssFile(theme);
-    runBashScript(scripts.restore, theme);
-    runBashScript(scripts.replace, theme);
-    execFileSync('cross-env', [`THEME=${theme}`, 'vite', 'build', '--c', 'vite-css.config.ts'], { stdio: 'ignore' });
+    execFileSync('vite', ['build', '--config', 'vite-css.config.ts'], {
+      stdio: 'ignore',
+      env: { ...process.env, THEME: theme }
+    });
+    
     spinner.succeed(`[CHI]: Build for ${theme} theme completed successfully`);
   } catch (error) {
     spinner.fail(`[CHI]: Error during build for ${theme} theme: ${error.message}`);
-  } finally {
-    runBashScript(scripts.restore, theme);
   }
 };
 
