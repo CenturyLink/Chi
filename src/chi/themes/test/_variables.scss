@@ -464,15 +464,21 @@ $alert-sm-text-font-size: $font-size-base;
 $alert-sm-text-line-height: $line-height;
 
 // App layout
-$app-layout-background-color: $color-background-base;
-$app-layout-header-background-color: transparent;
+$app-layout-background-color: $color-grey-10;
+$app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-header-title-color: $color-text-base;
-$app-layout-sub-header-title-color: $color-grey-80;
+$app-layout-sub-header-title-color: $color-text-base;
 $app-layout-header-line-height: $line-height-xl;
 $app-layout-sub-header-font-size: $font-size-xl;
 $app-layout-sub-header-font-weight: $font-weight-semi-bold;
 $app-layout-sub-header-border-color: $color-grey-30;
-$app-layout-header-background-title-color: inherit;
+$app-layout-header-background-title-color: $color-text-white;
+$app-layout-header-background-subtitle-color: $color-text-white;
+$app-layout-header-title-font-size: 2.25rem;
+$app-layout-header-title-font-weight: $font-weight-medium;
+$app-layout-header-card-background-color: $color-background-white;
+$app-layout-header-card-border: 0.0625rem solid rgba($color-black, 0.17);
+$app-layout-header-card-border-radius: 0.5rem;
 
 // Avatar
 $avatar-background-color: $color-grey-20;
@@ -1801,12 +1807,13 @@ $popover-gradient-arrow-offset: 0.75rem;
 
 // Progress
 $progress-background-color: $color-grey-20;
-$progress-border-radius: $border-radius-base;
-$progress-value-background-color: $color-background-primary;
-$progress-value-info-background-color: $color-icon-info;
-$progress-value-danger-background-color: $color-icon-danger;
-$progress-value-success-background-color: $color-icon-success;
-$progress-value-warning-background-color: $color-icon-warning;
+$progress-border-radius: 0.3125rem;
+$progress-height: 1rem;
+$progress-value-background-color: $color-teal-100;
+$progress-value-info-background-color: $color-blue-50;
+$progress-value-danger-background-color: $color-red-50;
+$progress-value-success-background-color: $color-green-50;
+$progress-value-warning-background-color: $color-yellow-50;
 
 // Radio button
 $radio-background-color: $color-background-white;
