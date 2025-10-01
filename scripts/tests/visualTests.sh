@@ -2,6 +2,7 @@
 source "$(dirname "$0")/backstopConfig.sh"
 
 SECONDS=0
+CONFIG_FILES=("responsive" "non-responsive" "non-responsive-ce")
 
 # Clean reports folder
 if [ -d "reports" ]; then
@@ -22,8 +23,9 @@ SERVER_PID=$!
 # Function to perform visual tests
 test_theme () {
   THEME=$1
+  CONFIG=$2
 
-  node ./scripts/tests/visualTests.js $THEME
+  node ./scripts/tests/visualTests.js $THEME $CONFIG
   return $?
 }
 
@@ -33,15 +35,16 @@ message=''
 
 for theme in ${THEMES_TO_TEST//,/ };
 do
-  test_theme $theme
-  TEST_EXIT_CODE=$?
+  for config in "${CONFIG_FILES[@]}"; do
+    test_theme $theme backstop-"$config"_"$theme".json
+    
+    TEST_EXIT_CODE=$?
 
-  if [ $TEST_EXIT_CODE -ne 0 ]; then
-    message+=$'\n'"[CHI]: Visual tests failed for $theme"
-    message+=$'\n\t'"[CHI]: RESPONSIVE REPORT reports/$theme/html_report/responsive/index.html"
-    message+=$'\n\t'"[CHI]: NON RESPONSIVE REPORT reports/$theme/html_report/non_responsive/index.html"
-    message+=$'\n\t'"[CHI]: CUSTOM ELEMENTS REPORT reports/$theme/html_report/non_responsive_ce/index.html"
-  fi
+    if [ $TEST_EXIT_CODE -ne 0 ]; then
+      message+=$'\n'"[CHI]: FAILED TESTS: $USER_PATH/reports/$theme/html_report/${config//-/_}/index.html"
+    fi
+
+  done
 done
 
 minutes=$((SECONDS / 60))
