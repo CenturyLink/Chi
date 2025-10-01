@@ -150,3 +150,9 @@ block content
                 .chi-icon
                   svg
                     use(xlink:href='#icon-x')
+
+
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => console.log("backstop_ready"), 2000)
+    });

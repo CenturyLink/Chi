@@ -15,6 +15,7 @@ docker run --rm -it --name backstopjs \
   -e SKIP_BOILERPLATES=true \
   -e THEMES_TO_BUILD=${THEMES_TO_TEST} \
   -e USER_PATH=${REPO_PATH} \
+  -e STOP_TESTS_ON_FAILURE=0 \
   --cap-add=SYS_ADMIN \
   -v ${REPO_PATH}:/backstopjs \
   -p 8000:8000 \

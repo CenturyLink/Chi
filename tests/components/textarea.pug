@@ -301,7 +301,7 @@ block content
                 .-d--flex.-align-items--start(id=`test-copy-button-${size}-${style}-disabled`)
                   .chi-input__wrapper.-flex--grow1
                     textarea.chi-input(disabled type='text' class=`-${size} -${style}` value="Some text")
-                  button.chi-button.-icon.-flat(disabled aria-label="Button action" data-tooltip="Copy to clipboard")
+                  button.chi-button.-icon.-flat.-disabled(aria-label="Button action" data-tooltip="Copy to clipboard")
                     .chi-button__content
                       if size == 'xs' || size == 'sm'
                         +icon("copy", 'xs')
