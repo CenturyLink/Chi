@@ -28,7 +28,7 @@ progress {
   /* For IE10 / IE 11 / Edge */
   color: $progress-value-background-color;
   display: block;
-  height: 0.5rem;
+  height: $progress-height;
   overflow: hidden;
   width: 100%;
 

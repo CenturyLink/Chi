@@ -1,7 +1,9 @@
-# Checks if the variable is already set (jenkins), if not, sets a default value
+# Checks if the variable is already set (jenkins), 
+# if not, sets a default value (for local dev)
 if [ -z ${THEMES_TO_TEST+x} ]; 
 then 
-  export THEMES_TO_TEST="lumen,portal"
+  # export THEMES_TO_TEST="lumen,portal"
+  export THEMES_TO_TEST="lumen"
 fi;
 
 # Stop tests on first failure (1 = true, 0 = false)
