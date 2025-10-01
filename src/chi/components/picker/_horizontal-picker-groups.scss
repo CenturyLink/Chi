@@ -52,6 +52,26 @@ $sizes: (
     display: flex;
     width: 100%;
 
+    chi-tooltip {
+      > div,
+      > div label {
+        height: 100%;
+      }
+    }
+
+    & > input[type='radio'].chi-picker__input + label:nth-child(1 of :is(label, chi-tooltip)),
+    & > chi-tooltip:first-child > div > label {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    & > input[type='radio'].chi-picker__input + label:last-child,
+    & > chi-tooltip:last-child > div > input[type='radio'].chi-picker__input + label {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border-right-width: 0.0625rem;
+    }
+
     .chi-icon {
       color: $picker-icon-color;
     }
@@ -89,17 +109,6 @@ $sizes: (
               min-height: map-get(map-get($sizes, $type), min-height);
               padding: map-get(map-get($sizes, $type), padding);
             }
-          }
-
-          &:first-of-type {
-            border-bottom-left-radius: $border-radius;
-            border-top-left-radius: $border-radius;
-          }
-
-          &:last-of-type {
-            border-bottom-right-radius: $border-radius;
-            border-right-width: 0.0625rem;
-            border-top-right-radius: $border-radius;
           }
 
           & > :not(:last-child) {

@@ -40,6 +40,32 @@
     .chi-picker-group__content {
       flex-direction: column;
 
+      & > input[type='radio'].chi-picker__input + label:nth-child(1 of :is(label, chi-tooltip)),
+      & > chi-tooltip:first-child > div > label {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+
+        @include respond-to(md) {
+          border-bottom-left-radius: $border-radius;
+          border-top-right-radius: 0;
+        }
+      }
+
+      & > input[type='radio'].chi-picker__input + label:last-child,
+      & > chi-tooltip:last-child > div > input[type='radio'].chi-picker__input + label {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        border-bottom-width: 0.0625rem;
+        border-top-right-radius: 0;
+
+        @include respond-to(md) {
+          border-bottom-left-radius: 0;
+          border-right-width: 0.0625rem;
+          border-top-right-radius: $border-radius;
+        }
+      }
+
       @include respond-to(md) {
         flex-direction: row;
       }
@@ -63,29 +89,29 @@
               flex: 1 0 0;
             }
 
-            &:first-of-type {
-              border-bottom-left-radius: 0;
-              border-top-left-radius: $border-radius;
-              border-top-right-radius: $border-radius;
+            // &:first-of-type {
+            //   border-bottom-left-radius: 0;
+            //   border-top-left-radius: $border-radius;
+            //   border-top-right-radius: $border-radius;
 
-              @include respond-to(md) {
-                border-bottom-left-radius: $border-radius;
-                border-top-right-radius: 0;
-              }
-            }
+            //   @include respond-to(md) {
+            //     border-bottom-left-radius: $border-radius;
+            //     border-top-right-radius: 0;
+            //   }
+            // }
 
-            &:last-of-type {
-              border-bottom-left-radius: $border-radius;
-              border-bottom-right-radius: $border-radius;
-              border-bottom-width: 0.0625rem;
-              border-top-right-radius: 0;
+            // &:last-of-type {
+            //   border-bottom-left-radius: $border-radius;
+            //   border-bottom-right-radius: $border-radius;
+            //   border-bottom-width: 0.0625rem;
+            //   border-top-right-radius: 0;
 
-              @include respond-to(md) {
-                border-bottom-left-radius: 0;
-                border-right-width: 0.0625rem;
-                border-top-right-radius: $border-radius;
-              }
-            }
+            //   @include respond-to(md) {
+            //     border-bottom-left-radius: 0;
+            //     border-right-width: 0.0625rem;
+            //     border-top-right-radius: $border-radius;
+            //   }
+            // }
 
             &.-no-fluid {
               flex: 0 1 auto;
