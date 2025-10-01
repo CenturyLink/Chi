@@ -23,3 +23,5 @@ updates:
         versions: [">=1.51.1"]
       - dependency-name: "@playwright/test"
         versions: [">=1.51.1"]
+      - dependency-name: "ora"
+        versions: [">=8.2.0"]
