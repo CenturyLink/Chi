@@ -3,6 +3,7 @@ import { Util } from '../core/util.js';
 
 const COMPONENT_SELECTOR = '.chi-main';
 const COMPONENT_TYPE = "appLayout";
+const COLLAPSED_BREAKPOINT = 1200;
 
 const WIDGETS = {
   ALERTS: '.widget-alerts',
@@ -23,8 +24,10 @@ class AppLayout extends Component {
 
     this._alertWidget = elem.querySelector(`${this._config.widgets.alerts}`);
     this._networkVisibilityWidget = elem.querySelector(`${this._config.widgets.networkVisibility}`);
+    this._resizeHandler = null;
 
     this._initResize();
+    this._initWindowResize();
   }
 
   _initResize() {
@@ -33,12 +36,25 @@ class AppLayout extends Component {
     resizeObserver.observe(this._alertWidget);
   }
 
+  _initWindowResize() {
+    this._resizeHandler = () => this._calculateMargin();
+    window.addEventListener('resize', this._resizeHandler);
+  }
+
+  _isViewportSmall() {
+    return window.innerWidth <= COLLAPSED_BREAKPOINT;
+  }
+
   _calculateMargin() {
      if (this._alertWidget && this._networkVisibilityWidget) {
-      const alertWidgetHeight = this._alertWidget.offsetHeight;
-      const calculatedMargin = alertWidgetHeight - this._config.threshold;
-
-      this._networkVisibilityWidget.style.marginTop = `-${calculatedMargin}px`;
+      if (this._isViewportSmall()) {
+        this._networkVisibilityWidget.style.marginTop = '0';
+      } else {
+        const alertWidgetHeight = this._alertWidget.offsetHeight;
+        const calculatedMargin = alertWidgetHeight - this._config.threshold;
+        
+        this._networkVisibilityWidget.style.marginTop = `-${calculatedMargin}px`;
+      }
     }
   }
 
@@ -51,8 +67,17 @@ class AppLayout extends Component {
   }
 
   dispose () {
+    if (this._resizeHandler) {
+      window.removeEventListener('resize', this._resizeHandler);
+    }
+
+    if (this._networkVisibilityWidget) {
+      this._networkVisibilityWidget.style.marginTop = '';
+    }
+
     this._alertWidget = null;
     this._networkVisibilityWidget = null;
+    this._resizeHandler = null;
   }
 }
 
