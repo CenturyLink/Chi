@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Card'
 
@@ -50,7 +50,17 @@ block content
             .chi-card__caption
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-hero
+      .test-card-hero-lumen
+        h4 Hero
+        .chi-card
+          .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
+            p.-text.-p--6.-text--center Hero Image
+          .chi-card__content
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+              | Donec sit amet consectetur elit.
+      .test-card-hero-portal
         h4 Hero
         .chi-card
           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
@@ -215,7 +225,17 @@ block content
             .chi-card__caption
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-widget-hero
+      .test-card-widget-hero-lumen
+        h4 Hero
+        .chi-card.-widget
+          .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
+            p.-text.-p--6.-text--center Hero Image
+          .chi-card__content
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+              | Donec sit amet consectetur elit.
+      .test-card-widget-hero-portal
         h4 Hero
         .chi-card.-widget
           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
