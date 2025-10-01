@@ -270,7 +270,7 @@
       "cookiePath": "",
       "url": "http://localhost:8000/chi/6.66.0/tests/<theme>/components/buttons.html",
       "referenceUrl": "",
-      "readyEvent": "",
+      "readyEvent": "backstop_ready",
       "readySelector": "",
       "delay": 0,
       "hideSelectors": [],
@@ -432,7 +432,7 @@
         ".test-card-content",
         ".test-card-content-with-icon",
         ".test-card-align-center",
-        ".test-card-hero",
+        ".test-card-hero-<theme>",
         ".test-card-footer",
         ".test-card-footer-right",
         ".test-card-footer-center",
@@ -452,7 +452,7 @@
         ".test-card-widget-content",
         ".test-card-widget-content-with-icon",
         ".test-card-widget-align-center",
-        ".test-card-widget-hero",
+        ".test-card-widget-hero-<theme>",
         ".test-card-widget-footer",
         ".test-card-widget-footer-right",
         ".test-card-widget-footer-center",
@@ -1518,7 +1518,7 @@
       "selectors": [
         ".test-backdrop-base",
         ".test-backdrop-inverse",
-        ".test-buttons",
+        ".test-buttons-<theme>",
         ".test-text-input",
         ".test-sizes",
         ".test-colors",
@@ -1903,9 +1903,10 @@
     "bitmaps_test": "reports/<theme>/html_report/non_responsive/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
     "html_report": "reports/<theme>/html_report/non_responsive",
-    "ci_report": "reports/<theme>/ci_report/non_responsive"
+    "ci_report": "reports/<theme>/ci_report/non_responsive",
+    "json_report": "reports/<theme>/json_report/non_responsive"
   },
-  "report": ["CI"],
+  "report": ["CI", "json"],
   "engine": "playwright",
   "engineOptions": {
     "browser": "chromium",

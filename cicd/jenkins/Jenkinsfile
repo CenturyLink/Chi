@@ -89,7 +89,7 @@ pipeline {
     NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
   
     // Tests variables
-    TEST_THEMES="lumen"
+    THEMES_TO_TEST="lumen"
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
     // Scripts
@@ -179,6 +179,8 @@ pipeline {
       }
       steps {
         script {
+          sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+    
           jslNpmWrapper('run tests:visual:run', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           stashAndArchiveCiReports()
@@ -275,7 +277,7 @@ pipeline {
       }
       steps {
         script {
-          TEST_THEMES.split(',').each { theme ->
+          THEMES_TO_TEST.split(',').each { theme ->
             def isTestAvailable = true
 
             try {
@@ -493,7 +495,7 @@ pipeline {
               jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed AFTER deployment")
             }
           } else {
-            TEST_THEMES.split(',').each { theme ->
+            THEMES_TO_TEST.split(',').each { theme ->
               try {
                 sh "rm -rf reports/${theme}/ci_report/*"
                 
@@ -588,7 +590,7 @@ def stashAndArchiveCiReports() {
   def tests = ["non_responsive", "responsive", "non_responsive_ce"]
 
   tests.each { test ->
-    TEST_THEMES.split(',').each { theme ->
+    THEMES_TO_TEST.split(',').each { theme ->
       def reportBasePath = "reports/${theme}/ci_report/"
       def htmlBasePath = "reports/${theme}/html_report/"
   

@@ -251,9 +251,10 @@
     "bitmaps_test": "reports/<theme>/html_report/responsive/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
     "html_report": "reports/<theme>/html_report/responsive",
-    "ci_report": "reports/<theme>/ci_report/responsive"
+    "ci_report": "reports/<theme>/ci_report/responsive",
+    "json_report": "reports/<theme>/json_report/responsive"
   },
-  "report": ["CI"],
+  "report": ["CI", "json"],
   "engine": "playwright",
   "engineOptions": {
     "browser": "chromium",

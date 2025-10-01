@@ -42,8 +42,11 @@ do
 
     if [ $TEST_EXIT_CODE -ne 0 ]; then
       message+=$'\n'"[CHI]: FAILED TESTS: $USER_PATH/reports/$theme/html_report/${config//-/_}/index.html"
+      
+      if [ $STOP_TESTS_ON_FAILURE -ne 0 ]; then
+        break 2
+      fi
     fi
-
   done
 done
 
@@ -56,5 +59,11 @@ kill $SERVER_PID
 
 if [ -x "$(command -v killall)" ]; then
   killall node
+fi
+
+if [ -n "$message" ]; then
+  exit 1
+else
+  exit 0
 fi
 
