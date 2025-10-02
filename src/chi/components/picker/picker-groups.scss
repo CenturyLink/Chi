@@ -46,9 +46,20 @@
         &.-no-fluid {
           flex: 0 1 auto;
         }
+
+        &:has(> div > input[type='radio'].chi-picker__input:checked + label) {
+          + input[type='radio'].chi-picker__input + label,
+          + chi-tooltip > div > label {
+            border-left-width: 0.0625rem;
+
+            @include respond-to(md) {
+              border-left-width: 0;
+            }
+          }
+        }
       }
 
-      & > input[type='radio'].chi-picker__input + label:nth-child(1 of :is(label, chi-tooltip)),
+      & > input[type='radio'].chi-picker__input:first-child + label,
       & > chi-tooltip:first-child > div > label {
         border-bottom-left-radius: 0;
         border-top-left-radius: $border-radius;
@@ -147,7 +158,8 @@
                 }
               }
 
-              & + input + label {
+              & + input + label,
+              & + chi-tooltip > div > label {
                 border-left-width: 0.0625rem;
                 border-top-width: 0;
                 padding-left: $picker-group-md-padding-hover;
