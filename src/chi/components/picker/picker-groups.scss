@@ -51,9 +51,19 @@
           + input[type='radio'].chi-picker__input + label,
           + chi-tooltip > div > label {
             border-left-width: 0.0625rem;
+            border-top-width: 0;
+            padding-left: $picker-group-md-padding-hover;
+
+            @each $type in map-keys($sizes) {
+              &.-#{$type} {
+                padding-left: map-get(map-get($sizes, $type), padding_hover);
+              }
+            }
 
             @include respond-to(md) {
               border-left-width: 0;
+              border-top-width: 0.0625rem;
+              padding-left: $picker-group-md-padding-checked;
             }
           }
         }

@@ -58,10 +58,11 @@ $sizes: (
         height: 100%;
       }
 
-      &:has(> div > input.chi-picker__input:checked + label) {
+      &:has(> div > input[type='radio'].chi-picker__input:checked + label) {
         + input.chi-picker__input + label,
         + chi-tooltip > div > label {
           border-left-width: 0;
+          padding-left: $picker-group-md-padding-checked;
         }
       }
     }
