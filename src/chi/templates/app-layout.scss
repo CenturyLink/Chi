@@ -157,10 +157,14 @@
 
     @include respond-to(lg) {
       padding: 0.5rem 0;
+
+      .chi-alert {
+        margin-top: 1.5rem;
+      }
     }
   }
 
-  &__header-description {
+  &__description {
     color: $app-layout-sub-header-title-color;
     font-size: $app-layout-sub-header-font-size;
     font-weight: normal;
@@ -221,7 +225,7 @@
     }
 
     .chi-main__subtitle,
-    .chi-main__header-description,
+    .chi-main__description,
     .chi-main__header-link,
     .chi-main__header-link .chi-link,
     .chi-main__header-link .chi-link .chi-icon {
