@@ -13,10 +13,11 @@ block content
   .test-base
     h3 Base
     .chi-picker-group
-      each type in radios
-        input.chi-picker__input(type="radio", name='box', id=`i-${type}`)
-        label(for=`i-${type}`)
-          = type
+      .chi-picker-group__content
+        each type in radios
+          input.chi-picker__input(type="radio", name='box', id=`i-${type}`)
+          label(for=`i-${type}`)
+            = type
   .test-base-checked
     h3 Base checked
     .chi-picker-group
