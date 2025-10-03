@@ -96,7 +96,6 @@ $sizes: (
           align-items: center;
           background-color: $picker-background-color;
           border: solid 0.0625rem $picker-border-color;
-          border-right-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           cursor: pointer;
           display: flex;
@@ -109,6 +108,10 @@ $sizes: (
           padding: $picker-group-md-padding;
           text-align: center;
           transition: border-color 0.2s, box-shadow 0.2s;
+
+          &:not(:last-of-type) {
+            border-right-width: 0;
+          }
 
           @each $type in map-keys($sizes) {
             &.-#{$type} {
