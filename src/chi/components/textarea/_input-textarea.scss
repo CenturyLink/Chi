@@ -6,31 +6,36 @@ $sizes: (
     font-size: $textarea-xs-font-size,
     line-height: $textarea-xs-line-height,
     min-height: $textarea-xs-min-height,
-    padding: $textarea-xs-padding
+    padding: $textarea-xs-padding,
+    readonly-padding: $textarea-xs-readonly-padding
   ),
   sm: (
     font-size: $textarea-sm-font-size,
     line-height: $textarea-sm-line-height,
     min-height: $textarea-sm-min-height,
-    padding: $textarea-sm-padding
+    padding: $textarea-sm-padding,
+    readonly-padding: $textarea-sm-readonly-padding
   ),
   md: (
     font-size: $textarea-md-font-size,
     line-height: $textarea-md-line-height,
     min-height: $textarea-md-min-height,
-    padding: $textarea-md-padding
+    padding: $textarea-md-padding,
+    readonly-padding: $textarea-md-readonly-padding
   ),
   lg: (
     font-size: $textarea-lg-font-size,
     line-height: $textarea-lg-line-height,
     min-height: $textarea-lg-min-height,
-    padding: $textarea-lg-padding
+    padding: $textarea-lg-padding,
+    readonly-padding: $textarea-lg-readonly-padding
   ),
   xl: (
     font-size: $textarea-xl-font-size,
     line-height: $textarea-xl-line-height,
     min-height: $textarea-xl-min-height,
-    padding: $textarea-xl-padding
+    padding: $textarea-xl-padding,
+    readonly-padding: $textarea-xl-readonly-padding
   )
 );
 
@@ -72,10 +77,8 @@ textarea {
 
     &[readonly],
     &.-readonly {
-      background: none;
-      border-color: transparent;
-      padding-left: 0;
-      padding-right: 0;
+      background: $textarea-readonly-background;
+      border-color: $textarea-readonly-border-color;
 
       &:focus,
       &.-focus {
@@ -92,8 +95,7 @@ textarea {
 
         &[readonly],
         &.-readonly {
-          padding-left: 0;
-          padding-right: 0;
+          padding: map-get(map-get($sizes, $type), readonly-padding);
         }
       }
     }

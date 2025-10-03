@@ -2272,6 +2272,8 @@ $textarea-focus-border-color: $focus-color;
 $textarea-text-color: $color-text-base;
 $textarea-placeholder-text-color: $color-grey-50;
 $textarea-disabled-background-color: $color-grey-10;
+$textarea-readonly-background: none;
+$textarea-readonly-border-color: transparent;
 $textarea-disabled-border-color: $color-border-base;
 $textarea-disabled-text-color: $color-text-muted-light;
 
@@ -2284,6 +2286,7 @@ $textarea-xs-font-size: $text-input-xs-font-size;
 $textarea-xs-line-height: $text-input-xs-line-height;
 $textarea-xs-min-height: 3.5rem;
 $textarea-xs-padding: $text-input-xs-padding;
+$textarea-xs-readonly-padding: 0.5rem 0rem;
 
 $textarea-sm-icon-size: $text-input-sm-icon-width;
 $textarea-sm-icon-top: $text-input-sm-icon-top;
@@ -2294,6 +2297,7 @@ $textarea-sm-font-size: $text-input-sm-font-size;
 $textarea-sm-line-height: $text-input-sm-line-height;
 $textarea-sm-min-height: 4rem;
 $textarea-sm-padding: $text-input-sm-padding;
+$textarea-sm-readonly-padding: 0.75rem 0rem;
 
 $textarea-md-icon-size: $text-input-md-icon-width;
 $textarea-md-icon-top: $text-input-md-icon-top;
@@ -2304,6 +2308,7 @@ $textarea-md-font-size: $text-input-md-font-size;
 $textarea-md-line-height: $text-input-md-line-height;
 $textarea-md-min-height: 5.5rem;
 $textarea-md-padding: $text-input-md-padding;
+$textarea-md-readonly-padding: 0.75rem 0rem;
 
 $textarea-lg-icon-size: $text-input-lg-icon-width;
 $textarea-lg-icon-top: $text-input-lg-icon-top;
@@ -2314,6 +2319,7 @@ $textarea-lg-font-size: $text-input-lg-font-size;
 $textarea-lg-line-height: $text-input-lg-line-height;
 $textarea-lg-min-height: 7rem;
 $textarea-lg-padding: $text-input-lg-padding;
+$textarea-lg-readonly-padding: 0.75rem 0rem;
 
 $textarea-xl-icon-size: $text-input-xl-icon-width;
 $textarea-xl-icon-top: $text-input-xl-icon-top;
@@ -2324,6 +2330,7 @@ $textarea-xl-font-size: $text-input-xl-font-size;
 $textarea-xl-line-height: $text-input-xl-line-height;
 $textarea-xl-min-height: 7.5rem;
 $textarea-xl-padding: $text-input-xl-padding;
+$textarea-xl-readonly-padding: 1rem 0rem;
 
 // Time picker
 $time-picker-width: 14rem;
