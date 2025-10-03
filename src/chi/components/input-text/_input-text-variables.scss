@@ -5,6 +5,7 @@ $sizes: (
     font-size: $text-input-xs-font-size,
     line-height: $text-input-xs-line-height,
     padding: $text-input-xs-padding,
+    readonly-padding: $text-input-xs-readonly-padding,
     icons: (
       height: $text-input-xs-icon-height,
       padding: $text-input-xs-icon-padding,
@@ -16,6 +17,7 @@ $sizes: (
     font-size: $text-input-sm-font-size,
     line-height: $text-input-sm-line-height,
     padding: $text-input-sm-padding,
+    readonly-padding: $text-input-sm-readonly-padding,
     icons: (
       height: $text-input-sm-icon-height,
       padding: $text-input-sm-icon-padding,
@@ -27,6 +29,7 @@ $sizes: (
     font-size: $text-input-md-font-size,
     line-height: $text-input-md-line-height,
     padding: $text-input-md-padding,
+    readonly-padding: $text-input-md-readonly-padding,
     icons: (
       height: $text-input-md-icon-height,
       padding: $text-input-md-icon-padding,
@@ -38,6 +41,7 @@ $sizes: (
     font-size: $text-input-lg-font-size,
     line-height: $text-input-lg-line-height,
     padding: $text-input-lg-padding,
+    readonly-padding: $text-input-lg-readonly-padding,
     icons: (
       height: $text-input-lg-icon-height,
       padding: $text-input-lg-icon-padding,
@@ -49,6 +53,7 @@ $sizes: (
     font-size: $text-input-xl-font-size,
     line-height: $text-input-xl-line-height,
     padding: $text-input-xl-padding,
+    readonly-padding: $text-input-xl-readonly-padding,
     icons: (
       height: $text-input-xl-icon-height,
       padding: $text-input-xl-icon-padding,
