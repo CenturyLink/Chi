@@ -2163,6 +2163,8 @@ $text-input-disabled-border-color: $color-border-base;
 $text-input-disabled-text-color: $color-text-muted-light;
 $text-input-disabled-icon-color: $color-icon-muted;
 $text-input-spinner-color: $color-icon-primary;
+$text-input-readonly-background: none;
+$text-input-readonly-border-color: transparent;
 
 $text-input-floating-label-text-color: $color-text-muted;
 $text-input-floating-label-opacity: $opacity-60;
@@ -2181,6 +2183,7 @@ $text-input-xs-icon-padding: 0.375rem;
 $text-input-xs-icon-width: 0.75rem;
 $text-input-xs-icon-top: 0.375rem;
 $text-input-xs-spinner-right: 0.5rem;
+$text-input-xs-readonly-padding: 0.3125rem 0;
 
 $text-input-sm-height: 2rem;
 $text-input-sm-font-size: $font-size-base;
@@ -2195,6 +2198,7 @@ $text-input-sm-icon-padding: 0.5rem;
 $text-input-sm-icon-width: 1rem;
 $text-input-sm-icon-top: 0.5rem;
 $text-input-sm-spinner-right: 0.75rem;
+$text-input-sm-readonly-padding: 0.4375rem 0;
 
 $text-input-md-height: 2.5rem;
 $text-input-md-font-size: 0.875rem;
@@ -2209,6 +2213,7 @@ $text-input-md-icon-padding: 0.75rem;
 $text-input-md-icon-width: 1.25rem;
 $text-input-md-icon-top: 0.625rem;
 $text-input-md-spinner-right: 0.75rem;
+$text-input-md-readonly-padding: 0.5625rem 0;
 
 $text-input-lg-height: 3rem;
 $text-input-lg-font-size: 0.875rem;
@@ -2223,6 +2228,7 @@ $text-input-lg-icon-padding: 1rem;
 $text-input-lg-icon-width: 1.25rem;
 $text-input-lg-icon-top: 0.875rem;
 $text-input-lg-spinner-right: 0.75rem;
+$text-input-lg-readonly-padding: 0.6875rem 0;
 
 $text-input-xl-height: 3.5rem;
 $text-input-xl-font-size: 0.875rem;
@@ -2237,6 +2243,7 @@ $text-input-xl-icon-padding: 1rem;
 $text-input-xl-icon-width: 1.25rem;
 $text-input-xl-icon-top: 1.0625rem;
 $text-input-xl-spinner-right: 1rem;
+$text-input-xl-readonly-padding: 0.6875rem 0;
 
 $text-input-md-floating-label-bottom: 0.5rem;
 $text-input-md-floating-label-focus-bottom: 0.9375rem;
