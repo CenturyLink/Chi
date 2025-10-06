@@ -413,19 +413,13 @@
     .chi-dropdown__menu {
       border: 0.0625rem solid $color-grey-30;
       border-radius: 0.3125rem;
-      box-shadow: 0 0.1875rem 0.3125rem rgba($color-black, 0.2);
-      padding: 0;
+      padding-top: 0;
       width: 25rem;
 
       &-header {
-        display: flex;
+        width: 100%;
         font-weight: $font-weight-semi-bold;
-        margin-bottom: 0 !important;
-        padding: 0.8125rem 1.25rem;
-
-        & > div:first-child {
-          width: 41.67%;
-        }
+        padding: 0.8125rem 1.25rem 0.3125rem 1.25rem;
       }
 
       &-footer {
@@ -436,26 +430,19 @@
       }
 
       &-item {
-        border-radius: 0.3125rem;
         height: unset;
-        padding: 0 0.625rem;
-        margin: 0.125rem 0.625rem;
         min-height: 2rem;
+        white-space: normal;
 
-        &.-active-item {
-          background-color: $color-orange-20;
-          box-shadow: none;
-          color: $color-orange-80;
-          font-weight: $font-weight-semi-bold;
-        }
+        .chi-grid {
+          width: 100%;
 
-        & > div:first-child {
-          flex-shrink: 0;
-          width: 41.67%;
-        }
+          .chi-col:has(chi-spinner) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
 
-        & > div:last-child {
-          white-space: normal;
         }
       }
     }
