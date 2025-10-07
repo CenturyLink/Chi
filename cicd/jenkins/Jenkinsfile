@@ -374,6 +374,8 @@ pipeline {
           steps {
             script {
               if (isVersionBump()) {
+                unstash name: "chi_build"
+
                 gitHubRelease()
               }
             }
@@ -659,10 +661,9 @@ def isVersionBump() {
 
 // This function is called to create a GitHub release
 def gitHubRelease() {
-  def rootPath = ''
   def latestRelease = 'true'
  
-  def packageJsonPath = "${rootPath}package.json"
+  def packageJsonPath = "package.json"
   def packageFile = readJSON file: packageJsonPath
   def packageVersion = packageFile['version']
   def plainVersion = packageVersion.tokenize('-')[0]
@@ -680,12 +681,12 @@ def gitHubRelease() {
 
   sh script: """#!/bin/bash
     echo "READING CHANGELOG FOR VERSION: ${publishVersion}"
-    echo "${publishVersion}" > ${rootPath}shortCHANGELOG.md
-    echo "" >> ${rootPath}shortCHANGELOG.md
-    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
+    echo "${publishVersion}" > shortCHANGELOG.md
+    echo "" >> shortCHANGELOG.md
+    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" dist/CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
   """
   
-  def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
+  def releaseNotes = readFile "shortCHANGELOG.md"
   
   env.VERSION = publishVersion
   env.GITHUB_USER='lumen-jenkins-prod'

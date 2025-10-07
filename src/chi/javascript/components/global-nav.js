@@ -6,6 +6,7 @@ const COMPONENT_SELECTOR = '.chi-sidenav';
 const COMPONENT_TYPE = 'globalNav';
 const LINK_SELECTOR = 'chi-link';
 const LIST_SELECTOR = '.chi-sidenav__list';
+const COLLAPSED_BREAKPOINT = 1440;
 
 const DEFAULT_CONFIG = {
   expanded: true,
@@ -21,12 +22,15 @@ class GlobalNav extends Component {
     this._links = this._elem.querySelectorAll(LINK_SELECTOR);
     this._accordionStates = new Map();
     this._wasExpandedBeforeHover = false;
+    this._resizeHandler = null;
+    this._stateBeforeSmallViewport = null;
 
     this._init();
   }
 
   _init() {
-    this._updateExpandedState();
+    this._checkViewportAndUpdate();
+    this._setupResizeListener();
 
     this._links.forEach((link) => {
       link.addEventListener('click', () => {
@@ -39,13 +43,20 @@ class GlobalNav extends Component {
         this._wasExpandedBeforeHover = this._expanded;
 
         if (!this._expanded) {
-          this.expanded = true;
+          this._expanded = true;
+          this._updateExpandedState();
         }
       });
 
       this._list.addEventListener('mouseleave', () => {
-        if (!this._wasExpandedBeforeHover) {
-          this.expanded = false;
+        if (this._isViewportSmall()) {
+          this._expanded = false;
+          this._updateExpandedState();
+        } else {
+          if (!this._wasExpandedBeforeHover) {
+            this._expanded = false;
+            this._updateExpandedState();
+          }
         }
       });
     }
@@ -57,6 +68,38 @@ class GlobalNav extends Component {
     });
 
     activeLink.classList.add(chi.classes.ACTIVE);
+  }
+
+  _isViewportSmall() {
+    return window.innerWidth <= COLLAPSED_BREAKPOINT;
+  }
+
+  _checkViewportAndUpdate() {
+    if (this._isViewportSmall()) {
+      this._stateBeforeSmallViewport = this._expanded;
+      this._expanded = false;
+    }
+
+    this._updateExpandedState();
+  }
+
+  _setupResizeListener() {
+    this._resizeHandler = () => {
+      const wasSmallViewport = this._stateBeforeSmallViewport !== null;
+      const isSmallViewport = this._isViewportSmall();
+
+      if (isSmallViewport && !wasSmallViewport) {
+        this._stateBeforeSmallViewport = this._expanded;
+        this._expanded = false;
+        this._updateExpandedState();
+      } else if (!isSmallViewport && wasSmallViewport) {
+        this._expanded = this._stateBeforeSmallViewport;
+        this._stateBeforeSmallViewport = null;
+        this._updateExpandedState();
+      }
+    };
+
+    window.addEventListener('resize', this._resizeHandler);
   }
 
   _updateExpandedState() {
@@ -100,6 +143,10 @@ class GlobalNav extends Component {
   }
 
   set expanded(value) {
+    if (this._isViewportSmall() && value === true) {
+      return;
+    }
+    
     this._expanded = value;
     this._updateExpandedState();
   }
@@ -114,12 +161,19 @@ class GlobalNav extends Component {
     });
     this._list.removeEventListener('mouseenter', this._expandOnHover);
     this._list.removeEventListener('mouseleave', this._collapseOnLeave);
+    
+    if (this._resizeHandler) {
+      window.removeEventListener('resize', this._resizeHandler);
+    }
+    
     this._elem = null;
     this._openOnHover = null;
     this._links = null;
     this._list = null;
     this._accordionStates = null;
     this._wasExpandedBeforeHover = null;
+    this._resizeHandler = null;
+    this._stateBeforeSmallViewport = null;
   }
 
   static get componentType() {
