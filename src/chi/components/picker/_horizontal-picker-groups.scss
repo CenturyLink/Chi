@@ -52,6 +52,34 @@ $sizes: (
     display: flex;
     width: 100%;
 
+    chi-tooltip {
+      > div,
+      > div label {
+        height: 100%;
+      }
+
+      &:has(> div > input[type='radio'].chi-picker__input:checked + label) {
+        + input.chi-picker__input + label,
+        + chi-tooltip > div > label {
+          border-left-width: 0;
+          padding-left: $picker-group-md-padding-checked;
+        }
+      }
+    }
+
+    & > input[type='radio'].chi-picker__input:first-child + label,
+    & > chi-tooltip:first-child > div > label {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+    }
+
+    & > input[type='radio'].chi-picker__input + label:last-child,
+    & > chi-tooltip:last-child > div > input.chi-picker__input + label {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border-right-width: 0.0625rem;
+    }
+
     .chi-icon {
       color: $picker-icon-color;
     }
@@ -68,7 +96,6 @@ $sizes: (
           align-items: center;
           background-color: $picker-background-color;
           border: solid 0.0625rem $picker-border-color;
-          border-right-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           cursor: pointer;
           display: flex;
@@ -82,6 +109,10 @@ $sizes: (
           text-align: center;
           transition: border-color 0.2s, box-shadow 0.2s;
 
+          &:not(:last-of-type) {
+            border-right-width: 0;
+          }
+
           @each $type in map-keys($sizes) {
             &.-#{$type} {
               font-size: map-get(map-get($sizes, $type), font-size);
@@ -89,17 +120,6 @@ $sizes: (
               min-height: map-get(map-get($sizes, $type), min-height);
               padding: map-get(map-get($sizes, $type), padding);
             }
-          }
-
-          &:first-of-type {
-            border-bottom-left-radius: $border-radius;
-            border-top-left-radius: $border-radius;
-          }
-
-          &:last-of-type {
-            border-bottom-right-radius: $border-radius;
-            border-right-width: 0.0625rem;
-            border-top-right-radius: $border-radius;
           }
 
           & > :not(:last-child) {
@@ -170,7 +190,8 @@ $sizes: (
               }
             }
 
-            & + input + label {
+            & + input + label,
+            & + chi-tooltip > div > label {
               border-left-width: 0;
               padding-left: $picker-group-md-padding-checked;
 
