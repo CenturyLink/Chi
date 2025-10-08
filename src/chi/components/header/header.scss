@@ -411,38 +411,39 @@
 
   .enterprise-id-switcher {
     .chi-dropdown__menu {
-      border: 0.0625rem solid $color-grey-30;
       border-radius: 0.3125rem;
+      border: 0.0625rem solid $color-grey-30;
       padding-top: 0;
       width: 25rem;
 
       &-header {
-        width: 100%;
         font-weight: $font-weight-semi-bold;
         padding: 0.8125rem 1.25rem 0.3125rem 1.25rem;
+        width: 100%;
       }
 
       &-footer {
         border-top: 0.0625rem solid $color-grey-30;
         display: flex;
-        padding: 0.625rem 1.25rem;
         margin-top: 1.375rem !important;
+        padding: 0.625rem 1.25rem;
       }
 
       &-item {
         height: unset;
         min-height: 2rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
         white-space: normal;
 
         .chi-grid {
           width: 100%;
 
           .chi-col:has(chi-spinner) {
+            align-items: center;
             display: flex;
             justify-content: center;
-            align-items: center;
           }
-
         }
       }
     }
