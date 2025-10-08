@@ -71,7 +71,7 @@
 
       &[readonly],
       &.-readonly {
-        padding: map-get(map-get($sizes, $type), readonly-padding);
+        padding: map-get(map-get($sizes, $type), padding);
       }
 
       .chi-icon {
