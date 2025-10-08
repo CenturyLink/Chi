@@ -409,7 +409,10 @@ $sizes: (
     }
 
     &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
-      color: $dropdown-button-text-color;
+
+      &:not(.chi-dropdown__select-mode.-disabled) {
+        color: $dropdown-button-text-color;
+      }
 
       &.chi-dropdown__icon {
         color: $dropdown-trigger-icon-color;
@@ -644,12 +647,18 @@ chi-dropdown[select-mode],
     height: map-get(map-get($sizes, md), select-height);
     font-size: map-get(map-get($sizes, md), select-font-size);
     padding: map-get(map-get($sizes, md), select-padding);
-    border: $dropdown-button-border-width solid $dropdown-button-border-color;
+    border: $dropdown-button-border-width solid $dropdown-select-border-color;
     border-radius: $dropdown-select-border-radius;
 
     &::after {
       font-size: map-get(map-get($sizes, md), select-chevron-size);
       width: 1rem;
+    }
+    
+    &:not(.-disabled) {
+      &::after {
+        color: $dropdown-select-chevron-color;
+      }
     }
 
     @each $size in map-keys($sizes) {
@@ -678,16 +687,17 @@ chi-dropdown[select-mode],
 
     &:hover:not(.-disabled):not(.-active):not(.-focus),
     &.-hover:not(.-disabled):not(.-active):not(.-focus) {
-      border-color: $select-hover-border-color;
+      border-color: $dropdown-select-hover-border-color;
       background-color: $dropdown-menu-background-color;
     }
 
     &.-disabled {
-      background-color: $dropdown-menu-background-color;
+      background-color: $dropdown-select-disabled-background-color;
       opacity: $dropdown-select-disabled-opacity;
+      color: $dropdown-select-disabled-color;
 
       &::after {
-        color: $dropdown-trigger-icon-color;
+        color: $dropdown-select-disabled-color;
       }
     }
   }
