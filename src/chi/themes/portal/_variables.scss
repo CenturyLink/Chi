@@ -987,7 +987,7 @@ $card-header-min-height: 2rem;
 $card-hero-border-radius: 0;
 $card-hero-width: 100%;
 $card-content-border: none;
-$card-content-border-radius: 0;
+$card-content-border-radius: $card-border-radius;
 $card-content-padding: 2rem;
 $card-content-title-padding-bottom: 0;
 $card-content-footer-border-bottom: 0;
