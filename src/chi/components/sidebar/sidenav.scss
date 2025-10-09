@@ -829,7 +829,7 @@ $sidenav-lg-width: 12.5rem;
         border-right: $sidenav-border-right;
         height: 100%;
 
-        > .chi-sidenav__list {
+        .chi-sidenav__list {
           > li {
             display: block;
             padding: 0 0.5rem;
