@@ -78,6 +78,15 @@ $sizes: (
     }
   }
 
+  // &:has(chi-helper-message:not([state])) {
+  //   display: flex;
+  //   flex-direction: column;
+
+  //   textarea {
+  //     order: $textarea-order-helper-message-default;
+  //   }
+  // }
+
   &.-icon--left {
     textarea {
       &.chi-input {
