@@ -1243,8 +1243,13 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline: $focus-color;
 
-$dropdown-select-disabled-opacity: $opacity-60;
 $dropdown-select-border-radius: $border-radius-base;
+$dropdown-select-border-color: $color-grey-50;
+$dropdown-select-chevron-color: $color-grey-60;
+$dropdown-select-disabled-opacity: $opacity-100;
+$dropdown-select-disabled-background-color: $color-grey-10;
+$dropdown-select-disabled-color: $color-grey-50;
+$dropdown-select-hover-border-color: $color-teal-70;
 
 $dropdown-select-xs-height: 1.5rem;
 $dropdown-select-xs-font-size: $font-size-xs;
