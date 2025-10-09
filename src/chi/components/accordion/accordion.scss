@@ -59,7 +59,7 @@ $sizes: (
         pointer-events: none;
       }
 
-      .chi-icon {
+      >.chi-icon {
         color: $accordion-item-trigger-icon-color;
         font-size: $accordion-md-item-icon-size;
         height: $accordion-md-item-icon-size;
