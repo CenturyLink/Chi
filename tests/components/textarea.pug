@@ -8,7 +8,7 @@ block variables
   - var title = 'Textarea'
   - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   - var _sizes = ['xs', 'sm', 'md', 'lg', 'xl']
-  - var states = ['initial', 'hover', 'focus', 'disabled']
+  - var states = ['initial', 'hover', 'focus', 'disabled', 'readonly']
   - var colors = ['default', 'success', 'warning', 'danger']
 
 block content
@@ -41,6 +41,8 @@ block content
                 .-m--1
                   if state == 'disabled'
                     textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                  else if state == 'readonly'
+                    textarea(class=`chi-input -${style} -${size}`, readonly) Value
                   else
                     textarea(class=`chi-input -${style} -${state} -${size}`) Value
               td(style='vertical-align: bottom')
@@ -49,6 +51,10 @@ block content
                     .chi-form__item
                       label.chi-label(class=`-${size}` for='example') Label
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
+                  else if state == 'readonly'
+                    .chi-form__item
+                      label.chi-label(class=`-${size}` for='example') Label
+                      textarea(class=`chi-input -${style} -${size}`, readonly) Value
                   else
                     .chi-form__item
                       label.chi-label(class=`-${size}` for='example') Label
