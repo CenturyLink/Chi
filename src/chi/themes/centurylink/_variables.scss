@@ -2245,13 +2245,15 @@ $text-input-xl-floating-label-padding-top:  1.125rem;
 
 // Textarea
 $textarea-border-color:                     $color-border-base-dark;
-$textarea-hover-border-color:               $color-grey-40;
-$textarea-focus-border-color:               $focus-color;
-$textarea-text-color:                       $color-text-base;
-$textarea-placeholder-text-color:           $color-grey-50;
 $textarea-disabled-background-color:        $color-grey-10;
 $textarea-disabled-border-color:            $color-border-base-dark;
 $textarea-disabled-text-color:              $color-text-muted-light;
+$textarea-focus-border-color:               $focus-color;
+$textarea-hover-border-color:               $color-grey-40;
+$textarea-placeholder-text-color:           $color-grey-50;
+$textarea-readonly-background:              $color-grey-10;
+$textarea-readonly-border-color:            $textarea-border-color;
+$textarea-text-color:                       $color-text-base;
 
 $textarea-xs-icon-size:                     $text-input-xs-icon-width;
 $textarea-xs-icon-top:                      $text-input-xs-icon-top;
