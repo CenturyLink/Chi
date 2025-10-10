@@ -465,7 +465,7 @@ $alert-sm-text-line-height: $line-height;
 
 // App layout
 $app-layout-background-color: $color-grey-10;
-$app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
+$app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
 $app-layout-sub-header-title-color: $color-text-base;
@@ -2178,8 +2178,8 @@ $text-input-placeholder-text-color: $color-grey-60;
 $text-input-hover-border-color: $color-teal-70;
 $text-input-focus-border-color: $focus-color;
 $text-input-disabled-background-color: $color-grey-10;
-$text-input-disabled-border-color: $color-border-base;
-$text-input-disabled-text-color: $color-text-muted-light;
+$text-input-disabled-border-color: $color-grey-30;
+$text-input-disabled-text-color: $color-grey-50;
 $text-input-disabled-icon-color: $color-icon-muted;
 $text-input-spinner-color: $color-icon-primary;
 $text-input-readonly-background: $color-grey-10;
@@ -2349,8 +2349,11 @@ $textarea-xl-min-height: 7.5rem;
 $textarea-xl-padding: $text-input-xl-padding;
 
 // Time picker
-$time-picker-width: 14rem;
+$time-picker-width: 12rem;
 $time-picker-column-border-color: $color-border-base;
+$time-picker-column-display: flex;
+$time-picker-column-align-items: center;
+$time-picker-column-flex-direction: column;
 $time-picker-item-border-radius: 0.1875rem;
 $time-picker-item-hover-background-color: rgba($color-teal-70, 0.2);
 $time-picker-item-focus-border-color: $focus-color;
@@ -2358,6 +2361,8 @@ $time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
+$time-picker-item-margin: 0.2rem 0.25rem;
+$time-picker-item-width: 2.25rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch

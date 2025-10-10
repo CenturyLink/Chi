@@ -23,6 +23,9 @@
     .chi-time-picker__minutes,
     .chi-time-picker__seconds,
     .chi-time-picker__periods {
+      align-items: $time-picker-column-align-items;
+      display: $time-picker-column-display;
+      flex-direction: $time-picker-column-flex-direction;
       max-height: 14.5rem;
       overflow: auto;
       padding-top: 0.25rem;
@@ -38,9 +41,10 @@
       .chi-time-picker__period {
         border-radius: $time-picker-item-border-radius;
         cursor: pointer;
-        margin: 0 0.25rem;
+        margin: $time-picker-item-margin;
         padding: 0.125rem;
         text-align: center;
+        width: $time-picker-item-width;
 
         &:hover {
           background-color: $time-picker-item-hover-background-color;
