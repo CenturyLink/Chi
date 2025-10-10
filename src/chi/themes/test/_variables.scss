@@ -1002,6 +1002,7 @@ $card-content-border-radius: $card-border-radius;
 $card-content-padding: 1.25rem;
 $card-content-title-padding-bottom: 0.5rem;
 $card-content-footer-border-bottom: 0;
+$card-content-footer-border-bottom-radius: 0;
 $card-footer-border: none;
 $card-footer-border-top: 0;
 $card-footer-border-color: rgba($color-black, 0.12);
@@ -1028,6 +1029,7 @@ $card-widget-header-sm-padding: $card-widget-header-padding;
 $card-widget-title-font-size: $font-size-xl;
 $card-widget-title-font-weight: $font-weight-bold;
 $card-widget-content-border: 0;
+$card-widget-content-border-radius: 0;
 $card-widget-content-padding: 1.25rem;
 
 $card-title-font-size: $font-size-xl;

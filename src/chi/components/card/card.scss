@@ -29,8 +29,8 @@
 
         & + .chi-card__content {
           border-top: $card-widget-content-border;
-          border-top-left-radius: $card-widget-content-border;
-          border-top-right-radius: $card-widget-content-border;
+          border-top-left-radius: $card-widget-content-border-radius;
+          border-top-right-radius: $card-widget-content-border-radius;
           padding-top: $card-widget-header-content-padding-top;
         }
 
@@ -109,8 +109,8 @@
     width: $card-hero-width;
 
     & + .chi-card__content {
-      border-top-left-radius: $card-content-footer-border-bottom;
-      border-top-right-radius: $card-content-footer-border-bottom;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
   }
 
@@ -125,8 +125,8 @@
 
     &:has(+ .chi-card__footer) {
       border-bottom: $card-content-footer-border-bottom;
-      border-bottom-left-radius: $card-content-footer-border-bottom;
-      border-bottom-right-radius: $card-content-footer-border-bottom;
+      border-bottom-left-radius: $card-content-footer-border-bottom-radius;
+      border-bottom-right-radius: $card-content-footer-border-bottom-radius;
     }
 
     .chi-card__title {
