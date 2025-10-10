@@ -1,0 +1,78 @@
+name: "Copilot Setup Steps"
+# https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/agents/copilot-coding-agent/customizing-the-development-environment-for-copilot-coding-agent#preinstalling-tools-or-dependencies-in-copilots-environment
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+    branches:
+      - master
+      - main
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+env:
+    # Set the node version to use for Copilot's environment. Set to empty to use the version specified in .nvmrc.
+    NODE_VERSION: ''
+    # Set the allow list for Copilot's firewall
+    # COPILOT_AGENT_FIREWALL_ALLOW_LIST_ADDITIONS: "lib.lumen.com,maps.googleapis.com"
+jobs:
+  copilot-setup-steps:
+    runs-on:
+      # Needed for KV access
+      group: CCOE-ONPREM-AZURE
+    permissions:
+      contents: read
+      id-token: write
+
+    # You can define any steps you want, and they will run before the agent starts.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
+
+      - name: Generate GitHub App Token
+        id: generate-token
+        uses: actions/create-github-app-token@67e27a7eb7db372a1c61a7f9bdab8699e9ee57f7 #v1.11.3
+        with:
+          app-id: ${{ secrets.GASL_UMI_ID }}
+          private-key: ${{ secrets.GASL_UMI_PK }}
+          owner: CenturyLink
+          repositories: |
+            gasl-umi
+
+      - name: Invoke get-devops-secret action
+        id: get-secret
+        uses: CenturyLink/gasl-github-shared-library/.github/actions/get-devops-secret@d997ec9cd891029637d937850d534c87a9fe8726 #v1.0.1
+        with:
+          github-token: ${{ steps.generate-token.outputs.token }}
+          secret-names: 'gasl-nexus-npm-token,gasl-gh-token'
+          environment: 'nonprod'
+          decode-base64: 'false'
+
+      - name: Determine Node.js version
+        id: node-version
+        run: |
+          if [ -n "${{ env.NODE_VERSION }}" ]; then
+            echo "version=${{ env.NODE_VERSION }}" >> $GITHUB_OUTPUT
+          elif [ -f .nvmrc ]; then
+            echo "version=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+          else
+            echo "version=20" >> $GITHUB_OUTPUT # fallback to Node.js 20 if no version is specified
+          fi
+        shell: bash
+
+      - name: Export tokens for next steps of copilot agent
+        id: export-tokens
+        run: |
+          echo "GH_TOKEN=${{ env.SECRET_GASL_GH_TOKEN }}" >> $GITHUB_ENV
+          echo "NEXUS_NPM_TOKEN=${{ env.SECRET_GASL_NEXUS_NPM_TOKEN }}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 #v4.4.0
+        with:
+          node-version: ${{ steps.node-version.outputs.version }}
+
+      - name: Install Dependencies
+        run: npm ci
