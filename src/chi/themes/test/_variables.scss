@@ -2164,17 +2164,19 @@ $tabs-solid-active-border-color: $color-orange-60;
 $tabs-solid-active-background-color: $color-background-white;
 
 // Text input
-$text-input-border-color: $color-border-base;
+$text-input-border-color: $color-grey-50;
 $text-input-border-radius: $border-radius-base;
 $text-input-text-color: $color-text-base;
 $text-input-placeholder-text-color: $color-grey-60;
-$text-input-hover-border-color: $color-grey-40;
+$text-input-hover-border-color: $color-teal-70;
 $text-input-focus-border-color: $focus-color;
 $text-input-disabled-background-color: $color-grey-10;
 $text-input-disabled-border-color: $color-border-base;
 $text-input-disabled-text-color: $color-text-muted-light;
 $text-input-disabled-icon-color: $color-icon-muted;
 $text-input-spinner-color: $color-icon-primary;
+$text-input-readonly-background: $color-grey-10;
+$text-input-readonly-border-color: $color-grey-50;
 
 $text-input-floating-label-text-color: $color-text-muted;
 $text-input-floating-label-opacity: $opacity-60;
