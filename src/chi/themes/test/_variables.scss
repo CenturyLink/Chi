@@ -1243,8 +1243,13 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline: $focus-color;
 
-$dropdown-select-disabled-opacity: $opacity-60;
 $dropdown-select-border-radius: $border-radius-base;
+$dropdown-select-border-color: $color-grey-50;
+$dropdown-select-chevron-color: $color-grey-60;
+$dropdown-select-disabled-opacity: $opacity-100;
+$dropdown-select-disabled-background-color: $color-grey-10;
+$dropdown-select-disabled-color: $color-grey-50;
+$dropdown-select-hover-border-color: $color-teal-70;
 
 $dropdown-select-xs-height: 1.5rem;
 $dropdown-select-xs-font-size: $font-size-xs;
@@ -1553,14 +1558,14 @@ $modal-header-graphics-background-placement: 85% / auto 165%;
 // Number input
 $number-input-arrow-icon-color: $color-icon-body;
 $number-input-disabled-arrow-icon-color: $color-icon-body;
-$number-input-border-color: $color-border-base;
-$number-input-hover-border-color: $color-grey-40;
+$number-input-border-color: $color-grey-50;
+$number-input-hover-border-color: $color-teal-70;
 $number-input-text-color: $color-text-base;
 $number-input-danger-border-color: $color-border-danger;
 $number-input-focus-border-color: $focus-color;
 $number-input-disabled-background-color: $color-grey-10;
-$number-input-disabled-border-color: $color-border-base;
-$number-input-disabled-text-color: $color-text-muted-light;
+$number-input-disabled-border-color: $color-border-base-dark;
+$number-input-disabled-text-color: $color-grey-50;
 
 $number-input-xs-height: 1.5rem;
 $number-input-xs-width: 5.5rem;
@@ -1624,7 +1629,7 @@ $number-input-xl-button-icon-background-size: 0.625rem;
 $number-input-button-background-color: $color-background-white;
 $number-input-button-border-color: $color-border-base-dark;
 $number-input-button-border-radius: 0.125rem;
-$number-input-button-hover-background-color: $color-background-base-dark;
+$number-input-button-hover-background-color: $color-background-base-darkest;
 $number-input-button-active-background-color: $color-background-base-darker;
 $number-input-button-disabled-background-color: $color-background-base-dark;
 $number-input-button-disabled-opacity: $opacity-60;
@@ -2177,17 +2182,19 @@ $tabs-solid-active-border-color: $color-orange-60;
 $tabs-solid-active-background-color: $color-background-white;
 
 // Text input
-$text-input-border-color: $color-border-base;
+$text-input-border-color: $color-grey-50;
 $text-input-border-radius: $border-radius-base;
 $text-input-text-color: $color-text-base;
 $text-input-placeholder-text-color: $color-grey-60;
-$text-input-hover-border-color: $color-grey-40;
+$text-input-hover-border-color: $color-teal-70;
 $text-input-focus-border-color: $focus-color;
 $text-input-disabled-background-color: $color-grey-10;
 $text-input-disabled-border-color: $color-border-base;
 $text-input-disabled-text-color: $color-text-muted-light;
 $text-input-disabled-icon-color: $color-icon-muted;
 $text-input-spinner-color: $color-icon-primary;
+$text-input-readonly-background: $color-grey-10;
+$text-input-readonly-border-color: $color-grey-50;
 
 $text-input-floating-label-text-color: $color-text-muted;
 $text-input-floating-label-opacity: $opacity-60;

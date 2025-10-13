@@ -1209,8 +1209,13 @@ $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline:          $focus-color;
 
-$dropdown-select-disabled-opacity:                   $opacity-60;
 $dropdown-select-border-radius: $border-radius-base;
+$dropdown-select-chevron-color: null;
+$dropdown-select-disabled-background-color: $dropdown-menu-background-color;
+$dropdown-select-border-color: $dropdown-button-border-color;
+$dropdown-select-disabled-color: $dropdown-trigger-icon-color;
+$dropdown-select-disabled-opacity: $opacity-60;
+$dropdown-select-hover-border-color: $color-grey-40;
 
 
 $dropdown-select-xs-height:                          1.5rem;
@@ -2154,6 +2159,8 @@ $text-input-disabled-border-color:          $color-border-base-dark;
 $text-input-disabled-text-color:            $color-text-muted-light;
 $text-input-disabled-icon-color:            $color-icon-muted;
 $text-input-spinner-color:                  $color-icon-muted;
+$text-input-readonly-background:            $color-grey-10;
+$text-input-readonly-border-color:          $color-grey-50;
 
 $text-input-floating-label-text-color:      $color-text-muted;
 $text-input-floating-label-opacity:         $opacity-60;
