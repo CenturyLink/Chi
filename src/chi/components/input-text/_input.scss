@@ -48,10 +48,8 @@
 
   &[readonly],
   &.-readonly {
-    background: none;
-    border-color: transparent;
-    padding-left: 0;
-    padding-right: 0;
+    background: $text-input-readonly-background;
+    border-color: $text-input-readonly-border-color;
 
     &:focus,
     &.-focus {
@@ -73,8 +71,7 @@
 
       &[readonly],
       &.-readonly {
-        padding-left: 0;
-        padding-right: 0;
+        padding: map-get(map-get($sizes, $type), padding);
       }
 
       .chi-icon {
