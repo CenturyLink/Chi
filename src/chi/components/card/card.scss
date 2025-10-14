@@ -203,6 +203,11 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
+
+    &-notifications {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   &__title {
