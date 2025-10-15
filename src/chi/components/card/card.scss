@@ -88,6 +88,16 @@
       box-shadow: none;
     }
 
+    &:has(.chi-card__hero + .chi-card__content) {
+      background-color: $card-background-color;
+    
+      .chi-card__content { 
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: none;
+      }
+    }
+
     &.-active {
       border: none;
       box-shadow: none;
@@ -288,6 +298,8 @@
     border: 0.125rem dashed $card-empty-border-color;
 
     & .chi-card__content {
+      background-color: transparent;
+      border: none;
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -302,6 +314,11 @@
 
   &.-no-border {
     border-color: transparent;
+
+    .chi-card__content,
+    .chi-card footer {
+      border-color: transparent;
+    }
   }
 
   &.-align--center {
