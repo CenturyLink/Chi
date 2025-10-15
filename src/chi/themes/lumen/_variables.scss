@@ -2341,10 +2341,9 @@ $textarea-xl-padding: $text-input-xl-padding;
 
 // Time picker
 $time-picker-width: 14rem;
+$time-picker-icon-color: $color-icon-base;
+$time-picker-icon-color-disabled: $color-icon-base;
 $time-picker-column-border-color: $color-border-base;
-$time-picker-column-display: block;
-$time-picker-column-align-items: unset;
-$time-picker-column-flex-direction: unset;
 $time-picker-item-border-radius: $button-border-radius;
 $time-picker-item-hover-background-color: $color-background-base-darker;
 $time-picker-item-focus-border-color: $focus-color;
@@ -2353,7 +2352,6 @@ $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
 $time-picker-item-margin: 0rem 0.25rem;
-$time-picker-item-width: auto;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch

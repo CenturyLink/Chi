@@ -2349,20 +2349,18 @@ $textarea-xl-min-height: 7.5rem;
 $textarea-xl-padding: $text-input-xl-padding;
 
 // Time picker
-$time-picker-width: 12rem;
+$time-picker-width: 14rem;
+$time-picker-icon-color: $color-icon-muted-dark;
+$time-picker-icon-color-disabled: $color-icon-muted;
 $time-picker-column-border-color: $color-border-base;
-$time-picker-column-display: flex;
-$time-picker-column-align-items: center;
-$time-picker-column-flex-direction: column;
-$time-picker-item-border-radius: 0.1875rem;
+$time-picker-item-border-radius: 0.125rem;
 $time-picker-item-hover-background-color: rgba($color-teal-70, 0.2);
 $time-picker-item-focus-border-color: $focus-color;
 $time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
-$time-picker-item-margin: 0.2rem 0.25rem;
-$time-picker-item-width: 2.25rem;
+$time-picker-item-margin: 0rem .875rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch
