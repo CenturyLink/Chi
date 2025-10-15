@@ -115,6 +115,7 @@
   }
 
   &__content {
+    width: 100%;
     display: flex;
     flex-direction: column;
     border: $card-content-border;
@@ -204,9 +205,11 @@
       padding: $card-header-sm-padding;
     }
 
-    &-notifications {
+    &.-notifications {
+      box-shadow: none;
       display: flex;
-      justify-content: flex-start;
+      align-items: center;
+      padding: 0 0.25rem 0 0.25rem;
     }
   }
 
@@ -461,11 +464,7 @@
   }
 
   &:has(.chi-accordion) {
-    border: $card-accordion-border;
-    border-radius: $card-accordion-border-radius;
-
     .chi-card__content {
-      border: none;
       padding: 0;
     }
   }
