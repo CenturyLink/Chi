@@ -34,7 +34,7 @@ chi-date-picker {
   .chi-input {
     &:disabled {
       + chi-icon .chi-icon {
-        color: $color-grey-50;
+        color: $date-picker-disabled-icon-color;
       }
     }
   }
@@ -194,7 +194,8 @@ chi-date-picker {
 
 .chi-popover {
   .chi-datepicker {
-    margin: 0.5rem;
+    margin: $date-picker-margin;
+    padding: $date-picker-padding;
   }
 
   &__datepicker,
