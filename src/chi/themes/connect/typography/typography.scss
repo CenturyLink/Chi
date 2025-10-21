@@ -1,0 +1,282 @@
+@import '_global-variables';
+@import '../_variables';
+@import '_global-mixins';
+@import '../_mixins';
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+blockquote,
+.chi-blockquote {
+  border-left: 0.25rem solid $color-border-base-dark;
+  padding-left: 1rem;
+}
+
+abbr,
+.chi-abbr {
+  border-bottom: 0;
+  text-decoration: underline dotted;
+}
+
+code,
+.chi-code,
+pre {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+}
+
+code {
+  color: $color-text-code;
+  word-break: break-word;
+}
+
+pre {
+  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
+  background-color: $color-grey-15;
+  color: $color-text-base;
+  display: block;
+  font-size: $font-size-sm;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  overflow: auto;
+  padding: 1.5rem;
+  width: 100%;
+
+  code {
+    color: inherit;
+    font-size: inherit;
+    word-break: normal;
+  }
+}
+
+b,
+strong {
+  font-weight: $font-weight-semi-bold;
+}
+
+ul,
+ol {
+  &.-inline {
+    display: inline-flex;
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      display: inline-flex;
+      padding: 0 0.5rem;
+
+      ul,
+      ol {
+        &.-inline {
+          margin-left: 0.5rem;
+          margin-right: -0.5rem;
+        }
+      }
+    }
+  }
+
+  &.-no-style {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+}
+
+dl {
+  margin: 0;
+  padding: 0;
+}
+
+dd,
+figure {
+  margin: 0;
+}
+
+p {
+  font-size: $font-size-base;
+  line-height: $line-height;
+}
+
+small {
+  font-size: $font-size-sm;
+  line-height: $line-height;
+}
+
+// Text colors
+.-text--inherit {
+  color: inherit !important;
+}
+
+.-text--body,
+.-text--dark {
+  color: $color-text-base !important;
+}
+
+.-hover--text--body {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-base !important;
+  }
+}
+
+.-text--white,
+.-text--light,
+.-text--inverse {
+  color: $color-text-white !important;
+}
+
+.-hover--text--white,
+.-hover--text--light {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-white !important;
+  }
+}
+
+.-text--brand,
+.-text--primary {
+  color: $color-text-primary !important;
+}
+
+.-hover--text--primary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-primary !important;
+  }
+}
+
+.-text--secondary {
+  color: $color-text-secondary !important;
+}
+
+.-hover--text--secondary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.-active {
+    color: $color-text-secondary !important;
+  }
+}
+
+.-text--success {
+  color: $color-text-success !important;
+}
+
+.-text--warning {
+  color: $color-text-warning !important;
+}
+
+.-text--danger {
+  color: $color-text-danger !important;
+}
+
+.-text--info {
+  color: $color-text-info !important;
+}
+
+.-text--muted,
+.-text--grey {
+  color: $color-text-muted !important;
+}
+
+.-text--navy {
+  color: $color-teal-80 !important;
+}
+
+.-text--orange {
+  color: $color-orange-60 !important;
+}
+
+// Icon colors
+
+.-icon--inherit {
+  color: inherit !important;
+}
+
+.-icon--body {
+  color: $color-icon-body !important;
+}
+
+.-icon--primary,
+.-icon--brand,
+.-icon--teal {
+  color: $color-icon-primary !important;
+}
+
+.-icon--primary-dark,
+.-icon--teal-dark {
+  color: $color-icon-primary-dark !important;
+}
+
+.-icon--secondary {
+  color: $color-icon-secondary !important;
+}
+
+.-icon--success {
+  color: $color-icon-success !important;
+}
+
+.-icon--warning {
+  color: $color-icon-warning !important;
+}
+
+.-icon--danger {
+  color: $color-icon-danger !important;
+}
+
+.-icon--danger-dark {
+  color: $color-icon-danger-dark !important;
+}
+
+.-icon--info {
+  color: $color-icon-info !important;
+}
+
+.-icon--muted {
+  color: $color-icon-muted !important;
+}
+
+.-icon--muted-dark,
+.-icon--grey {
+  color: $color-icon-muted-dark !important;
+}
+
+.-icon--orange {
+  color: $color-icon-orange !important;
+}
+
+.-icon--orange-dark {
+  color: $color-icon-orange-dark !important;
+}
+
+.-icon--dark {
+  color: $color-icon-dark !important;
+}
+
+.-icon--light {
+  color: $color-icon-light !important;
+}
+
+.-icon--white {
+  color: $color-icon-white !important;
+}
+
+// Depracated - for backwards compatibility
+.-icon--navy {
+  color: $color-teal-80 !important;
+}
