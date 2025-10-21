@@ -23,20 +23,18 @@ $monday-starting-week: (
 .sc-chi-date-picker {
   &.-disabled {
     pointer-events: none;
+
+    .chi-icon {
+      color: $date-picker-disabled-icon-color;
+    }
+  }
+
+  .chi-icon {
+    color: $date-picker-icon-color;
   }
 
   chi-popover {
     display: flex;
-  }
-}
-
-chi-date-picker {
-  .chi-input {
-    &:disabled {
-      + chi-icon .chi-icon {
-        color: $date-picker-disabled-icon-color;
-      }
-    }
   }
 }
 
