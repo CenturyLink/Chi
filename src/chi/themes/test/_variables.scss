@@ -465,7 +465,7 @@ $alert-sm-text-line-height: $line-height;
 
 // App layout
 $app-layout-background-color: $color-grey-10;
-$app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
+$app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
 $app-layout-sub-header-title-color: $color-text-base;
@@ -1074,15 +1074,32 @@ $carousel-controller-height-pagination: calc(100% - #{$carousel-pagination-line-
 
 // Checkbox
 $checkbox-background-color: $color-background-white;
-$checkbox-border-color: $color-grey-40;
+$checkbox-border: 0.125rem solid $color-grey-70;
+$checkbox-border-radius: 0.125rem;
 $checkbox-danger-border-color: $color-border-danger;
-$checkbox-focus-color: $focus-color;
-$checkbox-checked-background-color: $color-teal-80;
-$checkbox-checked-border-color: $color-teal-80;
+
+$checkbox-active-outline: 0.25rem solid rgba($color-teal-70, 0.2);
+
+$checkbox-checked-background-color: $color-teal-70;
+$checkbox-checked-background-color-disabled: $color-grey-50;
+$checkbox-checked-background-color-hover: $color-teal-80;
+$checkbox-checked-border-color: $color-teal-70;
+$checkbox-checked-border-color-disabled: $color-grey-50;
+$checkbox-checked-border-color-hover: $color-teal-80;
 $checkbox-checked-icon-color: $color-background-white;
+
+$checkbox-disabled-background-color: $color-grey-25;
+$checkbox-disabled-border-color: $color-grey-50;
+$checkbox-disabled-label-opacity: $opacity-100;
+$checkbox-disabled-label-text-color: $color-text-muted;
+
+$checkbox-focus-color: rgba($focus-color, 0.7);
+
+$checkbox-hover-background-color: rgba($color-teal-70, 0.2);
+$checkbox-hover-border-color: $color-teal-70;
+$checkbox-hover-transform: scale(0);
+
 $checkbox-label-danger-text-color: $color-text-base;
-$checkbox-label-disabled-text-color: $color-text-muted;
-$checkbox-label-disabled-opacity: $opacity-80;
 $checkbox-label-before-top: 0.125rem;
 $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
