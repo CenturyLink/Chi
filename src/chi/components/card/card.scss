@@ -480,6 +480,46 @@
     }
   }
 
+  &.-alert {
+    &.-empty {
+      border-style: solid;
+      box-shadow: $card-alert-empty-box-shadow;
+
+      .chi-accordion__item {
+        .chi-accordion__trigger {
+          > .chi-icon {
+             color: $color-grey-80;
+          }
+        }
+
+        &.-expanded {
+          .chi-accordion__trigger {
+            border-bottom: 0.125rem solid $card-empty-border-color;
+            padding: $card-alert-empty-accordion-trigger-padding;
+          }
+        }
+
+        .chi-accordion__content {
+          padding-bottom: $card-alert-empty-accordion-content-padding-y;
+          padding-top: $card-alert-empty-accordion-content-padding-y;
+        }
+
+        .chi-card__caption {
+          chi-icon {
+            background-color: $color-grey-20;
+            border-radius: $card-alert-empty-icon-border-radius;
+            margin-bottom: $card-alert-empty-icon-margin-bottom;
+            padding: $card-alert-empty-icon-padding;
+            
+            .chi-icon {
+              margin: $card-alert-empty-icon-margin;
+            }
+          }
+        }
+      }
+    }
+  }
+
   &:has(.chi-accordion) {
     .chi-card__content {
       padding: 0;
