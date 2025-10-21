@@ -88,6 +88,16 @@
       box-shadow: none;
     }
 
+    &:has(.chi-card__hero + .chi-card__content) {
+      background-color: $card-background-color;
+    
+      .chi-card__content { 
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: none;
+      }
+    }
+
     &.-active {
       border: none;
       box-shadow: none;
@@ -122,6 +132,7 @@
     font-size: $font-size-base;
     line-height: $line-height;
     padding: $card-content-padding;
+    width: 100%;
 
     &:has(+ .chi-card__footer) {
       border-bottom: $card-content-footer-border-bottom;
@@ -203,6 +214,13 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
+
+    &.-notifications {
+      align-items: center;
+      box-shadow: none;
+      display: flex;
+      padding: 0 0.25rem;
+    }
   }
 
   &__title {
@@ -280,6 +298,8 @@
     border: 0.125rem dashed $card-empty-border-color;
 
     & .chi-card__content {
+      background-color: transparent;
+      border: none;
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -294,6 +314,11 @@
 
   &.-no-border {
     border-color: transparent;
+
+    .chi-card__content,
+    .chi-card footer {
+      border-color: transparent;
+    }
   }
 
   &.-align--center {
@@ -456,11 +481,7 @@
   }
 
   &:has(.chi-accordion) {
-    border: $card-accordion-border;
-    border-radius: $card-accordion-border-radius;
-
     .chi-card__content {
-      border: none;
       padding: 0;
     }
   }
