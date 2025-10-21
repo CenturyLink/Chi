@@ -229,6 +229,13 @@
     line-height: $card-title-line-height;
   }
 
+  &__eyebrow {
+    font-weight: $font-weight-normal;
+    font-size: $font-size-md;
+    margin-bottom: $card-eyebrow-margin-bottom;
+    line-height: $line-height-lg;
+  }
+
   &__footer {
     box-shadow: inset 0 1px 0 0 $card-footer-border-color;
     display: flex;
