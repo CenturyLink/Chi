@@ -8,7 +8,11 @@ let chi = {
     BACK: '-back',
     CLOSE: '-close',
     CLOSED: '-closed',
+    COLLAPSED: '-collapsed',
     DISABLED: '-disabled',
+    DISPLAY: {
+      NONE: '-d--none',
+    },
     EXPANDED: '-expanded',
     INACTIVE: '-inactive',
     TRANSITIONING : '-transitioning',

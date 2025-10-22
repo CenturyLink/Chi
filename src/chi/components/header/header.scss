@@ -17,7 +17,7 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: $header-content-justify;
     padding: $header-content-padding-xs;
     position: relative;
     width: 100%;
@@ -45,11 +45,12 @@
   &__brand {
     align-items: center;
     display: inline-flex;
-    justify-content: center;
-    order: 2;
+    justify-content: $header-brand-justify-content;
+    order: $header-brand-order;
 
     @include respond-to(lg) {
-      order: 1;
+      flex-grow: $header-lg-brand-flex-grow;
+      order: $header-lg-brand-order;
     }
 
     .chi-brand {
@@ -67,8 +68,7 @@
 
       @include respond-to(lg) {
         font-size: $header-content-title-lg-font-size;
-        margin-left: 1.5rem;
-        margin-right: 1rem;
+        margin: $header-content-title-lg-margin;
       }
     }
   }
@@ -78,8 +78,8 @@
     flex-wrap: nowrap;
 
     @include respond-to(lg) {
-      flex-grow: 1;
-      order: 2;
+      flex-grow: $header-lg-start-flex-grow;
+      order: $header-lg-start-order;
     }
   }
 
@@ -117,6 +117,20 @@
       &.-vertical {
         align-self: center;
         height: 2rem;
+      }
+    }
+
+    chi-dropdown,
+    .chi-dropdown {
+      .chi-button::after,
+      .chi-icon {
+        color: $header-dropdown-icon-color;
+      }
+
+      + .chi-divider {
+        &.-vertical {
+          margin: $header-end-divider-margin;
+        }
       }
     }
   }
@@ -182,7 +196,7 @@
   }
 
   .chi-impersonation-bar {
-    box-shadow: inset 0 4px 0 0 $header-impersonation-background-color;
+    box-shadow: $header-impersonation-box-shadow;
     color: $header-impersonation-text-color;
     display: flex;
     font-size: $header-impersonation-font-size;
@@ -199,14 +213,14 @@
       background-color: $header-impersonation-background-color;
       display: flex;
       justify-content: center;
-      padding: 0 0.5rem;
+      padding: $header-impersonation-content-padding;
       position: relative;
 
       &::before {
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: 1.5rem;
+        height: $header-impersonation-edge-element-height;
         left: -1rem;
         position: absolute;
         top: 0;
@@ -219,7 +233,7 @@
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: 1.5rem;
+        height: $header-impersonation-edge-element-height;
         position: absolute;
         right: -1rem;
         top: 0;
@@ -395,6 +409,40 @@
     }
   }
 
+  .enterprise-id-switcher {
+    .chi-dropdown__menu {
+      padding-top: 0;
+      padding-bottom: 0;
+      width: 25rem;
+
+      &-header {
+        font-weight: $font-weight-semi-bold;
+        padding: 0.8125rem 1.25rem 0.3125rem 1.25rem;
+      }
+
+      &-footer {
+        .chi-link {
+          padding-left: 1.25rem;
+          padding-bottom: 0.625rem;
+        }
+      }
+
+      &-item {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        .chi-grid {
+          width: 100%;
+
+          .chi-col:has(chi-spinner) {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
   &,
   &.-md {
     min-height: $header-height;
@@ -489,15 +537,15 @@
 
     .chi-brand {
       @include respond-to(lg) {
-        margin: 0 3rem 0 0;
+        margin: $header-lg-brand-margin;
       }
 
       &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
-        margin: 0 0.5rem;
+        margin: $header-lg-brand-margin-portal;
         width: 9.0625rem;
 
         @include respond-to(md) {
-          margin: 0 3rem 0 0;
+          margin: $header-lg-brand-margin;
           width: 9.0625rem;
         }
 

@@ -2,25 +2,26 @@
 @import '_global-mixins';
 
 .chi-tags {
-  border: 0.0625rem solid $tags-border-color;
+  align-items: center;
+  background-color: white;
   border-radius: $tags-border-radius;
+  border: 0.0625rem solid $tags-border-color;
   color: $tags-text-color;
   display: flex;
-  height: $tags-md-height;
+  flex-wrap: wrap;
   font-size: $tags-md-font-size;
+  height: auto;
   line-height: $tags-md-line-height;
-  padding: $tags-md-padding;
+  margin: 0;
   outline: none;
+  padding: $tags-md-padding;
   transition: all 0.15s ease-in-out;
   width: 100%;
-  align-items: center;
-  margin: 0;
-  background-color: white;
 
   &:focus-within,
   &.-focus {
     border-color: $tags-focus-border-color;
-    box-shadow: 0 0 0 1px $tags-focus-border-color;
+    box-shadow: 0 0 0 0.0625rem $tags-focus-border-color;
   }
 
   &:hover,
@@ -29,22 +30,57 @@
   }
 
   li {
-    list-style-type: none;
     height: fit-content;
-  }
+    list-style-type: none;
 
-  .chi-tags__input {
-    border: 0;
-    outline: none;
-    width: 100%;
-    height: 100%;
+    .chi-tag {
+      max-width: 100%;
 
-    &::placeholder {
-      color: $tags-input-placeholder-text-color;
+      .chi-badge {
+        border-radius: $tag-badge-border-radius;
+        font-weight: $tag-badge-font-weight;
+        padding-bottom: $tag-badge-padding-bottom;
+        padding-top: $tag-badge-padding-top;
+
+        & > span {
+          display: flex;
+          align-items: center;
+        }
+
+        .chi-button {
+          &.-icon {
+            &.-close {
+              margin-left: $tag-button-close-icon-margin-left;
+            }
+          }
+        }
+      }
     }
   }
 
-  .chi-tag {
-    margin-right: 0.5rem;
+  .chi-tags__input {
+    align-items: center;
+    display: flex;
+    flex: 1 0 auto;
+    min-height: $tags-input-min-height;
+
+    input {
+      border: 0;
+      height: 100%;
+      outline: none;
+      padding: 0;
+      width: 100%;
+
+      &::placeholder {
+        color: $tags-input-placeholder-text-color;
+      }
+    }
+  }
+
+  .chi-tag,
+  .chi-tags__input {
+    margin-bottom: $tag-margin-bottom;
+    margin-right: $tag-margin-right;
+    margin-top: $tag-margin-top;
   }
 }

@@ -1,0 +1,257 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../js/chi.js')
+  script(src='../../chi-icons.js')
+  script(src='../../chi-marketing-icons.js')
+block variables
+  - var title = 'Modals'
+
+block content
+  h3 Backdrops
+  .test-backdrops
+    table(cellpadding="0", cellspacing="16px")
+      tr
+        td
+          h4 backdrop
+          .chi-backdrop(style={
+            position: 'relative',
+            height: '12rem',
+            width: '12rem',
+            top: 'initial',
+            left: 'initial'
+          })
+        td
+          h4 backdrop / inverse
+          .chi-backdrop.-inverse(style={
+            position: 'relative',
+            height: '12rem',
+            width: '12rem',
+            top: 'initial',
+            left: 'initial'
+          })
+
+  h3 Window base
+  .test-window-base(style={
+    width: '100%'
+  })
+    h4 window base
+    .chi-modal(style={
+      'height': '10rem'
+    })
+
+    h4 window portal base
+    .chi-modal.-portal(style={
+      'height': '10rem'
+    })
+
+  h3 Headers
+  .test-headers(style={
+      width: '100%'
+    })
+    h4 header
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header
+
+    h4 header / title
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header
+        h1.chi-modal__title Modal alert title
+
+    h4 header / subtitle
+      .chi-modal(style={
+        'box-shadow': 'none',
+        'border-bottom-left-radius': 0,
+        'border-bottom-right-radius': 0
+      })
+        .chi-modal__header
+          h1.chi-modal__title Modal alert title
+          p.chi-modal__subtitle Modal alert subtitle
+
+    h4 header / title / close
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header
+        h1.chi-modal__title Modal alert title
+        button(class='chi-button -icon -close', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden="true")
+
+    h4 header / title / no border / close
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header.-no-border
+        h1.chi-modal__title Modal alert title
+        button(class='chi-button -icon -close', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden="true")
+
+    h4 header / title / centered / close
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header
+        h1.chi-modal__title.-centered Modal alert title
+        button(class='chi-button -icon -close', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden="true")
+
+    h4 header / title / centered / back/ close
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-bottom-left-radius': 0,
+      'border-bottom-right-radius': 0
+    })
+      .chi-modal__header
+        h1.chi-modal__title.-centered Modal alert title
+        button.chi-modal__back
+        button(class='chi-button -icon -close', aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden="true")
+
+    h4 header / subtitle / centered / back/ close
+      .chi-modal(style={
+        'box-shadow': 'none',
+        'border-bottom-left-radius': 0,
+        'border-bottom-right-radius': 0
+      })
+        .chi-modal__header
+          h1.chi-modal__title.-centered Modal alert title
+          p.chi-modal__subtitle.-centered Modal alert subtitle
+          button.chi-modal__back
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden="true")
+
+      h4 header / portal
+      .chi-modal.-portal(style={
+        'box-shadow': 'none'
+      })
+        .chi-modal__header
+
+      h4 header / title / portal
+      .chi-modal.-portal(style={
+        'box-shadow': 'none'
+      })
+        .chi-modal__header
+          h1.chi-modal__title Modal alert title
+
+      h4 header / title / close / portal
+      .chi-modal.-portal(style={
+        'box-shadow': 'none'
+      })
+        .chi-modal__header
+          h1.chi-modal__title Modal alert title
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden="true")
+
+  h3 Footers
+
+  .test-footers(style={
+      width: '100%'
+    })
+    h4 footer
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-top-left-radius': 0,
+      'border-top-right-radius': 0
+    })
+      .chi-modal__footer
+
+    h4 footer / no border
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-top-left-radius': 0,
+      'border-top-right-radius': 0
+    })
+      .chi-modal__footer.-no-border
+
+    h4 footer / save
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-top-left-radius': 0,
+      'border-top-right-radius': 0
+    })
+      .chi-modal__footer
+        button.chi-button.-primary Save
+
+    h4 footer / cancel / save
+    .chi-modal(style={
+      'box-shadow': 'none',
+      'border-top-left-radius': 0,
+      'border-top-right-radius': 0
+    })
+      .chi-modal__footer
+        button.chi-button Cancel
+        button.chi-button.-primary Save
+
+    h4 footer / portal
+    .chi-modal.-portal(style={
+      'box-shadow': 'none'
+    })
+      .chi-modal__footer
+
+    h4 footer / save / portal
+    .chi-modal.-portal(style={
+      'box-shadow': 'none'
+    })
+      .chi-modal__footer
+        button.chi-button.-primary.-lg Save
+
+
+
+  .chi-col.-w--12.-w-md--6.-w-xl--4.-mt--3
+    .test-gradient-type
+      h2 Gradient type
+      .-position--relative.-w--100(style='height: 18rem')
+        .chi-backdrop.-position--absolute
+          .chi-backdrop__wrapper
+            section.chi-modal.-gradient(role="dialog" aria-label="Modal description" aria-modal="true")
+              header.chi-modal__header
+                h2.chi-modal__title Modal Title
+                h3.chi-modal__subtitle This is the modal subtitle
+                button.chi-button.-icon.-close(data-dismiss="modal" aria-label="Close")
+                  .chi-button__content
+                    i.chi-icon.icon-x(aria-hidden="true")
+              .chi-modal__content
+                p.-text.-m--0 Modal content
+              footer.chi-modal__footer
+                button.chi-button(data-dismiss="modal") Cancel
+                button.chi-button.-primary Save
+
+    .test-gradient-type-with-header-image
+      h2 Gradient type with header image
+      .-position--relative.-w--100(style='height: 18rem')
+        .chi-backdrop.-position--absolute
+          .chi-backdrop__wrapper
+            section.chi-modal.-gradient.-header-image(role="dialog" aria-label="Modal description" aria-modal="true")
+              header.chi-modal__header
+                h2.chi-modal__title Modal Title
+                h3.chi-modal__subtitle This is the modal subtitle
+                button.chi-button.-icon.-close(data-dismiss="modal" aria-label="Close")
+                  .chi-button__content
+                    .chi-icon
+                      svg(aria-hidden='true')
+                        use(xlink:href='#icon-x')
+              .chi-modal__content
+                p.-text.-m--0 Modal content
+              footer.chi-modal__footer
+                button.chi-button(data-dismiss="modal") Cancel
+                button.chi-button.-primary Save

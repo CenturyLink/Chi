@@ -36,6 +36,10 @@ i {
   }
 }
 
+.icon-icon-mail-open-dollar::before {
+  content: '\ea50';
+}
+
 .icon-circle-partial::before {
   content: '\ea24';
 }
@@ -452,6 +456,10 @@ i {
   content: '\e9c8';
 }
 
+.icon-table-column::before {
+  content: '\e800';
+}
+
 .icon-table::before {
   content: '\e9c9';
 }
@@ -542,10 +550,6 @@ i {
 
 .icon-logo-linkedin::before {
   content: '\e964';
-}
-
-.icon-logo-twitter::before {
-  content: '\e969';
 }
 
 .icon-logo-youtube::before {

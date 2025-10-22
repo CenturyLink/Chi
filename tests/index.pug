@@ -1,0 +1,31 @@
+doctype html
+html.chi
+  head
+    title Chi tests
+    link(rel="stylesheet" href="../chi.css")
+    script(type="module" src="../js/ce/ux-chi-ce/ux-chi-ce.esm.js")
+  body.-p--2
+    h2 Chi tests
+    h3 Components
+    ul
+      each component in components
+        li
+          chi-link(href=component.href) #{component.name}
+    
+    h3 Custom elements
+    ul
+      each customElement in customElements
+        li
+          chi-link(href=customElement.href) #{customElement.name}
+    
+    h3 Foundations
+    ul
+      each foundation in foundations
+        li
+          chi-link(href=foundation.href) #{foundation.name}
+    
+    h3 JS
+    ul
+      each jsFile in js
+        li
+          chi-link(href=jsFile.href) #{jsFile.name}

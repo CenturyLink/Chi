@@ -1,0 +1,39 @@
+.chi-filters {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .chi-drawer {
+    width: $filters-drawer-width;
+
+    .chi-drawer__header {
+      border-bottom: $filters-drawer-header-border;
+      margin-bottom: $filters-drawer-header-margin-bottom;
+    }
+
+    .chi-drawer__content {
+      flex-grow: 0;
+
+      & > .chi-form__item {
+        margin-bottom: $filters-content-item-margin-bottom;
+      }
+
+      .chi-link {
+        margin-top: $filters-content-link-margin-top;
+      }
+    }
+
+    .chi-drawer__footer {
+      chi-button:not(:last-child) {
+        .chi-button {
+          margin-right: $filters-footer-button-margin-right;
+        }
+      }
+    }
+  }
+
+  &__trigger-button {
+    margin-left: $filters-drawer-trigger-button-margin-left;
+  }
+}

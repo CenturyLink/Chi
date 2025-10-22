@@ -5,7 +5,6 @@ $animation-duration: 0.5s;
 
 .chi-drawer {
   background-color: $drawer-background-color;
-  box-shadow: 0 0 25px 10px rgba($color-black, 0.15);
   display: none;
   flex-direction: column;
   overflow-x: hidden;
@@ -30,6 +29,7 @@ $animation-duration: 0.5s;
   }
 
   &.-top {
+    box-shadow: $drawer-box-shadow-top;
     height: $drawer-height;
     left: 0;
     right: 0;
@@ -64,6 +64,7 @@ $animation-duration: 0.5s;
 
   &.-right {
     bottom: 0;
+    box-shadow: $drawer-box-shadow-right;
     right: 0;
     top: 0;
     width: $drawer-width;
@@ -97,6 +98,7 @@ $animation-duration: 0.5s;
 
   &.-bottom {
     bottom: 0;
+    box-shadow: $drawer-box-shadow-bottom;
     height: $drawer-height;
     left: 0;
     right: 0;
@@ -130,6 +132,7 @@ $animation-duration: 0.5s;
 
   &.-left {
     bottom: 0;
+    box-shadow: $drawer-box-shadow-left;
     left: 0;
     top: 0;
     width: $drawer-width;
@@ -161,21 +164,20 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
-  .-close {
+  .-close:not(.chi-drawer__content *) {
     position: fixed;
-    right: 0.75rem;
+    right: $drawer-button-close-right;
     top: $drawer-button-close-top;
     z-index: 50;
-
-    .chi-icon {
-      color: $drawer-close-icon-color;
-    }
   }
 
   &__header {
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
+    display: $drawer-header-display;
+    flex-direction: column;
+    flex-shrink: $drawer-header-flex-shrink;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
@@ -190,13 +192,19 @@ $animation-duration: 0.5s;
   &__title {
     font-size: $drawer-header-title-font-size;
     font-weight: $drawer-header-title-font-weight;
-    line-height: 1.5rem;
+    line-height: $drawer-title-line-height;
     margin: 0;
   }
 
   &__content {
     flex-grow: 1;
     overflow: auto;
+    padding: $drawer-content-padding;
+  }
+
+  &__footer {
+    border-top: $drawer-footer-border;
+    padding: $drawer-footer-padding;
   }
 }
 

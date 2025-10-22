@@ -12,37 +12,45 @@
   word-wrap: break-word;
 
   &.-widget {
+    border-radius: $card-widget-border-radius;
     background-color: $card-widget-background-color;
     border: $card-widget-border;
 
-    .chi-card__header {
-      background: none;
-      box-shadow: none;
-      flex-wrap: nowrap;
-      justify-content: space-between;
-      padding: 1rem;
+    &:not(.-floating-header) {
+      .chi-card__header {
+        background: none;
+        border: $card-widget-header-border;
+        border-bottom: $card-widget-header-border-bottom;
+        border-radius: $card-widget-header-border-radius;
+        box-shadow: none;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: $card-widget-header-padding;
 
-      & + .chi-card__content {
-        padding-top: 0;
-      }
+        & + .chi-card__content {
+          border-top: $card-widget-content-border;
+          border-top-left-radius: $card-widget-content-border-radius;
+          border-top-right-radius: $card-widget-content-border-radius;
+          padding-top: $card-widget-header-content-padding-top;
+        }
 
-      &.-align--left {
-        justify-content: flex-start;
-      }
+        &.-align--left {
+          justify-content: flex-start;
+        }
 
-      &.-align--right {
-        justify-content: flex-end;
-      }
+        &.-align--right {
+          justify-content: flex-end;
+        }
 
-      &.-align--center {
-        justify-content: center;
-      }
+        &.-align--center {
+          justify-content: center;
+        }
 
-      &.-sm {
-        padding: $card-widget-header-sm-padding;
+        &.-sm {
+          padding: $card-widget-header-sm-padding;
+        }
       }
     }
-
     .chi-card__title {
       font-size: $card-widget-title-font-size;
       font-weight: $card-widget-title-font-weight;
@@ -53,22 +61,87 @@
     }
   }
 
+  &.-floating-header {
+    background: none;
+    border: none;
+
+    .chi-card__header {
+      background: none;
+      box-shadow: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .chi-card__content {
+      background-color: $card-background-color;
+      border: $card-border;
+      border-top-left-radius: $card-content-border-radius;
+      border-top-right-radius: $card-content-border-radius;
+    }
+
+    .chi-card__footer {
+      background-color: $card-background-color;
+      border: $card-border;
+      border-bottom-left-radius: $card-content-border-radius;
+      border-bottom-right-radius: $card-content-border-radius;
+      border-top: 0;
+      box-shadow: none;
+    }
+
+    &:has(.chi-card__hero + .chi-card__content) {
+      background-color: $card-background-color;
+    
+      .chi-card__content { 
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: none;
+      }
+    }
+
+    &.-active {
+      border: none;
+      box-shadow: none;
+
+      .chi-card__content {
+        border: 0.0625rem solid $card-active-border-color;
+        box-shadow: 0 0 0 0.0625rem $card-active-border-color;
+      }
+
+      .chi-card__footer {
+        border: 0.0625rem solid $card-active-border-color;
+        box-shadow: 0 0 0 0.0625rem $card-active-border-color;
+      }
+    }
+  }
+
   &__hero {
-    width: 100%;
+    border-radius: $card-hero-border-radius;
+    width: $card-hero-width;
+
+    & + .chi-card__content {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: column;
+    border: $card-content-border;
+    border-radius: $card-content-border-radius;
     font-size: $font-size-base;
     line-height: $line-height;
     padding: $card-content-padding;
+    width: 100%;
+
+    &:has(+ .chi-card__footer) {
+      border-bottom: $card-content-footer-border-bottom;
+      border-bottom-left-radius: $card-content-footer-border-bottom-radius;
+      border-bottom-right-radius: $card-content-footer-border-bottom-radius;
+    }
 
     .chi-card__title {
-      font-size: $font-size-lg;
-      font-weight: $font-weight-semi-bold;
-      line-height: $line-height-lg;
-      margin: 0 0 0.5rem 0;
+      padding-bottom: $card-content-title-padding-bottom;
     }
 
     .chi-card__icon {
@@ -141,13 +214,19 @@
     &.-sm {
       padding: $card-header-sm-padding;
     }
+
+    &.-notifications {
+      align-items: center;
+      box-shadow: none;
+      display: flex;
+      padding: 0 0.25rem;
+    }
   }
 
-  .chi-card__title {
+  &__title {
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;
     line-height: $card-title-line-height;
-    margin: 0;
   }
 
   &__footer {
@@ -159,6 +238,10 @@
     min-height: $card-footer-min-height;
     padding: $card-footer-padding;
     position: relative;
+    border: $card-footer-border;
+    border-top: $card-footer-border-top;
+    border-bottom-left-radius: $card-footer-border-bottom-radius;
+    border-bottom-right-radius: $card-footer-border-bottom-radius;
 
     .chi-button {
       + .chi-button {
@@ -215,6 +298,8 @@
     border: 0.125rem dashed $card-empty-border-color;
 
     & .chi-card__content {
+      background-color: transparent;
+      border: none;
       align-items: center;
       display: flex;
       flex-direction: column;
@@ -229,6 +314,11 @@
 
   &.-no-border {
     border-color: transparent;
+
+    .chi-card__content,
+    .chi-card footer {
+      border-color: transparent;
+    }
   }
 
   &.-align--center {
@@ -282,6 +372,136 @@
     &.-widget {
       .chi-card__header {
         background-color: $card-highlight-background-color;
+      }
+    }
+  }
+
+  &.-kpi {
+    background-color: $card-kpi-background-color;
+    border: $card-kpi-border;
+    box-shadow: $card-kpi-box-shadow;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.12s, border 0.12s, box-shadow 0.12s, color 0.12s;
+
+    &.-fixed-width {
+      width: 14.25rem;
+    }
+
+    .chi-card__content {
+      padding: 1rem 1.25rem;
+
+      .chi-card__title {
+        color: $card-kpi-title-color;
+        font-size: $font-size-lg;
+        font-weight: $font-weight-base;
+        line-height: $line-height-sm;
+        padding-right: 25%;
+        position: relative;
+
+        &::after {
+          color: $card-kpi-icon-arrow-color;
+          content: '\e904';
+          font-family: $font-family-icon;
+          font-size: 1rem;
+          font-weight: 400;
+          height: 1rem;
+          line-height: 1rem;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 1rem;
+        }
+      }
+
+      .chi-card__caption {
+        color: $card-kpi-caption-color;
+        font-size: $font-size-md;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-metric-color;
+        font-size: 1.75rem;
+        font-weight: $font-weight-bold;
+        margin-top: 1.25rem;
+      }
+    }
+
+    &:hover {
+      background: $card-kpi-hover-background-color;
+      border: $card-kpi-hover-border;
+      box-shadow: $card-kpi-hover-box-shadow;
+
+      .chi-card__title {
+        color: $card-kpi-hover-title-color;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-hover-metric-color;
+      }
+    }
+
+    &:active {
+      background: $card-kpi-active-background-color;
+      border: $card-kpi-active-border;
+      box-shadow: $card-kpi-active-box-shadow;
+
+      .chi-card__title {
+        color: $card-kpi-active-title-color;
+      }
+
+      .chi-card__metric {
+        color: $card-kpi-active-metric-color;
+      }
+    }
+
+    &.-disabled {
+      pointer-events: none;
+
+      &,
+      &:hover,
+      &:active {
+        background: $card-kpi-disabled-background-color;
+        border: $card-kpi-disabled-border;
+        box-shadow: $card-kpi-disabled-box-shadow;
+
+        .chi-card__title {
+          color: $card-kpi-disabled-title-color;
+
+          &::after {
+            visibility: hidden;
+          }
+        }
+
+        .chi-card__metric {
+          color: $card-kpi-disabled-metric-color;
+        }
+      }
+    }
+  }
+
+  &:has(.chi-accordion) {
+    .chi-card__content {
+      padding: 0;
+    }
+  }
+
+  .chi-accordion {
+    .chi-accordion__item {
+      background-color: transparent;
+
+      .chi-accordion__trigger {
+        padding: 1.25rem;
+      }
+
+      .chi-accordion__content {
+        padding: 0 1.25rem 1.25rem;
+      }
+
+      &.-expanded {
+        .chi-accordion__trigger {
+          padding-bottom: 0.5rem;
+        }
       }
     }
   }
