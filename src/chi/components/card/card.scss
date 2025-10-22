@@ -16,41 +16,40 @@
     background-color: $card-widget-background-color;
     border: $card-widget-border;
 
-    &:not(.-floating-header) {
-      .chi-card__header {
-        background: none;
-        border: $card-widget-header-border;
-        border-bottom: $card-widget-header-border-bottom;
-        border-radius: $card-widget-header-border-radius;
-        box-shadow: none;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-        padding: $card-widget-header-padding;
+    .chi-card__header {
+      background: none;
+      border: $card-widget-header-border;
+      border-bottom: $card-widget-header-border-bottom;
+      border-radius: $card-widget-header-border-radius;
+      box-shadow: none;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding: $card-widget-header-padding;
 
-        & + .chi-card__content {
-          border-top: $card-widget-content-border;
-          border-top-left-radius: $card-widget-content-border-radius;
-          border-top-right-radius: $card-widget-content-border-radius;
-          padding-top: $card-widget-header-content-padding-top;
-        }
+      & + .chi-card__content {
+        border-top: $card-widget-content-border;
+        border-top-left-radius: $card-widget-content-border-radius;
+        border-top-right-radius: $card-widget-content-border-radius;
+        padding-top: $card-widget-header-content-padding-top;
+      }
 
-        &.-align--left {
-          justify-content: flex-start;
-        }
+      &.-align--left {
+        justify-content: flex-start;
+      }
 
-        &.-align--right {
-          justify-content: flex-end;
-        }
+      &.-align--right {
+        justify-content: flex-end;
+      }
 
-        &.-align--center {
-          justify-content: center;
-        }
+      &.-align--center {
+        justify-content: center;
+      }
 
-        &.-sm {
-          padding: $card-widget-header-sm-padding;
-        }
+      &.-sm {
+        padding: $card-widget-header-sm-padding;
       }
     }
+
     .chi-card__title {
       font-size: $card-widget-title-font-size;
       font-weight: $card-widget-title-font-weight;
@@ -58,59 +57,6 @@
 
     .chi-card__content {
       padding: $card-widget-content-padding;
-    }
-  }
-
-  &.-floating-header {
-    background: none;
-    border: none;
-
-    .chi-card__header {
-      background: none;
-      box-shadow: none;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    .chi-card__content {
-      background-color: $card-background-color;
-      border: $card-border;
-      border-top-left-radius: $card-content-border-radius;
-      border-top-right-radius: $card-content-border-radius;
-    }
-
-    .chi-card__footer {
-      background-color: $card-background-color;
-      border: $card-border;
-      border-bottom-left-radius: $card-content-border-radius;
-      border-bottom-right-radius: $card-content-border-radius;
-      border-top: 0;
-      box-shadow: none;
-    }
-
-    &:has(.chi-card__hero + .chi-card__content) {
-      background-color: $card-background-color;
-    
-      .chi-card__content { 
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-top: none;
-      }
-    }
-
-    &.-active {
-      border: none;
-      box-shadow: none;
-
-      .chi-card__content {
-        border: 0.0625rem solid $card-active-border-color;
-        box-shadow: 0 0 0 0.0625rem $card-active-border-color;
-      }
-
-      .chi-card__footer {
-        border: 0.0625rem solid $card-active-border-color;
-        box-shadow: 0 0 0 0.0625rem $card-active-border-color;
-      }
     }
   }
 
@@ -502,6 +448,71 @@
         .chi-accordion__trigger {
           padding-bottom: 0.5rem;
         }
+      }
+    }
+  }
+
+  &.-outline {
+    background-color: $card-outline-background-color;
+
+    .chi-card__header {
+      background-color: $card-outline-header-background-color;
+      padding: $card-outline-header-padding;
+
+      &.-sm {
+        padding: $card-outline-header-sm-padding;
+      }
+    }
+
+    .chi-card__content {
+      background-color: $card-outline-background-color;
+      border: $card-outline-border;
+      border-radius: $card-outline-border-radius;
+      padding: $card-outline-content-padding;
+
+      .chi-card__title {
+        padding-bottom: $card-outline-content-title-padding-bottom;
+      }
+    }
+
+    .chi-card__footer {
+      border-bottom-left-radius: $card-outline-footer-border-bottom-radius;
+      border-bottom-right-radius: $card-outline-footer-border-bottom-radius;
+      padding: $card-outline-footer-padding;
+    }
+
+    .chi-card__hero {
+      border-radius: $card-outline-hero-border-radius;
+    }
+
+    &.-widget {
+      background-color: $card-outline-widget-background-color;
+      border: $card-outline-widget-border;
+
+      .chi-card__header {
+        padding: $card-outline-widget-header-padding;
+
+        &.-sm {
+          padding: $card-outline-widget-header-sm-padding;
+        }
+      }
+
+      .chi-card__title {
+        font-size: $card-outline-widget-title-font-size;
+        font-weight: $card-outline-widget-title-font-weight;
+      }
+
+      .chi-card__content {
+        border: none;
+      }
+    }
+
+    &:has(.chi-accordion) {
+      border: $card-outline-widget-border;
+
+      .chi-card__content {
+        border: none;
+        padding: 0;
       }
     }
   }
