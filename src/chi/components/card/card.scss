@@ -510,12 +510,13 @@
             display: flex;
             flex-direction: column;
 
-            chi-icon {
+            &-icon {
               background-color: $color-grey-20;
               border-radius: $card-alert-empty-icon-border-radius;
+              display: flex;
               margin-bottom: $card-alert-empty-icon-margin-bottom;
               padding: $card-alert-empty-icon-padding;
-              
+
               .chi-icon {
                 margin: $card-alert-empty-icon-margin;
               }
