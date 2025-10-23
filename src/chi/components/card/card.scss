@@ -176,9 +176,9 @@
   }
 
   &__eyebrow {
-    font-size: $font-size-md;
-    font-weight: $font-weight-normal;
-    line-height: $line-height-lg;
+    font-size: $card-eyebrow-font-size;
+    font-weight: $card-eyebrow-font-weight;
+    line-height: $card-eyebrow-line-height;
     margin-bottom: $card-eyebrow-margin-bottom;
   }
 
