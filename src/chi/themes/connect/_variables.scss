@@ -983,6 +983,25 @@ $button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
 $button-group-border-width: $button-solid-border-width;
 
 // Card
+$card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-alert-empty-accordion-content-padding-y: 1.875rem;
+$card-alert-empty-accordion-trigger-padding: 1.25rem;
+$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-empty-content-align-items: center;
+$card-alert-empty-content-display: flex;
+$card-alert-empty-content-flex-direction: column;
+$card-alert-empty-content-gap: 0.75rem;
+$card-alert-empty-content-icon-background-color: $color-grey-20;
+$card-alert-empty-content-icon-border-radius: 50%;
+$card-alert-empty-content-icon-color: $color-grey-90;
+$card-alert-empty-content-icon-display: flex;
+$card-alert-empty-content-icon-height: $icon-size-sm3;
+$card-alert-empty-content-icon-margin: 0;
+$card-alert-empty-content-icon-width: $icon-size-sm3;
+$card-alert-empty-content-message-font-size: $font-size-lg;
+$card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-icon-padding: 0.75rem;
+
 $card-background-color: $color-grey-10;
 $card-border: none;
 $card-border-radius: 0.5rem;
