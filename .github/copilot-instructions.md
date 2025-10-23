@@ -6,7 +6,7 @@ Chi is Lumen's design system providing consistent UI components and experiences.
 
 ### Core Structure
 - **`src/chi/`**: Main design system source code
-  - `themes/`: Brand-specific themes (lumen, brightspeed, centurylink, colt, portal)
+  - `themes/`: Brand-specific themes (lumen, brightspeed, centurylink, colt, portal, connect)
   - `components/`: Individual UI components with SCSS and JS
   - `javascript/`: Vanilla JS component implementations
   - `utilities/`: CSS utility classes
