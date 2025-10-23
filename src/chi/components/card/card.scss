@@ -176,10 +176,10 @@
   }
 
   &__eyebrow {
-    font-weight: $font-weight-normal;
     font-size: $font-size-md;
-    margin-bottom: $card-eyebrow-margin-bottom;
+    font-weight: $font-weight-normal;
     line-height: $line-height-lg;
+    margin-bottom: $card-eyebrow-margin-bottom;
   }
 
   &__footer {
