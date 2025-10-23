@@ -427,20 +427,15 @@
   }
 
   &.-alert {
+    box-shadow: $card-alert-box-shadow;
+
     &.-empty {
-      border-style: solid;
-      box-shadow: $card-alert-empty-box-shadow;
+      border: 0.0625rem solid $card-empty-border-color;
 
       .chi-accordion__item {
-        .chi-accordion__trigger {
-          > .chi-icon {
-             color: $color-grey-80;
-          }
-        }
-
         &.-expanded {
           .chi-accordion__trigger {
-            border-bottom: 0.125rem solid $card-empty-border-color;
+            border-bottom: 0.0625rem solid $card-empty-border-color;
             padding: $card-alert-empty-accordion-trigger-padding;
           }
         }
@@ -455,25 +450,25 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            gap: $card-alert-empty-content-gap;
 
             &-icon {
               background-color: $color-grey-20;
-              border-radius: $card-alert-empty-icon-border-radius;
+              border-radius: 50%;
               display: flex;
-              margin-bottom: $card-alert-empty-icon-margin-bottom;
               padding: $card-alert-empty-icon-padding;
               
               .chi-icon {
                 color: $color-grey-90;
-                margin: $card-alert-empty-icon-margin;
                 height: $icon-size-sm3;
+                margin: 0;
                 width: $icon-size-sm3;
               }
             }
 
             span {
-              line-height: $line-height-lg;
               font-size: $font-size-lg;
+              line-height: $line-height-lg;
             }
           }
         }
