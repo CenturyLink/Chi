@@ -462,10 +462,18 @@
               display: flex;
               margin-bottom: $card-alert-empty-icon-margin-bottom;
               padding: $card-alert-empty-icon-padding;
-
+              
               .chi-icon {
+                color: $color-grey-90;
                 margin: $card-alert-empty-icon-margin;
+                height: $icon-size-sm3;
+                width: $icon-size-sm3;
               }
+            }
+
+            span {
+              line-height: $line-height-lg;
+              font-size: $font-size-lg;
             }
           }
         }
