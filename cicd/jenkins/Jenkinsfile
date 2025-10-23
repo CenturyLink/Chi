@@ -315,11 +315,17 @@ pipeline {
           def chiManifest = 'chiManifest.yml'
           def chiManifestFile = "./${chiManifest}"
 
-          // jslBuildAndPushToNexus(NGINX_DOCKERFILE)
-
           sh "rm -rf ${chiManifestFile}"
 
           jslGenerateManifestForSimpleNginx(chiManifestFile)
+          
+          // Fix ports from 80 to 8080 to match the nginx container port
+          sh """
+            sed -i 's/port: 80/port: 8080/g' ${chiManifestFile}
+            sed -i 's/containerPort: 80/containerPort: 8080/g' ${chiManifestFile}
+            sed -i 's/number: 80/number: 8080/g' ${chiManifestFile}
+          """
+          
           jslDeployK8s(chiManifestFile)
           
           archiveArtifacts artifacts: chiManifest, fingerprint: true
