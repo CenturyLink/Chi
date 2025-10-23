@@ -3,8 +3,8 @@ import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
 
-const allowedThemes = ['lumen', 'portal', 'centurylink', 'colt', 'brightspeed', 'test'];
-const themes = (process.env.THEMES_TO_BUILD || 'lumen,portal,centurylink,colt,brightspeed,test')
+const allowedThemes = ['lumen', 'portal', 'connect', 'centurylink', 'colt', 'brightspeed', 'test'];
+const themes = (process.env.THEMES_TO_BUILD || 'lumen,portal,connect,centurylink,colt,brightspeed,test')
   .split(',')
   .filter(theme => allowedThemes.includes(theme));
 

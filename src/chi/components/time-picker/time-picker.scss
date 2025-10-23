@@ -4,6 +4,14 @@
 .sc-chi-time-picker {
   &.-disabled {
     pointer-events: none;
+
+    .chi-icon {
+      color: $time-picker-icon-color-disabled;
+    }
+  }
+
+  .chi-icon {
+    color: $time-picker-icon-color;
   }
 
   chi-popover {
@@ -38,7 +46,7 @@
       .chi-time-picker__period {
         border-radius: $time-picker-item-border-radius;
         cursor: pointer;
-        margin: 0 0.25rem;
+        margin: $time-picker-item-margin;
         padding: 0.125rem;
         text-align: center;
 

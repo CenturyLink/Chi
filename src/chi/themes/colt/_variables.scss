@@ -989,6 +989,28 @@ $card-widget-content-border:                none;
 $card-widget-content-border-radius:         0;
 $card-widget-content-padding:               1rem;
 
+$card-outline-background-color:             $card-background-color;
+$card-outline-border:                       $card-border;
+$card-outline-border-radius:                $card-border-radius;
+$card-outline-header-background-color:      $card-header-background-color;
+$card-outline-header-box-shadow:            $card-header-box-shadow;
+$card-outline-header-padding:               $card-header-padding;
+$card-outline-header-sm-padding:            $card-header-sm-padding;
+$card-outline-hero-border-radius:           $card-hero-border-radius;
+$card-outline-content-padding:              $card-content-padding;
+$card-outline-content-title-padding-bottom: $card-content-title-padding-bottom;
+$card-outline-footer-border-bottom-radius:  $card-footer-border-bottom-radius;
+$card-outline-footer-padding:               $card-footer-padding;
+
+$card-outline-widget-background-color:      $card-widget-background-color;
+$card-outline-widget-border:                $card-widget-border;
+$card-outline-widget-border-radius:         $card-widget-border-radius;
+$card-outline-widget-header-border-radius:  $card-widget-header-border-radius;
+$card-outline-widget-header-padding:        $card-widget-header-padding;
+$card-outline-widget-header-sm-padding:     $card-widget-header-sm-padding;
+$card-outline-widget-title-font-size:       $card-widget-title-font-size;
+$card-outline-widget-title-font-weight:     $card-widget-title-font-weight;
+
 $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
 $card-title-line-height:                    $line-height-lg;
@@ -2307,6 +2329,8 @@ $textarea-xl-padding:                       $text-input-xl-padding;
 
 // Time picker
 $time-picker-width:                         14rem;
+$time-picker-icon-color:                    $color-icon-base;
+$time-picker-icon-color-disabled:           $color-icon-base;
 $time-picker-column-border-color:           $color-border-base;
 $time-picker-item-border-radius:            $border-radius-base;
 $time-picker-item-hover-background-color:   $color-background-base-darker;
@@ -2315,6 +2339,7 @@ $time-picker-item-active-background-color:  $color-background-primary;
 $time-picker-item-active-text-color:        $color-text-white;
 $time-picker-item-disabled-text-color:      $color-grey-70;
 $time-picker-item-disabled-opacity:         $opacity-40;
+$time-picker-item-margin:                   0rem 0.25rem;
 $time-picker-border-color:                  $color-border-base;
 
 // Toggle switch
