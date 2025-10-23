@@ -288,6 +288,40 @@ block content
         chi-card(widget no-borders='["card"]')
           | This is a card with no border
 
+  h3 Alert
+  .test-card-alert
+    .chi-grid.-w--100
+      .chi-col.-w--6
+        h4 Base
+        .-mb--1 
+          chi-card(title="Alerts" type="alert") Alert Content Here
+        chi-card(title="Alerts" type="alert" expanded) Alert Content Here
+      
+      .chi-col.-w--6
+        h4 Empty
+        .-mb--1 
+          chi-card(title="Alerts" type="alert" empty)
+        chi-card(title="Alerts" type="alert" expanded empty)
+      
+      .chi-col.-w--6
+        h4 Notifications
+        .-mb--1 
+          chi-card(title="Alerts" type="alert" notifications="20") Alert Content Here
+        chi-card(title="Alerts" type="alert" expanded notifications="20") Alert Content Here
+    
+      .chi-col.-w--6
+        h4 Notifications with inner cards and eyebrow
+        chi-card(title="Alerts" type="alert" notifications="20" expanded)
+          each id in [1,2]
+            chi-card(title="[Alert title]" type="compact-title" eyebrow="[Product/Service Name]")
+              div(slot="compact-title")
+                chi-button(type="icon" variant="flat")
+                  chi-icon(icon="more-vert")
+              div.-w--100.-d--flex.-justify-content--between(slot="footer")
+                chi-link=`ID 123456567${id}`
+                chi-badge(color="muted") Email Sent
+
+      
   script.
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
