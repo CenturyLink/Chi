@@ -59,14 +59,14 @@ pipeline {
     DOCKER_NODE20 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node20_agent:latest"
     DOCKER_JIRA = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest"
 
-    // K8s variables
-    KUBE_CREDENTIALS = 'kube-secret'
-    KUBE_CREDENTIALS_TEST = 'kube-secret-test'
-    IMAGE_NAME = "${env.PROJECT_NAME}"
-    IMAGE_TAG = "${env.PULL_REQUEST}"
+    // Rancher K8s variables
+    KUBE_CREDENTIALS = 'rancher-chi-dev'
+    KUBE_CREDENTIALS_TEST = 'rancher-chi-test'
     KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
     KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
-    NGINX_DOCKERFILE = './cicd/nginx/Dockerfile'
+
+    IMAGE_NAME = "${env.PROJECT_NAME}"
+    IMAGE_TAG = "${env.PULL_REQUEST}"
     
     // Sonarqube variables
     SONARQUBE_CREDENTIALS = 'sonarcicdent'
@@ -300,18 +300,30 @@ pipeline {
       }
       steps {
         script {
-          def packageJson = readJSON file: 'package.json'
-          def chiManifest = 'chiManifest.yml'
-          def chiManifestFile = "./${chiManifest}"
-
           sh "rm -rf ./dist"
           unstash name: 'chi_build'
 
-          jslBuildAndPushToNexus(NGINX_DOCKERFILE)
+          def dockerfile_path = './NginxDockerfile'
+          def packageJson = readJSON file: 'package.json'
+
+          jslGenerateNginxDockerFile(dockerfile_path, "./dist/")
+          jslBuildAndPushToNexus(dockerfile_path)
+          jslCleanPath(dockerfile_path)
+
+          def chiManifest = 'chiManifest.yml'
+          def chiManifestFile = "./${chiManifest}"
 
           sh "rm -rf ${chiManifestFile}"
 
           jslGenerateManifestForSimpleNginx(chiManifestFile)
+          
+          // Fix ports from 80 to 8080 to match the nginx container port
+          sh """
+            sed -i 's/port: 80/port: 8080/g' ${chiManifestFile}
+            sed -i 's/containerPort: 80/containerPort: 8080/g' ${chiManifestFile}
+            sed -i 's/number: 80/number: 8080/g' ${chiManifestFile}
+          """
+          
           jslDeployK8s(chiManifestFile)
           
           archiveArtifacts artifacts: chiManifest, fingerprint: true
@@ -522,8 +534,8 @@ pipeline {
     success {
       script {
         def endpointBranch = BRANCH_NAME == env.PROD_BRANCH ? BRANCH_NAME : PULL_REQUEST
-        def endpointMessage = "You can check this PRs instance in https://nginx-${endpointBranch}-ux-chi.kubeodc-test.corp.intranet/ (internal)"
-        
+        def endpointMessage = "You can check this PRs instance in https://nginx-${endpointBranch}-ux-chi.rke-odc-test.corp.intranet (internal)"
+
         jslNotification('success')
         jslGitHubMessage(endpointMessage, env.CHANGE_ID)
       }
