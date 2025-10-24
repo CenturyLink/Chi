@@ -10,7 +10,6 @@ server {
   }
 }
 
-
 log_format f_json escape=json '{ '
     '"time": "$time_iso8601", '
     '"request_id": "$upstream_http_x_request_id", '
