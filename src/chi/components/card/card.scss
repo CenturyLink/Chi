@@ -175,6 +175,13 @@
     line-height: $card-title-line-height;
   }
 
+  &__eyebrow {
+    font-size: $card-eyebrow-font-size;
+    font-weight: $card-eyebrow-font-weight;
+    line-height: $card-eyebrow-line-height;
+    margin-bottom: $card-eyebrow-margin-bottom;
+  }
+
   &__footer {
     box-shadow: inset 0 1px 0 0 $card-footer-border-color;
     display: flex;
@@ -421,6 +428,56 @@
 
         .chi-card__metric {
           color: $card-kpi-disabled-metric-color;
+        }
+      }
+    }
+  }
+
+  &.-alert {
+    box-shadow: $card-alert-box-shadow;
+
+    &.-empty {
+      border: $card-alert-empty-border;
+
+      .chi-accordion__item {
+        &.-expanded {
+          .chi-accordion__trigger {
+            border-bottom: $card-alert-empty-border;
+            padding: $card-alert-empty-accordion-trigger-padding;
+          }
+        }
+
+        .chi-accordion__content {
+          padding-bottom: $card-alert-empty-accordion-content-padding-y;
+          padding-top: $card-alert-empty-accordion-content-padding-y;
+        }
+
+        .chi-card__caption {
+          .chi-card__empty-content {
+            align-items: $card-alert-empty-content-align-items;
+            display: $card-alert-empty-content-display;
+            flex-direction: $card-alert-empty-content-flex-direction;
+            gap: $card-alert-empty-content-gap;
+
+            &-icon {
+              background-color: $card-alert-empty-content-icon-background-color;
+              border-radius: $card-alert-empty-content-icon-border-radius;
+              display: $card-alert-empty-content-icon-display;
+              padding: $card-alert-empty-icon-padding;
+              
+              .chi-icon {
+                color: $card-alert-empty-content-icon-color;
+                height: $card-alert-empty-content-icon-height; 
+                margin: $card-alert-empty-content-icon-margin;
+                width: $card-alert-empty-content-icon-width; 
+              }
+            }
+
+            span {
+              font-size: $card-alert-empty-content-message-font-size; 
+              line-height: $card-alert-empty-content-message-line-height; 
+            }
+          }
         }
       }
     }
