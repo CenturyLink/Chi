@@ -24,10 +24,11 @@
     "tests:visual:approve": "node ./scripts/tests/approve.js",
     "tests:e2e": "bash ./scripts/tests/e2eTests.sh",
     "lint:scss": "sass-lint -v -q",
-    "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh"
+    "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh",
+    "postrelease:checkSri": "node ./scripts/build/utils/checkSri.js"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "1.38.0",
+    "@centurylink/chi-custom-elements": "1.39.0",
     "@centurylink/chi-documentation": "1.39.0",
     "@centurylink/chi-vue": "3.24.0"
   },

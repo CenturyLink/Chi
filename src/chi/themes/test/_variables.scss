@@ -1934,6 +1934,9 @@ $search-input-lg-close-top: 0.75rem;
 $search-input-xl-icon-top: 0;
 $search-input-xl-close-right: 3rem;
 $search-input-xl-close-top: 1rem;
+$search-input-icon-active-background-color: transparent;
+$search-input-icon-disabled-background-color: transparent;
+$search-input-icon-active-box-shadow: inset 0 0 0 0.0625rem $color-teal-70;
 
 // Select
 $select-text-color: $color-text-base;
