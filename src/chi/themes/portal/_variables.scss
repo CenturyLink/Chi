@@ -972,38 +972,62 @@ $button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
 $button-group-border-width: $button-solid-border-width;
 
 // Card
-$card-background-color: $color-grey-10;
-$card-border: none;
-$card-border-radius: 0.5rem;
+$card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-alert-empty-accordion-content-padding-y: 1.875rem;
+$card-alert-empty-accordion-trigger-padding: 1.25rem;
+$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-empty-content-align-items: center;
+$card-alert-empty-content-display: flex;
+$card-alert-empty-content-flex-direction: column;
+$card-alert-empty-content-gap: 0.75rem;
+$card-alert-empty-content-icon-background-color: $color-grey-20;
+$card-alert-empty-content-icon-border-radius: 50%;
+$card-alert-empty-content-icon-color: $color-grey-90;
+$card-alert-empty-content-icon-display: flex;
+$card-alert-empty-content-icon-height: $icon-size-sm3;
+$card-alert-empty-content-icon-margin: 0;
+$card-alert-empty-content-icon-width: $icon-size-sm3;
+$card-alert-empty-content-message-font-size: $font-size-lg;
+$card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-icon-padding: 0.75rem;
+
 $card-active-border-color: $color-teal-80;
-$card-active-title-text-color: $color-text-base;
 $card-active-icon-color: $color-teal-70;
+$card-active-title-text-color: $color-text-base;
+$card-background-color: $color-grey-10;
+$card-border-radius: 0.5rem;
+$card-border: none;
+$card-content-border-radius: $card-border-radius;
+$card-content-border: none;
+$card-content-footer-border-bottom-radius: 0;
+$card-content-footer-border-bottom: 0;
+$card-content-padding: 2rem;
+$card-content-title-padding-bottom: 0;
+$card-empty-border-color: rgba($color-black, 0.12);
+$card-empty-icon-color: $color-text-muted-light;
+$card-eyebrow-font-size: $font-size-md;
+$card-eyebrow-font-weight: $font-weight-normal;
+$card-eyebrow-line-height: $line-height-lg;
+$card-eyebrow-margin-bottom: 0.3125rem;
+$card-footer-border-bottom-radius: 0;
+$card-footer-border-color: rgba($color-black, 0.12);
+$card-footer-border-top: 0;
+$card-footer-border: none;
+$card-footer-min-height: 2rem;
+$card-footer-padding: 1rem;
 $card-header-background-color: $color-background-white;
 $card-header-border-color: transparent;
 $card-header-box-shadow: none;
+$card-header-min-height: 2rem;
 $card-header-padding: 0.5rem 0;
 $card-header-sm-padding: 0.5rem 1rem;
-$card-header-min-height: 2rem;
 $card-hero-border-radius: 0;
 $card-hero-width: 100%;
-$card-content-border: none;
-$card-content-border-radius: 0;
-$card-content-padding: 2rem;
-$card-content-title-padding-bottom: 0;
-$card-content-footer-border-bottom: 0;
-$card-footer-border: none;
-$card-footer-border-top: 0;
-$card-footer-border-color: rgba($color-black, 0.12);
-$card-footer-border-bottom-radius: none;
-$card-footer-padding: 1rem;
-$card-footer-min-height: 2rem;
-$card-empty-border-color: rgba($color-black, 0.12);
-$card-empty-icon-color: $color-text-muted-light;
-$card-tabs-padding: 1rem 2rem;
-$card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
 $card-highlight-background-color: $color-cyan-10;
 $card-highlight-border-color: $color-cyan-20;
 $card-highlight-header-background-color: $color-background-white;
+$card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
+$card-tabs-padding: 1rem 2rem;
 
 $card-widget-background-color: $color-grey-10;
 $card-widget-border: 0.0625rem solid $color-grey-15;
@@ -1017,7 +1041,30 @@ $card-widget-header-sm-padding: 0.75rem 1rem;
 $card-widget-title-font-size: $font-size-7;
 $card-widget-title-font-weight: $font-weight-extra-bold;
 $card-widget-content-border: none;
+$card-widget-content-border-radius: 0;
 $card-widget-content-padding: 1rem;
+
+$card-outline-background-color: $card-background-color;
+$card-outline-border: $card-border;
+$card-outline-border-radius: $card-border-radius;
+$card-outline-header-background-color: $card-header-background-color;
+$card-outline-header-box-shadow: $card-header-box-shadow;
+$card-outline-header-padding: $card-header-padding;
+$card-outline-header-sm-padding: $card-header-sm-padding;
+$card-outline-hero-border-radius: $card-hero-border-radius;
+$card-outline-content-padding: $card-content-padding;
+$card-outline-content-title-padding-bottom: $card-content-title-padding-bottom;
+$card-outline-footer-border-bottom-radius: $card-footer-border-bottom-radius;
+$card-outline-footer-padding: $card-footer-padding;
+
+$card-outline-widget-background-color: $card-widget-background-color;
+$card-outline-widget-border: $card-widget-border;
+$card-outline-widget-border-radius: $card-widget-border-radius;
+$card-outline-widget-header-border-radius: $card-widget-header-border-radius;
+$card-outline-widget-header-padding: $card-widget-header-padding;
+$card-outline-widget-header-sm-padding: $card-widget-header-sm-padding;
+$card-outline-widget-title-font-size: $card-widget-title-font-size;
+$card-outline-widget-title-font-weight: $card-widget-title-font-weight;
 
 $card-title-font-size: $font-size-7;
 $card-title-font-weight: $font-weight-extra-bold;
@@ -1886,6 +1933,9 @@ $search-input-lg-close-top: 0.75rem;
 $search-input-xl-icon-top: 0;
 $search-input-xl-close-right: 3rem;
 $search-input-xl-close-top: 1rem;
+$search-input-icon-active-background-color: null;
+$search-input-icon-disabled-background-color: null;
+$search-input-icon-active-box-shadow: null;
 
 // Select
 $select-text-color: $color-text-base;
@@ -2351,6 +2401,8 @@ $textarea-xl-padding: $text-input-xl-padding;
 
 // Time picker
 $time-picker-width: 14rem;
+$time-picker-icon-color: $color-icon-base;
+$time-picker-icon-color-disabled: $color-icon-base;
 $time-picker-column-border-color: $color-border-base;
 $time-picker-item-border-radius: $button-border-radius;
 $time-picker-item-hover-background-color: $color-background-base-darker;
@@ -2359,6 +2411,7 @@ $time-picker-item-active-background-color: $color-background-primary;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
+$time-picker-item-margin: 0rem 0.25rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch
@@ -2422,6 +2475,7 @@ $tags-md-line-height: $line-height-md;
 $tags-md-padding: 0.3125rem 0.75rem;
 
 $tag-badge-border-radius: 2em;
+$tag-badge-font-weight: $font-weight-semi-bold;
 $tag-badge-padding-top: 0.0625rem;
 $tag-badge-padding-bottom: 0.0625rem;
 $tag-margin-bottom: 0.25rem;
