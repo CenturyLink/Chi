@@ -4,12 +4,11 @@ server {
   index index.html index.htm;
   server_name _;
 
-  location /chi/6.66.0 {
+  location /chi/6.68.0 {
     alias /var/www/html/;
     try_files $uri $uri/ /index.html;
   }
 }
-
 
 log_format f_json escape=json '{ '
     '"time": "$time_iso8601", '
