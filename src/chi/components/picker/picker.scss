@@ -55,7 +55,6 @@ $pill-sizes: (
       font-size: $picker-md-item-font-size;
       font-weight: $font-weight-normal;
       justify-content: space-between;
-      line-height: $picker-label-line-height;
       margin-bottom: 0.5rem;
       min-height: 3rem;
       padding: 1rem;
@@ -159,6 +158,7 @@ $pill-sizes: (
     &.-disabled {
       & + label {
         background-color: $picker-disabled-background-color;
+        border-color: $picker-disabled-border-color;
         box-shadow: none;
         color: $picker-disabled-text-color;
         pointer-events: none;
