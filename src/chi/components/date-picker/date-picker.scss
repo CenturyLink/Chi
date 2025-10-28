@@ -56,7 +56,7 @@ $monday-starting-week: (
       font-weight: $font-weight-semi-bold;
 
       &.-today::after {
-        background-color: $date-picker-day-background-color;
+        background-color: $date-picker-day-today-accent-background-color-active;
       }
     }
 
@@ -74,7 +74,7 @@ $monday-starting-week: (
 
       &::after {
         background-color: $date-picker-day-today-accent-background-color;
-        bottom: $date-picker-today-bottom;
+        bottom: $date-picker-day-today-bottom;
         content: '';
         height: 4px;
         left: calc(50% - 2px);
