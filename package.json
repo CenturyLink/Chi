@@ -21,7 +21,7 @@
     "cy:open": "cypress open --config-file cypress.config.cjs",
     "tests:visual": "bash ./scripts/tests/docker/startDocker.sh",
     "tests:visual:run": "bash ./scripts/tests/visualTests.sh",
-    "tests:visual:approve": "node ./scripts/tests/approve.js",
+    "tests:visual:approve": "bash ./scripts/tests/approve.sh",
     "tests:e2e": "bash ./scripts/tests/e2eTests.sh",
     "lint:scss": "sass-lint -v -q",
     "postrelease:algolia": "bash ./scripts/reindexAlgolia.sh",
