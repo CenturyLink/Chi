@@ -41,7 +41,7 @@
     color: $text-input-disabled-text-color;
 
     & ~ .chi-icon,
-    & ~ chi-icon {
+    & ~ chi-icon .chi-icon {
       color: $text-input-disabled-icon-color;
     }
   }

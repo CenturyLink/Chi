@@ -3,7 +3,7 @@ const CLOSE_CLASS = '-close';
 const EXPANDED_CLASS = '-expanded';
 const ACCORDION_CLASSES = {
   ITEM: 'chi-accordion__item',
-  CONTENT: 'chi-accordion__content'
+  CONTENT: 'chi-accordion__content',
 };
 const SIDENAV_LIST_CLASS = 'chi-sidenav__list';
 
@@ -13,34 +13,22 @@ const hasClassAssertion = (el, value) => {
 
 describe('Sidenav', () => {
   before(() => {
-    cy.visit('tests/js/sidenav.html');
+    cy.visit('tests/lumen/js/sidenav.html');
   });
 
   beforeEach(() => {
-    cy.get('[data-cy="sidenav"]')
-      .find(`.${SIDENAV_LIST_CLASS}`)
-      .children()
-      .as('list');
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelFirstItem');
-    cy.get('@list')
-      .eq(1)
-      .find('a')
-      .as('firstLevelSecondItem');
+    cy.get('[data-cy="sidenav"]').find(`.${SIDENAV_LIST_CLASS}`).children().as('list');
+    cy.get('@list').first().find('a').as('firstLevelFirstItem');
+    cy.get('@list').eq(1).find('a').as('firstLevelSecondItem');
   });
 
   it('check that click on 1st level opens 2nd-level menu drawer', () => {
-    cy.get('@list').each(menuItem => {
-      cy.get(menuItem)
-        .find('a')
-        .as('firstLevelItem')
-        .should('have.attr', 'href');
+    cy.get('@list').each((menuItem) => {
+      cy.get(menuItem).find('a').as('firstLevelItem').should('have.attr', 'href');
       cy.get('@firstLevelItem').should('not.have.class', ACTIVE_CLASS);
       cy.get('@firstLevelItem')
         .invoke('attr', 'href')
-        .then(drawerSelector => {
+        .then((drawerSelector) => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
@@ -53,12 +41,12 @@ describe('Sidenav', () => {
   });
 
   it('check that click on "X" in menu drawer closes drawer', () => {
-    cy.get('@list').each(menuItem => {
+    cy.get('@list').each((menuItem) => {
       cy.get(menuItem)
         .find('a')
         .as('firstLevelItem')
         .invoke('attr', 'href')
-        .then(drawerSelector => {
+        .then((drawerSelector) => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
@@ -77,12 +65,12 @@ describe('Sidenav', () => {
   });
 
   it('check that click outside an opened drawer closes it', () => {
-    cy.get('@list').each(menuItem => {
+    cy.get('@list').each((menuItem) => {
       cy.get(menuItem)
         .find('a')
         .as('firstLevelItem')
         .invoke('attr', 'href')
-        .then(drawerSelector => {
+        .then((drawerSelector) => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
@@ -103,15 +91,10 @@ describe('Sidenav', () => {
   it('Should show 3rd level accordions by default on 1st level menu click for the first menu item', () => {
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(drawerSelector => {
+      .then((drawerSelector) => {
         cy.get('@firstLevelFirstItem').click();
-        cy.get(drawerSelector)
-          .find(`.${ACCORDION_CLASSES.ITEM}.${ACTIVE_CLASS}`)
-          .should('have.length', 2);
-        cy.get(drawerSelector)
-          .find(`.${ACCORDION_CLASSES.ITEM}`)
-          .first()
-          .as('secondLevelItem');
+        cy.get(drawerSelector).find(`.${ACCORDION_CLASSES.ITEM}.${ACTIVE_CLASS}`).should('have.length', 2);
+        cy.get(drawerSelector).find(`.${ACCORDION_CLASSES.ITEM}`).first().as('secondLevelItem');
         hasClassAssertion('@secondLevelItem', EXPANDED_CLASS);
       });
   });
@@ -123,7 +106,7 @@ describe('Sidenav', () => {
           .find('a')
           .as('firstLevelItem')
           .invoke('attr', 'href')
-          .then(drawerSelector => {
+          .then((drawerSelector) => {
             cy.get('@firstLevelItem').click();
             cy.get(drawerSelector)
               .find(`.${ACCORDION_CLASSES.ITEM}`)
@@ -152,13 +135,9 @@ describe('Sidenav', () => {
           .find('a')
           .as('firstLevelItem')
           .invoke('attr', 'href')
-          .then(drawerSelector => {
+          .then((drawerSelector) => {
             cy.get('@firstLevelItem').click();
-            cy.get(drawerSelector)
-              .find(`.${ACCORDION_CLASSES.ITEM}`)
-              .first()
-              .as('secondLevelItem')
-              .click();
+            cy.get(drawerSelector).find(`.${ACCORDION_CLASSES.ITEM}`).first().as('secondLevelItem').click();
             cy.get('@secondLevelItem')
               .contains('Accordion A')
               .parent(`.${ACCORDION_CLASSES.ITEM}`)
@@ -177,18 +156,10 @@ describe('Sidenav', () => {
                   .as('lastThirdLevelItem')
                   .click()
                   .then(() => {
-                    cy.get('@firstThirdLevelItem').should(
-                      'not.have.class',
-                      EXPANDED_CLASS
-                    );
-                    cy.get('@firstThirdLevelItemContent').should(
-                      'not.be.visible'
-                    );
+                    cy.get('@firstThirdLevelItem').should('not.have.class', EXPANDED_CLASS);
+                    cy.get('@firstThirdLevelItemContent').should('not.be.visible');
                     hasClassAssertion('@lastThirdLevelItem', EXPANDED_CLASS);
-                    cy.get('@lastThirdLevelItem')
-                      .find(`.${ACCORDION_CLASSES.CONTENT}`)
-                      .first()
-                      .should('be.visible');
+                    cy.get('@lastThirdLevelItem').find(`.${ACCORDION_CLASSES.CONTENT}`).first().should('be.visible');
                   });
               });
           });
@@ -200,7 +171,7 @@ describe('Sidenav', () => {
     cy.reload();
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(drawerSelector => {
+      .then((drawerSelector) => {
         cy.get('@firstLevelFirstItem').click();
         cy.get(drawerSelector)
           .contains('Accordion A')
@@ -213,12 +184,9 @@ describe('Sidenav', () => {
       });
     cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
-      .then(drawerSelector => {
+      .then((drawerSelector) => {
         cy.get('@firstLevelSecondItem').click();
-        cy.get(drawerSelector)
-          .find(`.${ACCORDION_CLASSES.ITEM}`)
-          .first()
-          .click();
+        cy.get(drawerSelector).find(`.${ACCORDION_CLASSES.ITEM}`).first().click();
         cy.get('@firstLevelFirstItem').click();
         hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
       });
@@ -228,7 +196,7 @@ describe('Sidenav', () => {
     cy.reload();
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(drawerSelector => {
+      .then((drawerSelector) => {
         cy.get('@firstLevelFirstItem').click();
         cy.get(drawerSelector)
           .contains('Accordion A')
@@ -242,13 +210,9 @@ describe('Sidenav', () => {
       });
     cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
-      .then(drawerSelector => {
+      .then((drawerSelector) => {
         cy.get('@firstLevelSecondItem').click();
-        cy.get(drawerSelector)
-          .find(`.${ACCORDION_CLASSES.ITEM}`)
-          .first()
-          .as('secondLevelSecondItem')
-          .click();
+        cy.get(drawerSelector).find(`.${ACCORDION_CLASSES.ITEM}`).first().as('secondLevelSecondItem').click();
         cy.get(drawerSelector)
           .contains('Accordion A')
           .parent(`.${ACCORDION_CLASSES.ITEM}`)
