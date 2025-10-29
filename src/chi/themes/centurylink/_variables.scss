@@ -949,9 +949,7 @@ $button-group-border-width:                 $button-solid-border-width;
 
 // Card
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
-$card-alert-empty-accordion-content-padding-y: 1.875rem;
-$card-alert-empty-accordion-trigger-padding: 1.25rem;
-$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-border: 0.0625rem solid rgba($color-black, 0.12);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;

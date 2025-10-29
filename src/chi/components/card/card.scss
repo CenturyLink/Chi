@@ -434,50 +434,65 @@
   }
 
   &.-alert {
+    border: $card-alert-border;
     box-shadow: $card-alert-box-shadow;
+    
+    .chi-accordion__item:first-of-type { 
+      max-height: 748px;
 
-    &.-empty {
-      border: $card-alert-empty-border;
+      .chi-accordion__trigger {
+        max-height: 65px;
+      }
 
-      .chi-accordion__item {
-        &.-expanded {
-          .chi-accordion__trigger {
-            border-bottom: $card-alert-empty-border;
-            padding: $card-alert-empty-accordion-trigger-padding;
-          }
+      &.-expanded {
+        .chi-accordion__trigger {
+          border-bottom: $card-alert-border;
         }
 
         .chi-accordion__content {
-          padding-bottom: $card-alert-empty-accordion-content-padding-y;
-          padding-top: $card-alert-empty-accordion-content-padding-y;
-        }
-
-        .chi-card__caption {
-          .chi-card__empty-content {
-            align-items: $card-alert-empty-content-align-items;
-            display: $card-alert-empty-content-display;
-            flex-direction: $card-alert-empty-content-flex-direction;
-            gap: $card-alert-empty-content-gap;
-
-            &-icon {
-              background-color: $card-alert-empty-content-icon-background-color;
-              border-radius: $card-alert-empty-content-icon-border-radius;
-              display: $card-alert-empty-content-icon-display;
-              padding: $card-alert-empty-icon-padding;
-              
-              .chi-icon {
-                color: $card-alert-empty-content-icon-color;
-                height: $card-alert-empty-content-icon-height; 
-                margin: $card-alert-empty-content-icon-margin;
-                width: $card-alert-empty-content-icon-width; 
+          .chi-card__content {
+            display: flex;
+            gap: 0.5rem;
+            max-height: 643px;
+            overflow-y: auto;
+            
+            .chi-card {
+              .chi-card__caption {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0 1.25rem 1.25rem 1.25rem;
               }
             }
-
-            span {
-              font-size: $card-alert-empty-content-message-font-size; 
-              line-height: $card-alert-empty-content-message-line-height; 
-            }
           }
+        }
+      }
+    }
+
+    &.-empty {
+      .chi-card__empty-content {
+        align-items: $card-alert-empty-content-align-items;
+        display: $card-alert-empty-content-display;
+        flex-direction: $card-alert-empty-content-flex-direction;
+        gap: $card-alert-empty-content-gap;
+
+        &-icon {
+          background-color: $card-alert-empty-content-icon-background-color;
+          border-radius: $card-alert-empty-content-icon-border-radius;
+          display: $card-alert-empty-content-icon-display;
+          padding: $card-alert-empty-icon-padding;
+          
+          .chi-icon {
+            color: $card-alert-empty-content-icon-color;
+            height: $card-alert-empty-content-icon-height; 
+            margin: $card-alert-empty-content-icon-margin;
+            width: $card-alert-empty-content-icon-width; 
+          }
+        }
+
+        span {
+          font-size: $card-alert-empty-content-message-font-size; 
+          line-height: $card-alert-empty-content-message-line-height; 
         }
       }
     }
@@ -498,13 +513,7 @@
       }
 
       .chi-accordion__content {
-        padding: 0 1.25rem 1.25rem;
-      }
-
-      &.-expanded {
-        .chi-accordion__trigger {
-          padding-bottom: 0.5rem;
-        }
+        padding: 1.25rem;
       }
     }
   }
@@ -518,6 +527,11 @@
 
       &.-sm {
         padding: $card-outline-header-sm-padding;
+      }
+
+      &.-notifications {
+        padding: 0;
+        min-height: auto;
       }
     }
 
@@ -571,6 +585,19 @@
         border: none;
         padding: 0;
       }
+    }
+  }
+}
+
+.kpi-wrapper {
+  chi-card[type="kpi"] {
+    .chi-card,
+    .chi-card__content {
+      height: 100%;
+    }
+
+    .chi-card__content {
+      border: none;
     }
   }
 }
