@@ -1159,12 +1159,12 @@ $date-picker-padding: 0;
 $date-picker-day-active-background-color: $color-teal-70;
 $date-picker-day-active-text-color: $color-text-white;
 $date-picker-day-border-radius: 0.1875rem;
-$date-picker-day-line-height: 1.5rem;
+$date-picker-day-line-height: 2rem;
 $date-picker-day-today-accent-background-color: $color-teal-70;
 $date-picker-day-today-accent-background-color-active: $color-background-white;
-$date-picker-day-today-bottom: 0;
-$date-picker-day-width: 11.76%;
-$date-picker-days-gap: 0.625rem 0.375rem;
+$date-picker-day-today-bottom: 0.1875rem;
+$date-picker-day-width: calc(100% / 7);
+$date-picker-days-gap: 0;
 
 $date-picker-day-inactive-text-color: rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
@@ -1174,8 +1174,8 @@ $date-picker-arrow-icon-color: $color-text-primary;
 $date-picker-arrow-disabled-icon-color: rgba($color-text-base, 0.2);
 
 $date-picker-time-picker-box-shadow: none;
-$date-picker-time-picker-margin-left: 0;
-$date-picker-time-picker-padding: 0.5rem 0.5rem 0.5rem 0;
+$date-picker-time-picker-margin-left: 0.75rem;
+$date-picker-time-picker-padding: 0.5rem;
 
 // Divider
 $divider-border-color: rgba($color-black, 0.12);
