@@ -1100,13 +1100,20 @@ $css-grid-gap:                              1rem;
 $css-grid-md-gap:                           1.5rem;
 
 // Date picker
+$date-picker-disabled-icon-color:           $color-icon-base;
+$date-picker-icon-color:                    $color-icon-base;
 $date-picker-input-width:                   16rem;
-$date-picker-day-border-radius:             $border-radius-base;
+$date-picker-margin:                        0;
 $date-picker-padding:                       0.5rem;
 $date-picker-day-active-background-color:   $color-background-primary;
 $date-picker-day-active-text-color:         $color-text-black;
-$date-picker-day-background-color:          $color-background-white;
+$date-picker-day-border-radius:             $border-radius-base;
+$date-picker-day-line-height:               2rem;
 $date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color-active: $color-background-white;
+$date-picker-day-today-bottom:              0.1875rem;
+$date-picker-day-width:                     calc(100% / 7);
+$date-picker-days-gap:                      0;
 
 $date-picker-day-inactive-text-color:       rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
@@ -1114,6 +1121,10 @@ $date-picker-day-hover-background-color:    $color-grey-20;
 
 $date-picker-arrow-icon-color:              $color-text-primary;
 $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
+
+$date-picker-time-picker-box-shadow:        inset 0.0625rem 0 0 0 $color-border-base;
+$date-picker-time-picker-margin-left:       0.75rem;
+$date-picker-time-picker-padding:           0.5rem;
 
 // Divider
 $divider-border-color:                      rgba($color-black, 0.12);
