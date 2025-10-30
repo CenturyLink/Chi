@@ -535,7 +535,7 @@
       }
     }
 
-    .chi-card__content {
+    > .chi-card__content {
       background-color: $card-outline-background-color;
       border: $card-outline-border;
       border-radius: $card-outline-border-radius;
