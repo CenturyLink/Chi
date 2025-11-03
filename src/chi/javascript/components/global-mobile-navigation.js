@@ -68,10 +68,7 @@ class GlobalMobileNav extends Component {
   }
 
   _initDropdown() {
-    const dropdown = this._enterpriseDropdown.dropdown;
-
-    dropdown.items = this._enterpriseDropdown.items ?? [];
-    dropdown.addEventListener('click', (event) => {
+    this._enterpriseDropdown.addEventListener('click', (event) => {
       event.stopPropagation();
     });
   }
@@ -175,12 +172,12 @@ class GlobalMobileNav extends Component {
 
     if (this._viewLevel === 0) {
       const header = this._drawer.querySelector('.chi-drawer__header');
-      
+
       this._drawer.removeAttribute('backlink');
       header.classList.add(chi.classes.DISPLAY.NONE);
     } else {
       const viewItem = this._viewItems.find((item) => item.level === this._viewLevel - 1);
-      
+
       this._setBacklink(viewItem.level, viewItem.link.innerText, true);
     }
   }
@@ -247,11 +244,11 @@ class GlobalMobileNav extends Component {
 
   _handleChiBacklinkClick(event) {
     this._drawer.setAttribute('prevent-auto-hide', '');
-      this._handleBack(event);
-      
-      setTimeout(() => {
-        this._drawer.removeAttribute('prevent-auto-hide');
-      }, 100);
+    this._handleBack(event);
+
+    setTimeout(() => {
+      this._drawer.removeAttribute('prevent-auto-hide');
+    }, 100);
   }
 
   dispose() {

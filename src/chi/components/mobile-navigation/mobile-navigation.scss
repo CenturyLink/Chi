@@ -65,6 +65,42 @@
         position: fixed;
         z-index: 50;
       }
+
+      .enterprise-id-switcher {
+        width: 100%;
+
+        .chi-dropdown__menu {
+          padding-top: 0;
+          padding-bottom: 0;
+          width: 100%;
+
+          &-header {
+            font-weight: $font-weight-semi-bold;
+            padding: 0.8125rem 1.25rem 0.3125rem 1.25rem;
+          }
+
+          &-footer {
+            .chi-link {
+              padding-left: 1.25rem;
+              padding-bottom: 0.625rem;
+            }
+          }
+
+          &-item {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+
+            .chi-grid {
+              width: 100%;
+
+              .chi-col:has(chi-spinner) {
+                display: flex;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
     }
 
     .chi-mobile-nav__content {
