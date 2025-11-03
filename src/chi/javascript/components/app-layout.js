@@ -11,7 +11,7 @@ const WIDGETS = {
 }
 
 const DEFAULT_CONFIG = {
-  threshold: 115,
+  threshold: 100,
   widgets: {
     alerts: WIDGETS.ALERTS,
     networkVisibility: WIDGETS.NETWORK_VISIBILITY
@@ -47,7 +47,7 @@ class AppLayout extends Component {
 
   _calculateMargin() {
      if (this._alertWidget && this._networkVisibilityWidget) {
-      if (this._isViewportSmall() || !this._alertWidget.querySelector('.chi-accordion__item.-expanded')) {
+      if (this._isViewportSmall()) {
         this._networkVisibilityWidget.style.marginTop = '0';
       } else {
         const alertWidgetHeight = this._alertWidget.offsetHeight;

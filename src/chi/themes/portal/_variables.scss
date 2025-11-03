@@ -972,8 +972,13 @@ $button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
 $button-group-border-width: $button-solid-border-width;
 
 // Card
+$card-accordion-border-width: 0.0625rem;
+$card-accordion-border: $card-accordion-border-width solid rgba($color-black, 0.12);
+$card-accordion-content-padding: 1.25rem;
+$card-alert-accordion-trigger-max-height: 4.0625rem;
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
-$card-alert-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-max-height: 46.875rem;
+$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*2);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;
@@ -987,6 +992,7 @@ $card-alert-empty-content-icon-margin: 0;
 $card-alert-empty-content-icon-width: $icon-size-sm3;
 $card-alert-empty-content-message-font-size: $font-size-lg;
 $card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-content-wrapper-gap: 0.5rem;
 $card-alert-empty-icon-padding: 0.75rem;
 
 $card-active-border-color: $color-teal-80;

@@ -434,36 +434,28 @@
   }
 
   &.-alert {
-    border: $card-alert-border;
+    border: $card-accordion-border;
     box-shadow: $card-alert-box-shadow;
-    
-    .chi-accordion__item:first-of-type { 
-      max-height: 748px;
+    max-height: $card-alert-max-height;
 
+    > chi-accordion .chi-accordion__item,
+    > .chi-accordion .chi-accordion__item {
       .chi-accordion__trigger {
-        max-height: 65px;
+        max-height: $card-alert-accordion-trigger-max-height;
       }
-
+    
       &.-expanded {
         .chi-accordion__trigger {
-          border-bottom: $card-alert-border;
+          border-bottom: $card-accordion-border;
         }
 
         .chi-accordion__content {
-          .chi-card__content {
+          .chi-card__content-wrapper {
             display: flex;
-            gap: 0.5rem;
-            max-height: 643px;
+            flex-direction: column;
+            gap: $card-alert-empty-content-wrapper-gap;
+            max-height: $card-alert-content-max-height;
             overflow-y: auto;
-            
-            .chi-card {
-              .chi-card__caption {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 0 1.25rem 1.25rem 1.25rem;
-              }
-            }
           }
         }
       }
@@ -498,22 +490,34 @@
     }
   }
 
-  &:has(.chi-accordion) {
-    .chi-card__content {
-      padding: 0;
-    }
-  }
+  &:has(
+    > chi-accordion .chi-accordion,
+    > .chi-accordion 
+  ) {
+    > chi-accordion .chi-accordion,
+    > .chi-accordion {
+      border: $card-accordion-border;
 
-  .chi-accordion {
-    .chi-accordion__item {
-      background-color: transparent;
-
-      .chi-accordion__trigger {
-        padding: 1.25rem;
-      }
-
-      .chi-accordion__content {
-        padding: 1.25rem;
+      .chi-accordion__item {
+        background-color: transparent;
+        
+        .chi-accordion__trigger {
+          padding: 1.25rem;
+        }
+        
+        .chi-accordion__content {
+          padding: $card-accordion-content-padding;
+          
+          .chi-card__content {
+            padding: 0;
+          }
+        }
+        
+        &.-expanded {
+          .chi-accordion__trigger {
+            border-bottom: $card-accordion-border;
+          }
+        }
       }
     }
   }
