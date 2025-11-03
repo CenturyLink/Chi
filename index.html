@@ -1128,7 +1128,6 @@
                   <div class="chi-grid">
                     <div class="chi-col -w--4">1234567</div>
                     <div class="chi-col -w--7">Acme Incorporated</div>
-
                   </div>
                 </a>
                 <a class="chi-dropdown__menu-item" slot="menu">
@@ -1625,7 +1624,7 @@
             const dropdownText = 'Enterprise ID: ' + enterpriseId;
 
             switcher.setAttribute('retain-selection', dropdownText);
-            
+
             setTimeout(() => {
               const items = switcher.querySelectorAll('.chi-dropdown__menu-item');
               items.forEach((item) => item.classList.toggle('-active', item.textContent.includes(enterpriseId)));
