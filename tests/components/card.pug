@@ -353,3 +353,105 @@ block content
         .chi-card.-widget.-no-border
           .chi-card__content.-text
             | This is a card with no border
+    
+  h3 Alert
+  .test-card-alert
+    .chi-grid.-w--100
+      .chi-col.-w--6
+        h4 Base
+        .-mb--1
+          .chi-card.-alert.-outline
+            .chi-accordion.-md.-truncated
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Alerts
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
+        
+        .chi-card.-alert.-outline
+          .chi-accordion.-md.-truncated
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                .chi-accordion__title Alerts
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                .chi-card__content
+                  .chi-card__caption Alert Content Here
+
+      .chi-col.-w--6
+        h4 Empty
+        .-mb--1
+          .chi-card.-alert.-outline.-empty
+            .chi-accordion.-md.-truncated
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title Alerts
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
+        
+        .chi-card.-alert.-outline.-empty
+          .chi-accordion.-md.-truncated
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                .chi-accordion__title Alerts
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                .chi-card__content
+                  .chi-card__caption
+                    .chi-card__empty-content
+                      .chi-card__empty-content-icon
+                        i.chi-icon.icon-thumbs-up.-sm--3
+                      span No alerts
+      
+      .chi-col.-w--6
+        h4 Notifications
+        .-mb--1
+          .chi-card.-alert.-outline
+            .chi-accordion.-md.-truncated
+              .chi-accordion__item
+                button.chi-accordion__trigger
+                  .chi-accordion__title.-flex--grow0 Alerts
+                  .-mx--1.-flex--grow1
+                    .chi-card__header.-notifications
+                      .chi-badge.-sm.-notification 20
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
+        
+        .chi-card.-alert.-outline
+          .chi-accordion.-md.-truncated
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                .chi-accordion__title.-flex--grow0 Alerts
+                .-mx--1.-flex--grow1
+                  .chi-card__header.-notifications
+                    .chi-badge.-sm.-notification 20
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                .chi-card__content
+                  .chi-card__caption Alert Content Here
+
+      .chi-col.-w--6
+        h4 Notifications with inner cards and eyebrow
+        .chi-card.-alert.-outline
+          .chi-accordion.-md.-truncated
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                .chi-accordion__title.-flex--grow0 Alerts
+                .-mx--1.-flex--grow1
+                  .chi-card__header.-notifications
+                    .chi-badge.-sm.-notification 20
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                .chi-card__content
+                  .chi-card__content-wrapper
+                    each id in [1,2,3 ,4,5, 6, 7]
+                      .chi-card.-widget.-compact-title
+                        .chi-card__header
+                          div
+                            .chi-card__eyebrow [Product/Service Name]
+                            .chi-card__title [Alert title]
+                          div
+                            button.chi-button.-flat.-icon
+                              .chi-button__content
+                              i.chi-icon.icon-more-vert
+                        .-d--flex.-justify-content--between.-p--2
+                          a.chi-link=`ID 123456567${id}`
+                          .chi-badge.-muted Email Sent
+
