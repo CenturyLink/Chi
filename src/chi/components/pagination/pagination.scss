@@ -39,6 +39,7 @@ $icon-sizes: (
     &:not(.-vertical) {
       .chi-button {
         justify-content: center;
+        margin-right: $pagination-button-group-margin-right;
 
         &:not(.-icon) {
           &.-xs {
