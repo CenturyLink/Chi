@@ -1865,7 +1865,7 @@ $popover-text-color: $color-text-base;
 $popover-max-width: 20rem;
 $popover-arrow-size: 0.75rem;
 $popover-modal-background-color: $popover-background-color;
-$popover-modal-header-background-color: $modal-header-background-color;
+$popover-modal-header-background-color: $color-teal-70;
 $popover-modal-header-background-image: $modal-header-background-image;
 $popover-modal-header-text-color: $color-text-white;
 $popover-modal-close-icon-color: $modal-close-icon-color;
@@ -2495,7 +2495,7 @@ $tooltip-max-width: 20rem;
 // Transfer list
 $transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
-$transfer-list-reset-button-color: $color-text-primary;
+$transfer-list-reset-button-color: $color-text-code;
 
 // Tags
 $tags-border-color: $color-border-base;

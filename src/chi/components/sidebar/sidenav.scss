@@ -107,6 +107,9 @@ $sidenav-lg-width: 12.5rem;
     box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
     position: absolute;
     z-index: $zindex-fixed;
+    // TODO: Remove after connect theme release
+    // Temporary workaround to support portal and connect theme
+    width: 18.75rem;
 
     &__header {
       align-items: center;
@@ -114,7 +117,16 @@ $sidenav-lg-width: 12.5rem;
       color: $color-text-base;
       display: flex;
       height: 3.5rem;
-      padding-left: 1.5rem;
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      padding: 1rem 1rem 1rem 1.5rem;
+
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      .chi-drawer__title {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
 
       .chi-button {
         &.-close {
@@ -143,6 +155,9 @@ $sidenav-lg-width: 12.5rem;
 
     &__content {
       background: $color-background-white;
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      padding: 0;
 
       a {
         color: $color-text-base;
@@ -863,7 +878,7 @@ $sidenav-lg-width: 12.5rem;
                     border-radius: $sidenav-global-item-border-radius;
                     color: $sidenav-global-item-active-text-color;
                     font-weight: $sidenav-global-item-active-font-weight;
-  
+
                     &:hover {
                       background-color: $sidenav-global-item-active-background-color;
                     }
@@ -1036,12 +1051,12 @@ $sidenav-lg-width: 12.5rem;
                     color: $sidenav-global-item-active-text-color;
                     font-weight: $sidenav-global-item-active-font-weight;
                     width: 100%;
-    
+
                     .chi-icon,
                     .chi-icon::before {
                       color: $sidenav-global-item-active-icon-color;
                     }
-    
+
                     .chi-link {
                       color: $sidenav-global-item-active-text-color;
                       font-weight: $sidenav-global-item-active-font-weight;
@@ -1070,7 +1085,7 @@ $sidenav-lg-width: 12.5rem;
                   padding: 0.875rem;
                   padding-left: 1rem;
                   width: 100%;
-  
+
                   .chi-link__content {
                     > span {
                       margin-left: 0.6875rem;
