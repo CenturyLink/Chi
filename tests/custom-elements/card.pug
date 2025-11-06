@@ -322,6 +322,17 @@ block content
                 chi-badge(color="muted") Email Sent
 
       
+  h3 Card KPI 
+  .test-card-kpi
+    .chi-grid 
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width) Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" metric="20" fixed-width)
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" metric="20" fixed-width) Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid")
   script.
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
@@ -330,4 +341,8 @@ block content
       document.querySelector('.test-card-widget-footer-no-border chi-card').noBorders = ['footer'];
       document.querySelector('.test-card-widget-header-no-border chi-card').noBorders = ['header'];
       document.querySelector('.test-card-widget-no-border chi-card').noBorders = ['card'];
+      document.getElementById('kpi-metric-grid').metric = [
+        {label: 'Down', value: "97"},
+        {label: 'Up', value: "143"},
+      ];
     });
