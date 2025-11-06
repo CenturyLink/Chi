@@ -1132,13 +1132,20 @@ $css-grid-gap:                              1rem;
 $css-grid-md-gap:                           1.5rem;
 
 // Date picker
+$date-picker-disabled-icon-color:           $color-icon-base;
+$date-picker-icon-color:                    $color-icon-base;
 $date-picker-input-width:                   14rem;
-$date-picker-day-border-radius:             $border-radius;
+$date-picker-margin:                        0;
 $date-picker-padding:                       0.5rem;
 $date-picker-day-active-background-color:   $color-background-primary;
 $date-picker-day-active-text-color:         $color-text-white;
-$date-picker-day-background-color:          $color-background-white;
+$date-picker-day-border-radius:             $border-radius;
+$date-picker-day-line-height:               2rem;
 $date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color-active: $color-background-white;
+$date-picker-day-today-bottom:              0.1875rem;
+$date-picker-day-width:                     calc(100% / 7);
+$date-picker-days-gap:                      0;
 
 $date-picker-day-inactive-text-color:       rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
@@ -1146,6 +1153,10 @@ $date-picker-day-hover-background-color:    $color-grey-20;
 
 $date-picker-arrow-icon-color:              $color-text-primary;
 $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
+
+$date-picker-time-picker-box-shadow:        inset 0.0625rem 0 0 0 $color-border-base;
+$date-picker-time-picker-margin-left:       0.75rem;
+$date-picker-time-picker-padding:           0.5rem;
 
 // Data Table
 $data-table-footer-background-color:        $color-grey-10;
@@ -1731,7 +1742,10 @@ $pagination-inverse-compact-label-text-color: $color-text-white;
 // Picker
 $picker-background-color:                   $color-background-white;
 $picker-border-color:                       $color-border-base-dark;
+$picker-border-radius:                      $border-radius;
 $picker-icon-color:                         inherit;
+$picker-checked-focus-outline:              none;
+$picker-checked-focus-outline-offset:       0;
 $picker-checkbox-border-color:              $color-grey-40;
 $picker-checkbox-text-color:                $color-grey-40;
 $picker-checkbox-icon-color:                $color-grey-50;
@@ -1739,6 +1753,7 @@ $picker-radio-border-color:                 $color-grey-50;
 $picker-radio-text-color:                   $color-grey-50;
 $picker-radio-icon-color:                   $color-grey-50;
 $picker-disabled-background-color:          $color-background-base-dark;
+$picker-disabled-border-color:              $color-border-base-dark;
 $picker-disabled-text-color:                $color-text-muted-light;
 $picker-checked-background-color:           $color-background-white;
 $picker-checked-border-color:               $color-border-primary;
@@ -1751,8 +1766,17 @@ $picker-checked-radio-background-color:     $color-background-primary;
 $picker-checked-radio-border-color:         $color-border-primary;
 $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
+$picker-hover-background-color:             $color-background-white;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-focus-outline:                      none;
+$picker-focus-outline-offset:               0;
+$picker-pill-active-background-color:       $color-background-white;
+$picker-pill-disabled-background-color:     $color-background-base-dark;
+$picker-pill-disabled-border-color:         $color-border-base-dark;
+$picker-pill-disabled-box-shadow:           none;
+$picker-pill-hover-background-color:        $color-background-white;
+$picker-pill-hover-border-color:            $color-grey-40;
 $picker-xs-item-font-size:                  $font-size-xs;
 $picker-xs-item-padding:                    0.1875rem 0.75rem;
 $picker-xs-item-description-line-height:    1rem;
