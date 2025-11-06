@@ -74,7 +74,7 @@
     {
       "label": "alert-banner",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/components/alert-banner.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/components/alert-banner.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -85,17 +85,30 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-default",
-        ".test-large"
+        ".test-banner-default",
+        ".test-banner-center-default",
+        ".test-banner-dismissible-default",
+        ".test-banner-titled-default",
+        ".test-banner-actionable-default",
+        ".test-banner-sm",
+        ".test-banner-center-sm",
+        ".test-banner-dismissible-sm",
+        ".test-banner-titled-sm",
+        ".test-banner-actionable-sm",
+        ".test-banner-lg",
+        ".test-banner-center-lg",
+        ".test-banner-dismissible-lg",
+        ".test-banner-titled-lg",
+        ".test-banner-actionable-lg"
       ],
-      "selectorExpansion": true,
+      "selectorExpansion": false,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
     },
     {
       "label": "alert-bubble",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/components/alert-bubble.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/components/alert-bubble.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -106,8 +119,23 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-default",
-        ".test-large"
+        ".test-bubble-default",
+        ".test-bubble-center-default",
+        ".test-bubble-dismissible-default",
+        ".test-bubble-titled-default",
+        ".test-bubble-actionable-default",
+        ".test-bubble-sm",
+        ".test-bubble-center-sm",
+        ".test-bubble-dismissible-sm",
+        ".test-bubble-titled-sm",
+        ".test-bubble-actionable-sm",
+        ".test-bubble-lg",
+        ".test-bubble-center-lg",
+        ".test-bubble-dismissible-lg",
+        ".test-bubble-titled-lg",
+        ".test-bubble-actionable-lg",
+        ".test-bubble-clickable-link-default",
+        ".test-bubble-clickable-button-default"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -116,7 +144,7 @@
     {
       "label": "alert-toast",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/components/alert-toast.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/components/alert-toast.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -127,7 +155,12 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-toast"
+        ".test-toast-default",
+        ".test-toast-titled-default",
+        ".test-toast-sm",
+        ".test-toast-titled-sm",
+        ".test-toast-lg",
+        ".test-toast-titled-lg"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -136,7 +169,7 @@
     {
       "label": "grid",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/foundations/grid.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/foundations/grid.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -168,7 +201,7 @@
     {
       "label": "modals",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/components/modals.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/components/modals.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -190,7 +223,7 @@
     {
       "label": "typography",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.66.0/tests/foundations/typography.html",
+      "url": "http://localhost:8000/chi/6.70.0/tests/<theme>/foundations/typography.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -214,13 +247,14 @@
     }
   ],
   "paths": {
-    "bitmaps_reference": "reports/html_report/responsive/bitmaps_reference",
-    "bitmaps_test": "reports/html_report/responsive/bitmaps_test",
+    "bitmaps_reference": "backstop_data/bitmaps_reference/<theme>/responsive",
+    "bitmaps_test": "reports/<theme>/html_report/responsive/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "reports/html_report/responsive",
-    "ci_report": "reports/ci_report/responsive"
+    "html_report": "reports/<theme>/html_report/responsive",
+    "ci_report": "reports/<theme>/ci_report/responsive",
+    "json_report": "reports/<theme>/json_report/responsive"
   },
-  "report": ["CI"],
+  "report": ["CI", "json"],
   "engine": "playwright",
   "engineOptions": {
     "browser": "chromium",

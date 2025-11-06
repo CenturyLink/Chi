@@ -1,8 +1,7 @@
 function calculateRangeProgress(element) {
   const rangeSliderParent = element.parentNode;
   const inputWidth = rangeSliderParent.querySelector('input').clientWidth;
-  const progressWidth = rangeSliderParent.querySelector('.chi-input__progress')
-    .clientWidth;
+  const progressWidth = rangeSliderParent.querySelector('.chi-input__progress').clientWidth;
   const minVal = rangeSliderParent.querySelector('input').getAttribute('min');
   const maxVal = rangeSliderParent.querySelector('input').getAttribute('max');
   const currentValue = rangeSliderParent.querySelector('input').value;
@@ -17,27 +16,27 @@ function calculateRangeProgress(element) {
 
 describe('Range Slider', () => {
   before(() => {
-    cy.visit('tests/js/range-slider.html');
+    cy.visit('tests/lumen/js/range-slider.html');
   });
 
   it('Base Range Slider', () => {
     cy.get('#baseRangeSlider')
-    .invoke('val', 60)
-    .trigger('change')
-    .then($element => {
-      calculateRangeProgress($element[0]);
-    });
+      .invoke('val', 60)
+      .trigger('change')
+      .then(($element) => {
+        calculateRangeProgress($element[0]);
+      });
   });
 
   it('Stepped Range Slider', () => {
-    [1, 2, 3, 4].forEach(value => {
+    [1, 2, 3, 4].forEach((value) => {
       cy.get('#steppedRangeSlider')
-      .invoke('val', value)
-      .trigger('change')
-      .wait(50)
-      .then($element => {
-        calculateRangeProgress($element[0]);
-      });
+        .invoke('val', value)
+        .trigger('change')
+        .wait(50)
+        .then(($element) => {
+          calculateRangeProgress($element[0]);
+        });
     });
   });
 });

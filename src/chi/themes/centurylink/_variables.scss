@@ -948,41 +948,64 @@ $button-group-vertical-xl-icon-padding:     $button-icon-xl-padding;
 $button-group-border-width:                 $button-solid-border-width;
 
 // Card
-$card-background-color:                     $color-background-white;
-$card-border:                               0.0625rem solid rgba($color-black, 0.12);
-$card-border-radius:                        0;
+$card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-alert-empty-accordion-content-padding-y: 1.875rem;
+$card-alert-empty-accordion-trigger-padding: 1.25rem;
+$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-empty-content-align-items: center;
+$card-alert-empty-content-display: flex;
+$card-alert-empty-content-flex-direction: column;
+$card-alert-empty-content-gap: 0.75rem;
+$card-alert-empty-content-icon-background-color: $color-grey-20;
+$card-alert-empty-content-icon-border-radius: 50%;
+$card-alert-empty-content-icon-color: $color-grey-90;
+$card-alert-empty-content-icon-display: flex;
+$card-alert-empty-content-icon-height: $icon-size-sm3;
+$card-alert-empty-content-icon-margin: 0;
+$card-alert-empty-content-icon-width: $icon-size-sm3;
+$card-alert-empty-content-message-font-size: $font-size-lg;
+$card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-icon-padding: 0.75rem;
+
 $card-active-border-color:                  $color-border-primary;
-$card-active-title-text-color:              $color-text-primary;
 $card-active-icon-color:                    $color-text-primary;
+$card-active-title-text-color:              $color-text-primary;
+$card-background-color:                     $color-background-white;
+$card-border-radius:                        0;
+$card-border:                               0.0625rem solid rgba($color-black, 0.12);
+$card-content-border-radius:                $card-border-radius;
+$card-content-border:                       none;
+$card-content-footer-border-bottom-radius:  0;
+$card-content-footer-border-bottom:         0;
+$card-content-padding:                      1rem;
+$card-content-title-padding-bottom:         0;
+$card-empty-border-color:                   rgba($color-black, 0.12);
+$card-empty-icon-color:                     $color-text-muted-light;
+$card-eyebrow-font-size:                    $font-size-md;
+$card-eyebrow-font-weight:                  $font-weight-normal;
+$card-eyebrow-line-height:                  $line-height-lg;
+$card-eyebrow-margin-bottom:                0.3125rem;
+$card-footer-border-bottom-radius:          0;
+$card-footer-border-color:                  rgba($color-black, 0.12);
+$card-footer-border-top:                    0;
+$card-footer-border:                        none;
+$card-footer-min-height:                    2rem;
+$card-footer-padding:                       1rem;
 $card-header-background-color:              transparent;
 $card-header-border-color:                  rgba($color-black, 0.12);
 $card-header-box-shadow:                    inset 0 -1px 0 0 $card-header-border-color;
+$card-header-min-height:                    2rem;
+$card-header-min-height:                    2rem;
 $card-header-padding:                       1rem;
 $card-header-sm-padding:                    0.5rem 1rem;
-$card-header-min-height:                    2rem;
 $card-header-sm-padding:                    0.5rem 1rem;
-$card-header-min-height:                    2rem;
 $card-hero-border-radius:                   0;
 $card-hero-width:                           100%;
-$card-content-border:                       none;
-$card-content-border-radius:                $card-border-radius;
-$card-content-padding:                      1rem;
-$card-content-title-padding-bottom:         0;
-$card-content-footer-border-bottom:         0;
-$card-content-footer-border-bottom-radius:  0;
-$card-footer-border:                        none;
-$card-footer-border-top:                    0;
-$card-footer-border-color:                  rgba($color-black, 0.12);
-$card-footer-border-bottom-radius:          0;
-$card-footer-padding:                       1rem;
-$card-footer-min-height:                    2rem;
-$card-empty-border-color:                   rgba($color-black, 0.12);
-$card-empty-icon-color:                     $color-text-muted-light;
-$card-tabs-padding:                         0 1rem;
-$card-tabs-border-bottom:                   none;
 $card-highlight-background-color:           $color-background-secondary-light;
 $card-highlight-border-color:               $color-mint-30;
 $card-highlight-header-background-color:    $color-background-white;
+$card-tabs-border-bottom:                   none;
+$card-tabs-padding:                         0 1rem;
 
 $card-widget-background-color:              $color-grey-10;
 $card-widget-border:                        0.0625rem solid $color-grey-20;
@@ -998,6 +1021,28 @@ $card-widget-title-font-weight:             $font-weight-extra-bold;
 $card-widget-content-border:                none;
 $card-widget-content-border-radius:         0;
 $card-widget-content-padding:               1rem;
+
+$card-outline-background-color:             $card-background-color;
+$card-outline-border:                       $card-border;
+$card-outline-border-radius:                $card-border-radius;
+$card-outline-header-background-color:      $card-header-background-color;
+$card-outline-header-box-shadow:            $card-header-box-shadow;
+$card-outline-header-padding:               $card-header-padding;
+$card-outline-header-sm-padding:            $card-header-sm-padding;
+$card-outline-hero-border-radius:           $card-hero-border-radius;
+$card-outline-content-padding:              $card-content-padding;
+$card-outline-content-title-padding-bottom: $card-content-title-padding-bottom;
+$card-outline-footer-border-bottom-radius:  $card-footer-border-bottom-radius;
+$card-outline-footer-padding:               $card-footer-padding;
+
+$card-outline-widget-background-color:      $card-widget-background-color;
+$card-outline-widget-border:                $card-widget-border;
+$card-outline-widget-border-radius:         $card-widget-border-radius;
+$card-outline-widget-header-border-radius:  $card-widget-header-border-radius;
+$card-outline-widget-header-padding:        $card-widget-header-padding;
+$card-outline-widget-header-sm-padding:     $card-widget-header-sm-padding;
+$card-outline-widget-title-font-size:       $card-widget-title-font-size;
+$card-outline-widget-title-font-weight:     $card-widget-title-font-weight;
 
 $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
@@ -1089,13 +1134,20 @@ $css-grid-gap:                              1rem;
 $css-grid-md-gap:                           1.5rem;
 
 // Date picker
+$date-picker-disabled-icon-color:           $color-icon-base;
+$date-picker-icon-color:                    $color-icon-base;
 $date-picker-input-width:                   14rem;
-$date-picker-day-border-radius:             $border-radius;
+$date-picker-margin:                        0;
 $date-picker-padding:                       0.5rem;
 $date-picker-day-active-background-color:   $color-background-primary;
 $date-picker-day-active-text-color:         $color-text-white;
-$date-picker-day-background-color:          $color-background-white;
+$date-picker-day-border-radius:             $border-radius;
+$date-picker-day-line-height:               2rem;
 $date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color-active: $color-background-white;
+$date-picker-day-today-bottom:              0.1875rem;
+$date-picker-day-width:                     calc(100% / 7);
+$date-picker-days-gap:                      0;
 
 $date-picker-day-inactive-text-color:       rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
@@ -1103,6 +1155,10 @@ $date-picker-day-hover-background-color:    $color-grey-20;
 
 $date-picker-arrow-icon-color:              $color-text-primary;
 $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
+
+$date-picker-time-picker-box-shadow:        inset 0.0625rem 0 0 0 $color-border-base;
+$date-picker-time-picker-margin-left:       0.75rem;
+$date-picker-time-picker-padding:           0.5rem;
 
 // Data Table
 $data-table-footer-background-color:        $color-grey-10;
@@ -1688,7 +1744,10 @@ $pagination-inverse-compact-label-text-color: $color-text-white;
 // Picker
 $picker-background-color:                   $color-background-white;
 $picker-border-color:                       $color-border-base-dark;
+$picker-border-radius:                      $border-radius;
 $picker-icon-color:                         inherit;
+$picker-checked-focus-outline:              none;
+$picker-checked-focus-outline-offset:       0;
 $picker-checkbox-border-color:              $color-grey-40;
 $picker-checkbox-text-color:                $color-grey-40;
 $picker-checkbox-icon-color:                $color-grey-50;
@@ -1696,6 +1755,7 @@ $picker-radio-border-color:                 $color-grey-50;
 $picker-radio-text-color:                   $color-grey-50;
 $picker-radio-icon-color:                   $color-grey-50;
 $picker-disabled-background-color:          $color-background-base-dark;
+$picker-disabled-border-color:              $color-border-base-dark;
 $picker-disabled-text-color:                $color-text-muted-light;
 $picker-checked-background-color:           $color-background-white;
 $picker-checked-border-color:               $color-border-primary;
@@ -1708,8 +1768,17 @@ $picker-checked-radio-background-color:     $color-background-primary;
 $picker-checked-radio-border-color:         $color-border-primary;
 $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
+$picker-hover-background-color:             $color-background-white;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-focus-outline:                      none;
+$picker-focus-outline-offset:               0;
+$picker-pill-active-background-color:       $color-background-white;
+$picker-pill-disabled-background-color:     $color-background-base-dark;
+$picker-pill-disabled-border-color:         $color-border-base-dark;
+$picker-pill-disabled-box-shadow:           none;
+$picker-pill-hover-background-color:        $color-background-white;
+$picker-pill-hover-border-color:            $color-grey-40;
 $picker-xs-item-font-size:                  $font-size-xs;
 $picker-xs-item-padding:                    0.1875rem 0.75rem;
 $picker-xs-item-description-line-height:    1rem;
@@ -1867,6 +1936,9 @@ $search-input-lg-close-top:                 0.75rem;
 $search-input-xl-icon-top:                  0;
 $search-input-xl-close-right:               3rem;
 $search-input-xl-close-top:                 1rem;
+$search-input-icon-active-background-color: null;
+$search-input-icon-disabled-background-color: null;
+$search-input-icon-active-box-shadow:       null;
 
 // Select
 $select-text-color:                         $color-text-base;
@@ -2333,6 +2405,8 @@ $textarea-xl-padding:                       $text-input-xl-padding;
 
 // Time picker
 $time-picker-width:                         14rem;
+$time-picker-icon-color:                    $color-icon-base;
+$time-picker-icon-color-disabled:           $color-icon-base;
 $time-picker-column-border-color:           $color-border-base;
 $time-picker-item-border-radius:            $border-radius-base;
 $time-picker-item-hover-background-color:   $color-background-base-darker;
@@ -2341,6 +2415,7 @@ $time-picker-item-active-background-color:  $color-background-primary;
 $time-picker-item-active-text-color:        $color-text-white;
 $time-picker-item-disabled-text-color:      $color-grey-70;
 $time-picker-item-disabled-opacity:         $opacity-40;
+$time-picker-item-margin:                   0rem 0.25rem;
 $time-picker-border-color:                  $color-border-base;
 
 // Toggle switch

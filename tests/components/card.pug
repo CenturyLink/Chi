@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Card'
 
@@ -13,18 +13,18 @@ block content
       h3 Base
       .test-card
         h4 Base
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption This is a card
       .test-card-titled
         h4 Titled
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__title Title
             .chi-card__caption This is a card
       .test-card-content
         h4 Titled with content
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__title Title
             .chi-card__caption
@@ -50,9 +50,19 @@ block content
             .chi-card__caption
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-hero
+      .test-card-hero-lumen
         h4 Hero
-        .chi-card.-floating-header
+        .chi-card
+          .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
+            p.-text.-p--6.-text--center Hero Image
+          .chi-card__content
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+              | Donec sit amet consectetur elit.
+      .test-card-hero-portal
+        h4 Hero
+        .chi-card
           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
             p.-text.-p--6.-text--center Hero Image
           .chi-card__content
@@ -62,7 +72,7 @@ block content
               | Donec sit amet consectetur elit.
       .test-card-footer
         h4 Footer
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption
               | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -72,7 +82,7 @@ block content
             button.chi-button Link
       .test-card-footer-right
         h4 Footer Right Aligned
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption
               | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -82,7 +92,7 @@ block content
             button.chi-button.-primary Link
       .test-card-footer-center
         h4 Footer Center Aligned
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption
               | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -91,7 +101,7 @@ block content
             button.chi-button.-primary Link
       .test-card-footer-no-border
         h4 Footer No Border
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption
               | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -100,7 +110,7 @@ block content
             button.chi-button.-primary Link
       .test-card-footer-small
         h4 Footer Small
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__content
             .chi-card__caption
               | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
@@ -109,35 +119,35 @@ block content
             a(href="#") Link
       .test-card-header
         h4 Header
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header
             .chi-card__title Title
           .chi-card__content
             .chi-card__caption This is a card with a header
       .test-card-header-center
         h4 Header Center Aligned
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header.-align--center
             .chi-card__title Title
           .chi-card__content
             .chi-card__caption This is a card with a header
       .test-card-header-no-border
         h4 Header No Border
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header.-no-border
             .chi-card__title Title
           .chi-card__content
             .chi-card__caption This is a card with a header
       .test-card-header-small
         h4 Header Small
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header.-sm
             .chi-card__title Title
           .chi-card__content
             .chi-card__caption This is a card with a header
       .test-card-header-footer
         h4 Header + Footer
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header
             .chi-card__title Title
           .chi-card__content
@@ -148,7 +158,7 @@ block content
             button.chi-button.-primary Link
       .test-card-header-footer-small
         h4 Header Small + Footer Small
-        .chi-card.-floating-header
+        .chi-card
           .chi-card__header.-sm
             .chi-card__title Title
           .chi-card__content
@@ -215,7 +225,17 @@ block content
             .chi-card__caption
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-widget-hero
+      .test-card-widget-hero-lumen
+        h4 Hero
+        .chi-card.-widget
+          .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
+            p.-text.-p--6.-text--center Hero Image
+          .chi-card__content
+            .chi-card__caption
+              | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+              | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+              | Donec sit amet consectetur elit.
+      .test-card-widget-hero-portal
         h4 Hero
         .chi-card.-widget
           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8);")
