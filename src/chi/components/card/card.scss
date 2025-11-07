@@ -607,16 +607,3 @@
     }
   }
 }
-
-.kpi-wrapper {
-  chi-card[type="kpi"] {
-    .chi-card,
-    .chi-card__content {
-      height: 100%;
-    }
-
-    .chi-card__content {
-      border: none;
-    }
-  }
-}
