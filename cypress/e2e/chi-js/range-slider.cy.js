@@ -40,4 +40,13 @@ describe('Range Slider', () => {
       });
     });
   });
+
+  it.only('Test dispose method', () => {
+    cy.get('#baseRangeSlider')
+      .should('have.class', 'chi-range-slider__thumb-overwritten');
+    cy.get('#dispose-range-slider-button')
+      .click();
+    cy.get('#baseRangeSlider')
+      .should('have.not.class', 'chi-range-slider__thumb-overwritten');
+  });
 });
