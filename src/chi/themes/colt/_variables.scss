@@ -8,6 +8,7 @@ $font-family-base: 'Gotham', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 // Font size - text
+$font-size-3xl: 1.75rem; // 28px
 $font-size-xl: 1.125rem; // 18px
 $font-size-lg: 1rem; // 16px
 $font-size-md: 0.875rem; // 14px
@@ -1067,6 +1068,9 @@ $card-kpi-disabled-title-color:             $color-text-muted;
 $card-kpi-icon-arrow-color:                 $color-icon-base;
 $card-kpi-caption-color:                    $color-text-muted;
 $card-kpi-metric-color:                     $color-text-primary;
+$card-kpi-metric-font-size:                 $font-size-3xl;
+$card-kpi-metric-margin-top:                0.75rem;
+$card-kpi-metric-label-margin-top:          0.3125rem;
 $card-kpi-hover-metric-color:               $color-text-primary-dark;
 $card-kpi-active-metric-color:              $color-text-primary-dark;
 $card-kpi-disabled-metric-color:            $color-text-muted;

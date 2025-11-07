@@ -523,8 +523,6 @@ pipeline {
                 sh "mkdir -p reports/${theme}/ci_report"
                 sh "touch reports/${theme}/ci_report/xunitfinal.xml"
               }
-
-              jslAdoptionMain("reports/${theme}/ci_report/xunitfinal.xml")
             }
           }
 
@@ -532,6 +530,7 @@ pipeline {
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
           }
           
+          jslAdoptionMain("reports/lumen/ci_report/xunitfinal.xml")
         }
       }
     }
@@ -553,12 +552,12 @@ pipeline {
     }
     failure {
       script {
-        gcrPostFailure()
         jslNotification('failure')
       }
     }
     aborted {
       script {
+        gcrPostFailure()
         jslNotification('aborted')
       }
     }

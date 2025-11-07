@@ -12,6 +12,7 @@ $font-family-base: 'Gotham', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 // Font size - text
+$font-size-3xl: 1.75rem; // 28px
 $font-size-xl: 1.125rem; // 18px
 $font-size-lg: 1rem; // 16px
 $font-size-md: 0.875rem; // 14px
@@ -1112,6 +1113,9 @@ $card-kpi-disabled-title-color: $color-text-muted;
 $card-kpi-icon-arrow-color: $color-teal-80;
 $card-kpi-caption-color: $color-text-muted;
 $card-kpi-metric-color: $color-teal-70;
+$card-kpi-metric-font-size: $font-size-3xl;
+$card-kpi-metric-margin-top: 0.75rem;
+$card-kpi-metric-label-margin-top: 0.3125rem;
 $card-kpi-hover-metric-color: $color-teal-80;
 $card-kpi-active-metric-color: $color-teal-80;
 $card-kpi-disabled-metric-color: $color-text-muted;
@@ -1872,7 +1876,7 @@ $popover-text-color: $color-text-base;
 $popover-max-width: 20rem;
 $popover-arrow-size: 0.75rem;
 $popover-modal-background-color: $popover-background-color;
-$popover-modal-header-background-color: $modal-header-background-color;
+$popover-modal-header-background-color: $color-teal-70;
 $popover-modal-header-background-image: $modal-header-background-image;
 $popover-modal-header-text-color: $color-text-white;
 $popover-modal-close-icon-color: $modal-close-icon-color;
@@ -2490,7 +2494,7 @@ $tooltip-max-width: 20rem;
 // Transfer list
 $transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
-$transfer-list-reset-button-color: $color-text-primary;
+$transfer-list-reset-button-color: $color-text-code;
 
 // Tags
 $tags-border-color: $color-border-base;
