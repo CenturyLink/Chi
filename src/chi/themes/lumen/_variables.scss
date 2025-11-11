@@ -1135,6 +1135,21 @@ $checkbox-label-after-top: 0.4375rem;
 $checkbox-label-indeterminate-after-top: 0.6875rem !important;
 
 // Customize panel
+$customize-panel-empty-content-align-items: center;
+$customize-panel-empty-content-display: flex;
+$customize-panel-empty-content-flex-direction: column;
+$customize-panel-empty-content-gap: 0.75rem;
+$customize-panel-empty-content-icon-background-color: $color-grey-20;
+$customize-panel-empty-content-icon-border-radius: 50%;
+$customize-panel-empty-content-icon-color: $color-grey-90;
+$customize-panel-empty-content-icon-display: flex;
+$customize-panel-empty-content-icon-height: $icon-size-sm3;
+$customize-panel-empty-content-icon-margin: 0;
+$customize-panel-empty-content-icon-width: $icon-size-sm3;
+$customize-panel-empty-content-message-font-size: $font-size-lg;
+$customize-panel-empty-content-message-line-height: $line-height-lg;
+$customize-panel-empty-icon-padding: 0.75rem;
+
 $customize-panel-border: 0.0625rem solid $color-grey-30;
 $customize-panel-border-bottom: 0.0625rem solid $color-grey-30;
 $customize-panel-content-padding-bottom: 1.5rem;
