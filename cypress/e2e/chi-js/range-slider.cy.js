@@ -41,7 +41,7 @@ describe('Range Slider', () => {
     });
   });
 
-  it.only('Test dispose method', () => {
+  it('Test dispose method', () => {
     cy.get('#baseRangeSlider')
       .should('have.class', 'chi-range-slider__thumb-overwritten');
     cy.get('#dispose-range-slider-button')
