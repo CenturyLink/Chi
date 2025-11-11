@@ -131,7 +131,7 @@ describe('chi-drawer', function() {
     });
   });
 
-  describe.only('Test open with Enter key', () => {
+  describe('Test open with Enter key', () => {
     it('Press Enter key on trigger', () => {
       cy.get('#drawer-trigger-1')
         .focus()
