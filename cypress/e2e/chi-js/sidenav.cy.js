@@ -1,3 +1,8 @@
+const drawerLiTitleSelector =
+  ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
+const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
+const drawerLiMainMenuTitleSelector =
+  ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
 const ACTIVE_CLASS = '-active';
 const CLOSE_CLASS = '-close';
 const EXPANDED_CLASS = '-expanded';
@@ -6,68 +11,63 @@ const ACCORDION_CLASSES = {
   CONTENT: 'chi-accordion__content'
 };
 const SIDENAV_LIST_CLASS = 'chi-sidenav__list';
-const drawerLiTitleSelector =
-  ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
-const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
-const drawerLiMainMenuTitleSelector =
-  ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
 };
 
 describe('Legacy Sidenav', () => {
-  before (() => {
-    cy.visit ('tests/js/sidenav.html');
+  before(() => {
+    cy.visit('tests/js/sidenav.html');
   });
 
-  beforeEach (() => {
-    cy.get ('[data-cy="sidenav-legacy"]').as ('legacySidenavSelector');
+  beforeEach(() => {
+    cy.get('[data-cy="sidenav-legacy"]').as('legacySidenavSelector');
   });
 
-  describe ('check that click on 1st level opens 2nd-level menu drawer', () => {
+  describe('check that click on 1st level opens 2nd-level menu drawer', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
-      it (`check "${menuText}" opens 2nd-level menu drawer`, () => {
-        cy.get ('@legacySidenavSelector').within (() => {
-          cy.get ('.chi-sidenav__list li')
-            .contains (menuText)
-            .as ('firstLevelElement');
-          cy.get ('@firstLevelElement')
-            .should ('have.attr', 'href')
-            .then (href => {
-              cy.get ('' + href).as ('drawer');
-              cy.get ('@firstLevelElement')
-                .click ()
-                .wait (550);
-              cy.get (`${href}.-active`).should ('be.visible');
+      it(`check "${menuText}" opens 2nd-level menu drawer`, () => {
+        cy.get('@legacySidenavSelector').within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`).should('be.visible');
             });
         });
       });
     });
   });
 
-  describe ('check that click on "X" in menu drawer closes drawer', () => {
+  describe('check that click on "X" in menu drawer closes drawer', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
-      it (`check "${menuText}" drawer closes on "X"`, () => {
-        cy.get ('@legacySidenavSelector').within (() => {
-          cy.get ('.chi-sidenav__list li')
-            .contains (menuText)
-            .as ('firstLevelElement');
+      it(`check "${menuText}" drawer closes on "X"`, () => {
+        cy.get('@legacySidenavSelector').within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
 
-          cy.get ('@firstLevelElement')
-            .should ('have.attr', 'href')
-            .then (href => {
-              cy.get ('' + href).as ('drawer');
-              cy.get ('@firstLevelElement')
-                .click ()
-                .wait (550);
-              cy.get (`${href}.-active`)
-                .should ('be.visible')
-                .within (() => {
-                  cy.get ('.-icon.-close')
-                    .click ()
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`)
+                .should('be.visible')
+                .within(() => {
+                  cy.get('.-icon.-close')
+                    .click()
                     .parents ('.chi-drawer')
-                    .should ('not.have.class', '-active');
+                    .should('not.have.class', '-active');
                 });
             });
         });
@@ -75,36 +75,36 @@ describe('Legacy Sidenav', () => {
     });
   });
 
-  describe ('check that click on 1st level opens the drawer and click on empty space in menu container closes it', () => {
+  describe('check that click on 1st level opens the drawer and click on empty space in menu container closes it', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
-      it (`check "${menuText}" clicked outside drawer closes it`, () => {
-        cy.get ('@legacySidenavSelector').within (() => {
-          cy.get ('.chi-sidenav__list li')
-            .contains (menuText)
-            .as ('firstLevelElement');
+      it(`check "${menuText}" clicked outside drawer closes it`, () => {
+        cy.get('@legacySidenavSelector').within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
 
-          cy.get ('@firstLevelElement')
-            .should ('have.attr', 'href')
-            .then (href => {
-              cy.get ('' + href).as ('drawer');
-              cy.get ('@firstLevelElement')
-                .click ()
-                .wait (550);
-              cy.get (`${href}.-active`).should ('be.visible');
-              cy.get ('.chi-sidenav__content')
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`).should('be.visible');
+              cy.get('.chi-sidenav__content')
                 .first ()
-                .click ()
-                .wait (250);
-              cy.get ('' + href)
-                .should ('not.have.class', '-active')
-                .should ('not.be.visible');
+                .click()
+                .wait(250);
+              cy.get('' + href)
+                .should('not.have.class', '-active')
+                .should('not.be.visible');
             });
         });
       });
     });
   });
 
-  describe ('Click on 2nd level menus should open 3rd level drop-downs', () => {
+  describe('Click on 2nd level menus should open 3rd level drop-downs', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
       var dropdownItems = [];
       if (menuText == '/^Active Item$/') {
@@ -113,27 +113,27 @@ describe('Legacy Sidenav', () => {
         dropdownItems = ['Title E', 'Title F'];
       }
       dropdownItems.forEach (element => {
-        it (`check "${menuText}" >   "${element}" should open Dropdown`, () => {
-          cy.get ('@legacySidenavSelector').within (() => {
-            cy.get ('.chi-sidenav__list li')
-              .contains (menuText)
-              .as ('firstLevelElement');
-            cy.get ('@firstLevelElement')
-              .should ('have.attr', 'href')
-              .then (href => {
-                cy.get ('' + href).as ('drawer');
-                cy.get ('@firstLevelElement')
-                  .click ()
-                  .wait (550);
-                cy.get (`${href}.-active`).should ('be.visible');
-                cy.get (href + drawerLiTitleSelector)
-                  .contains (element)
-                  .click ()
+        it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
+          cy.get('@legacySidenavSelector').within(() => {
+            cy.get('.chi-sidenav__list li')
+              .contains(menuText)
+              .as('firstLevelElement');
+            cy.get('@firstLevelElement')
+              .should('have.attr', 'href')
+              .then(href => {
+                cy.get('' + href).as('drawer');
+                cy.get('@firstLevelElement')
+                  .click()
+                  .wait(550);
+                cy.get(`${href}.-active`).should('be.visible');
+                cy.get(href + drawerLiTitleSelector)
+                  .contains(element)
+                  .click()
                   .parents ('li')
-                  .should ('have.class', '-expanded')
+                  .should('have.class', '-expanded')
                   .find (drawerDropDownTitle)
-                  .contains (/^Sub tab A$/)
-                  .should ('be.visible');
+                  .contains(/^Sub tab A$/)
+                  .should('be.visible');
               });
           });
         });
@@ -141,7 +141,7 @@ describe('Legacy Sidenav', () => {
     });
   });
 
-  describe ('Click on the 3rd level dropdown should close the existing opened dropdown and should expand current one', () => {
+  describe('Click on the 3rd level dropdown should close the existing opened dropdown and should expand current one', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
       var dropdownItems = [];
       if (menuText == '/^Active Item$/') {
@@ -150,30 +150,30 @@ describe('Legacy Sidenav', () => {
         dropdownItems = ['Title E', 'Title F'];
       }
       dropdownItems.forEach (element => {
-        it (`check "${menuText}" >   "${element}" should open Dropdown`, () => {
-          cy.get ('@legacySidenavSelector').within (() => {
-            cy.get ('.chi-sidenav__list li')
-              .contains (menuText)
-              .as ('firstLevelElement');
-            cy.get ('@firstLevelElement')
-              .should ('have.attr', 'href')
-              .then (href => {
-                cy.get ('' + href).as ('drawer');
-                cy.get ('@firstLevelElement')
-                  .click ()
-                  .wait (550);
-                cy.get (`${href}.-active`).should ('be.visible');
-                cy.get (href + drawerLiTitleSelector)
-                  .contains (element)
-                  .click ()
+        it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
+          cy.get('@legacySidenavSelector').within(() => {
+            cy.get('.chi-sidenav__list li')
+              .contains(menuText)
+              .as('firstLevelElement');
+            cy.get('@firstLevelElement')
+              .should('have.attr', 'href')
+              .then(href => {
+                cy.get('' + href).as('drawer');
+                cy.get('@firstLevelElement')
+                  .click()
+                  .wait(550);
+                cy.get(`${href}.-active`).should('be.visible');
+                cy.get(href + drawerLiTitleSelector)
+                  .contains(element)
+                  .click()
                   .parents ('li')
-                  .should ('have.class', '-expanded')
+                  .should('have.class', '-expanded')
                   .find (drawerDropDownTitle)
-                  .contains (/^Sub tab A$/)
-                  .should ('be.visible');
-                cy.get (href + ' ul.chi-sidenav__drawer-list')
+                  .contains(/^Sub tab A$/)
+                  .should('be.visible');
+                cy.get(href + ' ul.chi-sidenav__drawer-list')
                   .children ('.-expanded')
-                  .should ('have.length', 1);
+                  .should('have.length', 1);
               });
           });
         });
@@ -181,8 +181,8 @@ describe('Legacy Sidenav', () => {
     });
   });
 
-  describe ('Check that menu items remain active for currently open site, while browsing through navigation', () => {
-    it (
+  describe('Check that menu items remain active for currently open site, while browsing through navigation', () => {
+    it(
       'Scenario:\n' +
       '- open website at "/", and give menu 2000ms time to load\n' +
       '- click "ActiveItems" > "Title C"\n' +
@@ -191,29 +191,29 @@ describe('Legacy Sidenav', () => {
       '-verify that when clicking on Title C Drawer should close and ActiveItems has -active class',
       () => {
         let menuText = /^Active Item$/;
-        cy.get ('@legacySidenavSelector').within (() => {
-          cy.get ('.chi-sidenav__list li')
-            .contains (menuText)
-            .as ('firstLevelElement');
-          cy.get ('@firstLevelElement')
-            .should ('have.attr', 'href')
-            .then (href => {
-              cy.get ('' + href).as ('drawer');
-              cy.get ('@firstLevelElement')
-                .click ({ force: true })
-                .wait (550);
-              cy.get (href + drawerLiMainMenuTitleSelector)
-                .contains (/^Title C$/)
-                .as ('secondLevelElement')
-                .click ()
+        cy.get('@legacySidenavSelector').within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click({ force: true })
+                .wait(550);
+              cy.get(href + drawerLiMainMenuTitleSelector)
+                .contains(/^Title C$/)
+                .as('secondLevelElement')
+                .click()
                 .parents ('li')
-                .should ('have.class', '-active');
-              cy.get ('' + href)
-                .should ('not.have.class', '-active')
-                .should ('not.be.visible');
-              cy.get ('@firstLevelElement')
+                .should('have.class', '-active');
+              cy.get('' + href)
+                .should('not.have.class', '-active')
+                .should('not.be.visible');
+              cy.get('@firstLevelElement')
                 .parents ('li')
-                .should ('have.class', '-active');
+                .should('have.class', '-active');
             });
         });
       }
@@ -478,12 +478,12 @@ describe('Accordion Sidenav', () => {
 });
 
 describe('Open on hover Sidenav', () => {
-  before (() => {
-    cy.visit ('tests/js/sidenav.html');
+  before(() => {
+    cy.visit('tests/js/sidenav.html');
   });
 
-  beforeEach (() => {
-    cy.get ('[data-cy="open-on-hover-sidenav"]').as ('openOnHoverSidenavSelector');
+  beforeEach(() => {
+    cy.get('[data-cy="open-on-hover-sidenav"]').as('openOnHoverSidenavSelector');
   });
 
   describe('Test Sidenav open on hover', () => {
