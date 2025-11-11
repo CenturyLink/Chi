@@ -440,31 +440,60 @@
   }
 
   &.-alert {
-    box-shadow: $card-alert-box-shadow;
+    &:has(
+      > chi-accordion .chi-accordion,
+      > .chi-accordion 
+    ) {
 
-    &.-empty {
-      border: $card-alert-empty-border;
-
-      .chi-accordion__item {
-        &.-expanded {
+        border: $card-accordion-border;
+        box-shadow: $card-alert-box-shadow;
+        max-height: $card-alert-max-height;
+        
+        > chi-accordion .chi-accordion__item,
+        > .chi-accordion .chi-accordion__item {
+          background-color: transparent;
+        
           .chi-accordion__trigger {
-            border-bottom: $card-alert-empty-border;
-            padding: $card-alert-empty-accordion-trigger-padding;
+            max-height: $card-alert-accordion-trigger-max-height;
+            padding: $card-accordion-trigger-padding;
+          }
+          
+          &.-expanded {
+            .chi-accordion__trigger {
+              border-bottom: $card-accordion-border;
+            }
+            
+            .chi-accordion__content {
+              padding: $card-accordion-content-padding;
+
+
+              .chi-card__content-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: $card-alert-empty-content-wrapper-gap;
+                max-height: $card-alert-content-max-height;
+                overflow-y: auto;
+              }
+            }
           }
         }
+      
+        &.-empty {
+          .chi-accordion__item {
+            &.-expanded {
+              .chi-accordion__content { 
+                padding-top: $card-alert-empty-content-padding-top;
+                padding-bottom: $card-alert-empty-content-padding-bottom;
+              }
+            }
+          }
 
-        .chi-accordion__content {
-          padding-bottom: $card-alert-empty-accordion-content-padding-y;
-          padding-top: $card-alert-empty-accordion-content-padding-y;
-        }
-
-        .chi-card__caption {
           .chi-card__empty-content {
             align-items: $card-alert-empty-content-align-items;
             display: $card-alert-empty-content-display;
             flex-direction: $card-alert-empty-content-flex-direction;
             gap: $card-alert-empty-content-gap;
-
+            
             &-icon {
               background-color: $card-alert-empty-content-icon-background-color;
               border-radius: $card-alert-empty-content-icon-border-radius;
@@ -478,38 +507,37 @@
                 width: $card-alert-empty-content-icon-width; 
               }
             }
-
+            
             span {
               font-size: $card-alert-empty-content-message-font-size; 
               line-height: $card-alert-empty-content-message-line-height; 
             }
           }
         }
-      }
     }
   }
 
-  &:has(.chi-accordion) {
-    .chi-card__content {
-      padding: 0;
-    }
-  }
+  &.-accordion {
+    border: $card-accordion-border;
+    
+    > chi-accordion .chi-accordion,
+    > .chi-accordion {
 
-  .chi-accordion {
-    .chi-accordion__item {
-      background-color: transparent;
-
-      .chi-accordion__trigger {
-        padding: 1.25rem;
-      }
-
-      .chi-accordion__content {
-        padding: 0 1.25rem 1.25rem;
-      }
-
-      &.-expanded {
+      .chi-accordion__item {
+        background-color: transparent;
+        
         .chi-accordion__trigger {
-          padding-bottom: 0.5rem;
+          padding: $card-accordion-trigger-padding;
+          padding-bottom: $card-accordion-content-padding-bottom;
+        }
+        
+        .chi-accordion__content {
+          padding: $card-accordion-content-padding;
+          padding-top: $card-accordion-content-padding-top;
+          
+          .chi-card__content {
+            padding: $card-accordion-card-content-padding;
+          }
         }
       }
     }
@@ -525,9 +553,14 @@
       &.-sm {
         padding: $card-outline-header-sm-padding;
       }
+
+      &.-notifications {
+        padding: 0;
+        min-height: auto;
+      }
     }
 
-    .chi-card__content {
+    > .chi-card__content {
       background-color: $card-outline-background-color;
       border: $card-outline-border;
       border-radius: $card-outline-border-radius;

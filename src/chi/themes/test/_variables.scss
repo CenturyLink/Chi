@@ -985,10 +985,17 @@ $button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
 $button-group-border-width: $button-solid-border-width;
 
 // Card
+$card-accordion-border-width: 0.0625rem;
+$card-accordion-border: $card-accordion-border-width solid rgba($color-black, 0.12);
+$card-accordion-card-content-padding: 0;
+$card-accordion-content-padding-bottom: 0.625rem;
+$card-accordion-content-padding-top: 0;
+$card-accordion-content-padding: 1.25rem;
+$card-accordion-trigger-padding: 1.25rem;
+$card-alert-accordion-trigger-max-height: 4.0625rem;
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
-$card-alert-empty-accordion-content-padding-y: 1.875rem;
-$card-alert-empty-accordion-trigger-padding: 1.25rem;
-$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-max-height: 46.875rem;
+$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*3);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;
@@ -1002,6 +1009,9 @@ $card-alert-empty-content-icon-margin: 0;
 $card-alert-empty-content-icon-width: $icon-size-sm3;
 $card-alert-empty-content-message-font-size: $font-size-lg;
 $card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-content-padding-bottom: 1.875rem;
+$card-alert-empty-content-padding-top: 1.875rem;
+$card-alert-empty-content-wrapper-gap: 0.5rem;
 $card-alert-empty-icon-padding: 0.75rem;
 
 $card-active-border-color: $color-teal-80;
@@ -1083,9 +1093,6 @@ $card-widget-content-padding: 1.25rem;
 $card-title-font-size: $font-size-xl;
 $card-title-font-weight: $font-weight-bold;
 $card-title-line-height: $line-height-lg;
-
-$card-accordion-border: $card-content-border;
-$card-accordion-border-radius: $card-content-border-radius;
 
 $card-kpi-background-color: $color-background-white;
 $card-kpi-hover-background-color: $color-teal-10;
