@@ -52,9 +52,13 @@ const updateThemeInTests = (theme) => {
   const styleSheet = theme === 'lumen' ? 'chi.css' : `chi-${theme}.css`;
 
   const textLayoutPath = path.join(inputDir, 'layout.pug');
-  const data = fs.readFileSync(textLayoutPath, 'utf8');
+  const indexLayoutPath = path.join(inputDir, 'index.pug');
 
-  fs.writeFileSync(textLayoutPath,data.replace(/chi(-.*)?.css/, styleSheet));
+  const layoutData = fs.readFileSync(textLayoutPath, 'utf8');
+  const indexData = fs.readFileSync(indexLayoutPath, 'utf8');
+
+  fs.writeFileSync(textLayoutPath, layoutData.replace(/chi(-.*)?.css/, styleSheet));
+  fs.writeFileSync(indexLayoutPath, indexData.replace(/chi(-.*)?.css/, styleSheet));
 };
 
 const spinner = ora(`[CHI]: Building tests`).start();
