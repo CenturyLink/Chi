@@ -2,7 +2,7 @@ import { Component } from "../core/component";
 import { Util } from "../core/util.js";
 import { chi } from "../core/chi";
 import { Drawer, EVENTS as DRAWER_EVENTS } from "./drawer";
-import { Accordion } from "../components/accordion";
+import { Accordion } from './accordion';
 
 const COMPONENT_SELECTOR = '.chi-sidenav';
 const COMPONENT_TYPE = "sidenav";
@@ -723,7 +723,6 @@ class Sidenav extends Component {
   }
 
   _configureAutoClose() {
-
     const self = this;
 
     this._addEventHandler(
