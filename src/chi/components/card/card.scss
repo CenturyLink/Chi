@@ -452,8 +452,9 @@
         > chi-accordion .chi-accordion__item,
         > .chi-accordion .chi-accordion__item {
           background-color: transparent;
-        
+          
           .chi-accordion__trigger {
+            background-color: transparent;
             max-height: $card-alert-accordion-trigger-max-height;
             padding: $card-accordion-trigger-padding;
           }
@@ -527,8 +528,14 @@
         background-color: transparent;
         
         .chi-accordion__trigger {
+          background-color: transparent;
           padding: $card-accordion-trigger-padding;
-          padding-bottom: $card-accordion-content-padding-bottom;
+        }
+        
+        &.-expanded {
+          .chi-accordion__trigger {
+            padding-bottom: $card-accordion-content-padding-bottom;
+          }
         }
         
         .chi-accordion__content {
