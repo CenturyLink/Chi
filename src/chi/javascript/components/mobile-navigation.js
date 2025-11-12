@@ -15,7 +15,6 @@ const DRAWER_ITEM_LIST_CLASS = 'chi-mobile-nav__list-item-list';
 const DRAWER_ITEM_TAB_CLASS = 'chi-mobile-nav-item-tab';
 const DRAWER_ITEM_LIST_EXPANDED = '-expanded';
 const DRAWER_NAV_LIST = 'chi-mobile-nav__list';
-const MOBILE_NAV_CONTENT = 'chi-mobile-nav__content';
 const DRAWER_SUBITEM_LIST_TRIGGER_CLASS = 'chi-drawer__subitem-list-trigger';
 const DROPDOWN_TRIGGER = 'chi-dropdown__trigger';
 const FIRST_LEVEL_DRAWER_CLASS = 'chi-mobile-nav__first-level';
@@ -178,7 +177,7 @@ class MobileNav extends Component {
 
     if (accordionElem) {
       const activators = accordionElem.querySelectorAll('a');
-  
+
       Array.prototype.forEach.call(
         activators,
         (anchor) => {
