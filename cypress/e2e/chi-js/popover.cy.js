@@ -1,12 +1,12 @@
-describe('Popover', function() {
+describe('Popover', function () {
   before(() => {
-    cy.visit('tests/js/popover.html');
-    cy.fixture('chidata.json').then(data => {
+    cy.visit('tests/lumen/js/popover.html');
+    cy.fixture('chidata.json').then((data) => {
       this.chidata = data;
     });
   });
 
-  describe('Popover should be shown  when  button  clicked ', function() {
+  describe('Popover should be shown  when  button  clicked ', function () {
     it('Popover should shown on button clicked', () => {
       cy.get('[data-cy="show-popover"]')
         .click()
@@ -16,16 +16,13 @@ describe('Popover', function() {
     });
 
     it('Popover should hide  on button clicked twice', () => {
-      cy.get('[data-target="#popover-in-html"]')
-        .click()
-        .find('+ .chi-popover')
-        .should('be.not.visible');
+      cy.get('[data-target="#popover-in-html"]').click().find('+ .chi-popover').should('be.not.visible');
     });
   });
 
   describe('Popover Positioning and arrow should be matched ', () => {
     it('Popover Positioning and arrow should work in accordance', () => {
-      this.chidata.popperPositions.forEach(position => {
+      this.chidata.popperPositions.forEach((position) => {
         const getValue = `[data-cy="test-more-${position}"]`;
 
         cy.get(getValue)
@@ -37,18 +34,20 @@ describe('Popover', function() {
     });
   });
 
-  describe('Autohide and NoAutohide should work', function() {
+  describe('Autohide and NoAutohide should work', function () {
     it('popover should hide when click out side when preventAutoHide set to false', () => {
       cy.get('[data-cy="auto-hide"]')
-        .find('[data-cy="popover-6"]').as('popover')
+        .find('[data-cy="popover-6"]')
+        .as('popover')
         .click()
         .parent()
         .find('.chi-popover#chi-popover-14')
         .should('have.class', '-active');
-      cy.get("@popover")
-        .click().then(() => {
+      cy.get('@popover')
+        .click()
+        .then(() => {
           cy.get('.chi-popover#chi-popover-14').should('not.have.class', '-active');
-        }); 
+        });
     });
 
     it('popover should not hide when click out side when preventAutoHide set to true', () => {
@@ -66,7 +65,7 @@ describe('Popover', function() {
     });
   });
 
-  describe('Hide, Toggle, Show methods should work ', function() {
+  describe('Hide, Toggle, Show methods should work ', function () {
     it('Hide, show, toggle should work', () => {
       cy.get('[data-cy="show-popover-3"]')
         .as('showElement')

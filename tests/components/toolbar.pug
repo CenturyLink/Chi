@@ -1,10 +1,10 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
-  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
+  script(type="module" src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 
 block variables
   - var title = 'Toolbar'
@@ -353,3 +353,27 @@ block content
           button.chi-button.-icon.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-x(aria-hidden="true")
+
+  h3 Toolbar expandable
+  .test-toolbar-expandable.-w--100 
+    .chi-toolbar
+      .chi-accordion.-compact-title.-md
+        .chi-accordion__item.-expanded
+          button.chi-accordion__trigger
+            .chi-accordion__title Search and filter
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+            .-mx--1.-flex--grow1
+              .-d--flex.-justify-content--between.-align-items--center
+                .chi-checkbox
+                  input.chi-checkbox__input(
+                    type="checkbox"
+                    id=`checkbox-accordion-compact-title`
+                  )
+                  label.chi-checkbox__label(for=`checkbox-accordion-compact-title`) Checkbox
+                .chi-checkbox
+                  input.chi-checkbox__input(
+                    type="checkbox"
+                    id=`checkbox2-accordion-compact-title`
+                  )
+                  label.chi-checkbox__label(for=`checkbox2-accordion-compact-title`) Checkbox
+          .chi-accordion__content Item custom content

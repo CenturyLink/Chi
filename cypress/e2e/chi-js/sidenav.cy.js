@@ -1,5 +1,4 @@
-const drawerLiTitleSelector =
-  ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
+const drawerLiTitleSelector = ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
 const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
 const drawerLiMainMenuTitleSelector =
   ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
@@ -18,7 +17,7 @@ const hasClassAssertion = (el, value) => {
 
 describe('Legacy Sidenav', () => {
   before(() => {
-    cy.visit('tests/js/sidenav.html');
+    cy.visit('tests/lumen/js/sidenav.html');
   });
 
   beforeEach(() => {
@@ -29,16 +28,12 @@ describe('Legacy Sidenav', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
       it(`check "${menuText}" opens 2nd-level menu drawer`, () => {
         cy.get('@legacySidenavSelector').within(() => {
-          cy.get('.chi-sidenav__list li')
-            .contains(menuText)
-            .as('firstLevelElement');
+          cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
           cy.get('@firstLevelElement')
             .should('have.attr', 'href')
-            .then(href => {
+            .then((href) => {
               cy.get('' + href).as('drawer');
-              cy.get('@firstLevelElement')
-                .click()
-                .wait(550);
+              cy.get('@firstLevelElement').click().wait(550);
               cy.get(`${href}.-active`).should('be.visible');
             });
         });
@@ -50,17 +45,13 @@ describe('Legacy Sidenav', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
       it(`check "${menuText}" drawer closes on "X"`, () => {
         cy.get('@legacySidenavSelector').within(() => {
-          cy.get('.chi-sidenav__list li')
-            .contains(menuText)
-            .as('firstLevelElement');
+          cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
 
           cy.get('@firstLevelElement')
             .should('have.attr', 'href')
-            .then(href => {
+            .then((href) => {
               cy.get('' + href).as('drawer');
-              cy.get('@firstLevelElement')
-                .click()
-                .wait(550);
+              cy.get('@firstLevelElement').click().wait(550);
               cy.get(`${href}.-active`)
                 .should('be.visible')
                 .within(() => {
@@ -79,17 +70,13 @@ describe('Legacy Sidenav', () => {
     [/^Active Item$/, /^Menu Item$/].forEach (menuText => {
       it(`check "${menuText}" clicked outside drawer closes it`, () => {
         cy.get('@legacySidenavSelector').within(() => {
-          cy.get('.chi-sidenav__list li')
-            .contains(menuText)
-            .as('firstLevelElement');
+          cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
 
           cy.get('@firstLevelElement')
             .should('have.attr', 'href')
-            .then(href => {
+            .then((href) => {
               cy.get('' + href).as('drawer');
-              cy.get('@firstLevelElement')
-                .click()
-                .wait(550);
+              cy.get('@firstLevelElement').click().wait(550);
               cy.get(`${href}.-active`).should('be.visible');
               cy.get('.chi-sidenav__content')
                 .first ()
@@ -115,16 +102,12 @@ describe('Legacy Sidenav', () => {
       dropdownItems.forEach (element => {
         it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
           cy.get('@legacySidenavSelector').within(() => {
-            cy.get('.chi-sidenav__list li')
-              .contains(menuText)
-              .as('firstLevelElement');
+            cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
             cy.get('@firstLevelElement')
               .should('have.attr', 'href')
-              .then(href => {
+              .then((href) => {
                 cy.get('' + href).as('drawer');
-                cy.get('@firstLevelElement')
-                  .click()
-                  .wait(550);
+                cy.get('@firstLevelElement').click().wait(550);
                 cy.get(`${href}.-active`).should('be.visible');
                 cy.get(href + drawerLiTitleSelector)
                   .contains(element)
@@ -152,16 +135,12 @@ describe('Legacy Sidenav', () => {
       dropdownItems.forEach (element => {
         it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
           cy.get('@legacySidenavSelector').within(() => {
-            cy.get('.chi-sidenav__list li')
-              .contains(menuText)
-              .as('firstLevelElement');
+            cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
             cy.get('@firstLevelElement')
               .should('have.attr', 'href')
-              .then(href => {
+              .then((href) => {
                 cy.get('' + href).as('drawer');
-                cy.get('@firstLevelElement')
-                  .click()
-                  .wait(550);
+                cy.get('@firstLevelElement').click().wait(550);
                 cy.get(`${href}.-active`).should('be.visible');
                 cy.get(href + drawerLiTitleSelector)
                   .contains(element)
@@ -192,16 +171,12 @@ describe('Legacy Sidenav', () => {
       () => {
         let menuText = /^Active Item$/;
         cy.get('@legacySidenavSelector').within(() => {
-          cy.get('.chi-sidenav__list li')
-            .contains(menuText)
-            .as('firstLevelElement');
+          cy.get('.chi-sidenav__list li').contains(menuText).as('firstLevelElement');
           cy.get('@firstLevelElement')
             .should('have.attr', 'href')
-            .then(href => {
+            .then((href) => {
               cy.get('' + href).as('drawer');
-              cy.get('@firstLevelElement')
-                .click({ force: true })
-                .wait(550);
+              cy.get('@firstLevelElement').click({ force: true }).wait(550);
               cy.get(href + drawerLiMainMenuTitleSelector)
                 .contains(/^Title C$/)
                 .as('secondLevelElement')

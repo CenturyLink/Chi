@@ -1,6 +1,6 @@
-describe('chi-drawer', function() {
+describe('chi-drawer', function () {
   before(() => {
-    cy.visit('tests/js/drawer.html');
+    cy.visit('tests/lumen/js/drawer.html');
   });
 
   describe('Test open & close behavior of Left positioned Drawer', () => {
@@ -32,11 +32,7 @@ describe('chi-drawer', function() {
         .should('be.visible');
     });
     it('Click on X button closes the Drawer and check for other functionalities', () => {
-      cy.get('#drawer-5')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-5').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 
@@ -49,11 +45,7 @@ describe('chi-drawer', function() {
         .should('be.visible');
     });
     it('Click on X button closes the Drawer', () => {
-      cy.get('#drawer-7')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-7').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 
@@ -66,48 +58,32 @@ describe('chi-drawer', function() {
         .should('be.visible');
     });
     it('Click on X button closes the Drawer', () => {
-      cy.get('#drawer-9')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-9').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 
   describe('Test open & close behavior of Drawer with Backdrop', () => {
     it('Click on Drawer trigger opens the Drawer', () => {
-      cy.get('#drawer-trigger-11')
-        .click();
+      cy.get('#drawer-trigger-11').click();
       cy.get('#drawer-11')
         .parents('div')
         .should('have.class', 'chi-backdrop')
         .get('#drawer-11')
-        .should('have.css', 'bottom','0px')
+        .should('have.css', 'bottom', '0px')
         .should('be.visible');
     });
     it('Click on X button closes the Drawer', () => {
-      cy.get('#drawer-11')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-11').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 
   describe('Test open & close behavior of Drawer with Title', () => {
     it('Click on Drawer trigger opens the Drawer', () => {
-      cy.get('#drawer-trigger-13')
-        .click();
-      cy.get('#drawer-13')
-        .find('.chi-drawer__header')
-        .should('be.visible');
+      cy.get('#drawer-trigger-13').click();
+      cy.get('#drawer-13').find('.chi-drawer__header').should('be.visible');
     });
     it('Click on X button closes the Drawer', () => {
-      cy.get('#drawer-13')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-13').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 
@@ -123,11 +99,7 @@ describe('chi-drawer', function() {
         .should('be.visible');
     });
     it('Click on X button closes the Drawer', () => {
-      cy.get('#drawer-23')
-        .find('.-close')
-        .click()
-        .parents('.chi-drawer')
-        .should('not.be.visible');
+      cy.get('#drawer-23').find('.-close').click().parents('.chi-drawer').should('not.be.visible');
     });
   });
 

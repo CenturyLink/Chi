@@ -1,0 +1,74 @@
+.chi-customize-panel {
+  .chi-drawer {
+    .chi-drawer__content {
+      flex-grow: 0;
+      padding-bottom: $customize-panel-content-padding-bottom;
+
+      .chi-search__input {
+        margin-bottom: $customize-panel-search-margin-bottom;
+      }
+    }
+
+    .chi-customize-panel__items-header {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: $customize-panel-items-header-padding-bottom;
+
+      > span {
+        font-weight: $font-weight-semi-bold;
+      }
+
+      &.chi-customize-panel__header-sort {
+        align-items: center;
+      }
+
+      &.chi-customize-panel__header-add {
+        flex-direction: column;
+      }
+    }
+
+    .chi-customize-panel__items {
+      .chi-customize-panel__no-results {
+        align-items: center;
+        display: flex;
+        font-style: italic;
+        justify-content: center;
+
+        .chi-icon {
+          margin-right: $customize-panel-no-results-icon-margin-right;
+        }
+      }
+
+      .chi-customize-panel__empty-content {
+        align-items: $customize-panel-empty-content-align-items;
+        display: $customize-panel-empty-content-display;
+        flex-direction: $customize-panel-empty-content-flex-direction;
+        gap: $customize-panel-empty-content-gap;
+
+        &-icon {
+          background-color: $customize-panel-empty-content-icon-background-color;
+          border-radius: $customize-panel-empty-content-icon-border-radius;
+          display: $customize-panel-empty-content-icon-display;
+          padding: $customize-panel-empty-icon-padding;
+
+          .chi-icon {
+            color: $customize-panel-empty-content-icon-color;
+            height: $customize-panel-empty-content-icon-height;
+            margin: $customize-panel-empty-content-icon-margin;
+            width: $customize-panel-empty-content-icon-width;
+          }
+        }
+
+        span {
+          font-size: $customize-panel-empty-content-message-font-size;
+          line-height: $customize-panel-empty-content-message-line-height;
+        }
+      }
+    }
+
+    .chi-customize-panel__footer {
+      display: flex;
+      gap: $customize-panel-footer-button-gap;
+    }
+  }
+}

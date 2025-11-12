@@ -31,8 +31,8 @@
     }
 
     .chi-modal__title {
-      font-size: $font-size-lg;
-      font-weight: bold;
+      font-size: $modal-title-font-size;
+      font-weight: $modal-title-font-weight;
       line-height: $line-height-lg;
       margin: 0;
 
@@ -90,7 +90,7 @@
 
     .-close {
       position: absolute;
-      right: 0.75rem;
+      right: $modal-close-right;
       top: $modal-close-top;
 
       .chi-icon {
@@ -103,14 +103,14 @@
     font-size: $font-size-base;
     line-height: $line-height;
     overflow-y: auto;
-    padding: 1.5rem;
+    padding: $modal-content-padding;
   }
 
   &__footer {
     box-shadow: $modal-footer-box-shadow;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: $modal-footer-justify-content;
     min-height: $modal-footer-min-height;
     padding: $modal-footer-padding;
     position: relative;
@@ -153,7 +153,8 @@
 
   &.-header-image {
     .chi-modal__header {
-      background: $modal-header-graphics-background-img no-repeat right, $modal-header-background-color;
+      background: $modal-header-graphics-background-img no-repeat $modal-header-graphics-background-placement,
+        $modal-header-background-color;
     }
   }
 
@@ -163,24 +164,63 @@
     .chi-modal__header {
       background: $modal-gradient-header-background;
       padding: $modal-gradient-header-padding;
+
+      .-close {
+        right: $modal-gradient-close-right;
+        top: $modal-gradient-close-top;
+
+        &,
+        &:hover,
+        &:active {
+          background-color: transparent;
+        }
+
+        .chi-icon {
+          color: $modal-gradient-close-icon-color;
+        }
+      }
     }
 
     &.-header-image {
       .chi-modal__header {
-        background: $modal-header-graphics-background-img no-repeat right, $modal-gradient-header-background;
+        background: $modal-header-graphics-background-img no-repeat $modal-header-graphics-background-placement,
+          $modal-gradient-header-background;
       }
     }
 
     .chi-modal__title {
+      color: $modal-gradient-title-color;
       font-size: $modal-gradient-title-font-size;
       line-height: $modal-gradient-title-line-height;
       margin-bottom: $modal-gradient-title-margin-bottom;
     }
 
     .chi-modal__subtitle {
+      color: $modal-gradient-subtitle-color;
       font-size: $modal-gradient-subtitle-font-size;
       line-height: $modal-gradient-subtitle-line-height;
       font-weight: $modal-gradient-subtitle-font-weight;
+    }
+  }
+
+  &.-full-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: none;
+    width: 100%;
+
+    &.-animated.-transitioning {
+      display: flex;
+    }
+
+    .chi-modal__header,
+    .chi-modal__footer {
+      flex-shrink: 0;
+    }
+
+    .chi-modal__content {
+      flex-grow: 1;
     }
   }
 }

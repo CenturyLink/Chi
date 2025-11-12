@@ -3,22 +3,38 @@
 
 .chi-search {
   &__input {
-    ~ .chi-button,
+    ~ .chi-button.-icon,
     ~ chi-button {
-      &.-icon {
-        &.-flat,
-        &.-close {
-          position: absolute;
-        }
+      &[variant='flat'],
+      &[type='close'],
+      &.-flat,
+      &.-close {
+        position: absolute;
+      }
 
-        &.-flat {
-          right: 0;
-          top: $search-input-md-icon-top;
-        }
+      &.-flat,
+      &[variant='flat'] {
+        right: 0;
+        top: $search-input-md-icon-top;
 
-        &.-close {
-          right: $search-input-md-close-right;
-          top: $search-input-md-close-top;
+        &:active {
+          box-shadow: $search-input-icon-active-box-shadow;
+          background-color: $search-input-icon-active-background-color;
+        }
+        
+        &.-disabled {
+          background-color: $search-input-icon-disabled-background-color;
+        }
+      }
+
+      &[type='close']:not([disabled]),
+      &.-close:not(.-disabled) {
+        right: $search-input-md-close-right;
+        top: $search-input-md-close-top;
+
+        &:active {
+          background-color: $search-input-icon-active-background-color;
+          box-shadow: $search-input-icon-active-box-shadow;
         }
       }
     }
@@ -43,18 +59,18 @@
           &.-xs {
             padding-right: 3.5rem;
 
-            ~ .chi-button,
+            ~ .chi-button.-icon,
             ~ chi-button {
-              &.-icon {
-                &.-flat {
-                  right: 0.25rem;
-                  top: $search-input-xs-icon-top;
-                }
+              &.-flat,
+              &[variant='flat'] {
+                right: 0.25rem;
+                top: $search-input-xs-icon-top;
+              }
 
-                &.-close {
-                  right: $search-input-xs-close-right;
-                  top: $search-input-xs-close-top;
-                }
+              &.-close,
+              &[type='close'] {
+                right: $search-input-xs-close-right;
+                top: $search-input-xs-close-top;
               }
             }
           }
@@ -62,46 +78,44 @@
           &.-sm {
             padding-right: 3.5rem;
 
-            ~ .chi-button,
+            ~ .chi-button.-icon,
             ~ chi-button {
-              &.-icon {
-                &.-flat {
-                  right: 0.25rem;
-                  top: $search-input-sm-icon-top;
-                }
+              &.-flat,
+              &[variant='flat'] {
+                right: 0.25rem;
+                top: $search-input-sm-icon-top;
+              }
 
-                &.-close {
-                  right: $search-input-sm-close-right;
-                  top: $search-input-sm-close-top;
-                }
+              &.-close,
+              &[type='close'] {
+                right: $search-input-sm-close-right;
+                top: $search-input-sm-close-top;
               }
             }
           }
 
           &.-lg {
-            ~ .chi-button,
+            ~ .chi-button.-icon,
             ~ chi-button {
-              &.-icon {
-                top: $search-input-lg-icon-top;
+              top: $search-input-lg-icon-top;
 
-                &.-close {
-                  right: $search-input-lg-close-right;
-                  top: $search-input-lg-close-top;
-                }
+              &.-close,
+              &[type='close'] {
+                right: $search-input-lg-close-right;
+                top: $search-input-lg-close-top;
               }
             }
           }
 
           &.-xl {
-            ~ .chi-button,
+            ~ .chi-button.-icon,
             ~ chi-button {
-              &.-icon {
-                top: $search-input-xl-icon-top;
+              top: $search-input-xl-icon-top;
 
-                &.-close {
-                  right: $search-input-xl-close-right;
-                  top: $search-input-xl-close-top;
-                }
+              &.-close,
+              &[type='close'] {
+                right: $search-input-xl-close-right;
+                top: $search-input-xl-close-top;
               }
             }
           }

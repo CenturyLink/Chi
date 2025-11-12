@@ -23,6 +23,18 @@ $monday-starting-week: (
 .sc-chi-date-picker {
   &.-disabled {
     pointer-events: none;
+
+    .chi-input__wrapper {
+      .chi-icon {
+        color: $date-picker-disabled-icon-color;
+      }
+    }
+  }
+
+  .chi-input__wrapper {
+    .chi-icon {
+      color: $date-picker-icon-color;
+    }
   }
 
   chi-popover {
@@ -37,10 +49,10 @@ $monday-starting-week: (
   &__day {
     border-radius: $date-picker-day-border-radius;
     font-weight: $font-weight-normal;
-    line-height: 2rem;
+    line-height: $date-picker-day-line-height;
     text-align: center;
     transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    width: calc(100% / 7);
+    width: $date-picker-day-width;
 
     &.-active {
       background-color: $date-picker-day-active-background-color;
@@ -48,7 +60,7 @@ $monday-starting-week: (
       font-weight: $font-weight-semi-bold;
 
       &.-today::after {
-        background-color: $date-picker-day-background-color;
+        background-color: $date-picker-day-today-accent-background-color-active;
       }
     }
 
@@ -66,7 +78,7 @@ $monday-starting-week: (
 
       &::after {
         background-color: $date-picker-day-today-accent-background-color;
-        bottom: 3px;
+        bottom: $date-picker-day-today-bottom;
         content: '';
         height: 4px;
         left: calc(50% - 2px);
@@ -132,6 +144,10 @@ $monday-starting-week: (
     margin-left: 0;
   }
 
+  &__days {
+    gap: $date-picker-days-gap;
+  }
+
   &__days,
   &__day-names {
     display: flex;
@@ -159,8 +175,8 @@ $monday-starting-week: (
   }
 
   & + .chi-time-picker {
-    box-shadow: inset 0.0625rem 0 0 0 $time-picker-border-color;
-    margin-left: 0.75rem;
+    box-shadow: $date-picker-time-picker-box-shadow;
+    margin-left: $date-picker-time-picker-margin-left;
   }
 }
 
@@ -171,16 +187,17 @@ $monday-starting-week: (
     }
 
     .chi-time-picker {
-      box-shadow: inset 0.0625rem 0 0 0 $time-picker-border-color;
-      margin-left: 0.75rem;
-      padding: 0.5rem;
+      box-shadow: $date-picker-time-picker-box-shadow;
+      margin-left: $date-picker-time-picker-margin-left;
+      padding: $date-picker-time-picker-padding;
     }
   }
 }
 
 .chi-popover {
   .chi-datepicker {
-    padding: 0.5rem;
+    margin: $date-picker-margin;
+    padding: $date-picker-padding;
   }
 
   &__datepicker,

@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Popover'
   - var sides = ['top', 'right', 'bottom', 'left'];
@@ -94,15 +94,18 @@ block content
           p.chi-popover__text
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-  each side in moreSides
-    div(class=`test-gradient-${side}`)
-      span.-text--h2=`Gradient popper side ${side}`
-      .-d--flex.-justify-content--center.-align-items--center(style="margin: 120px 220px;")
-        button.-gradient-popover.chi-button.autostart(
+  div(class=`test-gradient`)
+    span.-text--h2=`Gradient type`
+
+    each side in moreSides
+      div(style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        button.-gradient-popover.chi-button.autostart.-justify-content--center(
           id="test-gradient-" + side,
+          style="margin: 120px 220px;",
           data-position=side,
           data-popover-content=`
-            <button class="chi-button -xs -icon -close" aria-label="Close">
+            <button class="chi-button -xs -icon -close" aria-label="Close" style="top: 1.25rem !important;">
               <div class="chi-button__content">
                 <div class="chi-alert__icon chi-icon">
                   <svg>

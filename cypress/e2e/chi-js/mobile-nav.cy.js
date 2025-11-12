@@ -1,26 +1,20 @@
-const drawerDropDownItem   = '.chi-mobile-nav__list-item-list ul.chi-tabs li';
+const drawerDropDownItem = '.chi-mobile-nav__list-item-list ul.chi-tabs li';
 
-describe('mobile-nav-menu', function() {
+describe('mobile-nav-menu', function () {
   before(() => {
-    cy.visit('tests/js/mobile-nav.html');
+    cy.visit('tests/lumen/js/mobile-nav.html');
   });
 
   describe('mobile-navigation-interaction-trigger button is present', () => {
     it('mobile-navigation-interaction-trigger button should be visible', () => {
-      cy.get('#mobile-navigation-interaction-trigger')
-        .should('be.visible');
+      cy.get('#mobile-navigation-interaction-trigger').should('be.visible');
     });
   });
 
   describe('click on mobile-navigation-interaction-trigger button opens the drawer', () => {
     it('click mobile-navigation-interaction-trigger opens chi-drawer ', () => {
-      cy.get('#mobile-navigation-interaction-trigger')
-        .click()
-        .wait(1000);
-      cy.get('.chi-drawer')
-        .should('have.class', '-left')
-        .should('have.class', '-active')  
-        .should('be.visible');
+      cy.get('#mobile-navigation-interaction-trigger').click().wait(1000);
+      cy.get('.chi-drawer').should('have.class', '-left').should('have.class', '-active').should('be.visible');
     });
   });
 
@@ -73,8 +67,8 @@ describe('mobile-nav-menu', function() {
         .click();
       cy.get('#second-level-1')
         .find('.chi-mobile-nav__list li:nth-child(3)')
-        .should('have.class','-active')
-        .should('have.class','-expanded')
+        .should('have.class', '-active')
+        .should('have.class', '-expanded')
         .find(drawerDropDownItem)
         .contains('Sub tab A')
         .should('be.visible')
@@ -96,8 +90,8 @@ describe('mobile-nav-menu', function() {
         .click();
       cy.get('#second-level-1')
         .find('.chi-mobile-nav__list li:nth-child(3)')
-        .should('have.class','-active')
-        .should('have.class','-expanded')
+        .should('have.class', '-active')
+        .should('have.class', '-expanded')
         .find(drawerDropDownItem)
         .contains('Sub tab A')
         .should('be.visible')
@@ -151,12 +145,8 @@ describe('mobile-nav-menu', function() {
 
   describe('Click on 2nd level menus should open 3rd level drop-downs', () => {
     it(`check opening of 3rd level drop-downs`, () => {
-      cy.get('#second-level-1')
-        .find('.chi-mobile-nav__list li')
-        .contains('Title A')
-        .as('secondLevelElement');
-      cy.get('@secondLevelElement')
-        .click()
+      cy.get('#second-level-1').find('.chi-mobile-nav__list li').contains('Title A').as('secondLevelElement');
+      cy.get('@secondLevelElement').click();
       cy.get(drawerDropDownItem)
         .contains('Sub tab A')
         .should('be.visible')
@@ -328,7 +318,7 @@ describe('mobile-nav-menu', function() {
       cy.get('#second-level-1') 
         .should('not.have.class', '-active');
     });
-  }); 
+  });
 
   describe('Check that click on "X" in second level drawer closes drawer', () => {
     it('check second level drawer closes on "X"', () => {
@@ -338,7 +328,9 @@ describe('mobile-nav-menu', function() {
       cy.get('#second-level-1')
         .find('.-close')
         .click()
-        .parents('.chi-drawer')
+        .should('have.class', '-closed')
+        .children()
+        .find('.chi-drawer')
         .should('not.have.class', '-active');
     });
   });

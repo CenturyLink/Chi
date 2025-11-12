@@ -8,6 +8,7 @@ $font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 // Font size - text
+$font-size-3xl: 1.75rem; // 28px
 $font-size-xl: 1.125rem; // 18px
 $font-size-lg: 1rem; // 16px
 $font-size-md: 0.875rem; // 14px
@@ -211,6 +212,7 @@ $color-border-primary:                $color-yellow-40;
 $color-border-primary-light:          $color-yellow-30;
 $color-border-primary-dark:           $color-yellow-50;
 $color-border-primary-darker:         $color-yellow-50;
+$color-border-secondary-light:        $color-yellow-30;
 $color-border-secondary:              $color-yellow-40;
 $color-border-secondary-dark:         $color-yellow-50;
 $color-border-secondary-darker:       $color-yellow-70;
@@ -327,6 +329,7 @@ $accordion-item-level-4-background-color:   $color-background-white;
 $accordion-item-level-5-background-color:   $color-grey-10;
 $accordion-link-color:                      $link-color;
 $accordion-link-hover-color:                $link-hover-color;
+$accordion-link-margin-left:                0.25rem;
 $accordion-sm-item-font-size:               $font-size-md;
 $accordion-sm-item-line-height:             1.25rem;
 $accordion-sm-item-padding:                 0.625rem 1rem;
@@ -422,13 +425,21 @@ $alert-sm-text-line-height:                 $line-height;
 // App layout
 $app-layout-background-color:               $color-background-base;
 $app-layout-header-background-color:        $color-yellow-30;
+$app-layout-legacy-header-background-color: $app-layout-header-background-color;
 $app-layout-header-title-color:             $color-text-base;
-$app-layout-header-line-height:             $line-height-xl;
+$app-layout-header-line-height:             2.5rem;
 $app-layout-sub-header-title-color:         $color-text-muted;
 $app-layout-sub-header-font-size:           $font-size-xl;
 $app-layout-sub-header-font-weight:         $font-weight-semi-bold;
 $app-layout-sub-header-border-color:        $color-grey-50;
 $app-layout-header-background-title-color:  inherit;
+$app-layout-legacy-header-background-title-color: inherit;
+$app-layout-header-background-subtitle-color: inherit;
+$app-layout-header-title-font-size:         2.25rem;
+$app-layout-header-title-font-weight:       $font-weight-semi-bold;
+$app-layout-header-card-background-color:   $color-background-white;
+$app-layout-header-card-border:             0.0625rem solid rgba($color-black, 0.17);
+$app-layout-header-card-border-radius:      0.5rem;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -475,59 +486,97 @@ $backdrop-inverse-background-color:         rgba($color-white, 0.8);
 // Badge
 $badge-background-color:                    $color-background-white;
 $badge-border-color:                        $color-border-base-dark;
+$badge-border-radius:                       2em;
 $badge-icon-color:                          $color-icon-base;
+$badge-align-items:                         center;
+$badge-box-shadow:                          0 1px 1px 0 rgba($color-black, 0.04);
+$badge-font-weight:                         $font-weight-semi-bold;
+$badge-line-height:                         $line-height;
+$badge-sm-line-height:                      $badge-line-height;
+$badge-xs-line-height:                      $line-height-sm;
+$badge-padding:                             0.0625rem 0.5em;
+$badge-sm-padding:                          0 0.375rem;
+$badge-text-align:                          center;
+$badge-white-space:                         nowrap;
 $badge-primary-background-color:            $color-background-primary;
-$badge-primary-border-color:                $color-border-primary;
+$badge-primary-border-color:                $color-background-primary;
 $badge-primary-text-color:                  $color-text-black;
 $badge-primary-icon-color:                  $color-text-black;
+$badge-outline-primary-border-color:        $color-border-primary;
+$badge-outline-primary-text-color:          $color-text-primary;
+$badge-outline-primary-icon-color:          $color-text-primary;
 $badge-flat-primary-text-color:             $color-text-primary;
 $badge-flat-primary-icon-color:             $color-text-primary;
 $badge-secondary-background-color:          $color-background-secondary;
-$badge-secondary-border-color:              $color-border-secondary;
+$badge-secondary-border-color:              $color-background-secondary;
 $badge-secondary-text-color:                $color-text-base;
 $badge-secondary-icon-color:                $color-text-base;
+$badge-outline-secondary-border-color:      $color-border-secondary;
+$badge-outline-secondary-text-color:        $color-text-secondary;
+$badge-outline-secondary-icon-color:        $color-text-secondary;
 $badge-flat-secondary-text-color:           $color-text-secondary;
 $badge-flat-secondary-icon-color:           $color-text-secondary;
 $badge-light-background-color:              $color-background-white;
 $badge-light-border-color:                  $color-border-white;
 $badge-light-text-color:                    $color-text-base;
 $badge-light-icon-color:                    $color-icon-base;
+$badge-outline-light-border-color:          $color-border-white;
+$badge-outline-light-text-color:            $color-text-white;
+$badge-outline-light-icon-color:            $color-text-white;
 $badge-flat-light-text-color:               $color-text-white;
 $badge-flat-light-icon-color:               $color-text-white;
 $badge-dark-background-color:               $color-background-dark;
-$badge-dark-border-color:                   $color-border-dark;
+$badge-dark-border-color:                   $color-background-dark;
 $badge-dark-text-color:                     $color-text-white;
 $badge-dark-icon-color:                     $color-icon-white;
+$badge-outline-dark-border-color:           $color-border-dark;
+$badge-outline-dark-text-color:             $color-text-base;
+$badge-outline-dark-icon-color:             $color-icon-base;
 $badge-flat-dark-text-color:                $color-text-base;
 $badge-flat-dark-icon-color:                $color-icon-base;
 $badge-success-background-color:            $color-background-success;
-$badge-success-border-color:                $color-border-success;
+$badge-success-border-color:                $color-background-success;
 $badge-success-text-color:                  $color-text-white;
 $badge-success-icon-color:                  $color-icon-white;
+$badge-outline-success-border-color:        $color-border-success;
+$badge-outline-success-text-color:          $color-text-success;
+$badge-outline-success-icon-color:          $color-icon-success;
 $badge-flat-success-text-color:             $color-text-success;
 $badge-flat-success-icon-color:             $color-icon-success;
 $badge-danger-background-color:             $color-background-danger;
-$badge-danger-border-color:                 $color-border-danger;
+$badge-danger-border-color:                 $color-background-danger;
 $badge-danger-text-color:                   $color-text-white;
 $badge-danger-icon-color:                   $color-icon-white;
+$badge-outline-danger-border-color:         $color-border-danger;
+$badge-outline-danger-text-color:           $color-text-danger;
+$badge-outline-danger-icon-color:           $color-icon-danger;
 $badge-flat-danger-text-color:              $color-text-danger;
 $badge-flat-danger-icon-color:              $color-icon-danger;
 $badge-warning-background-color:            $color-background-warning;
-$badge-warning-border-color:                $color-border-warning;
+$badge-warning-border-color:                $color-background-warning;
 $badge-warning-text-color:                  $color-text-white;
 $badge-warning-icon-color:                  $color-icon-white;
+$badge-outline-warning-border-color:        $color-border-warning;
+$badge-outline-warning-text-color:          $color-text-warning;
+$badge-outline-warning-icon-color:          $color-icon-warning;
 $badge-flat-warning-text-color:             $color-text-warning;
 $badge-flat-warning-icon-color:             $color-icon-warning;
 $badge-info-background-color:               $color-background-info;
-$badge-info-border-color:                   $color-border-info;
+$badge-info-border-color:                   $color-background-info;
 $badge-info-text-color:                     $color-text-white;
 $badge-info-icon-color:                     $color-icon-white;
+$badge-outline-info-border-color:           $color-border-info;
+$badge-outline-info-text-color:             $color-text-info;
+$badge-outline-info-icon-color:             $color-icon-info;
 $badge-flat-info-text-color:                $color-text-info;
 $badge-flat-info-icon-color:                $color-icon-info;
 $badge-muted-background-color:              $color-grey-60;
 $badge-muted-border-color:                  $color-grey-60;
 $badge-muted-text-color:                    $color-text-white;
 $badge-muted-icon-color:                    $color-icon-white;
+$badge-outline-muted-border-color:          $color-border-muted;
+$badge-outline-muted-text-color:            $color-text-muted;
+$badge-outline-muted-icon-color:            $color-icon-muted;
 $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
 
@@ -535,6 +584,9 @@ $badge-accent-1-background-color:           $color-red-50;
 $badge-accent-1-border-color:               $color-red-50;
 $badge-accent-1-text-color:                 $color-text-white;
 $badge-accent-1-icon-color:                 $color-icon-white;
+$badge-outline-accent-1-border-color:       $color-red-50;
+$badge-outline-accent-1-text-color:         $color-red-50;
+$badge-outline-accent-1-icon-color:         $color-red-50;
 $badge-flat-accent-1-text-color:            $color-red-50;
 $badge-flat-accent-1-icon-color:            $color-red-50;
 
@@ -542,6 +594,9 @@ $badge-accent-2-background-color:           $color-orange-60;
 $badge-accent-2-border-color:               $color-orange-60;
 $badge-accent-2-text-color:                 $color-text-white;
 $badge-accent-2-icon-color:                 $color-icon-white;
+$badge-outline-accent-2-border-color:       $color-orange-60;
+$badge-outline-accent-2-text-color:         $color-orange-60;
+$badge-outline-accent-2-icon-color:         $color-orange-60;
 $badge-flat-accent-2-text-color:            $color-orange-60;
 $badge-flat-accent-2-icon-color:            $color-orange-60;
 
@@ -549,6 +604,9 @@ $badge-accent-3-background-color:           $color-orange-50;
 $badge-accent-3-border-color:               $color-orange-50;
 $badge-accent-3-text-color:                 $color-text-white;
 $badge-accent-3-icon-color:                 $color-icon-white;
+$badge-outline-accent-3-border-color:       $color-orange-50;
+$badge-outline-accent-3-text-color:         $color-orange-50;
+$badge-outline-accent-3-icon-color:         $color-orange-50;
 $badge-flat-accent-3-text-color:            $color-orange-50;
 $badge-flat-accent-3-icon-color:            $color-orange-50;
 
@@ -556,6 +614,9 @@ $badge-accent-4-background-color:           $color-orange-40;
 $badge-accent-4-border-color:               $color-orange-40;
 $badge-accent-4-text-color:                 $color-text-white;
 $badge-accent-4-icon-color:                 $color-icon-white;
+$badge-outline-accent-4-border-color:       $color-orange-40;
+$badge-outline-accent-4-text-color:         $color-orange-40;
+$badge-outline-accent-4-icon-color:         $color-orange-40;
 $badge-flat-accent-4-text-color:            $color-orange-40;
 $badge-flat-accent-4-icon-color:            $color-orange-40;
 
@@ -563,8 +624,17 @@ $badge-accent-5-background-color:           $color-yellow-30;
 $badge-accent-5-border-color:               $color-yellow-30;
 $badge-accent-5-text-color:                 $color-text-base;
 $badge-accent-5-icon-color:                 $color-icon-base;
+$badge-outline-accent-5-border-color:       $color-yellow-30;
+$badge-outline-accent-5-text-color:         $color-yellow-30;
+$badge-outline-accent-5-icon-color:         $color-yellow-30;
 $badge-flat-accent-5-text-color:            $color-yellow-30;
 $badge-flat-accent-5-icon-color:            $color-yellow-30;
+
+$badge-notification-background-color:       $color-background-danger;
+$badge-notification-border-color:           $color-background-danger;
+$badge-notification-border-radius:          2em;
+$badge-notification-text-color:             $color-text-white;
+$badge-notification-icon-color:             $color-icon-white;
 
 // Bulk actions
 $bulk-actions-background-color:             $color-yellow-40;
@@ -640,10 +710,15 @@ $button-flat-text-color:                    inherit;
 $button-flat-icon-color:                    inherit;
 $button-float-border-color:                 $color-grey-40;
 $button-float-hover-border-color:           $color-grey-40;
+$button-float-disabled-icon-color:          $color-icon-muted;
+$button-float-disabled-background-color:    $color-background-base-dark;
+$button-float-disabled-border-color:        $color-border-base-dark;
 $button-close-background-color:             transparent;
-$button-close-border-color:                 transparent;
+$button-close-hover-background-color:       transparent;
+$button-close-active-background-color:      transparent;
 $button-close-icon-color:                   $color-icon-primary;
 $button-close-hover-icon-opacity:           $opacity-80;
+$button-close-disabled-border-color:        $color-border-base-dark;
 
 $button-primary-solid-background-color:     $color-background-primary;
 $button-primary-solid-border-color:         $color-border-primary;
@@ -670,6 +745,15 @@ $button-primary-flat-hover-border-color:    transparent;
 $button-primary-flat-active-border-color:   transparent;
 $button-primary-flat-hover-background-color: transparent;
 $button-primary-flat-active-background-color: transparent;
+
+$button-primary-disabled-background-color: null;
+$button-primary-disabled-border-color: null;
+$button-primary-disabled-text-color: null;
+$button-primary-disabled-icon-color: null;
+$button-secondary-disabled-background-color: null;
+$button-secondary-disabled-border-color: null;
+$button-secondary-disabled-icon-color: null;
+$button-secondary-disabled-text-color: null;
 
 $button-secondary-solid-background-color:     $color-background-secondary;
 $button-secondary-solid-border-color:         $color-border-secondary;
@@ -704,7 +788,7 @@ $button-dark-solid-text-color:              $color-text-white;
 $button-dark-solid-hover-background-color:  $color-background-black;
 $button-dark-solid-hover-border-color:      $color-border-black;
 $button-dark-solid-active-background-color: $color-background-black;
-$button-dark-solid-active-border-color:     $color-border-black;
+$button-dark-solid-active-border-color:     transparent;
 $button-dark-solid-focus-outline:           $button-solid-focus-outline;
 $button-dark-outline-background-color:      transparent;
 $button-dark-outline-text-color:            $color-text-base;
@@ -724,11 +808,11 @@ $button-dark-flat-hover-background-color:   transparent;
 $button-dark-flat-active-background-color:  transparent;
 
 $button-danger-solid-background-color:      $color-background-danger;
-$button-danger-solid-border-color:          $color-border-danger;
+$button-danger-solid-border-color:          transparent;
 $button-danger-solid-border-radius:         $button-border-radius;
 $button-danger-solid-text-color:            $color-text-white;
 $button-danger-solid-hover-background-color: $color-background-danger-dark;
-$button-danger-solid-hover-border-color:    $color-border-danger-dark;
+$button-danger-solid-hover-border-color:    transparent;
 $button-danger-solid-active-background-color: $color-background-danger-darker;
 $button-danger-solid-active-border-color:   $color-border-danger-darker;
 $button-danger-solid-focus-outline:         $button-solid-focus-outline;
@@ -825,6 +909,8 @@ $button-icon-xl-padding:                    1.0625rem;
 $button-icon-xl-height:                     1.25rem;
 $button-icon-xl-width:                      1.25rem;
 
+$button-labeled-icon-padding: null;
+
 // Button group
 $button-group-horizontal-xs-padding:        1rem;
 $button-group-horizontal-xs-icon-padding:   $button-icon-xs-padding;
@@ -850,40 +936,140 @@ $button-group-vertical-xl-icon-padding:     $button-icon-xl-padding;
 $button-group-border-width:                 $button-solid-border-width;
 
 // Card
-$card-background-color:                     $color-grey-10;
-$card-border:                               none;
-$card-border-radius:                        0;
+$card-accordion-border-width: 0.0625rem;
+$card-accordion-border: $card-accordion-border-width solid rgba($color-black, 0.12);
+$card-accordion-card-content-padding: 0;
+$card-accordion-content-padding-bottom: 0.625rem;
+$card-accordion-content-padding-top: 0;
+$card-accordion-content-padding: 1.25rem;
+$card-accordion-trigger-padding: 1.25rem;
+$card-alert-accordion-trigger-max-height: 4.0625rem;
+$card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-alert-max-height: 46.875rem;
+$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*3);
+$card-alert-empty-content-align-items: center;
+$card-alert-empty-content-display: flex;
+$card-alert-empty-content-flex-direction: column;
+$card-alert-empty-content-gap: 0.75rem;
+$card-alert-empty-content-icon-background-color: $color-grey-20;
+$card-alert-empty-content-icon-border-radius: 50%;
+$card-alert-empty-content-icon-color: $color-grey-90;
+$card-alert-empty-content-icon-display: flex;
+$card-alert-empty-content-icon-height: $icon-size-sm3;
+$card-alert-empty-content-icon-margin: 0;
+$card-alert-empty-content-icon-width: $icon-size-sm3;
+$card-alert-empty-content-message-font-size: $font-size-lg;
+$card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-content-padding-bottom: 1.875rem;
+$card-alert-empty-content-padding-top: 1.875rem;
+$card-alert-empty-content-wrapper-gap: 0.5rem;
+$card-alert-empty-icon-padding: 0.75rem;
+
 $card-active-border-color:                  $color-border-primary;
-$card-active-title-text-color:              $color-text-primary;
 $card-active-icon-color:                    $color-text-primary;
+$card-active-title-text-color:              $color-text-primary;
+$card-background-color:                     $color-grey-10;
+$card-border-radius:                        0;
+$card-border:                               none;
+$card-content-border-radius:                $card-border-radius;
+$card-content-border:                       none;
+$card-content-footer-border-bottom-radius:  0;
+$card-content-footer-border-bottom:         0;
+$card-content-padding:                      2rem;
+$card-content-title-padding-bottom:         0;
+$card-empty-border-color:                   rgba($color-black, 0.12);
+$card-empty-icon-color:                     $color-text-muted-light;
+$card-eyebrow-font-size:                    $font-size-md;
+$card-eyebrow-font-weight:                  $font-weight-normal;
+$card-eyebrow-line-height:                  $line-height-lg;
+$card-eyebrow-margin-bottom:                0.3125rem;
+$card-footer-border-bottom-radius:          0;
+$card-footer-border-color:                  rgba($color-black, 0.12);
+$card-footer-border-top:                    0;
+$card-footer-border:                        none;
+$card-footer-min-height:                    2rem;
+$card-footer-padding:                       1rem;
 $card-header-background-color:              $color-background-white;
 $card-header-border-color:                  transparent;
 $card-header-box-shadow:                    none;
+$card-header-min-height:                    2rem;
 $card-header-padding:                       0.5rem 0;
 $card-header-sm-padding:                    0.5rem 1rem;
-$card-header-min-height:                    2rem;
-$card-footer-border-color:                  rgba($color-black, 0.12);
-$card-footer-padding:                       1rem;
-$card-footer-min-height:                    2rem;
-$card-empty-border-color:                   rgba($color-black, 0.12);
-$card-empty-icon-color:                     $color-text-muted-light;
-$card-content-padding:                      2rem;
-$card-tabs-padding:                         1rem 2rem;
-$card-tabs-border-bottom:                   inset 0 -0.125rem 0 0 $color-border-base;
+$card-hero-border-radius:                   0;
+$card-hero-width:                           100%;
 $card-highlight-background-color:           $color-background-secondary-light;
 $card-highlight-border-color:               $color-yellow-30;
 $card-highlight-header-background-color:    $color-background-white;
+$card-tabs-border-bottom:                   inset 0 -0.125rem 0 0 $color-border-base;
+$card-tabs-padding:                         1rem 2rem;
 
 $card-widget-background-color:              $color-grey-10;
 $card-widget-border:                        0.0625rem solid $color-grey-15;
+$card-widget-border-radius:                 $card-border-radius;
+$card-widget-header-content-padding-top:    0;
+$card-widget-header-padding:                1rem;
+$card-widget-header-border:                 none;
+$card-widget-header-border-bottom:          none;
+$card-widget-header-border-radius:          0;
+$card-widget-header-sm-padding:             0.75rem 1rem;
 $card-widget-title-font-size:               $font-size-7;
 $card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-border:                none;
+$card-widget-content-border-radius:         0;
 $card-widget-content-padding:               1rem;
-$card-widget-header-sm-padding:             0.75rem 1rem;
+
+$card-outline-background-color:             $card-background-color;
+$card-outline-border:                       $card-border;
+$card-outline-border-radius:                $card-border-radius;
+$card-outline-header-background-color:      $card-header-background-color;
+$card-outline-header-box-shadow:            $card-header-box-shadow;
+$card-outline-header-padding:               $card-header-padding;
+$card-outline-header-sm-padding:            $card-header-sm-padding;
+$card-outline-hero-border-radius:           $card-hero-border-radius;
+$card-outline-content-padding:              $card-content-padding;
+$card-outline-content-title-padding-bottom: $card-content-title-padding-bottom;
+$card-outline-footer-border-bottom-radius:  $card-footer-border-bottom-radius;
+$card-outline-footer-padding:               $card-footer-padding;
+
+$card-outline-widget-background-color:      $card-widget-background-color;
+$card-outline-widget-border:                $card-widget-border;
+$card-outline-widget-border-radius:         $card-widget-border-radius;
+$card-outline-widget-header-border-radius:  $card-widget-header-border-radius;
+$card-outline-widget-header-padding:        $card-widget-header-padding;
+$card-outline-widget-header-sm-padding:     $card-widget-header-sm-padding;
+$card-outline-widget-title-font-size:       $card-widget-title-font-size;
+$card-outline-widget-title-font-weight:     $card-widget-title-font-weight;
 
 $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
 $card-title-line-height:                    $line-height-lg;
+
+
+$card-kpi-background-color:                 $color-background-white;
+$card-kpi-hover-background-color:           $color-background-primary-lighter;
+$card-kpi-active-background-color:          $color-background-primary-light;
+$card-kpi-disabled-background-color:        $color-background-white;
+$card-kpi-border:                           0.0625rem solid rgba($color-black, 0.17);
+$card-kpi-hover-border:                     0.0625rem solid $color-border-primary;
+$card-kpi-active-border:                    0.0625rem solid $color-border-primary;
+$card-kpi-disabled-border:                  $card-kpi-border;
+$card-kpi-box-shadow:                       0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-hover-box-shadow:                 inset 0 0 0 0.0625rem $color-border-primary, 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-active-box-shadow:                inset 0 0 0 0.0625rem $color-border-primary, 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
+$card-kpi-disabled-box-shadow:              none;
+$card-kpi-title-color:                      $color-text-primary;
+$card-kpi-hover-title-color:                $color-text-primary-dark;
+$card-kpi-active-title-color:               $color-text-primary-dark;
+$card-kpi-disabled-title-color:             $color-text-muted;
+$card-kpi-icon-arrow-color:                 $color-icon-base;
+$card-kpi-caption-color:                    $color-text-muted;
+$card-kpi-metric-color:                     $color-text-primary;
+$card-kpi-metric-font-size:                 $font-size-3xl;
+$card-kpi-metric-margin-top:                0.75rem;
+$card-kpi-metric-label-margin-top:          0.3125rem;
+$card-kpi-hover-metric-color:               $color-text-primary-dark;
+$card-kpi-active-metric-color:              $color-text-primary-dark;
+$card-kpi-disabled-metric-color:            $color-text-muted;
 
 // Carousel
 $carousel-dot-background-color:             transparent;
@@ -910,6 +1096,29 @@ $checkbox-label-before-top:                 0.125rem;
 $checkbox-label-after-top:                  0.3125rem;
 $checkbox-label-indeterminate-after-top:    0.5625rem !important;
 
+// Customize panel
+$customize-panel-empty-content-align-items: center;
+$customize-panel-empty-content-display: flex;
+$customize-panel-empty-content-flex-direction: column;
+$customize-panel-empty-content-gap: 0.75rem;
+$customize-panel-empty-content-icon-background-color: $color-grey-20;
+$customize-panel-empty-content-icon-border-radius: 50%;
+$customize-panel-empty-content-icon-color: $color-grey-90;
+$customize-panel-empty-content-icon-display: flex;
+$customize-panel-empty-content-icon-height: $icon-size-sm3;
+$customize-panel-empty-content-icon-margin: 0;
+$customize-panel-empty-content-icon-width: $icon-size-sm3;
+$customize-panel-empty-content-message-font-size: $font-size-lg;
+$customize-panel-empty-content-message-line-height: $line-height-lg;
+$customize-panel-empty-icon-padding: 0.75rem;
+
+$customize-panel-content-padding-bottom: 1.5rem;
+$customize-panel-footer-button-gap: 1rem;
+$customize-panel-items-header-add-margin-bottom: 1.5rem;
+$customize-panel-items-header-padding-bottom: 0.5rem;
+$customize-panel-no-results-icon-margin-right: 0.5rem;
+$customize-panel-search-margin-bottom: 1.25rem;
+
 // Code
 $code-font-size:                            $font-size-sm;
 
@@ -918,13 +1127,20 @@ $css-grid-gap:                              1rem;
 $css-grid-md-gap:                           1.5rem;
 
 // Date picker
+$date-picker-disabled-icon-color:           $color-icon-base;
+$date-picker-icon-color:                    $color-icon-base;
 $date-picker-input-width:                   16rem;
-$date-picker-day-border-radius:             $border-radius-base;
+$date-picker-margin:                        0;
 $date-picker-padding:                       0.5rem;
 $date-picker-day-active-background-color:   $color-background-primary;
 $date-picker-day-active-text-color:         $color-text-black;
-$date-picker-day-background-color:          $color-background-white;
+$date-picker-day-border-radius:             $border-radius-base;
+$date-picker-day-line-height:               2rem;
 $date-picker-day-today-accent-background-color: $color-background-primary;
+$date-picker-day-today-accent-background-color-active: $color-background-white;
+$date-picker-day-today-bottom:              0.1875rem;
+$date-picker-day-width:                     calc(100% / 7);
+$date-picker-days-gap:                      0;
 
 $date-picker-day-inactive-text-color:       rgba($color-text-base, 0.4);
 $date-picker-day-inactive-background-color: rgba($color-text-base, 0.4);
@@ -932,6 +1148,10 @@ $date-picker-day-hover-background-color:    $color-grey-20;
 
 $date-picker-arrow-icon-color:              $color-text-primary;
 $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
+
+$date-picker-time-picker-box-shadow:        inset 0.0625rem 0 0 0 $color-border-base;
+$date-picker-time-picker-margin-left:       0.75rem;
+$date-picker-time-picker-padding:           0.5rem;
 
 // Divider
 $divider-border-color:                      rgba($color-black, 0.12);
@@ -955,20 +1175,52 @@ $data-table-state-danger-box-shadow:        $color-red-60;
 $data-table-state-success-box-shadow:       $color-green-60;
 $data-table-state-info-box-shadow:          $color-blue-60;
 
+$data-table-cell-highlight-background: $color-yellow-30;
+$data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-cell-highlight-border-radius: 0.125rem;
+$data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-cell-highlight-color: $color-black;
+
+// Drag and Drop
+$drag-item-background-color:                $color-background-white;
+$drag-item-border-color:                    $color-grey-30;
+$drag-item-border-radius:                   $border-radius-base;
+$drag-item-focus-color:                     $focus-color;
+$drag-item-padding:                         1.25rem;
+$drag-item-title-font-size:                 $font-size-md;
+$drag-item-title-font-weight:               $font-weight-semi-bold;
+$drag-item-title-line-height:               $line-height-lg;
+$drag-item-description-font-size:           $font-size-sm;
+$drag-item-description-line-height:         $line-height-md;
+$drag-item-dragging-close-background-color: $color-background-white;
+$drag-item-close-hover-background-color:    $color-grey-20;
+$drag-item-close-active-background-color:   $color-grey-25;
+$drag-item-drop-indicator-background-color: $focus-color;
+
 // Drawer
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
+$drawer-content-padding:                    0;
 $drawer-background-color:                   $color-background-white;
 $drawer-header-background-color:            $color-yellow-40;
 $drawer-header-background-image:            none;
 $drawer-header-text-color:                  inherit;
+$drawer-header-flex-shrink:                 0;
+$drawer-header-display:                     flex;
 $drawer-button-close-top:                   0.5rem;
-$drawer-close-icon-color:                   inherit;
+$drawer-button-close-right:                 0.75rem;
 $drawer-header-close-icon-color:            $color-icon-body;
 $drawer-header-min-height:                  3.5rem;
 $drawer-header-padding:                     1rem;
 $drawer-header-title-font-size:             1rem;
 $drawer-header-title-font-weight:           $font-weight-semi-bold;
+$drawer-title-line-height:                  1.5rem;
+$drawer-footer-padding:                     1.25rem 2rem;
+$drawer-footer-border:                      0.0625rem solid $color-grey-30;
+$drawer-box-shadow-top:                     0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-bottom:                  0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-right:                   0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
+$drawer-box-shadow-left:                    0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 
 // Dropdown
 $dropdown-button-text-color:                $color-text-base;
@@ -1025,8 +1277,13 @@ $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline:          $focus-color;
 
-$dropdown-select-disabled-opacity:                   $opacity-60;
 $dropdown-select-border-radius: $border-radius-base;
+$dropdown-select-chevron-color: null;
+$dropdown-select-disabled-background-color: $dropdown-menu-background-color;
+$dropdown-select-border-color: $dropdown-button-border-color;
+$dropdown-select-disabled-color: $dropdown-trigger-icon-color;
+$dropdown-select-disabled-opacity: $opacity-60;
+$dropdown-select-hover-border-color: $color-grey-40;
 
 $dropdown-select-xs-height:                          1.5rem;
 $dropdown-select-xs-font-size:                       $font-size-xs;
@@ -1059,13 +1316,25 @@ $dropdown-select-xl-arrow-background-size:           1rem;
 $dropdown-select-xl-padding:                         0.6875rem 1rem;
 
 // Expansion panel
-$expansion-panel-border-color:              $color-border-base;
 $expansion-panel-active-title-text-color:   $color-text-primary;
-$expansion-panel-disabled-title-text-color: $color-text-muted;
-$expansion-panel-disabled-title-opacity:    $opacity-60;
-$expansion-panel-footer-border-color:       rgba($color-black, 0.12);
+$expansion-panel-body-border-radius:        0;
+$expansion-panel-body-margin:               1.25rem 0 0.5rem 0;
+$expansion-panel-border-color:              $color-border-base;
 $expansion-panel-bordered-background-color: $color-background-white;
 $expansion-panel-bordered-border-color:     $color-border-base;
+$expansion-panel-content-margin-right:      0;
+$expansion-panel-disabled-title-opacity:    $opacity-60;
+$expansion-panel-disabled-title-text-color: $color-text-muted;
+$expansion-panel-footer-border-color:       rgba($color-black, 0.12);
+$expansion-panel-footer-justify-content:    flex-end;
+$expansion-panel-footer-padding:            1rem;
+$expansion-panel-line-height:               $line-height;
+$expansion-panel-number-margin-right:       0;
+$expansion-panel-number-width:              5%;
+$expansion-panel-padding:                   1.625rem 0;
+$expansion-panel-title-font-weight:         $font-weight-semi-bold;
+$expansion-panel-title-margin-right:        0;
+$expansion-panel-title-width:               27%;
 
 // File input
 $file-input-xs-height:                      1.5rem;
@@ -1111,6 +1380,15 @@ $file-input-button-active-text-color:       $button-solid-active-text-color;
 $file-input-button-focus-border-color:      $button-solid-focus-border-color;
 $file-input-button-focus:                   $button-solid-focus-outline;
 
+//Filters
+$filters-content-item-margin-bottom:        1.5rem;
+$filters-content-link-margin-top:           0.5rem;
+$filters-drawer-header-border:              0.0625rem solid $color-grey-30;
+$filters-drawer-header-margin-bottom:       1.875rem;
+$filters-drawer-trigger-button-margin-left: 1rem;
+$filters-drawer-width:                      34rem;
+$filters-footer-button-margin-right:        1rem;
+
 // Footer
 $footer-internal-background-color:          $color-background-black;
 $footer-internal-border-top-color:          transparent;
@@ -1135,7 +1413,10 @@ $form-item-list-item-border-color:          $color-border-base-light;
 
 // Header
 $header-background-color:                   $color-background-white;
+$header-brand-order:                        2;
+$header-brand-justify-content:              center;
 $header-shadow:                             0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+$header-content-justify:                    space-between;
 $header-content-padding-xs:                 0 0.5rem;
 $header-content-padding-sm:                 0 1rem;
 $header-content-padding-lg:                 0 1.5rem;
@@ -1144,11 +1425,17 @@ $header-content-title-font-weight:          $font-weight-normal;
 $header-content-title-line-height:          $line-height;
 $header-content-title-font-size:            $font-size-lg;
 $header-content-title-lg-font-size:         $font-size-xl;
+$header-content-title-lg-margin:            0 1rem 0 1.5rem;
+$header-dropdown-icon-color:                $dropdown-trigger-icon-color;
 $header-alert-badge-background-color:       $color-background-black;
+$header-end-divider-margin:                  0 0.5rem;
 $header-search-background-color:            $color-background-white;
 $header-search-hover-border-color:          $color-grey-40;
 $header-search-focus-color:                 $focus-color;
 $header-impersonation-background-color:     $color-grey-25;
+$header-impersonation-box-shadow:           inset 0 0.25rem 0 0 $header-impersonation-background-color;
+$header-impersonation-content-padding:      0 0.5rem;
+$header-impersonation-edge-element-height:  1.5rem;
 $header-impersonation-text-color:           $color-text-base;
 $header-impersonation-font-size:            $font-size-sm;
 $header-impersonation-line-height:          $line-height-lg;
@@ -1176,9 +1463,15 @@ $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
 $header-navbar-tab-xs-link-padding:         0.5rem 1rem;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
+$header-lg-brand-flex-grow:                 0;
+$header-lg-brand-margin:                    0 3rem 0 0;
+$header-lg-brand-margin-portal:             0 0.5rem;
+$header-lg-brand-order:                     1;
 $header-lg-height:                          4rem;
 $header-lg-navbar-height:                   2rem;
 $header-lg-navbar-font-size:                $font-size-base;
+$header-lg-start-flex-grow:                 1;
+$header-lg-start-order:                     2;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-lg;
@@ -1233,6 +1526,11 @@ $mobile-nav-background-color:               $color-background-white;
 $mobile-nav-width:                          23rem;
 $mobile-nav-header-background-color:        $color-background-base;
 $mobile-nav-header-button-top:              0.5rem;
+$mobile-nav-header-bottom-border:           0.0625rem solid $color-border-base;
+$mobile-nav-header-title-font-size:         $font-size-xl;
+$mobile-nav-header-title-font-weight:       $font-weight-bold;
+$mobile-nav-header-title-line-height:       $line-height-lg;
+$mobile-nav-header-title-text-color:        $color-text-base;
 $mobile-nav-user-background-color:          $color-background-base;
 $mobile-nav-user-border-color:              $color-border-base;
 $mobile-nav-drawer-close-icon-color:        $color-icon-primary;
@@ -1246,6 +1544,7 @@ $mobile-nav-list-item-hover-text-color:     $color-text-base;
 $mobile-nav-list-item-active-background-color: $color-yellow-20;
 $mobile-nav-list-item-active-border-color:  $color-border-primary;
 $mobile-nav-list-item-icon-size:            1.25rem;
+$mobile-nav-list-item-icon-color:           $color-grey-90;
 $mobile-nav-list-item-trigger-icon-color:   $color-icon-primary;
 $mobile-nav-list-item-active-trigger-icon-color:  $color-icon-primary;
 $mobile-nav-list-item-title-font-weight:    $font-weight-semi-bold;
@@ -1257,6 +1556,7 @@ $modal-background-color:                    $color-background-white;
 $modal-border-radius:                       $border-radius-base;
 $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-close-top:                           0.5rem;
+$modal-close-right:                         0.75rem;
 $modal-max-width:                           600px;
 $modal-header-background-color:             $color-yellow-40;
 $modal-header-background-image:             none;
@@ -1264,22 +1564,32 @@ $modal-header-text-color:                   inherit;
 $modal-header-box-shadow:                   none;
 $modal-header-min-height:                   3.5rem;
 $modal-header-padding:                      1rem;
+$modal-title-font-size:                     $font-size-lg;
+$modal-title-font-weight:                   $font-weight-bold;
+$modal-content-padding:                     1.5rem;
 $modal-footer-box-shadow:                   none;
 $modal-footer-min-height:                   4rem;
 $modal-footer-padding:                      1rem;
+$modal-footer-justify-content:              flex-end;
 $modal-back-link-color:                     $color-icon-body;
 $modal-close-icon-color:                    $color-icon-body;
 
-$modal-gradient-border-radius:              0;
-$modal-gradient-header-background:          initial;
-$modal-gradient-header-padding:             initial;
-$modal-header-graphics-background-img:      initial;
-$modal-gradient-title-font-size:            initial;
-$modal-gradient-title-line-height:          initial;
-$modal-gradient-title-margin-bottom:        initial;
-$modal-gradient-subtitle-font-size:         initial;
-$modal-gradient-subtitle-line-height:       initial;
-$modal-gradient-subtitle-font-weight:       initial;
+$modal-gradient-border-radius:              $modal-border-radius;
+$modal-gradient-header-background:          none;
+$modal-gradient-header-padding:             1rem 1.5rem;
+$modal-gradient-close-icon-color:           inherit;
+$modal-gradient-close-right:                1rem;
+$modal-gradient-close-top:                  1rem;
+$modal-gradient-title-color:                inherit;
+$modal-gradient-title-font-size:            $font-size-h3;
+$modal-gradient-title-line-height:          2rem;
+$modal-gradient-title-margin-bottom:        0;
+$modal-gradient-subtitle-color:             inherit;
+$modal-gradient-subtitle-font-size:         $font-size-xl;
+$modal-gradient-subtitle-line-height:       1.5rem;
+$modal-gradient-subtitle-font-weight:       $font-weight-normal;
+$modal-header-graphics-background-img:      none;
+$modal-header-graphics-background-placement: 0 0;
 
 // Number input
 $number-input-arrow-icon-color:             $color-icon-primary;
@@ -1428,7 +1738,10 @@ $pagination-inverse-compact-label-text-color: $color-text-white;
 // Picker
 $picker-background-color:                   $color-background-white;
 $picker-border-color:                       $color-border-base-dark;
+$picker-border-radius:                      $border-radius;
 $picker-icon-color:                         inherit;
+$picker-checked-focus-outline:              none;
+$picker-checked-focus-outline-offset:       0;
 $picker-checkbox-border-color:              $color-grey-40;
 $picker-checkbox-text-color:                $color-grey-40;
 $picker-checkbox-icon-color:                $color-grey-50;
@@ -1436,6 +1749,7 @@ $picker-radio-border-color:                 $color-grey-50;
 $picker-radio-text-color:                   $color-grey-50;
 $picker-radio-icon-color:                   $color-grey-50;
 $picker-disabled-background-color:          $color-background-base-dark;
+$picker-disabled-border-color:              $color-border-base-dark;
 $picker-disabled-text-color:                $color-text-muted-light;
 $picker-checked-background-color:           $color-background-white;
 $picker-checked-border-color:               $color-border-black;
@@ -1448,8 +1762,17 @@ $picker-checked-radio-background-color:     $color-background-black;
 $picker-checked-radio-border-color:         $color-border-black;
 $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
+$picker-hover-background-color:             $color-background-white;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-focus-outline:                      none;
+$picker-focus-outline-offset:               0;
+$picker-pill-active-background-color:       $color-background-white;
+$picker-pill-disabled-background-color:     $color-background-base-dark;
+$picker-pill-disabled-border-color:         $color-border-base-dark;
+$picker-pill-disabled-box-shadow:           none;
+$picker-pill-hover-background-color:        $color-background-white;
+$picker-pill-hover-border-color:            $color-grey-40;
 $picker-xs-item-font-size:                  $font-size-xs;
 $picker-xs-item-padding:                    0.1875rem 0.75rem;
 $picker-xs-item-description-line-height:    1rem;
@@ -1539,6 +1862,7 @@ $popover-gradient-arrow-offset:             initial;
 // Progress
 $progress-background-color:                 $color-grey-20;
 $progress-border-radius:                    $border-radius-base;
+$progress-height:                           0.5rem;
 $progress-value-background-color:           $color-background-primary;
 $progress-value-info-background-color:      $color-icon-info;
 $progress-value-danger-background-color:    $color-icon-danger;
@@ -1587,6 +1911,9 @@ $save-view-ribbon-label-font-style:         italic;
 $save-view-ribbon-arrow-border-color:       $color-black;
 $save-view-ribbon-arrow-border-style:       solid;
 
+// Save views
+$save-views-modal-form-item-margin-bottom:  1.5rem;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -1603,6 +1930,9 @@ $search-input-lg-close-top:                 0.75rem;
 $search-input-xl-icon-top:                  0;
 $search-input-xl-close-right:               3rem;
 $search-input-xl-close-top:                 1rem;
+$search-input-icon-active-background-color: null;
+$search-input-icon-disabled-background-color: null;
+$search-input-icon-active-box-shadow:       null;
 
 // Select
 $select-text-color:                         $color-text-base;
@@ -1678,6 +2008,21 @@ $sidenav-item-active-expanded-background-color: $color-background-white;
 $sidenav-drawer-tab-active-background-color: $color-yellow-20;
 $sidenav-drawer-tab-active-box-shadow:      inset 0.125rem 0 0 $color-border-primary;
 $sidenav-float-drawer-margin-left:          -0.0625rem;
+
+$sidenav-global-background-color: $color-white;
+$sidenav-global-item-text-color: $sidenav-item-text-color;
+$sidenav-global-item-font-size: 0.875rem;
+$sidenav-global-item-icon-color: $sidenav-item-icon-color;
+$sidenav-global-item-icon-size: 1.25rem;
+$sidenav-global-item-border-radius: 0.3125rem;
+$sidenav-global-item-background-color: $color-white;
+$sidenav-global-item-active-background-color: $sidenav-item-active-background-color;
+$sidenav-global-item-active-text-color: $sidenav-item-text-color;
+$sidenav-global-item-active-icon-color: $sidenav-item-text-color;
+$sidenav-global-item-active-font-weight: $font-weight-bold;
+$sidenav-global-item-hover-background-color: $sidenav-item-hover-background-color;
+$sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
 
 // Skeleton
 $skeleton-xs-size:                          1.5rem;
@@ -1885,6 +2230,8 @@ $text-input-disabled-border-color:          $color-border-base;
 $text-input-disabled-text-color:            $color-text-muted-light;
 $text-input-disabled-icon-color:            $color-icon-muted;
 $text-input-spinner-color:                  $color-icon-primary;
+$text-input-readonly-background:            $color-grey-10;
+$text-input-readonly-border-color:          $color-grey-50;
 
 $text-input-floating-label-text-color:      $color-text-muted;
 $text-input-floating-label-opacity:         $opacity-60;
@@ -1989,13 +2336,15 @@ $text-input-xl-floating-label-padding-top:  1.125rem;
 
 // Textarea
 $textarea-border-color:                     $color-border-base;
-$textarea-hover-border-color:               $color-grey-40;
-$textarea-focus-border-color:               $focus-color;
-$textarea-text-color:                       $color-text-base;
-$textarea-placeholder-text-color:           $color-grey-50;
 $textarea-disabled-background-color:        $color-grey-10;
 $textarea-disabled-border-color:            $color-border-base;
 $textarea-disabled-text-color:              $color-text-muted-light;
+$textarea-focus-border-color:               $focus-color;
+$textarea-hover-border-color:               $color-grey-40;
+$textarea-placeholder-text-color:           $color-grey-50;
+$textarea-readonly-background:              $color-grey-10;
+$textarea-readonly-border-color:            $textarea-border-color;
+$textarea-text-color:                       $color-text-base;
 
 $textarea-xs-icon-size:                     $text-input-xs-icon-width;
 $textarea-xs-icon-top:                      $text-input-xs-icon-top;
@@ -2049,6 +2398,8 @@ $textarea-xl-padding:                       $text-input-xl-padding;
 
 // Time picker
 $time-picker-width:                         14rem;
+$time-picker-icon-color:                    $color-icon-base;
+$time-picker-icon-color-disabled:           $color-icon-base;
 $time-picker-column-border-color:           $color-border-base;
 $time-picker-item-border-radius:            $border-radius-base;
 $time-picker-item-hover-background-color:   $color-background-base-darker;
@@ -2057,6 +2408,7 @@ $time-picker-item-active-background-color:  $color-background-primary;
 $time-picker-item-active-text-color:        $color-text-black;
 $time-picker-item-disabled-text-color:      $color-grey-70;
 $time-picker-item-disabled-opacity:         $opacity-40;
+$time-picker-item-margin:                   0rem 0.25rem;
 $time-picker-border-color:                  $color-border-base;
 
 // Toggle switch
@@ -2084,6 +2436,9 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
+$toolbar-expandable-border-radius:          0.5rem;
+$toolbar-expandable-background-color:       $color-grey-20;
+$toolbar-expandable-border:                 0.0625rem solid $color-grey-30;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);
@@ -2108,8 +2463,19 @@ $tags-border-color: $color-border-base;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-50;
+$tags-input-min-height: 1.25rem;
 $tags-hover-border-color: $color-grey-40;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
-$tags-md-padding: 0.0625rem 0.75rem;
+$tags-md-padding: 0.3125rem 0.75rem;
+
+$tag-badge-border-radius: 2em;
+$tag-badge-font-weight: $font-weight-semi-bold;
+$tag-badge-padding-top: 0.0625rem;
+$tag-badge-padding-bottom: 0.0625rem;
+$tag-margin-bottom: 0.25rem;
+$tag-margin-right: 0.5rem;
+$tag-margin-top: 0.25rem;
+
+$tag-button-close-icon-margin-left: 0;
