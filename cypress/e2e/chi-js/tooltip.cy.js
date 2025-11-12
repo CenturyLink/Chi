@@ -1,6 +1,6 @@
 describe('chi-tooltip', function () {
   before(() => {
-    cy.visit('tests/js/tooltip.html');
+    cy.visit('tests/lumen/js/tooltip.html');
   });
 
   describe('Tooltip should be rendered correctly', () => {

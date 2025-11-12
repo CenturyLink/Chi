@@ -1,6 +1,6 @@
 describe('Date picker', () => {
   beforeEach(() => {
-    cy.visit('tests/components/date-picker.html');
+    cy.visit('tests/lumen/js/date-picker.html');
   })
 
   describe('Date picker 1', () => {

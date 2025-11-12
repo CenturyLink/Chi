@@ -1,6 +1,6 @@
 describe('chi-number-input', function () {
   before(() => {
-    cy.visit('tests/js/number-input.html');
+    cy.visit('tests/lumen/js/number-input.html');
   });
 
   describe('Number Input should be rendered correctly', () => {

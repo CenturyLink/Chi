@@ -1,6 +1,6 @@
 describe('Chi Tabs', function() {
   before(() => {
-    cy.visit('tests/js/tabs.html');
+    cy.visit('tests/lumen/js/tabs.html');
   });
 
   describe('Animated tab contains sliding border', () => {
