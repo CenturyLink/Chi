@@ -50,12 +50,22 @@ function compilePugFiles(dir, outputDir, theme, spinner) {
 
 const updateThemeInTests = (theme) => {
   const styleSheet = theme === 'lumen' ? 'chi.css' : `chi-${theme}.css`;
-
-  const textLayoutPath = path.join(inputDir, 'layout.pug');
-  const data = fs.readFileSync(textLayoutPath, 'utf8');
-
-  fs.writeFileSync(textLayoutPath,data.replace(/chi(-.*)?.css/, styleSheet));
+  
+  updateStyleSheetInFile('layout.pug', styleSheet);
+  updateStyleSheetInFile('index.pug', styleSheet);
 };
+
+const updateStyleSheetInFile = (file, styleSheet) => {
+  const filePath = path.join(inputDir, file);
+
+  try {
+    const fileData = fs.readFileSync(filePath, 'utf8');
+    fs.writeFileSync(filePath, fileData.replace(/chi(-.*)?.css/, styleSheet));
+  } catch (error) {
+    console.error(`[CHI]: Error reading file ${filePath}: ${error}`);
+    process.exit(1);
+  }
+}
 
 const spinner = ora(`[CHI]: Building tests`).start();
 
