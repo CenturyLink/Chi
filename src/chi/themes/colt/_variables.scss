@@ -1166,20 +1166,53 @@ $divider-vertical-border-color:             rgba($color-black, 0.12);
 $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 
 // Data Table
-$data-table-footer-background-color:        $color-grey-10;
 $data-table-head-background-color:          $color-grey-10;
+$data-table-head-border: 0;
+$data-table-head-border-bottom: 0;
+$data-table-head-border-top-radius: 0;
+$data-table-head-cell-border-left: 0;
+$data-table-head-first-cell-border-left: 0;
 $data-table-head-icon-button-color:         $color-icon-base;
+$data-table-head-sorting-background-color: transparent;
+$data-table-head-sorting-icon-color: inherit;
+$data-table-head-sorting-border-bottom: 0;
+
+$data-table-body-border: 0;
+$data-table-body-border-top: 0;
+$data-table-body-border-bottom: 0;
+
 $data-table-row-striped-background-color:   $color-grey-05;
 $data-table-row-active-background-color:    $color-teal-10;
 $data-table-row-active-marker-color:        $color-border-primary;
 $data-table-row-hover-background-color:     $color-grey-20;
 $data-table-row-expanded-background-color:  $data-table-row-active-background-color;
 $data-table-row-expandable-icon:            $color-icon-base;
+$data-table-row-border: 0;
+$data-table-row-expanded-border: 0;
 
-$data-table-state-warning-box-shadow:       $color-yellow-60;
+$data-table-cell-expandable-flex-basis: 3rem;
+$data-table-head-expandable-min-width: auto;
+$data-table-head-expandable-border-right: 0;
+$data-table-cell-selectable-flex-basis: 3rem;
+$data-table-head-selectable-min-width: auto;
+$data-table-cell-highlight-background: $color-yellow-30;
+$data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
+$data-table-cell-highlight-border-radius: 0.125rem;
+$data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
+$data-table-cell-highlight-color: $color-black;
+$data-table-cell-icon-color: $color-icon-primary;
+
+$data-table-footer-background-color:        $color-grey-10;
+$data-table-footer-border: 0;
+$data-table-footer-border-top: 0;
+$data-table-footer-border-bottom-radius: 0;
+$data-table-footer-icon-color: $color-icon-base;
+$data-table-footer-icon-disabled-color: $color-icon-muted;
+
 $data-table-state-danger-box-shadow:        $color-red-60;
-$data-table-state-success-box-shadow:       $color-green-60;
 $data-table-state-info-box-shadow:          $color-blue-60;
+$data-table-state-success-box-shadow:       $color-green-60;
+$data-table-state-warning-box-shadow:       $color-yellow-60;
 
 // Drag and Drop
 $drag-item-background-color:                $color-background-white;
@@ -1741,6 +1774,8 @@ $pagination-inverse-input-border-color:     $color-grey-70;
 $pagination-inverse-input-text-color:       $color-text-white;
 $pagination-inverse-input-focus-background-color: $color-background-white;
 $pagination-inverse-compact-label-text-color: $color-text-white;
+
+$pagination-button-group-margin-right: 0;
 
 // Picker
 $picker-background-color:                   $color-background-white;
