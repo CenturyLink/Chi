@@ -1214,13 +1214,13 @@ $divider-vertical-inverse-border-color: rgba($color-white, 0.2);
 $data-table-head-background-color: $color-background-base-darker;
 $data-table-head-border: 0.0625rem solid $color-border-base;
 $data-table-head-border-bottom: 0;
+$data-table-head-border-top-radius: 0.5rem;
 $data-table-head-cell-border-left: 0.0625rem solid $color-border-base;
 $data-table-head-first-cell-border-left: none;
-$data-table-head-border-top-radius: 0.5rem;
+$data-table-head-icon-button-color: $color-icon-black;
 $data-table-head-sorting-background-color: $color-background-primary-light;
 $data-table-head-sorting-icon-color: $color-icon-orange;
 $data-table-head-sorting-border-bottom: 0.125rem solid $color-red-50;
-$data-table-head-icon-button-color: $color-icon-black;
 
 $data-table-body-border: 0.0625rem solid $color-grey-25;
 $data-table-body-border-top: 0;
@@ -1254,10 +1254,10 @@ $data-table-footer-border-bottom-radius: 0.5rem;
 $data-table-footer-icon-color: $color-icon-black;
 $data-table-footer-icon-disabled-color: $color-icon-muted;
 
-$data-table-state-warning-box-shadow: $color-yellow-60;
 $data-table-state-danger-box-shadow: $color-red-60;
-$data-table-state-success-box-shadow: $color-green-60;
 $data-table-state-info-box-shadow: $color-blue-60;
+$data-table-state-success-box-shadow: $color-green-60;
+$data-table-state-warning-box-shadow: $color-yellow-60;
 
 // Drag and Drop
 $drag-item-background-color: $color-background-white;
