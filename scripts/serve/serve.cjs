@@ -80,7 +80,7 @@ const watchFiles = () => {
     const { version } = JSON.parse(fs.readFileSync(packageJsonRoute, 'utf-8'));
 
     console.log('[CHI]: Playground started at http://localhost:5173/');
-    console.log(`[CHI]: Tests started at http://localhost:8000/chi/${version}/tests`);
+    console.log(`[CHI]: Tests started at http://localhost:8000/chi/${version}/tests/lumen`);
     console.log(`[CHI]: Dist folder started at http://localhost:8000/chi/${version}`);
   } catch (error) {
     console.error('Error loading package.json or applying version:', error);
