@@ -11,6 +11,8 @@ chi-toolbar,
 
   &__header {
     background-color: $toolbar-header-background-color;
+    border: $toolbar-header-border;
+    border-radius: $toolbar-header-border-radius;
     justify-content: flex-start;
     padding: 0.5rem;
 
@@ -122,17 +124,16 @@ chi-toolbar,
 
   .chi-accordion {
     &.-compact-title {
-      .chi-accordion__item {
+      .chi-accordion {
         background-color: $toolbar-expandable-background-color;
         border: $toolbar-expandable-border;
         border-radius: $toolbar-expandable-border-radius;
-        
+
         .chi-accordion__trigger {
           .chi-accordion__title {
             font-weight: $font-weight-bold;
           }
         }
-        
       }
     }
   }
