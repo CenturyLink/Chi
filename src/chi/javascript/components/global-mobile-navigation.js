@@ -14,7 +14,7 @@ class GlobalMobileNav extends Component {
     this._trigger = trigger;
     this._enterpriseDropdown = dropdown;
     this._linkHandlers = [];
-    this._viewLevel = 0;
+    this._currentViewId = null;
 
     this._initDrawer();
     this._initViews();
@@ -27,11 +27,40 @@ class GlobalMobileNav extends Component {
     return COMPONENT_TYPE;
   }
 
+  _getViewLevel(viewId) {
+    return viewId.match(/content-(.+)$/)?.[1] ?? '0';
+  }
+
+  _getParentLevel(level) {
+    const parts = level.split('-');
+    
+    return parts.length <= 1 ? null : parts.slice(0, -1).join('-');
+  }
+
+  _getDepth(level) {
+    return level.split('-').length - 1;
+  }
+
+  _getRootView() {
+    if (this._views.length === 0) return null;
+
+    return this._views.reduce((root, view) => {
+      const rootDepth = this._getDepth(this._getViewLevel(root.id));
+      const viewDepth = this._getDepth(this._getViewLevel(view.id));
+
+      return viewDepth < rootDepth ? view : root;
+    }, this._views[0]);
+  }
+
+  _getRootLevel() {
+    return this._getViewLevel(this._getRootView()?.id) ?? '0';
+  }
+
   _initDrawer() {
     this._drawer.setAttribute('position', 'left');
     this._drawer.setAttribute('backdrop', '');
     this._drawer.setAttribute('non-closable', '');
-    this._drawer.addEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
+    this._drawer.addEventListener('chiBacklinkClick', this._handleChiBacklinkClick.bind(this));
   }
 
   _initViews() {
@@ -43,17 +72,11 @@ class GlobalMobileNav extends Component {
   }
 
   _initLinks() {
-    const allLinks = [];
+    if (!this._drawer) return;
 
-    if (this._drawer) {
-      const links = this._drawer.querySelectorAll('chi-link');
+    const links = Array.from(this._drawer.querySelectorAll('chi-link'));
 
-      links.forEach((link) => {
-        allLinks.push(link);
-      });
-    }
-
-    allLinks.forEach((link) => {
+    links.forEach((link) => {
       const handler = (event) => this._handleLinkClick(event, link);
 
       link.addEventListener('click', handler);
@@ -68,9 +91,7 @@ class GlobalMobileNav extends Component {
   }
 
   _initDropdown() {
-    this._enterpriseDropdown.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
+    this._enterpriseDropdown.addEventListener('click', (event) => event.stopPropagation());
   }
 
   _handlerTriggerClick() {
@@ -83,9 +104,13 @@ class GlobalMobileNav extends Component {
 
     this._initViews();
 
-    this._viewLevel = 0;
+    const rootView = this._getRootView();
+
+    if (!rootView) return;
+
+    this._currentViewId = rootView.id;
     this._viewItems = this._viewItems.filter((item) => item.state !== 'pending');
-    this._views[0].classList.remove(chi.classes.DISPLAY.NONE);
+    rootView.classList.remove(chi.classes.DISPLAY.NONE);
     header.classList.add(chi.classes.DISPLAY.NONE);
     this._drawer.active = true;
 
@@ -93,57 +118,90 @@ class GlobalMobileNav extends Component {
 
     this._views.forEach((view) => {
       const activeLink = view.querySelector('chi-link.-active');
-      const level = Number(view.id.split('_')[1]);
+      const level = this._getViewLevel(view.id);
 
-      const viewItem = {
+      this._viewItems.push({
         view,
         state: 'active',
         link: activeLink,
         level,
-      };
-
-      this._viewItems.push(viewItem);
+        viewId: view.id,
+      });
     });
   }
 
   _handleLinkClick(event, link) {
-    const href = link.getAttribute('href');
-    const opensView = href && href.startsWith('#');
-    const targetId = opensView ? href.slice(1) : null;
-
     event.stopPropagation();
 
-    if (!opensView) {
-      return;
-    }
+    const href = link.getAttribute('href');
+    
+    if (!href?.startsWith('#')) return;
 
-    const currentView = this._views[this._viewLevel];
-    let nextView = currentView;
-
-    if (targetId) {
-      nextView = this._views.find((view) => view.id === targetId);
-    }
-
-    const viewItem = { view: currentView, state: '', link: link, level: this._viewLevel };
-
-    this._addToViewItems(viewItem, nextView !== currentView);
-    this._setBacklink(viewItem.level, link.innerText, nextView !== currentView);
+    const currentView = this._views.find((view) => view.id === this._currentViewId);
+    const targetId = href.slice(1);
+    const nextView = this._views.find((view) => view.id === targetId) ?? currentView;
+    const currentLevel = this._getViewLevel(this._currentViewId);
 
     if (nextView !== currentView) {
+      this._viewItems.push({
+        view: currentView,
+        state: 'pending',
+        link,
+        level: currentLevel,
+        viewId: this._currentViewId,
+      });
+      
+      this._setBacklink(currentLevel, link.innerText, true);
       currentView.classList.add(chi.classes.DISPLAY.NONE);
       nextView.classList.remove(chi.classes.DISPLAY.NONE);
-
-      this._viewLevel++;
+      this._currentViewId = nextView.id;
     } else {
+      this._clearAllActiveLinks();
+      
+      this._viewItems.push({
+        view: currentView,
+        state: 'active',
+        link,
+        level: currentLevel,
+        viewId: this._currentViewId,
+      });
+      
+      link.classList.add(chi.classes.ACTIVE);
+      this._activatePendingParents(currentLevel);
       this._drawer.active = false;
     }
+  }
+
+  _activatePendingParents(currentLevel) {
+    const activateLevel = (level) => {
+      if (level === null) return;
+
+      this._viewItems
+        .filter((item) => item.level === level && item.state === 'pending')
+        .forEach((item) => {
+          item.state = 'active';
+          item.link?.classList.add(chi.classes.ACTIVE);
+        });
+
+      activateLevel(this._getParentLevel(level));
+    };
+
+    activateLevel(this._getParentLevel(currentLevel));
   }
 
   _setBacklink(level, title, isNextView) {
     if (!isNextView) return;
 
     const header = this._drawer.querySelector('.chi-drawer__header');
-    const backlink = level === 0 ? 'All' : this._viewItems[this._viewLevel].link.innerText;
+    const parentLevel = this._getParentLevel(level);
+    
+    const parentItems = this._viewItems.filter((item) => {
+      const itemLevel = this._getViewLevel(item.view.id);
+      
+      return itemLevel === parentLevel && item.link && (item.state === 'pending' || item.state === 'active');
+    });
+
+    const backlink = parentItems.at(-1)?.link.innerText ?? 'All';
 
     this._drawer.setAttribute('backlink', backlink);
     this._drawer.setAttribute('title', title);
@@ -153,93 +211,49 @@ class GlobalMobileNav extends Component {
   _handleBack(event) {
     event.stopPropagation();
 
-    const currentView = this._views[this._viewLevel];
-    currentView.classList.add(chi.classes.DISPLAY.NONE);
+    const currentView = this._views.find((view) => view.id === this._currentViewId);
+    
+    currentView?.classList.add(chi.classes.DISPLAY.NONE);
 
-    let filteredViewItems = [];
+    const currentLevel = this._getViewLevel(this._currentViewId);
+    const parentLevel = this._getParentLevel(currentLevel);
 
-    this._viewLevel--;
-    this._viewItems.forEach((item) => {
-      if (!(item.level === this._viewLevel && item.state === 'pending')) {
-        filteredViewItems.push(item);
-      }
-    });
+    this._viewItems = this._viewItems.filter(
+      (item) => !(item.level === currentLevel && item.state === 'pending')
+    );
 
-    this._viewItems = filteredViewItems;
+    const parentView = this._views.find((view) => this._getViewLevel(view.id) === parentLevel);
+    
+    if (parentView) {
+      parentView.classList.remove(chi.classes.DISPLAY.NONE);
+      this._currentViewId = parentView.id;
+    }
 
-    const previousView = this._views[this._viewLevel];
-    previousView.classList.remove(chi.classes.DISPLAY.NONE);
+    const header = this._drawer.querySelector('.chi-drawer__header');
+    const rootLevel = this._getRootLevel();
 
-    if (this._viewLevel === 0) {
-      const header = this._drawer.querySelector('.chi-drawer__header');
-
+    if (parentLevel === rootLevel || parentLevel === null) {
       this._drawer.removeAttribute('backlink');
       header.classList.add(chi.classes.DISPLAY.NONE);
     } else {
-      const viewItem = this._viewItems.find((item) => item.level === this._viewLevel - 1);
-
-      this._setBacklink(viewItem.level, viewItem.link.innerText, true);
-    }
-  }
-
-  _addToViewItems(viewItem, isNextView) {
-    viewItem.state = isNextView ? 'pending' : 'active';
-
-    if (viewItem.state === 'active') {
-      viewItem.link.classList.add(chi.classes.ACTIVE);
-    }
-
-    this._viewItems.push(viewItem);
-    this._clearActiveLinks(viewItem, isNextView);
-    for (let i = 0; i < this._views.length - 1; i++) {
-      this._manageViewItemState(i);
-    }
-  }
-
-  _clearActiveLinks(currentViewItem) {
-    const filteredViewItems = [];
-
-    this._viewItems.forEach((item) => {
-      const diffLink = item.link !== currentViewItem.link;
-      const sameState = item.state === currentViewItem.state;
-      const isHigherOrSameLevel = item.level >= this._viewLevel;
-
-      if (diffLink && sameState && isHigherOrSameLevel) {
-        item.link?.classList.remove(chi.classes.ACTIVE);
-      } else {
-        filteredViewItems.push(item);
-      }
-    });
-
-    this._viewItems = filteredViewItems;
-  }
-
-  _manageViewItemState(level) {
-    const hasActiveItemInHigherLevel = this._viewItems.some((item) => item.level > level && item.state === 'active');
-    const hasPendingItemInMyLevel = this._viewItems.some((item) => item.level === level && item.state === 'pending');
-    let mappedViewItems = [];
-
-    if (hasActiveItemInHigherLevel && hasPendingItemInMyLevel) {
-      mappedViewItems = this._viewItems.map((item) => {
-        if (item.level === level) {
-          let state = item.state;
-
-          if (state === 'active') {
-            item.link?.classList.remove(chi.classes.ACTIVE);
-            state = '';
-          } else if (state === 'pending') {
-            item.link.classList.add(chi.classes.ACTIVE);
-            state = 'active';
-          }
-
-          return { ...item, state };
-        } else {
-          return item;
-        }
+      const grandparentLevel = this._getParentLevel(parentLevel);
+      const grandparentItem = this._viewItems.find((item) => {
+        const itemLevel = this._getViewLevel(item.view.id);
+        
+        return itemLevel === grandparentLevel && item.link;
       });
 
-      this._viewItems = mappedViewItems.filter((item) => item.state);
+      if (grandparentItem) {
+        this._setBacklink(grandparentItem.level, grandparentItem.link.innerText, true);
+      }
     }
+  }
+
+  _clearAllActiveLinks() {
+    this._viewItems
+      .filter((item) => item.state === 'active')
+      .forEach((item) => item.link?.classList.remove(chi.classes.ACTIVE));
+    this._viewItems = this._viewItems.filter((item) => item.state === 'pending');
   }
 
   _handleChiBacklinkClick(event) {
@@ -252,20 +266,20 @@ class GlobalMobileNav extends Component {
   }
 
   dispose() {
-    this._linkHandlers.forEach(({ link, handler }) => {
-      link.removeEventListener('click', handler);
-    });
-    this._trigger.removeEventListener('click', this._handlerTriggerClick.bind(this));
-    this._drawer.removeEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
+    this._linkHandlers.forEach(({ link, handler }) => link.removeEventListener('click', handler));
+    this._trigger?.removeEventListener('click', this._handlerTriggerClick.bind(this));
+    this._drawer?.removeEventListener('chiBacklinkClick', this._handleChiBacklinkClick.bind(this));
 
-    this._elem = null;
-    this._drawer = null;
-    this._enterpriseDropdown = null;
-    this._trigger = null;
-    this._views = [];
-    this._viewItems = [];
-    this._linkHandlers = [];
-    this._viewLevel = 0;
+    Object.assign(this, {
+      _elem: null,
+      _drawer: null,
+      _enterpriseDropdown: null,
+      _trigger: null,
+      _views: [],
+      _viewItems: [],
+      _linkHandlers: [],
+      _currentViewId: null,
+    });
   }
 }
 
