@@ -124,7 +124,7 @@ chi-toolbar,
 
   .chi-accordion {
     &.-compact-title {
-      .chi-accordion {
+      .chi-accordion__item {
         background-color: $toolbar-expandable-background-color;
         border: $toolbar-expandable-border;
         border-radius: $toolbar-expandable-border-radius;
