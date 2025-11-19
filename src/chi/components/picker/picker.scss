@@ -135,6 +135,10 @@ $pill-sizes: (
             margin: $picker-md-item-description-margin;
             padding: $picker-md-item-description-padding;
           }
+
+          .chi-picker__label-info-icon {
+            margin-left: $picker-item-info-icon-margin-left;
+          }
         }
 
         &--end {
