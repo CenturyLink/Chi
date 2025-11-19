@@ -321,7 +321,7 @@
 
           <div class="chi-mobile-nav -global" id="mobile-nav">
             <chi-drawer id="mobile-nav-drawer">
-              <div id="main-content-0">
+              <div id="main-menu">
                 <div class="chi-mobile-nav__header">
                   <chi-dropdown
                     id="enterprise-dropdown"
@@ -381,14 +381,14 @@
                     </chi-link>
                   </li>
                   <li class="chi-mobile-nav__item">
-                    <chi-link class="-active" href="#services-content-0-1">
+                    <chi-link class="-active" href="#services-menu">
                       <chi-icon icon="list-alt"></chi-icon>
                       <span>Services</span>
                       <chi-icon icon="chevron-right"></chi-icon>
                     </chi-link>
                   </li>
                   <li class="chi-mobile-nav__item">
-                    <chi-link href="#apis-content-0-2">
+                    <chi-link href="#apis-menu">
                       <chi-icon icon="api"></chi-icon>
                       <span>APIs</span>
                       <chi-icon icon="chevron-right"></chi-icon>
@@ -457,7 +457,7 @@
                   </li>
                 </ul>
               </div>
-              <div id="services-content-0-1">
+              <div id="services-menu">
                 <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
                     <chi-link href="https://lib.lumen.com/"> Manage Services </chi-link>
@@ -481,23 +481,23 @@
                     </chi-link>
                   </li>
                   <li class="chi-mobile-nav__item">
-                    <chi-link class="-active" href="#quotes-content-0-1-1">
+                    <chi-link class="-active" href="#quotes-menu">
                       <span>Quotes</span>
                       <chi-icon icon="chevron-right"></chi-icon>
                     </chi-link>
                   </li>
                   <li class="chi-mobile-nav__item">
-                    <chi-link href="#services-portal-content-0-1-2">
+                    <chi-link href="#service-portals-menu">
                       <span>Service Portals</span>
                       <chi-icon icon="chevron-right"></chi-icon>
                     </chi-link>
                   </li>
                 </ul>
               </div>
-              <div id="apis-content-0-2">
+              <div id="apis-menu">
                 <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
-                    <chi-link href="#view-apis-content-0-2-1">
+                    <chi-link href="#view-apis-menu">
                       <span>View APIs</span>
                       <chi-icon icon="chevron-right"></chi-icon>
                     </chi-link>
@@ -510,7 +510,7 @@
                   </li>
                 </ul>
               </div>
-              <div id="quotes-content-0-1-1">
+              <div id="quotes-menu">
                 <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
                     <chi-link class="-active">View Quotes</chi-link>
@@ -520,7 +520,7 @@
                   </li>
                 </ul>
               </div>
-              <div id="services-portal-content-0-1-2">
+              <div id="service-portals-menu">
                 <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
                     <chi-link>Service Portal 1</chi-link>
@@ -530,7 +530,7 @@
                   </li>
                 </ul>
               </div>
-              <div id="view-apis-content-0-2-1">
+              <div id="view-apis-menu">
                 <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
                     <chi-link>API 1</chi-link>
@@ -1201,196 +1201,6 @@
           </div>
         </div>
       </chi-toolbar>
-
-      <h4>Mobile Navigation</h4>
-      <chi-button id="mobile-nav-trigger" variant="flat" type="icon">
-        <chi-icon icon="menu"></chi-icon>
-      </chi-button>
-
-      <div class="chi-mobile-nav -global" id="mobile-nav">
-        <chi-drawer id="mobile-nav-drawer">
-          <div id="main-content_0">
-            <div class="chi-mobile-nav__header">
-              <chi-dropdown
-                id="enterprise-dropdown-mobile-nav"
-                class="enterprise-id-switcher"
-                position="bottom"
-                button="Enterprise ID: 1234567"
-                size="sm"
-                select-mode
-              >
-                <div class="chi-grid" slot="menu-header">
-                  <div class="chi-col -w--4">Enterprise ID</div>
-                  <div class="chi-col -w--7">Enterprise Name</div>
-                </div>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234567</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234568</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234569</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234560</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <div class="chi-divider" slot="menu-footer"></div>
-                <chi-link slot="menu-footer">Manage My Enterprises</chi-link>
-              </chi-dropdown>
-            </div>
-            <div class="chi-divider -my--0"></div>
-            <ul class="chi-mobile-nav__list">
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="dashboard"></chi-icon>
-                  <span>Dashboard</span>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="bell"></chi-icon>
-                  <span>Alerts & Notifications</span>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link class="-active" href="#services-content_1">
-                  <chi-icon icon="list-alt"></chi-icon>
-                  <span>Services</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="api"></chi-icon>
-                  <span>APIs</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="chart-bar"></chi-icon>
-                  <span>Monitoring & Reports</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="mail-open-dollar"></chi-icon>
-                  <span>Billing</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="users"></chi-icon>
-                  <span>Admin</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="life-ring"></chi-icon>
-                  <span>Support</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-            </ul>
-            <div class="chi-divider -my--0"></div>
-            <ul class="chi-mobile-nav__list">
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="circle-question"></chi-icon>
-                  <span>[Portal Name] Help</span>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="compose"></chi-icon>
-                  <span>Contact Lumen</span>
-                </chi-link>
-              </li>
-            </ul>
-            <div class="chi-divider -my--0"></div>
-            <ul class="chi-mobile-nav__list">
-              <li class="chi-mobile-nav__item">
-                <span class="chi-mobile-nav__email">jamie.johnson@company.com</span>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="user"></chi-icon>
-                  <span>My Profile</span>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <chi-icon icon="logout"></chi-icon>
-                  <span>Sign out</span>
-                </chi-link>
-              </li>
-            </ul>
-          </div>
-          <div id="services-content_1">
-            <ul class="chi-mobile-nav__list">
-              <li class="chi-mobile-nav__item">
-                <chi-link href="https://lib.lumen.com/"> Manage Services </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link> Add Services </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link> Order Status </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <span>Service Tools</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <span>Service Requests</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link class="-active" href="#quotes-content_2">
-                  <span>Quotes</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>
-                  <span>Service Portals</span>
-                  <chi-icon icon="chevron-right"></chi-icon>
-                </chi-link>
-              </li>
-            </ul>
-          </div>
-          <div id="quotes-content_2">
-            <ul class="chi-mobile-nav__list">
-              <li class="chi-mobile-nav__item">
-                <chi-link class="-active">View Quotes</chi-link>
-              </li>
-              <li class="chi-mobile-nav__item">
-                <chi-link>Create Quotes</chi-link>
-              </li>
-            </ul>
-          </div>
-        </chi-drawer>
-      </div>
 
       <h3>Test Portal Header</h3>
       <div class="header-portal-header-narnia -w--100">
