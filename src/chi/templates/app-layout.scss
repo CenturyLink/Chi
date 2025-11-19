@@ -316,10 +316,15 @@
             padding: 0;
           }
 
+          &.-expanded {
+            > .chi-accordion__trigger {
+              margin-bottom: 0.5rem;
+            }
+          }
+
           > .chi-accordion__trigger > .chi-accordion__title {
             flex-grow: 0;
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
           }
         }
       }

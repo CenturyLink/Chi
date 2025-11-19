@@ -339,6 +339,10 @@
 
     &.-fixed-width {
       width: 14.25rem;
+
+      &.-lg {
+        width: 29.5rem;
+      }
     }
 
     .chi-card__content {
@@ -365,6 +369,12 @@
           top: 0;
           width: 1rem;
         }
+      }
+
+      .chi-card__metric {
+        flex-grow: 1;
+        align-content: flex-end;
+        text-wrap: nowrap;
       }
 
       .chi-card__caption,
