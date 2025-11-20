@@ -9,263 +9,211 @@ class GlobalMobileNav extends Component {
 
     this._elem = elem;
     this._drawer = drawer;
-    this._views = [];
-    this._viewItems = [];
     this._trigger = trigger;
     this._enterpriseDropdown = dropdown;
-    this._linkHandlers = [];
-    this._viewLevel = 0;
+    this._navigationStack = [];
+    this._boundHandlers = new Map();
 
-    this._initDrawer();
-    this._initViews();
-    this._initLinks();
-    this._initTrigger();
-    this._initDropdown();
+    this._handleBackClick = this._handleBackClick.bind(this);
+    this._handleTriggerClick = this._handleTriggerClick.bind(this);
+    this._handleDropdownClick = this._handleDropdownClick.bind(this);
+
+    this._init();
   }
 
   static get componentType() {
     return COMPONENT_TYPE;
   }
 
-  _initDrawer() {
+  _init() {
+    if (!this._drawer || !this._trigger) return;
+
     this._drawer.setAttribute('position', 'left');
     this._drawer.setAttribute('backdrop', '');
     this._drawer.setAttribute('non-closable', '');
-    this._drawer.addEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
-  }
+    this._drawer.addEventListener('chiBacklinkClick', this._handleBackClick);
+    this._trigger.addEventListener('click', this._handleTriggerClick);
 
-  _initViews() {
-    this._views = Array.from(this._drawer.querySelectorAll('div[id*="-content"]'));
-
-    this._views.forEach((view) => {
-      view.classList.add(chi.classes.DISPLAY.NONE);
-    });
-  }
-
-  _initLinks() {
-    const allLinks = [];
-
-    if (this._drawer) {
-      const links = this._drawer.querySelectorAll('chi-link');
-
-      links.forEach((link) => {
-        allLinks.push(link);
-      });
+    if (this._enterpriseDropdown) {
+      this._enterpriseDropdown.addEventListener('click', this._handleDropdownClick);
     }
 
-    allLinks.forEach((link) => {
-      const handler = (event) => this._handleLinkClick(event, link);
+    const allViews = this._getAllViews();
+    
+    allViews.forEach((view) => view.classList.add(chi.classes.DISPLAY.NONE));
+    this._attachLinkHandlers();
+  }
 
+  _handleDropdownClick(e) {
+    e.stopPropagation();
+  }
+
+  _getAllViews() {
+    const views = Array.from(this._drawer.querySelectorAll('div[id]'));
+
+    if (views.length === 0) {
+      return Array.from(this._drawer.children).filter((child) => child.tagName === 'DIV' && child.id);
+    }
+
+    return views;
+  }
+
+  _getViewById(id) {
+    return this._drawer.querySelector(`#${id}`);
+  }
+
+  _getRootView() {
+    const views = this._getAllViews();
+    
+    return views[0] ?? null;
+  }
+
+  _attachLinkHandlers() {
+    const links = Array.from(this._drawer.querySelectorAll('chi-link'));
+
+    links.forEach((link) => {
+      const handler = (e) => this._handleLinkClick(e, link);
+      
       link.addEventListener('click', handler);
-      this._linkHandlers.push({ link, handler });
+      this._boundHandlers.set(link, handler);
     });
   }
 
-  _initTrigger() {
-    if (!this._trigger) return;
-
-    this._trigger.addEventListener('click', this._handlerTriggerClick.bind(this));
-  }
-
-  _initDropdown() {
-    this._enterpriseDropdown.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
-  }
-
-  _handlerTriggerClick() {
+  _handleTriggerClick() {
     if (this._drawer.active) {
       this._drawer.active = false;
       return;
     }
 
+    this._navigationStack = [];
+    const rootView = this._getRootView();
+
+    if (!rootView) return;
+
+    this._getAllViews().forEach((view) => view.classList.add(chi.classes.DISPLAY.NONE));
+    rootView.classList.remove(chi.classes.DISPLAY.NONE);
+
     const header = this._drawer.querySelector('.chi-drawer__header');
-
-    this._initViews();
-
-    this._viewLevel = 0;
-    this._viewItems = this._viewItems.filter((item) => item.state !== 'pending');
-    this._views[0].classList.remove(chi.classes.DISPLAY.NONE);
-    header.classList.add(chi.classes.DISPLAY.NONE);
+    
+    header?.classList.add(chi.classes.DISPLAY.NONE);
     this._drawer.active = true;
-
-    if (this._viewItems.length) return;
-
-    this._views.forEach((view) => {
-      const activeLink = view.querySelector('chi-link.-active');
-      const level = Number(view.id.split('_')[1]);
-
-      const viewItem = {
-        view,
-        state: 'active',
-        link: activeLink,
-        level,
-      };
-
-      this._viewItems.push(viewItem);
-    });
   }
 
   _handleLinkClick(event, link) {
     const href = link.getAttribute('href');
-    const opensView = href && href.startsWith('#');
-    const targetId = opensView ? href.slice(1) : null;
 
-    event.stopPropagation();
+    if (!href || href === '#' || !href.startsWith('#')) {
+      event.preventDefault();
+      event.stopPropagation();
 
-    if (!opensView) {
+      if (!href || href === '#') {
+        this._setActiveLinkWithParents(link);
+        this._drawer.active = false;
+      }
+      
       return;
     }
 
-    const currentView = this._views[this._viewLevel];
-    let nextView = currentView;
-
-    if (targetId) {
-      nextView = this._views.find((view) => view.id === targetId);
-    }
-
-    const viewItem = { view: currentView, state: '', link: link, level: this._viewLevel };
-
-    this._addToViewItems(viewItem, nextView !== currentView);
-    this._setBacklink(viewItem.level, link.innerText, nextView !== currentView);
-
-    if (nextView !== currentView) {
-      currentView.classList.add(chi.classes.DISPLAY.NONE);
-      nextView.classList.remove(chi.classes.DISPLAY.NONE);
-
-      this._viewLevel++;
-    } else {
-      this._drawer.active = false;
-    }
-  }
-
-  _setBacklink(level, title, isNextView) {
-    if (!isNextView) return;
-
-    const header = this._drawer.querySelector('.chi-drawer__header');
-    const backlink = level === 0 ? 'All' : this._viewItems[this._viewLevel].link.innerText;
-
-    this._drawer.setAttribute('backlink', backlink);
-    this._drawer.setAttribute('title', title);
-    header.classList.remove(chi.classes.DISPLAY.NONE);
-  }
-
-  _handleBack(event) {
+    event.preventDefault();
     event.stopPropagation();
 
-    const currentView = this._views[this._viewLevel];
-    currentView.classList.add(chi.classes.DISPLAY.NONE);
+    const targetId = href.slice(1);
+    const targetView = this._getViewById(targetId);
 
-    let filteredViewItems = [];
-
-    this._viewLevel--;
-    this._viewItems.forEach((item) => {
-      if (!(item.level === this._viewLevel && item.state === 'pending')) {
-        filteredViewItems.push(item);
-      }
-    });
-
-    this._viewItems = filteredViewItems;
-
-    const previousView = this._views[this._viewLevel];
-    previousView.classList.remove(chi.classes.DISPLAY.NONE);
-
-    if (this._viewLevel === 0) {
-      const header = this._drawer.querySelector('.chi-drawer__header');
-
-      this._drawer.removeAttribute('backlink');
-      header.classList.add(chi.classes.DISPLAY.NONE);
-    } else {
-      const viewItem = this._viewItems.find((item) => item.level === this._viewLevel - 1);
-
-      this._setBacklink(viewItem.level, viewItem.link.innerText, true);
-    }
-  }
-
-  _addToViewItems(viewItem, isNextView) {
-    viewItem.state = isNextView ? 'pending' : 'active';
-
-    if (viewItem.state === 'active') {
-      viewItem.link.classList.add(chi.classes.ACTIVE);
+    if (!targetView) {
+      this._setActiveLinkWithParents(link);
+      this._drawer.active = false;
+      
+      return;
     }
 
-    this._viewItems.push(viewItem);
-    this._clearActiveLinks(viewItem, isNextView);
-    for (let i = 0; i < this._views.length - 1; i++) {
-      this._manageViewItemState(i);
-    }
-  }
+    const allViews = this._getAllViews();
+    const currentView = allViews.find((view) => !view.classList.contains(chi.classes.DISPLAY.NONE));
+    const backlinkTitle =
+      this._navigationStack.length === 0 ? 'All' : this._navigationStack[this._navigationStack.length - 1].targetTitle;
 
-  _clearActiveLinks(currentViewItem) {
-    const filteredViewItems = [];
-
-    this._viewItems.forEach((item) => {
-      const diffLink = item.link !== currentViewItem.link;
-      const sameState = item.state === currentViewItem.state;
-      const isHigherOrSameLevel = item.level >= this._viewLevel;
-
-      if (diffLink && sameState && isHigherOrSameLevel) {
-        item.link?.classList.remove(chi.classes.ACTIVE);
-      } else {
-        filteredViewItems.push(item);
-      }
-    });
-
-    this._viewItems = filteredViewItems;
-  }
-
-  _manageViewItemState(level) {
-    const hasActiveItemInHigherLevel = this._viewItems.some((item) => item.level > level && item.state === 'active');
-    const hasPendingItemInMyLevel = this._viewItems.some((item) => item.level === level && item.state === 'pending');
-    let mappedViewItems = [];
-
-    if (hasActiveItemInHigherLevel && hasPendingItemInMyLevel) {
-      mappedViewItems = this._viewItems.map((item) => {
-        if (item.level === level) {
-          let state = item.state;
-
-          if (state === 'active') {
-            item.link?.classList.remove(chi.classes.ACTIVE);
-            state = '';
-          } else if (state === 'pending') {
-            item.link.classList.add(chi.classes.ACTIVE);
-            state = 'active';
-          }
-
-          return { ...item, state };
-        } else {
-          return item;
-        }
+    if (currentView) {
+      this._navigationStack.push({
+        view: currentView,
+        targetTitle: link.textContent.trim(),
+        backlinkTitle,
+        activeLink: link,
       });
 
-      this._viewItems = mappedViewItems.filter((item) => item.state);
+      currentView.classList.add(chi.classes.DISPLAY.NONE);
+    }
+
+    targetView.classList.remove(chi.classes.DISPLAY.NONE);
+    this._updateDrawerHeader(link.textContent.trim(), backlinkTitle);
+  }
+
+  _handleBackClick(event) {
+    event.stopPropagation();
+
+    this._drawer.setAttribute('prevent-auto-hide', '');
+
+    if (this._navigationStack.length === 0) {
+      this._drawer.active = false;
+      return;
+    }
+
+    const currentView = this._getAllViews().find((view) => !view.classList.contains(chi.classes.DISPLAY.NONE));
+    const previousState = this._navigationStack.pop();
+
+    currentView?.classList.add(chi.classes.DISPLAY.NONE);
+    previousState.view.classList.remove(chi.classes.DISPLAY.NONE);
+
+    if (this._navigationStack.length === 0) {
+      const header = this._drawer.querySelector('.chi-drawer__header');
+
+      header?.classList.add(chi.classes.DISPLAY.NONE);
+      this._drawer.removeAttribute('backlink');
+      this._drawer.removeAttribute('title');
+    } else {
+      const currentState = this._navigationStack[this._navigationStack.length - 1];
+
+      this._updateDrawerHeader(currentState.targetTitle, currentState.backlinkTitle);
+    }
+
+    setTimeout(() => this._drawer.removeAttribute('prevent-auto-hide'), 100);
+  }
+
+  _updateDrawerHeader(title, backlink = 'All') {
+    const header = this._drawer.querySelector('.chi-drawer__header');
+
+    if (header) {
+      this._drawer.setAttribute('title', title);
+      this._drawer.setAttribute('backlink', backlink);
+      header.classList.remove(chi.classes.DISPLAY.NONE);
     }
   }
 
-  _handleChiBacklinkClick(event) {
-    this._drawer.setAttribute('prevent-auto-hide', '');
-    this._handleBack(event);
+  _setActiveLinkWithParents(link) {
+    this._drawer.querySelectorAll('chi-link.-active').forEach((activeLink) => {
+      activeLink.classList.remove(chi.classes.ACTIVE);
+    });
 
-    setTimeout(() => {
-      this._drawer.removeAttribute('prevent-auto-hide');
-    }, 100);
+    link.classList.add(chi.classes.ACTIVE);
+    this._navigationStack.forEach((state) => {
+      state.activeLink?.classList.add(chi.classes.ACTIVE);
+    });
   }
 
   dispose() {
-    this._linkHandlers.forEach(({ link, handler }) => {
+    this._boundHandlers.forEach((handler, link) => {
       link.removeEventListener('click', handler);
     });
-    this._trigger.removeEventListener('click', this._handlerTriggerClick.bind(this));
-    this._drawer.removeEventListener('chiBacklinkClick', (event) => this._handleChiBacklinkClick(event));
 
+    this._drawer?.removeEventListener('chiBacklinkClick', this._handleBackClick);
+    this._trigger?.removeEventListener('click', this._handleTriggerClick);
+    this._enterpriseDropdown?.removeEventListener('click', this._handleDropdownClick);
+
+    this._boundHandlers.clear();
+    this._navigationStack = [];
     this._elem = null;
     this._drawer = null;
-    this._enterpriseDropdown = null;
     this._trigger = null;
-    this._views = [];
-    this._viewItems = [];
-    this._linkHandlers = [];
-    this._viewLevel = 0;
+    this._enterpriseDropdown = null;
   }
 }
 

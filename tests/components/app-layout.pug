@@ -86,7 +86,9 @@ block content
             .chi-main__header-end
               .chi-button(slot='help-icon' data-position='right start' aria-label='Help')
                 .chi-button__content
-                  i.chi-icon.icon-circle-question-outline.-sm(aria-hidden='true')
+                  i.chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-circle-question-outline')
                   span Help
           .chi-main__content
             .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
