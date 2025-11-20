@@ -21,10 +21,12 @@
         &::before {
           background-color: $radio-checked-background-color;
           border-color: $radio-checked-border-color;
+          box-shadow: $radio-checked-inner-box-shadow;
         }
 
         &::after {
           background-color: $radio-checked-icon-color;
+          display: $radio-checked-dot-display;
           transform: scale(1);
         }
       }
@@ -36,6 +38,35 @@
         color: $radio-disabled-text-color;
         opacity: $radio-disabled-opacity;
         pointer-events: none;
+
+        &::before {
+          background-color: $radio-disabled-background-color;
+          border-color: $radio-disabled-border-color;
+        }
+      }
+
+      &:checked + .chi-radio__label {
+        &::before {
+          background-color: $radio-disabled-background-color-checked;
+        }
+      }
+    }
+
+    &:hover:not(:checked) {
+      & + .chi-radio__label {
+        &::before {
+          background-color: $radio-hover-background-color;
+          border-color: $radio-hover-border-color;
+        }
+      }
+    }
+
+    &:hover:checked {
+      & + .chi-radio__label {
+        &::before {
+          background-color: $radio-checked-background-color;
+          box-shadow: $radio-checked-inner-box-shadow-hover;
+        }
       }
     }
 
@@ -69,7 +100,7 @@
 
       &::before {
         background-color: $radio-background-color;
-        border: 0.0625rem solid $radio-border-color;
+        border: $radio-border;
         border-radius: 0.5rem;
         content: '';
         cursor: pointer;
@@ -96,9 +127,17 @@
         width: 0.375rem;
       }
 
+      &:active {
+        &::before {
+          outline: $radio-active-outline;
+        }
+      }
+
       &:hover,
       &.-hover {
         &::after {
+          // To prevent showing ::after when using box-shadow on ::before
+          display: $radio-hover-dot-display;
           transform: scale(1);
         }
       }
