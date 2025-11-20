@@ -148,6 +148,14 @@
           transform: scale(1);
           width: 0.625rem;
         }
+
+        &:hover,
+        &.-hover {
+          &::before {
+            background-color: $checkbox-checked-background-color-hover;
+            border-color: $checkbox-checked-border-color-hover;
+          }
+        }
       }
     }
   }
