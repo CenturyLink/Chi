@@ -937,7 +937,7 @@ $sidenav-lg-width: 12.5rem;
                       > div {
                         > .chi-sidenav__item-guide {
                           &::before {
-                            border-left: 2px solid $sidenav-global-tree-guide-active-color;
+                            border-left: 1px solid $sidenav-global-tree-guide-active-color;
                           }
                         }
                       }
@@ -977,7 +977,7 @@ $sidenav-lg-width: 12.5rem;
                       position: relative;
 
                       &::before {
-                        border-left: 2px solid $sidenav-global-tree-guide-color;
+                        border-left: 1px solid $sidenav-global-tree-guide-color;
                         content: '';
                         display: block;
                         height: 100%;
