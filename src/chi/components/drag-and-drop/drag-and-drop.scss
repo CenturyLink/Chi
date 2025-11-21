@@ -34,6 +34,10 @@
       font-weight: $drag-item-title-font-weight;
       line-height: $drag-item-title-line-height;
       margin-bottom: 0.315rem;
+
+      .chi-drag__title-info-icon-message {
+        margin-left: $drag-item-title-info-icon-margin-left;
+      }
     }
 
     .chi-drag__title-icon {
@@ -52,6 +56,7 @@
       .chi-drag__description {
         font-size: $drag-item-description-font-size;
         line-height: $drag-item-description-line-height;
+        text-align: $drag-item-description-text-align;
       }
     }
 

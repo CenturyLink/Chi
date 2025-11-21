@@ -16,7 +16,9 @@
       flex-grow: 0;
 
       & > .chi-form__item {
-        margin-bottom: $filters-content-item-margin-bottom;
+        &:not(:last-child) {
+          margin-bottom: $filters-content-item-margin-bottom;
+        }
       }
 
       .chi-link {
