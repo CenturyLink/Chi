@@ -1479,6 +1479,15 @@ $filters-footer-button-margin-right: 1rem;
 // Footer
 $footer-internal-background-color: $color-grey-80;
 $footer-internal-border-top-color: transparent;
+$footer-internal-compact-background-color:  $color-background-white;
+$footer-internal-compact-border-top: 0.0625rem solid $color-grey-25;
+$footer-internal-compact-content-padding: 1.25rem 2rem;
+$footer-internal-compact-color: $color-grey-100;
+$footer-internal-compact-content-padding-lg: 1.25rem 4rem;
+$footer-internal-compact-content-gap: 3rem;
+$footer-internal-compact-content-lg-gap: 2rem;
+$footer-internal-compact-content-xxl-gap: 10%;
+$footer-internal-compact-links-gap: 2.25rem;
 $footer-internal-text-color: $color-text-white;
 $footer-internal-select-text-color: $color-text-white;
 $footer-copyright-font-size: $font-size-xs;
