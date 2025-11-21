@@ -6,9 +6,10 @@ block scripts
   script(src='../../../chi-marketing-icons.js')
 
 block variables
-  - var title = 'Mobile Navigation -  component example'
+  - var title = 'Mobile Navigation - component example'
 
 block content
+
   button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobile-navigation-example')
     .chi-button__content
       i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
@@ -51,7 +52,11 @@ block content
                   li.-active
                     a(href='#second-level-1')
                       i.chi-icon.icon-atom(aria-hidden="true")
-                      span Toggle me
+                      span List items
+                  li
+                    a(href='#second-level-2')
+                      i.chi-icon.icon-atom(aria-hidden="true")
+                      span Accordion items
                   li
                     a(href='#tab-link')
                       i.chi-icon.icon-atom(aria-hidden="true")
@@ -116,6 +121,73 @@ block content
                   li
                     a(href='#tab-link')
                       .chi-mobile-nav__list-title Single level
+            #second-level-2.chi-drawer.-right.-position--absolute
+              .chi-drawer__header.chi-mobile-nav__header
+                button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+                .chi-mobile-nav__header-title Inventory
+                button.chi-button.-icon.-close(aria-label='Close')
+                  .chi-button__content
+                    i.chi-icon.icon-x(aria-hidden='true')
+              .chi-drawer__content.chi-mobile-nav__content
+                .chi-accordion
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title Item 1
+                      i.chi-icon.icon-chevron-down(aria-hidden='true')
+                    .chi-accordion__content
+                      .chi-accordion
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            .chi-accordion__title Item 1.1
+                            i.chi-icon.icon-chevron-down(aria-hidden='true')
+                          .chi-accordion__content
+                            a(href='#exampleHashTarget')
+                              span Item 1.1.1
+                            a(href='#exampleHashTarget')
+                              span Item 1.1.2
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            .chi-accordion__title Item 1.2
+                            i.chi-icon.icon-chevron-down(aria-hidden='true')
+                          .chi-accordion__content
+                            a(href='#exampleHashTarget')
+                              span Item 1.2.1
+                            a(href='#exampleHashTarget')
+                              span Item 1.2.2
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title Item 2
+                      i.chi-icon.icon-chevron-down(aria-hidden='true')
+                    .chi-accordion__content
+                      .chi-accordion
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            .chi-accordion__title Item 2.1
+                            i.chi-icon.icon-chevron-down(aria-hidden='true')
+                          .chi-accordion__content
+                            a(href='#exampleHashTarget')
+                              span Item 2.1.1
+                            a(href='#exampleHashTarget')
+                              span Item 2.1.2
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            .chi-accordion__title Item 2.2
+                            i.chi-icon.icon-chevron-down(aria-hidden='true')
+                          .chi-accordion__content
+                            a(href='#exampleHashTarget')
+                              span Item 2.2.1
+                            a.-active(href='#exampleHashTarget')
+                              span Item 2.2.2
+                  a(href='#exampleHashTarget')
+                    span
+                      | External
+                      i.chi-icon.icon-external-link.-xs(aria-hidden='true')
+
+  button#dispose-mobile-nav-button.chi-button.-mt--3
+    | Dispose Mobile Navigation
 
   script.
-    chi.mobilenav(document.querySelector("#mobile-navigation-interaction-trigger"));
+    const mobileNav = chi.mobilenav(document.getElementById("mobile-navigation-interaction-trigger"));
+    document.getElementById('dispose-mobile-nav-button').addEventListener('click', () => mobileNav.dispose());
