@@ -45,7 +45,6 @@
         }
 
         .custom-app-class {
-          height: 100vh;
           display: flex;
           flex-direction: column;
         }
@@ -74,7 +73,7 @@
       <h3>App Layout Examples</h3>
 
       <h3>Dashboard - Chi Grid</h3>
-      <div class="narnia-app-layout--dashboard custom-app-class -mb--5">
+      <div class="narnia-app-layout--dashboard custom-app-class -h--100 -mb--5">
         <!-- Header -->
         <header class="chi-header -lg -z--1">
           <div class="chi-header__brandbar"></div>
@@ -782,6 +781,29 @@
                 </div>
               </div>
               <chi-skeleton></chi-skeleton>
+
+              <footer class="chi-footer -compact" slot="footer">
+                <div class="chi-footer__content">
+                  <div class="chi-footer__internal">
+                    <div class="chi-footer__internal-content">
+                      <div class="chi-footer__copyright">&copy; 2025 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                      <div class="chi-footer__links">
+                        <chi-link href="https://www.lumen.com/en-us/about.html">About Us</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/accessibility.html">Accessibility</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts.html">Canadian Ombudsman</chi-link>
+                        <chi-link href="https://jobs.lumen.com" target="_blank">Careers</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/contact-us.html">Contact Us</chi-link>
+                        <chi-link href="#">Cookie Settings</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/governance.html">Governance</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/legal.html">Legal</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/legal/privacy-center.html">Privacy</chi-link>
+                        <chi-link href="https://www.lumen.com/en-us/about/public-policy.html">Public Policy</chi-link>
+                        <chi-link href="https://www.lumen.com/help/en-us/home.html" target="_blank">Support</chi-link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </footer>
             </chi-main>
 
             <!-- Help drawer -->
