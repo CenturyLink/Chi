@@ -133,4 +133,24 @@ chi-search-input {
       }
     }
   }
+
+  &:not([value=""]) {
+    .chi-dropdown__menu-item {
+      font-weight: $search-input-menu-item-font-weight;
+    }
+  }
+
+  .chi-dropdown__menu-item {
+    white-space: pre;
+
+    .-highlight {
+      background: $search-input-highlight-background;
+      border: $search-input-highlight-border;
+      border-radius: $search-input-highlight-border-radius;
+      box-shadow: $search-input-highlight-box-shadow;
+      color: $search-input-highlight-color;
+      display: inline;
+      font-weight: $search-input-menu-item-font-weight-highlight;
+    }
+  }
 }
