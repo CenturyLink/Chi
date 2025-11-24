@@ -1,6 +1,6 @@
 describe('chi-expansion-panel', () => {
   before(() => {
-    cy.visit('tests/js/expansion-panel.html');
+    cy.visit('tests/lumen/js/expansion-panel.html');
   });
 
   const EXPECTED = {

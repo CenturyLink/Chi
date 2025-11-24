@@ -6,7 +6,7 @@ describe('Chi Navigation', () => {
   const DISPOSE_BTN = '#dispose-btn';
 
   before(() => {
-    cy.visit('tests/js/navigation.html');
+    cy.visit('tests/lumen/js/navigation.html');
   });
 
   beforeEach(() => {

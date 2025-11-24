@@ -1,6 +1,6 @@
 describe('Floating label', () => {
   before(() => {
-    cy.visit('tests/js/floating-label.html');
+    cy.visit('tests/lumen/js/floating-label.html');
   });
 
   const WRAPPER_SELECT = '#floating-label-select > select';

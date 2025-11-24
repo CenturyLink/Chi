@@ -198,7 +198,7 @@ describe('Legacy Sidenav', () => {
 
 describe('Accordion Sidenav', () => {
   before(() => {
-    cy.visit('tests/js/sidenav.html');
+    cy.visit('tests/lumen/js/sidenav.html');
   });
 
   beforeEach(() => {
@@ -454,7 +454,7 @@ describe('Accordion Sidenav', () => {
 
 describe('Open on hover Sidenav', () => {
   before(() => {
-    cy.visit('tests/js/sidenav.html');
+    cy.visit('tests/lumen/js/sidenav.html');
   });
 
   beforeEach(() => {
