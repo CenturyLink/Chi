@@ -2055,6 +2055,8 @@ $sidenav-global-item-active-font-weight: $font-weight-bold;
 $sidenav-global-item-hover-background-color: $sidenav-item-hover-background-color;
 $sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
 $sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color;
 
 // Skeleton
 $skeleton-xs-size:                          1.5rem;
