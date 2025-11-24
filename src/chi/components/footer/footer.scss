@@ -311,14 +311,14 @@
       border-top: $footer-internal-compact-border-top;
       
       .chi-footer__internal-content {
-        color: #262425;
-        padding: $footer-internal-compact-content-padding;
+        color: $footer-internal-compact-color;
         flex-direction: column;
         gap: $footer-internal-compact-content-gap;
+        padding: $footer-internal-compact-content-padding;
 
         @include respond-to(lg) {
-          gap: $footer-internal-compact-content-lg-gap;
           flex-direction: row;
+          gap: $footer-internal-compact-content-lg-gap;
           padding: $footer-internal-compact-content-padding-lg
         }
 
@@ -329,13 +329,13 @@
 
 
         .chi-footer__copyright {
-          text-align: left;
-          font-size: $font-size-md;
-          line-height: $line-height-lg;
           flex: 1;
-          padding: 0;
+          font-size: $font-size-md;
           justify-content: flex-start;
+          line-height: $line-height-lg;
           min-width: 100%;
+          padding: 0;
+          text-align: left;
 
           @include respond-to(lg) {
             min-width: auto;
@@ -343,17 +343,17 @@
         }
 
         .chi-footer__links {
-          flex: 2;
           flex-direction: row;
           flex-wrap: wrap;
-          height: 100%;
+          flex: 2;
           gap: $footer-internal-compact-links-gap;
+          height: 100%;
           justify-content: flex-start;
 
           chi-link,
           .chi-link {
-            display: inline;
             color: $link-color;
+            display: inline;
           }
         }
       }
