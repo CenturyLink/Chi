@@ -15,7 +15,7 @@ block content
     chi-icon(icon="menu")
   div#mobile-nav.chi-mobile-nav.-global(data-cy="mobile-nav")
     chi-drawer#mobile-nav-drawer
-      div#main-content_0
+      div#main-menu
         div.chi-mobile-nav__header
           chi-dropdown#enterprise-dropdown.enterprise-id-switcher(
             select-mode=""
@@ -47,6 +47,7 @@ block content
             .chi-divider(slot="menu-footer")
             chi-link(slot="menu-footer") Manage My Enterprises
         .chi-divider.-my--0
+
         ul#main-content.chi-mobile-nav__list
           li.chi-mobile-nav__item
             chi-link
@@ -57,31 +58,37 @@ block content
               chi-icon(icon="bell")
               span Alerts & Notifications
           li.chi-mobile-nav__item
-            chi-link.-active(href="#services-content")
+            chi-link.-active(href="#services-menu")
               chi-icon(icon="list-alt")
               span Services
               chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
-            chi-link
+            chi-link(href="#apis-menu")
               chi-icon(icon="api")
               span APIs
+              chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
             chi-link
               chi-icon(icon="chart-bar")
               span Monitoring & Reports
+              chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
             chi-link
               chi-icon(icon="mail-open-dollar")
               span Billing
+              chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
             chi-link
               chi-icon(icon="users")
               span Admin
+              chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
             chi-link
               chi-icon(icon="life-ring")
               span Support
+              chi-icon(icon="chevron-right")
         .chi-divider.-my--0
+
         ul.chi-mobile-nav__list
           li.chi-mobile-nav__item
             chi-link
@@ -92,6 +99,7 @@ block content
               chi-icon(icon="compose")
               span Contact Lumen
         .chi-divider.-my--0
+
         ul.chi-mobile-nav__list
           li.chi-mobile-nav__item
             span.chi-mobile-nav__email jamie.johnson@company.com
@@ -103,10 +111,11 @@ block content
             chi-link
               chi-icon(icon="logout")
               span Sign out
-      div#services-content
+
+      #services-menu
         ul.chi-mobile-nav__list
           li.chi-mobile-nav__item
-            chi-link Manage Services
+            chi-link(href="https://lib.lumen.com/") Manage Services
           li.chi-mobile-nav__item
             chi-link Add Services
           li.chi-mobile-nav__item
@@ -120,32 +129,73 @@ block content
               span Service Requests
               chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
-            chi-link.-active(href="#quotes-content")
+            chi-link.-active(href="#quotes-menu")
               span Quotes
               chi-icon(icon="chevron-right")
           li.chi-mobile-nav__item
-            chi-link
+            chi-link(href="#service-portals-menu")
               span Service Portals
               chi-icon(icon="chevron-right")
-      div#quotes-content
+
+      #apis-menu
+        ul.chi-mobile-nav__list
+          li.chi-mobile-nav__item
+            chi-link(href="#view-apis-menu")
+              span View APIs
+              chi-icon(icon="chevron-right")
+          li.chi-mobile-nav__item
+            chi-link Edit APIs
+          li.chi-mobile-nav__item
+            chi-link API Settings
+
+      #quotes-menu
         ul.chi-mobile-nav__list
           li.chi-mobile-nav__item
             chi-link.-active View Quotes
           li.chi-mobile-nav__item
             chi-link Create Quotes
 
+      #service-portals-menu
+        ul.chi-mobile-nav__list
+          li.chi-mobile-nav__item
+            chi-link Service Portal 1
+          li.chi-mobile-nav__item
+            chi-link Service Portal 2
+
+      #view-apis-menu
+        ul.chi-mobile-nav__list
+          li.chi-mobile-nav__item
+            chi-link API 1
+          li.chi-mobile-nav__item
+            chi-link API 2
+
   button#dispose-mobile-navigation-button.chi-button.-mt--3
     | Dispose Mobile Navigation
 
   script.
-    const enterpriseDropdown = document.getElementById('enterprise-dropdown');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileNavTrigger = document.getElementById('mobile-nav-trigger');
     const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+    const enterpriseDropdown = document.getElementById('enterprise-dropdown');
     const globalMobileNav = chi.globalMobileNav(mobileNav, mobileNavTrigger, mobileNavDrawer, enterpriseDropdown);
 
+    let selectedEnterpriseId = '1234567';
+
+    const enterpriseDropdownLabel = () => `Enterprise ID: ${selectedEnterpriseId}`;
+
+    const extractIdFromDetail = (detail) => ((detail || '').split('\n')[0]);
+
+    mobileNavDrawer.addEventListener('click.capture', (e) => {
+      const anchorElement = e.target.closest('a[href^="#"]');
+      if (!anchorElement) return;
+      e.preventDefault();
+    });
+
     enterpriseDropdown.addEventListener('chiDropdownItemSelected', (e) => {
-      // Handle enterprise selection change with custom logic
+      const enterpriseId = extractIdFromDetail(e.detail);
+      e.currentTarget.resetSelection();
+      selectedEnterpriseId = enterpriseId;
+      enterpriseDropdown.setAttribute('button', enterpriseDropdownLabel());
     });
 
     const disposeMobileNavButton = document.getElementById('dispose-mobile-navigation-button');

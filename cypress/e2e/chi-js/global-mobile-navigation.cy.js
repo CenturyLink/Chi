@@ -85,19 +85,19 @@ describe('Global Sidenav', () => {
     it('open second level level accordion item and click on it to close the drawer', () => {
       cy.get('#mobile-nav-trigger')
         .click();
-      cy.get('#main-content')
+      cy.get('#main-menu')
         .find('.chi-link')
         .contains('Services')
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#services-content')
+        .find('#services-menu')
         .as('accordion')
       cy.get('@accordion')
         .should('have.not.class','-d--none');
       cy.get('@accordion')
         .find('.chi-mobile-nav__item')
-        .contains('Manage Services')
+        .contains('Add Services')
         .click();
       cy.get('.chi-backdrop')
         .should('have.class','-closed')
@@ -111,16 +111,16 @@ describe('Global Sidenav', () => {
     it('accordion item should recover the active state when the drawer is closed and opened again', () => {
       cy.get('#mobile-nav-trigger')
         .click();
-      cy.get('#main-content')
+      cy.get('#main-menu')
         .find('.chi-link')
         .contains('Services')
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#services-content')
+        .find('#services-menu')
         .as('firstAccordion')
       cy.get('@firstAccordion')
-        .find('.chi-mobile-nav__item:first-child')
+        .find('.chi-mobile-nav__item:nth-child(2)')
         .find('chi-link')
         .should('have.class', '-active');
       cy.get('@firstAccordion')
@@ -130,12 +130,8 @@ describe('Global Sidenav', () => {
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#quotes-content')
+        .find('#quotes-menu')
         .as('secondAccordion')
-      cy.get('@secondAccordion')
-        .find('.chi-mobile-nav__item:first-child')
-        .find('chi-link')
-        .should('have.class', '-active');
       cy.get('@secondAccordion')
         .find('.chi-mobile-nav__item:last-child')
         .find('chi-link')
@@ -148,13 +144,13 @@ describe('Global Sidenav', () => {
         .should('not.exist');
       cy.get('#mobile-nav-trigger')
         .click();
-      cy.get('#main-content')
+      cy.get('#main-menu')
         .find('.chi-link')
         .contains('Services')
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#services-content')
+        .find('#services-menu')
         .as('firstAccordion')
       cy.get('@firstAccordion')
         .find('.chi-mobile-nav__item:nth-child(6)')
@@ -163,12 +159,8 @@ describe('Global Sidenav', () => {
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#quotes-content')
+        .find('#quotes-menu')
         .as('secondAccordion')
-      cy.get('@secondAccordion')
-        .find('.chi-mobile-nav__item:first-child')
-        .find('chi-link')
-        .should('have.class', '-active');
       cy.get('@secondAccordion')
         .find('.chi-mobile-nav__item:last-child')
         .find('chi-link')
@@ -186,13 +178,13 @@ describe('Global Sidenav', () => {
     it('check that click on back button closes second level drawer', () => {
       cy.get('#mobile-nav-trigger')
         .click();
-      cy.get('#main-content')
+      cy.get('#main-menu')
         .find('.chi-link')
         .contains('Services')
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#services-content')
+        .find('#services-menu')
         .as('firstAccordion')
       cy.get('@firstAccordion')
         .find('.chi-mobile-nav__item')
@@ -201,14 +193,14 @@ describe('Global Sidenav', () => {
         .click();
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__content')
-        .find('#quotes-content')
+        .find('#quotes-menu')
         .as('secondAccordion');
       cy.get('@secondAccordion')
         .should('have.not.class','-d--none');
       cy.get('#mobile-nav-drawer')
         .find('.chi-drawer__header')
         .find('chi-link')
-        .contains('Quotes')
+        .contains('Services')
         .click();
       cy.get('@secondAccordion')
         .should('have.class','-d--none');
