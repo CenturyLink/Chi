@@ -103,6 +103,24 @@ block content
         .chi-drawer__content
           .-p--2.-text Drawer content here
 
+  h2 Chi Drawer - Not animated
+  button#drawer-trigger-25.chi-button.-icon.chi-drawer__trigger(data-target='#drawer-25', aria-label='Toggle navigation')
+    .chi-button__content
+      i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
+  .chi-backdrop.-closed
+    .chi-backdrop__wrapper
+      #drawer-25.chi-drawer.-left
+        .chi-drawer__header
+          button.chi-button.-icon.-close(aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden="true")
+        .chi-drawer__content
+          .-px--2.-text Drawer content here
+
+  h2 Chi Drawer - dispose()
+  button#dispose-drawer-button.chi-button
+    | Dispose Drawer
+
   script.
     chi.drawer(document.getElementById('drawer-trigger-1'));
     chi.drawer(document.getElementById('drawer-trigger-5'));
@@ -111,3 +129,7 @@ block content
     chi.drawer(document.getElementById('drawer-trigger-11'));
     chi.drawer(document.getElementById('drawer-trigger-13'));
     chi.drawer(document.getElementById('drawer-trigger-23'));
+
+    const drawer25 = chi.drawer(document.getElementById('drawer-trigger-25'), { animated: false });
+
+    document.getElementById('dispose-drawer-button').addEventListener('click', () => drawer25.dispose());

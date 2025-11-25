@@ -3,7 +3,6 @@ import { Util } from '../core/util.js';
 import { chi } from '../core/chi';
 
 const ANIMATION_DURATION = 500;
-const CLASS_DRAWER = 'chi-drawer';
 const CLOSE_TRIGGER_SELECTOR = `.-close`;
 const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = 'drawer';
@@ -127,9 +126,6 @@ class Drawer extends Component {
 
   show() {
     if (!this._shown) {
-      // if (this._backdrop) {
-      //   Util.addClass(document.body, DISABLE_SCROLL);
-      // }
       if (this._transitioning) {
         Util.stopThreeStepsAnimation(this._currentThreeStepsAnimation, false);
       }

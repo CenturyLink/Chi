@@ -118,28 +118,28 @@ block content
                     i.chi-icon.icon-external-link.-xs(aria-hidden="true")
 
   h3 Sidenav Accordion implementation
-  aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated(data-cy="sidenav")
+  aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated(data-cy="sidenav-accordion")
     .chi-sidenav__content
       nav
         ul.chi-sidenav__list
           li.-active
-            a(href='#drawer-2-1')
+            a(href='#drawer-1-1')
               i.chi-icon.icon-atom(aria-hidden='true')
               span Active Item
           li
-            a(href='#drawer-2-2')
+            a(href='#drawer-1-2')
               i.chi-icon.icon-atom(aria-hidden='true')
               span Menu Item
           li
-            a(href='#drawer-2-3')
+            a(href='#drawer-1-3')
               i.chi-icon.icon-atom(aria-hidden='true')
               span Menu Item
           li
-            a(href='#drawer-2-4')
+            a(href='#drawer-1-4')
               i.chi-icon.icon-atom(aria-hidden='true')
               span Menu Item
     .chi-sidenav__drawers
-      #drawer-2-1.chi-drawer.-animated.-left
+      #drawer-1-1.chi-drawer.-animated.-left
         .chi-drawer__header
           .chi-drawer__title Menu item 1
           button.chi-button.-icon.-close(aria-label='Close')
@@ -185,7 +185,7 @@ block content
               span
                 | External 1
                 i.chi-icon.icon-external-link.-xs(aria-hidden='true')
-      #drawer-2-2.chi-drawer.-left.-animated
+      #drawer-1-2.chi-drawer.-left.-animated
         .chi-drawer__header
           .chi-drawer__title Menu item 2
           button.chi-button.-icon.-close(aria-label='Close')
@@ -231,7 +231,7 @@ block content
               span
                 | External 2
                 i.chi-icon.icon-external-link.-xs(aria-hidden='true')
-      #drawer-2-3.chi-drawer.-left.-animated
+      #drawer-1-3.chi-drawer.-left.-animated
         .chi-drawer__header
           .chi-drawer__title Menu item 3
           button.chi-button.-icon.-close(aria-label='Close')
@@ -277,7 +277,7 @@ block content
               span
                 | External 3
                 i.chi-icon.icon-external-link.-xs(aria-hidden='true')
-      #drawer-2-4.chi-drawer.-left.-animated
+      #drawer-1-4.chi-drawer.-left.-animated
         .chi-drawer__header
           .chi-drawer__title Menu item 4
           button.chi-button.-icon.-close(aria-label='Close')
@@ -324,6 +324,122 @@ block content
                 | External 4
                 i.chi-icon.icon-external-link.-xs(aria-hidden='true')
 
+  h3 Open on hover Sidenav
+  .enterprise-nav-menu.chi(style='height: 35rem;')
+    aside#sidenav-2.chi-sidenav.-h--75(data-cy="open-on-hover-sidenav")
+      .chi-sidenav__content
+        nav
+          ul.chi-sidenav__list
+            li.-active
+              a(href='#drawer-2-1')
+                i.chi-icon.icon-atom(aria-hidden="true")
+                span Active Item
+            li
+              a(href='#drawer-2-2')
+                i.chi-icon.icon-atom(aria-hidden="true")
+                span Menu Item
+      .chi-sidenav__drawers
+        #drawer-2-1.chi-drawer.-animated.-left
+          .chi-drawer__header
+            .chi-drawer__title Menu item 1
+            button.chi-button.-icon.-close(aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-drawer__content
+            ul.chi-sidenav__drawer-list
+              li
+                a(href='#drawer-item-list-2-1-A')
+                  .chi-sidenav__title Title A
+                #drawer-item-list-2-1-A.chi-sidenav__drawer-item-list
+                  ul.chi-tabs.-vertical.-sm
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab A
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab B
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab C
+              li.-active.-expanded
+                a(href='#drawer-item-list-2-1-B')
+                  .chi-sidenav__title Title B
+                #drawer-item-list-2-1-B.chi-sidenav__drawer-item-list
+                  ul.chi-tabs.-vertical.-sm
+                    li
+                      a.chi-sidenav__drawer-item-tab.-active(href='#exampleHashTarget')
+                        | Sub tab A
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab B
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab C
+              li
+                a(href='#exampleHashTarget')
+                  span.chi-sidenav__title
+                    | Title C
+                    i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+              li
+                a(href='#exampleHashTarget')
+                  span.chi-sidenav__title
+                    | Title D
+                    i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+        #drawer-2-2.chi-drawer.-animated.-left
+          .chi-drawer__header
+            .chi-drawer__title Menu item 2
+            button.chi-button.-icon.-close(aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-drawer__content
+            ul.chi-sidenav__drawer-list
+              li
+                a(href='#drawer-item-list-2-2-A')
+                  .chi-sidenav__title Title E
+                #drawer-item-list-2-2-A.chi-sidenav__drawer-item-list
+                  ul.chi-tabs.-vertical.-sm
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab A
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab B
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab C
+              li
+                a(href='#drawer-item-list-2-2-B')
+                  .chi-sidenav__title Title F
+                #drawer-item-list-2-2-B.chi-sidenav__drawer-item-list
+                  ul.chi-tabs.-vertical.-sm
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab A
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab B
+                    li
+                      a.chi-sidenav__drawer-item-tab(href='#exampleHashTarget')
+                        | Sub tab C
+              li
+                a(href='#exampleHashTarget')
+                  span.chi-sidenav__title
+                    | Title G
+                    i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+              li
+                a(href='#exampleHashTarget')
+                  span.chi-sidenav__title
+                    | Title H
+                    i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+
+  h3 dispose()
+  button#dispose-sidenav-button.chi-button
+    | Dispose Sidenav
+
   script.
     chi.sidenav(document.getElementById('sidenav-0'));
     chi.sidenav(document.getElementById('sidenav-1'));
+    const sidenav = chi.sidenav(document.getElementById('sidenav-2'), { openOnHover: true, autoClose: true });
+
+    const disposeSidenavButton = document.getElementById('dispose-sidenav-button');
+    disposeSidenavButton.addEventListener('click', () => sidenav.dispose());

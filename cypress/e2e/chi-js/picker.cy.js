@@ -3,7 +3,7 @@ const PICKER_PILL_CLASS = '-pill';
 
 describe('Picker', function () {
   before(() => {
-    cy.visit('tests/lumen/components/picker.html');
+    cy.visit('tests/lumen/js/picker.html');
   });
 
   describe('Pill', () => {
