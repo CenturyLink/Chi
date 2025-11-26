@@ -768,7 +768,17 @@ $sidenav-lg-width: 12.5rem;
                   visibility: visible;
                 }
               }
+              
+              &.-expanded {
+                .chi-accordion__trigger {
+                  .icon-chevron-down {
+                    flex-grow: 1;
+                    margin-right: 0.25rem;
+                  }
+                }
+              }
             }
+
           }
         }
       }
@@ -887,6 +897,8 @@ $sidenav-lg-width: 12.5rem;
 
                 .chi-link {
                   display: flex;
+                  margin-bottom: 0.125rem;
+                  margin-top: 0.125rem;
                   padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 2 Item
                   width: 100%;
 
