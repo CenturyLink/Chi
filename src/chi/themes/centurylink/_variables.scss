@@ -1098,15 +1098,32 @@ $carousel-controller-height-pagination:     calc(100% - #{$carousel-pagination-l
 
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
-$checkbox-border-color:                     $color-grey-40;
+$checkbox-border:                           0.0625rem solid $color-grey-40;
+$checkbox-border-radius:                    0;
 $checkbox-danger-border-color:              $color-border-danger;
-$checkbox-focus-color:                      $focus-color;
+
+$checkbox-active-outline:                   none;
+
 $checkbox-checked-background-color:         $color-background-primary;
+$checkbox-checked-background-color-disabled:$color-background-primary;
+$checkbox-checked-background-color-hover:   $color-background-primary;
 $checkbox-checked-border-color:             $color-border-primary;
+$checkbox-checked-border-color-disabled:    $color-border-primary;
+$checkbox-checked-border-color-hover:       $color-border-primary;
 $checkbox-checked-icon-color:               $color-background-white;
+
+$checkbox-disabled-background-color:        $color-background-white;
+$checkbox-disabled-border-color:            $color-grey-40;
+$checkbox-disabled-label-opacity:           $opacity-80;
+$checkbox-disabled-label-text-color:        $color-text-muted;
+
+$checkbox-focus-color:                      $focus-color;
+
+$checkbox-hover-background-color:           $color-background-white;
+$checkbox-hover-border-color:               $color-grey-40;
+$checkbox-hover-transform:                  scale(1);
+
 $checkbox-label-danger-text-color:          $color-text-base;
-$checkbox-label-disabled-text-color:        $color-text-muted;
-$checkbox-label-disabled-opacity:           $opacity-80;
 $checkbox-label-before-top:                 0.125rem;
 $checkbox-label-after-top:                  0.3125rem;
 $checkbox-label-indeterminate-after-top:    0.5625rem !important;
@@ -1234,6 +1251,7 @@ $drag-item-padding:                         1.25rem;
 $drag-item-title-font-size:                 $font-size-md;
 $drag-item-title-font-weight:               $font-weight-semi-bold;
 $drag-item-title-line-height:               $line-height-lg;
+$drag-item-title-info-icon-margin-left:     0.25rem;
 $drag-item-description-font-size:           $font-size-sm;
 $drag-item-description-line-height:         $line-height-md;
 $drag-item-description-text-align:          left;
@@ -1479,9 +1497,9 @@ $header-search-background-color:            $color-background-white;
 $header-search-hover-border-color:          $color-grey-40;
 $header-search-focus-color:                 $focus-color;
 $header-impersonation-background-color:     $color-grey-30;
+$header-impersonation-bar-height:           1.5rem;
 $header-impersonation-box-shadow:           inset 0 0.25rem 0 0 $header-impersonation-background-color;
 $header-impersonation-content-padding:      0 0.5rem;
-$header-impersonation-edge-element-height:  1.5rem;
 $header-impersonation-text-color:           $color-text-base;
 $header-impersonation-font-size:            $font-size-sm;
 $header-impersonation-line-height:          $line-height-lg;
@@ -1786,6 +1804,7 @@ $picker-background-color:                   $color-background-white;
 $picker-border-color:                       $color-border-base-dark;
 $picker-border-radius:                      $border-radius;
 $picker-icon-color:                         inherit;
+$picker-item-info-icon-margin-left:         0.25rem;
 $picker-checked-focus-outline:              none;
 $picker-checked-focus-outline-offset:       0;
 $picker-checkbox-border-color:              $color-grey-40;
@@ -2069,6 +2088,8 @@ $sidenav-global-item-active-font-weight: $font-weight-bold;
 $sidenav-global-item-hover-background-color: $sidenav-item-hover-background-color;
 $sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
 $sidenav-global-tree-guide-active-color: $color-icon-primary;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color;
 
 // Skeleton
 $skeleton-xs-size:                          1.5rem;
@@ -2482,10 +2503,12 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
 $toolbar-header-background-color:           $color-background-base;
+$toolbar-header-border:                     none;
+$toolbar-header-border-radius:              0;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-expandable-border-radius:          0.5rem;
 $toolbar-expandable-background-color:       $color-grey-20;
 $toolbar-expandable-border:                 0.0625rem solid $color-grey-30;
+$toolbar-expandable-border-radius:          0.5rem;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);
