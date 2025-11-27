@@ -22,20 +22,6 @@ app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-function redirectPreserveQuery(req, res, targetPath) {
-  const search = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
-  res.redirect(302, `${targetPath}${search}`);
-}
-
-app.get(/^\/chi\/?$/, (req, res) => {
-  return redirectPreserveQuery(req, res, '/chi/latest/');
-});
-
-app.get(/^\/chi\/latest(?:\/.*)?$/, (req, res) => {
-  const newPath = req.path.replace(/^\/chi\/latest(?=\/|$)/, `/chi/${CHI_VERSION}`);
-  return redirectPreserveQuery(req, res, newPath);
-});
-
 app.get(new RegExp(`${basePath}/tests/(.*)`), (req, res) => {
   const requestedPath = req.path.replace(`${basePath}/tests`, '');
   const baseTestsPath = path.join(__dirname, 'dist', 'tests');
