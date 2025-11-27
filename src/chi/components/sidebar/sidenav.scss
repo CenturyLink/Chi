@@ -869,15 +869,15 @@ $sidenav-lg-width: 12.5rem;
             .chi-link {
               color: $sidenav-global-item-text-color;
               font-size: $sidenav-global-item-font-size;
-              margin-bottom: 0.125rem;
-              margin-top: 0.125rem;
               text-decoration: none;
             }
 
             .chi-sidenav__item-wrapper:has(chi-accordion) {
               chi-link {
-                width: 100%;
                 border-radius: $sidenav-global-item-border-radius;
+                margin-bottom: 0.125rem;
+                margin-top: 0.125rem;
+                width: 100%;
 
                 &.-active {
                   .chi-icon,
