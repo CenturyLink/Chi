@@ -434,6 +434,24 @@ $sizes: (
       }
     }
 
+    .chi-dropdown {
+      &.-actions {
+        .chi-button {
+          &.-flat {
+            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+              &.-icon {
+                .chi-icon {
+                  &.icon-more-vert {
+                    color: $data-table-cell-actions-icon-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     .chi-button {
       &.-flat {
         &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
@@ -1125,7 +1143,7 @@ $sizes: (
           }
         }
       }
-      
+
       &-child,
       &-grand-child {
         background-color: $color-background-base-darker;
