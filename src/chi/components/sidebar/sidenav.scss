@@ -744,7 +744,7 @@ $sidenav-lg-width: 12.5rem;
     height: 100%;
 
     &.-expanded {
-      width: 18.75rem;
+      min-width: 20.250rem;
 
       .chi-sidenav__item-wrapper {
         chi-link {
@@ -768,7 +768,17 @@ $sidenav-lg-width: 12.5rem;
                   visibility: visible;
                 }
               }
+              
+              &.-expanded {
+                .chi-accordion__trigger {
+                  .icon-chevron-down {
+                    flex-grow: 1;
+                    margin-right: 0.25rem;
+                  }
+                }
+              }
             }
+
           }
         }
       }
@@ -864,8 +874,10 @@ $sidenav-lg-width: 12.5rem;
 
             .chi-sidenav__item-wrapper:has(chi-accordion) {
               chi-link {
-                width: 100%;
                 border-radius: $sidenav-global-item-border-radius;
+                margin-bottom: 0.125rem;
+                margin-top: 0.125rem;
+                width: 100%;
 
                 &.-active {
                   .chi-icon,
@@ -937,7 +949,7 @@ $sidenav-lg-width: 12.5rem;
                       > div {
                         > .chi-sidenav__item-guide {
                           &::before {
-                            border-left: 2px solid $sidenav-global-tree-guide-active-color;
+                            border-left: $sidenav-global-tree-guide-active-border-left;
                           }
                         }
                       }
@@ -977,7 +989,7 @@ $sidenav-lg-width: 12.5rem;
                       position: relative;
 
                       &::before {
-                        border-left: 2px solid $sidenav-global-tree-guide-color;
+                        border-left: $sidenav-global-tree-guide-border-left;
                         content: '';
                         display: block;
                         height: 100%;

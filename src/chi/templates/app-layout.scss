@@ -278,7 +278,7 @@
         gap: 1rem;
         padding: 0.5rem 0;
 
-        @include respond-to(md) { 
+        @include respond-to(md) {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -306,6 +306,28 @@
 
     .chi-main__content {
       padding-top: 2rem;
+
+      .chi-main__accordion {
+        > chi-accordion > .chi-accordion > .chi-accordion__item {
+          background: transparent;
+
+          > .chi-accordion__trigger,
+          > .chi-accordion__content {
+            padding: 0;
+          }
+
+          &.-expanded {
+            > .chi-accordion__trigger {
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          > .chi-accordion__trigger > .chi-accordion__title {
+            flex-grow: 0;
+            font-size: 1.5rem;
+          }
+        }
+      }
     }
 
     &.-header-background {

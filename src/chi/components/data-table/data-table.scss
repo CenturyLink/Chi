@@ -3,20 +3,20 @@
 
 $sizes: (
   xs: (
-    padding: 0.25rem
+    padding: 0.25rem,
   ),
   sm: (
-    padding: 0.5rem
+    padding: 0.5rem,
   ),
   md: (
-    padding: 0.75rem 1rem
+    padding: 0.75rem 1rem,
   ),
   lg: (
-    padding: 1rem
+    padding: 1rem,
   ),
   xl: (
-    padding: 1.25rem 1rem
-  )
+    padding: 1.25rem 1rem,
+  ),
 );
 
 .chi-data-table {
@@ -68,8 +68,20 @@ $sizes: (
       flex-direction: column;
     }
 
+    .chi-data-table__row-wrapper {
+      border-bottom: $data-table-row-border;
+
+      .chi-data-table__row-wrapper {
+        border-bottom: $data-table-row-expanded-border;
+      }
+    }
+
     .chi-data-table__row {
+      border-bottom: $data-table-row-border;
+
       &.-expanded {
+        border-bottom: $data-table-row-expanded-border;
+
         @include respond-to(md) {
           font-weight: $font-weight-semi-bold;
         }
@@ -158,29 +170,41 @@ $sizes: (
           border-top: 0;
           user-select: none;
 
-          .icon-arrow-up,
-          .icon-arrow-down,
-          .icon-arrow-sort {
-            opacity: $opacity-60;
+          &.-active {
+            background-color: $data-table-head-sorting-background-color;
+
+            &:first-child {
+              border-top-left-radius: $data-table-head-border-top-radius;
+            }
+
+            &:last-child {
+              border-top-right-radius: $data-table-head-border-top-radius;
+            }
           }
+
+          // .icon-arrow-up,
+          // .icon-arrow-down,
+          // .icon-arrow-sort {
+          //   opacity: $opacity-60;
+          // }
 
           &:hover,
           &:focus {
             cursor: pointer;
 
-            .icon-arrow-up,
-            .icon-arrow-down,
-            .icon-arrow-sort {
-              opacity: $opacity-100;
-            }
+            // .icon-arrow-up,
+            // .icon-arrow-down,
+            // .icon-arrow-sort {
+            //   opacity: $opacity-100;
+            // }
           }
 
           &.-active {
-            .icon-arrow-up,
-            .icon-arrow-down,
-            .icon-arrow-sort {
-              opacity: $opacity-100;
-            }
+            // .icon-arrow-up,
+            // .icon-arrow-down,
+            // .icon-arrow-sort {
+            //   opacity: $opacity-100;
+            // }
 
             &.-descending {
               .icon-arrow-up,
@@ -190,6 +214,10 @@ $sizes: (
               }
             }
           }
+        }
+
+        &:not(:first-child) {
+          border-left: $data-table-head-cell-border-left;
         }
       }
 
@@ -326,22 +354,22 @@ $sizes: (
       &.-row {
         &--warning {
           box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset,
-          inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
+            inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
         }
 
         &--danger {
           box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset,
-          inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
+            inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
         }
 
         &--success {
           box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset,
-          inset 0.25rem 0 0 $data-table-state-success-box-shadow;
+            inset 0.25rem 0 0 $data-table-state-success-box-shadow;
         }
 
         &--info {
           box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset,
-          inset 0.25rem 0 0 $data-table-state-info-box-shadow;
+            inset 0.25rem 0 0 $data-table-state-info-box-shadow;
         }
       }
     }
@@ -378,12 +406,58 @@ $sizes: (
       color: $color-icon-base;
     }
 
+    &.-sorting {
+      &.-active {
+        .chi-button {
+          &.-flat {
+            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+              &.-icon {
+                .chi-icon {
+                  color: $data-table-head-sorting-icon-color;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .chi-button {
+        &.-flat {
+          &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+            &.-icon {
+              .chi-icon {
+                color: $data-table-cell-icon-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .chi-dropdown {
+      &.-actions {
+        .chi-button {
+          &.-flat {
+            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+              &.-icon {
+                .chi-icon {
+                  &.icon-more-vert {
+                    color: $data-table-cell-actions-icon-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     .chi-button {
       &.-flat {
         &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
           &.-icon {
             .chi-icon {
-              color: $color-icon-base;
+              color: $data-table-cell-icon-color;
             }
           }
         }
@@ -479,7 +553,7 @@ $sizes: (
 
       @include respond-to(md) {
         display: flex;
-        flex-basis: 3rem;
+        flex-basis: $data-table-cell-expandable-flex-basis;
       }
     }
 
@@ -488,7 +562,7 @@ $sizes: (
 
       @include respond-to(md) {
         display: flex;
-        flex-basis: 3rem;
+        flex-basis: $data-table-cell-selectable-flex-basis;
 
         .chi-checkbox__label {
           padding-left: 1rem;
@@ -636,7 +710,9 @@ $sizes: (
     &:not(.-bordered) {
       .chi-data-table__body {
         @include respond-to(md) {
-          border: 0.0625rem solid $color-grey-15;
+          border: $data-table-body-border;
+          border-top: $data-table-body-border-top;
+          border-bottom: $data-table-body-border-bottom;
         }
       }
     }
@@ -709,6 +785,10 @@ $sizes: (
     .chi-data-table__footer {
       @include respond-to(md) {
         background-color: $data-table-footer-background-color;
+        border: $data-table-footer-border;
+        border-top: $data-table-footer-border-top;
+        border-bottom-left-radius: $data-table-footer-border-bottom-radius;
+        border-bottom-right-radius: $data-table-footer-border-bottom-radius;
         padding: 0.5rem 1rem;
 
         .chi-pagination__content {
@@ -723,9 +803,15 @@ $sizes: (
                     border: 0.0625rem solid transparent;
                   }
 
+                  &:not(.-disabled):not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+                    .chi-icon {
+                      color: $data-table-footer-icon-color;
+                    }
+                  }
+
                   &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
                     .chi-icon {
-                      color: $color-icon-base;
+                      color: $data-table-footer-icon-disabled-color;
                     }
                   }
                 }
@@ -751,21 +837,38 @@ $sizes: (
     .chi-data-table__head {
       @include respond-to(md) {
         background-color: $data-table-head-background-color;
+        border: $data-table-head-border;
+        border-bottom: $data-table-head-border-bottom;
+        border-top-left-radius: $data-table-head-border-top-radius;
+        border-top-right-radius: $data-table-head-border-top-radius;
 
         .chi-data-table__row {
           &,
           &:hover {
             background-color: $data-table-head-background-color;
+            border-top-left-radius: $data-table-head-border-top-radius;
+            border-top-right-radius: $data-table-head-border-top-radius;
           }
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
 
             &.-selectable {
+              min-width: $data-table-head-selectable-min-width;
+
               .chi-dropdown {
                 left: 2.5rem;
                 position: absolute;
                 z-index: 1;
+              }
+            }
+
+            &.-expandable {
+              border-right: $data-table-head-expandable-border-right;
+              min-width: $data-table-head-expandable-min-width;
+
+              ~ .chi-data-table__cell {
+                border-left: $data-table-head-first-cell-border-left;
               }
             }
 
@@ -787,6 +890,12 @@ $sizes: (
           &:last-child {
             .chi-data-table__cell {
               border-bottom: 0;
+
+              &.-sorting {
+                &.-active {
+                  border-bottom: $data-table-head-sorting-border-bottom;
+                }
+              }
             }
           }
         }
@@ -911,6 +1020,14 @@ $sizes: (
           }
         }
       }
+
+      .chi-data-table__row-wrapper {
+        border-bottom: $data-table-row-border;
+
+        .chi-data-table__row-wrapper {
+          border-bottom: $data-table-row-expanded-border;
+        }
+      }
     }
 
     @each $type in map-keys($sizes) {
@@ -949,7 +1066,7 @@ $sizes: (
 
     .chi-data-table__row {
       background-color: $color-background-muted-lighter;
-      border-bottom: 0;
+      border-bottom: $data-table-row-border;
       margin-top: 0.5rem;
       padding: 1rem;
 
@@ -962,6 +1079,7 @@ $sizes: (
       &.-active,
       &.-expanded {
         background-color: $data-table-row-active-background-color;
+        border-bottom: $data-table-row-expanded-border;
 
         .chi-data-table__cell {
           &.-key {
@@ -971,6 +1089,14 @@ $sizes: (
               }
             }
           }
+        }
+
+        @include respond-to(md) {
+          font-weight: $font-weight-semi-bold;
+        }
+
+        .chi-data-table__cell {
+          border-bottom-color: transparent;
         }
       }
 

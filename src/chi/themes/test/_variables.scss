@@ -12,6 +12,7 @@ $font-family-base: 'Gotham', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 // Font size - text
+$font-size-3xl: 1.75rem; // 28px
 $font-size-xl: 1.125rem; // 18px
 $font-size-lg: 1rem; // 16px
 $font-size-md: 0.875rem; // 14px
@@ -984,10 +985,17 @@ $button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
 $button-group-border-width: $button-solid-border-width;
 
 // Card
+$card-accordion-border-width: 0.0625rem;
+$card-accordion-border: $card-accordion-border-width solid rgba($color-black, 0.12);
+$card-accordion-card-content-padding: 0;
+$card-accordion-content-padding-bottom: 0.625rem;
+$card-accordion-content-padding-top: 0;
+$card-accordion-content-padding: 1.25rem;
+$card-accordion-trigger-padding: 1.25rem;
+$card-alert-accordion-trigger-max-height: 4.0625rem;
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
-$card-alert-empty-accordion-content-padding-y: 1.875rem;
-$card-alert-empty-accordion-trigger-padding: 1.25rem;
-$card-alert-empty-border: 0.0625rem solid rgba($color-black, 0.12);
+$card-alert-max-height: 46.875rem;
+$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*3);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;
@@ -1001,6 +1009,9 @@ $card-alert-empty-content-icon-margin: 0;
 $card-alert-empty-content-icon-width: $icon-size-sm3;
 $card-alert-empty-content-message-font-size: $font-size-lg;
 $card-alert-empty-content-message-line-height: $line-height-lg;
+$card-alert-empty-content-padding-bottom: 1.875rem;
+$card-alert-empty-content-padding-top: 1.875rem;
+$card-alert-empty-content-wrapper-gap: 0.5rem;
 $card-alert-empty-icon-padding: 0.75rem;
 
 $card-active-border-color: $color-teal-80;
@@ -1083,9 +1094,6 @@ $card-title-font-size: $font-size-xl;
 $card-title-font-weight: $font-weight-bold;
 $card-title-line-height: $line-height-lg;
 
-$card-accordion-border: $card-content-border;
-$card-accordion-border-radius: $card-content-border-radius;
-
 $card-kpi-background-color: $color-background-white;
 $card-kpi-hover-background-color: $color-teal-10;
 $card-kpi-active-background-color: $color-teal-15;
@@ -1105,6 +1113,9 @@ $card-kpi-disabled-title-color: $color-text-muted;
 $card-kpi-icon-arrow-color: $color-teal-80;
 $card-kpi-caption-color: $color-text-muted;
 $card-kpi-metric-color: $color-teal-70;
+$card-kpi-metric-font-size: $font-size-3xl;
+$card-kpi-metric-margin-top: 0.75rem;
+$card-kpi-metric-label-margin-top: 0.3125rem;
 $card-kpi-hover-metric-color: $color-teal-80;
 $card-kpi-active-metric-color: $color-teal-80;
 $card-kpi-disabled-metric-color: $color-text-muted;
@@ -1121,20 +1132,52 @@ $carousel-controller-height-pagination: calc(100% - #{$carousel-pagination-line-
 
 // Checkbox
 $checkbox-background-color: $color-background-white;
-$checkbox-border-color: $color-grey-40;
+$checkbox-border: 0.125rem solid $color-grey-70;
+$checkbox-border-radius: 0.125rem;
 $checkbox-danger-border-color: $color-border-danger;
-$checkbox-focus-color: $focus-color;
-$checkbox-checked-background-color: $color-teal-80;
-$checkbox-checked-border-color: $color-teal-80;
+
+$checkbox-active-outline: 0.25rem solid rgba($color-teal-70, 0.2);
+
+$checkbox-checked-background-color: $color-teal-70;
+$checkbox-checked-background-color-disabled: $color-grey-50;
+$checkbox-checked-background-color-hover: $color-teal-80;
+$checkbox-checked-border-color: $color-teal-70;
+$checkbox-checked-border-color-disabled: $color-grey-50;
+$checkbox-checked-border-color-hover: $color-teal-80;
 $checkbox-checked-icon-color: $color-background-white;
+
+$checkbox-disabled-background-color: $color-grey-25;
+$checkbox-disabled-border-color: $color-grey-50;
+$checkbox-disabled-label-opacity: $opacity-100;
+$checkbox-disabled-label-text-color: $color-text-muted;
+
+$checkbox-focus-color: rgba($focus-color, 0.7);
+
+$checkbox-hover-background-color: rgba($color-teal-70, 0.2);
+$checkbox-hover-border-color: $color-teal-70;
+$checkbox-hover-transform: scale(0);
+
 $checkbox-label-danger-text-color: $color-text-base;
-$checkbox-label-disabled-text-color: $color-text-muted;
-$checkbox-label-disabled-opacity: $opacity-80;
 $checkbox-label-before-top: 0.125rem;
 $checkbox-label-after-top: 0.3125rem;
 $checkbox-label-indeterminate-after-top: 0.5625rem !important;
 
 // Customize panel
+$customize-panel-empty-content-align-items: center;
+$customize-panel-empty-content-display: flex;
+$customize-panel-empty-content-flex-direction: column;
+$customize-panel-empty-content-gap: 0.75rem;
+$customize-panel-empty-content-icon-background-color: $color-grey-20;
+$customize-panel-empty-content-icon-border-radius: 50%;
+$customize-panel-empty-content-icon-color: $color-grey-90;
+$customize-panel-empty-content-icon-display: flex;
+$customize-panel-empty-content-icon-height: $icon-size-sm3;
+$customize-panel-empty-content-icon-margin: 0;
+$customize-panel-empty-content-icon-width: $icon-size-sm3;
+$customize-panel-empty-content-message-font-size: $font-size-lg;
+$customize-panel-empty-content-message-line-height: $line-height-lg;
+$customize-panel-empty-icon-padding: 0.75rem;
+
 $customize-panel-border: 0.0625rem solid $color-grey-30;
 $customize-panel-border-bottom: 0.0625rem solid $color-grey-30;
 $customize-panel-content-padding-bottom: 1.5rem;
@@ -1162,7 +1205,7 @@ $date-picker-day-active-text-color: $color-text-white;
 $date-picker-day-border-radius: 0.1875rem;
 $date-picker-day-line-height: 2rem;
 $date-picker-day-today-accent-background-color: $color-teal-70;
-$date-picker-day-today-accent-background-color-active: $color-teal-70;
+$date-picker-day-today-accent-background-color-active: $color-background-white;
 $date-picker-day-today-bottom: 0.1875rem;
 $date-picker-day-width: calc(100% / 7);
 $date-picker-days-gap: 0;
@@ -1185,26 +1228,54 @@ $divider-vertical-border-color: rgba($color-black, 0.12);
 $divider-vertical-inverse-border-color: rgba($color-white, 0.2);
 
 // Data Table
-$data-table-footer-background-color: $color-grey-10;
-$data-table-head-background-color: $color-background-muted-lighter;
-$data-table-head-icon-button-color: $color-teal-80;
+$data-table-head-background-color: $color-background-base-darker;
+$data-table-head-border: 0.0625rem solid $color-border-base;
+$data-table-head-border-bottom: 0;
+$data-table-head-border-top-radius: 0.5rem;
+$data-table-head-cell-border-left: 0.0625rem solid $color-border-base;
+$data-table-head-first-cell-border-left: none;
+$data-table-head-icon-button-color: $color-icon-black;
+$data-table-head-sorting-background-color: $color-background-primary-light;
+$data-table-head-sorting-icon-color: $color-icon-orange;
+$data-table-head-sorting-border-bottom: 0.125rem solid $color-red-50;
+
+$data-table-body-border: 0.0625rem solid $color-grey-25;
+$data-table-body-border-top: 0;
+$data-table-body-border-bottom: 0;
+
 $data-table-row-striped-background-color: $color-grey-10;
 $data-table-row-active-background-color: $color-orange-05;
 $data-table-row-active-marker-color: $color-border-primary;
 $data-table-row-hover-background-color: $color-orange-10;
 $data-table-row-expanded-background-color: $data-table-row-active-background-color;
 $data-table-row-expandable-icon: $color-orange-70;
+$data-table-row-border: 0.0625rem solid $color-border-base;
+$data-table-row-expanded-border: none;
 
-$data-table-state-warning-box-shadow: $color-yellow-60;
-$data-table-state-danger-box-shadow: $color-red-60;
-$data-table-state-success-box-shadow: $color-green-60;
-$data-table-state-info-box-shadow: $color-blue-60;
-
+$data-table-cell-expandable-flex-basis: 3.375rem;
+$data-table-head-expandable-min-width: 3.375rem;
+$data-table-head-expandable-border-right: 0.0625rem solid $color-border-base;
+$data-table-cell-selectable-flex-basis: 4rem;
+$data-table-head-selectable-min-width: 4rem;
 $data-table-cell-highlight-background: $color-yellow-30;
 $data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
 $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
+$data-table-cell-actions-icon-color: $color-icon-base;
+$data-table-cell-icon-color: $color-icon-black;
+
+$data-table-footer-background-color: $color-background-base-darker;
+$data-table-footer-border: 0.0625rem solid $color-border-base;
+$data-table-footer-border-top: 0;
+$data-table-footer-border-bottom-radius: 0.5rem;
+$data-table-footer-icon-color: $color-icon-black;
+$data-table-footer-icon-disabled-color: $color-icon-muted;
+
+$data-table-state-danger-box-shadow: $color-red-60;
+$data-table-state-info-box-shadow: $color-blue-60;
+$data-table-state-success-box-shadow: $color-green-60;
+$data-table-state-warning-box-shadow: $color-yellow-60;
 
 // Drag and Drop
 $drag-item-background-color: $color-background-white;
@@ -1215,8 +1286,10 @@ $drag-item-padding: 1.25rem;
 $drag-item-title-font-size: $font-size-md;
 $drag-item-title-font-weight: $font-weight-semi-bold;
 $drag-item-title-line-height: $line-height-lg;
+$drag-item-title-info-icon-margin-left: 0.25rem;
 $drag-item-description-font-size: $font-size-sm;
 $drag-item-description-line-height: $line-height-md;
+$drag-item-description-text-align: left;
 $drag-item-dragging-close-background-color: $color-background-white;
 $drag-item-close-hover-background-color: $color-grey-20;
 $drag-item-close-active-background-color: $color-grey-25;
@@ -1459,9 +1532,9 @@ $header-search-background-color: $color-background-white;
 $header-search-hover-border-color: $color-grey-40;
 $header-search-focus-color: $focus-color;
 $header-impersonation-background-color: $color-teal-80;
+$header-impersonation-bar-height: 1.25rem;
 $header-impersonation-box-shadow: inset 0 0.375rem 0 0 $header-impersonation-background-color;
 $header-impersonation-content-padding: 0 2rem;
-$header-impersonation-edge-element-height: 1.25rem;
 $header-impersonation-text-color: $color-text-white;
 $header-impersonation-font-size: $font-size-sm;
 $header-impersonation-line-height: $line-height-sm;
@@ -1759,11 +1832,14 @@ $pagination-inverse-input-text-color: $color-text-white;
 $pagination-inverse-input-focus-background-color: $color-background-white;
 $pagination-inverse-compact-label-text-color: $color-text-white;
 
+$pagination-button-group-margin-right: 0.5rem;
+
 // Picker
 $picker-background-color: $color-background-white;
 $picker-border-color: $color-grey-50;
 $picker-border-radius: 0.25rem;
 $picker-icon-color: inherit;
+$picker-item-info-icon-margin-left: 0.25rem;
 $picker-checked-focus-outline: 0.125rem solid $color-teal-70;
 $picker-checked-focus-outline-offset: 0.125rem;
 $picker-checkbox-border-color: $color-grey-40;
@@ -2061,6 +2137,8 @@ $sidenav-global-item-active-font-weight: $font-weight-bold;
 $sidenav-global-item-hover-background-color: $color-grey-20;
 $sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
 $sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color;
 
 // Skeleton
 $skeleton-xs-size: 1.5rem;
@@ -2258,7 +2336,7 @@ $tabs-solid-active-background-color: $color-background-white;
 
 // Text input
 $text-input-border-color: $color-grey-50;
-$text-input-border-radius: 0.1875rem;
+$text-input-border-radius: $border-radius-base;
 $text-input-text-color: $color-text-base;
 $text-input-placeholder-text-color: $color-grey-60;
 $text-input-hover-border-color: $color-teal-70;
@@ -2446,7 +2524,7 @@ $time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
-$time-picker-item-margin: 0rem .875rem;
+$time-picker-item-margin: 0rem 0.875rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch
@@ -2472,11 +2550,14 @@ $toggle-switch-xs-thumb-after-width: 0.75rem;
 $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
-$toolbar-header-background-color: $color-grey-15;
-$toolbar-header-divider-height: 2.5rem;
-$toolbar-expandable-border-radius: 0.5rem;
-$toolbar-expandable-background-color: $color-grey-20;
+$toolbar-expandable-background-color: $color-background-base-darker;
 $toolbar-expandable-border: 0.0625rem solid $color-grey-30;
+$toolbar-expandable-border-radius: 0.5rem;
+$toolbar-header-background-color: $color-background-base-darker;
+$toolbar-header-border: 0.0625rem solid $color-grey-30;
+$toolbar-header-border-radius: 0.5rem;
+$toolbar-header-divider-height: 2.5rem;
+$toolbar-margin-bottom: 1.5rem;
 
 // Tooltip
 $tooltip-light-background-color: rgba($color-white, 0.96);
