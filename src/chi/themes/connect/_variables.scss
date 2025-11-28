@@ -1976,16 +1976,28 @@ $progress-value-success-background-color: $color-green-50;
 $progress-value-warning-background-color: $color-yellow-50;
 
 // Radio button
-$radio-background-color: $color-background-white;
-$radio-border-color: $color-grey-40;
-$radio-icon-color: $color-grey-50;
-$radio-checked-background-color: $color-teal-80;
-$radio-checked-border-color: $color-teal-80;
-$radio-checked-icon-color: $color-background-white;
+// Needed because box-shadow with rgba and opacity doesn't work
+$color-teal-light: #d3e5e6;
 
-$radio-disabled-text-color: $color-grey-70;
-$radio-disabled-opacity: $opacity-80;
-$radio-focus-border-color: $focus-color;
+$radio-background-color: $color-background-white;
+$radio-border: 0.125rem solid $color-grey-70;
+$radio-icon-color: $color-grey-50;
+$radio-active-outline: 0.25rem solid $color-teal-light;
+$radio-checked-background-color: $color-teal-70;
+$radio-checked-border-color: $color-teal-70;
+$radio-checked-dot-display: none;
+$radio-checked-icon-color: $color-background-white;
+$radio-checked-inner-box-shadow: inset 0 0 0 0.125rem $color-white;
+$radio-checked-inner-box-shadow-hover: inset 0 0 0 0.125rem $color-teal-light;
+$radio-disabled-background-color: $color-grey-25;
+$radio-disabled-background-color-checked: $color-grey-50;
+$radio-disabled-border-color: $color-grey-50;
+$radio-disabled-opacity: $opacity-100;
+$radio-disabled-text-color: $color-text-muted;
+$radio-hover-background-color: $color-teal-light;
+$radio-hover-border-color: $color-teal-70;
+$radio-hover-dot-display: none;
+$radio-focus-border-color: rgba($focus-color, 0.7);
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.125rem;
 $radio-label-after-top: 0.4375rem;
@@ -2516,7 +2528,7 @@ $time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
-$time-picker-item-margin: 0rem .875rem;
+$time-picker-item-margin: 0rem 0.875rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch

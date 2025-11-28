@@ -1937,14 +1937,23 @@ $progress-value-warning-background-color:   $color-icon-warning;
 
 // Radio button
 $radio-background-color:                    $color-background-white;
-$radio-border-color:                        $color-grey-40;
+$radio-border:                              0.0625rem solid $color-grey-40;
 $radio-icon-color:                          $color-grey-50;
+$radio-active-outline:                      none;
 $radio-checked-background-color:            $color-background-primary;
 $radio-checked-border-color:                $color-border-primary;
+$radio-checked-dot-display:                 block;
 $radio-checked-icon-color:                  $color-background-white;
-
-$radio-disabled-text-color:                 $color-grey-70;
+$radio-checked-inner-box-shadow:            none;
+$radio-checked-inner-box-shadow-hover:      none;
+$radio-disabled-background-color:           $color-background-white;
+$radio-disabled-background-color-checked:   $color-background-white;
+$radio-disabled-border-color:               $color-grey-40;
 $radio-disabled-opacity:                    $opacity-80;
+$radio-disabled-text-color:                 $color-grey-70;
+$radio-hover-background-color:              $color-background-white;
+$radio-hover-border-color:                  $color-grey-40;
+$radio-hover-dot-display:                   block;
 $radio-focus-border-color:                  $focus-color;
 $radio-danger-border-color:                 $color-border-danger;
 $radio-label-before-top:                    0.125rem;
