@@ -1455,22 +1455,31 @@ $filters-drawer-width:                      34rem;
 $filters-footer-button-margin-right:        1rem;
 
 // Footer
-$footer-internal-background-color:          $color-background-white;
-$footer-internal-border-top-color:          $color-border-base;
-$footer-internal-text-color:                $color-text-muted;
-$footer-internal-select-text-color:         $color-text-muted;
 $footer-copyright-font-size:                $font-size-xs;
 $footer-copyright-line-height:              1rem;
 $footer-dropdown-arrow-icon-color:          inherit;
-$footer-internal-link-color:                $color-text-muted;
 $footer-external-background-color:          $color-background-white;
+$footer-external-first-column-link-color:   $color-text-base;
+$footer-external-link-color:                $color-text-base;
+$footer-external-social-hover-link-color:   $color-grey-80;
+$footer-external-social-link-color:         $color-icon-base;
 $footer-external-text-color:                $color-text-base;
 $footer-external-title-font-weight:         $font-weight-bold;
 $footer-external-title-text-transform:      uppercase;
-$footer-external-first-column-link-color:   $color-text-base;
-$footer-external-link-color:                $color-text-base;
-$footer-external-social-link-color:         $color-icon-base;
-$footer-external-social-hover-link-color:   $color-grey-80;
+$footer-internal-background-color:          $color-background-white;
+$footer-internal-border-top-color:          $color-border-base;
+$footer-internal-link-color:                $color-text-muted;
+$footer-internal-row-background-color:      $color-background-white;
+$footer-internal-row-border-top:            0.0625rem solid $color-grey-25;
+$footer-internal-row-color:                 $color-grey-100;
+$footer-internal-row-content-gap:           3rem;
+$footer-internal-row-content-lg-gap:        2rem;
+$footer-internal-row-content-padding-lg:     1.25rem 4rem;
+$footer-internal-row-content-padding:       1.25rem 2rem;
+$footer-internal-row-content-xxl-gap:       10%;
+$footer-internal-row-links-gap:             2.25rem;
+$footer-internal-select-text-color:         $color-text-muted;
+$footer-internal-text-color:                $color-text-muted;
 
 // Form Item
 $form-item-list-border-color:               $color-border-base-dark;
