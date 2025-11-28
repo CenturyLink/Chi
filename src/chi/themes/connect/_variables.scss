@@ -2065,12 +2065,15 @@ $search-input-icon-active-box-shadow: inset 0 0 0 0.0625rem $color-teal-70;
 $select-text-color: $color-text-base;
 $select-background-color: $color-background-white;
 $select-background-image: url('icon-chevron-thin-down.svg');
-$select-border-color: $color-border-base;
-$select-hover-border-color: $color-grey-40;
+$select-border-color: $color-grey-50;
+$select-hover-border-color: $color-teal-70;
 $select-focus-border-color: $focus-color;
 $select-danger-border-color: $color-border-danger;
 $select-danger-text-color: $color-text-base;
-$select-disabled-opacity: $opacity-60;
+$select-disabled-opacity: $opacity-100;
+$select-disabled-background-color: $color-grey-10;
+$select-disabled-border-color: $color-border-base-dark;
+$select-disabled-text-color: $color-grey-50;
 $select-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
 $select-option-checked-background-color: $color-background-primary-light;
 
