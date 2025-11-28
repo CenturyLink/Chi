@@ -1211,6 +1211,7 @@ $data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
 $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
+$data-table-cell-actions-icon-color: $color-icon-base;
 $data-table-cell-icon-color: $color-icon-primary;
 
 $data-table-footer-background-color:        $color-grey-10;
@@ -1920,14 +1921,23 @@ $progress-value-warning-background-color:   $color-icon-warning;
 
 // Radio button
 $radio-background-color:                    $color-background-white;
-$radio-border-color:                        $color-grey-40;
+$radio-border:                              0.0625rem solid $color-grey-40;
 $radio-icon-color:                          $color-grey-50;
+$radio-active-outline:                      none;
 $radio-checked-background-color:            $color-background-black;
 $radio-checked-border-color:                $color-border-black;
+$radio-checked-dot-display:                 block;
 $radio-checked-icon-color:                  $color-background-white;
-
-$radio-disabled-text-color:                 $color-grey-70;
+$radio-checked-inner-box-shadow:            none;
+$radio-checked-inner-box-shadow-hover:      none;
+$radio-disabled-background-color:           $color-background-white;
+$radio-disabled-background-color-checked:   $color-background-white;
+$radio-disabled-border-color:               $color-grey-40;
 $radio-disabled-opacity:                    $opacity-80;
+$radio-disabled-text-color:                 $color-grey-70;
+$radio-hover-background-color:              $color-background-white;
+$radio-hover-border-color:                  $color-grey-40;
+$radio-hover-dot-display:                   block;
 $radio-focus-border-color:                  $focus-color;
 $radio-danger-border-color:                 $color-border-danger;
 $radio-label-before-top:                    0.125rem;
@@ -2488,13 +2498,14 @@ $toggle-switch-xs-thumb-after-width:        0.75rem;
 $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
+$toolbar-expandable-background-color:       $color-grey-20;
+$toolbar-expandable-border:                 0.0625rem solid $color-grey-30;
+$toolbar-expandable-border-radius:          0.5rem;
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-border:                     none;
 $toolbar-header-border-radius:              0;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-expandable-background-color:       $color-grey-20;
-$toolbar-expandable-border:                 0.0625rem solid $color-grey-30;
-$toolbar-expandable-border-radius:          0.5rem;
+$toolbar-margin-bottom:                     0rem;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);

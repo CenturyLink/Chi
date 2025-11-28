@@ -3,6 +3,8 @@
 
 chi-toolbar,
 .chi-toolbar {
+  margin-bottom: $toolbar-margin-bottom;
+
   &__header,
   &__ribbon {
     align-items: center;
