@@ -6,7 +6,7 @@ server {
 
   location /chi/6.75.0 {
     alias /var/www/html/;
-    try_files $uri $uri/ /index.html;
+    try_files $uri $uri/ /chi/6.75.0/index.html;
   }
 }
 
