@@ -333,6 +333,10 @@ block content
         chi-card(title="KPI Card" type="kpi" metric="20" fixed-width) Card content
       .chi-col.-w--3 
         chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid")
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" show-arrow="false") Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" disabled) Card content
   script.
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];

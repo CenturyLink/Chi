@@ -355,20 +355,6 @@
         line-height: $line-height-sm;
         padding-right: 25%;
         position: relative;
-
-        &::after {
-          color: $card-kpi-icon-arrow-color;
-          content: '\e904';
-          font-family: $font-family-icon;
-          font-size: 1rem;
-          font-weight: 400;
-          height: 1rem;
-          line-height: 1rem;
-          position: absolute;
-          right: 0;
-          top: 0;
-          width: 1rem;
-        }
       }
 
       .chi-card__metric {
@@ -435,15 +421,31 @@
 
         .chi-card__title {
           color: $card-kpi-disabled-title-color;
-
-          &::after {
-            visibility: hidden;
-          }
         }
 
         .chi-card__metric,
         .chi-card__metric-value {
           color: $card-kpi-disabled-metric-color;
+        }
+      }
+    }
+
+    &.-arrow {
+      .chi-card__content {
+        .chi-card__title {
+          &::after {
+            color: $card-kpi-icon-arrow-color;
+            content: '\e904';
+            font-family: $font-family-icon;
+            font-size: 1rem;
+            font-weight: 400;
+            height: 1rem;
+            line-height: 1rem;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1rem;
+          }
         }
       }
     }
