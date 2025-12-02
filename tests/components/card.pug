@@ -4,6 +4,12 @@ block scripts
   script(src='../../../js/chi.js')
   script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
+block styles
+  style.
+    #custom-floating-card {
+      top: 10px;
+      left: 10px;
+    }
 block variables
   - var title = 'Card'
 
@@ -486,3 +492,14 @@ block content
               .chi-col 
                 .chi-card__metric-label Up
                 .chi-card__metric-value 143
+  h3 Floating Card
+  .test-card-float
+    .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 450px;")
+      | This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      .chi-card.-float.-widget#custom-floating-card
+        .chi-card__content
+          .chi-card__title Float
+          .chi-card__caption
+            | Floating card relative to the parent
