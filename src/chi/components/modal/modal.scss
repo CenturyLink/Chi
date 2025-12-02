@@ -127,7 +127,7 @@
       }
     }
 
-    &:has(> .chi-button, > chi-button) {
+    &:has(> .chi-button, > chi-button:not([slot='footer'])) {
       flex-direction: $modal-footer-no-slot-flex-direction;
       justify-content: $modal-footer-no-slot-justify-content;
 
