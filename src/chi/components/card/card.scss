@@ -265,67 +265,9 @@
     }
   }
 
-  &.-floating {
+  &.-float {
     position: absolute;
     z-index: $zindex-fixed;
-
-    &.-top-left,
-    &.-left-top {
-      top: 0;
-      left: 0;
-    }
-
-    &.-top-right,
-    &.-right-top {
-      top: 0;
-      right: 0;
-    }
-
-    &.-bottom-left,
-    &.-left-bottom {
-      bottom: 0;
-      left: 0;
-    }
-
-    &.-bottom-right,
-    &.-right-bottom {
-      bottom: 0;
-      right: 0;
-    }
-
-    &.-top-center,
-    &.-center-top {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &.-bottom-center,
-    &.-center-bottom {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &.-left-center,
-    &.-center-left {
-      left: 0;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
-
-    &.-right-center,
-    &.-center-right {
-      right: 0;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
-
-    &.-center {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 
   &.-no-border {
