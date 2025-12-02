@@ -391,6 +391,11 @@
         font-weight: $font-weight-bold;
         margin-top: $card-kpi-metric-margin-top;
       }
+
+      .chi-card__content-wrapper {
+        flex-grow: 1;
+        margin-top: $card-kpi-metric-label-margin-top;
+      }
     }
 
     &:hover {
