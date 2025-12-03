@@ -29,7 +29,8 @@
 
       &::before {
         background-color: $checkbox-background-color;
-        border: 0.0625rem solid $checkbox-border-color;
+        border: $checkbox-border;
+        border-radius: $checkbox-border-radius;
         content: '';
         display: block;
         height: 1rem;
@@ -55,8 +56,18 @@
 
       &:hover,
       &.-hover {
+        &::before {
+          background-color: $checkbox-hover-background-color;
+          border-color: $checkbox-hover-border-color;
+        }
         &::after {
-          transform: scale(1);
+          transform: $checkbox-hover-transform;
+        }
+      }
+
+      &:active {
+        &::before {
+          outline: $checkbox-active-outline;
         }
       }
 
@@ -80,12 +91,23 @@
           background-image: url('icon-check.svg');
           transform: scale(1);
         }
+
+        &:hover,
+        &.-hover {
+          &::before {
+            background-color: $checkbox-checked-background-color-hover;
+            border-color: $checkbox-checked-border-color-hover;
+          }
+        }
       }
 
-      &:focus,
-      &.-focus {
-        & + .chi-checkbox__label::before {
-          border-color: $checkbox-checked-border-color;
+      &.-disabled,
+      &[disabled] {
+        & + .chi-checkbox__label {
+          &::before {
+            background-color: $checkbox-checked-background-color-disabled;
+            border-color: $checkbox-checked-border-color-disabled;
+          }
         }
       }
     }
@@ -93,9 +115,14 @@
     &.-disabled,
     &[disabled] {
       & + .chi-checkbox__label {
-        color: $checkbox-label-disabled-text-color;
-        opacity: $checkbox-label-disabled-opacity;
+        color: $checkbox-disabled-label-text-color;
+        opacity: $checkbox-disabled-label-opacity;
         pointer-events: none;
+
+        &::before {
+          background-color: $checkbox-disabled-background-color;
+          border-color: $checkbox-disabled-border-color;
+        }
       }
     }
 
@@ -120,6 +147,14 @@
           top: $checkbox-label-indeterminate-after-top;
           transform: scale(1);
           width: 0.625rem;
+        }
+
+        &:hover,
+        &.-hover {
+          &::before {
+            background-color: $checkbox-checked-background-color-hover;
+            border-color: $checkbox-checked-border-color-hover;
+          }
         }
       }
     }
