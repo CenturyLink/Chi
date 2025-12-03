@@ -126,6 +126,20 @@
         margin-left: 1rem;
       }
     }
+
+    &:has(> .chi-button, > chi-button:not([slot='footer'])) {
+      flex-direction: $modal-footer-no-slot-flex-direction;
+      justify-content: $modal-footer-no-slot-justify-content;
+
+      .chi-button,
+      chi-button {
+        & + .chi-button,
+        & + chi-button {
+          margin-left: $modal-footer-no-slot-margin-left;
+          margin-right: $modal-footer-no-slot-margin-right;
+        }
+      }
+    }
   }
 
   &.-active {

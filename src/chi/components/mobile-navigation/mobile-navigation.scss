@@ -651,6 +651,13 @@
       > .chi-mobile-nav__item {
         list-style: none;
         margin-bottom: 0.5rem;
+        position: relative;
+
+        chi-badge {
+          left: 1.5rem;
+          position: absolute;
+          top: 0.75rem;
+        }
 
         chi-link {
           width: 100%;
