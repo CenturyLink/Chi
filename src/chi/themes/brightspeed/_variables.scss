@@ -1183,7 +1183,7 @@ $data-table-head-border-bottom: 0;
 $data-table-head-border-top-radius: 0;
 $data-table-head-cell-border-left: 0;
 $data-table-head-first-cell-border-left: 0;
-$data-table-head-icon-button-color:         $color-icon-base;
+$data-table-head-icon-button-color: $color-icon-base;
 $data-table-head-sorting-background-color: transparent;
 $data-table-head-sorting-icon-color: inherit;
 $data-table-head-sorting-border-bottom: 0;
@@ -1212,7 +1212,9 @@ $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
 $data-table-cell-actions-icon-color: $color-icon-base;
+$data-table-cell-expandable-icon-color: $color-icon-base;
 $data-table-cell-icon-color: $color-icon-primary;
+$data-table-cell-sorting-icon-color: $color-icon-base;
 
 $data-table-footer-background-color:        $color-grey-10;
 $data-table-footer-border: 0;
