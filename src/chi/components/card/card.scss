@@ -440,6 +440,10 @@
 
         .chi-card__title {
           color: $card-kpi-disabled-title-color;
+
+          &::after {
+            content: '';
+          }
         }
 
         .chi-card__metric,
@@ -453,7 +457,7 @@
       .chi-card__content {
         .chi-card__title {
           &::after {
-            visibility: hidden;
+            content: '';
           }
         }
       }
