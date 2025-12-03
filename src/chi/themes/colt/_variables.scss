@@ -1639,6 +1639,10 @@ $modal-footer-box-shadow:                   none;
 $modal-footer-min-height:                   4rem;
 $modal-footer-padding:                      1rem;
 $modal-footer-justify-content:              flex-end;
+$modal-footer-no-slot-flex-direction:       row;
+$modal-footer-no-slot-justify-content:      flex-end;
+$modal-footer-no-slot-margin-left:          1rem;
+$modal-footer-no-slot-margin-right:         0;
 $modal-back-link-color:                     $color-icon-body;
 $modal-close-icon-color:                    $color-icon-body;
 
