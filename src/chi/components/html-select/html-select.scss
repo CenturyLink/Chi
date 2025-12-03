@@ -41,11 +41,12 @@ $sizes: (
     background-position: $select-xl-arrow-background-position,
     background-size: $select-xl-arrow-background-size,
     padding: $select-xl-padding,
-  )
+  ),
 );
 
 .chi-select,
-select.chi-input { // sass-lint:disable-line force-element-nesting
+select.chi-input {
+  // sass-lint:disable-line force-element-nesting
   appearance: none;
   background-color: $select-background-color;
   border: 0.0625rem solid $select-border-color;
@@ -93,11 +94,6 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
     box-shadow: 0 0 0 1px rgba($select-focus-border-color, 1);
   }
 
-  &[disabled] {
-    opacity: $select-disabled-opacity;
-    pointer-events: none;
-  }
-
   @each $type in map-keys($sizes) {
     &.-#{$type} {
       background-position: map-get(map-get($sizes, $type), background-position);
@@ -130,5 +126,13 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
         background: $select-option-checked-background-color !important;
       }
     }
+  }
+
+  &[disabled] {
+    background-color: $select-disabled-background-color;
+    border-color: $select-disabled-border-color;
+    color: $select-disabled-text-color;
+    opacity: $select-disabled-opacity;
+    pointer-events: none;
   }
 }

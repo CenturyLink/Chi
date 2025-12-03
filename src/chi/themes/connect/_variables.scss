@@ -1266,7 +1266,10 @@ $data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
 $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
-$data-table-cell-icon-color: $color-icon-black;
+$data-table-cell-actions-icon-color: $color-icon-base;
+$data-table-cell-expandable-icon-color: $color-icon-black;
+$data-table-cell-icon-color: $color-icon-base;
+$data-table-cell-sorting-icon-color: $color-icon-black;
 
 $data-table-footer-background-color: $color-background-base-darker;
 $data-table-footer-border: 0.0625rem solid $color-border-base;
@@ -1492,22 +1495,31 @@ $filters-drawer-width: 34rem;
 $filters-footer-button-margin-right: 1rem;
 
 // Footer
-$footer-internal-background-color: $color-grey-80;
-$footer-internal-border-top-color: transparent;
-$footer-internal-text-color: $color-text-white;
-$footer-internal-select-text-color: $color-text-white;
 $footer-copyright-font-size: $font-size-xs;
 $footer-copyright-line-height: 1rem;
 $footer-dropdown-arrow-icon-color: $color-icon-white;
-$footer-internal-link-color: $color-text-white;
 $footer-external-background-color: $color-grey-15;
+$footer-external-first-column-link-color: $color-teal-70;
+$footer-external-link-color: $color-teal-70;
+$footer-external-social-hover-link-color: $color-teal-100;
+$footer-external-social-link-color: $color-teal-100;
 $footer-external-text-color: $color-text-base;
 $footer-external-title-font-weight: $font-weight-bold;
 $footer-external-title-text-transform: uppercase;
-$footer-external-first-column-link-color: $color-teal-70;
-$footer-external-link-color: $color-teal-70;
-$footer-external-social-link-color: $color-teal-100;
-$footer-external-social-hover-link-color: $color-teal-100;
+$footer-internal-background-color: $color-grey-80;
+$footer-internal-border-top-color: transparent;
+$footer-internal-link-color: $color-text-white;
+$footer-internal-row-background-color: $color-background-white;
+$footer-internal-row-border-top: 0.0625rem solid $color-grey-25;
+$footer-internal-row-color: $color-grey-100;
+$footer-internal-row-content-gap: 3rem;
+$footer-internal-row-content-lg-gap: 2rem;
+$footer-internal-row-content-padding-lg: 1.25rem 4rem;
+$footer-internal-row-content-padding: 1.25rem 2rem;
+$footer-internal-row-content-xxl-gap: 10%;
+$footer-internal-row-links-gap: 2.25rem;
+$footer-internal-select-text-color: $color-text-white;
+$footer-internal-text-color: $color-text-white;
 
 // Form Item
 $form-item-list-border-color: $color-border-base-dark;
@@ -1535,9 +1547,9 @@ $header-search-background-color: $color-background-white;
 $header-search-hover-border-color: $color-grey-40;
 $header-search-focus-color: $focus-color;
 $header-impersonation-background-color: $color-teal-80;
+$header-impersonation-bar-height: 1.25rem;
 $header-impersonation-box-shadow: inset 0 0.375rem 0 0 $header-impersonation-background-color;
 $header-impersonation-content-padding: 0 2rem;
-$header-impersonation-edge-element-height: 1.25rem;
 $header-impersonation-text-color: $color-text-white;
 $header-impersonation-font-size: $font-size-sm;
 $header-impersonation-line-height: $line-height-sm;
@@ -1670,7 +1682,12 @@ $modal-content-padding: 2rem 2rem 0 2rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 2rem;
+$modal-footer-flex-direction: row;
 $modal-footer-justify-content: flex-start;
+$modal-footer-no-slot-flex-direction: row-reverse;
+$modal-footer-no-slot-justify-content: flex-end;
+$modal-footer-no-slot-margin-left: 0;
+$modal-footer-no-slot-margin-right: 1rem;
 $modal-back-link-color: $color-grey-80;
 $modal-close-icon-color: $color-grey-80;
 
@@ -1975,16 +1992,28 @@ $progress-value-success-background-color: $color-green-50;
 $progress-value-warning-background-color: $color-yellow-50;
 
 // Radio button
-$radio-background-color: $color-background-white;
-$radio-border-color: $color-grey-40;
-$radio-icon-color: $color-grey-50;
-$radio-checked-background-color: $color-teal-80;
-$radio-checked-border-color: $color-teal-80;
-$radio-checked-icon-color: $color-background-white;
+// Needed because box-shadow with rgba and opacity doesn't work
+$color-teal-light: #d3e5e6;
 
-$radio-disabled-text-color: $color-grey-70;
-$radio-disabled-opacity: $opacity-80;
-$radio-focus-border-color: $focus-color;
+$radio-background-color: $color-background-white;
+$radio-border: 0.125rem solid $color-grey-70;
+$radio-icon-color: $color-grey-50;
+$radio-active-outline: 0.25rem solid $color-teal-light;
+$radio-checked-background-color: $color-teal-70;
+$radio-checked-border-color: $color-teal-70;
+$radio-checked-dot-display: none;
+$radio-checked-icon-color: $color-background-white;
+$radio-checked-inner-box-shadow: inset 0 0 0 0.125rem $color-white;
+$radio-checked-inner-box-shadow-hover: inset 0 0 0 0.125rem $color-teal-light;
+$radio-disabled-background-color: $color-grey-25;
+$radio-disabled-background-color-checked: $color-grey-50;
+$radio-disabled-border-color: $color-grey-50;
+$radio-disabled-opacity: $opacity-100;
+$radio-disabled-text-color: $color-text-muted;
+$radio-hover-background-color: $color-teal-light;
+$radio-hover-border-color: $color-teal-70;
+$radio-hover-dot-display: none;
+$radio-focus-border-color: rgba($focus-color, 0.7);
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.125rem;
 $radio-label-after-top: 0.4375rem;
@@ -2049,12 +2078,15 @@ $search-input-menu-item-font-weight-highlight: $font-weight-normal;
 $select-text-color: $color-text-base;
 $select-background-color: $color-background-white;
 $select-background-image: url('icon-chevron-thin-down.svg');
-$select-border-color: $color-border-base;
-$select-hover-border-color: $color-grey-40;
+$select-border-color: $color-grey-50;
+$select-hover-border-color: $color-teal-70;
 $select-focus-border-color: $focus-color;
 $select-danger-border-color: $color-border-danger;
 $select-danger-text-color: $color-text-base;
-$select-disabled-opacity: $opacity-60;
+$select-disabled-opacity: $opacity-100;
+$select-disabled-background-color: $color-grey-10;
+$select-disabled-border-color: $color-border-base-dark;
+$select-disabled-text-color: $color-grey-50;
 $select-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
 $select-option-checked-background-color: $color-background-primary-light;
 
@@ -2134,6 +2166,8 @@ $sidenav-global-item-active-font-weight: $font-weight-bold;
 $sidenav-global-item-hover-background-color: $color-grey-20;
 $sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
 $sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color;
 
 // Skeleton
 $skeleton-xs-size: 1.5rem;
@@ -2519,7 +2553,7 @@ $time-picker-item-active-background-color: $color-teal-70;
 $time-picker-item-active-text-color: $color-text-white;
 $time-picker-item-disabled-text-color: $color-grey-70;
 $time-picker-item-disabled-opacity: $opacity-40;
-$time-picker-item-margin: 0rem .875rem;
+$time-picker-item-margin: 0rem 0.875rem;
 $time-picker-border-color: $color-border-base;
 
 // Toggle switch
@@ -2545,13 +2579,14 @@ $toggle-switch-xs-thumb-after-width: 0.75rem;
 $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
+$toolbar-expandable-background-color: $color-background-base-darker;
+$toolbar-expandable-border: 0.0625rem solid $color-grey-30;
+$toolbar-expandable-border-radius: 0.5rem;
 $toolbar-header-background-color: $color-background-base-darker;
 $toolbar-header-border: 0.0625rem solid $color-grey-30;
 $toolbar-header-border-radius: 0.5rem;
 $toolbar-header-divider-height: 2.5rem;
-$toolbar-expandable-background-color: $color-background-base-darker;
-$toolbar-expandable-border: 0.0625rem solid $color-grey-30;
-$toolbar-expandable-border-radius: 0.5rem;
+$toolbar-margin-bottom: 1.5rem;
 
 // Tooltip
 $tooltip-light-background-color: rgba($color-white, 0.96);
