@@ -2063,9 +2063,15 @@ $search-input-lg-close-top: 0.75rem;
 $search-input-xl-icon-top: 0;
 $search-input-xl-close-right: 3rem;
 $search-input-xl-close-top: 1rem;
+$search-input-highlight-background: $color-yellow-30;
+$search-input-highlight-border: 0.0625rem solid $color-yellow-40;
+$search-input-highlight-border-radius: 0.125rem;
+$search-input-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $search-input-icon-active-background-color: transparent;
 $search-input-icon-disabled-background-color: transparent;
 $search-input-icon-active-box-shadow: inset 0 0 0 0.0625rem $color-teal-70;
+$search-input-menu-item-font-weight: $font-weight-normal;
+$search-input-menu-item-font-weight-highlight: $font-weight-normal;
 
 // Select
 $select-text-color: $color-text-base;

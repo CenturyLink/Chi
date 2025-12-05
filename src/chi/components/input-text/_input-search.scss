@@ -21,7 +21,7 @@
           box-shadow: $search-input-icon-active-box-shadow;
           background-color: $search-input-icon-active-background-color;
         }
-        
+
         &.-disabled {
           background-color: $search-input-icon-disabled-background-color;
         }
@@ -131,6 +131,24 @@ chi-search-input {
       &.-active {
         position: absolute;
       }
+    }
+  }
+
+  &:not([value='']) {
+    .chi-dropdown__menu-item {
+      font-weight: $search-input-menu-item-font-weight;
+    }
+  }
+
+  .chi-dropdown__menu-item {
+    white-space: pre;
+
+    .-highlight {
+      background: $search-input-highlight-background;
+      border: $search-input-highlight-border;
+      border-radius: $search-input-highlight-border-radius;
+      box-shadow: $search-input-highlight-box-shadow;
+      font-weight: $search-input-menu-item-font-weight-highlight;
     }
   }
 }
