@@ -776,9 +776,30 @@ $sidenav-lg-width: 12.5rem;
                     margin-right: 0.25rem;
                   }
                 }
+
+                // For nested accordions
+                chi-accordion {
+                  .chi-accordion {
+                    .chi-accordion__item {
+                      .chi-accordion__trigger {
+                        .icon-chevron-down {
+                          flex-grow: 0;
+                          margin-right: 0.25rem;
+                        }
+                      }
+
+                      &.-expanded {
+                        .chi-accordion__trigger {
+                          .icon-chevron-down {
+                            margin-right: 0.25rem;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
-
           }
         }
       }
