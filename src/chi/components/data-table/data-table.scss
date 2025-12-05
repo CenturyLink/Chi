@@ -426,7 +426,7 @@ $sizes: (
           &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
             &.-icon {
               .chi-icon {
-                color: $data-table-cell-icon-color;
+                color: $data-table-cell-sorting-icon-color;
               }
             }
           }
@@ -445,6 +445,20 @@ $sizes: (
                     color: $data-table-cell-actions-icon-color;
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-expandable {
+      .chi-button {
+        &.-flat {
+          &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+            &.-icon {
+              .chi-icon {
+                color: $data-table-cell-expandable-icon-color;
               }
             }
           }

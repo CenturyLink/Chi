@@ -1252,7 +1252,9 @@ $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
 $data-table-cell-actions-icon-color: $color-icon-base;
+$data-table-cell-expandable-icon-color: $color-icon-base;
 $data-table-cell-icon-color: $color-icon-base;
+$data-table-cell-sorting-icon-color: $color-icon-base;
 
 $data-table-footer-background-color: $color-background-white;
 $data-table-footer-border: 0;
@@ -1668,6 +1670,10 @@ $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 1rem;
 $modal-footer-justify-content: flex-end;
+$modal-footer-no-slot-flex-direction: row;
+$modal-footer-no-slot-justify-content: flex-end;
+$modal-footer-no-slot-margin-left: 1rem;
+$modal-footer-no-slot-margin-right: 0;
 $modal-back-link-color: $color-icon-body;
 $modal-close-icon-color: $color-icon-body;
 
