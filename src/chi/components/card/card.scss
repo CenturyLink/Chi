@@ -265,6 +265,11 @@
     }
   }
 
+  &.-float {
+    position: absolute;
+    z-index: $zindex-fixed;
+  }
+
   &.-no-border {
     border-color: transparent;
 
