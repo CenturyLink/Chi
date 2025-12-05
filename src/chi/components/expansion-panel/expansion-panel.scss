@@ -139,8 +139,22 @@ $transition-duration: 0.2s;
     min-height: 4rem;
     padding: $expansion-panel-footer-padding;
     position: relative;
+
     @include respond-to(sm) {
       flex-direction: row;
+
+      &:has(> .chi-button:not([slot='footer']), > chi-button:not([slot='footer'])) {
+        flex-direction: $expansion-panel-footer-no-slot-flex-direction;
+        justify-content: $expansion-panel-footer-no-slot-justify-content;
+
+        > button.chi-button,
+        > chi-button {
+          &:not(:first-of-type) {
+            margin-left: $expansion-panel-footer-no-slot-button-margin-left;
+            margin-right: $expansion-panel-footer-no-slot-button-margin-right;
+          }
+        }
+      }
     }
 
     .chi-button,
