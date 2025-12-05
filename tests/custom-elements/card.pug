@@ -5,7 +5,7 @@ block scripts
   script(src='../../../js/chi.js')
 block styles
   style.
-    #custom-floating-card {
+    #custom-floating-card>.chi-card.-float {
       top: 10px;
       left: 10px;
     }
@@ -337,19 +337,23 @@ block content
         chi-card(title="KPI Card" type="kpi" metric="20" fixed-width) Card content
       .chi-col.-w--3 
         chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid")
+      .chi-col.-w--3
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" arrow="false") Card content
+      .chi-col.-w--3
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" disabled) Card content
 
   h3 Floating Card
-    .test-card-float
-      .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 450px;")
-        | This is the parent element content. This is the parent element content. This is the parent element content.
-        |   This is the parent element content. This is the parent element content. This is the parent element content.
-        |   This is the parent element content. This is the parent element content. This is the parent element content.
-        chi-card#custom-floating-card(
-          variant="outline"
-          title="Float"
-          widget
-          float
-        ) Floating card relative to the parent element
+  .test-card-float
+    .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 500px;")
+      | This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      chi-card#custom-floating-card(
+        variant="outline"
+        title="Float"
+        widget
+        float
+      ) Floating card relative to the parent element
 
   script.
     document.addEventListener('DOMContentLoaded', function() {
@@ -364,4 +368,3 @@ block content
         {label: 'Up', value: "143"},
       ];
     });
-
