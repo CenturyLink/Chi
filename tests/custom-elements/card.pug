@@ -337,6 +337,20 @@ block content
         chi-card(title="KPI Card" type="kpi" metric="20" fixed-width) Card content
       .chi-col.-w--3 
         chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid")
+
+  h3 Floating Card
+    .test-card-float
+      .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 450px;")
+        | This is the parent element content. This is the parent element content. This is the parent element content.
+        |   This is the parent element content. This is the parent element content. This is the parent element content.
+        |   This is the parent element content. This is the parent element content. This is the parent element content.
+        chi-card#custom-floating-card(
+          variant="outline"
+          title="Float"
+          widget
+          float
+        ) Floating card relative to the parent element
+
   script.
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
@@ -351,14 +365,3 @@ block content
       ];
     });
 
-  h3 Floating Card
-    .test-card-float
-      .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 450px;")
-        | This is the parent element content. This is the parent element content. This is the parent element content.
-        |   This is the parent element content. This is the parent element content. This is the parent element content.
-        |   This is the parent element content. This is the parent element content. This is the parent element content.
-        .chi-card.-float.-widget#custom-floating-card
-          .chi-card__content
-            .chi-card__title Float
-            .chi-card__caption
-              | Floating card relative to the parent
