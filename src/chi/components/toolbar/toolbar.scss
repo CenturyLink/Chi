@@ -3,8 +3,6 @@
 
 chi-toolbar,
 .chi-toolbar {
-  margin-bottom: $toolbar-margin-bottom;
-
   &__header,
   &__ribbon {
     align-items: center;
@@ -139,4 +137,10 @@ chi-toolbar,
       }
     }
   }
+}
+
+// TO BE DELETED once the old ribbon disappears 
+chi-toolbar,
+.chi-toolbar__header {
+  margin-bottom: $toolbar-margin-bottom;
 }
