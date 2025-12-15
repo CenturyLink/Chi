@@ -320,16 +320,67 @@
   }
 
   &.-highlight {
-    background-color: $card-highlight-background-color;
-    border-color: $card-highlight-border-color;
+    &,
+    &.-outline,
+    &.-outline.-widget,
+    &.-widget,
+    &.-kpi {
+      background-color: $card-highlight-background-color;
+      border: $card-highlight-border;
+    }
+
+    &.-alert {
+      background-color: $card-highlight-background-color;
+
+      .chi-card__content {
+        background-color: $color-background-white;
+      }
+    }
+
+    &.-kpi:hover {
+      box-shadow: none;
+    }
 
     .chi-card__header {
-      background-color: $color-background-white;
+      border-radius: $card-border-radius;
+    }
+
+    .chi-card__content {
+      background-color: $card-highlight-background-color;
+      // border: $card-highlight-border;
     }
 
     &.-widget {
-      .chi-card__header {
+      .chi-card__header,
+      .chi-card__content {
         background-color: $card-highlight-background-color;
+      }
+    }
+
+    &.-alert:has(> chi-accordion .chi-accordion, > .chi-accordion),
+    &.-accordion,
+    &.-accordion.-outline {
+      border-color: $card-highlight-border-color;
+      background-color: $card-highlight-background-color;
+
+      > chi-accordion .chi-accordion,
+      > .chi-accordion {
+        .chi-accordion__item {
+          border-radius: $card-border-radius;
+
+          .chi-accordion__content {
+            background-color: $card-highlight-background-color;
+            border-radius: $card-border-radius;
+
+            > .chi-card__content {
+              background-color: $card-highlight-background-color;
+            }
+          }
+
+          .chi-accordion__trigger {
+            border-color: $card-highlight-border-color;
+          }
+        }
       }
     }
   }
