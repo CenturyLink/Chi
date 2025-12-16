@@ -11,12 +11,14 @@ const COLLAPSED_BREAKPOINT = 1440;
 const DEFAULT_CONFIG = {
   expanded: true,
   openOnHover: true,
+  autoCollapse: true
 };
 
 class GlobalNav extends Component {
   constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._expanded = this._config.expanded;
+    this.autoCollapse = this._config.autoCollapse;
     this._openOnHover = this._config.openOnHover;
     this._list = this._elem.querySelector(LIST_SELECTOR);
     this._links = this._elem.querySelectorAll(LINK_SELECTOR);
@@ -30,7 +32,10 @@ class GlobalNav extends Component {
 
   _init() {
     this._checkViewportAndUpdate();
-    this._setupResizeListener();
+
+    if (this.autoCollapse) {
+      this._setupResizeListener();
+    }
 
     this._links.forEach((link) => {
       link.addEventListener('click', () => {
@@ -44,11 +49,14 @@ class GlobalNav extends Component {
 
         if (!this._expanded) {
           this._expanded = true;
+          this._elem.classList.add(chi.classes.OPEN_ON_HOVER);
           this._updateExpandedState();
         }
       });
 
       this._list.addEventListener('mouseleave', () => {
+        this._elem.classList.remove(chi.classes.OPEN_ON_HOVER);
+
         if (this._isViewportSmall()) {
           this._expanded = false;
           this._updateExpandedState();

@@ -16,6 +16,7 @@ let chi = {
     EXPANDED: '-expanded',
     INACTIVE: '-inactive',
     TRANSITIONING : '-transitioning',
+    OPEN_ON_HOVER: '-open-on-hover',
     UNSELECTED: '-unselected'
   },
   componentIndex: 0,
