@@ -12,10 +12,18 @@ block content
   .test-dropdown-select-button-icon(style='width: 500px; height: 200px;')
     chi-dropdown-select(data-cy="with-button-icon" active button="- Select -")
 
+  span.-text--h2 Multiple search
+  .test-dropdown-select-multiple-search(style='width: 500px; height: 400px;')
+    chi-dropdown-select(data-cy="multiple-search" active multiple search button="- Select -")
+
   script.
     const items = [
       { label: 'Item 1', buttons: [{icon: "delete"}, {icon: "edit"}], checked: true },
       { label: 'Item 2', buttons: [{icon: "delete", disabled: true}, {icon: "edit"}] },
     ]
+    const itemsMultipleSearch = [
+      { label: 'Item 1' }, { label: 'Item 2' }, { label: 'Item 3' }, { label: 'Item 4' }, { label: 'Item 5' },
+    ]
 
     document.querySelector('[data-cy="with-button-icon"]').items = items;
+    document.querySelector('[data-cy="multiple-search"]').items = itemsMultipleSearch;

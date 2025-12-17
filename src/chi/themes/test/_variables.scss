@@ -1378,6 +1378,10 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline: $focus-color;
 
+$dropdown-menu-footer-buttons-direction: row;
+$dropdown-menu-footer-buttons-justify-content: end;
+$dropdown-menu-footer-buttons-padding: 0.5rem 1rem 0.5rem 0.5rem;
+
 $dropdown-select-border-radius: $border-radius-base;
 $dropdown-select-border-color: $color-grey-50;
 $dropdown-select-chevron-color: $color-grey-60;

@@ -83,6 +83,16 @@ $sizes: (
         }
       }
     }
+
+    .chi-dropdown__menu-footer {
+      .chi-dropdown__menu-footer-buttons {
+        display: flex;
+        flex-direction: $dropdown-menu-footer-buttons-direction;
+        justify-content: $dropdown-menu-footer-buttons-justify-content;
+        gap: 0.5rem;
+        padding: $dropdown-menu-footer-buttons-padding;
+      }
+    }
   }
 
   &__menu {
