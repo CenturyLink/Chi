@@ -31,14 +31,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Line weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-semi-bold;
+$font-weight-h4: $font-weight-semi-bold;
+$font-weight-h5: $font-weight-semi-bold;
+$font-weight-h6: $font-weight-semi-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
-$line-height-xs: 1rem; // 16px
-$line-height-2xs: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 4rem;
+$line-height-h2: 3rem;
+$line-height-h3: 2rem;
+$line-height-h4: 2rem;
+$line-height-h5: 1.5rem;
+$line-height-h6: 1.5rem;
 
 // System color
 // sass-lint:disable no-color-hex
