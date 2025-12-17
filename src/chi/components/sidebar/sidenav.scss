@@ -747,7 +747,7 @@ $sidenav-lg-width: 12.5rem;
       min-width: 20.250rem;
 
       &.-open-on-hover {
-        margin-right: calc(-20.25rem + 4.275rem);
+        margin-right: calc(-20.25rem + 4.375rem);
         z-index: 10;
       }
 
@@ -811,7 +811,7 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-collapsed {
-      width: 4.275rem;
+      width: 4.375rem;
 
       .chi-sidenav__item {
         &:hover {
