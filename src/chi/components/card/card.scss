@@ -321,7 +321,10 @@
 
   &.-highlight {
     background-color: $card-highlight-background-color;
-    border-color: $card-highlight-border-color;
+
+    .chi-card__content {
+      border: 0.0625rem solid $card-highlight-border-color;
+    }
 
     .chi-card__header {
       background-color: $color-background-white;
