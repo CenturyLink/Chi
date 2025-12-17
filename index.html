@@ -1037,13 +1037,15 @@
         //#region Drag and Drop
         const drag = document.getElementById('drag-example');
 
-        drag.items = [
+        if (drag) {
+          drag.items = [
           { title: 'Title item 1', description: 'Item description 1', closable: false, locked: true },
           { description: 'Item description 2' },
           { title: 'Title item 3', icon: 'atom' },
           { title: 'Title item 4', description: 'Item description 4' },
           { title: 'Title item 5', description: 'Item description 5' },
-        ];
+          ];
+        }
         //#endregion
 
         //#region Enterprise ID Switcher
