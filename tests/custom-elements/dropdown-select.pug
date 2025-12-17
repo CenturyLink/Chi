@@ -21,9 +21,9 @@ block content
       { label: 'Item 1', buttons: [{icon: "delete"}, {icon: "edit"}], checked: true },
       { label: 'Item 2', buttons: [{icon: "delete", disabled: true}, {icon: "edit"}] },
     ]
-    const itemsMultipleSearch = [
+    const multiDropdownItems = [
       { label: 'Item 1' }, { label: 'Item 2' }, { label: 'Item 3' }, { label: 'Item 4' }, { label: 'Item 5' },
     ]
 
     document.querySelector('[data-cy="with-button-icon"]').items = items;
-    document.querySelector('[data-cy="multiple-search"]').items = itemsMultipleSearch;
+    document.querySelector('[data-cy="multiple-search"]').items = multiDropdownItems;
