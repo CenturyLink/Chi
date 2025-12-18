@@ -321,13 +321,19 @@
 
   &.-highlight {
     background-color: $card-highlight-background-color;
-    border-color: $card-highlight-border-color;
+
+    .chi-card__content {
+      border: $card-highlight-border;
+    }
 
     .chi-card__header {
       background-color: $color-background-white;
     }
 
     &.-widget {
+      border: $card-widget-border;
+      border-color: $card-highlight-border-color;
+  
       .chi-card__header {
         background-color: $card-highlight-background-color;
       }
