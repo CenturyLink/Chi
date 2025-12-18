@@ -151,10 +151,6 @@ class GlobalNav extends Component {
   }
 
   set expanded(value) {
-    if (this._isViewportSmall() && value === true) {
-      return;
-    }
-    
     this._expanded = value;
     this._updateExpandedState();
   }
