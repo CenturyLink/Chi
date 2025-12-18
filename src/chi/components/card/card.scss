@@ -331,6 +331,9 @@
     }
 
     &.-widget {
+      border: $card-widget-border;
+      border-color: $card-highlight-border-color;
+  
       .chi-card__header {
         background-color: $card-highlight-background-color;
       }
