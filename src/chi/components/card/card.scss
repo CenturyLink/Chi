@@ -387,20 +387,21 @@
         align-content: flex-end;
         text-wrap: nowrap;
       }
-
+      
       .chi-card__caption,
       .chi-card__metric-label {
         color: $card-kpi-caption-color;
         font-size: $font-size-md;
         margin-top: $card-kpi-metric-label-margin-top;
       }
-
+      
       .chi-card__metric,
       .chi-card__metric-value {
         color: $card-kpi-metric-color;
         font-size: $card-kpi-metric-font-size;
         font-weight: $font-weight-bold;
         margin-top: $card-kpi-metric-margin-top;
+        text-wrap: nowrap;
       }
 
       .chi-card__content-wrapper {
