@@ -307,6 +307,16 @@
     .chi-main__content {
       padding-top: 2rem;
 
+      .chi-main__actions-wrapper {
+        border-top: $app-layout-actions-border;
+        display: flex;
+        flex-direction: $app-layout-actions-direction;
+        justify-content: $app-layout-actions-justify-content;
+        gap: 0.5rem;
+        margin-top: $app-layout-actions-margin-top;
+        padding: $app-layout-actions-padding;
+      }
+
       .chi-main__accordion {
         > chi-accordion > .chi-accordion > .chi-accordion__item {
           background: transparent;
