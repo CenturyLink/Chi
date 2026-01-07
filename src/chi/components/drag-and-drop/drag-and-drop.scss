@@ -4,8 +4,10 @@
 .chi-drag {
   .chi-drag__item {
     background-color: $drag-item-background-color;
-    border: 0.0625rem solid $drag-item-border-color;
     border-radius: $drag-item-border-radius;
+    border: 0.0625rem solid $drag-item-border-color;
+    display: flex;
+    flex-direction: row;
     padding: 0;
     width: 100%;
 
@@ -18,13 +20,13 @@
       outline: 0.0625rem solid rgba($drag-item-focus-color, 0.7);
     }
 
+    &:hover {
+      cursor: move;
+    }
+
     .chi-drag__wrapper {
       padding: $drag-item-padding;
       width: 100%;
-
-      &:hover {
-        cursor: move;
-      }
     }
 
     .chi-drag__title {
@@ -42,16 +44,14 @@
 
     .chi-drag__title-icon {
       display: flex;
-      margin-right: 0.875rem;
+      margin-right: 0;
+      padding: $drag-item-title-icon-padding;
     }
 
     .chi-drag__content {
-      display: flex;
       align-items: center;
-
-      &:not(:has(> .chi-drag__title-icon)) {
-        margin-left: 1.875rem;
-      }
+      display: flex;
+      margin: 0;
 
       .chi-drag__description {
         font-size: $drag-item-description-font-size;
@@ -94,10 +94,8 @@
     }
 
     &.-locked {
-      .chi-drag__wrapper {
-        &:hover {
-          cursor: not-allowed;
-        }
+      &:hover {
+        cursor: not-allowed;
       }
 
       .chi-drag__closable {
@@ -128,6 +126,30 @@
         background-color: $drag-item-drop-indicator-background-color;
         margin-top: 0.3125rem;
         margin-bottom: 0.3125rem;
+      }
+    }
+
+    &.-accordion {
+      .chi-accordion {
+        .chi-accordion__item {
+          background-color: $drag-accordion-item-background-color;
+
+          .chi-accordion__trigger {
+            padding: $drag-accordion-trigger-padding;
+
+            .chi-accordion__title {
+              font-size: $font-size-md;
+            }
+          }
+
+          .chi-accordion__content {
+            padding: $drag-accordion-content-padding;
+
+            .chi-accordion__text {
+              text-align: start;
+            }
+          }
+        }
       }
     }
   }
