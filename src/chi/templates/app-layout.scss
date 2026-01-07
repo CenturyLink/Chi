@@ -311,8 +311,8 @@
         border-top: $app-layout-actions-border;
         display: flex;
         flex-direction: $app-layout-actions-direction;
-        justify-content: $app-layout-actions-justify-content;
         gap: 0.5rem;
+        justify-content: $app-layout-actions-justify-content;
         margin-top: $app-layout-actions-margin-top;
         padding: $app-layout-actions-padding;
       }
