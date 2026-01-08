@@ -490,7 +490,7 @@ $alert-sm-text-font-size: $font-size-base;
 $alert-sm-text-line-height: $line-height;
 
 // App layout
-$app-layout-background-color: $color-background-base-light;
+$app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
@@ -2637,12 +2637,12 @@ $transfer-list-checkbox-icon-color: $color-icon-primary;
 $transfer-list-reset-button-color: $color-text-code;
 
 // Tags
-$tags-border-color: $color-border-base;
+$tags-border-color: $color-grey-50;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-60;
 $tags-input-min-height: 2rem;
-$tags-hover-border-color: $color-grey-40;
+$tags-hover-border-color: $color-border-secondary-darker;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;
