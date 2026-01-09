@@ -391,6 +391,6 @@
   }
 }
 
-.chi-main__wrapper div:has(chi-main) {
+.chi-main__wrapper div:has(chi-main):not(chi-main div) {
   height: 100%;
 }
