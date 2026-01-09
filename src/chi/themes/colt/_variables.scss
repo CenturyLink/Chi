@@ -427,6 +427,11 @@ $alert-sm-text-font-size:                   $font-size-base;
 $alert-sm-text-line-height:                 $line-height;
 
 // App layout
+$app-layout-actions-border:                 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction:              row;
+$app-layout-actions-justify-content:        end;
+$app-layout-actions-padding:                1.5rem 0;
+$app-layout-actions-margin-top:             1rem;
 $app-layout-background-color:               $color-background-base;
 $app-layout-header-background-color:        $color-teal-40;
 $app-layout-legacy-header-background-color: $app-layout-header-background-color;
