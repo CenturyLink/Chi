@@ -169,6 +169,18 @@
     }
   }
 
+  &__content {
+    .chi-main__actions-wrapper {
+      border-top: $app-layout-actions-border;
+      display: flex;
+      flex-direction: $app-layout-actions-direction;
+      gap: 0.5rem;
+      justify-content: $app-layout-actions-justify-content;
+      margin-top: $app-layout-actions-margin-top;
+      padding: $app-layout-actions-padding;
+    }
+  }
+
   &.-no-margin {
     .chi-main__header,
     .chi-main__content,
@@ -306,16 +318,6 @@
 
     .chi-main__content {
       padding-top: 2rem;
-
-      .chi-main__actions-wrapper {
-        border-top: $app-layout-actions-border;
-        display: flex;
-        flex-direction: $app-layout-actions-direction;
-        gap: 0.5rem;
-        justify-content: $app-layout-actions-justify-content;
-        margin-top: $app-layout-actions-margin-top;
-        padding: $app-layout-actions-padding;
-      }
 
       .chi-main__accordion {
         > chi-accordion > .chi-accordion > .chi-accordion__item {
