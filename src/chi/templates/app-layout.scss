@@ -20,20 +20,16 @@
     &-end {
       display: flex;
       flex-direction: column-reverse;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-start;
       margin-top: 1.5rem;
 
-      .chi-button + .chi-button {
-        margin-bottom: 0.5rem;
-      }
-
-      @include respond-to(md) {
+      @include respond-to(lg) {
         flex-direction: row;
+        justify-content: flex-end;
         margin-top: 0;
-
-        .chi-button + .chi-button {
-          margin-bottom: 0;
-          margin-left: 0.5rem;
-        }
+        padding-top: 0.5rem;
       }
     }
 
@@ -59,13 +55,11 @@
       color: $app-layout-header-title-color;
       font-size: $font-size-h3;
       font-weight: $font-weight-black;
-      line-height: $app-layout-header-line-height;
+      gap: 1rem;
       margin: 0;
       padding-right: 1rem;
 
       .chi-button {
-        margin-left: 0.5rem;
-
         &.-flat {
           &.-icon {
             margin-left: 0;
@@ -82,21 +76,27 @@
         }
       }
 
-      & + .chi-main__title-subheading {
-        @include respond-to(md) {
+      @include respond-to(md) {
+        & + .chi-main__title-subheading {
           border-left: 0.0625rem solid $app-layout-sub-header-border-color;
         }
       }
     }
+  }
 
-    &-subheading {
-      color: $app-layout-sub-header-title-color;
-      font-size: $app-layout-sub-header-font-size;
-      font-weight: $app-layout-sub-header-font-weight;
+  &__subtitle {
+    color: $app-layout-sub-header-title-color;
+    font-size: $app-layout-sub-header-font-size;
+    font-weight: $app-layout-sub-header-font-weight;
+  }
 
-      @include respond-to(md) {
-        padding-left: 1rem;
-      }
+  .chi-main__title-subheading {
+    color: $app-layout-sub-header-title-color;
+    font-size: $app-layout-sub-header-font-size;
+    font-weight: $app-layout-sub-header-font-weight;
+
+    @include respond-to(md) {
+      padding-left: 1rem;
     }
   }
 
@@ -128,6 +128,56 @@
       & + .chi-alert {
         margin-top: 0.5rem;
       }
+    }
+  }
+
+  &__header-breadcrumb,
+  &__header-content,
+  &__header-meta {
+    width: 100%;
+  }
+
+  &__header-content {
+    display: flex;
+    flex-direction: column;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+  }
+
+  &__header-meta {
+    padding: 2rem 0 1rem;
+
+    @include respond-to(lg) {
+      padding: 0.5rem 0;
+
+      .chi-alert {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  &__description {
+    color: $app-layout-sub-header-title-color;
+    font-size: $app-layout-sub-header-font-size;
+    font-weight: normal;
+    padding-top: 0.5rem;
+
+    @include respond-to(xxl) {
+      max-width: 65%;
+    }
+  }
+
+  &__content {
+    .chi-main__actions-wrapper {
+      border-top: $app-layout-actions-border;
+      display: flex;
+      flex-direction: $app-layout-actions-direction;
+      gap: 0.5rem;
+      justify-content: $app-layout-actions-justify-content;
+      margin-top: $app-layout-actions-margin-top;
+      padding: $app-layout-actions-padding;
     }
   }
 
@@ -171,36 +221,178 @@
     }
   }
 
-  &.-header-background {
+  &.-card-header {
+    .chi-main__header {
+      background: $app-layout-header-card-background-color;
+      border: $app-layout-header-card-border;
+      border-radius: $app-layout-header-card-border-radius;
+      margin: 1.5rem 1rem;
+      padding: 1.25rem;
+
+      @include respond-to(sm) {
+        margin: 1.5rem 1.5rem;
+        padding: 1.25rem;
+      }
+
+      @include respond-to(md) {
+        margin: 1.5rem 2rem;
+        padding: 1.25rem;
+      }
+
+      @include respond-to(lg) {
+        margin: 1.5rem 4rem;
+        padding: 1.25rem;
+      }
+
+      .chi-main__header-content {
+        padding: 1rem 0;
+      }
+    }
+  }
+
+  &.-narnia {
+    padding-top: 0;
+    width: 100%;
+
+    .chi-main__header {
+      margin: 0;
+      padding: 2rem 1rem;
+
+      @include respond-to(sm) {
+        padding: 2.5rem 1.5rem;
+      }
+
+      @include respond-to(md) {
+        align-items: stretch;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 2.5rem 2rem;
+      }
+
+      @include respond-to(lg) {
+        padding: 2.5rem 4rem;
+      }
+
+      .chi-main__header-start {
+        flex-grow: 1;
+      }
+
+      .chi-main__header-end {
+        flex-direction: row;
+        gap: 1rem;
+
+        @include respond-to(lg) {
+          align-self: flex-start;
+        }
+      }
+
+      .chi-main__title {
+        gap: 1rem;
+        padding: 0.5rem 0;
+
+        @include respond-to(md) {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .chi-main__title-heading {
+          align-items: center;
+          display: flex;
+          flex-wrap: wrap;
+          font-size: $app-layout-header-title-font-size;
+          font-weight: $app-layout-header-title-font-weight;
+          line-height: $app-layout-header-line-height;
+
+          @include respond-to(sm) {
+            flex-wrap: nowrap;
+          }
+
+          @include respond-to(md) {
+            & + .chi-main__title-subheading {
+              border-left: none;
+            }
+          }
+        }
+      }
+    }
+
+    .chi-main__content {
+      padding-top: 2rem;
+
+      .chi-main__accordion {
+        > chi-accordion > .chi-accordion > .chi-accordion__item {
+          background: transparent;
+
+          > .chi-accordion__trigger,
+          > .chi-accordion__content {
+            padding: 0;
+          }
+
+          &.-expanded {
+            > .chi-accordion__trigger {
+              margin-bottom: 0.5rem;
+            }
+          }
+
+          > .chi-accordion__trigger > .chi-accordion__title {
+            flex-grow: 0;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    &.-header-background {
+      .chi-main__header {
+        background: $app-layout-header-background-color;
+      }
+
+      .chi-main__title-heading {
+        color: $app-layout-header-background-title-color;
+      }
+
+      .chi-main__subtitle,
+      .chi-main__description,
+      .chi-main__header-link,
+      .chi-main__header-link .chi-link,
+      .chi-main__header-link .chi-link .chi-icon {
+        color: $app-layout-header-background-subtitle-color;
+      }
+    }
+  }
+
+  &:not(.-narnia) {
+    &.-header-background {
+      .chi-main__background {
+        z-index: 0;
+      }
+
+      .chi-main__title-heading {
+        color: $app-layout-legacy-header-background-title-color;
+      }
+    }
+
     .chi-main__background {
-      z-index: 0;
+      position: absolute;
+      height: 12rem;
+      overflow: hidden;
+      width: 100%;
+      top: 0;
     }
 
-    .chi-main__title-heading {
-      color: $app-layout-header-background-title-color;
+    .chi-main__background-image {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $app-layout-legacy-header-background-color;
     }
-  }
-
-  &__background {
-    position: absolute;
-    height: 12rem;
-    overflow: hidden;
-    width: 100%;
-    top: 0;
-  }
-
-  &__background-image {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $app-layout-header-background-color;
   }
 }
 
-.chi-main__wrapper div:has(chi-main) {
+.chi-main__wrapper div:has(chi-main):not(chi-main div) {
   height: 100%;
 }

@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Search input'
   - var styles = ['default', 'success', 'warning', 'danger']
@@ -46,15 +46,21 @@ block content
                         value='Value'
                       )
                       button.chi-button.-icon.-flat.-bg--none(
-                        class=`-${size}`
+                        class={
+                          [`-${size}`]: true,
+                          '-disabled': state == 'disabled'
+                        }
                         aria-label='Search'
                       )
                         .chi-button__content
-                          i.chi-icon.icon-search(aria-hidden="true")
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-search')
                       if state != 'disabled'
                         button.chi-button.-xs.-icon.-close(aria-label='Close')
-                          .chi-button__content
-                            i.chi-icon.icon-x(aria-hidden="true")
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-x')
 
   each size in sizes
     div(class=`test-helper-message-${size}`)
@@ -79,15 +85,21 @@ block content
                         value='Value'
                       )
                       button.chi-button.-icon.-flat.-bg--none(
-                        class=`-${size}`
+                        class={
+                          [`-${size}`]: true,
+                          '-disabled': state == 'disabled'
+                        }
                         aria-label='Search'
                       )
                         .chi-button__content
-                          i.chi-icon.icon-search(aria-hidden="true")
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-search')
                       if state != 'disabled'
                         button.chi-button.-xs.-icon.-close(aria-label='Close')
-                          .chi-button__content
-                            i.chi-icon.icon-x(aria-hidden="true")
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-x')
                       .-d--flex
                       .chi-label.-status(class=`-${style}`)
                         if style == 'success'

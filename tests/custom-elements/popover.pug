@@ -1,8 +1,8 @@
 extends ../layout.pug
 
 block scripts
-  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-  script(src='../../js/chi.js')
+  script(type="module" src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../../js/chi.js')
 
 block variables
   - var title = 'Popover'
@@ -56,3 +56,13 @@ block content
     .-position--relative
       chi-popover(title='Popover title', variant='text', modal, closable, drag, active)
         | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+  div(class=`test-gradient`)
+    span.-text--h2=`Gradient type`
+
+    each side in moreSides
+      div(style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        button.chi-button.-justify-content--center(id=`gradient-${side}` style="margin: 120px 220px;") Popover
+        chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#gradient-${side}`, active, type="gradient", closable)
+          | Popover content.

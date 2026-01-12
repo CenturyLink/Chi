@@ -1,9 +1,18 @@
 #!/bin/bash
+source "$(dirname "$0")/../tests/backstopConfig.sh"
 set -e
 
 SECONDS=0
+IS_TESTING=false
 
-CHI_DOCUMENTATION="./node_modules/@centurylink/chi-documentation/.output/public"
+for arg in "$@"; do
+  if [ "$arg" == "--testing" ]; then
+    IS_TESTING=true
+  fi
+done
+
+
+CHI_DOCUMENTATION="./node_modules/@centurylink/chi-documentation"
 CHI_CE="./node_modules/@centurylink/chi-custom-elements"
 CHI_VUE_UMD="./node_modules/@centurylink/chi-vue/umd/index.umd.js"
 
@@ -21,7 +30,12 @@ fi
 node ./scripts/build/css/build.js
 
 # Build JS
-node ./scripts/build/js/build.js
+if [ "$IS_TESTING" = true ]; then
+  node ./scripts/build/js/build:testing.js
+else
+  node ./scripts/build/js/build.js
+fi
+
 
 # Build utils
 bash ./scripts/build/utils/copyFile.sh ./src/chi/components/input-file/input-file.js dist
@@ -31,16 +45,16 @@ bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
 # Build boilerplates
 if [ -z "${SKIP_BOILERPLATES}" ]; then
-  echo "[CHI]: Building boilerplates..."
   bash ./scripts/build/utils/buildBoilerplates.sh
 fi
 
 # Build tests
-node ./scripts/build/utils/buildTests.js
+node ./scripts/build/utils/buildTests.js $THEMES_TO_TEST
 bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 
 # Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
-bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION dist
+bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION/.output/public dist
+bash ./scripts/build/utils/copyFile.sh $CHI_DOCUMENTATION/CHANGELOG.md dist
 bash ./scripts/build/utils/copyFile.sh $CHI_VUE_UMD dist/chi-vue/umd
 bash ./scripts/build/utils/copyFiles.sh "$CHI_CE/dist" dist/js/ce
 

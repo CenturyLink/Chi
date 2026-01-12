@@ -107,6 +107,9 @@ $sidenav-lg-width: 12.5rem;
     box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
     position: absolute;
     z-index: $zindex-fixed;
+    // TODO: Remove after connect theme release
+    // Temporary workaround to support portal and connect theme
+    width: 18.75rem;
 
     &__header {
       align-items: center;
@@ -114,7 +117,16 @@ $sidenav-lg-width: 12.5rem;
       color: $color-text-base;
       display: flex;
       height: 3.5rem;
-      padding-left: 1.5rem;
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      padding: 1rem 1rem 1rem 1.5rem;
+
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      .chi-drawer__title {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
 
       .chi-button {
         &.-close {
@@ -143,6 +155,9 @@ $sidenav-lg-width: 12.5rem;
 
     &__content {
       background: $color-background-white;
+      // TODO: Remove after connect theme release
+      // Temporary workaround to support portal and connect theme
+      padding: 0;
 
       a {
         color: $color-text-base;
@@ -720,6 +735,427 @@ $sidenav-lg-width: 12.5rem;
         margin-top: 3rem;
         margin-bottom: 3rem;
         margin-left: $sidenav-float-drawer-margin-left;
+      }
+    }
+  }
+
+  &.-global {
+    background: $sidenav-global-background-color;
+    height: 100%;
+
+    &.-expanded {
+      min-width: 20.25rem;
+
+      &.-open-on-hover {
+        margin-right: calc(-20.25rem + 4.375rem);
+        z-index: 10;
+      }
+
+      .chi-sidenav__item-wrapper {
+        chi-link {
+          .chi-link__content {
+            > span {
+              opacity: 1;
+              pointer-events: auto;
+              visibility: visible;
+            }
+          }
+        }
+
+        chi-accordion {
+          .chi-accordion {
+            .chi-accordion__item {
+              .chi-accordion__trigger {
+                .chi-link,
+                .icon-chevron-down {
+                  opacity: 1;
+                  pointer-events: auto;
+                  visibility: visible;
+                }
+              }
+
+              &.-expanded {
+                .chi-accordion__trigger {
+                  .icon-chevron-down {
+                    flex-grow: 1;
+                    margin-right: 0.25rem;
+                  }
+                }
+
+                // For nested accordions
+                chi-accordion {
+                  .chi-accordion {
+                    .chi-accordion__item {
+                      .chi-accordion__trigger {
+                        .icon-chevron-down {
+                          flex-grow: 0;
+                          margin-right: 0.25rem;
+                        }
+                      }
+
+                      &.-expanded {
+                        .chi-accordion__trigger {
+                          .icon-chevron-down {
+                            margin-right: 0.5rem;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-collapsed {
+      width: 4.375rem;
+
+      .chi-sidenav__item {
+        &:hover {
+          transition: opacity 0.1s ease, visibility 0.1s ease;
+        }
+      }
+
+      .chi-sidenav__item-wrapper {
+        chi-link {
+          .chi-link__content {
+            > span {
+              opacity: 0;
+              visibility: hidden;
+              white-space: nowrap;
+            }
+          }
+        }
+
+        chi-accordion {
+          .chi-accordion {
+            .chi-accordion__item {
+              .chi-accordion__trigger {
+                .chi-link,
+                .icon-chevron-down {
+                  opacity: 0;
+                  visibility: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    chi-link {
+      .chi-link__content {
+        > span {
+          transition: opacity 0.1s ease, visibility 0.1s ease;
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+      }
+    }
+
+    chi-accordion {
+      .chi-accordion {
+        .chi-accordion__item {
+          .chi-accordion__trigger {
+            .chi-link,
+            .icon-chevron-down {
+              transition: opacity 0.1s ease, visibility 0.1s ease;
+              opacity: 1;
+              visibility: visible;
+              pointer-events: auto;
+            }
+          }
+        }
+      }
+    }
+
+    .chi-sidenav__content {
+      background-color: transparent;
+      box-shadow: none;
+
+      nav {
+        border-right: $sidenav-border-right;
+        height: 100%;
+
+        .chi-sidenav__list {
+          > li {
+            display: block;
+            padding: 0 0.5rem;
+            margin: 0.375rem 0;
+
+            .chi-icon {
+              color: $sidenav-global-item-icon-color;
+              height: $sidenav-global-item-icon-size;
+              width: $sidenav-global-item-icon-size;
+            }
+
+            .chi-link {
+              color: $sidenav-global-item-text-color;
+              font-size: $sidenav-global-item-font-size;
+              text-decoration: none;
+            }
+
+            .chi-sidenav__item-wrapper:has(chi-accordion) {
+              chi-link {
+                border-radius: $sidenav-global-item-border-radius;
+                margin-bottom: 0.125rem;
+                margin-top: 0.125rem;
+                width: 100%;
+
+                &.-active {
+                  .chi-icon,
+                  .chi-icon::before {
+                    color: $sidenav-global-item-active-icon-color;
+                  }
+
+                  .chi-link {
+                    background-color: $sidenav-global-item-active-background-color;
+                    border-radius: $sidenav-global-item-border-radius;
+                    color: $sidenav-global-item-active-text-color;
+                    font-weight: $sidenav-global-item-active-font-weight;
+
+                    &:hover {
+                      background-color: $sidenav-global-item-active-background-color;
+                    }
+                  }
+                }
+
+                .chi-link {
+                  display: flex;
+                  padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 2 Item
+                  width: 100%;
+
+                  &:hover {
+                    background-color: $sidenav-global-item-hover-background-color;
+                    border-radius: $sidenav-global-item-border-radius;
+                  }
+                }
+              }
+
+              chi-accordion {
+                .chi-accordion__item {
+                  &.-expanded {
+                    > .chi-accordion__trigger {
+                      .chi-link {
+                        font-weight: $sidenav-global-item-active-font-weight;
+                      }
+                    }
+                  }
+
+                  &:has(.-active) {
+                    > .chi-accordion__trigger,
+                    > .chi-accordion__trigger:hover {
+                      background-color: $sidenav-global-item-active-background-color;
+
+                      .chi-icon,
+                      .chi-icon::before {
+                        color: $sidenav-global-item-active-icon-color;
+                      }
+
+                      .chi-link {
+                        color: $sidenav-global-item-active-text-color;
+                        font-weight: $sidenav-global-item-active-font-weight;
+                      }
+                    }
+
+                    &.-expanded {
+                      > .chi-accordion__trigger {
+                        background-color: transparent;
+                      }
+
+                      > .chi-accordion__trigger:hover {
+                        background-color: $sidenav-global-item-hover-background-color;
+                      }
+                    }
+
+                    > .chi-accordion__content {
+                      > div {
+                        > .chi-sidenav__item-guide {
+                          &::before {
+                            border-left: $sidenav-global-tree-guide-active-border-left;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .chi-accordion__trigger {
+                    background: $sidenav-global-item-background-color;
+                    border-radius: $sidenav-global-item-border-radius;
+                    display: flex;
+                    padding: 0.75rem;
+
+                    &:hover {
+                      background-color: $sidenav-global-item-hover-background-color;
+                    }
+
+                    .chi-icon {
+                      display: flex;
+                      align-items: center;
+
+                      &.icon-chevron-down {
+                        margin-left: auto;
+                      }
+
+                      &:not(.icon-chevron-down) {
+                        margin-right: 1.1875rem;
+                      }
+                    }
+                  }
+
+                  .chi-accordion__content {
+                    background: none;
+                    padding-bottom: 0;
+                    padding-top: 0.25rem;
+
+                    .chi-sidenav__item-guide {
+                      position: relative;
+
+                      &::before {
+                        border-left: $sidenav-global-tree-guide-border-left;
+                        content: '';
+                        display: block;
+                        height: 100%;
+                        left: 1.5rem;
+                        position: absolute;
+                        top: 0;
+                        width: 1px;
+                      }
+
+                      .chi-sidenav__item-guide {
+                        padding-left: 0.625rem;
+
+                        &::before {
+                          left: 0;
+                        }
+                      }
+                    }
+
+                    [slot] {
+                      chi-link {
+                        padding-left: 2.25rem;
+                      }
+
+                      .chi-accordion {
+                        padding-left: 2.25rem;
+
+                        .chi-accordion__item {
+                          .chi-accordion__trigger {
+                            padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 2 Item
+
+                            .chi-link {
+                              padding-left: 0;
+                            }
+                          }
+
+                          .chi-accordion__content {
+                            padding-left: 1.25rem;
+
+                            .chi-accordion {
+                              padding-left: 0.75rem;
+                            }
+
+                            chi-link {
+                              width: 100%;
+                              padding-left: 0;
+
+                              .chi-link {
+                                border-radius: $sidenav-global-item-border-radius;
+                                display: flex;
+                                padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 3 Item
+                                width: 100%;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .chi-sidenav__item-wrapper {
+              chi-link {
+                width: 100%;
+
+                chi-icon[icon='external-link'] {
+                  display: none;
+                }
+
+                &:hover {
+                  chi-icon[icon='external-link'] {
+                    display: inline-flex;
+                  }
+                }
+
+                &.-active {
+                  .chi-link {
+                    background-color: $sidenav-global-item-active-background-color;
+                    box-shadow: none;
+                    color: $sidenav-global-item-active-text-color;
+                    font-weight: $sidenav-global-item-active-font-weight;
+                    width: 100%;
+
+                    .chi-icon,
+                    .chi-icon::before {
+                      color: $sidenav-global-item-active-icon-color;
+                    }
+
+                    .chi-link {
+                      color: $sidenav-global-item-active-text-color;
+                      font-weight: $sidenav-global-item-active-font-weight;
+                    }
+
+                    &:hover {
+                      background-color: $sidenav-global-item-active-background-color;
+                    }
+                  }
+                }
+              }
+
+              .chi-link {
+                border-radius: $sidenav-global-item-border-radius;
+                position: relative;
+
+                chi-badge {
+                  position: absolute;
+                  left: 1.5rem;
+                  top: 0.75rem;
+                }
+              }
+
+              &:not(:has(chi-accordion)) {
+                .chi-link {
+                  padding: 0.875rem;
+                  padding-left: 1rem;
+                  width: 100%;
+
+                  .chi-link__content {
+                    > span {
+                      margin-left: 0.6875rem;
+                    }
+                  }
+                }
+
+                chi-link {
+                  &:not(.-active) {
+                    .chi-link {
+                      &:hover {
+                        background-color: $sidenav-global-item-hover-background-color;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

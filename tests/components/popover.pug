@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Popover'
   - var sides = ['top', 'right', 'bottom', 'left'];
@@ -94,9 +94,47 @@ block content
           p.chi-popover__text
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
+  div(class=`test-gradient`)
+    span.-text--h2=`Gradient type`
+
+    each side in moreSides
+      div(style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        button.-gradient-popover.chi-button.autostart.-justify-content--center(
+          id="test-gradient-" + side,
+          style="margin: 120px 220px;",
+          data-position=side,
+          data-popover-content=`
+            <button class="chi-button -xs -icon -close" aria-label="Close" style="top: 1.25rem !important;">
+              <div class="chi-button__content">
+                <div class="chi-alert__icon chi-icon">
+                  <svg>
+                    <use xlink:href="#icon-x"></use>
+                  </svg>
+                </div>
+              </div>
+            </button>
+
+            <header class="chi-popover__header">
+              <h2 class="chi-popover__title">Popover Title</h2>
+            </header>
+
+            <div class="chi-popover__content">
+              <p class="chi-popover__text">Popover content.</p>
+            </div>`
+        )
+          | Popover
+
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const popovers = chi.popover(document.querySelectorAll('.autostart'));
 
-      Array.prototype.forEach.call(popovers, (popover) => popover.show());
+      Array.prototype.forEach.call(popovers, (popover) => {
+        if (popover._elem.classList.contains('-gradient-popover')) {
+          popover._popoverElem.classList.add('-gradient');
+          popover._popoverElem.classList.add('-closable');
+        }
+
+        popover.show()
+      });
     });

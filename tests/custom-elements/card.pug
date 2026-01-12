@@ -1,9 +1,14 @@
 extends ../layout.pug
 
 block scripts
-  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-  script(src='../../js/chi.js')
-
+  script(type="module" src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../../js/chi.js')
+block styles
+  style.
+    #custom-floating-card>.chi-card.-float {
+      top: 10px;
+      left: 10px;
+    }
 block variables
   - var title = 'Card'
 
@@ -49,13 +54,23 @@ block content
             .chi-card__caption.-text--center
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-hero
+      .test-card-hero-lumen
         h4 Hero
         chi-card
           div(slot="content")
            .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
             p.-text.-p--6.-text--center Hero Image
            .chi-card__caption(style="margin-top: 152px;")
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+            | Donec sit amet consectetur elit.
+      .test-card-hero-portal
+        h4 Hero
+        chi-card
+          div(slot="content")
+           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
+            p.-text.-p--6.-text--center Hero Image
+           .chi-card__caption(style="margin-top: 144px;")
             | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
             | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
             | Donec sit amet consectetur elit.
@@ -180,13 +195,23 @@ block content
             .chi-card__caption.-text--center
               span.-text--sm Meta Label
               span.-text--xs.-text--grey Sublabel
-      .test-card-widget-hero
+      .test-card-widget-hero-lumen
         h4 Hero
         chi-card(widget)
           div(slot="content")
            .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
             p.-text.-p--6.-text--center Hero Image
            .chi-card__caption(style="margin-top: 152px;")
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
+            | Donec sit amet consectetur elit.
+      .test-card-widget-hero-portal
+        h4 Hero
+        chi-card(widget)
+          div(slot="content")
+           .chi-card__hero.-text--inverse(style="width: 100%;background:rgba(0,0,0,.8); position: absolute; top: 0; left: 0;")
+            p.-text.-p--6.-text--center Hero Image
+           .chi-card__caption(style="margin-top: 144px;")
             | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
             | Ut felis magna, facilisis ut malesuada nec, ultrices in turpis.
             | Donec sit amet consectetur elit.
@@ -268,6 +293,70 @@ block content
         chi-card(widget no-borders='["card"]')
           | This is a card with no border
 
+  h3 Alert
+  .test-card-alert
+    .chi-grid.-w--100
+      .chi-col.-w--6
+        h4 Base
+        .-mb--1 
+          chi-card(title="Alerts" type="alert" variant="outline") Alert Content Here
+        chi-card(title="Alerts" type="alert" variant="outline" expanded) Alert Content Here
+      
+      .chi-col.-w--6
+        h4 Empty
+        .-mb--1 
+          chi-card(title="Alerts" type="alert" variant="outline" empty)
+        chi-card(title="Alerts" type="alert" variant="outline" expanded empty)
+      
+      .chi-col.-w--6
+        h4 Notifications
+        .-mb--1 
+          chi-card(title="Alerts" type="alert" variant="outline" notifications="20") Alert Content Here
+        chi-card(title="Alerts" type="alert" variant="outline" expanded notifications="20") Alert Content Here
+    
+      .chi-col.-w--6
+        h4 Notifications with inner cards and eyebrow
+        chi-card(title="Alerts" type="alert" variant="outline" notifications="20" expanded)
+          each id in [1,2,3,4,5,6,7]
+            chi-card(title="[Alert title]" type="compact-title" eyebrow="[Product/Service Name]")
+              div(slot="compact-title")
+                chi-button(type="icon" variant="flat")
+                  chi-icon(icon="more-vert")
+              .-d--flex.-justify-content--between.-p--2
+                chi-link=`ID 123456567${id}`
+                chi-badge(color="muted") Email Sent
+
+  h3 Card KPI 
+  .test-card-kpi
+    .chi-grid 
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width) Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" metric="20" fixed-width)
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" metric="20" fixed-width) Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid")
+      .chi-col.-w--3
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" arrow="false") Card content
+      .chi-col.-w--3
+        chi-card(title="KPI Card" type="kpi" fixed-width metric="20" disabled) Card content
+      .chi-col.-w--3 
+        chi-card(title="KPI Card" type="kpi" fixed-width id="kpi-metric-grid-large")
+
+  h3 Floating Card
+  .test-card-float
+    .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 500px;")
+      | This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      chi-card#custom-floating-card(
+        variant="outline"
+        title="Float"
+        widget
+        float
+      ) Floating card relative to the parent element
+
   script.
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('.test-card-footer-no-border chi-card').noBorders = ['footer'];
@@ -276,4 +365,12 @@ block content
       document.querySelector('.test-card-widget-footer-no-border chi-card').noBorders = ['footer'];
       document.querySelector('.test-card-widget-header-no-border chi-card').noBorders = ['header'];
       document.querySelector('.test-card-widget-no-border chi-card').noBorders = ['card'];
+      document.getElementById('kpi-metric-grid').metric = [
+        {label: 'Down', value: "97"},
+        {label: 'Up', value: "143"},
+      ];
+      document.getElementById('kpi-metric-grid-large').metric = [
+        {label: 'Down', value: "970000"},
+        {label: 'Up', value: "1430000"},
+      ];
     });

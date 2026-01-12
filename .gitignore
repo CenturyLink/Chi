@@ -4,6 +4,7 @@
 
 node_modules
 /dist
+CHANGELOG.md
 
 # Log files
 npm-debug.log*
@@ -27,10 +28,17 @@ cypress/downloads
 
 # Backstop
 /reports
+backstop-*_*.json
 
 # Custom
 src/boilerplates/es6/chi-vue-es6-boilerplate/src/es6
 
 # Backup files
 *.bak
-*.scss*
+
+# Env
+.env
+
+# Coverage
+coverage*
+.nyc_output*

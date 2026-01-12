@@ -14,7 +14,7 @@
     {
       "label": "accordion",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/accordion.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/accordion.html",
       "referenceUrl": "",
       "readyEvent": "backstop_ready",
       "readySelector": "",
@@ -29,7 +29,8 @@
         ".test-accordion-sizes",
         ".test-accordion-portal-layout",
         ".test-accordion-portal-layout-card",
-        ".test-accordion-link"
+        ".test-accordion-link",
+        ".test-accordion-compact-title"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -38,7 +39,7 @@
     {
       "label": "alert-banner",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/alert-banner.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/alert-banner.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -72,7 +73,7 @@
     {
       "label": "alert-bubble",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/alert-bubble.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/alert-bubble.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -108,7 +109,7 @@
     {
       "label": "alert-toast",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/alert-toast.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/alert-toast.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -133,7 +134,7 @@
     {
       "label": "app-layout",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/app-layout.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/app-layout.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -145,6 +146,7 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-layout-base",
+        ".test-layout-base-with-help-button",
         ".test-layout-base-with-alert",
         ".test-layout-backlink",
         ".test-layout-backlink-subtitle",
@@ -163,7 +165,7 @@
     {
       "label": "brand",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/brand.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/brand.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -186,7 +188,7 @@
     {
       "label": "badges",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/badges.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/badges.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -211,7 +213,7 @@
     {
       "label": "icons-svg",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/icons.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/icons.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -239,7 +241,7 @@
     {
       "label": "buttons",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/buttons.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/buttons.html",
       "referenceUrl": "",
       "readyEvent": "backstop_ready",
       "readySelector": "",
@@ -289,7 +291,7 @@
     {
       "label": "card",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/card.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/card.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -305,7 +307,7 @@
         ".test-card-content",
         ".test-card-content-with-icon",
         ".test-card-align-center",
-        ".test-card-hero",
+        ".test-card-hero-<theme>",
         ".test-card-footer",
         ".test-card-footer-right",
         ".test-card-footer-center",
@@ -325,7 +327,7 @@
         ".test-card-widget-content",
         ".test-card-widget-content-with-icon",
         ".test-card-widget-align-center",
-        ".test-card-widget-hero",
+        ".test-card-widget-hero-<theme>",
         ".test-card-widget-footer",
         ".test-card-widget-footer-right",
         ".test-card-widget-footer-center",
@@ -338,7 +340,10 @@
         ".test-card-widget-header-footer",
         ".test-card-widget-header-footer-small",
         ".test-card-widget-active",
-        ".test-card-widget-no-border"
+        ".test-card-widget-no-border",
+        ".test-card-kpi",
+        ".test-card-alert",
+        ".test-card-float"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -347,7 +352,7 @@
     {
       "label": "carousel",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/carousel.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/carousel.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -373,7 +378,7 @@
     {
       "label": "checkbox",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/checkbox.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/checkbox.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -391,7 +396,7 @@
     {
       "label": "copy-text",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/copy-text.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/copy-text.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -413,7 +418,7 @@
     {
       "label": "date-picker",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/date-picker.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/date-picker.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": ".test-input-combined-icon chi-date-picker.hydrated",
@@ -439,7 +444,7 @@
     {
       "label": "drawer",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/drawer.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/drawer.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -495,7 +500,7 @@
     {
       "label": "dropdown",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/dropdown.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/dropdown.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -519,9 +524,30 @@
       "requireSameDimensions": true
     },
     {
+      "label": "dropdown-select",
+      "cookiePath": "",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/dropdown-select.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-dropdown-select-button-icon",
+        ".test-dropdown-select-multiple-search"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "expansion-panel",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/expansion-panel.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/expansion-panel.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -547,18 +573,17 @@
     },
     {
       "label": "form-wrapper",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/form-wrapper.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/form-wrapper.html",
       "delay": 2000,
       "selectors": [
         ".test-form-wrapper-checkboxes",
-        ".test-form-wrapper-radio-buttons",
-        ".test-form-wrapper-states"
+        ".test-form-wrapper-radio-buttons"
       ]
     },
     {
       "label": "popover",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/popover.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/popover.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -589,7 +614,8 @@
         ".test-with-custom-content",
         ".test-closable",
         ".test-modal",
-        ".test-modal-draggable"
+        ".test-modal-draggable",
+        ".test-gradient"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0.7,
@@ -597,9 +623,31 @@
     },
 
     {
+      "label": "modals",
+      "cookiePath": "",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/modals.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-gradient-type",
+        ".test-gradient-type-with-header-image"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+
+    {
       "label": "progress",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/progress.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/progress.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -628,7 +676,7 @@
     {
       "label": "input-search",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/search-input.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/search-input.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -657,7 +705,7 @@
     {
       "label": "input-text",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/text-input.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/text-input.html",
       "referenceUrl": "",
       "readyEvent": "backstop_ready",
       "readySelector": "",
@@ -716,7 +764,7 @@
     {
       "label": "input-number",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/number-input.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/number-input.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -755,7 +803,7 @@
     {
       "label": "label",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/label.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/label.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -778,7 +826,7 @@
     {
       "label": "link",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/link.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/link.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -803,7 +851,7 @@
     {
       "label": "marketing-icon",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/marketing-icon.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/marketing-icon.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -828,7 +876,7 @@
     {
       "label": "pagination",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/components/pagination.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/components/pagination.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -856,7 +904,7 @@
     {
       "label": "picker",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/picker.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/picker.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -910,7 +958,7 @@
     {
       "label": "skeleton",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/skeleton.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/skeleton.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -930,7 +978,7 @@
     {
       "label": "spinner",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/spinner.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/spinner.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -943,7 +991,7 @@
       "selectors": [
         ".test-backdrop-base",
         ".test-backdrop-inverse",
-        ".test-buttons",
+        ".test-buttons-<theme>",
         ".test-text-input",
         ".test-sizes",
         ".test-colors",
@@ -964,7 +1012,7 @@
     {
       "label": "tabs",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/tabs.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/tabs.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -991,7 +1039,7 @@
     {
       "label": "tags",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/tags.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/tags.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -1015,7 +1063,7 @@
     {
       "label": "textarea",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/textarea.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/textarea.html",
       "referenceUrl": "",
       "readyEvent": "backstop_ready",
       "readySelector": "",
@@ -1064,7 +1112,7 @@
     {
       "label": "toggle-switch",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/toggle-switch.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/toggle-switch.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -1080,9 +1128,27 @@
       "requireSameDimensions": true
     },
     {
+      "label": "toolbar",
+      "cookiePath": "",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/toolbar.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [".test-toolbar-expandable", ".test-toolbar-base"],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "time",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/time.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/time.html",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
@@ -1119,7 +1185,7 @@
     {
       "label": "time-picker",
       "cookiePath": "",
-      "url": "http://localhost:8000/chi/6.45.0/tests/custom-elements/time-picker.html",
+      "url": "http://localhost:8000/chi/6.84.0/tests/<theme>/custom-elements/time-picker.html",
       "referenceUrl": "",
       "readyEvent": "backstop_ready",
       "readySelector": "",
@@ -1158,13 +1224,14 @@
     }
   ],
   "paths": {
-    "bitmaps_reference": "reports/html_report/non_responsive_ce/bitmaps_reference",
-    "bitmaps_test": "reports/html_report/non_responsive_ce/bitmaps_test",
+    "bitmaps_reference": "backstop_data/bitmaps_reference/<theme>/non_responsive",
+    "bitmaps_test": "reports/<theme>/html_report/non_responsive_ce/bitmaps_test",
     "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "reports/html_report/non_responsive_ce",
-    "ci_report": "reports/ci_report/non_responsive_ce"
+    "html_report": "reports/<theme>/html_report/non_responsive_ce",
+    "ci_report": "reports/<theme>/ci_report/non_responsive_ce",
+    "json_report": "reports/<theme>/json_report/non_responsive_ce"
   },
-  "report": ["CI"],
+  "report": ["CI", "json"],
   "engine": "playwright",
   "engineOptions": {
     "browser": "chromium",

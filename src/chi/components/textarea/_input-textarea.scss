@@ -72,10 +72,10 @@ textarea {
 
     &[readonly],
     &.-readonly {
-      background: none;
-      border-color: transparent;
-      padding-left: 0;
-      padding-right: 0;
+      background: $textarea-readonly-background;
+      border-color: $textarea-readonly-border-color;
+      padding: $textarea-md-padding;
+
 
       &:focus,
       &.-focus {
@@ -92,8 +92,7 @@ textarea {
 
         &[readonly],
         &.-readonly {
-          padding-left: 0;
-          padding-right: 0;
+          padding: map-get(map-get($sizes, $type), padding);
         }
       }
     }

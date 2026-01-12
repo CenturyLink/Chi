@@ -65,6 +65,42 @@
         position: fixed;
         z-index: 50;
       }
+
+      .enterprise-id-switcher {
+        width: 100%;
+
+        .chi-dropdown__menu {
+          padding-top: 0;
+          padding-bottom: 0;
+          width: 100%;
+
+          &-header {
+            font-weight: $font-weight-semi-bold;
+            padding: 0.8125rem 1.25rem 0.3125rem 1.25rem;
+          }
+
+          &-footer {
+            .chi-link {
+              padding-left: 1.25rem;
+              padding-bottom: 0.625rem;
+            }
+          }
+
+          &-item {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+
+            .chi-grid {
+              width: 100%;
+
+              .chi-col:has(chi-spinner) {
+                display: flex;
+                justify-content: center;
+              }
+            }
+          }
+        }
+      }
     }
 
     .chi-mobile-nav__content {
@@ -576,6 +612,116 @@
             }
           }
         }
+      }
+    }
+  }
+
+  &.-global {
+    .chi-drawer__header {
+      background-color: $mobile-nav-header-background-color;
+      border-bottom: $mobile-nav-header-bottom-border;
+      padding: 1.25rem 1.5rem;
+
+      .chi-drawer__title {
+        color: $mobile-nav-header-title-text-color;
+        font-size: $mobile-nav-header-title-font-size;
+        font-weight: $mobile-nav-header-title-font-weight;
+        line-height: $mobile-nav-header-title-line-height;
+      }
+    }
+
+    .chi-drawer__content {
+      padding: 0 0 2rem 0;
+    }
+
+    .chi-mobile-nav__header,
+    .chi-mobile-nav__list {
+      margin-bottom: 0;
+      margin-top: 0;
+      padding: 0.815rem;
+    }
+
+    .chi-mobile-nav__header {
+      chi-dropdown-select {
+        width: 100%;
+      }
+    }
+
+    .chi-mobile-nav__list {
+      > .chi-mobile-nav__item {
+        list-style: none;
+        margin-bottom: 0.5rem;
+        position: relative;
+
+        chi-badge {
+          left: 1.5rem;
+          position: absolute;
+          top: 0.75rem;
+        }
+
+        chi-link {
+          width: 100%;
+
+          &.-active {
+            background-color: $mobile-nav-list-item-active-background-color;
+            border-radius: 0.315rem;
+            font-weight: 700;
+
+            .chi-icon,
+            .chi-link {
+              color: $mobile-nav-list-item-active-text-color;
+            }
+
+            .chi-link {
+              &:hover {
+                background-color: $mobile-nav-list-item-active-background-color;
+              }
+            }
+          }
+
+          .chi-link__content {
+            & > chi-icon {
+              &:first-child {
+                margin-right: 1.25rem;
+              }
+            }
+          }
+        }
+
+        chi-icon {
+          &[icon='chevron-right'] {
+            margin-left: auto;
+          }
+        }
+
+        .chi-icon {
+          color: $mobile-nav-list-item-icon-color;
+          height: $mobile-nav-list-item-icon-size;
+          width: $mobile-nav-list-item-icon-size;
+        }
+
+        .chi-link {
+          border-radius: 0.315rem;
+          cursor: pointer;
+          color: $mobile-nav-list-item-text-color;
+          font-size: $font-size-md;
+          padding: 0.875rem;
+          text-decoration: none;
+          width: 100%;
+
+          &:hover {
+            background: $mobile-nav-list-item-hover-background-color;
+          }
+        }
+
+        .chi-mobile-nav__email {
+          font-size: $font-size-md;
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      .chi-mobile-nav__item:has(.chi-mobile-nav__email) {
+        padding: 1rem;
       }
     }
   }

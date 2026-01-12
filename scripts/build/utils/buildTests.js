@@ -5,15 +5,16 @@ import ora from 'ora';
 
 const __dirname = resolve();
 const inputDir = path.join(__dirname, 'tests');
-const outputDir = path.join(__dirname, 'dist/tests');
 const componentsJsonPath = path.join(inputDir, 'tests.json');
+
+const THEMES_TO_TEST = process.argv[2] ? process.argv[2].split(',') : ['lumen'];
 
 let components, customElements, foundations, js;
 
 try {
   const jsonData = fs.readFileSync(componentsJsonPath, 'utf8');
   const jsonParsed = JSON.parse(jsonData);
-  
+
   components = jsonParsed.components;
   customElements = jsonParsed['custom-elements'];
   foundations = jsonParsed.foundations;
@@ -23,14 +24,12 @@ try {
   process.exit(1);
 }
 
-fs.mkdirSync(outputDir, { recursive: true });
-
-function compilePugFiles(dir, spinner) {
-  fs.readdirSync(dir).forEach(file => {
+function compilePugFiles(dir, outputDir, theme, spinner) {
+  fs.readdirSync(dir).forEach((file) => {
     const fullPath = path.join(dir, file);
 
     if (fs.statSync(fullPath).isDirectory()) {
-      compilePugFiles(fullPath, spinner);
+      compilePugFiles(fullPath, outputDir, theme, spinner);
     } else if (path.extname(file) === '.pug') {
       let outputFile;
 
@@ -43,17 +42,49 @@ function compilePugFiles(dir, spinner) {
       fs.mkdirSync(path.dirname(outputFile), { recursive: true });
       const compiledFunction = pug.compileFile(fullPath);
       const html = compiledFunction({ components, customElements, foundations, js });
-      
+
       fs.writeFileSync(outputFile, html);
     }
   });
 }
 
+const updateThemeInTests = (theme) => {
+  const styleSheet = theme === 'lumen' ? 'chi.css' : `chi-${theme}.css`;
+  
+  updateStyleSheetInFile('layout.pug', styleSheet);
+  updateStyleSheetInFile('index.pug', styleSheet);
+};
+
+const updateStyleSheetInFile = (file, styleSheet) => {
+  const filePath = path.join(inputDir, file);
+
+  try {
+    const fileData = fs.readFileSync(filePath, 'utf8');
+    fs.writeFileSync(filePath, fileData.replace(/chi(-.*)?.css/, styleSheet));
+  } catch (error) {
+    console.error(`[CHI]: Error reading file ${filePath}: ${error}`);
+    process.exit(1);
+  }
+}
+
 const spinner = ora(`[CHI]: Building tests`).start();
 
+const buildTests = async () => {
+  for (const theme of THEMES_TO_TEST) {
+    const outputDir = path.join(__dirname, `dist/tests/${theme}`);
+    fs.mkdirSync(outputDir, { recursive: true });
+
+    updateThemeInTests(theme);
+
+    compilePugFiles(inputDir, outputDir, theme, spinner);
+
+    updateThemeInTests('lumen');
+  }
+};
+
 try {
-  compilePugFiles(inputDir, spinner);
-  spinner.succeed(`[CHI]: Tests built successfully`);
+
+  buildTests().then(() => spinner.succeed(`[CHI]: Tests built successfully`));
 } catch (error) {
   spinner.fail(`[CHI]: Error during building tests: ${error.message}`);
 }

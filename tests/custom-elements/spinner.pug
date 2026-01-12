@@ -1,8 +1,8 @@
 extends ../layout.pug
 
 block scripts
-  script(type="module" src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
-  script(src='../../js/chi.js')
+  script(type="module" src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../../js/chi.js')
 
 block variables
   - var title = 'Spinner'
@@ -23,7 +23,19 @@ block content
 
   h3 Contextual
   h4 Spinner Buttons
-  .test-buttons
+  .test-buttons-lumen
+    .example.-mb--3
+      .-p--3
+        chi-button.-mr--3
+          span Button
+          chi-spinner(color='muted')
+        chi-button.-mr--3(size='sm')
+          span Small
+          chi-spinner(color='muted', size='xs')
+        chi-button.-mr--3(size='lg')
+          span Large
+          chi-spinner(color='muted', size='sm--2')
+  .test-buttons-portal
     .example.-mb--3
       .-p--3
         chi-button.-mr--3

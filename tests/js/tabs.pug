@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 
 block variables
   - var title = 'Chi Tabs component example'
@@ -21,11 +21,8 @@ block content
   #horizontal-base-1.chi-tabs-panel.-active Tab 1 content
   #horizontal-base-2.chi-tabs-panel Tab 2 content
   #horizontal-base-3.chi-tabs-panel Tab 3 content
-  
-  script.
-    chi.tab(document.getElementById('example-horizontal-base'));
 
-  h3 Vertical
+  h3 Vertical and non animated
   ul#example-vertical-base.chi-tabs.-vertical
     li.-active
       a(href='#vertical-base-1') Active Tab
@@ -38,6 +35,13 @@ block content
   #vertical-base-2.chi-tabs-panel Tab 2 content
   #vertical-base-3.chi-tabs-panel Tab 3 content
 
+  h3 dispose()
+  button#dispose-tabs-button.chi-button
+    | Dispose tabs
+
   script.
-    chi.tab(document.getElementById('example-vertical-base'));
-    
+    chi.tab(document.getElementById('example-horizontal-base'));
+    const tab = chi.tab(document.getElementById('example-vertical-base'), { animated: false });
+
+    const disposeTabButton = document.getElementById('dispose-tabs-button');
+    disposeTabButton.addEventListener('click', () => tab.dispose());

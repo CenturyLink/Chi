@@ -7,6 +7,9 @@ $colors: (
     border-color: $badge-primary-border-color,
     text-color: $badge-primary-text-color,
     icon-color: $badge-primary-icon-color,
+    border-color-outline: $badge-outline-primary-border-color,
+    text-color-outline: $badge-outline-primary-text-color,
+    icon-color-outline: $badge-outline-primary-icon-color,
     text-color-flat: $badge-flat-primary-text-color,
     icon-color-flat: $badge-flat-primary-icon-color,
   ),
@@ -15,6 +18,9 @@ $colors: (
     border-color: $badge-secondary-border-color,
     text-color: $badge-secondary-text-color,
     icon-color: $badge-secondary-icon-color,
+    border-color-outline: $badge-outline-secondary-border-color,
+    text-color-outline: $badge-outline-secondary-text-color,
+    icon-color-outline: $badge-outline-secondary-icon-color,
     text-color-flat: $badge-flat-secondary-text-color,
     icon-color-flat: $badge-flat-secondary-icon-color,
   ),
@@ -23,6 +29,9 @@ $colors: (
     border-color: $badge-light-border-color,
     text-color: $badge-light-text-color,
     icon-color: $badge-light-icon-color,
+    border-color-outline: $badge-outline-light-border-color,
+    text-color-outline: $badge-outline-light-text-color,
+    icon-color-outline: $badge-outline-light-icon-color,
     text-color-flat: $badge-flat-light-text-color,
     icon-color-flat: $badge-flat-light-icon-color,
   ),
@@ -31,6 +40,9 @@ $colors: (
     border-color: $badge-dark-border-color,
     text-color: $badge-dark-text-color,
     icon-color: $badge-dark-icon-color,
+    border-color-outline: $badge-outline-dark-border-color,
+    text-color-outline: $badge-outline-dark-text-color,
+    icon-color-outline: $badge-outline-dark-icon-color,
     text-color-flat: $badge-flat-dark-text-color,
     icon-color-flat: $badge-flat-dark-icon-color,
   ),
@@ -39,6 +51,9 @@ $colors: (
     border-color: $badge-success-border-color,
     text-color: $badge-success-text-color,
     icon-color: $badge-success-icon-color,
+    border-color-outline: $badge-outline-success-border-color,
+    text-color-outline: $badge-outline-success-text-color,
+    icon-color-outline: $badge-outline-success-icon-color,
     text-color-flat: $badge-flat-success-text-color,
     icon-color-flat: $badge-flat-success-icon-color,
   ),
@@ -47,6 +62,9 @@ $colors: (
     border-color: $badge-danger-border-color,
     text-color: $badge-danger-text-color,
     icon-color: $badge-danger-icon-color,
+    border-color-outline: $badge-outline-danger-border-color,
+    text-color-outline: $badge-outline-danger-text-color,
+    icon-color-outline: $badge-outline-danger-icon-color,
     text-color-flat: $badge-flat-danger-text-color,
     icon-color-flat: $badge-flat-danger-icon-color,
   ),
@@ -55,6 +73,9 @@ $colors: (
     border-color: $badge-warning-border-color,
     text-color: $badge-warning-text-color,
     icon-color: $badge-warning-icon-color,
+    border-color-outline: $badge-outline-warning-border-color,
+    text-color-outline: $badge-outline-warning-text-color,
+    icon-color-outline: $badge-outline-warning-icon-color,
     text-color-flat: $badge-flat-warning-text-color,
     icon-color-flat: $badge-flat-warning-icon-color,
   ),
@@ -63,6 +84,9 @@ $colors: (
     border-color: $badge-info-border-color,
     text-color: $badge-info-text-color,
     icon-color: $badge-info-icon-color,
+    border-color-outline: $badge-outline-info-border-color,
+    text-color-outline: $badge-outline-info-text-color,
+    icon-color-outline: $badge-outline-info-icon-color,
     text-color-flat: $badge-flat-info-text-color,
     icon-color-flat: $badge-flat-info-icon-color,
   ),
@@ -71,6 +95,9 @@ $colors: (
     border-color: $badge-muted-border-color,
     text-color: $badge-muted-text-color,
     icon-color: $badge-muted-icon-color,
+    border-color-outline: $badge-outline-muted-border-color,
+    text-color-outline: $badge-outline-muted-text-color,
+    icon-color-outline: $badge-outline-muted-icon-color,
     text-color-flat: $badge-flat-muted-text-color,
     icon-color-flat: $badge-flat-muted-icon-color,
   ),
@@ -79,6 +106,9 @@ $colors: (
     border-color: $badge-accent-1-border-color,
     text-color: $badge-accent-1-text-color,
     icon-color: $badge-accent-1-icon-color,
+    border-color-outline: $badge-outline-accent-1-border-color,
+    text-color-outline: $badge-outline-accent-1-text-color,
+    icon-color-outline: $badge-outline-accent-1-icon-color,
     text-color-flat: $badge-flat-accent-1-text-color,
     icon-color-flat: $badge-flat-accent-1-icon-color,
   ),
@@ -87,6 +117,9 @@ $colors: (
     border-color: $badge-accent-2-border-color,
     text-color: $badge-accent-2-text-color,
     icon-color: $badge-accent-2-icon-color,
+    border-color-outline: $badge-outline-accent-2-border-color,
+    text-color-outline: $badge-outline-accent-2-text-color,
+    icon-color-outline: $badge-outline-accent-2-icon-color,
     text-color-flat: $badge-flat-accent-2-text-color,
     icon-color-flat: $badge-flat-accent-2-icon-color,
   ),
@@ -95,6 +128,9 @@ $colors: (
     border-color: $badge-accent-3-border-color,
     text-color: $badge-accent-3-text-color,
     icon-color: $badge-accent-3-icon-color,
+    border-color-outline: $badge-outline-accent-3-border-color,
+    text-color-outline: $badge-outline-accent-3-text-color,
+    icon-color-outline: $badge-outline-accent-3-icon-color,
     text-color-flat: $badge-flat-accent-3-text-color,
     icon-color-flat: $badge-flat-accent-3-icon-color,
   ),
@@ -103,6 +139,9 @@ $colors: (
     border-color: $badge-accent-4-border-color,
     text-color: $badge-accent-4-text-color,
     icon-color: $badge-accent-4-icon-color,
+    border-color-outline: $badge-outline-accent-4-border-color,
+    text-color-outline: $badge-outline-accent-4-text-color,
+    icon-color-outline: $badge-outline-accent-4-icon-color,
     text-color-flat: $badge-flat-accent-4-text-color,
     icon-color-flat: $badge-flat-accent-4-icon-color,
   ),
@@ -111,6 +150,9 @@ $colors: (
     border-color: $badge-accent-5-border-color,
     text-color: $badge-accent-5-text-color,
     icon-color: $badge-accent-5-icon-color,
+    border-color-outline: $badge-outline-accent-5-border-color,
+    text-color-outline: $badge-outline-accent-5-text-color,
+    icon-color-outline: $badge-outline-accent-5-icon-color,
     text-color-flat: $badge-flat-accent-5-text-color,
     icon-color-flat: $badge-flat-accent-5-icon-color,
   )
@@ -118,20 +160,20 @@ $colors: (
 
 .chi-badge {
   // sass-lint:disable-block property-units
-  align-items: center;
+  align-items: $badge-align-items;
   background-color: $badge-background-color;
   border: 0.0625rem solid $badge-border-color;
-  border-radius: 2em;
-  box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+  border-radius: $badge-border-radius;
+  box-shadow: $badge-box-shadow;
   display: inline-flex;
   font-size: $font-size-base;
-  font-weight: $font-weight-semi-bold;
-  line-height: $line-height;
+  font-weight: $badge-font-weight;
+  line-height: $badge-line-height;
   min-width: 1.5rem;
-  padding: 0.0625rem 0.5em;
-  text-align: center;
+  padding: $badge-padding;
+  text-align: $badge-text-align;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: $badge-white-space;
 
   .chi-icon {
     color: $badge-icon-color;
@@ -156,9 +198,9 @@ $colors: (
   &.-sm {
     font-size: $font-size-xs;
     height: 1.25rem;
-    line-height: $line-height;
+    line-height: $badge-sm-line-height;
     min-width: 1.25rem;
-    padding: 0 0.375rem;
+    padding: $badge-sm-padding;
 
     .chi-icon {
       height: 0.75rem;
@@ -176,15 +218,14 @@ $colors: (
     }
 
     span {
-      line-height: $line-height;
+      line-height: $badge-sm-line-height;
     }
   }
 
   &.-xs {
-    border-radius: 0.5rem;
     font-size: $font-size-2xs;
     height: 1rem;
-    line-height: $line-height-sm;
+    line-height: $badge-xs-line-height;
     min-width: 1rem;
     padding: 0 0.25rem;
 
@@ -204,14 +245,14 @@ $colors: (
     }
 
     span {
-      line-height: $line-height-sm;
+      line-height: $badge-xs-line-height;
     }
   }
 
   &.-outline,
   &.-flat {
     background-color: transparent;
-    box-shadow: initial;
+    box-shadow: none;
   }
 
   &.-flat {
@@ -221,7 +262,7 @@ $colors: (
   @each $color in map-keys($colors) {
     &.-#{$color} {
       background-color: map-get(map-get($colors, $color), background-color);
-      border: 0.0625rem solid map-get(map-get($colors, $color), background-color);
+      border: 0.0625rem solid map-get(map-get($colors, $color), border-color);
       color: map-get(map-get($colors, $color), text-color);
 
       .chi-icon {
@@ -231,17 +272,37 @@ $colors: (
       &.-outline,
       &.-flat {
         background-color: transparent;
-        border-color: map-get(map-get($colors, $color), border-color);
+      }
+
+      &.-outline {
+        border-color: map-get(map-get($colors, $color), border-color-outline);
+        color: map-get(map-get($colors, $color), text-color-outline);
+
+        .chi-icon {
+          color: map-get(map-get($colors, $color), icon-color-outline);
+        }
+      }
+
+      &.-flat {
+        border-color: transparent;
         color: map-get(map-get($colors, $color), text-color-flat);
 
         .chi-icon {
           color: map-get(map-get($colors, $color), icon-color-flat);
         }
       }
+    }
+  }
 
-      &.-flat {
-        border-color: transparent;
-      }
+  &.-notification {
+    background-color: $badge-notification-background-color;
+    border: 0.0625rem solid $badge-notification-border-color;
+    border-radius: $badge-notification-border-radius;
+    color: $badge-notification-text-color;
+    font-weight: $font-weight-bold;
+
+    .chi-icon {
+      color: $badge-notification-icon-color;
     }
   }
 }

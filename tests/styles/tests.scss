@@ -24,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 // sass-lint:enable class-name-format
 
 [class^='test-'] {
@@ -73,6 +74,16 @@ body {
 
     .chi-backdrop {
       position: absolute;
+    }
+  }
+
+  chi-modal {
+    .chi-backdrop {
+      position: absolute;
+    }
+
+    [name='trigger'] {
+      display: none;
     }
   }
 }

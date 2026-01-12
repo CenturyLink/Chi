@@ -51,7 +51,7 @@
   }
 
   // Stacking (on XS Viewports)
-  @each $size in sm md lg xl {
+  @each $size in sm md lg xl xxl {
     @include respond-to-only(xs) {
       &.-w-#{$size} {
         flex: 1 0 auto;
@@ -78,7 +78,7 @@
 
   // Sizing by Viewport
 
-  @each $size in sm md lg xl {
+  @each $size in sm md lg xl xxl {
     @include respond-to($size) {
       @for $i from 1 through 12 {
         &.-w-#{$size}--#{$i} {
@@ -96,7 +96,7 @@
       margin-left: (100% / 12 * $i);
     }
 
-    @each $size in sm md lg xl {
+    @each $size in sm md lg xl xxl {
       @include respond-to($size) {
         @for $i from 1 through 11 {
           &.-o-#{$size}--#{$i} {
@@ -129,7 +129,7 @@
       order: #{$i};
     }
 
-    @each $size in xs sm md lg xl {
+    @each $size in xs sm md lg xl xxl {
       @include respond-to($size) {
         @for $i from 1 through 12 {
           &.-n-#{$size}--#{$i} {
@@ -141,7 +141,7 @@
     }
   }
 
-  @each $size in xs sm md lg xl {
+  @each $size in xs sm md lg xl xxl {
     @include respond-to-only($size) {
       &.-#{$size}--hide {
         display: none;
@@ -149,7 +149,7 @@
     }
   }
 
-  @each $size in sm md lg xl {
+  @each $size in sm md lg xl xxl {
     @include respond-to($size) {
       &.-#{$size}--hide-from {
         display: none;
@@ -210,6 +210,17 @@
   .chi-col {
     @for $i from 1 through 12 {
       &.-w-xl--#{$i} {
+        flex: 0 0 auto;
+        width: (100% / 12 * $i);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $xxl-breakpoint) and (-ms-high-contrast: none) {
+  .chi-col {
+    @for $i from 1 through 12 {
+      &.-w-xxl--#{$i} {
         flex: 0 0 auto;
         width: (100% / 12 * $i);
       }

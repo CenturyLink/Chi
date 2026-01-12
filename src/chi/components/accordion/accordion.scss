@@ -31,13 +31,13 @@ $sizes: (
     line-height: $accordion-xl-item-line-height,
     padding: $accordion-xl-item-padding,
     content-padding: $accordion-xl-item-content-padding,
-  )
+  ),
 );
 
 .chi-accordion {
   &__item {
     background-color: $accordion-item-background-color;
-    border-bottom: 0.0625rem solid  $accordion-item-border-color;
+    border-bottom: 0.0625rem solid $accordion-item-border-color;
 
     &:last-child {
       border-bottom: 0.0625rem solid transparent;
@@ -59,15 +59,21 @@ $sizes: (
         pointer-events: none;
       }
 
-      .chi-icon {
+      > .chi-icon {
         color: $accordion-item-trigger-icon-color;
         font-size: $accordion-md-item-icon-size;
         height: $accordion-md-item-icon-size;
         line-height: $accordion-md-item-icon-size;
         width: $accordion-md-item-icon-size;
 
-        & + .chi-accordion__title {
-          margin-left: 1rem;
+        &.icon-chevron-down {
+          & + .chi-accordion__title {
+            margin-left: 1rem;
+          }
+        }
+
+        &:not(.icon-chevron-down) {
+          margin-right: 1rem;
         }
       }
 
@@ -90,6 +96,12 @@ $sizes: (
       .icon-chevron-right {
         transition-duration: $animation-duration;
       }
+
+      &:has(div[slot]) {
+        .chi-accordion__title {
+          flex-grow: 0;
+        }
+      } 
     }
 
     .chi-accordion__content {
@@ -111,6 +123,10 @@ $sizes: (
 
       &.-transitioning {
         display: block;
+      }
+
+      &:has(div[slot]) {
+        overflow: visible;
       }
     }
 
@@ -289,16 +305,15 @@ $sizes: (
     .chi-accordion__item {
       background-color: transparent;
       border-bottom: none;
-      
+
       .chi-accordion__trigger {
         padding: 0;
 
-
         .chi-icon {
           color: $accordion-link-color;
-          margin-left: 1rem;
+          margin-left: $accordion-link-margin-left;
         }
-        
+
         &:hover {
           .chi-icon::before {
             color: $accordion-link-hover-color;
@@ -309,6 +324,18 @@ $sizes: (
       .chi-accordion__content {
         padding-left: 0;
         padding-right: 0;
+      }
+    }
+  }
+
+  &.-compact-title {
+    .chi-accordion__trigger {
+      .chi-accordion__title {
+        flex-grow: 0;
+  
+        + .chi-icon {
+          color: inherit;
+        }
       }
     }
   }

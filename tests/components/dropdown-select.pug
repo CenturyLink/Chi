@@ -1,0 +1,78 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
+
+block variables
+  - var title = 'Dropdown Select'
+
+block content
+  span.-text--h2 With button icons
+  .test-dropdown-select-button-icon(style='width: 500px; height: 200px;')
+    .chi-dropdown.-active(style="margin-bottom: 8em")
+      button(class='chi-button chi-dropdown__trigger chi-dropdown__select-mode -active -animate -fluid -focus') Item 1
+      div(class='chi-dropdown__menu -z--10 -active -fluid')
+        .chi-dropdown__menu-wrapper.-active
+          a(class='chi-dropdown__menu-item -active', href='#') Item 1
+          .chi-dropdown__menu-buttons
+            button(class='chi-button -flat -icon -sm')
+              .chi-button__content
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-delete')
+            button(class='chi-button -flat -icon -sm')
+              .chi-button__content
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-edit')
+        .chi-dropdown__menu-wrapper
+          a(class='chi-dropdown__menu-item', href='#') Item 2
+          .chi-dropdown__menu-buttons
+            button(class='chi-button -flat -icon -sm -disabled')
+              .chi-button__content
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-delete')
+            button(class='chi-button -flat -icon -sm')
+              .chi-button__content
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-edit')
+
+  span.-text--h2 Multiple search
+  .test-dropdown-select-multiple-search(style='width: 500px; height: 400px;')
+    .chi-dropdown.-active(style="margin-bottom: 8em")
+      button(class='chi-button chi-dropdown__trigger chi-dropdown__select-mode -active -animate -fluid -focus') - Select -
+      div(class='chi-dropdown__menu -z--10 -active -fluid')
+        div.chi-dropdown__menu-header
+          .-px--1
+            .chi-input__wrapper.-icon--right
+              input.chi-input.chi-search__input(type='search' placeholder='Search')
+              button.chi-button.-icon.-flat.-bg--none(aria-label='Search')
+                .chi-button__content
+                  .chi-icon
+                    svg
+                      use(xlink:href='#icon-search')
+          .chi-divider
+        .chi-checkbox.chi-dropdown__menu-item
+          input.chi-checkbox__input(type="checkbox" id="checkbox-1")
+          label.chi-checkbox__label(for="checkbox-1") Item 1
+        .chi-checkbox.chi-dropdown__menu-item
+          input.chi-checkbox__input(type="checkbox" id="checkbox-2")
+          label.chi-checkbox__label(for="checkbox-2") Item 2
+        .chi-checkbox.chi-dropdown__menu-item
+          input.chi-checkbox__input(type="checkbox" id="checkbox-3")
+          label.chi-checkbox__label(for="checkbox-3") Item 3
+        .chi-checkbox.chi-dropdown__menu-item
+          input.chi-checkbox__input(type="checkbox" id="checkbox-4")
+          label.chi-checkbox__label(for="checkbox-4") Item 4
+        .chi-checkbox.chi-dropdown__menu-item
+          input.chi-checkbox__input(type="checkbox" id="checkbox-5")
+          label.chi-checkbox__label(for="checkbox-5") Item 5
+        div.chi-dropdown__menu-footer
+          .chi-divider
+          div.chi-dropdown__menu-footer-actions
+            button.chi-button.-xs(aria-label='Clear') Clear
+            button.chi-button.-primary.-xs(aria-label='Apply') Apply

@@ -48,7 +48,7 @@ $pill-sizes: (
       align-items: flex-start;
       background-color: $picker-background-color;
       border: solid $border $picker-border-color;
-      border-radius: $border-radius;
+      border-radius: $picker-border-radius;
       box-shadow: map-get($shadow, 1);
       cursor: pointer;
       display: flex;
@@ -135,6 +135,10 @@ $pill-sizes: (
             margin: $picker-md-item-description-margin;
             padding: $picker-md-item-description-padding;
           }
+
+          .chi-picker__label-info-icon {
+            margin-left: $picker-item-info-icon-margin-left;
+          }
         }
 
         &--end {
@@ -158,6 +162,7 @@ $pill-sizes: (
     &.-disabled {
       & + label {
         background-color: $picker-disabled-background-color;
+        border-color: $picker-disabled-border-color;
         box-shadow: none;
         color: $picker-disabled-text-color;
         pointer-events: none;
@@ -195,6 +200,13 @@ $pill-sizes: (
           }
         }
       }
+
+      &:focus {
+        & + label {
+          outline: $picker-checked-focus-outline;
+          outline-offset: $picker-checked-focus-outline-offset;
+        }
+      }
     }
 
     &:hover {
@@ -222,6 +234,8 @@ $pill-sizes: (
         & + label {
           background-color: $picker-focus-background-color;
           border-color: $picker-focus-border-color;
+          outline: $picker-focus-outline;
+          outline-offset: $picker-focus-outline-offset;
           cursor: pointer;
         }
       }
@@ -229,8 +243,36 @@ $pill-sizes: (
   }
 
   &.-pill {
-    .chi-picker__input + label {
-      border-radius: $border-radius-rounded-pill;
+    .chi-picker__input {
+      & + label {
+        border-radius: $border-radius-rounded-pill;
+      }
+
+      &[disabled],
+      &.-disabled {
+        & + label {
+          background-color: $picker-pill-disabled-background-color;
+          border-color: $picker-pill-disabled-border-color;
+          box-shadow: $picker-pill-disabled-box-shadow;
+        }
+      }
+
+      &:hover {
+        &:not(:checked) {
+          & + label {
+            background-color: $picker-pill-hover-background-color;
+            border-color: $picker-pill-hover-border-color;
+          }
+        }
+      }
+
+      &:active {
+        &:not(:checked) {
+          & + label {
+            background-color: $picker-pill-active-background-color;
+          }
+        }
+      }
     }
 
     & ~ .-pill {

@@ -1,9 +1,9 @@
 extends ../layout.pug
 
 block scripts
-  script(src='../../js/chi.js')
-  script(src='../../chi-icons.js')
-  script(src='../../chi-marketing-icons.js')
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
 
 block variables
   - var title = 'Modal'
@@ -27,11 +27,11 @@ block content
           button.chi-button.-primary Save
 
   h3 Scrollable
-  button#modal-trigger-3.chi-button.chi-modal__trigger(data-target='#modal-3')
+  button#modal-trigger-2.chi-button.chi-modal__trigger(data-target='#modal-2')
     | Launch scrollable modal
   .chi-backdrop.-closed
     .chi-backdrop__wrapper
-      section#modal-3.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+      section#modal-2.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
         header.chi-modal__header
           h2.chi-modal__title Modal Title
           button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
@@ -56,11 +56,11 @@ block content
           button.chi-button.-primary Save
 
   h3 Scrolling long content
-  button#modal-trigger-4.chi-button.chi-modal__trigger(data-target='#modal-4')
+  button#modal-trigger-3.chi-button.chi-modal__trigger(data-target='#modal-3')
     | Launch long scrollable modal
   .chi-backdrop.-closed.-mh--480
     .chi-backdrop__wrapper
-      section#modal-4.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+      section#modal-3.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
         header.chi-modal__header
           h2.chi-modal__title Modal Title
           button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
@@ -84,7 +84,31 @@ block content
           button.chi-button(data-dismiss='modal') Cancel
           button.chi-button.-primary Save
 
+  h3 Not animated
+  button#modal-trigger-4.chi-button.chi-modal__trigger(data-target='#modal-4')
+    | Launch not animated modal
+  .chi-backdrop.-closed
+    .chi-backdrop__wrapper
+      section#modal-4.chi-modal(role='dialog', aria-label='Modal description', aria-modal='true')
+        header.chi-modal__header
+          h2.chi-modal__title Modal Title
+          button.chi-button.-icon.-close(data-dismiss='modal', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden="true")
+        .chi-modal__content
+          p.-text.-m--0 Modal content
+        footer.chi-modal__footer
+          button.chi-button#modal-1-cancel(data-dismiss='modal') Cancel
+          button.chi-button.-primary Save
+
+  h3 dispose()
+  button#dispose-modal-button.chi-button
+    | Dispose Modal
+
   script.
     chi.modal(document.getElementById('modal-trigger-1'));
+    chi.modal(document.getElementById('modal-trigger-2'));
     chi.modal(document.getElementById('modal-trigger-3'));
-    chi.modal(document.getElementById('modal-trigger-4'));
+
+    const modal4 = chi.modal(document.getElementById('modal-trigger-4'), { animated: false });
+    document.getElementById('dispose-modal-button').addEventListener('click', () => modal4.dispose());
