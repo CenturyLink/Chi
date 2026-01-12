@@ -465,6 +465,11 @@ $alert-sm-text-font-size: $font-size-base;
 $alert-sm-text-line-height: $line-height;
 
 // App layout
+$app-layout-actions-border: 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction: row-reverse;
+$app-layout-actions-justify-content: start;
+$app-layout-actions-padding: 1.5rem 0;
+$app-layout-actions-margin-top: 1rem;
 $app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
@@ -1046,7 +1051,6 @@ $card-header-sm-padding: 0.5rem 1rem;
 $card-hero-border-radius: 0;
 $card-hero-width: 100%;
 $card-highlight-background-color: $color-teal-10;
-$card-highlight-border-color: $color-teal-60;
 $card-highlight-border-color: $color-teal-20;
 $card-highlight-border: 0.0625rem solid $card-highlight-border-color;
 $card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
@@ -1382,6 +1386,10 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline: $focus-color;
 
+$dropdown-menu-footer-actions-direction: row-reverse;
+$dropdown-menu-footer-actions-justify-content: start;
+$dropdown-menu-footer-actions-padding: 0.5rem 0.5rem 0.5rem 1rem;
+
 $dropdown-select-border-radius: $border-radius-base;
 $dropdown-select-border-color: $color-grey-50;
 $dropdown-select-chevron-color: $color-grey-60;
@@ -1432,10 +1440,11 @@ $expansion-panel-disabled-title-opacity: $opacity-60;
 $expansion-panel-disabled-title-text-color: $color-text-muted;
 $expansion-panel-footer-border-color: rgba($color-black, 0.12);
 $expansion-panel-footer-justify-content: flex-start;
-$expansion-panel-footer-no-slot-button-margin-left: 0;
-$expansion-panel-footer-no-slot-button-margin-right: 1rem;
-$expansion-panel-footer-no-slot-flex-direction: row-reverse;
-$expansion-panel-footer-no-slot-justify-content: flex-end;
+$expansion-panel-footer-flex-direction: column-reverse;
+$expansion-panel-footer-md-button-margin-left: 0;
+$expansion-panel-footer-md-button-margin-right: 1rem;
+$expansion-panel-footer-md-flex-direction: row-reverse;
+$expansion-panel-footer-md-justify-content: flex-end;
 $expansion-panel-footer-padding: 1.25rem;
 $expansion-panel-line-height: $line-height-lg;
 $expansion-panel-number-margin-right: 1rem;
@@ -2612,12 +2621,12 @@ $transfer-list-checkbox-icon-color: $color-icon-primary;
 $transfer-list-reset-button-color: $color-text-code;
 
 // Tags
-$tags-border-color: $color-border-base;
+$tags-border-color: $color-grey-50;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-60;
 $tags-input-min-height: 2rem;
-$tags-hover-border-color: $color-grey-40;
+$tags-hover-border-color: $color-border-secondary-darker;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;

@@ -134,7 +134,7 @@ $transition-duration: 0.2s;
     align-items: center;
     box-shadow: inset 0 1px 0 0 $expansion-panel-footer-border-color;
     display: flex;
-    flex-direction: column;
+    flex-direction: $expansion-panel-footer-flex-direction;
     justify-content: $expansion-panel-footer-justify-content;
     min-height: 4rem;
     padding: $expansion-panel-footer-padding;
@@ -143,19 +143,22 @@ $transition-duration: 0.2s;
     @include respond-to(sm) {
       flex-direction: row;
 
-      &:has(> .chi-button:not([slot='footer']), > chi-button:not([slot='footer'])) {
-        flex-direction: $expansion-panel-footer-no-slot-flex-direction;
-        justify-content: $expansion-panel-footer-no-slot-justify-content;
+      &:has(> .chi-button:not([slot='footer']), > chi-button:not([slot='footer'])),
+      > div[slot='footer'] {
+        display: flex;
+        flex-direction: $expansion-panel-footer-md-flex-direction;
+        justify-content: $expansion-panel-footer-md-justify-content;
 
         > button.chi-button,
         > chi-button {
           &:not(:first-of-type) {
-            margin-left: $expansion-panel-footer-no-slot-button-margin-left;
-            margin-right: $expansion-panel-footer-no-slot-button-margin-right;
+            margin-left: $expansion-panel-footer-md-button-margin-left;
+            margin-right: $expansion-panel-footer-md-button-margin-right;
           }
         }
       }
     }
+
 
     .chi-button,
     chi-button {

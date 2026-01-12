@@ -458,6 +458,11 @@ $alert-sm-text-font-size: 0.875rem;
 $alert-sm-text-line-height: $line-height-sm;
 
 // App layout
+$app-layout-actions-border: 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction: row;
+$app-layout-actions-justify-content: end;
+$app-layout-actions-padding: 1.5rem 0;
+$app-layout-actions-margin-top: 1rem;
 $app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: $color-teal-100;
@@ -1367,6 +1372,10 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-15;
 $dropdown-menu-item-focus-outline: $focus-color;
 
+$dropdown-menu-footer-actions-direction: row;
+$dropdown-menu-footer-actions-justify-content: end;
+$dropdown-menu-footer-actions-padding: 0.5rem 1rem 0.5rem 0.5rem;
+
 $dropdown-select-border-radius: $border-radius-base;
 $dropdown-select-chevron-color: null;
 $dropdown-select-disabled-background-color: $dropdown-menu-background-color;
@@ -1416,11 +1425,12 @@ $expansion-panel-content-margin-right: 0;
 $expansion-panel-disabled-title-opacity: $opacity-60;
 $expansion-panel-disabled-title-text-color: $color-text-muted;
 $expansion-panel-footer-border-color: rgba($color-black, 0.12);
+$expansion-panel-footer-flex-direction: column;
 $expansion-panel-footer-justify-content: flex-end;
-$expansion-panel-footer-no-slot-button-margin-left: 1rem;
-$expansion-panel-footer-no-slot-button-margin-right: 0;
-$expansion-panel-footer-no-slot-flex-direction: row;
-$expansion-panel-footer-no-slot-justify-content: flex-start;
+$expansion-panel-footer-md-button-margin-left: 1rem;
+$expansion-panel-footer-md-button-margin-right: 0;
+$expansion-panel-footer-md-flex-direction: row;
+$expansion-panel-footer-md-justify-content: flex-start;
 $expansion-panel-footer-padding: 1rem;
 $expansion-panel-line-height: $line-height;
 $expansion-panel-number-margin-right: 0;
