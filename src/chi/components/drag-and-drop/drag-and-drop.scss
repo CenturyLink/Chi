@@ -151,6 +151,12 @@
           }
         }
       }
+
+      .chi-drag__title-icon {
+        .chi-icon {
+          height: $accordion-md-item-line-height;
+        }
+      }
     }
   }
 }
