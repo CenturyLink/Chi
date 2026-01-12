@@ -207,6 +207,7 @@
     top: 0;
     width: 100%;
     z-index: 1;
+    height: $header-impersonation-bar-height;
 
     &__content {
       align-items: center;
@@ -220,7 +221,7 @@
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: $header-impersonation-edge-element-height;
+        height: $header-impersonation-bar-height;
         left: -1rem;
         position: absolute;
         top: 0;
@@ -233,7 +234,7 @@
         background-color: $header-impersonation-background-color;
         content: '';
         display: block;
-        height: $header-impersonation-edge-element-height;
+        height: $header-impersonation-bar-height;
         position: absolute;
         right: -1rem;
         top: 0;

@@ -744,7 +744,12 @@ $sidenav-lg-width: 12.5rem;
     height: 100%;
 
     &.-expanded {
-      min-width: 20.250rem;
+      min-width: 20.25rem;
+
+      &.-open-on-hover {
+        margin-right: calc(-20.25rem + 4.375rem);
+        z-index: 10;
+      }
 
       .chi-sidenav__item-wrapper {
         chi-link {
@@ -768,6 +773,37 @@ $sidenav-lg-width: 12.5rem;
                   visibility: visible;
                 }
               }
+
+              &.-expanded {
+                .chi-accordion__trigger {
+                  .icon-chevron-down {
+                    flex-grow: 1;
+                    margin-right: 0.25rem;
+                  }
+                }
+
+                // For nested accordions
+                chi-accordion {
+                  .chi-accordion {
+                    .chi-accordion__item {
+                      .chi-accordion__trigger {
+                        .icon-chevron-down {
+                          flex-grow: 0;
+                          margin-right: 0.25rem;
+                        }
+                      }
+
+                      &.-expanded {
+                        .chi-accordion__trigger {
+                          .icon-chevron-down {
+                            margin-right: 0.5rem;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -775,13 +811,14 @@ $sidenav-lg-width: 12.5rem;
     }
 
     &.-collapsed {
-      width: 4.3rem;
+      width: 4.375rem;
 
       .chi-sidenav__item {
         &:hover {
           transition: opacity 0.1s ease, visibility 0.1s ease;
         }
       }
+
       .chi-sidenav__item-wrapper {
         chi-link {
           .chi-link__content {
@@ -864,8 +901,10 @@ $sidenav-lg-width: 12.5rem;
 
             .chi-sidenav__item-wrapper:has(chi-accordion) {
               chi-link {
-                width: 100%;
                 border-radius: $sidenav-global-item-border-radius;
+                margin-bottom: 0.125rem;
+                margin-top: 0.125rem;
+                width: 100%;
 
                 &.-active {
                   .chi-icon,
@@ -937,7 +976,7 @@ $sidenav-lg-width: 12.5rem;
                       > div {
                         > .chi-sidenav__item-guide {
                           &::before {
-                            border-left: 2px solid $sidenav-global-tree-guide-active-color;
+                            border-left: $sidenav-global-tree-guide-active-border-left;
                           }
                         }
                       }
@@ -977,7 +1016,7 @@ $sidenav-lg-width: 12.5rem;
                       position: relative;
 
                       &::before {
-                        border-left: 2px solid $sidenav-global-tree-guide-color;
+                        border-left: $sidenav-global-tree-guide-border-left;
                         content: '';
                         display: block;
                         height: 100%;
@@ -1043,6 +1082,16 @@ $sidenav-lg-width: 12.5rem;
             .chi-sidenav__item-wrapper {
               chi-link {
                 width: 100%;
+
+                chi-icon[icon='external-link'] {
+                  display: none;
+                }
+
+                &:hover {
+                  chi-icon[icon='external-link'] {
+                    display: inline-flex;
+                  }
+                }
 
                 &.-active {
                   .chi-link {

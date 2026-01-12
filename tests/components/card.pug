@@ -4,6 +4,12 @@ block scripts
   script(src='../../../js/chi.js')
   script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
+block styles
+  style.
+    #custom-floating-card {
+      top: 10px;
+      left: 10px;
+    }
 block variables
   - var title = 'Card'
 
@@ -455,28 +461,27 @@ block content
                           a.chi-link=`ID 123456567${id}`
                           .chi-badge.-muted Email Sent
 
-  
   h3 Card KPI
   .test-card-kpi
     .chi-grid
       .chi-col.-w--3
-        .chi-card.-widget.-fixed-width.-kpi 
+        .chi-card.-widget.-fixed-width.-kpi
           .chi-card__content 
             .chi-card__title KPI Card
             .chi-card__caption Card content
       .chi-col.-w--3 
-        .chi-card.-widget.-fixed-width.-kpi 
+        .chi-card.-widget.-fixed-width.-kpi
           .chi-card__content 
             .chi-card__title KPI Card
             .chi-card__metric 20
       .chi-col.-w--3 
-        .chi-card.-widget.-fixed-width.-kpi 
+        .chi-card.-widget.-fixed-width.-kpi
           .chi-card__content 
             .chi-card__title KPI Card
             .chi-card__caption Card content
             .chi-card__metric 20
       .chi-col.-w--3 
-        .chi-card.-widget.-fixed-width.-kpi 
+        .chi-card.-widget.-fixed-width.-kpi
           .chi-card__content 
             .chi-card__title KPI Card
             .chi-grid 
@@ -486,3 +491,40 @@ block content
               .chi-col 
                 .chi-card__metric-label Up
                 .chi-card__metric-value 143
+      .chi-col.-w--3
+        .chi-card.-widget.-fixed-width.-kpi.-no-arrow
+          .chi-card__content
+            .chi-card__title KPI Card
+            .chi-card__caption Card content
+            .chi-card__metric 20
+      .chi-col.-w--3
+        .chi-card.-widget.-fixed-width.-kpi.-disabled.-no-arrow
+          .chi-card__content
+            .chi-card__title KPI Card
+            .chi-card__caption Card content
+            .chi-card__metric 20
+      .chi-col.-w--3 
+        .chi-card.-widget.-fixed-width.-kpi.-lg
+          .chi-card__content 
+            .chi-card__title KPI Card
+            .chi-card__content-wrapper 
+            .chi-grid 
+              .chi-col 
+                .chi-card__metric-label Down
+                .chi-card__metric-value 970000
+              .chi-col 
+                .chi-card__metric-label Up
+                .chi-card__metric-value 1430000
+
+  h3 Floating Card
+  .test-card-float
+    .-position--relative.-bg--grey-30.-p--1(style="height: 200px; width: 500px;")
+      | This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      |   This is the parent element content. This is the parent element content. This is the parent element content.
+      .chi-card.-float.-widget.-outline#custom-floating-card
+        .chi-card__header
+          .chi-card__title Float
+        .chi-card__content
+          .chi-card__caption
+            | Floating card relative to the parent element

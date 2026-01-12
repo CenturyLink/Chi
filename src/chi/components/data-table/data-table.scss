@@ -426,7 +426,39 @@ $sizes: (
           &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
             &.-icon {
               .chi-icon {
-                color: $data-table-cell-icon-color;
+                color: $data-table-cell-sorting-icon-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .chi-dropdown {
+      &.-actions {
+        .chi-button {
+          &.-flat {
+            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+              &.-icon {
+                .chi-icon {
+                  &.icon-more-vert {
+                    color: $data-table-cell-actions-icon-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-expandable {
+      .chi-button {
+        &.-flat {
+          &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+            &.-icon {
+              .chi-icon {
+                color: $data-table-cell-expandable-icon-color;
               }
             }
           }
@@ -1125,7 +1157,7 @@ $sizes: (
           }
         }
       }
-      
+
       &-child,
       &-grand-child {
         background-color: $color-background-base-darker;

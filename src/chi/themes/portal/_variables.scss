@@ -458,6 +458,11 @@ $alert-sm-text-font-size: $font-size-base;
 $alert-sm-text-line-height: $line-height;
 
 // App layout
+$app-layout-actions-border: 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction: row;
+$app-layout-actions-justify-content: end;
+$app-layout-actions-padding: 1.5rem 0;
+$app-layout-actions-margin-top: 1rem;
 $app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
@@ -1035,6 +1040,7 @@ $card-header-sm-padding: 0.5rem 1rem;
 $card-hero-border-radius: 0;
 $card-hero-width: 100%;
 $card-highlight-background-color: $color-cyan-10;
+$card-highlight-border: none;
 $card-highlight-border-color: $color-cyan-20;
 $card-highlight-header-background-color: $color-background-white;
 $card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
@@ -1250,7 +1256,10 @@ $data-table-cell-highlight-border: 0.0625rem solid $color-yellow-40;
 $data-table-cell-highlight-border-radius: 0.125rem;
 $data-table-cell-highlight-box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.25);
 $data-table-cell-highlight-color: $color-black;
+$data-table-cell-actions-icon-color: $color-icon-base;
+$data-table-cell-expandable-icon-color: $color-icon-base;
 $data-table-cell-icon-color: $color-icon-primary;
+$data-table-cell-sorting-icon-color: $color-icon-base;
 
 $data-table-footer-background-color: $color-grey-10;
 $data-table-footer-border: 0;
@@ -1363,6 +1372,10 @@ $dropdown-menu-item-disabled-opacity: $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
 $dropdown-menu-item-focus-outline: $focus-color;
 
+$dropdown-menu-footer-actions-direction: row;
+$dropdown-menu-footer-actions-justify-content: end;
+$dropdown-menu-footer-actions-padding: 0.5rem 1rem 0.5rem 0.5rem;
+
 $dropdown-select-border-radius: $border-radius-base;
 $dropdown-select-disabled-background-color: $dropdown-menu-background-color;
 $dropdown-select-border-color: $dropdown-button-border-color;
@@ -1412,7 +1425,12 @@ $expansion-panel-content-margin-right: 0;
 $expansion-panel-disabled-title-opacity: $opacity-60;
 $expansion-panel-disabled-title-text-color: $color-text-muted;
 $expansion-panel-footer-border-color: rgba($color-black, 0.12);
+$expansion-panel-footer-flex-direction: column;
 $expansion-panel-footer-justify-content: flex-end;
+$expansion-panel-footer-md-button-margin-left: 1rem;
+$expansion-panel-footer-md-button-margin-right: 0;
+$expansion-panel-footer-md-flex-direction: row;
+$expansion-panel-footer-md-justify-content: flex-start;
 $expansion-panel-footer-padding: 1rem;
 $expansion-panel-line-height: $line-height;
 $expansion-panel-number-margin-right: 0;
@@ -1476,22 +1494,31 @@ $filters-drawer-width: 34rem;
 $filters-footer-button-margin-right: 1rem;
 
 // Footer
-$footer-internal-background-color: $color-grey-80;
-$footer-internal-border-top-color: transparent;
-$footer-internal-text-color: $color-text-white;
-$footer-internal-select-text-color: $color-text-white;
 $footer-copyright-font-size: $font-size-xs;
 $footer-copyright-line-height: 1rem;
 $footer-dropdown-arrow-icon-color: $color-icon-white;
-$footer-internal-link-color: $color-text-white;
 $footer-external-background-color: $color-grey-15;
+$footer-external-first-column-link-color: $color-teal-70;
+$footer-external-link-color: $color-teal-70;
+$footer-external-social-hover-link-color: $color-teal-100;
+$footer-external-social-link-color: $color-teal-100;
 $footer-external-text-color: $color-text-base;
 $footer-external-title-font-weight: $font-weight-bold;
 $footer-external-title-text-transform: uppercase;
-$footer-external-first-column-link-color: $color-teal-70;
-$footer-external-link-color: $color-teal-70;
-$footer-external-social-link-color: $color-teal-100;
-$footer-external-social-hover-link-color: $color-teal-100;
+$footer-internal-background-color: $color-grey-80;
+$footer-internal-border-top-color: transparent;
+$footer-internal-link-color: $color-text-white;
+$footer-internal-row-background-color: $color-background-white;
+$footer-internal-row-border-top: 0.0625rem solid $color-grey-25;
+$footer-internal-row-color: $color-grey-100;
+$footer-internal-row-content-gap: 3rem;
+$footer-internal-row-content-lg-gap: 2rem;
+$footer-internal-row-content-padding-lg: 1.25rem 4rem;
+$footer-internal-row-content-padding: 1.25rem 2rem;
+$footer-internal-row-content-xxl-gap: 10%;
+$footer-internal-row-links-gap: 2.25rem;
+$footer-internal-select-text-color: $color-text-white;
+$footer-internal-text-color: $color-text-white;
 
 // Form Item
 $form-item-list-border-color: $color-border-base-dark;
@@ -1521,7 +1548,7 @@ $header-search-focus-color: $focus-color;
 $header-impersonation-background-color: $color-grey-25;
 $header-impersonation-box-shadow: inset 0 0.25rem 0 0 $header-impersonation-background-color;
 $header-impersonation-content-padding: 0 0.5rem;
-$header-impersonation-edge-element-height: 1.5rem;
+$header-impersonation-bar-height: 1.5rem;
 $header-impersonation-text-color: $color-text-base;
 $header-impersonation-font-size: $font-size-sm;
 $header-impersonation-line-height: $line-height-lg;
@@ -1656,6 +1683,10 @@ $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 1rem;
 $modal-footer-justify-content: flex-end;
+$modal-footer-no-slot-flex-direction: row;
+$modal-footer-no-slot-justify-content: flex-end;
+$modal-footer-no-slot-margin-left: 1rem;
+$modal-footer-no-slot-margin-right: 0;
 $modal-back-link-color: $color-text-white;
 $modal-close-icon-color: $color-text-white;
 
@@ -1961,14 +1992,23 @@ $progress-value-warning-background-color: $color-icon-warning;
 
 // Radio button
 $radio-background-color: $color-background-white;
-$radio-border-color: $color-grey-40;
+$radio-border: 0.0625rem solid $color-grey-40;
 $radio-icon-color: $color-grey-50;
+$radio-active-outline: none;
 $radio-checked-background-color: $color-teal-80;
 $radio-checked-border-color: $color-teal-80;
+$radio-checked-dot-display: block;
 $radio-checked-icon-color: $color-background-white;
-
-$radio-disabled-text-color: $color-grey-70;
+$radio-checked-inner-box-shadow: none;
+$radio-checked-inner-box-shadow-hover: none;
+$radio-disabled-background-color: $color-background-white;
+$radio-disabled-background-color-checked: $color-background-white;
+$radio-disabled-border-color: $color-grey-40;
 $radio-disabled-opacity: $opacity-80;
+$radio-disabled-text-color: $color-grey-70;
+$radio-hover-background-color: $color-background-white;
+$radio-hover-border-color: $color-grey-40;
+$radio-hover-dot-display: block;
 $radio-focus-border-color: $focus-color;
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.125rem;
@@ -2020,9 +2060,15 @@ $search-input-lg-close-top: 0.75rem;
 $search-input-xl-icon-top: 0;
 $search-input-xl-close-right: 3rem;
 $search-input-xl-close-top: 1rem;
+$search-input-highlight-background: none;
+$search-input-highlight-border: none;
+$search-input-highlight-border-radius: 0;
+$search-input-highlight-box-shadow: 0;
 $search-input-icon-active-background-color: null;
 $search-input-icon-disabled-background-color: null;
 $search-input-icon-active-box-shadow: null;
+$search-input-menu-item-font-weight: $font-weight-semi-bold;
+$search-input-menu-item-font-weight-highlight: $font-weight-normal;
 
 // Select
 $select-text-color: $color-text-base;
@@ -2034,6 +2080,9 @@ $select-focus-border-color: $focus-color;
 $select-danger-border-color: $color-border-danger;
 $select-danger-text-color: $color-text-base;
 $select-disabled-opacity: $opacity-60;
+$select-disabled-background-color: $color-background-white;
+$select-disabled-border-color: $color-border-base;
+$select-disabled-text-color: inherit;
 $select-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
 $select-option-checked-background-color: $color-background-primary-light;
 
@@ -2113,6 +2162,8 @@ $sidenav-global-item-active-font-weight: $font-weight-bold;
 $sidenav-global-item-hover-background-color: $color-grey-20;
 $sidenav-global-tree-guide-color: $sidenav-global-item-icon-color;
 $sidenav-global-tree-guide-active-color: $sidenav-global-item-active-icon-color;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color;
 
 // Skeleton
 $skeleton-xs-size: 1.5rem;
@@ -2524,13 +2575,14 @@ $toggle-switch-xs-thumb-after-width: 0.75rem;
 $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
+$toolbar-expandable-background-color: $color-grey-20;
+$toolbar-expandable-border: 0.0625rem solid $color-grey-30;
+$toolbar-expandable-border-radius: 0.5rem;
 $toolbar-header-background-color: $color-grey-15;
 $toolbar-header-border: none;
 $toolbar-header-border-radius: 0;
 $toolbar-header-divider-height: 2.5rem;
-$toolbar-expandable-background-color: $color-grey-20;
-$toolbar-expandable-border: 0.0625rem solid $color-grey-30;
-$toolbar-expandable-border-radius: 0.5rem;
+$toolbar-margin-bottom: 0rem;
 
 // Tooltip
 $tooltip-light-background-color: rgba($color-white, 0.96);

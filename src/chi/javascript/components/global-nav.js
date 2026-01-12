@@ -6,17 +6,20 @@ const COMPONENT_SELECTOR = '.chi-sidenav';
 const COMPONENT_TYPE = 'globalNav';
 const LINK_SELECTOR = 'chi-link';
 const LIST_SELECTOR = '.chi-sidenav__list';
-const COLLAPSED_BREAKPOINT = 1440;
 
 const DEFAULT_CONFIG = {
   expanded: true,
   openOnHover: true,
+  autoCollapse: true,
+  collapsedBreakpoint: 1440,
 };
 
 class GlobalNav extends Component {
   constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._expanded = this._config.expanded;
+    this._blockExpandedState = false;
+    this.autoCollapse = this._config.autoCollapse;
     this._openOnHover = this._config.openOnHover;
     this._list = this._elem.querySelector(LIST_SELECTOR);
     this._links = this._elem.querySelectorAll(LINK_SELECTOR);
@@ -30,7 +33,10 @@ class GlobalNav extends Component {
 
   _init() {
     this._checkViewportAndUpdate();
-    this._setupResizeListener();
+
+    if (this.autoCollapse) {
+      this._setupResizeListener();
+    }
 
     this._links.forEach((link) => {
       link.addEventListener('click', () => {
@@ -40,15 +46,26 @@ class GlobalNav extends Component {
 
     if (this._list && this._openOnHover) {
       this._list.addEventListener('mouseenter', () => {
+        if (this._blockExpandedState) {
+          return;
+        }
+
         this._wasExpandedBeforeHover = this._expanded;
 
         if (!this._expanded) {
           this._expanded = true;
+          this._elem.classList.add(chi.classes.OPEN_ON_HOVER);
           this._updateExpandedState();
         }
       });
 
       this._list.addEventListener('mouseleave', () => {
+        if (this._blockExpandedState) {
+          return;
+        }
+
+        this._elem.classList.remove(chi.classes.OPEN_ON_HOVER);
+
         if (this._isViewportSmall()) {
           this._expanded = false;
           this._updateExpandedState();
@@ -71,7 +88,7 @@ class GlobalNav extends Component {
   }
 
   _isViewportSmall() {
-    return window.innerWidth <= COLLAPSED_BREAKPOINT;
+    return window.innerWidth <= this._config.collapsedBreakpoint;
   }
 
   _checkViewportAndUpdate() {
@@ -88,7 +105,7 @@ class GlobalNav extends Component {
       const wasSmallViewport = this._stateBeforeSmallViewport !== null;
       const isSmallViewport = this._isViewportSmall();
 
-      if (isSmallViewport && !wasSmallViewport) {
+      if (isSmallViewport && !wasSmallViewport && !this._blockExpandedState) {
         this._stateBeforeSmallViewport = this._expanded;
         this._expanded = false;
         this._updateExpandedState();
@@ -144,11 +161,9 @@ class GlobalNav extends Component {
   }
 
   set expanded(value) {
-    if (this._isViewportSmall() && value === true) {
-      return;
-    }
-    
     this._expanded = value;
+    this._blockExpandedState = value;
+
     this._updateExpandedState();
   }
 
@@ -162,11 +177,11 @@ class GlobalNav extends Component {
     });
     this._list.removeEventListener('mouseenter', this._expandOnHover);
     this._list.removeEventListener('mouseleave', this._collapseOnLeave);
-    
+
     if (this._resizeHandler) {
       window.removeEventListener('resize', this._resizeHandler);
     }
-    
+
     this._elem = null;
     this._openOnHover = null;
     this._links = null;

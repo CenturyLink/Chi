@@ -265,6 +265,11 @@
     }
   }
 
+  &.-float {
+    position: absolute;
+    z-index: $zindex-fixed;
+  }
+
   &.-no-border {
     border-color: transparent;
 
@@ -316,13 +321,19 @@
 
   &.-highlight {
     background-color: $card-highlight-background-color;
-    border-color: $card-highlight-border-color;
+
+    .chi-card__content {
+      border: $card-highlight-border;
+    }
 
     .chi-card__header {
       background-color: $color-background-white;
     }
 
     &.-widget {
+      border: $card-widget-border;
+      border-color: $card-highlight-border-color;
+  
       .chi-card__header {
         background-color: $card-highlight-background-color;
       }
@@ -339,6 +350,10 @@
 
     &.-fixed-width {
       width: 14.25rem;
+
+      &.-lg {
+        width: 29.5rem;
+      }
     }
 
     .chi-card__content {
@@ -349,7 +364,7 @@
         font-size: $font-size-lg;
         font-weight: $font-weight-base;
         line-height: $line-height-sm;
-        padding-right: 25%;
+        padding-right: 20%;
         position: relative;
 
         &::after {
@@ -367,19 +382,31 @@
         }
       }
 
+      .chi-card__metric {
+        flex-grow: 1;
+        align-content: flex-end;
+        text-wrap: nowrap;
+      }
+      
       .chi-card__caption,
       .chi-card__metric-label {
         color: $card-kpi-caption-color;
         font-size: $font-size-md;
         margin-top: $card-kpi-metric-label-margin-top;
       }
-
+      
       .chi-card__metric,
       .chi-card__metric-value {
         color: $card-kpi-metric-color;
         font-size: $card-kpi-metric-font-size;
         font-weight: $font-weight-bold;
         margin-top: $card-kpi-metric-margin-top;
+        text-wrap: nowrap;
+      }
+
+      .chi-card__content-wrapper {
+        flex-grow: 1;
+        margin-top: $card-kpi-metric-label-margin-top;
       }
     }
 
@@ -427,7 +454,7 @@
           color: $card-kpi-disabled-title-color;
 
           &::after {
-            visibility: hidden;
+            content: '';
           }
         }
 
@@ -437,111 +464,115 @@
         }
       }
     }
+
+    &.-no-arrow {
+      .chi-card__content {
+        .chi-card__title {
+          &::after {
+            content: '';
+          }
+        }
+      }
+    }
   }
 
   &.-alert {
-    &:has(
-      > chi-accordion .chi-accordion,
-      > .chi-accordion 
-    ) {
+    &:has(> chi-accordion .chi-accordion, > .chi-accordion) {
+      border: $card-accordion-border;
+      box-shadow: $card-alert-box-shadow;
+      max-height: $card-alert-max-height;
 
-        border: $card-accordion-border;
-        box-shadow: $card-alert-box-shadow;
-        max-height: $card-alert-max-height;
-        
-        > chi-accordion .chi-accordion__item,
-        > .chi-accordion .chi-accordion__item {
+      > chi-accordion .chi-accordion__item,
+      > .chi-accordion .chi-accordion__item {
+        background-color: transparent;
+
+        .chi-accordion__trigger {
           background-color: transparent;
+          max-height: $card-alert-accordion-trigger-max-height;
+          padding: $card-accordion-trigger-padding;
+        }
 
+        &.-expanded {
           .chi-accordion__trigger {
-            background-color: transparent;
-            max-height: $card-alert-accordion-trigger-max-height;
-            padding: $card-accordion-trigger-padding;
+            border-bottom: $card-accordion-border;
           }
-          
+
+          .chi-accordion__content {
+            padding: $card-accordion-content-padding;
+
+            .chi-card__content-wrapper {
+              display: flex;
+              flex-direction: column;
+              gap: $card-alert-empty-content-wrapper-gap;
+              max-height: $card-alert-content-max-height;
+              overflow-y: auto;
+            }
+          }
+        }
+      }
+
+      &.-empty {
+        .chi-accordion__item {
           &.-expanded {
-            .chi-accordion__trigger {
-              border-bottom: $card-accordion-border;
-            }
-            
             .chi-accordion__content {
-              padding: $card-accordion-content-padding;
-
-
-              .chi-card__content-wrapper {
-                display: flex;
-                flex-direction: column;
-                gap: $card-alert-empty-content-wrapper-gap;
-                max-height: $card-alert-content-max-height;
-                overflow-y: auto;
-              }
+              padding-bottom: $card-alert-empty-content-padding-bottom;
+              padding-top: $card-alert-empty-content-padding-top;
             }
           }
         }
-      
-        &.-empty {
-          .chi-accordion__item {
-            &.-expanded {
-              .chi-accordion__content { 
-                padding-top: $card-alert-empty-content-padding-top;
-                padding-bottom: $card-alert-empty-content-padding-bottom;
-              }
+
+        .chi-card__empty-content {
+          align-items: $card-alert-empty-content-align-items;
+          display: $card-alert-empty-content-display;
+          flex-direction: $card-alert-empty-content-flex-direction;
+          gap: $card-alert-empty-content-gap;
+
+          &-icon {
+            background-color: $card-alert-empty-content-icon-background-color;
+            border-radius: $card-alert-empty-content-icon-border-radius;
+            display: $card-alert-empty-content-icon-display;
+            padding: $card-alert-empty-icon-padding;
+
+            .chi-icon {
+              color: $card-alert-empty-content-icon-color;
+              height: $card-alert-empty-content-icon-height;
+              margin: $card-alert-empty-content-icon-margin;
+              width: $card-alert-empty-content-icon-width;
             }
           }
 
-          .chi-card__empty-content {
-            align-items: $card-alert-empty-content-align-items;
-            display: $card-alert-empty-content-display;
-            flex-direction: $card-alert-empty-content-flex-direction;
-            gap: $card-alert-empty-content-gap;
-            
-            &-icon {
-              background-color: $card-alert-empty-content-icon-background-color;
-              border-radius: $card-alert-empty-content-icon-border-radius;
-              display: $card-alert-empty-content-icon-display;
-              padding: $card-alert-empty-icon-padding;
-              
-              .chi-icon {
-                color: $card-alert-empty-content-icon-color;
-                height: $card-alert-empty-content-icon-height; 
-                margin: $card-alert-empty-content-icon-margin;
-                width: $card-alert-empty-content-icon-width; 
-              }
-            }
-            
-            span {
-              font-size: $card-alert-empty-content-message-font-size; 
-              line-height: $card-alert-empty-content-message-line-height; 
-            }
+          span {
+            font-size: $card-alert-empty-content-message-font-size;
+            line-height: $card-alert-empty-content-message-line-height;
           }
         }
+      }
     }
   }
 
   &.-accordion {
     border: $card-accordion-border;
-    
+
     > chi-accordion .chi-accordion,
     > .chi-accordion {
-
       .chi-accordion__item {
         background-color: transparent;
-        
+
         .chi-accordion__trigger {
           background-color: transparent;
           padding: $card-accordion-trigger-padding;
         }
-        
+
         &.-expanded {
           .chi-accordion__trigger {
             padding-bottom: $card-accordion-content-padding-bottom;
           }
         }
-        
+
         .chi-accordion__content {
           padding: $card-accordion-content-padding;
           padding-top: $card-accordion-content-padding-top;
-          
+
           .chi-card__content {
             padding: $card-accordion-card-content-padding;
           }
