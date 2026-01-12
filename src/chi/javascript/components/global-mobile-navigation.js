@@ -39,6 +39,7 @@ class GlobalMobileNav extends Component {
     }
 
     const allViews = this._getAllViews();
+
     allViews.forEach((view) => view.classList.add(chi.classes.DISPLAY.NONE));
     this._attachLinkHandlers();
   }
@@ -63,6 +64,7 @@ class GlobalMobileNav extends Component {
 
   _getRootView() {
     const views = this._getAllViews();
+
     return views[0] ?? null;
   }
 
@@ -71,6 +73,7 @@ class GlobalMobileNav extends Component {
 
     links.forEach((link) => {
       const handler = (e) => this._handleLinkClick(e, link);
+
       link.addEventListener('click', handler);
       this._boundHandlers.set(link, handler);
     });
@@ -91,6 +94,7 @@ class GlobalMobileNav extends Component {
     rootView.classList.remove(chi.classes.DISPLAY.NONE);
 
     const header = this._drawer.querySelector('.chi-drawer__header');
+
     header?.classList.add(chi.classes.DISPLAY.NONE);
     this._drawer.active = true;
   }
@@ -106,6 +110,7 @@ class GlobalMobileNav extends Component {
         this._setActiveLinkWithParents(link);
         this._drawer.active = false;
       }
+
       return;
     }
 
@@ -118,6 +123,7 @@ class GlobalMobileNav extends Component {
     if (!targetView) {
       this._setActiveLinkWithParents(link);
       this._drawer.active = false;
+
       return;
     }
 
