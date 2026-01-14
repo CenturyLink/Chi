@@ -176,13 +176,14 @@ block content
             else
               .chi-datepicker__day=day++
 
+  button#toggle-datepicker.chi-button Toggle
+  button#setDate-datepicker.chi-button Set date
+  button#dispose-datepicker.chi-button Dispose date picker
+
   .test-input-combined.-py--2
     span.-text--h2 Input Popover Combined
-    button#toggle-datepicker.chi-button Toggle
-    button#setDate-datepicker.chi-button Set date
-    button#dispose-datepicker.chi-button Dispose date picker
 
-    .-position--relative#datepicker-1.-mt--3(style="height: 18rem; width:14rem;")
+    .-position--relative#datepicker-1(style="height: 18rem; width:14rem;")
       input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
 
   .test-input-combined-icon.-py--2
@@ -207,6 +208,11 @@ block content
         .chi-icon
           svg
             use(xlink:href="#icon-date")
+
+  .test-input-error-without-date.-py--2
+    span.-text--h2 Input Popover Error
+    .-position--relative#datepicker-5(style="height: 18rem; width:14rem;")
+      input.chi-input.-danger.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
 
   - day = 1;
 
@@ -342,7 +348,8 @@ block content
       const datePickerElements = [
         document.querySelector('#datepicker-1 input'),
         document.querySelector('#datepicker-2 input'),
-        document.querySelector('#datepicker-3 input')
+        document.querySelector('#datepicker-3 input'),
+        document.querySelector('#datepicker-5 input')
       ];
 
       const datePicker = chi.datePicker(datePickerElements[0], {
@@ -353,9 +360,18 @@ block content
 
       chi.datePicker(datePickerElements[1], {
         date: '01/24/2019',
+        min: '01/24/2019',
       });
 
-      chi.datePicker(datePickerElements[2]);
+      chi.datePicker(datePickerElements[2], {
+        date: '01/24/2019',
+        min: '01/24/2019',
+      });
+
+      chi.datePicker(datePickerElements[3]);
+
+      datePickerElements.forEach(datePicker => datePicker.focus());
+      datePickerElements.forEach((datePicker, index) => index !== 0 && datePicker.blur());
 
       const toggleDatePicker = document.getElementById("toggle-datepicker");
       const setDateButton = document.getElementById("setDate-datepicker");

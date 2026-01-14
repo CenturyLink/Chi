@@ -221,9 +221,9 @@ describe('Date picker', () => {
     });
 
     it('should display today\'s date in datepicker after clearing the input', () => {
-      cy.get(datePickerInput).type('01/25/2019').blur()
+      cy.get(datePickerInput).type('01/25/2019').blur();
 
-      cy.get(datePickerInput).clear().blur()
+      cy.get(datePickerInput).clear().blur();
 
       // Check the current date is visible
       cy.get(datePickerPopover).within(() => {
