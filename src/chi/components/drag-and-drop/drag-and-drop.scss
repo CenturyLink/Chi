@@ -138,7 +138,7 @@
             padding: $drag-accordion-trigger-padding;
 
             .chi-accordion__title {
-              font-size: $font-size-md;
+              font-size: $drag-accordion-title-font-size;
             }
           }
 
@@ -146,7 +146,7 @@
             padding: $drag-accordion-content-padding;
 
             .chi-accordion__text {
-              text-align: start;
+              text-align: $drag-accordion-content-text-align;
             }
           }
         }
@@ -154,7 +154,7 @@
 
       .chi-drag__title-icon {
         .chi-icon {
-          height: $accordion-md-item-line-height;
+          height: $drag-accordion-title-icon-height;
         }
       }
     }

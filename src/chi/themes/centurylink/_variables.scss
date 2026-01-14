@@ -1253,7 +1253,10 @@ $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 
 // Drag and Drop
 $drag-accordion-content-padding:            0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align:         start;
 $drag-accordion-item-background-color:      transparent;
+$drag-accordion-title-font-size:            $font-size-md;
+$drag-accordion-title-icon-height:          $accordion-md-item-line-height;
 $drag-accordion-trigger-padding:            0;
 $drag-item-background-color:                $color-background-white;
 $drag-item-border-color:                    $color-grey-30;
