@@ -1,0 +1,21 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-icons.js')
+  script(src='../../../chi-marketing-icons.js')
+
+block content
+  .chi-col.-w--12
+    h2 Pill
+    .-w--100.example
+      h4= `Picker - Pill`
+      div(class=`test-type-pill-sm`)
+        fieldset(id=`type-pill-sm`)
+          legend.chi-label Legend
+          .-d--flex
+            each type in ['Radio1','Radio2']
+              div(class=`chi-picker -pill -sm`)
+                input(type="radio" class="chi-picker__input", name=`type-pill-sm`, id=`pill-ei-sm-${type}`)
+                label(for=`pill-ei-sm-${type}`)
+                  = type
