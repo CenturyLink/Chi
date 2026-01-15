@@ -327,6 +327,9 @@ $accordion-item-disabled-text-color:        $color-text-muted-light;
 $accordion-item-disabled-opacity:           $opacity-60;
 $accordion-item-title-text-color:           $color-text-base;
 $accordion-item-title-font-weight:          $font-weight-semi-bold;
+$accordion-item-trigger-icon-animation-duration:  0.2s;
+$accordion-item-trigger-icon-transform:           rotate(180deg);
+$accordion-item-trigger-icon-transition:          transform $accordion-item-trigger-icon-animation-duration ease-in-out;
 $accordion-item-trigger-icon-color:         $color-icon-base;
 $accordion-item-level-2-background-color:   $color-background-white;
 $accordion-item-level-3-background-color:   $color-grey-10;
@@ -1241,6 +1244,12 @@ $data-table-state-success-box-shadow:       $color-green-60;
 $data-table-state-warning-box-shadow:       $color-yellow-60;
 
 // Drag and Drop
+$drag-accordion-content-padding:            0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align:         start;
+$drag-accordion-item-background-color:      transparent;
+$drag-accordion-title-font-size:            $font-size-md;
+$drag-accordion-title-icon-height:          $accordion-md-item-line-height;
+$drag-accordion-trigger-padding:            0;
 $drag-item-background-color:                $color-background-white;
 $drag-item-border-color:                    $color-grey-30;
 $drag-item-border-radius:                   $border-radius-base;
@@ -1252,9 +1261,10 @@ $drag-item-description-text-align:          left;
 $drag-item-dragging-close-background-color: $color-background-white;
 $drag-item-drop-indicator-background-color: $focus-color;
 $drag-item-focus-color:                     $focus-color;
-$drag-item-padding:                         1.25rem;
+$drag-item-padding:                         1.25rem 1.25rem 1.25rem 0;
 $drag-item-title-font-size:                 $font-size-md;
 $drag-item-title-font-weight:               $font-weight-semi-bold;
+$drag-item-title-icon-padding:              1.25rem 0.875rem 1.25rem 1.25rem;
 $drag-item-title-info-icon-margin-left:     0.25rem;
 $drag-item-title-line-height:               $line-height-lg;
 
