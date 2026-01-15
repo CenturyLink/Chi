@@ -1255,22 +1255,29 @@ $divider-vertical-border-color:             rgba($color-black, 0.12);
 $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 
 // Drag and Drop
+$drag-accordion-content-padding:            0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align:         start;
+$drag-accordion-item-background-color:      transparent;
+$drag-accordion-title-font-size:            $font-size-md;
+$drag-accordion-title-icon-height:          $accordion-md-item-line-height;
+$drag-accordion-trigger-padding:            0;
 $drag-item-background-color:                $color-background-white;
 $drag-item-border-color:                    $color-grey-30;
 $drag-item-border-radius:                   $border-radius-base;
-$drag-item-focus-color:                     $focus-color;
-$drag-item-padding:                         1.25rem;
-$drag-item-title-font-size:                 $font-size-md;
-$drag-item-title-font-weight:               $font-weight-semi-bold;
-$drag-item-title-line-height:               $line-height-lg;
-$drag-item-title-info-icon-margin-left:     0.25rem;
+$drag-item-close-active-background-color:   $color-grey-25;
+$drag-item-close-hover-background-color:    $color-grey-20;
 $drag-item-description-font-size:           $font-size-sm;
 $drag-item-description-line-height:         $line-height-md;
 $drag-item-description-text-align:          left;
 $drag-item-dragging-close-background-color: $color-background-white;
-$drag-item-close-hover-background-color:    $color-grey-20;
-$drag-item-close-active-background-color:   $color-grey-25;
 $drag-item-drop-indicator-background-color: $focus-color;
+$drag-item-focus-color:                     $focus-color;
+$drag-item-padding:                         1.25rem 1.25rem 1.25rem 0;
+$drag-item-title-font-size:                 $font-size-md;
+$drag-item-title-font-weight:               $font-weight-semi-bold;
+$drag-item-title-icon-padding:              1.25rem 0.875rem 1.25rem 1.25rem;
+$drag-item-title-info-icon-margin-left:     0.25rem;
+$drag-item-title-line-height:               $line-height-lg;
 
 // Drawer
 $drawer-width:                              18.75rem;

@@ -467,7 +467,7 @@ $app-layout-actions-justify-content: end;
 $app-layout-actions-padding: 1.5rem 0;
 $app-layout-actions-margin-top: 1rem;
 $app-layout-background-color: $color-background-base;
-$app-layout-header-background-color: linear-gradient(90deg,rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
+$app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
 $app-layout-sub-header-title-color: $color-grey-80;
@@ -793,7 +793,7 @@ $button-primary-flat-disabled-background-color: transparent;
 $button-primary-disabled-background-color: null;
 $button-primary-disabled-text-color: null;
 $button-primary-disabled-icon-color: null;
-$button-primary-disabled-border-color:null;
+$button-primary-disabled-border-color: null;
 
 $button-secondary-disabled-background-color: null;
 $button-secondary-disabled-border-color: null;
@@ -991,7 +991,10 @@ $card-accordion-trigger-padding: 1.25rem;
 $card-alert-accordion-trigger-max-height: 4.0625rem;
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
 $card-alert-max-height: 46.875rem;
-$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*3);
+$card-alert-content-max-height: calc(
+  $card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding * 2 -
+    $card-accordion-border-width * 3
+);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;
@@ -1089,7 +1092,6 @@ $card-outline-widget-title-font-weight: $card-widget-title-font-weight;
 $card-title-font-size: $font-size-7;
 $card-title-font-weight: $font-weight-extra-bold;
 $card-title-line-height: $line-height-lg;
-
 
 $card-kpi-background-color: $color-background-white;
 $card-kpi-hover-background-color: $color-teal-10;
@@ -1277,22 +1279,29 @@ $data-table-state-success-box-shadow: $color-green-60;
 $data-table-state-warning-box-shadow: $color-yellow-60;
 
 // Drag and Drop
+$drag-accordion-content-padding: 0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align: start;
+$drag-accordion-item-background-color: transparent;
+$drag-accordion-title-font-size: $font-size-md;
+$drag-accordion-title-icon-height: $accordion-md-item-line-height;
+$drag-accordion-trigger-padding: 0;
 $drag-item-background-color: $color-background-white;
 $drag-item-border-color: $color-grey-30;
 $drag-item-border-radius: $border-radius-base;
-$drag-item-focus-color: $focus-color;
-$drag-item-padding: 1.25rem;
-$drag-item-title-font-size: $font-size-md;
-$drag-item-title-font-weight: $font-weight-semi-bold;
-$drag-item-title-line-height: $line-height-lg;
-$drag-item-title-info-icon-margin-left: 0.25rem;
+$drag-item-close-active-background-color: $color-grey-25;
+$drag-item-close-hover-background-color: $color-grey-20;
 $drag-item-description-font-size: $font-size-sm;
 $drag-item-description-line-height: $line-height-md;
 $drag-item-description-text-align: left;
 $drag-item-dragging-close-background-color: $color-background-white;
-$drag-item-close-hover-background-color: $color-grey-20;
-$drag-item-close-active-background-color: $color-grey-25;
 $drag-item-drop-indicator-background-color: $focus-color;
+$drag-item-focus-color: $focus-color;
+$drag-item-padding: 1.25rem 1.25rem 1.25rem 0;
+$drag-item-title-font-size: $font-size-md;
+$drag-item-title-font-weight: $font-weight-semi-bold;
+$drag-item-title-icon-padding: 1.25rem 0.875rem 1.25rem 1.25rem;
+$drag-item-title-info-icon-margin-left: 0.25rem;
+$drag-item-title-line-height: $line-height-lg;
 
 // Drawer
 $drawer-width: 18.75rem;
