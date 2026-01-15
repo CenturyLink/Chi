@@ -28,7 +28,12 @@ node ./scripts/build/js/build.js
 bash ./scripts/build/utils/copyFile.sh ./src/chi/components/input-file/input-file.js dist
 node ./scripts/build/utils/buildIcons.js
 node ./scripts/build/utils/buildSprites.js
-bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
+
+# Copy static assets
+bash ./scripts/build/utils/copyFiles.sh ./assets/images dist/assets/images
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/connect dist/assets/themes/connect
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/lumen dist/assets/themes/lumen
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/centurylink dist/assets/themes/centurylink
 
 # Build boilerplates
 if [ -z "${SKIP_BOILERPLATES}" ]; then

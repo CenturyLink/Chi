@@ -12,14 +12,14 @@
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue),*.js,tests/**/*(*.js)}' --check"
   },
   "dependencies": {
-    "@centurylink/chi-vue": "^3.19.0",
-    "vue": "3.5.17"
+    "@centurylink/chi-vue": "^3.30.0",
+    "vue": "3.5.26"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "eslint": "^9.29.0",
-    "pinia": "^3.0.3",
-    "prettier": "^3.6.1",
-    "vite": "^7.0.0"
+    "@vitejs/plugin-vue": "^6.0.3",
+    "eslint": "^9.39.2",
+    "pinia": "^3.0.4",
+    "prettier": "^3.8.0",
+    "vite": "^7.3.1"
   }
 }

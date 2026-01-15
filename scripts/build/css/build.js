@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
 
-const allowedThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
+const allowedThemes = ['lumen', 'connect', 'centurylink']; // 'test' can be added for testing purposes
 const themes = process.env.THEMES_TO_BUILD?.split(',') || allowedThemes;
 
 const scripts = {
