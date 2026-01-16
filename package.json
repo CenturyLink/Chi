@@ -18,7 +18,7 @@
     "build": "bash ./scripts/build/build.sh",
     "build:testing": "bash ./scripts/build/build.sh --testing",
     "serve": "node ./scripts/serve/serve.cjs",
-    "cy:run": "cypress run --config-file cypress.config.cjs",
+    "cy:run": "bash tools/fix-coverage.sh && cypress run --config-file cypress.config.cjs --browser chrome --headless",
     "cy:open": "cypress open --config-file cypress.config.cjs",
     "tests:visual": "bash ./scripts/tests/docker/startDocker.sh",
     "tests:visual:run": "bash ./scripts/tests/visualTests.sh",
