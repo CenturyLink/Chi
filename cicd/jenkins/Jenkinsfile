@@ -541,6 +541,8 @@ pipeline {
           def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1;
 
           if (isDeploymentTag) {
+            unstash 'smokeTests'
+
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
             jslAdoptionMain('cypress/reports/smokeTests/*.xml')
 
