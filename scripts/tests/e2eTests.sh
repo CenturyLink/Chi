@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SECONDS=0
+export THEMES_TO_BUILD=lumen
 
 npm run build:testing
 npm run start:dist &

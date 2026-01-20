@@ -143,7 +143,7 @@ describe('chi-drawer', function () {
 
     it('Dispatches show/shown/hide/hidden and deprecated events', () => {
       cy.clock();
-      cy.get('#drawer-6').then($drawer => {
+      cy.get('#drawer-7').then($drawer => {
         const show = cy.stub();
         const shown = cy.stub();
         const hide = cy.stub();
@@ -159,7 +159,7 @@ describe('chi-drawer', function () {
         $drawer[0].addEventListener('chi.drawer.hide', hideDeprecated);
 
         // open
-        cy.get('#drawer-trigger-6')
+        cy.get('#drawer-trigger-7')
           .click();
         cy.tick(ANIMATION_DURATION + 50);
         cy.wrap(null).then(() => {
@@ -169,7 +169,7 @@ describe('chi-drawer', function () {
         });
 
         // close
-        cy.get('#drawer-trigger-6')
+        cy.get('#drawer-trigger-7')
           .click();
         cy.tick(ANIMATION_DURATION + 50);
         cy.wrap(null).then(() => {
