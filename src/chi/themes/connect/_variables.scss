@@ -21,6 +21,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h1: 2.25rem; // 36px
+$font-size-h2: 2rem; // 32px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h5: 1rem; // 16px
+$font-size-h6: 0.875rem; // 14px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -31,12 +39,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Font weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-bold;
+$font-weight-h4: $font-weight-bold;
+$font-weight-h5: $font-weight-bold;
+$font-weight-h6: $font-weight-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 3rem; // 44px
+$line-height-h2: 3rem; // 40px
+$line-height-h3: 2rem; // 32px
+$line-height-h4: 2rem; // 26px
+$line-height-h5: 1.5rem; // 24px
+$line-height-h6: 1.5rem; // 22px
 
 // System color
 // sass-lint:disable no-color-hex
