@@ -21,6 +21,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h6: 0.875rem; // 14px
+$font-size-h5: 1rem; // 16px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h2: 2rem; // 32px
+$font-size-h1: 3rem; // 48px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -30,12 +38,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Line weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-semi-bold;
+$font-weight-h4: $font-weight-semi-bold;
+$font-weight-h5: $font-weight-semi-bold;
+$font-weight-h6: $font-weight-semi-bold;
+
 // Line height
 $line-height: 1.5rem; // 24px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.5rem; // 24px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 4rem;
+$line-height-h2: 3rem;
+$line-height-h3: 2rem;
+$line-height-h4: 2rem;
+$line-height-h5: 1.5rem;
+$line-height-h6: 1.5rem;
 
 // System color
 // sass-lint:disable no-color-hex
@@ -992,7 +1016,10 @@ $card-accordion-trigger-padding: 1.25rem;
 $card-alert-accordion-trigger-max-height: 4.0625rem;
 $card-alert-box-shadow: 0 0.3125rem 0.3125rem rgba($color-black, 0.05);
 $card-alert-max-height: 46.875rem;
-$card-alert-content-max-height: calc($card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding*2 - $card-accordion-border-width*3);
+$card-alert-content-max-height: calc(
+  $card-alert-max-height - $card-alert-accordion-trigger-max-height - $card-accordion-content-padding * 2 -
+    $card-accordion-border-width * 3
+);
 $card-alert-empty-content-align-items: center;
 $card-alert-empty-content-display: flex;
 $card-alert-empty-content-flex-direction: column;
@@ -1090,7 +1117,6 @@ $card-outline-widget-title-font-weight: $card-widget-title-font-weight;
 $card-title-font-size: $font-size-xl;
 $card-title-font-weight: $font-weight-extra-bold;
 $card-title-line-height: $line-height-lg;
-
 
 $card-kpi-background-color: $card-background-color;
 $card-kpi-hover-background-color: $color-teal-10;
