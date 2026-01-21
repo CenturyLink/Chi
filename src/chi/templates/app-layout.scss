@@ -358,6 +358,16 @@
       .chi-main__header-link .chi-link .chi-icon {
         color: $app-layout-header-background-subtitle-color;
       }
+
+      .chi-main__header-end {
+        chi-button[slot='help-icon'] {
+          .chi-button {
+            &:hover {
+              background-color: $app-layout-header-help-icon-background-color;
+            }
+          }
+        }
+      }
     }
   }
 
