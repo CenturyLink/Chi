@@ -1,8 +1,9 @@
 #!/bin/bash
 
 SECONDS=0
+export THEMES_TO_BUILD=lumen
 
-npm run build
+npm run build:testing
 npm run start:dist &
 SERVER_PID=$!
 

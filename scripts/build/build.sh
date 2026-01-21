@@ -3,6 +3,14 @@ source "$(dirname "$0")/../tests/backstopConfig.sh"
 set -e
 
 SECONDS=0
+IS_TESTING=false
+
+for arg in "$@"; do
+  if [ "$arg" == "--testing" ]; then
+    IS_TESTING=true
+  fi
+done
+
 
 CHI_DOCUMENTATION="./node_modules/@centurylink/chi-documentation"
 CHI_CE="./node_modules/@centurylink/chi-custom-elements"
@@ -22,7 +30,12 @@ fi
 node ./scripts/build/css/build.js
 
 # Build JS
-node ./scripts/build/js/build.js
+if [ "$IS_TESTING" = true ]; then
+  node ./scripts/build/js/build:testing.js
+else
+  node ./scripts/build/js/build.js
+fi
+
 
 # Build utils
 bash ./scripts/build/utils/copyFile.sh ./src/chi/components/input-file/input-file.js dist

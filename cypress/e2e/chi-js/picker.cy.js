@@ -3,7 +3,7 @@ const PICKER_PILL_CLASS = '-pill';
 
 describe('Picker', function () {
   before(() => {
-    cy.visit('tests/lumen/components/picker.html');
+    cy.visit('tests/lumen/js/picker.html');
   });
 
   describe('Pill', () => {
@@ -13,26 +13,22 @@ describe('Picker', function () {
     });
 
     it(`Should have -pill class`, () => {
-      cy.get('@pickerPillWrapper').within(() => {
-        cy.get('@pickerPill').each(($el) => {
-          cy.get($el).should('have.class', PICKER_PILL_CLASS);
-        });
+      cy.get('@pickerPill').each(($el) => {
+        cy.get($el).should('have.class', PICKER_PILL_CLASS);
       });
     });
 
     it(`Should be able to display as checked on picker click`, () => {
-      cy.get('@pickerPillWrapper').within(() => {
-        cy.get('@pickerPill').find('input[type="radio"]').should('not.be.checked');
+      cy.get('@pickerPill').find('input[type="radio"]').should('not.be.checked');
 
-        cy.get('@pickerPill')
-          .first()
-          .click()
-          .then(($first) => {
-            cy.get($first).find('input[type="radio"]').should('be.checked');
+      cy.get('@pickerPill')
+        .first()
+        .click()
+        .then(($first) => {
+          cy.get($first).find('input[type="radio"]').should('be.checked');
 
-            cy.get($first).find('label').should('have.css', 'color', 'rgb(0, 0, 0)');
-          });
-      });
+          cy.get($first).find('label').should('have.css', 'color', 'rgb(0, 0, 0)');
+        });
     });
   });
 });

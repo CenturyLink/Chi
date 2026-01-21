@@ -15,6 +15,6 @@ src_dirs=("$vue_src_dir" "$stencil_src_dir" "$react_src_dir" "$es6_src_dir" "$an
 for src_dir in "${src_dirs[@]}"; do
   if [ -d "$src_dir" ]; then
     folder_name=$(basename "$src_dir")
-    zip -r "$dist_dir/${folder_name}.zip" "$src_dir" > /dev/null 2>&1 
+    zip -r "$dist_dir/${folder_name}.zip" "$src_dir" -x "*/node_modules/*" > /dev/null 2>&1 
   fi
 done
