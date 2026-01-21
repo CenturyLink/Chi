@@ -21,6 +21,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h1: 2.25rem; // 36px
+$font-size-h2: 2rem; // 32px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h5: 1rem; // 16px
+$font-size-h6: 0.875rem; // 14px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -31,12 +39,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Font weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-bold;
+$font-weight-h4: $font-weight-bold;
+$font-weight-h5: $font-weight-bold;
+$font-weight-h6: $font-weight-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 3rem; // 44px
+$line-height-h2: 3rem; // 40px
+$line-height-h3: 2rem; // 32px
+$line-height-h4: 2rem; // 26px
+$line-height-h5: 1.5rem; // 24px
+$line-height-h6: 1.5rem; // 22px
 
 // System color
 // sass-lint:disable no-color-hex
@@ -174,10 +198,10 @@ $color-white: #ffffff;
 
 // Text color
 $color-text-base: $color-grey-100;
-$color-text-primary-darker: $color-orange-100;
-$color-text-primary-dark: $color-orange-90;
-$color-text-primary: $color-orange-70;
-$color-text-primary-alt: $color-orange-70;
+$color-text-primary-darker: $color-teal-100;
+$color-text-primary-dark: $color-teal-90;
+$color-text-primary: $color-teal-70;
+$color-text-primary-alt: $color-teal-70;
 $color-text-secondary: $color-teal-40;
 $color-text-secondary-dark: $color-teal-50;
 $color-text-secondary-darker: $color-teal-60;
@@ -227,7 +251,6 @@ $color-border-secondary-light: $color-teal-30;
 $color-border-secondary: $color-teal-40;
 $color-border-secondary-dark: $color-teal-50;
 $color-border-secondary-darker: $color-teal-70;
-$color-border-secondary-dark: $color-teal-50;
 $color-border-success-light: $color-green-30;
 $color-border-success: $color-green-60;
 $color-border-warning-light: $color-yellow-30;
@@ -1054,9 +1077,9 @@ $card-header-padding: 0.5rem 0;
 $card-header-sm-padding: 0.5rem 1rem;
 $card-hero-border-radius: 0;
 $card-hero-width: 100%;
-$card-highlight-background-color: $color-cyan-10;
-$card-highlight-border: none;
-$card-highlight-border-color: $color-cyan-20;
+$card-highlight-background-color: $color-teal-10;
+$card-highlight-border-color: $color-teal-60;
+$card-highlight-border: 0.0625rem solid $card-highlight-border-color;
 $card-highlight-header-background-color: $color-background-white;
 $card-tabs-border-bottom: inset 0 -0.125rem 0 0 $color-border-base;
 $card-tabs-padding: 1rem 2rem;
@@ -1309,7 +1332,7 @@ $drag-item-focus-color: $focus-color;
 $drag-item-padding: 1.25rem 1.25rem 1.25rem 0;
 $drag-item-title-font-size: $font-size-md;
 $drag-item-title-font-weight: $font-weight-semi-bold;
-$drag-item-title-icon-padding: 1.4375rem 0.875rem 1.25rem 1.25rem;
+$drag-item-title-icon-padding: 1.25rem 0.875rem 1.25rem 1.25rem;
 $drag-item-title-info-icon-margin-left: 0.25rem;
 $drag-item-title-line-height: $line-height-lg;
 
@@ -1703,6 +1726,7 @@ $modal-content-padding: 2rem 2rem 0 2rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
 $modal-footer-padding: 2rem;
+$modal-footer-flex-direction: row;
 $modal-footer-justify-content: flex-start;
 $modal-footer-no-slot-flex-direction: row-reverse;
 $modal-footer-no-slot-justify-content: flex-end;
@@ -2033,7 +2057,7 @@ $radio-disabled-text-color: $color-text-muted;
 $radio-hover-background-color: $color-teal-light;
 $radio-hover-border-color: $color-teal-70;
 $radio-hover-dot-display: none;
-$radio-focus-border-color: $focus-color;
+$radio-focus-border-color: rgba($focus-color, 0.7);
 $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.125rem;
 $radio-label-after-top: 0.4375rem;

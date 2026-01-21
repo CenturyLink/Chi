@@ -21,6 +21,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h1: 2.25rem; // 36px
+$font-size-h2: 2rem; // 32px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h5: 1rem; // 16px
+$font-size-h6: 0.875rem; // 14px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -31,12 +39,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Font weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-bold;
+$font-weight-h4: $font-weight-bold;
+$font-weight-h5: $font-weight-bold;
+$font-weight-h6: $font-weight-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 3rem; // 44px
+$line-height-h2: 3rem; // 40px
+$line-height-h3: 2rem; // 32px
+$line-height-h4: 2rem; // 26px
+$line-height-h5: 1.5rem; // 24px
+$line-height-h6: 1.5rem; // 22px
 
 // System color
 // sass-lint:disable no-color-hex
@@ -174,10 +198,10 @@ $color-white: #ffffff;
 
 // Text color
 $color-text-base: $color-grey-100;
-$color-text-primary-darker: $color-orange-100;
-$color-text-primary-dark: $color-orange-90;
-$color-text-primary: $color-orange-70;
-$color-text-primary-alt: $color-orange-70;
+$color-text-primary-darker: $color-teal-100;
+$color-text-primary-dark: $color-teal-90;
+$color-text-primary: $color-teal-70;
+$color-text-primary-alt: $color-teal-70;
 $color-text-secondary: $color-teal-40;
 $color-text-secondary-dark: $color-teal-50;
 $color-text-secondary-darker: $color-teal-60;
@@ -1124,9 +1148,6 @@ $card-kpi-metric-color: $color-teal-70;
 $card-kpi-metric-font-size: $font-size-3xl;
 $card-kpi-metric-margin-top: 0.75rem;
 $card-kpi-metric-label-margin-top: 0.3125rem;
-$card-kpi-metric-font-size: $font-size-3xl;
-$card-kpi-metric-margin-top: 0.75rem;
-$card-kpi-metric-label-margin-top: 0.3125rem;
 $card-kpi-hover-metric-color: $color-teal-80;
 $card-kpi-active-metric-color: $color-teal-80;
 $card-kpi-disabled-metric-color: $color-text-muted;
@@ -1262,7 +1283,6 @@ $data-table-row-expanded-background-color: $data-table-row-active-background-col
 $data-table-row-expandable-icon: $color-orange-70;
 $data-table-row-border: 0.0625rem solid $color-border-base;
 $data-table-row-expanded-border: none;
-
 
 $data-table-cell-expandable-flex-basis: 3.375rem;
 $data-table-head-expandable-min-width: 3.375rem;
@@ -1450,8 +1470,8 @@ $expansion-panel-content-margin-right: 1.5rem;
 $expansion-panel-disabled-title-opacity: $opacity-60;
 $expansion-panel-disabled-title-text-color: $color-text-muted;
 $expansion-panel-footer-border-color: rgba($color-black, 0.12);
-$expansion-panel-footer-justify-content: flex-start;
 $expansion-panel-footer-flex-direction: column-reverse;
+$expansion-panel-footer-justify-content: flex-start;
 $expansion-panel-footer-md-button-margin-left: 0;
 $expansion-panel-footer-md-button-margin-right: 1rem;
 $expansion-panel-footer-md-flex-direction: row-reverse;
