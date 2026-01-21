@@ -363,7 +363,7 @@
         chi-button[slot='help-icon'] {
           .chi-button {
             &:hover {
-              background-color: $color-background-base;
+              background-color: $app-layout-header-help-icon-background-color;
             }
           }
         }
