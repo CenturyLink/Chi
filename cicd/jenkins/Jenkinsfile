@@ -57,6 +57,7 @@ pipeline {
     // Docker variables
     DOCKER_CREDENTIALS = 'nexus-secrets'
     DOCKER_NODE20 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node20_agent:latest"
+    DOCKER_NODE22 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node22_light_agent:latest"
     DOCKER_JIRA = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest"
 
     // Rancher K8s variables
@@ -127,7 +128,7 @@ pipeline {
       }
       agent {
         docker {
-          image DOCKER_NODE20
+          image DOCKER_NODE22
         }
       }
       steps {
@@ -148,7 +149,7 @@ pipeline {
       }
       agent {
         docker {
-          image DOCKER_NODE20
+          image DOCKER_NODE22
         }
       }
       steps {
@@ -173,7 +174,7 @@ pipeline {
       }
       agent {
         docker {
-          image DOCKER_NODE20
+          image DOCKER_NODE22
         }
       }
       steps {
@@ -197,7 +198,7 @@ pipeline {
       }
       agent {
         docker {
-          image DOCKER_NODE20
+          image DOCKER_NODE22
         }
       }
       steps {
@@ -492,6 +493,7 @@ pipeline {
           def isDeploymentTag = env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1;
 
           if (isDeploymentTag) {
+            unstash 'smokeTests'
             env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
             jslAdoptionMain('cypress/reports/smokeTests/*.xml')
 
