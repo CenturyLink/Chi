@@ -11,7 +11,14 @@ fi
 
 echo "[CHI]: Installing dependencies..."
 
-npm ci
+# backstop runs on node 20 not 22, npm ci will give conflicts with package-lock
+# TO BE REMOVED ONCE MIGRATION TO NODE22 IS COMPLETE
+sed -i.bak 's/"@centurylink\/chi-documentation":[[:space:]]*"[^"]*"/"@centurylink\/chi-documentation": "1.57.0"/' package.json && rm package.json.bak
+mv package-lock-tests.json package-lock.json
+
+npm i
+
+# npm ci
 npx playwright install
 
 npm run build
