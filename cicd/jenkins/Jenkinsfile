@@ -174,7 +174,8 @@ pipeline {
       }
       agent {
         docker {
-          image DOCKER_NODE22
+          // backstop needs node 20
+          image DOCKER_NODE20
         }
       }
       steps {
