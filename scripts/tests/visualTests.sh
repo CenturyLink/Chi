@@ -11,12 +11,8 @@ fi
 
 echo "[CHI]: Installing dependencies..."
 
-# backstop runs on node 20 not 22
-# Documentation needs node22, so it's fixed in 1.57.0 with node 20
-mv package.ci.tests.json package.json
-mv package-lock.ci.tests.json package-lock.json
-
-npm ci
+# backstop runs on node 20 not 22, npm ci will give conflicts with package-lock
+npm i
 npx playwright install
 
 npm run build
