@@ -11,7 +11,6 @@ then
 fi;
 
 export SKIP_BOILERPLATES=true
-export SKIP_DOCUMENTATION_INSTALL=true
 export SKIP_SRI=true
 
 set_backstop_config () {
