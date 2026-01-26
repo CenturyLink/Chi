@@ -10,6 +10,9 @@ then
   export STOP_TESTS_ON_FAILURE=1
 fi;
 
+export SKIP_BOILERPLATES=true
+export SKIP_DOCUMENTATION_INSTALL=true
+export SKIP_SRI=true
 
 set_backstop_config () {
   find . -maxdepth 1 -name 'backstop*.json' -not -name '*_*' | while read -r file
