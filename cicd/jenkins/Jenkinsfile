@@ -181,6 +181,7 @@ pipeline {
       steps {
         script {
           sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+          sh "export SKIP_DOCUMENTATION_INSTALL=true"
     
           jslNpmWrapper('run tests:visual:run', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
