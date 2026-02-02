@@ -186,10 +186,7 @@ pipeline {
           steps {
             unstash 'chi_build'
 
-            sh '''
-              npm run start:dist &
-              echo $! > app.pid
-            '''
+            jslNpmWrapper('run start:dist', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           }
         }
 
