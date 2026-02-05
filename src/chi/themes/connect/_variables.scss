@@ -2399,14 +2399,26 @@ $tabs-vertical-lg-font-size: $font-size-lg;
 $tabs-vertical-xl-font-size: $font-size-lg;
 $tabs-vertical-lg-description-font-size: $font-size-base;
 
+$tabs-solid-active-border-color: $color-orange-60;
+$tabs-solid-active-background-color: $color-background-primary-light;
+$tabs-solid-active-background-color-hover: $color-orange-20;
+$tabs-solid-active-background-color-disabled: $color-grey-40;
+$tabs-solid-active-border-disabled: 0.0625rem solid $color-grey-50;
+$tabs-solid-background-color: transparent;
+$tabs-solid-background-color-hover: $color-grey-20;
+$tabs-solid-border-focus: 0.0625rem solid $color-grey-80;
+$tabs-solid-border-top-radius: 0.5rem;
+$tabs-solid-deprecated-border-display: none;
+$tabs-solid-horizontal-lg-active-border-width: 0.0625rem;
+$tabs-solid-horizontal-md-active-border-width: 0.0625rem;
+$tabs-solid-opacity-disabled: 1;
+$tabs-solid-text-color: $color-grey-100;
+$tabs-solid-text-color-hover: $color-grey-100;
+$tabs-solid-text-color-active: $color-orange-80;
+$tabs-solid-text-color-disabled: $color-grey-60;
+$tabs-solid-vertical-xl-active-border-width: 0.0625rem;
 $tabs-solid-xl-font-size: $font-size-lg;
 $tabs-solid-xl-font-weight: $font-weight-bold;
-$tabs-solid-vertical-xl-active-border-width: 0.25rem;
-$tabs-solid-horizontal-lg-active-border-width: 0.25rem;
-$tabs-solid-horizontal-md-active-border-width: 0.125rem;
-$tabs-solid-background-color: $color-grey-10;
-$tabs-solid-active-border-color: $color-orange-60;
-$tabs-solid-active-background-color: $color-background-white;
 
 // Text input
 $text-input-border-color: $color-grey-50;

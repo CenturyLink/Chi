@@ -2344,14 +2344,26 @@ $tabs-vertical-lg-font-size:                $font-size-lg;
 $tabs-vertical-xl-font-size:                $font-size-lg;
 $tabs-vertical-lg-description-font-size:    $font-size-base;
 
-$tabs-solid-xl-font-size:                   $font-size-lg;
-$tabs-solid-xl-font-weight:                 $font-weight-bold;
-$tabs-solid-vertical-xl-active-border-width: 0.25rem;
-$tabs-solid-horizontal-lg-active-border-width: 0.25rem;
+$tabs-solid-active-border-color: $color-orange-60;
+$tabs-solid-active-background-color: $color-background-white;
+$tabs-solid-active-background-color-hover: $color-background-white;
+$tabs-solid-active-background-color-disabled: $color-background-white;
+$tabs-solid-active-border-disabled: none;
+$tabs-solid-background-color: $color-grey-10;
+$tabs-solid-background-color-hover: $color-grey-10;
+$tabs-solid-border-focus: none;
+$tabs-solid-border-top-radius: 0;
+$tabs-solid-deprecated-border-display: block;
+$tabs-solid-horizontal-lg-active-border-width: 0.125rem;
 $tabs-solid-horizontal-md-active-border-width: 0.125rem;
-$tabs-solid-background-color:               $color-grey-10;
-$tabs-solid-active-border-color:            $color-border-black;
-$tabs-solid-active-background-color:        $color-background-white;
+$tabs-solid-opacity-disabled: 0.75;
+$tabs-solid-text-color: $color-text-black;
+$tabs-solid-text-color-hover: $color-text-primary;
+$tabs-solid-text-color-active: $color-text-primary;
+$tabs-solid-text-color-disabled: inherit;
+$tabs-solid-vertical-xl-active-border-width: 0.125rem;
+$tabs-solid-xl-font-size: $font-size-lg;
+$tabs-solid-xl-font-weight: $font-weight-bold;
 
 // Text input
 $text-input-border-color:                   $color-border-base;
