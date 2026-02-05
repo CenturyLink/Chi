@@ -12,7 +12,7 @@
     width: 100%;
 
     &.-active {
-      border: 1px solid red !important;
+      border: 0.0625rem solid $drag-item-active-border-color;
     }
 
     &:not(:last-of-type) {
@@ -108,11 +108,11 @@
       .chi-dropdown {
         > chi-button {
           .chi-button {
-            padding: 1.25rem 1rem;
+            padding: $drag-item-actions-dropdown-button-padding;
             border-color: transparent;
 
             .chi-icon {
-              color: #585657;
+              color: $drag-item-actions-dropdown-icon-color;
             }
 
             &:focus {
@@ -135,17 +135,17 @@
             &.-active {
               box-shadow: none;
               font-weight: $font-weight-normal;
-              color: #262425;
+              color: $drag-item-actions-dropdown-active-text-color;
 
               .chi-icon {
-                color: #e66400;
+                color: $drag-item-actions-dropdown-active-icon-color;
               }
             }
           }
 
           &:has(.chi-drag__action-item chi-icon) {
             .chi-drag__action-item:not(:has(chi-icon)) {
-              padding-left: 2.5rem;
+              padding-left: $drag-item-actions-dropdown-item-padding-left;
             }
           }
         }
