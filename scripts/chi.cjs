@@ -5,7 +5,7 @@ const { execFileSync } = require('child_process');
 const commands = {
   start: ['npm', ['run', 'serve']],
   build: ['npm', ['run', 'build']],
-  test: ['npm', ['run', 'tests:visual']],
+  test: ['npm', ['run', 'tests:visual:local']],
   'test:e2e': ['npm', ['run', 'tests:e2e']],
   approve: ['npm', ['run', 'tests:visual:approve']],
   release: ['bash', ['./scripts/release.sh']],

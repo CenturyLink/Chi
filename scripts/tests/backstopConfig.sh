@@ -10,6 +10,12 @@ then
   export STOP_TESTS_ON_FAILURE=1
 fi;
 
+# Set TESTS_URL if not set, defaults to CI
+if [ -z ${TESTS_HOST+x} ]; 
+then 
+  export TESTS_HOST="backstop-net"
+fi;
+
 
 set_backstop_config () {
   find . -maxdepth 1 -name 'backstop*.json' -not -name '*_*' | while read -r file
@@ -18,8 +24,12 @@ set_backstop_config () {
       for THEME in ${THEMES_TO_TEST//,/ }; 
       do
         new_file="${file%\.json}_$THEME.json"
-
         sed "s|<theme>|${THEME}|g" $file > "$new_file"
+
+        sed \
+          -e "s|<theme>|${THEME}|g" \
+          -e "s|<tests_host>|${TESTS_HOST}|g" \
+          "$file" > "$new_file"   
       done
      fi
   done

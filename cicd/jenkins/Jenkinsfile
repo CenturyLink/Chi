@@ -117,28 +117,28 @@ pipeline {
         }
       }
     }
-    stage('Linting') {
-      when {
-        beforeAgent true
-        allOf {
-          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-          not { branch PROD_BRANCH }
-        }
-      }
-      agent {
-        docker {
-          image DOCKER_NODE22
-        }
-      }
-      steps {
-        script {
-          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          // TODO: Fix linting
-          // jslNpmWrapper('run lint:scss', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-        }
-      }
-    }
+    // stage('Linting') {
+    //   when {
+    //     beforeAgent true
+    //     allOf {
+    //       not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+    //       not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+    //       not { branch PROD_BRANCH }
+    //     }
+    //   }
+    //   agent {
+    //     docker {
+    //       image DOCKER_NODE22
+    //     }
+    //   }
+    //   steps {
+    //     script {
+    //       jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+    //       // TODO: Fix linting
+    //       // jslNpmWrapper('run lint:scss', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+    //     }
+    //   }
+    // }
     stage ('Build Chi') {
       when {
         beforeAgent true
@@ -163,7 +163,7 @@ pipeline {
         }
       }
     }
-    stage ('Backstop tests') {
+    stage ('Visual regression tests') {
       when {
         beforeAgent true
         allOf {
@@ -172,19 +172,42 @@ pipeline {
           not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
         }
       }
-      agent {
-        docker {
-          // backstop needs node 20
-          image DOCKER_NODE20
-        }
-      }
-      steps {
-        script {
-          sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-    
-          jslNpmWrapper('run tests:visual:run', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
-          stashAndArchiveCiReports()
+      parallel {
+        stage('Serve CHI') {
+
+          agent {
+            docker {
+              image DOCKER_NODE22
+              args '--network backstop-net'
+            }
+          }
+
+          steps {
+            unstash 'chi_build'
+
+            jslNpmWrapper('run start:dist', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          }
+        }
+
+        stage('Backstop') {
+          agent {
+            docker {
+              // backstop needs node 20
+              image DOCKER_NODE20
+              args '--network backstop-net'
+            }
+          }
+
+          steps {
+            script {
+              sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+        
+              jslNpmWrapper('run tests:visual:ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+
+              stashAndArchiveCiReports()
+            }
+          }
         }
       }
     }
