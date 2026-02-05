@@ -11,6 +11,10 @@
     padding: 0;
     width: 100%;
 
+    &.-active {
+      border: 1px solid red !important;
+    }
+
     &:not(:last-of-type) {
       margin-bottom: 1rem;
     }
@@ -89,6 +93,65 @@
       }
     }
 
+    .chi-drag__actions-dropdown {
+      border-left: 0.0625rem solid $drag-item-border-color;
+      border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
+
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $drag-item-close-hover-background-color;
+      }
+
+      .chi-dropdown {
+        > chi-button {
+          .chi-button {
+            padding: 1.25rem 1rem;
+            border-color: transparent;
+
+            .chi-icon {
+              color: #585657;
+            }
+
+            &:focus {
+              outline: none;
+            }
+
+            &,
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+
+        .chi-dropdown__menu {
+          .chi-drag__action-item {
+            .chi-icon {
+              color: $color-icon-muted;
+            }
+
+            &.-active {
+              box-shadow: none;
+              font-weight: $font-weight-normal;
+              color: #262425;
+
+              .chi-icon {
+                color: #e66400;
+              }
+            }
+          }
+
+          &:has(.chi-drag__action-item chi-icon) {
+            .chi-drag__action-item:not(:has(chi-icon)) {
+              padding-left: 2.5rem;
+            }
+          }
+        }
+      }
+    }
+
     &:has(.chi-drag__wrapper:active) {
       box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.2);
     }
@@ -155,6 +218,14 @@
       .chi-drag__title-icon {
         .chi-icon {
           height: $drag-accordion-title-icon-height;
+        }
+      }
+    }
+
+    &.-base {
+      .chi-drag__title-icon {
+        .chi-icon {
+          margin-top: 0.25rem;
         }
       }
     }
