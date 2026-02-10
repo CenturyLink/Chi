@@ -21,6 +21,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h1: 2.25rem; // 36px
+$font-size-h2: 2rem; // 32px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h5: 1rem; // 16px
+$font-size-h6: 0.875rem; // 14px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -31,12 +39,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Font weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-bold;
+$font-weight-h4: $font-weight-bold;
+$font-weight-h5: $font-weight-bold;
+$font-weight-h6: $font-weight-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 3rem; // 44px
+$line-height-h2: 3rem; // 40px
+$line-height-h3: 2rem; // 32px
+$line-height-h4: 2rem; // 26px
+$line-height-h5: 1.5rem; // 24px
+$line-height-h6: 1.5rem; // 22px
 
 // System color
 // sass-lint:disable no-color-hex
@@ -174,10 +198,10 @@ $color-white: #ffffff;
 
 // Text color
 $color-text-base: $color-grey-100;
-$color-text-primary-darker: $color-orange-100;
-$color-text-primary-dark: $color-orange-90;
-$color-text-primary: $color-orange-70;
-$color-text-primary-alt: $color-orange-70;
+$color-text-primary-darker: $color-teal-100;
+$color-text-primary-dark: $color-teal-90;
+$color-text-primary: $color-teal-70;
+$color-text-primary-alt: $color-teal-70;
 $color-text-secondary: $color-teal-40;
 $color-text-secondary-dark: $color-teal-50;
 $color-text-secondary-darker: $color-teal-60;
@@ -366,6 +390,9 @@ $accordion-item-disabled-text-color: $color-text-muted-light;
 $accordion-item-disabled-opacity: $opacity-60;
 $accordion-item-title-text-color: $color-text-base;
 $accordion-item-title-font-weight: $font-weight-semi-bold;
+$accordion-item-trigger-icon-animation-duration: 0.2s;
+$accordion-item-trigger-icon-transform: rotate(180deg);
+$accordion-item-trigger-icon-transition: transform $accordion-item-trigger-icon-animation-duration ease-in-out;
 $accordion-item-trigger-icon-color: $color-icon-primary;
 $accordion-item-level-2-background-color: $color-background-white;
 $accordion-item-level-3-background-color: $color-grey-10;
@@ -465,11 +492,17 @@ $alert-sm-text-font-size: $font-size-base;
 $alert-sm-text-line-height: $line-height;
 
 // App layout
-$app-layout-background-color: $color-background-base-light;
+$app-layout-actions-border: 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction: row-reverse;
+$app-layout-actions-justify-content: start;
+$app-layout-actions-padding: 1.5rem 0;
+$app-layout-actions-margin-top: 1rem;
+$app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: transparent;
 $app-layout-header-title-color: $color-text-base;
 $app-layout-sub-header-title-color: $color-text-base;
+$app-layout-header-help-icon-background-color: $color-background-base;
 $app-layout-header-line-height: 2.5rem;
 $app-layout-sub-header-font-size: $font-size-xl;
 $app-layout-sub-header-font-weight: $font-weight-semi-bold;
@@ -1116,9 +1149,6 @@ $card-kpi-metric-color: $color-teal-70;
 $card-kpi-metric-font-size: $font-size-3xl;
 $card-kpi-metric-margin-top: 0.75rem;
 $card-kpi-metric-label-margin-top: 0.3125rem;
-$card-kpi-metric-font-size: $font-size-3xl;
-$card-kpi-metric-margin-top: 0.75rem;
-$card-kpi-metric-label-margin-top: 0.3125rem;
 $card-kpi-hover-metric-color: $color-teal-80;
 $card-kpi-active-metric-color: $color-teal-80;
 $card-kpi-disabled-metric-color: $color-text-muted;
@@ -1255,7 +1285,6 @@ $data-table-row-expandable-icon: $color-orange-70;
 $data-table-row-border: 0.0625rem solid $color-border-base;
 $data-table-row-expanded-border: none;
 
-
 $data-table-cell-expandable-flex-basis: 3.375rem;
 $data-table-head-expandable-min-width: 3.375rem;
 $data-table-head-expandable-border-right: 0.0625rem solid $color-border-base;
@@ -1284,22 +1313,29 @@ $data-table-state-success-box-shadow: $color-green-60;
 $data-table-state-warning-box-shadow: $color-yellow-60;
 
 // Drag and Drop
+$drag-accordion-content-padding: 0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align: start;
+$drag-accordion-item-background-color: transparent;
+$drag-accordion-title-font-size: $font-size-md;
+$drag-accordion-title-icon-height: $accordion-md-item-line-height;
+$drag-accordion-trigger-padding: 0;
 $drag-item-background-color: $color-background-white;
 $drag-item-border-color: $color-grey-30;
 $drag-item-border-radius: 0.3125rem;
-$drag-item-focus-color: $focus-color;
-$drag-item-padding: 1.25rem;
-$drag-item-title-font-size: $font-size-md;
-$drag-item-title-font-weight: $font-weight-semi-bold;
-$drag-item-title-line-height: $line-height-lg;
-$drag-item-title-info-icon-margin-left: 0.25rem;
+$drag-item-close-active-background-color: $color-grey-25;
+$drag-item-close-hover-background-color: $color-grey-20;
 $drag-item-description-font-size: $font-size-sm;
 $drag-item-description-line-height: $line-height-md;
 $drag-item-description-text-align: left;
 $drag-item-dragging-close-background-color: $color-background-white;
-$drag-item-close-hover-background-color: $color-grey-20;
-$drag-item-close-active-background-color: $color-grey-25;
 $drag-item-drop-indicator-background-color: $focus-color;
+$drag-item-focus-color: $focus-color;
+$drag-item-padding: 1.25rem 1.25rem 1.25rem 0;
+$drag-item-title-font-size: $font-size-md;
+$drag-item-title-font-weight: $font-weight-semi-bold;
+$drag-item-title-icon-padding: 1.25rem 0.875rem 1.25rem 1.25rem;
+$drag-item-title-info-icon-margin-left: 0.25rem;
+$drag-item-title-line-height: $line-height-lg;
 
 // Drawer
 $drawer-width: 31rem;
@@ -1435,8 +1471,8 @@ $expansion-panel-content-margin-right: 1.5rem;
 $expansion-panel-disabled-title-opacity: $opacity-60;
 $expansion-panel-disabled-title-text-color: $color-text-muted;
 $expansion-panel-footer-border-color: rgba($color-black, 0.12);
-$expansion-panel-footer-justify-content: flex-start;
 $expansion-panel-footer-flex-direction: column-reverse;
+$expansion-panel-footer-justify-content: flex-start;
 $expansion-panel-footer-md-button-margin-left: 0;
 $expansion-panel-footer-md-button-margin-right: 1rem;
 $expansion-panel-footer-md-flex-direction: row-reverse;
@@ -2622,12 +2658,12 @@ $transfer-list-checkbox-icon-color: $color-icon-primary;
 $transfer-list-reset-button-color: $color-text-code;
 
 // Tags
-$tags-border-color: $color-border-base;
+$tags-border-color: $color-grey-50;
 $tags-border-radius: $border-radius-base;
 $tags-text-color: $color-text-base;
 $tags-input-placeholder-text-color: $color-grey-60;
 $tags-input-min-height: 2rem;
-$tags-hover-border-color: $color-grey-40;
+$tags-hover-border-color: $color-border-secondary-darker;
 $tags-focus-border-color: $focus-color;
 $tags-md-font-size: $font-size-md;
 $tags-md-line-height: $line-height-md;

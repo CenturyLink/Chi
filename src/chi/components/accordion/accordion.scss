@@ -1,8 +1,6 @@
 @import '_global-variables';
 @import '_global-mixins';
 
-$animation-duration: 0.2s;
-
 $sizes: (
   sm: (
     font-size: $accordion-sm-item-font-size,
@@ -94,7 +92,7 @@ $sizes: (
 
       .icon-chevron-down,
       .icon-chevron-right {
-        transition-duration: $animation-duration;
+        transition-duration: $accordion-item-trigger-icon-animation-duration;
       }
 
       &:has(div[slot]) {
@@ -137,13 +135,13 @@ $sizes: (
 
       & > .chi-accordion__trigger {
         .icon-chevron-down {
-          transform: rotate(180deg);
-          transition: transform $animation-duration ease-in-out;
+          transform: $accordion-item-trigger-icon-transform;
+          transition: $accordion-item-trigger-icon-transition;
         }
 
         .icon-chevron-right {
           transform: rotate(90deg);
-          transition: transform $animation-duration ease-in-out;
+          transition: $accordion-item-trigger-icon-transition;
         }
 
         .icon-plus {

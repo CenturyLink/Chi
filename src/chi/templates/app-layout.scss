@@ -169,6 +169,18 @@
     }
   }
 
+  &__content {
+    .chi-main__actions-wrapper {
+      border-top: $app-layout-actions-border;
+      display: flex;
+      flex-direction: $app-layout-actions-direction;
+      gap: 0.5rem;
+      justify-content: $app-layout-actions-justify-content;
+      margin-top: $app-layout-actions-margin-top;
+      padding: $app-layout-actions-padding;
+    }
+  }
+
   &.-no-margin {
     .chi-main__header,
     .chi-main__content,
@@ -346,6 +358,16 @@
       .chi-main__header-link .chi-link .chi-icon {
         color: $app-layout-header-background-subtitle-color;
       }
+
+      .chi-main__header-end {
+        chi-button[slot='help-icon'] {
+          .chi-button {
+            &:hover {
+              background-color: $app-layout-header-help-icon-background-color;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -381,6 +403,6 @@
   }
 }
 
-.chi-main__wrapper div:has(chi-main) {
+.chi-main__wrapper div:has(chi-main):not(chi-main div) {
   height: 100%;
 }

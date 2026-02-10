@@ -11,7 +11,7 @@ else
 fi
 
 if [ -d "$theme_dir" ]; then
-  find src/chi/components -type f -name "*.scss" | while read -r file; do
+  find src/chi/components src/chi/utilities -type f -name "*.scss" | while read -r file; do
     if [ -f "$file" ]; then
       cp "$file" "$file$backup_suffix"
 

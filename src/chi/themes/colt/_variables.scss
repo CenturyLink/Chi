@@ -17,6 +17,14 @@ $font-size-xs: 0.75rem; // 12px
 $font-size-2xs: 0.6875rem; // 11px
 $font-size-base: $font-size-md;
 
+// Font size - headings
+$font-size-h6: 0.875rem; // 14px
+$font-size-h5: 1rem; // 16px
+$font-size-h4: 1.125rem; // 18px
+$font-size-h3: 1.5rem; // 24px
+$font-size-h2: 2rem; // 32px
+$font-size-h1: 3rem; // 48px
+
 // Font weight
 $font-weight-light: 300;
 $font-weight-normal: 400;
@@ -26,12 +34,28 @@ $font-weight-extra-bold: 800;
 $font-weight-black: 900;
 $font-weight-base: $font-weight-normal;
 
+// Line weights - headings
+$font-weight-h1: $font-weight-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h3: $font-weight-semi-bold;
+$font-weight-h4: $font-weight-semi-bold;
+$font-weight-h5: $font-weight-semi-bold;
+$font-weight-h6: $font-weight-semi-bold;
+
 // Line height
 $line-height: 1.25rem; // 20px
 $line-height-xl: 1.75rem; // 28px
 $line-height-lg: 1.5rem; // 24px
 $line-height-md: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+
+// Line heights - headings
+$line-height-h1: 4rem;
+$line-height-h2: 3rem;
+$line-height-h3: 2rem;
+$line-height-h4: 2rem;
+$line-height-h5: 1.5rem;
+$line-height-h6: 1.5rem;
 
 // System color
 // sass-lint:disable no-color-hex
@@ -327,6 +351,9 @@ $accordion-item-disabled-text-color:        $color-text-muted-light;
 $accordion-item-disabled-opacity:           $opacity-60;
 $accordion-item-title-text-color:           $color-text-base;
 $accordion-item-title-font-weight:          $font-weight-semi-bold;
+$accordion-item-trigger-icon-animation-duration:  0.2s;
+$accordion-item-trigger-icon-transform:           rotate(180deg);
+$accordion-item-trigger-icon-transition:          transform $accordion-item-trigger-icon-animation-duration ease-in-out;
 $accordion-item-trigger-icon-color:         $color-icon-base;
 $accordion-item-level-2-background-color:   $color-background-white;
 $accordion-item-level-3-background-color:   $color-grey-10;
@@ -427,10 +454,16 @@ $alert-sm-text-font-size:                   $font-size-base;
 $alert-sm-text-line-height:                 $line-height;
 
 // App layout
+$app-layout-actions-border:                 0.0625rem solid $color-grey-25;
+$app-layout-actions-direction:              row;
+$app-layout-actions-justify-content:        end;
+$app-layout-actions-padding:                1.5rem 0;
+$app-layout-actions-margin-top:             1rem;
 $app-layout-background-color:               $color-background-base;
 $app-layout-header-background-color:        $color-teal-40;
 $app-layout-legacy-header-background-color: $app-layout-header-background-color;
 $app-layout-header-title-color:             $color-text-base;
+$app-layout-header-help-icon-background-color: $color-background-base;
 $app-layout-header-line-height:             2.5rem;
 $app-layout-sub-header-title-color:         $color-text-muted;
 $app-layout-sub-header-font-size:           $font-size-xl;
@@ -1236,6 +1269,12 @@ $data-table-state-success-box-shadow:       $color-green-60;
 $data-table-state-warning-box-shadow:       $color-yellow-60;
 
 // Drag and Drop
+$drag-accordion-content-padding:            0.875rem 0.875rem 0 0;
+$drag-accordion-content-text-align:         start;
+$drag-accordion-item-background-color:      transparent;
+$drag-accordion-title-font-size:            $font-size-md;
+$drag-accordion-title-icon-height:          $accordion-md-item-line-height;
+$drag-accordion-trigger-padding:            0;
 $drag-item-background-color:                $color-background-white;
 $drag-item-border-color:                    $color-grey-30;
 $drag-item-border-radius:                   $border-radius-base;
@@ -1247,9 +1286,10 @@ $drag-item-description-text-align:          left;
 $drag-item-dragging-close-background-color: $color-background-white;
 $drag-item-drop-indicator-background-color: $focus-color;
 $drag-item-focus-color:                     $focus-color;
-$drag-item-padding:                         1.25rem;
+$drag-item-padding:                         1.25rem 1.25rem 1.25rem 0;
 $drag-item-title-font-size:                 $font-size-md;
 $drag-item-title-font-weight:               $font-weight-semi-bold;
+$drag-item-title-icon-padding:              1.25rem 0.875rem 1.25rem 1.25rem;
 $drag-item-title-info-icon-margin-left:     0.25rem;
 $drag-item-title-line-height:               $line-height-lg;
 
