@@ -1,5 +1,6 @@
 @import '_global-mixins';
 @import '_global-variables';
+@import 'icon-mapping'; // Import icon mapping for backward compatibility
 
 $icon-sizes: (
   xs: $icon-size-xs,
@@ -11,26 +12,53 @@ $icon-sizes: (
   xl: $icon-size-xl,
   xxl: $icon-size-xxl);
 
+// Import Material Symbols Outlined font from Google Fonts CDN
+// https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=block
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(https://lib.lumen.com/fonts/google-material-icons/Material-Symbols-Outlined.woff2) format('woff2');
+}
+
+// Main chi-icon component - supports both new and legacy usage
 .chi-icon {
-  color: $icon-color;
+  font-family: 'Material Symbols Outlined';
+  font-weight: 400;
+  font-style: normal;
+  font-size: $icon-size-base;
   display: inline-block;
-  height: $icon-size-base;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+  color: $icon-color;
   position: relative;
-  width: $icon-size-base;
 
-  & > svg {
-    fill: currentColor;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
+  // Preserve all size modifiers
   @each $type in map-keys($icon-sizes) {
     &.-#{$type} {
+      font-size: map-get($icon-sizes, $type) !important;
       height: map-get($icon-sizes, $type) !important;
       width: map-get($icon-sizes, $type) !important;
+      line-height: map-get($icon-sizes, $type) !important;
     }
+  }
+
+  // Hide SVG elements (Material Symbols replaces SVG sprite)
+  // This allows legacy SVG usage to gracefully degrade
+  & > svg {
+    display: none;
+  }
+
+  &.-fill {
+    font-variation-settings: 'FILL' 1;
   }
 }

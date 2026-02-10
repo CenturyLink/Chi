@@ -27,7 +27,6 @@ node ./scripts/build/js/build.js
 # Build utils
 bash ./scripts/build/utils/copyFile.sh ./src/chi/components/input-file/input-file.js dist
 node ./scripts/build/utils/buildIcons.js
-node ./scripts/build/utils/buildSprites.js
 bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
 
 # Build boilerplates

@@ -104,9 +104,9 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       &::after {
         color: $steps-item-line-border-color;
-        content: '\e934';
+        content: 'circle';
         font-family: $font-family-icon;
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         position: absolute;
       }
 
@@ -157,7 +157,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
         &::after {
           color: $steps-item-completed-icon-color;
-          content: '\e929';
+          content: 'check_circle';
+          font-variation-settings: "FILL" 1;
         }
       }
 
@@ -182,7 +183,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
         &::after {
           color: $steps-item-active-icon-color;
-          content: '\e942';
+          content: 'circle';
+          font-variation-settings: "FILL" 1;
         }
 
         &::before {
@@ -312,7 +314,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
 
         &::after {
-          font-size: $font-size-lg;
+          font-size: 1.25rem;
         }
 
         & > .chi-steps__content {
@@ -359,7 +361,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         width: 100%;
 
         &::before {
-          left: 0.5rem;
+          left: 0.625rem;
         }
 
         &::after {

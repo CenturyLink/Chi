@@ -22,9 +22,7 @@ block content
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-atom')
+                  .chi-icon.icon-atom
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         .chi-drawer.-active.-animated.-left
@@ -53,9 +51,7 @@ block content
                     a(href=`#exampleHashTarget`)
                       span.chi-sidenav__title
                         =`Title 1`
-                        .chi-icon.-xs
-                          svg
-                            use(xlink:href='#icon-external-link')
+                        .chi-icon.-xs.icon-external-link
 
   each size in sizes
     h2.-text--capitalized
@@ -68,9 +64,7 @@ block content
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-atom')
+                    .chi-icon.icon-atom
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
         .chi-sidenav__drawers
           .chi-drawer.-active.-animated.-left
@@ -99,6 +93,4 @@ block content
                       a(href=`#exampleHashTarget`)
                         span.chi-sidenav__title
                           =`Title 1`
-                          .chi-icon.-xs
-                            svg
-                              use(xlink:href='#icon-external-link')
+                          .chi-icon.-xs.icon-external-link

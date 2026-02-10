@@ -103,9 +103,16 @@ $avatar-default-size: 'md';
 
   & > i,
   &.chi-icon > svg {
-    height: 50%;
-    margin: 25%;
-    width: 50%;
+    height: 100%;
+    width: 100%;
+  }
+
+  & > i {
+    &.chi-icon {
+      align-items: center;
+      display: inline-flex;
+      justify-content: center;
+    }
   }
 
   &.chi-icon {

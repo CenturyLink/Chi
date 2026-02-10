@@ -1,0 +1,384 @@
+// Icon mapping: Chi icon class names to Material Symbols icon names
+// This enables backward compatibility with existing icon-* classes
+// Maps Chi icon names to Material Symbols ligature names
+
+// Icon mapping: Chi icon class names to Material Symbols icon names and fill state
+$icon-mapping: (
+  // Navigation & Arrows
+  'icon-activity': (name: 'timeline', fill: false),
+  'icon-address-book': (name: 'contacts', fill: true),
+  'icon-arrow-down': (name: 'arrow_downward', fill: false),
+  'icon-arrow-left': (name: 'arrow_back', fill: false),
+  'icon-arrow-right': (name: 'arrow_forward', fill: false),
+  'icon-arrow-up': (name: 'arrow_upward', fill: false),
+  'icon-arrow-long-down': (name: 'south', fill: false),
+  'icon-arrow-long-left': (name: 'west', fill: false),
+  'icon-arrow-long-right': (name: 'east', fill: false),
+  'icon-arrow-long-up': (name: 'north', fill: false),
+  'icon-arrow-sort': (name: 'swap_vert', fill: false),
+  'icon-arrow-sync': (name: 'swap_horiz', fill: false),
+  'icon-arrow-to-bottom': (name: 'download', fill: false),
+  'icon-arrow-to-top': (name: 'upload', fill: false),
+  'icon-arrow-vertical': (name: 'unfold_more', fill: false),
+  'icon-arrows': (name: 'zoom_out_map', fill: false),
+  
+  // Common Icons
+  'icon-asterisk': (name: 'emergency', fill: false),
+  'icon-atom': (name: 'category', fill: true),
+  'icon-attachment': (name: 'attach_file', fill: false),
+  'icon-autopay': (name: 'eco', fill: true),
+  'icon-ban': (name: 'block', fill: false),
+  'icon-bank': (name: 'savings', fill: true),
+  'icon-bell': (name: 'notifications', fill: true),
+  'icon-bell-off': (name: 'notifications_off', fill: true),
+  'icon-bell-off-outline': (name: 'notifications_off', fill: false),
+  'icon-bell-outline': (name: 'notifications', fill: false),
+  'icon-bell-settings-outline': (name: 'edit_notifications', fill: false),
+  'icon-bookmark': (name: 'bookmark', fill: true),
+  'icon-bookmark-outline': (name: 'bookmark_border', fill: false),
+  'icon-box': (name: 'deployed_code', fill: true),
+  'icon-box-application': (name: 'stacks', fill: true),
+  'icon-box-circle-arrow-left': (name: 'deployed_code', fill: false),
+  'icon-box-circle-check': (name: 'deployed_code', fill: false),
+  'icon-box-cloudformation': (name: 'article', fill: false),
+  'icon-box-container': (name: 'square', fill: false),
+  'icon-box-deployment': (name: 'box', fill: false),
+  'icon-box-fill': (name: 'crop_square', fill: true),
+  'icon-box-outline': (name: 'deployed_code', fill: false),
+  'icon-box-script': (name: 'code_blocks', fill: false),
+  'icon-brain-nodes': (name: 'network_intelligence', fill: false),
+  'icon-building': (name: 'domain', fill: true),
+  'icon-building-outline': (name: 'domain', fill: false),
+  
+  // Calendar & Time
+  'icon-calendar-circle-alert': (name: 'assignment_late', fill: false),
+  'icon-calendar-circle-check': (name: 'event_available', fill: false),
+  'icon-calendar-circle-clock': (name: 'calendar_clock', fill: false),
+  'icon-calendar-circle-x': (name: 'event_busy', fill: false),
+  
+  // Charts & Data
+  'icon-cart': (name: 'shopping_cart', fill: true),
+  'icon-cart-alt': (name: 'shopping_cart', fill: false),
+  'icon-cart-outline': (name: 'shopping_cart', fill: false),
+  'icon-chart-bar': (name: 'bar_chart', fill: true),
+  'icon-chart-line': (name: 'show_chart', fill: true),
+  'icon-chart-pie': (name: 'pie_chart', fill: true),
+  
+  // Communication
+  'icon-chat': (name: 'chat', fill: true),
+  'icon-chat-outline': (name: 'chat', fill: false),
+  'icon-comment': (name: 'chat_bubble', fill: true),
+  'icon-comment-dots': (name: 'sms', fill: true),
+  'icon-comment-dots-outline': (name: 'sms', fill: false),
+  'icon-comment-outline': (name: 'chat_bubble', fill: false),
+  'icon-comments': (name: 'forum', fill: true),
+  'icon-comments-dots': (name: 'forum', fill: true),
+  'icon-comments-dots-outline': (name: 'forum', fill: false),
+  'icon-comments-outline': (name: 'forum', fill: false),
+  'icon-comments-sparkle': (name: 'reviews', fill: true),
+  'icon-compose': (name: 'edit_square', fill: true),
+  'icon-compose-cancel': (name: 'edit_off', fill: true),
+  
+  // Actions
+  'icon-check': (name: 'check', fill: true),
+  'icon-check-alt': (name: 'check', fill: true),
+  'icon-check-double': (name: 'done_all', fill: true),
+  'icon-checkbox': (name: 'check_box_outline_blank', fill: false),
+  'icon-checkbox-checked': (name: 'check_box', fill: true),
+  'icon-chevron-down': (name: 'expand_more', fill: false),
+  'icon-chevron-left': (name: 'chevron_left', fill: false),
+  'icon-chevron-right': (name: 'chevron_right', fill: false),
+  'icon-chevron-up': (name: 'expand_less', fill: false),
+  'icon-circle': (name: 'circle', fill: false),
+  'icon-circle-alert': (name: 'error', fill: true),
+  'icon-circle-alert-outline': (name: 'error', fill: false),
+  'icon-circle-arrow-down': (name: 'arrow_circle_down', fill: true),
+  'icon-circle-arrow-down-outline': (name: 'arrow_circle_down', fill: false),
+  'icon-circle-arrow-up': (name: 'arrow_circle_up', fill: true),
+  'icon-circle-arrow-up-outline': (name: 'arrow_circle_up', fill: false),
+  'icon-circle-check': (name: 'check_circle', fill: true),
+  'icon-circle-check-outline': (name: 'check_circle_outline', fill: false),
+  'icon-circle-clock': (name: 'schedule', fill: true),
+  'icon-circle-clock-outline': (name: 'schedule', fill: false),
+  'icon-circle-code': (name: 'build_circle', fill: true),
+  'icon-circle-code-outline': (name: 'build_circle', fill: false),
+  'icon-circle-gear': (name: 'build_circle', fill: true),
+  'icon-circle-gear-outline': (name: 'build_circle', fill: false),
+  'icon-circle-info': (name: 'info', fill: true),
+  'icon-circle-info-outline': (name: 'info', fill: false),
+  'icon-circle-minus': (name: 'do_not_disturb_on', fill: true),
+  'icon-circle-minus-outline': (name: 'do_not_disturb_on', fill: false),
+  'icon-circle-outline': (name: 'radio_button_unchecked', fill: false),
+  'icon-circle-partial': (name: 'stroke_partial', fill: false),
+  'icon-circle-pie': (name: 'clock_loader_40', fill: false),
+  'icon-circle-play': (name: 'play_circle', fill: true),
+  'icon-circle-play-outline': (name: 'play_circle', fill: false),
+  'icon-circle-plus': (name: 'add_circle', fill: true),
+  'icon-circle-plus-outline': (name: 'add_circle', fill: false),
+  'icon-circle-question': (name: 'help', fill: true),
+  'icon-circle-question-outline': (name: 'help', fill: false),
+  'icon-circle-reload': (name: 'change_circle', fill: true),
+  'icon-circle-reload-outline': (name: 'change_circle', fill: false),
+  'icon-circle-slash': (name: 'block', fill: true),
+  'icon-circle-slash-outline': (name: 'block', fill: false),
+  'icon-circle-stop': (name: 'stop_circle', fill: true),
+  'icon-circle-stop-outline': (name: 'stop_circle', fill: false),
+  'icon-circle-user': (name: 'account_circle', fill: true),
+  'icon-circle-warning': (name: 'error', fill: true),
+  'icon-circle-wrench': (name: 'build_circle', fill: false),
+  'icon-circle-x': (name: 'cancel', fill: true),
+  'icon-circle-x-outline': (name: 'cancel', fill: false),
+  'icon-clipboard': (name: 'assignment', fill: false),
+  'icon-close': (name: 'close', fill: false),
+  'icon-cloud': (name: 'cloud', fill: true),
+  'icon-cloud-outline': (name: 'cloud', fill: false),
+  'icon-cloud-products': (name: 'desktop_cloud_stack', fill: true),
+  'icon-computer': (name: 'computer', fill: false),
+  'icon-copy': (name: 'content_copy', fill: false),
+  'icon-cost': (name: 'attach_money', fill: false),
+  
+  // Dashboard & Navigation
+  'icon-dashboard': (name: 'dashboard', fill: true),
+  'icon-database': (name: 'database', fill: true),
+  'icon-database-outline': (name: 'database', fill: false),
+  'icon-date': (name: 'calendar_month', fill: true),
+  'icon-date-alt': (name: 'calendar_today', fill: false),
+  'icon-delete': (name: 'delete', fill: true),
+  'icon-diagram': (name: 'graph_2', fill: true),
+  'icon-diagram-outline': (name: 'graph_2', fill: false),
+  
+  // Files & Folders
+  'icon-drag-vertical': (name: 'drag_indicator', fill: true),
+  'icon-drag-vertical-outline': (name: 'drag_indicator', fill: false),
+  'icon-edit': (name: 'edit', fill: true),
+  'icon-edit-cancel': (name: 'edit_off', fill: true),
+  'icon-edit-create': (name: 'edit', fill: true),
+  'icon-edit-reload': (name: 'edit', fill: true),
+  'icon-external-link': (name: 'open_in_new', fill: false),
+  'icon-file': (name: 'description', fill: true),
+  'icon-file-check': (name: 'task', fill: true),
+  'icon-file-check-outline': (name: 'task', fill: false),
+  'icon-file-error-outline': (name: 'unknown_document', fill: false),
+  'icon-file-export': (name: 'file_export', fill: true),
+  'icon-file-invoice': (name: 'request_page', fill: true),
+  'icon-file-invoice-create': (name: 'request_page', fill: true),
+  'icon-file-invoice-gear': (name: 'request_page', fill: true),
+  'icon-file-outline': (name: 'description', fill: false),
+  'icon-filter': (name: 'tune', fill: false),
+  'icon-filter-alt': (name: 'filter_alt', fill: true),
+  'icon-filter-alt-off': (name: 'filter_alt_off', fill: true),
+  'icon-filter-alt-off-outline': (name: 'filter_alt_off', fill: false),
+  'icon-filter-alt-outline': (name: 'filter_alt', fill: false),
+  'icon-flag': (name: 'flag_2', fill: true),
+  'icon-flag-off': (name: 'flag_2', fill: false),
+  'icon-folder': (name: 'folder', fill: true),
+  'icon-folder-gear': (name: 'folder', fill: true),
+  'icon-folder-open': (name: 'folder_open', fill: true),
+  'icon-gear-password': (name: 'subtitles_gear', fill: false),
+  'icon-gears': (name: 'manufacturing', fill: false),
+  'icon-globe-network': (name: 'language', fill: true),
+  'icon-globe-network-outline': (name: 'language', fill: false),
+  'icon-globe-outline': (name: 'globe', fill: false),
+  'icon-grid': (name: 'grid_view', fill: true),
+  
+  // UI Elements
+  'icon-hand-gear': (name: 'handyman', fill: true),
+  'icon-handshake': (name: 'handshake', fill: true),
+  'icon-heart': (name: 'favorite', fill: true),
+  'icon-home': (name: 'home', fill: true),
+  'icon-home-outline': (name: 'home', fill: false),
+  'icon-inbox': (name: 'inbox', fill: true),
+  'icon-inbox-multiple': (name: 'all_inbox', fill: true),
+  'icon-key': (name: 'key', fill: true),
+  'icon-life-ring': (name: 'support', fill: false),
+  'icon-lightbulb-magic': (name: 'lightbulb', fill: true),
+  'icon-lightbulb-magic-outline': (name: 'lightbulb', fill: false),
+  'icon-lightbulb-on': (name: 'online_prediction', fill: true),
+  'icon-lightbulb-on-outline': (name: 'online_prediction', fill: false),
+  'icon-link': (name: 'link', fill: false),
+  'icon-link-broken': (name: 'link_off', fill: false),
+  'icon-list': (name: 'list', fill: false),
+  'icon-list-alt': (name: 'format_list_bulleted', fill: false),
+  'icon-lock': (name: 'lock', fill: true),
+  'icon-lock-outline': (name: 'lock', fill: false),
+  'icon-login': (name: 'login', fill: false),
+  'icon-logout': (name: 'logout', fill: false),
+  'icon-mail': (name: 'mail', fill: true),
+  'icon-mail-circle-check': (name: 'mark_email_read', fill: true),
+  'icon-mail-incoming': (name: 'mail', fill: true),
+  'icon-mail-incoming-outline': (name: 'mail', fill: false),
+  'icon-mail-open-dollar': (name: 'payments', fill: true),
+  'icon-mail-outgoing': (name: 'outgoing_mail', fill: true),
+  'icon-mail-outline': (name: 'mail', fill: false),
+  'icon-mail-outgoing-outline': (name: 'outgoing_mail', fill: false),
+  'icon-map-marker': (name: 'location_on', fill: true),
+  'icon-map-marker-alt': (name: 'location_on', fill: false),
+  'icon-map-marker-outline': (name: 'location_on', fill: false),
+  'icon-menu': (name: 'menu', fill: false),
+  'icon-microphone': (name: 'mic', fill: true),
+  'icon-microphone-mute': (name: 'mic_off', fill: true),
+  'icon-minus': (name: 'remove', fill: false),
+  'icon-minus-alt': (name: 'remove', fill: false),
+  'icon-moon': (name: 'dark_mode', fill: true),
+  'icon-moon-outline': (name: 'dark_mode', fill: false),
+  'icon-more': (name: 'more_horiz', fill: false),
+  'icon-more-vert': (name: 'more_vert', fill: false),
+  'icon-nodes': (name: 'hub', fill: true),
+  'icon-nodes-circle-check': (name: 'network_node', fill: true),
+  'icon-number': (name: 'numbers', fill: false),
+  'icon-page-first': (name: 'first_page', fill: false),
+  'icon-page-last': (name: 'last_page', fill: false),
+  'icon-paper-plane': (name: 'send', fill: true),
+  'icon-paste': (name: 'content_paste', fill: true),
+  'icon-pause': (name: 'pause', fill: true),
+  'icon-pause-arrow-rotate-right': (name: 'autopause', fill: false),
+  'icon-phone': (name: 'call', fill: true),
+  'icon-play': (name: 'play_arrow', fill: true),
+  'icon-plus': (name: 'add', fill: false),
+  'icon-plus-alt': (name: 'add_2', fill: false),
+  'icon-print': (name: 'print', fill: true),
+  'icon-radio': (name: 'radio_button_unchecked', fill: false),
+  'icon-radio-checked': (name: 'radio_button_checked', fill: false),
+  'icon-refresh': (name: 'cached', fill: false),
+  'icon-reload': (name: 'refresh', fill: false),
+  'icon-reset': (name: 'history', fill: false),
+  'icon-rocket': (name: 'rocket_launch', fill: true),
+  'icon-search': (name: 'search', fill: false),
+  'icon-settings': (name: 'settings', fill: true),
+  'icon-share': (name: 'share', fill: true),
+  'icon-shield': (name: 'security', fill: true),
+  'icon-shield-2fa': (name: 'shield_person', fill: true),
+  'icon-sparkle': (name: 'stars_2', fill: true),
+  'icon-spinner': (name: 'progress_activity', fill: false),
+  'icon-square-minus': (name: 'indeterminate_check_box', fill: true),
+  'icon-square-minus-outline': (name: 'indeterminate_check_box', fill: false),
+  'icon-square-plus': (name: 'add_box', fill: true),
+  'icon-square-plus-outline': (name: 'add_box', fill: false),
+  'icon-squares-minus-outline': (name: 'indeterminate_check_box', fill: false),
+  'icon-squares-plus-outline': (name: 'add_box', fill: false),
+  'icon-star': (name: 'star', fill: true),
+  'icon-star-outline': (name: 'star', fill: false),
+  'icon-stop': (name: 'stop', fill: true),
+  'icon-sun': (name: 'light_mode', fill: true),
+  'icon-sun-outline': (name: 'light_mode', fill: false),
+  'icon-sync': (name: 'sync', fill: false),
+  'icon-table': (name: 'table', fill: false),
+  'icon-table-column': (name: 'data_table', fill: false),
+  'icon-table-column-settings': (name: 'table_edit', fill: false),
+  'icon-tag': (name: 'sell', fill: true),
+  'icon-tag-outline': (name: 'sell', fill: false),
+  'icon-text': (name: 'insert_text', fill: true),
+  'icon-thumbs-down': (name: 'thumb_down', fill: true),
+  'icon-thumbs-up': (name: 'thumb_up', fill: true),
+  'icon-thumbtack-angle': (name: 'keep', fill: true),
+  'icon-ticket-wrench': (name: 'problem', fill: true),
+  'icon-ticket-wrench-multiple': (name: 'problem', fill: true),
+  'icon-triangle-down': (name: 'arrow_drop_down', fill: false),
+  'icon-triangle-left': (name: 'arrow_left', fill: false),
+  'icon-triangle-right': (name: 'arrow_right', fill: false),
+  'icon-triangle-up': (name: 'arrow_drop_up', fill: false),
+  'icon-triangle-wrench': (name: 'handyman', fill: false),
+  'icon-unlock': (name: 'lock_open_right', fill: true),
+  'icon-unlock-outline': (name: 'lock_open_right', fill: false),
+  'icon-user': (name: 'person', fill: true),
+  'icon-user-create': (name: 'person_add', fill: true),
+  'icon-user-outline': (name: 'person', fill: false),
+  'icon-user-remove': (name: 'person_remove', fill: true),
+  'icon-user-settings': (name: 'person_edit', fill: true),
+  'icon-users': (name: 'group', fill: true),
+  'icon-verified': (name: 'verified', fill: false),
+  'icon-video-camera': (name: 'videocam', fill: true),
+  'icon-video-camera-mute': (name: 'videocam_off', fill: true),
+  'icon-visible': (name: 'visibility', fill: true),
+  'icon-visible-off': (name: 'visibility_off', fill: true),
+  'icon-voip': (name: 'wifi_calling_bar_2', fill: false),
+  'icon-warning': (name: 'warning', fill: true),
+  'icon-warning-outline': (name: 'warning', fill: false),
+  'icon-wifi': (name: 'wifi', fill: true),
+  'icon-wifi-outline': (name: 'wifi', fill: false),
+  'icon-wrench': (name: 'build', fill: true),
+  'icon-x': (name: 'close', fill: false),
+  'icon-x-alt': (name: 'close', fill: false),
+  
+  // API & Technical
+  'icon-api': (name: 'code_blocks', fill: true),
+  'icon-api-outline': (name: 'code_blocks', fill: false),
+  
+  // Additional icons
+  'icon-fact-check': (name: 'fact_check', fill: true),
+  'icon-fact-check-outline': (name: 'fact_check', fill: false),
+  'icon-checklist': (name: 'checklist', fill: true),
+  'icon-checklist-outline': (name: 'checklist', fill: false),
+  'icon-edge-solutions': (name: 'bolt', fill: false),
+);
+
+// Logo icons that need custom SVG handling (no Material Symbols equivalent)
+$logo-icons: (
+  'icon-logo-amazon',
+  'icon-logo-aws',
+  'icon-logo-azure',
+  'icon-logo-centurylink',
+  'icon-logo-facebook',
+  'icon-logo-github',
+  'icon-logo-google',
+  'icon-logo-linkedin',
+  'icon-logo-x',
+  'icon-logo-youtube'
+);
+
+// Generate CSS for logo icons using CSS mask-image
+// This allows color customization via currentColor while using SVG shapes
+@each $logo-icon in $logo-icons {
+  i.#{$logo-icon},
+  div.#{$logo-icon} {
+    // Use CSS mask to display SVG as mask with colored background
+    // PostCSS will inline these SVGs from src/chi/assets/icons/logos/
+    mask-image: url('logos/#{$logo-icon}.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    
+    // Webkit prefixes for Safari support
+    -webkit-mask-image: url('logos/#{$logo-icon}.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    
+    // Background color becomes the visible icon color (inherits from text color)
+    background-color: currentColor;
+    
+    // Standard icon display properties
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    
+    // Hide ::before content since we're using mask instead
+    &::before {
+      content: '';
+      display: none;
+    }
+  }
+}
+
+// Generate CSS for all other icon mappings using ::before pseudo-element
+// This enables backward compatibility: <i class="chi-icon icon-check"></i>
+@each $chi-icon, $icon-data in $icon-mapping {
+  // Skip logo icons as they're handled separately with CSS mask
+  @if not index($logo-icons, $chi-icon) {
+    $material-icon: map-get($icon-data, name);
+    $fill: map-get($icon-data, fill);
+    i.#{$chi-icon}::before,
+    div.#{$chi-icon}::before {
+      content: $material-icon;
+      display: inline-block;
+      font-family: 'Material Symbols Outlined';
+      font-variant: normal;
+      line-height: 1;
+      @if $fill {
+        font-variation-settings: 'FILL' 1;
+      }
+    }
+  }
+}
+

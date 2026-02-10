@@ -1,9 +1,5 @@
 extends ../layout.pug
 
-block scripts
-  script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
-  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Icons'
   - var sizes = ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
@@ -11,13 +7,6 @@ block variables
   - var colors = ['', 'primary', 'success', 'warning', 'danger', 'muted', 'light', 'secondary', 'grey'];
 
 block content
-  h2 Sizes SVG
-  each size in sizes
-    div(class=`test-sizes-svg-${size}`)
-      .chi-icon(class=`-${size}`)
-        svg(aria-hidden='true')
-          use(xlink:href='#icon-atom')
-
   h2 Sizes
   .test-sizes
     .chi-grid
@@ -27,30 +16,11 @@ block content
         .chi-col.-w--2.-d--flex.-align-items--center
           i(class=`chi-icon icon-atom -${size}`, aria-hidden='true')
 
-  h2 Single icon SVG
-  .test-single-svg
-    .chi-grid
-      .chi-col
-        .chi-icon
-          svg(aria-hidden='true')
-            use(xlink:href='#icon-atom')
-
   h2 Single icon
   .test-single
     .chi-grid
       .chi-col.-w--2.-d--flex.-align-items--center
         i(class=`chi-icon icon-atom`, aria-hidden='true')
-
-  h2 Colors SVG
-  .test-colors-svg
-    .chi-grid
-      each color in colors
-        .chi-col.-w--1.-o--1.-d--flex.-align-items--center
-          h4= color
-        .chi-col.-w--2.-d--flex.-align-items--center
-          .chi-icon(class=`-icon--${color} -lg`)
-            svg(aria-hidden='true')
-              use(xlink:href='#icon-atom')
 
   h2 Colors
   .test-colors
@@ -61,20 +31,10 @@ block content
         .chi-col.-w--2.-d--flex.-align-items--center
           i(class=`chi-icon icon-atom -lg -icon--${color}`, aria-hidden='true')
 
-  h2 Icons SVG
-  .test-icons-svg
-    .chi-grid(data-cy='icon-list')
-      each name in icons
-        .chi-col.-w--2.-o--1.-text--center
-          .chi-icon.-sm(class=`-${size}`)
-            svg(aria-hidden='true')
-              use(xlink:href=`#icon-${name}`)
-          h4= 'icon-' + name
-
   h2 Icons
   .test-icons
     .chi-grid(data-cy='icon-list')
       each name in icons
         .chi-col.-w--2.-o--1.-text--center
-          i.chi-icon.-sm(class=`icon-${name}`, aria-hidden="true")
+          i.chi-icon.-md(class=`icon-${name}`, aria-hidden="true")
           h4= 'icon-' + name

@@ -15,9 +15,7 @@ block content
       span This is an example text
       button(class="chi-button -icon -flat" aria-label="Edit")
         .chi-button__content
-          .chi-icon
-            svg(aria-hidden='true')
-              use(xlink:href='#icon-copy')
+          .chi-icon.icon-copy
 
   h3 Disabled
   .test-copy-text-disabled
@@ -25,9 +23,7 @@ block content
       span This is an example text
       button(class="chi-button -icon -flat" aria-label="Edit" disabled)
         .chi-button__content
-          .chi-icon
-            svg(aria-hidden='true')
-              use(xlink:href='#icon-copy')
+          .chi-icon.icon-copy
 
   h3 Sizes
   .test-copy-text-sizes
@@ -36,7 +32,5 @@ block content
         .-m--1
           button(class="chi-button -icon -flat" aria-label="Edit")
             .chi-button__content
-              .chi-icon(class=`-${size}`)
-                svg(aria-hidden='true')
-                  use(xlink:href='#icon-copy')
+              .chi-icon(class=`icon-copy -${size}`)
           p.-text.-text--center #{size}

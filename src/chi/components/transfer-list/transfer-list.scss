@@ -54,12 +54,12 @@
 
     &.-checkbox {
       &::before {
-        content: '\e91d';
+        content: 'check_box_outline_blank';
       }
 
       &:checked {
         &::before {
-          content: '\e91c';
+          content: 'check_box';
           color: $transfer-list-checkbox-icon-color;
         }
       }
@@ -67,7 +67,7 @@
 
     &.-locked {
       &::before {
-        content: '\e959';
+        content: 'lock';
       }
     }
   }

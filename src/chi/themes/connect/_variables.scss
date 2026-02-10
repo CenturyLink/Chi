@@ -318,9 +318,9 @@ $color-background-gradient-accent-4: linear-gradient(
 
 // Icons
 $icon-color: $color-icon-base;
-$icon-size-base: 1rem;
-$icon-size-xs: 0.75rem;
-$icon-size-sm: 1rem;
+$icon-size-base: 1.25rem;
+$icon-size-xs: 1rem;
+$icon-size-sm: 1.25rem;
 $icon-size-sm2: 1.25rem;
 $icon-size-sm3: 1.5rem;
 $icon-size-md: 2rem;
@@ -377,22 +377,22 @@ $accordion-link-margin-left: 0.25rem;
 $accordion-sm-item-font-size: $font-size-md;
 $accordion-sm-item-line-height: 1.25rem;
 $accordion-sm-item-padding: 0.625rem 1rem;
-$accordion-sm-item-icon-size: 1rem;
+$accordion-sm-item-icon-size: 1.25rem;
 $accordion-sm-item-content-padding: 1rem;
 $accordion-md-item-font-size: $font-size-xl;
 $accordion-md-item-line-height: 1.5rem;
 $accordion-md-item-padding: 1.5rem;
-$accordion-md-item-icon-size: 1rem;
+$accordion-md-item-icon-size: 1.25rem;
 $accordion-md-item-content-padding: 0 1.5rem 1.5rem;
 $accordion-lg-item-font-size: $font-size-xl;
 $accordion-lg-item-line-height: 1.5rem;
 $accordion-lg-item-padding: 1.5rem;
-$accordion-lg-item-icon-size: 1rem;
+$accordion-lg-item-icon-size: 1.25rem;
 $accordion-lg-item-content-padding: 0 1.5rem 1.5rem;
 $accordion-xl-item-font-size: $font-size-xl;
 $accordion-xl-item-line-height: 1.5rem;
 $accordion-xl-item-padding: 1.5rem;
-$accordion-xl-item-icon-size: 1rem;
+$accordion-xl-item-icon-size: 1.25rem;
 $accordion-xl-item-content-padding: 0 1.5rem 1.5rem;
 
 // Alert
@@ -911,11 +911,11 @@ $button-xs-font-size: $font-size-xs;
 $button-xs-line-height: $line-height-sm;
 $button-xs-padding: 0.1875rem 1rem;
 $button-xs-text-transform: none;
-$button-icon-xs-font-size: 0.75rem;
-$button-icon-xs-line-height: 0.75rem;
-$button-icon-xs-padding: 0.3125rem;
-$button-icon-xs-height: 0.75rem;
-$button-icon-xs-width: 0.75rem;
+$button-icon-xs-font-size: 1rem;
+$button-icon-xs-line-height: 1rem;
+$button-icon-xs-padding: 0.1875rem;
+$button-icon-xs-height: 1rem;
+$button-icon-xs-width: 1rem;
 
 $button-sm-font-size: $font-size-base;
 $button-sm-line-height: $line-height-sm;
@@ -951,11 +951,11 @@ $button-xl-font-size: $font-size-xl;
 $button-xl-line-height: $line-height-lg;
 $button-xl-padding: 0.9375rem 3rem;
 $button-xl-text-transform: none;
-$button-icon-xl-font-size: 1.25rem;
-$button-icon-xl-line-height: 1.25rem;
-$button-icon-xl-padding: 1.0625rem;
-$button-icon-xl-height: 1.25rem;
-$button-icon-xl-width: 1.25rem;
+$button-icon-xl-font-size: 1.5rem;
+$button-icon-xl-line-height: 1.5rem;
+$button-icon-xl-padding: 0.9375rem;
+$button-icon-xl-height: 1.5rem;
+$button-icon-xl-width: 1.5rem;
 
 $button-labeled-icon-padding: 1rem;
 
@@ -1396,32 +1396,32 @@ $dropdown-select-hover-border-color: $color-teal-70;
 
 $dropdown-select-xs-height: 1.5rem;
 $dropdown-select-xs-font-size: $font-size-xs;
-$dropdown-select-xs-line-height: 0.75rem;
-$dropdown-select-xs-arrow-background-size: 0.75rem;
+$dropdown-select-xs-line-height: 1rem;
+$dropdown-select-xs-arrow-background-size: 1rem;
 $dropdown-select-xs-padding: 0.3125rem 0.5rem;
 
 $dropdown-select-sm-height: 2rem;
 $dropdown-select-sm-font-size: $font-size-base;
 $dropdown-select-sm-line-height: $line-height-sm;
-$dropdown-select-sm-arrow-background-size: 0.75rem;
+$dropdown-select-sm-arrow-background-size: 1.25rem;
 $dropdown-select-sm-padding: 0.4375rem 0.75rem;
 
 $dropdown-select-md-height: 2.5rem;
 $dropdown-select-md-font-size: $font-size-base;
 $dropdown-select-md-line-height: 1.25rem;
-$dropdown-select-md-arrow-background-size: 1rem;
+$dropdown-select-md-arrow-background-size: 1.25rem;
 $dropdown-select-md-padding: 0.5625rem 1rem 0.5625rem 0.75rem;
 
 $dropdown-select-lg-height: 3rem;
 $dropdown-select-lg-font-size: $font-size-base;
 $dropdown-select-lg-line-height: $line-height-lg;
-$dropdown-select-lg-arrow-background-size: 1rem;
+$dropdown-select-lg-arrow-background-size: 1.25rem;
 $dropdown-select-lg-padding: 0.6875rem 1rem 0.6875rem 0.75rem;
 
 $dropdown-select-xl-height: 3.5rem;
 $dropdown-select-xl-font-size: $font-size-base;
 $dropdown-select-xl-line-height: 2rem;
-$dropdown-select-xl-arrow-background-size: 1rem;
+$dropdown-select-xl-arrow-background-size: 1.25rem;
 $dropdown-select-xl-padding: 0.6875rem 1rem 0.6875rem 1rem;
 
 // Expansion panel
@@ -1618,7 +1618,7 @@ $label-help-hover-icon-color: $color-teal-100;
 $link-text-decoration: underline;
 $link-hover-text-decoration: underline;
 
-$link-cta-icon: '\e904';
+$link-cta-icon: 'east';
 $link-cta-icon-color: $color-orange-60;
 $link-cta-icon-size: 1rem;
 $link-cta-text-transform: none;
@@ -1800,8 +1800,8 @@ $number-input-expanded-xs-width: 6rem;
 $number-input-expanded-xs-button-font-size: $button-xs-font-size;
 $number-input-expanded-xs-button-line-height: $button-xs-line-height;
 $number-input-expanded-xs-button-height: $number-input-xs-height;
-$number-input-expanded-xs-button-padding: 0.3125rem;
-$number-input-expanded-xs-button-icon-size: 0.75rem;
+$number-input-expanded-xs-button-padding: 0.1875rem;
+$number-input-expanded-xs-button-icon-size: 1rem;
 
 $number-input-expanded-sm-width: 8rem;
 $number-input-expanded-sm-button-font-size: $button-sm-font-size;
@@ -1814,22 +1814,22 @@ $number-input-expanded-md-width: 10rem;
 $number-input-expanded-md-button-font-size: $button-md-font-size;
 $number-input-expanded-md-button-line-height: $button-md-line-height;
 $number-input-expanded-md-button-height: $number-input-md-height;
-$number-input-expanded-md-button-padding: 0.6875rem;
-$number-input-expanded-md-button-icon-size: 1rem;
+$number-input-expanded-md-button-padding: 0.5625rem;
+$number-input-expanded-md-button-icon-size: 1.25rem;
 
 $number-input-expanded-lg-width: 12rem;
 $number-input-expanded-lg-button-font-size: $button-lg-font-size;
 $number-input-expanded-lg-button-line-height: $button-lg-line-height;
 $number-input-expanded-lg-button-height: $number-input-lg-height;
 $number-input-expanded-lg-button-padding: 0.9375rem;
-$number-input-expanded-lg-button-icon-size: 1rem;
+$number-input-expanded-lg-button-icon-size: 1.25rem;
 
 $number-input-expanded-xl-width: 12rem;
 $number-input-expanded-xl-button-font-size: $button-xl-font-size;
 $number-input-expanded-xl-button-line-height: $button-xl-line-height;
 $number-input-expanded-xl-button-height: $number-input-xl-height;
 $number-input-expanded-xl-button-padding: 0.9375rem;
-$number-input-expanded-xl-button-icon-size: 1rem;
+$number-input-expanded-xl-button-icon-size: 1.5rem;
 
 $number-input-expanded-button-disabled-background-color: $color-grey-10;
 $number-input-expanded-button-disabled-border-color: $color-border-base;
@@ -2399,10 +2399,11 @@ $text-input-xs-iconleft-padding-left: 1.6875rem;
 $text-input-xs-iconright-padding-right: 1.6875rem;
 $text-input-xs-iconleft-left: 0.5rem;
 $text-input-xs-iconright-right: 0.5rem;
-$text-input-xs-icon-height: 0.75rem;
+$text-input-xs-icon-font-size:  1rem;
+$text-input-xs-icon-height: 1rem;
 $text-input-xs-icon-padding: 0.375rem;
-$text-input-xs-icon-width: 0.75rem;
-$text-input-xs-icon-top: 0.375rem;
+$text-input-xs-icon-width: 1rem;
+$text-input-xs-icon-top: 0.25rem;
 $text-input-xs-spinner-right: 0.5rem;
 
 $text-input-sm-height: 2rem;
@@ -2413,6 +2414,7 @@ $text-input-sm-iconleft-padding-left: 1.9375rem;
 $text-input-sm-iconright-padding-right: 1.9375rem;
 $text-input-sm-iconleft-left: 0.5rem;
 $text-input-sm-iconright-right: 0.5rem;
+$text-input-sm-icon-font-size:  1rem;
 $text-input-sm-icon-height: 1rem;
 $text-input-sm-icon-padding: 0.5rem;
 $text-input-sm-icon-width: 1rem;
@@ -2427,6 +2429,7 @@ $text-input-md-iconleft-padding-left: 2.5rem;
 $text-input-md-iconright-padding-right: 2.5rem;
 $text-input-md-iconleft-left: 0.75rem;
 $text-input-md-iconright-right: 0.75rem;
+$text-input-md-icon-font-size:  1.25rem;
 $text-input-md-icon-height: 1.25rem;
 $text-input-md-icon-padding: 0.75rem;
 $text-input-md-icon-width: 1.25rem;
@@ -2441,6 +2444,7 @@ $text-input-lg-iconleft-padding-left: 2.5rem;
 $text-input-lg-iconright-padding-right: 2.5rem;
 $text-input-lg-iconleft-left: 0.75rem;
 $text-input-lg-iconright-right: 0.75rem;
+$text-input-lg-icon-font-size:  1.25rem;
 $text-input-lg-icon-height: 1.25rem;
 $text-input-lg-icon-padding: 1rem;
 $text-input-lg-icon-width: 1.25rem;
@@ -2455,10 +2459,11 @@ $text-input-xl-iconleft-padding-left: 3rem;
 $text-input-xl-iconright-padding-right: 3rem;
 $text-input-xl-iconleft-left: 1rem;
 $text-input-xl-iconright-right: 1rem;
-$text-input-xl-icon-height: 1.25rem;
+$text-input-xl-icon-font-size:  1.5rem;
+$text-input-xl-icon-height: 1.5rem;
 $text-input-xl-icon-padding: 1rem;
-$text-input-xl-icon-width: 1.25rem;
-$text-input-xl-icon-top: 1.0625rem;
+$text-input-xl-icon-width: 1.5rem;
+$text-input-xl-icon-top: 1rem;
 $text-input-xl-spinner-right: 1rem;
 
 $text-input-md-floating-label-bottom: 0.5rem;

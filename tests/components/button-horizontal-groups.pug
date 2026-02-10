@@ -12,9 +12,7 @@ block variables
 
 block content
   mixin icon(name)
-    .chi-icon
-      svg
-        use(xlink:href=`#icon-${name}`)
+    .chi-icon(class=`icon-${name}`)
 
   mixin button(icon, type, style, size, modifier)
     button.chi-button(class={
