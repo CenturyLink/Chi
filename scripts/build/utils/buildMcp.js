@@ -1,18 +1,23 @@
 import { execSync } from 'child_process';
 import ora from 'ora';
 
-const spinner = ora('[CHI]: Building MCP metadata').start();
+function run(label, command) {
+  const spinner = ora(label).start();
 
-try {
-  execSync('npm run build:mcp', { 
-    stdio: 'inherit',
-    cwd: process.cwd()
-  });
-  spinner.succeed('[CHI]: MCP metadata built successfully');
-  process.exit(0);
-} catch (error) {
-  spinner.fail('[CHI]: MCP metadata build failed');
-  const errorMessage = error instanceof Error ? error.message : String(error);
-  console.error(errorMessage);
-  process.exit(1);
+  try {
+    execSync(command, { stdio: 'pipe', cwd: process.cwd() });
+    spinner.succeed(label.replace('...'));
+  } catch (error) {
+    spinner.fail(label.replace('...'));
+    const stderr = error.stderr ? error.stderr.toString().trim() : '';
+    const stdout = error.stdout ? error.stdout.toString().trim() : '';
+
+    if (stderr) console.error(stderr);
+    else if (stdout) console.error(stdout);
+
+    process.exit(1);
+  }
 }
+
+run('[CHI]: Syncing skills from SCSS sources...', 'npm run sync:skills');
+run('[CHI]: Building MCP metadata...', 'npm run build:mcp');

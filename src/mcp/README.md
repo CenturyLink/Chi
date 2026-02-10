@@ -1,240 +1,132 @@
-# Chi MCP Metadata Generator
+# Chi MCP Metadata
 
-Generates comprehensive metadata for the Chi Design System MCP server.
+This directory contains the MCP metadata generation pipeline and the generated `metadata.json` consumed by the external Chi MCP server.
 
 ## Architecture
 
 ```
 src/mcp/
-├── build.ts                    # Main entry point
-├── metadata.json               # Generated output (includes cache info)
-├── README.md                   # This file
-│
-├── config/                     # Configuration
-│   ├── constants.ts           # Themes, mappings, component props
-│   ├── patterns.ts            # Centralized validation patterns
-│   └── guidelines.ts          # Best practices (Web Components first!)
-│
-├── types/                      # TypeScript definitions
-│   └── index.ts               # All interfaces and types
-│
-├── extractors/                 # Data extraction
-│   ├── tokens/                # Design token extraction
-│   │   ├── index.ts          # Main extraction logic
-│   │   ├── parser.ts         # SCSS variable parsing
-│   │   ├── categorizer.ts    # Token categorization
-│   │   └── metadata.ts       # Descriptions and examples
-│   │
-│   ├── utilities/             # Utility class extraction
-│   │   ├── index.ts          # Main extraction + validation
-│   │   ├── spacing.ts        # Spacing utility generator
-│   │   ├── color.ts          # Color utility generator
-│   │   ├── opacity.ts        # Opacity utility generator
-│   │   ├── parser.ts         # SCSS parsing
-│   │   ├── categories.ts     # Category definitions
-│   │   └── validator.ts      # Format validation (double-dash)
-│   │
-│   ├── cssComponents/         # CSS component extraction
-│   │   ├── index.ts          # Main extraction logic
-│   │   ├── parser.ts         # SCSS component parsing
-│   │   ├── generators.ts     # Example generation
-│   │   └── metadata.ts       # Descriptions and categories
-│   │
-│   └── changelog/             # Changelog extraction
-│       └── index.ts          # Parses CHANGELOG.md for version history
-│
-├── builders/                   # Metadata assembly
-│   ├── metadata.ts           # Final assembly
-│   ├── searchIndex.ts        # Keyword search index
-│   ├── quality.ts            # Quality metrics
-│   └── performance.ts        # Performance hints
-│
-├── validation/                 # Validation & migration
-│   ├── antiPatterns.ts       # Common mistakes
-│   ├── schemas.ts            # Component validation rules
-│   ├── relationships.ts      # Element relationships
-│   ├── migration.ts          # HTML → Web Component migration
-│   └── crossMcp.ts           # Cross-MCP conflict detection
-│
-├── interop/                    # Central repository integration
-│   ├── index.ts              # Module exports
-│   ├── types.ts              # Interop type definitions
-│   ├── exports.ts            # Export functions
-│   ├── recommendation.ts     # Approach recommendation engine
-│   └── schema.ts             # Contract with central repo
-│
-├── tools/                      # MCP tool definitions
-│   └── index.ts              # 18 MCP tools
-│
-└── utils/                      # Helpers
-    └── helpers.ts            # Utility functions
+├── config.ts                  # Centralized configuration (paths, themes, WC tags, categories, descriptions)
+├── metadata.json              # Generated output (gitignored)
+├── scripts/
+│   ├── generate.ts            # Orchestrator: assembles metadata.json from all modules
+│   ├── sync-skills.ts         # Updates Skills/Rules files from SCSS (auto-generated sections)
+│   └── validate.ts            # Post-build validation (16 structural + quality checks)
+├── extractors/
+│   ├── extract.ts             # Shared SCSS extraction logic (components, tokens, utilities, WC mappings)
+│   ├── tokens.ts              # Token enrichment (descriptions, examples, categories)
+│   ├── utilities.ts           # Utility class generation (spacing, color, opacity, static)
+│   └── components.ts          # Component deduplication and categorization
+└── data/
+    ├── tools.json             # MCP tool definitions (19 tools)
+    └── static-data.ts         # Tools, anti-patterns, guidelines, schemas, relationships, skills bundling
 ```
 
-## Key Features
+**Grouping logic:**
+- `scripts/` -- Entry-point scripts invoked via npm (orchestrators)
+- `extractors/` -- Modules that parse SCSS and enrich data (pure data transforms)
+- `data/` -- Static data files and the module that assembles them
+- `config.ts` -- Top-level config, shared by all modules
 
-### 1. Web Components First
-The metadata strongly recommends **Chi Web Components (Custom Elements)** as the primary approach:
-- Better developer experience
-- Type safety
-- Built-in interactivity
-- Automatic accessibility handling
+Supporting data lives in Cursor Skills and Rules:
 
-HTML/CSS is available as fallback for legacy browser support or when explicitly requested.
-
-### 2. Utility Format Validation
-All utilities use **double-dash syntax** and are validated:
-- ✅ Correct: `-p--4`, `-bg--primary`, `-opacity--60`
-- ❌ Wrong: `-p-4`, `-bg-primary`, `-opacity-60`
-
-The validator automatically detects and suggests corrections.
-
-### 3. HTML to Web Component Migration
-The `migration.ts` module provides:
-- CSS class to Web Component property mapping
-- Automatic migration suggestions
-- Preservation of utility classes on Web Components
-
-Example migration:
-```html
-<!-- Before (CSS) -->
-<button class="chi-button -primary -lg">Click</button>
-
-<!-- After (Web Component) -->
-<chi-button color="primary" size="lg">Click</chi-button>
+```
+.cursor/
+├── skills/
+│   ├── chi-components/reference.md         # Component descriptions, categories, relationships
+│   ├── chi-tokens/reference.md             # Token descriptions, examples, relationships
+│   ├── chi-utilities/reference.md          # Utility class reference
+│   ├── chi-component-schemas/schemas.json  # Validation schemas (modifiers, conflicts, a11y)
+│   ├── chi-search/reference.md             # Synonyms and use-case mappings
+│   └── chi-recommendations/SKILL.md        # Implementation approach decision tree
+└── rules/
+    ├── chi-design-system.md                # Global conventions
+    ├── chi-code-validation.md              # Anti-patterns and validation
+    └── chi-migration.md                    # CSS-to-WC and modifier-to-prop mappings
 ```
 
-### 4. Comprehensive Search Index
-Semantic search with synonyms for discoverability:
-- "center" → finds `-mx--auto`, `-justify-content--center`
-- "error" → finds `-text--danger`, `chi-alert`, `-bg--danger`
-- "button" → finds `chi-button`, `-primary`, `-secondary`
+## Build Flow
 
-## Usage
-
-### Build Metadata
-```bash
-npm run build:mcp
+```
+npm run build
+  │
+  ├─ 1. sync-skills.ts    ← Updates Skills/Rules from SCSS (auto-generated sections)
+  ├─ 2. generate.ts       ← Produces metadata.json from SCSS + Skills
+  │     ├─ extractors/     (SCSS parsing + enrichment)
+  │     ├─ data/           (tools, schemas, anti-patterns, skills)
+  │     └─ validate.ts     (post-build validation)
+  └─ 3. Copy to dist/     ← metadata.json → dist/metadata/chi/
 ```
 
-### Output
-Generates `src/mcp/metadata.json` with:
-- 35+ design tokens across 6 categories
-- 283 utility classes (with validation)
-- 55 CSS components (with Web Component mappings)
-- 18 MCP tools
-- 22 anti-patterns (with Web Component alternatives)
-- 30 migration rules
-- 231 changelog entries (version history)
-- Quality metrics and search indices
-- Cache checksums for efficient invalidation
+## Commands
 
-## MCP Tools (18 total)
+| Command | What it does |
+|---------|-------------|
+| `npm run sync:skills` | Update Skills/Rules auto-generated sections from SCSS |
+| `npm run build:mcp` | Generate `src/mcp/metadata.json` (includes validation) |
+| `npm run build:mcp -- --force` | Force rebuild even if no changes detected |
+| `npm run build` | Full build (includes both of the above) |
 
-| Tool | Description |
-|------|-------------|
-| `get_chi_version` | **Current version and changelog** - What's new in Chi |
-| `recommend_chi_implementation` | **USE FIRST** - Recommends Web Components |
-| `get_design_token_info` | Token details (shared across approaches) |
-| `list_design_tokens` | Browse tokens by category/theme |
-| `get_chi_utility_info` | Utility class details |
-| `list_chi_utilities` | Browse utilities by category |
-| `generate_chi_html_snippet` | HTML generator (fallback) |
-| `get_chi_css_component_info` | CSS component details |
-| `list_chi_css_components` | Browse CSS components |
-| `validate_chi_code` | Code validation + anti-pattern detection |
-| `suggest_related_utilities` | Relationship discovery |
-| `search_by_keyword` | Semantic search |
-| `get_component_schema` | Validation rules |
-| `migrate_html_to_webcomponent` | HTML to Web Component migration |
-| `validate_cross_mcp` | Detect conflicts in mixed codebases |
-| `get_unified_recommendation` | Approach recommendation based on context |
-| `get_migration_path` | Step-by-step migration guidance |
-| `get_interop_data` | Central repository integration data |
+## Output
 
-## Integration with Chi MCP Server
+`metadata.json` contains:
 
-This metadata is designed to work with:
-1. **Chi Vue MCP** - Vue 3 component metadata
-2. **Chi Custom Elements MCP** - Web Component metadata
-3. **Chi HTML/CSS MCP** - This metadata (utilities, tokens, CSS components)
+- **version** -- Package version
+- **summary** -- Counts and theme list
+- **guidelines** -- Best practices, spacing formula, implementation priority
+- **tools** -- 19 MCP tool definitions (includes `setup_chi_html_css_cursor_skills`)
+- **designTokens** -- Extracted from SCSS, enriched with descriptions and examples
+- **utilities** -- Generated (spacing, color, opacity) + static (display, flex, etc.), with examples
+- **cssComponents** -- Extracted from SCSS, deduplicated, categorized, with WC mappings
+- **searchIndex** -- Keyword search indices with synonyms
+- **quality** -- Documentation coverage metrics (tokens, utilities, components, schemas)
+- **antiPatterns** -- Common mistakes with severity and corrections
+- **schemas** -- Component validation rules with accessibility info
+- **relationships** -- Element relationships (tokens → utilities → components)
+- **migration** -- CSS-to-WC conversion rules (modifier → property mappings)
+- **cursorSkills** -- Bundled user-facing Skills/Rules (14 files) for distribution via `setup_chi_html_css_cursor_skills`
+- **cache** -- MD5 checksums and TTL for MCP client caching
 
-All three can be combined to provide comprehensive Chi Design System assistance.
+## Post-Build Validation
 
-## Guidelines
+After generating `metadata.json`, `validate.ts` runs 16 structural and quality checks:
 
-### Spacing
-- Use utility classes: `-p--4`, `-m--2`, `-g--3`
-- Double-dash syntax required
-- Gap utilities preferred over component modifiers
+1. Required top-level sections exist (including antiPatterns, guidelines, relationships, summary)
+2. No duplicate components
+3. Schema keys match component baseClass
+4. Components with WC tags have schemas
+5. Token description coverage above threshold
+6. Utility examples coverage above threshold
+7. Skills bundle file count is consistent
+8. Cache checksums are present
+9. No generic component descriptions
+10. Schema coverage matches component count
+11. WC mapping coverage for known tags
+12. Tools have required name and inputSchema fields
+13. AntiPatterns section is non-empty array
+14. Guidelines has all expected keys (webComponents, spacing, styling, components, accessibility)
+15. SearchIndex has non-empty tokens, utilities, and cssComponents indices
+16. Migration has valid cssToWebComponent array
 
-### Colors
-- Semantic colors: `-bg--success`, `-text--danger`
-- Support variations: `-light`, `-lighter`
+If any critical check fails, the build exits with error code 1.
 
-### Components
-- **Prefer Web Components** over CSS classes
-- Utility classes work on Web Components: `<chi-button class="-p--4">`
+## Incremental Builds
 
-## Changelog Integration
+The generator uses `.build-cache.json` (gitignored) to track MD5 hashes of all source files. If no SCSS, config, or skill/rule files have changed since the last build, the build is skipped. Use `--force` to bypass.
 
-The metadata includes version history extracted from `@centurylink/chi-documentation`:
+## Auto-Sync
 
-```json
-{
-  "changelog": {
-    "currentVersion": "6.87.0",
-    "releaseDate": "Jan 29, 2026",
-    "recentVersions": [
-      {
-        "version": "6.87.0",
-        "date": "Jan 29, 2026",
-        "changes": [
-          {
-            "category": "Components",
-            "type": "Added",
-            "items": ["Modal web component now supports `title` property on simple mode."]
-          }
-        ]
-      }
-    ],
-    "totalVersions": 231
-  }
-}
-```
+Files with `<!-- AUTO-GENERATED:START -->` markers are updated automatically by `sync-skills.ts`. Content outside these markers is preserved. This keeps Skills/Rules in sync with SCSS without manual updates.
 
-Use the `get_chi_version` tool to:
-- Check the current Chi version
-- View recent changes (Added, Changed, Fixed, Removed, Deprecated)
-- Get changes for a specific version
+Currently auto-synced sections:
+- Component list table in `chi-components/reference.md`
+- Token list table in `chi-tokens/reference.md`
+- CSS-to-WC mapping table in `chi-migration.md`
+- Modifier-to-prop tables in `chi-migration.md`
+- Schema `allowedModifiers` in `schemas.json`
 
-## Cache System
+## Distributable Cursor Skills
 
-The metadata includes embedded cache information for efficient invalidation:
+The metadata bundles 9 user-facing Skills/Rules (14 files) in the `cursorSkills` section. The `setup_chi_html_css_cursor_skills` MCP tool uses this data to install Chi Skills/Rules into any user's project.
 
-```json
-{
-  "cache": {
-    "checksums": {
-      "tokens": "e13f3dac",
-      "utilities": "9bc3be7b",
-      "cssComponents": "9375dbe2",
-      "tools": "c5817cf1"
-    },
-    "ttl": 86400
-  }
-}
-```
-
-- **checksums**: MD5 hashes (8 chars) of each section
-- **ttl**: Time-to-live in seconds (24 hours default)
-
-Consumers can compare checksums to detect changes without parsing the full file.
-
-## Quality Metrics
-
-The build calculates:
-- Documentation coverage (tokens, utilities, components)
-- Average description length
-- Examples coverage
-
-Target: 100% coverage with meaningful descriptions.
+See [.cursor/skills/README.md](../../.cursor/skills/README.md) for the full list and installation instructions.
