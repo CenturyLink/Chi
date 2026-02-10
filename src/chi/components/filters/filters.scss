@@ -35,6 +35,31 @@
     }
   }
 
+  .chi-filters-location {
+    .chi-filter-location-field {
+      display: $filters-location-field-display;
+      flex-direction: $filters-location-field-flex-direction;
+
+      .chi-divider {
+        margin: $filters-location-field-divider-margin;
+      }
+
+      chi-button[variant='flat']:not([type='icon']) {
+        margin: $filters-location-field-add-button-margin;
+      }
+    }
+
+    .chi-filter-location-row {
+      display: $filters-location-row-display;
+      gap: $filters-location-row-gap;
+      margin-bottom: $filters-location-row-margin-bottom;
+
+      chi-dropdown-select {
+        min-width: $filters-location-row-dropdown-min-width;
+      }
+    }
+  }
+
   &__trigger-button {
     margin-left: $filters-drawer-trigger-button-margin-left;
   }
