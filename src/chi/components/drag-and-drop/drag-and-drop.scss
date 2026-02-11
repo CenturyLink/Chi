@@ -239,6 +239,12 @@
         border: 0.0625rem solid $drag-item-border-color;
         outline: none;
       }
+
+      &.-active:focus {
+        border: 0.0625rem solid $drag-item-active-border-color;
+        outline: none;
+      }
+
       .chi-drag__closable {
         .chi-button {
           &:focus {

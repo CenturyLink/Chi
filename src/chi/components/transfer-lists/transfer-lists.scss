@@ -1,0 +1,130 @@
+@import '_global-variables';
+chi-transfer-lists {
+  display: block;
+  height: 100%;
+
+  .chi-transfer-lists {
+    display: flex;
+    height: 100%;
+
+    .chi-transfer-lists__column {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+
+      > chi-card {
+        height: 100%;
+
+        .chi-card {
+          height: 100%;
+
+          .chi-card__content {
+            height: 100%;
+            overflow: hidden;
+
+            > div {
+              height: 100%;
+              overflow: hidden;
+
+              .chi-transfer-lists__column-search {
+                margin-bottom: $transfer-list-column-search-margin-bottom;
+              }
+
+              .chi-transfer-lists__column-content {
+                // Search input height and margin bottom
+                height: calc(
+                  100% - #{$transfer-list-search-input-height} - #{$transfer-list-column-search-margin-bottom}
+                );
+                overflow: scroll;
+              }
+            }
+          }
+        }
+      }
+
+      // Grouped column: groups and items
+      .chi-transfer-lists__group {
+        margin-bottom: $transfer-list-group-margin-bottom;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .chi-transfer-lists__group-title {
+          color: $transfer-list-group-title-color;
+          font-size: $transfer-list-group-title-font-size;
+          font-weight: $font-weight-semi-bold;
+          margin-bottom: $transfer-list-group-title-margin-bottom;
+        }
+
+        .chi-transfer-lists__group-items {
+          display: flex;
+          flex-direction: column;
+
+          // Grouped column items: clickable, pointer cursor, red border when selected
+          .chi-transfer-lists__item {
+            cursor: pointer;
+            padding: $transfer-list-item-padding;
+
+            &:hover {
+              background-color: $transfer-list-item-hover-background-color;
+            }
+
+            &.-active {
+              background-color: $transfer-list-item-active-background-color;
+            }
+          }
+        }
+      }
+
+      .chi-transfer-lists__column-header {
+        border-bottom: $transfer-list-column-header-border;
+        flex-shrink: 0;
+        padding: $transfer-list-column-header-padding;
+      }
+
+      .chi-transfer-lists__column-title {
+        align-items: center;
+        display: flex;
+        font-weight: $font-weight-semi-bold;
+        gap: $transfer-list-column-title-gap;
+        margin-bottom: $transfer-list-column-title-margin-bottom;
+      }
+
+      .chi-transfer-lists__column-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: $transfer-list-column-content-padding;
+      }
+    }
+
+    chi-transfer-lists-drag-column {
+      chi-drag {
+        .chi-drag__title {
+          &:has(span + chi-icon) {
+            justify-content: space-between;
+          }
+
+          > chi-icon {
+            .chi-icon {
+              color: $transfer-list-drag-icon-color;
+            }
+          }
+        }
+      }
+    }
+
+    // Transfer buttons: centered between columns
+    .chi-transfer-lists__transfer-buttons {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      gap: $transfer-list-transfer-buttons-gap;
+      justify-content: center;
+      padding: 0 $transfer-list-transfer-buttons-padding-x;
+    }
+  }
+}
