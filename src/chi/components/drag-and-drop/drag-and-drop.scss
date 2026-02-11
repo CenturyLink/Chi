@@ -4,15 +4,15 @@
 .chi-drag {
   .chi-drag__item {
     background-color: $drag-item-background-color;
-    border-radius: $drag-item-border-radius;
     border: 0.0625rem solid $drag-item-border-color;
+    border-radius: $drag-item-border-radius;
     display: flex;
     flex-direction: row;
     padding: 0;
     width: 100%;
 
     &.-active {
-      border: 0.0625rem solid $drag-item-active-border-color;
+      border: $drag-item-active-border;
     }
 
     &:not(:last-of-type) {
@@ -34,8 +34,8 @@
     }
 
     .chi-drag__title {
-      display: flex;
       align-items: center;
+      display: flex;
       font-size: $drag-item-title-font-size;
       font-weight: $drag-item-title-font-weight;
       line-height: $drag-item-title-line-height;
@@ -65,8 +65,8 @@
     }
 
     .chi-drag__closable {
-      display: flex;
       border-left: 0.0625rem solid $drag-item-border-color;
+      display: flex;
 
       .chi-button {
         border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
@@ -94,12 +94,11 @@
     }
 
     .chi-drag__actions-dropdown {
+      align-items: center;
       border-left: 0.0625rem solid $drag-item-border-color;
       border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
-
-      display: flex;
-      align-items: center;
       cursor: pointer;
+      display: flex;
 
       &:hover {
         background-color: $drag-item-close-hover-background-color;
@@ -108,8 +107,8 @@
       .chi-dropdown {
         > chi-button {
           .chi-button {
-            padding: $drag-item-actions-dropdown-button-padding;
             border-color: transparent;
+            padding: $drag-item-actions-dropdown-button-padding;
 
             .chi-icon {
               color: $drag-item-actions-dropdown-icon-color;
@@ -134,8 +133,8 @@
 
             &.-active {
               box-shadow: none;
-              font-weight: $font-weight-normal;
               color: $drag-item-actions-dropdown-active-text-color;
+              font-weight: $font-weight-normal;
 
               .chi-icon {
                 color: $drag-item-actions-dropdown-active-icon-color;
@@ -176,19 +175,19 @@
     }
 
     &.drag-over {
-      position: relative;
       margin-top: 1.25rem;
+      position: relative;
 
       &::after {
+        background-color: $drag-item-drop-indicator-background-color;
         content: '';
+        height: 0.25rem;
+        left: 0;
+        margin-bottom: 0.3125rem;
+        margin-top: 0.3125rem;
         position: absolute;
         top: -0.625rem;
-        left: 0;
         width: 100%;
-        height: 0.25rem;
-        background-color: $drag-item-drop-indicator-background-color;
-        margin-top: 0.3125rem;
-        margin-bottom: 0.3125rem;
       }
     }
 
@@ -241,7 +240,7 @@
       }
 
       &.-active:focus {
-        border: 0.0625rem solid $drag-item-active-border-color;
+        border: $drag-item-active-border;
         outline: none;
       }
 

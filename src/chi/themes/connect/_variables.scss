@@ -1331,6 +1331,7 @@ $drag-item-dragging-close-background-color: $color-background-white;
 $drag-item-drop-indicator-background-color: $focus-color;
 $drag-item-focus-color: $focus-color;
 $drag-item-active-border-color: $focus-color;
+$drag-item-active-border: 0.0625rem solid $drag-item-active-border-color;
 $drag-item-actions-dropdown-button-padding: 1.25rem 1rem;
 $drag-item-actions-dropdown-icon-color: $color-grey-70;
 $drag-item-actions-dropdown-active-text-color: $color-grey-100;
