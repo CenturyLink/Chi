@@ -1492,6 +1492,7 @@ $file-input-button-focus-border-color:      $button-solid-focus-border-color;
 $file-input-button-focus:                   $button-solid-focus-outline;
 
 //Filters
+$filters-badge-padding:                     0.4375rem 0.5rem;
 $filters-content-item-margin-bottom:        1.5rem;
 $filters-content-link-margin-top:           0.5rem;
 $filters-drawer-header-border:              0.0625rem solid $color-grey-30;
@@ -1504,7 +1505,6 @@ $filters-location-field-display:            flex;
 $filters-location-field-divider-margin:     1rem 0;
 $filters-location-field-flex-direction:     column;
 $filters-location-row-display:              flex;
-$filters-location-row-dropdown-min-width:   23%;
 $filters-location-row-gap:                  1rem;
 $filters-location-row-margin-bottom:        1rem;
 
