@@ -231,6 +231,7 @@ $color-icon-info: $color-blue-60;
 $color-icon-muted-light: $color-grey-50;
 $color-icon-muted: $color-grey-60;
 $color-icon-muted-dark: $color-grey-70;
+$color-icon-dark: $color-grey-90;
 $color-icon-white: $color-white;
 $color-icon-black: $color-black;
 
@@ -1670,6 +1671,32 @@ $marketing-icon-size-sm: 5rem;
 $marketing-icon-size-md: 6rem;
 $marketing-icon-size-lg: 8rem;
 $marketing-icon-outline-fill: $marketing-icon-primary-color;
+
+// Inner navigation
+$inner-nav-accordion-content-border-left: 0.125rem solid $color-grey-60;
+$inner-nav-accordion-content-item-title-font-size: $font-size-md;
+$inner-nav-accordion-content-margin-top: 0.625rem;
+$inner-nav-accordion-content-padding: 0 0 0 1.125rem;
+$inner-nav-accordion-icon-color: $color-icon-dark;
+$inner-nav-accordion-icon-font-size: $icon-size-xs;
+$inner-nav-accordion-link-color: $color-text-base;
+$inner-nav-accordion-link-font-size: $font-size-md;
+$inner-nav-accordion-link-font-weight: $font-weight-semi-bold;
+$inner-nav-accordion-link-margin-right: 0.625rem;
+$inner-nav-item-active-color: $color-orange-80;
+$inner-nav-item-active-font-weight: $font-weight-semi-bold;
+$inner-nav-item-hover-background-color: $color-grey-15;
+$inner-nav-item-margin-bottom: 0.5rem;
+$inner-nav-item-title-font-size: $font-size-md;
+$inner-nav-item-title-font-weight: $font-weight-semi-bold;
+$inner-nav-item-title-padding: 0.5rem;
+$inner-nav-padding: 0 0.5rem;
+$inner-nav-title-color: $color-text-muted;
+$inner-nav-title-font-size: $font-size-xs;
+$inner-nav-title-font-weight: $font-weight-semi-bold;
+$inner-nav-title-margin-bottom: 0.625rem;
+$inner-nav-title-text-transform: uppercase;
+$inner-nav-width: 100%;
 
 // Mobile navigation
 $mobile-nav-background-color: $color-background-white;

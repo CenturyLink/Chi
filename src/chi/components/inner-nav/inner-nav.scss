@@ -2,14 +2,14 @@
 @import '_global-mixins';
 
 .chi-inner-nav {
-  width: 100%;
+  width: $inner-nav-width;
 
   .chi-inner-nav__title {
-    text-transform: uppercase;
-    font-weight: $font-weight-semi-bold;
-    color: $color-text-muted;
-    margin-bottom: 0.625rem;
-    font-size: 0.75rem; // font-size-xs
+    color: $inner-nav-title-color;
+    font-size: $inner-nav-title-font-size;
+    font-weight: $inner-nav-title-font-weight;
+    margin-bottom: $inner-nav-title-margin-bottom;
+    text-transform: $inner-nav-title-text-transform;
   }
 
   .chi-inner-nav__item {
@@ -17,18 +17,37 @@
     pointer-events: all;
 
     &:not(:last-of-type) {
-      margin-bottom: 1rem;
+      margin-bottom: $inner-nav-item-margin-bottom;
+    }
+
+    &:has(chi-accordion) {
+      padding: $inner-nav-padding;
+    }
+    
+    &:not(:has(chi-accordion)) {
+      padding-right: $inner-nav-item-title-padding;
+
+      .chi-inner-nav__item-title {
+        padding: $inner-nav-item-title-padding;
+      }
+    }
+
+
+    .chi-inner-nav__item-title {
+      &:hover {
+        background-color: $inner-nav-item-hover-background-color;
+      }
     }
 
     // title
     .chi-inner-nav__item-title:not(.chi-accordion__content .chi-inner-nav__item-title) {
-      font-weight: $font-weight-semi-bold;
-
-      font-size: $font-size-md;
+      font-size: $inner-nav-item-title-font-size;
+      font-weight: $inner-nav-item-title-font-weight;
     }
 
     &.-active {
-      color: red;
+      color: $inner-nav-item-active-color;
+      font-weight: $inner-nav-item-active-font-weight;
     }
 
     // title
@@ -36,26 +55,26 @@
       .chi-accordion__item {
         .chi-accordion__trigger {
           .chi-link {
-            color: $color-text-base;
-            font-weight: $font-weight-semi-bold;
-            font-size: $font-size-md;
-            margin-right: 0.625rem;
+            color: $inner-nav-accordion-link-color;
+            font-size: $inner-nav-accordion-link-font-size;
+            font-weight: $inner-nav-accordion-link-font-weight;
+            margin-right: $inner-nav-accordion-link-margin-right;
           }
 
           .chi-icon {
-            font-size: 0.75rem; // xs icon
-            color: $color-icon-dark;
+            color: $inner-nav-accordion-icon-color;
+            font-size: $inner-nav-accordion-icon-font-size;
           }
         }
 
         .chi-accordion__content {
-          padding: 0 0 0 1.625rem;
-          margin-top: 0.625rem;
-          border-left: 0.125rem solid $color-grey-60;
+          border-left: $inner-nav-accordion-content-border-left;
+          margin-top: $inner-nav-accordion-content-margin-top;
+          padding: $inner-nav-accordion-content-padding;
 
           .chi-inner-nav__item {
             .chi-inner-nav__item-title {
-              font-size: $font-size-md;
+              font-size: $inner-nav-accordion-content-item-title-font-size;
             }
           }
         }
