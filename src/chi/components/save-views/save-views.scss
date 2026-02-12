@@ -6,7 +6,9 @@
     overflow: initial;
 
     .chi-modal__content {
-      .chi-form__item:has(chi-text-input) {
+      .chi-form__item:has(chi-text-input),
+      chi-form-wrapper[type='radio'],
+      chi-alert {
         margin-bottom: $save-views-modal-form-item-margin-bottom;
       }
     }
