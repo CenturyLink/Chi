@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Modals'
@@ -247,9 +246,7 @@ block content
                 h3.chi-modal__subtitle This is the modal subtitle
                 button.chi-button.-icon.-close(data-dismiss="modal" aria-label="Close")
                   .chi-button__content
-                    .chi-icon
-                      svg(aria-hidden='true')
-                        use(xlink:href='#icon-x')
+                    .chi-icon.icon-x
               .chi-modal__content
                 p.-text.-m--0 Modal content
               footer.chi-modal__footer

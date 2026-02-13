@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Alert Toasts' 
@@ -15,28 +14,20 @@ block content
     div(class=`test-toast-${size}`)
       each val, type in icons
         .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -icon--${type}`)
-            svg
-              use(xlink:href=`#${val}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
           .chi-alert__content
               p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
           button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
             .chi-button__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-x')
+              .chi-icon.icon-x
     h4 Titled / #{size}
     div(class=`test-toast-titled-${size}`)
       each val, type in icons
         .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          div(class=`chi-alert__icon chi-icon -icon--${type}`)
-            svg
-              use(xlink:href=`#${val}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
           .chi-alert__content
               p.chi-alert__title= type
               p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} toast alert`
           button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
             .chi-button__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-x')
+              .chi-icon.icon-x

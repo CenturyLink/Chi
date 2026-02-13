@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   -  var title = 'Date Picker'
@@ -23,15 +22,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -47,15 +42,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -74,15 +65,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -101,15 +88,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -128,15 +111,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev.-disabled
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next.-disabled
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -155,15 +134,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev.-disabled
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -186,9 +161,7 @@ block content
     .-position--relative(style="height: 18rem; width:14rem;")
       .chi-input__wrapper.-icon--right
         input#datepicker-2.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
-        .chi-icon
-          svg
-            use(xlink:href="#icon-date")
+        .chi-icon.icon-date
 
   .test-input-error.-py--2
     span.-text--h2 Input Popover Error
@@ -200,9 +173,7 @@ block content
     .-position--relative(style="width:14rem;")
       .chi-input__wrapper.-icon--right.-disabled
         input.chi-input.-load__datepicker(type="text", placeholder="MM/DD/YYYY", disabled)
-        .chi-icon
-          svg
-            use(xlink:href="#icon-date")
+        .chi-icon.icon-date
 
   - day = 1;
 
@@ -212,15 +183,11 @@ block content
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.-sm.icon-chevron-left
           .chi-datepicker__month
             | November 2018
           .next
-            .chi-icon.-sm
-              svg
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.-sm.icon-chevron-right
         .chi-datepicker__day-names
           each weekDay in weekS
             .chi-datepicker__week-day=weekDay
@@ -244,16 +211,12 @@ block content
         .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
           .chi-datepicker__month-row
             .prev
-              .chi-icon.-sm.undefined
-                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                  use(xlink:href='#icon-chevron-left')
+              .chi-icon.-sm.icon-chevron-left
             .chi-datepicker__month
               | November
               | 2018
             .next
-              .chi-icon.-sm.undefined
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-chevron-right')
+              .chi-icon.-sm.icon-chevron-right
           .chi-datepicker__day-names
             each weekDay in weekS
               .chi-datepicker__week-day=weekDay
@@ -291,16 +254,12 @@ block content
         .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
           .chi-datepicker__month-row
             .prev
-              .chi-icon.-sm
-                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                  use(xlink:href='#icon-chevron-left')
+              .chi-icon.-sm.icon-chevron-left
             .chi-datepicker__month
               | November
               | 2018
             .next
-              .chi-icon.-sm
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-chevron-right')
+              .chi-icon.-sm.icon-chevron-right
           .chi-datepicker__day-names
             each weekDay in weekS
               .chi-datepicker__week-day=weekDay

@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Chi time picker'
@@ -22,9 +21,7 @@ block content
         data-target="#popover-base"
       )
         input#base-control.chi-input(type="text" value="01:30 am")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-base
         .chi-popover__content
           .chi-time-picker
@@ -59,9 +56,7 @@ block content
         data-target="#popover-active"
       )
         input#active-control.chi-input.-focus(type="text" value="12:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-active.-active
         .chi-popover__content
           .chi-time-picker
@@ -94,9 +89,7 @@ block content
     div.-disabled
       .chi-input__wrapper.-icon--right
         input#disabled-control.chi-input(type="text" placeholder="--:-- --" disabled)
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
 
   - minute = 0;
   - second = 0;
@@ -107,9 +100,7 @@ block content
     div.-disabled
       .chi-input__wrapper.-icon--right
         input#disabled-value-control.chi-input(type="text" value="01:30" disabled)
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
 
   - minute = 0;
   - second = 0;
@@ -122,9 +113,7 @@ block content
         data-target="#popover-display-seconds"
       )
         input#display-seconds-control.chi-input.-focus(type="text" value="12:00:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-display-seconds.-active
         .chi-popover__content
           .chi-time-picker
@@ -165,9 +154,7 @@ block content
         data-target="#popover-12hr-format"
       )
         input#12hr-format-control.chi-input.-focus(type="text" value="12:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-12hr-format.-active
         .chi-popover__content
           .chi-time-picker
@@ -202,9 +189,7 @@ block content
         data-target="#popover-24hr-format"
       )
         input#24hr-format-control.chi-input.-focus(type="text" value="00:00")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-24hr-format.-active
         .chi-popover__content
           .chi-time-picker
@@ -233,9 +218,7 @@ block content
         data-target="#popover-24hr-format-seconds"
       )
         input#24hr-format-seconds-control.chi-input.-focus(type="text" value="00:00:00")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-24hr-format-seconds.-active
         .chi-popover__content
           .chi-time-picker
@@ -270,9 +253,7 @@ block content
         data-target="#popover-minutes-step-default"
       )
         input#minutes-step-default-control.chi-input.-focus(type="text" value="00:30 am")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-default.-active
         .chi-popover__content
           .chi-time-picker
@@ -309,9 +290,7 @@ block content
         data-target="#popover-minutes-step-5-seconds"
       )
         input#minutes-step-5-seconds-control.chi-input.-focus(type="text" value="12:00:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-5-seconds.-active
         .chi-popover__content
           .chi-time-picker
@@ -354,9 +333,7 @@ block content
         data-target="#popover-minutes-step-10"
       )
         input#minutes-step-10-control.chi-input.-focus(type="text" value="12:30 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-10.-active
         .chi-popover__content
           .chi-time-picker
@@ -393,9 +370,7 @@ block content
         data-target="#popover-minutes-step-15"
       )
         input#minutes-step-15-control.chi-input.-focus(type="text" value="12:30 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-15.-active
         .chi-popover__content
           .chi-time-picker
@@ -432,9 +407,7 @@ block content
         data-target="#popover-minutes-step-20"
       )
         input#minutes-step-20-control.chi-input.-focus(type="text" value="12:40 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-20.-active
         .chi-popover__content
           .chi-time-picker
@@ -471,9 +444,7 @@ block content
         data-target="#popover-minutes-step-30"
       )
         input#minutes-step-30-control.chi-input.-focus(type="text" value="12:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-step-30.-active
         .chi-popover__content
           .chi-time-picker
@@ -510,9 +481,7 @@ block content
         data-target="#popover-seconds-step-default"
       )
         input#seconds-step-default-control.chi-input.-focus(type="text" value="12:00:20 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-default.-active
         .chi-popover__content
           .chi-time-picker
@@ -555,9 +524,7 @@ block content
         data-target="#popover-seconds-step-5"
       )
         input#seconds-step-5-control.chi-input.-focus(type="text" value="12:00:00 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-5.-active
         .chi-popover__content
           .chi-time-picker
@@ -600,9 +567,7 @@ block content
         data-target="#popover-seconds-step-10"
       )
         input#seconds-step-10-control.chi-input.-focus(type="text" value="12:00:30 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-10.-active
         .chi-popover__content
           .chi-time-picker
@@ -645,9 +610,7 @@ block content
         data-target="#popover-seconds-step-15"
       )
         input#seconds-step-15-control.chi-input.-focus(type="text" value="12:00:30 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-15.-active
         .chi-popover__content
           .chi-time-picker
@@ -690,9 +653,7 @@ block content
         data-target="#popover-seconds-step-20"
       )
         input#seconds-step-20-control.chi-input.-focus(type="text" value="12:00:40 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-20.-active
         .chi-popover__content
           .chi-time-picker
@@ -735,9 +696,7 @@ block content
         data-target="#popover-seconds-step-30"
       )
         input#seconds-step-30-control.chi-input.-focus(type="text" value="12:00:30 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-seconds-step-30.-active
         .chi-popover__content
           .chi-time-picker
@@ -780,9 +739,7 @@ block content
         data-target="#popover-minutes-seconds-step-default"
       )
         input#minutes-seconds-step-default-control.chi-input.-focus(type="text" value="12:00:50 pm")
-        .chi-icon
-          svg(xmlns="http://www.w3.org/2000/svg" aria-hidden="true")
-            use(href="#icon-circle-clock-outline")
+        .chi-icon.icon-circle-clock-outline
       section.chi-popover.-animated.chi-popover--bottom.-no-arrow.chi-popover__input#popover-minutes-seconds-step-default.-active
         .chi-popover__content
           .chi-time-picker

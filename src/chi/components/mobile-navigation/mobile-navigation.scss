@@ -322,7 +322,7 @@
 
                   &::after {
                     color: $mobile-nav-list-item-trigger-icon-color;
-                    content: '\e920';
+                    content: 'chevron_right';
                     display: block;
                     font-family: $font-family-icon;
                     font-size: 0.75rem;
@@ -572,7 +572,7 @@
 
                   &::after {
                     color: $mobile-nav-list-item-trigger-icon-color;
-                    content: '\e91e';
+                    content: 'keyboard_arrow_down';
                     display: block;
                     font-family: $font-family-icon;
                     font-size: 0.75rem;

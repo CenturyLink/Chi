@@ -1,4 +1,4 @@
-FROM backstopjs/backstopjs:latest
+FROM backstopjs/backstopjs:6.3.25
 
 WORKDIR /backstopjs
 

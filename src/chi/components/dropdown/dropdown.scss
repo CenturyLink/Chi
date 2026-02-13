@@ -521,10 +521,10 @@ $sizes: (
   &:not([data-position^='left']) {
     &::after {
       color: $dropdown-trigger-icon-color;
-      content: '\e91e';
+      content: 'expand_more';
       display: block;
       font-family: $font-family-icon;
-      font-size: 0.75rem;
+      font-size: 1.25rem;
       font-weight: $font-weight-normal;
       height: 1rem;
       line-height: 1.2rem;
@@ -550,14 +550,14 @@ $sizes: (
     }
 
     &.-sm::after {
-      font-size: 0.625rem;
+      font-size: 1.25rem;
       height: 0.75rem;
       line-height: 0.75rem;
       margin-left: 0.25rem;
     }
 
     &.-xs::after {
-      font-size: 0.625rem;
+      font-size: 1rem;
       height: 0.75rem;
       line-height: 0.875rem;
       margin-left: 0.25rem;
@@ -587,10 +587,10 @@ $sizes: (
   &[data-position^='left'] {
     &::before {
       color: $dropdown-trigger-icon-color;
-      content: '\e91e';
+      content: 'expand_more';
       display: block;
       font-family: $font-family-icon;
-      font-size: 0.75rem;
+      font-size: 1.25rem;
       font-weight: $font-weight-normal;
       height: 1rem;
       line-height: 1.2rem;

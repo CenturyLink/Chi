@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Buttons'
@@ -51,9 +50,7 @@ block content
                       aria-label='Button action'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          i.chi-icon.icon-atom
                       button.chi-button.-m--1(
                       class={
                         [`-${type}`]: type !== 'solid',
@@ -64,9 +61,7 @@ block content
                       disabled=state === 'disabled' ? 'disabled' : false
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          i.chi-icon.icon-atom
                           span Button
                 else
                   td
@@ -94,9 +89,7 @@ block content
                       aria-label='Button action'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          i.chi-icon.icon-atom
                       button.chi-button.-m--1(
                       class={
                         [`-${type}`]: type !== 'solid',
@@ -107,9 +100,7 @@ block content
                       disabled=state === 'disabled' ? 'disabled' : false
                       )
                         .chi-button__content
-                            .chi-icon
-                              svg
-                                use(xlink:href='#icon-atom')
+                            i.chi-icon.icon-atom
                             span Button
 
     if size === 'default'
@@ -125,16 +116,12 @@ block content
                   td.-bg--black
                     button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
                 else
                   td
                     button(type="button", class=`chi-button -float -${style} -${state} -mx--2 -m--1`, aria-label='Button action')
                       .chi-button__content
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-atom')
+                        i.chi-icon.icon-atom
 
   each size in sizes
     div(class={
@@ -147,6 +134,4 @@ block content
           td
             button(class=`chi-button -icon -close -${size}`, aria-label='Close')
               .chi-button__content
-                .chi-icon
-                  svg
-                    use(xlink:href='#icon-x')
+                i.chi-icon.icon-atom

@@ -106,7 +106,7 @@ $vertical-alignments: (top, bottom, middle);
 
         &::after {
           background-image: none;
-          content: '\e921';
+          content: 'keyboard_arrow_up';
           font-family: $font-family-icon;
           font-size: $font-size-xs;
           font-weight: $font-weight-normal;

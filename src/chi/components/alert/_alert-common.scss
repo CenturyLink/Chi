@@ -225,16 +225,19 @@ $states: (
     &.-close,
     &.chi-alert__close-button {
       align-self: flex-start;
+      // Remove default chi-button border so the icon-only alert close control renders borderless;
+      // this explicitly overrides inherited button border styles (including after icon migration updates).
+      border: 0;
       margin-left: 1rem;
       padding: 0.125rem;
       transform: initial;
 
       .chi-icon {
         color: $alert-close-icon-color;
-        font-size: 0.75rem;
-        height: 0.75rem;
-        line-height: 0.75rem;
-        width: 0.75rem;
+        font-size: 1.25rem;
+        height: 1.25rem;
+        line-height: 1.25rem;
+        width: 1.25rem;
       }
     }
   }
@@ -264,9 +267,9 @@ $states: (
         padding: 0;
 
         .chi-icon {
-          font-size: 1rem;
-          height: 1rem;
-          line-height: 1rem;
+          font-size: 1.5rem;
+          height: 1.5rem;
+          line-height: 1.5rem;
           width: 1rem;
         }
       }
@@ -345,6 +348,10 @@ $states: (
 
     &.-close {
       padding-right: 1rem;
+    }
+
+    .chi-alert__close-button {
+      padding: 0;
     }
   }
 }

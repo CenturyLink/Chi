@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Text Inputs'
@@ -34,19 +33,13 @@ block content
   mixin icon(name, size)
     .chi-icon(class={
       [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1,
-      [`-${size}`]: size
-    })
-      svg
-        if name == 'success'
-          use(xlink:href='#icon-check')
-        else if name == 'warning'
-          use(xlink:href='#icon-warning')
-        else if name == 'danger'
-          use(xlink:href='#icon-circle-warning')
-        else if name == 'default'
-          use(xlink:href='#icon-circle-info-outline')
-        else
-          use(xlink:href=`#icon-${name}`)
+      [`-${size}`]: size,
+      'icon-check': name == 'success',
+      'icon-warning': name == 'warning',
+      'icon-circle-warning': name == 'danger',
+      'icon-circle-info-outline': name == 'default',
+      [`icon-${name}`]: !['success', 'warning', 'danger', 'default'].includes(name)
+    }, aria-hidden="true")
 
   each size in sizes
     div(class=`test-${size}`)
@@ -119,21 +112,13 @@ block content
                   .chi-input__wrapper.-icon--right
                     +input(style, state, size, disabled)
                     if style == 'success'
-                      .chi-icon.-icon--success
-                        svg
-                          use(xlink:href='#icon-check')
+                      .chi-icon.-icon--success.icon-check
                     else if style == 'warning'
-                      .chi-icon.-icon--warning
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.-icon--warning.icon-warning
                     else if style == 'danger'
-                      .chi-icon.-icon--danger
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.-icon--danger.icon-circle-warning
                     else
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-info-outline')
+                      .chi-icon.icon-circle-info-outline
 
     div(class=`test-${size}-icon-right`)
       span.-text--h2= `Text Input + Label / ${size} / icon right`
@@ -150,21 +135,13 @@ block content
                     .chi-input__wrapper.-icon--right
                       +input(style, state, size, disabled, id='example')
                       if style == 'success'
-                        .chi-icon.-icon--success
-                          svg
-                            use(xlink:href='#icon-check')
+                        .chi-icon.-icon--success.icon-check
                       else if style == 'warning'
-                        .chi-icon.-icon--warning
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.-icon--warning.icon-warning
                       else if style == 'danger'
-                        .chi-icon.-icon--danger
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.-icon--danger.icon-circle-warning
                       else
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-info-outline')
+                        .chi-icon.icon-circle-info-outline
 
     div(class=`test-${size}-icon-left-right`)
       span.-text--h2= `Text Input / ${size} / icon left / icon right`
@@ -180,21 +157,13 @@ block content
                     +input(style, state, size, disabled)
                     +icon('atom')
                     if style == 'success'
-                      .chi-icon.-icon--success
-                        svg
-                          use(xlink:href='#icon-check')
+                      .chi-icon.-icon--success.icon-check
                     else if style == 'warning'
-                      .chi-icon.-icon--warning
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.-icon--warning.icon-warning
                     else if style == 'danger'
-                      .chi-icon.-icon--danger
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.-icon--danger.icon-circle-warning
                     else
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-info-outline')
+                      .chi-icon.icon-circle-info-outline
 
     div(class=`test-${size}-icon-left-right`)
       span.-text--h2= `Text Input + label / ${size} / icon left / icon right`
@@ -212,21 +181,13 @@ block content
                       +input(style, state, size, disabled, id='example')
                       +icon('atom')
                       if style == 'success'
-                        .chi-icon.-icon--success
-                          svg
-                            use(xlink:href='#icon-check')
+                        .chi-icon.-icon--success.icon-check
                       else if style == 'warning'
-                        .chi-icon.-icon--warning
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.-icon--warning.icon-warning
                       else if style == 'danger'
-                        .chi-icon.-icon--danger
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.-icon--danger.icon-circle-warning
                       else
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-info-outline')
+                        .chi-icon.icon-circle-info-outline
 
     div(class=`test-${size}-label-inline`)
       span.-text--h2= `Text Input + label / ${size} / inline`
@@ -275,17 +236,11 @@ block content
                   .-d--flex
                     .chi-label.-status(class=`-${style}`)
                       if style == 'success'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-check')
+                        .chi-icon.icon-circle-check
                       else if style == 'warning'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.icon-warning
                       else if style == 'danger'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.icon-circle-warning
                       | Optional helper message
 
   each size in _sizes
@@ -356,17 +311,11 @@ block content
                 .-d--flex
                   .chi-label.-status(class=`-${style}`)
                     if style == 'success'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-check')
+                      .chi-icon.icon-circle-check
                     else if style == 'warning'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.icon-warning
                     else if style == 'danger'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.icon-circle-warning
                     | Optional helper message
             td
               .-m--3
@@ -384,15 +333,9 @@ block content
                 .-d--flex
                   .chi-label.-status(class=`-${style}`)
                     if style == 'success'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-check')
+                      .chi-icon.icon-circle-check
                     else if style == 'warning'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.icon-warning
                     else if style == 'danger'
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.icon-circle-warning
                     | Optional helper message
