@@ -1,0 +1,1296 @@
+{
+  "chi-button": {
+    "name": "button",
+    "baseClass": "chi-button",
+    "webComponentTag": "chi-button",
+    "allowedModifiers": [
+      "-primary",
+      "-secondary",
+      "-dark",
+      "-light",
+      "-danger",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-flat",
+      "-outline",
+      "-pill",
+      "-icon",
+      "-float",
+      "-close",
+      "-expand",
+      "-fluid",
+      "-justified",
+      "-disabled",
+      "-hover",
+      "-focus",
+      "-active",
+      "-uppercase",
+      "-no-hover",
+      "-xs",
+      "-line-height",
+      "-padding",
+      "-text-transform",
+      "-icons",
+      "-width",
+      "-font-size",
+      "-background-color-disabled",
+      "-background-color-hover",
+      "-background-color-active",
+      "-background-color-outline",
+      "-background-color-outline-hover",
+      "-background-color-outline-active",
+      "-background-color-flat-hover",
+      "-background-color-flat-active",
+      "-border-color",
+      "-border-color-disabled",
+      "-border-color-hover",
+      "-border-color-active",
+      "-border-color-outline",
+      "-border-color-outline-hover",
+      "-border-color-outline-active",
+      "-border-color-flat-hover",
+      "-border-color-flat-active",
+      "-text-color",
+      "-text-color-disabled",
+      "-text-color-outline",
+      "-text-color-outline-hover",
+      "-text-color-outline-active",
+      "-text-color-flat",
+      "-icon-color-disabled"
+    ],
+    "conflictingModifiers": [
+      ["-primary", "-secondary", "-dark", "-light", "-danger"],
+      ["-sm", "-md", "-lg", "-xl"],
+      ["-flat", "-outline"]
+    ],
+    "maxModifiers": 4,
+    "requiredAttributes": ["type"],
+    "recommendedAttributes": ["aria-label"],
+    "recommendedCombinations": [
+      {
+        "modifiers": ["-primary", "-lg"],
+        "utilities": ["-p--3"],
+        "description": "Primary call-to-action button",
+        "useCase": "Main action buttons in forms and cards"
+      },
+      {
+        "modifiers": ["-flat", "-sm"],
+        "utilities": ["-p--2"],
+        "description": "Secondary action button",
+        "useCase": "Less prominent actions like cancel or close"
+      },
+      {
+        "modifiers": ["-icon"],
+        "utilities": [],
+        "description": "Icon-only button",
+        "useCase": "Toolbar buttons, close buttons (add aria-label for accessibility)"
+      }
+    ],
+    "accessibility": {
+      "keyboardSupport": "Activates on Enter or Space",
+      "focusManagement": "Receives focus in tab order",
+      "requiredAria": []
+    }
+  },
+  "chi-alert": {
+    "name": "alert",
+    "baseClass": "chi-alert",
+    "webComponentTag": "chi-alert",
+    "allowedModifiers": [
+      "-success",
+      "-warning",
+      "-danger",
+      "-info",
+      "-muted",
+      "-sm",
+      "-md",
+      "-lg",
+      "-banner",
+      "-bubble",
+      "-toast",
+      "-center",
+      "-close",
+      "-hover",
+      "-border-color",
+      "-banner-background-color",
+      "-bubble-background-color",
+      "-color",
+      "-title-color"
+    ],
+    "conflictingModifiers": [
+      ["-success", "-warning", "-danger", "-info", "-muted"],
+      ["-sm", "-md", "-lg"],
+      ["-banner", "-bubble", "-toast"]
+    ],
+    "maxModifiers": 3,
+    "requiredAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["alert"],
+      "keyboardSupport": "Dismissible alerts: Escape to close",
+      "focusManagement": "Auto-announces to screen readers"
+    }
+  },
+  "chi-modal": {
+    "name": "modal",
+    "baseClass": "chi-modal",
+    "webComponentTag": "chi-modal",
+    "allowedModifiers": [
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-center",
+      "-no-border",
+      "-centered",
+      "-active",
+      "-animated",
+      "-transitioning",
+      "-header-image",
+      "-gradient",
+      "-full-page"
+    ],
+    "conflictingModifiers": [["-sm", "-md", "-lg", "-xl"]],
+    "requiredAttributes": ["role", "aria-label", "aria-modal"],
+    "requiredParent": "body",
+    "dependencies": ["chi-backdrop"],
+    "forbiddenParents": ["chi-card", "chi-dropdown"],
+    "accessibility": {
+      "requiredRoles": ["dialog"],
+      "requiredAria": ["aria-label", "aria-modal"],
+      "keyboardSupport": "Escape to close, Tab to cycle focus within modal",
+      "focusManagement": "Traps focus inside modal, returns focus on close"
+    }
+  },
+  "chi-dropdown": {
+    "name": "dropdown",
+    "baseClass": "chi-dropdown",
+    "webComponentTag": "chi-dropdown",
+    "allowedModifiers": [
+      "-animate",
+      "-hover",
+      "-fluid",
+      "-active",
+      "-h--auto",
+      "-no-interaction",
+      "-icon--right",
+      "-has-active",
+      "-disabled",
+      "-text",
+      "-list",
+      "-w--xs",
+      "-w--sm",
+      "-w--md",
+      "-w--lg",
+      "-w--xl",
+      "-xs",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-icon",
+      "-primary",
+      "-secondary",
+      "-dark",
+      "-light",
+      "-danger",
+      "-focus",
+      "-select-font-size",
+      "-select-line-height",
+      "-select-chevron-size",
+      "-select-padding"
+    ],
+    "allowedChildren": ["chi-dropdown__trigger", "chi-dropdown__menu", "chi-dropdown__menu-item"],
+    "accessibility": {
+      "requiredAria": ["aria-haspopup", "aria-expanded"],
+      "keyboardSupport": "Arrow keys to navigate, Enter to select, Escape to close"
+    }
+  },
+  "chi-card": {
+    "name": "card",
+    "baseClass": "chi-card",
+    "webComponentTag": "chi-card",
+    "allowedModifiers": [
+      "-portal",
+      "-active",
+      "-hover",
+      "-widget",
+      "-align--left",
+      "-align--right",
+      "-align--center",
+      "-sm",
+      "-no-border",
+      "-notifications",
+      "-empty",
+      "-float",
+      "-hover--animate",
+      "-highlight",
+      "-kpi",
+      "-fixed-width",
+      "-lg",
+      "-disabled",
+      "-no-arrow",
+      "-alert",
+      "-expanded",
+      "-accordion",
+      "-outline"
+    ],
+    "allowedChildren": [
+      "chi-card__header",
+      "chi-card__title",
+      "chi-card__content",
+      "chi-card__footer",
+      "chi-card__caption"
+    ],
+    "accessibility": {
+      "keyboardSupport": "Interactive cards should be wrapped in <button> or <a>"
+    }
+  },
+  "chi-spinner": {
+    "name": "spinner",
+    "baseClass": "chi-spinner",
+    "webComponentTag": "chi-spinner",
+    "allowedModifiers": [
+      "-sm",
+      "-sm--2",
+      "-sm--3",
+      "-md",
+      "-lg",
+      "-xl",
+      "-xxl",
+      "-primary",
+      "-inverse",
+      "-backdrop",
+      "-xs"
+    ],
+    "conflictingModifiers": [
+      ["-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"],
+      ["-primary", "-inverse"]
+    ],
+    "requiredAttributes": ["role", "aria-label"],
+    "accessibility": {
+      "requiredRoles": ["status"],
+      "requiredAria": ["aria-label", "aria-live"],
+      "keyboardSupport": "Announced to screen readers automatically"
+    }
+  },
+  "chi-badge": {
+    "name": "badge",
+    "baseClass": "chi-badge",
+    "webComponentTag": "chi-badge",
+    "allowedModifiers": [
+      "-primary",
+      "-success",
+      "-warning",
+      "-danger",
+      "-info",
+      "-light",
+      "-dark",
+      "-muted",
+      "-sm",
+      "-xs",
+      "-outline",
+      "-flat",
+      "-notification",
+      "-border-color",
+      "-text-color",
+      "-icon-color",
+      "-border-color-outline",
+      "-text-color-outline",
+      "-icon-color-outline",
+      "-text-color-flat",
+      "-icon-color-flat",
+      "-secondary",
+      "-accent-1",
+      "-accent-2",
+      "-accent-3",
+      "-accent-4",
+      "-accent-5"
+    ],
+    "conflictingModifiers": [
+      ["-primary", "-success", "-warning", "-danger", "-info", "-light", "-dark", "-muted"],
+      ["-sm", "-xs"],
+      ["-outline", "-flat"]
+    ],
+    "accessibility": {
+      "keyboardSupport": "Not interactive by default"
+    }
+  },
+  "chi-tabs": {
+    "name": "tabs",
+    "baseClass": "chi-tabs",
+    "webComponentTag": "chi-tabs",
+    "allowedModifiers": [
+      "-border",
+      "-sliding-border",
+      "-pills",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-vertical",
+      "-horizontal",
+      "-active",
+      "-active-alt",
+      "-animated",
+      "-list",
+      "-tree",
+      "-icon",
+      "-solid",
+      "-icons",
+      "-xs",
+      "-portal",
+      "-disabled",
+      "-has-child",
+      "-sliding",
+      "-inverse",
+      "-responsive"
+    ],
+    "conflictingModifiers": [
+      ["-border", "-sliding-border", "-pills"],
+      ["-sm", "-md", "-lg", "-xl"],
+      ["-vertical", "-horizontal"]
+    ],
+    "allowedChildren": ["chi-tabs__panel"],
+    "requiredAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["tablist"],
+      "requiredAria": ["aria-selected", "aria-controls"],
+      "keyboardSupport": "Arrow keys to navigate tabs, Home/End for first/last"
+    }
+  },
+  "chi-tooltip": {
+    "name": "tooltip",
+    "baseClass": "chi-tooltip",
+    "webComponentTag": "chi-tooltip",
+    "allowedModifiers": ["-top", "-right", "-bottom", "-left", "-active", "-light", "-dark"],
+    "conflictingModifiers": [["-top", "-right", "-bottom", "-left"]],
+    "requiredAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["tooltip"],
+      "requiredAria": ["aria-label"],
+      "keyboardSupport": "Shows on focus, hides on blur or Escape"
+    }
+  },
+  "chi-popover": {
+    "name": "popover",
+    "baseClass": "chi-popover",
+    "webComponentTag": "chi-popover",
+    "allowedModifiers": [
+      "-top",
+      "-right",
+      "-bottom",
+      "-left",
+      "-w--sm",
+      "-w--md",
+      "-w--lg",
+      "-animated",
+      "-active",
+      "-transitioning",
+      "-close",
+      "-vertical",
+      "-closable",
+      "-modal",
+      "-draggable",
+      "-gradient"
+    ],
+    "conflictingModifiers": [
+      ["-top", "-right", "-bottom", "-left"],
+      ["-w--sm", "-w--md", "-w--lg"]
+    ],
+    "requiredAttributes": ["role"],
+    "dependencies": ["chi-button"],
+    "accessibility": {
+      "requiredRoles": ["dialog"],
+      "requiredAria": ["aria-label"],
+      "keyboardSupport": "Escape to close, Tab to cycle focus",
+      "focusManagement": "Traps focus when open"
+    }
+  },
+  "chi-accordion": {
+    "name": "accordion",
+    "baseClass": "chi-accordion",
+    "webComponentTag": "chi-accordion",
+    "allowedModifiers": [
+      "-disabled",
+      "-transitioning",
+      "-expanded",
+      "-truncated",
+      "-card",
+      "-sm",
+      "-link",
+      "-compact-title",
+      "-icon-size",
+      "-line-height",
+      "-padding",
+      "-content-padding",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "conflictingModifiers": [["-sm", "-md", "-lg", "-xl"]],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "accessibility": {
+      "keyboardSupport": "Enter/Space to toggle, Arrow keys to navigate items"
+    }
+  },
+  "chi-backdrop": {
+    "name": "backdrop",
+    "baseClass": "chi-backdrop",
+    "webComponentTag": "chi-backdrop",
+    "allowedModifiers": [
+      "-full-page",
+      "-center",
+      "-mobile-bottom",
+      "-animated",
+      "-closed",
+      "-inverse",
+      "-transitioning"
+    ],
+    "conflictingModifiers": [],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "accessibility": {
+      "keyboardSupport": "Escape to close when interactive"
+    }
+  },
+  "chi-brand": {
+    "name": "brand",
+    "baseClass": "chi-brand",
+    "webComponentTag": "chi-brand",
+    "allowedModifiers": [
+      "-centurylink",
+      "-brightspeed",
+      "-colt",
+      "-xs",
+      "-lumen-width",
+      "-centurylink-height",
+      "-centurylink-width",
+      "-brightspeed-height",
+      "-brightspeed-width",
+      "-colt-height",
+      "-colt-width",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-xxl"
+    ],
+    "accessibility": {}
+  },
+  "chi-breadcrumb": {
+    "name": "breadcrumb",
+    "baseClass": "chi-breadcrumb",
+    "webComponentTag": "chi-breadcrumb",
+    "allowedModifiers": ["-active", "-alt", "-xs", "-line-height", "-sm", "-md", "-lg", "-xl"],
+    "accessibility": {}
+  },
+  "chi-cache-loader": {
+    "name": "cache-loader",
+    "baseClass": "chi-cache-loader",
+    "webComponentTag": "chi-cache-loader",
+    "allowedModifiers": ["-pulse", "-bar", "-muted", "-no-interaction"],
+    "accessibility": {}
+  },
+  "chi-carousel": {
+    "name": "carousel",
+    "baseClass": "chi-carousel",
+    "webComponentTag": "chi-carousel",
+    "allowedModifiers": ["-previous", "-next", "-float", "-dots", "-pagination", "-active"],
+    "accessibility": {}
+  },
+  "chi-checkbox": {
+    "name": "checkbox",
+    "baseClass": "chi-checkbox",
+    "webComponentTag": "chi-checkbox",
+    "allowedModifiers": ["-hover", "-danger", "-disabled", "-focus", "-indeterminate"],
+    "conflictingModifiers": [],
+    "maxModifiers": 3,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["id", "name"],
+    "accessibility": {
+      "keyboardSupport": "Space to toggle, Tab to navigate"
+    }
+  },
+  "chi-drag": {
+    "name": "drag-and-drop",
+    "baseClass": "chi-drag",
+    "webComponentTag": "chi-drag",
+    "allowedModifiers": ["-locked", "-accordion"],
+    "accessibility": {}
+  },
+  "chi-drawer": {
+    "name": "drawer",
+    "baseClass": "chi-drawer",
+    "webComponentTag": "chi-drawer",
+    "allowedModifiers": ["-active", "-animated", "-transitioning", "-top", "-menu", "-right", "-bottom", "-left"],
+    "conflictingModifiers": [["-top", "-right", "-bottom", "-left"]],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "accessibility": {
+      "requiredRoles": ["dialog"],
+      "requiredAria": ["aria-label"],
+      "keyboardSupport": "Escape to close, Tab to cycle focus",
+      "focusManagement": "Traps focus inside drawer"
+    }
+  },
+  "chi-icon": {
+    "name": "icon",
+    "baseClass": "chi-icon",
+    "webComponentTag": "chi-icon",
+    "allowedModifiers": ["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"],
+    "conflictingModifiers": [["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"]],
+    "maxModifiers": 1,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["aria-hidden", "aria-label"],
+    "accessibility": {
+      "keyboardSupport": "Decorative icons should use aria-hidden=\"true\""
+    }
+  },
+  "chi-link": {
+    "name": "link",
+    "baseClass": "chi-link",
+    "webComponentTag": "chi-link",
+    "allowedModifiers": [
+      "-hover",
+      "-disabled",
+      "-cta",
+      "-no-underline",
+      "-no-hover-underline",
+      "-xs",
+      "-line-height",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "accessibility": {}
+  },
+  "chi-pagination": {
+    "name": "pagination",
+    "baseClass": "chi-pagination",
+    "webComponentTag": "chi-pagination",
+    "allowedModifiers": [
+      "-xs",
+      "-hover",
+      "-active",
+      "-focus",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-flat",
+      "-light",
+      "-compact",
+      "-inverse"
+    ],
+    "accessibility": {}
+  },
+  "chi-picker": {
+    "name": "picker",
+    "baseClass": "chi-picker",
+    "webComponentTag": "chi-picker",
+    "allowedModifiers": ["-disabled", "-pill", "-xs", "-item-font-size", "-item-description-line-height", "-sm"],
+    "accessibility": {}
+  },
+  "chi-skeleton": {
+    "name": "skeleton",
+    "baseClass": "chi-skeleton",
+    "webComponentTag": "chi-skeleton",
+    "allowedModifiers": ["-circle", "-square", "-rounded", "-xs", "-sm", "-md", "-lg", "-xl"],
+    "accessibility": {}
+  },
+  "chi-switch": {
+    "name": "toggle-switch",
+    "baseClass": "chi-switch",
+    "webComponentTag": "chi-switch",
+    "allowedModifiers": ["-label--hide", "-focus", "-disabled", "-xs", "-sm", "-row", "-list"],
+    "accessibility": {}
+  },
+  "chi-tags": {
+    "name": "tags",
+    "baseClass": "chi-tags",
+    "webComponentTag": "chi-tags",
+    "allowedModifiers": ["-focus", "-hover", "-icon", "-close"],
+    "accessibility": {}
+  },
+  "chi-toolbar": {
+    "name": "toolbar",
+    "baseClass": "chi-toolbar",
+    "webComponentTag": "chi-toolbar",
+    "allowedModifiers": ["-vertical", "-flat", "-icon", "-compact-title"],
+    "accessibility": {}
+  },
+  "chi-time-picker": {
+    "name": "time-picker",
+    "baseClass": "chi-time-picker",
+    "webComponentTag": "chi-time-picker",
+    "allowedModifiers": ["-disabled", "-active"],
+    "accessibility": {}
+  },
+  "chi-datepicker": {
+    "name": "date-picker",
+    "baseClass": "chi-datepicker",
+    "webComponentTag": "chi-date-picker",
+    "allowedModifiers": [
+      "-disabled",
+      "-active",
+      "-today",
+      "-inactive",
+      "-hover",
+      "-week-starts-on-sun",
+      "-month-starts-on-",
+      "-week-starts-on-mon",
+      "-no-arrow"
+    ],
+    "accessibility": {}
+  },
+  "chi-customize-panel": {
+    "name": "customize-panel",
+    "baseClass": "chi-customize-panel",
+    "webComponentTag": "chi-customize-panel",
+    "allowedModifiers": [],
+    "accessibility": {}
+  },
+  "chi-marketing-icon": {
+    "name": "marketing-icon",
+    "baseClass": "chi-marketing-icon",
+    "webComponentTag": "chi-marketing-icon",
+    "allowedModifiers": ["-xs", "-sm", "-md", "-lg"],
+    "accessibility": {}
+  },
+  "chi-phone-input": {
+    "name": "phone-input",
+    "baseClass": "chi-phone-input",
+    "webComponentTag": "chi-phone-input",
+    "allowedModifiers": [],
+    "accessibility": {}
+  },
+  "chi-price": {
+    "name": "price",
+    "baseClass": "chi-price",
+    "webComponentTag": "chi-price",
+    "allowedModifiers": ["-sm", "-line-height", "-sup", "-top", "-md", "-lg"],
+    "accessibility": {}
+  },
+  "chi-label": {
+    "name": "label",
+    "baseClass": "chi-label",
+    "webComponentTag": "chi-label",
+    "allowedModifiers": [
+      "-status",
+      "-danger",
+      "-success",
+      "-warning",
+      "-info",
+      "-xs",
+      "-line-height",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "accessibility": {}
+  },
+  "chi-number-input": {
+    "name": "input-number",
+    "baseClass": "chi-number-input",
+    "webComponentTag": "chi-number-input",
+    "allowedModifiers": [
+      "-expanded",
+      "-xs",
+      "-line-height",
+      "-font-size",
+      "-padding",
+      "-btn-height",
+      "-right",
+      "-top",
+      "-bottom",
+      "-background-size",
+      "-sm",
+      "-md",
+      "-btn-width",
+      "-lg",
+      "-xl"
+    ],
+    "accessibility": {}
+  },
+  "chi-picker-group": {
+    "name": "picker-group",
+    "baseClass": "chi-picker-group",
+    "webComponentTag": "chi-picker-group",
+    "allowedModifiers": [
+      "-sm",
+      "-lg",
+      "-xl",
+      "-disabled",
+      "-fluid",
+      "-xs",
+      "-line-height",
+      "-min-height",
+      "-padding",
+      "-no-fluid",
+      "-align--left",
+      "-align--center",
+      "-align--right",
+      "-md"
+    ],
+    "accessibility": {}
+  },
+  "chi-epanel": {
+    "name": "expansion-panel",
+    "baseClass": "chi-epanel",
+    "webComponentTag": "chi-expansion-panel",
+    "allowedModifiers": [
+      "-centered",
+      "-active",
+      "-disabled",
+      "-bordered",
+      "-no-step",
+      "-state-icon",
+      "-state",
+      "-done"
+    ],
+    "accessibility": {}
+  },
+  "chi-input": {
+    "name": "input-file",
+    "baseClass": "chi-input",
+    "webComponentTag": "chi-text-input",
+    "allowedModifiers": [
+      "-hover",
+      "-active",
+      "-focus",
+      "-xs",
+      "-width",
+      "-font-size",
+      "-line-height",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-disabled",
+      "-readonly",
+      "-zero"
+    ],
+    "accessibility": {}
+  },
+  "chi-radio": {
+    "name": "radio",
+    "baseClass": "chi-radio",
+    "webComponentTag": "chi-radio-button",
+    "allowedModifiers": ["-disabled", "-focus", "-danger", "-hover"],
+    "accessibility": {}
+  },
+  "chi-search": {
+    "name": "search-input",
+    "baseClass": "chi-search",
+    "webComponentTag": "chi-search-input",
+    "allowedModifiers": ["-flat", "-close", "-disabled", "-icon--right", "-xs", "-sm", "-lg", "-xl", "-active"],
+    "accessibility": {}
+  },
+  "chi-activity": {
+    "name": "activity",
+    "baseClass": "chi-activity",
+    "allowedModifiers": ["-feed", "-compact", "-stories"],
+    "conflictingModifiers": [["-feed", "-stories"]],
+    "maxModifiers": 2,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-avatar": {
+    "name": "avatar",
+    "baseClass": "chi-avatar",
+    "allowedModifiers": [
+      "-transparent",
+      "-xs",
+      "-sm",
+      "-sm--2",
+      "-sm--3",
+      "-md",
+      "-lg",
+      "-xl",
+      "-xxl",
+      "-grey",
+      "-text-color",
+      "-red",
+      "-pink",
+      "-purple",
+      "-indigo",
+      "-cyan",
+      "-navy",
+      "-blue",
+      "-teal",
+      "-green",
+      "-yellow",
+      "-orange",
+      "-light",
+      "-inverse",
+      "-primary",
+      "-secondary"
+    ],
+    "conflictingModifiers": [
+      ["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"],
+      [
+        "-grey",
+        "-red",
+        "-pink",
+        "-purple",
+        "-indigo",
+        "-cyan",
+        "-navy",
+        "-blue",
+        "-teal",
+        "-green",
+        "-yellow",
+        "-orange",
+        "-light",
+        "-inverse",
+        "-primary",
+        "-secondary"
+      ]
+    ],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["alt"],
+    "accessibility": {
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-bulk-actions": {
+    "name": "bulk-actions",
+    "baseClass": "chi-bulk-actions",
+    "allowedModifiers": ["-vertical"],
+    "conflictingModifiers": [],
+    "maxModifiers": 1,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-button-group": {
+    "name": "button-group",
+    "baseClass": "chi-button-group",
+    "allowedModifiers": [
+      "-icon",
+      "-hover",
+      "-focus",
+      "-xs",
+      "-icons",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-vertical",
+      "-fluid"
+    ],
+    "conflictingModifiers": [["-xs", "-sm", "-md", "-lg", "-xl"]],
+    "maxModifiers": 4,
+    "requiredAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["group"],
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-css-grid": {
+    "name": "css-grid",
+    "baseClass": "chi-css-grid",
+    "allowedModifiers": [
+      "-grid-rows--176",
+      "-grid-template-rows--none",
+      "-grid-auto-rows--auto",
+      "-col--",
+      "-col-",
+      "-row--",
+      "-row-",
+      "-row-start--",
+      "-row-start-",
+      "-row-end--",
+      "-row-end-",
+      "-gap--",
+      "-gap--05",
+      "-gap-"
+    ],
+    "conflictingModifiers": [],
+    "maxModifiers": 6,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-data-table": {
+    "name": "data-table",
+    "baseClass": "chi-data-table",
+    "allowedModifiers": [
+      "-expanded",
+      "-selectable",
+      "-sorting",
+      "-active",
+      "-descending",
+      "-expandable",
+      "-striped",
+      "-selected",
+      "-actionable",
+      "-row",
+      "-container",
+      "-flat",
+      "-icon",
+      "-actions",
+      "-justify-content-md--end",
+      "-flex-basis--5",
+      "-key",
+      "-hover",
+      "-hidden-column",
+      "-no-border",
+      "-bordered",
+      "-portal",
+      "-compact",
+      "-bold",
+      "-collapsed",
+      "-expand",
+      "-xs",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "conflictingModifiers": [
+      ["-xs", "-sm", "-md", "-lg", "-xl"],
+      ["-no-border", "-bordered"]
+    ],
+    "maxModifiers": 8,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["table"],
+      "keyboardSupport": "Arrow keys navigate cells, Enter activates row"
+    }
+  },
+  "chi-divider": {
+    "name": "divider",
+    "baseClass": "chi-divider",
+    "allowedModifiers": ["-inverse", "-vertical", "-label"],
+    "conflictingModifiers": [],
+    "maxModifiers": 3,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["separator"]
+    }
+  },
+  "chi-filters": {
+    "name": "filters",
+    "baseClass": "chi-filters",
+    "allowedModifiers": [],
+    "conflictingModifiers": [],
+    "maxModifiers": 0,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-flag-icon": {
+    "name": "flag-icon",
+    "baseClass": "chi-flag-icon",
+    "allowedModifiers": ["-xs"],
+    "conflictingModifiers": [],
+    "maxModifiers": 1,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["aria-label"],
+    "accessibility": {
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-footer": {
+    "name": "footer",
+    "baseClass": "chi-footer",
+    "allowedModifiers": ["-icon", "-flat", "-row"],
+    "conflictingModifiers": [],
+    "maxModifiers": 3,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["contentinfo"]
+    }
+  },
+  "chi-grid": {
+    "name": "grid",
+    "baseClass": "chi-grid",
+    "allowedModifiers": [
+      "-no-gutter",
+      "-align--top",
+      "-align--center",
+      "-align--bottom",
+      "-w-",
+      "-w--",
+      "-o--",
+      "-o-",
+      "-n--",
+      "-n-",
+      "-w-sm--",
+      "-w-md--",
+      "-w-lg--",
+      "-w-xl--",
+      "-w-xxl--"
+    ],
+    "conflictingModifiers": [["-align--top", "-align--center", "-align--bottom"]],
+    "maxModifiers": 6,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-header": {
+    "name": "header",
+    "baseClass": "chi-header",
+    "allowedModifiers": [
+      "-dark",
+      "-vertical",
+      "-collapsed",
+      "-impersonation",
+      "-navbar",
+      "-xs",
+      "-md",
+      "-inverse",
+      "-active",
+      "-lg",
+      "-xl",
+      "-sm"
+    ],
+    "conflictingModifiers": [
+      ["-xs", "-sm", "-md", "-lg", "-xl"],
+      ["-dark", "-inverse"]
+    ],
+    "maxModifiers": 5,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["banner"]
+    }
+  },
+  "chi-mobile-nav": {
+    "name": "mobile-nav",
+    "baseClass": "chi-mobile-nav",
+    "allowedModifiers": [
+      "-second-level-shown",
+      "-left",
+      "-right",
+      "-animated",
+      "-close",
+      "-vertical",
+      "-icons",
+      "-active",
+      "-unselected",
+      "-expanded",
+      "-transitioning",
+      "-sm",
+      "-global",
+      "-back"
+    ],
+    "conflictingModifiers": [["-left", "-right"]],
+    "maxModifiers": 6,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["navigation"],
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-save-view": {
+    "name": "save-view",
+    "baseClass": "chi-save-view",
+    "allowedModifiers": [],
+    "conflictingModifiers": [],
+    "maxModifiers": 0,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-save-views": {
+    "name": "save-views",
+    "baseClass": "chi-save-views",
+    "allowedModifiers": [],
+    "conflictingModifiers": [],
+    "maxModifiers": 0,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-sidenav": {
+    "name": "sidenav",
+    "baseClass": "chi-sidenav",
+    "allowedModifiers": [
+      "-active",
+      "-sliding",
+      "-close",
+      "-left",
+      "-animated",
+      "-expanded",
+      "-sm",
+      "-transitioning",
+      "-md",
+      "-lg",
+      "-float",
+      "-global",
+      "-open-on-hover",
+      "-collapsed"
+    ],
+    "conflictingModifiers": [
+      ["-sm", "-md", "-lg"],
+      ["-expanded", "-collapsed"]
+    ],
+    "maxModifiers": 6,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["navigation"],
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-stat": {
+    "name": "stat",
+    "baseClass": "chi-stat",
+    "allowedModifiers": ["-active", "-flat", "-icon", "-disabled", "-center", "-compact"],
+    "conflictingModifiers": [],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "accessibility": {}
+  },
+  "chi-steps": {
+    "name": "steps",
+    "baseClass": "chi-steps",
+    "allowedModifiers": [
+      "-active",
+      "-completed",
+      "-inverse",
+      "-horizontal-label",
+      "-labels--hide",
+      "-sm",
+      "-vertical",
+      "-labels-"
+    ],
+    "conflictingModifiers": [["-active", "-completed"]],
+    "maxModifiers": 4,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["list"]
+    }
+  },
+  "chi-table": {
+    "name": "table",
+    "baseClass": "chi-table",
+    "allowedModifiers": [
+      "-sorted",
+      "-ascending",
+      "-descending",
+      "-row--success",
+      "-row--warning",
+      "-row--danger",
+      "-row--info",
+      "-active",
+      "-portal",
+      "-xs",
+      "-sm",
+      "-hover",
+      "-striped",
+      "-no-border",
+      "-bordered",
+      "-fixed--header",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "conflictingModifiers": [
+      ["-xs", "-sm", "-md", "-lg", "-xl"],
+      ["-ascending", "-descending"],
+      ["-no-border", "-bordered"],
+      ["-row--success", "-row--warning", "-row--danger", "-row--info"]
+    ],
+    "maxModifiers": 6,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["role"],
+    "accessibility": {
+      "requiredRoles": ["table"]
+    }
+  },
+  "chi-transfer-list": {
+    "name": "transfer-list",
+    "baseClass": "chi-transfer-list",
+    "allowedModifiers": ["-checkbox", "-locked"],
+    "conflictingModifiers": [],
+    "maxModifiers": 2,
+    "requiredAttributes": [],
+    "accessibility": {
+      "requiredAria": ["aria-label"]
+    }
+  },
+  "chi-text-input": {
+    "name": "text-input",
+    "baseClass": "chi-text-input",
+    "webComponentTag": "chi-text-input",
+    "allowedModifiers": [
+      "-hover",
+      "-active",
+      "-focus",
+      "-xs",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl",
+      "-disabled",
+      "-readonly",
+      "-danger"
+    ],
+    "conflictingModifiers": [["-xs", "-sm", "-md", "-lg", "-xl"]],
+    "maxModifiers": 3,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["id", "name", "aria-label"],
+    "accessibility": {
+      "requiredAria": ["aria-label"],
+      "keyboardSupport": "Standard text input keyboard behavior"
+    }
+  },
+  "chi-textarea": {
+    "name": "textarea",
+    "baseClass": "chi-textarea",
+    "webComponentTag": "chi-textarea",
+    "allowedModifiers": [
+      "-hover",
+      "-focus",
+      "-disabled",
+      "-readonly",
+      "-danger",
+      "-xs",
+      "-sm",
+      "-md",
+      "-lg",
+      "-xl"
+    ],
+    "conflictingModifiers": [["-xs", "-sm", "-md", "-lg", "-xl"]],
+    "maxModifiers": 3,
+    "requiredAttributes": [],
+    "recommendedAttributes": ["id", "name", "aria-label"],
+    "accessibility": {
+      "requiredAria": ["aria-label"],
+      "keyboardSupport": "Standard textarea keyboard behavior"
+    }
+  },
+  "chi-form-wrapper": {
+    "name": "form-wrapper",
+    "baseClass": "chi-form-wrapper",
+    "webComponentTag": "chi-form-wrapper",
+    "allowedModifiers": [],
+    "conflictingModifiers": [],
+    "maxModifiers": 0,
+    "requiredAttributes": [],
+    "accessibility": {
+      "keyboardSupport": "Wraps form controls with proper label association"
+    }
+  },
+  "chi-helper-message": {
+    "name": "helper-message",
+    "baseClass": "chi-helper-message",
+    "webComponentTag": "chi-helper-message",
+    "allowedModifiers": ["-danger", "-success", "-warning", "-info"],
+    "conflictingModifiers": [["-danger", "-success", "-warning", "-info"]],
+    "maxModifiers": 1,
+    "requiredAttributes": [],
+    "accessibility": {
+      "requiredAria": ["aria-live"],
+      "keyboardSupport": "Announced to screen readers on state change"
+    }
+  }
+}
