@@ -35,6 +35,10 @@
     }
   }
 
+  .chi-badge {
+    padding: $filters-badge-padding;
+  }
+
   &__trigger-button {
     margin-left: $filters-drawer-trigger-button-margin-left;
   }
