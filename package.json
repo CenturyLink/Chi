@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "6.88.0",
+  "version": "6.89.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -16,6 +16,8 @@
     "start:dist": "node server.cjs",
     "start": "npm run start:dist & npm run start:local",
     "build": "bash ./scripts/build/build.sh",
+    "sync:skills": "tsx src/mcp/scripts/sync-skills.ts",
+    "build:mcp": "tsx src/mcp/scripts/generate.ts",
     "serve": "node ./scripts/serve/serve.cjs",
     "cy:run": "cypress run --config-file cypress.config.cjs",
     "cy:open": "cypress open --config-file cypress.config.cjs",
@@ -28,9 +30,9 @@
     "postrelease:checkSri": "node ./scripts/build/utils/checkSri.js"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "file:centurylink-chi-custom-elements-1.53.0.tgz",
-    "@centurylink/chi-documentation": "1.57.0",
-    "@centurylink/chi-vue": "3.30.0"
+    "@centurylink/chi-custom-elements": "1.54.0",
+    "@centurylink/chi-documentation": "1.61.0",
+    "@centurylink/chi-vue": "3.31.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
@@ -57,6 +59,7 @@
     "sass-lint": "^1.13.1",
     "ssri": "^12.0.0",
     "svg-sprite": "^2.0.4",
+    "tsx": "^4.21.0",
     "vite": "6.3.5",
     "vite-plugin-banner": "^0.8.1"
   },

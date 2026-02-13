@@ -41,6 +41,55 @@ $ chi start
 
 Once the Chi project has started connect to one of the ports showed in console. While running, any changes in the style will automatically be reloaded in your browser.
 
+## AI-Assisted Development (Cursor IDE)
+
+Chi includes built-in **Cursor Skills and Rules** that give the AI assistant deep knowledge of the design system. When you open this project in Cursor, the AI automatically understands Chi conventions, validates your code, and suggests the right components and utilities.
+
+### What's Included
+
+**Rules** (always active -- applied automatically when editing matching files):
+
+| Rule | What it does |
+|------|-------------|
+| `chi-design-system` | Global conventions: implementation priority, double-dash utility syntax, spacing system, themes |
+| `chi-code-validation` | Anti-pattern detection, utility format validation, component schema checks, accessibility rules |
+| `chi-migration` | CSS-to-Web Component mappings, modifier-to-property tables, migration examples |
+
+**Skills** (invoked on demand when you ask the AI about specific topics):
+
+| Skill | What it does |
+|-------|-------------|
+| `chi-components` | Component reference: names, modifiers, BEM structure, Web Component equivalents |
+| `chi-tokens` | Design tokens: SCSS variables, values, categories, theme-specific tokens |
+| `chi-utilities` | Utility classes: spacing, color, opacity, display, flexbox, typography, and more |
+| `chi-component-schemas` | Validation schemas: allowed modifiers, conflicts, accessibility requirements |
+| `chi-search` | Semantic search: synonym dictionary, use-case mappings for discoverability |
+| `chi-recommendations` | Implementation approach decision tree: Vue vs Web Components vs HTML/CSS |
+
+### How to Use
+
+Once the project is open in Cursor, the rules activate automatically. For skills, just ask the AI naturally:
+
+- *"What modifiers does chi-button support?"* -- triggers `chi-components`
+- *"What's the spacing value for -p--4?"* -- triggers `chi-tokens` and `chi-utilities`
+- *"Validate this HTML against Chi best practices"* -- triggers `chi-code-validation`
+- *"Migrate this CSS button to a Web Component"* -- triggers `chi-migration`
+- *"Should I use Vue components or Web Components for my React project?"* -- triggers `chi-recommendations`
+
+See [.cursor/skills/README.md](.cursor/skills/README.md) for full documentation, installation options for external projects, and the complete directory structure.
+
+### MCP Metadata Server
+
+Chi also generates metadata for the **Chi MCP Server**, which provides the same intelligence to any MCP-compatible AI tool (not just Cursor). The metadata pipeline lives in `src/mcp/` and produces a comprehensive `metadata.json` with tokens, utilities, components, schemas, anti-patterns, and bundled skills.
+
+| Command | What it does |
+|---------|-------------|
+| `npm run sync:skills` | Update Skills/Rules auto-generated sections from SCSS |
+| `npm run build:mcp` | Generate `src/mcp/metadata.json` |
+| `npm run build:mcp -- --force` | Force rebuild (bypass incremental cache) |
+
+See [src/mcp/README.md](src/mcp/README.md) for the full architecture and build flow.
+
 ## Testing Changes
 
 We use [BackstopJS](https://garris.github.io/BackstopJS) for visual regression testing of our CSS components. In order to account for differences in development environments we always run these tests in a consistent Docker container. To execute the test suite, run the following command:
@@ -75,9 +124,8 @@ In addition, Chi uses several 3rd-party libraries, a list of which can be viewed
 
 ## Contribution Notice
 
-By contributing to this Project, You grant to CenturyLink and to recipients of software distributed by CenturyLink, a perpetual worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute your contributions to this Project (“Your Contributions”), including derivative works thereof.
+By contributing to this Project, You grant to CenturyLink and to recipients of software distributed by CenturyLink, a perpetual worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense, and distribute your contributions to this Project ("Your Contributions"), including derivative works thereof.
 
 You grant to CenturyLink and to recipients of software distributed by CenturyLink a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section), patent license to make, have made, use, offer to sell, sell, import and otherwise transfer Your Contributions, where such license applies only to those patent claims licensable by You that are necessarily infringed by Your Contributions(s) alone or by combination of Your Contribution(s) with this Project. If any entity institutes patent litigation against You or any other entity (including a cross-claim or counterclaim in a lawsuit) alleging that Your Contribution, or this Project, constitutes direct or contributory patent infringement, then any patent licenses granted to that entity under this agreement for Your Contribution or this Project shall terminate as of the date such litigation is filed.
 
 You represent that each of Your Contributions is Your original creation and represent that You are legally entitled to grant the above license and that no other third party permission is required. If your employer(s) has rights to intellectual property that is included in Your Contributions, You represent that You have received permission to make such contributions on behalf of that employer.
-

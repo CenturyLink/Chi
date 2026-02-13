@@ -231,6 +231,8 @@ $color-icon-info: $color-blue-60;
 $color-icon-muted-light: $color-grey-50;
 $color-icon-muted: $color-grey-60;
 $color-icon-muted-dark: $color-grey-70;
+$color-icon-orange: $color-orange-60;
+$color-icon-orange-dark: $color-orange-80;
 $color-icon-white: $color-white;
 $color-icon-black: $color-black;
 
@@ -1322,6 +1324,13 @@ $drag-item-description-text-align: left;
 $drag-item-dragging-close-background-color: $color-background-white;
 $drag-item-drop-indicator-background-color: $focus-color;
 $drag-item-focus-color: $focus-color;
+$drag-item-active-border-color: $focus-color;
+$drag-item-active-border: 0.0625rem solid $drag-item-active-border-color;
+$drag-item-actions-dropdown-button-padding: 1.25rem 1rem;
+$drag-item-actions-dropdown-icon-color: $color-grey-70;
+$drag-item-actions-dropdown-active-text-color: $color-grey-100;
+$drag-item-actions-dropdown-active-icon-color: $color-orange-60;
+$drag-item-actions-dropdown-item-padding-left: 2.5rem;
 $drag-item-padding: 1.25rem 1.25rem 1.25rem 0;
 $drag-item-title-font-size: $font-size-md;
 $drag-item-title-font-weight: $font-weight-semi-bold;
@@ -1523,6 +1532,7 @@ $file-input-button-focus-border-color: $button-solid-focus-border-color;
 $file-input-button-focus: $button-solid-focus-outline;
 
 //Filters
+$filters-badge-padding: 0.4375rem 0.5rem;
 $filters-content-item-margin-bottom: 1.5rem;
 $filters-content-link-margin-top: 0.5rem;
 $filters-drawer-header-border: 0.0625rem solid $color-grey-30;
@@ -2642,9 +2652,26 @@ $tooltip-font-weight: $font-weight-semi-bold;
 $tooltip-max-width: 20rem;
 
 // Transfer list
-$transfer-list-title-color: $color-text-base;
 $transfer-list-checkbox-icon-color: $color-icon-primary;
+$transfer-list-column-content-padding: 0.5rem;
+$transfer-list-column-header-border: 0.0625rem solid $color-border-base; // 1px
+$transfer-list-column-header-padding: 1rem;
+$transfer-list-column-search-margin-bottom: 1.25rem; // 20px
+$transfer-list-column-title-gap: 0.5rem;
+$transfer-list-column-title-margin-bottom: 0.75rem;
+$transfer-list-drag-icon-color: $color-icon-orange;
+$transfer-list-group-margin-bottom: 1.5rem;
+$transfer-list-group-title-color: $color-text-muted;
+$transfer-list-group-title-font-size: $font-size-md; // 0.875rem
+$transfer-list-group-title-margin-bottom: 0.5rem; // 8px
+$transfer-list-item-active-background-color: $color-background-primary-light;
+$transfer-list-item-hover-background-color: $color-background-base-dark;
+$transfer-list-item-padding: 0.125rem;
 $transfer-list-reset-button-color: $color-blue-75;
+$transfer-list-search-input-height: 2.5rem; // 40px
+$transfer-list-title-color: $color-text-base;
+$transfer-list-transfer-buttons-gap: 0.5rem;
+$transfer-list-transfer-buttons-padding-x: 1rem;
 
 // Tags
 $tags-border-color: $color-border-base;

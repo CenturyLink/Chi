@@ -47,6 +47,10 @@ bash ./scripts/build/utils/copyFiles.sh "$CHI_CE/dist" dist/js/ce
 # Has to be executed after the documentation assets are copied until docs.json is removed from chi-documentation repository
 bash ./scripts/build/utils/copyFile.sh "$CHI_CE/docs/docs.json" dist
 
+# Build MCP metadata
+node ./scripts/build/utils/buildMcp.js
+bash ./scripts/build/utils/copyFile.sh src/mcp/metadata.json dist/metadata/chi
+
 # Build SRI
 if [ -z "${SKIP_SRI}" ]; then
   node ./scripts/build/utils/buildSri.js;
