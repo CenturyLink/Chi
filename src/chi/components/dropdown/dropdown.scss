@@ -532,6 +532,15 @@ $sizes: (
       width: 0.75rem;
     }
 
+    &.-icon {
+      &:not([data-position^='left']) {
+        &::after {
+          margin-left: 0;
+          margin-right: $dropdown-trigger-icon-margin-left;
+        }
+      }
+    }
+
     &.chi-dropdown__icon {
       &:not([data-position^='left']) {
         &::after {
