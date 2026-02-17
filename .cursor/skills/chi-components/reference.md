@@ -87,7 +87,7 @@
 | data-table | chi-data-table | -expanded, -selectable, -sorting, -active, -descending, -expandable, -striped, -selected, ... | chi-data-table__body, chi-data-table__footer, chi-data-table__head, chi-data-table__row, ... |  |
 | date-picker | chi-datepicker | -disabled, -active, -today, -inactive, -hover, -week-starts-on-sun, -month-starts-on-, -week-starts-on-mon, ... | chi-datepicker__day, chi-datepicker__week-day, chi-datepicker__month, chi-datepicker__days, ... | `<chi-date-picker>` |
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
-| drag-and-drop | chi-drag | -locked, -accordion |  | `<chi-drag>` |
+| drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
 | drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header, chi-drawer__title, chi-drawer__content, chi-drawer__footer | `<chi-drawer>` |
 | dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
@@ -96,7 +96,7 @@
 | footer | chi-footer | -icon, -flat, -row | chi-footer__content, chi-footer__internal, chi-footer__external |  |
 | grid | chi-grid | -no-gutter, -align--top, -align--center, -align--bottom, -w-, -w--, -o--, -o-, ... | chi-grid__container |  |
 | header | chi-header | -dark, -vertical, -collapsed, -impersonation, -navbar, -xs, -md, -inverse, ... | chi-header__content, chi-header__brand, chi-header__start, chi-header__end, ... |  |
-| icons | chi-icon | -xs, -sm, -sm--2, -sm--3, -md, -lg, -xl, -xxl |  | `<chi-icon>` |
+| icons | chi-icon | -fill, -xs, -sm, -sm--2, -sm--3, -md, -lg, -xl, ... |  | `<chi-icon>` |
 | input-file | chi-input | -hover, -active, -focus, -xs, -width, -font-size, -line-height, -sm, ... |  | `<chi-text-input>` |
 | input-number | chi-number-input | -expanded, -xs, -line-height, -font-size, -padding, -btn-height, -right, -top, ... |  | `<chi-number-input>` |
 | input-text | chi-search | -flat, -close, -disabled, -icon--right, -xs, -sm, -lg, -xl, ... | chi-search__input | `<chi-search-input>` |

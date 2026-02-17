@@ -518,7 +518,7 @@
     "name": "drag-and-drop",
     "baseClass": "chi-drag",
     "webComponentTag": "chi-drag",
-    "allowedModifiers": ["-locked", "-accordion"],
+    "allowedModifiers": ["-locked", "-accordion", "-active", "-base"],
     "accessibility": {}
   },
   "chi-drawer": {
@@ -540,7 +540,7 @@
     "name": "icon",
     "baseClass": "chi-icon",
     "webComponentTag": "chi-icon",
-    "allowedModifiers": ["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"],
+    "allowedModifiers": ["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl", "-fill"],
     "conflictingModifiers": [["-xs", "-sm", "-sm--2", "-sm--3", "-md", "-lg", "-xl", "-xxl"]],
     "maxModifiers": 1,
     "requiredAttributes": [],
@@ -1247,18 +1247,7 @@
     "name": "textarea",
     "baseClass": "chi-textarea",
     "webComponentTag": "chi-textarea",
-    "allowedModifiers": [
-      "-hover",
-      "-focus",
-      "-disabled",
-      "-readonly",
-      "-danger",
-      "-xs",
-      "-sm",
-      "-md",
-      "-lg",
-      "-xl"
-    ],
+    "allowedModifiers": ["-hover", "-focus", "-disabled", "-readonly", "-danger", "-xs", "-sm", "-md", "-lg", "-xl"],
     "conflictingModifiers": [["-xs", "-sm", "-md", "-lg", "-xl"]],
     "maxModifiers": 3,
     "requiredAttributes": [],
