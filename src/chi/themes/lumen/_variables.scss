@@ -1670,6 +1670,14 @@ $link-cta-padding-right: 2rem;
 $link-cta-hover-color: $color-teal-100;
 $link-underline-hover-color: $link-cta-hover-color;
 
+// Location
+$location-field-add-button-margin: 0 0 1rem auto;
+$location-field-display: flex;
+$location-field-divider-margin: 1rem 0;
+$location-field-flex-direction: column;
+$location-row-gap: 1rem;
+$location-row-margin-bottom: 1rem;
+
 // Marketing icon
 $marketing-icon-primary-color: $color-teal-100;
 $marketing-icon-secondary-color: $color-red-50;

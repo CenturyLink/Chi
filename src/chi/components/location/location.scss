@@ -1,0 +1,19 @@
+.chi-location {
+  .chi-location__field {
+    display: $location-field-display;
+    flex-direction: $location-field-flex-direction;
+
+    .chi-divider {
+      margin: $location-field-divider-margin;
+    }
+
+    chi-button[variant='flat']:not([type='icon']) {
+      margin: $location-field-add-button-margin;
+    }
+  }
+
+  .chi-location__row {
+    gap: $location-row-gap;
+    margin-bottom: $location-row-margin-bottom;
+  }
+}
