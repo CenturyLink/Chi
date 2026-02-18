@@ -14,7 +14,20 @@ echo "[CHI]: Installing dependencies..."
 # backstop runs on node 20 not 22, npm ci will give conflicts with package-lock
 # TO BE REMOVED ONCE MIGRATION TO NODE22 IS COMPLETE
 sed -i.bak 's/"@centurylink\/chi-documentation":[[:space:]]*"[^"]*"/"@centurylink\/chi-documentation": "1.57.0"/' package.json && rm package.json.bak
+
+# Backup package-lock.json and use tests lockfile for this run (restored at exit)
+PACKAGE_LOCK_BACKUP=$(mktemp)
+cp package-lock.json "$PACKAGE_LOCK_BACKUP"
 mv package-lock-tests.json package-lock.json
+
+restore_lockfiles() {
+  if [ -f "$PACKAGE_LOCK_BACKUP" ]; then
+    mv package-lock.json package-lock-tests.json
+    cp "$PACKAGE_LOCK_BACKUP" package-lock.json
+    rm -f "$PACKAGE_LOCK_BACKUP"
+  fi
+}
+trap restore_lockfiles EXIT
 
 npm i
 

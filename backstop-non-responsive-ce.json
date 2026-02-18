@@ -25,7 +25,7 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-accordion-base", 
+        ".test-accordion-base",
         ".test-accordion-sizes",
         ".test-accordion-portal-layout",
         ".test-accordion-portal-layout-card",
@@ -175,12 +175,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-inverse",
-        ".test-white",
-        ".test-black"
-      ],
+      "selectors": [".test-base", ".test-inverse", ".test-white", ".test-black"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -211,7 +206,7 @@
       "requireSameDimensions": true
     },
     {
-      "label": "icons-ce",
+      "label": "icons",
       "cookiePath": "",
       "url": "http://localhost:8000/chi/6.89.0/tests/<theme>/custom-elements/icons.html",
       "referenceUrl": "",
@@ -223,17 +218,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-single-icon",
-        ".test-colors-icon",
-        ".test-icons-list",
-        ".test-sizes-list-xs",
-        ".test-sizes-list-sm",
-        ".test-sizes-list-sm--2",
-        ".test-sizes-list-sm--3",
-        ".test-sizes-list-md",
-        ".test-sizes-list-lg"
-      ],
+      "selectors": [".test-single", ".test-sizes", ".test-colors", ".test-icons"],
       "selectorExpansion": true,
       "misMatchThreshold": 0.01,
       "requireSameDimensions": true
@@ -405,11 +390,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-copy-text-base",
-        ".test-copy-text-disabled",
-        ".test-copy-text-sizes"
-      ],
+      "selectors": [".test-copy-text-base", ".test-copy-text-disabled", ".test-copy-text-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -535,10 +516,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-dropdown-select-button-icon",
-        ".test-dropdown-select-multiple-search"
-      ],
+      "selectors": [".test-dropdown-select-button-icon", ".test-dropdown-select-multiple-search"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -574,10 +552,7 @@
       "label": "form-wrapper",
       "url": "http://localhost:8000/chi/6.89.0/tests/<theme>/custom-elements/form-wrapper.html",
       "delay": 2000,
-      "selectors": [
-        ".test-form-wrapper-checkboxes",
-        ".test-form-wrapper-radio-buttons"
-      ]
+      "selectors": [".test-form-wrapper-checkboxes", ".test-form-wrapper-radio-buttons"]
     },
     {
       "label": "popover",
@@ -634,10 +609,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-gradient-type",
-        ".test-gradient-type-with-header-image"
-      ],
+      "selectors": [".test-gradient-type", ".test-gradient-type-with-header-image"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -831,9 +803,9 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-link-base", 
-        ".test-link-disabled", 
-        ".test-link-cta", 
+        ".test-link-base",
+        ".test-link-disabled",
+        ".test-link-cta",
         ".test-link-no-underline",
         ".test-link-hover",
         ".test-link-no-hover-underline"
@@ -962,9 +934,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-skeleton"
-      ],
+      "selectors": [".test-skeleton"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true

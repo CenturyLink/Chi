@@ -36,5 +36,6 @@ block content
     .chi-grid(data-cy='icon-list')
       each name in icons
         .chi-col.-w--2.-o--1.-text--center
-          i.chi-icon.-md(class=`icon-${name}`, aria-hidden="true")
+          div(style="display: inline-flex;")
+            i.chi-icon.-md(class=`icon-${name}`, aria-hidden="true")
           h4= 'icon-' + name
