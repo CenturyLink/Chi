@@ -189,7 +189,7 @@ $colors: (
     justify-content: center;
 
     & > :not(:last-child) {
-      margin-right: 0.375em; // sass-lint:disable-line property-units
+      margin-right: 0.375rem;
     }
   }
 

@@ -264,7 +264,7 @@ $states: (
       // sass-lint:disable-line force-element-nesting
       &.-close,
       &.chi-alert__close-button {
-        padding: 0;
+        padding: 0 !important;
 
         .chi-icon {
           font-size: 1.5rem;
