@@ -1,6 +1,6 @@
 // File: scripts/tests/retryFailedBackstop.js
-const fs = require('fs');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import { execSync } from 'child_process';
 
 // 1. Get arguments passed from the bash script
 const theme = process.argv[2];
