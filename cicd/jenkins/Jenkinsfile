@@ -165,8 +165,7 @@ pipeline {
     }
 
     // --- PARALLEL TESTING STAGE ---
-    
-    stage('Testing & Analysis') {
+    stage('Testing') {
       when {
         beforeAgent true
         allOf {
@@ -181,15 +180,11 @@ pipeline {
         
         // 1. BACKSTOP: RESPONSIVE
         stage('Backstop: Responsive') {
-          agent {
-            docker { image DOCKER_NODE20 }
-          }
+          agent { docker { image DOCKER_NODE20 } }
           steps {
             script {
               sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-              retry(2) { 
-                jslNpmWrapper('run tests:visual:run -- responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
-              }
+              jslNpmWrapper('run tests:visual:run -- responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
               
               THEMES_TO_TEST.split(',').each { theme ->
                 def ciReportPath = "reports/${theme}/ci_report/responsive"
@@ -205,15 +200,11 @@ pipeline {
 
         // 2. BACKSTOP: NON-RESPONSIVE
         stage('Backstop: Non-Responsive') {
-          agent {
-            docker { image DOCKER_NODE20 }
-          }
+          agent { docker { image DOCKER_NODE20 } }
           steps {
             script {
               sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-              retry(2) { 
-                jslNpmWrapper('run tests:visual:run -- non-responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
-              }
+              jslNpmWrapper('run tests:visual:run -- non-responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
               
               THEMES_TO_TEST.split(',').each { theme ->
                 def ciReportPath = "reports/${theme}/ci_report/non_responsive"
@@ -229,15 +220,11 @@ pipeline {
 
         // 3. BACKSTOP: NON-RESPONSIVE CE
         stage('Backstop: Non-Responsive CE') {
-          agent {
-            docker { image DOCKER_NODE20 }
-          }
+          agent { docker { image DOCKER_NODE20 } }
           steps {
             script {
               sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-              retry(2) { 
-                jslNpmWrapper('run tests:visual:run -- non-responsive-ce', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
-              }
+              jslNpmWrapper('run tests:visual:run -- non-responsive-ce', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
               
               THEMES_TO_TEST.split(',').each { theme ->
                 def ciReportPath = "reports/${theme}/ci_report/non_responsive_ce"
@@ -253,40 +240,46 @@ pipeline {
 
         // 4. E2E TESTS
         stage ('E2E tests') {
-          agent {
-            docker { image DOCKER_NODE22 }
-          }
+          agent { docker { image DOCKER_NODE22 } }
           steps {
             script {
               jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+              // We leave retry(2) here just in case Cypress has network timeouts
               retry(2) { jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS) }
             }
           }
         }
+      }
+    }
+    // --- END PARALLEL TESTING STAGE ---
 
-        // 5. SONARQUBE COVERAGE
-        stage('Sonar Coverage') {
-          agent {
-            docker { image DOCKER_NODE20 }
-          }
+    // --- SONARQUBE STAGE (Runs sequentially after Testing completes) ---
+    stage('Sonarqube') {
+      when {
+        beforeAgent true
+        allOf {
+          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
+          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
+        }
+      }
+      parallel {
+        stage('Coverage') {
+          agent { docker { image DOCKER_NODE20 } }
           steps {
             // TODO: Improve to have nyc, coverage (folder) & lcov.info
             jslQualityGateCodeCoverage(SONARQUBE_PROPERTIES)
           }
         }
-
-        // 6. SONARQUBE STATIC ANALYSIS
-        stage('Sonar Static Analysis') {
-          agent {
-            docker { image DOCKER_NODE20 }
-          }
+        stage('Static Analysis') {
+          agent { docker { image DOCKER_NODE20 } }
           steps {
             jslSonarQubeStaticAnalysis(SONARQUBE_PROPERTIES, SONARQUBE_CREDENTIALS)
           }
         }
       }
     }
-    // --- END PARALLEL TESTING STAGE ---
+    // --- END SONARQUBE STAGE ---
 
     stage('QualityGate') {
       when {
@@ -613,7 +606,7 @@ pipeline {
   }
 }
 
-// This function is called to print the summary of the pipeline
+// Support Functions Below
 def printSummary() {
   env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
 
@@ -632,7 +625,6 @@ def printSummary() {
   """
 }
 
-// This function is called to send the build info to JIRA
 def sendBuildInfo() {
   echo "/dist & /dist/components"
   
@@ -644,12 +636,6 @@ def sendBuildInfo() {
   jslJiraSendBuildInfo()
 }
 
-// NOTE: stashAndArchiveCiReports() function has been removed from here 
-// because we are now doing it specifically inside the individual parallel stages!
-
-// This function is called when the pipeline fails
-// - It will update the GCR as cancelled / backed out
-// - It will update the DEVOPS_GCR_PREPROD_BRANCH with the PROD_BRANCH
 def gcrPostFailure() {
   def gcrInProgress = env.TAG_NAME == null ? env.GCR_NUMBER : env.TAG_NAME
         
@@ -660,7 +646,6 @@ def gcrPostFailure() {
   }
 }
 
-// This function is called to promote the RC tag to the DEPLOYMENT tag
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   
@@ -674,7 +659,6 @@ def promoteDeployTagGCR() {
   jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
 }
 
-// This function is called to check the package.json version
 def packageVersionCheck() {
   sh(script: """
     chmod +x ${VERSION_CHECK_SCRIPT}
@@ -684,7 +668,6 @@ def packageVersionCheck() {
   stash name: "chi_version_bump", includes: "chi_version_bump"
 }
 
-// This function is called to check if the version bump exists
 def isVersionBump() {
   def isVersionBumpResult = false
 
@@ -714,7 +697,6 @@ def isVersionBump() {
   return isVersionBumpResult
 }
 
-// This function is called to create a GitHub release
 def gitHubRelease() {
   def latestRelease = 'true'
  
@@ -755,7 +737,6 @@ def gitHubRelease() {
   }
 }
 
-// This function is called to create and open a pull request
 def createAndOpenPullRequest(def version) {
   def org = jslGitGetRepoOwner()
   def commitMessage = "[FSTEAM-4189] This PR is for CHI ${version}"
@@ -785,7 +766,6 @@ def createAndOpenPullRequest(def version) {
   jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
 }
 
-// This function is called to check/create the smoke tests
 def smokeTestChecker() {
   def version = env.VERSION
 

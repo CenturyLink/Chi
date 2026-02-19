@@ -30,11 +30,27 @@ npm run build
 npm run start:dist &
 SERVER_PID=$!
 
-# Function to perform visual tests
+# Function to perform visual tests with Smart Retry
 test_theme () {
-  CONFIG=$1
-  node ./scripts/tests/visualTests.js $CONFIG
-  return $?
+  CONFIG_FILE=$1
+  THEME_NAME=$2
+  CONFIG_TYPE=$3
+
+  # Initial run
+  node ./scripts/tests/visualTests.js "$CONFIG_FILE"
+  TEST_EXIT_CODE=$?
+
+  # If it failed, trigger the smart retry script
+  if [ $TEST_EXIT_CODE -ne 0 ]; then
+    echo "[CHI]: Initial run failed for $CONFIG_TYPE. Triggering Smart Retry..."
+    
+    node ./scripts/tests/retryFailedBackstop.js "$THEME_NAME" "$CONFIG_TYPE"
+    RETRY_EXIT_CODE=$?
+    
+    return $RETRY_EXIT_CODE
+  fi
+
+  return 0
 }
 
 set_backstop_config
@@ -44,11 +60,13 @@ message=''
 # 2. Loop only through themes, but strictly execute the TARGET_CONFIG
 for theme in ${THEMES_TO_TEST//,/ }; do
   echo "[CHI]: Running $TARGET_CONFIG for $theme..."
-  test_theme backstop-"$TARGET_CONFIG"_"$theme".json
   
-  TEST_EXIT_CODE=$?
+  # Pass the config file, the theme name, and the config type
+  test_theme "backstop-${TARGET_CONFIG}_${theme}.json" "$theme" "$TARGET_CONFIG"
+  
+  FINAL_EXIT_CODE=$?
 
-  if [ $TEST_EXIT_CODE -ne 0 ]; then
+  if [ $FINAL_EXIT_CODE -ne 0 ]; then
     # Note: ensure we replace the dash with underscore for the HTML report path if that matches your folder structure
     message+=$'\n'"[CHI]: FAILED TESTS: $USER_PATH/reports/$theme/html_report/${TARGET_CONFIG//-/_}/index.html"
     
