@@ -1199,7 +1199,7 @@ $logo-icons: (
     div.#{$chi-icon}::before {
       content: $material-icon;
       display: inline-block;
-      font-family: 'Material Symbols Outlined';
+      font-family: 'Material Symbols Outlined', sans-serif;
       font-variant: normal;
       line-height: 1;
 
