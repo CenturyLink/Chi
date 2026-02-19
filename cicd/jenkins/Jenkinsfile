@@ -163,32 +163,10 @@ pipeline {
         }
       }
     }
-    stage ('Backstop tests') {
-      when {
-        beforeAgent true
-        allOf {
-          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-        }
-      }
-      agent {
-        docker {
-          // backstop needs node 20
-          image DOCKER_NODE20
-        }
-      }
-      steps {
-        script {
-          sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-    
-          jslNpmWrapper('run tests:visual:run', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
-          stashAndArchiveCiReports()
-        }
-      }
-    }
-    stage ('E2E tests') {
+    // --- PARALLEL TESTING STAGE ---
+    
+    stage('Testing & Analysis') {
       when {
         beforeAgent true
         allOf {
@@ -197,44 +175,110 @@ pipeline {
           not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
         }
       }
-      agent {
-        docker {
-          image DOCKER_NODE22
-        }
-      }
-      steps {
-        script {
-          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-        }
-      }
-    }
-    stage('Sonarqube') {
-      when {
-        beforeAgent true
-        allOf {
-          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-        }
-      }
+      // Allows successful parallel branches to save their state even if one fails
+      failFast false 
       parallel {
-        stage('Coverage') {
+        
+        // 1. BACKSTOP: RESPONSIVE
+        stage('Backstop: Responsive') {
           agent {
-            docker {
-              image DOCKER_NODE20
+            docker { image DOCKER_NODE20 }
+          }
+          steps {
+            script {
+              sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+              retry(2) { 
+                jslNpmWrapper('run tests:visual:run -- responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
+              }
+              
+              THEMES_TO_TEST.split(',').each { theme ->
+                def ciReportPath = "reports/${theme}/ci_report/responsive"
+                def htmlReportPath = "reports/${theme}/html_report/responsive"
+                
+                stash name: "${theme}_responsive_ci", includes: "${ciReportPath}/**"
+                archiveArtifacts artifacts: "${htmlReportPath}/**", fingerprint: true, allowEmptyArchive: true
+                jslPublishTestResults("${ciReportPath}/xunit.xml")
+              }
             }
+          }
+        }
+
+        // 2. BACKSTOP: NON-RESPONSIVE
+        stage('Backstop: Non-Responsive') {
+          agent {
+            docker { image DOCKER_NODE20 }
+          }
+          steps {
+            script {
+              sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+              retry(2) { 
+                jslNpmWrapper('run tests:visual:run -- non-responsive', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
+              }
+              
+              THEMES_TO_TEST.split(',').each { theme ->
+                def ciReportPath = "reports/${theme}/ci_report/non_responsive"
+                def htmlReportPath = "reports/${theme}/html_report/non_responsive"
+                
+                stash name: "${theme}_non_responsive_ci", includes: "${ciReportPath}/**"
+                archiveArtifacts artifacts: "${htmlReportPath}/**", fingerprint: true, allowEmptyArchive: true
+                jslPublishTestResults("${ciReportPath}/xunit.xml")
+              }
+            }
+          }
+        }
+
+        // 3. BACKSTOP: NON-RESPONSIVE CE
+        stage('Backstop: Non-Responsive CE') {
+          agent {
+            docker { image DOCKER_NODE20 }
+          }
+          steps {
+            script {
+              sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
+              retry(2) { 
+                jslNpmWrapper('run tests:visual:run -- non-responsive-ce', GITHUB_PUBLISH_TOKEN_CREDENTIALS) 
+              }
+              
+              THEMES_TO_TEST.split(',').each { theme ->
+                def ciReportPath = "reports/${theme}/ci_report/non_responsive_ce"
+                def htmlReportPath = "reports/${theme}/html_report/non_responsive_ce"
+                
+                stash name: "${theme}_non_responsive_ce_ci", includes: "${ciReportPath}/**"
+                archiveArtifacts artifacts: "${htmlReportPath}/**", fingerprint: true, allowEmptyArchive: true
+                jslPublishTestResults("${ciReportPath}/xunit.xml")
+              }
+            }
+          }
+        }
+
+        // 4. E2E TESTS
+        stage ('E2E tests') {
+          agent {
+            docker { image DOCKER_NODE22 }
+          }
+          steps {
+            script {
+              jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+              retry(2) { jslNpmWrapper('run tests:e2e', GITHUB_PUBLISH_TOKEN_CREDENTIALS) }
+            }
+          }
+        }
+
+        // 5. SONARQUBE COVERAGE
+        stage('Sonar Coverage') {
+          agent {
+            docker { image DOCKER_NODE20 }
           }
           steps {
             // TODO: Improve to have nyc, coverage (folder) & lcov.info
             jslQualityGateCodeCoverage(SONARQUBE_PROPERTIES)
           }
         }
-        stage('Static Analysis') {
+
+        // 6. SONARQUBE STATIC ANALYSIS
+        stage('Sonar Static Analysis') {
           agent {
-            docker {
-              image DOCKER_NODE20
-            }
+            docker { image DOCKER_NODE20 }
           }
           steps {
             jslSonarQubeStaticAnalysis(SONARQUBE_PROPERTIES, SONARQUBE_CREDENTIALS)
@@ -242,6 +286,8 @@ pipeline {
         }
       }
     }
+    // --- END PARALLEL TESTING STAGE ---
+
     stage('QualityGate') {
       when {
         beforeAgent true
@@ -598,22 +644,8 @@ def sendBuildInfo() {
   jslJiraSendBuildInfo()
 }
 
-// This function is called to stash and archive the CI reports
-def stashAndArchiveCiReports() {
-  def tests = ["non_responsive", "responsive", "non_responsive_ce"]
-
-  tests.each { test ->
-    THEMES_TO_TEST.split(',').each { theme ->
-      def reportBasePath = "reports/${theme}/ci_report/"
-      def htmlBasePath = "reports/${theme}/html_report/"
-  
-      stash name: "${theme}_${test}_ci", includes: "${reportBasePath}${test}/**"
-
-      archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
-      jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
-    }
-  }
-}
+// NOTE: stashAndArchiveCiReports() function has been removed from here 
+// because we are now doing it specifically inside the individual parallel stages!
 
 // This function is called when the pipeline fails
 // - It will update the GCR as cancelled / backed out
