@@ -49,9 +49,14 @@ if (failedTests.length === 0) {
 console.log(`[Smart Retry] Found ${failedTests.length} flaky test(s). Preparing targeted retry...`);
 
 // 5. Build the regex filter for the Backstop command
-// Escape special regex characters in the test labels and join them with the OR (|) operator
+// Safely extract the label whether Backstop put it in 'pair.label' or 'meta.label'
 const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-const filterRegex = failedTests.map((t) => `^${escapeRegExp(t.meta.label)}$`).join('|');
+const filterRegex = failedTests
+  .map((t) => {
+    const label = (t.pair && t.pair.label) || (t.meta && t.meta.label) || 'UnknownTest';
+    return `^${escapeRegExp(label)}$`;
+  })
+  .join('|');
 
 // Construct the targeted Backstop command
 const command = `npx backstop test --config=${backstopConfigFile} --filter="${filterRegex}"`;
