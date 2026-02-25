@@ -1062,21 +1062,20 @@
   &.-vertical,
   &:not(.-vertical) {
     &.-solid {
+      gap: $tabs-solid-gap;
+
       & > li {
         & > a {
           background-color: $tabs-solid-background-color;
           color: $tabs-solid-text-color;
 
+          &:focus-visible {
+            outline: $tabs-solid-outline-focus-visible;
+          }
+
           &:hover {
             background-color: $tabs-solid-background-color-hover;
             color: $tabs-solid-text-color-hover;
-          }
-
-          &:active {
-            border: $tabs-solid-border-focus;
-            border-bottom: none;
-            border-top-left-radius: $tabs-solid-border-top-radius;
-            border-top-right-radius: $tabs-solid-border-top-radius;
           }
         }
 
@@ -1096,6 +1095,10 @@
             background-color: $tabs-solid-active-background-color;
             color: $tabs-solid-text-color-active;
 
+            &::before {
+              display: $tabs-solid-deprecated-border-display;
+            }
+
             &:hover {
               background-color: $tabs-solid-active-background-color-hover;
             }
@@ -1104,15 +1107,131 @@
           &.-disabled {
             & > a {
               background-color: $tabs-solid-active-background-color-disabled;
-              border: $tabs-solid-active-border-disabled;
-              border-bottom: none;
-              border-top-left-radius: $tabs-solid-border-top-radius;
-              border-top-right-radius: $tabs-solid-border-top-radius;
               color: $tabs-solid-text-color-disabled;
 
               &::before {
                 display: $tabs-solid-deprecated-border-display;
               }
+            }
+          }
+        }
+      }
+
+      &.-inverse {
+        & > li {
+          & > a {
+            color: $color-text-white;
+          }
+        }
+      }
+    }
+  }
+
+  &:not(.-vertical) {
+    &.-solid {
+      box-shadow: $tabs-solid-horizontal-box-shadow;
+
+      & > li {
+        & > a {
+          border: $tabs-solid-border-transparent;
+          border-bottom-width: $tabs-solid-border-bottom-width;
+          border-top-left-radius: $tabs-solid-border-top-radius;
+          border-top-right-radius: $tabs-solid-border-top-radius;
+          box-shadow: $tabs-solid-box-shadow;
+          padding: $tabs-solid-horizontal-padding;
+
+          &:active,
+          &:focus {
+            border: $tabs-solid-border-focus;
+            border-bottom: none;
+          }
+
+          &:hover {
+            border-bottom: $tabs-solid-border-bottom-hover;
+          }
+        }
+
+        &:not(.-active) {
+          & > a {
+            &:focus,
+            &:active {
+              border-bottom: $tabs-solid-border-bottom-focus;
+            }
+          }
+        }
+
+        &.-active {
+          & > a {
+            border: $tabs-solid-border-active;
+            border-bottom: $tabs-solid-border-bottom-transparent;
+
+            &:active,
+            &:focus {
+              border: $tabs-solid-border-focus;
+              border-bottom: $tabs-solid-border-bottom-transparent;
+            }
+          }
+
+          &.-disabled {
+            & > a {
+              border: $tabs-solid-active-border-disabled;
+              border-bottom: $tabs-solid-border-bottom-transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.-vertical {
+    &.-solid {
+      box-shadow: $tabs-solid-vertical-box-shadow !important;
+
+      & > li {
+        & > a {
+          border: $tabs-solid-border-transparent;
+          border-top-right-radius: $tabs-solid-border-top-radius;
+          border-bottom-right-radius: $tabs-solid-border-top-radius;
+          box-shadow: $tabs-solid-box-shadow;
+          padding: $tabs-solid-vertical-padding;
+
+          &:active,
+          &:focus {
+            border: $tabs-solid-border-focus;
+            border-left: $tabs-solid-border-bottom-transparent;
+          }
+
+        }
+
+        &:not(.-active) {
+          & > a {
+            &:hover {
+              border-left: $tabs-solid-border-bottom-hover;
+            }
+
+            &:focus,
+            &:active {
+              border-left: $tabs-solid-border-bottom-focus;
+            }
+          }
+        }
+
+        &.-active {
+          & > a {
+            border: $tabs-solid-border-active;
+            border-left: $tabs-solid-border-bottom-transparent;
+
+            &:active,
+            &:focus {
+              border: $tabs-solid-border-focus;
+              border-left: $tabs-solid-border-bottom-transparent;
+            }
+          }
+
+          &.-disabled {
+            & > a {
+              border: $tabs-solid-active-border-disabled;
+              border-left: $tabs-solid-border-bottom-transparent;
             }
           }
         }
