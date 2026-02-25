@@ -1020,26 +1020,6 @@
     }
   }
 
-  &:not(.-vertical):not(.-responsive) {
-    @include tabs-not-vertical;
-  }
-
-  &.-vertical {
-    @include tabs-vertical;
-  }
-
-  @media only screen and (min-width: $md-breakpoint) {
-    &.-responsive {
-      @include tabs-not-vertical;
-    }
-  }
-
-  @media only screen and (max-width: $md-breakpoint - 1) {
-    &.-responsive {
-      @include tabs-vertical;
-    }
-  }
-
   .chi-dropdown__menu-item {
     &.-active {
       &.chi-dropdown__trigger {
@@ -1200,7 +1180,6 @@
             border: $tabs-solid-border-focus;
             border-left: $tabs-solid-border-bottom-transparent;
           }
-
         }
 
         &:not(.-active) {
@@ -1236,6 +1215,26 @@
           }
         }
       }
+    }
+  }
+
+  &:not(.-vertical):not(.-responsive) {
+    @include tabs-not-vertical;
+  }
+
+  &.-vertical {
+    @include tabs-vertical;
+  }
+
+  @media only screen and (min-width: $md-breakpoint) {
+    &.-responsive {
+      @include tabs-not-vertical;
+    }
+  }
+
+  @media only screen and (max-width: $md-breakpoint - 1) {
+    &.-responsive {
+      @include tabs-vertical;
     }
   }
 }
