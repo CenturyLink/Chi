@@ -4,12 +4,16 @@
 .chi-drag {
   .chi-drag__item {
     background-color: $drag-item-background-color;
-    border-radius: $drag-item-border-radius;
     border: 0.0625rem solid $drag-item-border-color;
+    border-radius: $drag-item-border-radius;
     display: flex;
     flex-direction: row;
     padding: 0;
     width: 100%;
+
+    &.-active {
+      border: $drag-item-active-border;
+    }
 
     &:not(:last-of-type) {
       margin-bottom: 1rem;
@@ -30,8 +34,8 @@
     }
 
     .chi-drag__title {
-      display: flex;
       align-items: center;
+      display: flex;
       font-size: $drag-item-title-font-size;
       font-weight: $drag-item-title-font-weight;
       line-height: $drag-item-title-line-height;
@@ -61,8 +65,8 @@
     }
 
     .chi-drag__closable {
-      display: flex;
       border-left: 0.0625rem solid $drag-item-border-color;
+      display: flex;
 
       .chi-button {
         border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
@@ -84,6 +88,64 @@
             border-radius: 2rem;
             outline: 0.125rem solid rgba($drag-item-focus-color, 0.7);
             outline-offset: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .chi-drag__actions-dropdown {
+      align-items: center;
+      border-left: 0.0625rem solid $drag-item-border-color;
+      border-radius: 0 $drag-item-border-radius $drag-item-border-radius 0;
+      cursor: pointer;
+      display: flex;
+
+      &:hover {
+        background-color: $drag-item-close-hover-background-color;
+      }
+
+      .chi-dropdown {
+        > chi-button {
+          .chi-button {
+            border-color: transparent;
+            padding: $drag-item-actions-dropdown-button-padding;
+
+            .chi-icon {
+              color: $drag-item-actions-dropdown-icon-color;
+            }
+
+            &:focus {
+              outline: none;
+            }
+
+            &,
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+
+        .chi-dropdown__menu {
+          .chi-drag__action-item {
+            .chi-icon {
+              color: $color-icon-muted;
+            }
+
+            &.-active {
+              box-shadow: none;
+              color: $drag-item-actions-dropdown-active-text-color;
+              font-weight: $font-weight-normal;
+
+              .chi-icon {
+                color: $drag-item-actions-dropdown-active-icon-color;
+              }
+            }
+          }
+
+          &:has(.chi-drag__action-item chi-icon) {
+            .chi-drag__action-item:not(:has(chi-icon)) {
+              padding-left: $drag-item-actions-dropdown-item-padding-left;
+            }
           }
         }
       }
@@ -113,19 +175,19 @@
     }
 
     &.drag-over {
-      position: relative;
       margin-top: 1.25rem;
+      position: relative;
 
       &::after {
+        background-color: $drag-item-drop-indicator-background-color;
         content: '';
+        height: 0.25rem;
+        left: 0;
+        margin-bottom: 0.3125rem;
+        margin-top: 0.3125rem;
         position: absolute;
         top: -0.625rem;
-        left: 0;
         width: 100%;
-        height: 0.25rem;
-        background-color: $drag-item-drop-indicator-background-color;
-        margin-top: 0.3125rem;
-        margin-bottom: 0.3125rem;
       }
     }
 
@@ -158,6 +220,14 @@
         }
       }
     }
+
+    &.-base {
+      .chi-drag__title-icon {
+        .chi-icon {
+          margin-top: 0.25rem;
+        }
+      }
+    }
   }
 }
 
@@ -168,6 +238,12 @@
         border: 0.0625rem solid $drag-item-border-color;
         outline: none;
       }
+
+      &.-active:focus {
+        border: $drag-item-active-border;
+        outline: none;
+      }
+
       .chi-drag__closable {
         .chi-button {
           &:focus {
