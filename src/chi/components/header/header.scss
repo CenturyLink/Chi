@@ -673,17 +673,3 @@
     }
   }
 }
-
-/* IE11 CSS hack */
-// sass-lint:disable-block no-vendor-prefixes
-@media all and (-ms-high-contrast: none) {
-  .chi-header {
-    .chi-search {
-      &.-collapsed {
-        .chi-input__wrapper {
-          position: relative;
-        }
-      }
-    }
-  }
-}

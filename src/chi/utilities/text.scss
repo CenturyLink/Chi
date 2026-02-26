@@ -69,13 +69,17 @@ $heading-sizes: (
 );
 
 $alignments: (justify, center, left, right);
-$decorations: (no-decoration, line-through, underline);
+$decorations: (
+  no-decoration: none,
+  line-through: line-through,
+  underline: underline
+);
 $transforms: (lowercase, uppercase, capitalize);
 
 // decorations
-@each $type in $decorations {
-  .-text--#{$type} {
-    text-decoration: #{$type} !important;
+@each $name, $value in $decorations {
+  .-text--#{$name} {
+    text-decoration: #{$value} !important;
   }
 }
 

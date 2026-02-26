@@ -57,11 +57,6 @@
     }
   }
 
-  // Remove ie11,edge clear field
-  &::-ms-clear { // sass-lint:disable-line no-vendor-prefixes
-    display: none;
-  }
-
   @each $type in map-keys($sizes) {
     &.-#{$type} {
       font-size: map-get(map-get($sizes, $type), font-size);

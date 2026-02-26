@@ -496,7 +496,6 @@ $app-layout-background-color: $color-background-base;
 $app-layout-header-background-color: linear-gradient(90deg, rgba(249, 94, 74, 1) 0%, rgba(251, 132, 42, 1) 100%);
 $app-layout-legacy-header-background-color: $color-teal-100;
 $app-layout-header-title-color: $color-text-primary-darker;
-$app-layout-sub-header-title-color: $color-text-muted;
 $app-layout-sub-header-title-color: $color-grey-80;
 $app-layout-header-help-icon-background-color: $color-background-base;
 $app-layout-header-line-height: 2.5rem;
@@ -1565,7 +1564,6 @@ $footer-internal-row-content-padding-lg: 1.25rem 4rem;
 $footer-internal-row-content-padding: 1.25rem 2rem;
 $footer-internal-row-content-xxl-gap: 10%;
 $footer-internal-row-links-gap: 2.25rem;
-$footer-internal-select-text-color: $color-text-white;
 $footer-internal-text-color: $color-text-white;
 
 // Form Item
@@ -2011,9 +2009,8 @@ $popover-arrow-size: 0.75rem;
 $popover-modal-background-color: $popover-background-color;
 $popover-modal-header-background-color: $modal-header-background-color;
 $popover-modal-header-background-image: $modal-header-background-image;
-$popover-modal-header-text-color: $color-text-white;
-$popover-modal-close-icon-color: $modal-close-icon-color;
 $popover-modal-header-text-color: inherit;
+$popover-modal-close-icon-color: $modal-close-icon-color;
 $popover-drag-icon-color: $color-icon-white;
 $popover-gradient-header-background: linear-gradient(90deg, $color-red-50 0%, $color-orange-50 100%);
 $popover-gradient-header-color: $color-white;

@@ -118,7 +118,7 @@
 | sidebar | chi-sidenav | -active, -sliding, -close, -left, -animated, -expanded, -sm, -transitioning, ... | chi-sidenav__content, chi-sidenav__list, chi-sidenav__drawer-list, chi-sidenav__header, ... |  |
 | skeleton | chi-skeleton | -circle, -square, -rounded, -xs, -sm, -md, -lg, -xl |  | `<chi-skeleton>` |
 | spinner | chi-spinner | -xs, -sm, -sm--2, -sm--3, -md, -lg, -xl, -xxl | chi-spinner__wrapper | `<chi-spinner>` |
-| stat | chi-stat | -active, -flat, -icon, -disabled, -center, -compact | chi-stat__title, chi-stat__value, chi-stat__item |  |
+| stat | chi-stat | -active, -flat, -icon, -disabled, -center, -compact | chi-stat__title, chi-stat__value |  |
 | steps | chi-steps | -active, -completed, -inverse, -horizontal-label, -labels--hide, -sm, -vertical, -labels- | chi-steps__icon, chi-steps__line, chi-steps__content, chi-steps__subitem, ... |  |
 | tables | chi-table | -sorted, -ascending, -descending, -row--success, -row--warning, -row--danger, -row--info, -active, ... |  |  |
 | tags | chi-tags | -focus, -hover, -icon, -close |  | `<chi-tags>` |
