@@ -178,6 +178,11 @@ When migrating CSS modifiers to Web Component properties:
 | `-active` | `active` | (boolean) |
 | `-hover` | `hover` | (boolean) |
 
+### chi-drag
+| CSS Modifier | Property | Value |
+|-------------|----------|-------|
+| `-active` | `active` | (boolean) |
+
 ### chi-drawer
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|

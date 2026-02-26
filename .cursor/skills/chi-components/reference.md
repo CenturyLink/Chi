@@ -87,7 +87,7 @@
 | data-table | chi-data-table | -expanded, -selectable, -sorting, -active, -descending, -expandable, -striped, -selected, ... | chi-data-table__body, chi-data-table__footer, chi-data-table__head, chi-data-table__row, ... |  |
 | date-picker | chi-datepicker | -disabled, -active, -today, -inactive, -hover, -week-starts-on-sun, -month-starts-on-, -week-starts-on-mon, ... | chi-datepicker__day, chi-datepicker__week-day, chi-datepicker__month, chi-datepicker__days, ... | `<chi-date-picker>` |
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
-| drag-and-drop | chi-drag | -locked, -accordion |  | `<chi-drag>` |
+| drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
 | drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header, chi-drawer__title, chi-drawer__content, chi-drawer__footer | `<chi-drawer>` |
 | dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
@@ -118,7 +118,7 @@
 | sidebar | chi-sidenav | -active, -sliding, -close, -left, -animated, -expanded, -sm, -transitioning, ... | chi-sidenav__content, chi-sidenav__list, chi-sidenav__drawer-list, chi-sidenav__header, ... |  |
 | skeleton | chi-skeleton | -circle, -square, -rounded, -xs, -sm, -md, -lg, -xl |  | `<chi-skeleton>` |
 | spinner | chi-spinner | -xs, -sm, -sm--2, -sm--3, -md, -lg, -xl, -xxl | chi-spinner__wrapper | `<chi-spinner>` |
-| stat | chi-stat | -active, -flat, -icon, -disabled, -center, -compact | chi-stat__title, chi-stat__value, chi-stat__item |  |
+| stat | chi-stat | -active, -flat, -icon, -disabled, -center, -compact | chi-stat__title, chi-stat__value |  |
 | steps | chi-steps | -active, -completed, -inverse, -horizontal-label, -labels--hide, -sm, -vertical, -labels- | chi-steps__icon, chi-steps__line, chi-steps__content, chi-steps__subitem, ... |  |
 | tables | chi-table | -sorted, -ascending, -descending, -row--success, -row--warning, -row--danger, -row--info, -active, ... |  |  |
 | tags | chi-tags | -focus, -hover, -icon, -close |  | `<chi-tags>` |
