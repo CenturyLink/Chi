@@ -1,8 +1,8 @@
 .chi-dynamic-form-group {
   .chi-dynamic-form-group__row {
     display: $dynamic-form-group-row-display;
-    gap: $dynamic-form-group-gap;
     flex-wrap: $dynamic-form-group-row-flex-wrap;
+    gap: $dynamic-form-group-gap;
 
     .chi-dynamic-form-group__field {
       display: $dynamic-form-group-field-display;
