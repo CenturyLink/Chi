@@ -1418,6 +1418,15 @@ $dropdown-select-xl-line-height:                     2rem;
 $dropdown-select-xl-arrow-background-size:           1rem;
 $dropdown-select-xl-padding:                         0.6875rem 1rem;
 
+// Dynamic form group
+$dynamic-form-group-field-add-button-margin:         0 0 1rem auto;
+$dynamic-form-group-field-display:                   flex;
+$dynamic-form-group-field-divider-margin:            1rem 0;
+$dynamic-form-group-field-flex-direction:            column;
+$dynamic-form-group-gap:                             1rem;
+$dynamic-form-group-row-display:                     grid;
+$dynamic-form-group-row-flex-wrap:                   wrap;
+
 // Expansion panel
 $expansion-panel-active-title-text-color:             $color-text-primary;
 $expansion-panel-body-border-radius:                  0;
@@ -1627,14 +1636,6 @@ $link-cta-hover-position-right:             auto;
 $link-cta-padding-right:                    0;
 $link-cta-hover-color:                      $color-text-primary;
 $link-underline-hover-color:                $link-cta-hover-color;
-
-// Location
-$location-field-add-button-margin:          0 0 1rem auto;
-$location-field-display:                    flex;
-$location-field-divider-margin:             1rem 0;
-$location-field-flex-direction:             column;
-$location-row-gap:                          1rem;
-$location-row-margin-bottom:                1rem;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;

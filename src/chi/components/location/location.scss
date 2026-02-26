@@ -1,19 +1,20 @@
-.chi-location {
-  .chi-location__field {
-    display: $location-field-display;
-    flex-direction: $location-field-flex-direction;
+.chi-dynamic-form-group {
+  .chi-dynamic-form-group__row {
+    display: $dynamic-form-group-row-display;
+    gap: $dynamic-form-group-gap;
+    flex-wrap: $dynamic-form-group-row-flex-wrap;
+
+    .chi-dynamic-form-group__field {
+      display: $dynamic-form-group-field-display;
+      gap: $dynamic-form-group-gap;
+    }
+
+    .chi-dynamic-form-group__add-field {
+      margin: $dynamic-form-group-field-add-button-margin;
+    }
 
     .chi-divider {
-      margin: $location-field-divider-margin;
+      margin: $dynamic-form-group-field-divider-margin;
     }
-
-    chi-button[variant='flat']:not([type='icon']) {
-      margin: $location-field-add-button-margin;
-    }
-  }
-
-  .chi-location__row {
-    gap: $location-row-gap;
-    margin-bottom: $location-row-margin-bottom;
   }
 }
