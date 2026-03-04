@@ -4,18 +4,28 @@
 $sizes: (
   xs: (
     background-position: right 0.5rem center,
+    min-width: 1.5rem,
+    padding: 0.4375rem,
   ),
   sm: (
     background-position: right 0.5rem center,
+    min-width: 2rem,
+    padding: 0.5625rem,
   ),
   md: (
     background-position: right 1rem center,
+    min-width: 2.5rem,
+    padding: 0.75rem,
   ),
   lg: (
     background-position: right 1rem center,
+    min-width: 3rem,
+    padding: 0.9375rem,
   ),
   xl: (
     background-position: right 1.25rem center,
+    min-width: 3.5rem,
+    padding: 0.9375rem,
   ),
 );
 
@@ -42,142 +52,62 @@ $icon-sizes: (
         margin-right: $pagination-button-group-margin-right;
 
         &:not(.-icon) {
-          &.-xs {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
+          @each $size in ('xs', 'sm', 'md', 'lg', 'xl') {
+            @if $size == 'md' {
               &,
-              & + .chi-button:not(.-icon) {
-                min-width: 1.5rem;
-                padding-left: 0.4375rem;
-                padding-right: 0.4375rem;
-              }
-            }
+              &.-#{$size} {
+                &,
+                &:hover,
+                &.-hover,
+                &:active,
+                &.-active,
+                &:focus,
+                &.-focus {
+                  &,
+                  & + .chi-button:not(.-icon) {
+                    min-width: map-get(map-get($sizes, $size), min-width);
+                    padding-left: map-get(map-get($sizes, $size), padding);
+                    padding-right: map-get(map-get($sizes, $size), padding);
+                  }
+                }
 
-            &:hover,
-            &.-hover {
-              & + .chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.4375rem;
-                  padding-right: 0.4375rem;
+                &:hover,
+                &.-hover {
+                  & + .chi-button:focus {
+                    &:not(.-icon) {
+                      border-left: 0;
+                      padding-left: map-get(map-get($sizes, $size), padding);
+                      padding-right: map-get(map-get($sizes, $size), padding);
+                    }
+                  }
                 }
               }
-            }
-          }
-
-          &.-sm {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              & + .chi-button:not(.-icon) {
-                min-width: 2rem;
-                padding-left: 0.5625rem;
-                padding-right: 0.5625rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              & + .chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.5625rem;
-                  padding-right: 0.5625rem;
+            } @else {
+              &.-#{$size} {
+                &,
+                &:hover,
+                &.-hover,
+                &:active,
+                &.-active,
+                &:focus,
+                &.-focus {
+                  &,
+                  & + .chi-button:not(.-icon) {
+                    min-width: map-get(map-get($sizes, $size), min-width);
+                    padding-left: map-get(map-get($sizes, $size), padding);
+                    padding-right: map-get(map-get($sizes, $size), padding);
+                  }
                 }
-              }
-            }
-          }
 
-          &,
-          &.-md {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              & + .chi-button:not(.-icon) {
-                min-width: 2.5rem;
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              & + .chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.75rem;
-                  padding-right: 0.75rem;
-                }
-              }
-            }
-          }
-
-          &.-lg {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              & + .chi-button:not(.-icon) {
-                min-width: 3rem;
-                padding-left: 0.9375rem;
-                padding-right: 0.9375rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              & + .chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.9375rem;
-                  padding-right: 0.9375rem;
-                }
-              }
-            }
-          }
-
-          &.-xl {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              & + .chi-button:not(.-icon) {
-                min-width: 3.5rem;
-                padding-left: 0.9375rem;
-                padding-right: 0.9375rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              & + .chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.9375rem;
-                  padding-right: 0.9375rem;
+                &:hover,
+                &.-hover {
+                  & + .chi-button:focus {
+                    &:not(.-icon) {
+                      border-left: 0;
+                      padding-left: map-get(map-get($sizes, $size), padding);
+                      padding-right: map-get(map-get($sizes, $size), padding);
+                    }
+                  }
                 }
               }
             }

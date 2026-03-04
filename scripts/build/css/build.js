@@ -6,24 +6,8 @@ import ora from 'ora';
 const allowedThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
 const themes = process.env.THEMES_TO_BUILD?.split(',') || allowedThemes;
 
-const scripts = {
-  replace: './scripts/build/css/replace-scss.sh',
-  restore: './scripts/build/css/restore-scss.sh',
-};
 const __dirname = path.resolve();
 const isWindows = process.platform === 'win32';
-
-const runBashScript = (scriptPath, theme, message) => {
-  const spinner = message ? ora(message).start() : null;
-
-  try {
-    execFileSync('bash', [scriptPath, theme], { stdio: 'ignore' });
-    spinner?.succeed(`[CHI]: ${message} completed successfully`);
-  } catch (error) {
-    spinner?.fail(`[CHI]: Error executing ${scriptPath} for ${theme}: ${error.message}`);
-    process.exit(1);
-  }
-};
 
 const deleteCssFile = (theme) => {
   if (!allowedThemes.includes(theme)) {
@@ -47,18 +31,15 @@ const deleteCssFile = (theme) => {
 };
 
 const buildTheme = async (theme) => {
-  const spinner = ora(`[CHI]: Building ${theme} theme`).start();
+  const spinner = ora(`[CHI]: Building ${theme} theme (no file mutations)`).start();
 
   try {
     deleteCssFile(theme);
-    runBashScript(scripts.restore, theme);
-    runBashScript(scripts.replace, theme);
     execFileSync('cross-env', [`THEME=${theme}`, 'vite', 'build', '--c', 'vite-css.config.ts'], { stdio: 'ignore' });
     spinner.succeed(`[CHI]: Build for ${theme} theme completed successfully`);
   } catch (error) {
     spinner.fail(`[CHI]: Error during build for ${theme} theme: ${error.message}`);
-  } finally {
-    runBashScript(scripts.restore, theme);
+    throw error;
   }
 };
 

@@ -127,8 +127,6 @@ $button-colors: (
   ),
 );
 
-$border: 0.0625rem;
-
 $sizes: (
   xs: (
     font-size: $button-xs-font-size,
@@ -436,29 +434,6 @@ $sizes: (
       }
     }
 
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        font-size: map-get(map-get($sizes, $type), font-size);
-        line-height: map-get(map-get($sizes, $type), line-height);
-
-        .chi-icon {
-          height: map-get(map-get(map-get($sizes, $type), icons), height);
-          width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-          &[class^='icon-'],
-          &[class*=' icon-'] {
-            font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-            line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-          }
-        }
-
-        .chi-spinner {
-          height: map-get(map-get(map-get($sizes, $type), icons), height);
-          width: map-get(map-get(map-get($sizes, $type), icons), width);
-        }
-      }
-    }
-
     &:hover,
     &.-hover {
       background-color: $button-flat-hover-background-color;
@@ -471,29 +446,6 @@ $sizes: (
         & > chi-icon .chi-icon {
           // sass-lint:disable-line force-element-nesting
           opacity: $button-flat-hover-icon-opacity;
-        }
-      }
-
-      @each $type in map-keys($sizes) {
-        &.-#{$type} {
-          font-size: map-get(map-get($sizes, $type), font-size);
-          line-height: map-get(map-get($sizes, $type), line-height);
-
-          .chi-icon {
-            height: map-get(map-get(map-get($sizes, $type), icons), height);
-            width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-            &[class^='icon-'],
-            &[class*=' icon-'] {
-              font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-            }
-          }
-
-          .chi-spinner {
-            height: map-get(map-get(map-get($sizes, $type), icons), height);
-            width: map-get(map-get(map-get($sizes, $type), icons), width);
-          }
         }
       }
     }
@@ -512,29 +464,9 @@ $sizes: (
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          font-size: map-get(map-get($sizes, $type), font-size);
-          line-height: map-get(map-get($sizes, $type), line-height);
-
-          .chi-icon {
-            height: map-get(map-get(map-get($sizes, $type), icons), height);
-            width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-            &[class^='icon-'],
-            &[class*=' icon-'] {
-              font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-            }
-          }
-
-          .chi-spinner {
-            height: map-get(map-get(map-get($sizes, $type), icons), height);
-            width: map-get(map-get(map-get($sizes, $type), icons), width);
-          }
-
           &.-icon {
             &:not(.chi-dropdown__trigger) {
               padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
             }
           }
         }
