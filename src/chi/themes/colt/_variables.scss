@@ -1430,6 +1430,15 @@ $dropdown-select-xl-line-height:                     2rem;
 $dropdown-select-xl-arrow-background-size:           1rem;
 $dropdown-select-xl-padding:                         0.6875rem 1rem;
 
+// Dynamic form group
+$dynamic-form-group-field-add-button-margin:         0 0 0 auto;
+$dynamic-form-group-field-display:                   flex;
+$dynamic-form-group-field-divider-margin:            1rem 0;
+$dynamic-form-group-field-flex-direction:            column;
+$dynamic-form-group-gap:                             1rem;
+$dynamic-form-group-row-display:                     grid;
+$dynamic-form-group-row-flex-wrap:                   wrap;
+
 // Expansion panel
 $expansion-panel-active-title-text-color:            $color-text-primary;
 $expansion-panel-body-border-radius:                 0;

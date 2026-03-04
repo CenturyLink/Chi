@@ -18,8 +18,7 @@ body {
 
 .-sr--only {
   border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px); // sass-lint:disable-line no-duplicate-properties
+  clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -39,10 +38,6 @@ fieldset {
 * { // sass-lint:disable-line no-universal-selectors
   -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
   -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-}
-
-html {
-  -ms-overflow-style: -ms-autohiding-scrollbar; // sass-lint:disable-line no-vendor-prefixes
 }
 
 .-disable-scroll {

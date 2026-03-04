@@ -1160,37 +1160,3 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 }
-
-/* IE11 CSS hack */
-// sass-lint:disable-block no-vendor-prefixes
-@media only screen and (-ms-high-contrast: none) {
-  .chi-sidenav {
-    .chi-sidenav__list {
-      li {
-        a {
-          height: 3rem;
-        }
-      }
-    }
-
-    &.-md {
-      .chi-sidenav__list {
-        li {
-          a {
-            height: 4rem;
-          }
-        }
-      }
-    }
-
-    &.-lg {
-      .chi-sidenav__list {
-        li {
-          a {
-            height: 3rem;
-          }
-        }
-      }
-    }
-  }
-}

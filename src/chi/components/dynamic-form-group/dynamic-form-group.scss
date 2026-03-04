@@ -1,0 +1,20 @@
+.chi-dynamic-form-group {
+  .chi-dynamic-form-group__row {
+    display: $dynamic-form-group-row-display;
+    flex-wrap: $dynamic-form-group-row-flex-wrap;
+    gap: $dynamic-form-group-gap;
+
+    .chi-dynamic-form-group__field {
+      display: $dynamic-form-group-field-display;
+      gap: $dynamic-form-group-gap;
+    }
+
+    .chi-dynamic-form-group__add-field {
+      margin: $dynamic-form-group-field-add-button-margin;
+    }
+
+    .chi-divider {
+      margin: $dynamic-form-group-field-divider-margin;
+    }
+  }
+}

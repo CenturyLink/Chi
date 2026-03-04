@@ -518,7 +518,7 @@
     "name": "drag-and-drop",
     "baseClass": "chi-drag",
     "webComponentTag": "chi-drag",
-    "allowedModifiers": ["-locked", "-accordion"],
+    "allowedModifiers": ["-locked", "-accordion", "-active", "-base"],
     "accessibility": {}
   },
   "chi-drawer": {
@@ -1247,18 +1247,7 @@
     "name": "textarea",
     "baseClass": "chi-textarea",
     "webComponentTag": "chi-textarea",
-    "allowedModifiers": [
-      "-hover",
-      "-focus",
-      "-disabled",
-      "-readonly",
-      "-danger",
-      "-xs",
-      "-sm",
-      "-md",
-      "-lg",
-      "-xl"
-    ],
+    "allowedModifiers": ["-hover", "-focus", "-disabled", "-readonly", "-danger", "-xs", "-sm", "-md", "-lg", "-xl"],
     "conflictingModifiers": [["-xs", "-sm", "-md", "-lg", "-xl"]],
     "maxModifiers": 3,
     "requiredAttributes": [],

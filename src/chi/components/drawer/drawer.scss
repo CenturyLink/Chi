@@ -54,7 +54,7 @@ $animation-duration: 0.5s;
 
         &.-animated {
           &:not(.-active) {
-            transform: translateY(0, -$drawer-height);
+            transform: translate(0, -$drawer-height);
           }
         }
       }
@@ -122,7 +122,7 @@ $animation-duration: 0.5s;
 
         &.-animated {
           &:not(.-active) {
-            transform: translateY(0, $drawer-height);
+            transform: translate(0, $drawer-height);
           }
         }
       }
@@ -210,14 +210,4 @@ $animation-duration: 0.5s;
 
 .chi-backdrop__wrapper > .chi-drawer {
   z-index: $zindex-fixed-with-backdrop;
-}
-
-/* IE11 CSS hack */
-// sass-lint:disable-block no-vendor-prefixes
-@media all and (-ms-high-contrast: none) {
-  .chi-drawer {
-    .-close {
-      position: absolute;
-    }
-  }
 }
