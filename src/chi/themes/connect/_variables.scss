@@ -712,7 +712,14 @@ $badge-notification-text-color: $color-text-white;
 $badge-notification-icon-color: $color-icon-white;
 
 // Bulk actions
-$bulk-actions-background-color: $color-background-secondary;
+$bulk-actions-padding: 1rem;
+$bulk-actions-border: 0.0625rem solid $color-teal-60;
+$bulk-actions-label-margin-right: 1.5rem;
+$bulk-actions-border-radius: 0.5rem 0.5rem 0 0;
+$bulk-actions-end-display-desktop: none;
+$bulk-actions-divider-margin: 0 1rem;
+
+$bulk-actions-background-color: $color-teal-10;
 $bulk-actions-link-color: $color-text-base;
 $bulk-actions-link-font-weight: $font-weight-semi-bold;
 $bulk-actions-results-font-size: $font-size-md;
