@@ -38,7 +38,7 @@
     display: none;
 
     @include respond-to(md) {
-      display: $bulk-actions-end-display-desktop;
+      display: block;
     }
   }
 

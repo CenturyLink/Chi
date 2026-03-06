@@ -672,21 +672,19 @@ $badge-notification-text-color:             $color-text-white;
 $badge-notification-icon-color:             $color-icon-white;
 
 // Bulk actions
-$bulk-actions-padding: 0.25rem 0.875rem 0.25rem 1.5rem;
-$bulk-actions-border: none;
-$bulk-actions-label-margin-right: 1rem;
-$bulk-actions-border-radius: 0;
-$bulk-actions-end-display-desktop: block;
-$bulk-actions-divider-margin: 0 0.5rem;
-
 $bulk-actions-background-color:             $color-yellow-40;
+$bulk-actions-border:                       none;
+$bulk-actions-border-radius:                0;
+$bulk-actions-button-icon-color:            $color-grey-80;
+$bulk-actions-divider-border-right-color:   rgba($color-black, 0.5);
+$bulk-actions-divider-height:               1.25rem;
+$bulk-actions-divider-margin:               0 0.5rem;
+$bulk-actions-label-font-weight:            $font-weight-semi-bold;
+$bulk-actions-label-margin-right:           1rem;
 $bulk-actions-link-color:                   $color-text-base;
 $bulk-actions-link-font-weight:             $font-weight-semi-bold;
+$bulk-actions-padding:                      0.25rem 0.875rem 0.25rem 1.5rem;
 $bulk-actions-results-font-size:            $font-size-md;
-$bulk-actions-label-font-weight:            $font-weight-semi-bold;
-$bulk-actions-divider-height:               1.25rem;
-$bulk-actions-divider-border-right-color:   rgba($color-black, 0.5);
-$bulk-actions-button-icon-color:            $color-grey-80;
 
 // Button
 $button-border-radius:                      $border-radius-base;
