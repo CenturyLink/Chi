@@ -1,6 +1,7 @@
 import { writeFileSync, readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { createHash } from 'crypto';
+import { execSync } from 'child_process';
 import { readJSON, getWarnings, resetWarnings } from '../extractors/extract.js';
 import { ROOT, CHI_SRC, OUTPUT_PATH, BUILD_CACHE_PATH, THEMES } from '../config.js';
 import { extractTokens } from '../extractors/tokens.js';
@@ -252,6 +253,17 @@ function build() {
   console.log(`   Cursor Skills: ${cursorSkills.totalFiles} files (${cursorSkills.skills.length} bundles)`);
   console.log(`   Duration: ${duration}s`);
   console.log(`   Output: metadata.json (${sizeKB} KB)\n`);
+
+  console.log('📊 Generating token metadata (dist/tokens/*.json)...');
+
+  try {
+    execSync('tsx scripts/build/css/vars/build.ts --json-only', {
+      cwd: ROOT,
+      stdio: 'inherit',
+    });
+  } catch (err) {
+    console.warn('Token metadata generation failed (dist/tokens may be incomplete):', (err as Error).message);
+  }
 }
 
 build();

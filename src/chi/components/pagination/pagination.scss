@@ -43,7 +43,7 @@ $icon-sizes: (
   flex-wrap: wrap;
   font-size: $font-size-base;
   justify-content: center;
-  line-height: $line-height;
+  line-height: $line-height-base;
 
   .chi-button-group {
     &:not(.-vertical) {

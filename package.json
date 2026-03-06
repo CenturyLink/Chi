@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "6.92.0",
+  "version": "6.93.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -18,6 +18,7 @@
     "build": "bash ./scripts/build/build.sh",
     "sync:skills": "tsx src/mcp/scripts/sync-skills.ts",
     "build:mcp": "tsx src/mcp/scripts/generate.ts",
+    "generate:css-vars": "tsx scripts/build/css/vars/build.ts",
     "serve": "node ./scripts/serve/serve.cjs",
     "cy:run": "cypress run --config-file cypress.config.cjs",
     "cy:open": "cypress open --config-file cypress.config.cjs",
@@ -31,8 +32,8 @@
   },
   "dependencies": {
     "@centurylink/chi-custom-elements": "1.56.0",
-    "@centurylink/chi-documentation": "1.64.0",
-    "@centurylink/chi-vue": "3.32.1"
+    "@centurylink/chi-documentation": "1.65.0",
+    "@centurylink/chi-vue": "3.33.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",

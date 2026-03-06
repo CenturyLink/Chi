@@ -5,7 +5,7 @@ $border: 0.0625rem;
 
 .chi-activity {
   font-size: $font-size-base;
-  line-height: $line-height;
+  line-height: $line-height-base;
 
   &__day {
     .chi-activity__header {
@@ -83,7 +83,7 @@ $border: 0.0625rem;
                   border-bottom: $border solid $color-border-base-light;
                   display: flex;
                   justify-content: flex-start;
-                  line-height: $line-height;
+                  line-height: $line-height-base;
                   padding: 0.875rem 1rem;
 
                   & div:first-of-type {

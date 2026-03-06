@@ -8,11 +8,11 @@ $sizes: (
   ),
   sm: (
     font-size: $font-size-sm,
-    line-height: $line-height,
+    line-height: $line-height-base,
   ),
   md: (
     font-size: $font-size-base,
-    line-height: $line-height,
+    line-height: $line-height-base,
   ),
   lg: (
     font-size: $font-size-lg,

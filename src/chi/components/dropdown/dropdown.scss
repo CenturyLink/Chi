@@ -118,7 +118,7 @@ $sizes: (
       align-items: center;
       display: flex;
       height: $dropdown-menu-item-height;
-      line-height: $line-height;
+      line-height: $line-height-base;
       padding-left: $dropdown-menu-item-padding-left;
       padding-right: $dropdown-menu-item-padding-right;
       white-space: nowrap;
@@ -189,7 +189,7 @@ $sizes: (
       &_title {
         font-size: $font-size-lg;
         font-weight: $font-weight-semi-bold;
-        line-height: $line-height;
+        line-height: $line-height-base;
         margin-bottom: 0.25rem;
         margin-top: 0;
         word-break: break-word;
@@ -197,7 +197,7 @@ $sizes: (
 
       &_text {
         font-size: $font-size-base;
-        line-height: $line-height;
+        line-height: $line-height-base;
         margin: 0;
         word-break: break-word;
       }

@@ -3,7 +3,7 @@
 
 .chi-radio {
   display: flex;
-  line-height: $line-height;
+  line-height: $line-height-base;
   position: relative;
 
   .chi-radio__input {
@@ -92,7 +92,7 @@
       display: inline-flex;
       font-size: $font-size-base;
       font-weight: $font-weight-normal;
-      line-height: $line-height;
+      line-height: $line-height-base;
       margin: 0;
       min-height: 1.25rem;
       padding-left: 1.5rem;
