@@ -31,7 +31,7 @@ const deleteCssFile = (theme) => {
 };
 
 const buildTheme = async (theme) => {
-  const spinner = ora(`[CHI]: Building ${theme} theme (no file mutations)`).start();
+  const spinner = ora(`[CHI]: Building ${theme} theme`).start();
 
   try {
     deleteCssFile(theme);

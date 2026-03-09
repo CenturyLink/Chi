@@ -103,12 +103,12 @@ figure {
 
 p {
   font-size: $font-size-base;
-  line-height: $line-height;
+  line-height: $line-height-base;
 }
 
 small {
   font-size: $font-size-sm;
-  line-height: $line-height;
+  line-height: $line-height-base;
 }
 
 // text colors

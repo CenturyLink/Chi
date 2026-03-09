@@ -1,25 +1,20 @@
 $cap-height: 0.75;
 $base-unit: 8px;
 
-$state-colors: (
-  success: green,
-  warning: yellow,
-  danger: red,
-);
-
 // Font family
 $font-family-base: 'Gotham', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
 // Font size - text
-$font-size-3xl: 1.75rem; // 28px
-$font-size-xl: 1.125rem; // 18px
-$font-size-lg: 1rem; // 16px
-$font-size-md: 0.875rem; // 14px
-$font-size-sm: 0.8125rem; // 13px
-$font-size-xs: 0.75rem; // 12px
+$font-size-base: 0.875rem; // 14px
 $font-size-2xs: 0.6875rem; // 11px
-$font-size-base: $font-size-md;
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-md: 0.875rem; // 14px
+$font-size-lg: 1rem; // 16px
+$font-size-xl: 1.125rem; // 18px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.75rem; // 28px
 
 // Font size - headings
 $font-size-h6: 0.875rem; // 14px
@@ -30,36 +25,36 @@ $font-size-h2: 2rem; // 32px
 $font-size-h1: 3rem; // 48px
 
 // Font weight
+$font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-normal: 400;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
 $font-weight-black: 900;
-$font-weight-base: $font-weight-normal;
 
 // Line weights - headings
-$font-weight-h1: $font-weight-bold;
-$font-weight-h2: $font-weight-bold;
-$font-weight-h3: $font-weight-semi-bold;
-$font-weight-h4: $font-weight-semi-bold;
-$font-weight-h5: $font-weight-semi-bold;
 $font-weight-h6: $font-weight-semi-bold;
+$font-weight-h5: $font-weight-semi-bold;
+$font-weight-h4: $font-weight-semi-bold;
+$font-weight-h3: $font-weight-semi-bold;
+$font-weight-h2: $font-weight-bold;
+$font-weight-h1: $font-weight-bold;
 
 // Line height
-$line-height: 1.25rem; // 20px
-$line-height-xl: 1.75rem; // 28px
-$line-height-lg: 1.5rem; // 24px
-$line-height-md: 1.25rem; // 20px
+$line-height-base: 1.25rem; // 20px
 $line-height-sm: 1rem; // 16px
+$line-height-md: 1.25rem; // 20px
+$line-height-lg: 1.5rem; // 24px
+$line-height-xl: 1.75rem; // 28px
 
 // Line heights - headings
-$line-height-h1: 4rem;
-$line-height-h2: 3rem;
-$line-height-h3: 2rem;
-$line-height-h4: 2rem;
-$line-height-h5: 1.5rem;
 $line-height-h6: 1.5rem;
+$line-height-h5: 1.5rem;
+$line-height-h4: 2rem;
+$line-height-h3: 2rem;
+$line-height-h2: 3rem;
+$line-height-h1: 4rem;
 
 // System color
 // sass-lint:disable no-color-hex
@@ -197,10 +192,10 @@ $color-white: #ffffff;
 
 // Text color
 $color-text-base: $color-grey-100;
-$color-text-primary-darker: $color-orange-100;
-$color-text-primary-dark: $color-orange-90;
 $color-text-primary: $color-orange-70;
 $color-text-primary-alt: $color-orange-70;
+$color-text-primary-darker: $color-orange-100;
+$color-text-primary-dark: $color-orange-90;
 $color-text-secondary: $color-teal-40;
 $color-text-secondary-dark: $color-teal-50;
 $color-text-secondary-darker: $color-teal-60;
@@ -210,8 +205,8 @@ $color-text-danger: $color-red-70;
 $color-text-danger-dark: $color-red-80;
 $color-text-danger-darker: $color-red-90;
 $color-text-info: $color-blue-70;
-$color-text-muted-light: $color-grey-60;
 $color-text-muted: $color-grey-70;
+$color-text-muted-light: $color-grey-60;
 $color-text-white: $color-white;
 $color-text-black: $color-black;
 $color-text-code: $color-teal-70;
@@ -227,8 +222,8 @@ $color-icon-success: $color-green-60;
 $color-icon-warning: $color-yellow-60;
 $color-icon-danger: $color-red-60;
 $color-icon-info: $color-blue-60;
-$color-icon-muted-light: $color-grey-50;
 $color-icon-muted: $color-grey-60;
+$color-icon-muted-light: $color-grey-50;
 $color-icon-muted-dark: $color-grey-70;
 $color-icon-orange: $color-orange-60;
 $color-icon-orange-dark: $color-orange-80;
@@ -236,30 +231,30 @@ $color-icon-white: $color-white;
 $color-icon-black: $color-black;
 
 // Border color
-$color-border-base-light: $color-grey-20;
 $color-border-base: $color-grey-25;
+$color-border-base-light: $color-grey-20;
 $color-border-base-dark: $color-grey-30;
 $color-border-primary: $color-orange-60;
 $color-border-primary-light: $color-orange-30;
 $color-border-primary-dark: $color-orange-70;
 $color-border-primary-darker: $color-orange-90;
-$color-border-secondary-light: $color-teal-30;
 $color-border-secondary: $color-teal-40;
+$color-border-secondary-light: $color-teal-30;
 $color-border-secondary-dark: $color-teal-50;
 $color-border-secondary-darker: $color-teal-70;
 $color-border-secondary-dark: $color-teal-50;
-$color-border-success-light: $color-green-30;
 $color-border-success: $color-green-60;
-$color-border-warning-light: $color-yellow-30;
+$color-border-success-light: $color-green-30;
 $color-border-warning: $color-yellow-60;
-$color-border-danger-light: $color-red-30;
+$color-border-warning-light: $color-yellow-30;
 $color-border-danger: $color-red-60;
+$color-border-danger-light: $color-red-30;
 $color-border-danger-dark: $color-red-80;
 $color-border-danger-darker: $color-red-90;
-$color-border-info-light: $color-blue-30;
 $color-border-info: $color-blue-60;
-$color-border-muted-light: $color-grey-30;
+$color-border-info-light: $color-blue-30;
 $color-border-muted: $color-grey-60;
+$color-border-muted-light: $color-grey-30;
 $color-border-white: $color-white;
 $color-border-black: $color-black;
 $color-border-dark: $color-grey-100;
@@ -269,32 +264,32 @@ $color-background-base: $color-white;
 $color-background-base-dark: $color-grey-15;
 $color-background-base-darker: $color-grey-20;
 $color-background-base-darkest: $color-grey-25;
+$color-background-primary: $color-orange-60;
 $color-background-primary-lighter: $color-orange-05;
 $color-background-primary-light: $color-orange-10;
-$color-background-primary: $color-orange-60;
 $color-background-primary-dark: $color-orange-70;
 $color-background-primary-darker: $color-orange-90;
-$color-background-secondary-light: $color-teal-15;
 $color-background-secondary: $color-teal-25;
+$color-background-secondary-light: $color-teal-15;
 $color-background-secondary-dark: $color-teal-40;
 $color-background-secondary-darker: $color-teal-60;
+$color-background-success: $color-green-70;
 $color-background-success-lighter: $color-green-10;
 $color-background-success-light: $color-green-20;
-$color-background-success: $color-green-70;
+$color-background-warning: $color-yellow-70;
 $color-background-warning-lighter: $color-yellow-10;
 $color-background-warning-light: $color-yellow-20;
-$color-background-warning: $color-yellow-70;
+$color-background-danger: $color-red-70;
 $color-background-danger-lighter: $color-red-10;
 $color-background-danger-light: $color-red-20;
-$color-background-danger: $color-red-70;
 $color-background-danger-dark: $color-red-80;
 $color-background-danger-darker: $color-red-90;
+$color-background-info: $color-blue-70;
 $color-background-info-lighter: $color-blue-10;
 $color-background-info-light: $color-blue-20;
-$color-background-info: $color-blue-70;
+$color-background-muted: $color-grey-30;
 $color-background-muted-lighter: $color-grey-10;
 $color-background-muted-light: $color-grey-20;
-$color-background-muted: $color-grey-30;
 $color-background-dark: $color-grey-100;
 $color-background-white: $color-white;
 $color-background-black: $color-black;
@@ -465,7 +460,7 @@ $alert-md-icon-margin-y: 0.125rem;
 $alert-md-icon-margin-right: 1rem;
 $alert-md-text-padding-top: 0.125rem;
 $alert-md-text-font-size: $font-size-base;
-$alert-md-text-line-height: $line-height;
+$alert-md-text-line-height: $line-height-base;
 $alert-md-title-font-size: $font-size-lg;
 $alert-md-title-font-weight: $font-weight-bold;
 $alert-md-title-line-height: $line-height-lg;
@@ -484,7 +479,7 @@ $alert-sm-icon-size: 1rem;
 $alert-sm-text-padding-top: 0.125rem;
 $alert-sm-title-font-size: $font-size-base;
 $alert-sm-text-font-size: $font-size-base;
-$alert-sm-text-line-height: $line-height;
+$alert-sm-text-line-height: $line-height-base;
 
 // App layout
 $app-layout-actions-border: 0.0625rem solid $color-grey-25;
@@ -561,7 +556,7 @@ $badge-icon-color: $color-icon-base;
 $badge-align-items: center;
 $badge-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
 $badge-font-weight: $font-weight-semi-bold;
-$badge-line-height: $line-height;
+$badge-line-height: $line-height-base;
 $badge-sm-line-height: $badge-line-height;
 $badge-xs-line-height: $line-height-sm;
 $badge-padding: 0.0625rem 0.5em;
@@ -1152,7 +1147,7 @@ $carousel-dot-border-color: $color-border-primary;
 $carousel-dot-hover-background-color: $color-background-primary;
 $carousel-dot-active-background-color: $color-background-primary;
 $carousel-dot-size: $icon-size-xs;
-$carousel-pagination-line-height: $line-height;
+$carousel-pagination-line-height: $line-height-base;
 $carousel-controller-height-dots: calc(100% - #{$carousel-dot-size});
 $carousel-controller-height-pagination: calc(100% - #{$carousel-pagination-line-height});
 
@@ -1487,7 +1482,7 @@ $expansion-panel-footer-md-button-margin-right: 0;
 $expansion-panel-footer-md-flex-direction: row;
 $expansion-panel-footer-md-justify-content: flex-start;
 $expansion-panel-footer-padding: 1rem;
-$expansion-panel-line-height: $line-height;
+$expansion-panel-line-height: $line-height-base;
 $expansion-panel-number-margin-right: 0;
 $expansion-panel-number-width: 5%;
 $expansion-panel-padding: 1.625rem 0;
@@ -1590,7 +1585,7 @@ $header-content-padding-sm: 0 1rem;
 $header-content-padding-lg: 0 1.5rem;
 $header-content-title-text-color: $color-text-base;
 $header-content-title-font-weight: $font-weight-normal;
-$header-content-title-line-height: $line-height;
+$header-content-title-line-height: $line-height-base;
 $header-content-title-font-size: $font-size-lg;
 $header-content-title-lg-font-size: $font-size-xl;
 $header-content-title-lg-margin: 0 1rem 0 1.5rem;
@@ -1643,7 +1638,7 @@ $header-lg-start-order: 2;
 $header-xl-height: 6rem;
 $header-xl-content-padding: 0 2rem;
 $header-xl-navbar-tab-link-font-size: $font-size-lg;
-$header-xl-navbar-tab-link-line-height: $line-height;
+$header-xl-navbar-tab-link-line-height: $line-height-base;
 
 // Label
 $label-status-text-color: $color-text-muted;

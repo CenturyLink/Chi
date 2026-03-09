@@ -8,11 +8,11 @@ $sizes: (
   ),
   sm: (
     font-size: $font-size-sm,
-    line-height: $line-height,
+    line-height: $line-height-base,
   ),
   md: (
     font-size: $font-size-base,
-    line-height: $line-height,
+    line-height: $line-height-base,
   ),
   lg: (
     font-size: $font-size-lg,
@@ -29,7 +29,7 @@ label,
   display: flex;
   font-size: $font-size-base;
   font-weight: $font-weight-semi-bold;
-  line-height: $line-height;
+  line-height: $line-height-base;
   margin-bottom: 0.25rem;
 
   @each $type in map-keys($sizes) {
