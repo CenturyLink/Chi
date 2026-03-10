@@ -707,14 +707,19 @@ $badge-notification-text-color: $color-text-white;
 $badge-notification-icon-color: $color-icon-white;
 
 // Bulk actions
-$bulk-actions-background-color: $color-background-secondary;
+$bulk-actions-background-color: $color-teal-10;
+$bulk-actions-border: 0.0625rem solid $color-teal-60;
+$bulk-actions-border-radius: 0.5rem 0.5rem 0 0;
+$bulk-actions-button-icon-color: $color-grey-80;
+$bulk-actions-divider-border-right-color: $color-grey-50;
+$bulk-actions-divider-height: 1.25rem;
+$bulk-actions-divider-margin: 0 1rem;
+$bulk-actions-label-font-weight: $font-weight-semi-bold;
+$bulk-actions-label-margin-right: 1.5rem;
 $bulk-actions-link-color: $color-text-base;
 $bulk-actions-link-font-weight: $font-weight-semi-bold;
+$bulk-actions-padding: 1rem;
 $bulk-actions-results-font-size: $font-size-md;
-$bulk-actions-label-font-weight: $font-weight-semi-bold;
-$bulk-actions-divider-height: 1.25rem;
-$bulk-actions-divider-border-right-color: $color-grey-50;
-$bulk-actions-button-icon-color: $color-grey-80;
 
 // Button
 $button-border-radius: 2rem;
@@ -1688,6 +1693,32 @@ $marketing-icon-size-sm: 5rem;
 $marketing-icon-size-md: 6rem;
 $marketing-icon-size-lg: 8rem;
 $marketing-icon-outline-fill: $marketing-icon-primary-color;
+
+// Inner navigation
+$anchor-nav-accordion-content-border-left: 0.125rem solid $color-grey-60;
+$anchor-nav-accordion-content-item-title-font-size: $font-size-md;
+$anchor-nav-accordion-content-margin-top: 0.625rem;
+$anchor-nav-accordion-content-padding: 0 0 0 1.125rem;
+$anchor-nav-accordion-icon-color: $color-icon-dark;
+$anchor-nav-accordion-icon-font-size: $icon-size-xs;
+$anchor-nav-accordion-link-color: $color-text-base;
+$anchor-nav-accordion-link-font-size: $font-size-md;
+$anchor-nav-accordion-link-font-weight: $font-weight-semi-bold;
+$anchor-nav-accordion-link-margin-right: 0.625rem;
+$anchor-nav-item-active-color: $color-orange-80;
+$anchor-nav-item-active-font-weight: $font-weight-semi-bold;
+$anchor-nav-item-hover-background-color: $color-grey-20;
+$anchor-nav-item-margin-bottom: 0.5rem;
+$anchor-nav-item-title-font-size: $font-size-md;
+$anchor-nav-item-title-font-weight: $font-weight-semi-bold;
+$anchor-nav-item-title-padding: 0.5rem;
+$anchor-nav-padding: 0 0.5rem;
+$anchor-nav-title-color: $color-text-muted;
+$anchor-nav-title-font-size: $font-size-xs;
+$anchor-nav-title-font-weight: $font-weight-semi-bold;
+$anchor-nav-title-margin-bottom: 0.625rem;
+$anchor-nav-title-text-transform: uppercase;
+$anchor-nav-width: 100%;
 
 // Mobile navigation
 $mobile-nav-background-color: $color-background-white;
