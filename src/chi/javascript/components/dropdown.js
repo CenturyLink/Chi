@@ -13,6 +13,7 @@ const COMPONENT_TYPE = "dropdown";
 const DEFAULT_CONFIG = {
   floating: true,
   popper: undefined,
+  portal: false,
   dropdownElem: null
 };
 const DEFAULT_POSITION = "bottom-start";
@@ -26,6 +27,8 @@ class Dropdown extends Component {
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._floating = null;
+    this._portalOriginalParent = null;
+    this._portalOriginalNextSibling = null;
     Object.defineProperty(this, '_popper', {
       configurable: true,
       enumerable: false,
@@ -137,6 +140,47 @@ class Dropdown extends Component {
     return dropdownPosition;
   }
 
+  _portalDropdownMenu() {
+    if (!this._config.portal || !this._dropdownElem) {
+      return;
+    }
+    this._portalOriginalParent = this._dropdownElem.parentElement;
+    this._portalOriginalNextSibling = this._dropdownElem.nextSibling;
+
+    this._dropdownElem.style.zIndex = '10';
+
+    document.body.appendChild(this._dropdownElem);
+
+    this._syncMenuMinWidth();
+  }
+
+  _syncMenuMinWidth() {
+    if (!this._config.portal || !this._elem || !this._dropdownElem) {
+      return;
+    }
+    const refWidth = this._elem.getBoundingClientRect().width;
+    if (refWidth > 0) {
+      this._dropdownElem.style.minWidth = `${refWidth}px`;
+    }
+  }
+
+  _restoreDropdownMenu() {
+    if (!this._portalOriginalParent || !this._dropdownElem) {
+      return;
+    }
+    this._dropdownElem.style.zIndex = '';
+    this._dropdownElem.style.minWidth = '';
+
+    if (this._portalOriginalParent.isConnected) {
+      this._portalOriginalParent.insertBefore(
+        this._dropdownElem,
+        this._portalOriginalNextSibling
+      );
+    }
+    this._portalOriginalParent = null;
+    this._portalOriginalNextSibling = null;
+  }
+
   enableFloating () {
     if (this._floating) {
       return;
@@ -148,6 +192,9 @@ class Dropdown extends Component {
       let dropdownPosition = self._calculateDropdownPosition();
 
       if (dropdownPosition) {
+        self._portalDropdownMenu();
+
+        const strategy = self._config.portal ? 'fixed' : 'absolute';
         self._floating = {
           _placement: dropdownPosition,
           _reference: self._elem,
@@ -156,13 +203,13 @@ class Dropdown extends Component {
           update() {
             return computePosition(this._reference, this._floating, {
               placement: this._placement,
-              strategy: 'fixed',
+              strategy: strategy,
               middleware: [flip(), shift(), hideMiddleware({ strategy: 'referenceHidden' })],
             }).then(({x, y, middlewareData}) => {
               Object.assign(this._floating.style, {
-                position: 'fixed',
-                left: `${x}px`,
-                top: `${y}px`,
+                position: strategy,
+                left: `${Util.roundByDPR(x)}px`,
+                top: `${Util.roundByDPR(y)}px`,
                 transform: 'none',
                 willChange: '',
                 right: '',
@@ -189,12 +236,12 @@ class Dropdown extends Component {
           },
           destroy() {
             this.disableAutoUpdate();
-            // Clean up inline styles
             this._floating.style.position = '';
             this._floating.style.left = '';
             this._floating.style.top = '';
             this._floating.style.transform = '';
             this._floating.style.willChange = '';
+            this._floating.style.visibility = '';
           }
         };
         self._floating.update();
@@ -211,6 +258,7 @@ class Dropdown extends Component {
       this._floating.destroy();
     }
     this._floating = null;
+    this._restoreDropdownMenu();
   }
 
   disablePopper () {
@@ -297,9 +345,15 @@ class Dropdown extends Component {
       Util.addClass(this._elem, CLASS_ACTIVE);
       Util.addClass(this._elem, CLASS_HAS_ACTIVE);
       Util.addClass(this._dropdownElem, CLASS_ACTIVE);
+      this._dropdownElem.style.visibility = '';
+      this._syncMenuMinWidth();
       if (this._floating && typeof this._floating.update === "function") {
-        this._floating.update();
-        this._floating.enableAutoUpdate();
+        const floatingRef = this._floating;
+        const self2 = this;
+        this._floating.update().then(function() {
+          if (self2._floating !== floatingRef) return;
+          floatingRef.enableAutoUpdate();
+        });
       }
       if (this._parentDropdown) {
         this._parentDropdown.show();
@@ -380,12 +434,12 @@ class Dropdown extends Component {
     this._childrenDropdowns = null;
     this._parentDropdown = null;
     this._activedDescendants = null;
-    this._dropdownElem = null;
 
     document.removeEventListener('click', this._documentClickEventListener);
     this._documentClickEventListener = null;
-    this._elem = null;
     this.disableFloating();
+    this._dropdownElem = null;
+    this._elem = null;
   }
 
 

@@ -18,12 +18,10 @@
   text-align: left;
   top: 0;
   white-space: normal;
+  width: max-content;
   z-index: $zindex-popover;
 
   &.-animated {
-    // CSS @keyframes handle show/hide animations via data-state attribute.
-    // No CSS transition needed — animations are driven by @keyframes.
-
     &[data-state='open'] {
       &.chi-popover--top { animation: chi-popover-slide-top-in 0.2s ease forwards; }
       &.chi-popover--top-start { animation: chi-popover-slide-top-in 0.2s ease forwards; }
@@ -149,15 +147,6 @@
     }
   }
 
-  // Arrow — positioned by Floating UI's arrow() middleware via inline styles.
-  // The arrow div acts as a filter container; its ::before pseudo-element is
-  // the visible triangle (a rotated square clipped by clip-path).
-  //
-  // Clipping strategy:
-  //   1. ::before is a square rotated 45° → visual diamond shape
-  //   2. clip-path (set via --chi-arrow-clip CSS variable from floating.ts)
-  //      removes the inner half that overlaps the popover body
-
   & .chi-arrow,
   & .chi-popover__arrow {
     display: block;
@@ -181,8 +170,6 @@
     }
   }
 
-  // CSS-only fallback arrow positioning for static / documentation usage.
-  // When Floating UI runs, its inline styles (higher specificity) override these.
   &.chi-popover--top,
   &.chi-popover--top-start,
   &.chi-popover--top-end {
@@ -371,10 +358,6 @@
       }
     }
 
-    // Position offsets for left/right start/end placements only.
-    // Uses margin-top (not top) to avoid overriding Floating UI's
-    // computed inline top value.
-
     &.chi-popover--left,
     &.chi-popover--right {
       .chi-arrow,
@@ -399,12 +382,6 @@
       }
     }
 
-
-    // Arrow gradient styles — override the arrow background color
-    // to match the gradient header/edges per placement direction.
-    // Floating UI handles all positioning; CSS only sets the color.
-
-    // Right side: arrow matches right edge of gradient header
     &.chi-popover--right-start {
       .chi-arrow::before,
       .chi-popover__arrow::before {
@@ -412,7 +389,6 @@
       }
     }
 
-    // Left side: arrow matches left edge of gradient header
     &.chi-popover--left-start {
       .chi-arrow::before,
       .chi-popover__arrow::before {
@@ -420,7 +396,6 @@
       }
     }
 
-    // Bottom side: arrow uses mixed color (blend of left + right)
     &.chi-popover--bottom-start,
     &.chi-popover--bottom {
       .chi-arrow::before,
@@ -430,11 +405,6 @@
     }
   }
 }
-
-// @keyframes for popover show/hide animations.
-// Uses transform: none in the final keyframe (not translateY(0))
-// to avoid creating a CSS containing block that would trap nested
-// position: fixed elements.
 
 @keyframes chi-popover-slide-top-in {
   from { opacity: 0; transform: translateY(20px); }

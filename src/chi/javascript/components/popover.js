@@ -6,7 +6,8 @@ import { chi } from '../core/chi';
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = 'popover';
 const CLASS_POPOVER = 'chi-popover';
-const TRANSITION_DURATION = 200;
+const ANIMATION_DURATION = 200;
+const ANIMATION_TIMEOUT = ANIMATION_DURATION + 50;
 const EVENTS = {
   SHOW_DEPRECATED: 'chi.popover.show',
   HIDE_DEPRECATED: 'chi.popover.hide',
@@ -22,6 +23,7 @@ const DEFAULT_CONFIG = {
   content: null,
   delayBetweenInteractions: 50,
   parent: null,
+  portal: false,
   position: 'top',
   trigger: 'click',
   preventAutoHide: false
@@ -49,8 +51,8 @@ class Popover extends Component {
     this._popoverElem = null;
     this._floatingCleanup = null;
     this._autoUpdateCleanup = null;
-    this._preAnimationTransformStyle = null;
-    this._postAnimationTransformStyle = null;
+    this._animationAbortController = null;
+    this._animationTimeout = null;
     this._shown = false;
     this._config.parent = this._config.parent || this._elem;
     this._config.position =
@@ -109,6 +111,7 @@ class Popover extends Component {
   }
 
   show(force) {
+    if (!this._popoverElem) return;
     if (this._shown || (!this.allowConsecutiveActions() && !force)) {
       return;
     }
@@ -117,39 +120,69 @@ class Popover extends Component {
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW));
 
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
+
+    this._popoverElem.removeAttribute('data-state');
+    this._popoverElem.style.left = '0';
+    this._popoverElem.style.top = '0';
+    this._popoverElem.style.display = 'block';
+    this._popoverElem.style.visibility = 'hidden';
+
     if (!this._config.animate) {
       Util.addClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'false');
+      this._popoverElem.style.display = '';
+      this._popoverElem.style.visibility = '';
       this._enableAutoUpdate();
       return;
     }
 
     const self = this;
-    const transition = this._popoverElem.style.transition;
-    self._popoverElem.style.transition = 'none';
-    Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
 
-    // computePosition is async — wait for position to be computed before animating
     self._updatePosition().then(function() {
-      Util.threeStepsAnimation(
-        function() {
-          self._popoverElem.style.transform = self._preAnimationTransformStyle;
+      if (!self._shown) return;
+
+      self._popoverElem.style.display = '';
+      self._popoverElem.style.visibility = '';
+      self._popoverElem.setAttribute('data-state', 'open');
+      Util.addClass(self._popoverElem, chi.classes.ACTIVE);
+
+      const controller = new AbortController();
+      self._animationAbortController = controller;
+
+      self._popoverElem.addEventListener(
+        'animationend',
+        function(e) {
+          if (e.target !== self._popoverElem) return;
+          if (!controller.signal.aborted) {
+            self._popoverElem.setAttribute('aria-hidden', 'false');
+            self._enableAutoUpdate();
+            self._popoverElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOWN)
+            );
+          }
         },
-        function() {
-          Util.addClass(self._popoverElem, chi.classes.ACTIVE);
-          self._popoverElem.style.transition = transition;
-          self._popoverElem.style.transform = self._postAnimationTransformStyle;
-        },
-        function() {
-          Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
-          self._popoverElem.setAttribute('aria-hidden', 'false');
-          self._popoverElem.dispatchEvent(
-            Util.createEvent(EVENTS.shown)
-          );
-          self._enableAutoUpdate();
-        },
-        TRANSITION_DURATION
+        { once: true, signal: controller.signal }
       );
+
+      self._animationTimeout = setTimeout(function() {
+        self._animationTimeout = null;
+        if (!controller.signal.aborted) {
+          controller.abort();
+          self._popoverElem.setAttribute('aria-hidden', 'false');
+          self._enableAutoUpdate();
+          self._popoverElem.dispatchEvent(
+            Util.createEvent(EVENTS.SHOWN)
+          );
+        }
+      }, ANIMATION_TIMEOUT);
     });
   }
 
@@ -163,30 +196,57 @@ class Popover extends Component {
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE));
 
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
+
     if (!this._config.animate) {
       Util.removeClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'true');
+      this._popoverElem.style.display = 'none';
       return;
     }
 
-    let self = this;
-    Util.threeStepsAnimation(
-      function() {
-        Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
+    const self = this;
+
+    self._popoverElem.setAttribute('data-state', 'closed');
+
+    const controller = new AbortController();
+    self._animationAbortController = controller;
+
+    self._popoverElem.addEventListener(
+      'animationend',
+      function(e) {
+        if (e.target !== self._popoverElem) return;
+        if (!controller.signal.aborted) {
+          Util.removeClass(self._popoverElem, chi.classes.ACTIVE);
+          self._popoverElem.setAttribute('aria-hidden', 'true');
+          self._popoverElem.style.display = 'none';
+          self._popoverElem.dispatchEvent(
+            Util.createEvent(EVENTS.HIDDEN)
+          );
+        }
       },
-      function() {
-        self._popoverElem.style.transform = self._preAnimationTransformStyle;
+      { once: true, signal: controller.signal }
+    );
+
+    self._animationTimeout = setTimeout(function() {
+      self._animationTimeout = null;
+      if (!controller.signal.aborted) {
+        controller.abort();
         Util.removeClass(self._popoverElem, chi.classes.ACTIVE);
-      },
-      function() {
-        Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'true');
+        self._popoverElem.style.display = 'none';
         self._popoverElem.dispatchEvent(
           Util.createEvent(EVENTS.HIDDEN)
         );
-      },
-      TRANSITION_DURATION
-    );
+      }
+    }, ANIMATION_TIMEOUT);
   }
 
   allowConsecutiveActions() {
@@ -236,12 +296,17 @@ class Popover extends Component {
       } else {
         this._popoverElem = document.querySelector(target);
       }
+      this._isPortaled = false;
     } else {
       this._popoverElem = document.createElement('section');
-      // Portal to document.body so position:fixed is always viewport-relative.
-      // Matches CE behavior — avoids ancestors with transforms/filters/overflow
-      // creating an unintended containing block.
-      document.body.appendChild(this._popoverElem);
+
+      if (this._config.portal) {
+        document.body.appendChild(this._popoverElem);
+        this._isPortaled = true;
+      } else {
+        this._config.parent.parentNode.appendChild(this._popoverElem);
+        this._isPortaled = false;
+      }
     }
   }
 
@@ -302,8 +367,6 @@ class Popover extends Component {
       left: 'right',
     };
 
-    // Clip-path polygons for each arrow direction.
-    // Applied to ::before via --chi-arrow-clip CSS custom property.
     const ARROW_CLIP_PATHS = {
       top: 'polygon(100% 0, 0 100%, 100% 100%)',
       bottom: 'polygon(0 0, 100% 0, 0 100%)',
@@ -322,23 +385,23 @@ class Popover extends Component {
         middleware.push(arrowMiddleware({ element: arrowEl }));
       }
 
-      // Hide the popover when the reference scrolls out of the viewport.
-      // Without this, shift() clamps the popover at the viewport edge,
-      // making it appear stuck. With hide(), the popover cleanly disappears.
-      middleware.push(hideMiddleware({ strategy: 'referenceHidden' }));
+      if (!self._isPortaled) {
+        middleware.push(hideMiddleware({ strategy: 'referenceHidden' }));
+      }
+
+      const strategy = self._isPortaled ? 'fixed' : 'absolute';
 
       return computePosition(self._config.parent, self._popoverElem, {
         placement: self._config.position,
-        strategy: 'fixed',
+        strategy: strategy,
         middleware: middleware,
       }).then(({x, y, placement, middlewareData}) => {
         Object.assign(self._popoverElem.style, {
-          position: 'fixed',
-          left: `${x}px`,
-          top: `${y}px`,
+          position: strategy,
+          left: `${Util.roundByDPR(x)}px`,
+          top: `${Util.roundByDPR(y)}px`,
         });
 
-        // Hide popover when reference is scrolled out of view
         if (middlewareData.hide) {
           self._popoverElem.style.visibility =
             middlewareData.hide.referenceHidden ? 'hidden' : '';
@@ -346,21 +409,16 @@ class Popover extends Component {
 
         const basePlacement = placement.split('-')[0];
 
-        // Update placement class on popover for CSS styling.
-        // Keep base side class for existing rules and add full placement
-        // class so consumers can target start/end alignments.
         PLACEMENT_CLASSES.forEach(function(side) {
           Util.removeClass(self._popoverElem, 'chi-popover--' + side);
         });
         Util.addClass(self._popoverElem, 'chi-popover--' + basePlacement);
         Util.addClass(self._popoverElem, 'chi-popover--' + placement);
 
-        // Apply arrow positioning
         if (arrowEl && middlewareData.arrow) {
           const {x: arrowX, y: arrowY} = middlewareData.arrow;
           const staticSide = OPPOSITE_SIDE[basePlacement];
 
-          // Measure arrow size for static-side offset
           const arrowLen = (basePlacement === 'top' || basePlacement === 'bottom')
             ? arrowEl.offsetHeight
             : arrowEl.offsetWidth;
@@ -373,33 +431,13 @@ class Popover extends Component {
             [staticSide]: `${-(arrowLen / 2)}px`,
           });
 
-          // Set clip-path direction on arrow ::before via CSS custom property
           arrowEl.style.setProperty(
             '--chi-arrow-clip',
             ARROW_CLIP_PATHS[basePlacement] || 'none'
           );
         }
-
-        // Animation transforms are RELATIVE offsets — left/top handles absolute positioning.
-        // Post = final position (no additional transform needed).
-        // Pre = 20px offset in the incoming direction for slide-in animation.
-        self._postAnimationTransformStyle = 'none';
-        if (basePlacement === 'top') {
-          self._preAnimationTransformStyle = 'translate3d(0, 20px, 0)';
-        } else if (basePlacement === 'right') {
-          self._preAnimationTransformStyle = 'translate3d(-20px, 0, 0)';
-        } else if (basePlacement === 'bottom') {
-          self._preAnimationTransformStyle = 'translate3d(0, -20px, 0)';
-        } else if (basePlacement === 'left') {
-          self._preAnimationTransformStyle = 'translate3d(20px, 0, 0)';
-        } else {
-          self._preAnimationTransformStyle = 'none';
-        }
       });
     };
-
-    // Initial position computation
-    this._updatePosition();
   }
 
   _enableAutoUpdate() {
@@ -430,6 +468,14 @@ class Popover extends Component {
 
   dispose() {
     this._disableAutoUpdate();
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
     this._removeEventHandlers();
     if (this._popoverElem && this._popoverElem.parentNode) {
       this._popoverElem.parentNode.removeChild(this._popoverElem);
@@ -437,9 +483,8 @@ class Popover extends Component {
     this._popoverElem = null;
     this._floatingCleanup = null;
     this._autoUpdateCleanup = null;
+    this._isPortaled = false;
     this._config = null;
-    this._preAnimationTransformStyle = null;
-    this._postAnimationTransformStyle = null;
 
     this._mouseClickOnDocument = null;
     this._mouseClickOnPopover = null;
