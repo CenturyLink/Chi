@@ -1,7 +1,7 @@
 import { Util } from '../core/util.js';
 import { Component } from '../core/component';
-import { computePosition, autoUpdate as floatingAutoUpdate, flip, shift, offset, arrow as arrowMiddleware, hide as hideMiddleware } from '@floating-ui/dom';
 import { chi } from '../core/chi';
+import { createFloating } from '../core/floating.js';
 
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = 'popover';
@@ -49,8 +49,8 @@ class Popover extends Component {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
 
     this._popoverElem = null;
-    this._floatingCleanup = null;
-    this._autoUpdateCleanup = null;
+    this._floating = null;
+    this._cleanupAutoUpdate = null;
     this._animationAbortController = null;
     this._animationTimeout = null;
     this._shown = false;
@@ -301,7 +301,8 @@ class Popover extends Component {
       this._popoverElem = document.createElement('section');
 
       if (this._config.portal) {
-        document.body.appendChild(this._popoverElem);
+        // Portal handled by createFloating; element appended during
+        // _configurePopoverFloating via portalElement.
         this._isPortaled = true;
       } else {
         this._config.parent.parentNode.appendChild(this._popoverElem);
@@ -360,100 +361,55 @@ class Popover extends Component {
       ? this._popoverElem.querySelector('.chi-popover__arrow')
       : null;
 
-    const OPPOSITE_SIDE = {
-      top: 'bottom',
-      right: 'left',
-      bottom: 'top',
-      left: 'right',
-    };
+    const portalId = this._isPortaled
+      ? 'chi-popover-portal-' + this.componentCounterNo
+      : undefined;
 
-    const ARROW_CLIP_PATHS = {
-      top: 'polygon(100% 0, 0 100%, 100% 100%)',
-      bottom: 'polygon(0 0, 100% 0, 0 100%)',
-      left: 'polygon(0 0, 100% 0, 100% 100%)',
-      right: 'polygon(0 0, 0 100%, 100% 100%)',
-    };
+    if (portalId) {
+      this._elem.setAttribute('data-chi-portal-id', portalId);
+    }
 
-    this._updatePosition = function() {
-      const middleware = [
-        offset(self._config.arrow ? 12 : 0),
-        flip(),
-        shift(),
-      ];
+    this._floating = createFloating(this._config.parent, this._popoverElem, {
+      placement: this._config.position,
+      portal: this._isPortaled,
+      ownerId: portalId,
+      offset: this._config.arrow ? 12 : 0,
+      flip: true,
+      shift: true,
+      arrowElement: arrowEl,
+      arrowPadding: 0,
+      autoUpdate: false,
+      hideWhenDetached: !this._isPortaled,
+      initialUpdate: false,
+      onCompute: function (data) {
+        var placement = data.placement;
+        var basePlacement = placement.split('-')[0];
 
-      if (arrowEl) {
-        middleware.push(arrowMiddleware({ element: arrowEl }));
-      }
-
-      if (!self._isPortaled) {
-        middleware.push(hideMiddleware({ strategy: 'referenceHidden' }));
-      }
-
-      const strategy = self._isPortaled ? 'fixed' : 'absolute';
-
-      return computePosition(self._config.parent, self._popoverElem, {
-        placement: self._config.position,
-        strategy: strategy,
-        middleware: middleware,
-      }).then(({x, y, placement, middlewareData}) => {
-        Object.assign(self._popoverElem.style, {
-          position: strategy,
-          left: `${Util.roundByDPR(x)}px`,
-          top: `${Util.roundByDPR(y)}px`,
-        });
-
-        if (middlewareData.hide) {
-          self._popoverElem.style.visibility =
-            middlewareData.hide.referenceHidden ? 'hidden' : '';
-        }
-
-        const basePlacement = placement.split('-')[0];
-
-        PLACEMENT_CLASSES.forEach(function(side) {
+        PLACEMENT_CLASSES.forEach(function (side) {
           Util.removeClass(self._popoverElem, 'chi-popover--' + side);
         });
         Util.addClass(self._popoverElem, 'chi-popover--' + basePlacement);
         Util.addClass(self._popoverElem, 'chi-popover--' + placement);
+        self._popoverElem.setAttribute('x-placement', placement);
+      },
+    });
 
-        if (arrowEl && middlewareData.arrow) {
-          const {x: arrowX, y: arrowY} = middlewareData.arrow;
-          const staticSide = OPPOSITE_SIDE[basePlacement];
-
-          const arrowLen = (basePlacement === 'top' || basePlacement === 'bottom')
-            ? arrowEl.offsetHeight
-            : arrowEl.offsetWidth;
-
-          Object.assign(arrowEl.style, {
-            left: arrowX != null ? `${arrowX}px` : '',
-            top: arrowY != null ? `${arrowY}px` : '',
-            right: '',
-            bottom: '',
-            [staticSide]: `${-(arrowLen / 2)}px`,
-          });
-
-          arrowEl.style.setProperty(
-            '--chi-arrow-clip',
-            ARROW_CLIP_PATHS[basePlacement] || 'none'
-          );
-        }
-      });
+    this._updatePosition = function () {
+      return self._floating.update();
     };
   }
 
   _enableAutoUpdate() {
     this._disableAutoUpdate();
-    const self = this;
-    this._autoUpdateCleanup = floatingAutoUpdate(
-      self._config.parent,
-      self._popoverElem,
-      function() { self._updatePosition(); }
-    );
+    if (this._floating) {
+      this._cleanupAutoUpdate = this._floating.enableAutoUpdate();
+    }
   }
 
   _disableAutoUpdate() {
-    if (this._autoUpdateCleanup) {
-      this._autoUpdateCleanup();
-      this._autoUpdateCleanup = null;
+    if (this._cleanupAutoUpdate) {
+      this._cleanupAutoUpdate();
+      this._cleanupAutoUpdate = null;
     }
   }
 
@@ -477,12 +433,14 @@ class Popover extends Component {
       this._animationTimeout = null;
     }
     this._removeEventHandlers();
-    if (this._popoverElem && this._popoverElem.parentNode) {
+    if (this._floating) {
+      this._floating.destroy();
+      this._floating = null;
+    } else if (this._popoverElem && this._popoverElem.parentNode) {
       this._popoverElem.parentNode.removeChild(this._popoverElem);
     }
     this._popoverElem = null;
-    this._floatingCleanup = null;
-    this._autoUpdateCleanup = null;
+    this._cleanupAutoUpdate = null;
     this._isPortaled = false;
     this._config = null;
 
@@ -490,6 +448,9 @@ class Popover extends Component {
     this._mouseClickOnPopover = null;
     this._mouseClickEventHandler = null;
 
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
     this._elem = null;
   }
 }

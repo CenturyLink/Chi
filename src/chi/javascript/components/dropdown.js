@@ -1,7 +1,8 @@
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
-import {computePosition, autoUpdate as floatingAutoUpdate, flip, shift, hide as hideMiddleware} from '@floating-ui/dom';
 import {CLASS_HAS_ACTIVE} from "./tab";
+import {createFloating} from '../core/floating.js';
+import {portalElement} from '../core/portal.js';
 
 const CLASS_ACTIVE = "-active";
 const CLASS_DROPDOWN = 'chi-dropdown__menu';
@@ -27,8 +28,8 @@ class Dropdown extends Component {
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._floating = null;
-    this._portalOriginalParent = null;
-    this._portalOriginalNextSibling = null;
+    this._cleanupAutoUpdate = null;
+    this._portalHandle = null;
     Object.defineProperty(this, '_popper', {
       configurable: true,
       enumerable: false,
@@ -144,12 +145,10 @@ class Dropdown extends Component {
     if (!this._config.portal || !this._dropdownElem) {
       return;
     }
-    this._portalOriginalParent = this._dropdownElem.parentElement;
-    this._portalOriginalNextSibling = this._dropdownElem.nextSibling;
 
-    this._dropdownElem.style.zIndex = '10';
-
-    document.body.appendChild(this._dropdownElem);
+    const portalId = 'chi-dropdown-portal-' + this.componentCounterNo;
+    this._elem.setAttribute('data-chi-portal-id', portalId);
+    this._portalHandle = portalElement(this._dropdownElem, portalId);
 
     this._syncMenuMinWidth();
   }
@@ -165,20 +164,17 @@ class Dropdown extends Component {
   }
 
   _restoreDropdownMenu() {
-    if (!this._portalOriginalParent || !this._dropdownElem) {
+    if (!this._portalHandle || !this._dropdownElem) {
       return;
     }
-    this._dropdownElem.style.zIndex = '';
     this._dropdownElem.style.minWidth = '';
 
-    if (this._portalOriginalParent.isConnected) {
-      this._portalOriginalParent.insertBefore(
-        this._dropdownElem,
-        this._portalOriginalNextSibling
-      );
+    this._portalHandle.restore();
+    this._portalHandle = null;
+
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
     }
-    this._portalOriginalParent = null;
-    this._portalOriginalNextSibling = null;
   }
 
   enableFloating () {
@@ -194,57 +190,24 @@ class Dropdown extends Component {
       if (dropdownPosition) {
         self._portalDropdownMenu();
 
-        const strategy = self._config.portal ? 'fixed' : 'absolute';
-        self._floating = {
-          _placement: dropdownPosition,
-          _reference: self._elem,
-          _floating: self._dropdownElem,
-          _autoUpdateCleanup: null,
-          update() {
-            return computePosition(this._reference, this._floating, {
-              placement: this._placement,
-              strategy: strategy,
-              middleware: [flip(), shift(), hideMiddleware({ strategy: 'referenceHidden' })],
-            }).then(({x, y, middlewareData}) => {
-              Object.assign(this._floating.style, {
-                position: strategy,
-                left: `${Util.roundByDPR(x)}px`,
-                top: `${Util.roundByDPR(y)}px`,
-                transform: 'none',
-                willChange: '',
-                right: '',
-              });
-              if (middlewareData.hide) {
-                this._floating.style.visibility = middlewareData.hide.referenceHidden ? 'hidden' : '';
-              }
-            });
-          },
-          enableAutoUpdate() {
-            this.disableAutoUpdate();
-            const ref = this._reference;
-            const floating = this._floating;
-            const floatingInstance = this;
-            this._autoUpdateCleanup = floatingAutoUpdate(
-              ref, floating, function() { floatingInstance.update(); }
-            );
-          },
-          disableAutoUpdate() {
-            if (this._autoUpdateCleanup) {
-              this._autoUpdateCleanup();
-              this._autoUpdateCleanup = null;
-            }
-          },
-          destroy() {
-            this.disableAutoUpdate();
-            this._floating.style.position = '';
-            this._floating.style.left = '';
-            this._floating.style.top = '';
-            this._floating.style.transform = '';
-            this._floating.style.willChange = '';
-            this._floating.style.visibility = '';
-          }
-        };
-        self._floating.update();
+        // Build floating instance — portal is false here because
+        // _portalDropdownMenu() already handled portaling with
+        // ownership tracking + minWidth sync. We pass the strategy
+        // directly.
+        self._floating = createFloating(self._elem, self._dropdownElem, {
+          placement: dropdownPosition,
+          strategy: self._config.portal ? 'fixed' : 'absolute',
+          portal: false,
+          flip: true,
+          shift: true,
+          // Skip hideMiddleware when portaled: the menu can be taller
+          // than the viewport, so scrolling to interact with items moves
+          // the trigger out of view, causing hide to incorrectly collapse
+          // the menu mid-interaction. Matches CE behavior.
+          hideWhenDetached: !self._config.portal,
+          autoUpdate: false,
+          initialUpdate: true,
+        });
       }
     });
   }
@@ -352,7 +315,7 @@ class Dropdown extends Component {
         const self2 = this;
         this._floating.update().then(function() {
           if (self2._floating !== floatingRef) return;
-          floatingRef.enableAutoUpdate();
+          self2._cleanupAutoUpdate = floatingRef.enableAutoUpdate();
         });
       }
       if (this._parentDropdown) {
@@ -373,8 +336,9 @@ class Dropdown extends Component {
       this._setActiveDescendants();
       Util.removeClass(this._elem, CLASS_ACTIVE);
       Util.removeClass(this._dropdownElem, CLASS_ACTIVE);
-      if (this._floating && typeof this._floating.disableAutoUpdate === "function") {
-        this._floating.disableAutoUpdate();
+      if (this._cleanupAutoUpdate) {
+        this._cleanupAutoUpdate();
+        this._cleanupAutoUpdate = null;
       }
       this._shown = false;
       this._childrenDropdowns.forEach(function(dd) {
@@ -439,6 +403,9 @@ class Dropdown extends Component {
     this._documentClickEventListener = null;
     this.disableFloating();
     this._dropdownElem = null;
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
     this._elem = null;
   }
 

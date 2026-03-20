@@ -172,7 +172,8 @@
 
   &.chi-popover--top,
   &.chi-popover--top-start,
-  &.chi-popover--top-end {
+  &.chi-popover--top-end,
+  &[x-placement^='top'] {
     .chi-arrow,
     .chi-popover__arrow {
       bottom: calc(#{$popover-arrow-size} / -2);
@@ -183,7 +184,8 @@
 
   &.chi-popover--bottom,
   &.chi-popover--bottom-start,
-  &.chi-popover--bottom-end {
+  &.chi-popover--bottom-end,
+  &[x-placement^='bottom'] {
     .chi-arrow,
     .chi-popover__arrow {
       top: calc(#{$popover-arrow-size} / -2);
@@ -194,7 +196,8 @@
 
   &.chi-popover--right,
   &.chi-popover--right-start,
-  &.chi-popover--right-end {
+  &.chi-popover--right-end,
+  &[x-placement^='right'] {
     .chi-arrow,
     .chi-popover__arrow {
       left: calc(#{$popover-arrow-size} / -2);
@@ -205,7 +208,8 @@
 
   &.chi-popover--left,
   &.chi-popover--left-start,
-  &.chi-popover--left-end {
+  &.chi-popover--left-end,
+  &[x-placement^='left'] {
     .chi-arrow,
     .chi-popover__arrow {
       right: calc(#{$popover-arrow-size} / -2);
@@ -359,7 +363,9 @@
     }
 
     &.chi-popover--left,
-    &.chi-popover--right {
+    &.chi-popover--right,
+    &[x-placement='left'],
+    &[x-placement='right'] {
       .chi-arrow,
       .chi-popover__arrow {
         margin-top: $popover-gradient-arrow-offset;
@@ -367,7 +373,9 @@
     }
 
     &.chi-popover--left-start,
-    &.chi-popover--right-start {
+    &.chi-popover--right-start,
+    &[x-placement='left-start'],
+    &[x-placement='right-start'] {
       .chi-arrow,
       .chi-popover__arrow {
         margin-top: $popover-gradient-arrow-offset;
@@ -375,21 +383,25 @@
     }
 
     &.chi-popover--left-end,
-    &.chi-popover--right-end {
+    &.chi-popover--right-end,
+    &[x-placement='left-end'],
+    &[x-placement='right-end'] {
       .chi-arrow,
       .chi-popover__arrow {
         margin-top: -$popover-gradient-arrow-offset;
       }
     }
 
-    &.chi-popover--right-start {
+    &.chi-popover--right-start,
+    &[x-placement='right-start'] {
       .chi-arrow::before,
       .chi-popover__arrow::before {
         background: $popover-gradient-right-arrow-color;
       }
     }
 
-    &.chi-popover--left-start {
+    &.chi-popover--left-start,
+    &[x-placement='left-start'] {
       .chi-arrow::before,
       .chi-popover__arrow::before {
         background: $popover-gradient-left-arrow-color;
@@ -397,7 +409,9 @@
     }
 
     &.chi-popover--bottom-start,
-    &.chi-popover--bottom {
+    &.chi-popover--bottom,
+    &[x-placement='bottom-start'],
+    &[x-placement='bottom'] {
       .chi-arrow::before,
       .chi-popover__arrow::before {
         background: $popover-gradient-arrow-mixed-color;

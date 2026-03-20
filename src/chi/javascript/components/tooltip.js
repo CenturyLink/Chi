@@ -1,7 +1,7 @@
-import {computePosition, autoUpdate as floatingAutoUpdate, flip, shift, offset, hide as hideMiddleware} from '@floating-ui/dom';
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
 import {KEYS} from  '../constants/constants';
+import {createFloating} from '../core/floating.js';
 
 const CLASS_ACTIVE = "-active";
 const COMPONENT_SELECTOR = '[data-tooltip]';
@@ -26,7 +26,8 @@ class Tooltip extends Component {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._tooltipElem = null;
     this._tooltipContent = null;
-    this._floatingCleanup = null;
+    this._floating = null;
+    this._cleanupAutoUpdate = null;
     this._hovered = false;
     this._focused = false;
     this._shown = false;
@@ -60,9 +61,6 @@ class Tooltip extends Component {
     });
     this._addEventHandler(this._elem, 'focus', function() {
       self._focused = true;
-      if (self._shown) {
-        self.hide();
-      }
     });
     this._addEventHandler(this._elem, 'blur', function() {
       self._focused = false;
@@ -74,12 +72,12 @@ class Tooltip extends Component {
 
   show() {
     this._shown = true;
-    this._tooltipElem.style.visibility = '';
     this._updatePosition().then(() => {
       if (!this._shown) return;
 
       Util.addClass(this._tooltipElem, CLASS_ACTIVE);
       this._tooltipElem.setAttribute('aria-hidden', 'false');
+      this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
       if (this._config.autoUpdate) {
         this._enableAutoUpdate();
       }
@@ -95,6 +93,7 @@ class Tooltip extends Component {
     this._disableAutoUpdate();
     Util.removeClass(this._tooltipElem, CLASS_ACTIVE);
     this._tooltipElem.setAttribute('aria-hidden', 'true');
+    this._elem.removeAttribute('aria-describedby');
     this._elem.dispatchEvent(
       Util.createEvent(EVENTS.hide)
     );
@@ -103,6 +102,7 @@ class Tooltip extends Component {
   _createTooltip () {
     this._tooltipElem = document.createElement('div');
     this._tooltipElem.setAttribute('class', 'chi-tooltip');
+    this._tooltipElem.setAttribute('role', 'tooltip');
     if (this._elem.getAttribute(TOOLTIP_COLOR_ATTRIBUTE) === 'light') {
       this._tooltipElem.classList.add(CLASS_LIGHT);
     }
@@ -110,53 +110,61 @@ class Tooltip extends Component {
     this._tooltipContent = document.createElement('span');
     this._tooltipContent.innerText = this._elem.dataset.tooltip;
     this._tooltipElem.appendChild(this._tooltipContent);
-    // Original Popper.js always appended tooltip to body.
-    // Default strategy is 'absolute' (matching original + CE default).
-    // When portal: true, use 'fixed' (matching CE portal behavior).
-    document.querySelector('body').appendChild(this._tooltipElem);
-    this._elem.setAttribute('aria-describedby', this._tooltipElem.id);
-    this._tooltipElem.setAttribute('aria-hidden', 'true');
 
     let self = this;
-    const strategy = self._config.portal ? 'fixed' : 'absolute';
+    const portalId = this._config.portal
+      ? 'chi-tooltip-portal-' + this.componentCounterNo
+      : undefined;
+
+    if (portalId) {
+      this._elem.setAttribute('data-chi-portal-id', portalId);
+    }
+
+    // Apply positioning and hide before the element enters the DOM so it is
+    // never in normal document flow and never flashes at position 0,0 on the
+    // first show() call.
+    Object.assign(this._tooltipElem.style, {
+      position: this._config.portal ? 'fixed' : 'absolute',
+      left: '0px',
+      top: '0px',
+      visibility: 'hidden',
+    });
+
+    if (!this._config.portal) {
+      // Non-portal: insert as sibling of trigger so tooltip participates
+      // in the same stacking context. Matches CE behavior where non-portal
+      // tooltips can be clipped by overflow containers (use portal to escape).
+      this._config.parent.parentNode.appendChild(this._tooltipElem);
+    }
+
+    this._tooltipElem.setAttribute('aria-hidden', 'true');
+
+    this._floating = createFloating(this._config.parent, this._tooltipElem, {
+      placement: this._config.position,
+      offset: 8,
+      portal: this._config.portal,
+      ownerId: portalId,
+      hideWhenDetached: this._config.hideWhenDetached,
+      autoUpdate: false,
+      initialUpdate: false,
+    });
 
     this._updatePosition = function () {
-      const middleware = [offset(8), flip(), shift()];
-      if (self._config.hideWhenDetached) {
-        middleware.push(hideMiddleware({ strategy: 'referenceHidden' }));
-      }
-
-      return computePosition(self._config.parent, self._tooltipElem, {
-        placement: self._config.position,
-        strategy: strategy,
-        middleware,
-      }).then(({x, y, middlewareData}) => {
-        Object.assign(self._tooltipElem.style, {
-          position: strategy,
-          left: `${Util.roundByDPR(x)}px`,
-          top: `${Util.roundByDPR(y)}px`,
-        });
-
-        if (self._config.hideWhenDetached && middlewareData.hide) {
-          self._tooltipElem.style.visibility = middlewareData.hide.referenceHidden ? 'hidden' : '';
-        }
-      });
+      return self._floating.update();
     };
   }
 
   _enableAutoUpdate() {
     this._disableAutoUpdate();
-    this._floatingCleanup = floatingAutoUpdate(
-      this._config.parent,
-      this._tooltipElem,
-      () => this._updatePosition()
-    );
+    if (this._floating) {
+      this._cleanupAutoUpdate = this._floating.enableAutoUpdate();
+    }
   }
 
   _disableAutoUpdate() {
-    if (this._floatingCleanup) {
-      this._floatingCleanup();
-      this._floatingCleanup = null;
+    if (this._cleanupAutoUpdate) {
+      this._cleanupAutoUpdate();
+      this._cleanupAutoUpdate = null;
     }
   }
 
@@ -178,14 +186,20 @@ class Tooltip extends Component {
 
   dispose() {
     this._disableAutoUpdate();
-    if (this._tooltipElem && this._tooltipElem.parentNode) {
+    if (this._floating) {
+      this._floating.destroy();
+      this._floating = null;
+    } else if (this._tooltipElem && this._tooltipElem.parentNode) {
       this._tooltipElem.parentNode.removeChild(this._tooltipElem);
     }
     this._tooltipElem = null;
     this._tooltipContent = null;
-    this._floatingCleanup = null;
+    this._cleanupAutoUpdate = null;
     this._config = null;
     this._removeEventHandlers();
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
     this._elem = null;
   }
 
