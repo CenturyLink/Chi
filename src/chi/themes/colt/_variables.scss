@@ -181,7 +181,7 @@ $color-yellow-20:   #faecd9;
 $color-yellow-10:   #fff8ed;
 $color-orange-100:  #5b2600;
 $color-orange-90:   #723204;
-$color-orange-80:   #974308;
+$color-orange-80:   #914008;
 $color-orange-70:   #b35009;
 $color-orange-60:   #c96010;
 $color-orange-50:   #e77528;
@@ -229,6 +229,7 @@ $color-icon-info:                     $color-blue-60;
 $color-icon-muted:                    $color-grey-60;
 $color-icon-muted-light:              $color-grey-50;
 $color-icon-muted-dark:               $color-grey-70;
+$color-icon-dark:                     $color-grey-90;
 $color-icon-orange:                   $color-orange-60;
 $color-icon-orange-dark:              $color-orange-80;
 $color-icon-white:                    $color-white;
@@ -676,13 +677,18 @@ $badge-notification-icon-color:             $color-icon-white;
 
 // Bulk actions
 $bulk-actions-background-color:             $color-navy-30;
+$bulk-actions-border:                       none;
+$bulk-actions-border-radius:                0;
+$bulk-actions-button-icon-color:            $color-grey-80;
+$bulk-actions-divider-border-right-color:   $color-grey-40;
+$bulk-actions-divider-height:               1.25rem;
+$bulk-actions-divider-margin:               0 0.5rem;
+$bulk-actions-label-font-weight:            $font-weight-semi-bold;
+$bulk-actions-label-margin-right:           1rem;
 $bulk-actions-link-color:                   $color-text-base;
 $bulk-actions-link-font-weight:             $font-weight-semi-bold;
+$bulk-actions-padding:                      0.25rem 0.875rem 0.25rem 1.5rem;
 $bulk-actions-results-font-size:            $font-size-md;
-$bulk-actions-label-font-weight:            $font-weight-semi-bold;
-$bulk-actions-divider-height:               1.25rem;
-$bulk-actions-divider-border-right-color:   $color-grey-40;
-$bulk-actions-button-icon-color:            $color-grey-80;
 
 // Button
 $button-border-radius:                      $border-radius-base;
@@ -1659,6 +1665,32 @@ $marketing-icon-size-md:                    6rem;
 $marketing-icon-size-lg:                    8rem;
 $marketing-icon-outline-fill:               $marketing-icon-primary-color;
 
+// Inner navigation
+$anchor-nav-accordion-content-border-left: 0.125rem solid $color-grey-60;
+$anchor-nav-accordion-content-item-title-font-size: $font-size-md;
+$anchor-nav-accordion-content-margin-top: 0.625rem;
+$anchor-nav-accordion-content-padding: 0 0 0 1.125rem;
+$anchor-nav-accordion-icon-color: $color-icon-dark;
+$anchor-nav-accordion-icon-font-size: $icon-size-xs;
+$anchor-nav-accordion-link-color: $color-text-base;
+$anchor-nav-accordion-link-font-size: $font-size-md;
+$anchor-nav-accordion-link-font-weight: $font-weight-semi-bold;
+$anchor-nav-accordion-link-margin-right: 0.625rem;
+$anchor-nav-item-active-color: $color-orange-80;
+$anchor-nav-item-active-font-weight: $font-weight-semi-bold;
+$anchor-nav-item-hover-background-color: $color-grey-20;
+$anchor-nav-item-margin-bottom: 0.5rem;
+$anchor-nav-item-title-font-size: $font-size-md;
+$anchor-nav-item-title-font-weight: $font-weight-semi-bold;
+$anchor-nav-item-title-padding: 0.5rem;
+$anchor-nav-padding: 0 0.5rem;
+$anchor-nav-title-color: $color-text-muted;
+$anchor-nav-title-font-size: $font-size-xs;
+$anchor-nav-title-font-weight: $font-weight-semi-bold;
+$anchor-nav-title-margin-bottom: 0.625rem;
+$anchor-nav-title-text-transform: uppercase;
+$anchor-nav-width: 100%;
+
 // Mobile navigation
 $mobile-nav-background-color:               $color-background-white;
 $mobile-nav-width:                          23rem;
@@ -2374,14 +2406,39 @@ $tabs-vertical-lg-font-size:                $font-size-lg;
 $tabs-vertical-xl-font-size:                $font-size-lg;
 $tabs-vertical-lg-description-font-size:    $font-size-base;
 
-$tabs-solid-xl-font-size:                   $font-size-lg;
-$tabs-solid-xl-font-weight:                 $font-weight-bold;
-$tabs-solid-vertical-xl-active-border-width: 0.125rem;
+$tabs-solid-active-background-color: $color-background-white;
+$tabs-solid-active-background-color-disabled: $color-background-white;
+$tabs-solid-active-background-color-hover: $color-background-white;
+$tabs-solid-active-border-color: $color-orange-60;
+$tabs-solid-active-border-disabled: none;
+$tabs-solid-background-color: $color-grey-10;
+$tabs-solid-background-color-hover: $color-grey-10;
+$tabs-solid-border-active: none;
+$tabs-solid-border-bottom-focus: none;
+$tabs-solid-border-bottom-hover: none;
+$tabs-solid-border-bottom-transparent: none;
+$tabs-solid-border-bottom-width: 0;
+$tabs-solid-border-focus: none;
+$tabs-solid-border-top-radius: 0;
+$tabs-solid-border-transparent: none;
+$tabs-solid-box-shadow: none;
+$tabs-solid-deprecated-border-display: block;
+$tabs-solid-gap: 0;
+$tabs-solid-horizontal-box-shadow: none;
 $tabs-solid-horizontal-lg-active-border-width: 0.125rem;
 $tabs-solid-horizontal-md-active-border-width: 0.125rem;
-$tabs-solid-background-color:               $color-grey-10;
-$tabs-solid-active-border-color:            $color-border-primary;
-$tabs-solid-active-background-color:        $color-background-white;
+$tabs-solid-horizontal-padding: $tabs-horizontal-md-solid-padding;
+$tabs-solid-opacity-disabled: 0.75;
+$tabs-solid-outline-focus-visible: none;
+$tabs-solid-text-color: $color-text-black;
+$tabs-solid-text-color-active: $color-text-primary;
+$tabs-solid-text-color-disabled: inherit;
+$tabs-solid-text-color-hover: $color-text-primary;
+$tabs-solid-vertical-box-shadow: none;
+$tabs-solid-vertical-padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+$tabs-solid-vertical-xl-active-border-width: 0.125rem;
+$tabs-solid-xl-font-size: $font-size-lg;
+$tabs-solid-xl-font-weight: $font-weight-bold;
 
 // Text input
 $text-input-border-color:                   $color-border-base;
