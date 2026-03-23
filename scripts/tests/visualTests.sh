@@ -18,7 +18,7 @@ PACKAGE_LOCK_BACKUP=$(mktemp)
 cp package.json "$PACKAGE_JSON_BACKUP"
 cp package-lock.json "$PACKAGE_LOCK_BACKUP"
 cp tests/package-tests.json package.json
-mv tests/package-lock-tests.json package-lock.json
+cp tests/package-lock-tests.json package-lock.json
 
 restore_lockfiles() {
   if [ -f "$PACKAGE_JSON_BACKUP" ]; then
@@ -29,8 +29,7 @@ restore_lockfiles() {
 }
 trap restore_lockfiles EXIT
 
-npm install
-cp package-lock.json tests/package-lock-tests.json
+npm ci
 
 npx playwright install
 
