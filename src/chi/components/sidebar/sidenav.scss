@@ -359,7 +359,7 @@ $sidenav-lg-width: 12.5rem;
         &.chi-sidenav__drawer-list {
           li {
             a {
-              line-height: $line-height;
+              line-height: $line-height-base;
               padding-right: 1.5rem;
 
               &.chi-drawer__subitem-list-trigger {
@@ -769,7 +769,6 @@ $sidenav-lg-width: 12.5rem;
               &.-expanded {
                 > .chi-accordion__trigger {
                   .icon-chevron-down {
-
                     &::before {
                       transform: $accordion-item-trigger-icon-transform;
                     }
@@ -793,7 +792,6 @@ $sidenav-lg-width: 12.5rem;
                       &.-expanded {
                         .chi-accordion__trigger {
                           .icon-chevron-down {
-
                             &::before {
                               transform: $accordion-item-trigger-icon-transform;
                             }

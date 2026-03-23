@@ -11,7 +11,7 @@
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   left: 0;
-  line-height: $line-height;
+  line-height: $line-height-base;
   max-width: $popover-max-width;
   opacity: 0;
   position: absolute;
@@ -83,7 +83,7 @@
     & p,
     & .chi-popover__text {
       font-size: $font-size-base;
-      line-height: $line-height;
+      line-height: $line-height-base;
       margin: 0.5rem 0;
     }
 

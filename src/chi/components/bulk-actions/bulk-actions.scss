@@ -9,8 +9,10 @@
 
   @include respond-to(md) {
     background-color: $bulk-actions-background-color;
+    border: $bulk-actions-border;
+    border-radius: $bulk-actions-border-radius;
     justify-content: space-between;
-    padding: 0.25rem 0.875rem 0.25rem 1.5rem;
+    padding: $bulk-actions-padding;
   }
 
   .chi-divider {
@@ -21,6 +23,7 @@
         border-right-color: $bulk-actions-divider-border-right-color;
         display: block;
         height: $bulk-actions-divider-height;
+        margin: $bulk-actions-divider-margin;
       }
     }
   }
@@ -73,7 +76,7 @@
 
     .chi-bulk-actions__label {
       font-weight: $bulk-actions-label-font-weight;
-      margin-right: 1rem;
+      margin-right: $bulk-actions-label-margin-right;
     }
   }
 

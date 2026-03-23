@@ -70,6 +70,7 @@
 | accordion | chi-accordion | -disabled, -transitioning, -expanded, -truncated, -card, -sm, -link, -compact-title, ... | chi-accordion__item | `<chi-accordion>` |
 | activity | chi-activity | -feed, -compact, -stories | chi-activity__day, chi-activity__item |  |
 | alert | chi-alert | -center, -banner, -close, -lg, -sm, -hover, -success, -border-color, ... | chi-alert__content | `<chi-alert>` |
+| anchor-nav | chi-anchor-nav | -active |  |  |
 | avatars | chi-avatar | -transparent, -xs, -sm, -sm--2, -sm--3, -md, -lg, -xl, ... |  |  |
 | backdrop | chi-backdrop | -full-page, -center, -mobile-bottom, -animated, -closed, -inverse, -transitioning | chi-backdrop__wrapper, chi-backdrop__footer | `<chi-backdrop>` |
 | badge | chi-badge | -sm, -xs, -outline, -flat, -notification, -primary, -border-color, -text-color, ... | chi-badge__content | `<chi-badge>` |
@@ -90,6 +91,7 @@
 | drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
 | drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header, chi-drawer__title, chi-drawer__content, chi-drawer__footer | `<chi-drawer>` |
 | dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
+| dynamic-form-group | chi-dynamic-form-group |  |  |  |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
 | filters | chi-filters |  | chi-filters__trigger-button |  |
 | flag-icon | chi-flag-icon | -xs |  |  |
@@ -106,7 +108,7 @@
 | mobile-navigation | chi-mobile-nav | -second-level-shown, -left, -right, -animated, -close, -vertical, -icons, -active, ... |  |  |
 | modal | chi-modal | -no-border, -centered, -active, -animated, -transitioning, -header-image, -gradient, -full-page | chi-modal__header, chi-modal__content, chi-modal__footer | `<chi-modal>` |
 | navigation | chi-tabs | -sm, -lg, -active, -responsive, -active-alt, -animated, -xl, -border, ... |  | `<chi-tabs>` |
-| pagination | chi-pagination | -xs, -hover, -active, -focus, -sm, -md, -lg, -xl, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
+| pagination | chi-pagination | -hover, -active, -focus, -flat, -light, -md, -sm, -lg, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
 | phone-input | chi-phone-input |  | chi-phone-input__menu | `<chi-phone-input>` |
 | picker | chi-picker-group | -sm, -lg, -xl, -disabled, -fluid, -xs, -line-height, -min-height, ... | chi-picker-group__content | `<chi-picker-group>` |
 | picker | chi-picker | -disabled, -pill, -xs, -item-font-size, -item-description-line-height, -sm |  | `<chi-picker>` |

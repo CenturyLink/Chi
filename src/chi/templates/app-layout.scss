@@ -250,7 +250,7 @@
     }
   }
 
-  &.-narnia {
+  &.-connect {
     padding-top: 0;
     width: 100%;
 
@@ -371,7 +371,7 @@
     }
   }
 
-  &:not(.-narnia) {
+  &:not(.-connect) {
     &.-header-background {
       .chi-main__background {
         z-index: 0;

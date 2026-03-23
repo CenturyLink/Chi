@@ -26,7 +26,10 @@ export default defineConfig({
       // Not available in Vite 7.0.0
       scss: {
         api: 'legacy',
-        includePaths: [resolve(__dirname, 'src/chi')],
+        includePaths: [
+          resolve(__dirname, `src/chi/themes/${process.env.THEME}`),
+          resolve(__dirname, 'src/chi')
+        ],
       },
     },
     postcss: {

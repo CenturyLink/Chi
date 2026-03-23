@@ -297,17 +297,17 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-pagination
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
-| `-xs` | `size` | `"xs"` |
 | `-hover` | `hover` | (boolean) |
 | `-active` | `active` | (boolean) |
-| `-sm` | `size` | `"sm"` |
-| `-md` | `size` | `"md"` |
-| `-lg` | `size` | `"lg"` |
-| `-xl` | `size` | `"xl"` |
 | `-flat` | `variant` | `"flat"` |
 | `-light` | `color` | `"light"` |
+| `-md` | `size` | `"md"` |
+| `-sm` | `size` | `"sm"` |
+| `-lg` | `size` | `"lg"` |
 | `-compact` | `compact` | (boolean) |
+| `-xl` | `size` | `"xl"` |
 | `-inverse` | `color` | `"inverse"` |
+| `-xs` | `size` | `"xs"` |
 
 ### chi-picker
 | CSS Modifier | Property | Value |
