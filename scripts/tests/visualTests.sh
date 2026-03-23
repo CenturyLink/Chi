@@ -29,9 +29,8 @@ restore_lockfiles() {
 }
 trap restore_lockfiles EXIT
 
-npm i
-
 # npm ci
+npm install
 npx playwright install
 
 npm run build
