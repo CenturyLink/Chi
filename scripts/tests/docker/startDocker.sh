@@ -11,6 +11,7 @@ docker run --rm -i --name backstopjs \
   -e GH_TOKEN \
   -e SKIP_SRI=true \
   -e SKIP_BOILERPLATES=true \
+  -e SKIP_CHI_DOCUMENTATION=true \
   -e THEMES_TO_BUILD=${THEMES_TO_TEST} \
   -e USER_PATH=${REPO_PATH} \
   -e STOP_TESTS_ON_FAILURE=0 \

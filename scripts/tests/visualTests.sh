@@ -11,10 +11,12 @@ fi
 
 echo "[CHI]: Installing dependencies..."
 
-# Visual tests use tests/package-tests.json + tests/package-lock-tests.json (e.g. pinned nuxt for CI only).
+# Visual tests use tests/package-tests.json + tests/package-lock-tests.json (no @centurylink/chi-documentation).
+# Build sets SKIP_CHI_DOCUMENTATION=1 — see scripts/build/build.sh.
 # Root package.json / package-lock.json are restored before exit.
 PACKAGE_JSON_BACKUP=$(mktemp)
 PACKAGE_LOCK_BACKUP=$(mktemp)
+
 cp package.json "$PACKAGE_JSON_BACKUP"
 cp package-lock.json "$PACKAGE_LOCK_BACKUP"
 cp tests/package-tests.json package.json
@@ -33,6 +35,7 @@ npm ci
 
 npx playwright install
 
+export SKIP_CHI_DOCUMENTATION=1
 npm run build
 
 npm run start:dist &

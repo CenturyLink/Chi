@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "@centurylink/chi-custom-elements": "2.0.0",
-    "@centurylink/chi-documentation": "1.57.0",
     "@centurylink/chi-vue": "3.35.0"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "express": "^5.1.0",
     "express-rate-limit": "^7.5.1",
     "normalize.css": "^8.0.1",
-    "nuxt": "3.17.4",
     "ora": "^8.2.0",
     "popper.js": "^1.16.1",
     "postcss-svg": "^3.0.0",
@@ -70,17 +68,6 @@
   },
   "overrides": {
     "merge": "^2.1.1",
-    "nuxt": "3.17.4",
-    "@nuxt/cli": "3.30.0",
-    "@nuxt/kit": "3.17.4",
-    "@nuxt/schema": "3.17.4",
-    "c12": "3.3.2",
-    "nitropack": "2.11.12",
-    "chokidar": "4.0.3",
-    "readdirp": "4.1.2",
-    "impound": "1.0.0",
-    "unplugin": "2.3.4",
-    "unplugin-utils": "0.2.4",
     "postcss-svg": {
       "postcss": "^8.5.6"
     },
