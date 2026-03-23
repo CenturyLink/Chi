@@ -11,26 +11,27 @@ fi
 
 echo "[CHI]: Installing dependencies..."
 
-# backstop runs on node 20 not 22, npm ci will give conflicts with package-lock
-# TO BE REMOVED ONCE MIGRATION TO NODE22 IS COMPLETE
-sed -i.bak 's/"@centurylink\/chi-documentation":[[:space:]]*"[^"]*"/"@centurylink\/chi-documentation": "1.57.0"/' package.json && rm package.json.bak
-
-# Backup package-lock.json and use tests lockfile for this run (restored at exit)
+# Visual tests use tests/package-tests.json + tests/package-lock-tests.json (e.g. pinned nuxt for CI only).
+# Root package.json / package-lock.json are restored before exit.
+PACKAGE_JSON_BACKUP=$(mktemp)
 PACKAGE_LOCK_BACKUP=$(mktemp)
+cp package.json "$PACKAGE_JSON_BACKUP"
 cp package-lock.json "$PACKAGE_LOCK_BACKUP"
-mv package-lock-tests.json package-lock.json
+cp tests/package-tests.json package.json
+mv tests/package-lock-tests.json package-lock.json
 
 restore_lockfiles() {
-  if [ -f "$PACKAGE_LOCK_BACKUP" ]; then
-    mv package-lock.json package-lock-tests.json
+  if [ -f "$PACKAGE_JSON_BACKUP" ]; then
     cp "$PACKAGE_LOCK_BACKUP" package-lock.json
-    rm -f "$PACKAGE_LOCK_BACKUP"
+    cp "$PACKAGE_JSON_BACKUP" package.json
+    rm -f "$PACKAGE_JSON_BACKUP" "$PACKAGE_LOCK_BACKUP"
   fi
 }
 trap restore_lockfiles EXIT
 
-# npm ci
 npm install
+cp package-lock.json tests/package-lock-tests.json
+
 npx playwright install
 
 npm run build
