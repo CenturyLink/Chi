@@ -23,8 +23,8 @@ cp tests/package-tests.json package.json
 cp tests/package-lock-tests.json package-lock.json
 
 npm install
+npx playwright install
 
-mv package-lock.json tests/package-lock-tests.json
 restore_root_manifests
 trap - EXIT
 

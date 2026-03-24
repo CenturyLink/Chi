@@ -11,31 +11,12 @@ fi
 
 echo "[CHI]: Installing dependencies..."
 
-# Visual tests use tests/package-tests.json + tests/package-lock-tests.json (no @centurylink/chi-documentation).
-# Build sets SKIP_CHI_DOCUMENTATION=1 — see scripts/build/build.sh.
-# Root package.json / package-lock.json are restored before exit.
-PACKAGE_JSON_BACKUP=$(mktemp)
-PACKAGE_LOCK_BACKUP=$(mktemp)
-
-cp package.json "$PACKAGE_JSON_BACKUP"
-cp package-lock.json "$PACKAGE_LOCK_BACKUP"
-cp tests/package-tests.json package.json
-cp tests/package-lock-tests.json package-lock.json
-
-restore_lockfiles() {
-  if [ -f "$PACKAGE_JSON_BACKUP" ]; then
-    cp "$PACKAGE_LOCK_BACKUP" package-lock.json
-    cp "$PACKAGE_JSON_BACKUP" package.json
-    rm -f "$PACKAGE_JSON_BACKUP" "$PACKAGE_LOCK_BACKUP"
-  fi
-}
-trap restore_lockfiles EXIT
-
-npm ci
-
-npx playwright install
-
+# backstop runs on node 20 not 22, npm ci will give conflicts with package-lock
+# TO BE REMOVED ONCE MIGRATION TO NODE22 IS COMPLETE
 export SKIP_CHI_DOCUMENTATION=1
+bash ./scripts/tests/sync-package-tests-lock.sh
+
+
 npm run build
 
 npm run start:dist &
