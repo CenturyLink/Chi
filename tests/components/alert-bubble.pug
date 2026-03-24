@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Alert Bubbles'
@@ -16,9 +15,7 @@ block content
       each val, type in icons
         .-m--2
           .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
     h4 Centered / #{size}
@@ -26,9 +23,7 @@ block content
       each val, type in icons
         .-m--2
           .chi-alert.-center(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p.chi-alert__text= `This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
     h4 Closable / #{size}
@@ -36,24 +31,18 @@ block content
       each val, type in icons
         .-m--2
           .chi-alert.-close(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p.chi-alert__text= `This is a dismissible ${type} alert`
             button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
               .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-x')
+                .chi-icon.icon-x
     h4 Titled / #{size}
     div(class=`test-bubble-titled-${size} -w--100`)
       each val, type in icons
         .-m--2
           .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p.chi-alert__title=`${type}`
               p.chi-alert__text=`This is a titled ${type} alert`
@@ -62,9 +51,7 @@ block content
       each val, type in icons
         .-m--2
           .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p.chi-alert__title #{type}
               p.chi-alert__text This is a #{size} #{type} actionable alert
@@ -76,16 +63,12 @@ block content
       .-m--2
         a.chi-link.-no-hover-underline.-no-underline(href='#')
           .chi-alert(class=`-${type}`)
-            div(class=`chi-alert__icon chi-icon -icon--${type}`)
-              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use(xlink:href=`#${val}`)
+            div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
               p(class=`chi-alert__title`)
                 =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
             .chi-alert__clickable-icon
-              i.chi-icon
-                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                  use(xlink:href=`#icon-chevron-right`)
+              i.chi-icon.icon-chevron-right
                 
   h4 Clickable Button Alert / default
   div(class=`test-bubble-clickable-button-default -w--100`)
@@ -94,13 +77,9 @@ block content
         button.chi-button.-flat.-fluid.-b--0.-p--0.-text--no-transform.-no-hover
           .chi-button__content
             .chi-alert(class=`-${type} -w--100`)
-              div(class=`chi-alert__icon chi-icon -icon--${type}`)
-                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                  use(xlink:href=`#${val}`)
+              div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
               .chi-alert__content
                 p(class=`chi-alert__title`)
                   =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
               .chi-alert__clickable-icon
-                i.chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href=`#icon-chevron-right`)
+                i.chi-icon.icon-chevron-right

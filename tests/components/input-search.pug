@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Search input'
@@ -53,14 +52,10 @@ block content
                         aria-label='Search'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-search')
+                          .chi-icon.icon-search
                       if state != 'disabled'
                         button.chi-button.-xs.-icon.-close(aria-label='Close')
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-x')
+                          .chi-icon.icon-x
 
   each size in sizes
     div(class=`test-helper-message-${size}`)
@@ -92,26 +87,16 @@ block content
                         aria-label='Search'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-search')
+                          .chi-icon.icon-search
                       if state != 'disabled'
                         button.chi-button.-xs.-icon.-close(aria-label='Close')
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-x')
+                          .chi-icon.icon-x
                       .-d--flex
                       .chi-label.-status(class=`-${style}`)
                         if style == 'success'
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-circle-check')
+                          .chi-icon.icon-circle-check
                         else if style == 'warning'
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-warning')
+                          .chi-icon.icon-warning
                         else if style == 'danger'
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-circle-warning')
+                          .chi-icon.icon-circle-warning
                         | Helper message

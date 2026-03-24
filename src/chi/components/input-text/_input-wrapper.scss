@@ -1,5 +1,6 @@
 $sizes: (
   xs: (
+    font-size: $text-input-xs-icon-font-size,
     height: $text-input-xs-icon-height,
     top: $text-input-xs-icon-top,
     width: $text-input-xs-icon-width,
@@ -8,6 +9,7 @@ $sizes: (
     ),
   ),
   sm: (
+    font-size: $text-input-sm-icon-font-size,
     height: $text-input-sm-icon-height,
     top: $text-input-sm-icon-top,
     width: $text-input-sm-icon-width,
@@ -16,6 +18,7 @@ $sizes: (
     ),
   ),
   md: (
+    font-size: $text-input-md-icon-font-size,
     height: $text-input-md-icon-height,
     top: $text-input-md-icon-top,
     width: $text-input-md-icon-width,
@@ -24,6 +27,7 @@ $sizes: (
     ),
   ),
   lg: (
+    font-size: $text-input-lg-icon-font-size,
     height: $text-input-lg-icon-height,
     top: $text-input-lg-icon-top,
     width: $text-input-lg-icon-width,
@@ -32,6 +36,7 @@ $sizes: (
     ),
   ),
   xl: (
+    font-size: $text-input-xl-icon-font-size,
     height: $text-input-xl-icon-height,
     top: $text-input-xl-icon-top,
     width: $text-input-xl-icon-width,
@@ -45,6 +50,7 @@ $sizes: (
   .chi-input {
     & ~ .chi-icon,
     & ~ chi-icon {
+      font-size: $text-input-md-icon-font-size;
       height: $text-input-md-icon-height;
       position: absolute;
       top: $text-input-md-icon-top;
@@ -53,6 +59,7 @@ $sizes: (
 
     & ~ chi-icon {
       .chi-icon {
+        font-size: $text-input-md-icon-font-size;
         height: $text-input-md-icon-height;
         width: $text-input-md-icon-width;
       }
@@ -71,6 +78,7 @@ $sizes: (
       &.-#{$type} {
         & ~ .chi-icon,
         & ~ chi-icon {
+          font-size: map-get(map-get($sizes, $type), font-size);
           height: map-get(map-get($sizes, $type), height);
           top: map-get(map-get($sizes, $type), top);
           width: map-get(map-get($sizes, $type), width);
@@ -78,6 +86,7 @@ $sizes: (
 
         & ~ chi-icon {
           .chi-icon {
+            font-size: map-get(map-get($sizes, $type), font-size);
             height: map-get(map-get($sizes, $type), height);
             top: 0;
             width: map-get(map-get($sizes, $type), width);

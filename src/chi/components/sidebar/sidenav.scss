@@ -369,7 +369,7 @@ $sidenav-lg-width: 12.5rem;
                 .chi-sidenav__title {
                   &::after {
                     color: $sidenav-item-trigger-icon-color;
-                    content: '\e91e';
+                    content: 'keyboard_arrow_down';
                     display: block;
                     font-family: $font-family-icon;
                     font-size: $font-size-xs;

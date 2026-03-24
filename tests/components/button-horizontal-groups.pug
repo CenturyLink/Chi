@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Horizontal button groups'
@@ -12,9 +11,7 @@ block variables
 
 block content
   mixin icon(name)
-    .chi-icon
-      svg
-        use(xlink:href=`#icon-${name}`)
+    .chi-icon(class=`icon-${name}`)
 
   mixin button(icon, type, style, size, modifier)
     button.chi-button(class={

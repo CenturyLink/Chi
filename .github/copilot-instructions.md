@@ -71,9 +71,12 @@ Production usage via CDN: `https://lib.lumen.com/chi/VERSION/chi.css`
 Requires `chi` class on `<html>` element for proper scoping.
 
 ### Icon System
-- Custom icon font with `chi` font-family
-- SVG sprites built from `src/chi/assets/icons/`
-- PostCSS plugin inlines SVGs in CSS
+- **Google Material Symbols Outlined** font (self-hosted, 2,500+ icons available)
+- Icons rendered via font ligatures using `.chi-icon` class with modifiers
+- **Logo icons**: Use CSS `mask-image` technique for full color customization
+- **Native component SVGs**: PostCSS plugin inlines remaining SVGs (checkboxes, selects, tables) from `src/chi/assets/icons/`
+- Icon mappings defined in `src/chi/components/icons/icon-mapping.scss`
+- No build process required for icon updates - all Material Symbols available automatically
 
 ### Documentation Site
 Built documentation lives in separate `@centurylink/chi-documentation` package but gets copied into Chi's `dist/` during build for unified distribution.

@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Carousel'
@@ -21,15 +20,11 @@ block content
       .chi-carousel__control.-previous
         button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.icon-chevron-left
       .chi-carousel__control.-next
         button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.icon-chevron-right
 
   .test-single(style="max-width: 55rem;")
     h2 Single
@@ -42,15 +37,11 @@ block content
       .chi-carousel__control.-previous
         button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.icon-chevron-left
       .chi-carousel__control.-next
         button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.icon-chevron-right
 
   .test-single-one-item(style="max-width: 55rem;")
     h2 Single - One item
@@ -72,15 +63,11 @@ block content
       .chi-carousel__control.-previous
         button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.icon-chevron-left
       .chi-carousel__control.-next
         button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.icon-chevron-right
       .chi-carousel__dots
         span.chi-carousel__dot.-active
         span.chi-carousel__dot
@@ -98,15 +85,11 @@ block content
       .chi-carousel__control.-previous
         button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.icon-chevron-left
       .chi-carousel__control.-next
         button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.icon-chevron-right
       .chi-carousel__pagination 1 of 8
 
   .test-no-button-controllers(style="max-width: 55rem;")
@@ -135,12 +118,8 @@ block content
       .chi-carousel__control.-previous
         button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-left')
+            .chi-icon.icon-chevron-left
       .chi-carousel__control.-next
         button.chi-button.-float.-sm(aria-label='Carousel next', style="border: none")
           .chi-button__content
-            .chi-icon
-              svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
-                use(xlink:href='#icon-chevron-right')
+            .chi-icon.icon-chevron-right

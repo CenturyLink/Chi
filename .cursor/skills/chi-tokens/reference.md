@@ -8,7 +8,7 @@
 | cap-height | `0.75` |
 | base-unit | `8px` |
 | state-colors | `(success: green, warning: yellow, danger: red)` |
-| font-family-icon | `'chi'` |
+| font-family-icon | `'Material Symbols Outlined'` |
 | font-size-1 | `0.6875rem` |
 | font-size-2 | `0.75rem` |
 | font-size-3 | `0.8125rem` |

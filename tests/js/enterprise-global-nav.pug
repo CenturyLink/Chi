@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 
 block variables
@@ -16,31 +15,19 @@ block content
           ul.chi-sidenav__list
             li.-active
               a(href='#enterprise-drawer-0')
-                .chi-icon
-                  svg
-                    svg
-                      use(xlink:href='#icon-user')
+                i.chi-icon.icon-user
                 span NoChanges
             li
               a(href='#enterprise-drawer-1')
-                .chi-icon
-                  svg
-                    svg
-                      use(xlink:href='#icon-user')
+                i.chi-icon.icon-user
                 span Changes
             li
               a(href='#enterprise-drawer-2')
-                .chi-icon
-                  svg
-                    svg
-                      use(xlink:href='#icon-logo-centurylink')
+                i.chi-icon.icon-logo-centurylink
                 span DeepLink
             li
               a(href='#home')
-                .chi-icon
-                  svg
-                    svg
-                      use(xlink:href='#icon-home')
+                i.chi-icon.icon-home
                 span Home
       .chi-sidenav__drawers
         .enterprise-nav-menu-drawer

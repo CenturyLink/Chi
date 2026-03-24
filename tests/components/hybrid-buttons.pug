@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Hybrid buttons'
@@ -20,17 +19,13 @@ block content
           [`-${size}`]: size != 'default'
         })
           .chi-button__content
-            .chi-icon
-              svg
-                use(xlink:href='#icon-atom')
+            .chi-icon.icon-atom
             span Reinstall
         button.chi-button.-icon(class={
           [`-${size}`]: size != 'default'
         })
           .chi-button__content
-            .chi-icon
-              svg
-                use(xlink:href='#icon-atom')
+            .chi-icon.icon-atom
 
     div(class={
       'test-fluid': size == 'default',
@@ -47,6 +42,4 @@ block content
             [`-${size}`]: size != 'default'
           })
             .chi-button__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom

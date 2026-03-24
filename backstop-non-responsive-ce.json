@@ -25,7 +25,7 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-accordion-base", 
+        ".test-accordion-base",
         ".test-accordion-sizes",
         ".test-accordion-portal-layout",
         ".test-accordion-portal-layout-card",
@@ -151,12 +151,7 @@
         ".test-layout-backlink",
         ".test-layout-backlink-subtitle",
         ".test-layout-backlink-subtitle-buttons",
-        ".test-layout-page-level-actions",
-        ".test-layout-no-margin",
-        ".test-layout-fixed-width",
-        ".test-layout-fixed-width-header-background",
-        ".test-layout-fixed-width-header-background-css-grid",
-        ".test-layout-fixed-width-alert-header-background-css-grid"
+        ".test-layout-page-level-actions"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -175,12 +170,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-inverse",
-        ".test-white",
-        ".test-black"
-      ],
+      "selectors": [".test-base", ".test-inverse", ".test-white", ".test-black"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -211,7 +201,7 @@
       "requireSameDimensions": true
     },
     {
-      "label": "icons-svg",
+      "label": "icons",
       "cookiePath": "",
       "url": "http://localhost:8000/chi/6.95.0/tests/<theme>/custom-elements/icons.html",
       "referenceUrl": "",
@@ -223,17 +213,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-single-svg",
-        ".test-colors-svg",
-        ".test-icons-svg",
-        ".test-sizes-svg-xs",
-        ".test-sizes-svg-sm",
-        ".test-sizes-svg-sm--2",
-        ".test-sizes-svg-sm--3",
-        ".test-sizes-svg-md",
-        ".test-sizes-svg-lg"
-      ],
+      "selectors": [".test-single", ".test-sizes", ".test-colors", ".test-icons"],
       "selectorExpansion": true,
       "misMatchThreshold": 0.01,
       "requireSameDimensions": true
@@ -405,11 +385,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-copy-text-base",
-        ".test-copy-text-disabled",
-        ".test-copy-text-sizes"
-      ],
+      "selectors": [".test-copy-text-base", ".test-copy-text-disabled", ".test-copy-text-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -535,10 +511,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-dropdown-select-button-icon",
-        ".test-dropdown-select-multiple-search"
-      ],
+      "selectors": [".test-dropdown-select-button-icon", ".test-dropdown-select-multiple-search"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -574,10 +547,7 @@
       "label": "form-wrapper",
       "url": "http://localhost:8000/chi/6.95.0/tests/<theme>/custom-elements/form-wrapper.html",
       "delay": 2000,
-      "selectors": [
-        ".test-form-wrapper-checkboxes",
-        ".test-form-wrapper-radio-buttons"
-      ]
+      "selectors": [".test-form-wrapper-checkboxes", ".test-form-wrapper-radio-buttons"]
     },
     {
       "label": "popover",
@@ -634,10 +604,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-gradient-type",
-        ".test-gradient-type-with-header-image"
-      ],
+      "selectors": [".test-gradient-type", ".test-gradient-type-with-header-image"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -779,11 +746,6 @@
         ".test-md",
         ".test-lg",
         ".test-xl",
-        ".test-expanded-svg-default",
-        ".test-expanded-svg-sm",
-        ".test-expanded-svg-md",
-        ".test-expanded-svg-lg",
-        ".test-expanded-svg-xl",
         ".test-base-helper-message-default",
         ".test-base-helper-message-sm",
         ".test-base-helper-message-md",
@@ -836,9 +798,9 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-link-base", 
-        ".test-link-disabled", 
-        ".test-link-cta", 
+        ".test-link-base",
+        ".test-link-disabled",
+        ".test-link-cta",
         ".test-link-no-underline",
         ".test-link-hover",
         ".test-link-no-hover-underline"
@@ -967,9 +929,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-skeleton"
-      ],
+      "selectors": [".test-skeleton"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
