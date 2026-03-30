@@ -12,7 +12,8 @@ const DEFAULT_CONFIG = {
   locale: 'en',
   min: '01/01/1900',
   max: '12/31/2099',
-  format: 'MM/DD/YYYY'
+  format: 'MM/DD/YYYY',
+  portal: false
 };
 const WEEK_CLASS_PART = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
@@ -195,6 +196,7 @@ class DatePicker extends Component {
       arrow: false,
       classes: ['chi-popover__datepicker'],
       content: this.elems.container,
+      portal: this._config.portal,
       position: 'bottom',
       preventAutoHide: true,
       trigger: 'manual'

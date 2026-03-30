@@ -1,7 +1,8 @@
 import {Component} from "../core/component";
 import {Util} from "../core/util.js";
-import Popper from 'popper.js';
 import {CLASS_HAS_ACTIVE} from "./tab";
+import {createFloating} from '../core/floating.js';
+import {portalElement} from '../core/portal.js';
 
 const CLASS_ACTIVE = "-active";
 const CLASS_DROPDOWN = 'chi-dropdown__menu';
@@ -11,7 +12,9 @@ const CLASS_COMPONENT = 'chi-dropdown__trigger';
 const COMPONENT_SELECTOR = '.chi-dropdown__trigger';
 const COMPONENT_TYPE = "dropdown";
 const DEFAULT_CONFIG = {
-  popper: true,
+  floating: true,
+  popper: undefined,
+  portal: false,
   dropdownElem: null
 };
 const DEFAULT_POSITION = "bottom-start";
@@ -24,6 +27,23 @@ class Dropdown extends Component {
 
   constructor (elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
+    this._floating = null;
+    this._cleanupAutoUpdate = null;
+    this._portalHandle = null;
+    Object.defineProperty(this, '_popper', {
+      configurable: true,
+      enumerable: false,
+      get: () => this._floating,
+      set: (value) => {
+        this._floating = value;
+      }
+    });
+
+    if (typeof this._config.floating === 'undefined') {
+      this._config.floating = typeof this._config.popper === 'boolean' ? this._config.popper : true;
+    }
+    this._config.popper = this._config.floating;
+
     this._eventCaptured = false;
     this._shown = Util.hasClass(elem, CLASS_ACTIVE);
     this._childrenDropdowns = [];
@@ -34,8 +54,8 @@ class Dropdown extends Component {
     this._locateDropdown();
     let self = this;
 
-    if (this._config.popper) {
-      this.enablePopper();
+    if (this._config.floating) {
+      this.enableFloating();
     }
 
     this._triggerClickEventListener = function(e) {
@@ -92,6 +112,7 @@ class Dropdown extends Component {
       function (elem) {
         const dropdownElem = elem.nextSibling;
         const config = Util.copyObject(self._config);
+        config.floating = false;
         config.popper = false;
         if (dropdownElem && Util.hasClass(dropdownElem, CLASS_DROPDOWN)) {
           config.dropdownElem = dropdownElem;
@@ -120,43 +141,91 @@ class Dropdown extends Component {
     return dropdownPosition;
   }
 
-  enablePopper () {
-    if (this._popper) {
+  _portalDropdownMenu() {
+    if (!this._config.portal || !this._dropdownElem) {
       return;
     }
 
-    this._popper = 'loading';
+    const portalId = 'chi-dropdown-portal-' + this.componentCounterNo;
+    this._elem.setAttribute('data-chi-portal-id', portalId);
+    this._portalHandle = portalElement(this._dropdownElem, portalId);
+
+    this._syncMenuMinWidth();
+  }
+
+  _syncMenuMinWidth() {
+    if (!this._config.portal || !this._elem || !this._dropdownElem) {
+      return;
+    }
+    const refWidth = this._elem.getBoundingClientRect().width;
+    if (refWidth > 0) {
+      this._dropdownElem.style.minWidth = `${refWidth}px`;
+    }
+  }
+
+  _restoreDropdownMenu() {
+    if (!this._portalHandle || !this._dropdownElem) {
+      return;
+    }
+    this._dropdownElem.style.minWidth = '';
+
+    this._portalHandle.restore();
+    this._portalHandle = null;
+
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
+  }
+
+  enableFloating () {
+    if (this._floating) {
+      return;
+    }
+
+    this._floating = 'loading';
     const self = this;
     window.requestAnimationFrame(function() {
       let dropdownPosition = self._calculateDropdownPosition();
 
-      if (dropdownPosition && typeof Popper !== 'undefined') {
-        self._popper = new Popper (self._elem, self._dropdownElem, {
-          modifiers: {
-            applyStyle: {enabled: true},
-            applyChiStyle: {
-              enabled: true,
-              fn: self._popperPatchForBottomLeftPropperLocation,
-              order: 890
-            },
-          },
-          placement: dropdownPosition
+      if (dropdownPosition) {
+        self._portalDropdownMenu();
+
+        // Build floating instance — portal is false here because
+        // _portalDropdownMenu() already handled portaling with
+        // ownership tracking + minWidth sync. We pass the strategy
+        // directly.
+        self._floating = createFloating(self._elem, self._dropdownElem, {
+          placement: dropdownPosition,
+          strategy: self._config.portal ? 'fixed' : 'absolute',
+          portal: false,
+          flip: true,
+          shift: true,
+          // Skip hideMiddleware when portaled: the menu can be taller
+          // than the viewport, so scrolling to interact with items moves
+          // the trigger out of view, causing hide to incorrectly collapse
+          // the menu mid-interaction. Matches CE behavior.
+          hideWhenDetached: !self._config.portal,
+          autoUpdate: false,
+          initialUpdate: true,
         });
       }
     });
   }
 
-  _popperPatchForBottomLeftPropperLocation (data) {
-    data.styles.left = data.styles.left || 'initial';
-    data.styles.right = data.styles.right || 'initial';
-    return data;
+  enablePopper () {
+    this.enableFloating();
+  }
+
+  disableFloating () {
+    if (this._floating && typeof this._floating === 'object' && this._floating.destroy) {
+      this._floating.destroy();
+    }
+    this._floating = null;
+    this._restoreDropdownMenu();
   }
 
   disablePopper () {
-    if (this._popper && typeof this._popper === 'function') {
-      this._popper.destroy();
-    }
-    this._popper = null;
+    this.disableFloating();
   }
 
   _clickOnTrigger() {
@@ -239,8 +308,15 @@ class Dropdown extends Component {
       Util.addClass(this._elem, CLASS_ACTIVE);
       Util.addClass(this._elem, CLASS_HAS_ACTIVE);
       Util.addClass(this._dropdownElem, CLASS_ACTIVE);
-      if (this._popper && typeof this._popper.update === "function") {
-        this._popper.update();
+      this._dropdownElem.style.visibility = '';
+      this._syncMenuMinWidth();
+      if (this._floating && typeof this._floating.update === "function") {
+        const floatingRef = this._floating;
+        const self2 = this;
+        this._floating.update().then(function() {
+          if (self2._floating !== floatingRef) return;
+          self2._cleanupAutoUpdate = floatingRef.enableAutoUpdate();
+        });
       }
       if (this._parentDropdown) {
         this._parentDropdown.show();
@@ -260,6 +336,10 @@ class Dropdown extends Component {
       this._setActiveDescendants();
       Util.removeClass(this._elem, CLASS_ACTIVE);
       Util.removeClass(this._dropdownElem, CLASS_ACTIVE);
+      if (this._cleanupAutoUpdate) {
+        this._cleanupAutoUpdate();
+        this._cleanupAutoUpdate = null;
+      }
       this._shown = false;
       this._childrenDropdowns.forEach(function(dd) {
         dd.hide();
@@ -318,12 +398,15 @@ class Dropdown extends Component {
     this._childrenDropdowns = null;
     this._parentDropdown = null;
     this._activedDescendants = null;
-    this._dropdownElem = null;
 
     document.removeEventListener('click', this._documentClickEventListener);
     this._documentClickEventListener = null;
+    this.disableFloating();
+    this._dropdownElem = null;
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
     this._elem = null;
-    this.disablePopper();
   }
 
 

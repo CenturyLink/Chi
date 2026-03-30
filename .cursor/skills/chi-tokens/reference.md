@@ -49,6 +49,7 @@
 | zindex-modal | `50` |
 | zindex-popover | `60` |
 | zindex-tooltip | `70` |
+| zindex-portal-root | `9999` |
 <!-- AUTO-GENERATED:END -->
 
 ## Token Descriptions (manual)

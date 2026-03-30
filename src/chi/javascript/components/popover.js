@@ -1,12 +1,13 @@
 import { Util } from '../core/util.js';
 import { Component } from '../core/component';
-import Popper from 'popper.js';
 import { chi } from '../core/chi';
+import { createFloating } from '../core/floating.js';
 
 const COMPONENT_SELECTOR = '[data-popover-content]';
 const COMPONENT_TYPE = 'popover';
 const CLASS_POPOVER = 'chi-popover';
-const TRANSITION_DURATION = 200;
+const ANIMATION_DURATION = 200;
+const ANIMATION_TIMEOUT = ANIMATION_DURATION + 50;
 const EVENTS = {
   SHOW_DEPRECATED: 'chi.popover.show',
   HIDE_DEPRECATED: 'chi.popover.hide',
@@ -22,20 +23,36 @@ const DEFAULT_CONFIG = {
   content: null,
   delayBetweenInteractions: 50,
   parent: null,
+  portal: false,
   position: 'top',
   trigger: 'click',
   preventAutoHide: false
 };
+
+const PLACEMENT_CLASSES = [
+  'top',
+  'top-start',
+  'top-end',
+  'right',
+  'right-start',
+  'right-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'left',
+  'left-start',
+  'left-end',
+];
 
 class Popover extends Component {
   constructor(elem, config) {
     super(elem, Util.extend(DEFAULT_CONFIG, config));
 
     this._popoverElem = null;
-    this._popper = null;
-    this._popperData = null;
-    this._preAnimationTransformStyle = null;
-    this._postAnimationTransformStyle = null;
+    this._floating = null;
+    this._cleanupAutoUpdate = null;
+    this._animationAbortController = null;
+    this._animationTimeout = null;
     this._shown = false;
     this._config.parent = this._config.parent || this._elem;
     this._config.position =
@@ -94,6 +111,7 @@ class Popover extends Component {
   }
 
   show(force) {
+    if (!this._popoverElem) return;
     if (this._shown || (!this.allowConsecutiveActions() && !force)) {
       return;
     }
@@ -102,38 +120,70 @@ class Popover extends Component {
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.SHOW));
 
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
+
+    this._popoverElem.removeAttribute('data-state');
+    this._popoverElem.style.left = '0';
+    this._popoverElem.style.top = '0';
+    this._popoverElem.style.display = 'block';
+    this._popoverElem.style.visibility = 'hidden';
+
     if (!this._config.animate) {
       Util.addClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'false');
+      this._popoverElem.style.display = '';
+      this._popoverElem.style.visibility = '';
+      this._enableAutoUpdate();
       return;
     }
 
     const self = this;
-    const transition = this._popoverElem.style.transition;
-    self._popoverElem.style.transition = 'none';
-    Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
-    //Because this popper method is asynchronous, cannot be done in step 1 of
-    // animation, as it will be executed between step 1 and step 2.
-    self.resetPosition();
 
-    Util.threeStepsAnimation(
-      function() {
-        self._popoverElem.style.transform = self._preAnimationTransformStyle;
-      },
-      function() {
-        Util.addClass(self._popoverElem, chi.classes.ACTIVE);
-        self._popoverElem.style.transition = transition;
-        self._popoverElem.style.transform = self._postAnimationTransformStyle;
-      },
-      function() {
-        Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
-        self._popoverElem.setAttribute('aria-hidden', 'false');
-        self._popoverElem.dispatchEvent(
-          Util.createEvent(EVENTS.shown)
-        );
-      },
-      TRANSITION_DURATION
-    );
+    self._updatePosition().then(function() {
+      if (!self._shown) return;
+
+      self._popoverElem.style.display = '';
+      self._popoverElem.style.visibility = '';
+      self._popoverElem.setAttribute('data-state', 'open');
+      Util.addClass(self._popoverElem, chi.classes.ACTIVE);
+
+      const controller = new AbortController();
+      self._animationAbortController = controller;
+
+      self._popoverElem.addEventListener(
+        'animationend',
+        function(e) {
+          if (e.target !== self._popoverElem) return;
+          if (!controller.signal.aborted) {
+            self._popoverElem.setAttribute('aria-hidden', 'false');
+            self._enableAutoUpdate();
+            self._popoverElem.dispatchEvent(
+              Util.createEvent(EVENTS.SHOWN)
+            );
+          }
+        },
+        { once: true, signal: controller.signal }
+      );
+
+      self._animationTimeout = setTimeout(function() {
+        self._animationTimeout = null;
+        if (!controller.signal.aborted) {
+          controller.abort();
+          self._popoverElem.setAttribute('aria-hidden', 'false');
+          self._enableAutoUpdate();
+          self._popoverElem.dispatchEvent(
+            Util.createEvent(EVENTS.SHOWN)
+          );
+        }
+      }, ANIMATION_TIMEOUT);
+    });
   }
 
   hide(force) {
@@ -142,33 +192,61 @@ class Popover extends Component {
     }
 
     this._shown = false;
+    this._disableAutoUpdate();
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE_DEPRECATED)); // To be removed in Chi 4.0
     this._elem.dispatchEvent(Util.createEvent(EVENTS.HIDE));
+
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
 
     if (!this._config.animate) {
       Util.removeClass(this._popoverElem, chi.classes.ACTIVE);
       this._popoverElem.setAttribute('aria-hidden', 'true');
+      this._popoverElem.style.display = 'none';
       return;
     }
 
-    let self = this;
-    Util.threeStepsAnimation(
-      function() {
-        Util.addClass(self._popoverElem, chi.classes.TRANSITIONING);
+    const self = this;
+
+    self._popoverElem.setAttribute('data-state', 'closed');
+
+    const controller = new AbortController();
+    self._animationAbortController = controller;
+
+    self._popoverElem.addEventListener(
+      'animationend',
+      function(e) {
+        if (e.target !== self._popoverElem) return;
+        if (!controller.signal.aborted) {
+          Util.removeClass(self._popoverElem, chi.classes.ACTIVE);
+          self._popoverElem.setAttribute('aria-hidden', 'true');
+          self._popoverElem.style.display = 'none';
+          self._popoverElem.dispatchEvent(
+            Util.createEvent(EVENTS.HIDDEN)
+          );
+        }
       },
-      function() {
-        self._popoverElem.style.transform = self._preAnimationTransformStyle;
+      { once: true, signal: controller.signal }
+    );
+
+    self._animationTimeout = setTimeout(function() {
+      self._animationTimeout = null;
+      if (!controller.signal.aborted) {
+        controller.abort();
         Util.removeClass(self._popoverElem, chi.classes.ACTIVE);
-      },
-      function() {
-        Util.removeClass(self._popoverElem, chi.classes.TRANSITIONING);
         self._popoverElem.setAttribute('aria-hidden', 'true');
+        self._popoverElem.style.display = 'none';
         self._popoverElem.dispatchEvent(
           Util.createEvent(EVENTS.HIDDEN)
         );
-      },
-      TRANSITION_DURATION
-    );
+      }
+    }, ANIMATION_TIMEOUT);
   }
 
   allowConsecutiveActions() {
@@ -197,7 +275,7 @@ class Popover extends Component {
   }
 
   resetPosition() {
-    this._popper.update();
+    this._updatePosition();
   }
 
   _configurePopover() {
@@ -205,7 +283,7 @@ class Popover extends Component {
     this._configurePopoverClasses();
     this._configurePopoverContent();
     this._configurePopoverIdAria();
-    this._configurePopoverPopper();
+    this._configurePopoverFloating();
   }
 
   _configurePopoverElement() {
@@ -218,9 +296,18 @@ class Popover extends Component {
       } else {
         this._popoverElem = document.querySelector(target);
       }
+      this._isPortaled = false;
     } else {
       this._popoverElem = document.createElement('section');
-      this._config.parent.parentNode.appendChild(this._popoverElem);
+
+      if (this._config.portal) {
+        // Portal handled by createFloating; element appended during
+        // _configurePopoverFloating via portalElement.
+        this._isPortaled = true;
+      } else {
+        this._config.parent.parentNode.appendChild(this._popoverElem);
+        this._isPortaled = false;
+      }
     }
   }
 
@@ -268,53 +355,62 @@ class Popover extends Component {
     this._popoverElem.setAttribute('aria-modal', 'true');
   }
 
-  _configurePopoverPopper() {
+  _configurePopoverFloating() {
     const self = this;
-    this._savePopperData = function(data) {
-      self._popperData = data;
-      self._preAnimationTransformStyle = null;
-      self._postAnimationTransformStyle = data.styles.transform;
-      if (data.placement.indexOf('top') === 0) {
-        self._preAnimationTransformStyle = `translate3d(${
-          data.popper.left
-        }px, ${data.popper.top + 20}px, 0px)`;
-      } else if (data.placement.indexOf('right') === 0) {
-        self._preAnimationTransformStyle = `translate3d(${data.popper.left -
-          20}px, ${data.popper.top}px, 0px)`;
-      } else if (data.placement.indexOf('bottom') === 0) {
-        self._preAnimationTransformStyle = `translate3d(${
-          data.popper.left
-        }px, ${data.popper.top - 20}px, 0px)`;
-      } else if (data.placement.indexOf('left') === 0) {
-        self._preAnimationTransformStyle = `translate3d(${data.popper.left +
-          20}px, ${data.popper.top}px, 0px)`;
-      } else {
-        self._preAnimationTransformStyle = data.styles.transform;
-      }
-      return data;
-    };
+    const arrowEl = this._config.arrow
+      ? this._popoverElem.querySelector('.chi-popover__arrow')
+      : null;
 
-    this._popper = new Popper(this._config.parent, this._popoverElem, {
-      modifiers: {
-        applyStyle: { enabled: true },
-        applyChiStyle: {
-          enabled: true,
-          fn: this._savePopperData,
-          // Set order to run after popper applyStyle modifier
-          // as we need data.styles to be filled.
-          order: 875
-        },
-        arrow: {
-          element: '.chi-popover__arrow',
-          enabled: this._config.arrow
-        },
-        preventOverflow: {
-          boundariesElement: "window"
-        },
+    const portalId = this._isPortaled
+      ? 'chi-popover-portal-' + this.componentCounterNo
+      : undefined;
+
+    if (portalId) {
+      this._elem.setAttribute('data-chi-portal-id', portalId);
+    }
+
+    this._floating = createFloating(this._config.parent, this._popoverElem, {
+      placement: this._config.position,
+      portal: this._isPortaled,
+      ownerId: portalId,
+      offset: this._config.arrow ? 12 : 0,
+      flip: true,
+      shift: true,
+      arrowElement: arrowEl,
+      arrowPadding: 0,
+      autoUpdate: false,
+      hideWhenDetached: !this._isPortaled,
+      initialUpdate: false,
+      onCompute: function (data) {
+        var placement = data.placement;
+        var basePlacement = placement.split('-')[0];
+
+        PLACEMENT_CLASSES.forEach(function (side) {
+          Util.removeClass(self._popoverElem, 'chi-popover--' + side);
+        });
+        Util.addClass(self._popoverElem, 'chi-popover--' + basePlacement);
+        Util.addClass(self._popoverElem, 'chi-popover--' + placement);
+        self._popoverElem.setAttribute('x-placement', placement);
       },
-      removeOnDestroy: true,
-      placement: this._config.position
     });
+
+    this._updatePosition = function () {
+      return self._floating.update();
+    };
+  }
+
+  _enableAutoUpdate() {
+    this._disableAutoUpdate();
+    if (this._floating) {
+      this._cleanupAutoUpdate = this._floating.enableAutoUpdate();
+    }
+  }
+
+  _disableAutoUpdate() {
+    if (this._cleanupAutoUpdate) {
+      this._cleanupAutoUpdate();
+      this._cleanupAutoUpdate = null;
+    }
   }
 
   setContent(content) {
@@ -327,18 +423,34 @@ class Popover extends Component {
   }
 
   dispose() {
+    this._disableAutoUpdate();
+    if (this._animationAbortController) {
+      this._animationAbortController.abort();
+      this._animationAbortController = null;
+    }
+    if (this._animationTimeout) {
+      clearTimeout(this._animationTimeout);
+      this._animationTimeout = null;
+    }
     this._removeEventHandlers();
+    if (this._floating) {
+      this._floating.destroy();
+      this._floating = null;
+    } else if (this._popoverElem && this._popoverElem.parentNode) {
+      this._popoverElem.parentNode.removeChild(this._popoverElem);
+    }
     this._popoverElem = null;
-    this._popper.destroy();
+    this._cleanupAutoUpdate = null;
+    this._isPortaled = false;
     this._config = null;
-    this._popperData = null;
-    this._preAnimationTransformStyle = null;
-    this._postAnimationTransformStyle = null;
 
     this._mouseClickOnDocument = null;
     this._mouseClickOnPopover = null;
     this._mouseClickEventHandler = null;
 
+    if (this._elem) {
+      this._elem.removeAttribute('data-chi-portal-id');
+    }
     this._elem = null;
   }
 }

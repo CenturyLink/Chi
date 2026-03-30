@@ -204,22 +204,22 @@ $monday-starting-week: (
   &__input {
     &.-no-arrow {
       &.chi-popover--top,
-      &[x-placement^='top'] {
+      &[class*='chi-popover--top-'] {
         margin-bottom: 1px;
       }
 
       &.chi-popover--right,
-      &[x-placement^='right'] {
+      &[class*='chi-popover--right-'] {
         margin-left: 1px;
       }
 
       &.chi-popover--bottom,
-      &[x-placement^='bottom'] {
+      &[class*='chi-popover--bottom-'] {
         margin-top: 1px;
       }
 
       &.chi-popover--left,
-      &[x-placement^='left'] {
+      &[class*='chi-popover--left-'] {
         margin-right: 1px;
       }
     }

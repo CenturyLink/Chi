@@ -41,7 +41,7 @@ block content
   each side in moreSides
     .chi-dropdown
       button.chi-button.chi-dropdown__trigger.-has-active(data-position=`${side}`,data-cy=`test-more-${side}`)=`${side} position`
-      .chi-dropdown__menu(style='width: 15rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(0px, -112px, 0px);', x-placement=`${side}`)
+      .chi-dropdown__menu(style='width: 15rem;')
         a.chi-dropdown__menu-item(href='#') Item 1
         a.chi-dropdown__menu-item(href='#') Item 2
         a.chi-dropdown__menu-item(href='#') Item 3

@@ -550,4 +550,14 @@ export class Util {
 
   static noOp () {}
 
+  /**
+   * Rounds a pixel value to the nearest device pixel to prevent sub-pixel
+   * blurriness on HiDPI / Retina displays. Matches chi-custom-elements'
+   * roundByDPR() in floating.ts.
+   */
+  static roundByDPR (value) {
+    const dpr = typeof window !== 'undefined' ? (window.devicePixelRatio || 1) : 1;
+    return Math.round(value * dpr) / dpr;
+  }
+
 }

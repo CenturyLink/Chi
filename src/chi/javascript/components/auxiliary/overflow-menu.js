@@ -160,7 +160,7 @@ class OverflowMenu {
         Util.addClass(child, 'chi-dropdown__menu-item');
       }
       if (Util.hasClass(child,'chi-dropdown__trigger')) {
-        NavigationDropdown.factory(child).disablePopper();
+        NavigationDropdown.factory(child).disableFloating();
       }
       newElem.appendChild(child);
     }
@@ -183,7 +183,7 @@ class OverflowMenu {
         Util.removeClass(child, 'chi-dropdown__menu-item');
       }
       if (Util.hasClass(child,'chi-dropdown__trigger')) {
-        NavigationDropdown.factory(child).enablePopper();
+        NavigationDropdown.factory(child).enableFloating();
         if (Util.hasClass(child, CLASS_HAS_ACTIVE)) {
           Util.addClass(oldTab, CLASS_ACTIVE);
         }

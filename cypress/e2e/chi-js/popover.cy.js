@@ -22,14 +22,21 @@ describe('Popover', function () {
 
   describe('Popover Positioning and arrow should be matched ', () => {
     it('Popover Positioning and arrow should work in accordance', () => {
-      this.chidata.popperPositions.forEach((position) => {
+      this.chidata.floatingPositions.forEach((position) => {
         const getValue = `[data-cy="test-more-${position}"]`;
 
         cy.get(getValue)
           .find('button.chi-button')
           .should('match', `[data-position="${position}"]`)
+          .click()
           .find('+ .chi-popover')
-          .should('match', `[x-placement="${position}"]`);
+          .should('be.visible')
+          .should('have.class', '-active');
+
+        // Click the button again to dismiss the popover before next iteration
+        cy.get(getValue)
+          .find('button.chi-button')
+          .click();
       });
     });
   });

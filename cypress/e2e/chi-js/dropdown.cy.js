@@ -59,7 +59,7 @@ describe('Dropdown', function () {
 
   describe('Dropdown Positioning test', () => {
     it('Dropdown Positioning should work in accordance', () => {
-      this.chidata.popperPositions.forEach((position) => {
+      this.chidata.floatingPositions.forEach((position) => {
         const getValue = `[data-cy="test-more-${position}"]`;
 
         cy.get(getValue)
