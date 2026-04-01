@@ -337,11 +337,11 @@
 
   &.-gradient,
   &.-gradient-accent-1 {
-    border-radius: 4px;
+    border-radius: $popover-gradient-border-radius;
 
     .chi-popover__header {
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
+      border-top-left-radius: $popover-gradient-border-radius;
+      border-top-right-radius: $popover-gradient-border-radius;
       background: $popover-gradient-header-background;
       color: $popover-gradient-header-color;
       padding-bottom: $popover-gradient-header-padding-bottom;
