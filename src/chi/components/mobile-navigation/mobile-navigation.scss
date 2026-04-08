@@ -322,18 +322,18 @@
 
                   &::after {
                     color: $mobile-nav-list-item-trigger-icon-color;
-                    content: '\e920';
+                    content: 'chevron_right';
                     display: block;
                     font-family: $font-family-icon;
-                    font-size: 0.75rem;
+                    font-size: 1.25rem;
                     font-weight: normal;
-                    height: 1rem;
+                    height: 1.25rem;
                     line-height: 1.25rem;
                     position: absolute;
                     right: 1.5rem;
                     top: 0.75rem;
                     transition: 0.2s;
-                    width: 0.75rem;
+                    width: 1.25rem;
                   }
                 }
               }
@@ -572,10 +572,10 @@
 
                   &::after {
                     color: $mobile-nav-list-item-trigger-icon-color;
-                    content: '\e91e';
+                    content: 'keyboard_arrow_down';
                     display: block;
                     font-family: $font-family-icon;
-                    font-size: 0.75rem;
+                    font-size: 1rem;
                     font-weight: normal;
                     height: 1rem;
                     line-height: 1.25rem;
@@ -583,7 +583,7 @@
                     right: 1.5rem;
                     top: 0.75rem;
                     transition: 0.2s;
-                    width: 0.75rem;
+                    width: 1rem;
                   }
                 }
               }

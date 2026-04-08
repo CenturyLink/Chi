@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Dropdown'
@@ -74,36 +73,24 @@ block content
     .-d--flex
       .chi-dropdown__menu.-active
         a.chi-dropdown__menu-item(href='#')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-file-outline')
+          .chi-icon.icon-file-outline
           = "New"
         a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-arrow-to-bottom')
+          .chi-icon.icon-arrow-to-bottom
           = "Save"
         .chi-divider
         a.chi-dropdown__menu-item(href='#')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-mail')
+          .chi-icon.icon-mail
           = "Send"
         a.chi-dropdown__menu-item.-active(href='#')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-cart')
+          .chi-icon.icon-cart
           = "Buy"
         a.chi-dropdown__menu-item.-hover(href='#')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-users')
+          .chi-icon.icon-users
           = "Share"
         .chi-divider
         a.chi-dropdown__menu-item(href='#')
-          .chi-icon
-            svg
-              use(xlink:href='#icon-logout')
+          .chi-icon.icon-logout
           = "Logout"
 
   div(class=`test-dropdown-searchBox -w--100`)
@@ -112,9 +99,7 @@ block content
       .chi-dropdown__menu.-active
         .chi-input__wrapper.-icon--left.chi-dropdown__menu-item
           input(type="text", class="chi-input", placeholder="Search")
-          .chi-icon
-            svg
-              use(xlink:href='#icon-search')
+          .chi-icon.icon-search
         a.chi-dropdown__menu-item(href='#') Element 1
         a.chi-dropdown__menu-item(href='#') Element 2
 
@@ -137,9 +122,7 @@ block content
             .chi-checkbox
               input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
               label.chi-checkbox__label(for=`checkbox${inputState}`)
-                .chi-icon
-                  svg
-                    use(xlink:href='#icon-logo-centurylink')
+                .chi-icon.icon-logo-centurylink
                 ="Element checkbox " + inputState
 
   div(class=`test-dropdown-radio -w--100`)
@@ -161,9 +144,7 @@ block content
             .chi-radio
               input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
               label.chi-radio__label(for=`radio${inputState}`)
-                .chi-icon
-                  svg
-                    use(xlink:href='#icon-logo-centurylink')
+                .chi-icon.icon-logo-centurylink
                 ="Element radio " + inputState
 
   div(class=`test-dropdown-text -w--100`)
@@ -276,9 +257,7 @@ block content
                       aria-label='Button action'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          .chi-icon.icon-atom
                       button.chi-button.chi-dropdown__trigger.-m--1(
                       class={
                         [`-${type}`]: type !== 'solid',
@@ -289,9 +268,7 @@ block content
                       disabled=state === 'disabled' ? 'disabled' : false
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          .chi-icon.icon-atom
                           span Button
                 else
                   td
@@ -317,9 +294,7 @@ block content
                       aria-label='Button action'
                       )
                         .chi-button__content
-                          .chi-icon
-                            svg
-                              use(xlink:href='#icon-atom')
+                          .chi-icon.icon-atom
                       button.chi-button.chi-dropdown__trigger.-m--1(
                       class={
                         [`-${type}`]: type !== 'solid',
@@ -330,9 +305,7 @@ block content
                       disabled=state === 'disabled' ? 'disabled' : false
                       )
                         .chi-button__content
-                            .chi-icon
-                              svg
-                                use(xlink:href='#icon-atom')
+                            .chi-icon.icon-atom
                             span Button
 
   .test-dropdown-variants-color.-mt--5(style='width: 1000px; height: 400px;')
@@ -455,15 +428,9 @@ block content
               if !!helperMessage
                 .chi-label.-status(class=`-${state}`)
                   if state == 'success'
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-circle-check')
+                    .chi-icon.icon-circle-check
                   else if state == 'warning'
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-warning')
+                    .chi-icon.icon-warning
                   else if state == 'danger'
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-circle-warning')
+                    .chi-icon.icon-circle-warning
                   | Optional long helper message

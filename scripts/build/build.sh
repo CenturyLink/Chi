@@ -21,11 +21,6 @@ if [ -d "dist" ]; then
     rm -rf "dist"
 fi
 
-# Clean sri.json file
-if [ -f "sri.json" ]; then
-    rm -f "sri.json"
-fi
-
 # Build CSS
 node ./scripts/build/css/build.js
 
@@ -40,8 +35,12 @@ fi
 # Build utils
 bash ./scripts/build/utils/copyFile.sh ./src/chi/components/input-file/input-file.js dist
 node ./scripts/build/utils/buildIcons.js
-node ./scripts/build/utils/buildSprites.js
-bash ./scripts/build/utils/copyFiles.sh ./assets dist/assets
+
+# Copy static assets
+bash ./scripts/build/utils/copyFiles.sh ./assets/images dist/assets/images
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/connect dist/assets/themes/connect
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/lumen dist/assets/themes/lumen
+bash ./scripts/build/utils/copyFiles.sh ./assets/themes/centurylink dist/assets/themes/centurylink
 
 # Build boilerplates
 if [ -z "${SKIP_BOILERPLATES}" ]; then
@@ -52,9 +51,13 @@ fi
 node ./scripts/build/utils/buildTests.js $THEMES_TO_TEST
 bash ./scripts/build/utils/copyFiles.sh ./tests/styles dist/tests
 
-# Copy assets from dependencies: chi-documentation, chi-vue, chi-custom-elements
-bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION/.output/public dist
-bash ./scripts/build/utils/copyFile.sh $CHI_DOCUMENTATION/CHANGELOG.md dist
+# Copy assets from dependencies: chi-documentation (optional), chi-vue, chi-custom-elements
+if [ -z "${SKIP_CHI_DOCUMENTATION}" ]; then
+  bash ./scripts/build/utils/copyFiles.sh $CHI_DOCUMENTATION/.output/public dist
+  bash ./scripts/build/utils/copyFile.sh $CHI_DOCUMENTATION/CHANGELOG.md dist
+else
+  echo "[CHI]: SKIP_CHI_DOCUMENTATION is set — skipping @centurylink/chi-documentation (.output/public, CHANGELOG.md)"
+fi
 bash ./scripts/build/utils/copyFile.sh $CHI_VUE_UMD dist/chi-vue/umd
 bash ./scripts/build/utils/copyFiles.sh "$CHI_CE/dist" dist/js/ce
 
@@ -66,9 +69,15 @@ node ./scripts/build/utils/buildMcp.js
 bash ./scripts/build/utils/copyFile.sh src/mcp/metadata.json dist/metadata/chi
 
 # Build SRI
-if [ -z "${SKIP_SRI}" ]; then
+if [ -z "${SKIP_SRI}" ] && [ "${BUILD_TARGET}" = "prod" ]; then
+  if [ -f "sri.json" ]; then
+    rm -f "sri.json"
+  fi
+
   node ./scripts/build/utils/buildSri.js;
   bash ./scripts/build/utils/copyFile.sh sri.json dist;
+else
+  echo "[CHI]: Skipping SRI generation for non-prod build"
 fi
 
 minutes=$((SECONDS / 60))

@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Textarea'
@@ -14,19 +13,14 @@ block variables
 block content
   mixin icon(name, size)
     .chi-icon(class={
-      [`-${size}`]: size
-    })
-      svg
-        if name == 'success'
-          use(xlink:href='#icon-check')
-        else if name == 'warning'
-          use(xlink:href='#icon-warning')
-        else if name == 'danger'
-          use(xlink:href='#icon-circle-warning')
-        else if name == 'default'
-          use(xlink:href='#icon-circle-info-outline')
-        else
-          use(xlink:href=`#icon-${name}`)
+      [`-text${name}`]: ['success', 'warning', 'danger'].indexOf(name) != -1,
+      [`-${size}`]: size,
+      'icon-check': name == 'success',
+      'icon-warning': name == 'warning',
+      'icon-circle-warning': name == 'danger',
+      'icon-circle-info-outline': name == 'default',
+      [`icon-${name}`]: !['success', 'warning', 'danger', 'default'].includes(name)
+    }, aria-hidden="true")
 
   each size in sizes
     div(class=`test-${size}`)
@@ -75,9 +69,7 @@ block content
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                     else
                       textarea(class=`chi-input -${style} -${state} -${size}`) Value
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-atom')
+                    .chi-icon.icon-atom
               td(style='vertical-align: bottom')
                 .-m--1
                   .chi-form__item
@@ -87,9 +79,7 @@ block content
                         textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                       else
                         textarea(class=`chi-input -${style} -${state} -${size}`) Value
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-atom')
+                      .chi-icon.icon-atom
 
     div(class=`test-${size}-icon-right`)
       span.-text--h2= `Textarea / ${size} / icon right`
@@ -107,21 +97,13 @@ block content
                     else
                       textarea(class=`chi-input -${style} -${state} -${size}`) Value
                     if style == 'success'
-                      .chi-icon.-icon--success
-                        svg
-                          use(xlink:href='#icon-check')
+                      .chi-icon.-icon--success.icon-check
                     else if style == 'warning'
-                      .chi-icon.-icon--warning
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.-icon--warning.icon-warning
                     else if style == 'danger'
-                      .chi-icon.-icon--danger
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.-icon--danger.icon-circle-warning
                     else
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-info-outline')
+                      .chi-icon.icon-circle-info-outline
               td(style='vertical-align: bottom')
                 .-m--1
                   .chi-form__item
@@ -132,21 +114,13 @@ block content
                       else
                         textarea(class=`chi-input -${style} -${state} -${size}`) Value
                       if style == 'success'
-                        .chi-icon.-icon--success
-                          svg
-                            use(xlink:href='#icon-check')
+                        .chi-icon.-icon--success.icon-check
                       else if style == 'warning'
-                        .chi-icon.-icon--warning
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.-icon--warning.icon-warning
                       else if style == 'danger'
-                        .chi-icon.-icon--danger
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.-icon--danger.icon-circle-warning
                       else
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-info-outline')
+                        .chi-icon.icon-circle-info-outline
 
     div(class=`test-${size}-icon-left-right`)
       span.-text--h2= `Textarea / ${size} / icon left / icon right`
@@ -163,25 +137,15 @@ block content
                       textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                     else
                       textarea(class=`chi-input -${style} -${state} -${size}`) Value
-                    .chi-icon
-                      svg
-                        use(xlink:href='#icon-atom')
+                    .chi-icon.icon-atom
                     if style == 'success'
-                      .chi-icon.-icon--success
-                        svg
-                          use(xlink:href='#icon-check')
+                      .chi-icon.-icon--success.icon-check
                     else if style == 'warning'
-                      .chi-icon.-icon--warning
-                        svg
-                          use(xlink:href='#icon-warning')
+                      .chi-icon.-icon--warning.icon-warning
                     else if style == 'danger'
-                      .chi-icon.-icon--danger
-                        svg
-                          use(xlink:href='#icon-circle-warning')
+                      .chi-icon.-icon--danger.icon-circle-warning
                     else
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-circle-info-outline')
+                      .chi-icon.icon-circle-info-outline
               td(style='vertical-align: bottom')
                 .-m--1
                   .chi-form__item
@@ -191,25 +155,15 @@ block content
                         textarea(class=`chi-input -${style} -${state} -${size}`, disabled) Value
                       else
                         textarea(class=`chi-input -${style} -${state} -${size}`) Value
-                      .chi-icon
-                        svg
-                          use(xlink:href='#icon-atom')
+                      .chi-icon.icon-atom
                       if style == 'success'
-                        .chi-icon.-icon--success
-                          svg
-                            use(xlink:href='#icon-check')
+                        .chi-icon.-icon--success.icon-check
                       else if style == 'warning'
-                        .chi-icon.-icon--warning
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.-icon--warning.icon-warning
                       else if style == 'danger'
-                        .chi-icon.-icon--danger
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.-icon--danger.icon-circle-warning
                       else
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-info-outline')
+                        .chi-icon.icon-circle-info-outline
   
     div(class=`test-${size}-helper-message`)
       span.-text--h2= `Textarea / Helper Message / ${size}`
@@ -230,9 +184,7 @@ block content
               .chi-form__item
                 textarea(class=`chi-input -success -${size}`) Value
                 div.chi-label(class=`-success -text--normal -status`) 
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-circle-check') 
+                  .chi-icon.icon-circle-check
                   div Optional helper message
         tr
           td
@@ -242,9 +194,7 @@ block content
               .chi-form__item
                 textarea(class=`chi-input -warning -${size}`) Value
                 div.chi-label(class=`-warning -text--normal -status`) 
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-warning')
+                  .chi-icon.icon-warning
                   div Optional helper message
         tr
           td
@@ -254,9 +204,7 @@ block content
               .chi-form__item
                 textarea(class=`chi-input -danger -${size}`) Value
                 div.chi-label(class=`-danger -text--normal -status`) 
-                  .chi-icon
-                    svg
-                      use(xlink:href='#icon-circle-warning')
+                  .chi-icon.icon-circle-warning
                   div Optional helper message
 
   each size in _sizes
@@ -320,17 +268,11 @@ block content
                     textarea.chi-input(type='text' class=`-${size} -${style}` value="Some text")
                     .chi-label.-status(class=`-${style}`)
                       if style == 'success'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-check')
+                        .chi-icon.icon-circle-check
                       else if style == 'warning'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.icon-warning
                       else if style == 'danger'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.icon-circle-warning
                       | Optional helper message
                   button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
                     .chi-button__content
@@ -348,17 +290,11 @@ block content
                     //- it is important that helper-message is a span when there are two icons.
                     span.chi-label.-status(class=`-${style}`)
                       if style == 'success'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-check')
+                        .chi-icon.icon-circle-check
                       else if style == 'warning'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-warning')
+                        .chi-icon.icon-warning
                       else if style == 'danger'
-                        .chi-icon
-                          svg
-                            use(xlink:href='#icon-circle-warning')
+                        .chi-icon.icon-circle-warning
                       | Optional helper message
                   button.chi-button.-icon.-flat(aria-label="Button action" data-tooltip="Copy to clipboard")
                     .chi-button__content

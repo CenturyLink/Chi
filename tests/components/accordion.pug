@@ -2,7 +2,6 @@ extends ../layout.pug
 
 block scripts
   script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
   script(src='../../../chi-marketing-icons.js')
 
 block variables
@@ -35,9 +34,7 @@ block content
           .chi-accordion__title
             | Accordion 4
         .chi-accordion__content
-          .chi-icon.-mr--2
-              svg
-                use(xlink:href='#icon-arrow-right')
+          i.chi-icon.icon-arrow-right.-mr--2(aria-hidden="true")
           | Some custom content here
       .chi-accordion__item
         button.chi-accordion__trigger
@@ -85,9 +82,7 @@ block content
             | Accordion 4
           i.chi-icon.icon-chevron-down(aria-hidden="true")
         .chi-accordion__content
-          .chi-icon.-mr--2
-              svg
-                use(xlink:href='#icon-arrow-right')
+          i.chi-icon.icon-arrow-right.-mr--2(aria-hidden="true")
           | Some custom content here
       .chi-accordion__item
         button.chi-accordion__trigger
@@ -123,9 +118,7 @@ block content
           .chi-accordion__title
             | Accordion 4
         .chi-accordion__content
-          .chi-icon.-mr--2
-            svg
-              use(xlink:href='#icon-arrow-right')
+          i.chi-icon.icon-arrow-right.-mr--2(aria-hidden="true")
           | Some custom content here
       .chi-accordion__item
         button.chi-accordion__trigger
@@ -161,9 +154,7 @@ block content
             span Accordion 4
           i.chi-icon.icon-chevron-down(aria-hidden="true")
         .chi-accordion__content
-          .chi-icon.-mr--2
-            svg
-              use(xlink:href='#icon-arrow-right')
+          i.chi-icon.icon-arrow-right.-mr--2(aria-hidden="true")
           | Some custom content here
       .chi-accordion__item
         button.chi-accordion__trigger

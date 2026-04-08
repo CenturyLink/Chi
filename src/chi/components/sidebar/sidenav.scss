@@ -369,7 +369,7 @@ $sidenav-lg-width: 12.5rem;
                 .chi-sidenav__title {
                   &::after {
                     color: $sidenav-item-trigger-icon-color;
-                    content: '\e91e';
+                    content: 'keyboard_arrow_down';
                     display: block;
                     font-family: $font-family-icon;
                     font-size: $font-size-xs;
@@ -769,7 +769,6 @@ $sidenav-lg-width: 12.5rem;
               &.-expanded {
                 > .chi-accordion__trigger {
                   .icon-chevron-down {
-
                     &::before {
                       transform: $accordion-item-trigger-icon-transform;
                     }
@@ -793,7 +792,6 @@ $sidenav-lg-width: 12.5rem;
                       &.-expanded {
                         .chi-accordion__trigger {
                           .icon-chevron-down {
-
                             &::before {
                               transform: $accordion-item-trigger-icon-transform;
                             }

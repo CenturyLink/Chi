@@ -1,0 +1,84 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-anchor-nav {
+  width: $anchor-nav-width;
+
+  .chi-anchor-nav__title {
+    color: $anchor-nav-title-color;
+    font-size: $anchor-nav-title-font-size;
+    font-weight: $anchor-nav-title-font-weight;
+    margin-bottom: $anchor-nav-title-margin-bottom;
+    text-transform: $anchor-nav-title-text-transform;
+  }
+
+  .chi-anchor-nav__item {
+    cursor: pointer;
+    pointer-events: all;
+
+    &:not(:last-of-type) {
+      margin-bottom: $anchor-nav-item-margin-bottom;
+    }
+
+    &:has(chi-accordion) {
+      padding: $anchor-nav-padding;
+    }
+    
+    &:not(:has(chi-accordion)) {
+      padding-right: $anchor-nav-item-title-padding;
+
+      .chi-anchor-nav__item-title {
+        padding: $anchor-nav-item-title-padding;
+      }
+    }
+
+
+    .chi-anchor-nav__item-title {
+      &:hover {
+        background-color: $anchor-nav-item-hover-background-color;
+      }
+    }
+
+    // title
+    .chi-anchor-nav__item-title:not(.chi-accordion__content .chi-anchor-nav__item-title) {
+      font-size: $anchor-nav-item-title-font-size;
+      font-weight: $anchor-nav-item-title-font-weight;
+    }
+
+    &.-active {
+      color: $anchor-nav-item-active-color;
+      font-weight: $anchor-nav-item-active-font-weight;
+    }
+
+    // title
+    chi-accordion {
+      .chi-accordion__item {
+        .chi-accordion__trigger {
+          .chi-link {
+            color: $anchor-nav-accordion-link-color;
+            font-size: $anchor-nav-accordion-link-font-size;
+            font-weight: $anchor-nav-accordion-link-font-weight;
+            margin-right: $anchor-nav-accordion-link-margin-right;
+          }
+
+          .chi-icon {
+            color: $anchor-nav-accordion-icon-color;
+            font-size: $anchor-nav-accordion-icon-font-size;
+          }
+        }
+
+        .chi-accordion__content {
+          border-left: $anchor-nav-accordion-content-border-left;
+          margin-top: $anchor-nav-accordion-content-margin-top;
+          padding: $anchor-nav-accordion-content-padding;
+
+          .chi-anchor-nav__item {
+            .chi-anchor-nav__item-title {
+              font-size: $anchor-nav-accordion-content-item-title-font-size;
+            }
+          }
+        }
+      }
+    }
+  }
+}

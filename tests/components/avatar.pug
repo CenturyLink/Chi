@@ -1,12 +1,8 @@
 extends ../layout.pug
 
-block scripts
-  script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
-  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Avatar'
-  - var types = ['img', 'icon', 'icon-web-font', 'letter', 'double-letter'];
+  - var types = ['img', 'icon-web-font', 'letter', 'double-letter'];
   - var colors = ["default", "grey", "red", "pink", "purple", "indigo", "navy", "blue", "cyan", "teal", "green", "yellow", "orange", "light", "secondary", "primary", "inverse"];
   - var sizes = ['default', 'xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'];
   - var transparents = [false, true];
@@ -39,17 +35,6 @@ block content
                           }
                         )
                           img(src='../../../assets/images/avatar.jpg', alt="avatar")
-                      else if type === 'icon'
-                        div(
-                          class={
-                            "chi-avatar chi-icon": true,
-                            [`-${color}`]: type !== 'default',
-                            [`-${size}`]: style !== 'default',
-                            [`-transparent`]: transparent
-                          }
-                        )
-                          svg
-                            use(xlink:href=`#icon-user`)
                       else if type === 'icon-web-font'
                         div(
                           class={

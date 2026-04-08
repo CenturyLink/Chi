@@ -3,14 +3,16 @@ import { existsSync } from 'fs';
 import path from 'path';
 import ora from 'ora';
 
-const allowedThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
-const themes = process.env.THEMES_TO_BUILD?.split(',') || allowedThemes;
+const validThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
+const localDefaultThemes = ['lumen', 'connect', 'centurylink'];
+const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink'];
+const themes = process.env.THEMES_TO_BUILD?.split(',') || localDefaultThemes;
 
 const __dirname = path.resolve();
 const isWindows = process.platform === 'win32';
 
 const deleteCssFile = (theme) => {
-  if (!allowedThemes.includes(theme)) {
+  if (!validThemes.includes(theme)) {
     throw new Error(`[CHI]: Invalid theme: ${theme}`);
   }
 
@@ -44,7 +46,9 @@ const buildTheme = async (theme) => {
 };
 
 const buildAllThemes = async () => {
-  for (const theme of themes) {
+  const themesToBuild = process.env.BUILD_TARGET === 'prod' ? prodDefaultThemes : themes;
+
+  for (const theme of themesToBuild) {
     await buildTheme(theme);
   }
 };

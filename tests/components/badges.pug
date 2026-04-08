@@ -1,9 +1,5 @@
 extends ../layout.pug
 
-block scripts
-  script(src='../../../js/chi.js')
-  script(src='../../../chi-icons.js')
-  script(src='../../../chi-marketing-icons.js')
 block variables
   - var title = 'Badges'
   - var variants = ['solid', 'outline', 'flat']
@@ -32,9 +28,7 @@ block content
           }
           )
             .chi-badge__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom
               span= style
 
   h2 Badge Icons
@@ -44,25 +38,17 @@ block content
         .p.-text--bold= size
           .chi-badge(class=`-${size} -m--1`)
             .chi-badge__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom
               span Badge
           .chi-badge(class=`-${size} -m--1`)
             .chi-badge__content
               span Badge
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom
           .chi-badge(class=`-${size} -m--1`)
             .chi-badge__content
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom
               span Badge
-              .chi-icon
-                svg
-                  use(xlink:href='#icon-atom')
+              .chi-icon.icon-atom
 
   h2 Text Transform
   .test-text-transform

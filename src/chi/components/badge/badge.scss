@@ -177,8 +177,10 @@ $colors: (
 
   .chi-icon {
     color: $badge-icon-color;
-    height: 1rem;
-    width: 1rem;
+    font-size: 1.25rem;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    width: 1.25rem;
   }
 
   &__content {
@@ -187,7 +189,7 @@ $colors: (
     justify-content: center;
 
     & > :not(:last-child) {
-      margin-right: 0.375em; // sass-lint:disable-line property-units
+      margin-right: 0.375rem;
     }
   }
 
@@ -203,14 +205,10 @@ $colors: (
     padding: $badge-sm-padding;
 
     .chi-icon {
+      font-size: 0.75rem;
       height: 0.75rem;
+      line-height: 0.75rem;
       width: 0.75rem;
-
-      &[class^='icon-'],
-      &[class*=' icon-'] {
-        font-size: 0.75rem;
-        line-height: 0.75rem;
-      }
     }
 
     & > div > :not(:last-child) {
@@ -230,14 +228,10 @@ $colors: (
     padding: 0 0.25rem;
 
     .chi-icon {
+      font-size: 0.75rem;
       height: 0.75rem;
+      line-height: 0.75rem;
       width: 0.75rem;
-
-      &[class^='icon-'],
-      &[class*=' icon-'] {
-        font-size: 0.75rem;
-        line-height: 0.75rem;
-      }
     }
 
     & > div > :not(:last-child) {

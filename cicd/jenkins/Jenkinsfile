@@ -155,7 +155,7 @@ pipeline {
       steps {
         script {
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          jslNpmWrapper('run build', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run build:prod', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           sendBuildInfo()
 

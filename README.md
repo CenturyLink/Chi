@@ -113,7 +113,8 @@ Once you have approved the changes, commit the new reference files with your cha
 Use the build command to make a ready-to-production build:
 
 ``` sh
-$ chi build
+$ chi build:local
+$ chi build:prod
 ```
 
 ## License
