@@ -17,7 +17,7 @@
     "start": "npm run start:dist & npm run start:local",
     "build": "cross-env THEMES_TO_BUILD=lumen,connect,centurylink bash ./scripts/build/build.sh",
     "build:prod": "cross-env BUILD_TARGET=prod bash ./scripts/build/build.sh",
-    "sync:skills": "tsx src/mcp/scripts/sync-skills.ts",
+    "generate:ai-rules": "tsx src/mcp/scripts/sync-skills.ts",
     "build:mcp": "tsx src/mcp/scripts/generate.ts",
     "generate:css-vars": "tsx scripts/build/css/vars/build.ts",
     "serve": "node ./scripts/serve/serve.cjs",

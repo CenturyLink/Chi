@@ -10,7 +10,7 @@ src/mcp/
 ├── metadata.json              # Generated output (gitignored)
 ├── scripts/
 │   ├── generate.ts            # Orchestrator: assembles metadata.json from all modules
-│   ├── sync-skills.ts         # Updates Skills/Rules files from SCSS (auto-generated sections)
+│   ├── sync-skills.ts         # Updates AI Rules/Skills files from SCSS (auto-generated sections)
 │   └── validate.ts            # Post-build validation (16 structural + quality checks)
 ├── extractors/
 │   ├── extract.ts             # Shared SCSS extraction logic (components, tokens, utilities, WC mappings)
@@ -28,7 +28,7 @@ src/mcp/
 - `data/` -- Static data files and the module that assembles them
 - `config.ts` -- Top-level config, shared by all modules
 
-Supporting data lives in Cursor Skills and Rules:
+Supporting data lives in AI Rules & Skills:
 
 ```
 .cursor/
@@ -50,7 +50,7 @@ Supporting data lives in Cursor Skills and Rules:
 ```
 npm run build
   │
-  ├─ 1. sync-skills.ts    ← Updates Skills/Rules from SCSS (auto-generated sections)
+  ├─ 1. sync-skills.ts    ← Updates AI Rules/Skills from SCSS (auto-generated sections)
   ├─ 2. generate.ts       ← Produces metadata.json from SCSS + Skills
   │     ├─ extractors/     (SCSS parsing + enrichment)
   │     ├─ data/           (tools, schemas, anti-patterns, skills)
@@ -62,7 +62,7 @@ npm run build
 
 | Command | What it does |
 |---------|-------------|
-| `npm run sync:skills` | Update Skills/Rules auto-generated sections from SCSS |
+| `npm run generate:ai-rules` | Update AI Rules/Skills auto-generated sections from SCSS |
 | `npm run build:mcp` | Generate `src/mcp/metadata.json` (includes validation) |
 | `npm run build:mcp -- --force` | Force rebuild even if no changes detected |
 | `npm run build` | Full build (includes both of the above) |
@@ -74,7 +74,7 @@ npm run build
 - **version** -- Package version
 - **summary** -- Counts and theme list
 - **guidelines** -- Best practices, spacing formula, implementation priority
-- **tools** -- 19 MCP tool definitions (includes `setup_chi_html_css_cursor_skills`)
+- **tools** -- 19 MCP tool definitions (includes `install_chi_cursor_rules_and_skills`)
 - **designTokens** -- Extracted from SCSS, enriched with descriptions and examples
 - **utilities** -- Generated (spacing, color, opacity) + static (display, flex, etc.), with examples
 - **cssComponents** -- Extracted from SCSS, deduplicated, categorized, with WC mappings
@@ -84,7 +84,7 @@ npm run build
 - **schemas** -- Component validation rules with accessibility info
 - **relationships** -- Element relationships (tokens → utilities → components)
 - **migration** -- CSS-to-WC conversion rules (modifier → property mappings)
-- **cursorSkills** -- Bundled user-facing Skills/Rules (14 files) for distribution via `setup_chi_html_css_cursor_skills`
+- **aiAssets** -- Bundled user-facing AI Rules & Skills (14 files) for distribution via `install_chi_cursor_rules_and_skills`
 - **cache** -- MD5 checksums and TTL for MCP client caching
 
 ## Post-Build Validation
@@ -125,8 +125,8 @@ Currently auto-synced sections:
 - Modifier-to-prop tables in `chi-migration.md`
 - Schema `allowedModifiers` in `schemas.json`
 
-## Distributable Cursor Skills
+## Distributable AI Rules & Skills
 
-The metadata bundles 9 user-facing Skills/Rules (14 files) in the `cursorSkills` section. The `setup_chi_html_css_cursor_skills` MCP tool uses this data to install Chi Skills/Rules into any user's project.
+The metadata bundles 9 user-facing AI Rules & Skills (14 files) in the `aiAssets` section. The `install_chi_cursor_rules_and_skills` MCP tool uses this data to install Chi AI Rules & Skills into any user's project.
 
 See [.cursor/skills/README.md](../../.cursor/skills/README.md) for the full list and installation instructions.

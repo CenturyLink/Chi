@@ -8,7 +8,7 @@ description: Generate and sync MCP metadata for the Chi Design System. Use when 
 ## Purpose
 
 This skill manages two related tasks:
-1. **Sync Skills** -- Updates auto-generated sections of Skills/Rules files from SCSS sources
+1. **Sync AI Rules & Skills** -- Updates auto-generated sections of Rules/Skills files from SCSS sources
 2. **Generate Metadata** -- Produces `src/mcp/metadata.json` for the external MCP server
 
 ## Location
@@ -20,7 +20,7 @@ src/mcp/
 ├── config.ts              # Centralized configuration (paths, themes, WC tags, etc.)
 ├── scripts/
 │   ├── generate.ts        # Orchestrator: assembles metadata.json
-│   ├── sync-skills.ts     # Updates auto-generated sections in Skills/Rules
+│   ├── sync-skills.ts     # Updates auto-generated sections in Rules/Skills
 │   └── validate.ts        # Post-build validation (16 checks)
 ├── extractors/
 │   ├── extract.ts         # Shared SCSS extraction logic
@@ -37,8 +37,8 @@ See `src/mcp/README.md` for full architecture documentation.
 ## How to Generate
 
 ```bash
-# Sync Skills from SCSS (updates .cursor/ files)
-npm run sync:skills
+# Sync AI Rules & Skills from SCSS
+npm run generate:ai-rules
 
 # Generate metadata.json
 npm run build:mcp
@@ -57,4 +57,4 @@ Regenerate when:
 - Tool definitions in `src/mcp/data/tools.json` change
 - Anti-patterns or schemas are updated
 - A new Chi version is released
-- Skills or Rules content changes (for the bundled `cursorSkills`)
+- Rules or Skills content changes (for the bundled AI assets)

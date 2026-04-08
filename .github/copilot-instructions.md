@@ -109,3 +109,28 @@ Override variables in theme-specific `_variables.scss` files. The Sass import or
 
 ### Build Optimization
 Set `SKIP_BOILERPLATES=true` or `SKIP_SRI=true` for faster development builds when these aren't needed.
+
+## AI Rules & Skills
+
+Chi provides AI-agnostic rules and skills that work across Cursor, VSCode Copilot, and other AI assistants.
+
+### Locations
+
+| Location | Purpose |
+|----------|---------|
+| `.cursor/rules/` | Rules (always active) |
+| `.cursor/skills/` | Skills (on demand) |
+| `.cursor/agents/` | Agent instructions |
+
+All `.md` files use `applyTo` YAML frontmatter, compatible with both Cursor and VSCode Copilot.
+
+### Key Rules
+
+- **chi-design-system**: Global conventions, double-dash utility syntax, spacing system, themes
+- **chi-code-validation**: Anti-pattern detection, validation, accessibility
+- **chi-migration**: CSS-to-Web Component mappings
+
+### Updating AI Assets
+```bash
+npm run generate:ai-rules  # Sync auto-generated sections from SCSS
+```

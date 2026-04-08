@@ -372,8 +372,8 @@
     }
   },
   {
-    "name": "setup_chi_html_css_cursor_skills",
-    "description": "Install Chi HTML/CSS Design System Skills and Rules into the current project for Cursor IDE. Returns file contents that should be written to the project's .cursor/ directory. Provides Chi HTML/CSS conventions, code validation, migration guidance, component reference data, and semantic search directly in the IDE. Use when user asks to set up Chi HTML/CSS skills, install Chi rules, or configure Cursor for Chi development. Note: separate tools exist for Chi Custom Elements and Chi Vue skills.",
+    "name": "install_chi_cursor_rules_and_skills",
+    "description": "Install Chi HTML/CSS Design System AI Rules & Skills into the current project. Returns file contents that should be written to the project's .cursor/ directory. Provides Chi HTML/CSS conventions, code validation, migration guidance, component reference data, and semantic search directly in the IDE. Compatible with Cursor, VSCode Copilot, and other AI assistants via applyTo frontmatter. Use when user asks to set up Chi rules, install Chi skills, or configure their editor for Chi development. Note: separate tools exist for Chi Custom Elements and Chi Vue skills.",
     "inputSchema": {
       "type": "object",
       "properties": {
