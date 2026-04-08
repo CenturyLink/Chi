@@ -315,24 +315,18 @@
     }
   }
 
-  &.chi-popover--xs {
-    width: 240px;
-    max-width: 240px;
-  }
+  $chi-popover-widths: (
+    xs: 15rem,
+    sm: 30rem,
+    md: 35rem,
+    lg: 40rem,
+  );
 
-  &.chi-popover--sm {
-    width: 480px;
-    max-width: 480px;
-  }
-
-  &.chi-popover--md {
-    width: 560px;
-    max-width: 560px;
-  }
-
-  &.chi-popover--lg {
-    width: 640px;
-    max-width: 640px;
+  @each $name, $width in $chi-popover-widths {
+    &.chi-popover--#{$name} {
+      width: $width;
+      max-width: $width;
+    }
   }
 
   &.-gradient,
