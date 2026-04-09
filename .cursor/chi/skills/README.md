@@ -1,10 +1,12 @@
-# Chi Design System -- Cursor Skills & Rules
+# Chi Design System -- AI Rules & Skills
 
-Cursor Skills and Rules that provide Chi Design System intelligence directly in your IDE. They help the AI assistant understand Chi conventions, validate your code, suggest components, and guide migrations.
+Rules and Skills that provide Chi Design System intelligence directly in your IDE. They help AI assistants understand Chi conventions, validate your code, suggest components, and guide migrations.
+
+Compatible with **Cursor**, **VSCode Copilot**, **Claude Code**, and other AI assistants that support `applyTo` YAML frontmatter.
 
 ## Quick Start
 
-**No setup needed inside this repository.** Open the project in Cursor and the rules activate automatically. For skills, just ask the AI naturally:
+**No setup needed inside this repository.** Open the project in your IDE and the rules activate automatically. For skills, just ask the AI naturally:
 
 - *"What modifiers does chi-button support?"*
 - *"What's the spacing value for -p--4?"*
@@ -12,12 +14,23 @@ Cursor Skills and Rules that provide Chi Design System intelligence directly in 
 - *"Migrate this CSS button to a Web Component"*
 - *"Should I use Vue or Web Components for my React project?"*
 
+## File Locations
+
+| Location | Purpose |
+|----------|---------|
+| `.cursor/rules/` | Rules (always active) |
+| `.cursor/skills/` | Skills (on demand) |
+| `.cursor/agents/` | Agent instructions |
+| `.github/copilot-instructions.md` | Global instructions for VSCode Copilot |
+
+All `.md` files use `applyTo` YAML frontmatter, compatible with both Cursor and VSCode Copilot.
+
 ## Available Rules (3)
 
-Rules are always-on guidelines that Cursor applies automatically when editing matching files.
+Rules are always-on guidelines applied automatically when editing matching files.
 
-| Rule | File | Glob Pattern | What it does |
-|------|------|-------------|-------------|
+| Rule | File | Scope | What it does |
+|------|------|-------|-------------|
 | **chi-design-system** | `rules/chi-design-system.md` | `**/*.{html,vue,tsx,jsx,scss,css,ts,js}` | Global Chi conventions: implementation priority (Vue > Web Components > HTML/CSS), double-dash utility syntax, spacing system, themes |
 | **chi-code-validation** | `rules/chi-code-validation.md` | `**/*.{html,vue,tsx,jsx}` | Anti-pattern detection, utility class format validation, component schema checks, accessibility rules, cross-MCP conflict detection |
 | **chi-migration** | `rules/chi-migration.md` | `**/*.{html,vue,tsx,jsx}` | CSS-to-Web Component mappings, modifier-to-property conversion tables, migration steps and examples |
@@ -40,7 +53,7 @@ Skills are invoked on demand when you ask the AI about specific Chi topics.
 
 ### Verifying Rules
 
-Rules activate automatically based on their `globs` pattern. To confirm:
+Rules activate automatically based on their `applyTo` pattern. To confirm:
 
 1. **Open any `.html`, `.vue`, or `.tsx` file** in the project
 2. **Ask the AI to review your code** -- e.g., type: *"Review this file for Chi best practices"*
@@ -75,38 +88,23 @@ Skills are triggered when you ask about specific topics:
 4. **Test chi-recommendations**: *"I'm building a React app, which Chi approach should I use?"*
    - Should recommend Custom Elements with React-specific notes
 
-### Checking in Cursor Settings
-
-You can also verify that Cursor has detected your rules and skills:
-
-1. Open **Cursor Settings** (Cmd+Shift+P > "Cursor Settings")
-2. Go to the **Rules** section -- you should see the 3 Chi rules listed
-3. Rules with `globs` patterns will show which file types they apply to
-
 ## Installation for External Projects
 
-If you want to use Chi Skills/Rules in a project that is NOT the Chi repository itself:
+If you want to use Chi Rules/Skills in a project that is NOT the Chi repository itself:
 
 ### Option A: Via Chi MCP Server (automatic)
 
 If you have the Chi MCP server configured, ask the AI:
 
-> "Set up Chi Cursor Skills in my project"
+> "Set up Chi rules in my project"
 
-The AI will call the `setup_chi_html_css_cursor_skills` MCP tool, which provides all the file contents needed. The AI then writes them to your project's `.cursor/` directory. (Separate tools will exist for Chi Custom Elements and Chi Vue skills.)
-
-You can also be selective:
-
-> "Install only the Chi rules, not the skills"
-> "Install just the chi-components and chi-tokens skills"
+The AI will call the appropriate MCP tool, which provides all the file contents needed. The AI then writes them to your project's `.cursor/` directory.
 
 ### Option B: Git submodule (recommended for teams)
 
-If your organization publishes a dedicated repo with the distributable Skills/Rules, you can add it as a Git submodule:
-
 ```bash
 # Add as submodule (one-time setup)
-git submodule add https://github.com/your-org/chi-cursor-skills.git .cursor/chi
+git submodule add https://github.com/your-org/chi-ai-rules.git .cursor/chi
 git submodule update --init
 
 # Update to latest version
@@ -115,37 +113,37 @@ git submodule update --remote .cursor/chi
 
 ### Option C: Manual copy
 
-Copy the `.cursor/rules/` and `.cursor/skills/` directories (excluding `chi-generate-metadata/`) into your project.
+Copy the `.cursor/rules/` and `.cursor/skills/` directories (excluding `chi-generate-metadata/`) into your project's `.cursor/` directory.
 
 ## Directory Structure
 
-After installation, your project should have:
-
 ```
 your-project/
-└── .cursor/
-    ├── rules/
-    │   ├── chi-design-system.md       # Global conventions (always active)
-    │   ├── chi-code-validation.md     # Anti-pattern detection (always active)
-    │   └── chi-migration.md           # Migration rules (always active)
-    └── skills/
-        ├── chi-components/
-        │   ├── SKILL.md               # How to look up components
-        │   └── reference.md           # Auto-generated component table
-        ├── chi-tokens/
-        │   ├── SKILL.md               # How to look up tokens
-        │   └── reference.md           # Auto-generated token table
-        ├── chi-utilities/
-        │   ├── SKILL.md               # How to look up utilities
-        │   └── reference.md           # Utility class reference
-        ├── chi-component-schemas/
-        │   ├── SKILL.md               # How to validate components
-        │   └── schemas.json           # Component validation schemas
-        ├── chi-search/
-        │   ├── SKILL.md               # How to search Chi elements
-        │   └── reference.md           # Synonym dictionary + use cases
-        └── chi-recommendations/
-            └── SKILL.md               # Implementation approach decision tree
+├── .cursor/
+│   ├── agents/
+│   │   └── chi.agents.md              # AI agent instructions
+│   ├── rules/
+│   │   ├── chi-design-system.md       # Global conventions (always active)
+│   │   ├── chi-code-validation.md     # Anti-pattern detection (always active)
+│   │   └── chi-migration.md           # Migration rules (always active)
+│   └── skills/
+│       ├── chi-components/
+│       │   ├── SKILL.md               # How to look up components
+│       │   └── reference.md           # Auto-generated component table
+│       ├── chi-tokens/
+│       │   ├── SKILL.md               # How to look up tokens
+│       │   └── reference.md           # Auto-generated token table
+│       ├── chi-utilities/
+│       │   ├── SKILL.md               # How to look up utilities
+│       │   └── reference.md           # Utility class reference
+│       ├── chi-component-schemas/
+│       │   ├── SKILL.md               # How to validate components
+│       │   └── schemas.json           # Component validation schemas
+│       ├── chi-search/
+│       │   ├── SKILL.md               # How to search Chi elements
+│       │   └── reference.md           # Synonym dictionary + use cases
+│       └── chi-recommendations/
+│           └── SKILL.md               # Implementation approach decision tree
 ```
 
 ## What is NOT Distributed
@@ -156,11 +154,11 @@ The `chi-generate-metadata/` skill is internal to the Chi repository. It is a li
 
 Skills and Rules are versioned with the Chi package. When a new Chi version is released:
 
-- **With MCP**: Run `setup_chi_html_css_cursor_skills` again to get the latest versions
+- **With MCP**: Run the appropriate setup tool again to get the latest versions
 - **With submodule**: `git submodule update --remote .cursor/chi`
 - **With manual copy**: Re-copy the files from the latest Chi release
 
-The auto-generated sections (marked with `<!-- AUTO-GENERATED:START -->` comments) in some files are updated automatically during the Chi build process (`npm run sync:skills`) and reflect the latest SCSS source data.
+The auto-generated sections (marked with `<!-- AUTO-GENERATED:START -->` comments) in some files are updated automatically during the Chi build process (`npm run generate:ai-rules`) and reflect the latest SCSS source data.
 
 ## MCP Metadata Pipeline
 
@@ -168,14 +166,14 @@ The metadata generation pipeline that powers the Chi MCP Server lives in `src/mc
 
 1. Parses SCSS source files for tokens, utilities, and components
 2. Enriches data with descriptions, examples, and categories
-3. Bundles Skills/Rules for distribution via the `setup_chi_html_css_cursor_skills` tool
+3. Bundles Rules/Skills for distribution via MCP tools
 4. Validates output with 16 structural and quality checks
 5. Supports incremental builds (skips if no source changes)
 
 Commands:
 
 ```bash
-npm run sync:skills          # Update auto-generated sections in Skills/Rules
+npm run generate:ai-rules   # Update auto-generated sections in Rules/Skills
 npm run build:mcp            # Generate src/mcp/metadata.json
 npm run build:mcp -- --force # Force rebuild (bypass cache)
 ```

@@ -6,6 +6,7 @@ SECONDS=0
 
 CHI_DOCUMENTATION="./node_modules/@centurylink/chi-documentation"
 CHI_CE="./node_modules/@centurylink/chi-custom-elements"
+CHI_VUE="./node_modules/@centurylink/chi-vue"
 CHI_VUE_UMD="./node_modules/@centurylink/chi-vue/umd/index.umd.js"
 
 # Clean dist folder
@@ -53,7 +54,18 @@ bash ./scripts/build/utils/copyFile.sh "$CHI_CE/docs/docs.json" dist
 
 # Build MCP metadata
 node ./scripts/build/utils/buildMcp.js
-bash ./scripts/build/utils/copyFile.sh src/mcp/metadata.json dist/metadata/chi
+
+# Copy MCP metadata to dist/metadata
+mkdir -p dist/metadata
+bash ./scripts/build/utils/copyFile.sh src/mcp/metadata.json dist/metadata/chi.json # Chi
+
+if [ -f "$CHI_CE/src/mcp/metadata.json" ]; then
+  bash ./scripts/build/utils/copyFile.sh "$CHI_CE/src/mcp/metadata.json" dist/metadata/custom-elements.json # Chi Custom Elements
+fi
+
+if [ -f "$CHI_VUE/src/mcp/metadata.json" ]; then
+  bash ./scripts/build/utils/copyFile.sh "$CHI_VUE/src/mcp/metadata.json" dist/metadata/vue.json # Chi Vue
+fi
 
 # Build SRI
 if [ -z "${SKIP_SRI}" ] && [ "${BUILD_TARGET}" = "prod" ]; then

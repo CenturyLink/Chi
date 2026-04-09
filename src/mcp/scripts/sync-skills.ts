@@ -29,7 +29,7 @@ function replaceAutoSection(filePath: string, sectionId: string, newContent: str
 
   if (!content) return false;
 
-  const startTag = `<!-- AUTO-GENERATED:START - section:${sectionId} - Do not edit below. Run \`npm run sync:skills\` to update -->`;
+  const startTag = `<!-- AUTO-GENERATED:START - section:${sectionId} - Do not edit below. Run \`npm run generate:ai-rules\` to update -->`;
   const pattern = new RegExp(
     `<!-- AUTO-GENERATED:START - section:${sectionId}[^>]*-->\\n[\\s\\S]*?<!-- AUTO-GENERATED:END -->`
   );
@@ -178,7 +178,7 @@ function mergeSchemas(components: ComponentInfo[]): boolean {
 }
 
 function sync() {
-  console.log('\n🔄 Syncing Skills from SCSS sources...\n');
+  console.log('\n🔄 Syncing AI Rules & Skills from SCSS sources...\n');
   console.log('📊 Scanning SCSS files...');
 
   const components = deduplicateComponents(extractComponents(false));
@@ -240,7 +240,7 @@ function sync() {
     console.log('   - No changes');
   }
 
-  console.log(`\n✨ Sync complete! ${totalChanges} file(s) updated.\n`);
+  console.log(`\n✨ AI rules sync complete! ${totalChanges} file(s) updated.\n`);
 
   if (totalChanges > 0) {
     console.log('💡 Review changes with: git diff .cursor/\n');

@@ -5,8 +5,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const ROOT = process.env.CHI_ROOT || join(__dirname, '../..');
 export const CHI_SRC = process.env.CHI_SRC || join(ROOT, 'src/chi');
-export const SKILLS_DIR = join(ROOT, '.cursor/skills');
-export const RULES_DIR = join(ROOT, '.cursor/rules');
+/** Path to the AI rules & skills assets directory */
+export const AI_ASSETS_PATH = '.cursor/chi';
+export const SKILLS_DIR = join(ROOT, AI_ASSETS_PATH, 'skills');
+export const RULES_DIR = join(ROOT, AI_ASSETS_PATH, 'rules');
 export const OUTPUT_PATH = join(ROOT, 'src/mcp/metadata.json');
 export const BUILD_CACHE_PATH = join(__dirname, '.build-cache.json');
 

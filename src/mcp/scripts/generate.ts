@@ -3,7 +3,7 @@ import { join } from 'path';
 import { createHash } from 'crypto';
 import { execSync } from 'child_process';
 import { readJSON, getWarnings, resetWarnings } from '../extractors/extract.js';
-import { ROOT, CHI_SRC, OUTPUT_PATH, BUILD_CACHE_PATH, THEMES } from '../config.js';
+import { ROOT, CHI_SRC, OUTPUT_PATH, BUILD_CACHE_PATH, THEMES, SKILLS_DIR, RULES_DIR } from '../config.js';
 import { extractTokens } from '../extractors/tokens.js';
 import { extractUtilities } from '../extractors/utilities.js';
 import { extractComponents } from '../extractors/components.js';
@@ -70,7 +70,7 @@ function collectSourceHashes(): Record<string, string> {
     join(ROOT, 'src/mcp/extractors/components.ts'),
     join(ROOT, 'src/mcp/scripts/generate.ts'),
     join(ROOT, 'src/mcp/scripts/validate.ts'),
-    join(ROOT, '.cursor/skills/chi-component-schemas/schemas.json'),
+    join(ROOT, '.cursor/chi/skills/chi-component-schemas/schemas.json'),
     join(ROOT, 'package.json'),
   ];
 
@@ -78,7 +78,7 @@ function collectSourceHashes(): Record<string, string> {
     hashes[f] = hashFile(f);
   }
 
-  const skillRuleDirs = [join(ROOT, '.cursor/skills'), join(ROOT, '.cursor/rules')];
+  const skillRuleDirs = [SKILLS_DIR, RULES_DIR];
 
   for (const dir of skillRuleDirs) {
     if (!existsSync(dir)) continue;
@@ -165,9 +165,9 @@ function build() {
   const schemas = loadSchemas();
   const migration = buildMigrationRules();
 
-  console.log('📊 Bundling distributable skills...');
+  console.log('📊 Bundling distributable AI rules & skills...');
   const version = getVersion();
-  const cursorSkills = bundleDistributableSkills(version);
+  const aiAssets = bundleDistributableSkills(version);
 
   console.log('📊 Assembling metadata...');
   const metadata = {
@@ -180,7 +180,7 @@ function build() {
       totalUtilityClasses: utilities.totalClasses,
       totalCssComponents: cssComponents.totalComponents,
       totalTools: tools.length,
-      totalCursorSkills: cursorSkills.totalFiles,
+      totalAiAssets: aiAssets.totalFiles,
       themes: THEMES,
       metadataFormatVersion: '1.0.0',
     },
@@ -195,14 +195,14 @@ function build() {
     schemas,
     relationships: RELATIONSHIPS,
     migration,
-    cursorSkills,
+    aiAssets,
     cache: {
       checksums: {
         tokens: hash(designTokens),
         utilities: hash(utilities),
         cssComponents: hash(cssComponents),
         tools: hash(tools),
-        cursorSkills: hash(cursorSkills),
+        aiAssets: hash(aiAssets),
       },
       ttl: 86400,
     },
@@ -250,7 +250,7 @@ function build() {
   console.log(`   Components: ${cssComponents.totalComponents}`);
   console.log(`   Schemas: ${Object.keys(schemas).length}`);
   console.log(`   Tools: ${tools.length}`);
-  console.log(`   Cursor Skills: ${cursorSkills.totalFiles} files (${cursorSkills.skills.length} bundles)`);
+  console.log(`   AI Assets: ${aiAssets.totalFiles} files (${aiAssets.skills.length} bundles)`);
   console.log(`   Duration: ${duration}s`);
   console.log(`   Output: metadata.json (${sizeKB} KB)\n`);
 

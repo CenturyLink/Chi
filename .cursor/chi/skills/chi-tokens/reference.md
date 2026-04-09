@@ -2,7 +2,7 @@
 
 ## Token List (auto-generated from SCSS)
 
-<!-- AUTO-GENERATED:START - section:token-list - Do not edit below. Run `npm run sync:skills` to update -->
+<!-- AUTO-GENERATED:START - section:token-list - Do not edit below. Run `npm run generate:ai-rules` to update -->
 | Token | SCSS Value |
 |-------|------------|
 | cap-height | `0.75` |

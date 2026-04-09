@@ -506,7 +506,7 @@ export function bundleDistributableSkills(version?: string): {
         name: rule.name,
         type: 'rule',
         description: rule.description,
-        files: [{ path: `.cursor/rules/${rule.file}`, content, description: rule.description }],
+        files: [{ path: `.cursor/chi/rules/${rule.file}`, content, description: rule.description }],
       });
     }
   }
@@ -560,7 +560,7 @@ export function bundleDistributableSkills(version?: string): {
 
       if (content) {
         skillFiles.push({
-          path: `.cursor/skills/${skill.dir}/${file}`,
+          path: `.cursor/chi/skills/${skill.dir}/${file}`,
           content,
           description: `${skill.name}: ${file}`,
         });
