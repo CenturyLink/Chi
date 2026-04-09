@@ -41,9 +41,9 @@ $ chi start
 
 Once the Chi project has started connect to one of the ports showed in console. While running, any changes in the style will automatically be reloaded in your browser.
 
-## AI-Assisted Development (Cursor IDE)
+## AI-Assisted Development
 
-Chi includes built-in **Cursor Skills and Rules** that give the AI assistant deep knowledge of the design system. When you open this project in Cursor, the AI automatically understands Chi conventions, validates your code, and suggests the right components and utilities.
+Chi includes built-in **AI Rules & Skills** that give AI assistants deep knowledge of the design system. Whether you use Cursor, VSCode Copilot, or any MCP-compatible tool, the AI automatically understands Chi conventions, validates your code, and suggests the right components and utilities.
 
 ### What's Included
 
@@ -68,7 +68,7 @@ Chi includes built-in **Cursor Skills and Rules** that give the AI assistant dee
 
 ### How to Use
 
-Once the project is open in Cursor, the rules activate automatically. For skills, just ask the AI naturally:
+Once the project is open in your editor, the rules activate automatically. For skills, just ask the AI naturally:
 
 - *"What modifiers does chi-button support?"* -- triggers `chi-components`
 - *"What's the spacing value for -p--4?"* -- triggers `chi-tokens` and `chi-utilities`
@@ -84,7 +84,7 @@ Chi also generates metadata for the **Chi MCP Server**, which provides the same 
 
 | Command | What it does |
 |---------|-------------|
-| `npm run sync:skills` | Update Skills/Rules auto-generated sections from SCSS |
+| `npm run generate:ai-rules` | Update AI Rules/Skills auto-generated sections from SCSS |
 | `npm run build:mcp` | Generate `src/mcp/metadata.json` |
 | `npm run build:mcp -- --force` | Force rebuild (bypass incremental cache) |
 

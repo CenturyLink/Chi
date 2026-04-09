@@ -11,7 +11,7 @@ export function validateMetadata(metadata: Record<string, unknown>): ValidationI
 
   const requiredSections = [
     'version', 'designTokens', 'utilities', 'cssComponents', 'schemas',
-    'tools', 'quality', 'searchIndex', 'migration', 'cursorSkills', 'cache',
+    'tools', 'quality', 'searchIndex', 'migration', 'aiAssets', 'cache',
     'antiPatterns', 'guidelines', 'relationships', 'summary',
   ];
 
@@ -85,18 +85,18 @@ export function validateMetadata(metadata: Record<string, unknown>): ValidationI
     });
   }
 
-  const cursorSkills = metadata['cursorSkills'] as
+  const aiAssets = metadata['aiAssets'] as
     | { version?: string; skills?: { name: string; files: { content: string }[] }[]; totalFiles?: number }
     | undefined;
 
-  if (cursorSkills) {
-    const actualFiles = (cursorSkills.skills ?? []).reduce((sum, b) => sum + b.files.length, 0);
+  if (aiAssets) {
+    const actualFiles = (aiAssets.skills ?? []).reduce((sum, b) => sum + b.files.length, 0);
 
-    if (cursorSkills.totalFiles !== actualFiles) {
-      issues.push({ severity: 'error', message: `cursorSkills.totalFiles (${cursorSkills.totalFiles}) doesn't match actual file count (${actualFiles})` });
+    if (aiAssets.totalFiles !== actualFiles) {
+      issues.push({ severity: 'error', message: `aiAssets.totalFiles (${aiAssets.totalFiles}) doesn't match actual file count (${actualFiles})` });
     }
 
-    for (const bundle of cursorSkills.skills ?? []) {
+    for (const bundle of aiAssets.skills ?? []) {
       for (const file of bundle.files) {
         if (!file.content || file.content.length < 10) {
           issues.push({ severity: 'error', message: `Empty or near-empty file in bundle "${bundle.name}"` });
@@ -104,17 +104,17 @@ export function validateMetadata(metadata: Record<string, unknown>): ValidationI
       }
     }
 
-    if (!cursorSkills.version) {
-      issues.push({ severity: 'warning', message: 'cursorSkills.version is missing' });
-    } else if (cursorSkills.version !== metadata['version']) {
-      issues.push({ severity: 'warning', message: `cursorSkills.version (${cursorSkills.version}) doesn't match metadata version (${metadata['version']})` });
+    if (!aiAssets.version) {
+      issues.push({ severity: 'warning', message: 'aiAssets.version is missing' });
+    } else if (aiAssets.version !== metadata['version']) {
+      issues.push({ severity: 'warning', message: `aiAssets.version (${aiAssets.version}) doesn't match metadata version (${metadata['version']})` });
     }
   }
 
   const cache = metadata['cache'] as { checksums?: Record<string, string> } | undefined;
 
   if (cache?.checksums) {
-    const expectedChecksums = ['tokens', 'utilities', 'cssComponents', 'tools', 'cursorSkills'];
+    const expectedChecksums = ['tokens', 'utilities', 'cssComponents', 'tools', 'aiAssets'];
 
     for (const key of expectedChecksums) {
       if (!cache.checksums[key]) {

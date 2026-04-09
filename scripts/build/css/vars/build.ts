@@ -452,7 +452,7 @@ function generateTokenMetadata(
 
   return {
     theme,
-    version: '7.0.0',
+    version: '7.1.0',
     generatedAt: new Date().toISOString(),
     tokenCount: {
       foundation: generatedOutput.foundationCount,

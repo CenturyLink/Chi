@@ -1,7 +1,5 @@
 ---
-description: Chi migration rules for converting between CSS, Web Components, and Vue approaches. Apply when migrating Chi code or when user asks about migration.
-globs:
-  - "**/*.{html,vue,tsx,jsx}"
+applyTo: "**/*.{html,vue,tsx,jsx}"
 ---
 
 # Chi Migration Rules
@@ -10,7 +8,7 @@ globs:
 
 These components have direct Web Component equivalents:
 
-<!-- AUTO-GENERATED:START - section:css-to-wc - Do not edit below. Run `npm run sync:skills` to update -->
+<!-- AUTO-GENERATED:START - section:css-to-wc - Do not edit below. Run `npm run generate:ai-rules` to update -->
 | CSS Class | Web Component Tag |
 |-----------|-------------------|
 | chi-accordion | `<chi-accordion>` |
@@ -59,7 +57,7 @@ These components have direct Web Component equivalents:
 
 When migrating CSS modifiers to Web Component properties:
 
-<!-- AUTO-GENERATED:START - section:modifier-to-prop - Do not edit below. Run `npm run sync:skills` to update -->
+<!-- AUTO-GENERATED:START - section:modifier-to-prop - Do not edit below. Run `npm run generate:ai-rules` to update -->
 ### chi-accordion
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|

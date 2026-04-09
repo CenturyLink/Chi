@@ -1,7 +1,5 @@
 ---
-description: Global Chi Design System conventions. Always active when working in this repository.
-globs:
-  - "**/*.{html,vue,tsx,jsx,scss,css,ts,js}"
+applyTo: "**/*.{html,vue,tsx,jsx,scss,css,ts,js}"
 ---
 
 # Chi Design System Conventions
