@@ -21,5 +21,5 @@ function run(label, command) {
   }
 }
 
-run('[CHI]: Syncing skills from SCSS sources...', 'npm run sync:skills');
+run('[CHI]: Syncing AI rules & skills from SCSS sources...', 'npm run generate:ai-rules');
 run('[CHI]: Building MCP metadata...', 'npm run build:mcp');
