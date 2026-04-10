@@ -264,7 +264,6 @@ describe('mobile-nav-menu (deprecated component)', function () {
 
   describe('Check that click on "X" in second level drawer closes drawer', () => {
     it('check second level drawer closes on "X"', () => {
-      cy.get('#mobile-navigation-interaction-trigger').click();
       cy.get('.chi-mobile-nav__first-level-content')
         .find('.chi-drawer__subitem-list-trigger[href="#second-level-1"]')
         .click();
