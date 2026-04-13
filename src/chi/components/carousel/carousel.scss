@@ -67,8 +67,10 @@
     }
   }
 
-  &__item:not(.-visible) {
-    opacity: 0.4;
+  &.-fade-hidden-items {
+    .chi-carousel__item:not(.-visible) {
+      opacity: 0.4;
+    }
   }
 
   &__dots {
