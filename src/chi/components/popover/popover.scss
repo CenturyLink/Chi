@@ -424,7 +424,37 @@
 
   &.-gradient-accent-1 {
     .chi-popover__header {
-      background: $color-background-gradient-accent-1;
+      background: $popover-gradient-accent-1-header-background;
+    }
+
+    &[x-placement='right'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-accent-1-right-arrow-color;
+      }
+    }
+
+    &[x-placement='right-start'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-accent-1-right-arrow-color;
+      }
+    }
+
+    &[x-placement='left'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-accent-1-left-arrow-color;
+      }
+    }
+
+    &[x-placement='left-start'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-accent-1-left-arrow-color;
+      }
+    }
+
+    &[x-placement^='bottom'] {
+      .chi-popover__arrow::after {
+        border-color: $popover-gradient-accent-1-arrow-mixed-color;
+      }
     }
   }
 }
