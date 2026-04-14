@@ -1,7 +1,5 @@
 ---
-description: Chi code validation rules. Apply when reviewing, generating, or validating HTML/CSS/Vue code that uses Chi Design System.
-globs:
-  - "**/*.{html,vue,tsx,jsx}"
+applyTo: "**/*.{html,vue,tsx,jsx}"
 ---
 
 # Chi Code Validation

@@ -64,7 +64,7 @@
 
 ## Component List (auto-generated from SCSS)
 
-<!-- AUTO-GENERATED:START - section:component-list - Do not edit below. Run `npm run sync:skills` to update -->
+<!-- AUTO-GENERATED:START - section:component-list - Do not edit below. Run `npm run generate:ai-rules` to update -->
 | Component | Base Class | Modifiers | Subcomponents | Web Component |
 |-----------|------------|-----------|---------------|---------------|
 | accordion | chi-accordion | -disabled, -transitioning, -expanded, -truncated, -card, -sm, -link, -compact-title, ... | chi-accordion__item | `<chi-accordion>` |
