@@ -6,12 +6,15 @@ const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.jso
 const basePath = `chi/${packageJson.version}`;
 
 module.exports = defineConfig({
-  reporter: 'junit',
+  reporter: 'mocha-junit-reporter',
   reporterOptions: {
     mochaFile: 'cypress/reports/cypress-pr.[hash].xml',
   },
   video: true,
   videoCompression: false,
+  env: {
+    coverage: true,
+  },
   e2e: {
     specPattern: 'cypress/e2e/**/*',
     supportFile: 'cypress/support/e2e.cjs',

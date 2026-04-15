@@ -80,7 +80,7 @@ class GlobalNav extends Component {
   }
 
   _setActiveLink(activeLink) {
-    this._links.forEach((link) => {
+    this._links?.forEach((link) => {
       link.classList.remove(chi.classes.ACTIVE);
     });
 
@@ -120,6 +120,7 @@ class GlobalNav extends Component {
   }
 
   _updateExpandedState() {
+    if (!this._elem) return;
     if (this._expanded) {
       this._elem.classList.remove(chi.classes.COLLAPSED);
       this._elem.classList.add(chi.classes.EXPANDED);
