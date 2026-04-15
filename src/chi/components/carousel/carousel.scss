@@ -67,7 +67,7 @@
     }
   }
 
-  &.-fade-hidden-items {
+  &.-fade {
     .chi-carousel__item:not(.-visible) {
       opacity: 0.4;
     }
