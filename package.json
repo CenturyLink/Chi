@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "description": "Chi is Lumen's design system for building consistent digital products and experiences.",
   "license": "MIT",
   "private": false,
@@ -33,8 +33,8 @@
     "postrelease:checkSri": "node ./scripts/build/utils/checkSri.js"
   },
   "dependencies": {
-    "@centurylink/chi-custom-elements": "2.1.0",
-    "@centurylink/chi-documentation": "2.1.0",
+    "@centurylink/chi-custom-elements": "2.2.0",
+    "@centurylink/chi-documentation": "2.2.0",
     "@centurylink/chi-vue": "3.35.0"
   },
   "devDependencies": {
