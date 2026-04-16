@@ -584,10 +584,15 @@
         ".test-closable",
         ".test-modal",
         ".test-modal-draggable",
-        ".test-gradient"
+        ".test-gradient",
+        ".test-size-xs",
+        ".test-size-sm",
+        ".test-size-md",
+        ".test-size-lg",
+        ".test-gradient-accent-1"
       ],
       "selectorExpansion": true,
-      "misMatchThreshold": 0.7,
+      "misMatchThreshold": 0,
       "requireSameDimensions": true
     },
 
