@@ -2035,6 +2035,10 @@ $popover-gradient-left-arrow-color:         initial;
 $popover-gradient-right-arrow-color:        initial;
 $popover-gradient-arrow-mixed-color:        initial;
 $popover-gradient-arrow-offset:             initial;
+$popover-gradient-accent-1-header-background: linear-gradient(90deg, $color-teal-80 0%, $color-teal-70 100%);
+$popover-gradient-accent-1-left-arrow-color:  initial;
+$popover-gradient-accent-1-right-arrow-color: initial;
+$popover-gradient-accent-1-arrow-mixed-color: initial;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
