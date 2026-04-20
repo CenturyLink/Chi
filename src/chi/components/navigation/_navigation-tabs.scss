@@ -14,13 +14,7 @@
 }
 
 .chi-tabs {
-  &:not(.-vertical):not(.-responsive) {
+  &:not(.-vertical) {
     @include navigation-tabs-not-vertical
-  }
-
-  @media only screen and (min-width: $md-breakpoint) {
-    &.-responsive {
-      @include navigation-tabs-not-vertical;
-    }
   }
 }
