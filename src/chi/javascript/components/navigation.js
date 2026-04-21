@@ -6,6 +6,7 @@ import {NavigationTab, TAB_CLASS_ACTIVE} from "./navigation/navigation-tab";
 import {
   CLASS_ACTIVE as DROPDOWN_CLASS_ACTIVE,
   CLASS_COMPONENT as DROPDOWN_CLASS_COMPONENT,
+  CLASS_DROPDOWN,
   CLASS_DROPDOWN_ITEM,
 } from "./dropdown";
 
@@ -36,7 +37,10 @@ class Navigation extends Component {
     const self = this;
     Array.prototype.forEach.call(
       this._elem.querySelectorAll('a.' + DROPDOWN_CLASS_COMPONENT),
-      function (dropdownElem) {
+      dropdownElem => {
+        // Skip inner dropdown triggers that live inside a dropdown menu
+        if (dropdownElem.closest('.' + CLASS_DROPDOWN)) return;
+
         self._dropdowns.push(
           NavigationDropdown.factory(
             dropdownElem,

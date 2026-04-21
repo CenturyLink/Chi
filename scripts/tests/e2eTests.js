@@ -15,10 +15,14 @@ import ora from 'ora';
 })();
 
 function runCypress(spinner) {
-  return new Promise((resolve, reject) => {    
-    exec(`npm run cy:run`, (error, stdout, stderr) => {
+  return new Promise((resolve, reject) => {
+    exec(`npm run cy:run`, { maxBuffer: 10 * 1024 * 1024 }, (error, stdout, stderr) => {
       if (error) {
-        spinner.fail(`[CHI]: E2E tests failed`);
+        spinner.fail('[CHI]: E2E tests failed');
+        
+        if (stdout) process.stdout.write(stdout);
+        if (stderr) process.stderr.write(stderr);
+        
         return reject(error);
       }
 
