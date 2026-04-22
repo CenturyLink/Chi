@@ -147,7 +147,8 @@
       "-banner-background-color",
       "-bubble-background-color",
       "-color",
-      "-title-color"
+      "-title-color",
+      "-hidden"
     ],
     "conflictingModifiers": [
       [
@@ -695,7 +696,8 @@
       "-float",
       "-dots",
       "-pagination",
-      "-active"
+      "-active",
+      "-fade"
     ],
     "accessibility": {}
   },

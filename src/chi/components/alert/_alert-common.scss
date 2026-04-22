@@ -209,6 +209,10 @@ $states: (
     .chi-alert__actions {
       padding-top: 0.75rem;
 
+      &.-hidden {
+        display: none;
+      }
+
       > .chi-button {
         margin-right: 0.5rem;
 
