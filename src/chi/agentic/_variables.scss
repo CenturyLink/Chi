@@ -37,14 +37,14 @@ $agentic-elevation-shadow:
 //#region Button
 $agentic-button-border-disabled: linear-gradient($agentic-color-grey-60, $agentic-color-grey-60);
 $agentic-button-border-gradient: $agentic-border-gradient;
-$agentic-button-border-radius: 0.25rem;
+$agentic-button-border-radius: 2rem;
 $agentic-button-border-width: 0.125rem;
 $agentic-button-fill-default: $agentic-color-teal-10;
 $agentic-button-fill-hover: $agentic-color-teal-20;
 $agentic-button-fill-active: $agentic-color-teal-25;
 $agentic-button-fill-disabled: $agentic-color-grey-25;
 $agentic-button-focus-outline-color: $agentic-color-teal-60;
-$agentic-button-font-size: 0.875rem;
+$agentic-button-font-size: 1rem;
 $agentic-button-font-weight: 600;
 $agentic-button-line-height: 1.5;
 $agentic-button-padding-x: 1rem;
@@ -59,6 +59,7 @@ $agentic-button-transition:
 //#endregion
 
 //#region Drawer
+$agentic-drawer-border: 0.0625rem solid $agentic-color-grey-60;
 //#endregion
 
 //#region Textarea

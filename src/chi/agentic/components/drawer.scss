@@ -1,5 +1,7 @@
 .chi-drawer {
   &.-agentic {
+    border: $agentic-drawer-border;
+
     .chi-drawer__footer {
       border-top: none;
     }
