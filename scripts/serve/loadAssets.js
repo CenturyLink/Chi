@@ -5,7 +5,7 @@ function getQueryParam(param) {
 }
 
 function isValidTheme(theme) {
-  const allowedThemes = ['chi', 'chi-connect', 'chi-centurylink']; // 'chi-test' can be added for testing purposes
+  const allowedThemes = ['chi', 'chi-connect', 'chi-centurylink', 'chi-test'];
 
   return allowedThemes.includes(theme);
 }

@@ -50,7 +50,7 @@ select.chi-input {
   appearance: none;
   background-color: $select-background-color;
   border: 0.0625rem solid $select-border-color;
-  border-radius: $border-radius-base;
+  border-radius: $select-border-radius;
   box-shadow: $select-box-shadow;
   color: $select-text-color;
   cursor: pointer;
@@ -86,6 +86,7 @@ select.chi-input {
   &:active,
   &.-active {
     border-color: $select-hover-border-color;
+    box-shadow: $select-hover-box-shadow;
   }
 
   &:focus,
@@ -113,6 +114,13 @@ select.chi-input {
 
   &.-danger {
     color: $select-danger-text-color;
+
+    &:hover,
+    &.-hover,
+    &:active,
+    &.-active {
+      box-shadow: $select-danger-hover-box-shadow;
+    }
 
     &:focus,
     &.-focus {

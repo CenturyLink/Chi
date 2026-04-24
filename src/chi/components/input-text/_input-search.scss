@@ -3,6 +3,8 @@
 
 .chi-search {
   &__input {
+    border-radius: $search-input-border-radius;
+
     ~ .chi-button.-icon,
     ~ chi-button {
       &[variant='flat'],

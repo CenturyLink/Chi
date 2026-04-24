@@ -15,7 +15,7 @@
     "start:local": "vite -c vite.config.ts",
     "start:dist": "node server.cjs",
     "start": "npm run start:dist & npm run start:local",
-    "build": "cross-env THEMES_TO_BUILD=lumen,connect,centurylink bash ./scripts/build/build.sh",
+    "build": "cross-env THEMES_TO_BUILD=lumen,connect,centurylink,test bash ./scripts/build/build.sh",
     "build:testing": "bash ./scripts/build/build.sh --testing",
     "build:prod": "cross-env BUILD_TARGET=prod bash ./scripts/build/build.sh",
     "generate:ai-rules": "tsx src/mcp/scripts/sync-skills.ts",
