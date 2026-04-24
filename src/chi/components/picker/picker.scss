@@ -1,7 +1,6 @@
 @import '_global-variables';
 @import '_global-mixins';
 
-$border: 0.0625rem;
 $sizes: (
   md: (
     item-font-size: $picker-md-item-font-size,
@@ -47,7 +46,7 @@ $pill-sizes: (
     & + label {
       align-items: flex-start;
       background-color: $picker-background-color;
-      border: solid $border $picker-border-color;
+      border: solid $picker-border-width $picker-border-color;
       border-radius: $picker-border-radius;
       box-shadow: map-get($shadow, 1);
       cursor: pointer;
@@ -62,48 +61,49 @@ $pill-sizes: (
       width: 100%;
 
       .chi-picker__checkbox {
-        border: $border solid $picker-checkbox-border-color;
+        border: $picker-checkbox-border-width solid $picker-checkbox-border-color;
+        border-radius: $picker-checkbox-border-radius;
         color: $picker-checkbox-text-color;
         flex-shrink: 0;
-        height: 1rem;
+        height: $picker-checkbox-size;
         position: relative;
-        width: 1rem;
+        width: $picker-checkbox-size;
 
         &::before {
-          border: 0.125rem solid $picker-checkbox-icon-color;
+          border: $picker-checkbox-checkmark-border-width solid $picker-checkbox-icon-color;
           border-right: 0;
           border-top: 0;
           content: '';
-          height: 0.3125rem;
-          left: calc(50% - 0.3125rem);
+          height: $picker-checkbox-checkmark-height;
+          left: $picker-checkbox-checkmark-left;
           position: absolute;
-          top: calc(50% - 0.25rem);
+          top: $picker-checkbox-checkmark-top;
           transform: rotate(-45deg) scale(0);
           transition-duration: 0.2s;
-          width: 0.625rem;
+          width: $picker-checkbox-checkmark-width;
         }
       }
 
       .chi-picker__radio {
-        border: $border solid $picker-radio-border-color;
-        border-radius: 0.5rem;
+        border: $picker-radio-border-width solid $picker-radio-border-color;
+        border-radius: $picker-radio-border-radius;
         color: $picker-radio-text-color;
         flex-shrink: 0;
-        height: 1rem;
+        height: $picker-radio-size;
         position: relative;
-        width: 1rem;
+        width: $picker-radio-size;
 
         &::before {
           background-color: $picker-radio-icon-color;
-          border-radius: 0.25rem;
+          border-radius: $picker-radio-dot-border-radius;
           content: '';
-          height: 0.375rem;
-          left: calc(50% - 0.1875rem);
+          height: $picker-radio-dot-size;
+          left: $picker-radio-dot-left;
           position: absolute;
-          top: calc(50% - 0.1875rem);
+          top: $picker-radio-dot-top;
           transform: scale(0);
           transition-duration: 0.2s;
-          width: 0.375rem;
+          width: $picker-radio-dot-size;
         }
       }
 
@@ -166,24 +166,34 @@ $pill-sizes: (
         box-shadow: none;
         color: $picker-disabled-text-color;
         pointer-events: none;
+
+        .chi-picker__checkbox {
+          background-color: $picker-disabled-checkbox-background-color;
+          border-color: $picker-disabled-checkbox-border-color;
+        }
+
+        .chi-picker__radio {
+          background-color: $picker-disabled-radio-background-color;
+          border-color: $picker-disabled-radio-border-color;
+        }
       }
     }
 
     &:checked {
       & + label {
         background-color: $picker-checked-background-color;
-        border: solid $border $picker-checked-border-color;
-        box-shadow: inset 0 0 0 $border $picker-checked-border-color;
+        border: solid $picker-border-width $picker-checked-border-color;
+        box-shadow: inset 0 0 0 $picker-border-width $picker-checked-border-color;
         color: $picker-checked-text-color;
         font-weight: $font-weight-semi-bold;
 
         .chi-picker__checkbox {
           background-color: $picker-checked-checkbox-background-color;
-          border: $border solid $picker-checked-checkbox-border-color;
+          border: $picker-checkbox-border-width solid $picker-checked-checkbox-border-color;
           color: $picker-checked-checkbox-text-color;
 
           &::before {
-            border: 0.125rem solid $picker-checked-checkbox-icon-color;
+            border: $picker-checkbox-checkmark-border-width solid $picker-checked-checkbox-icon-color;
             border-right: 0;
             border-top: 0;
             transform: rotate(-45deg) scale(1);
@@ -192,11 +202,12 @@ $pill-sizes: (
 
         .chi-picker__radio {
           background-color: $picker-checked-radio-background-color;
-          border: $border solid $picker-checked-radio-border-color;
+          border: $picker-radio-border-width solid $picker-checked-radio-border-color;
+          box-shadow: $picker-checked-radio-box-shadow;
 
           &::before {
             background-color: $picker-checked-radio-icon-color;
-            transform: scale(1);
+            transform: $picker-checked-radio-dot-transform;
           }
         }
       }
@@ -207,6 +218,25 @@ $pill-sizes: (
           outline-offset: $picker-checked-focus-outline-offset;
         }
       }
+
+      &[disabled],
+      &.-disabled {
+        & + label {
+          .chi-picker__checkbox {
+            background-color: $picker-checked-disabled-checkbox-background-color;
+            border-color: $picker-checked-disabled-checkbox-border-color;
+
+            &::before {
+              border-color: $picker-checked-disabled-checkbox-icon-color;
+            }
+          }
+
+          .chi-picker__radio {
+            background-color: $picker-checked-disabled-radio-background-color;
+            border-color: $picker-checked-disabled-radio-border-color;
+          }
+        }
+      }
     }
 
     &:hover {
@@ -215,14 +245,18 @@ $pill-sizes: (
           border-color: $picker-hover-border-color;
 
           .chi-picker__checkbox {
+            border-color: $picker-hover-checkbox-border-color;
+
             &::before {
-              transform: rotate(-45deg) scale(1);
+              transform: $picker-hover-checkbox-checkmark-transform;
             }
           }
 
           .chi-picker__radio {
+            border-color: $picker-hover-radio-border-color;
+
             &::before {
-              transform: scale(1);
+              transform: $picker-hover-radio-dot-transform;
             }
           }
         }

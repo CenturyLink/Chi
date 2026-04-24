@@ -500,6 +500,16 @@ $sizes: (
           background-color: $dropdown-button-background-color;
           box-shadow: $dropdown-button-box-shadow;
 
+          // When the gradient transition system is active, the base .chi-button has a
+          // dual-layer gradient background that paints over background-color. Reset the
+          // gradient stops to transparent so the solid dropdown colors show through.
+          @if $button-gradient-stop-1 != transparent {
+            --chi-button-gradient-fill-1: transparent;
+            --chi-button-gradient-fill-2: transparent;
+            --chi-button-gradient-border-1: transparent;
+            --chi-button-gradient-border-2: transparent;
+          }
+
           &:hover:not(.chi-dropdown__select-mode) {
             background-color: $dropdown-button-hover-background-color;
           }
@@ -722,6 +732,14 @@ chi-dropdown[select-mode],
     padding: map-get(map-get($sizes, md), select-padding);
     border: $dropdown-button-border-width solid $dropdown-select-border-color;
     border-radius: $dropdown-select-border-radius;
+
+    // Reset gradient stops so solid background-color shows through on hover/active/focus.
+    @if $button-gradient-stop-1 != transparent {
+      --chi-button-gradient-fill-1: transparent;
+      --chi-button-gradient-fill-2: transparent;
+      --chi-button-gradient-border-1: transparent;
+      --chi-button-gradient-border-2: transparent;
+    }
 
     &::after {
       font-size: map-get(map-get($sizes, md), select-chevron-size);

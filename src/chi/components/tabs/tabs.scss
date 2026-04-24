@@ -78,7 +78,6 @@ $tab-horizontal-solid-sizes: (
   ),
 );
 
-
 @mixin dropdown-icon {
   color: inherit;
   content: 'expand_more';
@@ -102,7 +101,7 @@ $tab-horizontal-solid-sizes: (
     display: inline-block;
 
     &.-active > a {
-      color: $color-text-primary;
+      color: $tabs-active-text-color;
     }
 
     &.-disabled {
@@ -124,7 +123,7 @@ $tab-horizontal-solid-sizes: (
       text-decoration: none;
 
       &:hover {
-        color: $color-text-primary;
+        color: $tabs-hover-text-color;
       }
     }
 
