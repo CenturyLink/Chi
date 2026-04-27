@@ -33,7 +33,7 @@
     .chi-modal__title {
       font-size: $modal-title-font-size;
       font-weight: $modal-title-font-weight;
-      line-height: $line-height-lg;
+      line-height: $modal-title-line-height;
       margin: 0;
 
       &.-centered {

@@ -81,7 +81,7 @@
 | buttons | chi-button | -disabled, -md, -sm, -icon, -float, -hover, -focus, -active, ... | chi-button__content | `<chi-button>` |
 | cache-loader | chi-cache-loader | -pulse, -bar, -muted, -no-interaction |  | `<chi-cache-loader>` |
 | card | chi-card | -widget, -align--left, -align--right, -align--center, -sm, -no-border, -notifications, -active, ... | chi-card__hero, chi-card__content, chi-card__header, chi-card__title, ... | `<chi-card>` |
-| carousel | chi-carousel | -previous, -next, -float, -dots, -pagination, -active | chi-carousel__content, chi-carousel__dots, chi-carousel__pagination | `<chi-carousel>` |
+| carousel | chi-carousel | -previous, -next, -float, -dots, -pagination, -fade, -active | chi-carousel__content, chi-carousel__dots, chi-carousel__pagination | `<chi-carousel>` |
 | checkbox | chi-checkbox | -hover, -danger, -disabled, -focus, -indeterminate |  | `<chi-checkbox>` |
 | css-grid | chi-css-grid | -grid-rows--176, -grid-template-rows--none, -grid-auto-rows--auto, -col--, -col-, -row--, -row-, -row-start--, ... |  |  |
 | customize-panel | chi-customize-panel |  |  | `<chi-customize-panel>` |

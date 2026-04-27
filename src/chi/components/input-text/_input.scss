@@ -24,8 +24,11 @@
   }
 
   &:hover,
-  &.-hover {
+  &.-hover,
+  &:active,
+  &.-active {
     border-color: $text-input-hover-border-color;
+    box-shadow: $text-input-hover-box-shadow;
   }
 
   &:focus,
@@ -86,6 +89,13 @@
     &:not([disabled]) {
       &.-#{$type} {
         border-color: map-get(map-get($color-semantic, $type), border-color);
+
+        &:hover,
+        &.-hover,
+        &:active,
+        &.-active {
+          box-shadow: map-get(map-get($color-semantic, $type), hover-box-shadow);
+        }
 
         &:focus,
         &.-focus {

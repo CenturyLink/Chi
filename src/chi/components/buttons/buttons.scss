@@ -1,8 +1,104 @@
 @import '_global-mixins';
 @import '_global-variables';
 
+// ---------------------------------------------------------------------------
+// Gradient transition system (opt-in)
+// ---------------------------------------------------------------------------
+//
+// Themes enable animated gradient buttons by setting TWO variables in their
+// _variables.scss — everything else is automatic:
+//
+//   $button-gradient-stop-1: <color>;   // left / start color
+//   $button-gradient-stop-2: <color>;   // right / end color
+//   $button-gradient-direction: <angle>; // optional, defaults to 90deg (LTR)
+//
+// When the stops are set to actual colors (anything other than `transparent`),
+// this file registers four @property custom properties and emits gradient
+// backgrounds on .chi-button that transition smoothly between states.
+//
+// Browser support: @property requires Chrome 85+, Safari 15.4+, Firefox 128+.
+// Older browsers still render the correct static colours — they simply won't
+// see the animated gradient transition (progressive enhancement).
+//
+// When neither stop is overridden (the default), the entire gradient code-path
+// is compiled away — non-gradient themes pay zero CSS cost.
+// ---------------------------------------------------------------------------
+$button-gradient-direction: 90deg !default;
+$button-gradient-stop-1: transparent !default;
+$button-gradient-stop-2: transparent !default;
+$button-icon-border-radius: null !default;
+$_uses-gradient: $button-gradient-stop-1 != transparent;
+
+// Compute alpha-0 variants of the stop colors for the "off" / transparent state.
+// This avoids the muddy rgba(0,0,0,0) → color interpolation that plain `transparent` causes.
+$_gradient-stop-1-off: if($_uses-gradient, rgba($button-gradient-stop-1, 0), transparent);
+$_gradient-stop-2-off: if($_uses-gradient, rgba($button-gradient-stop-2, 0), transparent);
+
+// Pre-built gradient stop tuples: (fill-1, fill-2, border-1, border-2).
+// "on"  → full gradient fill + gradient border
+// "off" → fully transparent (alpha-0 stops for clean color interpolation)
+$_gradient-on: ($button-gradient-stop-1, $button-gradient-stop-2, $button-gradient-stop-1, $button-gradient-stop-2);
+$_gradient-off: ($_gradient-stop-1-off, $_gradient-stop-2-off, $_gradient-stop-1-off, $_gradient-stop-2-off);
+
+@if $_uses-gradient {
+  // @at-root escapes the .chi { } scope in index.scss so @property lands at the stylesheet root.
+  @at-root {
+    @property --chi-button-gradient-fill-1 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-fill-2 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-border-1 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-border-2 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+  }
+}
+
+@mixin _chi-button-gradient-bg {
+  background:
+    linear-gradient(#{$button-gradient-direction}, var(--chi-button-gradient-fill-1), var(--chi-button-gradient-fill-2)) padding-box,
+    linear-gradient(#{$button-gradient-direction}, var(--chi-button-gradient-border-1), var(--chi-button-gradient-border-2)) border-box;
+}
+
+@mixin _chi-button-set-gradient-stops($fill-1, $fill-2, $border-1: $fill-1, $border-2: $fill-2) {
+  --chi-button-gradient-fill-1: #{$fill-1};
+  --chi-button-gradient-fill-2: #{$fill-2};
+  --chi-button-gradient-border-1: #{$border-1};
+  --chi-button-gradient-border-2: #{$border-2};
+}
+
+// Applies a gradient-stops tuple (fill-1, fill-2, border-1, border-2) to the custom properties.
+// The background itself only needs to be set once (on .chi-button) since it references these vars.
+@mixin _chi-button-gradient-state($stops) {
+  @include _chi-button-set-gradient-stops(nth($stops, 1), nth($stops, 2), nth($stops, 3), nth($stops, 4));
+}
+
 $button-colors: (
   primary: (
+    // Gradient state tuples — when uses-gradient is true, these drive the @property transition system
+    // and the background-color-* keys below are ignored for this color.
+    uses-gradient: $_uses-gradient,
+    gradient-base: $_gradient-on,
+    gradient-hover: $_gradient-off,
+    gradient-active: $_gradient-off,
+    gradient-outline: $_gradient-off,
+    gradient-outline-hover: $_gradient-on,
+    gradient-outline-active: $_gradient-on,
     background-color: $button-primary-solid-background-color,
     background-color-disabled: $button-primary-disabled-background-color,
     background-color-hover: $button-primary-solid-hover-background-color,
@@ -16,6 +112,9 @@ $button-colors: (
     border-color-disabled: $button-primary-disabled-border-color,
     border-color-hover: $button-primary-solid-hover-border-color,
     border-color-active: $button-primary-solid-active-border-color,
+    box-shadow: $button-primary-solid-box-shadow,
+    box-shadow-hover: $button-primary-solid-hover-box-shadow,
+    box-shadow-active: $button-primary-solid-active-box-shadow,
     border-color-outline: $button-primary-outline-border-color,
     border-color-outline-hover: $button-primary-outline-hover-border-color,
     border-color-outline-active: $button-primary-outline-active-border-color,
@@ -43,21 +142,31 @@ $button-colors: (
     border-color-disabled: $button-secondary-disabled-border-color,
     border-color-hover: $button-secondary-solid-hover-border-color,
     border-color-active: $button-secondary-solid-active-border-color,
+    box-shadow: $button-secondary-solid-box-shadow,
+    box-shadow-hover: $button-secondary-solid-hover-box-shadow,
+    box-shadow-active: $button-secondary-solid-active-box-shadow,
     border-color-outline: $button-secondary-outline-border-color,
     border-color-outline-hover: $button-secondary-outline-hover-border-color,
     border-color-outline-active: $button-secondary-outline-active-border-color,
     border-color-flat-hover: $button-secondary-flat-hover-border-color,
     border-color-flat-active: $button-secondary-flat-active-border-color,
     icon-color-disabled: $button-secondary-disabled-icon-color,
+    icon-color-outline-disabled: $button-secondary-outline-disabled-icon-color,
     text-color: $button-secondary-solid-text-color,
+    text-color-hover: $button-secondary-solid-hover-text-color,
+    text-color-active: $button-secondary-solid-active-text-color,
     text-color-disabled: $button-secondary-disabled-text-color,
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
     text-color-outline-active: $button-secondary-outline-active-text-color,
+    text-color-outline-disabled: $button-secondary-outline-disabled-text-color,
     text-color-flat: $button-secondary-flat-text-color,
+    background-color-outline-disabled: $button-secondary-outline-disabled-background-color,
+    border-color-outline-disabled: $button-secondary-outline-disabled-border-color,
   ),
   dark: (
     background-color: $button-dark-solid-background-color,
+    background-color-disabled: $button-dark-disabled-background-color,
     background-color-hover: $button-dark-solid-hover-background-color,
     background-color-active: $button-dark-solid-active-background-color,
     background-color-outline: $button-dark-outline-background-color,
@@ -66,14 +175,22 @@ $button-colors: (
     background-color-flat-hover: $button-dark-flat-hover-background-color,
     background-color-flat-active: $button-dark-flat-active-background-color,
     border-color: $button-dark-solid-border-color,
+    border-color-disabled: $button-dark-disabled-border-color,
     border-color-hover: $button-dark-solid-hover-border-color,
     border-color-active: $button-dark-solid-active-border-color,
+    box-shadow: $button-dark-solid-box-shadow,
+    box-shadow-hover: $button-dark-solid-hover-box-shadow,
+    box-shadow-active: $button-dark-solid-active-box-shadow,
     border-color-outline: $button-dark-outline-border-color,
     border-color-outline-hover: $button-dark-outline-hover-border-color,
     border-color-outline-active: $button-dark-outline-active-border-color,
     border-color-flat-hover: $button-dark-flat-hover-border-color,
     border-color-flat-active: $button-dark-flat-active-border-color,
     text-color: $button-dark-solid-text-color,
+    text-color-hover: $button-dark-solid-hover-text-color,
+    text-color-active: $button-dark-solid-active-text-color,
+    text-color-disabled: $button-dark-disabled-text-color,
+    icon-color-disabled: $button-dark-disabled-icon-color,
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
     text-color-outline-active: $button-dark-outline-active-text-color,
@@ -81,6 +198,7 @@ $button-colors: (
   ),
   danger: (
     background-color: $button-danger-solid-background-color,
+    background-color-disabled: $button-danger-disabled-background-color,
     background-color-hover: $button-danger-solid-hover-background-color,
     background-color-active: $button-danger-solid-active-background-color,
     background-color-outline: $button-danger-outline-background-color,
@@ -89,14 +207,22 @@ $button-colors: (
     background-color-flat-hover: $button-danger-flat-hover-background-color,
     background-color-flat-active: $button-danger-flat-active-background-color,
     border-color: $button-danger-solid-border-color,
+    border-color-disabled: $button-danger-disabled-border-color,
     border-color-hover: $button-danger-solid-hover-border-color,
     border-color-active: $button-danger-solid-active-border-color,
+    box-shadow: $button-danger-solid-box-shadow,
+    box-shadow-hover: $button-danger-solid-hover-box-shadow,
+    box-shadow-active: $button-danger-solid-active-box-shadow,
     border-color-outline: $button-danger-outline-border-color,
     border-color-outline-hover: $button-danger-outline-hover-border-color,
     border-color-outline-active: $button-danger-outline-active-border-color,
     border-color-flat-hover: $button-danger-flat-hover-border-color,
     border-color-flat-active: $button-danger-flat-active-border-color,
     text-color: $button-danger-solid-text-color,
+    text-color-hover: $button-danger-solid-hover-text-color,
+    text-color-active: $button-danger-solid-active-text-color,
+    text-color-disabled: $button-danger-disabled-text-color,
+    icon-color-disabled: $button-danger-disabled-icon-color,
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
     text-color-outline-active: $button-danger-outline-active-text-color,
@@ -104,6 +230,7 @@ $button-colors: (
   ),
   light: (
     background-color: $button-light-solid-background-color,
+    background-color-disabled: $button-light-disabled-background-color,
     background-color-hover: $button-light-solid-hover-background-color,
     background-color-active: $button-light-solid-active-background-color,
     background-color-outline: $button-light-outline-background-color,
@@ -112,18 +239,30 @@ $button-colors: (
     background-color-flat-hover: $button-light-flat-hover-background-color,
     background-color-flat-active: $button-light-flat-active-background-color,
     border-color: $button-light-solid-border-color,
+    border-color-disabled: $button-light-disabled-border-color,
     border-color-hover: $button-light-solid-hover-border-color,
-    border-color-active: $button-light-solid-border-color,
+    border-color-active: $button-light-solid-active-border-color,
+    box-shadow: $button-light-solid-box-shadow,
+    box-shadow-hover: $button-light-solid-hover-box-shadow,
+    box-shadow-active: $button-light-solid-active-box-shadow,
     border-color-outline: $button-light-outline-border-color,
     border-color-outline-hover: $button-light-outline-hover-border-color,
     border-color-outline-active: $button-light-outline-active-border-color,
     border-color-flat-hover: $button-light-flat-hover-border-color,
     border-color-flat-active: $button-light-flat-active-border-color,
+    icon-color-disabled: $button-light-disabled-icon-color,
+    icon-color-outline-disabled: $button-light-outline-disabled-icon-color,
     text-color: $button-light-solid-text-color,
+    text-color-hover: $button-light-solid-hover-text-color,
+    text-color-active: $button-light-solid-active-text-color,
+    text-color-disabled: $button-light-disabled-text-color,
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
     text-color-outline-active: $button-light-outline-active-text-color,
+    text-color-outline-disabled: $button-light-outline-disabled-text-color,
     text-color-flat: $button-light-flat-text-color,
+    background-color-outline-disabled: $button-light-outline-disabled-background-color,
+    border-color-outline-disabled: $button-light-outline-disabled-border-color,
   ),
 );
 
@@ -197,7 +336,12 @@ $sizes: (
 
 .chi-button {
   align-items: center;
-  background-color: $button-solid-background-color;
+  @if $_uses-gradient {
+    @include _chi-button-gradient-state($_gradient-off);
+    @include _chi-button-gradient-bg;
+  } @else {
+    background: $button-solid-background-color;
+  }
   border: $button-solid-border-width solid $button-solid-border-color;
   border-radius: $button-border-radius;
   box-shadow: $button-solid-box-shadow;
@@ -212,7 +356,13 @@ $sizes: (
   text-align: center;
   text-decoration: none;
   text-transform: $button-md-text-transform;
-  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in, scale 0.2s ease-in;
+  @if $_uses-gradient {
+    transition: --chi-button-gradient-fill-1 0.12s ease-in, --chi-button-gradient-fill-2 0.12s ease-in,
+                --chi-button-gradient-border-1 0.12s ease-in, --chi-button-gradient-border-2 0.12s ease-in,
+                background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in, scale 0.2s ease-in;
+  } @else {
+    transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in, scale 0.2s ease-in;
+  }
   vertical-align: middle;
   white-space: nowrap;
 
@@ -281,7 +431,11 @@ $sizes: (
 
   &:hover,
   &.-hover {
-    background-color: $button-solid-hover-background-color;
+    @if $_uses-gradient {
+      @include _chi-button-gradient-state($_gradient-on);
+    } @else {
+      background: $button-solid-hover-background-color;
+    }
     border: $button-solid-border-width solid $button-solid-hover-border-color;
     color: $button-solid-hover-text-color;
     scale: $button-solid-hover-scale;
@@ -302,7 +456,11 @@ $sizes: (
 
   &:active,
   &.-active {
-    background-color: $button-solid-active-background-color;
+    @if $_uses-gradient {
+      @include _chi-button-gradient-state($_gradient-on);
+    } @else {
+      background: $button-solid-active-background-color;
+    }
     border: $button-solid-border-width solid $button-solid-active-border-color;
     color: $button-solid-active-text-color;
     outline: none;
@@ -314,6 +472,12 @@ $sizes: (
 
   &.-icon {
     padding: $button-icon-md-padding;
+
+    @if $button-icon-border-radius {
+      &:not(.-fluid):not(.chi-dropdown__trigger) {
+        border-radius: $button-icon-border-radius;
+      }
+    }
   }
 
   &.-float {
@@ -353,7 +517,7 @@ $sizes: (
   }
 
   &.-close {
-    background-color: $button-close-background-color;
+    background: $button-close-background-color;
     border-color: transparent;
 
     &,
@@ -364,14 +528,14 @@ $sizes: (
     &:not(.-disabled):not([disabled]) {
       &:hover,
       &.-hover {
-        background-color: $button-close-hover-background-color;
+        background: $button-close-hover-background-color;
         box-shadow: none;
         opacity: $button-close-hover-icon-opacity;
       }
       
       &:active,
       &.-active {
-        background-color: $button-close-active-background-color;
+        background: $button-close-active-background-color;
         box-shadow: none;
       }
     }
@@ -383,26 +547,42 @@ $sizes: (
   }
 
   &.-outline {
-    background-color: $button-outline-background-color;
+    @if $_uses-gradient {
+      @include _chi-button-gradient-state($_gradient-off);
+    } @else {
+      background: $button-outline-background-color;
+    }
     border: $button-outline-border-width solid $button-outline-border-color;
 
     &:hover,
     &.-hover {
-      background-color: $button-outline-hover-background-color;
+      @if $_uses-gradient {
+        @include _chi-button-gradient-state($_gradient-on);
+      } @else {
+        background: $button-outline-hover-background-color;
+      }
       border-color: $button-outline-hover-border-color;
       color: $button-outline-hover-text-color;
     }
 
     &:active,
     &.-active {
-      background-color: $button-outline-active-background-color;
+      @if $_uses-gradient {
+        @include _chi-button-gradient-state($_gradient-on);
+      } @else {
+        background: $button-outline-active-background-color;
+      }
       border-color: $button-outline-active-border-color;
       color: $button-outline-active-text-color;
     }
 
     &[disabled],
     &.-disabled {
-      background-color: $button-outline-disabled-background-color;
+      @if $_uses-gradient {
+        @include _chi-button-gradient-state($_gradient-off);
+      } @else {
+        background: $button-outline-disabled-background-color;
+      }
       border-color: $button-outline-disabled-border-color;
       box-shadow: none;
       color: $button-outline-disabled-text-color;
@@ -417,7 +597,7 @@ $sizes: (
   }
 
   &.-flat {
-    background-color: $button-flat-background-color;
+    background: $button-flat-background-color;
     border: $button-flat-border-width solid $button-flat-border-color;
     box-shadow: none;
     color: $button-flat-text-color;
@@ -432,10 +612,19 @@ $sizes: (
 
     &:hover,
     &.-hover {
-      background-color: $button-flat-hover-background-color;
+      background: $button-flat-hover-background-color;
       border: $button-flat-border-width solid $button-flat-hover-border-color;
       box-shadow: none;
       color: $button-flat-hover-text-color;
+
+      @if $button-flat-hover-text-decoration {
+        text-decoration: $button-flat-hover-text-decoration;
+
+        &.chi-dropdown__trigger,
+        &.-icon {
+          text-decoration: none;
+        }
+      }
 
       .chi-button__content {
         & > .chi-icon,
@@ -448,9 +637,18 @@ $sizes: (
 
     &:active,
     &.-active {
-      background-color: $button-flat-active-background-color;
+      background: $button-flat-active-background-color;
       border: $button-flat-border-width solid $button-flat-active-border-color;
       color: $button-flat-active-text-color;
+
+      @if $button-flat-active-text-decoration {
+        text-decoration: $button-flat-active-text-decoration;
+
+        &.chi-dropdown__trigger,
+        &.-icon {
+          text-decoration: none;
+        }
+      }
 
       &:not(.chi-dropdown__trigger) {
         &.-icon {
@@ -471,7 +669,7 @@ $sizes: (
 
     &[disabled],
     &.-disabled {
-      background-color: $button-flat-disabled-background-color;
+      background: $button-flat-disabled-background-color;
       border-color: $button-flat-disabled-border-color;
       opacity: $button-flat-disabled-opacity;
       color: $button-flat-disabled-text-color;
@@ -487,7 +685,7 @@ $sizes: (
       &.-hover,
       &:active,
       &.-active {
-        background-color: transparent;
+        background: transparent;
         border-color: transparent;
         box-shadow: none;
         scale: 1;
@@ -502,10 +700,17 @@ $sizes: (
   }
 
   @each $color in map-keys($button-colors) {
+    $_color-data: map-get($button-colors, $color);
+    $_color-gradient: map-get($_color-data, uses-gradient);
+
     &.-#{$color} {
-      background-color: map-get(map-get($button-colors, $color), background-color);
+      @if $_color-gradient {
+        @include _chi-button-gradient-state(map-get($_color-data, gradient-base));
+      } @else {
+        background: map-get(map-get($button-colors, $color), background-color);
+      }
       border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color);
-      box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+      box-shadow: map-get(map-get($button-colors, $color), box-shadow);
       color: map-get(map-get($button-colors, $color), text-color);
 
       .chi-icon {
@@ -520,25 +725,35 @@ $sizes: (
 
       &:hover,
       &.-hover {
-        background-color: map-get(map-get($button-colors, $color), background-color-hover);
+        @if $_color-gradient {
+          @include _chi-button-gradient-state(map-get($_color-data, gradient-hover));
+        } @else {
+          background: map-get(map-get($button-colors, $color), background-color-hover);
+        }
         border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color-hover);
-        box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
-        color: map-get(map-get($button-colors, $color), text-color);
+        box-shadow: map-get(map-get($button-colors, $color), box-shadow-hover);
+        $text-hover: map-get(map-get($button-colors, $color), text-color-hover);
+        color: if($text-hover, $text-hover, map-get(map-get($button-colors, $color), text-color));
       }
 
       &:active,
       &.-active {
-        background-color: map-get(map-get($button-colors, $color), background-color-active);
+        @if $_color-gradient {
+          @include _chi-button-gradient-state(map-get($_color-data, gradient-active));
+        } @else {
+          background: map-get(map-get($button-colors, $color), background-color-active);
+        }
         border: $button-solid-border-width solid map-get(map-get($button-colors, $color), border-color-active);
-        box-shadow: none;
-        color: map-get(map-get($button-colors, $color), text-color);
+        box-shadow: map-get(map-get($button-colors, $color), box-shadow-active);
+        $text-active: map-get(map-get($button-colors, $color), text-color-active);
+        color: if($text-active, $text-active, map-get(map-get($button-colors, $color), text-color));
       }
 
       &[disabled],
       &.-disabled {
         @include button-disabled;
 
-        background-color: map-get(map-get($button-colors, $color), background-color-disabled);
+        background: map-get(map-get($button-colors, $color), background-color-disabled);
         border-color: map-get(map-get($button-colors, $color), border-color-disabled);
         color: map-get(map-get($button-colors, $color), text-color-disabled);
 
@@ -549,7 +764,11 @@ $sizes: (
       }
 
       &.-outline {
-        background-color: map-get(map-get($button-colors, $color), background-color-outline);
+        @if $_color-gradient {
+          @include _chi-button-gradient-state(map-get($_color-data, gradient-outline));
+        } @else {
+          background: map-get(map-get($button-colors, $color), background-color-outline);
+        }
         border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline);
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-outline);
@@ -563,7 +782,11 @@ $sizes: (
         &:hover,
         &.-hover {
           // sass-lint:disable-block max-line-length
-          background-color: map-get(map-get($button-colors, $color), background-color-outline-hover);
+          @if $_color-gradient {
+            @include _chi-button-gradient-state(map-get($_color-data, gradient-outline-hover));
+          } @else {
+            background: map-get(map-get($button-colors, $color), background-color-outline-hover);
+          }
           border: $button-outline-border-width
             solid
             map-get(map-get($button-colors, $color), border-color-outline-hover);
@@ -573,7 +796,11 @@ $sizes: (
         &:active,
         &.-active {
           // sass-lint:disable-block max-line-length
-          background-color: map-get(map-get($button-colors, $color), background-color-outline-active);
+          @if $_color-gradient {
+            @include _chi-button-gradient-state(map-get($_color-data, gradient-outline-active));
+          } @else {
+            background: map-get(map-get($button-colors, $color), background-color-outline-active);
+          }
           border: $button-outline-border-width
             solid
             map-get(map-get($button-colors, $color), border-color-outline-active);
@@ -583,11 +810,35 @@ $sizes: (
         &[disabled],
         &.-disabled {
           @include button-disabled;
+
+          $outline-disabled-bg: map-get(map-get($button-colors, $color), background-color-outline-disabled);
+          $outline-disabled-border: map-get(map-get($button-colors, $color), border-color-outline-disabled);
+          $outline-disabled-text: map-get(map-get($button-colors, $color), text-color-outline-disabled);
+          $outline-disabled-icon: map-get(map-get($button-colors, $color), icon-color-outline-disabled);
+
+          @if $outline-disabled-bg {
+            background: $outline-disabled-bg;
+          }
+
+          @if $outline-disabled-border {
+            border-color: $outline-disabled-border;
+          }
+
+          @if $outline-disabled-text {
+            color: $outline-disabled-text;
+          }
+
+          @if $outline-disabled-icon {
+            & .chi-icon {
+              color: $outline-disabled-icon;
+              opacity: $opacity-100;
+            }
+          }
         }
       }
 
       &.-flat {
-        background-color: $button-flat-background-color;
+        background: $button-flat-background-color;
         border: $button-flat-border-width solid transparent;
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-flat);
@@ -595,13 +846,13 @@ $sizes: (
         &:not(.-no-hover) {
           &:hover,
           &.-hover {
-            background-color: map-get(map-get($button-colors, $color), background-color-flat-hover);
+            background: map-get(map-get($button-colors, $color), background-color-flat-hover);
             border: $button-flat-border-width solid map-get(map-get($button-colors, $color), border-color-flat-hover);
           }
 
           &:active,
           &.-active {
-            background-color: map-get(map-get($button-colors, $color), background-color-flat-active);
+            background: map-get(map-get($button-colors, $color), background-color-flat-active);
             border: $button-flat-border-width solid map-get(map-get($button-colors, $color), border-color-flat-active);
             box-shadow: none;
           }
@@ -609,7 +860,7 @@ $sizes: (
 
         &[disabled],
         &.-disabled {
-          background-color: transparent;
+          background: transparent;
           border-color: transparent;
           opacity: $opacity-60;
           color: map-get(map-get($button-colors, $color), text-color-flat-disabled);
@@ -635,7 +886,7 @@ $sizes: (
         &.-disabled {
           @include button-disabled;
 
-          background-color: $button-float-disabled-background-color;
+          background: $button-float-disabled-background-color;
           border-color: $button-float-disabled-border-color;
 
           & .chi-icon {
@@ -645,4 +896,5 @@ $sizes: (
       }
     }
   }
+
 }
