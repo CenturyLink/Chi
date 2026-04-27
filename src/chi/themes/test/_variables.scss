@@ -2567,6 +2567,7 @@ $tabs-inverse-item-active-border-color: $color-teal-bright-50;
 $tabs-inverse-item-active-text-color: $color-text-white;
 $tabs-inverse-item-hover-text-color: $color-text-white;
 $tabs-inverse-item-hover-background-color: transparent;
+$tabs-inverse-solid-background-color: transparent;
 
 $tabs-horizontal-border-bottom-width: 0.0625rem;
 $tabs-horizontal-border-bottom: 0.0625rem solid $color-border-base;
@@ -2620,6 +2621,8 @@ $tabs-solid-box-shadow: none;
 $tabs-solid-deprecated-border-display: block;
 $tabs-solid-gap: 0;
 $tabs-solid-horizontal-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-20;
+$tabs-solid-horizontal-item-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-20;
+$tabs-inverse-solid-horizontal-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-80;
 $tabs-solid-horizontal-md-active-border-width: 0.25rem;
 $tabs-solid-horizontal-sm-active-border-width: 0.125rem;
 $tabs-solid-horizontal-xs-active-border-width: 0.125rem;

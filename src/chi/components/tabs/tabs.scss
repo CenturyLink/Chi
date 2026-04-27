@@ -7,7 +7,10 @@ $tabs-solid-horizontal-xs-active-border-width: $tabs-solid-horizontal-md-active-
 $tabs-solid-horizontal-sm-active-border-width: $tabs-solid-horizontal-md-active-border-width !default;
 $tabs-solid-horizontal-lg-active-border-width: $tabs-solid-horizontal-md-active-border-width !default;
 $tabs-solid-border-border-color: $color-border-base !default;
+$tabs-solid-border-item-box-shadow: inset 0 -0.0625rem 0 0 $tabs-solid-border-border-color !default;
 $tabs-solid-inverse-border-border-color: $color-grey-80 !default;
+$tabs-solid-horizontal-item-box-shadow: none !default;
+$tabs-inverse-solid-horizontal-box-shadow: $tabs-solid-horizontal-box-shadow !default;
 $tabs-inverse-solid-background-color: $color-grey-100 !default;
 $tabs-solid-vertical-active-box-shadow: inset 0.125rem 0 0 $tabs-solid-active-border-color !default;
 $tabs-inverse-solid-vertical-active-box-shadow: inset 0.125rem 0 0 $tabs-inverse-item-active-border-color !default;
@@ -232,6 +235,7 @@ $tab-horizontal-solid-sizes: (
       & > a {
         border-bottom-width: $tabs-solid-border-bottom-width;
         border-top-left-radius: $tabs-solid-border-top-radius;
+        box-shadow: $tabs-solid-horizontal-item-box-shadow;
         padding: $tabs-solid-horizontal-padding;
 
         &:active,
@@ -569,6 +573,10 @@ $tab-horizontal-solid-sizes: (
       &:not(.-inverse) {
         &.-border {
           box-shadow: inset 0 -0.0625rem 0 0 $tabs-solid-border-border-color;
+
+          & > li:not(.-active) > a {
+            box-shadow: $tabs-solid-border-item-box-shadow;
+          }
         }
       }
     }
@@ -1049,8 +1057,12 @@ $tab-horizontal-solid-sizes: (
         box-shadow: inset 0.125rem 0 0 $tabs-inverse-item-active-border-color;
       }
 
-      &.-solid:not(.-sliding) > li.-active:not(.-has-active) > a {
-        box-shadow: $tabs-inverse-solid-vertical-active-box-shadow;
+      &.-solid {
+        box-shadow: none;
+
+        &:not(.-sliding) > li.-active:not(.-has-active) > a {
+          box-shadow: $tabs-inverse-solid-vertical-active-box-shadow;
+        }
       }
 
       // Subtab active border — requires .-animated on parent .chi-tabs
@@ -1082,6 +1094,12 @@ $tab-horizontal-solid-sizes: (
         }
       }
 
+      &.-solid.-border {
+        > li > a {
+          box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
+        }
+      }
+
       .chi-tabs__subtabs {
         & > li {
           &.-active > a {
@@ -1109,9 +1127,13 @@ $tab-horizontal-solid-sizes: (
       }
 
       &.-solid {
-        box-shadow: $tabs-solid-horizontal-box-shadow;
+        box-shadow: $tabs-inverse-solid-horizontal-box-shadow;
 
         & > li {
+          & > a {
+            box-shadow: none;
+          }
+
           &.-active > a {
             box-shadow: none;
 
