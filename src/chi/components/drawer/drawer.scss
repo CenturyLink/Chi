@@ -164,7 +164,7 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
-  .-close:not(.chi-drawer__content *) {
+  .-close:not(.chi-drawer__content *):not(.chi-drawer__header-actions *) {
     position: fixed;
     right: $drawer-button-close-right;
     top: $drawer-button-close-top;
@@ -188,13 +188,6 @@ $animation-duration: 0.5s;
     gap: 0.75rem;
     margin-left: auto;
     z-index: 51;
-  }
-
-  & > &__header-actions {
-    position: absolute;
-    right: $drawer-button-close-right;
-    top: $drawer-button-close-top;
-    transform: none;
   }
 
   &__compact-title {
