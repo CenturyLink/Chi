@@ -171,6 +171,56 @@ $animation-duration: 0.5s;
     z-index: 50;
   }
 
+  &__header-main {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__header-actions {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    gap: 0.75rem;
+    margin-left: auto;
+    z-index: 51;
+  }
+
+  & > &__header-actions {
+    position: absolute;
+    right: $drawer-button-close-right;
+    top: $drawer-button-close-top;
+    transform: none;
+  }
+
+  &__compact-title {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.5rem;
+    max-width: 100%;
+    min-height: 2.5rem;
+  }
+
+  &__title-group {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  &__title-icon {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    line-height: 0;
+  }
+
   &__header {
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
