@@ -1096,11 +1096,6 @@ $tab-horizontal-solid-sizes: (
         }
       }
 
-      &.-solid.-border {
-        > li > a {
-          box-shadow: $tabs-solid-inverse-border-item-box-shadow;
-        }
-      }
 
       .chi-tabs__subtabs {
         & > li {
