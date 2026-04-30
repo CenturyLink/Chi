@@ -174,44 +174,19 @@ $animation-duration: 0.5s;
   &__header-main {
     align-items: center;
     display: flex;
-    flex-direction: row;
-    gap: 0.75rem;
-    min-width: 0;
-    width: 100%;
+    gap: 0.625rem;
   }
 
   &__header-actions {
     align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-shrink: 0;
-    gap: 0.75rem;
-    margin-left: auto;
-    z-index: 51;
-  }
-
-  &__compact-title {
-    align-items: center;
-    display: inline-flex;
-    gap: 0.5rem;
-    max-width: 100%;
-    min-height: 2.5rem;
   }
 
   &__title-group {
     align-items: center;
     display: flex;
     flex: 1 1 auto;
-    flex-wrap: wrap;
     gap: 0.5rem;
-    min-width: 0;
-  }
-
-  &__title-icon {
-    align-items: center;
-    display: inline-flex;
-    flex-shrink: 0;
-    line-height: 0;
   }
 
   &__header {
@@ -224,7 +199,8 @@ $animation-duration: 0.5s;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
-
+    border-bottom: 1px solid $color-grey-30;
+    
     .-close {
       .chi-icon {
         color: $drawer-header-close-icon-color;
