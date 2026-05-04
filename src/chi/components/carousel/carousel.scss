@@ -67,6 +67,12 @@
     }
   }
 
+  &.-fade {
+    .chi-carousel__item:not(.-visible) {
+      opacity: 0.4;
+    }
+  }
+
   &__dots {
     display: flex;
     justify-content: center;

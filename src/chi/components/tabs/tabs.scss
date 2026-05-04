@@ -13,7 +13,7 @@
     & > li {
       &.-active {
         & > a {
-          color: $color-text-primary;
+          color: $tabs-active-text-color;
           font-weight: $font-weight-semi-bold;
         }
       }
@@ -28,7 +28,7 @@
         text-decoration: none;
 
         &:hover {
-          color: $color-text-primary;
+          color: $tabs-hover-text-color;
         }
       }
     }
@@ -296,7 +296,7 @@
             .chi-tabs_item {
               background-color: $color-background-primary-light;
               box-shadow: inset 0.125rem 0 0 $color-border-primary;
-              color: $color-text-primary;
+              color: $tabs-active-text-color;
 
               .chi-button {
                 &.-icon {
@@ -312,7 +312,7 @@
 
       &.-active {
         .chi-tabs_item {
-          color: $color-text-primary;
+          color: $tabs-active-text-color;
 
           > .chi-icon {
             left: 1rem;
@@ -452,7 +452,7 @@
     & > li {
       &.-active {
         .chi-icon {
-          color: $color-text-primary;
+          color: $tabs-active-text-color;
         }
       }
     }
@@ -511,7 +511,7 @@
                       &:not(.-danger) {
                         background-color: transparent;
                         box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
-                        color: $color-text-primary;
+                        color: $tabs-active-text-color;
 
                         &:hover,
                         &:active,
@@ -525,6 +525,76 @@
                 }
               }
             }
+          }
+
+          &:not(.-active) > a:hover {
+            box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $tabs-horizontal-item-hover-border-color;
+          }
+        }
+
+        &.-xs > li {
+          &.-active > a {
+            box-shadow: $tabs-horizontal-xs-active-box-shadow;
+
+            &.chi-dropdown__trigger {
+              &:not(.-primary) {
+                &:not(.-secondary) {
+                  &:not(.-dark) {
+                    &:not(.-light) {
+                      &:not(.-danger) {
+                        box-shadow: $tabs-horizontal-xs-active-box-shadow;
+
+                        &:hover,
+                        &:active,
+                        &.-active {
+                          box-shadow: $tabs-horizontal-xs-active-box-shadow;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &:not(.-active) > a:hover {
+            box-shadow: inset 0 (-$tabs-solid-horizontal-xs-active-border-width) 0 $tabs-horizontal-item-hover-border-color;
+          }
+        }
+
+        &.-sm > li {
+          &.-active > a {
+            box-shadow: $tabs-horizontal-sm-active-box-shadow;
+
+            &.chi-dropdown__trigger {
+              &:not(.-primary) {
+                &:not(.-secondary) {
+                  &:not(.-dark) {
+                    &:not(.-light) {
+                      &:not(.-danger) {
+                        box-shadow: $tabs-horizontal-sm-active-box-shadow;
+
+                        &:hover,
+                        &:active,
+                        &.-active {
+                          box-shadow: $tabs-horizontal-sm-active-box-shadow;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &:not(.-active) > a:hover {
+            box-shadow: inset 0 (-$tabs-solid-horizontal-sm-active-border-width) 0 $tabs-horizontal-item-hover-border-color;
+          }
+        }
+
+        &.-lg > li {
+          &:not(.-active) > a:hover {
+            box-shadow: inset 0 (-$tabs-solid-horizontal-lg-active-border-width) 0 $tabs-horizontal-item-hover-border-color;
           }
         }
       }
@@ -586,6 +656,10 @@
           }
         }
       }
+
+      &.chi-sliding-border {
+        height: $tabs-solid-horizontal-xs-active-border-width;
+      }
     }
   }
 
@@ -606,6 +680,10 @@
             top: $tabs-horizontal-sm-trigger-icon-top;
           }
         }
+      }
+
+      &.chi-sliding-border {
+        height: $tabs-solid-horizontal-sm-active-border-width;
       }
     }
   }
@@ -685,6 +763,13 @@
           }
         }
       }
+
+      &:not(.-active) > a:hover {
+        &::before {
+          background: $tabs-solid-item-hover-border-color;
+          height: $tabs-solid-horizontal-md-active-border-width;
+        }
+      }
     }
 
     &,
@@ -720,6 +805,22 @@
           }
         }
       }
+
+      & > li {
+        &.-active {
+          & > a {
+            &::before {
+              height: $tabs-solid-horizontal-xs-active-border-width;
+            }
+          }
+        }
+
+        &:not(.-active) > a:hover {
+          &::before {
+            height: $tabs-solid-horizontal-xs-active-border-width;
+          }
+        }
+      }
     }
 
     &.-sm {
@@ -732,6 +833,22 @@
               right: 1rem;
               top: $tabs-horizontal-sm-trigger-icon-top;
             }
+          }
+        }
+      }
+
+      & > li {
+        &.-active {
+          & > a {
+            &::before {
+              height: $tabs-solid-horizontal-sm-active-border-width;
+            }
+          }
+        }
+
+        &:not(.-active) > a:hover {
+          &::before {
+            height: $tabs-solid-horizontal-sm-active-border-width;
           }
         }
       }
@@ -759,6 +876,12 @@
             &::before {
               height: $tabs-solid-horizontal-lg-active-border-width;
             }
+          }
+        }
+
+        &:not(.-active) > a:hover {
+          &::before {
+            height: $tabs-solid-horizontal-lg-active-border-width;
           }
         }
       }
@@ -803,7 +926,7 @@
     display: inline-block;
 
     &.-active > a {
-      color: $color-text-primary;
+      color: $tabs-active-text-color;
     }
 
     &.-disabled {
@@ -825,7 +948,7 @@
       text-decoration: none;
 
       &:hover {
-        color: $color-text-primary;
+        color: $tabs-hover-text-color;
       }
     }
 
@@ -901,12 +1024,44 @@
       }
     }
 
-    &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
-      &.-active > a {
-        box-shadow: inset 0 -0.125rem 0 0 $tabs-inverse-item-active-border-color;
+    &:not(.-vertical):not(.-responsive):not(.-sliding):not(.-solid) {
+      & > li {
+        &.-active > a {
+          box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 0 $tabs-inverse-item-active-border-color;
 
-        .chi-icon {
-          color: $tabs-inverse-item-active-text-color;
+          .chi-icon {
+            color: $tabs-inverse-item-active-text-color;
+          }
+        }
+
+        &:not(.-active) > a:hover {
+          box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 0 $tabs-horizontal-item-inverse-hover-border-color;
+        }
+      }
+
+      &.-xs > li {
+        &.-active > a {
+          box-shadow: $tabs-inverse-horizontal-xs-active-box-shadow;
+        }
+
+        &:not(.-active) > a:hover {
+          box-shadow: inset 0 (-$tabs-solid-horizontal-xs-active-border-width) 0 0 $tabs-horizontal-item-inverse-hover-border-color;
+        }
+      }
+
+      &.-sm > li {
+        &.-active > a {
+          box-shadow: $tabs-inverse-horizontal-sm-active-box-shadow;
+        }
+
+        &:not(.-active) > a:hover {
+          box-shadow: inset 0 (-$tabs-solid-horizontal-sm-active-border-width) 0 0 $tabs-horizontal-item-inverse-hover-border-color;
+        }
+      }
+
+      &.-lg > li {
+        &:not(.-active) > a:hover {
+          box-shadow: inset 0 (-$tabs-solid-horizontal-lg-active-border-width) 0 0 $tabs-horizontal-item-inverse-hover-border-color;
         }
       }
     }
@@ -974,6 +1129,8 @@
       }
 
       &.-solid {
+        box-shadow: $tabs-inverse-solid-box-shadow;
+
         & > li {
           &.-active {
             & > a {
@@ -987,6 +1144,8 @@
         }
 
         &.-border {
+          box-shadow: $tabs-inverse-solid-border-box-shadow;
+
           & > li {
             &:not(.-active) {
               & > a {
@@ -1029,7 +1188,7 @@
               &:not(.-light) {
                 &:not(.-danger) {
                   background-color: $color-background-primary-light;
-                  color: $color-text-primary;
+                  color: $tabs-active-text-color;
                 }
               }
             }
@@ -1101,6 +1260,19 @@
         & > li {
           & > a {
             color: $color-text-white;
+
+            &:hover {
+              background-color: transparent;
+              color: $color-text-white;
+            }
+          }
+
+          &.-active {
+            & > a {
+              &:hover {
+                background-color: transparent;
+              }
+            }
           }
         }
       }

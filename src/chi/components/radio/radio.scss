@@ -3,7 +3,7 @@
 
 .chi-radio {
   display: flex;
-  line-height: $line-height-base;
+  line-height: $radio-line-height;
   position: relative;
 
   .chi-radio__input {
@@ -92,39 +92,39 @@
       display: inline-flex;
       font-size: $font-size-base;
       font-weight: $font-weight-normal;
-      line-height: $line-height-base;
+      line-height: $radio-label-line-height;
       margin: 0;
-      min-height: 1.25rem;
-      padding-left: 1.5rem;
+      min-height: $radio-label-min-height;
+      padding-left: $radio-label-padding-left;
       position: relative;
 
       &::before {
         background-color: $radio-background-color;
         border: $radio-border;
-        border-radius: 0.5rem;
+        border-radius: $radio-border-radius;
         content: '';
         cursor: pointer;
         display: block;
-        height: 1rem;
+        height: $radio-size;
         left: 0;
         position: absolute;
         top: $radio-label-before-top;
         transition: background-color 0.2s ease-in-out;
-        width: 1rem;
+        width: $radio-size;
       }
 
       &::after {
         background-color: $radio-icon-color;
-        border-radius: 0.5rem;
+        border-radius: $radio-dot-border-radius;
         content: '';
         display: block;
-        height: 0.375rem;
-        left: 0.3125rem;
+        height: $radio-dot-size;
+        left: $radio-dot-left;
         position: absolute;
         top: $radio-label-after-top;
         transform: scale(0);
         transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-        width: 0.375rem;
+        width: $radio-dot-size;
       }
 
       &:active {

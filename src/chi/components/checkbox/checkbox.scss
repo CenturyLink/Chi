@@ -21,10 +21,10 @@
       display: inline-flex;
       font-size: $font-size-base;
       font-weight: $font-weight-normal;
-      line-height: $line-height-base;
+      line-height: $checkbox-label-line-height;
       margin: 0;
       min-height: 1.25rem;
-      padding-left: 1.5rem;
+      padding-left: $checkbox-label-padding-left;
       position: relative;
 
       &::before {
@@ -33,25 +33,29 @@
         border-radius: $checkbox-border-radius;
         content: '';
         display: block;
-        height: 1rem;
+        height: $checkbox-size;
         left: 0;
         position: absolute;
         top: $checkbox-label-before-top;
         transition: background-color 0.2s ease-in-out;
-        width: 1rem;
+        width: $checkbox-size;
       }
 
       &::after {
-        background-image: url('icon-check--hover.svg');
-        content: '';
+        background-image: $checkbox-icon-background-image;
+        color: $checkbox-icon-color;
+        content: $checkbox-icon-content;
         display: block;
-        height: 0.625rem;
-        left: 0.1875rem;
+        font-family: $checkbox-icon-font-family;
+        font-size: $checkbox-icon-font-size;
+        height: $checkbox-icon-height;
+        left: $checkbox-icon-left;
+        line-height: $checkbox-icon-line-height;
         position: absolute;
         top: $checkbox-label-after-top;
         transform: scale(0);
-        transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
-        width: 0.625rem;
+        transition: $checkbox-icon-transition;
+        width: $checkbox-icon-width;
       }
 
       &:hover,
@@ -88,7 +92,8 @@
         }
 
         &::after {
-          background-image: url('icon-check.svg');
+          background-image: $checkbox-checked-icon-background-image;
+          color: $checkbox-checked-icon-color;
           transform: scale(1);
         }
 
@@ -107,6 +112,10 @@
           &::before {
             background-color: $checkbox-checked-background-color-disabled;
             border-color: $checkbox-checked-border-color-disabled;
+          }
+
+          &::after {
+            color: $checkbox-checked-icon-color-disabled;
           }
         }
       }
@@ -143,10 +152,13 @@
 
         &::after {
           background: $checkbox-checked-icon-color;
-          height: 0.125rem;
+          content: '';
+          font-family: initial;
+          height: $checkbox-indeterminate-height;
+          left: $checkbox-indeterminate-left;
           top: $checkbox-label-indeterminate-after-top;
           transform: scale(1);
-          width: 0.625rem;
+          width: $checkbox-indeterminate-width;
         }
 
         &:hover,

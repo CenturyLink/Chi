@@ -33,6 +33,7 @@
       background-color: $toggle-switch-background-color;
       border: 0;
       border-radius: 0.75rem;
+      box-shadow: $toggle-switch-box-shadow;
       cursor: pointer;
       display: inline-block;
       height: 1.5rem;
@@ -112,7 +113,7 @@
       & + .chi-switch__content {
         .chi-switch__thumb {
           outline: 0.125rem solid $toggle-switch-focus-color;
-          outline-offset: 0.0625rem;
+          outline-offset: $toggle-switch-focus-offset;
         }
       }
     }

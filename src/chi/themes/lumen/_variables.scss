@@ -362,12 +362,15 @@ $border-radius-rounded-pill: 10rem;
 $color-semantic: (
   success: (
     border-color: $color-border-success,
+    hover-box-shadow: null,
   ),
   warning: (
     border-color: $color-border-warning,
+    hover-box-shadow: null,
   ),
   danger: (
     border-color: $color-border-danger,
+    hover-box-shadow: null,
   ),
 );
 
@@ -719,6 +722,7 @@ $bulk-actions-results-font-size: $font-size-md;
 
 // Button
 $button-border-radius: 2rem;
+$button-icon-border-radius: null;
 $button-font-weight: $font-weight-bold;
 $button-solid-background-color: transparent;
 $button-solid-border-color: $color-teal-100;
@@ -766,9 +770,11 @@ $button-flat-hover-background-color: transparent;
 $button-flat-hover-border-color: transparent;
 $button-flat-hover-icon-opacity: $opacity-100;
 $button-flat-hover-text-color: $button-solid-text-color;
+$button-flat-hover-text-decoration: null;
 $button-flat-active-background-color: transparent;
 $button-flat-active-border-color: transparent;
 $button-flat-active-text-color: $button-solid-text-color;
+$button-flat-active-text-decoration: null;
 $button-flat-focus-background-color: transparent;
 $button-flat-focus-border-color: transparent;
 $button-flat-focus-outline: $focus-color;
@@ -794,6 +800,9 @@ $button-close-disabled-border-color: $color-border-base-dark;
 $button-primary-solid-background-color: $color-red-50;
 $button-primary-solid-border-color: transparent;
 $button-primary-solid-border-radius: 0 2rem 2rem 2rem;
+$button-primary-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$button-primary-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
+$button-primary-solid-active-box-shadow: none;
 $button-primary-solid-text-color: $color-text-white;
 $button-primary-solid-hover-background-color: $color-red-50;
 $button-primary-solid-hover-border-color: transparent;
@@ -831,7 +840,12 @@ $button-secondary-disabled-text-color: null;
 $button-secondary-solid-background-color: $color-teal-25;
 $button-secondary-solid-border-color: transparent;
 $button-secondary-solid-border-radius: $button-border-radius;
+$button-secondary-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$button-secondary-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
+$button-secondary-solid-active-box-shadow: none;
 $button-secondary-solid-text-color: $color-teal-100;
+$button-secondary-solid-hover-text-color: null;
+$button-secondary-solid-active-text-color: null;
 $button-secondary-solid-hover-background-color: $color-teal-25;
 $button-secondary-solid-hover-border-color: transparent;
 $button-secondary-solid-active-background-color: $color-teal-25;
@@ -846,6 +860,10 @@ $button-secondary-outline-hover-border-color: $color-teal-25;
 $button-secondary-outline-active-border-color: $color-teal-25;
 $button-secondary-outline-hover-background-color: $color-background-white;
 $button-secondary-outline-active-background-color: $color-background-white;
+$button-secondary-outline-disabled-background-color: null;
+$button-secondary-outline-disabled-border-color: null;
+$button-secondary-outline-disabled-text-color: null;
+$button-secondary-outline-disabled-icon-color: null;
 $button-secondary-flat-text-color: $color-teal-25;
 $button-secondary-flat-hover-text-color: $color-teal-25;
 $button-secondary-flat-active-text-color: $color-teal-25;
@@ -854,10 +872,19 @@ $button-secondary-flat-active-border-color: transparent;
 $button-secondary-flat-hover-background-color: transparent;
 $button-secondary-flat-active-background-color: transparent;
 
+$button-dark-disabled-background-color: null;
+$button-dark-disabled-border-color: null;
+$button-dark-disabled-text-color: null;
+$button-dark-disabled-icon-color: null;
 $button-dark-solid-background-color: $color-teal-100;
 $button-dark-solid-border-color: transparent;
 $button-dark-solid-border-radius: $button-border-radius;
+$button-dark-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$button-dark-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
+$button-dark-solid-active-box-shadow: none;
 $button-dark-solid-text-color: $color-text-white;
+$button-dark-solid-hover-text-color: null;
+$button-dark-solid-active-text-color: null;
 $button-dark-solid-hover-background-color: $color-teal-90;
 $button-dark-solid-hover-border-color: transparent;
 $button-dark-solid-active-background-color: $color-teal-100;
@@ -880,10 +907,19 @@ $button-dark-flat-active-border-color: transparent;
 $button-dark-flat-hover-background-color: transparent;
 $button-dark-flat-active-background-color: transparent;
 
+$button-danger-disabled-background-color: null;
+$button-danger-disabled-border-color: null;
+$button-danger-disabled-text-color: null;
+$button-danger-disabled-icon-color: null;
 $button-danger-solid-background-color: $color-background-danger;
 $button-danger-solid-border-color: transparent;
 $button-danger-solid-border-radius: $button-border-radius;
+$button-danger-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$button-danger-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
+$button-danger-solid-active-box-shadow: none;
 $button-danger-solid-text-color: $color-text-white;
+$button-danger-solid-hover-text-color: null;
+$button-danger-solid-active-text-color: null;
 $button-danger-solid-hover-background-color: $color-background-danger-dark;
 $button-danger-solid-hover-border-color: transparent;
 $button-danger-solid-active-background-color: $color-background-danger-darker;
@@ -906,10 +942,19 @@ $button-danger-flat-active-border-color: transparent;
 $button-danger-flat-hover-background-color: transparent;
 $button-danger-flat-active-background-color: transparent;
 
+$button-light-disabled-background-color: null;
+$button-light-disabled-border-color: null;
+$button-light-disabled-icon-color: null;
+$button-light-disabled-text-color: null;
 $button-light-solid-background-color: $color-background-white;
 $button-light-solid-border-color: transparent;
 $button-light-solid-border-radius: $button-border-radius;
+$button-light-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$button-light-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
+$button-light-solid-active-box-shadow: none;
 $button-light-solid-text-color: $color-text-base;
+$button-light-solid-hover-text-color: null;
+$button-light-solid-active-text-color: null;
 $button-light-solid-hover-background-color: $color-grey-20;
 $button-light-solid-hover-border-color: transparent;
 $button-light-solid-active-background-color: $color-background-muted;
@@ -924,6 +969,10 @@ $button-light-outline-hover-border-color: $color-border-base;
 $button-light-outline-active-border-color: $color-grey-40;
 $button-light-outline-hover-background-color: transparent;
 $button-light-outline-active-background-color: transparent;
+$button-light-outline-disabled-background-color: null;
+$button-light-outline-disabled-border-color: null;
+$button-light-outline-disabled-text-color: null;
+$button-light-outline-disabled-icon-color: null;
 $button-light-flat-text-color: $color-text-white;
 $button-light-flat-hover-text-color: $color-grey-25;
 $button-light-flat-active-text-color: $color-grey-40;
@@ -1188,6 +1237,25 @@ $checkbox-label-danger-text-color: $color-text-base;
 $checkbox-label-before-top: 0.25rem;
 $checkbox-label-after-top: 0.4375rem;
 $checkbox-label-indeterminate-after-top: 0.6875rem !important;
+
+$checkbox-size: 1rem;
+$checkbox-label-padding-left: 1.5rem;
+$checkbox-icon-height: 0.625rem;
+$checkbox-icon-width: 0.625rem;
+$checkbox-icon-left: 0.1875rem;
+$checkbox-indeterminate-height: 0.125rem;
+$checkbox-indeterminate-width: 0.625rem;
+$checkbox-indeterminate-left: 0.1875rem;
+$checkbox-label-line-height: $line-height-base;
+$checkbox-icon-content: '';
+$checkbox-icon-font-size: inherit;
+$checkbox-icon-color: inherit;
+$checkbox-icon-background-image: url('icon-check--hover.svg');
+$checkbox-icon-font-family: inherit;
+$checkbox-icon-line-height: inherit;
+$checkbox-icon-transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
+$checkbox-checked-icon-background-image: url('icon-check.svg');
+$checkbox-checked-icon-color-disabled: $checkbox-checked-icon-color;
 
 // Customize panel
 $customize-panel-empty-content-align-items: center;
@@ -1761,6 +1829,7 @@ $modal-header-min-height: 3.5rem;
 $modal-header-padding: 1rem;
 $modal-title-font-size: $font-size-lg;
 $modal-title-font-weight: $font-weight-bold;
+$modal-title-line-height: $line-height-lg;
 $modal-content-padding: 1.5rem;
 $modal-footer-box-shadow: none;
 $modal-footer-min-height: 4rem;
@@ -1995,6 +2064,37 @@ $picker-lg-item-description-font-size: $font-size-md;
 $picker-lg-item-description-line-height: $line-height-md;
 $picker-lg-item-description-margin: 0 0 0 2rem;
 $picker-lg-item-description-padding: 0.5rem 0 0;
+$picker-border-width: 0.0625rem;
+$picker-checkbox-size: 1rem;
+$picker-checkbox-border-width: 0.0625rem;
+$picker-checkbox-border-radius: 0;
+$picker-checkbox-checkmark-border-width: 0.125rem;
+$picker-checkbox-checkmark-height: 0.3125rem;
+$picker-checkbox-checkmark-width: 0.625rem;
+$picker-checkbox-checkmark-left: calc(50% - 0.3125rem);
+$picker-checkbox-checkmark-top: calc(50% - 0.25rem);
+$picker-hover-checkbox-border-color: $picker-checkbox-border-color;
+$picker-hover-checkbox-checkmark-transform: rotate(-45deg) scale(1);
+$picker-disabled-checkbox-background-color: transparent;
+$picker-disabled-checkbox-border-color: $picker-checkbox-border-color;
+$picker-checked-disabled-checkbox-background-color: $picker-checked-checkbox-background-color;
+$picker-checked-disabled-checkbox-border-color: $picker-checked-checkbox-border-color;
+$picker-checked-disabled-checkbox-icon-color: $picker-checked-checkbox-icon-color;
+$picker-radio-size: 1rem;
+$picker-radio-border-width: 0.0625rem;
+$picker-radio-border-radius: 0.5rem;
+$picker-radio-dot-size: 0.375rem;
+$picker-radio-dot-border-radius: 0.25rem;
+$picker-radio-dot-left: calc(50% - 0.1875rem);
+$picker-radio-dot-top: calc(50% - 0.1875rem);
+$picker-hover-radio-border-color: $picker-radio-border-color;
+$picker-hover-radio-dot-transform: scale(1);
+$picker-checked-radio-box-shadow: none;
+$picker-checked-radio-dot-transform: scale(1);
+$picker-disabled-radio-background-color: transparent;
+$picker-disabled-radio-border-color: $picker-radio-border-color;
+$picker-checked-disabled-radio-background-color: $picker-checked-radio-background-color;
+$picker-checked-disabled-radio-border-color: $picker-checked-radio-border-color;
 
 // Picker group
 $picker-group-hover-background-color: $color-background-base-dark;
@@ -2100,6 +2200,16 @@ $radio-danger-border-color: $color-border-danger;
 $radio-label-before-top: 0.25rem;
 $radio-label-after-top: 0.5625rem;
 
+$radio-size: 1rem;
+$radio-border-radius: 0.5rem;
+$radio-dot-size: 0.375rem;
+$radio-dot-left: 0.3125rem;
+$radio-dot-border-radius: 0.5rem;
+$radio-label-padding-left: 1.5rem;
+$radio-label-min-height: 1.25rem;
+$radio-line-height: $line-height-base;
+$radio-label-line-height: $line-height-base;
+
 // Range slider
 $range-slider-thumb-background-color: $color-background-white;
 $range-slider-zero-thumb-background-color: $color-grey-50;
@@ -2155,21 +2265,23 @@ $search-input-icon-disabled-background-color: null;
 $search-input-icon-active-box-shadow: null;
 $search-input-menu-item-font-weight: $font-weight-semi-bold;
 $search-input-menu-item-font-weight-highlight: $font-weight-normal;
-
-// Select
+$search-input-border-radius: $border-radius-base;
 $select-text-color: $color-text-base;
 $select-background-color: $color-background-white;
 $select-background-image: url('icon-chevron-thin-down.svg');
 $select-border-color: $color-border-base;
+$select-border-radius: $border-radius-base;
 $select-hover-border-color: $color-grey-40;
 $select-focus-border-color: $focus-color;
 $select-danger-border-color: $color-border-danger;
 $select-danger-text-color: $color-text-base;
+$select-danger-hover-box-shadow: none;
 $select-disabled-opacity: $opacity-60;
 $select-disabled-background-color: $color-background-white;
 $select-disabled-border-color: $color-border-base;
 $select-disabled-text-color: inherit;
 $select-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
+$select-hover-box-shadow: none;
 $select-option-checked-background-color: $color-background-primary-light;
 
 $select-xs-height: 1.5rem;
@@ -2390,6 +2502,10 @@ $table-portal-row-hover-background-color: $color-orange-10;
 
 // Tabs
 $tabs-icon-color: $color-icon-body;
+$tabs-active-text-color: $color-text-primary;
+$tabs-hover-text-color: $color-text-primary;
+$tabs-horizontal-item-hover-border-color: transparent;
+$tabs-horizontal-item-inverse-hover-border-color: transparent;
 $tabs-inverse-item-active-border-color: $color-border-white;
 $tabs-inverse-item-active-text-color: $color-text-white;
 $tabs-inverse-item-hover-text-color: $color-text-white;
@@ -2444,6 +2560,7 @@ $tabs-solid-active-border-disabled: none;
 $tabs-solid-background-color: $color-grey-10;
 $tabs-solid-background-color-hover: $color-grey-10;
 $tabs-solid-border-active: none;
+$tabs-solid-item-hover-border-color: transparent;
 $tabs-solid-border-bottom-focus: none;
 $tabs-solid-border-bottom-hover: none;
 $tabs-solid-border-bottom-transparent: none;
@@ -2457,6 +2574,14 @@ $tabs-solid-gap: 0;
 $tabs-solid-horizontal-box-shadow: none;
 $tabs-solid-horizontal-lg-active-border-width: 0.125rem;
 $tabs-solid-horizontal-md-active-border-width: 0.125rem;
+$tabs-solid-horizontal-sm-active-border-width: 0.125rem;
+$tabs-solid-horizontal-xs-active-border-width: 0.125rem;
+$tabs-horizontal-xs-active-box-shadow: null;
+$tabs-horizontal-sm-active-box-shadow: null;
+$tabs-inverse-horizontal-xs-active-box-shadow: null;
+$tabs-inverse-horizontal-sm-active-box-shadow: null;
+$tabs-inverse-solid-box-shadow: null;
+$tabs-inverse-solid-border-box-shadow: null;
 $tabs-solid-horizontal-padding: $tabs-horizontal-md-solid-padding;
 $tabs-solid-opacity-disabled: 0.75;
 $tabs-solid-outline-focus-visible: none;
@@ -2476,6 +2601,7 @@ $text-input-border-radius: $border-radius-base;
 $text-input-text-color: $color-text-base;
 $text-input-placeholder-text-color: $color-grey-60;
 $text-input-hover-border-color: $color-grey-40;
+$text-input-hover-box-shadow: none;
 $text-input-focus-border-color: $focus-color;
 $text-input-disabled-background-color: $color-grey-10;
 $text-input-disabled-border-color: $color-border-base;
@@ -2670,9 +2796,11 @@ $time-picker-border-color: $color-border-base;
 // Toggle switch
 $toggle-switch-background-color: $color-grey-50;
 $toggle-switch-thumb-background-color: $color-background-white;
+$toggle-switch-box-shadow: none;
 $toggle-switch-checked-background-color: $color-teal-80;
 $toggle-switch-checked-thumb-background-color: $color-background-white;
 $toggle-switch-focus-color: $focus-color;
+$toggle-switch-focus-offset: 0.0625rem;
 $toggle-switch-disabled-opacity: $opacity-60;
 $toggle-switch-sm-thumb-border-radius: 0.75rem;
 $toggle-switch-sm-thumb-height: 1.5rem;
