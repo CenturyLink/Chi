@@ -368,10 +368,6 @@ $sizes: (
 
 .chi-dropdown__trigger {
   &.chi-button {
-    &:not(.-uppercase) {
-      text-transform: $dropdown-trigger-text-transform;
-    }
-
     &:not(.-icon) {
       &.-xs {
         padding-left: $dropdown-trigger-xs-padding-x;

@@ -13,11 +13,9 @@
   border-color: $button-solid-disabled-border-color;
   box-shadow: none;
   color: $button-solid-disabled-text-color;
-  opacity: $opacity-100;
   pointer-events: none;
 
   & .chi-icon {
     color: $button-solid-disabled-icon-color;
-    opacity: $opacity-100;
   }
 }

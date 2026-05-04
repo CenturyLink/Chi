@@ -77,8 +77,8 @@
 | brand | chi-brand | -centurylink, -brightspeed, -colt, -xs, -lumen-width, -centurylink-height, -centurylink-width, -brightspeed-height, ... |  | `<chi-brand>` |
 | breadcrumb | chi-breadcrumb | -active, -alt, -xs, -line-height, -sm, -md, -lg, -xl | chi-breadcrumb__item | `<chi-breadcrumb>` |
 | bulk-actions | chi-bulk-actions | -vertical | chi-bulk-actions__start, chi-bulk-actions__end, chi-bulk-actions__top, chi-bulk-actions__results, ... |  |
-| buttons | chi-button-group | -icon, -hover, -focus, -xs, -icons, -sm, -md, -lg, ... |  |  |
-| buttons | chi-button | -disabled, -md, -sm, -icon, -float, -hover, -focus, -active, ... | chi-button__content | `<chi-button>` |
+| buttons | chi-button-group | -hover, -focus, -vertical, -icon, -xs, -icon-padding, -sm, -lg, ... |  |  |
+| buttons | chi-button | -icon, -float, -hover, -focus, -active, -fluid, -close, -disabled, ... | chi-button__content | `<chi-button>` |
 | cache-loader | chi-cache-loader | -pulse, -bar, -muted, -no-interaction |  | `<chi-cache-loader>` |
 | card | chi-card | -widget, -align--left, -align--right, -align--center, -sm, -no-border, -notifications, -active, ... | chi-card__hero, chi-card__content, chi-card__header, chi-card__title, ... | `<chi-card>` |
 | carousel | chi-carousel | -previous, -next, -float, -dots, -pagination, -fade, -active | chi-carousel__content, chi-carousel__dots, chi-carousel__pagination | `<chi-carousel>` |
