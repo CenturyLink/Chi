@@ -2,8 +2,10 @@
 
 // Teal
 $agentic-color-teal-80: #00555c;
+$agentic-color-teal-70: #007981;
 $agentic-color-teal-60: #039198;
 $agentic-color-teal-50: #0cd4d4;
+$agentic-color-teal-40: #2aede5;
 $agentic-color-teal-25: #b2fff6;
 $agentic-color-teal-20: #d9fdf9;
 $agentic-color-teal-10: #f2fdfc;
@@ -23,10 +25,9 @@ $agentic-color-white: #ffffff;
 //#region Agentic generic
 $agentic-border-gradient: linear-gradient(
   to right,
-  $agentic-color-teal-80,
-  $agentic-color-teal-50,
-  $agentic-color-orange-40,
-  $agentic-color-orange-60
+  $agentic-color-teal-70,
+  $agentic-color-teal-40,
+  $agentic-color-teal-70
 );
 
 $agentic-elevation-shadow:
