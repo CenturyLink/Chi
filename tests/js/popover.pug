@@ -1,5 +1,9 @@
 extends ../layout.pug
 
+block styles
+  style.
+    #tests { align-items: center; }
+
 block scripts
   script(src='../../../js/chi.js')
   script(src='../../../chi-marketing-icons.js')
@@ -17,7 +21,7 @@ block content
       p.chi-popover__text Popover content
 
   each side in moreSides
-    div(class=`test-more-${side} -position--relative`,data-cy=`test-more-${side}`)
+    div(class=`test-more-${side} -position--relative`,data-cy=`test-more-${side}`,style='padding: 300px 0;')
       button.chi-button.popover-btn(data-position=`${side}`, data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover positioning</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover Content.</p></div>')=`${side} popover`
 
   .parent(data-cy='auto-hide')
