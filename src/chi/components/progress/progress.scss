@@ -16,6 +16,32 @@ $states: (
   ),
 );
 
+.chi-progress__bar,
+.chi-progress__label {
+  align-items: center;
+  color: $color-grey-60;
+  display: flex;
+  font-size: 0.8125rem;
+  gap: 0.5rem;
+}
+
+.chi-progress__label {
+  margin-top: 0.6rem;
+
+  chi-spinner.sc-chi-spinner-h {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.chi-progress__bar {
+  span {
+    color: $color-grey-100;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+
 progress {
   // sass-lint:disable-block no-vendor-prefixes
   /* Reset the default appearance */
@@ -30,6 +56,7 @@ progress {
   height: $progress-height;
   overflow: hidden;
   width: 100%;
+  border: 1px solid $color-grey-30;
 
   //Chrome, Safari
   &::-webkit-progress-bar {
@@ -38,11 +65,13 @@ progress {
 
   &::-webkit-progress-value {
     background-color: $progress-value-background-color;
+    border-radius: $progress-border-radius;
   }
 
   //Firefox
   &::-moz-progress-bar {
     background-color: $progress-value-background-color;
+    border-radius: $progress-border-radius;
   }
 
   @each $state in map-keys($states) {
