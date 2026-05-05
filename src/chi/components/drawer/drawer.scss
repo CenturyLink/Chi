@@ -177,11 +177,6 @@ $animation-duration: 0.5s;
     gap: 0.625rem;
   }
 
-  &__header-actions {
-    align-items: center;
-    display: flex;
-  }
-
   &__title-group {
     align-items: center;
     display: flex;
@@ -189,12 +184,19 @@ $animation-duration: 0.5s;
     gap: 0.5rem;
   }
 
+  &__compact-title {
+    margin-left: auto;
+
+    &.-closable {
+      margin-right: 2.2rem;
+    }
+  }
+
   &__header {
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
     display: $drawer-header-display;
-    flex-direction: column;
     flex-shrink: $drawer-header-flex-shrink;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
