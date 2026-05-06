@@ -178,18 +178,9 @@ $animation-duration: 0.5s;
   }
 
   &__title-group {
+    display: flex;    
     align-items: center;
-    display: flex;
-    flex: 1 1 auto;
     gap: 0.5rem;
-  }
-
-  &__compact-title {
-    margin-left: auto;
-
-    &.-closable {
-      margin-right: 2.2rem;
-    }
   }
 
   &__header {
