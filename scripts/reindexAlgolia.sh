@@ -2,13 +2,13 @@
 # Script to reindex Algolia using the Algolia Crawler API
 # https://www.algolia.com/doc/rest-api/crawler/#section/Availability-and-authentication
 
-# Needs env variables ALGOLIA_USER_ID, ALGOLIA_API_KEY, ALGOLIA_CRAWLER_ID to be set
+# Needs env variables ALGOLIA_CRAWLER_USER_ID, ALGOLIA_API_KEY, ALGOLIA_CRAWLER_ID to be set
 source ./.env
 
 SITEMAP="dist/sitemap.xml"
 
 # Base64 encode your credentials
-CREDENTIALS=$(echo -n "${ALGOLIA_USER_ID}:${ALGOLIA_API_KEY}" | base64)
+CREDENTIALS=$(echo -n "${ALGOLIA_CRAWLER_USER_ID}:${ALGOLIA_API_KEY}" | base64)
 
 check_task_status() {
   local TASK_ID="$1"

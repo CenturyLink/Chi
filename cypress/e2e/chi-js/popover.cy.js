@@ -20,6 +20,7 @@ describe('Popover', function () {
     });
   });
 
+
   describe('Popover Positioning and arrow should be matched ', () => {
     it('Popover Positioning and arrow should work in accordance', () => {
       this.chidata.popperPositions.forEach((position) => {
@@ -27,9 +28,13 @@ describe('Popover', function () {
 
         cy.get(getValue)
           .find('button.chi-button')
+          .then($btn => $btn[0].scrollIntoView({ block: 'center', inline: 'center' }))
           .should('match', `[data-position="${position}"]`)
-          .find('+ .chi-popover')
-          .should('match', `[x-placement="${position}"]`);
+          .click({ scrollBehavior: false })
+          .next('.chi-popover')
+          .should('have.attr', 'x-placement', position);
+
+        cy.get(getValue).find('button.chi-button').click({ scrollBehavior: false });
       });
     });
   });
