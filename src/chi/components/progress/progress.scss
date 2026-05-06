@@ -5,40 +5,40 @@ $states: (
   danger: (
     background-color: $progress-value-danger-background-color,
   ),
-  warning: (
-    background-color: $progress-value-warning-background-color,
-  ),
   info: (
     background-color: $progress-value-info-background-color,
   ),
   success: (
     background-color: $progress-value-success-background-color,
   ),
+  warning: (
+    background-color: $progress-value-warning-background-color,
+  ),
 );
+
+.chi-progress__bar {
+  span {
+    color: $progress-percentage-color;
+    font-size: $progress-percentage-font-size;
+    font-weight: $progress-percentage-font-weight;
+  }
+}
 
 .chi-progress__bar,
 .chi-progress__label {
   align-items: center;
-  color: $color-grey-60;
+  color: $progress-bar-label-color;
   display: flex;
-  font-size: 0.8125rem;
-  gap: 0.5rem;
+  font-size: $progress-bar-label-font-size;
+  gap: $progress-bar-label-gap;
 }
 
 .chi-progress__label {
-  margin-top: 0.6rem;
+  margin-top: $progress-label-margin-top;
 
   chi-spinner.sc-chi-spinner-h {
     align-items: center;
     display: flex;
-  }
-}
-
-.chi-progress__bar {
-  span {
-    color: $color-grey-100;
-    font-size: 0.9rem;
-    font-weight: 500;
   }
 }
 
@@ -49,14 +49,19 @@ progress {
   -webkit-appearance: none;
   appearance: none;
   /* Get rid of default border in Firefox. */
-  border: 0;
   border-radius: $progress-border-radius;
+  border: $progress-track-border;
   color: $progress-value-background-color;
   display: block;
   height: $progress-height;
   overflow: hidden;
   width: 100%;
-  border: 1px solid $color-grey-30;
+
+  //Firefox
+  &::-moz-progress-bar {
+    background-color: $progress-value-background-color;
+    border-radius: $progress-border-radius;
+  }
 
   //Chrome, Safari
   &::-webkit-progress-bar {
@@ -68,21 +73,15 @@ progress {
     border-radius: $progress-border-radius;
   }
 
-  //Firefox
-  &::-moz-progress-bar {
-    background-color: $progress-value-background-color;
-    border-radius: $progress-border-radius;
-  }
-
   @each $state in map-keys($states) {
     &.-#{$state} {
       color: map-get(map-get($states, $state), background-color);
 
-      &::-webkit-progress-value {
+      &::-moz-progress-bar {
         background-color: map-get(map-get($states, $state), background-color);
       }
 
-      &::-moz-progress-bar {
+      &::-webkit-progress-value {
         background-color: map-get(map-get($states, $state), background-color);
       }
     }
