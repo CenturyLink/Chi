@@ -5,7 +5,7 @@ import ora from 'ora';
 
 const validThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
 const localDefaultThemes = ['lumen', 'connect', 'centurylink', 'test'];
-const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink'];
+const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink', 'test'];
 const themes = process.env.THEMES_TO_BUILD?.split(',') || localDefaultThemes;
 
 const __dirname = path.resolve();
@@ -45,12 +45,26 @@ const buildTheme = async (theme) => {
   }
 };
 
+const buildAgentic = async () => {
+  const spinner = ora('[CHI]: Building chi-agentic').start();
+
+  try {
+    execFileSync('cross-env', ['vite', 'build', '--c', 'vite-agentic.config.ts'], { stdio: 'ignore' });
+    spinner.succeed('[CHI]: Build for chi-agentic completed successfully');
+  } catch (error) {
+    spinner.fail(`[CHI]: Error during build for agentic: ${error.message}`);
+    throw error;
+  }
+};
+
 const buildAllThemes = async () => {
   const themesToBuild = process.env.BUILD_TARGET === 'prod' ? prodDefaultThemes : themes;
 
   for (const theme of themesToBuild) {
     await buildTheme(theme);
   }
+
+  await buildAgentic();
 };
 
 buildAllThemes();

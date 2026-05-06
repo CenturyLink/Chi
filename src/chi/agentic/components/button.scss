@@ -1,0 +1,48 @@
+.chi-button {
+  &.-agentic {
+    @include agentic-button-background($agentic-button-fill-default);
+
+    border-color: transparent !important;
+    border-radius: $agentic-button-border-radius;
+    border-style: solid;
+    border-width: $agentic-button-border-width !important;
+    box-shadow: $agentic-button-shadow;
+    font-size: $agentic-button-font-size;
+    font-weight: $agentic-button-font-weight;
+    line-height: $agentic-button-line-height;
+    padding-bottom: $agentic-button-padding-y;
+    padding-top: $agentic-button-padding-y;
+    transition: $agentic-button-transition;
+
+    &:hover {
+      @include agentic-button-background($agentic-button-fill-hover);
+    }
+
+    &:active {
+      @include agentic-button-background($agentic-button-fill-active);
+    }
+
+    &:focus {
+      outline-color: $agentic-button-focus-outline-color;
+    }
+
+    &[disabled],
+    &.-disabled {
+      @include agentic-button-background($agentic-button-fill-disabled, $agentic-button-border-disabled);
+
+      border-color: transparent;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    &.-sm {
+      padding-bottom: $agentic-button-padding-y-sm;
+      padding-top: $agentic-button-padding-y-sm;
+    }
+
+    &.-lg {
+      padding-bottom: $agentic-button-padding-y-lg;
+      padding-top: $agentic-button-padding-y-lg;
+    }
+  }
+}

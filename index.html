@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="chi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link id="theme-css" rel="stylesheet" type="text/css" />
+    <link id="agentic-css" rel="stylesheet" type="text/css" />
     <script id="chi-js"></script>
     <script id="ux-chi-ce-js"></script>
 
@@ -536,10 +537,16 @@
 
           <!-- App layout -->
           <chi-main title="Dashboard" header-background>
-            <chi-button slot="help-icon" id="help-button">
-              <chi-icon icon="circle-question-outline" size="sm"></chi-icon>
-              <span>Help</span>
-            </chi-button>
+            <div class="-d--flex -g--1" slot="help-icon">
+              <chi-button id="help-button">
+                <chi-icon icon="circle-question-outline" size="sm"></chi-icon>
+                <span>Help</span>
+              </chi-button>
+              <chi-button id="agentic-trigger" extra-class="-agentic">
+                <chi-icon fill>stars_2</chi-icon>
+                <span>Ask Lumen</span>
+              </chi-button>
+            </div>
 
             <div class="chi-main__accordion">
               <chi-accordion id="main-accordion" portal>
@@ -751,6 +758,15 @@
                 </div>
               </chi-accordion>
             </div>
+
+            <chi-drawer id="agentic-drawer" title="Ask Lumen" position="right" extra-class="-agentic" backdrop>
+              <!-- Agentic content -->
+              Agentic content here
+
+              <div slot="footer" class="chi-form__item">
+                <chi-textarea placeholder="Ask Lumen" size="lg" extra-class="-agentic"></chi-textarea>
+              </div>
+            </chi-drawer>
 
             <div class="chi-divider -my--3"></div>
 
@@ -1024,20 +1040,6 @@
         customizeSnapshotsPanel.addEventListener('chiReset', (ev) => console.log('Customize panel was reseted'));
         //#endregion
 
-        //#endregion
-
-        //#region Drag and Drop
-        const drag = document.getElementById('drag-example');
-
-        drag.items = [
-          { title: 'Title item 1', description: 'Item description 1', closable: false, locked: true },
-          { description: 'Item description 2' },
-          { title: 'Title item 3', icon: 'atom' },
-          { title: 'Title item 4', description: 'Item description 4' },
-          { title: 'Title item 5', description: 'Item description 5' },
-        ];
-        //#endregion
-
         //#region Enterprise ID Switcher
         const switchers = document.querySelectorAll('.enterprise-id-switcher');
 
@@ -1056,10 +1058,14 @@
         });
         //#endregion
 
-        //#region App Layout
-        const appLayout = document.getElementById('app-layout');
+        //#region Agentic
+        const agenticTrigger = document.getElementById('agentic-trigger');
+        const agenticDrawer = document.getElementById('agentic-drawer');
 
-        chi.appLayout(appLayout);
+        agenticTrigger.addEventListener('click', () => {
+          console.log('Agentic trigger clicked');
+          agenticDrawer.toggle();
+        });
         //#endregion
       })
       .catch((err) => {
