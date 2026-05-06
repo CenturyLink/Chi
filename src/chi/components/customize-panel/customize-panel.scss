@@ -24,6 +24,22 @@
 
       &.chi-customize-panel__header-add {
         flex-direction: column;
+        padding-bottom: 0;
+
+        > chi-link {
+          margin-top: $customize-panel-back-link-margin-top;
+          margin-bottom: $customize-panel-back-link-margin-bottom;
+          font-weight: $customize-panel-back-link-font-weight;
+
+          span {
+            text-decoration: $customize-panel-back-link-label-text-decoration;
+            margin-bottom: $customize-panel-back-link-label-margin-bottom;
+          }
+
+          .sc-chi-icon-h {
+            margin-right: $customize-panel-back-link-icon-margin-right;
+          }
+        }
       }
     }
 
