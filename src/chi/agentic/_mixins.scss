@@ -1,0 +1,5 @@
+@mixin agentic-button-background($fill-color, $border-gradient: $agentic-button-border-gradient) {
+  background:
+    linear-gradient($fill-color, $fill-color) padding-box,
+    $border-gradient border-box;
+}
