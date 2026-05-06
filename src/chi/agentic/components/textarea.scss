@@ -1,0 +1,16 @@
+chi-textarea {
+  .chi-input {
+    &.-agentic {
+      background:
+        linear-gradient($agentic-textarea-fill, $agentic-textarea-fill) padding-box,
+        $agentic-textarea-border-gradient border-box;
+      border-color: transparent !important;
+      border-radius: $agentic-textarea-border-radius;
+      box-shadow: $agentic-textarea-shadow;
+
+      &:focus {
+        box-shadow: $agentic-textarea-shadow;
+      }
+    }
+  }
+}
