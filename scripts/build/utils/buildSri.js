@@ -6,7 +6,7 @@ const __dirname = resolve();
 
 const validThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
 const localDefaultThemes = ['lumen', 'connect', 'centurylink', 'test'];
-const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink'];
+const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink', 'test'];
 
 const selectedThemes = process.env.BUILD_TARGET === 'prod'
   ? prodDefaultThemes
@@ -22,6 +22,7 @@ const cssFilesToHash = selectedThemes.map((theme) => {
 
 const filesToHash = [
   ...cssFilesToHash,
+  'dist/chi-agentic.css',
   'dist/js/chi.js',
   'dist/assets/themes/lumen/images/favicon.svg',
   'dist/assets/themes/lumen/images/favicon.ico',
