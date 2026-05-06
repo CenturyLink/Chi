@@ -31,9 +31,14 @@ async function loadChiAssets() {
     const theme = isValidTheme(themeParam) ? themeParam : 'chi';
     const baseUrl = getBaseUrl(version);
     const themeCss = document.getElementById('theme-css');
+    const agenticCss = document.getElementById('agentic-css');
 
     if (themeCss) {
       themeCss.href = `${baseUrl}/${theme}.css`;
+    }
+
+    if (agenticCss) {
+      agenticCss.href = `${baseUrl}/chi-agentic.css`;
     }
 
     await loadScript(`${baseUrl}/js/chi.js`);
