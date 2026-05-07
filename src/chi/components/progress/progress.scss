@@ -70,7 +70,7 @@ progress {
 
   &::-webkit-progress-value {
     background-color: $progress-value-background-color;
-    border-radius: $progress-border-radius;
+    border-radius: $progress-value-border-radius;
   }
 
   @each $state in map-keys($states) {
