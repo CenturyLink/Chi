@@ -2143,20 +2143,20 @@ $popover-gradient-accent-1-arrow-mixed-color: initial;
 // Progress
 $progress-background-color:                 $color-grey-20;
 $progress-height:                           0.5rem;
-$progress-border-radius:                    calc($progress-height / 2);
+$progress-border-radius:                    0;
 $progress-value-background-color:           $color-background-primary;
 $progress-value-info-background-color:      $color-icon-info;
 $progress-value-danger-background-color:    $color-icon-danger;
 $progress-value-success-background-color:   $color-icon-success;
 $progress-value-warning-background-color:   $color-icon-warning;
 $progress-bar-label-color:                  $color-grey-60;
-$progress-bar-label-font-size:            0.8125rem;
-$progress-bar-label-gap:                  0.5rem;
-$progress-label-margin-top:               0.6rem;
-$progress-percentage-color:               $color-grey-100;
-$progress-percentage-font-size:           0.9rem;
-$progress-percentage-font-weight:         500;
-$progress-track-border:                   0.0625rem solid $color-grey-30;
+$progress-bar-label-font-size:              0.8125rem;
+$progress-bar-label-gap:                    0.5rem;
+$progress-label-margin-top:                 0.6rem;
+$progress-percentage-color:                 $color-grey-100;
+$progress-percentage-font-size:             0.9rem;
+$progress-percentage-font-weight:           500;
+$progress-track-border:                     0;
 
 // Radio button
 $radio-background-color:                    $color-background-white;
