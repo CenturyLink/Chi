@@ -2176,6 +2176,7 @@ $popover-gradient-accent-1-arrow-mixed-color: mix($color-teal-80, $color-teal-70
 $progress-background-color: $color-grey-20;
 $progress-height: 1rem;
 $progress-border-radius: calc($progress-height / 2);
+$progress-value-border-radius: $progress-border-radius;
 $progress-value-background-color: $color-teal-100;
 $progress-value-info-background-color: $color-teal-60;
 $progress-value-danger-background-color: $color-red-50;
