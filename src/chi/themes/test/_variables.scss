@@ -2221,13 +2221,22 @@ $popover-gradient-accent-1-arrow-mixed-color: mix($color-teal-80, $color-teal-70
 
 // Progress
 $progress-background-color: $color-grey-20;
-$progress-border-radius: 0.3125rem;
 $progress-height: 1rem;
+$progress-border-radius: 0;
+$progress-value-border-radius: 0;
 $progress-value-background-color: $color-teal-100;
 $progress-value-info-background-color: $color-blue-50;
 $progress-value-danger-background-color: $color-red-50;
 $progress-value-success-background-color: $color-green-50;
 $progress-value-warning-background-color: $color-yellow-50;
+$progress-bar-label-color: $color-grey-60;
+$progress-bar-label-font-size: 0.8125rem;
+$progress-bar-label-gap: 0.5rem;
+$progress-label-margin-top: 0.6rem;
+$progress-percentage-color: $color-grey-100;
+$progress-percentage-font-size: 0.9rem;
+$progress-percentage-font-weight: 500;
+$progress-track-border: 0;
 
 // Radio button
 // Needed because box-shadow with rgba and opacity doesn't work
