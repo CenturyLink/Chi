@@ -1,0 +1,95 @@
+// ---------------------------------------------------------------------------
+// Gradient transition system (opt-in)
+// ---------------------------------------------------------------------------
+//
+// Themes enable animated gradient buttons by setting TWO variables in their
+// _variables.scss — everything else is automatic:
+//
+//   $button-gradient-stop-1: <color>;   // left / start color
+//   $button-gradient-stop-2: <color>;   // right / end color
+//   $button-gradient-direction: <angle>; // optional, defaults to 90deg (LTR)
+//
+// When the stops are set to actual colors (anything other than `transparent`),
+// this file registers four @property custom properties and emits gradient
+// backgrounds on .chi-button that transition smoothly between states.
+//
+// Browser support: @property requires Chrome 85+, Safari 15.4+, Firefox 128+.
+// Older browsers still render the correct static colours — they simply won't
+// see the animated gradient transition (progressive enhancement).
+//
+// When neither stop is overridden (the default), the entire gradient code-path
+// is compiled away — non-gradient themes pay zero CSS cost.
+// ---------------------------------------------------------------------------
+$button-gradient-direction: 90deg !default;
+$button-gradient-stop-1: transparent !default;
+$button-gradient-stop-2: transparent !default;
+$_uses-gradient: $button-gradient-stop-1 != transparent;
+
+// Pre-built gradient stop tuples: (fill-1, fill-2, border-1, border-2).
+// "visible"     → full-opacity gradient fill + gradient border
+// "transparent" → alpha-0 stops so static background-color shows through.
+//                  Uses rgba(color, 0) instead of plain `transparent` to avoid
+//                  muddy rgba(0,0,0,0) → color interpolation during transitions.
+$_gradient-visible: ($button-gradient-stop-1, $button-gradient-stop-2, $button-gradient-stop-1, $button-gradient-stop-2);
+$_gradient-transparent: (
+  if($_uses-gradient, rgba($button-gradient-stop-1, 0), transparent),
+  if($_uses-gradient, rgba($button-gradient-stop-2, 0), transparent),
+  if($_uses-gradient, rgba($button-gradient-stop-1, 0), transparent),
+  if($_uses-gradient, rgba($button-gradient-stop-2, 0), transparent)
+);
+
+@if $_uses-gradient {
+  // @at-root escapes the .chi { } scope in index.scss so @property lands at the stylesheet root.
+  @at-root {
+    @property --chi-button-gradient-fill-1 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-fill-2 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-border-1 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+
+    @property --chi-button-gradient-border-2 {
+      syntax: '<color>';
+      inherits: false;
+      initial-value: transparent;
+    }
+  }
+}
+
+@mixin _chi-button-gradient-bg {
+  background:
+    linear-gradient(#{$button-gradient-direction}, var(--chi-button-gradient-fill-1), var(--chi-button-gradient-fill-2)) padding-box,
+    linear-gradient(#{$button-gradient-direction}, var(--chi-button-gradient-border-1), var(--chi-button-gradient-border-2)) border-box;
+}
+
+// Applies a gradient-stops tuple (fill-1, fill-2, border-1, border-2) to the custom properties.
+// The background itself only needs to be set once (on .chi-button) since it references these vars.
+@mixin _chi-button-apply-gradient($stops) {
+  --chi-button-gradient-fill-1: #{nth($stops, 1)};
+  --chi-button-gradient-fill-2: #{nth($stops, 2)};
+  --chi-button-gradient-border-1: #{nth($stops, 3)};
+  --chi-button-gradient-border-2: #{nth($stops, 4)};
+}
+
+/// Sets the button background — gradient stops for gradient themes, static background for others.
+/// @param {List|null} $gradient-stops - Gradient state tuple (fill-1, fill-2, border-1, border-2)
+/// @param {Color} $static-bg - Static background value for non-gradient themes
+/// @param {Bool} $use-gradient [$_uses-gradient] - Override gradient condition (for per-color control)
+@mixin _chi-button-set-bg($gradient-stops, $static-bg, $use-gradient: $_uses-gradient) {
+  @if $use-gradient {
+    @include _chi-button-apply-gradient($gradient-stops);
+  } @else {
+    background: $static-bg;
+  }
+}
