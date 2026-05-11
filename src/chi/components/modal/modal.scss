@@ -53,6 +53,10 @@
       }
     }
 
+    &:has(chi-button[type='close']) .chi-modal__title {
+      margin-right: 3rem;
+    }
+
     .chi-modal__subtitle {
       font-size: $font-size-base;
       font-weight: $font-weight-normal;
