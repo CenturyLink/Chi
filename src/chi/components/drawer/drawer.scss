@@ -174,13 +174,13 @@ $animation-duration: 0.5s;
   &__header-main {
     align-items: center;
     display: flex;
-    gap: 0.625rem;
+    gap: $drawer-header-main-gap;
   }
 
   &__title-wrapper {
     display: flex;    
     align-items: center;
-    gap: 0.5rem;
+    gap: $drawer-title-wrapper-gap;
   }
 
   &__header {
@@ -192,7 +192,7 @@ $animation-duration: 0.5s;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
-    border-bottom: 0.0625rem solid $color-grey-30;
+    border-bottom: $drawer-header-border;
     
     .-close {
       .chi-icon {
