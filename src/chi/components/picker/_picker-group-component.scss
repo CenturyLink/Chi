@@ -1,0 +1,153 @@
+chi-picker-group {
+  .chi-picker-group__content {
+    .chi-picker-group__item,
+    chi-tooltip {
+      display: contents;
+    }
+
+    chi-tooltip > div {
+      display: flex;
+    }
+  }
+
+  .chi-picker-group:not(.-fluid) .chi-picker-group__content {
+    > .chi-picker-group__item:first-child input.chi-picker__input + label {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: 0;
+    }
+
+    > .chi-picker-group__item:last-child input.chi-picker__input + label {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: $border-radius;
+      border-top-left-radius: 0;
+      border-top-right-radius: $border-radius;
+    }
+
+    // Overrides legacy :first-of-type + :last-of-type firing on every wrapped label.
+    > .chi-picker-group__item:not(:first-child):not(:last-child) input.chi-picker__input + label {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    // Overrides legacy :last-of-type setting border-right on every wrapped label.
+    > .chi-picker-group__item:not(:last-child) input.chi-picker__input:not(:checked) + label {
+      border-right-width: 0;
+    }
+
+    > .chi-picker-group__item:has(input:checked) + .chi-picker-group__item label {
+      border-left-width: 0;
+      padding-left: $picker-group-md-padding-checked;
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          padding-left: map-get(map-get($sizes, $type), padding_checked);
+        }
+      }
+    }
+  }
+
+  .chi-picker-group.-fluid .chi-picker-group__content {
+    chi-tooltip > div {
+      flex: 1 0 auto;
+      width: 100%;
+
+      @include respond-to(md) {
+        flex: 1 0 0;
+      }
+    }
+
+    .chi-picker-group__item.-no-fluid chi-tooltip > div {
+      flex: 0 1 auto;
+
+      @include respond-to(md) {
+        width: auto;
+      }
+    }
+
+    > .chi-picker-group__item:first-child input.chi-picker__input + label {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+
+      @include respond-to(md) {
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: 0;
+      }
+    }
+
+    > .chi-picker-group__item:last-child input.chi-picker__input + label {
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+
+      @include respond-to(md) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: $border-radius;
+        border-top-left-radius: 0;
+        border-top-right-radius: $border-radius;
+      }
+    }
+
+    // Overrides legacy :first-of-type + :last-of-type firing on every wrapped label.
+    > .chi-picker-group__item:not(:first-child):not(:last-child) input.chi-picker__input + label {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    // Overrides legacy :last-of-type setting bottom (mobile) / right (md+) borders on every wrapped label.
+    > .chi-picker-group__item:not(:last-child) input.chi-picker__input:not(:checked) + label {
+      border-bottom-width: 0;
+
+      @include respond-to(md) {
+        border-bottom-width: 0.0625rem;
+        border-right-width: 0;
+      }
+    }
+
+    > .chi-picker-group__item:has(input:checked) + .chi-picker-group__item label {
+      border-left-width: 0.0625rem;
+      border-top-width: 0;
+      padding-left: $picker-group-md-padding-hover;
+
+      // Adds the md+ branch that legacy fluid's @each omits for sized labels.
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          padding-left: map-get(map-get($sizes, $type), padding_hover);
+
+          @include respond-to(md) {
+            padding-left: map-get(map-get($sizes, $type), padding_checked);
+          }
+        }
+      }
+
+      @include respond-to(md) {
+        border-left-width: 0;
+        border-top-width: 0.0625rem;
+        padding-left: $picker-group-md-padding-checked;
+      }
+    }
+
+    // Overrides legacy :checked + label:last-of-type over-firing on wrapped middle items.
+    > .chi-picker-group__item:not(:last-child) input.chi-picker__input:checked + label {
+      @include respond-to(md) {
+        padding-right: $picker-group-md-padding-hover;
+
+        @each $type in map-keys($sizes) {
+          &.-#{$type} {
+            padding-right: map-get(map-get($sizes, $type), padding_hover);
+          }
+        }
+      }
+    }
+  }
+}
