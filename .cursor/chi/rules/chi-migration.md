@@ -277,6 +277,9 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-modal
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
+| `-sm` | `size` | `"sm"` |
+| `-md` | `size` | `"md"` |
+| `-lg` | `size` | `"lg"` |
 | `-active` | `active` | (boolean) |
 
 ### chi-number-input

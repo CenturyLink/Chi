@@ -17,15 +17,18 @@
   top: 0;
   width: 100%;
 
-  &.chi-modal--sm {
+  &.-sm {
+    width: 30rem;
     max-width: 30rem;
   }
 
-  &.chi-modal--md {
+  &.-md {
+    width: 45rem;
     max-width: 45rem;
   }
 
-  &.chi-modal--lg {
+  &.-lg {
+    width: 60rem;
     max-width: 60rem;
   }
 
@@ -122,34 +125,21 @@
     padding: $modal-content-padding;
   }
 
-  &__top-image-wrapper {
+  &__header-image-wrapper {
     border-bottom: 0.0625rem solid $color-grey-30;
-    max-height: 11.75rem;
-    overflow: hidden;
     position: relative;
     width: 100%;
+    
+    img {
+      display: block;
+      width: 100%;
+    }
 
     .-close {
-      background-color: $color-background-base;
-      border: 0.0625rem solid $color-teal-70;
-      border-radius: 50%;
-      box-shadow: map-get($shadow, 3);
       position: absolute;
       right: $modal-close-right;
       top: $modal-close-top;
-
-      .chi-icon {
-        color: $color-teal-70;
-      }
     }
-  }
-
-  &__top-image {
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    width: 100%;
   }
 
   &__footer {
@@ -215,14 +205,6 @@
     .chi-modal__header {
       background: $modal-header-graphics-background-img no-repeat $modal-header-graphics-background-placement,
         $modal-header-background-color;
-    }
-  }
-
-  &.-has-top-image {
-    .chi-modal__header {
-      .-close {
-        display: none;
-      }
     }
   }
 
