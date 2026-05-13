@@ -18,18 +18,18 @@
   width: 100%;
 
   &.-sm {
-    width: 30rem;
-    max-width: 30rem;
+    width: $modal-max-width-sm;
+    max-width: $modal-max-width-sm;
   }
 
   &.-md {
-    width: 45rem;
-    max-width: 45rem;
+    width: $modal-max-width-md;
+    max-width: $modal-max-width-md;
   }
 
   &.-lg {
-    width: 60rem;
-    max-width: 60rem;
+    width: $modal-max-width-lg;
+    max-width: $modal-max-width-lg;
   }
 
   &__header {
@@ -126,7 +126,7 @@
   }
 
   &__header-image-wrapper {
-    border-bottom: 0.0625rem solid $color-grey-30;
+    border-bottom: $modal-header-image-border;
     position: relative;
     width: 100%;
     
