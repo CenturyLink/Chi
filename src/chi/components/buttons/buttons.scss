@@ -494,6 +494,12 @@ $sizes: (
         &[disabled],
         &.-disabled {
           background: $button-flat-disabled-background-color;
+          border-color: $button-flat-disabled-border-color;
+          color: $button-flat-disabled-text-color;
+
+          .chi-icon {
+            color: $button-flat-disabled-icon-color;
+          }
         }
       }
     }
