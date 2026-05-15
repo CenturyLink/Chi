@@ -30,9 +30,15 @@ $dropdown-trigger-xl-padding-x: 2rem !default;
 $dropdown-trigger-base-xs-padding-y: 0.1875rem !default;
 $dropdown-trigger-base-sm-padding-y: 0.4375rem !default;
 $dropdown-trigger-base-md-padding-y: 0.5625rem !default;
+$dropdown-trigger-base-lg-padding-y: 0.8125rem !default;
+$dropdown-trigger-base-xl-padding-y: 0.9375rem !default;
 
 // Trigger padding — icon vertical
+$dropdown-trigger-base-icon-xs-padding-y: 0.3125rem !default;
 $dropdown-trigger-base-icon-sm-padding-y: 0.4375rem !default;
+$dropdown-trigger-base-icon-md-padding-y: 0.6875rem !default;
+$dropdown-trigger-base-icon-lg-padding-y: 0.9375rem !default;
+$dropdown-trigger-base-icon-xl-padding-y: 1.0625rem !default;
 
 // Menu appearance
 $dropdown-menu-background-color: $color-background-white !default;
@@ -58,11 +64,24 @@ $dropdown-select-xl-height: 3.5rem !default;
 
 // Select-mode sizes — font-size
 $dropdown-select-xs-font-size: $font-size-xs !default;
+$dropdown-select-sm-font-size: $font-size-sm !default;
+$dropdown-select-md-font-size: 1rem !default;
+$dropdown-select-lg-font-size: 1rem !default;
+$dropdown-select-xl-font-size: 1rem !default;
 
 // Select-mode sizes — line-height
 $dropdown-select-xs-line-height: 1rem !default;
 $dropdown-select-sm-line-height: $line-height-sm !default;
 $dropdown-select-md-line-height: 1.25rem !default;
+$dropdown-select-lg-line-height: 1.25rem !default;
+$dropdown-select-xl-line-height: 1.25rem !default;
+
+// Select-mode sizes — padding
+$dropdown-select-xs-padding: 0.3125rem 0.5rem !default;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem !default;
+$dropdown-select-md-padding: 0.5625rem 1rem 0.5625rem 0.75rem !default;
+$dropdown-select-lg-padding: 0.6875rem 1rem 0.6875rem 0.75rem !default;
+$dropdown-select-xl-padding: 0.6875rem 1rem 0.6875rem 1rem !default;
 
 // Select-mode sizes — arrow background size
 $dropdown-select-xs-arrow-background-size: 1rem !default;
@@ -71,7 +90,7 @@ $dropdown-select-md-arrow-background-size: 1.25rem !default;
 $dropdown-select-lg-arrow-background-size: 1.25rem !default;
 $dropdown-select-xl-arrow-background-size: 1.25rem !default;
 
-$sizes: (
+$_dropdown-sizes: (
   xs: (
     select-height: $dropdown-select-xs-height,
     select-font-size: $dropdown-select-xs-font-size,
@@ -124,9 +143,9 @@ $sizes: (
   ),
 );
 
-// Emits size selectors from $sizes: &, &.-md for md; &.-#{$size} for others.
+// Emits size selectors from $_dropdown-sizes: &, &.-md for md; &.-#{$size} for others.
 @mixin _chi-dropdown-trigger-sizes($map-key) {
-  @each $size, $data in $sizes {
+  @each $size, $data in $_dropdown-sizes {
     @if $size == md {
       &,
       &.-md {
@@ -369,11 +388,11 @@ $sizes: (
       .chi-dropdown__menu-buttons {
         display: flex;
         gap: 0.5rem;
-        
+
         :is(chi-tooltip, chi-button) {
           pointer-events: all;
         }
-        
+
         :is(chi-tooltip:has(chi-button[disabled]), chi-button[disabled]) {
           cursor: default;
         }
@@ -629,7 +648,7 @@ a.chi-dropdown__menu-item {
 // ==============================
 :is(chi-dropdown[select-mode], .chi-dropdown) {
   .chi-dropdown__trigger.chi-button.chi-dropdown__select-mode {
-    $md: map-get($sizes, md);
+    $md: map-get($_dropdown-sizes, md);
 
     font-weight: $font-weight-normal;
     line-height: map-get($md, select-line-height);
@@ -653,9 +672,9 @@ a.chi-dropdown__menu-item {
     }
 
     // Per-size overrides (md skipped — base block provides defaults). @if guards skip matching values.
-    @each $size in map-keys($sizes) {
+    @each $size in map-keys($_dropdown-sizes) {
       @if $size != md {
-        $size-data: map-get($sizes, $size);
+        $size-data: map-get($_dropdown-sizes, $size);
 
         &.-#{$size} {
           padding: map-get($size-data, select-padding);
