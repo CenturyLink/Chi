@@ -66,3 +66,22 @@ block content
         button.chi-button.-justify-content--center(id=`gradient-${side}` style="margin: 120px 220px;") Popover
         chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#gradient-${side}`, active, type="gradient", closable)
           | Popover content.
+
+  - var sizes = ['xs', 'sm', 'md', 'lg'];
+
+  each size in sizes
+    div(class=`test-size-${size}`, style='height: 220px; width: 700px;')
+      span.-text--h2=`Size ${size}`
+      .-position--relative
+        chi-popover(size=size, position="top", title="Popover Title", variant="text", active, arrow)
+          | #{size} content.
+
+  div(class=`test-gradient-accent-1`)
+    span.-text--h2=`Gradient Accent 1 type`
+
+    each side in moreSides
+      div(style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        button.chi-button.-justify-content--center(id=`gradient-accent-1-${side}`, style="margin: 120px 220px;") Popover
+        chi-popover(position=side, title="Popover Title", variant="text", arrow, reference=`#gradient-accent-1-${side}`, active, type="gradient-accent-1", closable)
+          | Popover content.

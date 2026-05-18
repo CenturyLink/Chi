@@ -26,8 +26,6 @@
       "-hover",
       "-focus",
       "-active",
-      "-uppercase",
-      "-no-hover",
       "-xs",
       "-line-height",
       "-padding",
@@ -74,7 +72,9 @@
       "-text-color-active",
       "-text-color-outline-disabled",
       "-background-color-outline-disabled",
-      "-border-color-outline-disabled"
+      "-border-color-outline-disabled",
+      "-icon-size",
+      "-icon-padding"
     ],
     "conflictingModifiers": [
       [
@@ -213,7 +213,8 @@
       "-transitioning",
       "-header-image",
       "-gradient",
-      "-full-page"
+      "-full-page",
+      "-has-top-image"
     ],
     "conflictingModifiers": [
       [
@@ -471,7 +472,8 @@
       "-has-child",
       "-sliding",
       "-inverse",
-      "-responsive"
+      "-responsive",
+      "-flat"
     ],
     "conflictingModifiers": [
       [

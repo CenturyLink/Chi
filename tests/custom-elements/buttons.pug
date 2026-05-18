@@ -7,7 +7,7 @@ block scripts
 block variables
   - var title = 'Buttons'
   - var sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
-  - var variants = ['solid', 'outline', 'flat', 'fluid', 'uppercase']
+  - var variants = ['solid', 'outline', 'flat', 'fluid']
   - var states = ['initial', 'hover', 'active', 'focus', 'disabled']
   - var colors = ['', 'primary', 'dark', 'danger', 'secondary', 'light']
 
@@ -30,9 +30,8 @@ block content
                     .-mr--2
                       chi-button.-m--1.-mx--2(
                         color=style
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         size= size !== 'default' ? size : ''
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
@@ -41,9 +40,8 @@ block content
                         type='icon'
                         color=style
                         size= size !== 'default' ? size : ''
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
                         alternative-text="Button action"
@@ -52,9 +50,8 @@ block content
                       chi-button.-m--1(
                         color=style
                         size= size !== 'default' ? size : ''
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
                       )
@@ -66,9 +63,8 @@ block content
                       chi-button.-m--1.-mx--2(
                         data-cy=`button-${style}-${size}`
                         color=style
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         size= size !== 'default' ? size : ''
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
@@ -77,9 +73,8 @@ block content
                         type='icon'
                         color=style
                         size= size !== 'default' ? size : ''
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
                         alternative-text="Button action"
@@ -88,9 +83,8 @@ block content
                       chi-button.-m--1(
                         color=style
                         size= size !== 'default' ? size : ''
-                        variant= type === 'solid' || type === 'fluid' || type === 'uppercase' ? '' : type
+                        variant= type === 'solid' || type === 'fluid' ? '' : type
                         fluid= type === 'fluid'
-                        uppercase= type === 'uppercase'
                         disabled= state === 'disabled'
                         extra-class= `-${state}`
                       )

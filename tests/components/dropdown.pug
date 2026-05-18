@@ -11,7 +11,7 @@ block variables
   - var colors = ["primary", "secondary", "danger", "dark", "light"]
   - var _colors = ['default', 'primary', 'dark', 'danger', 'secondary', 'light']
   - var variants = ["", "outline", "flat"]
-  - var _variants = ['solid', 'outline', 'flat', 'fluid', 'uppercase']
+  - var _variants = ['solid', 'outline', 'flat', 'fluid']
   - var sizes = ["xs", "sm", "md", "lg", "xl"]
   - var _sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   - var states = ['initial', 'hover', 'active', 'focus', 'disabled']
@@ -341,16 +341,6 @@ block content
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
       .chi-dropdown
         button.chi-button.chi-dropdown__trigger(disabled) Disabled
-      .chi-dropdown__menu 
-        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
-        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
-
-  .test-dropdown-button-uppercase.-mt--5(style='width: 500px; height: 200px;')
-    span.-text--h2=`Uppercase text`
-    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      .chi-dropdown
-        button.chi-button.chi-dropdown__trigger.-uppercase() This text is uppercased
       .chi-dropdown__menu 
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
