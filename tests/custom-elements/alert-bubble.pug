@@ -76,11 +76,11 @@ block content
     each val, type in types
       if (type === 'base')
         .-m--2
-          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform' fluid)
             chi-alert.-w--100(class=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default}`)
               chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       else
         .-m--2
-          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform' fluid)
             chi-alert.-w--100(color=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default`)
               chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')

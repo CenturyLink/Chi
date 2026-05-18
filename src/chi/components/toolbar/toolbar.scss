@@ -70,7 +70,7 @@ chi-toolbar,
 
     .chi-button {
       &.-flat {
-        &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+        @include not-color-variant {
           &.-icon {
             .chi-icon {
               color: $color-icon-base;

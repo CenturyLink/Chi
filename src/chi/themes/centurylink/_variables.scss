@@ -704,7 +704,6 @@ $bulk-actions-results-font-size:            $font-size-md;
 
 // Button
 $button-border-radius:                      $border-radius-base;
-$button-icon-border-radius:                 null;
 $button-font-weight:                        $font-weight-semi-bold;
 $button-solid-background-color:             $color-background-white;
 $button-solid-border-color:                 $color-border-primary;
@@ -716,7 +715,6 @@ $button-solid-hover-background-color:       $color-background-white;
 $button-solid-hover-border-color:           $color-border-primary-dark;
 $button-solid-hover-text-color:             $color-text-primary-dark;
 $button-solid-hover-icon-color:             inherit;
-$button-solid-hover-scale:                  1;
 $button-solid-active-icon-color:            inherit;
 $button-solid-focus-background-color:       $color-background-white;
 $button-solid-focus-border-color:           $color-border-primary;
@@ -744,7 +742,6 @@ $button-outline-disabled-background-color:  $color-background-base-dark;
 $button-outline-disabled-border-color:      $color-border-base-dark;
 $button-outline-disabled-text-color:        $color-text-muted-light;
 $button-outline-disabled-icon-color:        $color-icon-muted;
-$button-outline-disabled-opacity:           $opacity-100;
 $button-flat-background-color:              transparent;
 $button-flat-border-color:                  transparent;
 $button-flat-border-width:                  0.0625rem;
@@ -764,7 +761,7 @@ $button-flat-disabled-background-color:     transparent;
 $button-flat-disabled-border-color:         transparent;
 $button-flat-disabled-text-color:           $color-text-muted-light;
 $button-flat-disabled-icon-color:           $color-icon-muted;
-$button-flat-disabled-opacity:              $opacity-60;
+$button-flat-disabled-opacity:              $opacity-100;
 $button-flat-text-color:                    inherit;
 $button-flat-icon-color:                    inherit;
 $button-float-border-color:                 $color-grey-40;
@@ -777,11 +774,9 @@ $button-close-hover-background-color:       transparent;
 $button-close-active-background-color:      transparent;
 $button-close-icon-color:                   $color-text-base;
 $button-close-hover-icon-opacity:           $opacity-100;
-$button-close-disabled-border-color:        $color-border-base-dark;
 
 $button-primary-solid-background-color:     $color-background-primary;
 $button-primary-solid-border-color:         $color-border-primary;
-$button-primary-solid-border-radius:        $button-border-radius;
 $button-primary-solid-box-shadow:           0 1px 1px 0 rgba($color-black, 0.04);
 $button-primary-solid-hover-box-shadow:     0 1px 4px 0 rgba($color-black, 0.15);
 $button-primary-solid-active-box-shadow:    none;
@@ -964,78 +959,36 @@ $button-light-flat-active-background-color: transparent;
 $button-xs-font-size:                       $font-size-xs;
 $button-xs-line-height:                     $line-height-sm;
 $button-xs-padding:                         0.1875rem 0.5rem;
-$button-xs-text-transform:                  none;
-$button-icon-xs-font-size:                  1rem;
-$button-icon-xs-line-height:                1rem;
 $button-icon-xs-padding:                    0.1875rem;
-$button-icon-xs-height:                     1rem;
-$button-icon-xs-width:                      1rem;
 
 $button-sm-font-size:                       $font-size-base;
 $button-sm-line-height:                     1.25rem;
 $button-sm-padding:                         0.3125rem 1rem;
-$button-sm-text-transform:                  none;
-$button-icon-sm-font-size:                  1.25rem;
-$button-icon-sm-line-height:                1.25rem;
 $button-icon-sm-padding:                    0.3125rem;
-$button-icon-sm-height:                     1.25rem;
-$button-icon-sm-width:                      1.25rem;
 
 $button-md-font-size:                       $font-size-base;
 $button-md-line-height:                     1.5rem;
 $button-md-padding:                         0.4375rem 1.5rem;
-$button-md-text-transform:                  none;
-$button-icon-md-font-size:                  1.5rem;
-$button-icon-md-line-height:                1.5rem;
 $button-icon-md-padding:                    0.4375rem;
-$button-icon-md-height:                     1.5rem;
-$button-icon-md-width:                      1.5rem;
 
 $button-lg-font-size:                       $font-size-base;
 $button-lg-line-height:                     1.5rem;
 $button-lg-padding:                         0.6875rem 2rem;
-$button-lg-text-transform:                  none;
-$button-icon-lg-font-size:                  1.5rem;
-$button-icon-lg-line-height:                1.5rem;
 $button-icon-lg-padding:                    0.6875rem;
-$button-icon-lg-height:                     1.5rem;
-$button-icon-lg-width:                      1.5rem;
 
 $button-xl-font-size:                       $font-size-lg;
 $button-xl-line-height:                     1.5rem;
 $button-xl-padding:                         0.9375rem 2.5rem;
-$button-xl-text-transform:                  none;
-$button-icon-xl-font-size:                  1.5rem;
-$button-icon-xl-line-height:                1.5rem;
 $button-icon-xl-padding:                    0.9375rem;
-$button-icon-xl-height:                     1.5rem;
-$button-icon-xl-width:                      1.5rem;
 
 $button-labeled-icon-padding: null;
 
 // Button group
-$button-group-horizontal-xs-padding:        0.5rem;
-$button-group-horizontal-xs-icon-padding:   $button-icon-xs-padding;
-$button-group-horizontal-sm-padding:        1rem;
-$button-group-horizontal-sm-icon-padding:   $button-icon-sm-padding;
-$button-group-horizontal-md-padding:        1.5rem;
-$button-group-horizontal-md-icon-padding:   $button-icon-md-padding;
-$button-group-horizontal-lg-padding:        2rem;
-$button-group-horizontal-lg-icon-padding:   $button-icon-lg-padding;
-$button-group-horizontal-xl-padding:        2.5rem;
-$button-group-horizontal-xl-icon-padding:   $button-icon-xl-padding;
 $button-group-vertical-xs-padding:          0.25rem;
-$button-group-vertical-xs-icon-padding:     $button-icon-xs-padding;
 $button-group-vertical-sm-padding:          0.25rem;
-$button-group-vertical-sm-icon-padding:     $button-icon-xs-padding;
 $button-group-vertical-md-padding:          0.5rem;
-$button-group-vertical-md-icon-padding:     $button-icon-sm-padding;
 $button-group-vertical-lg-padding:          0.625rem;
-$button-group-vertical-lg-icon-padding:     $button-icon-md-padding;
 $button-group-vertical-xl-padding:          0.875rem;
-$button-group-vertical-xl-icon-padding:     $button-icon-xl-padding;
-
-$button-group-border-width:                 $button-solid-border-width;
 
 // Card
 $card-accordion-border-width: 0.0625rem;
@@ -1148,7 +1101,6 @@ $card-outline-widget-title-font-weight:     $card-widget-title-font-weight;
 $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
 $card-title-line-height:                    $line-height-lg;
-
 
 $card-kpi-background-color:                 $card-background-color;
 $card-kpi-hover-background-color:           $color-grey-10;
@@ -1429,7 +1381,6 @@ $dropdown-button-active-border-color:       rgba($color-grey-70, 0.2);
 
 $dropdown-trigger-icon-color:               inherit;
 $dropdown-trigger-icon-margin-left:         0.375rem;
-$dropdown-trigger-text-transform:           none;
 
 $dropdown-trigger-xs-padding-y:             0.125rem;
 $dropdown-trigger-xs-padding-x:             0.5rem;
@@ -1482,7 +1433,6 @@ $dropdown-select-border-color: $dropdown-button-border-color;
 $dropdown-select-disabled-color: $dropdown-trigger-icon-color;
 $dropdown-select-disabled-opacity: $opacity-60;
 $dropdown-select-hover-border-color: $color-grey-40;
-
 
 $dropdown-select-xs-height:                          1.5rem;
 $dropdown-select-xs-font-size:                       $font-size-xs;
@@ -2459,7 +2409,6 @@ $steps-inverse-item-completed-line-border-color: $color-border-secondary;
 $steps-inverse-item-line-border-color:      $color-grey-40;
 $steps-inverse-item-active-count-text-color: $color-text-black;
 $steps-inverse-item-count-border-color:     $color-grey-40;
-
 
 // Table
 $table-row-background-color:                $color-background-white;
