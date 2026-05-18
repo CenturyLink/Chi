@@ -114,6 +114,46 @@ block content
         )
           | Popover
 
+  - var sizes = ['xs', 'sm', 'md', 'lg'];
+
+  each size in sizes
+    div(class=`test-size-${size}`, style='height: 220px; width: 700px;')
+      span.-text--h2=`Size ${size}`
+      .-position--relative
+        section.chi-popover.-active.-position--absolute(class=`chi-popover--top chi-popover--${size}`, aria-modal="true", aria-label="Popover Title", role="dialog")
+          header.chi-popover__header
+            h2.chi-popover__title Popover Title
+          .chi-popover__content
+            p.chi-popover__text #{size} content.
+          .chi-popover__arrow
+
+  div(class=`test-gradient-accent-1`)
+    span.-text--h2=`Gradient Accent 1 type`
+
+    each side in moreSides
+      div(style='width: 600px')
+        span.-text--h3=`Side ${side}`
+        button.-gradient-accent-1-popover.chi-button.autostart.-justify-content--center(
+          id="test-gradient-accent-1-" + side,
+          style="margin: 120px 220px;",
+          data-position=side,
+          data-popover-content=`
+            <button class="chi-button -xs -icon -close" aria-label="Close" style="top: 1.25rem !important;">
+              <div class="chi-button__content">
+                <div class="chi-alert__icon chi-icon icon-x"></div>
+              </div>
+            </button>
+
+            <header class="chi-popover__header">
+              <h2 class="chi-popover__title">Popover Title</h2>
+            </header>
+
+            <div class="chi-popover__content">
+              <p class="chi-popover__text">Popover content.</p>
+            </div>`
+        )
+          | Popover
+
   script.
     document.addEventListener('DOMContentLoaded', () => {
       const popovers = chi.popover(document.querySelectorAll('.autostart'));
@@ -121,6 +161,9 @@ block content
       Array.prototype.forEach.call(popovers, (popover) => {
         if (popover._elem.classList.contains('-gradient-popover')) {
           popover._popoverElem.classList.add('-gradient');
+          popover._popoverElem.classList.add('-closable');
+        } else if (popover._elem.classList.contains('-gradient-accent-1-popover')) {
+          popover._popoverElem.classList.add('-gradient-accent-1');
           popover._popoverElem.classList.add('-closable');
         }
 
