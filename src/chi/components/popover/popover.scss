@@ -125,6 +125,7 @@
     margin: 0;
     position: absolute;
     width: $popover-arrow-size;
+    z-index: -1;
 
     &::after {
       border-color: $color-border-white;

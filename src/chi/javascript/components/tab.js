@@ -6,7 +6,6 @@ import {Util} from "../core/util.js";
 const CLASS_ACTIVE = "-active";
 const CLASS_HAS_ACTIVE = "-has-active";
 const CLASS_ANIMATED = "-animated";
-const CLASS_RESPONSIVE = "-responsive";
 const CLASS_VERTICAL = "-vertical";
 const COMPONENT_SELECTOR = '.chi-tabs';
 const COMPONENT_TYPE = "tab";
@@ -151,10 +150,7 @@ class Tab extends Component {
 
   isVertical () {
 
-    let isVertical = Util.hasClass(this._elem, CLASS_VERTICAL) ||
-      Util.hasClass(this._elem, CLASS_RESPONSIVE) &&
-      Util.getMediaWidth() < chi.responsiveBreakpoints.md
-    ;
+    let isVertical = Util.hasClass(this._elem, CLASS_VERTICAL);
 
     if (this._slidingBorder) {
       const newValue = isVertical;

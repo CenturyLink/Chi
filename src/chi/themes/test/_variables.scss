@@ -2529,7 +2529,6 @@ $table-portal-row-active-background-color: $color-orange-05;
 $table-portal-row-hover-background-color: $color-orange-10;
 
 // Tabs
-$tabs-icon-color: $color-icon-body;
 $tabs-active-text-color: $color-text-base;
 $tabs-hover-text-color: $color-text-base;
 $tabs-horizontal-item-hover-border-color: $color-red-40;
@@ -2537,19 +2536,14 @@ $tabs-horizontal-item-inverse-hover-border-color: $color-red-40;
 $tabs-inverse-item-active-border-color: $color-teal-bright-50;
 $tabs-inverse-item-active-text-color: $color-text-white;
 $tabs-inverse-item-hover-text-color: $color-text-white;
+$tabs-inverse-item-hover-background-color: transparent;
+$tabs-inverse-solid-background-color: transparent;
 
 $tabs-horizontal-border-bottom-width: 0.0625rem;
 $tabs-horizontal-border-bottom: 0.0625rem solid $color-border-base;
 $tabs-horizontal-sliding-border-bottom-placement: -0.0625rem;
 
-$tabs-horizontal-lg-font-size: $font-size-lg;
 $tabs-horizontal-lg-font-weight: $font-weight-medium;
-$tabs-horizontal-lg-height: 4rem;
-$tabs-horizontal-lg-line-height: $line-height-lg;
-$tabs-horizontal-lg-padding: 1.25rem 0;
-$tabs-horizontal-lg-solid-padding: 1.5rem 2rem;
-$tabs-horizontal-lg-trigger-icon-top: 1.5rem;
-$tabs-horizontal-lg-trigger-padding-right: 1.5rem;
 
 $tabs-horizontal-md-font-size: $font-size-lg;
 $tabs-horizontal-md-font-weight: $font-weight-medium;
@@ -2557,7 +2551,6 @@ $tabs-horizontal-md-height: 3rem;
 $tabs-horizontal-md-padding: 1.0625rem 0 0.9375rem;
 $tabs-horizontal-md-solid-padding: 1rem 1rem;
 $tabs-horizontal-md-trigger-icon-top: 1.0625rem;
-$tabs-horizontal-md-trigger-padding-right: 1.5rem;
 
 $tabs-horizontal-sm-font-size: $font-size-lg;
 $tabs-horizontal-sm-font-weight: $font-weight-medium;
@@ -2576,8 +2569,6 @@ $tabs-horizontal-xs-trigger-icon-top: 0.4375rem;
 $tabs-horizontal-xs-trigger-padding-right: 1.25rem;
 
 $tabs-vertical-md-subtabs-font-size: $font-size-sm;
-$tabs-vertical-lg-font-size: $font-size-lg;
-$tabs-vertical-xl-font-size: $font-size-lg;
 $tabs-vertical-lg-description-font-size: $font-size-base;
 
 $tabs-solid-active-background-color: $color-background-white;
@@ -2599,28 +2590,22 @@ $tabs-solid-border-transparent: none;
 $tabs-solid-box-shadow: none;
 $tabs-solid-deprecated-border-display: block;
 $tabs-solid-gap: 0;
-$tabs-solid-horizontal-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-20 !important;
-$tabs-solid-horizontal-lg-active-border-width: 0.25rem;
+$tabs-solid-horizontal-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-20;
+$tabs-solid-horizontal-item-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-20;
+$tabs-inverse-solid-horizontal-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-80;
+$tabs-inverse-solid-horizontal-item-box-shadow: inset 0 -0.0625rem 0 0 $color-grey-80;
 $tabs-solid-horizontal-md-active-border-width: 0.25rem;
 $tabs-solid-horizontal-sm-active-border-width: 0.125rem;
 $tabs-solid-horizontal-xs-active-border-width: 0.125rem;
-$tabs-horizontal-xs-active-box-shadow: inset 0 (-$tabs-solid-horizontal-xs-active-border-width) 0 $color-border-primary;
-$tabs-horizontal-sm-active-box-shadow: inset 0 (-$tabs-solid-horizontal-sm-active-border-width) 0 $color-border-primary;
-$tabs-inverse-horizontal-xs-active-box-shadow: inset 0 (-$tabs-solid-horizontal-xs-active-border-width) 0 0 $tabs-inverse-item-active-border-color;
-$tabs-inverse-horizontal-sm-active-box-shadow: inset 0 (-$tabs-solid-horizontal-sm-active-border-width) 0 0 $tabs-inverse-item-active-border-color;
-$tabs-inverse-solid-box-shadow: none !important;
-$tabs-inverse-solid-border-box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80 !important;
 $tabs-solid-horizontal-padding: 0.5rem 1rem;
 $tabs-solid-opacity-disabled: 1;
-$tabs-solid-outline-focus-visible: none;
 $tabs-solid-text-color: $color-text-base;
 $tabs-solid-text-color-active: $color-text-base;
 $tabs-solid-text-color-disabled: $color-text-muted;
 $tabs-solid-text-color-hover: $color-text-base;
-$tabs-solid-vertical-box-shadow: inset 0.25rem 0 0 0 $color-teal-80 !important;
+$tabs-solid-vertical-box-shadow: inset 0.25rem 0 0 0 $color-teal-80;
 $tabs-solid-vertical-padding: 0.5rem 1rem;
 $tabs-solid-vertical-xl-active-border-width: 0.25rem;
-$tabs-solid-xl-font-size: $font-size-lg;
 $tabs-solid-xl-font-weight: $font-weight-medium;
 
 // Text input
