@@ -297,6 +297,7 @@ When migrating CSS modifiers to Web Component properties:
 | `-hover` | `hover` | (boolean) |
 | `-active` | `active` | (boolean) |
 | `-flat` | `variant` | `"flat"` |
+| `-disabled` | `disabled` | (boolean) |
 | `-light` | `color` | `"light"` |
 | `-md` | `size` | `"md"` |
 | `-sm` | `size` | `"sm"` |
