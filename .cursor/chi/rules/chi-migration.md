@@ -396,14 +396,12 @@ When migrating CSS modifiers to Web Component properties:
 | `-sm` | `size` | `"sm"` |
 | `-lg` | `size` | `"lg"` |
 | `-active` | `active` | (boolean) |
-| `-xl` | `size` | `"xl"` |
-| `-border` | `border` | (boolean) |
-| `-xs` | `size` | `"xs"` |
-| `-portal` | `portal` | (boolean) |
-| `-md` | `size` | `"md"` |
 | `-disabled` | `disabled` | (boolean) |
-| `-inverse` | `color` | `"inverse"` |
 | `-vertical` | `vertical` | (boolean) |
+| `-flat` | `variant` | `"flat"` |
+| `-border` | `border` | (boolean) |
+| `-xl` | `size` | `"xl"` |
+| `-inverse` | `color` | `"inverse"` |
 
 ### chi-tags
 | CSS Modifier | Property | Value |
