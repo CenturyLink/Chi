@@ -134,6 +134,11 @@ $icon-sizes: (
           color: $pagination-active-text-color;
         }
 
+        &.-disabled,
+        &[disabled] {
+          background-color: transparent;
+        }
+
         &.-light {
           &:hover {
             border-color: $pagination-inverse-hover-border-color;
