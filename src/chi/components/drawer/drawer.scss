@@ -164,11 +164,23 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
-  .-close:not(.chi-drawer__content *) {
+  .-close:not(.chi-drawer__content *):not(.chi-drawer__header-actions *) {
     position: fixed;
     right: $drawer-button-close-right;
     top: $drawer-button-close-top;
     z-index: 50;
+  }
+
+  &__header-main {
+    align-items: center;
+    display: flex;
+    gap: $drawer-header-main-gap;
+  }
+
+  &__title-wrapper {
+    display: flex;    
+    align-items: center;
+    gap: $drawer-title-wrapper-gap;
   }
 
   &__header {
@@ -176,12 +188,12 @@ $animation-duration: 0.5s;
     background-image: $drawer-header-background-image;
     color: $drawer-header-text-color;
     display: $drawer-header-display;
-    flex-direction: column;
     flex-shrink: $drawer-header-flex-shrink;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
-
+    border-bottom: $drawer-header-border;
+    
     .-close {
       .chi-icon {
         color: $drawer-header-close-icon-color;
