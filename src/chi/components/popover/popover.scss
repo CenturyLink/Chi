@@ -125,6 +125,7 @@
     margin: 0;
     position: absolute;
     width: $popover-arrow-size;
+    z-index: -1;
 
     &::after {
       border-color: $color-border-white;
@@ -298,7 +299,31 @@
   &.-draggable {
     .chi-popover__header {
       cursor: move;
+    }
+  }
 
+  &.-draggable:not(.-modal) {
+    .chi-popover__header {
+      padding-left: calc($icon-size-base + 1.5rem);
+      position: relative;
+
+      &::before {
+        content: 'drag_indicator';
+        font-family: 'Material Symbols Outlined', sans-serif;
+        font-size: $icon-size-base;
+        position: absolute;
+        left: 0.625rem;
+        top: calc(1rem + ($line-height-lg - $icon-size-base) / 2);
+      }
+    }
+
+    .chi-popover__content {
+      padding-left: calc($icon-size-base + 1.5rem);
+    }
+  }
+
+  &.-draggable.-modal {
+    .chi-popover__header {
       &::before {
         // sass-lint:disable-all
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 6'%3E%3Cpath fill='#{$popover-drag-icon-color}' d='M8 0h2v2H8zm8 0h2v2h-2zm8 0h2v2h-2zM12 0h2v2h-2zm8 0h2v2h-2zm8 0h2v2h-2zM8 4h2v2H8zm8 0h2v2h-2zm8 0h2v2h-2zM12 4h2v2h-2zm8 0h2v2h-2zm8 0h2v2h-2zM0 0h2v2H0zm4 0h2v2H4zM0 4h2v2H0zm4 0h2v2H4zm36-4h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zM32 0h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2zm20-4h2v2h-2zm8 0h2v2h-2zm-4 0h2v2h-2zm8 0h2v2h-2zM56 4h2v2h-2zm8 0h2v2h-2zm-4 0h2v2h-2zm8 0h2v2h-2zM48 0h2v2h-2zm4 0h2v2h-2zm-4 4h2v2h-2zm4 0h2v2h-2z'/%3E%3C/svg%3E");

@@ -1,33 +1,29 @@
+// ---------------------------------------------------------------------------
+// Icon padding defaults — identical across all themes.
+// Themes may override any of these in their _variables.scss (loaded first).
+// ---------------------------------------------------------------------------
+$button-group-vertical-xs-icon-padding: $button-icon-xs-padding !default;
+$button-group-vertical-sm-icon-padding: $button-icon-xs-padding !default;
+$button-group-vertical-md-icon-padding: $button-icon-sm-padding !default;
+$button-group-vertical-lg-icon-padding: $button-icon-md-padding !default;
+$button-group-vertical-xl-icon-padding: $button-icon-xl-padding !default;
+
 $sizes: (
   xs: (
     padding: $button-group-vertical-xs-padding,
-    icons: (
-      padding: $button-group-vertical-xs-icon-padding,
-    ),
+    icon-padding: $button-group-vertical-xs-icon-padding,
   ),
   sm: (
     padding: $button-group-vertical-sm-padding,
-    icons: (
-      padding: $button-group-vertical-sm-icon-padding,
-    ),
-  ),
-  md: (
-    padding: $button-group-vertical-md-padding,
-    icons: (
-      padding: $button-group-vertical-md-icon-padding,
-    ),
+    icon-padding: $button-group-vertical-sm-icon-padding,
   ),
   lg: (
     padding: $button-group-vertical-lg-padding,
-    icons: (
-      padding: $button-group-vertical-lg-icon-padding,
-    ),
+    icon-padding: $button-group-vertical-lg-icon-padding,
   ),
   xl: (
     padding: $button-group-vertical-xl-padding,
-    icons: (
-      padding: $button-group-vertical-xl-icon-padding,
-    ),
+    icon-padding: $button-group-vertical-xl-icon-padding,
   ),
 );
 
@@ -45,11 +41,13 @@ $sizes: (
         }
 
         @each $type in map-keys($sizes) {
+          $size: map-get($sizes, $type);
+
           &.-#{$type} {
-            padding-bottom: map-get(map-get($sizes, $type), padding);
+            padding-bottom: map-get($size, padding);
 
             &.-icon {
-              padding-bottom: map-get(map-get(map-get($sizes, $type), icons), padding);
+              padding-bottom: map-get($size, icon-padding);
             }
           }
         }

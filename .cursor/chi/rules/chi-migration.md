@@ -125,22 +125,21 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-button
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
-| `-disabled` | `disabled` | (boolean) |
-| `-md` | `size` | `"md"` |
-| `-sm` | `size` | `"sm"` |
 | `-hover` | `hover` | (boolean) |
 | `-active` | `active` | (boolean) |
 | `-fluid` | `fluid` | (boolean) |
+| `-disabled` | `disabled` | (boolean) |
 | `-outline` | `variant` | `"outline"` |
 | `-flat` | `variant` | `"flat"` |
 | `-primary` | `color` | `"primary"` |
-| `-xs` | `size` | `"xs"` |
-| `-lg` | `size` | `"lg"` |
-| `-xl` | `size` | `"xl"` |
 | `-secondary` | `color` | `"secondary"` |
 | `-dark` | `color` | `"dark"` |
 | `-danger` | `color` | `"danger"` |
 | `-light` | `color` | `"light"` |
+| `-xs` | `size` | `"xs"` |
+| `-sm` | `size` | `"sm"` |
+| `-lg` | `size` | `"lg"` |
+| `-xl` | `size` | `"xl"` |
 
 ### chi-cache-loader
 | CSS Modifier | Property | Value |
@@ -277,6 +276,9 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-modal
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
+| `-sm` | `size` | `"sm"` |
+| `-md` | `size` | `"md"` |
+| `-lg` | `size` | `"lg"` |
 | `-active` | `active` | (boolean) |
 
 ### chi-number-input
@@ -298,6 +300,7 @@ When migrating CSS modifiers to Web Component properties:
 | `-hover` | `hover` | (boolean) |
 | `-active` | `active` | (boolean) |
 | `-flat` | `variant` | `"flat"` |
+| `-disabled` | `disabled` | (boolean) |
 | `-light` | `color` | `"light"` |
 | `-md` | `size` | `"md"` |
 | `-sm` | `size` | `"sm"` |

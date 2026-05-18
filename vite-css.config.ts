@@ -35,7 +35,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({
-          overrideBrowserslist: ['last 2 versions', 'ie >= 10'],
+          overrideBrowserslist: ['last 2 versions', 'not dead'],
         }),
         postcssSvg({
           dirs: [resolve(__dirname, 'src/chi/assets/icons')],
