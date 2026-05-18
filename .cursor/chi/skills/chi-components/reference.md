@@ -106,7 +106,7 @@
 | link | chi-link | -hover, -disabled, -cta, -no-underline, -no-hover-underline, -xs, -line-height, -sm, ... |  | `<chi-link>` |
 | marketing-icon | chi-marketing-icon | -xs, -sm, -md, -lg |  | `<chi-marketing-icon>` |
 | mobile-navigation | chi-mobile-nav | -second-level-shown, -left, -right, -animated, -close, -vertical, -icons, -active, ... |  |  |
-| modal | chi-modal | -no-border, -centered, -active, -animated, -transitioning, -header-image, -gradient, -full-page | chi-modal__header, chi-modal__content, chi-modal__footer | `<chi-modal>` |
+| modal | chi-modal | -sm, -md, -lg, -no-border, -centered, -active, -animated, -transitioning, ... | chi-modal__header, chi-modal__content, chi-modal__header-image-wrapper, chi-modal__footer | `<chi-modal>` |
 | navigation | chi-tabs | -sm, -lg, -active, -responsive, -active-alt, -animated, -xl, -border, ... |  | `<chi-tabs>` |
 | pagination | chi-pagination | -hover, -active, -focus, -flat, -disabled, -light, -md, -sm, -lg, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
 | phone-input | chi-phone-input |  | chi-phone-input__menu | `<chi-phone-input>` |
