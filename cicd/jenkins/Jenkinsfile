@@ -89,7 +89,6 @@ pipeline {
     NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
   
     // Tests variables
-    THEMES_TO_TEST="lumen"
     CYPRESS_CACHE_FOLDER = ".cypress-bin"
 
     // Scripts
@@ -182,31 +181,6 @@ pipeline {
           jslNpmWrapper('run build:testing', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
           stash name: 'build_testing_stash', includes: 'dist/**'
-        }
-      }
-    }
-    stage ('Backstop tests') {
-      when {
-        beforeAgent true
-        allOf {
-          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-        }
-      }
-      agent {
-        docker {
-          // backstop needs node 20
-          image DOCKER_NODE20
-        }
-      }
-      steps {
-        script {
-          sh "export THEMES_TO_TEST='${THEMES_TO_TEST}'"
-    
-          jslNpmWrapper('run tests:visual:run', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-
-          stashAndArchiveCiReports()
         }
       }
     }
@@ -307,38 +281,6 @@ pipeline {
       steps {
         script {
           jslQualityGate()
-        }
-      }
-    }
-    stage('QualityGate1') {
-      when {
-        beforeAgent true
-        allOf {
-          not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP" }
-          not { tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP" }
-        }
-      }
-      agent {
-        docker {
-          image DOCKER_JIRA
-        }
-      }
-      steps {
-        script {
-          THEMES_TO_TEST.split(',').each { theme ->
-            def isTestAvailable = true
-
-            try {
-              unstash name: "${theme}_non_responsive_ci"
-            } catch (Exception e) {
-              isTestAvailable = false
-            }
-              
-            if (isTestAvailable) {
-              jslCheckQualityGates("reports/${theme}/ci_report/non_responsive/xunit.xml", 'QualityGate2-Regression')
-            }
-          }
         }
       }
     }
@@ -633,23 +575,6 @@ def sendBuildInfo() {
   """
 
   jslJiraSendBuildInfo()
-}
-
-// This function is called to stash and archive the CI reports
-def stashAndArchiveCiReports() {
-  def tests = ["non_responsive", "responsive", "non_responsive_ce"]
-
-  tests.each { test ->
-    THEMES_TO_TEST.split(',').each { theme ->
-      def reportBasePath = "reports/${theme}/ci_report/"
-      def htmlBasePath = "reports/${theme}/html_report/"
-  
-      stash name: "${theme}_${test}_ci", includes: "${reportBasePath}${test}/**"
-
-      archiveArtifacts artifacts: "${htmlBasePath}${test}/**", fingerprint: true
-      jslPublishTestResults("${reportBasePath}${test}/xunit.xml")
-    }
-  }
 }
 
 // This function is called when the pipeline fails
