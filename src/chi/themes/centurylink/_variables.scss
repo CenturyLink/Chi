@@ -1253,15 +1253,20 @@ $customize-panel-empty-content-message-font-size: $font-size-lg;
 $customize-panel-empty-content-message-line-height: $line-height-lg;
 $customize-panel-empty-icon-padding: 0.75rem;
 
-$customize-panel-border: 0.0625rem solid $color-grey-30;
+$customize-panel-back-link-font-weight: 500;
+$customize-panel-back-link-label-margin-bottom: 0.125rem;
+$customize-panel-back-link-label-text-decoration: underline;
+$customize-panel-back-link-margin-bottom: 0.5rem;
 $customize-panel-border-bottom: 0.0625rem solid $color-grey-30;
+$customize-panel-border: 0.0625rem solid $color-grey-30;
 $customize-panel-content-padding-bottom: 1.5rem;
 $customize-panel-footer-button-gap: 1rem;
 $customize-panel-items-header-add-margin-bottom: 1.5rem;
+$customize-panel-items-header-margin-top: 1.5rem;
 $customize-panel-items-header-padding-bottom: 0.5rem;
 $customize-panel-no-results-icon-margin-right: 0.5rem;
 $customize-panel-search-margin-bottom: 1.25rem;
-
+$customize-panel-back-link-icon-margin-right: 0.125rem;
 // Code
 $code-font-size:                            $font-size-sm;
 
