@@ -1,13 +1,105 @@
 @import '_global-variables';
 @import '_global-mixins';
 
-$sizes: (
+// !default vars — themes override before @import; unoverridden values stay.
+
+// Button appearance
+$dropdown-button-text-color: $color-text-base !default;
+$dropdown-button-background-color: $color-background-white !default;
+$dropdown-button-border-color: $color-border-base-dark !default;
+$dropdown-button-border-width: 0.0625rem !default;
+$dropdown-button-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04) !default;
+$dropdown-button-hover-background-color: $color-grey-20 !default;
+$dropdown-button-hover-border-color: $color-border-base-dark !default;
+$dropdown-button-active-background-color: $color-grey-25 !default;
+$dropdown-button-active-border-color: rgba($color-grey-70, 0.2) !default;
+
+// Trigger padding — per-size x/y
+$dropdown-trigger-xs-padding-y: 0.125rem !default;
+$dropdown-trigger-xs-padding-x: 0.5rem !default;
+$dropdown-trigger-sm-padding-y: 0.375rem !default;
+$dropdown-trigger-sm-padding-x: 0.75rem !default;
+$dropdown-trigger-md-padding-y: 0.5rem !default;
+$dropdown-trigger-md-padding-x: 1rem !default;
+$dropdown-trigger-lg-padding-y: 0.625rem !default;
+$dropdown-trigger-lg-padding-x: 1.5rem !default;
+$dropdown-trigger-xl-padding-y: 0.875rem !default;
+$dropdown-trigger-xl-padding-x: 2rem !default;
+
+// Trigger padding — base (non-icon) vertical
+$dropdown-trigger-base-xs-padding-y: 0.1875rem !default;
+$dropdown-trigger-base-sm-padding-y: 0.4375rem !default;
+$dropdown-trigger-base-md-padding-y: 0.5625rem !default;
+$dropdown-trigger-base-lg-padding-y: 0.8125rem !default;
+$dropdown-trigger-base-xl-padding-y: 0.9375rem !default;
+
+// Trigger padding — icon vertical
+$dropdown-trigger-base-icon-xs-padding-y: 0.3125rem !default;
+$dropdown-trigger-base-icon-sm-padding-y: 0.4375rem !default;
+$dropdown-trigger-base-icon-md-padding-y: 0.6875rem !default;
+$dropdown-trigger-base-icon-lg-padding-y: 0.9375rem !default;
+$dropdown-trigger-base-icon-xl-padding-y: 1.0625rem !default;
+
+// Menu appearance
+$dropdown-menu-background-color: $color-background-white !default;
+$dropdown-menu-border-radius: $border-radius-base !default;
+$dropdown-menu-item-height: 2rem !default;
+$dropdown-menu-item-padding-x: 1rem !default;
+$dropdown-menu-item-active-text-color: $color-text-primary !default;
+$dropdown-menu-item-active-font-weight: $font-weight-semi-bold !default;
+$dropdown-menu-item-disabled-text-color: $color-grey-70 !default;
+$dropdown-menu-item-disabled-icon-color: $color-grey-70 !default;
+$dropdown-menu-item-disabled-opacity: $opacity-60 !default;
+$dropdown-menu-item-focus-outline: $focus-color !default;
+
+// Select-mode appearance
+$dropdown-select-border-radius: $border-radius-base !default;
+
+// Select-mode sizes — height
+$dropdown-select-xs-height: 1.5rem !default;
+$dropdown-select-sm-height: 2rem !default;
+$dropdown-select-md-height: 2.5rem !default;
+$dropdown-select-lg-height: 3rem !default;
+$dropdown-select-xl-height: 3.5rem !default;
+
+// Select-mode sizes — font-size
+$dropdown-select-xs-font-size: $font-size-xs !default;
+$dropdown-select-sm-font-size: $font-size-sm !default;
+$dropdown-select-md-font-size: 1rem !default;
+$dropdown-select-lg-font-size: 1rem !default;
+$dropdown-select-xl-font-size: 1rem !default;
+
+// Select-mode sizes — line-height
+$dropdown-select-xs-line-height: 1rem !default;
+$dropdown-select-sm-line-height: $line-height-sm !default;
+$dropdown-select-md-line-height: 1.25rem !default;
+$dropdown-select-lg-line-height: 1.25rem !default;
+$dropdown-select-xl-line-height: 1.25rem !default;
+
+// Select-mode sizes — padding
+$dropdown-select-xs-padding: 0.3125rem 0.5rem !default;
+$dropdown-select-sm-padding: 0.4375rem 0.75rem !default;
+$dropdown-select-md-padding: 0.5625rem 1rem 0.5625rem 0.75rem !default;
+$dropdown-select-lg-padding: 0.6875rem 1rem 0.6875rem 0.75rem !default;
+$dropdown-select-xl-padding: 0.6875rem 1rem 0.6875rem 1rem !default;
+
+// Select-mode sizes — arrow background size
+$dropdown-select-xs-arrow-background-size: 1rem !default;
+$dropdown-select-sm-arrow-background-size: 1.25rem !default;
+$dropdown-select-md-arrow-background-size: 1.25rem !default;
+$dropdown-select-lg-arrow-background-size: 1.25rem !default;
+$dropdown-select-xl-arrow-background-size: 1.25rem !default;
+
+$_dropdown-sizes: (
   xs: (
     select-height: $dropdown-select-xs-height,
     select-font-size: $dropdown-select-xs-font-size,
     select-line-height: $dropdown-select-xs-line-height,
     select-chevron-size: $dropdown-select-xs-arrow-background-size,
     select-padding: $dropdown-select-xs-padding,
+    trigger-padding-x: $dropdown-trigger-xs-padding-x,
+    trigger-base-padding-y: $dropdown-trigger-base-xs-padding-y,
+    trigger-icon-padding-y: $dropdown-trigger-base-icon-xs-padding-y,
   ),
   sm: (
     select-height: $dropdown-select-sm-height,
@@ -15,6 +107,9 @@ $sizes: (
     select-line-height: $dropdown-select-sm-line-height,
     select-chevron-size: $dropdown-select-sm-arrow-background-size,
     select-padding: $dropdown-select-sm-padding,
+    trigger-padding-x: $dropdown-trigger-sm-padding-x,
+    trigger-base-padding-y: $dropdown-trigger-base-sm-padding-y,
+    trigger-icon-padding-y: $dropdown-trigger-base-icon-sm-padding-y,
   ),
   md: (
     select-height: $dropdown-select-md-height,
@@ -22,6 +117,9 @@ $sizes: (
     select-line-height: $dropdown-select-md-line-height,
     select-chevron-size: $dropdown-select-md-arrow-background-size,
     select-padding: $dropdown-select-md-padding,
+    trigger-padding-x: $dropdown-trigger-md-padding-x,
+    trigger-base-padding-y: $dropdown-trigger-base-md-padding-y,
+    trigger-icon-padding-y: $dropdown-trigger-base-icon-md-padding-y,
   ),
   lg: (
     select-height: $dropdown-select-lg-height,
@@ -29,6 +127,9 @@ $sizes: (
     select-line-height: $dropdown-select-lg-line-height,
     select-chevron-size: $dropdown-select-lg-arrow-background-size,
     select-padding: $dropdown-select-lg-padding,
+    trigger-padding-x: $dropdown-trigger-lg-padding-x,
+    trigger-base-padding-y: $dropdown-trigger-base-lg-padding-y,
+    trigger-icon-padding-y: $dropdown-trigger-base-icon-lg-padding-y,
   ),
   xl: (
     select-height: $dropdown-select-xl-height,
@@ -36,9 +137,61 @@ $sizes: (
     select-line-height: $dropdown-select-xl-line-height,
     select-chevron-size: $dropdown-select-xl-arrow-background-size,
     select-padding: $dropdown-select-xl-padding,
+    trigger-padding-x: $dropdown-trigger-xl-padding-x,
+    trigger-base-padding-y: $dropdown-trigger-base-xl-padding-y,
+    trigger-icon-padding-y: $dropdown-trigger-base-icon-xl-padding-y,
   ),
 );
 
+// Emits size selectors from $_dropdown-sizes: &, &.-md for md; &.-#{$size} for others.
+@mixin _chi-dropdown-trigger-sizes($map-key) {
+  @each $size, $data in $_dropdown-sizes {
+    @if $size == md {
+      &,
+      &.-md {
+        @content(map-get($data, $map-key));
+      }
+    } @else {
+      &.-#{$size} {
+        @content(map-get($data, $map-key));
+      }
+    }
+  }
+}
+
+@mixin _chi-dropdown-chevron-lg($margin-side) {
+  height: 1rem;
+  line-height: 1rem;
+  margin-#{$margin-side}: 0.75rem;
+}
+
+@mixin _chi-dropdown-animate-transforms {
+  &::after {
+    transform: rotate(180deg);
+  }
+
+  &[data-position^='right']::after {
+    transform: rotate(90deg);
+  }
+
+  &[data-position^='top']::after {
+    transform: rotate(0deg);
+  }
+}
+
+@mixin _chi-dropdown-gradient-reset {
+  // Clear gradient stops so solid background-color shows through.
+  @if $button-gradient-stop-1 != transparent {
+    --chi-button-gradient-fill-1: transparent;
+    --chi-button-gradient-fill-2: transparent;
+    --chi-button-gradient-border-1: transparent;
+    --chi-button-gradient-border-2: transparent;
+  }
+}
+
+// ==============================
+// Container
+// ==============================
 .chi-dropdown {
   display: inline-block;
   position: relative;
@@ -54,47 +207,13 @@ $sizes: (
   .chi-dropdown__menu {
     left: 0;
     min-width: 100%;
-    overflow: auto;
     position: absolute;
     z-index: $zindex-dropdown;
-
-    .chi-dropdown__menu {
-      border: 0 solid transparent;
-      box-shadow: none;
-      padding-bottom: 0;
-      padding-top: 0;
-      position: initial;
-
-      .chi-dropdown__menu {
-        &-item {
-          padding-left: 2.5rem;
-        }
-
-        .chi-dropdown__menu {
-          &-item {
-            padding-left: 4.5rem;
-          }
-
-          .chi-dropdown__menu {
-            &-item {
-              padding-left: 6.5rem;
-            }
-          }
-        }
-      }
-    }
-
-    .chi-dropdown__menu-footer {
-      .chi-dropdown__menu-footer-actions {
-        display: flex;
-        flex-direction: $dropdown-menu-footer-actions-direction;
-        justify-content: $dropdown-menu-footer-actions-justify-content;
-        gap: 0.5rem;
-        padding: $dropdown-menu-footer-actions-padding;
-      }
-    }
   }
 
+  // ==============================
+  // Menu
+  // ==============================
   &__menu {
     background-color: $dropdown-menu-background-color;
     border-radius: $dropdown-menu-border-radius;
@@ -103,15 +222,22 @@ $sizes: (
     font-size: $font-size-base;
     font-weight: $font-weight-base;
     margin: 0;
+    overflow: auto;
     padding: 0.5rem 0;
-    overflow-y: auto;
+
+    .chi-dropdown__menu {
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      position: initial;
+
+      .chi-dropdown__menu-item {
+        padding-left: 2.5rem;
+      }
+    }
 
     &.-active {
       display: block;
-    }
-
-    &-items-wrapper {
-      overflow: auto;
     }
 
     &-item {
@@ -119,22 +245,12 @@ $sizes: (
       display: flex;
       height: $dropdown-menu-item-height;
       line-height: $line-height-base;
-      padding-left: $dropdown-menu-item-padding-left;
-      padding-right: $dropdown-menu-item-padding-right;
+      padding: 0 $dropdown-menu-item-padding-x;
       white-space: nowrap;
-
-      & > .chi-checkbox {
-        align-items: center;
-        display: flex;
-      }
 
       &.-h--auto {
         height: auto;
         white-space: normal;
-      }
-
-      &.-no-interaction {
-        pointer-events: none;
       }
 
       .-flex--ellipsis {
@@ -145,8 +261,7 @@ $sizes: (
         white-space: nowrap;
       }
 
-      .chi-icon,
-      .chi-flag-icon {
+      :is(.chi-icon, .chi-flag-icon) {
         margin-right: 0.75rem;
 
         &.-icon--right {
@@ -155,20 +270,17 @@ $sizes: (
         }
       }
 
-      &:not(.-active) {
+      &:not(.-active, .-disabled) {
         .chi-icon {
           color: $dropdown-menu-item-icon-color;
         }
       }
 
       &.-active {
-        &,
-        &:hover {
-          background-color: $dropdown-menu-item-active-background-color;
-          box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
-          color: $dropdown-menu-item-active-text-color;
-          font-weight: $dropdown-menu-item-active-font-weight;
-        }
+        background-color: $dropdown-menu-item-active-background-color;
+        box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
+        color: $dropdown-menu-item-active-text-color;
+        font-weight: $dropdown-menu-item-active-font-weight;
       }
 
       &.-has-active {
@@ -180,102 +292,45 @@ $sizes: (
         opacity: $dropdown-menu-item-disabled-opacity;
         pointer-events: none;
 
-        .chi-icon {
-          color: $dropdown-menu-item-disabled-icon-color;
-          opacity: $dropdown-menu-item-disabled-opacity;
+        @if $dropdown-menu-item-disabled-icon-color != $dropdown-menu-item-disabled-text-color {
+          .chi-icon {
+            color: $dropdown-menu-item-disabled-icon-color;
+          }
         }
       }
 
       &_title {
         font-size: $font-size-lg;
         font-weight: $font-weight-semi-bold;
-        line-height: $line-height-base;
-        margin-bottom: 0.25rem;
-        margin-top: 0;
+        margin-block: 0 0.25rem;
         word-break: break-word;
       }
 
       &_text {
-        font-size: $font-size-base;
-        line-height: $line-height-base;
         margin: 0;
         word-break: break-word;
       }
     }
 
-    & chi-search-input {
-      width: auto;
-    }
+    & > .chi-input__wrapper {
+      margin: 0.5rem;
+      padding-inline: 0;
 
-    & > .chi-input__wrapper,
-    & chi-search-input {
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-      padding-left: 0;
-      padding-right: 0;
-
-      &:not(:first-child) {
-        margin-top: 0.5rem;
+      &:first-child {
+        margin-top: 0;
       }
 
-      &:not(:last-child) {
-        margin-bottom: 0.5rem;
-      }
-    }
-
-    label {
-      &.-text {
-        align-items: center;
-        display: flex;
-        font-weight: $font-weight-normal;
+      &:last-child {
         margin-bottom: 0;
       }
     }
 
-    input {
-      &[type='checkbox'],
-      &[type='radio'] {
-        &.chi-input + label {
-          margin-bottom: 0;
-          margin-right: 0;
-
-          &::before {
-            margin-right: 0.75rem;
-          }
-        }
-      }
+    :is(.chi-checkbox, .chi-radio) :is(.chi-checkbox__input, .chi-radio__input) + :is(.chi-checkbox__label, .chi-radio__label) {
+      padding-left: 1.75rem;
     }
 
-    .chi-checkbox {
-      input {
-        &[type='checkbox'] {
-          &.chi-checkbox__input {
-            & + label {
-              &.chi-checkbox__label {
-                padding-left: 1.75rem;
-
-                &::before {
-                  margin-right: 0.75rem;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .chi-radio {
-      input {
-        &[type='radio'] {
-          &.chi-radio__input {
-            & + label {
-              &.chi-radio__label {
-                padding-left: 1.75rem;
-              }
-            }
-          }
-        }
-      }
+    .chi-checkbox .chi-checkbox__input + .chi-checkbox__label::before {
+      margin-right: 0.75rem;
     }
 
     &.-list {
@@ -283,8 +338,7 @@ $sizes: (
         align-items: flex-start;
         flex-direction: column;
         height: auto;
-        padding-bottom: 0.5rem;
-        padding-top: 0.5rem;
+        padding-block: 0.5rem;
 
         &.-active {
           .chi-dropdown__menu-item_text {
@@ -294,24 +348,10 @@ $sizes: (
       }
     }
 
-    &.-w--xs {
-      min-width: 5rem;
-    }
-
-    &.-w--sm {
-      min-width: 10rem;
-    }
-
-    &.-w--md {
-      min-width: 15rem;
-    }
-
-    &.-w--lg {
-      min-width: 20rem;
-    }
-
-    &.-w--xl {
-      min-width: 30rem;
+    @each $size, $width in (xs: 5rem, sm: 10rem, md: 15rem, lg: 20rem, xl: 30rem) {
+      &.-w--#{$size} {
+        min-width: $width;
+      }
     }
 
     &-wrapper {
@@ -348,13 +388,12 @@ $sizes: (
       .chi-dropdown__menu-buttons {
         display: flex;
         gap: 0.5rem;
-        
+
         :is(chi-tooltip, chi-button) {
           pointer-events: all;
         }
-        
-        chi-tooltip:has(chi-button[disabled]),
-        chi-button[disabled] {
+
+        :is(chi-tooltip:has(chi-button[disabled]), chi-button[disabled]) {
           cursor: default;
         }
       }
@@ -362,210 +401,159 @@ $sizes: (
 
     &-footer {
       margin-top: 0.5rem;
+
+      &-actions {
+        display: flex;
+        @if $dropdown-menu-footer-actions-direction != row {
+          flex-direction: $dropdown-menu-footer-actions-direction;
+        }
+        justify-content: $dropdown-menu-footer-actions-justify-content;
+        gap: 0.5rem;
+        padding: $dropdown-menu-footer-actions-padding;
+      }
     }
   }
 }
 
+// ==============================
+// Trigger
+// ==============================
 .chi-dropdown__trigger {
   &.chi-button {
+    // Horizontal padding per size (non-icon triggers only)
     &:not(.-icon) {
-      &.-xs {
-        padding-left: $dropdown-trigger-xs-padding-x;
-        padding-right: $dropdown-trigger-xs-padding-x;
-      }
-
-      &.-sm {
-        padding-left: $dropdown-trigger-sm-padding-x;
-        padding-right: $dropdown-trigger-sm-padding-x;
-      }
-
-      &,
-      &.-md {
-        padding-left: $dropdown-trigger-md-padding-x;
-        padding-right: $dropdown-trigger-md-padding-x;
-      }
-
-      &.-lg {
-        padding-left: $dropdown-trigger-lg-padding-x;
-        padding-right: $dropdown-trigger-lg-padding-x;
-      }
-
-      &.-xl {
-        padding-left: $dropdown-trigger-xl-padding-x;
-        padding-right: $dropdown-trigger-xl-padding-x;
+      @include _chi-dropdown-trigger-sizes(trigger-padding-x) using ($value) {
+        padding-inline: $value;
       }
     }
 
-    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline):not(.-flat):not(
-        .chi-dropdown__select-mode
-      ) {
-      &.-xs {
-        padding-top: $dropdown-trigger-base-xs-padding-y;
-        padding-bottom: $dropdown-trigger-base-xs-padding-y;
-      }
-
-      &.-sm {
-        padding-top: $dropdown-trigger-base-sm-padding-y;
-        padding-bottom: $dropdown-trigger-base-sm-padding-y;
-      }
-
-      &,
-      &.-md {
-        padding-top: $dropdown-trigger-base-md-padding-y;
-        padding-bottom: $dropdown-trigger-base-md-padding-y;
-      }
-
-      &.-lg {
-        padding-top: $dropdown-trigger-base-lg-padding-y;
-        padding-bottom: $dropdown-trigger-base-lg-padding-y;
-      }
-
-      &.-xl {
-        padding-top: $dropdown-trigger-base-xl-padding-y;
-        padding-bottom: $dropdown-trigger-base-xl-padding-y;
+    // Vertical padding per size — base trigger only (excludes color variants, outline, flat, select-mode)
+    &:not(.-primary, .-secondary, .-dark, .-light, .-danger, .-outline, .-flat, .chi-dropdown__select-mode) {
+      @include _chi-dropdown-trigger-sizes(trigger-base-padding-y) using ($value) {
+        padding-block: $value;
       }
 
       &.-icon {
-        &.-xs {
-          padding-top: $dropdown-trigger-base-icon-xs-padding-y;
-          padding-bottom: $dropdown-trigger-base-icon-xs-padding-y;
-        }
-
-        &.-sm {
-          padding-top: $dropdown-trigger-base-icon-sm-padding-y;
-          padding-bottom: $dropdown-trigger-base-icon-sm-padding-y;
-        }
-
-        &,
-        &.-md {
-          padding-top: $dropdown-trigger-base-icon-md-padding-y;
-          padding-bottom: $dropdown-trigger-base-icon-md-padding-y;
-        }
-
-        &.-lg {
-          padding-top: $dropdown-trigger-base-icon-lg-padding-y;
-          padding-bottom: $dropdown-trigger-base-icon-lg-padding-y;
-        }
-
-        &.-xl {
-          padding-top: $dropdown-trigger-base-icon-xl-padding-y;
-          padding-bottom: $dropdown-trigger-base-icon-xl-padding-y;
+        @include _chi-dropdown-trigger-sizes(trigger-icon-padding-y) using ($value) {
+          padding-block: $value;
         }
       }
     }
 
-    &.-primary,
-    &.-secondary,
-    &.-dark,
-    &.-light,
-    &.-danger,
-    &.-disabled,
-    &[disabled] {
-      &:not([data-position^='left']),
-      &[data-position^='left'] {
-        &::before,
-        &::after {
-          color: inherit;
-        }
+    // Color variant pseudo-element inherit
+    &:is(.-primary, .-secondary, .-dark, .-light, .-danger, .-disabled, [disabled]) {
+      &::before,
+      &::after {
+        color: inherit;
       }
     }
 
-    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
+    @include not-color-variant {
+      &:not(.-outline) {
 
-      &:not(.chi-dropdown__select-mode.-disabled) {
-        color: $dropdown-button-text-color;
-      }
-
-      &.chi-dropdown__icon {
-        color: $dropdown-trigger-icon-color;
-      }
-
-      &:not(.-flat):not(.chi-dropdown__select-mode) {
-        border: $dropdown-button-border-width solid $dropdown-button-border-color;
-
-        &:hover {
-          border-color: $dropdown-button-hover-border-color;
+        &:not(.-disabled, [disabled]) {
+          color: $dropdown-button-text-color;
         }
 
-        &:active,
-        &.-active {
-          border-color: $dropdown-button-active-border-color;
+        &.chi-dropdown__icon {
+          color: $dropdown-trigger-icon-color;
         }
 
-        &:not(.-disabled):not([disabled]) {
-          background-color: $dropdown-button-background-color;
-          box-shadow: $dropdown-button-box-shadow;
+        &:not(.-flat, .chi-dropdown__select-mode) {
+          border: $dropdown-button-border-width solid $dropdown-button-border-color;
 
-          // When the gradient transition system is active, the base .chi-button has a
-          // dual-layer gradient background that paints over background-color. Reset the
-          // gradient stops to transparent so the solid dropdown colors show through.
-          @if $button-gradient-stop-1 != transparent {
-            --chi-button-gradient-fill-1: transparent;
-            --chi-button-gradient-fill-2: transparent;
-            --chi-button-gradient-border-1: transparent;
-            --chi-button-gradient-border-2: transparent;
+          @if $dropdown-button-hover-border-color != $dropdown-button-border-color {
+            &:hover {
+              border-color: $dropdown-button-hover-border-color;
+            }
           }
 
-          &:hover:not(.chi-dropdown__select-mode) {
-            background-color: $dropdown-button-hover-background-color;
+          &:is(:active, .-active) {
+            border-color: $dropdown-button-active-border-color;
           }
 
-          &:active,
-          &.-active {
-            background-color: $dropdown-button-active-background-color;
+          &:not(.-disabled, [disabled]) {
+            background-color: $dropdown-button-background-color;
+            box-shadow: $dropdown-button-box-shadow;
+
+            @include _chi-dropdown-gradient-reset;
+
+            &:hover {
+              background-color: $dropdown-button-hover-background-color;
+            }
+
+            &:is(:active, .-active) {
+              background-color: $dropdown-button-active-background-color;
+            }
           }
         }
       }
     }
 
-    &:hover,
-    &.-hover {
-      scale: 1;
+    @if $button-solid-hover-scale != 1 {
+      &:hover,
+      &.-hover {
+        scale: 1;
+      }
     }
   }
 
-  &:not([data-position^='left']) {
-    &::after {
-      color: $dropdown-trigger-icon-color;
-      content: 'expand_more';
-      display: block;
-      font-family: $font-family-icon;
-      font-size: 1.25rem;
-      font-weight: $font-weight-normal;
-      height: 1rem;
-      line-height: 1.2rem;
-      margin-left: $dropdown-trigger-icon-margin-left;
-      width: 0.75rem;
-    }
+  // ==============================
+  // Chevron — shared base (::after / ::before)
+  // ==============================
+  &:not([data-position^='left'])::after,
+  &[data-position^='left']::before {
+    color: $dropdown-trigger-icon-color;
+    content: 'expand_more';
+    display: block;
+    font-family: $font-family-icon;
+    font-size: 1.25rem;
+    font-weight: $font-weight-normal;
+    height: 1rem;
+    line-height: 1.2rem;
+    width: 0.75rem;
+  }
 
+  // Direction-specific margins
+  &:not([data-position^='left'])::after {
+    margin-left: $dropdown-trigger-icon-margin-left;
+  }
+
+  &[data-position^='left']::before {
+    margin-right: 0.375rem;
+  }
+
+  // Shared animate transition for both chevron directions.
+  &.-animate {
+    &:not([data-position^='left'])::after,
+    &[data-position^='left']::before {
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  // ==============================
+  // Chevron — right position (::after) overrides
+  // ==============================
+  &:not([data-position^='left']) {
     &.-icon {
-      &:not([data-position^='left']) {
-        &::after {
-          margin-left: 0;
-          margin-right: $dropdown-trigger-icon-margin-left;
-        }
+      &::after {
+        margin-inline: 0 $dropdown-trigger-icon-margin-left;
       }
     }
 
     &.chi-dropdown__icon {
-      &:not([data-position^='left']) {
-        &::after {
-          display: none;
-        }
+      &::after {
+        display: none;
       }
     }
 
-    &.-lg,
-    &.-xl {
+    &:is(.-lg, .-xl) {
       &::after {
-        height: 1rem;
-        line-height: 1rem;
-        margin-left: 0.75rem;
+        @include _chi-dropdown-chevron-lg(left);
       }
     }
 
     &.-sm::after {
-      font-size: 1.25rem;
       height: 0.75rem;
       line-height: 0.75rem;
       margin-left: 0.25rem;
@@ -578,65 +566,24 @@ $sizes: (
       margin-left: 0.25rem;
     }
 
-    &.-animate {
-      &::after {
-        transition: transform 0.2s ease-in-out;
-      }
-
-      &.-active {
-        &::after {
-          transform: rotate(180deg);
-        }
-
-        &[data-position^='right']::after {
-          transform: rotate(90deg);
-        }
-
-        &[data-position^='top']::after {
-          transform: rotate(0deg);
-        }
-      }
-    }
   }
 
+  // ==============================
+  // Chevron — left position (::before) overrides
+  // ==============================
   &[data-position^='left'] {
-    &::before {
-      color: $dropdown-trigger-icon-color;
-      content: 'expand_more';
-      display: block;
-      font-family: $font-family-icon;
-      font-size: 1.25rem;
-      font-weight: $font-weight-normal;
-      height: 1rem;
-      line-height: 1.2rem;
-      margin-right: 0.375rem;
-      width: 0.75rem;
-    }
-
-    &.-lg,
-    &.-xl {
+    &:is(.-lg, .-xl) {
       &::before {
-        height: 1rem;
-        line-height: 1rem;
-        margin-right: 0.75rem;
+        @include _chi-dropdown-chevron-lg(right);
       }
     }
 
+    // No .-sm::before override — left-positioned sm uses the base chevron size.
     &.-xs::before {
       font-size: 0.625rem;
       height: 0.75rem;
       line-height: 0.875rem;
       margin-right: 0.25rem;
-    }
-
-    &.-animate {
-      &::before {
-        transition: transform 0.2s ease-in-out;
-      }
-
-      &.-active::before {
-        transform: rotate(270deg);
-      }
     }
   }
 
@@ -646,99 +593,75 @@ $sizes: (
   }
 }
 
-.chi-dropdown__hover:hover,
-.chi-dropdown__hover.-hover, // sass-lint:disable-line force-element-nesting
-.chi-dropdown__hover:active {
-  .chi-dropdown__trigger {
-    &:not([data-position^='left']) {
-      &.-animate {
-        &::after {
-          transform: rotate(180deg);
-        }
+// ==============================
+// Animate transforms (shared by trigger active + hover parent)
+// ==============================
+:is(
+  .chi-dropdown__trigger:not([data-position^='left']).-animate.-active,
+  .chi-dropdown__hover:is(:hover, .-hover, :active) .chi-dropdown__trigger:not([data-position^='left']).-animate
+) {
+  @include _chi-dropdown-animate-transforms;
+}
 
-        &[data-position^='right']::after {
-          transform: rotate(90deg);
-        }
-
-        &[data-position^='top']::after {
-          transform: rotate(0deg);
-        }
-      }
-    }
-
-    &[data-position^='left'] {
-      &.-animate {
-        &::before {
-          transform: rotate(270deg);
-        }
-      }
-    }
+:is(
+  .chi-dropdown__trigger[data-position^='left'].-animate.-active,
+  .chi-dropdown__hover:is(:hover, .-hover, :active) .chi-dropdown__trigger[data-position^='left'].-animate
+) {
+  &::before {
+    transform: rotate(270deg);
   }
+}
 
+// ==============================
+// Hover animation
+// ==============================
+.chi-dropdown__hover:is(:hover, .-hover, :active) { // sass-lint:disable-line force-element-nesting
   .chi-dropdown__menu {
     display: block;
   }
 }
 
-legend {
-  &.chi-dropdown__menu-item {
-    font-weight: $font-weight-semi-bold;
+// ==============================
+// Anchor menu item
+// ==============================
+a.chi-dropdown__menu-item {
+  color: $color-text-base;
+  text-decoration: none;
+
+  &:is(:hover, .-hover):not(.-disabled, .-active) {
+    background-color: $dropdown-menu-item-hover-background-color;
   }
-}
 
-a {
-  &.chi-dropdown__menu-item {
-    color: $color-text-base;
-    text-decoration: none;
+  &:not(.-disabled) {
+    &:is(:focus, .focus, .-focus, :focus-visible) {
+      outline: 0.125rem solid $dropdown-menu-item-focus-outline;
 
-    &:hover {
-      color: $color-text-base;
-      text-decoration: none;
-    }
-
-    &:hover:not(.-disabled):not(.-active),
-    &.-hover:not(.-disabled):not(.-active) {
-      background-color: $dropdown-menu-item-hover-background-color;
-    }
-
-    &:not(.-disabled) {
-      &:focus,
-      &.focus,
-      &.-focus,
-      &:focus-visible {
-        &:not(.-active) {
-          outline: 0.125rem solid $dropdown-menu-item-focus-outline;
-        }
-
-        &.-active {
-          outline: 0.125rem solid $dropdown-menu-item-active-border-color;
-        }
+      &.-active {
+        outline-color: $dropdown-menu-item-active-border-color;
       }
     }
   }
 }
 
-chi-dropdown[select-mode],
-.chi-dropdown {
+// ==============================
+// Select-mode
+// ==============================
+:is(chi-dropdown[select-mode], .chi-dropdown) {
   .chi-dropdown__trigger.chi-button.chi-dropdown__select-mode {
+    $md: map-get($_dropdown-sizes, md);
+
     font-weight: $font-weight-normal;
-    line-height: map-get(map-get($sizes, md), select-line-height);
-    height: map-get(map-get($sizes, md), select-height);
-    font-size: map-get(map-get($sizes, md), select-font-size);
-    padding: map-get(map-get($sizes, md), select-padding);
+    line-height: map-get($md, select-line-height);
+    height: map-get($md, select-height);
+    font-size: map-get($md, select-font-size);
+    padding: map-get($md, select-padding);
     border: $dropdown-button-border-width solid $dropdown-select-border-color;
     border-radius: $dropdown-select-border-radius;
 
-    // Reset gradient stops so solid background-color shows through on hover/active/focus.
-    @if $button-gradient-stop-1 != transparent {
-      --chi-button-gradient-fill-1: transparent;
-      --chi-button-gradient-fill-2: transparent;
-      --chi-button-gradient-border-1: transparent;
-      --chi-button-gradient-border-2: transparent;
-    }
+    @include _chi-dropdown-gradient-reset;
 
     &::after {
-      font-size: map-get(map-get($sizes, md), select-chevron-size);
+      font-size: map-get($md, select-chevron-size);
       width: 1rem;
     }
     
@@ -748,32 +671,41 @@ chi-dropdown[select-mode],
       }
     }
 
-    @each $size in map-keys($sizes) {
-      &.-#{$size} {
-        padding: map-get(map-get($sizes, $size), select-padding);
-        line-height: map-get(map-get($sizes, $size), select-line-height);
-        height: map-get(map-get($sizes, $size), select-height);
-        font-size: map-get(map-get($sizes, $size), select-font-size);
+    // Per-size overrides (md skipped — base block provides defaults). @if guards skip matching values.
+    @each $size in map-keys($_dropdown-sizes) {
+      @if $size != md {
+        $size-data: map-get($_dropdown-sizes, $size);
 
-        &::after {
-          font-size: map-get(map-get($sizes, $size), select-chevron-size);
-          width: 1rem;
+        &.-#{$size} {
+          padding: map-get($size-data, select-padding);
+
+          @if map-get($size-data, select-line-height) != map-get($md, select-line-height) {
+            line-height: map-get($size-data, select-line-height);
+          }
+
+          height: map-get($size-data, select-height);
+
+          @if map-get($size-data, select-font-size) != map-get($md, select-font-size) {
+            font-size: map-get($size-data, select-font-size);
+          }
+
+          @if map-get($size-data, select-chevron-size) != map-get($md, select-chevron-size) {
+            &::after {
+              font-size: map-get($size-data, select-chevron-size);
+            }
+          }
         }
       }
     }
 
-    &:active,
-    &.-active,
-    &:focus,
-    &.-focus {
+    &:is(:active, .-active, :focus, .-focus) {
       background-color: $dropdown-menu-background-color;
-      border: $dropdown-button-border-width solid $focus-color;
+      border-color: $focus-color;
       box-shadow: 0px 0 0 1px $focus-color;
       outline: none;
     }
 
-    &:hover:not(.-disabled):not(.-active):not(.-focus),
-    &.-hover:not(.-disabled):not(.-active):not(.-focus) {
+    &:is(:hover, .-hover):not(.-disabled, .-active, .-focus) {
       border-color: $dropdown-select-hover-border-color;
       background-color: $dropdown-menu-background-color;
     }
@@ -783,8 +715,10 @@ chi-dropdown[select-mode],
       opacity: $dropdown-select-disabled-opacity;
       color: $dropdown-select-disabled-color;
 
-      &::after {
-        color: $dropdown-select-disabled-color;
+      @if $dropdown-select-disabled-color != $dropdown-trigger-icon-color {
+        &::after {
+          color: $dropdown-select-disabled-color;
+        }
       }
     }
   }
