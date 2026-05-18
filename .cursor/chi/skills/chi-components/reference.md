@@ -77,8 +77,8 @@
 | brand | chi-brand | -centurylink, -brightspeed, -colt, -xs, -lumen-width, -centurylink-height, -centurylink-width, -brightspeed-height, ... |  | `<chi-brand>` |
 | breadcrumb | chi-breadcrumb | -active, -alt, -xs, -line-height, -sm, -md, -lg, -xl | chi-breadcrumb__item | `<chi-breadcrumb>` |
 | bulk-actions | chi-bulk-actions | -vertical | chi-bulk-actions__start, chi-bulk-actions__end, chi-bulk-actions__top, chi-bulk-actions__results, ... |  |
-| buttons | chi-button-group | -icon, -hover, -focus, -xs, -icons, -sm, -md, -lg, ... |  |  |
-| buttons | chi-button | -disabled, -md, -sm, -icon, -float, -hover, -focus, -active, ... | chi-button__content | `<chi-button>` |
+| buttons | chi-button-group | -hover, -focus, -vertical, -icon, -xs, -icon-padding, -sm, -lg, ... |  |  |
+| buttons | chi-button | -icon, -float, -hover, -focus, -active, -fluid, -close, -disabled, ... | chi-button__content | `<chi-button>` |
 | cache-loader | chi-cache-loader | -pulse, -bar, -muted, -no-interaction |  | `<chi-cache-loader>` |
 | card | chi-card | -widget, -align--left, -align--right, -align--center, -sm, -no-border, -notifications, -active, ... | chi-card__hero, chi-card__content, chi-card__header, chi-card__title, ... | `<chi-card>` |
 | carousel | chi-carousel | -previous, -next, -float, -dots, -pagination, -fade, -active | chi-carousel__content, chi-carousel__dots, chi-carousel__pagination | `<chi-carousel>` |
@@ -89,7 +89,7 @@
 | date-picker | chi-datepicker | -disabled, -active, -today, -inactive, -hover, -week-starts-on-sun, -month-starts-on-, -week-starts-on-mon, ... | chi-datepicker__day, chi-datepicker__week-day, chi-datepicker__month, chi-datepicker__days, ... | `<chi-date-picker>` |
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
 | drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
-| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header, chi-drawer__title, chi-drawer__content, chi-drawer__footer | `<chi-drawer>` |
+| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header-main, chi-drawer__title-group, chi-drawer__header, chi-drawer__title, ... | `<chi-drawer>` |
 | dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | dynamic-form-group | chi-dynamic-form-group |  |  |  |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
@@ -106,9 +106,9 @@
 | link | chi-link | -hover, -disabled, -cta, -no-underline, -no-hover-underline, -xs, -line-height, -sm, ... |  | `<chi-link>` |
 | marketing-icon | chi-marketing-icon | -xs, -sm, -md, -lg |  | `<chi-marketing-icon>` |
 | mobile-navigation | chi-mobile-nav | -second-level-shown, -left, -right, -animated, -close, -vertical, -icons, -active, ... |  |  |
-| modal | chi-modal | -no-border, -centered, -active, -animated, -transitioning, -header-image, -gradient, -full-page | chi-modal__header, chi-modal__content, chi-modal__footer | `<chi-modal>` |
+| modal | chi-modal | -sm, -md, -lg, -no-border, -centered, -active, -animated, -transitioning, ... | chi-modal__header, chi-modal__content, chi-modal__header-image-wrapper, chi-modal__footer | `<chi-modal>` |
 | navigation | chi-tabs | -sm, -lg, -active, -responsive, -active-alt, -animated, -xl, -border, ... |  | `<chi-tabs>` |
-| pagination | chi-pagination | -hover, -active, -focus, -flat, -light, -md, -sm, -lg, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
+| pagination | chi-pagination | -hover, -active, -focus, -flat, -disabled, -light, -md, -sm, -lg, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
 | phone-input | chi-phone-input |  | chi-phone-input__menu | `<chi-phone-input>` |
 | picker | chi-picker-group | -sm, -lg, -xl, -disabled, -fluid, -xs, -line-height, -min-height, ... | chi-picker-group__content | `<chi-picker-group>` |
 | picker | chi-picker | -disabled, -pill, -xs, -item-font-size, -item-description-line-height, -sm |  | `<chi-picker>` |

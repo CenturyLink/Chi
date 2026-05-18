@@ -410,7 +410,7 @@ $sizes: (
       &.-active {
         .chi-button {
           &.-flat {
-            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+            @include not-color-variant {
               &.-icon {
                 .chi-icon {
                   color: $data-table-head-sorting-icon-color;
@@ -423,7 +423,7 @@ $sizes: (
 
       .chi-button {
         &.-flat {
-          &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+          @include not-color-variant {
             &.-icon {
               .chi-icon {
                 color: $data-table-cell-sorting-icon-color;
@@ -438,7 +438,7 @@ $sizes: (
       &.-actions {
         .chi-button {
           &.-flat {
-            &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+            @include not-color-variant {
               &.-icon {
                 .chi-icon {
                   &.icon-more-vert {
@@ -455,7 +455,7 @@ $sizes: (
     &.-expandable {
       .chi-button {
         &.-flat {
-          &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+          @include not-color-variant {
             &.-icon {
               .chi-icon {
                 color: $data-table-cell-expandable-icon-color;
@@ -468,7 +468,7 @@ $sizes: (
 
     .chi-button {
       &.-flat {
-        &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+        @include not-color-variant {
           &.-icon {
             .chi-icon {
               color: $data-table-cell-icon-color;
@@ -817,13 +817,15 @@ $sizes: (
                     border: 0.0625rem solid transparent;
                   }
 
-                  &:not(.-disabled):not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
-                    .chi-icon {
-                      color: $data-table-footer-icon-color;
+                  &:not(.-disabled) {
+                    @include not-color-variant {
+                      .chi-icon {
+                        color: $data-table-footer-icon-color;
+                      }
                     }
                   }
 
-                  &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+                  @include not-color-variant {
                     .chi-icon {
                       color: $data-table-footer-icon-disabled-color;
                     }
@@ -888,7 +890,7 @@ $sizes: (
 
             .chi-button {
               &.-flat {
-                &:not(.-light):not(.-dark):not(.-danger):not(.-primary):not(.-secondary) {
+                @include not-color-variant {
                   &.-icon {
                     .chi-icon {
                       &.icon-circle-info-outline {

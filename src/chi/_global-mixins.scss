@@ -69,3 +69,9 @@
     text-decoration: none;
   }
 }
+
+@mixin not-color-variant {
+  &:not(.-primary, .-secondary, .-dark, .-light, .-danger) {
+    @content;
+  }
+}

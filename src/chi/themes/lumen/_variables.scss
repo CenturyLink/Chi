@@ -722,7 +722,6 @@ $bulk-actions-results-font-size: $font-size-md;
 
 // Button
 $button-border-radius: 2rem;
-$button-icon-border-radius: null;
 $button-font-weight: $font-weight-bold;
 $button-solid-background-color: transparent;
 $button-solid-border-color: $color-teal-100;
@@ -762,7 +761,6 @@ $button-outline-disabled-background-color: $color-background-base-dark;
 $button-outline-disabled-border-color: $color-border-base-dark;
 $button-outline-disabled-text-color: $color-text-muted-light;
 $button-outline-disabled-icon-color: $color-icon-muted;
-$button-outline-disabled-opacity: $opacity-100;
 $button-flat-background-color: transparent;
 $button-flat-border-color: transparent;
 $button-flat-border-width: 0.1875rem;
@@ -782,7 +780,7 @@ $button-flat-disabled-background-color: transparent;
 $button-flat-disabled-border-color: transparent;
 $button-flat-disabled-text-color: $color-text-muted-light;
 $button-flat-disabled-icon-color: $color-icon-muted;
-$button-flat-disabled-opacity: $opacity-60;
+$button-flat-disabled-opacity: $opacity-100;
 $button-flat-text-color: $button-solid-text-color;
 $button-flat-icon-color: $button-solid-icon-color;
 $button-float-border-color: $color-grey-40;
@@ -795,11 +793,9 @@ $button-close-hover-background-color: transparent;
 $button-close-active-background-color: transparent;
 $button-close-icon-color: $color-teal-100;
 $button-close-hover-icon-opacity: $opacity-100;
-$button-close-disabled-border-color: $color-border-base-dark;
 
 $button-primary-solid-background-color: $color-red-50;
 $button-primary-solid-border-color: transparent;
-$button-primary-solid-border-radius: 0 2rem 2rem 2rem;
 $button-primary-solid-box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
 $button-primary-solid-hover-box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
 $button-primary-solid-active-box-shadow: none;
@@ -984,78 +980,36 @@ $button-light-flat-active-background-color: transparent;
 $button-xs-font-size: $font-size-xs;
 $button-xs-line-height: 1rem;
 $button-xs-padding: 0.0625rem 0.5rem;
-$button-xs-text-transform: none;
-$button-icon-xs-font-size: 1rem;
-$button-icon-xs-line-height: 1rem;
 $button-icon-xs-padding: 0.0625rem;
-$button-icon-xs-height: 1rem;
-$button-icon-xs-width: 1rem;
 
 $button-sm-font-size: $font-size-sm;
 $button-sm-line-height: 1.25rem;
 $button-sm-padding: 0.1875rem 1rem;
-$button-sm-text-transform: none;
-$button-icon-sm-font-size: 1.25rem;
-$button-icon-sm-line-height: 1.25rem;
 $button-icon-sm-padding: 0.1875rem;
-$button-icon-sm-height: 1.25rem;
-$button-icon-sm-width: 1.25rem;
 
 $button-md-font-size: $font-size-base;
 $button-md-line-height: 1.5rem;
 $button-md-padding: 0.3125rem 1.5rem;
-$button-md-text-transform: none;
-$button-icon-md-font-size: 1.5rem;
-$button-icon-md-line-height: 1.5rem;
 $button-icon-md-padding: 0.3125rem;
-$button-icon-md-height: 1.5rem;
-$button-icon-md-width: 1.5rem;
 
 $button-lg-font-size: $font-size-base;
 $button-lg-line-height: 1.5rem;
 $button-lg-padding: 0.5625rem 2rem;
-$button-lg-text-transform: none;
-$button-icon-lg-font-size: 1.5rem;
-$button-icon-lg-line-height: 1.5rem;
 $button-icon-lg-padding: 0.5625rem;
-$button-icon-lg-height: 1.5rem;
-$button-icon-lg-width: 1.5rem;
 
 $button-xl-font-size: $font-size-lg;
 $button-xl-line-height: 1.5rem;
 $button-xl-padding: 0.8125rem 2.5rem;
-$button-xl-text-transform: none;
-$button-icon-xl-font-size: 1.5rem;
-$button-icon-xl-line-height: 1.5rem;
 $button-icon-xl-padding: 0.8125rem;
-$button-icon-xl-height: 1.5rem;
-$button-icon-xl-width: 1.5rem;
 
 $button-labeled-icon-padding: null;
 
 // Button group
-$button-group-horizontal-xs-padding: 0.5rem;
-$button-group-horizontal-xs-icon-padding: $button-icon-xs-padding;
-$button-group-horizontal-sm-padding: 1rem;
-$button-group-horizontal-sm-icon-padding: $button-icon-sm-padding;
-$button-group-horizontal-md-padding: 1.5rem;
-$button-group-horizontal-md-icon-padding: $button-icon-md-padding;
-$button-group-horizontal-lg-padding: 2rem;
-$button-group-horizontal-lg-icon-padding: $button-icon-lg-padding;
-$button-group-horizontal-xl-padding: 2.5rem;
-$button-group-horizontal-xl-icon-padding: $button-icon-xl-padding;
 $button-group-vertical-xs-padding: 0.1875rem;
-$button-group-vertical-xs-icon-padding: $button-icon-xs-padding;
 $button-group-vertical-sm-padding: 0.4375rem;
-$button-group-vertical-sm-icon-padding: $button-icon-xs-padding;
 $button-group-vertical-md-padding: 0.5625rem;
-$button-group-vertical-md-icon-padding: $button-icon-sm-padding;
 $button-group-vertical-lg-padding: 0.8125rem;
-$button-group-vertical-lg-icon-padding: $button-icon-md-padding;
 $button-group-vertical-xl-padding: 1.0625rem;
-$button-group-vertical-xl-icon-padding: $button-icon-xl-padding;
-
-$button-group-border-width: $button-solid-border-width;
 
 // Card
 $card-accordion-border-width: 0.0625rem;
@@ -1273,15 +1227,20 @@ $customize-panel-empty-content-message-font-size: $font-size-lg;
 $customize-panel-empty-content-message-line-height: $line-height-lg;
 $customize-panel-empty-icon-padding: 0.75rem;
 
-$customize-panel-border: 0.0625rem solid $color-grey-30;
+$customize-panel-back-link-font-weight: 500;
+$customize-panel-back-link-icon-margin-right: 0.125rem;
+$customize-panel-back-link-label-margin-bottom: 0.125rem;
+$customize-panel-back-link-label-text-decoration: underline;
+$customize-panel-back-link-margin-bottom: 0.5rem;
 $customize-panel-border-bottom: 0.0625rem solid $color-grey-30;
+$customize-panel-border: 0.0625rem solid $color-grey-30;
 $customize-panel-content-padding-bottom: 1.5rem;
 $customize-panel-footer-button-gap: 1rem;
 $customize-panel-items-header-add-margin-bottom: 1.5rem;
+$customize-panel-items-header-margin-top: 1.5rem;
 $customize-panel-items-header-padding-bottom: 0.5rem;
 $customize-panel-no-results-icon-margin-right: 0.5rem;
 $customize-panel-search-margin-bottom: 1.25rem;
-
 // Code
 $code-font-size: 0.9375rem;
 
@@ -1426,6 +1385,9 @@ $drawer-header-title-font-weight: $font-weight-semi-bold;
 $drawer-title-line-height: 1.5rem;
 $drawer-footer-padding: 1.25rem 2rem;
 $drawer-footer-border: 0.0625rem solid $color-grey-30;
+$drawer-header-border: 0.0625rem solid $color-grey-30;
+$drawer-header-main-gap: 0.625rem;
+$drawer-title-wrapper-gap: 0.5rem;
 $drawer-box-shadow-top: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 $drawer-box-shadow-bottom: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
 $drawer-box-shadow-right: 0 0 1.5625rem 0.625rem rgba($color-black, 0.15);
@@ -1444,7 +1406,6 @@ $dropdown-button-active-border-color: rgba($color-grey-70, 0.2);
 
 $dropdown-trigger-icon-color: inherit;
 $dropdown-trigger-icon-margin-left: 0.375rem;
-$dropdown-trigger-text-transform: none;
 
 $dropdown-trigger-xs-padding-y: 0.125rem;
 $dropdown-trigger-xs-padding-x: 0.5rem;
@@ -1821,6 +1782,10 @@ $modal-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0
 $modal-close-top: 0.5rem;
 $modal-close-right: 0.75rem;
 $modal-max-width: 600px;
+$modal-max-width-sm: 30rem;
+$modal-max-width-md: 45rem;
+$modal-max-width-lg: 60rem;
+$modal-header-image-border: 0.0625rem solid $color-grey-30;
 $modal-header-background-color: transparent;
 $modal-header-background-image: none;
 $modal-header-text-color: $color-text-base;
@@ -2510,7 +2475,6 @@ $table-portal-row-active-background-color: $color-orange-05;
 $table-portal-row-hover-background-color: $color-orange-10;
 
 // Tabs
-$tabs-icon-color: $color-icon-body;
 $tabs-active-text-color: $color-text-primary;
 $tabs-hover-text-color: $color-text-primary;
 $tabs-horizontal-item-hover-border-color: transparent;
@@ -2518,19 +2482,13 @@ $tabs-horizontal-item-inverse-hover-border-color: transparent;
 $tabs-inverse-item-active-border-color: $color-border-white;
 $tabs-inverse-item-active-text-color: $color-text-white;
 $tabs-inverse-item-hover-text-color: $color-text-white;
+$tabs-inverse-item-hover-background-color: $color-grey-90;
 
 $tabs-horizontal-border-bottom-width: 0.0625rem;
 $tabs-horizontal-border-bottom: 0.0625rem solid $color-border-base;
 $tabs-horizontal-sliding-border-bottom-placement: -0.0625rem;
 
-$tabs-horizontal-lg-font-size: $font-size-lg;
 $tabs-horizontal-lg-font-weight: $font-weight-bold;
-$tabs-horizontal-lg-height: 4rem;
-$tabs-horizontal-lg-line-height: $line-height-lg;
-$tabs-horizontal-lg-padding: 1.25rem 0;
-$tabs-horizontal-lg-solid-padding: 1.5rem 2rem;
-$tabs-horizontal-lg-trigger-icon-top: 1.5rem;
-$tabs-horizontal-lg-trigger-padding-right: 1.5rem;
 
 $tabs-horizontal-md-font-size: $font-size-base;
 $tabs-horizontal-md-font-weight: $font-weight-semi-bold;
@@ -2538,7 +2496,6 @@ $tabs-horizontal-md-height: 3.5rem;
 $tabs-horizontal-md-padding: 1.25rem 0;
 $tabs-horizontal-md-solid-padding: 1.25rem 1.5rem;
 $tabs-horizontal-md-trigger-icon-top: 1.25rem;
-$tabs-horizontal-md-trigger-padding-right: 1.5rem;
 
 $tabs-horizontal-sm-font-size: $font-size-base;
 $tabs-horizontal-sm-font-weight: $font-weight-bold;
@@ -2557,8 +2514,6 @@ $tabs-horizontal-xs-trigger-icon-top: 0.8125rem;
 $tabs-horizontal-xs-trigger-padding-right: 1.25rem;
 
 $tabs-vertical-md-subtabs-font-size: 0.875rem;
-$tabs-vertical-lg-font-size: $font-size-lg;
-$tabs-vertical-xl-font-size: $font-size-lg;
 $tabs-vertical-lg-description-font-size: 0.875rem;
 
 $tabs-solid-active-background-color: $color-background-white;
@@ -2571,6 +2526,7 @@ $tabs-solid-background-color-hover: $color-grey-10;
 $tabs-solid-border-active: none;
 $tabs-solid-item-hover-border-color: transparent;
 $tabs-solid-border-bottom-focus: none;
+$tabs-solid-item-hover-border-color: transparent;
 $tabs-solid-border-bottom-hover: none;
 $tabs-solid-border-bottom-transparent: none;
 $tabs-solid-border-bottom-width: 0;
@@ -2581,7 +2537,6 @@ $tabs-solid-box-shadow: none;
 $tabs-solid-deprecated-border-display: block;
 $tabs-solid-gap: 0;
 $tabs-solid-horizontal-box-shadow: none;
-$tabs-solid-horizontal-lg-active-border-width: 0.125rem;
 $tabs-solid-horizontal-md-active-border-width: 0.125rem;
 $tabs-solid-horizontal-sm-active-border-width: 0.125rem;
 $tabs-solid-horizontal-xs-active-border-width: 0.125rem;
@@ -2593,7 +2548,6 @@ $tabs-inverse-solid-box-shadow: null;
 $tabs-inverse-solid-border-box-shadow: null;
 $tabs-solid-horizontal-padding: $tabs-horizontal-md-solid-padding;
 $tabs-solid-opacity-disabled: 0.75;
-$tabs-solid-outline-focus-visible: none;
 $tabs-solid-text-color: $color-text-black;
 $tabs-solid-text-color-active: $color-text-primary;
 $tabs-solid-text-color-disabled: inherit;
@@ -2601,7 +2555,6 @@ $tabs-solid-text-color-hover: $color-text-primary;
 $tabs-solid-vertical-box-shadow: none;
 $tabs-solid-vertical-padding: 0.5rem 0.5rem 0.5rem 1.5rem;
 $tabs-solid-vertical-xl-active-border-width: 0.125rem;
-$tabs-solid-xl-font-size: $font-size-lg;
 $tabs-solid-xl-font-weight: $font-weight-bold;
 
 // Text input

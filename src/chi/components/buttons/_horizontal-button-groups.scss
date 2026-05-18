@@ -1,35 +1,4 @@
-$sizes: (
-  xs: (
-    padding: $button-group-horizontal-xs-padding,
-    icons: (
-      padding: $button-group-horizontal-xs-icon-padding,
-    ),
-  ),
-  sm: (
-    padding: $button-group-horizontal-sm-padding,
-    icons: (
-      padding: $button-group-horizontal-sm-icon-padding,
-    ),
-  ),
-  md: (
-    padding: $button-group-horizontal-md-padding,
-    icons: (
-      padding: $button-group-horizontal-md-icon-padding,
-    ),
-  ),
-  lg: (
-    padding: $button-group-horizontal-lg-padding,
-    icons: (
-      padding: $button-group-horizontal-lg-icon-padding,
-    ),
-  ),
-  xl: (
-    padding: $button-group-horizontal-xl-padding,
-    icons: (
-      padding: $button-group-horizontal-xl-icon-padding,
-    ),
-  ),
-);
+$button-group-border-width: $button-solid-border-width !default;
 
 .chi-button-group {
   display: inline-flex;
@@ -39,24 +8,6 @@ $sizes: (
       &:not(.-flat) {
         border-radius: $border-radius-sharp !important;
         border-right-width: 0;
-
-        &:not(:last-child) {
-          padding-right: $button-group-horizontal-md-padding;
-
-          &.-icon {
-            padding-right: $button-group-horizontal-md-icon-padding;
-          }
-        }
-
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            padding-right: map-get(map-get($sizes, $type), padding);
-
-            &.-icon {
-              padding-right: map-get(map-get(map-get($sizes, $type), icons), padding);
-            }
-          }
-        }
 
         &:hover,
         &.-hover,

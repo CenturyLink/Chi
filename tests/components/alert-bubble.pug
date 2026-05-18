@@ -61,7 +61,7 @@ block content
   div(class=`test-bubble-clickable-link-default -w--100`)
     each val, type in icons
       .-m--2
-        a.chi-link.-no-hover-underline.-no-underline(href='#')
+        a.chi-link-underline.-no-underline(href='#')
           .chi-alert(class=`-${type}`)
             div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
             .chi-alert__content
@@ -74,7 +74,7 @@ block content
   div(class=`test-bubble-clickable-button-default -w--100`)
     each val, type in icons
       .-m--2
-        button.chi-button.-flat.-fluid.-b--0.-p--0.-text--no-transform.-no-hover
+        button.chi-button.-flat.-fluid.-b--0.-p--0.-text--no-transform
           .chi-button__content
             .chi-alert(class=`-${type} -w--100`)
               div(class=`chi-alert__icon chi-icon -icon--${type} ${val}`)
