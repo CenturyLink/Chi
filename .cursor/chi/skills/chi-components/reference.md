@@ -89,7 +89,7 @@
 | date-picker | chi-datepicker | -disabled, -active, -today, -inactive, -hover, -week-starts-on-sun, -month-starts-on-, -week-starts-on-mon, ... | chi-datepicker__day, chi-datepicker__week-day, chi-datepicker__month, chi-datepicker__days, ... | `<chi-date-picker>` |
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
 | drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
-| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header-main, chi-drawer__title-group, chi-drawer__header, chi-drawer__title, ... | `<chi-drawer>` |
+| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header-main, chi-drawer__title-wrapper, chi-drawer__header, chi-drawer__title, ... | `<chi-drawer>` |
 | dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | dynamic-form-group | chi-dynamic-form-group |  |  |  |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
@@ -107,8 +107,8 @@
 | marketing-icon | chi-marketing-icon | -xs, -sm, -md, -lg |  | `<chi-marketing-icon>` |
 | mobile-navigation | chi-mobile-nav | -second-level-shown, -left, -right, -animated, -close, -vertical, -icons, -active, ... |  |  |
 | modal | chi-modal | -sm, -md, -lg, -no-border, -centered, -active, -animated, -transitioning, ... | chi-modal__header, chi-modal__content, chi-modal__header-image-wrapper, chi-modal__footer | `<chi-modal>` |
-| navigation | chi-tabs | -sm, -lg, -active, -responsive, -active-alt, -animated, -xl, -border, ... |  | `<chi-tabs>` |
-| pagination | chi-pagination | -hover, -active, -focus, -flat, -disabled, -light, -md, -sm, -lg, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
+| navigation | chi-tabs | -sm, -lg, -active, -disabled, -has-child, -sliding, -solid, -vertical, ... |  | `<chi-tabs>` |
+| pagination | chi-pagination | -hover, -active, -focus, -flat, -disabled, -light, -md, -sm, ... | chi-pagination__content, chi-pagination__pages, chi-pagination__results, chi-pagination__button-group, ... | `<chi-pagination>` |
 | phone-input | chi-phone-input |  | chi-phone-input__menu | `<chi-phone-input>` |
 | picker | chi-picker-group | -sm, -lg, -xl, -disabled, -fluid, -xs, -line-height, -min-height, ... | chi-picker-group__content | `<chi-picker-group>` |
 | picker | chi-picker | -disabled, -pill, -xs, -item-font-size, -item-description-line-height, -sm |  | `<chi-picker>` |
@@ -124,6 +124,7 @@
 | steps | chi-steps | -active, -completed, -inverse, -horizontal-label, -labels--hide, -sm, -vertical, -labels- | chi-steps__icon, chi-steps__line, chi-steps__content, chi-steps__subitem, ... |  |
 | tables | chi-table | -sorted, -ascending, -descending, -row--success, -row--warning, -row--danger, -row--info, -active, ... |  |  |
 | tags | chi-tags | -focus, -hover, -icon, -close |  | `<chi-tags>` |
+| textarea | chi-composer-input | -hover, -focus, -disabled, -readonly, -xs, -line-height, -min-height, -padding, ... |  |  |
 | time-picker | chi-time-picker | -disabled, -active | chi-time-picker__content | `<chi-time-picker>` |
 | toggle-switch | chi-switch | -label--hide, -focus, -disabled, -xs, -sm, -row, -list |  | `<chi-switch>` |
 | toolbar | chi-toolbar | -vertical, -flat, -icon, -compact-title | chi-toolbar__header, chi-toolbar__ribbon, chi-toolbar__start, chi-toolbar__end, ... | `<chi-toolbar>` |
