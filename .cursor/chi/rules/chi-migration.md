@@ -192,21 +192,16 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-dropdown
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
+| `-md` | `size` | `"md"` |
 | `-fluid` | `fluid` | (boolean) |
 | `-active` | `active` | (boolean) |
 | `-disabled` | `disabled` | (boolean) |
-| `-xs` | `size` | `"xs"` |
-| `-sm` | `size` | `"sm"` |
-| `-md` | `size` | `"md"` |
-| `-lg` | `size` | `"lg"` |
-| `-xl` | `size` | `"xl"` |
-| `-primary` | `color` | `"primary"` |
-| `-secondary` | `color` | `"secondary"` |
-| `-dark` | `color` | `"dark"` |
-| `-light` | `color` | `"light"` |
-| `-danger` | `color` | `"danger"` |
 | `-hover` | `hover` | (boolean) |
 | `-animate` | `animate` | (boolean) |
+| `-sm` | `size` | `"sm"` |
+| `-xs` | `size` | `"xs"` |
+| `-lg` | `size` | `"lg"` |
+| `-xl` | `size` | `"xl"` |
 
 ### chi-epanel
 | CSS Modifier | Property | Value |

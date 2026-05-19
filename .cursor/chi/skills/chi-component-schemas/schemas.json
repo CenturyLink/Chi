@@ -285,7 +285,11 @@
       "-select-font-size",
       "-select-line-height",
       "-select-chevron-size",
-      "-select-padding"
+      "-select-padding",
+      "-w--",
+      "-trigger-padding-x",
+      "-trigger-base-padding-y",
+      "-trigger-icon-padding-y"
     ],
     "allowedChildren": [
       "chi-dropdown__trigger",

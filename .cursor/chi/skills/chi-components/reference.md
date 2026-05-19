@@ -90,7 +90,7 @@
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
 | drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
 | drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header-main, chi-drawer__title-wrapper, chi-drawer__header, chi-drawer__title, ... | `<chi-drawer>` |
-| dropdown | chi-dropdown | -fluid, -active, -h--auto, -no-interaction, -icon--right, -has-active, -disabled, -text, ... | chi-dropdown__menu | `<chi-dropdown>` |
+| dropdown | chi-dropdown | -md, -fluid, -active, -h--auto, -icon--right, -has-active, -disabled, -list, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | dynamic-form-group | chi-dynamic-form-group |  |  |  |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
 | filters | chi-filters |  | chi-filters__trigger-button |  |
@@ -124,7 +124,7 @@
 | steps | chi-steps | -active, -completed, -inverse, -horizontal-label, -labels--hide, -sm, -vertical, -labels- | chi-steps__icon, chi-steps__line, chi-steps__content, chi-steps__subitem, ... |  |
 | tables | chi-table | -sorted, -ascending, -descending, -row--success, -row--warning, -row--danger, -row--info, -active, ... |  |  |
 | tags | chi-tags | -focus, -hover, -icon, -close |  | `<chi-tags>` |
-| textarea | chi-composer-input | -hover, -focus, -disabled, -readonly, -xs, -line-height, -min-height, -padding, ... |  |  |
+| textarea | chi-composer-input | -hover, -focus, -disabled, -readonly, -xs, -line-height, -min-height, -padding, ... | chi-composer-input__content, chi-composer-input__footer |  |
 | time-picker | chi-time-picker | -disabled, -active | chi-time-picker__content | `<chi-time-picker>` |
 | toggle-switch | chi-switch | -label--hide, -focus, -disabled, -xs, -sm, -row, -list |  | `<chi-switch>` |
 | toolbar | chi-toolbar | -vertical, -flat, -icon, -compact-title | chi-toolbar__header, chi-toolbar__ribbon, chi-toolbar__start, chi-toolbar__end, ... | `<chi-toolbar>` |

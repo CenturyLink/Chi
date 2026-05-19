@@ -113,60 +113,29 @@ textarea {
 }
 
 .chi-composer-input {
-  background: linear-gradient(
-        $textarea-composer-background-color,
-        $textarea-composer-background-color
-      )
-      padding-box,
-    linear-gradient(
-        to right,
-        $textarea-composer-border-color-start,
-        $textarea-composer-border-color-mid,
-        $textarea-composer-border-color-start
-      )
-      border-box;
-  border-color: transparent;
   border-width: $textarea-composer-border-width;
   border-radius: $textarea-composer-border-radius;
   border-style: solid;
-  box-shadow: $textarea-composer-box-shadow;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.3s ease;
-
-  &:focus-within {
-    box-shadow: $textarea-composer-focus-box-shadow;
-  }
 
   &__content {
     padding: $textarea-composer-content-padding;
 
     textarea {
-      background: transparent;
       border: 0 none !important;
       min-height: $textarea-composer-min-height !important;
       max-height: $textarea-composer-max-height;
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: transparent transparent;
-
-      &:hover,
-      &:focus {
-        scrollbar-color: $textarea-composer-scrollbar-thumb-color transparent;
-      }
 
       &::-webkit-scrollbar {
         width: $textarea-composer-scrollbar-width;
       }
 
       &::-webkit-scrollbar-thumb {
-        background: transparent;
         border-radius: $textarea-composer-scrollbar-thumb-radius;
-      }
-
-      &:hover::-webkit-scrollbar-thumb,
-      &:focus::-webkit-scrollbar-thumb {
-        background: $textarea-composer-scrollbar-thumb-color;
       }
 
       &:focus {
