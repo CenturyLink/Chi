@@ -2689,20 +2689,21 @@ $textarea-xl-font-size: $text-input-xl-font-size;
 $textarea-xl-line-height: $text-input-xl-line-height;
 $textarea-xl-min-height: 7.5rem;
 $textarea-xl-padding: $text-input-xl-padding;
+$textarea-composer-background-color: $color-grey-10;
+$textarea-composer-border-color-mid: $color-teal-40;
+$textarea-composer-border-color-start: $color-teal-70;
 $textarea-composer-border-radius: 1rem;
 $textarea-composer-border-width: 0.125rem;
+$textarea-composer-box-shadow: 1px 1px 4px 0 color-mix(in srgb, $color-teal-60 25%, transparent), -1px -1px 4px 0 color-mix(in srgb, $color-teal-60 25%, transparent);
 $textarea-composer-content-padding: 0.5rem 0.5rem 0;
+$textarea-composer-focus-box-shadow: 1px 4px 8px 0 color-mix(in srgb, $color-teal-60 25%, transparent), -1px -1px 8px 0 color-mix(in srgb, $color-teal-60 25%, transparent);
 $textarea-composer-footer-padding: 0 0.5rem 0.5rem;
-$textarea-composer-min-height: 3rem;
 $textarea-composer-max-height: 13rem;
-$textarea-composer-scrollbar-width: 0.375rem;
+$textarea-composer-min-height: 3rem;
 $textarea-composer-scrollbar-thumb-color: rgba(0, 0, 0, 0.2);
 $textarea-composer-scrollbar-thumb-radius: 0.1875rem;
-$textarea-composer-background-color: var(--chi-color-grey-10);
-$textarea-composer-border-color-start: var(--chi-color-teal-70);
-$textarea-composer-border-color-mid: var(--chi-color-teal-40);
-$textarea-composer-box-shadow: 1px 1px 4px 0 color-mix(in srgb, var(--chi-color-teal-60) 25%, transparent), -1px -1px 4px 0 color-mix(in srgb, var(--chi-color-teal-60) 25%, transparent);
-$textarea-composer-focus-box-shadow: 1px 4px 8px 0 color-mix(in srgb, var(--chi-color-teal-60) 25%, transparent), -1px -1px 8px 0 color-mix(in srgb, var(--chi-color-teal-60) 25%, transparent);
+$textarea-composer-scrollbar-width: 0.375rem;
+
 
 // Time picker
 $time-picker-width: 14rem;

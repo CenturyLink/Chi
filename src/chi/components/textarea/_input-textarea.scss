@@ -124,8 +124,8 @@ textarea {
     padding: $textarea-composer-content-padding;
 
     textarea {
-      border: 0 none !important;
-      min-height: $textarea-composer-min-height !important;
+      border: 0 none;
+      min-height: $textarea-composer-min-height;
       max-height: $textarea-composer-max-height;
       overflow-y: auto;
       scrollbar-width: thin;
@@ -139,7 +139,7 @@ textarea {
       }
 
       &:focus {
-        box-shadow: none !important;
+        box-shadow: none;
       }
     }
   }
