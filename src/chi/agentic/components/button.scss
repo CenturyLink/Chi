@@ -1,6 +1,21 @@
+@property --agentic-angle {
+  syntax: '<angle>';
+  initial-value: 90deg;
+  inherits: false;
+}
+
+@property --agentic-spread {
+  syntax: '<percentage>';
+  initial-value: 50%;
+  inherits: false;
+}
+
 .chi-button {
   &.-agentic {
-    @include agentic-button-background($agentic-button-fill-default);
+    --agentic-angle: 90deg;
+    --agentic-spread: 50%;
+
+    @include agentic-button-animated-background($agentic-button-fill-default);
 
     border-color: transparent !important;
     border-radius: $agentic-button-border-radius;
@@ -12,14 +27,28 @@
     line-height: $agentic-button-line-height;
     padding-bottom: $agentic-button-padding-y;
     padding-top: $agentic-button-padding-y;
-    transition: $agentic-button-transition;
+
+    // Mouse-out: angle springs back first, then spread widens
+    transition:
+      $agentic-button-transition,
+      --agentic-angle $agentic-button-spring-duration $agentic-button-spring-easing,
+      --agentic-spread 0.3s ease-in 0.4s;
 
     &:hover {
-      @include agentic-button-background($agentic-button-fill-hover);
+      --agentic-angle: 180deg;
+      --agentic-spread: $agentic-button-spring-spread;
+
+      @include agentic-button-animated-background($agentic-button-fill-hover);
+
+      // Mouse-in: spread narrows first, then angle rotates with spring
+      transition:
+        $agentic-button-transition,
+        --agentic-spread 0.25s ease-out,
+        --agentic-angle $agentic-button-spring-duration $agentic-button-spring-easing 0.15s;
     }
 
     &:active {
-      @include agentic-button-background($agentic-button-fill-active);
+      @include agentic-button-animated-background($agentic-button-fill-active);
     }
 
     &:focus {

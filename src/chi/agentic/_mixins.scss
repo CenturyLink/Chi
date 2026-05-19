@@ -3,3 +3,16 @@
     linear-gradient($fill-color, $fill-color) padding-box,
     $border-gradient border-box;
 }
+
+@mixin agentic-button-animated-background($fill-color) {
+  background:
+    linear-gradient($fill-color, $fill-color) padding-box,
+    linear-gradient(
+      var(--agentic-angle),
+      $agentic-button-border-color-start,
+      $agentic-button-border-color-start calc(50% - var(--agentic-spread)),
+      $agentic-button-border-color-mid 50%,
+      $agentic-button-border-color-start calc(50% + var(--agentic-spread)),
+      $agentic-button-border-color-start
+    ) border-box;
+}

@@ -38,6 +38,8 @@ $agentic-elevation-shadow:
 //#region Button
 $agentic-button-border-disabled: linear-gradient($agentic-color-grey-60, $agentic-color-grey-60);
 $agentic-button-border-gradient: $agentic-border-gradient;
+$agentic-button-border-color-start: $agentic-color-teal-70;
+$agentic-button-border-color-mid: $agentic-color-teal-40;
 $agentic-button-border-radius: 2rem;
 $agentic-button-border-width: 0.125rem;
 $agentic-button-fill-default: $agentic-color-teal-10;
@@ -53,6 +55,14 @@ $agentic-button-padding-y: 0.375rem;
 $agentic-button-padding-y-lg: 0.625rem;
 $agentic-button-padding-y-sm: 0.25rem;
 $agentic-button-shadow: $agentic-elevation-shadow;
+$agentic-button-spring-duration: 0.8s;
+$agentic-button-spring-spread: 16%;
+$agentic-button-spring-easing: linear(
+  0, 0.07 5%, 0.25 10%, 0.47 17%, 0.69 24%,
+  0.86 31%, 0.97 39%, 1.05 48%, 1.1 55%,
+  1.12 60%, 1.1 67%, 1.06 75%, 1.03 83%,
+  1.01 91%, 1
+);
 $agentic-button-transition:
   background-color 0.2s ease,
   color 0.2s ease,

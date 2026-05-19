@@ -2,6 +2,8 @@
 @import '_global-variables';
 
 $animation-duration: 0.5s;
+$drawer-inline-width: 35rem !default;
+$drawer-header-title-group-gap: 0.5rem !default;
 
 .chi-drawer {
   background-color: $drawer-background-color;
@@ -206,6 +208,12 @@ $animation-duration: 0.5s;
     font-weight: $drawer-header-title-font-weight;
     line-height: $drawer-title-line-height;
     margin: 0;
+
+    &-group {
+      display: flex;
+      align-items: center;
+      gap: $drawer-header-title-group-gap;
+    }
   }
 
   &__content {
@@ -217,6 +225,31 @@ $animation-duration: 0.5s;
   &__footer {
     border-top: $drawer-footer-border;
     padding: $drawer-footer-padding;
+  }
+
+  &.-inline {
+    height: 100%;
+    position: static;
+    width: $drawer-inline-width;
+
+    &.-right.-animated:not(.-active) {
+      transform: none;
+    }
+  }
+}
+
+chi-drawer[inline][position='right'] {
+  align-self: flex-start;
+  flex-shrink: 0;
+  height: 100%;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  transition: width $animation-duration cubic-bezier(0.38, 0.52, 0.37, 1);
+  width: $drawer-inline-width;
+
+  &:not([active]) {
+    width: 0;
   }
 }
 

@@ -2,6 +2,12 @@
   &.-agentic {
     border: $agentic-drawer-border;
 
+    .chi-drawer__title-group {
+      .chi-icon {
+        color: $agentic-color-orange-60;
+      }
+    }
+
     .chi-drawer__footer {
       border-top: none;
     }
