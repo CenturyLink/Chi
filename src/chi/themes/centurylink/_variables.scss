@@ -2664,6 +2664,17 @@ $textarea-xl-font-size:                     $text-input-xl-font-size;
 $textarea-xl-line-height:                   $text-input-xl-line-height;
 $textarea-xl-min-height:                    7.5rem;
 $textarea-xl-padding:                       $text-input-xl-padding;
+$textarea-composer-background-color:        $color-grey-10;
+$textarea-composer-border-color-mid:        $color-teal-40;
+$textarea-composer-border-color-start:      $color-teal-70;
+$textarea-composer-box-shadow:              0.0625rem 0.0625rem 0.25rem 0 color-mix(in srgb, $color-teal-60 25%, transparent), -0.0625rem -0.0625rem 0.25rem 0 color-mix(in srgb, $color-teal-60 25%, transparent);
+$textarea-composer-content-padding:         0.5rem 0.5rem 0;
+$textarea-composer-focus-box-shadow:        0.0625rem 0.25rem 0.5rem 0 color-mix(in srgb, $color-teal-60 25%, transparent), -0.0625rem -0.0625rem 0.5rem 0 color-mix(in srgb, $color-teal-60 25%, transparent);
+$textarea-composer-footer-padding:          0 0.5rem 0.5rem;
+$textarea-composer-max-height:              13rem;
+$textarea-composer-min-height:              3rem;
+$textarea-composer-scrollbar-thumb-color:   rgba(0, 0, 0, 0.2);
+
 
 // Time picker
 $time-picker-width:                         14rem;
