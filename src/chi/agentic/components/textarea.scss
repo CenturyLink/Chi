@@ -1,6 +1,8 @@
 chi-textarea {
   .chi-composer-input {
     &.-agentic {
+      border-width: $textarea-composer-border-width;
+      border-radius: $textarea-composer-border-radius;
       background: linear-gradient($textarea-composer-background-color,
           $textarea-composer-background-color ) padding-box,
         linear-gradient(to right,
