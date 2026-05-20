@@ -1,6 +1,8 @@
 @import '_variables';
 @import '_mixins';
 
-@import 'components/button';
-@import 'components/drawer';
-@import 'components/textarea';
+.chi {
+  @import 'components/button';
+  @import 'components/drawer';
+  @import 'components/textarea';
+}
