@@ -2,14 +2,35 @@
   &.-agentic {
     border: $agentic-drawer-border;
 
-    .chi-drawer__title-wrapper {
-      .chi-icon {
-        color: $agentic-color-orange-60;
-      }
+    .chi-drawer__title-wrapper .chi-icon {
+      color: $agentic-color-orange-60;
     }
 
     .chi-drawer__footer {
       border-top: none;
+    }
+
+    @media only screen and (max-width: 767px) {
+      &.-right {
+        max-width: 85vw;
+      }
+
+      .chi-drawer__header {
+        padding: 1.5rem 1rem;
+      }
+
+      .chi-drawer__header .-close.-close {
+        top: 1.5rem;
+        right: 1rem;
+      }
+
+      .chi-drawer__content {
+        padding: 0 1rem 1rem;
+      }
+
+      .chi-drawer__footer {
+        padding: 1rem;
+      }
     }
   }
 }
