@@ -13,22 +13,89 @@
   </head>
   <body style="height: 100vh">
     <style type="text/css">
-      .-mxh--300 {
-        max-height: 18.75rem;
+      /* ── Layout ─────────────────────────────────────────────── */
+
+      #app {
+        height: 100%;
       }
 
-      .custom-app-class {
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Shell container: scroll container that pins the header by keeping
+      /* Scroll container that pins the header by keeping
          overflow within the content area below the header */
       .shell-container {
         flex: 1;
         min-height: 0;
         overflow-y: auto;
       }
+
+      /* ── Sidenav ────────────────────────────────────────────── */
+
+      /* Full-height sticky positioning for inline drawer coordination */
+      .chi-sidenav.-global {
+        align-self: stretch;
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+      }
+
+      /* Opt-in width/min-width transition, applied via JS only during
+         agentic drawer show/hide to avoid conflicting with open-on-hover */
+      .chi-sidenav.-global.-animate {
+        transition: width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1),
+                    min-width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
+      }
+
+      /* Explicit width on expanded state so width transition works
+         (the component only sets min-width by default) */
+      .chi-sidenav.-global.-expanded {
+        width: 20.25rem;
+      }
+
+      /* Explicit min-width on collapsed state so min-width transition works
+         (the component only sets width by default) */
+      .chi-sidenav.-global.-collapsed {
+        min-width: 4.375rem;
+      }
+
+      /* Prevent text wrapping during width transitions */
+      .chi-sidenav.-global chi-link .chi-link__content > span {
+        white-space: nowrap;
+      }
+
+      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .chi-link,
+      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .icon-chevron-down {
+        white-space: nowrap;
+      }
+
+      /* ── Mobile nav ─────────────────────────────────────────── */
+
+      /* Position drawer and backdrop below the header */
+      .chi-mobile-nav.-global {
+        .chi-drawer.-left,
+        .chi-backdrop.-animated {
+          top: 4.5rem;
+        }
+
+        /* Inset shadow emulates the header's box-shadow casting
+           downward onto the drawer, avoiding z-index conflicts */
+        .chi-drawer {
+          box-shadow: inset 0 0.3125rem 0.1875rem rgba(0, 0, 0, 0.1);
+          padding-top: 0.25rem;
+        }
+
+        .chi-drawer .chi-mobile-nav__header {
+          background-color: transparent;
+        }
+
+        /* Prevent mobile nav icon styles from overriding the
+           agentic button's icon color and size */
+        .chi-mobile-nav__list > .chi-mobile-nav__item .chi-button.-agentic .chi-icon {
+          color: inherit;
+          height: auto;
+          width: auto;
+        }
+      }
+
+      /* ── Demo content - Not needed for Agentic ─────────── */
 
       .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card,
       .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card .chi-card__content {
@@ -50,88 +117,17 @@
         height: 800px !important;
       }
 
-      /* Sidenav: full-height sticky positioning for inline drawer coordination */
-      .chi-sidenav.-global {
-        align-self: stretch;
-        overflow: hidden;
-        position: sticky;
-        top: 0;
-      }
-
-      /* Sidenav: opt-in width/min-width transition, applied via JS only during
-         agentic drawer show/hide to avoid conflicting with open-on-hover */
-      .chi-sidenav.-global.-animate {
-        transition: width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1),
-                    min-width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
-      }
-
-      /* Sidenav: explicit width on expanded state so width transition works
-         (the component only sets min-width by default) */
-      .chi-sidenav.-global.-expanded {
-        width: 20.25rem;
-      }
-
-      /* Sidenav: explicit min-width on collapsed state so min-width transition works
-         (the component only sets width by default) */
-      .chi-sidenav.-global.-collapsed {
-        min-width: 4.375rem;
-      }
-
-      /* Sidenav: prevent text wrapping during width transitions */
-      .chi-sidenav.-global chi-link .chi-link__content > span {
-        white-space: nowrap;
-      }
-
-      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .chi-link,
-      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .icon-chevron-down {
-        white-space: nowrap;
-      }
-
-      /* Mobile nav: position drawer and backdrop below the header */
-      .chi-mobile-nav.-global {
-        .chi-drawer.-left,
-        .chi-backdrop.-animated {
-          top: 4.5rem;
-        }
-
-        /* Mobile nav: inset shadow emulates the header's box-shadow casting
-           downward onto the drawer, avoiding z-index conflicts */
-        .chi-drawer {
-          box-shadow: inset 0 0.3125rem 0.1875rem rgba(0, 0, 0, 0.1);
-          padding-top: 0.25rem;
-        }
-
-        .chi-drawer .chi-mobile-nav__header {
-          background-color: transparent;
-        }
-
-        /* Mobile nav: prevent mobile nav icon styles from overriding the
-           agentic button's icon color and size */
-        .chi-mobile-nav__list > .chi-mobile-nav__item .chi-button.-agentic .chi-icon {
-          color: inherit;
-          height: auto;
-          width: auto;
-        }
-      }
-
-      /* Backdrop drawers (help, agentic mobile): position below the header */
-      .chi-backdrop.-animated {
-        top: 4.5rem;
-      }
       .shell-dependencies {
-          z-index: 99999;
-          width: 5px;
-          height: 5px;
-          position: absolute;
-          top: 0;
-          left: 0;
-      }
-      #app {
-        height: 100%;
+        z-index: 99999;
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     </style>
     <div id="app">
-      <div class="shell narnia-app-layout--dashboard custom-app-class -h--100 -mb--5">
+      <div class="shell narnia-app-layout--dashboard custom-app-class -h--100 -mb--5 -bg--white -d--flex -flex--column">
         <!-- Shell Dependencies -->
         <div class="shell-dependencies"></div>
         <!-- Header -->
@@ -1207,11 +1203,15 @@
           if (lgBreakpoint.matches && sidenavWasExpanded) {
             sidenavElement.classList.add('-animate');
             globalNav.expanded = true;
+            sidenavWasExpanded = false;
           }
         });
 
-        sidenavElement.addEventListener('transitionend', () => {
-          sidenavElement.classList.remove('-animate');
+        sidenavElement.addEventListener('transitionend', (e) => {
+          // Only act on the width transition to avoid duplicate calls
+          if (e.propertyName === 'width') {
+            sidenavElement.classList.remove('-animate');
+          }
         });
         //#endregion
       })
