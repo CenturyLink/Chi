@@ -1,27 +1,23 @@
-.chi-composer-input {
-  &.-agentic {
-    background: linear-gradient(
-          $textarea-composer-background-color,
-          $textarea-composer-background-color
-        )
-        padding-box,
-      linear-gradient(
-          to right,
+chi-textarea {
+  .chi-composer-input {
+    &.-agentic {
+      background: linear-gradient($textarea-composer-background-color,
+          $textarea-composer-background-color ) padding-box,
+        linear-gradient(to right,
           $textarea-composer-border-color-start,
           $textarea-composer-border-color-mid,
-          $textarea-composer-border-color-start
-        )
-        border-box;
-    border-color: transparent;
-    box-shadow: $textarea-composer-box-shadow;
+          $textarea-composer-border-color-start ) border-box;
+      border-color: transparent;
+      box-shadow: $textarea-composer-box-shadow;
 
-    &:focus-within {
-      box-shadow: $textarea-composer-focus-box-shadow;
-    }
+      &:focus-within {
+        box-shadow: $textarea-composer-focus-box-shadow;
+      }
 
-    .chi-composer-input__content {
-      textarea {
-        background: transparent;
+      .chi-composer-input__content {
+        textarea {
+          background: transparent;
+        }
       }
     }
   }
