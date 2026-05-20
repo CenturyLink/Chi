@@ -238,6 +238,8 @@ $drawer-header-title-group-gap: 0.5rem !default;
   }
 }
 
+// Targets the host element (not .chi-drawer) so sticky, flex-shrink,
+// and the width animation apply to the flex child in the parent layout.
 chi-drawer[inline][position='right'] {
   align-self: flex-start;
   flex-shrink: 0;
