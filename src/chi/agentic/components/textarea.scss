@@ -1,15 +1,25 @@
 chi-textarea {
-  .chi-input {
+  .chi-composer-input {
     &.-agentic {
-      background:
-        linear-gradient($agentic-textarea-fill, $agentic-textarea-fill) padding-box,
-        $agentic-textarea-border-gradient border-box;
-      border-color: transparent !important;
-      border-radius: $agentic-textarea-border-radius;
-      box-shadow: $agentic-textarea-shadow;
+      border-width: $textarea-composer-border-width;
+      border-radius: $textarea-composer-border-radius;
+      background: linear-gradient($textarea-composer-background-color,
+          $textarea-composer-background-color ) padding-box,
+        linear-gradient(to right,
+          $textarea-composer-border-color-start,
+          $textarea-composer-border-color-mid,
+          $textarea-composer-border-color-start ) border-box;
+      border-color: transparent;
+      box-shadow: $textarea-composer-box-shadow;
 
-      &:focus {
-        box-shadow: $agentic-textarea-shadow;
+      &:focus-within {
+        box-shadow: $textarea-composer-focus-box-shadow;
+      }
+
+      .chi-composer-input__content {
+        textarea {
+          background: transparent;
+        }
       }
     }
   }

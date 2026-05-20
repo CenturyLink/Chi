@@ -2,36 +2,26 @@
 @import '_global-mixins';
 
 $sizes: (
-  xs: (
-    font-size: $textarea-xs-font-size,
+  xs: (font-size: $textarea-xs-font-size,
     line-height: $textarea-xs-line-height,
     min-height: $textarea-xs-min-height,
-    padding: $textarea-xs-padding
-  ),
-  sm: (
-    font-size: $textarea-sm-font-size,
+    padding: $textarea-xs-padding ),
+  sm: (font-size: $textarea-sm-font-size,
     line-height: $textarea-sm-line-height,
     min-height: $textarea-sm-min-height,
-    padding: $textarea-sm-padding
-  ),
-  md: (
-    font-size: $textarea-md-font-size,
+    padding: $textarea-sm-padding ),
+  md: (font-size: $textarea-md-font-size,
     line-height: $textarea-md-line-height,
     min-height: $textarea-md-min-height,
-    padding: $textarea-md-padding
-  ),
-  lg: (
-    font-size: $textarea-lg-font-size,
+    padding: $textarea-md-padding ),
+  lg: (font-size: $textarea-lg-font-size,
     line-height: $textarea-lg-line-height,
     min-height: $textarea-lg-min-height,
-    padding: $textarea-lg-padding
-  ),
-  xl: (
-    font-size: $textarea-xl-font-size,
+    padding: $textarea-lg-padding ),
+  xl: (font-size: $textarea-xl-font-size,
     line-height: $textarea-xl-line-height,
     min-height: $textarea-xl-min-height,
-    padding: $textarea-xl-padding
-  )
+    padding: $textarea-xl-padding )
 );
 
 textarea {
@@ -60,7 +50,7 @@ textarea {
     &:focus,
     &.-focus {
       border-color: $textarea-focus-border-color;
-      box-shadow: 0 0 0 1px $textarea-focus-border-color;
+      box-shadow: 0 0 0 0.0625rem $textarea-focus-border-color;
     }
 
     &[disabled],
@@ -104,10 +94,45 @@ textarea {
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 1px rgba(map-get(map-get($color-semantic, $type), border-color), 1);
+            box-shadow: 0 0 0 0.0625rem rgba(map-get(map-get($color-semantic, $type), border-color), 1);
           }
         }
       }
     }
+  }
+}
+
+.chi-composer-input {
+  border: 0.0625rem solid $textarea-border-color;
+  border-radius: $border-radius-base;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &.-hover {
+    border-color: $textarea-hover-border-color;
+  }
+
+  &__content {
+    padding: $textarea-composer-content-padding;
+
+    textarea {
+      border: 0 none;
+      min-height: $textarea-composer-min-height;
+      max-height: $textarea-composer-max-height;
+      overflow-y: auto;
+      scrollbar-color: $textarea-composer-scrollbar-thumb-color transparent;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: $textarea-composer-footer-padding;
   }
 }
