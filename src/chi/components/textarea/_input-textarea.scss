@@ -128,15 +128,7 @@ textarea {
       min-height: $textarea-composer-min-height;
       max-height: $textarea-composer-max-height;
       overflow-y: auto;
-      scrollbar-width: thin;
-
-      &::-webkit-scrollbar {
-        width: $textarea-composer-scrollbar-width;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: $textarea-composer-scrollbar-thumb-radius;
-      }
+      scrollbar-color: $textarea-composer-scrollbar-thumb-color transparent;
 
       &:focus {
         box-shadow: none;

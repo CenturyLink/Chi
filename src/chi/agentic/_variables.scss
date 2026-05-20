@@ -15,9 +15,9 @@ $agentic-color-orange-60: #e66400;
 $agentic-color-orange-40: #f99e58;
 
 // Grey
-$agentic-color-grey-10: #fafafa;
 $agentic-color-grey-60: #6a6869;
 $agentic-color-grey-25: #dfddde;
+$agentic-color-grey-10: #fafafa;
 
 // White
 $agentic-color-white: #ffffff;
@@ -64,18 +64,10 @@ $agentic-button-transition:
 $agentic-drawer-border: 0.0625rem solid $agentic-color-grey-60;
 //#endregion
 
-//#region Textarea
-$agentic-textarea-border-gradient: $agentic-border-gradient;
-$agentic-textarea-border-radius: 1rem;
-$agentic-textarea-fill: $agentic-color-white;
-$agentic-textarea-shadow: $agentic-elevation-shadow;
-//#endregion
-
 //#region Composer textarea
 $textarea-composer-background-color: $agentic-color-grey-10;
 $textarea-composer-border-color-start: $agentic-color-teal-70;
 $textarea-composer-border-color-mid: $agentic-color-teal-40;
 $textarea-composer-box-shadow: $agentic-elevation-shadow;
 $textarea-composer-focus-box-shadow: 0.0625rem 0.25rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent), -0.0625rem -0.0625rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent);
-$textarea-composer-scrollbar-thumb-color: rgba(0, 0, 0, 0.2);
 //#endregion

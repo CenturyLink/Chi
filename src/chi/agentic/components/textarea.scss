@@ -22,23 +22,6 @@
     .chi-composer-input__content {
       textarea {
         background: transparent;
-        scrollbar-color: transparent transparent;
-
-        &:hover,
-        &:focus {
-          scrollbar-color: $textarea-composer-scrollbar-thumb-color transparent;
-        }
-
-        &::-webkit-scrollbar-thumb {
-          background: transparent;
-        }
-
-        &:hover::-webkit-scrollbar-thumb,
-        &:focus::-webkit-scrollbar-thumb {
-          background: $textarea-composer-scrollbar-thumb-color;
-        }
-
-
       }
     }
   }
