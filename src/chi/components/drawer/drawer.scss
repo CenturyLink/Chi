@@ -230,7 +230,7 @@ $drawer-header-title-group-gap: 0.5rem !default;
   &.-inline {
     height: 100%;
     position: static;
-    width: $drawer-inline-width;
+    width: min($drawer-inline-width, 40vw);
 
     &.-right.-animated:not(.-active) {
       transform: none;
@@ -245,11 +245,12 @@ chi-drawer[inline][position='right'] {
   flex-shrink: 0;
   height: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow: hidden;
   position: sticky;
   top: 0;
   transition: width $animation-duration cubic-bezier(0.38, 0.52, 0.37, 1);
-  width: $drawer-inline-width;
+  width: min($drawer-inline-width, 40vw);
 
   &:not([active]) {
     width: 0;

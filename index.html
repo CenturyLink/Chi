@@ -902,11 +902,32 @@
 
           <!-- Agentic drawer -->
           <chi-drawer id="agentic-drawer" title="Ask Lumen" extra-class="-agentic" position="right" inline title-icon="stars_2">
+            <div class="agentic-drawer-title" slot="compact-title">
+              <chi-button variant="flat" type="icon">
+                <chi-icon>chat</chi-icon>
+              </chi-button>
+              <chi-button variant="flat" type="icon">
+                <chi-icon>history</chi-icon>
+              </chi-button>
+              <chi-button variant="flat" type="icon">
+                <chi-icon>help</chi-icon>
+              </chi-button>
+              <div class="chi-divider -vertical"></div>
+            </div>
             <!-- Agentic content -->
             Agentic content here
 
             <div slot="footer" class="chi-form__item">
-              <chi-textarea placeholder="Ask Lumen" size="lg" composer extra-class="-agentic"></chi-textarea>
+              <chi-textarea placeholder="Ask Lumen" size="lg" composer slot="footer" extra-class="-agentic">
+                <div class="-g--2" slot="footer">
+                  <chi-button variant="flat" type="icon">
+                    <chi-icon>mic</chi-icon>
+                  </chi-button>
+                  <chi-button variant="flat" type="icon">
+                    <chi-icon>send</chi-icon>
+                  </chi-button>
+                </div>
+              </chi-textarea>
             </div>
           </chi-drawer>
 

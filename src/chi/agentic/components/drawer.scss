@@ -2,12 +2,34 @@
   &.-agentic {
     border: $agentic-drawer-border;
 
-    .chi-drawer__title-wrapper .chi-icon {
-      color: $agentic-color-orange-60;
+    .agentic-drawer-title {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chi-drawer__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chi-drawer__title-wrapper {
+      flex-grow: 1;
+      overflow: hidden;
+
+      .chi-icon {
+        color: $agentic-color-orange-60;
+      }
     }
 
     .chi-drawer__footer {
       border-top: none;
+    }
+
+    .chi-drawer__header .-close.-close {
+      margin-left: 0.5rem;
+      padding: 0.5626rem;
+      position: static;
     }
 
     @media only screen and (max-width: 767px) {
@@ -17,11 +39,6 @@
 
       .chi-drawer__header {
         padding: 1.5rem 1rem;
-      }
-
-      .chi-drawer__header .-close.-close {
-        top: 1.5rem;
-        right: 1rem;
       }
 
       .chi-drawer__content {
