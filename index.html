@@ -903,15 +903,33 @@
           <!-- Agentic drawer -->
           <chi-drawer id="agentic-drawer" title="Ask Lumen" extra-class="-agentic" position="right" inline title-icon="stars_2">
             <div class="agentic-drawer-title" slot="compact-title">
-              <chi-button variant="flat" type="icon">
-                <chi-icon>chat</chi-icon>
-              </chi-button>
-              <chi-button variant="flat" type="icon">
-                <chi-icon>history</chi-icon>
-              </chi-button>
-              <chi-button variant="flat" type="icon">
-                <chi-icon>help</chi-icon>
-              </chi-button>
+              <div class="-d--none -d-xl--flex -g--1">
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>chat</chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>history</chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>help</chi-icon>
+                </chi-button>
+              </div>
+              <div class="-d-xl--none">
+                <chi-dropdown icon="more-vert" position="bottom-end" variant="flat">
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>chat</chi-icon>
+                    Chat
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>history</chi-icon>
+                    History
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>help</chi-icon>
+                    Help
+                  </a>
+                </chi-dropdown>
+              </div>
               <div class="chi-divider -vertical"></div>
             </div>
             <!-- Agentic content -->
