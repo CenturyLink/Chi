@@ -3,7 +3,6 @@
 
 $animation-duration: 0.5s;
 $drawer-inline-width: 35rem !default;
-$drawer-header-title-group-gap: 0.5rem !default;
 
 .chi-drawer {
   background-color: $drawer-background-color;
@@ -179,12 +178,6 @@ $drawer-header-title-group-gap: 0.5rem !default;
     gap: $drawer-header-main-gap;
   }
 
-  &__title-wrapper {
-    display: flex;    
-    align-items: center;
-    gap: $drawer-title-wrapper-gap;
-  }
-
   &__header {
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
@@ -209,10 +202,10 @@ $drawer-header-title-group-gap: 0.5rem !default;
     line-height: $drawer-title-line-height;
     margin: 0;
 
-    &-group {
+    &-wrapper {
       display: flex;
       align-items: center;
-      gap: $drawer-header-title-group-gap;
+      gap: $drawer-title-wrapper-gap;
     }
   }
 

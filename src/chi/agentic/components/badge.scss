@@ -1,0 +1,13 @@
+.chi-badge {
+  &.-agentic {
+    align-self: flex-start;
+    border-radius: 2rem;
+    display: inline-flex;
+    line-height: 1.25rem;
+    padding: 0.5625rem 1rem;
+
+    &.-multi-line {
+      border-radius: 1rem;
+    }
+  }
+}
