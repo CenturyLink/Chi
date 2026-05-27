@@ -171,6 +171,55 @@ $sizes: (
   }
 
   &.-icon--right {
+    chi-button[type='close'] {
+      position: absolute;
+      right: $text-input-clearable-right;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.-clear-with-right-icon {
+      .chi-input {
+        padding-right: $text-input-md-clearable-with-icon-padding-right;
+
+        &.-xs {
+          padding-right: $text-input-xs-clearable-with-icon-padding-right;
+        }
+
+        &.-sm {
+          padding-right: $text-input-sm-clearable-with-icon-padding-right;
+        }
+
+        &.-md {
+          padding-right: $text-input-md-clearable-with-icon-padding-right;
+        }
+
+        &.-lg {
+          padding-right: $text-input-lg-clearable-with-icon-padding-right;
+        }
+
+        &.-xl {
+          padding-right: $text-input-xl-clearable-with-icon-padding-right;
+        }
+      }
+
+      chi-button[type='close'] {
+        right: $text-input-md-clearable-with-icon-right;
+      }
+
+      .chi-input.-xs ~ chi-button[type='close'] {
+        right: $text-input-xs-clearable-with-icon-right;
+      }
+
+      .chi-input.-sm ~ chi-button[type='close'] {
+        right: $text-input-sm-clearable-with-icon-right;
+      }
+
+      .chi-input.-xl ~ chi-button[type='close'] {
+        right: $text-input-xl-clearable-with-icon-right;
+      }
+    }
+
     input {
       &.chi-input {
         padding-right: $text-input-md-iconright-padding-right;

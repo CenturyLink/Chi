@@ -137,6 +137,12 @@
     width: 100%;
   }
 
+  &__header-breadcrumb {
+    .chi-link {
+      font-weight: 500;
+    }
+  }
+
   &__header-content {
     display: flex;
     flex-direction: column;
