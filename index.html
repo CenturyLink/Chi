@@ -12,63 +12,126 @@
     <title>Chi CSS & JS</title>
   </head>
   <body style="height: 100vh">
-    <div class="-p--2">
-      <h2>Chi Playground</h2>
+    <style type="text/css">
+      /* ── Layout ─────────────────────────────────────────────── */
 
-      <p>In order to change the theme, you can use the following routes:</p>
-      <ul>
-        <li><b>Chi (default)</b>: <a href="http://localhost:5173">http://localhost:5173</a></li>
-        <li>
-          <b>Connect</b>:
-          <a href="http://localhost:5173/?theme=chi-connect">http://localhost:5173/?theme=chi-connect</a>
-        </li>
-        <li>
-          <b>Centurylink</b>:
-          <a href="http://localhost:5173/?theme=chi-centurylink">http://localhost:5173/?theme=chi-centurylink</a>
-        </li>
-        <!-- <li>
-          <b>Test</b>:
-          <a href="http://localhost:5173/?theme=chi-test">http://localhost:5173/?theme=chi-test</a>
-        </li> -->
-      </ul>
+      #app {
+        height: 100%;
+      }
 
-      <style type="text/css">
-        .-mxh--300 {
-          max-height: 18.75rem;
+      /* Scroll container that pins the header by keeping
+         overflow within the content area below the header */
+      .shell-container {
+        flex: 1;
+        min-height: 0;
+        overflow-y: auto;
+      }
+
+      /* ── Sidenav ────────────────────────────────────────────── */
+
+      /* Full-height sticky positioning for inline drawer coordination */
+      .chi-sidenav.-global {
+        align-self: stretch;
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+      }
+
+      /* Opt-in width/min-width transition, applied via JS only during
+         agentic drawer show/hide to avoid conflicting with open-on-hover */
+      .chi-sidenav.-global.-animate {
+        transition: width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1),
+                    min-width 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
+      }
+
+      /* Explicit width on expanded state so width transition works
+         (the component only sets min-width by default) */
+      .chi-sidenav.-global.-expanded {
+        width: 20.25rem;
+      }
+
+      /* Explicit min-width on collapsed state so min-width transition works
+         (the component only sets width by default) */
+      .chi-sidenav.-global.-collapsed {
+        min-width: 4.375rem;
+      }
+
+      /* Prevent text wrapping during width transitions */
+      .chi-sidenav.-global chi-link .chi-link__content > span {
+        white-space: nowrap;
+      }
+
+      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .chi-link,
+      .chi-sidenav.-global chi-accordion .chi-accordion .chi-accordion__item .chi-accordion__trigger .icon-chevron-down {
+        white-space: nowrap;
+      }
+
+      /* ── Mobile nav ─────────────────────────────────────────── */
+
+      /* Position drawer and backdrop below the header */
+      .chi-mobile-nav.-global {
+        .chi-drawer.-left,
+        .chi-backdrop.-animated {
+          top: 4.5rem;
         }
 
-        .custom-app-class {
-          display: flex;
-          flex-direction: column;
+        /* Inset shadow emulates the header's box-shadow casting
+           downward onto the drawer, avoiding z-index conflicts */
+        .chi-drawer {
+          box-shadow: inset 0 0.3125rem 0.1875rem rgba(0, 0, 0, 0.1);
+          padding-top: 0.25rem;
         }
 
-        .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card,
-        .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card .chi-card__content {
-          height: 100%;
+        .chi-drawer .chi-mobile-nav__header {
+          background-color: transparent;
         }
 
-        .alert__inner-card .alert__inner-content {
-          display: flex;
-          justify-content: space-between;
-          padding: 0 1.25rem 1.25rem 1.25rem;
-          width: 100%;
+        /* Prevent mobile nav icon styles from overriding the
+           agentic button's icon color and size */
+        .chi-mobile-nav__list > .chi-mobile-nav__item .chi-button.-agentic .chi-icon {
+          color: inherit;
+          height: auto;
+          width: auto;
         }
+      }
 
-        .alert__inner-card :not(:last-child) {
-          margin-bottom: 0.5rem;
-        }
+      /* ── Demo content - Not needed for Agentic ─────────── */
 
-        .chi-skeleton {
-          height: 800px !important;
-        }
-      </style>
+      .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card,
+      .custom-app-class chi-main .chi-main__content .kpi-wrapper chi-card[type='kpi'] .chi-card .chi-card__content {
+        height: 100%;
+      }
 
-      <h3>App Layout Examples</h3>
+      .alert__inner-card .alert__inner-content {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1.25rem 1.25rem 1.25rem;
+        width: 100%;
+      }
 
-      <h3>Dashboard - Chi Grid</h3>
-      <div class="narnia-app-layout--dashboard custom-app-class -h--100 -mb--5">
+      .alert__inner-card :not(:last-child) {
+        margin-bottom: 0.5rem;
+      }
+
+      .chi-skeleton {
+        height: 800px !important;
+      }
+
+      .shell-dependencies {
+        z-index: 99999;
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <div id="app">
+      <div class="shell narnia-app-layout--dashboard custom-app-class -h--100 -mb--5 -bg--white -d--flex -flex--column">
+        <!-- Shell Dependencies -->
+        <div class="shell-dependencies"></div>
         <!-- Header -->
-        <header class="chi-header -lg -z--40">
+        <header class="chi-header -lg -z--20">
           <div class="chi-header__brandbar"></div>
           <nav class="chi-header__content">
             <div class="chi-header__brand">
@@ -82,71 +145,78 @@
                 <chi-icon icon="menu" size="sm--3"></chi-icon>
               </chi-button>
             </div>
-            <div class="chi-header__start -d-md--none">
+            <div class="chi-header__start -d-lg--none">
               <chi-button id="mobile-nav-trigger" variant="flat" type="icon" color="dark" size="lg">
                 <chi-icon icon="menu" size="sm--3"></chi-icon>
               </chi-button>
             </div>
-            <div class="chi-header__end -d--none -d-lg--flex">
-              <chi-dropdown
-                class="enterprise-id-switcher"
-                position="bottom-end"
-                button="Enterprise ID: 1234567"
-                size="sm"
-                select-mode
-              >
-                <div class="chi-grid" slot="menu-header">
-                  <div class="chi-col -w--4">Enterprise ID</div>
-                  <div class="chi-col -w--7">Enterprise Name</div>
-                </div>
-                <a class="chi-dropdown__menu-item -active" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234567</div>
-                    <div class="chi-col -w--4">Acme Incorporated</div>
+            <div class="chi-header__end -align-items--center">
+              <div class="-d--none -d-lg--flex -align-items--center">
+                <chi-button id="agentic-trigger" extra-class="-agentic">
+                  <chi-icon fill>stars_2</chi-icon>
+                  <span>Ask Lumen</span>
+                </chi-button>
+                <div class="chi-divider -vertical -mx--3"></div>
+                <chi-dropdown
+                  class="enterprise-id-switcher"
+                  position="bottom-end"
+                  button="Enterprise ID: 1234567"
+                  size="sm"
+                  select-mode
+                >
+                  <div class="chi-grid" slot="menu-header">
+                    <div class="chi-col -w--4">Enterprise ID</div>
+                    <div class="chi-col -w--7">Enterprise Name</div>
                   </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234568</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234569</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                    <div class="chi-col -w--1">
-                      <chi-spinner></chi-spinner>
+                  <a class="chi-dropdown__menu-item -active" slot="menu">
+                    <div class="chi-grid">
+                      <div class="chi-col -w--4">1234567</div>
+                      <div class="chi-col -w--4">Acme Incorporated</div>
                     </div>
-                  </div>
-                </a>
-                <a class="chi-dropdown__menu-item" slot="menu">
-                  <div class="chi-grid">
-                    <div class="chi-col -w--4">1234560</div>
-                    <div class="chi-col -w--7">Acme Incorporated</div>
-                  </div>
-                </a>
-                <chi-link slot="menu-footer">Manage My Enterprises</chi-link>
-              </chi-dropdown>
-              <div class="chi-divider -vertical"></div>
-              <chi-dropdown position="bottom" size="sm" button="Menu" variant="flat">
-                <a class="chi-dropdown__menu-item" href="#" slot="menu">
-                  <chi-icon icon="user"></chi-icon>
-                  Item 1
-                </a>
-                <a class="chi-dropdown__menu-item" href="#" slot="menu">
-                  <chi-icon icon="login"></chi-icon>
-                  Item 2
-                </a>
-              </chi-dropdown>
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <div class="chi-grid">
+                      <div class="chi-col -w--4">1234568</div>
+                      <div class="chi-col -w--7">Acme Incorporated</div>
+                    </div>
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <div class="chi-grid">
+                      <div class="chi-col -w--4">1234569</div>
+                      <div class="chi-col -w--7">Acme Incorporated</div>
+                      <div class="chi-col -w--1">
+                        <chi-spinner></chi-spinner>
+                      </div>
+                    </div>
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <div class="chi-grid">
+                      <div class="chi-col -w--4">1234560</div>
+                      <div class="chi-col -w--7">Acme Incorporated</div>
+                    </div>
+                  </a>
+                  <chi-link slot="menu-footer">Manage My Enterprises</chi-link>
+                </chi-dropdown>
+                <div class="chi-divider -vertical"></div>
+                <chi-dropdown position="bottom" size="sm" button="Menu" variant="flat">
+                  <a class="chi-dropdown__menu-item" href="#" slot="menu">
+                    <chi-icon icon="user"></chi-icon>
+                    Item 1
+                  </a>
+                  <a class="chi-dropdown__menu-item" href="#" slot="menu">
+                    <chi-icon icon="login"></chi-icon>
+                    Item 2
+                  </a>
+                </chi-dropdown>
+              </div>
             </div>
           </nav>
         </header>
 
-        <!-- App layout wrapper -->
-        <div class="app-layout-wrapper -d--flex">
+        <!-- Shell container -->
+        <div class="shell-container -d--flex">
           <!-- Side navigation -->
-          <aside id="global-nav" class="chi-sidenav -global -h--auto -d--none -d-md--block">
+          <aside id="global-nav" class="chi-sidenav -global -h--auto -d--none -d-lg--block">
             <div class="chi-sidenav__content">
               <nav>
                 <ul class="chi-sidenav__list">
@@ -432,6 +502,15 @@
                 </ul>
                 <div class="chi-divider -my--0"></div>
                 <ul class="chi-mobile-nav__list">
+                  <li class="chi-mobile-nav__item -p--2 -mb--0">
+                    <chi-button id="mobile-agentic-trigger" extra-class="-agentic" fluid>
+                      <chi-icon fill>stars_2</chi-icon>
+                      <span>Ask Lumen</span>
+                    </chi-button>
+                  </li>
+                </ul>
+                <div class="chi-divider -my--0"></div>
+                <ul class="chi-mobile-nav__list">
                   <li class="chi-mobile-nav__item">
                     <span class="chi-mobile-nav__email">jamie.johnson@company.com</span>
                   </li>
@@ -542,12 +621,23 @@
                 <chi-icon icon="circle-question-outline" size="sm"></chi-icon>
                 <span>Help</span>
               </chi-button>
-              <chi-button id="agentic-trigger" extra-class="-agentic">
-                <chi-icon fill>stars_2</chi-icon>
-                <span>Ask Lumen</span>
-              </chi-button>
             </div>
-
+            <p>In order to change the theme, you can use the following routes:</p>
+            <ul class="-mb--6">
+              <li><b>Chi (default)</b>: <a href="http://localhost:5173">http://localhost:5173</a></li>
+              <li>
+                <b>Connect</b>:
+                <a href="http://localhost:5173/?theme=chi-connect">http://localhost:5173/?theme=chi-connect</a>
+              </li>
+              <li>
+                <b>Centurylink</b>:
+                <a href="http://localhost:5173/?theme=chi-centurylink">http://localhost:5173/?theme=chi-centurylink</a>
+              </li>
+              <!-- <li>
+                <b>Test</b>:
+                <a href="http://localhost:5173/?theme=chi-test">http://localhost:5173/?theme=chi-test</a>
+              </li> -->
+            </ul>
             <div class="chi-main__accordion">
               <chi-accordion id="main-accordion" portal>
                 <div slot="core-capabilities">
@@ -759,15 +849,6 @@
               </chi-accordion>
             </div>
 
-            <chi-drawer id="agentic-drawer" title="Ask Lumen" position="right" extra-class="-agentic" backdrop>
-              <!-- Agentic content -->
-              Agentic content here
-
-              <div slot="footer" class="chi-form__item">
-                <chi-textarea placeholder="Ask Lumen" size="lg" extra-class="-agentic"></chi-textarea>
-              </div>
-            </chi-drawer>
-
             <div class="chi-divider -my--3"></div>
 
             <div class="chi-grid -mb--3">
@@ -818,6 +899,57 @@
               </div>
             </footer>
           </chi-main>
+
+          <!-- Agentic drawer -->
+          <chi-drawer id="agentic-drawer" title="Ask Lumen" extra-class="-agentic" position="right" inline title-icon="stars_2">
+            <div class="agentic-drawer-title" slot="compact-title">
+              <div class="-d--none -d-xl--flex -g--1">
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>chat</chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>history</chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon">
+                  <chi-icon>help</chi-icon>
+                </chi-button>
+              </div>
+              <div class="-d-xl--none">
+                <chi-dropdown icon="more-vert" position="bottom-end" variant="flat">
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>chat</chi-icon>
+                    Chat
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>history</chi-icon>
+                    History
+                  </a>
+                  <a class="chi-dropdown__menu-item" slot="menu">
+                    <chi-icon>help</chi-icon>
+                    Help
+                  </a>
+                </chi-dropdown>
+              </div>
+              <div class="chi-divider -vertical"></div>
+            </div>
+            <!-- Agentic content -->
+
+            <div class="chi-badge -primary -agentic">How can Lumen AI assist me?</div>
+            <div class="chi-badge -primary -agentic -multi-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis sapien euismod, luctus est non, tincidunt purus. Nam eget nulla quis urna rutrum accumsan. Vestibulum eros dui, lacinia tempus nisl non, dignissim euismod risus. Nunc pretium, felis rhoncus ultricies posuere, felis risus tincidunt urna, et vestibulum ante tellus vehicula ex.</div>
+
+            <div slot="footer" class="chi-form__item">
+              <chi-textarea placeholder="Ask Lumen" size="lg" composer slot="footer" extra-class="-agentic">
+                <div class="-g--2" slot="footer">
+                  <chi-button variant="flat" type="icon">
+                    <chi-icon>mic</chi-icon>
+                  </chi-button>
+                  <chi-button variant="flat" type="icon">
+                    <chi-icon>send</chi-icon>
+                  </chi-button>
+                </div>
+              </chi-textarea>
+            </div>
+          </chi-drawer>
 
           <!-- Help drawer -->
           <chi-drawer id="help-drawer" title="Title" position="right" backdrop>
@@ -1060,11 +1192,67 @@
 
         //#region Agentic
         const agenticTrigger = document.getElementById('agentic-trigger');
+        const mobileAgenticTrigger = document.getElementById('mobile-agentic-trigger');
         const agenticDrawer = document.getElementById('agentic-drawer');
+        const lgBreakpoint = window.matchMedia('(min-width: 992px)');
+        let sidenavWasExpanded = false;
 
+        // Viewport-based drawer mode: inline on desktop, overlay on mobile
+        function updateDrawerMode(isDesktop) {
+          if (isDesktop) {
+            agenticDrawer.setAttribute('inline', '');
+            agenticDrawer.setAttribute('prevent-auto-hide', '');
+            agenticDrawer.removeAttribute('backdrop');
+          } else {
+            agenticDrawer.removeAttribute('inline');
+            agenticDrawer.removeAttribute('prevent-auto-hide');
+            agenticDrawer.setAttribute('backdrop', '');
+            // Close drawer when switching to mobile if open
+            if (agenticDrawer.active) {
+              agenticDrawer.hide();
+            }
+          }
+        }
+
+        updateDrawerMode(lgBreakpoint.matches);
+        lgBreakpoint.addEventListener('change', (e) => updateDrawerMode(e.matches));
+
+        // Desktop header trigger
         agenticTrigger.addEventListener('click', () => {
-          console.log('Agentic trigger clicked');
           agenticDrawer.toggle();
+        });
+
+        // Mobile nav trigger: close mobile nav first, then open agentic drawer
+        mobileAgenticTrigger.addEventListener('click', () => {
+          mobileNavDrawer.hide();
+          agenticDrawer.show();
+        });
+
+        agenticDrawer.addEventListener('chiDrawerShow', () => {
+          // Only coordinate sidenav on desktop (inline mode)
+          if (lgBreakpoint.matches) {
+            sidenavWasExpanded = globalNav.expanded;
+            if (globalNav.expanded) {
+              sidenavElement.classList.add('-animate');
+              globalNav.expanded = false;
+            }
+          }
+        });
+
+        agenticDrawer.addEventListener('chiDrawerHide', () => {
+          // Only restore sidenav on desktop
+          if (lgBreakpoint.matches && sidenavWasExpanded) {
+            sidenavElement.classList.add('-animate');
+            globalNav.expanded = true;
+            sidenavWasExpanded = false;
+          }
+        });
+
+        sidenavElement.addEventListener('transitionend', (e) => {
+          // Only act on the width transition to avoid duplicate calls
+          if (e.propertyName === 'width') {
+            sidenavElement.classList.remove('-animate');
+          }
         });
         //#endregion
       })

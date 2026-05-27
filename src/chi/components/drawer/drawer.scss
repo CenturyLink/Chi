@@ -2,6 +2,7 @@
 @import '_global-variables';
 
 $animation-duration: 0.5s;
+$drawer-inline-width: 35rem !default;
 
 .chi-drawer {
   background-color: $drawer-background-color;
@@ -177,12 +178,6 @@ $animation-duration: 0.5s;
     gap: $drawer-header-main-gap;
   }
 
-  &__title-wrapper {
-    display: flex;    
-    align-items: center;
-    gap: $drawer-title-wrapper-gap;
-  }
-
   &__header {
     background-color: $drawer-header-background-color;
     background-image: $drawer-header-background-image;
@@ -206,6 +201,12 @@ $animation-duration: 0.5s;
     font-weight: $drawer-header-title-font-weight;
     line-height: $drawer-title-line-height;
     margin: 0;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: $drawer-title-wrapper-gap;
+    }
   }
 
   &__content {
@@ -217,6 +218,35 @@ $animation-duration: 0.5s;
   &__footer {
     border-top: $drawer-footer-border;
     padding: $drawer-footer-padding;
+  }
+
+  &.-inline {
+    height: 100%;
+    position: static;
+    width: min($drawer-inline-width, 40vw);
+
+    &.-right.-animated:not(.-active) {
+      transform: none;
+    }
+  }
+}
+
+// Targets the host element (not .chi-drawer) so sticky, flex-shrink,
+// and the width animation apply to the flex child in the parent layout.
+chi-drawer[inline][position='right'] {
+  align-self: flex-start;
+  flex-shrink: 0;
+  height: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  transition: width $animation-duration cubic-bezier(0.38, 0.52, 0.37, 1);
+  width: min($drawer-inline-width, 40vw);
+
+  &:not([active]) {
+    width: 0;
   }
 }
 

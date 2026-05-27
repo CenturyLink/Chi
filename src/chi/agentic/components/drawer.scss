@@ -2,8 +2,59 @@
   &.-agentic {
     border: $agentic-drawer-border;
 
+    .agentic-drawer-title {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .chi-drawer__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chi-drawer__title-wrapper {
+      flex-grow: 1;
+      overflow: hidden;
+
+      .chi-icon {
+        color: $agentic-color-orange-60;
+      }
+    }
+
     .chi-drawer__footer {
       border-top: none;
+    }
+
+    .chi-drawer__header .chi-button.-close {
+      margin-left: 0.5rem;
+      padding: 0.5626rem;
+      position: static;
+    }
+
+    .chi-drawer__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    @media only screen and (max-width: 767px) {
+      &.-right {
+        max-width: 85vw;
+      }
+
+      .chi-drawer__header {
+        padding: 1.5rem 1rem;
+      }
+
+      .chi-drawer__content {
+        padding: 1rem;
+      }
+
+      .chi-drawer__footer {
+        padding: 1rem;
+      }
     }
   }
 }
