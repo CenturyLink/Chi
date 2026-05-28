@@ -89,7 +89,7 @@
 | date-picker | chi-datepicker | -disabled, -active, -today, -inactive, -hover, -week-starts-on-sun, -month-starts-on-, -week-starts-on-mon, ... | chi-datepicker__day, chi-datepicker__week-day, chi-datepicker__month, chi-datepicker__days, ... | `<chi-date-picker>` |
 | divider | chi-divider | -inverse, -vertical, -label |  |  |
 | drag-and-drop | chi-drag | -active, -locked, -accordion, -base |  | `<chi-drag>` |
-| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left | chi-drawer__header-main, chi-drawer__title-wrapper, chi-drawer__header, chi-drawer__title, ... | `<chi-drawer>` |
+| drawer | chi-drawer | -active, -animated, -transitioning, -top, -menu, -right, -bottom, -left, ... | chi-drawer__header-main, chi-drawer__header, chi-drawer__title, chi-drawer__content, ... | `<chi-drawer>` |
 | dropdown | chi-dropdown | -md, -fluid, -active, -h--auto, -icon--right, -has-active, -disabled, -list, ... | chi-dropdown__menu | `<chi-dropdown>` |
 | dynamic-form-group | chi-dynamic-form-group |  |  |  |
 | expansion-panel | chi-epanel | -centered, -active, -disabled, -bordered, -no-step, -state-icon, -state, -done | chi-epanel__header, chi-epanel__collapse, chi-epanel__footer, chi-epanel__wrapper | `<chi-expansion-panel>` |
