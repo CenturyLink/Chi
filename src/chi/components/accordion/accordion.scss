@@ -271,24 +271,29 @@ $sizes: (
 
   &.-card {
     .chi-accordion__item {
+      background-color: $accordion-item-background-color;
+      border: 0.0625rem solid $accordion-item-border-color;
+      border-radius: $accordion-item-border-radius;
+      overflow: hidden;
       margin-bottom: 1.75rem;
 
-      &:not(.-expanded) {
-        border-bottom: 0.0625rem solid $color-border-base;
-      }
-
       .chi-accordion__trigger {
-        background-color: $color-background-white;
-        padding: 0.5rem 0;
+        background-color: $accordion-item-background-color;
+        padding: 0.5rem 1rem;
 
         .chi-accordion__title {
-          font-size: $font-size-7;
-          font-weight: $font-weight-extra-bold;
+          font-size: $accordion-md-item-font-size;
+          font-weight: $accordion-item-title-font-weight;
         }
       }
 
+      &.-expanded > .chi-accordion__trigger {
+        border-bottom: 0.0625rem solid $accordion-item-border-color;
+      }
+
       .chi-accordion__content {
-        padding: 2rem;
+        background-color: $color-background-white;
+        padding: 1.5rem;
       }
 
       .chi-accordion {
@@ -356,6 +361,11 @@ $sizes: (
         .chi-icon {
           color: $accordion-link-color;
           margin-left: $accordion-link-margin-left;
+        }
+
+        .icon-chevron-down,
+        .icon-chevron-right {
+          color: $accordion-link-color;
         }
 
         &:hover {
