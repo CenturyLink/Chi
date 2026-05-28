@@ -12,6 +12,11 @@ chi-textarea {
       border-color: transparent;
       box-shadow: $textarea-composer-box-shadow;
 
+      &:hover,
+      &:focus-within {
+        border-color: transparent;
+      }
+
       &:focus-within {
         box-shadow: $textarea-composer-focus-box-shadow;
       }
@@ -19,6 +24,11 @@ chi-textarea {
       .chi-composer-input__content {
         textarea {
           background: transparent;
+
+          &:focus {
+            border-color: transparent;
+            box-shadow: none;
+          }
         }
       }
     }

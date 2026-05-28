@@ -427,16 +427,10 @@ $_dropdown-sizes: (
       }
     }
 
-    // Vertical padding per size — base trigger only (excludes color variants, outline, flat, select-mode)
-    &:not(.-primary, .-secondary, .-dark, .-light, .-danger, .-outline, .-flat, .chi-dropdown__select-mode) {
+    // Vertical padding per size — base trigger only (excludes color variants, outline, flat, icon, select-mode)
+    &:not(.-primary, .-secondary, .-dark, .-light, .-danger, .-outline, .-flat, .-icon, .chi-dropdown__select-mode) {
       @include _chi-dropdown-trigger-sizes(trigger-base-padding-y) using ($value) {
         padding-block: $value;
-      }
-
-      &.-icon {
-        @include _chi-dropdown-trigger-sizes(trigger-icon-padding-y) using ($value) {
-          padding-block: $value;
-        }
       }
     }
 
@@ -628,8 +622,12 @@ a.chi-dropdown__menu-item {
   color: $color-text-base;
   text-decoration: none;
 
-  &:is(:hover, .-hover):not(.-disabled, .-active) {
-    background-color: $dropdown-menu-item-hover-background-color;
+  &:is(:hover, .-hover) {
+    text-decoration: none;
+
+    &:not(.-disabled, .-active) {
+      background-color: $dropdown-menu-item-hover-background-color;
+    }
   }
 
   &:not(.-disabled) {

@@ -2,6 +2,7 @@
 @import '_mixins';
 
 .chi {
+  @import 'components/badge';
   @import 'components/button';
   @import 'components/drawer';
   @import 'components/textarea';
