@@ -1,0 +1,176 @@
+extends ../layout.pug
+
+block scripts
+  script(type="module" src='../../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+  script(src='../../../js/chi.js')
+
+block variables
+  - var title = 'Sidenav'
+
+block content
+  h3 Global Sidenav - Collapsed
+  .test-sidenav-global-collapsed(style='height: 40rem;')
+    //- Trigger button
+    chi-button#toggle-nav-collapsed(variant='flat' type='icon')
+      chi-icon(icon='menu')
+
+    //- Global sidenav in collapsed state
+    aside#global-nav-collapsed.chi-sidenav.-global
+      .chi-sidenav__content
+        nav
+          ul.chi-sidenav__list
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='dashboard')
+                  span Dashboard
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='bell')
+                  chi-badge(type='notification' size='xs' text-weight='bold') 21
+                  span Alerts & Notifications
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#services-collapsed(type='link')
+                  div(slot='services-collapsed-template')
+                    .chi-sidenav__item-guide
+                      chi-link Manage Services
+                      chi-link Add Services
+                      chi-link Order Status
+                      chi-accordion#services-tools-collapsed(type='link')
+                        div(slot='services-tools-collapsed-template')
+                          .chi-sidenav__item-guide
+                            chi-link ELS & LI Management
+                            chi-link Network Storage
+                            chi-link.-active Edge Bare Metal
+                            chi-link SASE Management
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#apis-collapsed(type='link')
+                  div(slot='apis-collapsed-template')
+                    .chi-sidenav__item-guide
+                      chi-link APIs page 1
+                      chi-link APIs page 2
+                      chi-link APIs page 3
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#billing-collapsed(type='link')
+                  div(slot='billing-collapsed-template')
+                    .chi-sidenav__item-guide
+                      chi-link Billing page 1
+                      chi-link Billing page 2
+                      chi-link Billing page 3
+            .chi-divider
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='circle-question')
+                  span Help
+                  chi-icon(icon='external-link' size='sm')
+
+  h3 Global Sidenav - Expanded
+  .test-sidenav-global-expanded(style='height: 40rem;')
+    //- Global sidenav in expanded state
+    aside#global-nav-expanded.chi-sidenav.-global.-expanded
+      .chi-sidenav__content
+        nav
+          ul.chi-sidenav__list
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='dashboard')
+                  span Dashboard
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='bell')
+                  chi-badge(type='notification' size='xs' text-weight='bold') 21
+                  span Alerts & Notifications
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#services-expanded(type='link')
+                  div(slot='services-expanded-template')
+                    .chi-sidenav__item-guide
+                      chi-link Manage Services
+                      chi-link Add Services
+                      chi-link Order Status
+                      chi-accordion#services-tools-expanded(type='link')
+                        div(slot='services-tools-expanded-template')
+                          .chi-sidenav__item-guide
+                            chi-link ELS & LI Management
+                            chi-link Network Storage
+                            chi-link.-active Edge Bare Metal
+                            chi-link SASE Management
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#apis-expanded(type='link')
+                  div(slot='apis-expanded-template')
+                    .chi-sidenav__item-guide
+                      chi-link APIs page 1
+                      chi-link APIs page 2
+                      chi-link APIs page 3
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-accordion#billing-expanded(type='link')
+                  div(slot='billing-expanded-template')
+                    .chi-sidenav__item-guide
+                      chi-link Billing page 1
+                      chi-link Billing page 2
+                      chi-link Billing page 3
+            .chi-divider
+            li.chi-sidenav__item
+              .chi-sidenav__item-wrapper
+                chi-link
+                  chi-icon(icon='circle-question')
+                  span Help
+                  chi-icon(icon='external-link' size='sm')
+
+  script.
+    document.addEventListener('DOMContentLoaded', function () {
+      // Collapsed sidenav
+      const servicesCollapsed = document.getElementById('services-collapsed');
+      const servicesToolsCollapsed = document.getElementById('services-tools-collapsed');
+      const apisCollapsed = document.getElementById('apis-collapsed');
+      const billingCollapsed = document.getElementById('billing-collapsed');
+
+      servicesCollapsed.accordions = [{ title: 'Services', icon: 'list-alt', template: 'services-collapsed-template' }];
+      servicesToolsCollapsed.accordions = [{ title: 'Service Tools', template: 'services-tools-collapsed-template' }];
+      apisCollapsed.accordions = [{ title: 'APIs', icon: 'api', template: 'apis-collapsed-template' }];
+      billingCollapsed.accordions = [{ title: 'Billing', icon: 'cost', template: 'billing-collapsed-template' }];
+
+      const sidenavCollapsed = document.getElementById('global-nav-collapsed');
+      const globalNavCollapsed = chi.globalNav(sidenavCollapsed);
+
+      const toggleNavCollapsed = document.getElementById('toggle-nav-collapsed');
+      toggleNavCollapsed.addEventListener('click', () => (globalNavCollapsed.expanded = !globalNavCollapsed.expanded));
+
+      // Expanded sidenav - no globalNav() init, keep .-expanded class for pure CSS visual test
+      const servicesExpanded = document.getElementById('services-expanded');
+      const servicesToolsExpanded = document.getElementById('services-tools-expanded');
+      const apisExpanded = document.getElementById('apis-expanded');
+      const billingExpanded = document.getElementById('billing-expanded');
+
+      servicesExpanded.accordions = [{ title: 'Services', icon: 'list-alt', template: 'services-expanded-template' }];
+      servicesToolsExpanded.accordions = [{ title: 'Service Tools', template: 'services-tools-expanded-template' }];
+      apisExpanded.accordions = [{ title: 'APIs', icon: 'api', template: 'apis-expanded-template' }];
+      billingExpanded.accordions = [{ title: 'Billing', icon: 'cost', template: 'billing-expanded-template' }];
+
+      // Wait for custom element hydration before signaling backstop
+      var defined = 0;
+      var total = document.querySelectorAll('chi-accordion').length;
+      var attempts = 0;
+      var maxAttempts = 100; // 10s at 100ms intervals
+
+      function checkHydration() {
+        defined = document.querySelectorAll('chi-accordion.hydrated').length;
+        attempts++;
+        if (defined >= total || attempts >= maxAttempts) {
+          console.log('backstop_ready');
+        } else {
+          setTimeout(checkHydration, 100);
+        }
+      }
+
+      checkHydration();
+    });
