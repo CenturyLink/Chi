@@ -279,7 +279,6 @@ $sizes: (
 
       .chi-accordion__trigger {
         background-color: $accordion-item-background-color;
-        padding: 0.5rem 1rem;
 
         .chi-accordion__title {
           font-size: $accordion-md-item-font-size;
@@ -339,7 +338,7 @@ $sizes: (
       .chi-accordion__item {
         .chi-accordion__title {
           font-size: $font-size-base;
-          font-weight: $font-weight-semi-bold;
+          font-weight: $accordion-item-title-font-weight;
         }
       }
     }
