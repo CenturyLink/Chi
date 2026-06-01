@@ -934,24 +934,6 @@
       "requireSameDimensions": true
     },
     {
-      "label": "sidenav",
-      "cookiePath": "",
-      "url": "http://localhost:8000/chi/7.8.0/tests/<theme>/custom-elements/sidenav.html",
-      "referenceUrl": "",
-      "readyEvent": "backstop_ready",
-      "readySelector": "",
-      "delay": 0,
-      "hideSelectors": [],
-      "removeSelectors": [],
-      "hoverSelector": "",
-      "clickSelector": "",
-      "postInteractionWait": "",
-      "selectors": [".test-sidenav-global-collapsed", ".test-sidenav-global-expanded"],
-      "selectorExpansion": true,
-      "misMatchThreshold": 0,
-      "requireSameDimensions": true
-    },
-    {
       "label": "spinner",
       "cookiePath": "",
       "url": "http://localhost:8000/chi/7.8.0/tests/<theme>/custom-elements/spinner.html",

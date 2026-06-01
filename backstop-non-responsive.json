@@ -1414,7 +1414,7 @@
       "cookiePath": "",
       "url": "http://localhost:8000/chi/7.8.0/tests/<theme>/js/sidenav.html",
       "referenceUrl": "",
-      "readyEvent": "",
+      "readyEvent": "backstop_ready",
       "readySelector": "",
       "delay": 0,
       "hideSelectors": [],
@@ -1422,7 +1422,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [".enterprise-nav-menu", ".sidenav-accordion"],
+      "selectors": [".enterprise-nav-menu", ".sidenav-accordion", ".test-sidenav-global-collapsed", ".test-sidenav-global-expanded"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
