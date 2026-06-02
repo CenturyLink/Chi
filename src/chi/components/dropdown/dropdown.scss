@@ -236,6 +236,10 @@ $_dropdown-sizes: (
       }
     }
 
+    &-items-wrapper {
+      overflow: auto;
+    }
+
     &.-active {
       display: block;
     }
@@ -310,6 +314,12 @@ $_dropdown-sizes: (
         margin: 0;
         word-break: break-word;
       }
+    }
+
+    & chi-search-input {
+      width: auto;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
     }
 
     & > .chi-input__wrapper {
@@ -662,7 +672,7 @@ a.chi-dropdown__menu-item {
       font-size: map-get($md, select-chevron-size);
       width: 1rem;
     }
-    
+
     &:not(.-disabled) {
       &::after {
         color: $dropdown-select-chevron-color;
