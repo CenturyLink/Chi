@@ -46,6 +46,65 @@ $sizes: (
   )
 );
 
+@mixin input-right-padding-and-icon-position($md, $xs, $sm, $lg, $xl) {
+  padding-right: $md;
+
+  &.-xs {
+    padding-right: $xs;
+
+    & ~ .chi-icon,
+    & ~ chi-icon {
+      &:last-of-type {
+        right: $text-input-xs-iconright-right;
+      }
+    }
+  }
+
+  &.-sm {
+    padding-right: $sm;
+
+    & ~ .chi-icon,
+    & ~ chi-icon {
+      &:last-of-type {
+        right: $text-input-sm-iconright-right;
+      }
+    }
+  }
+
+  &.-md {
+    padding-right: $md;
+  }
+
+  &.-lg {
+    padding-right: $lg;
+
+    & ~ .chi-icon,
+    & ~ chi-icon {
+      &:last-of-type {
+        right: $text-input-lg-iconright-right;
+      }
+    }
+  }
+
+  &.-xl {
+    padding-right: $xl;
+
+    & ~ .chi-icon,
+    & ~ chi-icon {
+      &:last-of-type {
+        right: $text-input-xl-iconright-right;
+      }
+    }
+  }
+
+  & ~ .chi-icon,
+  & ~ chi-icon {
+    &:last-of-type {
+      right: $text-input-md-iconright-right;
+    }
+  }
+}
+
 .chi-input__wrapper {
   .chi-input {
     & ~ .chi-icon,
@@ -178,106 +237,48 @@ $sizes: (
       transform: translateY(-50%);
     }
 
-    &.-icon--right-wrapper {
-      .chi-input {
-        padding-right: $text-input-md-clearable-with-icon-padding-right;
-
-        &.-xs {
-          padding-right: $text-input-xs-clearable-with-icon-padding-right;
-        }
-
-        &.-sm {
-          padding-right: $text-input-sm-clearable-with-icon-padding-right;
-        }
-
-        &.-md {
-          padding-right: $text-input-md-clearable-with-icon-padding-right;
-        }
-
-        &.-lg {
-          padding-right: $text-input-lg-clearable-with-icon-padding-right;
-        }
-
-        &.-xl {
-          padding-right: $text-input-xl-clearable-with-icon-padding-right;
-        }
+    input {
+      &.chi-input {
+        @include input-right-padding-and-icon-position(
+          $text-input-md-iconright-padding-right,
+          $text-input-xs-iconright-padding-right,
+          $text-input-sm-iconright-padding-right,
+          $text-input-lg-iconright-padding-right,
+          $text-input-xl-iconright-padding-right
+        );
       }
+    }
+  }
 
-      chi-button[type='close'] {
-        right: $text-input-md-clearable-with-icon-right;
-      }
+  &.-icon--right-wrapper {
+    chi-button[type='close'] {
+      position: absolute;
+      right: $text-input-md-clearable-with-icon-right;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
-      .chi-input.-xs ~ chi-button[type='close'] {
-        right: $text-input-xs-clearable-with-icon-right;
-      }
+    .chi-input.-xs ~ chi-button[type='close'] {
+      right: $text-input-xs-clearable-with-icon-right;
+    }
 
-      .chi-input.-sm ~ chi-button[type='close'] {
-        right: $text-input-sm-clearable-with-icon-right;
-      }
+    .chi-input.-sm ~ chi-button[type='close'] {
+      right: $text-input-sm-clearable-with-icon-right;
+    }
 
-      .chi-input.-xl ~ chi-button[type='close'] {
-        right: $text-input-xl-clearable-with-icon-right;
-      }
+    .chi-input.-xl ~ chi-button[type='close'] {
+      right: $text-input-xl-clearable-with-icon-right;
     }
 
     input {
       &.chi-input {
-        padding-right: $text-input-md-iconright-padding-right;
-
-        &.-xs {
-          padding-right: $text-input-xs-iconright-padding-right;
-
-          & ~ .chi-icon,
-          & ~ chi-icon {
-            &:last-of-type {
-              right: $text-input-xs-iconright-right;
-            }
-          }
-        }
-
-        &.-sm {
-          padding-right: $text-input-sm-iconright-padding-right;
-
-          & ~ .chi-icon,
-          & ~ chi-icon {
-            &:last-of-type {
-              right: $text-input-sm-iconright-right;
-            }
-          }
-        }
-
-        &.-md {
-          padding-right: $text-input-md-iconright-padding-right;
-        }
-
-        &.-lg {
-          padding-right: $text-input-lg-iconright-padding-right;
-
-          & ~ .chi-icon,
-          & ~ chi-icon {
-            &:last-of-type {
-              right: $text-input-lg-iconright-right;
-            }
-          }
-        }
-
-        &.-xl {
-          padding-right: $text-input-xl-iconright-padding-right;
-
-          & ~ .chi-icon,
-          & ~ chi-icon {
-            &:last-of-type {
-              right: $text-input-xl-iconright-right;
-            }
-          }
-        }
-
-        & ~ .chi-icon,
-        & ~ chi-icon {
-          &:last-of-type {
-            right: $text-input-md-iconright-right;
-          }
-        }
+        @include input-right-padding-and-icon-position(
+          $text-input-md-clearable-with-icon-padding-right,
+          $text-input-xs-clearable-with-icon-padding-right,
+          $text-input-sm-clearable-with-icon-padding-right,
+          $text-input-lg-clearable-with-icon-padding-right,
+          $text-input-xl-clearable-with-icon-padding-right
+        );
       }
     }
   }
