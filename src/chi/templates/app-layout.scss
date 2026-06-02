@@ -137,6 +137,12 @@
     width: 100%;
   }
 
+  &__header-breadcrumb {
+    .chi-link {
+      font-weight: $font-weight-medium;
+    }
+  }
+
   &__header-content {
     display: flex;
     flex-direction: column;
