@@ -265,18 +265,18 @@
       padding: 2rem 1rem;
 
       @include respond-to(sm) {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1.5rem;
       }
 
       @include respond-to(md) {
         align-items: stretch;
         flex-direction: column;
         justify-content: flex-start;
-        padding: 2.5rem 2rem;
+        padding: 2rem 2rem;
       }
 
       @include respond-to(lg) {
-        padding: 2.5rem 4rem;
+        padding: 2rem 4rem;
       }
 
       .chi-main__header-start {
@@ -323,8 +323,6 @@
     }
 
     .chi-main__content {
-      padding-top: 2rem;
-
       .chi-main__accordion {
         > chi-accordion > .chi-accordion > .chi-accordion__item {
           background: transparent;
