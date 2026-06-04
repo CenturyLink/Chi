@@ -28,6 +28,7 @@ $font-size-h1: 3rem; // 48px
 $font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
@@ -2555,6 +2556,17 @@ $text-input-xl-icon-padding:                1rem;
 $text-input-xl-icon-width:                  1.5rem;
 $text-input-xl-icon-top:                    1rem;
 $text-input-xl-spinner-right:               1rem;
+
+$text-input-clearable-right:                      0.75rem;
+$text-input-xs-clearable-with-icon-padding-right: 2.9375rem;
+$text-input-sm-clearable-with-icon-padding-right: 3.1875rem;
+$text-input-md-clearable-with-icon-padding-right: 3.75rem;
+$text-input-lg-clearable-with-icon-padding-right: 3.75rem;
+$text-input-xl-clearable-with-icon-padding-right: 4.25rem;
+$text-input-xs-clearable-with-icon-right:         1.5rem;
+$text-input-sm-clearable-with-icon-right:         2rem;
+$text-input-md-clearable-with-icon-right:         2.5rem;
+$text-input-xl-clearable-with-icon-right:         2.875rem;
 
 $text-input-md-floating-label-bottom:       0.5rem;
 $text-input-md-floating-label-focus-bottom: 0.9375rem;
