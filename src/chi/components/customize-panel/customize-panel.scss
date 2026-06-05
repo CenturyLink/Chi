@@ -25,11 +25,6 @@
 
       &.chi-customize-panel__header-add {
         flex-direction: column;
-        padding-bottom: 0;
-
-        > span {
-          padding-bottom: $customize-panel-items-header-padding-bottom;
-        }
 
         > chi-link {
           margin-bottom: $customize-panel-back-link-margin-bottom;
