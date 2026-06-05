@@ -79,15 +79,39 @@ a,
     }
   }
 
+  &:has(.chi-icon) {
+    text-decoration: none;
+
+    &:hover,
+    &.-hover {
+      text-decoration: none;
+    }
+
+    &:not(.-no-underline):not(.-cta) {
+      > div > :not(chi-icon):not(.chi-icon),
+      > :not(chi-icon):not(.chi-icon):not(div) {
+        text-decoration: $link-text-decoration;
+      }
+    }
+
+    &:not(.-no-hover-underline):not(.-cta) {
+      &:hover,
+      &.-hover {
+        > div > :not(chi-icon):not(.chi-icon),
+        > :not(chi-icon):not(.chi-icon):not(div) {
+          text-decoration: $link-hover-text-decoration;
+        }
+      }
+    }
+  }
+
   .chi-link__content {
     align-items: center;
     display: flex;
 
-    & > i {
-      &.chi-icon {
-        &::before {
-          display: inline-block;
-        }
+    .chi-icon {
+      &::before {
+        display: inline-block;
       }
     }
 
