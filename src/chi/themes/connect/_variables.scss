@@ -381,6 +381,19 @@ $color-semantic: (
 // Components
 // sass-lint:disable max-line-length
 
+// Accordion
+$accordion-item-background-color: $color-grey-20;
+$accordion-item-border-color: $color-grey-30;
+$accordion-item-border-radius: 0.5rem;
+$accordion-item-title-font-weight: $font-weight-medium;
+$accordion-item-chevron-color: $color-black;
+$accordion-sm-item-padding: 0.9584rem 1rem;
+$accordion-md-item-padding: 1.458rem;
+$accordion-md-item-font-size: $font-size-lg;
+$accordion-item-border-width: 0.0625rem;
+$accordion-item-overflow: hidden;
+$accordion-item-last-child-border-bottom-color: $accordion-item-border-color;
+$accordion-card-not-expanded-border-bottom: none;
 
 // Alert
 $alert-background-color: $color-background-white;

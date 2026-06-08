@@ -67,7 +67,7 @@
 <!-- AUTO-GENERATED:START - section:component-list - Do not edit below. Run `npm run generate:ai-rules` to update -->
 | Component | Base Class | Modifiers | Subcomponents | Web Component |
 |-----------|------------|-----------|---------------|---------------|
-| accordion | chi-accordion | -disabled, -transitioning, -expanded, -sm, -md, -truncated, -card, -link, -compact-title, ... | chi-accordion__item | `<chi-accordion>` |
+| accordion | chi-accordion | -transitioning, -expanded, -truncated, -card, -sm, -link, -compact-title | chi-accordion__item | `<chi-accordion>` |
 | activity | chi-activity | -feed, -compact, -stories | chi-activity__day, chi-activity__item |  |
 | alert | chi-alert | -center, -banner, -close, -lg, -sm, -hover, -success, -border-color, ... | chi-alert__content | `<chi-alert>` |
 | anchor-nav | chi-anchor-nav | -active |  |  |
