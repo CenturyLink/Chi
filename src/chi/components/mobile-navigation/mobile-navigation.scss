@@ -713,20 +713,7 @@
             background: $mobile-nav-list-item-hover-background-color;
           }
 
-          &:has(.chi-icon) {
-            > div > :not(chi-icon):not(.chi-icon),
-            > :not(chi-icon):not(.chi-icon):not(div) {
-              text-decoration: none;
-            }
-
-            &:hover,
-            &.-hover {
-              > div > :not(chi-icon):not(.chi-icon),
-              > :not(chi-icon):not(.chi-icon):not(div) {
-                text-decoration: none;
-              }
-            }
-          }
+          @include nav-link-icon-no-underline;
         }
 
         .chi-mobile-nav__email {

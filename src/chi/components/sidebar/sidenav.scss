@@ -896,20 +896,7 @@ $sidenav-lg-width: 12.5rem;
               font-size: $sidenav-global-item-font-size;
               text-decoration: none;
 
-              &:has(.chi-icon) {
-                > div > :not(chi-icon):not(.chi-icon),
-                > :not(chi-icon):not(.chi-icon):not(div) {
-                  text-decoration: none;
-                }
-
-                &:hover,
-                &.-hover {
-                  > div > :not(chi-icon):not(.chi-icon),
-                  > :not(chi-icon):not(.chi-icon):not(div) {
-                    text-decoration: none;
-                  }
-                }
-              }
+              @include nav-link-icon-no-underline;
             }
 
             .chi-sidenav__item-wrapper:has(chi-accordion) {
