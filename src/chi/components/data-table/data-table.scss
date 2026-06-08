@@ -1124,27 +1124,16 @@ $sizes: (
           padding-left: 2rem;
 
           &.-expandable {
-            display: block;
+            display: flex;
             overflow: initial;
             position: relative;
 
             .chi-button {
               &.-expand {
-                display: block;
-                left: -0.125rem;
-                position: absolute;
-                top: -0.0625rem;
                 z-index: 1;
 
                 &.-flat {
                   border-width: 0.0625rem;
-                }
-
-                @include respond-to(md) {
-                  left: 0;
-                  position: relative;
-                  top: 0;
-                  z-index: auto;
                 }
               }
             }
