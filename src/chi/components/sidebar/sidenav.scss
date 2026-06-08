@@ -895,6 +895,8 @@ $sidenav-lg-width: 12.5rem;
               color: $sidenav-global-item-text-color;
               font-size: $sidenav-global-item-font-size;
               text-decoration: none;
+
+              @include nav-link-icon-no-underline;
             }
 
             .chi-sidenav__item-wrapper:has(chi-accordion) {
