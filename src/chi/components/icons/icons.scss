@@ -14,7 +14,7 @@ $icon-sizes: (
 );
 
 @font-face {
-  font-family: 'Material Symbols Outlined';
+  font-family: $font-family-icon-base;
   font-style: normal;
   font-weight: 400;
   font-display: block;
@@ -22,11 +22,16 @@ $icon-sizes: (
 }
 
 .chi-icon {
-  font-family: 'Material Symbols Outlined', sans-serif;
+  font-family: $font-family-icon;
   font-weight: 400;
   font-style: normal;
   font-size: $icon-size-base;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
@@ -36,7 +41,6 @@ $icon-sizes: (
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: 'liga';
   color: $icon-color;
   position: relative;
 

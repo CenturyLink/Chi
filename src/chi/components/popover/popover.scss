@@ -310,7 +310,7 @@
 
       &::before {
         content: 'drag_indicator';
-        font-family: 'Material Symbols Outlined', sans-serif;
+        font-family: $font-family-icon;
         font-size: $icon-size-base;
         position: absolute;
         left: 0.625rem;

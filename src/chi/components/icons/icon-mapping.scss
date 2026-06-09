@@ -1,3 +1,5 @@
+@import 'material-codepoints';
+
 $icon-mapping: (
   // Navigation & Arrows
   'icon-activity': (
@@ -1190,22 +1192,61 @@ $logo-icons: (
   }
 }
 
+// Declarations shared by every icon glyph. Per-icon rules below only add the
+// `content` codepoint (and FILL where needed), so this isn't repeated on each.
+.chi-icon::before {
+  display: inline-block;
+  font-family: $font-family-icon;
+  font-variant: normal;
+  line-height: 1;
+}
+
+// Legacy Chi icon classes mapped to a Material Symbols glyph. Each renders via
+// the glyph's codepoint, not its ligature name — a codepoint can't be mistaken
+// for text, so an icon name never flashes before the font loads.
 @each $chi-icon, $icon-data in $icon-mapping {
   @if not index($logo-icons, $chi-icon) {
     $material-icon: map-get($icon-data, name);
     $fill: map-get($icon-data, fill);
+    $codepoint: map-get($material-codepoints, $material-icon);
 
-    i.#{$chi-icon}::before,
-    div.#{$chi-icon}::before {
-      content: $material-icon;
-      display: inline-block;
-      font-family: 'Material Symbols Outlined', sans-serif;
-      font-variant: normal;
-      line-height: 1;
+    @if $codepoint {
+      i.#{$chi-icon}::before,
+      div.#{$chi-icon}::before {
+        content: unquote('"\\#{$codepoint}"');
 
-      @if $fill {
-        font-variation-settings: 'FILL' 1;
+        @if $fill {
+          font-variation-settings: 'FILL' 1;
+        }
       }
+    } @else {
+      @warn 'chi-icon: no codepoint for Material name "#{$material-icon}" (#{$chi-icon}); icon will not render. Regenerate _material-codepoints.scss.';
+    }
+  }
+}
+
+// Extra Material icons to expose in CSS, for ones with no legacy Chi class.
+// Add a Material name (underscore spelling, e.g. 'rocket_launch') to get an
+// `.icon-{name}` class; the codepoint resolves automatically. Only names listed
+// here emit CSS, so chi.css stays lean. Outline by default; add `-fill` on
+// `.chi-icon` to fill. An unknown or duplicate name is skipped with a warning.
+$curated-material-additions: (
+  // 'water_drop',
+  // 'forest',
+);
+
+@each $material-icon in $curated-material-additions {
+  $material-class: 'icon-#{$material-icon}';
+  $codepoint: map-get($material-codepoints, $material-icon);
+
+  @if not $codepoint {
+    @warn 'chi-icon: curated addition "#{$material-icon}" has no codepoint in $material-codepoints; it will not render. Check the spelling or regenerate _material-codepoints.scss.';
+  } @else if map-has-key($icon-mapping, $material-class) or index($logo-icons, $material-class) {
+    @warn 'chi-icon: curated addition "#{$material-icon}" collides with an existing icon class "#{$material-class}"; remove it from $curated-material-additions.';
+  } @else {
+    i.#{$material-class}::before,
+    div.#{$material-class}::before {
+      content: unquote('"\\#{$codepoint}"');
     }
   }
 }
