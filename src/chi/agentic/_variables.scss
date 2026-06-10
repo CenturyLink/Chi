@@ -83,3 +83,12 @@ $textarea-composer-border-width: 0.125rem;
 $textarea-composer-box-shadow: $agentic-elevation-shadow;
 $textarea-composer-focus-box-shadow: 0.0625rem 0.25rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent), -0.0625rem -0.0625rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent);
 //#endregion
+
+//#region Card
+$agentic-card-background-color: $agentic-color-white;
+$agentic-card-border-color-start: $agentic-color-teal-70;
+$agentic-card-border-color-mid: $agentic-color-teal-40;
+$agentic-card-border-radius: 0.5rem;
+$agentic-card-border-width: 0.125rem;
+$agentic-card-box-shadow: $agentic-elevation-shadow;
+//#endregion
