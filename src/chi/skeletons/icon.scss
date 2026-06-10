@@ -8,9 +8,11 @@ $sizes: (
   'md': 2rem,
   'lg': 4rem,
   'xl': 6rem,
-  'xxl': 8rem);
+  'xxl': 8rem,
+);
 
-chi-icon:not(.hydrated) {
+chi-icon:not(.hydrated),
+.chi-icon.-loading {
   animation: shine $animation-duration infinite linear;
   border-radius: 0.5rem;
   display: block;
@@ -19,7 +21,7 @@ chi-icon:not(.hydrated) {
   width: 1rem;
 
   @each $size, $width in $sizes {
-    &[size=#{$size}] {
+    &[size='#{$size}'] {
       border-radius: $width / 2;
       height: $width;
       width: $width;
@@ -27,4 +29,12 @@ chi-icon:not(.hydrated) {
   }
 
   @include background-gradient;
+}
+
+.chi-icon {
+  &.-loading {
+    &::before {
+      display: none;
+    }
+  }
 }

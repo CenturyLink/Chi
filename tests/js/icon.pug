@@ -1,0 +1,31 @@
+extends ../layout.pug
+
+block scripts
+  script(src='../../../js/chi.js')
+  script(src='../../../chi-marketing-icons.js')
+
+block variables
+  - var title = 'Icon'
+
+block content
+  i#valid-icon.chi-icon.icon-circle-check.-lg(aria-hidden="true")
+  i#invalid-icon.chi-icon.icon-does-not-exist.-lg(aria-hidden="true")
+  i#logo-icon.chi-icon.icon-logo-aws.-lg(aria-hidden="true")
+  i#valid-ligature.chi-icon.-lg(aria-hidden="true") home
+  i#invalid-ligature.chi-icon.-lg(aria-hidden="true") notarealicon
+
+  button#add-icon-button.chi-button.-ml--3
+    | Add icon
+
+  #dynamic-container.-mt--3
+
+  script.
+    document.getElementById('add-icon-button').addEventListener('click', () => {
+      const i = document.createElement('i');
+      
+      i.id = 'dynamic-icon';
+      i.className = 'chi-icon icon-arrow-right -lg';
+      i.setAttribute('aria-hidden', 'true');
+      
+      document.getElementById('dynamic-container').appendChild(i);
+    });
