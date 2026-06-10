@@ -53,9 +53,10 @@ $spinner-sizes: (
 }
 
 .chi-spinner__wrapper {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
 }
 
 @keyframes rotator {
