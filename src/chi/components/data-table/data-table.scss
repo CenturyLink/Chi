@@ -522,7 +522,6 @@ $sizes: (
             &.-flat {
               position: absolute;
               right: 1.375rem;
-              top: -1.25rem;
             }
           }
         }
@@ -1124,16 +1123,32 @@ $sizes: (
           padding-left: 2rem;
 
           &.-expandable {
-            display: flex;
+            display: block;
             overflow: initial;
             position: relative;
 
+            @include respond-to(md) {
+              display: flex;
+            }
+
             .chi-button {
               &.-expand {
+                display: block;
+                left: -0.125rem;
+                position: absolute;
+                top: -0.0625rem;
                 z-index: 1;
 
                 &.-flat {
                   border-width: 0.0625rem;
+                }
+
+                @include respond-to(md) {
+                  display: flex;
+                  left: 0;
+                  position: relative;
+                  top: 0;
+                  z-index: auto;
                 }
               }
             }
