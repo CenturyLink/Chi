@@ -391,10 +391,10 @@ $accordion-sm-item-padding: 0.9584rem 1rem;
 $accordion-md-item-padding: 1.458rem;
 $accordion-md-item-font-size: $font-size-lg;
 $accordion-item-border-width: 0.0625rem;
-$accordion-item-overflow: hidden;
 $accordion-item-last-child-border-bottom-color: $accordion-item-border-color;
-$accordion-card-not-expanded-border-bottom: none;
-
+$accordion-card-expanded-trigger-border-radius: 0.5rem 0.5rem 0 0;
+$accordion-card-expanded-content-border-radius: 0 0 0.5rem 0.5rem;
+$accordion-item-trigger-border-radius: 0.5rem;
 // Alert
 $alert-background-color: $color-background-white;
 $alert-border-radius: 0.5rem;

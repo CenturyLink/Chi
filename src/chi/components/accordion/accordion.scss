@@ -29,7 +29,6 @@ $accordion-item-background-color: $color-grey-10 !default;
 $accordion-item-border-color: transparent !default;
 $accordion-item-border-radius: 0 !default;
 $accordion-item-border-width: 0 0 0.0625rem 0 !default;
-$accordion-item-overflow: visible !default;
 $accordion-item-last-child-border-bottom-color: transparent !default;
 $accordion-item-trigger-icon-color: $color-icon-primary !default;
 $accordion-item-chevron-color: inherit !default;
@@ -53,8 +52,10 @@ $accordion-card-trigger-padding: $accordion-md-item-padding !default;
 $accordion-card-title-font-size: $accordion-md-item-font-size !default;
 $accordion-card-title-font-weight: $accordion-item-title-font-weight !default;
 $accordion-card-content-padding: 1.5rem !default;
-$accordion-card-not-expanded-border-bottom: 0.0625rem solid $accordion-item-border-color !default;
 $accordion-card-expanded-trigger-border-bottom: 0.0625rem solid $accordion-item-border-color !default;
+$accordion-card-expanded-trigger-border-radius: 0 !default;
+$accordion-card-expanded-content-border-radius: 0 !default;
+$accordion-item-trigger-border-radius: 0 !default;
 
 // ==========================================
 // Size map
@@ -95,16 +96,19 @@ $sizes: (
     border-width: $accordion-item-border-width;
     border-color: $accordion-item-border-color;
     border-radius: $accordion-item-border-radius;
-    overflow: $accordion-item-overflow;
-
     &:last-child {
       border-bottom-color: $accordion-item-last-child-border-bottom-color;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
     }
 
     .chi-accordion__trigger {
       align-items: center;
       background-color: transparent;
       border: 0;
+      border-radius: $accordion-item-trigger-border-radius;
       cursor: pointer;
       display: flex;
       font-size: $accordion-md-item-font-size;
@@ -286,7 +290,7 @@ $sizes: (
       margin-bottom: 1.75rem;
 
       &:not(.-expanded) {
-        border-bottom: $accordion-card-not-expanded-border-bottom;
+        border-bottom: 0.0625rem solid $color-border-base;
       }
 
       .chi-accordion__trigger {
@@ -301,11 +305,13 @@ $sizes: (
 
       &.-expanded > .chi-accordion__trigger {
         border-bottom: $accordion-card-expanded-trigger-border-bottom;
+        border-radius: $accordion-card-expanded-trigger-border-radius;
       }
 
       .chi-accordion__content {
         background-color: $color-background-white;
         padding: $accordion-card-content-padding;
+        border-radius: $accordion-card-expanded-content-border-radius;
       }
 
       .chi-accordion {
