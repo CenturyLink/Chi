@@ -88,8 +88,7 @@ a,
     }
 
     &:not(.-no-underline):not(.-cta) {
-      > div > :not(chi-icon):not(.chi-icon),
-      > :not(chi-icon):not(.chi-icon):not(div) {
+      @include link-icon-text-children {
         text-decoration: $link-text-decoration;
       }
     }
@@ -97,8 +96,7 @@ a,
     &:not(.-no-hover-underline):not(.-cta) {
       &:hover,
       &.-hover {
-        > div > :not(chi-icon):not(.chi-icon),
-        > :not(chi-icon):not(.chi-icon):not(div) {
+        @include link-icon-text-children {
           text-decoration: $link-hover-text-decoration;
         }
       }
