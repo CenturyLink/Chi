@@ -1,0 +1,56 @@
+.chi-alert {
+  &.-gradient {
+    background: $alert-gradient-background;
+    border: 0;
+    border-radius: $alert-border-radius;
+    box-shadow: none;
+    overflow: hidden;
+    padding: $alert-gradient-padding;
+
+    &::before {
+      display: none;
+    }
+
+    .chi-alert__title {
+      color: $alert-gradient-title-color;
+      font-weight: $alert-gradient-title-font-weight;
+      margin-bottom: $alert-gradient-title-margin-bottom;
+    }
+
+    .chi-alert__text {
+      margin-bottom: $alert-gradient-text-margin-bottom;
+    }
+
+    .chi-button {
+      &.-close {
+        background-color: $alert-gradient-close-button-background;
+        border-radius: $border-radius-circle;
+        z-index: 1;
+
+        .chi-icon {
+          color: $alert-gradient-close-icon-color;
+        }
+      }
+    }
+
+    &.-teal {
+      background: $alert-gradient-teal-background;
+    }
+
+    .chi-alert__gradient-image {
+      bottom: 0;
+      right: 0;
+      height: 100%;
+      width: $alert-gradient-image-width;
+      object-fit: cover;
+      position: absolute;
+    }
+
+    &:has(.chi-alert__gradient-image) {
+      .chi-alert__content {
+        padding-right: $alert-gradient-image-width;
+      }
+    }
+
+  }
+}
