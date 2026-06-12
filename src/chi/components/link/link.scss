@@ -87,13 +87,13 @@ a,
       text-decoration: none;
     }
 
-    &:not(.-no-underline):not(.-cta) {
+    &:not(.-no-underline, .-cta, .chi-dropdown__menu-item) {
       @include link-icon-text-children {
         text-decoration: $link-text-decoration;
       }
     }
 
-    &:not(.-no-hover-underline):not(.-cta) {
+    &:not(.-no-hover-underline, .-cta, .chi-dropdown__menu-item) {
       &:hover,
       &.-hover {
         @include link-icon-text-children {
