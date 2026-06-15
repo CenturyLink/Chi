@@ -1,5 +1,6 @@
 .chi-alert {
-  &.-gradient {
+  &.-gradient,
+  &.-gradient-accent-1 {
     background: $alert-gradient-background;
     border: 0;
     border-radius: $alert-border-radius;
@@ -33,10 +34,6 @@
       }
     }
 
-    &.-teal {
-      background: $alert-gradient-teal-background;
-    }
-
     .chi-alert__gradient-image {
       bottom: 0;
       right: 0;
@@ -51,6 +48,9 @@
         padding-right: $alert-gradient-image-width;
       }
     }
+  }
 
+  &.-gradient-accent-1 {
+    background: $alert-gradient-teal-background;
   }
 }
