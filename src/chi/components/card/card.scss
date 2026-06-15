@@ -170,8 +170,11 @@
   }
 
   &__title {
+    align-items: center;
+    display: flex;
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;
+    gap: 0.5rem;
     line-height: $card-title-line-height;
   }
 
