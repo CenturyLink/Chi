@@ -522,7 +522,6 @@ $sizes: (
             &.-flat {
               position: absolute;
               right: 1.375rem;
-              top: -1.25rem;
             }
           }
         }
@@ -1128,6 +1127,10 @@ $sizes: (
             overflow: initial;
             position: relative;
 
+            @include respond-to(md) {
+              display: flex;
+            }
+
             .chi-button {
               &.-expand {
                 display: block;
@@ -1141,6 +1144,7 @@ $sizes: (
                 }
 
                 @include respond-to(md) {
+                  display: flex;
                   left: 0;
                   position: relative;
                   top: 0;
