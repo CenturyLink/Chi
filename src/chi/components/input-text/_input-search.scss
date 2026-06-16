@@ -33,6 +33,7 @@
       &.-close:not(.-disabled) {
         right: $search-input-md-close-right;
         top: $search-input-md-close-top;
+        transform: none;
 
         &:active {
           background-color: $search-input-icon-active-background-color;

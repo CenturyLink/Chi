@@ -61,12 +61,8 @@ When migrating CSS modifiers to Web Component properties:
 ### chi-accordion
 | CSS Modifier | Property | Value |
 |-------------|----------|-------|
-| `-disabled` | `disabled` | (boolean) |
 | `-expanded` | `expanded` | (boolean) |
 | `-sm` | `size` | `"sm"` |
-| `-md` | `size` | `"md"` |
-| `-lg` | `size` | `"lg"` |
-| `-xl` | `size` | `"xl"` |
 
 ### chi-alert
 | CSS Modifier | Property | Value |

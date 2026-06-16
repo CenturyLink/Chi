@@ -28,6 +28,7 @@ $font-size-h1: 3rem; // 48px
 $font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-normal: 400;
+$font-weight-medium: 500;
 $font-weight-semi-bold: 600;
 $font-weight-bold: 700;
 $font-weight-extra-bold: 800;
@@ -344,44 +345,6 @@ $color-semantic: (
 // Components
 // sass-lint:disable max-line-length
 
-// Accordion
-$accordion-item-background-color:           $color-grey-10;
-$accordion-item-border-color:               transparent;
-$accordion-item-disabled-text-color:        $color-text-muted-light;
-$accordion-item-disabled-opacity:           $opacity-60;
-$accordion-item-title-text-color:           $color-text-base;
-$accordion-item-title-font-weight:          $font-weight-semi-bold;
-$accordion-item-trigger-icon-animation-duration:  0.2s;
-$accordion-item-trigger-icon-transform:           rotate(180deg);
-$accordion-item-trigger-icon-transition:          transform $accordion-item-trigger-icon-animation-duration ease-in-out;
-$accordion-item-trigger-icon-color:         $color-icon-primary;
-$accordion-item-level-2-background-color:   $color-background-white;
-$accordion-item-level-3-background-color:   $color-grey-10;
-$accordion-item-level-4-background-color:   $color-background-white;
-$accordion-item-level-5-background-color:   $color-grey-10;
-$accordion-link-color:                      $link-color;
-$accordion-link-hover-color:                $link-hover-color;
-$accordion-link-margin-left:                0.25rem;
-$accordion-sm-item-font-size:               $font-size-md;
-$accordion-sm-item-line-height:             1rem;
-$accordion-sm-item-padding:                 0.625rem 1rem;
-$accordion-sm-item-icon-size:               1.25rem;
-$accordion-sm-item-content-padding:         1rem;
-$accordion-md-item-font-size:               $font-size-xl;
-$accordion-md-item-line-height:             1.5rem;
-$accordion-md-item-padding:                 1.5rem;
-$accordion-md-item-icon-size:               1.5rem;
-$accordion-md-item-content-padding:         0 1.5rem 1.5rem;
-$accordion-lg-item-font-size:               $font-size-xl;
-$accordion-lg-item-line-height:             1.5rem;
-$accordion-lg-item-padding:                 1.5rem;
-$accordion-lg-item-icon-size:               1.5rem;
-$accordion-lg-item-content-padding:         0 1.5rem 1.5rem;
-$accordion-xl-item-font-size:               $font-size-xl;
-$accordion-xl-item-line-height:             1.75rem;
-$accordion-xl-item-padding:                 1.5rem;
-$accordion-xl-item-icon-size:               1.5rem;
-$accordion-xl-item-content-padding:         0 1.5rem 1.5rem;
 
 // Alert
 $alert-background-color:                    $color-background-white;
@@ -1299,7 +1262,7 @@ $drag-accordion-content-padding:            0.875rem 0.875rem 0 0;
 $drag-accordion-content-text-align:         start;
 $drag-accordion-item-background-color:      transparent;
 $drag-accordion-title-font-size:            $font-size-md;
-$drag-accordion-title-icon-height:          $accordion-md-item-line-height;
+$drag-accordion-title-icon-height:          1.5rem;
 $drag-accordion-trigger-padding:            0;
 $drag-item-background-color:                $color-background-white;
 $drag-item-border-color:                    $color-grey-30;
@@ -2541,6 +2504,17 @@ $text-input-xl-icon-padding:                1rem;
 $text-input-xl-icon-width:                  1.5rem;
 $text-input-xl-icon-top:                    1rem;
 $text-input-xl-spinner-right:               1rem;
+
+$text-input-clearable-right:                      0.75rem;
+$text-input-xs-clearable-with-icon-padding-right: 2.9375rem;
+$text-input-sm-clearable-with-icon-padding-right: 3.1875rem;
+$text-input-md-clearable-with-icon-padding-right: 3.75rem;
+$text-input-lg-clearable-with-icon-padding-right: 3.75rem;
+$text-input-xl-clearable-with-icon-padding-right: 4.25rem;
+$text-input-xs-clearable-with-icon-right:         1.5rem;
+$text-input-sm-clearable-with-icon-right:         2rem;
+$text-input-md-clearable-with-icon-right:         2.5rem;
+$text-input-xl-clearable-with-icon-right:         2.875rem;
 
 $text-input-md-floating-label-bottom:       0.5rem;
 $text-input-md-floating-label-focus-bottom: 0.9375rem;
