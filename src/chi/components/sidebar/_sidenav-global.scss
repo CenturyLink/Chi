@@ -85,6 +85,8 @@
           color: $sidenav-global-item-text-color;
           font-size: $sidenav-global-item-font-size;
           text-decoration: none;
+
+          @include nav-link-icon-no-underline;
         }
       }
     }
