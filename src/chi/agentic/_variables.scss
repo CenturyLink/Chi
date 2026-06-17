@@ -72,6 +72,10 @@ $agentic-button-transition:
 
 //#region Drawer
 $agentic-drawer-border: 0.0625rem solid $agentic-color-grey-60;
+$agentic-drawer-box-shadow: -0.5rem 0 1rem rgba(0, 0, 0, 0.2);
+$agentic-drawer-width: 31.25rem;
+$agentic-drawer-width-xxl: 35rem;
+$agentic-drawer-width-md: 27.5rem;
 //#endregion
 
 //#region Composer textarea
@@ -82,4 +86,13 @@ $textarea-composer-border-radius: 1rem;
 $textarea-composer-border-width: 0.0625rem;
 $textarea-composer-box-shadow: $agentic-elevation-shadow;
 $textarea-composer-focus-box-shadow: 0.0625rem 0.25rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent), -0.0625rem -0.0625rem 0.5rem 0 color-mix(in srgb, $agentic-color-teal-60 25%, transparent);
+//#endregion
+
+//#region Card
+$agentic-card-background-color: $agentic-color-white;
+$agentic-card-border-color-start: $agentic-color-teal-70;
+$agentic-card-border-color-mid: $agentic-color-teal-40;
+$agentic-card-border-radius: 0.5rem;
+$agentic-card-border-width: 0.125rem;
+$agentic-card-box-shadow: $agentic-elevation-shadow;
 //#endregion

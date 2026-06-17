@@ -79,15 +79,37 @@ a,
     }
   }
 
+  &:has(.chi-icon) {
+    text-decoration: none;
+
+    &:hover,
+    &.-hover {
+      text-decoration: none;
+    }
+
+    &:not(.-no-underline, .-cta, .chi-dropdown__menu-item) {
+      @include link-icon-text-children {
+        text-decoration: $link-text-decoration;
+      }
+    }
+
+    &:not(.-no-hover-underline, .-cta, .chi-dropdown__menu-item) {
+      &:hover,
+      &.-hover {
+        @include link-icon-text-children {
+          text-decoration: $link-hover-text-decoration;
+        }
+      }
+    }
+  }
+
   .chi-link__content {
     align-items: center;
     display: flex;
 
-    & > i {
-      &.chi-icon {
-        &::before {
-          display: inline-block;
-        }
+    .chi-icon {
+      &::before {
+        display: inline-block;
       }
     }
 

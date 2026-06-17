@@ -1,0 +1,42 @@
+.chi-card {
+  &.-agentic {
+    .chi-card__title {
+      .chi-icon {
+        color: $agentic-color-orange-60;
+      }
+    }
+
+    &:is(:not(.-widget):not(.-alert), .-kpi) {
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+
+      .chi-card__header,
+      .chi-card__footer {
+        padding-inline: 0;
+      }
+
+      .chi-card__header {
+        background-color: transparent;
+        box-shadow: none;
+      }
+
+      .chi-card__content {
+        background:
+          linear-gradient($agentic-card-background-color, $agentic-card-background-color) padding-box,
+          linear-gradient(
+              to right,
+              $agentic-card-border-color-start,
+              $agentic-card-border-color-mid,
+              $agentic-card-border-color-start
+            )
+            border-box;
+        border-color: transparent;
+        border-radius: $agentic-card-border-radius;
+        border-style: solid;
+        border-width: $agentic-card-border-width;
+        box-shadow: $agentic-card-box-shadow;
+      }
+    }
+  }
+}

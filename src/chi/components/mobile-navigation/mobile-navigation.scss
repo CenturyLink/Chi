@@ -712,6 +712,8 @@
           &:hover {
             background: $mobile-nav-list-item-hover-background-color;
           }
+
+          @include nav-link-icon-no-underline;
         }
 
         .chi-mobile-nav__email {

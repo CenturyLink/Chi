@@ -75,3 +75,25 @@
     @content;
   }
 }
+
+@mixin link-icon-text-children {
+  > div > :not(chi-icon):not(.chi-icon),
+  > :not(chi-icon):not(.chi-icon):not(div) {
+    @content;
+  }
+}
+
+@mixin nav-link-icon-no-underline {
+  &:has(.chi-icon) {
+    @include link-icon-text-children {
+      text-decoration: none;
+    }
+
+    &:hover,
+    &.-hover {
+      @include link-icon-text-children {
+        text-decoration: none;
+      }
+    }
+  }
+}
