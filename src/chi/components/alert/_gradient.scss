@@ -1,3 +1,7 @@
+// TODO: Replace placeholders 
+$alert-gradient-image-1: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop') !default;
+$alert-gradient-image-2: url('https://placehold.co/400x200') !default;
+
 .chi-alert {
   &.-gradient,
   &.-gradient-accent-1 {
@@ -34,19 +38,31 @@
       }
     }
 
-    .chi-alert__gradient-image {
-      bottom: 0;
-      right: 0;
-      height: 100%;
-      width: $alert-gradient-image-width;
-      object-fit: cover;
-      position: absolute;
-    }
+    &.-image-1,
+    &.-image-2 {
+      &::after {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        bottom: 0;
+        content: '';
+        height: 100%;
+        position: absolute;
+        right: 0;
+        width: $alert-gradient-image-width;
+      }
 
-    &:has(.chi-alert__gradient-image) {
       .chi-alert__content {
         padding-right: $alert-gradient-image-width;
       }
+    }
+
+    &.-image-1::after {
+      background-image: $alert-gradient-image-1;
+    }
+
+    &.-image-2::after {
+      background-image: $alert-gradient-image-2;
     }
   }
 
