@@ -75,6 +75,7 @@ $sidenav-md-width: 6rem;
 
       > a {
         @include remove-anchor-style;
+        @include nav-link-icon-no-underline;
       }
     }
   }
@@ -191,6 +192,8 @@ $sidenav-md-width: 6rem;
         color: $color-text-base;
         display: block;
         text-decoration: none;
+
+        @include nav-link-icon-no-underline;
 
         &.-active {
           background-color: $sidenav-drawer-tab-active-background-color;
