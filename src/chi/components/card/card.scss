@@ -554,8 +554,6 @@
   }
 
   &.-accordion {
-    border: $card-accordion-border;
-
     > chi-accordion .chi-accordion,
     > .chi-accordion {
       .chi-accordion__item {
@@ -651,6 +649,10 @@
         border: none;
         padding: 0;
       }
+    }
+
+    &.-accordion {     
+      border: $card-accordion-border;
     }
   }
 }
