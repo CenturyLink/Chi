@@ -488,6 +488,7 @@
       > chi-accordion .chi-accordion__item,
       > .chi-accordion .chi-accordion__item {
         background-color: transparent;
+        border: 0;
 
         .chi-accordion__trigger {
           background-color: transparent;
@@ -496,10 +497,6 @@
         }
 
         &.-expanded {
-          .chi-accordion__trigger {
-            border-bottom: $card-accordion-border;
-          }
-
           .chi-accordion__content {
             padding: $card-accordion-content-padding;
 
@@ -554,10 +551,13 @@
   }
 
   &.-accordion {
+    border: $card-accordion-border;
+
     > chi-accordion .chi-accordion,
     > .chi-accordion {
       .chi-accordion__item {
         background-color: transparent;
+        border: 0;
 
         .chi-accordion__trigger {
           background-color: transparent;
@@ -649,10 +649,6 @@
         border: none;
         padding: 0;
       }
-    }
-
-    &.-accordion {     
-      border: $card-accordion-border;
     }
   }
 }

@@ -997,7 +997,7 @@ $button-group-vertical-xl-padding: 0.875rem;
 
 // Card
 $card-accordion-border-width: 0.0625rem;
-$card-accordion-border: none;
+$card-accordion-border: $card-accordion-border-width solid rgba($color-black, 0.12);
 $card-accordion-card-content-padding: 0;
 $card-accordion-content-padding-bottom: 0.625rem;
 $card-accordion-content-padding-top: 0;
