@@ -497,6 +497,10 @@
         }
 
         &.-expanded {
+          .chi-accordion__trigger {
+            border-bottom: $card-accordion-border;
+          }
+
           .chi-accordion__content {
             padding: $card-accordion-content-padding;
 
