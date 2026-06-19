@@ -326,7 +326,8 @@
       .chi-main__accordion {
         > chi-accordion > .chi-accordion > .chi-accordion__item {
           background: transparent;
-
+          border: 0;
+          
           > .chi-accordion__trigger,
           > .chi-accordion__content {
             padding: 0;
