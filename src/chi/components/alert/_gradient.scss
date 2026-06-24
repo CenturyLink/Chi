@@ -11,6 +11,7 @@ $alert-gradient-image-2: url('https://placehold.co/400x200') !default;
     box-shadow: none;
     overflow: hidden;
     padding: $alert-gradient-padding;
+    position: relative;
 
     &::before {
       display: none;
@@ -30,6 +31,7 @@ $alert-gradient-image-2: url('https://placehold.co/400x200') !default;
       &.-close {
         background-color: $alert-gradient-close-button-background;
         border-radius: $border-radius-circle;
+        position: relative;
         z-index: 1;
 
         .chi-icon {
