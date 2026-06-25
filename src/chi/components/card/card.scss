@@ -488,6 +488,7 @@
       > chi-accordion .chi-accordion__item,
       > .chi-accordion .chi-accordion__item {
         background-color: transparent;
+        border: none;
 
         .chi-accordion__trigger {
           background-color: transparent;
@@ -498,6 +499,8 @@
         &.-expanded {
           .chi-accordion__trigger {
             border-bottom: $card-accordion-border;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
           }
 
           .chi-accordion__content {
@@ -560,6 +563,7 @@
     > .chi-accordion {
       .chi-accordion__item {
         background-color: transparent;
+        border: none;
 
         .chi-accordion__trigger {
           background-color: transparent;
