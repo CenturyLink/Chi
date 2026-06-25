@@ -195,7 +195,8 @@
       .chi-accordion {
         .chi-accordion__item {
           background-color: $drag-accordion-item-background-color;
-
+          border: none;
+          
           .chi-accordion__trigger {
             padding: $drag-accordion-trigger-padding;
 
