@@ -1,11 +1,10 @@
 // TODO: Replace placeholders 
-$alert-gradient-image-1: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop') !default;
-$alert-gradient-image-2: url('https://placehold.co/400x200') !default;
+$alert-gradient-image-1: url('https://lib.lumen.com/control-center/images/alert-banner-media-1.png') !default;
+$alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-banner-media-2.png') !default;
 
 .chi-alert {
-  &.-gradient,
-  &.-gradient-accent-1 {
-    background: $alert-gradient-background;
+  &.-gradient-accent-1,
+  &.-gradient-accent-2 {
     border: 0;
     border-radius: $alert-border-radius;
     box-shadow: none;
@@ -40,18 +39,19 @@ $alert-gradient-image-2: url('https://placehold.co/400x200') !default;
       }
     }
 
-    &.-image-1,
-    &.-image-2 {
+    &.-alert-banner-media-1,
+    &.-alert-banner-media-2 {
       &::after {
-        background-position: center;
+        background-position: right;
         background-repeat: no-repeat;
-        background-size: cover;
-        bottom: 0;
+        background-size: contain;
+        bottom: -5px;
         content: '';
-        height: 100%;
+        height: 110%;
         position: absolute;
-        right: 0;
-        width: $alert-gradient-image-width;
+        right: -5px;
+        width: 100%;
+        pointer-events: none;
       }
 
       .chi-alert__content {
@@ -59,16 +59,20 @@ $alert-gradient-image-2: url('https://placehold.co/400x200') !default;
       }
     }
 
-    &.-image-1::after {
+    &.-alert-banner-media-1::after {
       background-image: $alert-gradient-image-1;
     }
 
-    &.-image-2::after {
+    &.-alert-banner-media-2::after {
       background-image: $alert-gradient-image-2;
     }
   }
 
   &.-gradient-accent-1 {
+    background: $alert-gradient-background;
+  }
+
+  &.-gradient-accent-2 {
     background: $alert-gradient-teal-background;
   }
 }
