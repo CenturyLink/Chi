@@ -1,16 +1,14 @@
-// TODO: Replace placeholders 
 $alert-gradient-image-1: url('https://lib.lumen.com/control-center/images/alert-banner-media-1.png') !default;
 $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-banner-media-2.png') !default;
 
 .chi-alert {
   &.-gradient-accent-1,
   &.-gradient-accent-2 {
-    border: 0;
+    border: none;
     border-radius: $alert-border-radius;
     box-shadow: none;
     overflow: hidden;
     padding: $alert-gradient-padding;
-    position: relative;
 
     &::before {
       display: none;
@@ -27,11 +25,10 @@ $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-
     }
 
     .chi-button {
-      &.-close {
+      &.-close,
+      &.chi-alert__close-button {
         background-color: $alert-gradient-close-button-background;
         border-radius: $border-radius-circle;
-        position: relative;
-        z-index: 1;
 
         .chi-icon {
           color: $alert-gradient-close-icon-color;
@@ -39,40 +36,45 @@ $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-
       }
     }
 
-    &.-alert-banner-media-1,
-    &.-alert-banner-media-2 {
-      &::after {
-        background-position: right;
-        background-repeat: no-repeat;
-        background-size: contain;
-        bottom: -5px;
-        content: '';
-        height: 110%;
-        position: absolute;
-        right: -5px;
-        width: 100%;
-        pointer-events: none;
+    @include respond-to(md) {
+      &.-alert-banner-media-1,
+      &.-alert-banner-media-2 {
+        .chi-alert__content {
+          padding-right: $alert-gradient-image-width;
+        }
       }
-
-      .chi-alert__content {
-        padding-right: $alert-gradient-image-width;
-      }
-    }
-
-    &.-alert-banner-media-1::after {
-      background-image: $alert-gradient-image-1;
-    }
-
-    &.-alert-banner-media-2::after {
-      background-image: $alert-gradient-image-2;
     }
   }
 
   &.-gradient-accent-1 {
     background: $alert-gradient-background;
+
+    @include respond-to(md) {
+      &.-alert-banner-media-1 {
+        background: $alert-gradient-image-1 no-repeat right center / $alert-gradient-image-width auto,
+        $alert-gradient-background;
+      }
+
+      &.-alert-banner-media-2 {
+        background: $alert-gradient-image-2 no-repeat right center / $alert-gradient-image-width auto,
+        $alert-gradient-background;
+      }
+    }
   }
 
   &.-gradient-accent-2 {
     background: $alert-gradient-teal-background;
+
+    @include respond-to(md) {
+      &.-alert-banner-media-1 {
+        background: $alert-gradient-image-1 no-repeat right center / $alert-gradient-image-width auto,
+        $alert-gradient-teal-background;
+      }
+
+      &.-alert-banner-media-2 {
+        background: $alert-gradient-image-2 no-repeat right center / $alert-gradient-image-width auto,
+        $alert-gradient-teal-background;
+      }
+    }
   }
 }
