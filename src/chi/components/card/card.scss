@@ -499,6 +499,8 @@
         &.-expanded {
           .chi-accordion__trigger {
             border-bottom: $card-accordion-border;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
           }
 
           .chi-accordion__content {
