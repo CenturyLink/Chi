@@ -30,6 +30,11 @@ $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-
         background-color: $alert-gradient-close-button-background;
         border-radius: $border-radius-circle;
 
+        &:not(.-disabled, [disabled]):is(:hover, .-hover, :active, .-active) {
+          background-color: $alert-gradient-close-button-background;
+          box-shadow: none;
+        }
+
         .chi-icon {
           color: $alert-gradient-close-icon-color;
         }
@@ -51,12 +56,12 @@ $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-
 
     @include respond-to(md) {
       &.-alert-banner-media-1 {
-        background: $alert-gradient-image-1 no-repeat right center / $alert-gradient-image-width auto,
+        background: $alert-gradient-image-1 no-repeat right center / contain,
         $alert-gradient-background;
       }
 
       &.-alert-banner-media-2 {
-        background: $alert-gradient-image-2 no-repeat right center / $alert-gradient-image-width auto,
+        background: $alert-gradient-image-2 no-repeat right center / contain,
         $alert-gradient-background;
       }
     }
@@ -67,12 +72,12 @@ $alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-
 
     @include respond-to(md) {
       &.-alert-banner-media-1 {
-        background: $alert-gradient-image-1 no-repeat right center / $alert-gradient-image-width auto,
+        background: $alert-gradient-image-1 no-repeat right center / contain,
         $alert-gradient-teal-background;
       }
 
       &.-alert-banner-media-2 {
-        background: $alert-gradient-image-2 no-repeat right center / $alert-gradient-image-width auto,
+        background: $alert-gradient-image-2 no-repeat right center / contain,
         $alert-gradient-teal-background;
       }
     }
