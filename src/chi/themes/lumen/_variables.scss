@@ -174,6 +174,7 @@ $color-yellow-70: #996100;
 $color-yellow-60: #c27b00;
 $color-yellow-50: #e09900;
 $color-yellow-40: #fdd219; // Lumen Deep Yellow
+$color-yellow-45: #fcba23;
 $color-yellow-30: #fde162;
 $color-yellow-20: #fff8b3; // Lumen Pale Yellow
 $color-yellow-10: #fefbdc;
@@ -438,6 +439,16 @@ $alert-muted-title-text-color: $color-text-muted;
 $alert-muted-icon-color: $color-icon-muted;
 $alert-muted-banner-background-color: $color-background-muted-light;
 $alert-muted-bubble-background-color: $color-background-muted-lighter;
+$alert-gradient-background: linear-gradient(90deg, $color-yellow-45 0%, $color-orange-50 100%);
+$alert-gradient-teal-background: linear-gradient(90.08deg, $color-teal-50 0.07%, $color-teal-80 99.27%);
+$alert-gradient-padding: 1.5rem;
+$alert-gradient-close-button-background: $color-teal-70;
+$alert-gradient-close-icon-color: $color-text-white;
+$alert-gradient-image-width: 20.3125rem; // 325px
+$alert-gradient-text-margin-bottom: 1rem;
+$alert-gradient-title-color: $alert-banner-title-text-color;
+$alert-gradient-title-font-weight: $font-weight-semi-bold;
+$alert-gradient-title-margin-bottom: 1rem;
 $alert-md-padding: 0.9375rem 1.5rem;
 $alert-md-banner-padding: 1rem 1.5rem;
 $alert-md-icon-size: 1.5rem;

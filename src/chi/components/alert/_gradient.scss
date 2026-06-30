@@ -1,0 +1,85 @@
+$alert-gradient-image-1: url('https://lib.lumen.com/control-center/images/alert-banner-media-1.png') !default;
+$alert-gradient-image-2: url('https://lib.lumen.com/control-center/images/alert-banner-media-2.png') !default;
+
+.chi-alert {
+  &.-gradient-accent-1,
+  &.-gradient-accent-2 {
+    border: none;
+    border-radius: $alert-border-radius;
+    box-shadow: none;
+    overflow: hidden;
+    padding: $alert-gradient-padding;
+
+    &::before {
+      display: none;
+    }
+
+    .chi-alert__title {
+      color: $alert-gradient-title-color;
+      font-weight: $alert-gradient-title-font-weight;
+      margin-bottom: $alert-gradient-title-margin-bottom;
+    }
+
+    .chi-alert__text {
+      margin-bottom: $alert-gradient-text-margin-bottom;
+    }
+
+    .chi-button {
+      &.-close,
+      &.chi-alert__close-button {
+        background-color: $alert-gradient-close-button-background;
+        border-radius: $border-radius-circle;
+
+        &:not(.-disabled, [disabled]):is(:hover, .-hover, :active, .-active) {
+          background-color: $alert-gradient-close-button-background;
+          box-shadow: none;
+        }
+
+        .chi-icon {
+          color: $alert-gradient-close-icon-color;
+        }
+      }
+    }
+
+    @include respond-to(md) {
+      &.-alert-banner-media-1,
+      &.-alert-banner-media-2 {
+        .chi-alert__content {
+          padding-right: $alert-gradient-image-width;
+        }
+      }
+    }
+  }
+
+  &.-gradient-accent-1 {
+    background: $alert-gradient-background;
+
+    @include respond-to(md) {
+      &.-alert-banner-media-1 {
+        background: $alert-gradient-image-1 no-repeat right center / contain,
+        $alert-gradient-background;
+      }
+
+      &.-alert-banner-media-2 {
+        background: $alert-gradient-image-2 no-repeat right center / contain,
+        $alert-gradient-background;
+      }
+    }
+  }
+
+  &.-gradient-accent-2 {
+    background: $alert-gradient-teal-background;
+
+    @include respond-to(md) {
+      &.-alert-banner-media-1 {
+        background: $alert-gradient-image-1 no-repeat right center / contain,
+        $alert-gradient-teal-background;
+      }
+
+      &.-alert-banner-media-2 {
+        background: $alert-gradient-image-2 no-repeat right center / contain,
+        $alert-gradient-teal-background;
+      }
+    }
+  }
+}
