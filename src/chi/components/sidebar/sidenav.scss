@@ -1,9 +1,50 @@
 @import '_global-mixins';
 @import '_global-variables';
 
+// ==========================================================================
+// Sidenav — !default variables (identical across all 7 themes)
+// ==========================================================================
+
+$sidenav-item-icon-size: 1.25rem !default;
+$sidenav-item-min-height: 4.5rem !default;
+$sidenav-item-active-box-shadow: inset 0.125rem 0 0 $sidenav-item-active-border-color !default;
+$sidenav-item-hover-box-shadow: inset 0.125rem 0 0 $sidenav-item-hover-border-color !default;
+$sidenav-item-title-font-weight: $font-weight-normal !default;
+$sidenav-item-title-line-height: 1.25rem !default;
+$sidenav-item-expanded-background-color: $color-background-white !default;
+$sidenav-item-expanded-box-shadow: none !default;
+$sidenav-item-active-expanded-background-color: $color-background-white !default;
+$sidenav-global-background-color: $color-white !default;
+$sidenav-global-item-font-size: 0.875rem !default;
+$sidenav-global-item-icon-size: 1.25rem !default;
+$sidenav-global-item-border-radius: 0.3125rem !default;
+$sidenav-global-item-background-color: $color-white !default;
+$sidenav-global-item-active-font-weight: $font-weight-bold !default;
+$sidenav-global-tree-guide-color: $sidenav-global-item-icon-color !default;
+$sidenav-global-tree-guide-border-left: 0.0625rem solid $sidenav-global-item-icon-color !default;
+$sidenav-global-tree-guide-active-border-left: 0.0625rem solid $sidenav-global-tree-guide-active-color !default;
+
+// ==========================================================================
+// Sidenav — Size widths & drawer positioning data
+// ==========================================================================
+
 $sidenav-sm-width: 3rem;
 $sidenav-md-width: 6rem;
-$sidenav-lg-width: 12.5rem;
+
+// ==========================================================================
+// Sidenav — Shared mixins
+// ==========================================================================
+
+@mixin _sidenav-drawer-active-state {
+  background-color: $sidenav-drawer-tab-active-background-color;
+  box-shadow: $sidenav-drawer-tab-active-box-shadow;
+  color: $color-text-primary;
+  font-weight: $font-weight-semi-bold;
+}
+
+// ==========================================================================
+// Sidenav — Base
+// ==========================================================================
 
 .chi-sidenav {
   position: relative;
@@ -14,6 +55,7 @@ $sidenav-lg-width: 12.5rem;
     box-shadow: $sidenav-box-shadow;
     height: 100%;
     position: relative;
+    z-index: $zindex-fixed + 2;
 
     // sass-lint:disable-block no-universal-selectors
     > * + nav {
@@ -24,8 +66,7 @@ $sidenav-lg-width: 12.5rem;
   &__list,
   &__drawer-list {
     list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
+    margin-block: 0;
     padding-left: 0;
 
     > li {
@@ -34,9 +75,14 @@ $sidenav-lg-width: 12.5rem;
 
       > a {
         @include remove-anchor-style;
+        @include nav-link-icon-no-underline;
       }
     }
   }
+
+  // ==========================================================================
+  // Sidenav — List items
+  // ==========================================================================
 
   &__list > li {
     > a {
@@ -67,48 +113,36 @@ $sidenav-lg-width: 12.5rem;
       }
     }
 
-    &.-active {
-      > a {
-        background-color: $sidenav-item-active-background-color;
-        box-shadow: $sidenav-item-active-box-shadow;
-        color: $color-text-primary;
-        font-weight: $font-weight-semi-bold;
+    &.-active > a {
+      background-color: $sidenav-item-active-background-color;
+      box-shadow: $sidenav-item-active-box-shadow;
+      color: $color-text-primary;
+      font-weight: $font-weight-semi-bold;
 
-        .chi-icon {
-          color: $sidenav-item-active-icon-color;
-        }
+      .chi-icon {
+        color: $sidenav-item-active-icon-color;
       }
     }
 
-    &:not(.-active) {
-      a {
-        &.-active {
-          background-color: $sidenav-item-hover-background-color;
-          box-shadow: $sidenav-item-hover-box-shadow;
+    &:not(.-active) a.-active {
+      background-color: $sidenav-item-hover-background-color;
+      box-shadow: $sidenav-item-hover-box-shadow;
 
-          .chi-icon {
-            color: $sidenav-item-icon-color;
-          }
-        }
+      .chi-icon {
+        color: $sidenav-item-icon-color;
       }
     }
   }
 
-  // &.-sliding {
-  //   .chi-sidenav__list > li {
-  //     &.-active > a {
-  //       box-shadow: none;
-  //     }
-  //   }
-  // }
+  // ==========================================================================
+  // Sidenav — Drawer
+  // ==========================================================================
 
   .chi-drawer {
     box-shadow: 0.5rem 0 0.5rem -0.5rem rgba($color-black, 0.2);
     position: absolute;
-    z-index: $zindex-fixed;
-    // TODO: Remove after connect theme release
-    // Temporary workaround to support portal and connect theme
     width: 18.75rem;
+    z-index: $zindex-fixed;
 
     &__header {
       align-items: center;
@@ -116,71 +150,68 @@ $sidenav-lg-width: 12.5rem;
       color: $color-text-base;
       display: flex;
       height: 3.5rem;
-      // TODO: Remove after connect theme release
-      // Temporary workaround to support portal and connect theme
       padding: 1rem 1rem 1rem 1.5rem;
 
-      // TODO: Remove after connect theme release
-      // Temporary workaround to support portal and connect theme
       .chi-drawer__title {
         font-size: 1rem;
         line-height: 1.5rem;
       }
 
-      .chi-button {
-        &.-close {
-          padding: 0.3125rem;
-          right: 1rem;
-          top: 1rem;
+      .chi-button.-close {
+        padding: 0.3125rem;
+        right: 0.75rem;
+        top: 0.75rem;
 
-          .chi-icon {
-            color: $sidenav-drawer-close-icon-color;
-            font-size: 0.75rem;
-            line-height: 0.75rem;
-            height: 0.75rem;
-            width: 0.75rem;
-          }
+        .chi-icon {
+          color: $sidenav-drawer-close-icon-color;
+          font-size: 1.25rem;
+          line-height: 1.25rem;
+          height: 1.25rem;
+          width: 1.25rem;
         }
       }
     }
 
     &.-left {
-      left: $sidenav-sm-width;
+      left: var(--sidenav-w, #{$sidenav-sm-width});
 
       &.-animated:not(.-active) {
-        left: -$drawer-width + $sidenav-sm-width;
+        left: calc(-#{$drawer-width} + var(--sidenav-w, #{$sidenav-sm-width}));
       }
     }
 
+    // ========================================================================
+    // Sidenav — Drawer content
+    // ========================================================================
+
     &__content {
       background: $color-background-white;
-      // TODO: Remove after connect theme release
-      // Temporary workaround to support portal and connect theme
       padding: 0;
 
       a {
         color: $color-text-base;
         display: block;
+        text-decoration: none;
+
+        @include nav-link-icon-no-underline;
 
         &.-active {
           background-color: $sidenav-drawer-tab-active-background-color;
           box-shadow: $sidenav-drawer-tab-active-box-shadow;
           color: $color-text-primary;
+          font-weight: $font-weight-semi-bold;
 
           .chi-sidenav__title {
             font-weight: $font-weight-semi-bold;
           }
         }
 
-        span {
-          &.chi-sidenav__title {
-            display: flex;
-            font-weight: $font-weight-normal;
-          }
+        span.chi-sidenav__title {
+          display: flex;
+        }
 
-          .chi-icon {
-            margin-left: 0.5rem;
-          }
+        .chi-sidenav__title .chi-icon {
+          margin-left: 0.5rem;
         }
       }
 
@@ -190,15 +221,8 @@ $sidenav-lg-width: 12.5rem;
           padding: 0.625rem 1.5rem;
           text-decoration: none;
 
-          &.-active {
+          &.-active:hover {
             background-color: $sidenav-drawer-tab-active-background-color;
-            box-shadow: $sidenav-drawer-tab-active-box-shadow;
-            color: $color-text-primary;
-            font-weight: $font-weight-semi-bold;
-
-            &:hover {
-              background-color: $sidenav-drawer-tab-active-background-color;
-            }
           }
 
           &:hover {
@@ -212,141 +236,112 @@ $sidenav-lg-width: 12.5rem;
           border: none;
           margin-bottom: 0;
 
-          .chi-accordion__content {
-            a {
-              color: $color-text-base;
-              display: block;
-              font-weight: $sidenav-item-title-font-weight;
-              text-decoration: none;
+          .chi-accordion__content a {
+            color: $color-text-base;
+            display: block;
+            font-weight: $sidenav-item-title-font-weight;
+            text-decoration: none;
 
-              &.-active {
-                background-color: $sidenav-drawer-tab-active-background-color;
-                box-shadow: $sidenav-drawer-tab-active-box-shadow;
-                color: $color-text-primary;
-                font-weight: $font-weight-semi-bold;
-
-                &:hover {
-                  background-color: $sidenav-drawer-tab-active-background-color;
-                  text-decoration: none;
-                }
-              }
+            &.-active {
+              @include _sidenav-drawer-active-state;
 
               &:hover {
-                background-color: $sidenav-item-hover-background-color;
+                background-color: $sidenav-drawer-tab-active-background-color;
                 text-decoration: none;
               }
             }
+
+            &:hover {
+              background-color: $sidenav-item-hover-background-color;
+              text-decoration: none;
+            }
           }
 
-          button {
-            &.chi-accordion__trigger {
-              background-color: transparent;
-              padding: 0.625rem 1.5rem;
-              position: relative;
+          button.chi-accordion__trigger {
+            background-color: transparent;
+            padding: 0.625rem 1.5rem;
+            position: relative;
 
-              .chi-accordion__title {
+            .chi-accordion__title {
+              font-size: $font-size-md;
+              font-weight: $font-weight-normal;
+              line-height: $sidenav-item-title-line-height;
+
+              + .chi-icon {
+                font-size: 1.25rem;
+                font-weight: $font-weight-normal;
+                height: 1.25rem;
+                line-height: 1.25rem;
+                position: absolute;
+                right: 1.25rem;
+                top: 0.75rem;
+                transition: 0.2s;
+                width: 1.25rem;
+              }
+            }
+
+            + .chi-accordion__content {
+              padding: 0;
+
+              a {
                 font-size: $font-size-md;
                 font-weight: $font-weight-normal;
-                line-height: $sidenav-item-title-line-height;
-
-                + .chi-icon {
-                  font-size: $font-size-xs;
-                  font-weight: $font-weight-normal;
-                  height: 1rem;
-                  line-height: 1.25rem;
-                  position: absolute;
-                  right: 1.5rem;
-                  top: 0.75rem;
-                  transition: 0.2s;
-                  width: 0.75rem;
-                }
+                padding: 0.625rem 3rem;
               }
 
-              + .chi-accordion__content {
-                padding: 0;
+              > .chi-accordion > .chi-accordion__item > button.chi-accordion__trigger {
+                padding: 0.625rem 3rem;
 
-                a {
+                .chi-accordion__title {
                   font-size: $font-size-md;
-                  font-weight: $font-weight-normal;
-                  padding: 0.625rem 3rem;
                 }
 
-                > .chi-accordion {
-                  > .chi-accordion__item {
-                    > button {
-                      &.chi-accordion__trigger {
-                        padding: 0.625rem 3rem;
-
-                        .chi-accordion__title {
-                          font-size: $font-size-md;
-                        }
-
-                        + .chi-accordion__content {
-                          a {
-                            font-size: $font-size-md;
-                            padding: 0.625rem 4rem;
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-
-              &:hover {
-                background-color: $sidenav-item-hover-background-color;
-              }
-            }
-          }
-
-          &.-active {
-            > button {
-              &.chi-accordion__trigger {
-                background-color: $sidenav-drawer-tab-active-background-color;
-                box-shadow: $sidenav-drawer-tab-active-box-shadow;
-
-                > .chi-accordion__title {
-                  color: $color-text-primary;
-                }
-
-                &:hover {
-                  background: $sidenav-drawer-tab-active-background-color;
-                  box-shadow: $sidenav-item-active-box-shadow;
+                + .chi-accordion__content a {
+                  font-size: $font-size-md;
+                  padding: 0.625rem 4rem;
                 }
               }
             }
+
+            &:hover {
+              background-color: $sidenav-item-hover-background-color;
+            }
           }
 
-          &.-expanded {
-            > button {
-              &.chi-accordion__trigger {
-                background-color: $sidenav-item-active-expanded-background-color;
-                box-shadow: none;
+          &.-active > button.chi-accordion__trigger {
+            background-color: $sidenav-drawer-tab-active-background-color;
+            box-shadow: $sidenav-drawer-tab-active-box-shadow;
 
-                > .chi-accordion__title {
-                  color: $color-text-base;
-                }
+            > .chi-accordion__title {
+              color: $color-text-primary;
+            }
 
-                &:hover {
-                  background-color: $sidenav-item-hover-background-color;
-                  box-shadow: none;
-                  text-decoration: none;
-                }
-              }
+            &:hover {
+              background: $sidenav-drawer-tab-active-background-color;
+              box-shadow: $sidenav-item-active-box-shadow;
+            }
+          }
+
+          &.-expanded > button.chi-accordion__trigger {
+            background-color: $sidenav-item-active-expanded-background-color;
+            box-shadow: none;
+
+            > .chi-accordion__title {
+              color: $color-text-base;
+            }
+
+            &:hover {
+              background-color: $sidenav-item-hover-background-color;
+              box-shadow: none;
+              text-decoration: none;
             }
           }
         }
       }
 
       > .chi-accordion {
-        > .chi-accordion__item {
-          > button {
-            &.chi-accordion__trigger {
-              > .chi-accordion__title {
-                font-weight: $font-weight-semi-bold;
-              }
-            }
-          }
+        > .chi-accordion__item > button.chi-accordion__trigger > .chi-accordion__title {
+          font-weight: $font-weight-semi-bold;
         }
 
         > a {
@@ -354,135 +349,102 @@ $sidenav-lg-width: 12.5rem;
         }
       }
 
-      ul {
-        &.chi-sidenav__drawer-list {
-          li {
-            a {
-              line-height: $line-height-base;
-              padding-right: 1.5rem;
+      ul.chi-sidenav__drawer-list li {
+        a {
+          line-height: $line-height-base;
+          padding-right: 1.5rem;
 
-              &.chi-drawer__subitem-list-trigger {
-                padding-right: 3rem;
-                position: relative;
+          &.chi-drawer__subitem-list-trigger {
+            padding-right: 3rem;
+            position: relative;
 
-                .chi-sidenav__title {
-                  &::after {
-                    color: $sidenav-item-trigger-icon-color;
-                    content: 'keyboard_arrow_down';
-                    display: block;
-                    font-family: $font-family-icon;
-                    font-size: $font-size-xs;
-                    font-weight: $font-weight-normal;
-                    height: 1rem;
-                    line-height: 1.25rem;
-                    position: absolute;
-                    right: 1.5rem;
-                    top: 0.75rem;
-                    transition: 0.2s;
-                    width: 0.75rem;
-                  }
-                }
-              }
-            }
-
-            &.-expanded {
-              a {
-                .chi-sidenav__title {
-                  &::after {
-                    transform: rotate(180deg);
-                  }
-                }
+            .chi-sidenav__title {
+              &::after {
+                color: $sidenav-item-trigger-icon-color;
+                content: 'expand_more';
+                display: block;
+                font-family: $font-family-icon;
+                font-size: 1.25rem;
+                font-weight: $font-weight-normal;
+                height: 1.25rem;
+                line-height: 1.25rem;
+                position: absolute;
+                right: 1.25rem;
+                top: 0.75rem;
+                transition: 0.2s;
+                width: 1.25rem;
               }
             }
           }
         }
+
+        &.-expanded a .chi-sidenav__title::after {
+          transform: rotate(180deg);
+        }
       }
     }
+
+    // ========================================================================
+    // Sidenav — Active drawer
+    // ========================================================================
 
     &.-active {
       z-index: $zindex-fixed + 1;
 
-      .chi-drawer__content {
-        .chi-sidenav__drawer-list {
-          li {
-            a {
-              .chi-sidenav__title {
-                .chi-icon {
-                  margin-left: 0.5rem;
-                }
-              }
+      .chi-drawer__content .chi-sidenav__drawer-list li {
+        a .chi-sidenav__title .chi-icon {
+          margin-left: 0.5rem;
+        }
+
+        &.-active {
+          & > a,
+          & > a:hover {
+            background: $sidenav-item-active-background-color;
+            box-shadow: inset 0.125rem 0 0 $color-border-primary;
+            color: $color-text-primary;
+          }
+
+          &.-expanded > a {
+            background-color: $sidenav-item-active-expanded-background-color;
+            color: $color-text-base;
+          }
+        }
+
+        &.-expanded {
+          & > a {
+            background-color: $sidenav-item-expanded-background-color;
+            box-shadow: $sidenav-item-expanded-box-shadow;
+            color: $color-text-base;
+
+            &:hover {
+              background-color: $sidenav-item-hover-background-color;
+              box-shadow: none;
+            }
+          }
+
+          .chi-sidenav__drawer-item-list {
+            display: block;
+          }
+        }
+
+        .chi-sidenav__drawer-item-list {
+          background-color: $color-background-white;
+
+          .chi-tabs.-sm li a.chi-sidenav__drawer-item-tab {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-normal;
+            line-height: 1.25rem;
+            padding-bottom: 0.375rem;
+            padding-left: 3rem;
+            padding-top: 0.375rem;
+
+            &:hover {
+              background-color: $color-grey-20;
+              color: $color-text-base;
             }
 
             &.-active {
-              & > a {
-                &,
-                &:hover {
-                  background: $sidenav-item-active-background-color;
-                  box-shadow: inset 0.125rem 0 0 $color-border-primary;
-                  color: $color-text-primary;
-                }
-              }
-
-              &.-expanded {
-                & > a {
-                  background-color: $sidenav-item-active-expanded-background-color;
-                  color: $color-text-base;
-                }
-              }
-            }
-
-            &.-expanded {
-              & > a {
-                background-color: $sidenav-item-expanded-background-color;
-                box-shadow: $sidenav-item-expanded-box-shadow;
-                color: $color-text-base;
-
-                &:hover {
-                  background-color: $sidenav-item-hover-background-color;
-                  box-shadow: none;
-                }
-
-                .chi-sidenav__title {
-                  font-weight: $font-weight-semi-bold;
-                }
-              }
-
-              .chi-sidenav__drawer-item-list {
-                display: block;
-              }
-            }
-
-            .chi-sidenav__drawer-item-list {
-              background-color: $color-background-white;
-
-              .chi-tabs {
-                &.-sm {
-                  li {
-                    a {
-                      &.chi-sidenav__drawer-item-tab {
-                        font-size: $font-size-sm;
-                        font-weight: $font-weight-normal;
-                        line-height: 1.25rem;
-                        padding-bottom: 0.375rem;
-                        padding-left: 3rem;
-                        padding-top: 0.375rem;
-
-                        &:hover {
-                          background-color: $color-grey-20;
-                          color: $color-text-base;
-                        }
-
-                        &.-active {
-                          background-color: $sidenav-drawer-tab-active-background-color;
-                          box-shadow: $sidenav-drawer-tab-active-box-shadow;
-                          color: $color-text-primary;
-                          font-weight: $font-weight-semi-bold;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              @include _sidenav-drawer-active-state;
             }
           }
         }
@@ -490,48 +452,53 @@ $sidenav-lg-width: 12.5rem;
     }
   }
 
-  &__drawer-list {
-    & > li {
-      & > a {
+  // ==========================================================================
+  // Sidenav — Drawer list
+  // ==========================================================================
+
+  &__drawer-list > li {
+    > a {
+      display: block;
+      font-weight: $font-weight-semi-bold;
+      padding: 0.625rem 0 0.625rem 1.5rem;
+
+      .chi-sidenav__title {
+        font-weight: $font-weight-semi-bold;
+      }
+
+      // sass-lint:disable no-universal-selectors
+      > *:first-child {
+        margin-top: 0;
+      }
+
+      > *:last-child {
+        margin-bottom: 0;
+      }
+      // sass-lint:enable no-universal-selectors
+    }
+
+    &.-active > a {
+      background-color: $color-background-white;
+    }
+
+    &:not(.-active) > a:hover {
+      background-color: $color-grey-20;
+    }
+
+    .chi-sidenav__drawer-item-list {
+      display: none;
+      overflow: hidden;
+      transition: height 0.075s ease-out;
+
+      &.-transitioning {
         display: block;
-        padding-bottom: 0.625rem;
-        padding-left: 1.5rem;
-        padding-top: 0.625rem;
-
-        // sass-lint:disable no-universal-selectors
-        & > *:first-child {
-          margin-top: 0;
-        }
-
-        & > *:last-child {
-          margin-bottom: 0;
-        }
-        // sass-lint:enable no-universal-selectors
-      }
-
-      &.-active > a {
-        background-color: $color-background-white;
-
-        .chi-sidenav__title {
-          font-weight: $font-weight-semi-bold;
-        }
-      }
-
-      &:not(.-active) > a:hover {
-        background-color: $color-grey-20;
-      }
-
-      .chi-sidenav__drawer-item-list {
-        display: none;
-        overflow: hidden;
-        transition: height 0.075s ease-out;
-
-        &.-transitioning {
-          display: block;
-        }
       }
     }
   }
+
+  // ==========================================================================
+  // Sidenav — Title & description
+  // ==========================================================================
 
   &__title {
     align-items: center;
@@ -540,623 +507,33 @@ $sidenav-lg-width: 12.5rem;
     font-weight: $sidenav-item-title-font-weight;
   }
 
-  &__description {
-    font-size: $font-size-base;
-    line-height: 1.25rem;
-    margin: 0;
+  // ==========================================================================
+  // Sidenav — Responsive (md breakpoint)
+  // ==========================================================================
+
+  &.-expanded.-open-on-hover {
+    margin-right: calc(-20.25rem + 4.375rem);
+    z-index: 10;
   }
 
   @include respond-to(md) {
     width: $sidenav-md-width;
 
-    .chi-drawer {
-      &.-left {
-        left: $sidenav-md-width;
+    --sidenav-w: #{$sidenav-md-width};
 
-        &.-animated:not(.-active) {
-          left: -$drawer-width + $sidenav-md-width;
-        }
+    &__list > li > a {
+      min-height: $sidenav-item-min-height;
+
+      // sass-lint:disable-block no-universal-selectors
+      > *:not(.chi-icon) {
+        display: block;
       }
-    }
 
-    &__list > li {
-      > a {
-        min-height: $sidenav-item-min-height;
-
-        // sass-lint:disable-block no-universal-selectors
-        > *:not(.chi-icon) {
-          display: block;
-        }
-
-        .chi-icon {
-          margin-bottom: 0.25rem;
-        }
+      .chi-icon {
+        margin-bottom: 0.25rem;
       }
     }
   }
 
-  &.-sm {
-    width: $sidenav-sm-width;
-
-    @include respond-to(md) {
-      .chi-sidenav__list > li {
-        > a {
-          align-items: center;
-          flex-direction: column;
-          justify-content: center;
-          min-height: 3rem;
-          padding-left: 0.5rem;
-
-          // sass-lint:disable-block no-universal-selectors
-          > *:not(.chi-icon) {
-            display: none;
-          }
-
-          > .chi-icon {
-            margin-bottom: 0;
-            margin-right: 0;
-          }
-        }
-      }
-    }
-
-    .chi-drawer {
-      &.-left {
-        left: $sidenav-sm-width;
-
-        &.-animated:not(.-active) {
-          left: -$drawer-width + $sidenav-sm-width;
-        }
-      }
-    }
-  }
-
-  &.-md {
-    width: $sidenav-md-width;
-
-    .chi-sidenav__list > li {
-      > a {
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 4rem;
-
-        @include respond-to(lg) {
-          font-size: $font-size-xs;
-          padding-left: 0.5rem;
-        }
-
-        // sass-lint:disable-block no-universal-selectors
-        > *:not(.chi-icon) {
-          display: block;
-        }
-
-        > .chi-icon {
-          margin-bottom: 0.25rem;
-          margin-right: 0;
-        }
-      }
-    }
-
-    .chi-drawer {
-      &.-left {
-        left: $sidenav-md-width;
-
-        &.-animated:not(.-active) {
-          left: -$drawer-width + $sidenav-md-width;
-        }
-      }
-    }
-  }
-
-  &.-lg {
-    width: $sidenav-lg-width;
-
-    .chi-sidenav__list > li {
-      > a {
-        flex-direction: row;
-        font-size: $font-size-md;
-        justify-content: flex-start;
-        min-height: 3rem;
-        padding-left: 1.5rem;
-
-        // sass-lint:disable-block no-universal-selectors
-        > *:not(.chi-icon) {
-          display: block;
-        }
-
-        > .chi-icon {
-          margin-bottom: 0;
-          margin-right: 1rem;
-        }
-      }
-    }
-
-    .chi-drawer {
-      &.-left {
-        left: $sidenav-lg-width;
-
-        &.-animated:not(.-active) {
-          left: -$drawer-width + $sidenav-lg-width;
-        }
-      }
-    }
-  }
-
-  &.-float {
-    .chi-sidenav__content {
-      background-color: transparent;
-      box-shadow: none;
-      padding-top: 3rem;
-      z-index: $zindex-fixed + 2;
-
-      & > nav {
-        background-color: $sidenav-background-color;
-        border: $sidenav-border-right;
-        border-left: 0;
-        border-top-right-radius: $border-radius;
-        border-bottom-right-radius: $border-radius;
-
-        & > .chi-sidenav__list {
-          & > li {
-            &:first-child {
-              border-top-right-radius: $border-radius;
-            }
-
-            &:last-child {
-              border-bottom-right-radius: $border-radius;
-            }
-          }
-        }
-      }
-    }
-
-    .chi-sidenav__drawers {
-      .chi-drawer {
-        border: $sidenav-border-right;
-        border-radius: $border-radius;
-        box-shadow: 0.25rem 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.1);
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        margin-left: $sidenav-float-drawer-margin-left;
-      }
-    }
-  }
-
-  &.-global {
-    background: $sidenav-global-background-color;
-    height: 100%;
-
-    &.-expanded {
-      min-width: 20.25rem;
-
-      &.-open-on-hover {
-        margin-right: calc(-20.25rem + 4.375rem);
-        z-index: 10;
-      }
-
-      .chi-sidenav__item-wrapper {
-        chi-link {
-          .chi-link__content {
-            > span {
-              opacity: 1;
-              pointer-events: auto;
-              visibility: visible;
-            }
-          }
-        }
-
-        chi-accordion {
-          .chi-accordion {
-            .chi-accordion__item {
-              .chi-accordion__trigger {
-                .chi-link,
-                .icon-chevron-down {
-                  opacity: 1;
-                  pointer-events: auto;
-                  visibility: visible;
-                }
-
-                .icon-chevron-down {
-                  transform: none;
-
-                  &::before {
-                    transition: $accordion-item-trigger-icon-transition;
-                  }
-                }
-              }
-
-              &.-expanded {
-                > .chi-accordion__trigger {
-                  .icon-chevron-down {
-                    &::before {
-                      transform: $accordion-item-trigger-icon-transform;
-                    }
-                  }
-                }
-
-                // For nested accordions
-                chi-accordion {
-                  .chi-accordion {
-                    .chi-accordion__item {
-                      .chi-accordion__trigger {
-                        .icon-chevron-down {
-                          transform: none;
-
-                          &::before {
-                            transition: $accordion-item-trigger-icon-transition;
-                          }
-                        }
-                      }
-
-                      &.-expanded {
-                        .chi-accordion__trigger {
-                          .icon-chevron-down {
-                            &::before {
-                              transform: $accordion-item-trigger-icon-transform;
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.-collapsed {
-      width: 4.375rem;
-
-      .chi-sidenav__item {
-        &:hover {
-          transition: opacity 0.1s ease, visibility 0.1s ease;
-        }
-      }
-
-      .chi-sidenav__item-wrapper {
-        chi-link {
-          .chi-link__content {
-            > span {
-              opacity: 0;
-              visibility: hidden;
-              white-space: nowrap;
-            }
-          }
-        }
-
-        chi-accordion {
-          .chi-accordion {
-            .chi-accordion__item {
-              .chi-accordion__trigger {
-                .chi-link,
-                .icon-chevron-down {
-                  opacity: 0;
-                  visibility: hidden;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    chi-link {
-      .chi-link__content {
-        > span {
-          transition: opacity 0.1s ease, visibility 0.1s ease;
-          opacity: 1;
-          visibility: visible;
-          pointer-events: auto;
-        }
-      }
-    }
-
-    chi-accordion {
-      .chi-accordion {
-        .chi-accordion__item {
-          .chi-accordion__trigger {
-            .chi-link,
-            .icon-chevron-down {
-              transition: opacity 0.1s ease, visibility 0.1s ease;
-              opacity: 1;
-              visibility: visible;
-              pointer-events: auto;
-            }
-          }
-        }
-      }
-    }
-
-    .chi-sidenav__content {
-      background-color: transparent;
-      box-shadow: none;
-
-      nav {
-        border-right: $sidenav-border-right;
-        height: 100%;
-
-        .chi-sidenav__list {
-          > li {
-            display: block;
-            padding: 0 0.5rem;
-            margin: 0.375rem 0;
-
-            .chi-icon {
-              color: $sidenav-global-item-icon-color;
-              height: $sidenav-global-item-icon-size;
-              width: $sidenav-global-item-icon-size;
-            }
-
-            .chi-link {
-              color: $sidenav-global-item-text-color;
-              font-size: $sidenav-global-item-font-size;
-              text-decoration: none;
-
-              @include nav-link-icon-no-underline;
-            }
-
-            .chi-sidenav__item-wrapper:has(chi-accordion) {
-              chi-link {
-                border-radius: $sidenav-global-item-border-radius;
-                margin-bottom: 0.125rem;
-                margin-top: 0.125rem;
-                width: 100%;
-
-                &.-active {
-                  .chi-icon,
-                  .chi-icon::before {
-                    color: $sidenav-global-item-active-icon-color;
-                  }
-
-                  .chi-link {
-                    background-color: $sidenav-global-item-active-background-color;
-                    border-radius: $sidenav-global-item-border-radius;
-                    color: $sidenav-global-item-active-text-color;
-                    font-weight: $sidenav-global-item-active-font-weight;
-
-                    &:hover {
-                      background-color: $sidenav-global-item-active-background-color;
-                    }
-                  }
-                }
-
-                .chi-link {
-                  display: flex;
-                  padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 2 Item
-                  width: 100%;
-
-                  &:hover {
-                    background-color: $sidenav-global-item-hover-background-color;
-                    border-radius: $sidenav-global-item-border-radius;
-                  }
-                }
-              }
-
-              chi-accordion {
-                .chi-accordion__item {
-                  &.-expanded {
-                    > .chi-accordion__trigger {
-                      .chi-link {
-                        font-weight: $sidenav-global-item-active-font-weight;
-                      }
-                    }
-                  }
-
-                  &:has(.-active) {
-                    > .chi-accordion__trigger,
-                    > .chi-accordion__trigger:hover {
-                      background-color: $sidenav-global-item-active-background-color;
-
-                      .chi-icon,
-                      .chi-icon::before {
-                        color: $sidenav-global-item-active-icon-color;
-                      }
-
-                      .chi-link {
-                        color: $sidenav-global-item-active-text-color;
-                        font-weight: $sidenav-global-item-active-font-weight;
-                      }
-                    }
-
-                    &.-expanded {
-                      > .chi-accordion__trigger {
-                        background-color: transparent;
-                      }
-
-                      > .chi-accordion__trigger:hover {
-                        background-color: $sidenav-global-item-hover-background-color;
-                      }
-                    }
-
-                    > .chi-accordion__content {
-                      > div {
-                        > .chi-sidenav__item-guide {
-                          &::before {
-                            border-left: $sidenav-global-tree-guide-active-border-left;
-                          }
-                        }
-                      }
-                    }
-                  }
-
-                  .chi-accordion__trigger {
-                    background: $sidenav-global-item-background-color;
-                    border-radius: $sidenav-global-item-border-radius;
-                    display: flex;
-                    padding: 0.75rem;
-
-                    &:hover {
-                      background-color: $sidenav-global-item-hover-background-color;
-                    }
-
-                    .chi-icon {
-                      display: flex;
-                      align-items: center;
-
-                      &.icon-chevron-down {
-                        margin-left: auto;
-                      }
-
-                      &:not(.icon-chevron-down) {
-                        margin-right: 1.1875rem;
-                      }
-                    }
-                  }
-
-                  .chi-accordion__content {
-                    background: none;
-                    padding-bottom: 0;
-                    padding-top: 0.25rem;
-
-                    .chi-sidenav__item-guide {
-                      position: relative;
-
-                      &::before {
-                        border-left: $sidenav-global-tree-guide-border-left;
-                        content: '';
-                        display: block;
-                        height: 100%;
-                        left: 1.5rem;
-                        position: absolute;
-                        top: 0;
-                        width: 1px;
-                      }
-
-                      .chi-sidenav__item-guide {
-                        padding-left: 0.625rem;
-
-                        &::before {
-                          left: 0;
-                        }
-                      }
-                    }
-
-                    [slot] {
-                      chi-link {
-                        padding-left: 2.25rem;
-                      }
-
-                      .chi-accordion {
-                        padding-left: 2.25rem;
-
-                        .chi-accordion__item {
-                          .chi-accordion__trigger {
-                            padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 2 Item
-
-                            .chi-link {
-                              padding-left: 0;
-                            }
-                          }
-
-                          .chi-accordion__content {
-                            padding-left: 1.25rem;
-
-                            .chi-accordion {
-                              padding-left: 0.75rem;
-                            }
-
-                            chi-link {
-                              width: 100%;
-                              padding-left: 0;
-
-                              .chi-link {
-                                border-radius: $sidenav-global-item-border-radius;
-                                display: flex;
-                                padding: 0.5rem 0.5rem 0.5rem 1.1875rem; // Level 3 Item
-                                width: 100%;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-
-            .chi-sidenav__item-wrapper {
-              chi-link {
-                width: 100%;
-
-                chi-icon[icon='external-link'] {
-                  display: none;
-                }
-
-                &:hover {
-                  chi-icon[icon='external-link'] {
-                    display: inline-flex;
-                  }
-                }
-
-                &.-active {
-                  .chi-link {
-                    background-color: $sidenav-global-item-active-background-color;
-                    box-shadow: none;
-                    color: $sidenav-global-item-active-text-color;
-                    font-weight: $sidenav-global-item-active-font-weight;
-                    width: 100%;
-
-                    .chi-icon,
-                    .chi-icon::before {
-                      color: $sidenav-global-item-active-icon-color;
-                    }
-
-                    .chi-link {
-                      color: $sidenav-global-item-active-text-color;
-                      font-weight: $sidenav-global-item-active-font-weight;
-                    }
-
-                    &:hover {
-                      background-color: $sidenav-global-item-active-background-color;
-                    }
-                  }
-                }
-              }
-
-              .chi-link {
-                border-radius: $sidenav-global-item-border-radius;
-                position: relative;
-
-                chi-badge {
-                  position: absolute;
-                  left: 1.5rem;
-                  top: 0.75rem;
-                }
-              }
-
-              &:not(:has(chi-accordion)) {
-                .chi-link {
-                  padding: 0.875rem;
-                  padding-left: 1rem;
-                  width: 100%;
-
-                  .chi-link__content {
-                    > span {
-                      margin-left: 0.6875rem;
-                    }
-                  }
-                }
-
-                chi-link {
-                  &:not(.-active) {
-                    .chi-link {
-                      &:hover {
-                        background-color: $sidenav-global-item-hover-background-color;
-                        cursor: pointer;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  @import 'sidenav-global';
 }
