@@ -623,7 +623,9 @@ $sizes: (
     &.-hidden-column {
       flex-basis: 2rem;
       flex-grow: 0;
-      right: 3rem;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 1;
     }
   }
