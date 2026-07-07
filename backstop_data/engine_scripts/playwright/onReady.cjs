@@ -17,7 +17,11 @@ module.exports = async (page, scenario, viewport, isReference, browserContext) =
       const active = column.querySelector('.-active');
 
       if (active) {
-        column.scrollTop = active.offsetTop - SCROLL_ADJUSTMENT;
+        const activeRelativeTop =
+          active.getBoundingClientRect().top -
+          column.getBoundingClientRect().top +
+          column.scrollTop;
+        column.scrollTop = Math.max(0, activeRelativeTop - SCROLL_ADJUSTMENT);
       }
     });
   });
