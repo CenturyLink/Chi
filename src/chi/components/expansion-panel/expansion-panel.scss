@@ -20,7 +20,7 @@ $transition-duration: 0.2s;
     margin-right: -0.25rem;
     min-height: 0;
 
-    & > * {
+    & > *:not(chi-tooltip,.chi-icon.-state) {
       // sass-lint:disable-line no-universal-selectors
       display: block;
       padding-left: 0.25rem;
