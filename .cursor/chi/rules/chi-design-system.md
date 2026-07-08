@@ -50,7 +50,7 @@ Examples: `-pt--4` (padding-top 32px), `-mx--auto` (margin horizontal auto), `-g
 
 ## Themes
 
-Chi supports 6 themes: `lumen`, `brightspeed`, `centurylink`, `colt`, `portal`, `connect`
+Chi supports 4 themes: `lumen`, `centurylink`, `portal`, `connect`
 
 ## Key Rules
 

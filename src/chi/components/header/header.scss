@@ -457,7 +457,7 @@
         margin: 0 3rem 0 0;
       }
 
-      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
+      &:not(.-centurylink) {
         margin: 0 0.5rem;
         width: 8.75rem;
 
@@ -539,7 +539,7 @@
         margin: $header-lg-brand-margin;
       }
 
-      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
+      &:not(.-centurylink) {
         margin: $header-lg-brand-margin-portal;
         width: 9.0625rem;
 
@@ -581,7 +581,7 @@
     }
 
     .chi-brand {
-      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
+      &:not(.-centurylink) {
         @include respond-to(md) {
           margin: 0 1rem 0 0;
           width: 10rem;
