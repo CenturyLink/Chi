@@ -4,9 +4,9 @@ import { resolve } from 'path';
 
 const __dirname = resolve(); 
 
-const validThemes = ['lumen', 'portal', 'connect', 'test', 'colt', 'brightspeed', 'centurylink'];
+const validThemes = ['lumen', 'portal', 'connect', 'test', 'centurylink'];
 const localDefaultThemes = ['lumen', 'connect', 'centurylink', 'test'];
-const prodDefaultThemes = ['lumen', 'portal', 'connect', 'colt', 'brightspeed', 'centurylink', 'test'];
+const prodDefaultThemes = ['lumen', 'portal', 'connect', 'centurylink', 'test'];
 
 const selectedThemes = process.env.BUILD_TARGET === 'prod'
   ? prodDefaultThemes

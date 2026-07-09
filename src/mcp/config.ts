@@ -12,7 +12,7 @@ export const RULES_DIR = join(ROOT, AI_ASSETS_PATH, 'rules');
 export const OUTPUT_PATH = join(ROOT, 'src/mcp/metadata.json');
 export const BUILD_CACHE_PATH = join(__dirname, '.build-cache.json');
 
-export const THEMES = ['lumen', 'brightspeed', 'centurylink', 'colt', 'portal', 'connect'] as const;
+export const THEMES = ['lumen', 'centurylink', 'portal', 'connect'] as const;
 export type Theme = (typeof THEMES)[number];
 
 export const KNOWN_WC_TAGS = new Set([
@@ -148,7 +148,7 @@ export const COMP_DESCRIPTIONS: Record<string, string> = {
   avatars: 'Circular user profile image or initials placeholder with size variants',
   backdrop: 'Semi-transparent overlay background used behind modals and drawers',
   badge: 'Small status indicator or count label, often attached to icons or buttons',
-  brand: 'Brand logo component for Lumen, CenturyLink, Brightspeed, and Colt themes',
+  brand: 'Brand logo component for Lumen and CenturyLink themes',
   breadcrumb: 'Navigation trail showing the current page location within a hierarchy',
   'bulk-actions': 'Toolbar for batch operations on selected items in a list or table',
   buttons: 'Interactive element for triggering actions, with color, size, and variant options',

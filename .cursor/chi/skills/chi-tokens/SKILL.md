@@ -16,7 +16,7 @@ Regex: `^\$([a-z0-9-_]+):\s*(.+?)\s*;`
 **Note**: Some values are SCSS maps (e.g., `$shadow`, `$state-colors`). These contain multiple sub-values inside `(key: value, ...)` syntax.
 
 ### Theme-Specific Tokens
-For theme colors, read `src/chi/themes/{theme}/_variables.scss` where theme is one of: `lumen`, `brightspeed`, `centurylink`, `colt`, `portal`, `connect`.
+For theme colors, read `src/chi/themes/{theme}/_variables.scss` where theme is one of: `lumen`, `centurylink`, `portal`, `connect`.
 
 Theme files override global tokens. When a user asks about a color, check the theme file first, then fall back to global.
 
