@@ -79,7 +79,7 @@
           "type": "string",
           "enum": ["colors", "typography", "spacing", "shadows", "breakpoints", "zIndex"]
         },
-        "theme": { "type": "string", "enum": ["lumen", "brightspeed", "centurylink", "colt", "portal", "connect"] }
+        "theme": { "type": "string", "enum": ["lumen", "centurylink", "portal", "connect"] }
       },
       "required": ["tokenName"]
     }
@@ -94,7 +94,7 @@
           "type": "string",
           "enum": ["colors", "typography", "spacing", "shadows", "breakpoints", "zIndex"]
         },
-        "theme": { "type": "string", "enum": ["lumen", "brightspeed", "centurylink", "colt", "portal", "connect"] }
+        "theme": { "type": "string", "enum": ["lumen", "centurylink", "portal", "connect"] }
       }
     }
   },

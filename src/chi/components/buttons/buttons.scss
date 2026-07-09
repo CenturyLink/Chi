@@ -309,7 +309,7 @@ $sizes: (
         }
       }
 
-      // Dims icons on hover for themes with sub-1 opacity (connect, brightspeed, portal).
+      // Dims icons on hover for themes with sub-1 opacity (connect, portal).
       @if $button-flat-hover-icon-opacity != $opacity-100 {
         .chi-button__content {
           & > .chi-icon,

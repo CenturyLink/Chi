@@ -52,7 +52,7 @@ When no MCP server is available, use the rules/instructions and reference files 
 
 - **Spacing formula**: `space(N) = (N/2)rem` — each step is 8px at 16px root
 - **Double-dash syntax**: ALL utility classes use `--` before values: `-p--4`, `-bg--primary`
-- **Themes**: lumen, brightspeed, centurylink, colt, portal, connect
+- **Themes**: lumen, centurylink, portal, connect
 - **Implementation priority**: Chi Vue > Chi Web Components > Chi HTML/CSS
 - **CSS loading**: Requires `<link>` to Chi CSS and `chi` class on `<html>` element
 - Components use BEM methodology with `chi-` prefix (e.g., `chi-button`, `chi-modal`)
