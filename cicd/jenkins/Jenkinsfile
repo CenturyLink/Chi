@@ -41,6 +41,7 @@ pipeline {
     PROJECT_NAME = 'ux-chi'
     PROJECT_MAL = 'CHI'
     DOCKER_REPO = 'chi'
+    ASSETS_SERVER_ORG = 'LumenTech-Prod'
 
     // Branch variables
     PROD_BRANCH = 'master'
@@ -410,7 +411,7 @@ pipeline {
                     ${CLEAN_SCRIPT}
                 """, label: "Cleaning before pushing to AssetsServer")
 
-                jslGitHubCloneRepo('ux-chi-AssetsServer')
+                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG)
 
                 env.CHECK = sh(script: """
                     chmod +x ${CHECK_FOLDER_SCRIPT}
@@ -687,7 +688,7 @@ def gitHubRelease() {
 
 // This function is called to create and open a pull request
 def createAndOpenPullRequest(def version) {
-  def org = jslGitGetRepoOwner()
+  def org = env.ASSETS_SERVER_ORG
   def commitMessage = "[FSTEAM-4189] This PR is for CHI ${version}"
   def description = "You can check staging in https://assets-dev.ctl.io/chi/staging"
   def branchName = "CHI_${version}"
@@ -712,7 +713,7 @@ def createAndOpenPullRequest(def version) {
       git push --set-upstream origin "${branchName}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer')
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer', org)
 }
 
 // This function is called to check/create the smoke tests
