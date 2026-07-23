@@ -56,7 +56,7 @@ pipeline {
     GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
     
     // Docker variables
-    DOCKER_CREDENTIALS = 'nexus-secrets'
+    DOCKER_CREDENTIALS = 'nexus-secrets-file'
     DOCKER_NODE20 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node20_agent:latest"
     DOCKER_NODE22 = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node22_light_agent:latest"
     DOCKER_JIRA = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest"
