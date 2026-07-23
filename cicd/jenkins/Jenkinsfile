@@ -602,7 +602,7 @@ def promoteDeployTagGCR() {
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
 
-  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
+  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 20)
 }
 
 // This function is called to check the package.json version
