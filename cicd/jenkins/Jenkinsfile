@@ -120,10 +120,25 @@ pipeline {
       }
       steps {
         script {
+          // TEMP: hardcoded version for testing purposes instead of reading package.json.
+          def version = '7.18.0'
+
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           jslNpmWrapper('run build:prod', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-          createAndOpenPullRequest('7.17')
+
+          sh(script: """
+              chmod +x ${CLEAN_SCRIPT}
+              ${CLEAN_SCRIPT}
+          """, label: "Cleaning before pushing to AssetsServer")
+
+          jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_ALTER_CREDENTIALS)
+
+          env.CHECK = sh(script: """
+              chmod +x ${CHECK_FOLDER_SCRIPT}
+              ${CHECK_FOLDER_SCRIPT} ${version}
+          """, returnStdout: true).trim()
+
+          createAndOpenPullRequest(version)
         }
       }
     }
@@ -442,7 +457,7 @@ pipeline {
                     ${CLEAN_SCRIPT}
                 """, label: "Cleaning before pushing to AssetsServer")
 
-                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_ALTER_CREDENTIALS)
 
                 env.CHECK = sh(script: """
                     chmod +x ${CHECK_FOLDER_SCRIPT}
@@ -746,7 +761,7 @@ def createAndOpenPullRequest(def version) {
       git push --set-upstream origin "${branchName}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer', org)
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_ALTER_CREDENTIALS, 'ux-chi-AssetsServer', org)
 }
 
 // This function is called to check/create the smoke tests
