@@ -36,6 +36,10 @@ pipeline {
     preserveStashes(buildCount: 10)
     disableConcurrentBuilds()
   }
+  // TEMP: remove after verifying the AssetsServer PR flow. Default is true so an opened PR runs ONLY the test stage.
+  parameters {
+    booleanParam(name: 'TEST_ASSETS_SERVER_PR', defaultValue: true, description: 'TEMPORARY: when true, only runs the AssetsServer PR test stage and skips the rest of the pipeline.')
+  }
   environment {
     // Project variables
     PROJECT_NAME = 'ux-chi'
@@ -103,6 +107,33 @@ pipeline {
     DEPLOY_AUTH_TOKEN = ''
   }
   stages {
+    // TEMP: isolated stage to test the AssetsServer PR flow only. Remove after verifying.
+    stage('Test AssetsServer PR only') {
+      when {
+        beforeAgent true
+        expression { return params.TEST_ASSETS_SERVER_PR != false }
+      }
+      agent {
+        docker {
+          image DOCKER_NODE22
+        }
+      }
+      steps {
+        script {
+          jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslNpmWrapper('run build:prod', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+          createAndOpenPullRequest('7.17')
+        }
+      }
+    }
+    // TEMP: wrapper so the whole normal pipeline is skipped while TEST_ASSETS_SERVER_PR is true. Remove after verifying.
+    stage('Full pipeline') {
+      when {
+        beforeAgent true
+        expression { return params.TEST_ASSETS_SERVER_PR == false }
+      }
+      stages {
     stage('Summary') {
       steps {
         script {
@@ -411,7 +442,7 @@ pipeline {
                     ${CLEAN_SCRIPT}
                 """, label: "Cleaning before pushing to AssetsServer")
 
-                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG)
+                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
 
                 env.CHECK = sh(script: """
                     chmod +x ${CHECK_FOLDER_SCRIPT}
@@ -515,6 +546,8 @@ pipeline {
           
           jslAdoptionMain('cypress/reports/*xml')
         }
+      }
+    }
       }
     }
   }
