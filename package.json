@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
-    "@cypress/code-coverage": "^3.14.7",
+    "@cypress/code-coverage": "^4.0.3",
     "@playwright/browser-chromium": "1.51.1",
     "@playwright/test": "1.51.1",
     "@types/node": "^24.0.4",
@@ -59,7 +59,7 @@
     "istanbul-reports": "^3.2.0",
     "mocha-junit-reporter": "^2.2.1",
     "normalize.css": "^8.0.1",
-    "nyc": "^17.1.0",
+    "nyc": "^18.0.0",
     "ora": "^8.2.0",
     "popper.js": "^1.16.1",
     "postcss-svg": "^3.0.0",
