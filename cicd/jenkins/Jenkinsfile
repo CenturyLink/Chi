@@ -120,8 +120,7 @@ pipeline {
       }
       steps {
         script {
-          // TEMP: hardcoded version for testing purposes instead of reading package.json.
-          def version = '7.18.0'
+          def packageJson = readJSON file: 'package.json'
 
           jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
           jslNpmWrapper('run build:prod', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
@@ -135,10 +134,10 @@ pipeline {
 
           env.CHECK = sh(script: """
               chmod +x ${CHECK_FOLDER_SCRIPT}
-              ${CHECK_FOLDER_SCRIPT} ${version}
+              ${CHECK_FOLDER_SCRIPT} ${packageJson.version}
           """, returnStdout: true).trim()
 
-          createAndOpenPullRequest(version)
+          createAndOpenPullRequest(packageJson.version)
         }
       }
     }
