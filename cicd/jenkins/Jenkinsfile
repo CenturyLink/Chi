@@ -53,6 +53,7 @@ pipeline {
     GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
     GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
     GITHUB_ALTER_CREDENTIALS = 'JCTOKEN'
+    GITHUB_APP_CREDENTIALS = 'gh-app-credentials'
     GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
     
     // Docker variables
@@ -411,7 +412,7 @@ pipeline {
                     ${CLEAN_SCRIPT}
                 """, label: "Cleaning before pushing to AssetsServer")
 
-                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG)
+                jslGitHubCloneRepo('ux-chi-AssetsServer', env.ASSETS_SERVER_ORG, 'master', GITHUB_APP_CREDENTIALS)
 
                 env.CHECK = sh(script: """
                     chmod +x ${CHECK_FOLDER_SCRIPT}
@@ -713,7 +714,7 @@ def createAndOpenPullRequest(def version) {
       git push --set-upstream origin "${branchName}"
       """)
 
-  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_PUBLISH_TOKEN_CREDENTIALS, 'ux-chi-AssetsServer', org)
+  jslGitHubPRCreate(commitMessage, description, branchName, 'master', GITHUB_APP_CREDENTIALS, 'ux-chi-AssetsServer', org)
 }
 
 // This function is called to check/create the smoke tests
